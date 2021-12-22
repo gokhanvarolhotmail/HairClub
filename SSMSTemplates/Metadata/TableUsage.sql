@@ -9,7 +9,7 @@ DROP TABLE [tempdb].[dbo].[Objects]
 SELECT
     CAST([k].[sqlserver_start_time] AS DATETIME2(0)) AS [ServerStartTime]
   , CAST([k].[SnapshotTime] AS DATETIME2(0)) AS [SnapshotTime]
-  , CAST(GETDATE() AS DATETIME2(0)) AS [Now]
+  , CAST(GETDATE() AS DATETIME2(0)) AS [ReportTime]
   , CAST(DATEDIFF(SECOND, [k].[SnapshotTime], GETDATE()) / 60.0 AS NUMERIC(10, 3)) AS [MinutesSinceSnapshot]
   , CAST(DATEDIFF(SECOND, [k].[SnapshotTime], GETDATE()) / 3600.0 AS NUMERIC(10, 3)) AS [HoursSinceSnapshot]
 FROM( SELECT
