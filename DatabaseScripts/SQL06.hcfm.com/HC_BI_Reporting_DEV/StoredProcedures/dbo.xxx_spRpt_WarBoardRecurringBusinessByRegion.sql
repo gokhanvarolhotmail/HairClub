@@ -1,3 +1,9 @@
+/* CreateDate: 09/13/2012 15:26:37.630 , ModifyDate: 03/07/2016 16:09:15.443 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /*
 ==============================================================================
 
@@ -358,3 +364,4 @@ CREATE TABLE #Centers (
 
 	SELECT * FROM #Region
 END
+GO

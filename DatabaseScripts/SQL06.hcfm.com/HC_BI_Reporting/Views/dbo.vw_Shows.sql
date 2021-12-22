@@ -1,3 +1,9 @@
+/* CreateDate: 06/19/2014 15:38:56.640 , ModifyDate: 08/20/2019 17:27:27.473 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 VIEW:					vw_Shows
 DESTINATION SERVER:		SQL06
@@ -79,3 +85,4 @@ WHERE   FAR.Show = 1
         AND ( ISNULL(DCP_Home.AreaCode + DCP_Home.PhoneNumber, '') <> ''
               OR ISNULL(DCP_Work.AreaCode + DCP_Work.PhoneNumber, '') <> ''
               OR ISNULL(DCP_Cell.AreaCode + DCP_Cell.PhoneNumber, '') <> '' )
+GO

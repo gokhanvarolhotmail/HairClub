@@ -1,3 +1,9 @@
+/* CreateDate: 11/18/2019 11:13:09.077 , ModifyDate: 11/18/2019 11:50:21.143 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 VIEW:					vw_Promotions_Rolling2Months
 DESTINATION SERVER:		SQL06
@@ -91,3 +97,4 @@ INNER JOIN HC_BI_MKTG_DDS.bi_mktg_dds.DimPromotionCode PC
 	ON PC.PromotionCodeKey = FL.PromotionCodeKey
 WHERE FAR.Consultation = 1
 AND FL.PromotionCodeKey <> -1
+GO

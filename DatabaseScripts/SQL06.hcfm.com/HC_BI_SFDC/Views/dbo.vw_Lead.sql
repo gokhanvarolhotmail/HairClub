@@ -1,3 +1,9 @@
+/* CreateDate: 10/29/2019 11:54:53.193 , ModifyDate: 02/05/2021 10:06:22.410 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /*
 NOTES
 
@@ -258,3 +264,4 @@ WHERE	l.Status IN ( 'Lead', 'Client', 'HWLead', 'HWClient', 'new', 'converted', 
 		AND ct.CenterTypeDescription <> 'Surgery'
 		AND ISNULL(l.IsDeleted, 0) = 0
 		AND ISNULL(fil.IsInvalidLead,0) = 0
+GO

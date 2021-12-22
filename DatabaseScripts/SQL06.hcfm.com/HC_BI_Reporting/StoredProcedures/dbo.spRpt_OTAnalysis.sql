@@ -1,3 +1,9 @@
+/* CreateDate: 08/30/2013 10:29:07.183 , ModifyDate: 10/24/2013 14:50:48.200 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /*
 ==============================================================================
 
@@ -112,3 +118,4 @@ BEGIN
 	,	EmployeeFullName
 
 END
+GO

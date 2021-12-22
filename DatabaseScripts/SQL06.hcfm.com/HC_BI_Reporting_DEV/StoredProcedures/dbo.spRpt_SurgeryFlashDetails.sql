@@ -1,3 +1,9 @@
+/* CreateDate: 06/02/2011 16:19:41.670 , ModifyDate: 09/12/2012 14:14:06.920 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /*
 ==============================================================================
 
@@ -570,3 +576,4 @@ BEGIN
 			AND ACT.CenterSSID = @NSCenterNum
 	END
 END
+GO

@@ -1,3 +1,9 @@
+/* CreateDate: 09/03/2021 09:37:07.837 , ModifyDate: 09/03/2021 09:37:07.837 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE VIEW [bi_mktg_dds].[vwDimActivityDemographic]
 AS
 -------------------------------------------------------------------------
@@ -51,3 +57,4 @@ AS
 	FROM [bi_mktg_dds].[DimActivityDemographic] dad
 	LEFT OUTER JOIN HC_BI_SFDC.dbo.Lead l
 	ON dad.SFDC_LeadID = l.Id
+GO

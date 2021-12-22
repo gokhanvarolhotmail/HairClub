@@ -1,3 +1,9 @@
+/* CreateDate: 10/26/2012 11:21:49.413 , ModifyDate: 03/27/2019 17:47:47.320 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE TABLE [dbo].[FactCommissionDetail](
 	[CommissionDetailKey] [int] IDENTITY(1,1) NOT NULL,
 	[CommissionHeaderKey] [int] NOT NULL,
@@ -40,3 +46,4 @@ CREATE NONCLUSTERED INDEX [IX_FactCommissionDetail_IsValidTransaction_INCL] ON [
 	[IsValidTransaction] ASC
 )
 INCLUDE([ClientMembershipKey],[SalesCodeDescriptionShort],[ExtendedPrice]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO

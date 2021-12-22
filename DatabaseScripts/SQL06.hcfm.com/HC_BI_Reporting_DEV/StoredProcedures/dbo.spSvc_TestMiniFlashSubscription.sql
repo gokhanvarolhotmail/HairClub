@@ -1,3 +1,9 @@
+/* CreateDate: 12/30/2019 10:39:36.850 , ModifyDate: 12/30/2019 10:39:36.850 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spSvc_TestMiniFlashSubscription
 DESTINATION SERVER:		SQL06
@@ -28,3 +34,4 @@ SELECT	'rhut@hairclub.com' AS 'SendTo'
 
 
 END
+GO

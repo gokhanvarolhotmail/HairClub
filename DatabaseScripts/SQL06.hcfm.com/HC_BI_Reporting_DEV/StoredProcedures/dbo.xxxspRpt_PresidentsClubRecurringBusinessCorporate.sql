@@ -1,3 +1,9 @@
+/* CreateDate: 10/02/2013 15:03:45.960 , ModifyDate: 04/05/2016 16:54:05.617 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spRpt_PresidentsClubRecurringBusinessCorporate
 DESTINATION SERVER:		SQL06
@@ -440,3 +446,4 @@ BEGIN
 
 
 END
+GO

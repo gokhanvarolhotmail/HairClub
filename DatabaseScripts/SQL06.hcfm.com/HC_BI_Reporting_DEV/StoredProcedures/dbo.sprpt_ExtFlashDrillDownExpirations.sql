@@ -1,3 +1,9 @@
+/* CreateDate: 04/18/2013 14:29:54.993 , ModifyDate: 01/06/2017 10:51:31.443 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /*
 ==============================================================================
 
@@ -108,3 +114,4 @@ END
 	WHERE q.ClientNo IS NOT NULL
 
 END
+GO

@@ -1,3 +1,9 @@
+/* CreateDate: 08/04/2015 16:14:14.760 , ModifyDate: 05/18/2018 16:06:08.930 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE VIEW [dbo].[vw_Clients]
 AS
 SELECT  DC.CenterID
@@ -84,3 +90,4 @@ SELECT  DC.CenterID
 ,		DC.CanConfirmAppointmentByEmail
 ,		DC.CanContactForPromotionsByEmail
 FROM    dbaClient DC
+GO

@@ -1,3 +1,9 @@
+/* CreateDate: 02/26/2013 16:56:51.900 , ModifyDate: 03/03/2020 23:59:40.447 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE TABLE [dbo].[FactDeferredRevenueHeader](
 	[DeferredRevenueHeaderKey] [int] IDENTITY(1,1) NOT NULL,
 	[DeferredRevenueTypeID] [int] NOT NULL,
@@ -48,3 +54,4 @@ CREATE NONCLUSTERED INDEX [NC_FactDeferredRevenueHeader_DeferredRevenueTypeID_De
 	[Deferred] ASC
 )
 INCLUDE([DeferredRevenueHeaderKey],[ClientKey],[ClientMembershipKey],[MembershipKey],[MembershipDescription],[MonthsRemaining],[MembershipCancelled]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO

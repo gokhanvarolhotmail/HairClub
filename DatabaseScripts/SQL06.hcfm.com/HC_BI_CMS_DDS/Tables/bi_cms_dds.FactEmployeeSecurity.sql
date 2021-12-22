@@ -1,3 +1,9 @@
+/* CreateDate: 10/03/2019 23:03:42.233 , ModifyDate: 10/03/2019 23:03:47.647 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE TABLE [bi_cms_dds].[FactEmployeeSecurity](
 	[EmployeeSecurityKey] [int] NOT NULL,
 	[EmployeeKey] [int] NULL,
@@ -15,3 +21,4 @@ CREATE TABLE [bi_cms_dds].[FactEmployeeSecurity](
 	[EmployeeSecurityKey] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [FG1]
 ) ON [FG1]
+GO

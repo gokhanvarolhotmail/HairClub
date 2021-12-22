@@ -1,3 +1,9 @@
+/* CreateDate: 06/16/2015 08:58:41.310 , ModifyDate: 07/13/2015 10:58:38.307 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				[spRpt_ContestSummerUpgradeConversion]
 DESTINATION SERVER:		SQL06
@@ -252,3 +258,4 @@ ORDER BY C.CenterSortOrder
 
 
 END
+GO

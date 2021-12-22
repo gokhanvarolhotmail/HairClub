@@ -1,3 +1,9 @@
+/* CreateDate: 09/06/2018 16:24:08.720 , ModifyDate: 02/21/2020 16:39:40.757 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spRpt_BosleyMiniFlash
 DESTINATION SERVER:		SQL06
@@ -851,3 +857,4 @@ FROM    #Final f
 ORDER BY f.SortOrder
 
 END
+GO

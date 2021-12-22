@@ -1,3 +1,9 @@
+/* CreateDate: 07/22/2015 14:31:40.583 , ModifyDate: 08/07/2015 11:30:24.617 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 VIEW:					vw_SalesMix
 DESTINATION SERVER:		SQL06
@@ -49,3 +55,4 @@ SELECT DD.FirstDateOfMonth
 	,	C.CenterSSID
 	,	C.CenterDescriptionNumber
 	,	C.CenterDescription
+GO

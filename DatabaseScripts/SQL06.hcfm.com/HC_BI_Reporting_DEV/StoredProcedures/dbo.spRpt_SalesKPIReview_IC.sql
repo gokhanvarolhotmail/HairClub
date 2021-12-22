@@ -1,3 +1,9 @@
+/* CreateDate: 05/07/2018 14:52:41.927 , ModifyDate: 05/07/2018 15:48:20.430 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /******************************************************************************************************************************
 PROCEDURE:				[spRpt_SalesKPIReview_IC]
 DESTINATION SERVER:		SQL06
@@ -196,3 +202,4 @@ INNER JOIN #HairSalesMix
 
 
 END
+GO

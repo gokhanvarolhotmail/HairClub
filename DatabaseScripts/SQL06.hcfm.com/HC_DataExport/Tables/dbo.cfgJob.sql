@@ -1,3 +1,9 @@
+/* CreateDate: 07/27/2016 14:35:29.713 , ModifyDate: 07/27/2016 14:35:29.797 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE TABLE [dbo].[cfgJob](
 	[JobID] [int] IDENTITY(1,1) NOT NULL,
 	[JobDescription] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
@@ -9,3 +15,4 @@ CREATE TABLE [dbo].[cfgJob](
 ) ON [PRIMARY]
 GO
 ALTER TABLE [dbo].[cfgJob] ADD  CONSTRAINT [DF_cfgJob_IsActiveFlag]  DEFAULT ((0)) FOR [IsActiveFlag]
+GO

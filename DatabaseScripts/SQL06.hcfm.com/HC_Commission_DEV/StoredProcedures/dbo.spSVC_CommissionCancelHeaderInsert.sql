@@ -1,3 +1,9 @@
+/* CreateDate: 11/02/2012 11:45:40.277 , ModifyDate: 11/02/2012 11:45:41.997 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /*
 ==============================================================================
 
@@ -67,3 +73,4 @@ BEGIN
 		)
 	END
 END
+GO

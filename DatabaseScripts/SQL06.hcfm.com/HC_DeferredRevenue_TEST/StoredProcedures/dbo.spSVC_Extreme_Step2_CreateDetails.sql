@@ -1,3 +1,9 @@
+/* CreateDate: 02/27/2020 07:44:10.147 , ModifyDate: 02/27/2020 07:44:10.147 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spSVC_Extreme_Step2_CreateDetails
 DESTINATION SERVER:		SQL06
@@ -142,3 +148,4 @@ FROM	#DetailsToProcess dtp
 WHERE	drt.DeferredRevenueTransactionsKey IS NULL
 
 END
+GO

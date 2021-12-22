@@ -1,3 +1,9 @@
+/* CreateDate: 07/23/2015 17:05:18.727 , ModifyDate: 02/15/2016 14:03:10.043 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 VIEW:					[vwd_ActualBudgetByBusSegment]
 DESTINATION SERVER:		SQL06
@@ -296,3 +302,4 @@ GROUP BY
 	,Rolling2Years.YearNumber
 	,Rolling2Years.YearMonthNumber
 	,SalesBusinessSegmentSummary.BusinessSegment
+GO

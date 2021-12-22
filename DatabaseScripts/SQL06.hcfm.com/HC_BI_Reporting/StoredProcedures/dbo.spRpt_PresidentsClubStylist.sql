@@ -1,3 +1,9 @@
+/* CreateDate: 07/30/2019 14:45:41.520 , ModifyDate: 08/13/2019 15:35:18.810 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				[spRpt_PresidentsClubStylist]
 DESTINATION SERVER:		SQL06
@@ -376,3 +382,4 @@ SELECT * FROM #Stylist
 
 
 END
+GO

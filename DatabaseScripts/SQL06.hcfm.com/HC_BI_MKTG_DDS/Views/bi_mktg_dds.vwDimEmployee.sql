@@ -1,3 +1,9 @@
+/* CreateDate: 09/03/2021 09:37:08.140 , ModifyDate: 09/03/2021 09:37:08.140 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE VIEW [bi_mktg_dds].[vwDimEmployee]
 AS
 -------------------------------------------------------------------------
@@ -30,3 +36,4 @@ AS
 			  ,[RowStartDate]
 			  ,[RowEndDate]
 	FROM [bi_mktg_dds].[DimEmployee]
+GO

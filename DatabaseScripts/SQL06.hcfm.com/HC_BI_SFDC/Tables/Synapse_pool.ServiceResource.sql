@@ -1,3 +1,9 @@
+/* CreateDate: 06/25/2021 17:17:15.023 , ModifyDate: 06/25/2021 17:17:15.023 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE TABLE [Synapse_pool].[ServiceResource](
 	[Id] [nvarchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[OwnerId] [nvarchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
@@ -18,3 +24,4 @@ CREATE TABLE [Synapse_pool].[ServiceResource](
 	[AccountId] [nvarchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[External_Id__c] [nvarchar](765) COLLATE SQL_Latin1_General_CP1_CI_AS NULL
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO

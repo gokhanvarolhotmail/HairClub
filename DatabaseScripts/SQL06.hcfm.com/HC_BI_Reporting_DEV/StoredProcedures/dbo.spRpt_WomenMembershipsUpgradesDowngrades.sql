@@ -1,3 +1,9 @@
+/* CreateDate: 07/01/2015 08:24:35.973 , ModifyDate: 09/04/2015 11:47:07.500 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spRpt_WomenMembershipsUpgradesDowngrades
 DESTINATION SERVER:		SQL06
@@ -144,3 +150,4 @@ ORDER BY C.CenterType
 ,		DSO.OrderDate
 
 END
+GO

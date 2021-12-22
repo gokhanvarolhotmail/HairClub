@@ -1,3 +1,9 @@
+/* CreateDate: 10/03/2019 22:32:12.307 , ModifyDate: 10/03/2019 22:32:12.307 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 create procedure [sp_MSupd_dboEmployeeHoursCertipay]
 		@c1 varchar(64) = NULL,
 		@c2 varchar(64) = NULL,
@@ -74,3 +80,4 @@ if @@rowcount = 0
 				exec sp_MSreplraiserror @errorid=20598
 		End
 end
+GO

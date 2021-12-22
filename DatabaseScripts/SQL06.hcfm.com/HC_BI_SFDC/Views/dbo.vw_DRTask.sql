@@ -1,3 +1,9 @@
+/* CreateDate: 02/12/2021 15:37:45.640 , ModifyDate: 02/23/2021 11:40:16.200 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /*
 NOTES
 ***************************
@@ -191,3 +197,4 @@ WHERE   LTRIM(RTRIM(t.Action__c)) IN ( 'Appointment', 'Be Back', 'In House', 'Re
 		AND (Result__c NOT IN ( 'Reschedule', 'Cancel', 'Center Exception', 'VOID' ) OR ISNULL(Result__c,'') ='')
 		AND t.ActivityDate BETWEEN '01/01/2020' AND DATEADD(dd,0, DATEDIFF(dd,0,GETUTCDATE()))
 		AND ISNULL(t.IsDeleted, 0) = 0
+GO

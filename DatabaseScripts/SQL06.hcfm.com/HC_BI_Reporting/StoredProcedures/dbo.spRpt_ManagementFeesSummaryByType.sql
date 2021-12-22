@@ -1,3 +1,9 @@
+/* CreateDate: 08/23/2012 09:18:20.433 , ModifyDate: 08/29/2017 09:36:25.140 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /*
 ==============================================================================
 
@@ -335,3 +341,4 @@ ORDER BY CenterType
 
 
 END
+GO

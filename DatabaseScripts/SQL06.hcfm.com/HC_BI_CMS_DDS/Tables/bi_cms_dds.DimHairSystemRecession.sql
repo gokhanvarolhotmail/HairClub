@@ -1,3 +1,9 @@
+/* CreateDate: 10/03/2019 23:03:40.923 , ModifyDate: 10/03/2019 23:03:46.160 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE TABLE [bi_cms_dds].[DimHairSystemRecession](
 	[HairSystemRecessionKey] [int] NOT NULL,
 	[HairSystemRecessionSSID] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
@@ -19,3 +25,4 @@ CREATE TABLE [bi_cms_dds].[DimHairSystemRecession](
 	[HairSystemRecessionKey] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [FG1]
 ) ON [FG1]
+GO

@@ -1,3 +1,9 @@
+/* CreateDate: 08/13/2021 18:24:21.900 , ModifyDate: 09/01/2021 08:02:57.407 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE VIEW [dbo].[VWTask_MS]
 AS
 With vwTask_CTE as (
@@ -96,3 +102,4 @@ select id,
        [ContactId],
        ReferralCode__c
 from vwTask_CTE
+GO

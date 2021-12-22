@@ -1,3 +1,9 @@
+/* CreateDate: 02/18/2015 13:48:40.563 , ModifyDate: 01/07/2016 11:21:22.190 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				[spRpt_DashbdRegionSalesMix]
 DESTINATION SERVER:		SQL06
@@ -130,3 +136,4 @@ BEGIN
 	SELECT * FROM #salesmix
 	ORDER BY CenterDescription
 END
+GO

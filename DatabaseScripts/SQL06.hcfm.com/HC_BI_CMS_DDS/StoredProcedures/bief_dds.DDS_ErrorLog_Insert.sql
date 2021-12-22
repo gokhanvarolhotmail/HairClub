@@ -1,3 +1,9 @@
+/* CreateDate: 10/03/2019 23:03:43.057 , ModifyDate: 10/03/2019 23:03:43.057 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE PROCEDURE [bief_dds].[DDS_ErrorLog_Insert]
 			  @EventType				varchar(20) = NULL
 			, @PackageName				varchar(50) = NULL
@@ -124,3 +130,4 @@ BEGIN
 
 
 END
+GO

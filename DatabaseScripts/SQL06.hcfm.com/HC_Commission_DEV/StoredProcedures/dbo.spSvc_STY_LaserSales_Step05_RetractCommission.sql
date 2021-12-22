@@ -1,3 +1,9 @@
+/* CreateDate: 03/30/2019 12:39:59.870 , ModifyDate: 10/09/2020 16:23:21.643 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spSvc_STY_LaserSales_Step05_RetractCommission
 DESTINATION SERVER:		SQL06
@@ -340,3 +346,4 @@ WHERE   AuditKey = @AuditID
 ------------------------------------------------------------------------------------------
 
 END
+GO

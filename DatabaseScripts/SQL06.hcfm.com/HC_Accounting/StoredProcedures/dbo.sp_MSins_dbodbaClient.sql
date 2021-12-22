@@ -1,3 +1,9 @@
+/* CreateDate: 10/03/2019 22:32:11.850 , ModifyDate: 10/03/2019 22:32:11.850 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 create procedure [sp_MSins_dbodbaClient]
     @c1 int,
     @c2 int,
@@ -295,3 +301,4 @@ begin
 		@c96,
 		@c97	)
 end
+GO

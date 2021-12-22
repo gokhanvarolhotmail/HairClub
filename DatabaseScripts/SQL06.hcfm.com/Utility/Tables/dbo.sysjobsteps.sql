@@ -1,3 +1,9 @@
+/* CreateDate: 07/31/2014 11:56:58.640 , ModifyDate: 07/31/2014 11:56:58.640 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE TABLE [dbo].[sysjobsteps](
 	[RunDate] [datetime] NOT NULL,
 	[job_id] [uniqueidentifier] NOT NULL,
@@ -27,3 +33,4 @@ CREATE TABLE [dbo].[sysjobsteps](
 	[proxy_id] [int] NULL,
 	[step_uid] [uniqueidentifier] NULL
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO

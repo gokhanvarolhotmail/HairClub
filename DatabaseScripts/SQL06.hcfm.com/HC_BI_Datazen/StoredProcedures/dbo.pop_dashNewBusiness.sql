@@ -1,3 +1,9 @@
+/* CreateDate: 02/11/2016 14:14:49.267 , ModifyDate: 05/29/2019 14:11:51.143 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				[pop_dashNewBusiness]
 DESTINATION SERVER:		SQL06
@@ -520,3 +526,4 @@ WHEN NOT MATCHED BY TARGET THEN
 */
 
 END
+GO

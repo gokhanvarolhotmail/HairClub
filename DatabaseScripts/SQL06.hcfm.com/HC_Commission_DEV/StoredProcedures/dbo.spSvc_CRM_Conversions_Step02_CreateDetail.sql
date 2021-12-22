@@ -1,3 +1,9 @@
+/* CreateDate: 03/30/2019 12:35:32.470 , ModifyDate: 12/01/2020 10:05:06.490 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spSvc_CRM_Conversions_Step02_CreateDetail
 DESTINATION SERVER:		SQL06
@@ -218,3 +224,4 @@ WHERE   AuditKey = @AuditID
 ------------------------------------------------------------------------------------------
 
 END
+GO

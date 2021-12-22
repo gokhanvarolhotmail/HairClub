@@ -1,3 +1,9 @@
+/* CreateDate: 10/03/2019 23:03:42.050 , ModifyDate: 10/04/2019 00:23:28.637 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE TABLE [bi_cms_dds].[DimTenderType](
 	[TenderTypeKey] [int] NOT NULL,
 	[TenderTypeSSID] [int] NOT NULL,
@@ -32,3 +38,4 @@ CREATE NONCLUSTERED INDEX [IDX_DimTenderType_TenderTypeKey] ON [bi_cms_dds].[Dim
 	[TenderTypeKey] ASC
 )
 INCLUDE([TenderTypeSSID],[TenderTypeDescription]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO

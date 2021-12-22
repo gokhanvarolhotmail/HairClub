@@ -1,3 +1,9 @@
+/* CreateDate: 03/20/2019 10:27:51.733 , ModifyDate: 09/15/2020 16:36:24.297 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 
 PROCEDURE:		[spRpt_NCC_AppointmentsOverview] (Originally sprpt_booking_overview )
@@ -181,3 +187,4 @@ WHERE   DCT.CenterTypeDescriptionShort IN('F','JV','C')
 
 
 END
+GO

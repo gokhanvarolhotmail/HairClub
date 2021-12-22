@@ -1,3 +1,9 @@
+/* CreateDate: 10/03/2019 23:03:43.710 , ModifyDate: 10/03/2019 23:03:43.710 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE VIEW [bi_cms_dds].[vwDimHairSystemHairLength]
 AS
 -------------------------------------------------------------------------
@@ -27,3 +33,4 @@ SELECT [HairSystemHairLengthKey]
       ,[RowEndDate]
 
   FROM [HC_BI_CMS_DDS].[bi_cms_dds].[DimHairSystemHairLength]
+GO

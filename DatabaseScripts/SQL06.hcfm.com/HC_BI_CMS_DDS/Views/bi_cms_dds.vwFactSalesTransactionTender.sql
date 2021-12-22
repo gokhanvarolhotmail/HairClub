@@ -1,3 +1,9 @@
+/* CreateDate: 10/03/2019 23:03:44.217 , ModifyDate: 01/31/2021 14:43:48.693 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE VIEW [bi_cms_dds].[vwFactSalesTransactionTender] AS
 -------------------------------------------------------------------------
 -- [vwFactSalesTransactionTender] is used to retrieve a
@@ -45,3 +51,4 @@ CREATE VIEW [bi_cms_dds].[vwFactSalesTransactionTender] AS
 		LEFT JOIN bi_cms_dds.synHC_MKTG_DDS_FactLead Lead WITH (NOLOCK)
 			ON CLI.contactkey=Lead.ContactKey
 	WHERE so.OrderDate >= '01/01/2017'
+GO

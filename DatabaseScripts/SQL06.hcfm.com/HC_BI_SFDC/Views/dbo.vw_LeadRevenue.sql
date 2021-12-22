@@ -1,3 +1,9 @@
+/* CreateDate: 07/22/2020 14:16:40.580 , ModifyDate: 02/23/2021 11:40:12.783 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /*
 NOTES
 
@@ -68,3 +74,4 @@ GROUP BY dc.SFDC_LeadID,
 	   ISNULL(l.OriginalCampaignID__c,'Unknown'),
 	   ISNULL(l.Source_Code_Legacy__c,'Unknown'),
 	   ISNULL(ds.Level02Location,'Unknown')
+GO

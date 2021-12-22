@@ -1,3 +1,9 @@
+/* CreateDate: 08/07/2017 13:43:04.913 , ModifyDate: 08/07/2017 13:43:04.913 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spSVC_CommissionTypeID_46_Step07_CloseCommission
 DESTINATION SERVER:		SQL06
@@ -131,3 +137,4 @@ WHERE   AuditKey = @AuditID
 ------------------------------------------------------------------------------------------
 
 END
+GO

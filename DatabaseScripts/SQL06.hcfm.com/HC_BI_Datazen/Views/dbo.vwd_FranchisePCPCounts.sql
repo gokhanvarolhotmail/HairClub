@@ -1,3 +1,9 @@
+/* CreateDate: 07/01/2016 12:47:31.297 , ModifyDate: 07/01/2016 12:47:31.297 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 VIEW:					[vwd_FranchisePCPCounts]
 DESTINATION SERVER:		SQL06
@@ -59,3 +65,4 @@ FROM FranchisePCP FR
 LEFT JOIN DecemberCounts DC
 	ON DC.CenterSSID = FR.CenterSSID
 WHERE DC.YearNumber = (FR.YearNumber - 1)
+GO

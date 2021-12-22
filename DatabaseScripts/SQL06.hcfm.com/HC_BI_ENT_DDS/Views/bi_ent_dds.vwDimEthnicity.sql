@@ -1,3 +1,9 @@
+/* CreateDate: 01/08/2021 15:21:54.370 , ModifyDate: 01/08/2021 15:21:54.370 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE VIEW [bi_ent_dds].[vwDimEthnicity]
 AS
 -------------------------------------------------------------------------
@@ -22,3 +28,4 @@ AS
 			  ,[RowStartDate]
 			  ,[RowEndDate]
 	FROM [bi_ent_dds].[DimEthnicity]
+GO

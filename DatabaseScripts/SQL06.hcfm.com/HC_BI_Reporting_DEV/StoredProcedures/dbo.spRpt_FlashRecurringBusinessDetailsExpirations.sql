@@ -1,3 +1,9 @@
+/* CreateDate: 08/02/2012 09:23:50.630 , ModifyDate: 05/16/2019 10:18:14.160 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spRpt_FlashRecurringBusinessDetailsExpirations
 DESTINATION SERVER:		SQL06
@@ -162,3 +168,4 @@ WHERE   M.BusinessSegmentKey = 3  --EXT
 
 
 END
+GO

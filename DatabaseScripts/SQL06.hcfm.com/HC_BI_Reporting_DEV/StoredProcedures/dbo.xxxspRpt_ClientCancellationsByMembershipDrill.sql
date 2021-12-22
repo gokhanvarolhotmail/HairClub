@@ -1,3 +1,9 @@
+/* CreateDate: 12/26/2013 10:20:49.037 , ModifyDate: 01/06/2017 09:29:46.533 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spRpt_ClientCancellationsByMembershipDrill
 DESTINATION SERVER:		SQL06
@@ -319,3 +325,4 @@ WHERE   CT.Department = 1010
         AND CT.Membership = @Membership
 
 END
+GO

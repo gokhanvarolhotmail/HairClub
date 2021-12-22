@@ -1,3 +1,9 @@
+/* CreateDate: 08/30/2012 13:42:59.697 , ModifyDate: 01/31/2017 16:24:13.220 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:	[spRpt_FranchiseWarBoards_NB2]
 -- Created By:             HDu
@@ -427,3 +433,4 @@ FROM (
 
 
 	END
+GO

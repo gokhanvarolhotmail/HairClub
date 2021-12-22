@@ -1,3 +1,9 @@
+/* CreateDate: 10/03/2019 23:03:43.590 , ModifyDate: 10/03/2019 23:03:43.590 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE VIEW [bi_cms_dds].[vwDimDate]
 AS
 -------------------------------------------------------------------------
@@ -134,3 +140,4 @@ AS
 				ON DBCD.DateKey = DD.DateKey
 			LEFT OUTER JOIN HC_BI_ENT_DDS.bief_dds.DIMDATE DD1
 				ON LEFT(DBCD.DATEKEY,6) + '01' = DD1.DATEKEY
+GO

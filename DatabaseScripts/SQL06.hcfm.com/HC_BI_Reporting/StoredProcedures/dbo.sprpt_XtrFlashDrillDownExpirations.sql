@@ -1,3 +1,9 @@
+/* CreateDate: 01/14/2015 15:24:32.067 , ModifyDate: 06/28/2018 16:45:14.363 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /*
 ==============================================================================
 
@@ -124,3 +130,4 @@ WHERE m.MembershipSSID IN (70,75)
 	*/
 
 END
+GO

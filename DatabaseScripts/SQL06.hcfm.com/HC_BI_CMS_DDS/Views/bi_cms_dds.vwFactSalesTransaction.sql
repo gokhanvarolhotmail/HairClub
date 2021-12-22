@@ -1,3 +1,9 @@
+/* CreateDate: 10/03/2019 23:03:44.193 , ModifyDate: 08/09/2021 11:17:48.363 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE VIEW [bi_cms_dds].[vwFactSalesTransaction] AS
 -------------------------------------------------------------------------
 -- [vwFactSalesTransaction] is used to retrieve a
@@ -61,3 +67,4 @@ CREATE VIEW [bi_cms_dds].[vwFactSalesTransaction] AS
 		LEFT JOIN bi_cms_dds.synHC_MKTG_DDS_FactLead Lead with (nolock)
 			ON CLI.contactkey=Lead.ContactKey
 	  WHERE ISNULL(IsSurgeryReversalFlag,0) <> 1
+GO

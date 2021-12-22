@@ -1,3 +1,9 @@
+/* CreateDate: 05/06/2016 15:12:15.337 , ModifyDate: 05/06/2016 15:12:15.337 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 VIEW:					vwk_FranRBSalesStatusMTD
 DESTINATION SERVER:		SQL06
@@ -22,3 +28,4 @@ SELECT  CASE WHEN A.Actual < (B.Goal * .9) THEN -1
         END AS 'Status'
 FROM    vwk_FranRBSalesCountMTD A
 ,       vwk_FranRBSalesGoalMTD B
+GO

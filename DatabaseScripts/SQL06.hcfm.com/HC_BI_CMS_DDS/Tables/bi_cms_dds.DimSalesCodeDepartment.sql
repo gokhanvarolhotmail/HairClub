@@ -1,3 +1,9 @@
+/* CreateDate: 10/03/2019 23:03:41.557 , ModifyDate: 04/27/2021 15:57:58.023 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE TABLE [bi_cms_dds].[DimSalesCodeDepartment](
 	[SalesCodeDepartmentKey] [int] NOT NULL,
 	[SalesCodeDepartmentSSID] [int] NOT NULL,
@@ -38,3 +44,4 @@ CREATE NONCLUSTERED INDEX [IX_DimSalesCodeDepartment_SalesCodeDivisionSSID] ON [
 (
 	[SalesCodeDivisionSSID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [FG1]
+GO

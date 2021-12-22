@@ -1,3 +1,9 @@
+/* CreateDate: 02/08/2016 13:48:14.417 , ModifyDate: 02/08/2016 13:48:14.417 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 VIEW:					vwk_FranchiseNewStyleDayCountMTD
 DESTINATION SERVER:		SQL06
@@ -27,3 +33,4 @@ FROM    HC_BI_CMS_DDS.bi_cms_dds.FactSalesTransaction FST
 WHERE   CONVERT(VARCHAR, CTR.CenterSSID) LIKE '[78]%'
 		AND DD.FullDate BETWEEN DATEADD(mm, DATEDIFF(mm, 0, GETDATE()), 0) AND DATEADD(ms, -3, DATEADD(mm, 0, DATEADD(mm, DATEDIFF(mm, 0, GETDATE()) +1, 0)))
 		AND DSC.SalesCodeSSID IN ( 648 )
+GO

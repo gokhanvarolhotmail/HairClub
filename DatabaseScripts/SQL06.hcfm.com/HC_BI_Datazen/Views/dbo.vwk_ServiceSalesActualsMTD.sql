@@ -1,3 +1,9 @@
+/* CreateDate: 07/27/2015 14:35:13.123 , ModifyDate: 07/27/2015 14:35:13.123 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 VIEW:					vwk_ServiceSalesActualsMTD
 DESTINATION SERVER:		SQL06
@@ -26,3 +32,4 @@ FROM  HC_BI_CMS_DDS.bi_cms_dds.FactSalesTransaction FST
                  	ON CM.CenterKey = C.CenterKey       --KEEP HomeCenter Based
 WHERE   DD.FullDate BETWEEN DATEADD(mm, DATEDIFF(mm, 0, GETDATE()), 0) AND DATEADD(ms, -3, DATEADD(mm, 0, DATEADD(mm, DATEDIFF(mm, 0, GETDATE()) +1, 0)))
 		AND C.CenterSSID LIKE '[2]%'
+GO

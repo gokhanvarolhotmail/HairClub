@@ -1,3 +1,9 @@
+/* CreateDate: 03/30/2020 11:08:29.000 , ModifyDate: 12/18/2021 17:29:49.830 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				[spSvc_LeadsConsultationsSummaryByCenterSubscription]
 DESTINATION SERVER:		SQL06
@@ -25,3 +31,4 @@ SELECT  'MNassar@hairclub.com; WHahn@hairclub.com; RNarcisi@hairclub.com; JChals
 ,       'Leads and Consultations Summary - All Centers - ' + DATENAME(DW, GETDATE() - 1) + ', ' + CONVERT(VARCHAR, GETDATE() - 1, 101) AS 'Subject'
 
 END
+GO

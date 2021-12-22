@@ -1,3 +1,9 @@
+/* CreateDate: 12/10/2012 11:29:31.333 , ModifyDate: 02/21/2019 14:38:25.807 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /*
 ==============================================================================
 
@@ -67,3 +73,4 @@ BEGIN
 			AND DRH.ClientMembershipKey = PMT.ClientMembershipKey
 
 END
+GO

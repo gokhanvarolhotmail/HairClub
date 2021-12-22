@@ -1,3 +1,9 @@
+/* CreateDate: 08/29/2012 16:42:14.493 , ModifyDate: 04/08/2013 10:13:20.097 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:	sprpt_MembershipChange
 -- Created By:             HDu
@@ -90,3 +96,4 @@ BEGIN
 	WHERE ce.CenterTypeSSID IN (2,3)
 		AND ce.Active = 'Y'
 END
+GO

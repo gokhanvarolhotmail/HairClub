@@ -1,3 +1,9 @@
+/* CreateDate: 09/03/2021 09:37:07.807 , ModifyDate: 09/03/2021 09:37:07.807 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE VIEW [bi_mktg_dds].[vwDimActivity]
 AS
 -------------------------------------------------------------------------
@@ -51,3 +57,4 @@ AS
 			,[SFDC_TaskID]
 			,[SFDC_LeadID]
 	FROM [bi_mktg_dds].[DimActivity]
+GO

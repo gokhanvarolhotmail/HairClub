@@ -1,3 +1,9 @@
+/* CreateDate: 09/26/2012 09:22:39.620 , ModifyDate: 03/14/2016 09:55:53.967 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 
 PROCEDURE:				spsvc_IMSLeadExport_ONCV
@@ -102,3 +108,4 @@ AS
 				ON UPPER(LTRIM(RTRIM(so.source_code))) = UPPER(LTRIM(RTRIM(SrcTbl.[SourceSSID])))
 		WHERE c.creation_date BETWEEN @BegDt AND @EndDt + ' 23:59:59'
 	END
+GO

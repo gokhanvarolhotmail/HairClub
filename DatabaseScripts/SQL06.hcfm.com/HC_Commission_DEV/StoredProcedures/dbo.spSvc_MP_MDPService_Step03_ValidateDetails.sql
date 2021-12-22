@@ -1,3 +1,9 @@
+/* CreateDate: 08/10/2019 06:47:45.000 , ModifyDate: 08/10/2019 06:47:45.000 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spSvc_STY_MDPSales_Step03_ValidateDetails
 DESTINATION SERVER:		SQL06
@@ -420,3 +426,4 @@ WHERE   AuditKey = @AuditID
 ------------------------------------------------------------------------------------------
 
 END
+GO

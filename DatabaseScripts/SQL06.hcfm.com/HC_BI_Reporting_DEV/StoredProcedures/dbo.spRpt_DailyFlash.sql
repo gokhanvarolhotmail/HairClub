@@ -1,3 +1,9 @@
+/* CreateDate: 03/15/2021 13:43:47.770 , ModifyDate: 05/25/2021 13:32:21.923 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spRpt_DailyFlash
 DESTINATION SERVER:		SQL06
@@ -1102,3 +1108,4 @@ WHERE	dfs.DateID IN ( 1, 2, 4, 5 )
 ORDER BY dfs.SortOrder
 
 END
+GO

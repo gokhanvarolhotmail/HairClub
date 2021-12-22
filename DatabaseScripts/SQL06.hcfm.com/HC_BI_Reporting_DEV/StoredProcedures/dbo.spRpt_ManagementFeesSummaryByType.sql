@@ -1,3 +1,9 @@
+/* CreateDate: 08/23/2012 09:18:20.433 , ModifyDate: 11/09/2012 11:19:51.977 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /*
 ==============================================================================
 
@@ -291,3 +297,4 @@ BEGIN
 	,	StartDate
 	,	TranCode
 END
+GO

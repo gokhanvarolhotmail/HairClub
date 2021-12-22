@@ -1,0 +1,84 @@
+/* CreateDate: 05/04/2018 09:20:52.860 , ModifyDate: 05/04/2018 09:20:52.860 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE VIEW [dbo].[LSTestView]
+(
+	[name],
+	[timestamp],
+	[source_database_id],
+	[object_id],
+	[object_type],
+	[duration],
+	[cpu_time],
+	[physical_reads],
+	[logical_reads],
+	[writes],
+	[row_count],
+	[last_row_count],
+	[nest_level],
+	[line_number],
+	[offset],
+	[offset_end],
+	[object_name],
+	[statement],
+	[event_sequence],
+	[client_app_name],
+	[database_id],
+	[database_name],
+	[nt_username],
+	[server_instance_name],
+	[sql_text],
+	[attach_activity_id_xfer.guid],
+	[attach_activity_id_xfer.seq],
+	[attach_activity_id.guid],
+	[attach_activity_id.seq],
+	[parameterized_plan_handle],
+	[result],
+	[batch_text],
+	[connection_reset_option],
+	[data_stream],
+	[output_parameters]
+)
+AS
+SELECT
+	[name],
+	[timestamp],
+	[source_database_id],
+	[object_id],
+	[object_type],
+	[duration],
+	[cpu_time],
+	[physical_reads],
+	[logical_reads],
+	[writes],
+	[row_count],
+	[last_row_count],
+	[nest_level],
+	[line_number],
+	[offset],
+	[offset_end],
+	[object_name],
+	[statement],
+	[event_sequence],
+	[client_app_name],
+	[database_id],
+	[database_name],
+	[nt_username],
+	[server_instance_name],
+	[sql_text],
+	[attach_activity_id_xfer.guid],
+	[attach_activity_id_xfer.seq],
+	[attach_activity_id.guid],
+	[attach_activity_id.seq],
+	[parameterized_plan_handle],
+	[result],
+	[batch_text],
+	[connection_reset_option],
+	[data_stream],
+	[output_parameters]
+FROM
+	[HCTESTCMS].[Utility].[dbo].[XEInfo]
+GO

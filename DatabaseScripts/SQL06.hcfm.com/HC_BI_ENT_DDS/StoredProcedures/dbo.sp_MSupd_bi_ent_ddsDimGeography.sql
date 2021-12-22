@@ -1,3 +1,9 @@
+/* CreateDate: 01/08/2021 15:21:53.813 , ModifyDate: 01/08/2021 15:21:53.813 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 create procedure [sp_MSupd_bi_ent_ddsDimGeography]
 		@c1 int = NULL,
 		@c2 nvarchar(15) = NULL,
@@ -48,3 +54,4 @@ if @@rowcount = 0
 				exec sp_MSreplraiserror @errorid=20598
 		End
 end
+GO

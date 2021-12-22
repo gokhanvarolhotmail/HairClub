@@ -1,3 +1,9 @@
+/* CreateDate: 03/12/2019 10:40:36.580 , ModifyDate: 02/10/2020 17:14:52.240 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /*
 ==============================================================================
 
@@ -223,3 +229,4 @@ SELECT * FROM #Final
 
 
 END
+GO

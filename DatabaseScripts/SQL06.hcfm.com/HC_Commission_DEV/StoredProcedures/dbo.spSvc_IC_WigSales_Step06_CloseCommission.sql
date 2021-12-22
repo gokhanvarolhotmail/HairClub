@@ -1,3 +1,9 @@
+/* CreateDate: 02/06/2020 08:15:57.583 , ModifyDate: 02/17/2020 07:39:49.930 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spSvc_IC_WigSales_Step06_CloseCommission
 DESTINATION SERVER:		SQL06
@@ -134,3 +140,4 @@ WHERE   AuditKey = @AuditID
 ------------------------------------------------------------------------------------------
 
 END
+GO

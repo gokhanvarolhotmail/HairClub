@@ -1,3 +1,9 @@
+/* CreateDate: 09/03/2021 09:37:07.957 , ModifyDate: 09/03/2021 09:37:07.957 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 -------------------------------------------------------------------------
 -- [vwDimContact] is used to retrieve a
 -- list of Contacts
@@ -177,3 +183,4 @@ from bi_mktg_dds.DimContact DC
           and DCA.PrimaryFlag = 'Y'
     order by DCA.ContactAddressKey desc
 ) DCAD;
+GO

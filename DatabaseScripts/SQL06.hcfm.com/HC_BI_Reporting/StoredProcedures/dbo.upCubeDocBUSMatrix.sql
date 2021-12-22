@@ -1,3 +1,9 @@
+/* CreateDate: 04/08/2020 11:22:01.460 , ModifyDate: 04/08/2020 11:22:01.460 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE PROCEDURE [dbo].[upCubeDocBUSMatrix]
     (@Catalog       VARCHAR(255),
      @Cube          VARCHAR(255)
@@ -39,3 +45,4 @@ SELECT
             AND CAST(bus.[DIMENSION_UNIQUE_NAME] AS VARCHAR(255))   = CAST(dim.[DIMENSION_UNIQUE_NAME] AS VARCHAR(255))
      WHERE  CAST(bus.[CATALOG_NAME] AS VARCHAR(255))        = @Catalog
         AND CAST(bus.[CUBE_NAME] AS VARCHAR(255))           = @Cube
+GO

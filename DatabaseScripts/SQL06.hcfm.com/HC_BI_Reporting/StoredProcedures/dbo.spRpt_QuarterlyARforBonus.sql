@@ -1,3 +1,9 @@
+/* CreateDate: 11/16/2015 16:52:34.570 , ModifyDate: 07/24/2018 14:22:20.140 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				[spRpt_QuarterlyARforBonus]
 DESTINATION SERVER:		SQL06
@@ -224,3 +230,4 @@ PRINT '@EndDate = ' + CAST(@EndDate AS NVARCHAR(12))
 		LEFT OUTER JOIN #WriteOffs WO
 			ON C.CenterNumber = WO.CenterNumber
 END
+GO

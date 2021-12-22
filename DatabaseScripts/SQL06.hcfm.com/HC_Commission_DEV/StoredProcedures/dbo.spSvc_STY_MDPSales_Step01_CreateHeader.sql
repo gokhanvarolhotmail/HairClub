@@ -1,3 +1,9 @@
+/* CreateDate: 07/30/2019 10:11:06.250 , ModifyDate: 10/24/2019 13:45:22.623 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spSvc_STY_MDPSales_Step01_CreateHeader
 DESTINATION SERVER:		SQL06
@@ -218,3 +224,4 @@ WHERE   AuditKey = @AuditID
 ------------------------------------------------------------------------------------------
 
 END
+GO

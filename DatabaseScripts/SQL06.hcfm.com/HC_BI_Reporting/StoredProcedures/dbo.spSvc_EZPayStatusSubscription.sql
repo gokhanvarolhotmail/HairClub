@@ -1,3 +1,9 @@
+/* CreateDate: 09/24/2019 11:23:38.970 , ModifyDate: 12/18/2021 17:27:18.900 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spSvc_EZPayStatusSubscription
 DESTINATION SERVER:		SQL06
@@ -27,3 +33,4 @@ SELECT	'_CorporateAreaDirectors@hcfm.com;NBowman@hairclub.com;GDebono@hairclub.c
 
 
 END
+GO

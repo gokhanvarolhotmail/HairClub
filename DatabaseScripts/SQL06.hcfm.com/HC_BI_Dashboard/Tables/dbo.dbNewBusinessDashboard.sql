@@ -1,3 +1,9 @@
+/* CreateDate: 03/25/2019 15:31:05.427 , ModifyDate: 12/21/2021 23:47:21.537 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE TABLE [dbo].[dbNewBusinessDashboard](
 	[Area] [varchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[CenterNumber] [int] NULL,
@@ -69,3 +75,4 @@ CREATE NONCLUSTERED INDEX [IX_dbNewBusinessDashboard_CenterNumber_INCL] ON [dbo]
 	[CenterNumber] ASC
 )
 INCLUDE([Area],[FullDate],[YearNumber],[MonthNumber],[MonthName]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO

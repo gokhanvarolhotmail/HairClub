@@ -1,3 +1,9 @@
+/* CreateDate: 04/18/2016 11:23:05.040 , ModifyDate: 05/07/2019 14:49:34.060 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spRpt_FlashRecurringBusinessDetailsPCP
 DESTINATION SERVER:		SQL06
@@ -817,3 +823,4 @@ END
 
 
 END
+GO

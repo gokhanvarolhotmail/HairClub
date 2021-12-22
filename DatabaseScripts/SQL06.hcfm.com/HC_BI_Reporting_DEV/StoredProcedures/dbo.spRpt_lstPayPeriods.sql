@@ -1,3 +1,9 @@
+/* CreateDate: 10/03/2013 14:53:55.020 , ModifyDate: 10/03/2013 14:53:56.747 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /*
 ==============================================================================
 
@@ -30,3 +36,4 @@ BEGIN
 	ORDER BY StartDate DESC
 
 END
+GO

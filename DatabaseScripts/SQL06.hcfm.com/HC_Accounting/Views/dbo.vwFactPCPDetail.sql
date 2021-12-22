@@ -1,3 +1,9 @@
+/* CreateDate: 07/30/2015 09:26:18.350 , ModifyDate: 12/10/2015 09:01:48.520 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 -------------------------------------------------------------------------
 -- Change History
 -------------------------------------------------------------------------
@@ -37,3 +43,4 @@ SELECT [ID]
 		ON do.OccupationSSID = c.OccupationSSID
 	LEFT OUTER JOIN HC_BI_ENT_DDS.bi_ent_dds.DimMaritalStatus AS DMS
 		ON DMS.MaritalStatusSSID = c.MaritalStatusSSID
+GO

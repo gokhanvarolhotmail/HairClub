@@ -1,3 +1,9 @@
+/* CreateDate: 11/02/2012 11:24:57.053 , ModifyDate: 06/18/2014 01:38:27.757 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE TABLE [dbo].[FactCommissionCancelHeader](
 	[CancelHeaderKey] [int] IDENTITY(1,1) NOT NULL,
 	[CenterSSID] [int] NOT NULL,
@@ -16,3 +22,4 @@ CREATE TABLE [dbo].[FactCommissionCancelHeader](
 	[CancelHeaderKey] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
+GO

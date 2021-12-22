@@ -1,3 +1,9 @@
+/* CreateDate: 02/27/2015 15:24:38.733 , ModifyDate: 02/27/2015 15:51:50.917 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE FUNCTION [dbo].[fnGetStr_SalesCodeDescriptions]
 (@AppointmentSSID UNIQUEIDENTIFIER)
 RETURNS VARCHAR(MAX)
@@ -17,3 +23,4 @@ BEGIN
 	RETURN RIGHT(@p_str,LEN(@p_str)-2)  --remove the first comma
 
 END
+GO

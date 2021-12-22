@@ -1,3 +1,9 @@
+/* CreateDate: 10/03/2019 23:03:43.883 , ModifyDate: 10/03/2019 23:03:43.883 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE VIEW [bi_cms_dds].[vwDimSalesOrder]
 AS
 -------------------------------------------------------------------------
@@ -80,3 +86,4 @@ AS
 		--	  ,dso.[RowIsCurrent]
 		--	  ,dso.[RowStartDate]
 		--	  ,dso.[RowEndDate]
+GO

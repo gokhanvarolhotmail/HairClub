@@ -1,3 +1,9 @@
+/* CreateDate: 12/10/2019 09:02:45.240 , ModifyDate: 12/19/2021 20:22:41.770 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spSvc_NBFlashSubscription
 DESTINATION SERVER:		SQL06
@@ -27,3 +33,4 @@ SELECT	'_CorporateRegionalDirectors@hairclub.com;_CorporateSalesTeam@hcfm.com;mn
 
 
 END
+GO

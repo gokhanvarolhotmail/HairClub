@@ -1,3 +1,9 @@
+/* CreateDate: 12/09/2013 13:53:33.020 , ModifyDate: 12/09/2013 14:01:21.670 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spRpt_CommissionClientOverview_Transactions
 DESTINATION SERVER:		SQL06
@@ -111,3 +117,4 @@ SELECT 'FactSalesTrans' AS Direction
 	SELECT * FROM #trans
 
 END
+GO

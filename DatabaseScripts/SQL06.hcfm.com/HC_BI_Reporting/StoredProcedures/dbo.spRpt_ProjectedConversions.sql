@@ -1,3 +1,9 @@
+/* CreateDate: 08/12/2016 13:58:12.030 , ModifyDate: 03/26/2020 17:21:42.200 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spRpt_ProjectedConversions
 DESTINATION SERVER:		SQL06
@@ -559,3 +565,4 @@ GROUP BY MainGroupID
 ,	FirstDateOfMonth
 
 END
+GO

@@ -1,3 +1,9 @@
+/* CreateDate: 07/02/2017 15:52:53.760 , ModifyDate: 04/20/2021 12:14:25.110 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				extHairClubCMSEarnedSummaryByEmployeeHR
 DESTINATION SERVER:		SQL06
@@ -69,3 +75,4 @@ ORDER BY CTR.ReportingCenterSSID
 OPTION (RECOMPILE)
 
 END
+GO

@@ -1,3 +1,9 @@
+/* CreateDate: 10/03/2019 23:03:41.723 , ModifyDate: 12/02/2021 23:26:25.090 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE TABLE [bi_cms_dds].[DimSalesOrder](
 	[SalesOrderKey] [int] NOT NULL,
 	[SalesOrderSSID] [uniqueidentifier] NOT NULL,
@@ -103,3 +109,4 @@ CREATE NONCLUSTERED INDEX [RP_DimSalesOrder_IsVoidedFlagOrderDate] ON [bi_cms_dd
 	[OrderDate] ASC
 )
 INCLUDE([SalesOrderKey],[CenterSSID]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO

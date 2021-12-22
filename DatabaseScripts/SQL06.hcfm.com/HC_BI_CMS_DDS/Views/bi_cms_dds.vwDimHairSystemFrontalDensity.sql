@@ -1,3 +1,9 @@
+/* CreateDate: 10/03/2019 23:03:43.680 , ModifyDate: 10/03/2019 23:03:43.680 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE VIEW [bi_cms_dds].[vwDimHairSystemFrontalDensity]
 AS
 -------------------------------------------------------------------------
@@ -28,3 +34,4 @@ SELECT [HairSystemFrontalDensityKey]
       ,[RowEndDate]
 
   FROM [HC_BI_CMS_DDS].[bi_cms_dds].[DimHairSystemFrontalDensity]
+GO

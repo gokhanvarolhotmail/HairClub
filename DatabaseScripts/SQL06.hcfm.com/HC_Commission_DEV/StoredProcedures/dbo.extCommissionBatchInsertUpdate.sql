@@ -1,3 +1,9 @@
+/* CreateDate: 02/12/2013 15:11:13.350 , ModifyDate: 02/14/2013 09:50:28.123 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /*
 ==============================================================================
 
@@ -71,3 +77,4 @@ BEGIN
 				AND PayPeriodKey = @PayPeriodKey
 		END
 END
+GO

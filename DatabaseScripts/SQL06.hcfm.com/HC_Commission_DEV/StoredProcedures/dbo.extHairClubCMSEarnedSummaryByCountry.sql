@@ -1,3 +1,9 @@
+/* CreateDate: 07/31/2017 12:23:46.290 , ModifyDate: 07/31/2017 12:23:46.290 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				extHairClubCMSEarnedSummaryByCountry
 DESTINATION SERVER:		SQL06
@@ -91,3 +97,4 @@ declare @Centers as table (
 	GROUP BY CONVERT(VARCHAR, PP.StartDate, 101) + ' - ' + CONVERT(VARCHAR, PP.EndDate, 101)
 
 END
+GO

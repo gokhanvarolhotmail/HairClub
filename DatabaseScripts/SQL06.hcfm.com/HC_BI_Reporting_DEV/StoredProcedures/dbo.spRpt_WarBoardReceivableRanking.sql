@@ -1,3 +1,9 @@
+/* CreateDate: 08/07/2012 13:29:32.187 , ModifyDate: 03/15/2018 16:05:12.163 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /*==============================================================================
 
 PROCEDURE:				[spRpt_WarBoardReceivableRanking]
@@ -408,3 +414,4 @@ GROUP BY CASE WHEN C.CenterTypeSSID = 1 THEN 'Corporate' ELSE 'Franchise' END,
          CTR.CenterDescriptionNumber
 
 END
+GO

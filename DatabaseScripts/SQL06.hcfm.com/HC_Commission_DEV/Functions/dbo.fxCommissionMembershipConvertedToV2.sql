@@ -1,3 +1,9 @@
+/* CreateDate: 04/10/2014 09:07:55.257 , ModifyDate: 04/10/2014 09:07:55.257 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 --SELECT dbo.fxCommissionMembershipConvertedToV2(111)
 CREATE FUNCTION [dbo].[fxCommissionMembershipConvertedToV2]
 (
@@ -29,3 +35,4 @@ WHERE   FST.SalesOrderKey = @SalesOrderKey
 RETURN ISNULL(@ConvertedTo, 0)
 
 END
+GO

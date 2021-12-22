@@ -1,3 +1,9 @@
+/* CreateDate: 01/08/2021 15:21:54.233 , ModifyDate: 01/08/2021 15:21:54.233 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE VIEW [bi_ent_dds].[vwDimAccount]
 AS
 -------------------------------------------------------------------------
@@ -37,3 +43,4 @@ SELECT [AccountID]
       --,[Description]
 	  ,CAST(accountid AS VARCHAR) + ' - ' + AccountDescription AS 'AcctNoDescription'
   FROM [bi_ent_dds].[DimAccount]
+GO

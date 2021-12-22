@@ -1,3 +1,9 @@
+/* CreateDate: 11/13/2012 12:31:27.820 , ModifyDate: 05/26/2016 17:02:59.397 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /*===============================================================================================
 -- Procedure Name:			rptAppliedHairSystemType
 -- Procedure Description:
@@ -111,3 +117,4 @@ LEFT JOIN HC_BI_CMS_DDS.bi_cms_dds.DimClientMembership cm ON cm.ClientMembership
 GROUP BY hair.HairSystemDescriptionShort
 
 END
+GO

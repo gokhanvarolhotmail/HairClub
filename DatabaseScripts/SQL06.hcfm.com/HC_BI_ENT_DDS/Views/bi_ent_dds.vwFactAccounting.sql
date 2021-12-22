@@ -1,3 +1,9 @@
+/* CreateDate: 01/08/2021 15:21:54.533 , ModifyDate: 01/08/2021 15:21:54.533 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE VIEW [bi_ent_dds].[vwFactAccounting]
 AS
 -------------------------------------------------------------------------
@@ -36,3 +42,4 @@ SELECT [CenterID]
 		ON [HC_Accounting].[dbo].[FactAccounting].DateKey = [bi_ent_dds].[vwDimDate].DateKey
 	INNER JOIN [bi_ent_dds].[vwDimAccount]
 		ON [HC_Accounting].[dbo].[FactAccounting].AccountID = [bi_ent_dds].[vwDimAccount].AccountID
+GO

@@ -1,3 +1,9 @@
+/* CreateDate: 04/20/2015 15:00:58.603 , ModifyDate: 08/20/2018 14:55:45.620 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spRpt_SalesAnalysis
 DESTINATION SERVER:		SQL06
@@ -232,3 +238,4 @@ ORDER BY D.Department
 ,       D.SalesCode
 
 END
+GO

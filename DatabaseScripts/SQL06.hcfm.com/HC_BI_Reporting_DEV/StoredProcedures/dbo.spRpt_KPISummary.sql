@@ -1,3 +1,9 @@
+/* CreateDate: 04/13/2017 17:04:38.423 , ModifyDate: 02/02/2021 10:59:39.413 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /*
 ==============================================================================
 
@@ -518,3 +524,4 @@ GROUP BY C.MainGroupID
 ,	PCP.ClosePCP
 
 END
+GO

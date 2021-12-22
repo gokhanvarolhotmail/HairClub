@@ -1,3 +1,9 @@
+/* CreateDate: 09/10/2013 10:38:52.660 , ModifyDate: 09/10/2013 10:38:52.660 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 create procedure [sp_MSupd_dbodatIncomingRequestLog]
 		@c1 int = NULL,
 		@c2 nvarchar(20) = NULL,
@@ -100,3 +106,4 @@ if @@rowcount = 0
         exec sp_MSreplraiserror 20598
 end
 end
+GO

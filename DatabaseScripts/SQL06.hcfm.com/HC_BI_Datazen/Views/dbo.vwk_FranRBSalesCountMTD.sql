@@ -1,3 +1,9 @@
+/* CreateDate: 05/06/2016 15:06:55.617 , ModifyDate: 05/06/2016 15:07:13.730 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 VIEW:					vwk_FranRBSalesCountMTD
 DESTINATION SERVER:		SQL06
@@ -28,3 +34,4 @@ SELECT
 			ON FST.CenterKey = C.CenterKey
 		WHERE DD.FullDate BETWEEN DATEADD(mm, DATEDIFF(mm, 0, GETDATE()), 0) AND DATEADD(ms, -3, DATEADD(mm, 0, DATEADD(mm, DATEDIFF(mm, 0, GETDATE()) +1, 0)))
 		AND C.CenterSSID LIKE '[78]%'
+GO

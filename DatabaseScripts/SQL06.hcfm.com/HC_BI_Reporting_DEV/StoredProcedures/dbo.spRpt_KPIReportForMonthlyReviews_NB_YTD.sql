@@ -1,3 +1,9 @@
+/* CreateDate: 11/01/2018 15:23:33.550 , ModifyDate: 04/01/2020 11:14:57.130 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /******************************************************************************************************************************
 PROCEDURE:				[spRpt_KPIReportForMonthlyReviews_NB_YTD]
 DESTINATION SERVER:		SQL06
@@ -261,3 +267,4 @@ LEFT JOIN #HairSalesMix hsm
 
 
 END
+GO

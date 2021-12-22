@@ -1,3 +1,9 @@
+/* CreateDate: 01/14/2015 11:11:10.143 , ModifyDate: 06/29/2018 12:26:46.233 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /*
 ==============================================================================
 
@@ -457,3 +463,4 @@ END
 	,	CMA.CenterManagementAreaSortOrder
 
 END
+GO

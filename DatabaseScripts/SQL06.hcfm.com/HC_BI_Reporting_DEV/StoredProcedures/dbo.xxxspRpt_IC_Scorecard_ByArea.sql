@@ -1,3 +1,9 @@
+/* CreateDate: 04/25/2019 11:00:09.467 , ModifyDate: 05/23/2019 16:57:31.577 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				[spRpt_IC_Scorecard_ByArea]
 DESTINATION SERVER:		SQL06
@@ -1361,3 +1367,4 @@ FROM #Final
 
 
 END
+GO

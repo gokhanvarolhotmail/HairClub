@@ -1,3 +1,9 @@
+/* CreateDate: 09/20/2018 14:46:22.450 , ModifyDate: 09/20/2018 14:46:22.450 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				pop_pbiClosingByConsultant
 DESTINATION SERVER:		SQL06
@@ -314,3 +320,4 @@ WHEN NOT MATCHED BY TARGET THEN
 
 
 END
+GO

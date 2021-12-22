@@ -1,3 +1,9 @@
+/* CreateDate: 07/20/2017 12:10:52.097 , ModifyDate: 03/12/2018 14:08:54.817 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spRpt_HaloAndHairExtensionsDetail
 DESTINATION SERVER:		SQL06
@@ -301,3 +307,4 @@ WHERE   DD.FullDate BETWEEN @StartDate AND @EndDate
 
 
 END
+GO

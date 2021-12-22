@@ -1,3 +1,9 @@
+/* CreateDate: 11/18/2016 17:02:21.473 , ModifyDate: 12/15/2020 15:36:53.987 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /*******************************************************************************************************
 
 PROCEDURE:				[spRpt_RetailFlashDepartmentDetail]
@@ -620,3 +626,4 @@ SELECT * FROM #FinalSum
 END
 
 END
+GO

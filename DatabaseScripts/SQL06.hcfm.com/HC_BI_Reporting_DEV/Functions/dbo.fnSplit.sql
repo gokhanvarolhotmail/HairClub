@@ -1,3 +1,9 @@
+/* CreateDate: 10/17/2013 16:50:12.430 , ModifyDate: 12/12/2019 15:53:58.353 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 NAME:					fnSplit
 DESTINATION SERVER:		SQL06
@@ -53,3 +59,4 @@ BEGIN
     RETURN
 
 END
+GO

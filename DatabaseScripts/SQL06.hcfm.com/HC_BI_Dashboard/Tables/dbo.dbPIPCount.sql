@@ -1,3 +1,9 @@
+/* CreateDate: 05/09/2019 15:19:50.813 , ModifyDate: 05/09/2019 15:19:50.813 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE TABLE [dbo].[dbPIPCount](
 	[EmployeeKey] [int] NOT NULL,
 	[EmployeeFullName] [nvarchar](1002) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
@@ -20,3 +26,4 @@ CREATE TABLE [dbo].[dbPIPCount](
 	[SalesCenterKey] [int] NULL,
 	[SalesCenter] [nvarchar](103) COLLATE SQL_Latin1_General_CP1_CI_AS NULL
 ) ON [PRIMARY]
+GO

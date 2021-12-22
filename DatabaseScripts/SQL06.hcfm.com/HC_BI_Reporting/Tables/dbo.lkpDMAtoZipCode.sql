@@ -1,3 +1,9 @@
+/* CreateDate: 02/12/2021 15:20:38.437 , ModifyDate: 02/12/2021 15:20:38.437 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE TABLE [dbo].[lkpDMAtoZipCode](
 	[DMACode] [int] NULL,
 	[ZipCode] [nvarchar](15) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
@@ -7,3 +13,4 @@ CREATE TABLE [dbo].[lkpDMAtoZipCode](
 	[DMA_Adintel] [nvarchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[CreateDate] [datetime] NULL
 ) ON [PRIMARY]
+GO

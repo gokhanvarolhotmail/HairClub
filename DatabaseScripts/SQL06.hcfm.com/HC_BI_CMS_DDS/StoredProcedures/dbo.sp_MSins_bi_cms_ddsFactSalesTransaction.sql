@@ -1,3 +1,9 @@
+/* CreateDate: 10/03/2019 23:03:42.427 , ModifyDate: 10/03/2019 23:03:42.427 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 create procedure [dbo].[sp_MSins_bi_cms_ddsFactSalesTransaction]
     @c1 int,
     @c2 int,
@@ -319,3 +325,4 @@ begin
 		@c104,
 		@c105	)
 end
+GO

@@ -1,3 +1,9 @@
+/* CreateDate: 02/23/2021 13:38:20.527 , ModifyDate: 02/23/2021 13:38:20.527 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /*
 NOTES
 ***************************
@@ -119,3 +125,4 @@ GROUP BY
 		ISNULL(c.PromoCodeName__c,'Unknown') ,
 		ISNULL(c.Status,'Unknown') ,
 		ISNULL(c.SourceCode_L__c,'Unknown')
+GO

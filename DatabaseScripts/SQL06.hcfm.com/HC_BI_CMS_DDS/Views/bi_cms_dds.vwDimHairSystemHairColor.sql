@@ -1,3 +1,9 @@
+/* CreateDate: 10/03/2019 23:03:43.693 , ModifyDate: 10/03/2019 23:03:43.693 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE VIEW [bi_cms_dds].[vwDimHairSystemHairColor]
 AS
 -------------------------------------------------------------------------
@@ -26,3 +32,4 @@ SELECT [HairSystemHairColorKey]
       ,[RowEndDate]
 
   FROM [HC_BI_CMS_DDS].[bi_cms_dds].[DimHairSystemHairColor]
+GO

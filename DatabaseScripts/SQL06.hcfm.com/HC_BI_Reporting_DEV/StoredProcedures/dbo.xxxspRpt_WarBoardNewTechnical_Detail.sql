@@ -1,3 +1,9 @@
+/* CreateDate: 08/29/2014 15:22:53.953 , ModifyDate: 04/07/2016 13:57:13.263 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /*
 ==============================================================================
 
@@ -534,3 +540,4 @@ GROUP BY CTR.ReportingCenterSSID
 
 
 END
+GO

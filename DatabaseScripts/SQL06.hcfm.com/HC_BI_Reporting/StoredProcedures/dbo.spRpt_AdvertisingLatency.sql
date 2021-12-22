@@ -1,3 +1,9 @@
+/* CreateDate: 04/26/2016 13:58:16.480 , ModifyDate: 06/06/2016 14:52:43.077 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spRpt_AdvertisingLatency
 DESTINATION SERVER:		SQL06
@@ -497,3 +503,4 @@ FROM #Totals, #Percent
 
 
 END
+GO

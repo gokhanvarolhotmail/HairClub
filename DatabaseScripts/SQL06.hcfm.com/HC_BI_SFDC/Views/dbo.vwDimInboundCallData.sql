@@ -1,3 +1,9 @@
+/* CreateDate: 04/16/2020 16:35:48.917 , ModifyDate: 10/13/2020 15:49:51.300 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE VIEW [dbo].[vwDimInboundCallData]
 AS
 -------------------------------------------------------------------------
@@ -46,3 +52,4 @@ FROM	HC_BI_MKTG_DDS.bi_mktg_dds.DimCallDataBP DCD
 		LEFT OUTER JOIN HC_BI_MKTG_DDS.bi_mktg_dds.DimSource DS
 			ON DCD.InboundSourceSSID = DS.SourceSSID
 WHERE	Call_Type_Group = 'Inbound' AND dcd.Call_Date >= '09/07/2020'
+GO

@@ -1,3 +1,9 @@
+/* CreateDate: 02/05/2013 14:09:15.530 , ModifyDate: 10/29/2013 13:42:04.277 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /*
 ==============================================================================
 
@@ -44,3 +50,4 @@ BEGIN
 	WHERE FCH.CommissionHeaderKey = @CommissionHeaderKey
 
 END
+GO

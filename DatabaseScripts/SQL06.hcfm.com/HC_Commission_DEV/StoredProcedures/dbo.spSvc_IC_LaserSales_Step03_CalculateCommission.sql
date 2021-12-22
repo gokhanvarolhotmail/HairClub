@@ -1,3 +1,9 @@
+/* CreateDate: 03/30/2019 12:37:01.437 , ModifyDate: 12/01/2020 10:35:42.683 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spSvc_IC_LaserSales_Step03_CalculateCommission
 DESTINATION SERVER:		SQL06
@@ -230,3 +236,4 @@ WHERE   AuditKey = @AuditID
 ------------------------------------------------------------------------------------------
 
 END
+GO

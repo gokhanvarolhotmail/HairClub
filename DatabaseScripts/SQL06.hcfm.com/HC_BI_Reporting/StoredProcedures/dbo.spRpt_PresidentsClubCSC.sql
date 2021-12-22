@@ -1,3 +1,9 @@
+/* CreateDate: 08/14/2019 15:44:27.900 , ModifyDate: 08/27/2019 12:14:42.580 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				[spRpt_PresidentsClubCSC]
 DESTINATION SERVER:		SQL06
@@ -502,3 +508,4 @@ WHERE EmployeeFullName IS NOT NULL
 
 
 END
+GO

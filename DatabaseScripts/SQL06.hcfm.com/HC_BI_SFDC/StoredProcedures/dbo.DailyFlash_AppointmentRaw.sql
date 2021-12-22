@@ -1,3 +1,9 @@
+/* CreateDate: 12/01/2021 01:06:09.153 , ModifyDate: 12/01/2021 08:02:10.833 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE PROCEDURE [dbo].[DailyFlash_AppointmentRaw]
     AS
     BEGIN
@@ -83,3 +89,4 @@ CREATE PROCEDURE [dbo].[DailyFlash_AppointmentRaw]
         select * from #activity
 
     end
+GO

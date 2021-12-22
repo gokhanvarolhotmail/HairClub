@@ -1,3 +1,9 @@
+/* CreateDate: 08/02/2016 13:57:18.297 , ModifyDate: 08/30/2016 15:01:06.220 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 VIEW:					[vwd_LASS_Rolling2Years]
 DESTINATION SERVER:		SQL06
@@ -221,3 +227,4 @@ GROUP BY L.MonthNumber
 	,	A.Appointments, A.Appt_ChannelID, A.Appt_Channel, A.Appt_TypeID, A.Appt_Type, A.Appt_SubtypeID, A.Appt_Subtype
 	,	SH.Shows, SH.Show_ChannelID, SH.Show_Channel, SH.Show_TypeID, SH.Show_Type, SH.Show_SubtypeID, SH.Show_Subtype
     ,	SA.Sales, SA.Sale_ChannelID, SA.Sale_Channel, SA.Sale_TypeID, SA.Sale_Type, SA.Sale_SubtypeID, SA.Sale_Subtype
+GO

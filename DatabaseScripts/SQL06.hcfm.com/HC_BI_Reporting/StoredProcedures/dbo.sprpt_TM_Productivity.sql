@@ -1,3 +1,9 @@
+/* CreateDate: 08/18/2011 16:33:57.420 , ModifyDate: 01/29/2019 16:10:46.980 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 
 PROCEDURE:				sprpt_TM_Productivity
@@ -345,3 +351,4 @@ WHERE
 order by ISNULL(#SALESPERSON.nccgroup, 'NCC UNASSIGNED'), #SALESPERSON.telemarketer
 
 END
+GO

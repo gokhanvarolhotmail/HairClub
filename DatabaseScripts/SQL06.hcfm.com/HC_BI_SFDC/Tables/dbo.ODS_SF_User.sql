@@ -1,3 +1,9 @@
+/* CreateDate: 10/04/2021 16:46:58.197 , ModifyDate: 10/04/2021 16:46:58.197 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE TABLE [dbo].[ODS_SF_User](
 	[CreatedDate] [datetime] NULL,
 	[Id] [varchar](8000) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
@@ -177,3 +183,4 @@ CREATE TABLE [dbo].[ODS_SF_User](
 	[DialerID__c] [varchar](8000) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[SightCall_UseCase_Id__c] [varchar](8000) COLLATE SQL_Latin1_General_CP1_CI_AS NULL
 ) ON [PRIMARY]
+GO

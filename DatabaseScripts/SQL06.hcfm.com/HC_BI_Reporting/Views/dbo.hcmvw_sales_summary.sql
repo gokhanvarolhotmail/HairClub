@@ -1,3 +1,9 @@
+/* CreateDate: 06/11/2012 15:57:30.867 , ModifyDate: 01/20/2016 12:38:07.377 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE VIEW [dbo].[hcmvw_sales_summary] AS
 
 SELECT
@@ -106,3 +112,4 @@ SELECT Center
 	) FL ON FL.CenterKey = T.CenterKey AND FL.LeadCreationDateKey = T.DateKey
 --WHERE [DATE] BETWEEN '2012-05-01' AND '2012-05-31'
 --order by center, [date]
+GO

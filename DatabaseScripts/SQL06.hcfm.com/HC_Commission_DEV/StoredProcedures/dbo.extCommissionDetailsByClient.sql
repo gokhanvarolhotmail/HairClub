@@ -1,3 +1,9 @@
+/* CreateDate: 02/05/2013 13:57:53.057 , ModifyDate: 02/13/2013 16:07:24.580 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /*
 ==============================================================================
 
@@ -48,3 +54,4 @@ BEGIN
 	ORDER BY FCD.SalesOrderDetailKey
 
 END
+GO

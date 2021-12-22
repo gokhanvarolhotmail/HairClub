@@ -1,3 +1,9 @@
+/* CreateDate: 06/16/2014 11:39:15.970 , ModifyDate: 11/14/2014 09:44:41.180 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spSvc_AmplifierDataExport_ActivePCP
 DESTINATION SERVER:		SQL06
@@ -96,3 +102,4 @@ WHERE   MONTH(DD.FullDate) = MONTH(GETDATE())
 		AND ISNULL(CLT.DoNotContactFlag, 0) = 0
 
 END
+GO

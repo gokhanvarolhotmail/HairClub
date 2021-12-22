@@ -1,3 +1,9 @@
+/* CreateDate: 10/03/2019 23:03:39.807 , ModifyDate: 10/03/2019 23:03:44.727 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE TABLE [bi_cms_dds].[DimAccumulatorActionType](
 	[AccumulatorActionTypeKey] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
 	[AccumulatorActionTypeSSID] [int] NOT NULL,
@@ -17,3 +23,4 @@ CREATE TABLE [bi_cms_dds].[DimAccumulatorActionType](
 	[AccumulatorActionTypeKey] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [FG1]
 ) ON [FG1]
+GO

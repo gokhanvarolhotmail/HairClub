@@ -1,3 +1,9 @@
+/* CreateDate: 08/10/2019 08:19:41.173 , ModifyDate: 01/16/2020 15:38:42.750 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spSvc_IC_EZPAYSales_Step01_CreateHeader
 DESTINATION SERVER:		SQL06
@@ -278,3 +284,4 @@ WHERE   AuditKey = @AuditID
 ------------------------------------------------------------------------------------------
 
 END
+GO

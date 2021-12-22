@@ -1,3 +1,9 @@
+/* CreateDate: 10/04/2019 14:09:30.427 , ModifyDate: 10/04/2019 14:09:30.427 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 create procedure [sp_MSupd_dboPromoCode__c]
 		@c1 int = NULL,
 		@c2 nvarchar(50) = NULL,
@@ -34,3 +40,4 @@ if @@rowcount = 0
 				exec sp_MSreplraiserror @errorid=20598
 		End
 end
+GO

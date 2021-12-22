@@ -1,3 +1,9 @@
+/* CreateDate: 08/30/2012 10:26:16.467 , ModifyDate: 02/03/2015 16:20:30.393 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:	[sprpt_MembershipChangeDetailsFranchise]
 -- Created By:             HDu
@@ -232,3 +238,4 @@ ELSE
 		END
 	END
 END
+GO

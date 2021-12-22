@@ -1,3 +1,9 @@
+/* CreateDate: 04/10/2014 12:15:43.327 , ModifyDate: 10/25/2021 15:02:30.150 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spSvc_BarthLeadsExport
 DESTINATION SERVER:		SQL06
@@ -238,3 +244,4 @@ BEGIN
 	FROM #Lead l
 
  END
+GO

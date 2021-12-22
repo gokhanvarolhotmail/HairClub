@@ -1,3 +1,9 @@
+/* CreateDate: 03/07/2016 14:28:19.207 , ModifyDate: 03/06/2017 15:20:35.953 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE: 	[spRpt_FranchiseWarBoards_Manager_TEST]
  Created By:             HDu
@@ -118,3 +124,4 @@ BEGIN
 		INNER JOIN #NB2Final f2
 			ON f.Center = f2.Center
 END
+GO

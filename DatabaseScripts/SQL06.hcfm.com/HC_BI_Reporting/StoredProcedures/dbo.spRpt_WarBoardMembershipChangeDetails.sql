@@ -1,3 +1,9 @@
+/* CreateDate: 08/07/2012 11:33:47.920 , ModifyDate: 07/13/2018 16:17:10.950 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /*
 ==============================================================================
 
@@ -239,3 +245,4 @@ BEGIN
 	WHERE DD.FullDate BETWEEN @StartDate AND @EndDate
 		AND SC.SalesCodeDepartmentSSID IN (1070, 1080)
 END
+GO

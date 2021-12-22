@@ -1,3 +1,9 @@
+/* CreateDate: 07/13/2012 16:06:39.817 , ModifyDate: 01/03/2013 16:08:35.257 */
+GO
+SET ANSI_NULLS OFF
+GO
+SET QUOTED_IDENTIFIER OFF
+GO
 --select dbo.Attrition(131, 131, 2, '12/1/12', '12/31/12')
 CREATE FUNCTION [dbo].[Attrition] (
 	@open_pcp INTEGER
@@ -25,3 +31,4 @@ RETURN(
 	 END
 )
 END
+GO

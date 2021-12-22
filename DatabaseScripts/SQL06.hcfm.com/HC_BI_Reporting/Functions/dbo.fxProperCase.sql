@@ -1,3 +1,9 @@
+/* CreateDate: 08/02/2012 16:37:34.800 , ModifyDate: 08/02/2012 16:37:34.800 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE FUNCTION [dbo].[fxProperCase]
 (
     @strIn VARCHAR(255)
@@ -41,3 +47,4 @@ BEGIN
     END
     RETURN @strOut
 END
+GO

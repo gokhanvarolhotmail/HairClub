@@ -1,3 +1,9 @@
+/* CreateDate: 02/27/2020 07:44:09.747 , ModifyDate: 02/27/2020 07:44:09.747 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /*
 ==============================================================================
 
@@ -225,3 +231,4 @@ ORDER BY R.RegionKey
 ,		CLT.ClientFullName
 
 END
+GO

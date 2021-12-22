@@ -1,3 +1,9 @@
+/* CreateDate: 11/13/2014 14:45:48.987 , ModifyDate: 11/13/2014 14:45:48.987 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 -- Removes special characters from a string value.
 -- All characters except 0-9, a-z and A-Z are removed and
 -- the remaining characters are returned.
@@ -24,3 +30,4 @@ begin
       return null
    return @s2
    end
+GO

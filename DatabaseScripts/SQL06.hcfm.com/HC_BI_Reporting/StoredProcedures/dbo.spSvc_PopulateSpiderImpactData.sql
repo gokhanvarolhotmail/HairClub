@@ -1,3 +1,9 @@
+/* CreateDate: 04/26/2021 10:06:20.847 , ModifyDate: 05/14/2021 14:12:28.950 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spSvc_PopulateSpiderImpactData
 DESTINATION SERVER:		SQL06
@@ -1273,3 +1279,4 @@ INSERT	INTO HC_BI_Reporting.dbo.datScorecard
 		FROM	#ScorecardData sd
 
 END
+GO

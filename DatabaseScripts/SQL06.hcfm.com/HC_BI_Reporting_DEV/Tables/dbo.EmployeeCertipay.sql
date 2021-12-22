@@ -1,3 +1,9 @@
+/* CreateDate: 07/11/2011 15:45:17.287 , ModifyDate: 07/11/2011 15:45:17.287 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE TABLE [dbo].[EmployeeCertipay](
 	[LastName] [nvarchar](64) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[FirstName] [nvarchar](64) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
@@ -23,3 +29,4 @@ CREATE TABLE [dbo].[EmployeeCertipay](
 	[GeneralLedger] [int] NULL,
 	[JobClassification] [varchar](100) COLLATE SQL_Latin1_General_CP1_CI_AS NULL
 ) ON [PRIMARY]
+GO

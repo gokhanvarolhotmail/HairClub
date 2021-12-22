@@ -1,3 +1,9 @@
+/* CreateDate: 04/28/2021 10:18:40.583 , ModifyDate: 05/21/2021 13:43:53.140 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE procedure [dbo].[spSvc_GenerateLifeTimeValue]
 as
 -------------------------------------------------------------------------
@@ -448,3 +454,4 @@ Concatenate all of that together to create a string
           );
 
 end;
+GO

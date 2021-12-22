@@ -1,3 +1,9 @@
+/* CreateDate: 07/20/2014 22:13:36.077 , ModifyDate: 07/20/2014 22:13:36.077 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE TABLE [dbo].[LogSpaceStats](
 	[ID] [int] IDENTITY(1,1) NOT NULL,
 	[LogDate] [datetime] NULL,
@@ -7,3 +13,4 @@ CREATE TABLE [dbo].[LogSpaceStats](
 ) ON [PRIMARY]
 GO
 ALTER TABLE [dbo].[LogSpaceStats] ADD  DEFAULT (getdate()) FOR [LogDate]
+GO

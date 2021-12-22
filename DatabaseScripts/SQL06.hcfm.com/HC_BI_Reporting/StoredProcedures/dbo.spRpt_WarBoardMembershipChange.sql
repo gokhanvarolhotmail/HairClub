@@ -1,3 +1,9 @@
+/* CreateDate: 08/07/2012 09:24:39.233 , ModifyDate: 07/12/2018 11:22:42.310 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /*
 ==============================================================================
 
@@ -159,3 +165,4 @@ BEGIN
 		LEFT OUTER JOIN #PCP P
 			ON C.CenterID = P.Center_Num
 END
+GO

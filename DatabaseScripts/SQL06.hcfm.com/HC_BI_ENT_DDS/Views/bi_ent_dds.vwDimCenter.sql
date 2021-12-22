@@ -1,3 +1,9 @@
+/* CreateDate: 01/08/2021 15:21:54.300 , ModifyDate: 01/08/2021 15:21:54.300 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE VIEW [bi_ent_dds].[vwDimCenter]
 AS
 -------------------------------------------------------------------------
@@ -87,3 +93,4 @@ AS
 		LEFT OUTER JOIN bi_ent_dds.DimCenterManagementArea CMA
 			ON CMA.CenterManagementAreaSSID = c.CenterManagementAreaSSID
 	--WHERE Active='Y'
+GO

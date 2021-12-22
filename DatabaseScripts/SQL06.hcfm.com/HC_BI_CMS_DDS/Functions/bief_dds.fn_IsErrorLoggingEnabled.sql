@@ -1,3 +1,9 @@
+/* CreateDate: 10/03/2019 23:03:42.630 , ModifyDate: 10/03/2019 23:03:42.630 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE FUNCTION [bief_dds].[fn_IsErrorLoggingEnabled] ()
 -----------------------------------------------------------------------
 -- [fn_IsErrorLoggingEnabled] indicates whether Error Logging
@@ -24,3 +30,4 @@ BEGIN
 	RETURN @IsEnabled
 
 END
+GO

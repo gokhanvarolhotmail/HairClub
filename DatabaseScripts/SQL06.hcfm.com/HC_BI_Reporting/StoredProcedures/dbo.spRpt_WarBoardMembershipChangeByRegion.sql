@@ -1,3 +1,9 @@
+/* CreateDate: 09/14/2012 14:14:34.363 , ModifyDate: 07/13/2018 16:06:58.107 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /*
 ==============================================================================
 
@@ -132,3 +138,4 @@ END
 --drop table #centers
 --drop table #change
 --drop table #pcp
+GO

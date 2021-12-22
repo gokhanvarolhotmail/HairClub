@@ -1,3 +1,9 @@
+/* CreateDate: 04/10/2014 12:08:56.480 , ModifyDate: 08/07/2018 16:48:33.127 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spSvc_BarthClientMembershipsExport
 DESTINATION SERVER:		SQL06
@@ -56,3 +62,4 @@ WHERE	CTR.CenterSSID IN ( 807, 804, 821, 745, 748, 806, 811, 805, 817, 746, 814,
 		AND dcm.ClientMembershipBeginDate >= '1/1/2013'
 
 END
+GO

@@ -1,3 +1,9 @@
+/* CreateDate: 07/07/2015 12:17:54.183 , ModifyDate: 05/10/2019 17:51:17.210 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spRpt_FlashRecurringBusinessDetailsReceivables
 DESTINATION SERVER:		SQL06
@@ -476,3 +482,4 @@ WHERE R.Ranking = 1
 	AND (CMA_LastAppt.ApptOrder IS NULL OR CMA_LastAppt.ApptOrder = 1)
 
 END
+GO

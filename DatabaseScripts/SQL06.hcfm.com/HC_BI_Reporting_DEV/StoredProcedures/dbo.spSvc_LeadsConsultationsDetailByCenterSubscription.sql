@@ -1,3 +1,9 @@
+/* CreateDate: 02/18/2020 13:56:11.590 , ModifyDate: 02/18/2020 14:14:08.683 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				[spSvc_LeadsConsultationsDetailByCenterSubscription]
 DESTINATION SERVER:		SQL06
@@ -27,3 +33,4 @@ SELECT  'rnarcisi@hairclub.com; moakes@hairclub.com; relder@hairclub.com; JChals
 
 
 END
+GO

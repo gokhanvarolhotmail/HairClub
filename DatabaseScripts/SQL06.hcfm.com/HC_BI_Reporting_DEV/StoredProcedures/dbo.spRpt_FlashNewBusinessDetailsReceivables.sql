@@ -1,3 +1,9 @@
+/* CreateDate: 10/15/2013 14:10:25.243 , ModifyDate: 08/19/2019 16:51:48.290 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spRpt_FlashNewBusinessDetailsReceivables
 DESTINATION SERVER:		SQL06
@@ -357,3 +363,4 @@ SELECT * FROM #Receivables
 
 
 END
+GO

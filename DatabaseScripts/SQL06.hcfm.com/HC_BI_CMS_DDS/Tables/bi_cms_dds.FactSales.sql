@@ -1,3 +1,9 @@
+/* CreateDate: 10/03/2019 23:03:42.357 , ModifyDate: 10/04/2019 00:23:54.647 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE TABLE [bi_cms_dds].[FactSales](
 	[OrderDateKey] [int] NOT NULL,
 	[SalesOrderKey] [int] NOT NULL,
@@ -35,3 +41,4 @@ CREATE NONCLUSTERED INDEX [IDX_FactSales_SalesOrderKey] ON [bi_cms_dds].[FactSal
 	[SalesOrderKey] ASC
 )
 INCLUDE([OrderDateKey],[SalesOrderTypeKey],[CenterKey],[ClientKey],[MembershipKey],[ClientMembershipKey],[EmployeeKey],[ClientHomeCenterKey],[IsRefunded],[IsTaxExempt],[IsWrittenOff],[TotalDiscount],[TotalTax],[TotalExtendedPrice],[TotalExtendedPricePlusTax],[TotalTender],[TenderVariance]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO

@@ -1,3 +1,9 @@
+/* CreateDate: 01/08/2021 15:21:54.180 , ModifyDate: 05/12/2021 16:27:52.133 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE TABLE [bief_dds].[DimDate](
 	[DateKey] [int] NOT NULL,
 	[FullDate] [date] NULL,
@@ -116,3 +122,4 @@ CREATE NONCLUSTERED INDEX [IX_DimDate_FullDate_INCL] ON [bief_dds].[DimDate]
 	[FullDate] ASC
 )
 INCLUDE([DayOfWeekName],[MonthNumber],[FirstDateOfMonth],[LastDateOfMonth],[DayOfMonth]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO

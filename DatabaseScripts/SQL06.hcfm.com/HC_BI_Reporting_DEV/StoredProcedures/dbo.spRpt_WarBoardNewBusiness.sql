@@ -1,3 +1,9 @@
+/* CreateDate: 08/02/2012 17:09:44.767 , ModifyDate: 03/19/2020 08:50:39.773 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /*
 ==============================================================================
 
@@ -384,3 +390,4 @@ FROM #Final f
 
 
 END
+GO

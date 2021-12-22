@@ -1,3 +1,9 @@
+/* CreateDate: 09/13/2012 11:43:04.910 , ModifyDate: 03/19/2020 10:20:05.913 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /*
 ==============================================================================
 
@@ -377,3 +383,4 @@ SELECT  f.CenterManagementAreaDescription
 FROM #Final f
 
 END
+GO

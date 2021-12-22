@@ -1,3 +1,9 @@
+/* CreateDate: 02/27/2020 07:44:10.883 , ModifyDate: 02/27/2020 07:44:10.883 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /*
 ==============================================================================
 
@@ -75,3 +81,4 @@ BEGIN
 	ORDER BY SalesOrderInvoiceNumber
 	,	SalesOrderlineID
 END
+GO

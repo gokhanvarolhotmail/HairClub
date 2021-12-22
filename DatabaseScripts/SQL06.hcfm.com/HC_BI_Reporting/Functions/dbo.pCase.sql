@@ -1,3 +1,9 @@
+/* CreateDate: 06/25/2013 10:11:11.057 , ModifyDate: 06/25/2013 10:11:11.057 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE FUNCTION [dbo].[pCase]
 (
     @strIn varchar(255)
@@ -41,3 +47,4 @@ BEGIN
       END
     RETURN @strOut
 END
+GO

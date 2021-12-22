@@ -1,3 +1,9 @@
+/* CreateDate: 05/06/2019 14:31:39.440 , ModifyDate: 05/07/2019 14:16:51.203 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spRpt_PIP_ClosingPercent	VERSION  1.0
 DESTINATION SERVER:		SQL06
@@ -98,3 +104,4 @@ WHERE AvgClosingPercent < .4
 ORDER BY EmployeeFullName
 
 END
+GO

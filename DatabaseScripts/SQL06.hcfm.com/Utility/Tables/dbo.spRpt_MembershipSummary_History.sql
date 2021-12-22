@@ -1,3 +1,9 @@
+/* CreateDate: 12/28/2018 11:31:28.993 , ModifyDate: 12/28/2018 11:31:28.993 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE TABLE [dbo].[spRpt_MembershipSummary_History](
 	[name] [nvarchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[timestamp] [datetimeoffset](7) NULL,
@@ -40,3 +46,4 @@ CREATE TABLE [dbo].[spRpt_MembershipSummary_History](
 	[data_stream] [varbinary](max) NULL,
 	[output_parameters] [nvarchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO

@@ -1,3 +1,9 @@
+/* CreateDate: 08/10/2019 08:20:06.553 , ModifyDate: 08/10/2019 08:20:06.553 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spSvc_IC_EZPAYSales_Step06_CloseCommission
 DESTINATION SERVER:		SQL06
@@ -133,3 +139,4 @@ WHERE   AuditKey = @AuditID
 ------------------------------------------------------------------------------------------
 
 END
+GO

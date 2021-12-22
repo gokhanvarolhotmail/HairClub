@@ -1,3 +1,9 @@
+/* CreateDate: 10/03/2019 23:03:42.560 , ModifyDate: 10/03/2019 23:03:48.670 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE TABLE [bi_cms_dds].[FactSurgeryCloseoutEmployee](
 	[SurgeryCloseOutEmployeeKey] [int] NOT NULL,
 	[AppointmentKey] [int] NULL,
@@ -14,3 +20,4 @@ CREATE TABLE [bi_cms_dds].[FactSurgeryCloseoutEmployee](
 	[SurgeryCloseOutEmployeeKey] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [FG1]
 ) ON [FG1]
+GO

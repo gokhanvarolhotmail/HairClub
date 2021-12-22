@@ -1,3 +1,9 @@
+/* CreateDate: 11/29/2012 12:59:05.867 , ModifyDate: 04/08/2013 10:07:19.323 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /*
 ==============================================================================
 
@@ -295,3 +301,4 @@ BEGIN
 	SELECT *
 	FROM #Output
 END
+GO

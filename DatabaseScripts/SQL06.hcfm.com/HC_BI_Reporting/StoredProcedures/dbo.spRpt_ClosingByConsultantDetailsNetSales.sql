@@ -1,3 +1,9 @@
+/* CreateDate: 05/28/2013 13:59:40.860 , ModifyDate: 03/16/2020 17:18:12.633 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spRpt_ClosingByConsultantDetailsNetSales
 DESTINATION SERVER:		SQL06
@@ -305,3 +311,4 @@ GROUP BY NS.RegionID
 	   , NS.MDP
 
 END
+GO

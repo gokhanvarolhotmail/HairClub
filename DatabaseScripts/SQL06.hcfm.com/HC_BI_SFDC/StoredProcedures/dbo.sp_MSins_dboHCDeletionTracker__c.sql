@@ -1,3 +1,9 @@
+/* CreateDate: 10/04/2019 14:09:30.323 , ModifyDate: 10/04/2019 14:09:30.323 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 create procedure [sp_MSins_dboHCDeletionTracker__c]
     @c1 nvarchar(18),
     @c2 uniqueidentifier,
@@ -58,3 +64,4 @@ begin
 		@c17,
 		@c18	)
 end
+GO

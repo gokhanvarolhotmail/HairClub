@@ -1,3 +1,9 @@
+/* CreateDate: 11/12/2019 09:41:20.377 , ModifyDate: 04/30/2020 11:15:43.067 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE TABLE [dbo].[dbTicket](
 	[Ticket ID] [int] NOT NULL,
 	[Open Date & Time] [datetime] NOT NULL,
@@ -17,3 +23,4 @@ CREATE TABLE [dbo].[dbTicket](
 	[Note] [nvarchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[IsClosedBeforeDueDate] [bit] NULL
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO

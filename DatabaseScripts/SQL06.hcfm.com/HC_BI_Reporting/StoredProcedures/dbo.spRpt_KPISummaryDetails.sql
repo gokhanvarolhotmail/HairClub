@@ -1,3 +1,9 @@
+/* CreateDate: 03/06/2019 10:41:34.563 , ModifyDate: 03/16/2020 17:21:17.750 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /*
 ==============================================================================
 
@@ -894,3 +900,4 @@ GROUP BY O.ClientIdentifier,
 END
 
 END
+GO

@@ -1,3 +1,9 @@
+/* CreateDate: 08/01/2019 11:16:12.650 , ModifyDate: 01/23/2020 16:21:47.373 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spRpt_RetailFlash1000PlusClub_Detail
 DESTINATION SERVER:		SQL06
@@ -270,3 +276,4 @@ GROUP BY S.MonthNumber
 
 
 END
+GO

@@ -1,3 +1,9 @@
+/* CreateDate: 04/18/2018 10:13:28.913 , ModifyDate: 04/18/2018 10:13:28.913 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE TABLE [dbo].[FranchiseDirectory](
 	[CenterKey] [int] NOT NULL,
 	[CenterNumber] [int] NOT NULL,
@@ -17,3 +23,4 @@ CREATE TABLE [dbo].[FranchiseDirectory](
 	[NB1] [nvarchar](250) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[CRM] [nvarchar](250) COLLATE SQL_Latin1_General_CP1_CI_AS NULL
 ) ON [PRIMARY]
+GO

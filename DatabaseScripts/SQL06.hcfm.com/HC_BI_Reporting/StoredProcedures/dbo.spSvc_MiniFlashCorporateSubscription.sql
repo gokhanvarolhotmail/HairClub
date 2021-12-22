@@ -1,3 +1,9 @@
+/* CreateDate: 01/31/2020 17:13:34.847 , ModifyDate: 12/18/2021 17:31:12.333 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spSvc_MiniFlashCorporateSubscription
 DESTINATION SERVER:		SQL06
@@ -33,3 +39,4 @@ SELECT	'_DailyFlashFranchise@hcfm.com' AS 'SendTo'
 
 
 END
+GO

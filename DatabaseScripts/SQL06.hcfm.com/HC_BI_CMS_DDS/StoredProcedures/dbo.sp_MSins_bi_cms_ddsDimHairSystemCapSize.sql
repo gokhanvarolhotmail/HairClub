@@ -1,3 +1,9 @@
+/* CreateDate: 10/03/2019 23:03:40.483 , ModifyDate: 10/03/2019 23:03:40.483 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 create procedure [sp_MSins_bi_cms_ddsDimHairSystemCapSize]
     @c1 int,
     @c2 nvarchar(50),
@@ -42,3 +48,4 @@ begin
 		default,
 		@c12	)
 end
+GO

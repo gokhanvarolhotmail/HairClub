@@ -1,3 +1,9 @@
+/* CreateDate: 09/19/2018 14:01:04.430 , ModifyDate: 09/20/2018 14:45:10.140 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 VIEW:					[vw_BudgetNBSales]
 DESTINATION SERVER:		SQL06
@@ -45,3 +51,4 @@ SELECT   C.CenterKey
 			   GROUP BY C.CenterKey
 			   ,        DD.FullDate
 			   ,		CMA.CenterManagementAreaDescription
+GO

@@ -1,3 +1,9 @@
+/* CreateDate: 10/15/2013 14:04:12.140 , ModifyDate: 01/28/2021 16:52:56.720 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spRpt_FlashNewBusinessDetailsActivity
 DESTINATION SERVER:		SQL06
@@ -373,3 +379,4 @@ BEGIN
 	,		c.ActivityDueDate
 END
 END
+GO

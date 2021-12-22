@@ -1,3 +1,9 @@
+/* CreateDate: 08/05/2013 15:36:53.037 , ModifyDate: 03/01/2018 18:47:31.547 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /*
 ==============================================================================
 
@@ -62,3 +68,4 @@ BEGIN
 	,	CLT.CLientFullName
 
 END
+GO

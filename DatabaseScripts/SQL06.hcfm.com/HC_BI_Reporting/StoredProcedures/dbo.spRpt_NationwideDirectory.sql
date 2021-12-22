@@ -1,3 +1,9 @@
+/* CreateDate: 12/16/2014 10:25:33.753 , ModifyDate: 03/24/2021 15:13:47.237 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spRpt_NationwideDirectory
 DESTINATION SERVER:		SQL06
@@ -191,3 +197,4 @@ BEGIN
 
 
 END
+GO

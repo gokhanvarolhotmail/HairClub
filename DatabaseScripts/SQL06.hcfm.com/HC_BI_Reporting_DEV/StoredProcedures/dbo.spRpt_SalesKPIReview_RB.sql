@@ -1,3 +1,9 @@
+/* CreateDate: 05/08/2018 14:58:39.060 , ModifyDate: 05/29/2018 15:21:18.690 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /******************************************************************************************************************************
 PROCEDURE:				[spRpt_SalesKPIReview_RB]
 DESTINATION SERVER:		SQL06
@@ -423,3 +429,4 @@ GROUP BY ISNULL(MatchPercent, 0)
 
 
 END
+GO

@@ -1,3 +1,9 @@
+/* CreateDate: 10/07/2015 15:48:58.503 , ModifyDate: 10/07/2015 15:48:58.503 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spSVC_CommissionTypeID_11_Step08_TerminatedEmployee
 DESCRIPTION:			EXT to Surgery
@@ -129,3 +135,4 @@ WHERE   AuditKey = @AuditID
 ------------------------------------------------------------------------------------------
 
 END
+GO

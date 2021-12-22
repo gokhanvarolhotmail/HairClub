@@ -1,3 +1,9 @@
+/* CreateDate: 01/08/2021 15:21:54.477 , ModifyDate: 01/08/2021 15:21:54.477 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE VIEW [bi_ent_dds].[vwDimRegion]
 AS
 -------------------------------------------------------------------------
@@ -29,3 +35,4 @@ SELECT [RegionKey]
       ,[RowTimeStamp]
       ,[msrepl_tran_version]
   FROM [HC_BI_ENT_DDS].[bi_ent_dds].[DimRegion]
+GO

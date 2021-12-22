@@ -1,3 +1,9 @@
+/* CreateDate: 04/10/2014 12:07:16.477 , ModifyDate: 10/22/2021 12:55:50.710 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 --EXEC [dbo].[spSvc_BarthActivitiesExport] NULL, NULL
 CREATE PROCEDURE [dbo].[spSvc_BarthActivitiesExport]
 (
@@ -363,3 +369,4 @@ SELECT * FROM #Activities
 
 
 END
+GO

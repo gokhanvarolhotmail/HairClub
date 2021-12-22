@@ -1,3 +1,9 @@
+/* CreateDate: 09/03/2021 09:37:08.653 , ModifyDate: 09/03/2021 09:37:08.653 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 -------------------------------------------------------------------------
 --[vwFactLead] is used to retrieve a
 --list of FactLead
@@ -82,3 +88,4 @@ FROM    bi_mktg_dds.FactLead AS FL
 				ON FL.SalesTypeKey = ST.SalesTypeKey
 		LEFT OUTER JOIN bi_mktg_dds.DimContactAppend DCA
 			ON DCA.ContactKey = FL.ContactKey
+GO

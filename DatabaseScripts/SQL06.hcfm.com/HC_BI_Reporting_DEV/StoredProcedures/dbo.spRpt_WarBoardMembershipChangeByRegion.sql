@@ -1,3 +1,9 @@
+/* CreateDate: 09/14/2012 14:14:34.363 , ModifyDate: 04/08/2013 09:03:14.500 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /*
 ==============================================================================
 
@@ -110,3 +116,4 @@ BEGIN
 		LEFT OUTER JOIN #PCP P
 			ON C.RegionSSID = P.RegionSSID
 END
+GO

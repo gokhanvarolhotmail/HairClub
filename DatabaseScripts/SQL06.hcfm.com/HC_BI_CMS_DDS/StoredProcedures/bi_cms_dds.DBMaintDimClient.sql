@@ -1,3 +1,9 @@
+/* CreateDate: 10/03/2019 23:03:42.843 , ModifyDate: 10/03/2019 23:03:42.843 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 create PROCEDURE [bi_cms_dds].[DBMaintDimClient]
 
 AS
@@ -16,3 +22,4 @@ LEFT JOIN HC_BI_MKTG_DDS.bi_mktg_dds.DimContact DWCont with (nolock)
 
 
 	--select COUNT(*) from bi_mktg_dds.FactActivity
+GO

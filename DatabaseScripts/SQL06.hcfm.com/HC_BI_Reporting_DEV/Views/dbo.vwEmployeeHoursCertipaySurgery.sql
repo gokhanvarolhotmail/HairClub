@@ -1,3 +1,9 @@
+/* CreateDate: 08/15/2011 13:08:04.983 , ModifyDate: 11/18/2013 14:06:14.690 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE VIEW [dbo].[vwEmployeeHoursCertipaySurgery]
 AS
 
@@ -32,3 +38,4 @@ SELECT  [LastName]
 ,       [TravelHours]
 ,       [TravelEarnings]
 FROM    [HC_Accounting].[dbo].[EmployeeHoursCertipay]
+GO

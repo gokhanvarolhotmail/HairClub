@@ -1,3 +1,9 @@
+/* CreateDate: 08/13/2021 18:01:00.883 , ModifyDate: 09/01/2021 07:28:10.423 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE VIEW [dbo].[VWLead_MS]
 AS
 With vwdimLead_CTE as (
@@ -190,3 +196,4 @@ select Id,
        CreatedById,
        LastModifiedById
 from vwdimLead_CTE
+GO

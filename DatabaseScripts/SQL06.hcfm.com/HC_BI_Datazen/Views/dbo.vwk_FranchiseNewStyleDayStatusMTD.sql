@@ -1,3 +1,9 @@
+/* CreateDate: 02/08/2016 13:48:34.933 , ModifyDate: 02/08/2016 13:48:34.933 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 VIEW:					vwk_FranchiseNewStyleDayStatusMTD
 DESTINATION SERVER:		SQL06
@@ -24,3 +30,4 @@ SELECT
         END AS 'Status'
 FROM    vwk_FranchiseNewStyleDayCountMTD A
 ,       vwk_FranchiseNewStyleDayGoalMTD B
+GO

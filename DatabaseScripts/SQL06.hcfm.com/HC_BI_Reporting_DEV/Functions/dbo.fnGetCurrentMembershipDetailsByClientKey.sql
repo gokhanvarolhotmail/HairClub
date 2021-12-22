@@ -1,3 +1,9 @@
+/* CreateDate: 10/21/2013 14:04:34.877 , ModifyDate: 07/15/2015 16:48:15.983 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 NAME:					fnGetCurrentMembershipDetailsByClientKey
 DESTINATION SERVER:		SQL06
@@ -138,3 +144,4 @@ INSERT  INTO @CurrentMembershipDetails
 RETURN
 
 END
+GO

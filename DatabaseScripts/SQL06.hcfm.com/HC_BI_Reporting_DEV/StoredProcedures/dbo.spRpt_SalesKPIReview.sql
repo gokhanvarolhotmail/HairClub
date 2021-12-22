@@ -1,3 +1,9 @@
+/* CreateDate: 05/04/2018 11:43:26.303 , ModifyDate: 05/04/2018 11:43:26.303 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /******************************************************************************************************************************
 PROCEDURE:				spRpt_SalesKPIReview
 DESTINATION SERVER:		SQL06
@@ -194,3 +200,4 @@ SELECT * FROM #Final
 WHERE AccountID <> 10555  --Remove the Retail Sales $ associated with 10555 - we needed this above to find the 'Actual' value from FactAccounting
 
 END
+GO

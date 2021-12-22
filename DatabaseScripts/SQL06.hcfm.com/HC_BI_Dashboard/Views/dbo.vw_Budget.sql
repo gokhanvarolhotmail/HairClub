@@ -1,3 +1,9 @@
+/* CreateDate: 08/14/2020 11:09:54.433 , ModifyDate: 08/14/2020 11:09:54.433 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE VIEW vw_Budget
 AS
 
@@ -56,3 +62,4 @@ WHERE	d.FullDate	BETWEEN DATEADD(YEAR, DATEDIFF(YEAR, 0, DATEADD(DAY, -1, DATEA
 		AND ct.CenterTypeDescriptionShort = 'C'
 GROUP BY ctr.CenterKey
 ,		d.FullDate
+GO

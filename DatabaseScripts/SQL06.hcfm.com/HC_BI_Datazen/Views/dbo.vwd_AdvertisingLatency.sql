@@ -1,3 +1,9 @@
+/* CreateDate: 05/02/2016 14:51:05.717 , ModifyDate: 05/02/2016 15:50:01.900 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 VIEW:					[vwd_AdvertisingLatency]
 DESTINATION SERVER:		SQL06
@@ -239,3 +245,4 @@ SELECT  Totals.Channel
 FROM Totals, [Percentage]
 
 */
+GO

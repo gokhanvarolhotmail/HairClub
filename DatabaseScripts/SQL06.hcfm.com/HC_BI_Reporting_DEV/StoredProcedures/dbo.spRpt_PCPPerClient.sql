@@ -1,3 +1,9 @@
+/* CreateDate: 11/18/2013 16:36:30.853 , ModifyDate: 04/14/2016 16:38:13.317 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spRpt_PCPPerClient
 DESTINATION SERVER:		SQL06
@@ -321,3 +327,4 @@ ORDER BY CenterType
 ,       CenterName
 
 END
+GO

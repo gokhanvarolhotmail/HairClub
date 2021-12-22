@@ -1,3 +1,9 @@
+/* CreateDate: 02/16/2015 14:53:33.113 , ModifyDate: 03/31/2015 09:39:37.360 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /*
 ==============================================================================
 
@@ -94,3 +100,4 @@ BEGIN
 	FROM #Commission
 
 END
+GO

@@ -1,3 +1,9 @@
+/* CreateDate: 09/30/2015 15:43:06.610 , ModifyDate: 09/30/2015 16:58:01.470 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 VIEW:					vwd_NBbyEmployee
 DESTINATION SERVER:		SQL06
@@ -65,3 +71,4 @@ GROUP BY LTRIM((CASE WHEN E1.EmployeeFullName = 'Unknown, Unknown' THEN ''
        , DD.YearNumber
        , DD.YearMonthNumber
        , CE.CenterSSID
+GO

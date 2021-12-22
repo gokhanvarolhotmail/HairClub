@@ -1,3 +1,9 @@
+/* CreateDate: 01/03/2014 16:16:13.143 , ModifyDate: 08/08/2014 15:35:50.990 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE VIEW [dbo].[vw_BarthClients]
 AS
 SELECT  CNTR.CenterSSID AS 'CenterSSID'
@@ -122,3 +128,4 @@ GROUP BY CM.ClientMembershipIdentifier
 ,       CM.ClientMembershipEndDate
 ,       CM.ClientMembershipMonthlyFee
 ,       CLT.ClientARBalance
+GO

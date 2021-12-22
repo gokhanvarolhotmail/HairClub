@@ -1,3 +1,9 @@
+/* CreateDate: 02/10/2020 11:53:16.803 , ModifyDate: 09/16/2020 15:10:53.520 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spSvc_IC_HaloSales_Step01_CreateHeader
 DESTINATION SERVER:		SQL06
@@ -210,3 +216,4 @@ WHERE   AuditKey = @AuditID
 ------------------------------------------------------------------------------------------
 
 END
+GO

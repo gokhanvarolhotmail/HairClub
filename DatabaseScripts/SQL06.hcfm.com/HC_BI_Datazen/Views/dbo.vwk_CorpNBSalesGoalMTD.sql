@@ -1,3 +1,9 @@
+/* CreateDate: 04/19/2016 17:03:34.297 , ModifyDate: 04/19/2016 17:06:49.623 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 VIEW:					[vwk_CorpNBSalesGoalMTD]
 DESTINATION SERVER:		SQL06
@@ -35,3 +41,4 @@ INNER JOIN CurrentMTD
 
 WHERE   CONVERT(VARCHAR, FA.CenterID) LIKE '[2]%'
 		AND FA.AccountID = 10233
+GO

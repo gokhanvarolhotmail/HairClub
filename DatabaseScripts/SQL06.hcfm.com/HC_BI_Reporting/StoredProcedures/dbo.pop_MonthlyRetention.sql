@@ -1,3 +1,9 @@
+/* CreateDate: 01/21/2016 11:47:41.043 , ModifyDate: 06/11/2018 17:30:37.330 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				[pop_MonthlyRetention]
 DESTINATION SERVER:		SQL06
@@ -302,3 +308,4 @@ END
 
 
  SELECT * FROM dbo.MonthlyRetention
+GO

@@ -1,3 +1,9 @@
+/* CreateDate: 07/27/2015 11:48:26.667 , ModifyDate: 07/27/2015 11:56:16.873 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 VIEW:					vwk_RetailSalesTrendMTD
 DESTINATION SERVER:		SQL06
@@ -40,3 +46,4 @@ WITH    PriorYearMonths
 
 	 GROUP BY DD.YearNumber
      ,      DD.MonthNumber
+GO

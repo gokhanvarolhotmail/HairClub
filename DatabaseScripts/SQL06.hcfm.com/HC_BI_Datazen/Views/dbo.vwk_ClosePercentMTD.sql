@@ -1,3 +1,9 @@
+/* CreateDate: 07/21/2015 14:25:48.097 , ModifyDate: 08/04/2015 17:11:42.620 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 VIEW:					vw_ClosePercentMTD
 DESTINATION SERVER:		SQL06
@@ -71,3 +77,4 @@ FROM Consultations
 	INNER JOIN NetSales
 		ON Consultations.CenterName = NetSales.CenterName
 GROUP BY Consultations.CenterName
+GO

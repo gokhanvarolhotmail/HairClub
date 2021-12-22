@@ -1,3 +1,9 @@
+/* CreateDate: 10/04/2013 09:07:41.097 , ModifyDate: 08/20/2019 16:59:40.777 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spRpt_PresidentsClubNewBusinessDetailsConsultation
 DESTINATION SERVER:		SQL06
@@ -114,3 +120,4 @@ WHERE   DA.ActivityDueDate BETWEEN @StartDate AND @EndDate
 
 
 END
+GO

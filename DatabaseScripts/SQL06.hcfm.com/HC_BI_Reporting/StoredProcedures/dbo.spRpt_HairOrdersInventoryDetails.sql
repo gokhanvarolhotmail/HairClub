@@ -1,3 +1,9 @@
+/* CreateDate: 11/09/2012 15:30:27.783 , ModifyDate: 10/02/2019 09:52:33.550 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /*==============================================================================
 PROCEDURE:				spRpt_HairOrdersInventoryDetails
 VERSION:				v1.0
@@ -70,3 +76,4 @@ AND ce.CenterSSID = @CenterID
 AND ce.Active = 'Y' --AND c.IsActiveFlag = 1
 AND ce.CenterSSID <> 100
 --GROUP BY re.RegionDescription,ce.CenterSSID,ce.CenterDescriptionNumber
+GO

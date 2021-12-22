@@ -1,3 +1,9 @@
+/* CreateDate: 07/02/2017 11:10:52.870 , ModifyDate: 10/09/2020 16:32:00.810 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				extHairClubCMSHRAuditByCountryAndPayPeriod
 DESTINATION SERVER:		SQL06
@@ -115,3 +121,4 @@ ORDER BY ISNULL(fco.EmployeeFullName, fch.EmployeeFullName)
 ,		clt.ClientFullName
 
 END
+GO

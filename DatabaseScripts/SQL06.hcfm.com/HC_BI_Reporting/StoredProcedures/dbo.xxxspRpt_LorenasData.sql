@@ -1,3 +1,9 @@
+/* CreateDate: 10/30/2018 16:39:47.077 , ModifyDate: 04/06/2020 10:55:38.257 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				[spRpt_LorenasData]
 DESTINATION SERVER:		SQL06
@@ -183,3 +189,4 @@ END
 SELECT * FROM #Final
 
 END
+GO

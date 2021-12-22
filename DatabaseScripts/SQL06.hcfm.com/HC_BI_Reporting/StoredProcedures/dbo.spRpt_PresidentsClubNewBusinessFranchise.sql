@@ -1,3 +1,9 @@
+/* CreateDate: 10/02/2013 14:58:55.573 , ModifyDate: 04/05/2016 15:59:31.707 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spRpt_PresidentsClubNewBusinessFranchise
 DESTINATION SERVER:		SQL06
@@ -306,3 +312,4 @@ ORDER BY DR.RegionDescription
 ,       DC.CenterDescriptionNumber
 
 END
+GO

@@ -1,3 +1,9 @@
+/* CreateDate: 10/29/2019 16:12:38.563 , ModifyDate: 10/29/2019 16:12:38.563 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spSvc_GetLeadAttributesByYear
 DESTINATION SERVER:		SQL06
@@ -385,3 +391,4 @@ FROM	#Lead l
 			ON rc.Id = l.RecentCampaignId
 
 END
+GO

@@ -1,3 +1,9 @@
+/* CreateDate: 08/04/2015 16:38:54.130 , ModifyDate: 08/04/2015 16:38:54.130 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 VIEW:					vwk_PCPDollarsStatusMTD
 DESTINATION SERVER:		SQL06
@@ -22,3 +28,4 @@ SELECT  CASE WHEN A.Actual < (B.Goal * .9) THEN -1
         END AS 'Status'
 FROM    vwk_PCPDollarsCountMTD A
 ,       vwk_PCPDollarsGoalMTD B
+GO

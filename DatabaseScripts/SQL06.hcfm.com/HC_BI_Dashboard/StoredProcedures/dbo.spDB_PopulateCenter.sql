@@ -1,3 +1,9 @@
+/* CreateDate: 03/25/2019 10:25:11.613 , ModifyDate: 04/18/2019 11:42:35.850 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spDB_PopulateCenter
 DESTINATION SERVER:		SQL06
@@ -112,3 +118,4 @@ INSERT	INTO dbCenter
 		ORDER BY c.CenterNumber
 
 END
+GO

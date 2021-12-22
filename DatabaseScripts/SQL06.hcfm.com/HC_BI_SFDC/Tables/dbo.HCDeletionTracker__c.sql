@@ -1,3 +1,9 @@
+/* CreateDate: 10/04/2019 14:09:30.320 , ModifyDate: 06/13/2021 00:12:56.087 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE TABLE [dbo].[HCDeletionTracker__c](
 	[Id] [nvarchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[SessionID] [uniqueidentifier] NOT NULL,
@@ -28,3 +34,4 @@ CREATE NONCLUSTERED INDEX [IX_HCDeletionTracker__c_SessionID] ON [dbo].[HCDeleti
 	[SessionID] ASC
 )
 INCLUDE([ToBeProcessed__c],[IsProcessed],[IsError]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO

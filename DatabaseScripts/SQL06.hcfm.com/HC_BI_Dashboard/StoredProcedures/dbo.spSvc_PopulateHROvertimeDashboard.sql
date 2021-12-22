@@ -1,3 +1,9 @@
+/* CreateDate: 11/20/2019 11:55:10.017 , ModifyDate: 11/20/2019 11:55:10.017 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spSvc_PopulateHROvertimeDashboard
 DESTINATION SERVER:		SQL06
@@ -44,3 +50,4 @@ INSERT	INTO dbHROvertime
 		WHERE	ho.PayDate BETWEEN @StartDate AND @EndDate
 
 END
+GO

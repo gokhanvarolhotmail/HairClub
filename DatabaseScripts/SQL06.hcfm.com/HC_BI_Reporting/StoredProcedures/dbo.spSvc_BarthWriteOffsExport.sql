@@ -1,3 +1,9 @@
+/* CreateDate: 04/10/2014 12:18:37.497 , ModifyDate: 08/07/2018 23:15:44.343 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spSvc_BarthWriteOffsExport
 DESTINATION SERVER:		SQL06
@@ -94,3 +100,4 @@ WHERE   DC.CenterSSID IN ( 807, 804, 821, 745, 748, 806, 811, 805, 817, 746, 814
 		AND DSO.IsVoidedFlag = 0
 
 END
+GO

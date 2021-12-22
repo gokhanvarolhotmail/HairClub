@@ -1,3 +1,9 @@
+/* CreateDate: 12/05/2018 16:23:23.443 , ModifyDate: 12/05/2018 16:23:23.443 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 VIEW:					vw_MicroDermalPigmentation
 DESTINATION SERVER:		SQL06
@@ -81,3 +87,4 @@ SELECT  A.MainGroupID
 
 				WHERE   sc.SalesCodeDescription LIKE 'MDP%'
 						AND so.IsVoidedFlag = 0
+GO

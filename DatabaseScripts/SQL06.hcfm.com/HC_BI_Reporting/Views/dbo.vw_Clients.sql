@@ -1,3 +1,9 @@
+/* CreateDate: 01/04/2014 10:04:43.883 , ModifyDate: 08/04/2015 16:13:43.697 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE VIEW [dbo].[vw_Clients]
 AS
 SELECT  DC.CenterID
@@ -82,3 +88,4 @@ SELECT  DC.CenterID
 ,       DC.DoNotCallFlag
 ,       DC.DoNotContactFlag
 FROM    HC_Accounting.dbo.dbaClient DC
+GO

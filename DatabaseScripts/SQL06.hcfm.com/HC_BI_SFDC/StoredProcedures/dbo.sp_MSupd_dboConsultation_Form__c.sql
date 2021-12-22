@@ -1,3 +1,9 @@
+/* CreateDate: 03/11/2021 15:38:03.537 , ModifyDate: 03/11/2021 15:38:03.537 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 create procedure [dbo].[sp_MSupd_dboConsultation_Form__c]     @c1 nvarchar(18) = NULL,     @c2 nvarchar(18) = NULL,     @c3 nvarchar(50) = NULL,     @c4 nvarchar(50) = NULL,     @c5 nvarchar(50) = NULL,     @c6 nvarchar(18) = NULL,     @c7 nvarchar(50) = NULL,     @c8 nvarchar(50) = NULL,     @c9 nvarchar(100) = NULL,     @c10 datetime = NULL,     @c11 nvarchar(50) = NULL,     @c12 nvarchar(50) = NULL,     @c13 int = NULL,     @c14 int = NULL,     @c15 nvarchar(255) = NULL,     @c16 nvarchar(80) = NULL,     @c17 nvarchar(80) = NULL,     @c18 nvarchar(80) = NULL,     @c19 nvarchar(80) = NULL,     @c20 nvarchar(50) = NULL,     @c21 nvarchar(18) = NULL,     @c22 nvarchar(18) = NULL,     @c23 nvarchar(175) = NULL,     @c24 nvarchar(175) = NULL,     @c25 nvarchar(500) = NULL,     @c26 nvarchar(500) = NULL,     @c27 nvarchar(175) = NULL,     @c28 nvarchar(175) = NULL,     @c29 nvarchar(175) = NULL,     @c30 nvarchar(4000) = NULL,     @c31 nvarchar(4000) = NULL,     @c32 nvarchar(4000) = NULL,     @c33 nvarchar(4000) = NULL,     @c34 nvarchar(4000) = NULL,     @c35 nvarchar(255) = NULL,     @c36 nvarchar(4000) = NULL,     @c37 nvarchar(4000) = NULL,     @c38 nvarchar(255) = NULL,     @c39 nvarchar(255) = NULL,     @c40 nvarchar(4000) = NULL,     @c41 nvarchar(80) = NULL,     @c42 nvarchar(4000) = NULL,     @c43 int = NULL,     @c44 datetime = NULL,     @c45 nvarchar(255) = NULL,     @c46 nvarchar(255) = NULL,     @c47 nvarchar(4000) = NULL,     @c48 nvarchar(4000) = NULL,     @c49 nvarchar(255) = NULL,     @c50 nvarchar(255) = NULL,     @c51 nvarchar(255) = NULL,     @c52 decimal(18,0) = NULL,     @c53 datetime = NULL,     @c54 datetime = NULL,     @c55 datetime = NULL,     @c56 datetime = NULL,     @c57 datetime = NULL,     @c58 bit = NULL,     @c59 bit = NULL,     @c60 datetime = NULL,     @c61 nvarchar(18) = NULL,     @c62 datetime = NULL,     @c63 nvarchar(18) = NULL,     @pkc1 nvarchar(18) = NULL,     @bitmap binary(8)
 as
 begin   if (substring(@bitmap,1,1) & 1 = 1)
@@ -9,3 +15,4 @@ begin  update [dbo].[Consultation_Form__c] set     [OwnerId] = case substring(@b
 where [Id] = @pkc1 if @@rowcount = 0
     if @@microsoftversion>0x07320000
         exec sp_MSreplraiserror 20598 end  end   --
+GO

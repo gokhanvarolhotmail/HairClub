@@ -1,3 +1,9 @@
+/* CreateDate: 06/03/2015 17:17:52.070 , ModifyDate: 01/09/2017 22:49:40.607 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /*==============================================================================
 PROCEDURE:				spRpt_RetentionByGenderPCPDetails
 DESTINATION SERVER:		SQL06
@@ -179,3 +185,4 @@ END
 
 
 END
+GO

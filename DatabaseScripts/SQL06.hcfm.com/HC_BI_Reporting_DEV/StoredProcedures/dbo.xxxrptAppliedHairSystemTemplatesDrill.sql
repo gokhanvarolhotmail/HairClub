@@ -1,3 +1,9 @@
+/* CreateDate: 11/12/2012 14:03:43.987 , ModifyDate: 05/26/2016 17:02:53.357 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /*===============================================================================================
 -- Procedure Name:			rptAppliedHairSystemTemplatesDrill
 -- Procedure Description:
@@ -163,3 +169,4 @@ LEFT JOIN HC_BI_CMS_DDS.bi_cms_dds.DimClientMembership cm ON cm.ClientMembership
 --	LEFT JOIN cfgMembership mem ON mem.MembershipID = cm.MembershipID
 
 END
+GO

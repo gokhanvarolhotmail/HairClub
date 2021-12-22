@@ -1,3 +1,9 @@
+/* CreateDate: 11/14/2012 09:22:15.887 , ModifyDate: 02/12/2013 16:44:17.430 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /*
 ==============================================================================
 
@@ -102,3 +108,4 @@ BEGIN
 	SELECT *
 	FROM #CommissionHeader
 END
+GO

@@ -1,3 +1,9 @@
+/* CreateDate: 09/06/2011 14:52:19.953 , ModifyDate: 08/20/2019 17:18:14.997 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 VIEW:					vw_Activity
 DESTINATION SERVER:		SQL06
@@ -114,3 +120,4 @@ FROM    HC_BI_MKTG_DDS.bi_mktg_dds.FactActivity Activity
             ON Activity.ResultCodeKey = ResultCode.ResultCodeKey
         LEFT OUTER JOIN [HC_BI_MKTG_DDS].[bi_mktg_dds].[DimActivityType] ActivityType
             ON Activity.ActivityTypeKey = ActivityType.ActivityTypeKey
+GO

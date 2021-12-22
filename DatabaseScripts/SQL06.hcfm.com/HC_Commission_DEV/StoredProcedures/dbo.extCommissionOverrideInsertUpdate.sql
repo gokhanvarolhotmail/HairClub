@@ -1,3 +1,9 @@
+/* CreateDate: 02/11/2013 11:18:51.807 , ModifyDate: 02/13/2013 16:08:22.087 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /*
 ==============================================================================
 
@@ -69,3 +75,4 @@ BEGIN
 			WHERE CommissionHeaderKey = @CommissionHeaderKey
 		END
 END
+GO

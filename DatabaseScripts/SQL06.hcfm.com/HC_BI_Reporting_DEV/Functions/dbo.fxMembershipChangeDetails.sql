@@ -1,3 +1,9 @@
+/* CreateDate: 07/31/2012 17:02:14.807 , ModifyDate: 01/07/2015 08:27:35.287 */
+GO
+SET ANSI_NULLS OFF
+GO
+SET QUOTED_IDENTIFIER OFF
+GO
 --Changes
 -- KM	01/07/2015	Modified cm2 join to be left outer join instead of inner join
 
@@ -36,3 +42,4 @@ BEGIN
 			AND SC.SalesCodeDepartmentSSID IN (1070, 1080, 1090, 1095, 1099)
 	)
 END
+GO

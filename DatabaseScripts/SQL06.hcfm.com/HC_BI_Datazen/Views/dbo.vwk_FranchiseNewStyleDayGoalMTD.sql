@@ -1,3 +1,9 @@
+/* CreateDate: 02/08/2016 13:45:54.793 , ModifyDate: 02/08/2016 16:31:25.393 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 VIEW:					vwk_FranchiseNewStyleDayGoalMTD
 DESTINATION SERVER:		SQL06
@@ -42,3 +48,4 @@ FROM HC_Accounting.dbo.FactAccounting FA
 SELECT ROUND(MAX(CAST (CurrentMTD.CurMTDWorkdays AS DECIMAL(18,4))/CAST(CurrentMTD.MonthWorkDaysTotal AS DECIMAL(18,4)))* SUM(Budget), 0)  AS 'Goal'
 FROM CurrentMTD
 INNER JOIN LastYearMTD ON CurrentMTD.FirstDateOfMonth = LastYearMTD.FirstDateOfMonth
+GO

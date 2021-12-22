@@ -1,3 +1,9 @@
+/* CreateDate: 09/03/2021 09:37:05.720 , ModifyDate: 09/03/2021 09:37:10.930 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE TABLE [bi_mktg_dds].[DimContactEmail](
 	[ContactEmailKey] [int] NOT NULL,
 	[ContactEmailSSID] [nvarchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
@@ -23,3 +29,4 @@ CREATE TABLE [bi_mktg_dds].[DimContactEmail](
 	[ContactEmailKey] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
+GO

@@ -1,3 +1,9 @@
+/* CreateDate: 02/07/2014 14:54:44.120 , ModifyDate: 02/07/2014 14:58:59.500 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE FUNCTION [dbo].[fnRemoveBadCharacter] (
 	@BadString nvarchar(500) )
 RETURNS nvarchar(500) AS
@@ -11,3 +17,4 @@ BEGIN
 	END
 	RETURN @BadString
 END
+GO

@@ -1,3 +1,9 @@
+/* CreateDate: 07/03/2014 11:34:45.377 , ModifyDate: 07/03/2014 11:34:45.377 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 VIEW:					[vw_dashbdActivePCP]
 DESTINATION SERVER:		SQL06
@@ -33,3 +39,4 @@ FROM    HC_Accounting.dbo.FactPCPDetail FPD
         INNER JOIN HC_BI_CMS_DDS.bi_cms_dds.DimMembership DM
             ON FPD.MembershipKey = DM.MembershipKey
 WHERE   FPD.PCP - FPD.EXT = 1
+GO

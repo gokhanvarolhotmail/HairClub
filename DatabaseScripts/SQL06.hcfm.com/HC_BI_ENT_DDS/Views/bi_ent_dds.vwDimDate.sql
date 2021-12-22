@@ -1,3 +1,9 @@
+/* CreateDate: 01/08/2021 15:21:54.343 , ModifyDate: 01/08/2021 15:21:54.343 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE VIEW [bi_ent_dds].[vwDimDate]
 AS
 -------------------------------------------------------------------------
@@ -141,3 +147,4 @@ AS
             LEFT OUTER JOIN HC_BI_ENT_DDS.bief_dds.DIMDATE DD1
 				ON CONVERT(VARCHAR(8),(LEFT(DD.DATEKEY,6) + '01')) = CONVERT(VARCHAR(8),DD1.DATEKEY)
 		--WHERE DD.FullDate  > '12/31/2011'
+GO

@@ -1,3 +1,9 @@
+/* CreateDate: 07/27/2015 11:20:19.140 , ModifyDate: 08/18/2015 16:18:09.293 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 VIEW:					vwk_RetailSalesMTD
 DESTINATION SERVER:		SQL06
@@ -31,3 +37,4 @@ FROM HC_BI_CMS_DDS.bi_cms_dds.FactSalesTransaction FST
 WHERE   DD.FullDate BETWEEN DATEADD(mm, DATEDIFF(mm, 0, GETDATE()), 0) AND DATEADD(ms, -3, DATEADD(mm, 0, DATEADD(mm, DATEDIFF(mm, 0, GETDATE()) +1, 0)))
 		AND C.CenterSSID LIKE '[2]%'
 			AND (SCD.SalesCodeDivisionSSID IN ( 30, 50 ) OR SC.SalesCodeDescriptionShort IN ( 'HM3V5','EXTPMTLC','EXTPMTLCP' ))
+GO

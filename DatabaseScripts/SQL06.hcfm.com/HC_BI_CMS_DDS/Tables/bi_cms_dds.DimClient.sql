@@ -1,3 +1,9 @@
+/* CreateDate: 11/21/2019 15:17:53.760 , ModifyDate: 06/03/2020 23:19:06.430 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE TABLE [bi_cms_dds].[DimClient](
 	[ClientKey] [int] NOT NULL,
 	[ClientSSID] [uniqueidentifier] NOT NULL,
@@ -118,3 +124,4 @@ CREATE NONCLUSTERED INDEX [IX_DimClient_ClientIdentifier] ON [bi_cms_dds].[DimCl
 (
 	[ClientIdentifier] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [FG1]
+GO

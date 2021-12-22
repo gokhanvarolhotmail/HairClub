@@ -1,3 +1,9 @@
+/* CreateDate: 03/04/2013 14:05:43.837 , ModifyDate: 06/18/2014 00:46:43.863 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE TABLE [bi_ent_dds].[xxxFactAccounting](
 	[CenterID] [int] NOT NULL,
 	[DateKey] [int] NOT NULL,
@@ -18,3 +24,4 @@ CREATE TABLE [bi_ent_dds].[xxxFactAccounting](
 	[AccountID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
+GO

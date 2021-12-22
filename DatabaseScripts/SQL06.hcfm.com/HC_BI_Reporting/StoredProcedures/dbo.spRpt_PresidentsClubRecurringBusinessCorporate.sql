@@ -1,3 +1,9 @@
+/* CreateDate: 03/15/2017 17:04:52.703 , ModifyDate: 01/24/2019 11:44:15.357 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spRpt_PresidentsClubRecurringBusinessCorporate
 DESTINATION SERVER:		SQL06
@@ -383,3 +389,4 @@ GROUP BY dbo.DIVIDE_DECIMAL(ISNULL(EXTXTRConvCnt ,0) ,ISNULL(EXTXTRCount ,0))
 
 
 END
+GO

@@ -1,3 +1,9 @@
+/* CreateDate: 10/03/2019 23:03:44.240 , ModifyDate: 10/03/2019 23:03:44.240 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE VIEW [bi_cms_dds].[xxxvwFactSalesFirstSurgeryInfo_Flash]
 AS
 -------------------------------------------------------------------------
@@ -161,3 +167,4 @@ AS
 				ON dcm.[ClientMembershipKey] = fst.[ClientMembershipKey]
 		LEFT OUTER JOIN  [bi_cms_dds].[synHC_ENT_DDS_DimDate] DD
 			ON fst.[OrderDateKey] = DD.[DateKey]
+GO

@@ -1,3 +1,9 @@
+/* CreateDate: 02/14/2013 14:18:04.280 , ModifyDate: 08/21/2019 09:06:55.247 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE VIEW [bi_mktg_dds].[vwMKTActivityLead]
 AS
 /*-------------------------------------------------------------------------
@@ -142,3 +148,4 @@ GROUP BY
             DCE.[Email],
 			DC.ContactLanguageDescription,
 			DC.[ContactPromotionDescription]
+GO

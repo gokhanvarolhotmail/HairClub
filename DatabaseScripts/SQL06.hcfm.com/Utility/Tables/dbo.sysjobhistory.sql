@@ -1,3 +1,9 @@
+/* CreateDate: 07/31/2014 11:56:58.347 , ModifyDate: 07/31/2014 11:56:58.347 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE TABLE [dbo].[sysjobhistory](
 	[RunDate] [datetime] NOT NULL,
 	[instance_id] [int] IDENTITY(1,1) NOT NULL,
@@ -17,3 +23,4 @@ CREATE TABLE [dbo].[sysjobhistory](
 	[retries_attempted] [int] NOT NULL,
 	[server] [sysname] COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL
 ) ON [PRIMARY]
+GO

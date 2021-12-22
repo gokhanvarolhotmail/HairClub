@@ -1,3 +1,9 @@
+/* CreateDate: 01/08/2021 15:21:53.610 , ModifyDate: 01/08/2021 15:21:53.610 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 create procedure [sp_MSdel_bi_ent_ddsDimCenterType]
 		@pkc1 int
 as
@@ -18,3 +24,4 @@ if @@rowcount = 0
 				exec sp_MSreplraiserror @errorid=20598
 		End
 end
+GO

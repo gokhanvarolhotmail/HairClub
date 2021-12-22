@@ -1,3 +1,9 @@
+/* CreateDate: 10/03/2019 23:03:43.847 , ModifyDate: 10/03/2019 23:03:43.847 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE VIEW [bi_cms_dds].[vwDimHairSystemVendorContract]
 AS
 -------------------------------------------------------------------------
@@ -29,3 +35,4 @@ SELECT [HairSystemVendorContractKey]
       ,[RowEndDate]
 
   FROM [HC_BI_CMS_DDS].[bi_cms_dds].[DimHairSystemVendorContract]
+GO

@@ -1,3 +1,9 @@
+/* CreateDate: 06/02/2016 16:38:48.153 , ModifyDate: 06/16/2016 09:05:14.970 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spRpt_ContestHairBusters
 DESTINATION SERVER:		SQL06
@@ -235,3 +241,4 @@ FROM
 ORDER BY q.CenterSortOrder
 
 END
+GO

@@ -1,3 +1,9 @@
+/* CreateDate: 10/03/2019 23:03:43.993 , ModifyDate: 10/03/2019 23:03:43.993 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 -------------------------------------------------------------------------
 -- Change History
 -------------------------------------------------------------------------
@@ -44,3 +50,4 @@ SELECT [ID]
 		ON DMS.MaritalStatusSSID = c.MaritalStatusSSID
 	LEFT OUTER JOIN HC_BI_ENT_DDS.bi_ent_dds.DimAgeRange DAR
 		ON ISNULL( DATEDIFF(YEAR, c.ClientDateOfBirth, GETDATE()),0) BETWEEN DAR.BeginAge AND DAR.EndAge
+GO

@@ -1,3 +1,9 @@
+/* CreateDate: 09/03/2021 09:37:07.873 , ModifyDate: 09/03/2021 09:37:07.873 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE VIEW [bi_mktg_dds].[vwDimActivityResult]
 AS
 -------------------------------------------------------------------------
@@ -68,3 +74,4 @@ AS
 			ON bi_mktg_dds.DimActivityResult.SFDC_LeadID = l.id
 		LEFT OUTER JOIN HC_BI_SFDC.dbo.[User] u
 			ON u.id = l.CreatedById
+GO

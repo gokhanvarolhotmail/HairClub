@@ -1,3 +1,9 @@
+/* CreateDate: 12/09/2013 13:48:18.617 , ModifyDate: 12/09/2013 14:01:31.713 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spRpt_CommissionClientOverview_Membership
 DESTINATION SERVER:		SQL06
@@ -47,3 +53,4 @@ BEGIN
 	ORDER BY ClientMembershipBeginDate
 
 END
+GO

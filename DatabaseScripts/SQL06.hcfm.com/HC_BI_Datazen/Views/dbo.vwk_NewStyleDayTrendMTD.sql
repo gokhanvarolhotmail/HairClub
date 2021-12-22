@@ -1,3 +1,9 @@
+/* CreateDate: 07/21/2015 12:34:40.013 , ModifyDate: 08/04/2015 17:13:54.773 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 VIEW:					vw_NewStyleDayTrendMTD
 DESTINATION SERVER:		SQL06
@@ -41,3 +47,4 @@ WITH    PriorYearMonths
             AND DSC.SalesCodeSSID IN ( 648 )
 	 GROUP BY DD.YearNumber
      ,        DD.MonthNumber
+GO

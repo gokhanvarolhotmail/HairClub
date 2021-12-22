@@ -1,3 +1,9 @@
+/* CreateDate: 04/13/2015 12:25:33.210 , ModifyDate: 04/14/2015 13:31:52.940 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spRpt_HairSystemsQuantityOver
 DESTINATION SERVER:		SQL06
@@ -117,3 +123,4 @@ BEGIN
 	FROM #Clients
 	WHERE QtyDifference < 0
 END
+GO

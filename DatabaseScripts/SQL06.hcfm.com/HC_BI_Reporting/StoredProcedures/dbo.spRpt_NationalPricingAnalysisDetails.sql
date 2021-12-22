@@ -1,3 +1,9 @@
+/* CreateDate: 01/31/2014 14:50:38.790 , ModifyDate: 09/13/2019 09:23:34.850 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spRpt_NationalPricingAnalysisDetails
 DESTINATION SERVER:		SQL06
@@ -398,3 +404,4 @@ WHERE ABS(Difference2) > 20  --Remove records with less than $20 difference
 
 
 END
+GO

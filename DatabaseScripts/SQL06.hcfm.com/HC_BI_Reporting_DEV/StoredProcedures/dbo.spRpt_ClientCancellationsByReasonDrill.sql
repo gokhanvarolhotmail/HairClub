@@ -1,3 +1,9 @@
+/* CreateDate: 12/26/2013 11:26:56.880 , ModifyDate: 05/10/2019 10:37:35.423 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /******************************************************************************************************************
 PROCEDURE:				spRpt_ClientCancellationsByReasonDrill
 DESTINATION SERVER:		SQL06
@@ -524,3 +530,4 @@ GROUP BY CT.MainGroupID
 SELECT DISTINCT * FROM #Final
 
 END
+GO

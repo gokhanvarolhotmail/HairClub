@@ -1,3 +1,9 @@
+/* CreateDate: 09/19/2012 15:39:41.723 , ModifyDate: 12/09/2014 14:52:55.463 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /*==============================================================================
 PROCEDURE:				spRpt_AttritionByGender
 DESTINATION SERVER:		SQL06
@@ -193,3 +199,4 @@ CREATE TABLE #AllConv(
 		,	C.CenterSSID
 
 END
+GO

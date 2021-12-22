@@ -1,3 +1,9 @@
+/* CreateDate: 10/03/2019 23:03:40.067 , ModifyDate: 12/04/2019 23:17:08.803 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE TABLE [bi_cms_dds].[DimAppointment](
 	[AppointmentKey] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
 	[AppointmentSSID] [uniqueidentifier] NULL,
@@ -124,3 +130,4 @@ CREATE NONCLUSTERED INDEX [Temp_DimAppointment_ClientMembershipKey] ON [bi_cms_d
 (
 	[ClientMembershipKey] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [FG1]
+GO

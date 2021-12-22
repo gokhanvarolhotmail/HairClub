@@ -1,3 +1,9 @@
+/* CreateDate: 06/09/2014 11:35:44.407 , ModifyDate: 06/09/2014 11:35:44.407 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE PROCEDURE [dbo].[IndexOptimize]
 
 @Databases nvarchar(max),
@@ -1362,3 +1368,4 @@ BEGIN
   ----------------------------------------------------------------------------------------------------
 
 END
+GO

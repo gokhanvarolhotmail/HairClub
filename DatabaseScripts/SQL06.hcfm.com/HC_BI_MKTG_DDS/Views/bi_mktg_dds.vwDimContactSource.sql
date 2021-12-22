@@ -1,3 +1,9 @@
+/* CreateDate: 09/03/2021 09:37:08.110 , ModifyDate: 09/03/2021 09:37:08.110 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE VIEW [bi_mktg_dds].[vwDimContactSource]
 AS
 -------------------------------------------------------------------------
@@ -30,3 +36,4 @@ AS
 			  ,[RowStartDate]
 			  ,[RowEndDate]
 	FROM [bi_mktg_dds].[DimContactSource]
+GO

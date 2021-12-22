@@ -1,3 +1,9 @@
+/* CreateDate: 04/26/2018 12:15:39.297 , ModifyDate: 05/09/2018 16:04:22.983 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				[spRpt_ContestCarnivalOfConversions]
 DESTINATION SERVER:		SQL06
@@ -135,3 +141,4 @@ FROM    #Centers C
 
 
 END
+GO

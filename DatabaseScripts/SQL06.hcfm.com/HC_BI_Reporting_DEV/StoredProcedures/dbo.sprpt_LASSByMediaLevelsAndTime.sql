@@ -1,3 +1,9 @@
+/* CreateDate: 08/30/2011 10:32:19.737 , ModifyDate: 12/12/2019 11:44:31.400 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 
 PROCEDURE:		sprpt_LASSByMediaLevelsAndTime
@@ -117,3 +123,4 @@ ORDER BY #LeadCount.Media, #LeadCount.Level_1, #LeadCount.Level_2, #LeadCount.SO
 Drop Table #Lead
 Drop Table #LeadCount
 Drop Table #ActivityCounts
+GO

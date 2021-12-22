@@ -1,3 +1,9 @@
+/* CreateDate: 06/01/2011 14:50:42.373 , ModifyDate: 06/01/2011 14:50:42.373 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 create  FUNCTION [dbo].[DIVIDE] (@numerator numeric, @denominator numeric)
 RETURNS float
 
@@ -14,3 +20,4 @@ AS
 		RETURN @fProduct
 
 	END
+GO

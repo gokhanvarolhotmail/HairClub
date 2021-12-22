@@ -1,3 +1,9 @@
+/* CreateDate: 02/19/2018 13:36:50.637 , ModifyDate: 02/19/2018 13:38:59.100 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spRpt_GetCenters
 DESTINATION SERVER:		SQL06
@@ -29,3 +35,4 @@ WHERE   CenterTypeKey IN ( 2, 3, 4 )
 ORDER BY CenterDescription
 
 END
+GO

@@ -1,3 +1,9 @@
+/* CreateDate: 07/13/2011 14:27:49.523 , ModifyDate: 11/18/2013 14:11:42.650 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /*===============================================================================================
 -- Procedure Name:			spRpt_SurgeryLaborEfficiency
 -- Procedure Description:
@@ -197,3 +203,4 @@ BEGIN
 			ON d.[DoctorRegionSSID] = o.DoctorRegionSSID
 	WHERE d.DoctorRegionKey>0 and d.Active = 1
 END
+GO

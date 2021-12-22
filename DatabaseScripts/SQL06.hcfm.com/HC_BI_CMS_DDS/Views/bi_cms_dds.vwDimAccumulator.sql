@@ -1,3 +1,9 @@
+/* CreateDate: 10/03/2019 23:03:43.567 , ModifyDate: 10/03/2019 23:03:43.567 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE VIEW [bi_cms_dds].[vwDimAccumulator]
 AS
 -------------------------------------------------------------------------
@@ -32,3 +38,4 @@ AS
 				, RowStartDate
 				, RowEndDate
 	FROM         bi_cms_dds.DimAccumulator
+GO

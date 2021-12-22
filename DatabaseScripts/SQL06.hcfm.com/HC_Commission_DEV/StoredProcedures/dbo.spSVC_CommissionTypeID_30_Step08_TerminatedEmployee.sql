@@ -1,3 +1,9 @@
+/* CreateDate: 05/05/2014 17:18:39.240 , ModifyDate: 05/05/2014 17:18:39.240 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spSVC_CommissionTypeID_30_Step08_TerminatedEmployee
 DESTINATION SERVER:		SQL06
@@ -128,3 +134,4 @@ WHERE   AuditKey = @AuditID
 ------------------------------------------------------------------------------------------
 
 END
+GO

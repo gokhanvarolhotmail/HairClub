@@ -1,3 +1,9 @@
+/* CreateDate: 07/12/2011 08:04:12.217 , ModifyDate: 07/12/2011 16:04:42.517 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE VIEW [dbo].[vw_SurgeryClients]
 AS
 -------------------------------------------------------------------------
@@ -140,3 +146,4 @@ group by
 	,	CL.IsTaxExemptFlag
 	,	CLM.ClientMembershipStatusDescription
 	,	CL.ClientARBalance
+GO

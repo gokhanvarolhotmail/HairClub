@@ -1,3 +1,9 @@
+/* CreateDate: 01/14/2015 15:37:37.850 , ModifyDate: 05/13/2019 14:32:36.647 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /*
 ==============================================================================
 
@@ -547,3 +553,4 @@ ELSE IF @type = 16 --Upgrade from EXT
 	END
 
 END
+GO

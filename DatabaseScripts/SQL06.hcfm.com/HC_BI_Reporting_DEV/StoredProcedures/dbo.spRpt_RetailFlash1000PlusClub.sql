@@ -1,3 +1,9 @@
+/* CreateDate: 08/02/2016 11:27:33.183 , ModifyDate: 01/09/2020 14:42:43.607 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spRpt_RetailFlash1000PlusClub
 DESTINATION SERVER:		SQL06
@@ -269,3 +275,4 @@ FROM #Thousand
 DROP INDEX #Sales.[IX_tmpSales_CenterSSID_Retail_Included]
 
 END
+GO

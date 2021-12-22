@@ -1,3 +1,9 @@
+/* CreateDate: 10/03/2019 23:03:40.430 , ModifyDate: 07/06/2021 23:17:52.047 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE TABLE [bi_cms_dds].[DimEmployeePositionJoin](
 	[EmployeeGUID] [uniqueidentifier] NOT NULL,
 	[EmployeePositionID] [int] NOT NULL,
@@ -19,3 +25,4 @@ CREATE NONCLUSTERED INDEX [IX_DimEmployeePositionJoin_EmployeeGUID] ON [bi_cms_d
 	[EmployeePositionID] ASC
 )
 INCLUDE([EmployeeGUID]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [FG1]
+GO

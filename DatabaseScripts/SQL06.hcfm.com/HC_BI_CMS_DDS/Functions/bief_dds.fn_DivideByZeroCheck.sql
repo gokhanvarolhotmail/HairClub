@@ -1,3 +1,9 @@
+/* CreateDate: 10/03/2019 23:03:43.107 , ModifyDate: 10/03/2019 23:03:43.107 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE  FUNCTION [bief_dds].[fn_DivideByZeroCheck] (@numerator numeric, @denominator numeric)
 -----------------------------------------------------------------------
 -- [fn_DivideByZeroCheck] ensures safe division by zero
@@ -24,3 +30,4 @@ AS
 		RETURN @fProduct
 
 	END
+GO

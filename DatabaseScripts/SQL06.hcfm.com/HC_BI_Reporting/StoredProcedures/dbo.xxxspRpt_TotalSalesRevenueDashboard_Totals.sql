@@ -1,3 +1,9 @@
+/* CreateDate: 11/08/2018 14:15:51.610 , ModifyDate: 12/18/2019 09:54:23.280 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spRpt_TotalSalesRevenueDashboard_Totals
 DESTINATION SERVER:		SQL06
@@ -324,3 +330,4 @@ GROUP BY NBBUD.FirstDateOfMonth
 
 
 END
+GO

@@ -1,3 +1,9 @@
+/* CreateDate: 08/24/2012 08:38:20.453 , ModifyDate: 08/24/2012 08:38:20.453 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /*==============================================================================
 PROCEDURE:					sprpt_FeeCenterReport
 -- Created By:             HDu
@@ -208,3 +214,4 @@ BEGIN
 	DROP TABLE #TEMP
 
 END
+GO

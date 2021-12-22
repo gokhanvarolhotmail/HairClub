@@ -1,3 +1,9 @@
+/* CreateDate: 08/13/2015 17:39:06.667 , ModifyDate: 08/13/2015 17:43:36.120 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 VIEW:					vwd_TotalCenterSalesGauge
 DESTINATION SERVER:		SQL06
@@ -35,3 +41,4 @@ GROUP BY CenterSSID
 ,	DRB.FirstDateOfMonth
 ,	TotalCenterSales
 ,	TotalRevenue_Budget
+GO

@@ -1,3 +1,9 @@
+/* CreateDate: 02/08/2013 21:01:37.070 , ModifyDate: 02/27/2020 07:44:09.637 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 -- select dbo.DIVIDE(10,2)
 CREATE  FUNCTION [dbo].[DIVIDE_DECIMAL] (@numerator DECIMAL(18,2), @denominator DECIMAL(18,2))
 RETURNS DECIMAL(18,2) AS
@@ -10,3 +16,4 @@ ELSE @numerator / @denominator END
 
 )
 END
+GO

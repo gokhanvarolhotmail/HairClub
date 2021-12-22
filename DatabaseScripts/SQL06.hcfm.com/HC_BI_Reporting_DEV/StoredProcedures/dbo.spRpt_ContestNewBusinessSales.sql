@@ -1,3 +1,9 @@
+/* CreateDate: 06/16/2017 11:22:27.720 , ModifyDate: 06/16/2017 11:22:27.720 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spRpt_ContestNewBusinessSales
 DESTINATION SERVER:		SQL06
@@ -208,3 +214,4 @@ FROM
 ORDER BY q.CenterSortOrder
 
 END
+GO

@@ -1,3 +1,9 @@
+/* CreateDate: 10/04/2018 17:03:18.963 , ModifyDate: 01/13/2020 08:59:46.710 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /*
 ==============================================================================
 
@@ -348,3 +354,4 @@ ORDER BY RecurringBusinessSize
 
 
 END
+GO

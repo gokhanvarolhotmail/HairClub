@@ -1,3 +1,9 @@
+/* CreateDate: 06/06/2012 11:30:56.103 , ModifyDate: 04/08/2013 10:04:51.647 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /*
 ==============================================================================
 
@@ -285,3 +291,4 @@ BEGIN
 	,	CenterName
 
 END
+GO

@@ -1,3 +1,9 @@
+/* CreateDate: 02/19/2015 11:27:30.403 , ModifyDate: 03/30/2015 13:25:51.533 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /*===============================================================================================
  Procedure Name:            [SpRpt_DashbCenterFlashDetail]
  Procedure Description:
@@ -265,3 +271,4 @@ SELECT d.ClientKey
 
 
 END
+GO

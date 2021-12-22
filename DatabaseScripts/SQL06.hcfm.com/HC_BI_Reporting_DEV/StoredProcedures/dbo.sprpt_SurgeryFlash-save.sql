@@ -1,3 +1,9 @@
+/* CreateDate: 08/15/2011 11:48:02.827 , ModifyDate: 08/15/2011 11:48:02.827 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /*
 ==============================================================================
 
@@ -348,3 +354,4 @@ FROM #SurgeryCenters
 		#SurgeryCenters.CenterID = #SurgeryConsultations.CenterID
 order by 	#SurgeryCenters.CenterID
 END
+GO

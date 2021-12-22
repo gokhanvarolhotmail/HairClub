@@ -1,3 +1,9 @@
+/* CreateDate: 04/10/2014 12:09:19.497 , ModifyDate: 03/07/2017 18:44:52.607 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spSvc_BarthClientsExport
 DESTINATION SERVER:		SQL06
@@ -217,3 +223,4 @@ ORDER BY CTR.CenterSSID
 ,       CLT.ClientIdentifier
 
 END
+GO

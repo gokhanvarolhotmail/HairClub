@@ -1,3 +1,9 @@
+/* CreateDate: 07/12/2011 09:34:57.813 , ModifyDate: 03/28/2013 15:55:04.653 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /*
 ==============================================================================
 
@@ -154,3 +160,4 @@ ORDER BY vwAppointments.DoctorRegionDescription
 ,		vwAppointments.AppointmentDate
 ,       vwAppointments.StartTime
 ,       vwAppointments.CenterID
+GO

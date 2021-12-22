@@ -1,3 +1,9 @@
+/* CreateDate: 10/03/2019 23:03:41.497 , ModifyDate: 06/16/2021 23:26:52.603 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE TABLE [bi_cms_dds].[DimSalesCode](
 	[SalesCodeKey] [int] NOT NULL,
 	[SalesCodeSSID] [int] NOT NULL,
@@ -44,3 +50,4 @@ CREATE NONCLUSTERED INDEX [IDX_DimSalesCode_SalesCodeKey] ON [bi_cms_dds].[DimSa
 	[SalesCodeKey] ASC
 )
 INCLUDE([SalesCodeSSID],[SalesCodeDescription],[SalesCodeTypeDescription],[ProductVendorDescription],[Barcode],[PriceDefault],[ServiceDuration]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO

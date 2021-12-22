@@ -1,3 +1,9 @@
+/* CreateDate: 11/25/2013 10:45:49.450 , ModifyDate: 12/05/2013 16:13:30.350 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spRpt_SurgeryClientOverview_CommissionDetail
 DESTINATION SERVER:		SQL06
@@ -92,3 +98,4 @@ BEGIN
 	ORDER BY FCD.SalesOrderDate, FCD.CommissionHeaderKey
 
 END
+GO

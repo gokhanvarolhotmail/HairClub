@@ -1,3 +1,9 @@
+/* CreateDate: 03/30/2019 12:34:39.910 , ModifyDate: 03/30/2019 12:34:39.910 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spSvc_CRM_Conversions_Step08_TerminatedEmployee
 DESTINATION SERVER:		SQL06
@@ -128,3 +134,4 @@ WHERE   AuditKey = @AuditID
 ------------------------------------------------------------------------------------------
 
 END
+GO

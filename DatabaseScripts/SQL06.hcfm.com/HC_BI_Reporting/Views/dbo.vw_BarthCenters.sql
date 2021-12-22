@@ -1,3 +1,9 @@
+/* CreateDate: 01/06/2014 13:37:37.840 , ModifyDate: 01/06/2014 13:37:37.840 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE VIEW [dbo].[vw_BarthCenters]
 AS
 
@@ -8,3 +14,4 @@ FROM    HC_BI_ENT_DDS.bi_ent_dds.vwDimCenter DC
 WHERE   CONVERT(VARCHAR, DC.CenterSSID) LIKE '[578]%'
         AND DC.Active = 'Y'
         AND DR.RegionSSID = 6
+GO

@@ -1,3 +1,9 @@
+/* CreateDate: 11/17/2020 12:12:00.330 , ModifyDate: 11/17/2020 12:12:00.330 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 create procedure [dbo].[sp_MSins_dboAccount]
     @c1 nvarchar(18),
     @c2 nvarchar(18),
@@ -37,3 +43,4 @@ begin
 		@c10,
 		@c11	)
 end
+GO

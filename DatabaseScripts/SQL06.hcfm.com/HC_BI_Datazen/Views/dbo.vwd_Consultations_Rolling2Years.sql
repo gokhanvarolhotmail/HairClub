@@ -1,3 +1,9 @@
+/* CreateDate: 07/23/2015 09:46:45.367 , ModifyDate: 09/19/2018 11:03:58.563 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 VIEW:					vwd_Consultations_Rolling2Years
 DESTINATION SERVER:		SQL06
@@ -173,3 +179,4 @@ UNION  --Find AreaManagers
 WHERE A.CenterSSID LIKE '[12]%'
 GROUP BY AM.CenterManagementAreaKey
 ,	A.FirstDateOfMonth
+GO

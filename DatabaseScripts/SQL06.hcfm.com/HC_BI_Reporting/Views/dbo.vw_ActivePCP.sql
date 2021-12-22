@@ -1,3 +1,9 @@
+/* CreateDate: 10/01/2015 15:36:08.663 , ModifyDate: 10/01/2015 15:36:08.663 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE VIEW [dbo].[vw_ActivePCP]
 AS
 
@@ -25,3 +31,4 @@ FROM    HC_Accounting.dbo.FactPCPDetail FPD
 WHERE   MONTH(DD.FullDate) = MONTH(GETDATE())
         AND YEAR(DD.FullDate) = YEAR(GETDATE())
         AND ( FPD.PCP - FPD.EXT - FPD.XTR ) = 1
+GO

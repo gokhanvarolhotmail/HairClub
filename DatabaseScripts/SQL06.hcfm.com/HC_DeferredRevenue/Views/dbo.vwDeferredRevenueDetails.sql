@@ -1,3 +1,9 @@
+/* CreateDate: 02/21/2013 13:51:10.950 , ModifyDate: 01/15/2019 15:43:56.837 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /*
 ==============================================================================
 
@@ -51,3 +57,4 @@ CREATE VIEW [dbo].[vwDeferredRevenueDetails] AS
 			ON DRH.DeferredRevenueTypeID = DRT.TypeID
 		LEFT OUTER JOIN DimMembershipRatesByCenter MRC
 			ON DRH.MembershipRateKey = MRC.MembershipRateKey
+GO

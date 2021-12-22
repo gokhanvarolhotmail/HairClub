@@ -1,3 +1,9 @@
+/* CreateDate: 04/15/2013 14:51:14.457 , ModifyDate: 04/15/2013 15:46:09.887 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /*==============================================================================
 PROCEDURE:				spRpt_AttritionByGenderDetails
 DESTINATION SERVER:		SQL06
@@ -94,3 +100,4 @@ BEGIN
 	,	CLT.ClientIdentifier
 
 END
+GO

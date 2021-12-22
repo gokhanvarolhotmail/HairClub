@@ -1,3 +1,9 @@
+/* CreateDate: 08/21/2012 11:11:05.060 , ModifyDate: 06/05/2015 12:26:38.070 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spRpt_FranchiseRoyaltySummary
 DESTINATION SERVER:		SQL06
@@ -460,3 +466,4 @@ ORDER BY F.Division
 ,		F.InvoiceNumber
 
 END
+GO

@@ -1,3 +1,9 @@
+/* CreateDate: 10/03/2019 23:03:43.747 , ModifyDate: 10/03/2019 23:03:43.747 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE VIEW [bi_cms_dds].[vwDimHairSystemOrderStatus]
 AS
 -------------------------------------------------------------------------
@@ -40,3 +46,4 @@ SELECT [HairSystemOrderStatusKey]
       ,[RowEndDate]
 
   FROM [HC_BI_CMS_DDS].[bi_cms_dds].[DimHairSystemOrderStatus]
+GO

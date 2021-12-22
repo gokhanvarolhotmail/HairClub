@@ -1,3 +1,9 @@
+/* CreateDate: 07/15/2021 08:14:14.757 , ModifyDate: 12/19/2021 20:22:06.940 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spSvc_MiniFlashFranchiseSubscription
 DESTINATION SERVER:		SQL06
@@ -32,3 +38,4 @@ SELECT	'mnassar@hairclub.com;whahn@hairclub.com;MSpadaccini@hairclub.com' AS 'Se
 --,		'f' AS 'CenterType'
 
 END
+GO

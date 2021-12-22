@@ -1,3 +1,9 @@
+/* CreateDate: 07/27/2015 14:36:45.637 , ModifyDate: 07/27/2015 14:36:45.637 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 VIEW:					vwk_ServiceSalesGoalMTD
 DESTINATION SERVER:		SQL06
@@ -27,3 +33,4 @@ WHERE   DD.FullDate BETWEEN DATEADD(mm, DATEDIFF(mm, 0, GETDATE()), 0)
 			AND DATEADD(ms, -3, DATEADD(mm, 0, DATEADD(mm, DATEDIFF(mm, 0, GETDATE()) +1, 0)))
 	AND FA.CenterID LIKE '[2]%'
 	AND FA.AccountID = 10575
+GO

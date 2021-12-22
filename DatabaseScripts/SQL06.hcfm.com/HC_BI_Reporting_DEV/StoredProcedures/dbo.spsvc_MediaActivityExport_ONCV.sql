@@ -1,3 +1,9 @@
+/* CreateDate: 09/26/2012 09:30:26.350 , ModifyDate: 03/23/2016 09:57:51.147 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 
 PROCEDURE:				spsvc_IMSActivityExport_ONCV
@@ -120,3 +126,4 @@ AS
 					--and fl.LeadCreationDateKey > 20050401
 
 		END
+GO

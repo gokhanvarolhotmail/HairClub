@@ -1,3 +1,9 @@
+/* CreateDate: 02/05/2013 14:22:43.620 , ModifyDate: 02/13/2013 16:10:48.537 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /*
 ==============================================================================
 
@@ -27,3 +33,4 @@ BEGIN
 	FROM HC_Commission.dbo.[DimOvererrideReasons]
 
 END
+GO

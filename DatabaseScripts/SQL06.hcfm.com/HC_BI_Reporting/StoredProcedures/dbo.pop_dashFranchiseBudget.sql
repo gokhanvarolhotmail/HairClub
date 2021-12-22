@@ -1,3 +1,9 @@
+/* CreateDate: 01/05/2017 15:20:56.210 , ModifyDate: 01/06/2017 08:56:56.350 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				[pop_dashFranchiseBudget]
 DESTINATION SERVER:		SQL06
@@ -451,3 +457,4 @@ WHEN NOT MATCHED BY TARGET THEN
     ,	Source.NetNB1Sales
 			)
 ;
+GO

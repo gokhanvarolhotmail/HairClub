@@ -1,3 +1,9 @@
+/* CreateDate: 11/12/2012 14:30:52.953 , ModifyDate: 05/26/2016 17:02:47.900 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /*===============================================================================================
 -- Procedure Name:			rptAppliedHairSystemTemplates
 -- Procedure Description:
@@ -126,3 +132,4 @@ GROUP BY Region.RegionDescription
 ,Center.CenterDescriptionNumber
 
 END
+GO

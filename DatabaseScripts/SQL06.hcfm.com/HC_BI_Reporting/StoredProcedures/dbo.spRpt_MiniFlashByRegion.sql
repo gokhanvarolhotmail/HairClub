@@ -1,3 +1,9 @@
+/* CreateDate: 05/15/2013 12:12:12.440 , ModifyDate: 02/25/2019 12:58:23.797 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /*===============================================================================================
 -- Procedure Name:			spRpt_MiniFlashByRegion
 -- Procedure Description:
@@ -776,3 +782,4 @@ BEGIN
 
 
 END
+GO

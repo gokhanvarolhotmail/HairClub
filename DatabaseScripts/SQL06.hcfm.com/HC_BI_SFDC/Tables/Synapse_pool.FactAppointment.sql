@@ -1,3 +1,9 @@
+/* CreateDate: 06/25/2021 14:47:47.670 , ModifyDate: 08/10/2021 17:28:02.483 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE TABLE [Synapse_pool].[FactAppointment](
 	[FactDate] [datetime] NULL,
 	[FactTimeKey] [int] NULL,
@@ -53,3 +59,4 @@ CREATE TABLE [Synapse_pool].[FactAppointment](
 	[OpportunityReferralCodeExpirationDate] [datetime] NULL,
 	[OpportunityAmmount] [numeric](38, 18) NULL
 ) ON [PRIMARY]
+GO

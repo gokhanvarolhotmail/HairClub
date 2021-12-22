@@ -1,3 +1,9 @@
+/* CreateDate: 11/19/2013 15:29:30.203 , ModifyDate: 04/26/2019 14:52:46.260 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spRpt_ConversionNewBusinessRetentionDetailsPCP
 DESTINATION SERVER:		SQL06
@@ -237,3 +243,4 @@ WHERE   MONTH(DD.FullDate) = MONTH(@PCPDate)
 
 
 END
+GO

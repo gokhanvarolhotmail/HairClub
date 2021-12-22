@@ -1,3 +1,9 @@
+/* CreateDate: 07/15/2021 08:05:07.450 , ModifyDate: 12/18/2021 17:26:43.923 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spSvc_DailyFlashCorporateSubscription
 DESTINATION SERVER:		SQL06
@@ -30,3 +36,4 @@ BEGIN
          , 'C'                                                                                                                                                                                                                                                                      AS 'CenterType'
 
 END
+GO

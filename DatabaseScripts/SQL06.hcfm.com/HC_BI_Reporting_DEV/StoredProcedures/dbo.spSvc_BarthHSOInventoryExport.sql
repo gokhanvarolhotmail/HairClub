@@ -1,3 +1,9 @@
+/* CreateDate: 04/10/2014 12:15:23.840 , ModifyDate: 01/31/2017 09:18:49.717 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spSvc_BarthHSOInventoryExport
 DESTINATION SERVER:		SQL06
@@ -56,3 +62,4 @@ ORDER BY hso.CenterID
 ,       hso.HairSystemOrderDate
 
 END
+GO

@@ -1,3 +1,9 @@
+/* CreateDate: 07/21/2015 12:33:01.257 , ModifyDate: 08/04/2015 17:13:28.243 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 VIEW:					vw_NewStyleDayCountMTD
 DESTINATION SERVER:		SQL06
@@ -27,3 +33,4 @@ FROM    HC_BI_CMS_DDS.bi_cms_dds.FactSalesTransaction FST
 WHERE   CONVERT(VARCHAR, CTR.CenterSSID) LIKE '[2]%'
 		AND DD.FullDate BETWEEN DATEADD(mm, DATEDIFF(mm, 0, GETDATE()), 0) AND DATEADD(ms, -3, DATEADD(mm, 0, DATEADD(mm, DATEDIFF(mm, 0, GETDATE()) +1, 0)))
 		AND DSC.SalesCodeSSID IN ( 648 )
+GO

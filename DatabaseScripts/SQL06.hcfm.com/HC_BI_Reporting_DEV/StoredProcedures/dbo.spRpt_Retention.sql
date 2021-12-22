@@ -1,3 +1,9 @@
+/* CreateDate: 02/01/2016 16:37:50.120 , ModifyDate: 01/09/2017 11:41:34.010 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /*========================================================================================================
 PROCEDURE:				spRpt_Retention
 DESTINATION SERVER:		SQL06
@@ -396,3 +402,4 @@ ORDER BY R.RegionSSID
 ,	C.CenterSSID
 
 END
+GO

@@ -1,3 +1,9 @@
+/* CreateDate: 10/13/2021 11:21:34.387 , ModifyDate: 10/13/2021 11:21:34.387 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE TABLE [dbo].[LeadBackUp20211013](
 	[Id] [nvarchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[ContactID__c] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
@@ -74,3 +80,4 @@ CREATE TABLE [dbo].[LeadBackUp20211013](
 	[IsDuplicateByEmail] [bit] NULL,
 	[IsDuplicateByName] [bit] NULL
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO

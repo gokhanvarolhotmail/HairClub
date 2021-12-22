@@ -1,3 +1,9 @@
+/* CreateDate: 03/18/2021 13:18:41.543 , ModifyDate: 03/19/2021 13:29:53.983 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spSvc_PopulateDailyFlashVariance
 DESTINATION SERVER:		SQL06
@@ -570,3 +576,4 @@ INSERT	INTO datDailyFlashVariance
 		ORDER BY dfv.SortOrder
 
 END
+GO

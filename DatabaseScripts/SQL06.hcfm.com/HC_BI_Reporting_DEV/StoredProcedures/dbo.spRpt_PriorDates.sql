@@ -1,3 +1,9 @@
+/* CreateDate: 06/09/2015 12:21:07.787 , ModifyDate: 06/09/2015 12:21:07.787 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /*
 ==============================================================================
 
@@ -149,3 +155,4 @@ BEGIN
 	SELECT * FROM #Dates
 
 END
+GO

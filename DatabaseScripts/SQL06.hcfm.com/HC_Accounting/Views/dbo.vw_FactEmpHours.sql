@@ -1,3 +1,9 @@
+/* CreateDate: 03/05/2013 10:04:10.477 , ModifyDate: 11/18/2013 14:18:33.743 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE VIEW [dbo].[vw_FactEmpHours]
 AS
 
@@ -28,3 +34,4 @@ AS
 		INNER JOIN HC_BI_ENT_DDS.bief_dds.DimDate AS DDCD
 			ON EmpHours.CheckDate = DDCD.FullDate
 	WHERE (EmpHours.PeriodBegin > '10/20/07')
+GO

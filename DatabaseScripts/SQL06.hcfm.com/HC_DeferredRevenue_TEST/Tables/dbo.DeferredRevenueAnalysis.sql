@@ -1,3 +1,9 @@
+/* CreateDate: 09/19/2013 09:17:59.607 , ModifyDate: 09/19/2013 09:17:59.607 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE TABLE [dbo].[DeferredRevenueAnalysis](
 	[RecordID] [int] IDENTITY(1,1) NOT NULL,
 	[CenterSSID] [int] NULL,
@@ -10,3 +16,4 @@ CREATE TABLE [dbo].[DeferredRevenueAnalysis](
 	[Revenue] [money] NULL,
 	[TotalPayments] [money] NULL
 ) ON [PRIMARY]
+GO

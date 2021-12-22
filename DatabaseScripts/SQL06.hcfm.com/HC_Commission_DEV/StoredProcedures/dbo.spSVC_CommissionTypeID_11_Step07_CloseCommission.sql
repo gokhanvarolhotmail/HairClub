@@ -1,3 +1,9 @@
+/* CreateDate: 10/07/2015 15:47:12.333 , ModifyDate: 10/07/2015 15:47:56.953 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spSVC_CommissionTypeID_11_Step07_CloseCommission
 DESCRIPTION:			EXT to Surgery
@@ -135,3 +141,4 @@ WHERE   AuditKey = @AuditID
 ------------------------------------------------------------------------------------------
 
 END
+GO

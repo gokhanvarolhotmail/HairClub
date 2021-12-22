@@ -1,3 +1,9 @@
+/* CreateDate: 08/21/2020 12:52:09.270 , ModifyDate: 08/21/2020 12:52:09.270 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 create VIEW dbo.[vwDimCallData]
 AS
 -------------------------------------------------------------------------
@@ -54,3 +60,4 @@ FROM HC_BI_MKTG_DDS.[bi_mktg_dds].[DimCallData] dcd
         ON dcd.TaskCampaignID = TSCP.SourceCode_L__c
 	--LEFT OUTER JOIN HC_Marketing.[dbo].[lkpNobleTSR] tsr
 	--	ON dcd.NobleUserSSID = tsr.tsrid;
+GO

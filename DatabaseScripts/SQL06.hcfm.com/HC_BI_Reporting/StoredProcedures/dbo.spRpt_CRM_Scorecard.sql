@@ -1,3 +1,9 @@
+/* CreateDate: 07/12/2019 10:52:43.593 , ModifyDate: 11/13/2019 15:50:34.070 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				[spRpt_CRM_Scorecard]
 DESTINATION SERVER:		SQL06
@@ -1446,3 +1452,4 @@ FROM #Totals
 
 
 END
+GO

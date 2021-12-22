@@ -1,3 +1,9 @@
+/* CreateDate: 02/18/2015 13:49:07.130 , ModifyDate: 10/12/2015 09:32:27.270 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				[spRpt_DashbCenterSalesMix]
 DESTINATION SERVER:		SQL06
@@ -157,3 +163,4 @@ BEGIN
 
 
 END
+GO

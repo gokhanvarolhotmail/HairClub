@@ -1,3 +1,9 @@
+/* CreateDate: 04/22/2021 16:28:17.003 , ModifyDate: 04/22/2021 16:28:17.153 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE TABLE [dbo].[datScorecard](
 	[OrganizationKey] [int] NULL,
 	[Organization] [nvarchar](80) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
@@ -12,3 +18,4 @@ CREATE TABLE [dbo].[datScorecard](
 	[Threshold3] [decimal](18, 4) NULL,
 	[Threshold4] [decimal](18, 4) NULL
 ) ON [PRIMARY]
+GO

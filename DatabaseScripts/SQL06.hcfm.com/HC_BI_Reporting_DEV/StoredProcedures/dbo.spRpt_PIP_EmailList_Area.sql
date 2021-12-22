@@ -1,3 +1,9 @@
+/* CreateDate: 08/07/2019 15:36:44.167 , ModifyDate: 08/07/2019 15:38:25.047 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				[spRpt_PIP_EmailList_Area]
 DESTINATION SERVER:		SQL06
@@ -82,3 +88,4 @@ SELECT  CenterManagementAreaDescription
 FROM #PIP_EmailList
 
 END
+GO

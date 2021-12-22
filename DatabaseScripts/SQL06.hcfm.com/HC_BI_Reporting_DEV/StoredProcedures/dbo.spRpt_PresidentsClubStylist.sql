@@ -1,3 +1,9 @@
+/* CreateDate: 07/26/2019 16:59:37.640 , ModifyDate: 08/13/2019 17:22:32.327 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				[spRpt_PresidentsClubStylist]
 DESTINATION SERVER:		SQL06
@@ -433,3 +439,4 @@ GROUP BY (BIOClosePCP - BIOopenPCP)
 
 
 END
+GO

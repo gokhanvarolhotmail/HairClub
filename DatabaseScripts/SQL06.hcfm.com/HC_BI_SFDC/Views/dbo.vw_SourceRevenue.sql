@@ -1,3 +1,9 @@
+/* CreateDate: 12/21/2020 13:31:09.920 , ModifyDate: 12/21/2020 13:31:17.287 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE VIEW [dbo].[vw_SourceRevenue]
 
 AS
@@ -27,3 +33,4 @@ WHERE l.Status IN (  'Lead', 'Client', 'HWLead', 'HWClient', 'NEW', 'PURSUING', 
       AND ISNULL(l.IsDeleted, 0) = 0
 	  AND l.ReportCreateDate__c >= '01/01/2020'
 GROUP BY l.Source_Code_Legacy__c
+GO

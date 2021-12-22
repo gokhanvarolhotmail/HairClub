@@ -1,3 +1,9 @@
+/* CreateDate: 07/08/2019 13:49:05.210 , ModifyDate: 07/18/2019 11:49:04.277 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spRpt_ProcedurePipeline
 DESTINATION SERVER:		SQL06
@@ -472,3 +478,4 @@ SELECT  * FROM #Initial ORDER BY ClientLastName
 
 
 END
+GO

@@ -1,3 +1,9 @@
+/* CreateDate: 09/17/2012 10:55:46.410 , ModifyDate: 04/12/2018 16:35:48.720 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /*==============================================================================
 
 PROCEDURE:				[spRpt_WarBoardReceivableRankingByRegion]
@@ -356,3 +362,4 @@ GROUP BY ISNULL(S.NB2, 0),
 
 
 END
+GO

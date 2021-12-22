@@ -1,3 +1,9 @@
+/* CreateDate: 10/03/2019 23:03:42.283 , ModifyDate: 05/05/2020 23:17:49.363 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE TABLE [bi_cms_dds].[FactHairSystemOrder](
 	[HairSystemOrderKey] [int] NOT NULL,
 	[HairSystemOrderSSID] [uniqueidentifier] NULL,
@@ -67,3 +73,4 @@ CREATE NONCLUSTERED INDEX [IDX_FactHairSystemOrder_ClientKey_HairSystemAppliedDa
 	[HairSystemAppliedDate] ASC
 )
 INCLUDE([HairSystemOrderNumber],[HairSystemOrderDate],[HairSystemDueDate],[CenterKey],[ClientMembershipKey],[ClientHomeCenterKey]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [FG1]
+GO

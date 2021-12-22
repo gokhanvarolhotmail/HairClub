@@ -1,3 +1,9 @@
+/* CreateDate: 10/12/2020 14:40:16.670 , ModifyDate: 10/12/2020 14:40:16.670 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spSvc_ExportVirtualCenterEmployeeCommissions
 DESTINATION SERVER:		SQL06
@@ -137,3 +143,4 @@ WHERE	ISNULL(fch.AdvancedCommission, 0) <> 0
 		AND CAST(fch.AdvancedCommissionDate AS DATE) BETWEEN @StartDate AND @EndDate
 
 END
+GO

@@ -1,3 +1,9 @@
+/* CreateDate: 09/03/2021 09:37:06.913 , ModifyDate: 09/03/2021 09:37:06.913 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 create procedure [sp_MSins_bi_mktg_ddsFactLead]
     @c1 int,
     @c2 int,
@@ -111,3 +117,4 @@ begin
 		@c34,
 		@c35	)
 end
+GO

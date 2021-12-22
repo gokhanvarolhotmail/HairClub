@@ -1,3 +1,9 @@
+/* CreateDate: 05/03/2019 15:51:56.347 , ModifyDate: 05/06/2019 09:12:36.357 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spRpt_PIP	VERSION  1.0
 DESTINATION SERVER:		SQL06
@@ -40,3 +46,4 @@ SELECT EmployeeKey
 FROM HC_BI_Dashboard.dbo.dbPIPCount
 
 END
+GO

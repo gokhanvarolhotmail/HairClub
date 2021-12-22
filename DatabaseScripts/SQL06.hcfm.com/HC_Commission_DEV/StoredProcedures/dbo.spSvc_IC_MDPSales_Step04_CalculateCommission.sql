@@ -1,3 +1,9 @@
+/* CreateDate: 03/30/2019 12:38:30.320 , ModifyDate: 03/06/2020 15:17:53.067 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spSvc_IC_MDPSales_Step04_CalculateCommission
 DESTINATION SERVER:		SQL06
@@ -261,3 +267,4 @@ WHERE   AuditKey = @AuditID
 ------------------------------------------------------------------------------------------
 
 END
+GO

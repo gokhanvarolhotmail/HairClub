@@ -1,3 +1,9 @@
+/* CreateDate: 12/05/2013 13:43:41.680 , ModifyDate: 12/05/2013 13:43:41.680 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spRpt_WriteOffTrendAnalysisSummary
 DESTINATION SERVER:		SQL06
@@ -266,3 +272,4 @@ INSERT  INTO #WriteOffs
 	,		W.Center
 
 END
+GO

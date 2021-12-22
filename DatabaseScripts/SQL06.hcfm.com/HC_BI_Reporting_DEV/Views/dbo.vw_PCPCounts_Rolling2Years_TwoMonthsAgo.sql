@@ -1,3 +1,9 @@
+/* CreateDate: 07/11/2016 17:06:41.797 , ModifyDate: 07/12/2016 09:52:41.697 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 VIEW:					vw_PCPCounts_Rolling2Years_TwoMonthsAgo
 DESTINATION SERVER:		SQL06
@@ -145,3 +151,4 @@ WHERE  CTR.Active = 'Y'
 GROUP BY AM.EmployeeKey
 	,	FA.DateKey
     ,	 DATEADD(MONTH,1,DD.FirstDateOfMonth)
+GO

@@ -1,3 +1,9 @@
+/* CreateDate: 03/16/2021 13:23:54.050 , ModifyDate: 05/05/2021 11:13:48.920 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spRpt_DailyFlashDetail
 DESTINATION SERVER:		SQL06
@@ -851,3 +857,4 @@ FROM	datDailyFlashDetail dfd
 ORDER BY dfd.FullDate
 
 END
+GO

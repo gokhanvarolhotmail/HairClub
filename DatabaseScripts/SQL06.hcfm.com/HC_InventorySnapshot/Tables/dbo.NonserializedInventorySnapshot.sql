@@ -1,3 +1,9 @@
+/* CreateDate: 12/07/2020 16:29:29.917 , ModifyDate: 12/07/2020 16:29:29.917 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE TABLE [dbo].[NonserializedInventorySnapshot](
 	[Snapshot Date] [date] NOT NULL,
 	[CenterID] [int] NOT NULL,
@@ -13,3 +19,4 @@ CREATE TABLE [dbo].[NonserializedInventorySnapshot](
 	[Per Item Cost] [money] NULL,
 	[Variance Cost] [int] NULL
 ) ON [PRIMARY]
+GO

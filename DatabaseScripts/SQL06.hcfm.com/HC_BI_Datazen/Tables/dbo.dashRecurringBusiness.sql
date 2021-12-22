@@ -1,3 +1,9 @@
+/* CreateDate: 05/29/2019 14:47:00.270 , ModifyDate: 05/29/2019 14:47:00.270 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE TABLE [dbo].[dashRecurringBusiness](
 	[FirstDateOfMonth] [datetime] NOT NULL,
 	[YearNumber] [int] NOT NULL,
@@ -34,3 +40,4 @@ CREATE TABLE [dbo].[dashRecurringBusiness](
 	[NB_XTRCnt] [int] NULL,
 	[NB_ExtCnt] [int] NULL
 ) ON [PRIMARY]
+GO

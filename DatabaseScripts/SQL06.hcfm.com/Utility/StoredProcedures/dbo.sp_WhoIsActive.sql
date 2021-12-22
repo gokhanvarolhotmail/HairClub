@@ -1,3 +1,9 @@
+/* CreateDate: 09/01/2016 16:21:31.673 , ModifyDate: 09/01/2016 16:21:32.447 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /*********************************************************************************************
 Who Is Active? v11.11 (2012-03-22)
 (C) 2007-2012, Adam Machanic
@@ -5158,3 +5164,4 @@ BEGIN;
 		N'@schema VARCHAR(MAX) OUTPUT',
 		@schema OUTPUT;
 END;
+GO

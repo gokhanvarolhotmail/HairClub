@@ -1,3 +1,9 @@
+/* CreateDate: 11/01/2018 15:31:35.220 , ModifyDate: 04/02/2020 15:58:17.507 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /******************************************************************************************************************************
 PROCEDURE:				[spRpt_KPIReportForMonthlyReviews_RB]
 DESTINATION SERVER:		SQL06
@@ -430,3 +436,4 @@ GROUP BY ISNULL(MatchPercent, 0)
 
 
 END
+GO

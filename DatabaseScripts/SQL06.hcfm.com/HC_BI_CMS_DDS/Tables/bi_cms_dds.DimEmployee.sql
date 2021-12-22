@@ -1,3 +1,9 @@
+/* CreateDate: 10/03/2019 23:03:40.320 , ModifyDate: 12/21/2021 23:20:02.383 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE TABLE [bi_cms_dds].[DimEmployee](
 	[EmployeeKey] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
 	[EmployeeSSID] [uniqueidentifier] NOT NULL,
@@ -74,3 +80,4 @@ CREATE NONCLUSTERED INDEX [ix_DimEmployee_EmployeePayrollID] ON [bi_cms_dds].[Di
 	[EmployeePayrollID] ASC
 )
 INCLUDE([EmployeeFirstName],[EmployeeLastName]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO

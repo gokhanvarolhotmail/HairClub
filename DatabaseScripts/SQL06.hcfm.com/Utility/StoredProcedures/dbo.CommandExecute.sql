@@ -1,3 +1,9 @@
+/* CreateDate: 06/09/2014 11:35:43.953 , ModifyDate: 06/09/2014 11:35:43.953 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE PROCEDURE [dbo].[CommandExecute]
 
 @Command nvarchar(max),
@@ -184,3 +190,4 @@ BEGIN
   ----------------------------------------------------------------------------------------------------
 
 END
+GO

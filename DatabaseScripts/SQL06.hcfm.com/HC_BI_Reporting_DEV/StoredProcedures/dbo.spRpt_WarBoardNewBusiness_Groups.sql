@@ -1,3 +1,9 @@
+/* CreateDate: 02/24/2014 17:07:31.633 , ModifyDate: 03/19/2020 08:56:20.817 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /*
 ==============================================================================
 
@@ -431,3 +437,4 @@ WHERE f.GroupSize = @GroupSize
 
 
 END
+GO

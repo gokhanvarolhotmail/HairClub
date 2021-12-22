@@ -1,3 +1,9 @@
+/* CreateDate: 10/03/2019 23:03:42.063 , ModifyDate: 10/03/2019 23:03:42.063 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 create procedure [sp_MSins_bi_cms_ddsDimTenderType]
     @c1 int,
     @c2 int,
@@ -45,3 +51,4 @@ begin
 		default,
 		@c13	)
 end
+GO

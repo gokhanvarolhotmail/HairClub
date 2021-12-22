@@ -1,3 +1,9 @@
+/* CreateDate: 07/11/2011 16:34:47.503 , ModifyDate: 09/04/2014 12:23:41.603 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /*
 ==============================================================================
 
@@ -164,3 +170,4 @@ BEGIN
 	,	C.CenterSSID
 	,	CLT.ClientFullName
 END
+GO

@@ -1,3 +1,9 @@
+/* CreateDate: 09/03/2021 09:37:06.427 , ModifyDate: 09/03/2021 09:37:06.427 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 create procedure [sp_MSins_bi_mktg_ddsDimSource]
     @c1 int,
     @c2 nvarchar(30),
@@ -78,3 +84,4 @@ begin
 		@c23,
 		@c24	)
 end
+GO

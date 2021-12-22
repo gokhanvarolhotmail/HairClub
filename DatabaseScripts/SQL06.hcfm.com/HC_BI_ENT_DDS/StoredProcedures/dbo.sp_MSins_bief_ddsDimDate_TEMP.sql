@@ -1,3 +1,9 @@
+/* CreateDate: 01/08/2021 15:21:53.640 , ModifyDate: 01/08/2021 15:21:53.640 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 create procedure [sp_MSins_bief_ddsDimDate_TEMP]
     @c1 int,
     @c2 datetime,
@@ -304,3 +310,4 @@ begin
 		@c99,
 		@c100	)
 end
+GO

@@ -1,3 +1,9 @@
+/* CreateDate: 07/24/2012 10:52:44.157 , ModifyDate: 01/25/2021 15:20:45.733 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spRpt_FlashRecurringBusiness
 DESTINATION SERVER:		SQL06
@@ -625,3 +631,4 @@ GROUP BY ISNULL(S.NetNB1Conv, 0)
 	   ,	ISNULL(LA.LaserAmt,0)
 
 END
+GO

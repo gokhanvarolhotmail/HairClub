@@ -1,3 +1,9 @@
+/* CreateDate: 12/07/2020 16:29:30.200 , ModifyDate: 12/07/2020 16:29:30.200 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE PROCEDURE [dbo].[spSvc_GetNonSerializedInventorySnapshotData_Daily]
 AS
 
@@ -63,3 +69,4 @@ ORDER BY c.CenterNumber
 ,		sc.SalesCodeDescriptionShort
 
 END
+GO

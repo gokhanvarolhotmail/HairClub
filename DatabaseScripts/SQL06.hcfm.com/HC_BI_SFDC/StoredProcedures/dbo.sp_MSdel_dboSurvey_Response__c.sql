@@ -1,3 +1,9 @@
+/* CreateDate: 02/24/2020 09:00:10.740 , ModifyDate: 02/24/2020 09:00:10.740 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 create procedure [dbo].[sp_MSdel_dboSurvey_Response__c]
 		@pkc1 nvarchar(18)
 as
@@ -18,3 +24,4 @@ if @@rowcount = 0
 				exec sp_MSreplraiserror @errorid=20598
 		End
 end
+GO

@@ -1,3 +1,9 @@
+/* CreateDate: 01/28/2015 15:37:59.760 , ModifyDate: 01/07/2019 16:51:43.717 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spSVC_CommissionTypeID_40_Step05_AdvanceCommission
 DESTINATION SERVER:		SQL06
@@ -145,3 +151,4 @@ WHERE   AuditKey = @AuditID
 ------------------------------------------------------------------------------------------
 
 END
+GO

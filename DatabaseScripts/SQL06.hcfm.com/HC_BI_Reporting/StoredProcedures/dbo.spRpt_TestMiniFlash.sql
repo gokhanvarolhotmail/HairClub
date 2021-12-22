@@ -1,3 +1,9 @@
+/* CreateDate: 02/11/2021 16:38:22.500 , ModifyDate: 02/11/2021 16:51:50.120 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spRpt_TestMiniFlash
 DESTINATION SERVER:		SQL06
@@ -578,3 +584,4 @@ FROM	#Final f
 ORDER BY f.SortOrder
 
 END
+GO

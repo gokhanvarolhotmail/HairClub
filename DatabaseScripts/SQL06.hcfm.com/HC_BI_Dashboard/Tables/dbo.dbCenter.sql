@@ -1,3 +1,9 @@
+/* CreateDate: 03/25/2019 10:23:46.670 , ModifyDate: 03/25/2019 10:23:46.670 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE TABLE [dbo].[dbCenter](
 	[AreaID] [int] NULL,
 	[Area] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
@@ -19,3 +25,4 @@ CREATE TABLE [dbo].[dbCenter](
 	[Phone3Type] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[SortOrder] [int] NULL
 ) ON [PRIMARY]
+GO

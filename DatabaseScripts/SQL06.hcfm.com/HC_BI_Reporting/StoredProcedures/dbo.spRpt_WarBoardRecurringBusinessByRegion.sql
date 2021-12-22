@@ -1,3 +1,9 @@
+/* CreateDate: 03/09/2016 11:37:05.133 , ModifyDate: 11/21/2019 14:51:21.183 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /*
 ==============================================================================
 
@@ -438,3 +444,4 @@ END
 
 /****** Object:  StoredProcedure [dbo].[spRpt_FranchiseWarBoards_Manager]    Script Date: 11/21/2019 1:33:27 PM ******/
 SET ANSI_NULLS ON
+GO

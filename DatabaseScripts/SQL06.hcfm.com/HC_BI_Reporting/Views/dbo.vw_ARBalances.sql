@@ -1,3 +1,9 @@
+/* CreateDate: 09/26/2017 16:34:16.750 , ModifyDate: 10/14/2019 11:43:59.500 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 VIEW:					[vw_ARBalances]
 DESTINATION SERVER:		SQL06
@@ -137,3 +143,4 @@ FROM Receivables REC
 		ON REC.ClientKey = Balance.ClientKey
 	INNER JOIN Centers CTR	ON CTR.CenterNumber = REC.CenterNumber
 WHERE Ranking = 1
+GO

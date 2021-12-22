@@ -1,3 +1,9 @@
+/* CreateDate: 04/16/2012 14:21:21.740 , ModifyDate: 02/02/2021 14:37:44.090 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /*
 ==============================================================================
 
@@ -1793,3 +1799,4 @@ DROP INDEX [IDX_tmpFormat] ON #Format
 
 
 END
+GO

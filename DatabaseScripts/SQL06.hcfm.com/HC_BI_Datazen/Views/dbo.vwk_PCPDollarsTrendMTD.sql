@@ -1,3 +1,9 @@
+/* CreateDate: 08/04/2015 16:23:38.320 , ModifyDate: 08/04/2015 16:23:59.157 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 VIEW:					vwk_PCPDollarsTrendMTD
 DESTINATION SERVER:		SQL06
@@ -40,3 +46,4 @@ WITH    PriorYearMonths
 
 	 GROUP BY DD.YearNumber
      ,        DD.MonthNumber
+GO

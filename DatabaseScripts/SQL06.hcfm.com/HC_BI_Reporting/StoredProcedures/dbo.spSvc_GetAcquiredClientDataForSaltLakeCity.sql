@@ -1,3 +1,9 @@
+/* CreateDate: 04/14/2021 11:36:04.390 , ModifyDate: 04/15/2021 15:52:55.873 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spSvc_GetAcquiredClientDataForSaltLakeCity
 DESTINATION SERVER:		SQL06
@@ -140,3 +146,4 @@ WHERE	dd.FullDate BETWEEN @StartDate AND @EndDate
 ORDER BY so.OrderDate
 
 END
+GO

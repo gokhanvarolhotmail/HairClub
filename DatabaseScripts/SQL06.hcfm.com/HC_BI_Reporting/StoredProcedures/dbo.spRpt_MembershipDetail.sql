@@ -1,3 +1,9 @@
+/* CreateDate: 08/28/2012 12:18:24.310 , ModifyDate: 09/16/2015 09:43:53.497 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /*===============================================================================================
 PROCEDURE:	[spRpt_MembershipDetail]
 
@@ -93,3 +99,4 @@ BEGIN
 			WHERE ( PCP = 1 OR XTR = 1 OR EXT = 1 )
 		END
 END
+GO

@@ -1,3 +1,9 @@
+/* CreateDate: 02/01/2016 17:01:49.330 , ModifyDate: 01/23/2018 15:03:07.720 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /*==============================================================================
 PROCEDURE:				spRpt_RetentionConversionDetails
 DESTINATION SERVER:		SQL06
@@ -262,3 +268,4 @@ WHERE d.FullDate BETWEEN @PCPStartDate and @ConversionEndDate
 END
 
 END
+GO

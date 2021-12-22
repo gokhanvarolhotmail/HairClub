@@ -1,3 +1,9 @@
+/* CreateDate: 07/26/2016 16:11:30.637 , ModifyDate: 04/05/2017 10:58:57.977 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spSVC_CommissionTypeID_42_Step06_RetractCommission
 DESTINATION SERVER:		SQL06
@@ -67,3 +73,4 @@ WHERE   AuditKey = @AuditID
 ------------------------------------------------------------------------------------------
 
 END
+GO

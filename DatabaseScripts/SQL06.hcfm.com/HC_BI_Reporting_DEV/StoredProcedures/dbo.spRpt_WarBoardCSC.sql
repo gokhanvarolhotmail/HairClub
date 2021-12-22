@@ -1,3 +1,9 @@
+/* CreateDate: 07/25/2019 13:51:31.627 , ModifyDate: 07/25/2019 17:13:33.630 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				[spRpt_WarBoardCSC]
 DESTINATION SERVER:		SQL06
@@ -176,3 +182,4 @@ FROM #Centers C
 
 
 END
+GO

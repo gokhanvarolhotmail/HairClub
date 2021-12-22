@@ -1,3 +1,9 @@
+/* CreateDate: 10/03/2019 23:03:40.213 , ModifyDate: 10/04/2019 00:13:52.803 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE TABLE [bi_cms_dds].[DimClientMembership](
 	[ClientMembershipKey] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
 	[ClientMembershipSSID] [uniqueidentifier] NOT NULL,
@@ -109,3 +115,4 @@ CREATE NONCLUSTERED INDEX [IX_DimClientMembership_MembershipKey] ON [bi_cms_dds]
 	[MembershipKey] ASC
 )
 INCLUDE([CenterKey],[ClientMembershipIdentifier]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [FG1]
+GO

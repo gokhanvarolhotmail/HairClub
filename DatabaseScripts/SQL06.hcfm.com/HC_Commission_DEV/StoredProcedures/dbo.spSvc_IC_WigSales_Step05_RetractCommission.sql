@@ -1,3 +1,9 @@
+/* CreateDate: 02/06/2020 08:14:19.357 , ModifyDate: 09/16/2020 15:10:29.593 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spSvc_IC_WigSales_Step05_RetractCommission
 DESTINATION SERVER:		SQL06
@@ -341,3 +347,4 @@ WHERE   AuditKey = @AuditID
 ------------------------------------------------------------------------------------------
 
 END
+GO

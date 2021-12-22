@@ -1,3 +1,9 @@
+/* CreateDate: 02/04/2013 15:36:21.957 , ModifyDate: 02/13/2013 16:09:17.067 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /*
 ==============================================================================
 
@@ -58,3 +64,4 @@ BEGIN
 	,	ISNULL(LCBS.BatchStatusID, 5)
 
 END
+GO

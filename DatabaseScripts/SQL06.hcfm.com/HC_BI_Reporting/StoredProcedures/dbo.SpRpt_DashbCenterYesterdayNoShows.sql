@@ -1,3 +1,9 @@
+/* CreateDate: 02/27/2015 09:56:55.080 , ModifyDate: 12/13/2019 14:33:11.973 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /*===============================================================================================
  Procedure Name:            [SpRpt_DashbCenterYesterdayNoShows]
  Procedure Description:
@@ -212,3 +218,4 @@ BEGIN
 		,	EmployeeInitials3
 
 END
+GO

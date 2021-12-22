@@ -1,3 +1,9 @@
+/* CreateDate: 09/03/2021 09:37:06.903 , ModifyDate: 09/03/2021 09:37:12.543 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE TABLE [bi_mktg_dds].[FactLead](
 	[ContactKey] [int] NOT NULL,
 	[LeadCreationDateKey] [int] NOT NULL,
@@ -40,3 +46,4 @@ CREATE TABLE [bi_mktg_dds].[FactLead](
 	[ContactKey] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
+GO

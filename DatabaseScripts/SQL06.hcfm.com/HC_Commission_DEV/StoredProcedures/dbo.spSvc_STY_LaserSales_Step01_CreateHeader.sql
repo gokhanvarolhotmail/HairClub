@@ -1,3 +1,9 @@
+/* CreateDate: 03/30/2019 12:40:56.810 , ModifyDate: 05/01/2020 10:39:15.110 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spSvc_STY_LaserSales_Step01_CreateHeader
 DESTINATION SERVER:		SQL06
@@ -208,3 +214,4 @@ WHERE   AuditKey = @AuditID
 ------------------------------------------------------------------------------------------
 
 END
+GO

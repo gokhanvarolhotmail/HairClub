@@ -1,3 +1,9 @@
+/* CreateDate: 06/22/2015 08:37:25.737 , ModifyDate: 03/07/2017 18:45:57.070 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spSvc_BarthConfirmationsExport
 DESTINATION SERVER:		SQL06
@@ -48,3 +54,4 @@ ORDER BY CTR.CenterSSID
 ,		DA.ActivityStartTime
 
 END
+GO

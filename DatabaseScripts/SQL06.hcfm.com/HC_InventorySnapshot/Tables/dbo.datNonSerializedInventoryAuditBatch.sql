@@ -1,3 +1,9 @@
+/* CreateDate: 12/07/2020 16:29:29.903 , ModifyDate: 12/07/2020 16:29:29.903 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE TABLE [dbo].[datNonSerializedInventoryAuditBatch](
 	[NonSerializedInventoryAuditBatchID] [int] IDENTITY(1,1) NOT NULL,
 	[NonSerializedInventoryAuditSnapshotID] [int] NOT NULL,
@@ -15,3 +21,4 @@ CREATE TABLE [dbo].[datNonSerializedInventoryAuditBatch](
 	[LastUpdateUser] [nvarchar](25) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[UpdateStamp] [timestamp] NOT NULL
 ) ON [PRIMARY]
+GO

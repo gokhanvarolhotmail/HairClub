@@ -1,3 +1,9 @@
+/* CreateDate: 10/03/2019 23:03:44.177 , ModifyDate: 10/03/2019 23:03:44.177 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE VIEW [bi_cms_dds].[vwFactSalesFirstSurgeryInfo]
 AS
 -------------------------------------------------------------------------
@@ -114,3 +120,4 @@ AS
 				ON fst.CenterKey = c.centerkey
 	 WHERE
 		c.CenterSSID LIKE '[356]%'
+GO

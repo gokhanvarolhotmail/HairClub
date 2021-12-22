@@ -1,3 +1,9 @@
+/* CreateDate: 02/27/2020 07:44:11.037 , ModifyDate: 02/27/2020 07:44:11.037 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spSVC_Tradition_Step3_UpdateDeferredAmountsByClient
 DESTINATION SERVER:		SQL06
@@ -107,3 +113,4 @@ WHERE	drd.Period = @Period
 OPTION(RECOMPILE);
 
 END
+GO

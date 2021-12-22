@@ -1,3 +1,9 @@
+/* CreateDate: 03/16/2016 15:34:34.260 , ModifyDate: 04/29/2016 11:53:09.793 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 VIEW:					vwChannelTypeSubtype
 DESTINATION SERVER:		SQL06
@@ -110,3 +116,4 @@ FROM
 	,	Level04Format
 	,	SourceKey
 	)q
+GO

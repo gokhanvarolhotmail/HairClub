@@ -1,3 +1,9 @@
+/* CreateDate: 08/07/2012 15:14:02.460 , ModifyDate: 03/07/2016 16:09:05.900 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /*
 ==============================================================================
 
@@ -309,3 +315,4 @@ BEGIN
 		INNER JOIN HC_BI_ENT_DDS.bi_ent_dds.DimRegion R
 			ON C.RegionKey = r.RegionKey
 END
+GO

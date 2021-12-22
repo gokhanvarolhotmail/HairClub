@@ -1,3 +1,9 @@
+/* CreateDate: 09/15/2015 13:37:11.890 , ModifyDate: 09/18/2015 13:14:52.320 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /*===============================================================================================
 PROCEDURE:	[spRpt_MembershipSummaryByRegion]
 
@@ -261,3 +267,4 @@ GROUP BY RegionSSID
        , FirstDateOfMonth
 
 END
+GO

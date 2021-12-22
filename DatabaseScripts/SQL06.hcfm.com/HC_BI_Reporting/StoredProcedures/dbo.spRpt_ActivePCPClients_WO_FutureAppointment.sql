@@ -1,3 +1,9 @@
+/* CreateDate: 11/06/2019 15:30:54.110 , ModifyDate: 11/07/2019 08:24:17.020 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spRpt_ActivePCPClients
 DESTINATION SERVER:		SQL06
@@ -80,3 +86,4 @@ SET NOCOUNT OFF;
 		,		CLT.ClientIdentifier
 
 END
+GO

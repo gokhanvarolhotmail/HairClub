@@ -1,3 +1,9 @@
+/* CreateDate: 10/03/2019 23:03:40.433 , ModifyDate: 10/03/2019 23:03:40.433 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 create procedure [dbo].[sp_MSins_bi_cms_ddsDimEmployeePositionJoin]
     @c1 uniqueidentifier,
     @c2 int,
@@ -25,3 +31,4 @@ begin
 		@c6,
 		@c7	)
 end
+GO

@@ -1,3 +1,9 @@
+/* CreateDate: 09/19/2012 09:15:30.827 , ModifyDate: 09/19/2012 09:15:30.827 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 
 PROCEDURE: 	[spRpt_CMSAutomaticApplicationsDetails]
@@ -83,3 +89,4 @@ BEGIN
 	ORDER BY SortOrder, ClientFullNameCalc, CMS25TransactionDate DESC
 
 END
+GO

@@ -1,3 +1,9 @@
+/* CreateDate: 10/04/2019 14:09:30.383 , ModifyDate: 11/20/2019 23:47:19.543 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE TABLE [dbo].[Phone__c](
 	[Id] [nvarchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[Lead__c] [nvarchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
@@ -40,3 +46,4 @@ CREATE NONCLUSTERED INDEX [IX_Phone__c_Primary] ON [dbo].[Phone__c]
 	[Primary__c] ASC
 )
 INCLUDE([Lead__c],[PhoneAbr__c],[LastModifiedDate]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO

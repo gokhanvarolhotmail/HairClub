@@ -1,3 +1,9 @@
+/* CreateDate: 08/14/2012 15:53:08.953 , ModifyDate: 08/14/2012 15:53:08.953 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE PROCEDURE [bi_mktg_dds].[DBMaintFactActivity]
 
 AS
@@ -44,3 +50,4 @@ LEFT OUTER join hcm.dbo.oncd_activity_user AU
 LEFT OUTER join bi_mktg_dds.DimEmployee DE
 	on au.user_code = de.EmployeeSSID
 WHERE ActivityEmployeeKey IS NULL
+GO

@@ -1,3 +1,9 @@
+/* CreateDate: 06/02/2015 15:08:30.487 , ModifyDate: 01/09/2017 22:41:52.880 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /*========================================================================================================
 PROCEDURE:				spRpt_RetentionByGender
 DESTINATION SERVER:		SQL06
@@ -322,3 +328,4 @@ IF @sType = 'F'  --Always By Regions for Franchises
 		,		C.CenterDescription
 
 END
+GO

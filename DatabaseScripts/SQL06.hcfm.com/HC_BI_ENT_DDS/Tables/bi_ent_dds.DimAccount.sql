@@ -1,3 +1,9 @@
+/* CreateDate: 01/08/2021 15:21:53.220 , ModifyDate: 01/08/2021 15:21:54.663 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE TABLE [bi_ent_dds].[DimAccount](
 	[AccountID] [int] NOT NULL,
 	[LedgerGroup] [varchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
@@ -26,3 +32,4 @@ CREATE TABLE [bi_ent_dds].[DimAccount](
 	[AccountID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
+GO

@@ -1,3 +1,9 @@
+/* CreateDate: 09/18/2017 21:23:22.800 , ModifyDate: 06/01/2019 13:49:28.550 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /*
 ==============================================================================
 
@@ -202,3 +208,4 @@ SELECT	*
 FROM	#signoff;
 
 END;
+GO

@@ -1,3 +1,9 @@
+/* CreateDate: 07/21/2015 15:46:42.410 , ModifyDate: 08/12/2015 10:29:08.133 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 VIEW:					vw_LeadsTrendMTD
 DESTINATION SERVER:		SQL06
@@ -40,3 +46,4 @@ WITH    PriorYearMonths
 
 	 GROUP BY DD.YearNumber
      ,        DD.MonthNumber
+GO

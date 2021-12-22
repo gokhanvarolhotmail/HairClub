@@ -1,3 +1,9 @@
+/* CreateDate: 08/13/2012 16:52:58.293 , ModifyDate: 08/13/2012 16:52:58.293 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE FUNCTION [dbo].[ISFLASH_SALE_ByDepartmentAndDivision] (
 		@center int
 		, @code as varchar(25)
@@ -176,3 +182,4 @@ CREATE FUNCTION [dbo].[ISFLASH_SALE_ByDepartmentAndDivision] (
 		END
 	)
 	END
+GO

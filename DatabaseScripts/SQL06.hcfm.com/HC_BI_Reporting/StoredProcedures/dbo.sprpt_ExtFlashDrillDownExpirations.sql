@@ -1,3 +1,9 @@
+/* CreateDate: 04/18/2013 14:29:54.993 , ModifyDate: 03/08/2018 11:20:25.793 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /*
 ==============================================================================
 
@@ -109,3 +115,4 @@ IF @Filter = 3								-- A Center has been selected.
 	WHERE q.ClientNo IS NOT NULL
 
 END
+GO

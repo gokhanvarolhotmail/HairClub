@@ -1,3 +1,9 @@
+/* CreateDate: 10/23/2012 14:15:05.787 , ModifyDate: 11/19/2012 11:16:43.867 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /*
 ==============================================================================
 
@@ -133,3 +139,4 @@ SET FMTONLY OFF
 		LEFT JOIN [HCSQL2\SQL2005].BOSOperations.dbo.[Contest_FeastOfSalesBudget] Budget ON ccrg.center=Budget.centerid
 		LEFT JOIN #Consultations C ON C.CenterSSID = ccrg.center
 	WHERE ccrg.Contestid = 15
+GO

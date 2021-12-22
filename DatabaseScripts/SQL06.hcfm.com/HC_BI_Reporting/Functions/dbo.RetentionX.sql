@@ -1,3 +1,9 @@
+/* CreateDate: 12/15/2015 11:06:44.557 , ModifyDate: 11/01/2016 09:24:10.233 */
+GO
+SET ANSI_NULLS OFF
+GO
+SET QUOTED_IDENTIFIER OFF
+GO
 --select dbo.RetentionX(321, 317, 21)
 CREATE FUNCTION [dbo].[RetentionX] (
 	@open_pcp INTEGER
@@ -20,3 +26,4 @@ RETURN(
 	 END
 )
 END
+GO

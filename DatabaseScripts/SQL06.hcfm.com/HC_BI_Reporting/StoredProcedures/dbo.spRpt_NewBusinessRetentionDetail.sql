@@ -1,3 +1,9 @@
+/* CreateDate: 08/12/2015 10:15:06.677 , ModifyDate: 02/19/2018 13:23:53.830 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spRpt_NewBusinessRetentionDetail
 DESTINATION SERVER:		SQL06
@@ -399,3 +405,4 @@ ORDER BY SD.ClientName
 
 
 END
+GO

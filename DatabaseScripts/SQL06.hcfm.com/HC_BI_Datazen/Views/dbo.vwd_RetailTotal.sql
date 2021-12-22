@@ -1,3 +1,9 @@
+/* CreateDate: 08/25/2015 09:53:33.790 , ModifyDate: 08/31/2015 09:36:51.447 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 VIEW:					[vwd_RetailTotal]
 DESTINATION SERVER:		SQL06
@@ -172,3 +178,4 @@ LEFT JOIN Budgets B
 LEFT JOIN RetailBudgets RB
 	ON A.CenterSSID = RB.CenterSSID
 		AND A.FullDate = RB.FullDate
+GO

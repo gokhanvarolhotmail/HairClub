@@ -1,3 +1,9 @@
+/* CreateDate: 02/01/2013 10:02:58.137 , ModifyDate: 06/18/2014 01:38:25.557 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE TABLE [dbo].[DimCommissionType](
 	[CommissionTypeID] [int] NOT NULL,
 	[SortOrder] [int] NULL,
@@ -12,3 +18,4 @@ CREATE TABLE [dbo].[DimCommissionType](
 	[CommissionTypeID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
+GO

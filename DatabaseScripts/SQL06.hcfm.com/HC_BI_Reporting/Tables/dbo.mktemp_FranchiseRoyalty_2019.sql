@@ -1,3 +1,9 @@
+/* CreateDate: 12/20/2021 10:48:30.047 , ModifyDate: 12/20/2021 10:48:30.047 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE TABLE [dbo].[mktemp_FranchiseRoyalty_2019](
 	[center] [int] NULL,
 	[CenterName] [varchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
@@ -18,3 +24,4 @@ CREATE TABLE [dbo].[mktemp_FranchiseRoyalty_2019](
 	[RoyaltyPercentage] [varchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[Last_Transact] [datetime] NULL
 ) ON [PRIMARY]
+GO

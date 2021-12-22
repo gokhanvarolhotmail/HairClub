@@ -1,3 +1,9 @@
+/* CreateDate: 01/08/2021 15:21:54.397 , ModifyDate: 01/08/2021 15:21:54.397 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE VIEW [bi_ent_dds].[vwDimGeography]
 AS
 -------------------------------------------------------------------------
@@ -26,3 +32,4 @@ AS
 				, [RowEndDate]
 		FROM [bi_ent_dds].[DimGeography]
 		WHERE [GeographyKey] < 0	-- Don't return any records
+GO

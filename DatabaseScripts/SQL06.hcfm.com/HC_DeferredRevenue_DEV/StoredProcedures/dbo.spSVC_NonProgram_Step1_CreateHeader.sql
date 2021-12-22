@@ -1,3 +1,9 @@
+/* CreateDate: 02/27/2020 07:44:10.597 , ModifyDate: 02/27/2020 07:44:10.597 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spSVC_NonProgram_Step1_CreateHeader
 DESTINATION SERVER:		SQL06
@@ -155,3 +161,4 @@ FROM	#HeadersToProcess htp
 WHERE	drh.DeferredRevenueHeaderKey IS NULL
 
 END
+GO

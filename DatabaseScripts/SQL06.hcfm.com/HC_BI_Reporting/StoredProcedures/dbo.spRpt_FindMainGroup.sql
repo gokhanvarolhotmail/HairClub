@@ -1,3 +1,9 @@
+/* CreateDate: 01/16/2018 11:58:12.443 , ModifyDate: 01/16/2018 11:58:12.443 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /*==============================================================================
 PROCEDURE:				spRpt_ConversionNewBusinessRetentionDetailsConversions
 DESTINATION SERVER:		SQL06
@@ -95,3 +101,4 @@ END
 SELECT TOP 1 * FROM #MainGroup
 
 END
+GO

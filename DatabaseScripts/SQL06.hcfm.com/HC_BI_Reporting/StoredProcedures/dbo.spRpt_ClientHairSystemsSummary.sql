@@ -1,3 +1,9 @@
+/* CreateDate: 02/14/2014 10:48:13.690 , ModifyDate: 02/14/2014 15:18:14.230 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spRpt_ClientHairSystemsSummary
 DESTINATION SERVER:		SQL06
@@ -206,3 +212,4 @@ BEGIN
 	ORDER BY CenterDescriptionNumber, LastName
 
 END
+GO

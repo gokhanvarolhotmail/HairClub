@@ -1,3 +1,9 @@
+/* CreateDate: 01/20/2016 13:00:37.350 , ModifyDate: 02/16/2016 11:44:19.740 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 VIEW:					vw_Conversions
 DESTINATION SERVER:		SQL06
@@ -164,3 +170,4 @@ WHERE  CTR.Active = 'Y'
 			OR ISNULL(FST.NB_XTRConvCnt,0) <> 0)
 GROUP BY AM.EmployeeKey
 ,	DD.FirstDateOfMonth
+GO

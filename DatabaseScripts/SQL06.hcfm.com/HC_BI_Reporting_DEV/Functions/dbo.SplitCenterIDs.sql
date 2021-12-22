@@ -1,3 +1,9 @@
+/* CreateDate: 08/18/2011 16:34:59.857 , ModifyDate: 08/18/2011 16:34:59.857 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 -- =============================================
 -- Author:		Howard Abelow
 -- Create date: 1/4/2007
@@ -39,3 +45,4 @@ BEGIN
 	END
 	RETURN
 END
+GO

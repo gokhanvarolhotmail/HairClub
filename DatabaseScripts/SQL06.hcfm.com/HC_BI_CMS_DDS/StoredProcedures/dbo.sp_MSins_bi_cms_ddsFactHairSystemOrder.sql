@@ -1,3 +1,9 @@
+/* CreateDate: 10/03/2019 23:03:42.293 , ModifyDate: 10/03/2019 23:03:42.293 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 create procedure [sp_MSins_bi_cms_ddsFactHairSystemOrder]
     @c1 int,
     @c2 uniqueidentifier,
@@ -171,3 +177,4 @@ begin
 		@c54,
 		@c55	)
 end
+GO

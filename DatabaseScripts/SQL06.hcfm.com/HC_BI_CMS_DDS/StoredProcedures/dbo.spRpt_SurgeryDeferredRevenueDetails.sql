@@ -1,3 +1,9 @@
+/* CreateDate: 10/03/2019 23:03:43.410 , ModifyDate: 10/03/2019 23:03:43.410 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /*
 ==============================================================================
 
@@ -158,3 +164,4 @@ HAVING
 		SUM([SF-Addtl_Surgery_Net$] + [SF-First_Surgery_Net$] ) <> 0
 
 END
+GO

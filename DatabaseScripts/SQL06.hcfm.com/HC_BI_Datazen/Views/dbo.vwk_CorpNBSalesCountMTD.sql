@@ -1,3 +1,9 @@
+/* CreateDate: 04/19/2016 16:59:14.970 , ModifyDate: 04/19/2016 16:59:14.970 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 VIEW:					[vwk_CorpNBSalesCountMTD]
 DESTINATION SERVER:		SQL06
@@ -44,3 +50,4 @@ SELECT SUM(ISNULL(FST.NB_TradAmt, 0))
 				AND C.CenterSSID LIKE '[2]%'
 				AND SC.SalesCodeKey NOT IN ( 665, 654, 393, 668 )
                 AND SOD.IsVoidedFlag = 0
+GO

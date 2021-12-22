@@ -1,3 +1,9 @@
+/* CreateDate: 02/21/2013 13:51:10.950 , ModifyDate: 02/27/2020 07:44:09.537 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 VIEW:					vwDeferredRevenueDetails
 DESTINATION SERVER:		SQL06
@@ -54,3 +60,4 @@ FROM	FactDeferredRevenueHeader drh
 			ON ctr.CenterSSID = drh.CenterSSID
 		LEFT OUTER JOIN DimMembershipRatesByCenter mr
 			ON mr.MembershipRateKey = drh.MembershipRateKey
+GO

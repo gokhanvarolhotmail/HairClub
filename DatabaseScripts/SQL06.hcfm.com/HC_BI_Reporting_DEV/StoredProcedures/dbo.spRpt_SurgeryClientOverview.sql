@@ -1,3 +1,9 @@
+/* CreateDate: 11/18/2013 17:37:28.540 , ModifyDate: 12/05/2013 15:35:20.680 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spRpt_SurgeryClientOverview
 DESTINATION SERVER:		SQL06
@@ -184,3 +190,4 @@ BEGIN
 	SELECT * FROM #surgery
 
 END
+GO

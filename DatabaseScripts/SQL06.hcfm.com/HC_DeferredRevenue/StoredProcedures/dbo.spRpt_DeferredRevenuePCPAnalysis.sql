@@ -1,3 +1,9 @@
+/* CreateDate: 07/08/2013 17:03:10.750 , ModifyDate: 03/01/2018 18:46:38.980 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /*
 ==============================================================================
 
@@ -100,3 +106,4 @@ BEGIN
 	,	P.ClientKey
 
 END
+GO

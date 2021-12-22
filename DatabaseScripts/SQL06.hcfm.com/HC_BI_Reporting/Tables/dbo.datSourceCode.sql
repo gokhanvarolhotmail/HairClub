@@ -1,3 +1,9 @@
+/* CreateDate: 12/06/2019 18:22:59.520 , ModifyDate: 12/06/2019 18:22:59.520 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE TABLE [dbo].[datSourceCode](
 	[CampaignID] [nvarchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[CampaignName] [nvarchar](80) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
@@ -19,3 +25,4 @@ CREATE TABLE [dbo].[datSourceCode](
 	[Status] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[IsActive] [bit] NULL
 ) ON [PRIMARY]
+GO

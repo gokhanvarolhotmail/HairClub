@@ -1,3 +1,9 @@
+/* CreateDate: 08/20/2019 17:22:35.463 , ModifyDate: 08/20/2019 17:22:42.983 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 CHANGE HISTORY:
 08/20/2019 - RH - Removed ContactSSID and ActivitySSID
@@ -148,3 +154,4 @@ WHERE  DS.Media IN ('Referrals', 'Referral')
 		AND FAR.BOSAppt <> 1
 		AND DA.ResultCodeDescription IN ('Show Sale','Show No Sale')
 		AND  M.MembershipDescription <> 'New Client (ShowNoSale)'
+GO

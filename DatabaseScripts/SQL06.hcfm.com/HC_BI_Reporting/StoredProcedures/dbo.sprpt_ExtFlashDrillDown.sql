@@ -1,3 +1,9 @@
+/* CreateDate: 09/18/2012 17:21:42.690 , ModifyDate: 03/08/2018 11:52:26.177 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /*
 ==============================================================================
 
@@ -568,3 +574,4 @@ ELSE IF @type = 15 --Recurring Revenue Ext Services
 
 
 END
+GO

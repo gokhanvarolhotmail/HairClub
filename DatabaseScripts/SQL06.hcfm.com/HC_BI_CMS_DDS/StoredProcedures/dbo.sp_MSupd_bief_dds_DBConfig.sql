@@ -1,3 +1,9 @@
+/* CreateDate: 10/03/2019 23:03:39.413 , ModifyDate: 10/03/2019 23:03:39.413 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 create procedure [sp_MSupd_bief_dds_DBConfig]
 		@c1 int = NULL,
 		@c2 varchar(max) = NULL,
@@ -59,3 +65,4 @@ if @@rowcount = 0
 		End
 end
 end
+GO

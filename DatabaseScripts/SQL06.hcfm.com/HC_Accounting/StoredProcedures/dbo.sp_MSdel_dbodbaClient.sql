@@ -1,3 +1,9 @@
+/* CreateDate: 10/03/2019 22:32:11.937 , ModifyDate: 10/03/2019 22:32:11.937 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 create procedure [sp_MSdel_dbodbaClient]
 		@pkc1 int
 as
@@ -18,3 +24,4 @@ if @@rowcount = 0
 				exec sp_MSreplraiserror @errorid=20598
 		End
 end
+GO

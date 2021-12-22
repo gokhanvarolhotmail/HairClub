@@ -1,3 +1,9 @@
+/* CreateDate: 04/10/2014 12:18:10.290 , ModifyDate: 08/07/2018 23:15:31.873 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spSvc_BarthTransactionTendersExport
 DESTINATION SERVER:		SQL06
@@ -114,3 +120,4 @@ WHERE	d.FullDate BETWEEN @StartDate AND @EndDate
 		AND so.IsVoidedFlag <> 1
 
 END
+GO

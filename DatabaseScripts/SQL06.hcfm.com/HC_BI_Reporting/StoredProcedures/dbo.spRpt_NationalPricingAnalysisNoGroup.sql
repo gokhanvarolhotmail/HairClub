@@ -1,3 +1,9 @@
+/* CreateDate: 11/19/2013 11:08:44.623 , ModifyDate: 09/13/2019 09:23:43.207 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spRpt_NationalPricingAnalysisNoGroup
 DESTINATION SERVER:		SQL06
@@ -425,3 +431,4 @@ WHERE NAT.MembershipEndDate >= @MonthStart
 				AND NAT.MembershipStartDate BETWEEN @MemBeginDate AND @MemEndDate
 
 END
+GO

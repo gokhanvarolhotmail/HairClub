@@ -1,3 +1,9 @@
+/* CreateDate: 09/13/2011 10:00:01.147 , ModifyDate: 08/20/2019 17:03:56.257 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /*
 ==============================================================================
 
@@ -217,3 +223,4 @@ DROP TABLE #SurgeryData
 DROP TABLE #PostEXTData
 
 END
+GO

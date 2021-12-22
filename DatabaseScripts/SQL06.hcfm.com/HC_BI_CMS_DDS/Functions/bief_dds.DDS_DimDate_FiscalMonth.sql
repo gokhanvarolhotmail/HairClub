@@ -1,3 +1,9 @@
+/* CreateDate: 10/03/2019 23:03:42.877 , ModifyDate: 10/03/2019 23:03:42.877 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 create function [bief_dds].[DDS_DimDate_FiscalMonth] (@date as datetime)
 returns int
 as
@@ -28,3 +34,4 @@ begin
 
   return @fiscal_month
 end
+GO

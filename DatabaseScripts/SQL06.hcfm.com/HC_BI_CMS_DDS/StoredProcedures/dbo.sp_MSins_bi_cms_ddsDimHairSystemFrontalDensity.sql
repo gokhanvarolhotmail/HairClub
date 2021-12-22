@@ -1,3 +1,9 @@
+/* CreateDate: 10/03/2019 23:03:40.633 , ModifyDate: 10/03/2019 23:03:40.633 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 create procedure [sp_MSins_bi_cms_ddsDimHairSystemFrontalDensity]
     @c1 int,
     @c2 nvarchar(50),
@@ -48,3 +54,4 @@ begin
 		default,
 		@c14	)
 end
+GO

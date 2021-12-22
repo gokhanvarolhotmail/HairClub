@@ -1,3 +1,9 @@
+/* CreateDate: 03/10/2014 13:59:32.393 , ModifyDate: 03/10/2014 16:58:34.580 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spRpt_GradualAnalysis
 DESTINATION SERVER:		SQL06
@@ -180,3 +186,4 @@ GROUP BY S.YearMonthNumber
 ORDER BY S.YearMonthNumber
 
 END
+GO

@@ -1,3 +1,9 @@
+/* CreateDate: 01/16/2014 15:34:24.760 , ModifyDate: 02/20/2017 16:30:54.900 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spRpt_FranchiseStores
 DESTINATION SERVER:		SQL06
@@ -149,3 +155,4 @@ BEGIN
 
 
 END
+GO

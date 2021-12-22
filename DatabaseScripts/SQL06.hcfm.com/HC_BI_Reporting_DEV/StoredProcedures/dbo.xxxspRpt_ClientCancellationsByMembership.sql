@@ -1,3 +1,9 @@
+/* CreateDate: 12/23/2013 14:21:37.110 , ModifyDate: 01/06/2017 09:29:40.040 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spRpt_ClientCancellationsByMembership
 DESTINATION SERVER:		SQL06
@@ -219,3 +225,4 @@ ORDER BY CT.Region
 ,       CT.Center
 
 END
+GO

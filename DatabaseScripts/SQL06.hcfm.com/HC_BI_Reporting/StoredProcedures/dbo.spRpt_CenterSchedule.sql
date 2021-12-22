@@ -1,3 +1,9 @@
+/* CreateDate: 06/02/2017 13:22:36.417 , ModifyDate: 06/02/2017 15:35:34.130 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spRpt_CenterSchedule
 DESTINATION SERVER:		SQL06
@@ -147,3 +153,4 @@ FROM    #CenterSchedule cs
 --,       cs.FirstName
 
 END
+GO

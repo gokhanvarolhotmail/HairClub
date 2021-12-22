@@ -1,3 +1,9 @@
+/* CreateDate: 04/10/2014 12:18:10.290 , ModifyDate: 03/01/2017 12:09:40.243 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spSvc_BarthTransactionTendersExport
 DESTINATION SERVER:		SQL06
@@ -117,3 +123,4 @@ ORDER BY [ClientCenterSSID]
 ,       [TicketNumber]
 
 END
+GO

@@ -1,3 +1,9 @@
+/* CreateDate: 02/10/2020 12:08:35.130 , ModifyDate: 02/17/2020 07:37:43.193 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spSvc_IC_HaloSales_Step07_TerminatedEmployee
 DESTINATION SERVER:		SQL06
@@ -127,3 +133,4 @@ WHERE   AuditKey = @AuditID
 ------------------------------------------------------------------------------------------
 
 END
+GO

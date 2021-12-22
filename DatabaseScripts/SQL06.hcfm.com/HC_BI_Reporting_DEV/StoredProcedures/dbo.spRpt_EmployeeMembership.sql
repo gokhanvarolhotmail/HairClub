@@ -1,3 +1,9 @@
+/* CreateDate: 03/20/2020 12:48:53.143 , ModifyDate: 03/20/2020 14:53:06.283 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /*
 ==============================================================================
 
@@ -276,3 +282,4 @@ GROUP BY ISNULL(S.ServiceAmt, 0)
 
 
 END
+GO

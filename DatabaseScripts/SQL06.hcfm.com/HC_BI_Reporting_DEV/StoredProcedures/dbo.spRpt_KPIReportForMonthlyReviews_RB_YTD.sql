@@ -1,3 +1,9 @@
+/* CreateDate: 11/01/2018 15:27:50.143 , ModifyDate: 04/02/2020 15:47:56.357 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /******************************************************************************************************************************
 PROCEDURE:				[spRpt_KPIReportForMonthlyReviews_RB_YTD]
 DESTINATION SERVER:		SQL06
@@ -477,3 +483,4 @@ GROUP BY q.CenterNumber
 	   , q.PCPGrowthStandard
 
 END
+GO

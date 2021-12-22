@@ -1,3 +1,9 @@
+/* CreateDate: 02/12/2018 15:38:30.153 , ModifyDate: 01/31/2020 10:38:43.080 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spSvc_GetSchooxEmployeeData
 DESTINATION SERVER:		SQL06
@@ -225,3 +231,4 @@ SELECT  '100 - Corporate' AS 'CENTER'
 ,		'NCC Administrative Assistant' AS 'JOBNAME'
 
 END
+GO

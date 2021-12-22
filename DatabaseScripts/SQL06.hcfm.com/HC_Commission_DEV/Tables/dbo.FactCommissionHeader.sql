@@ -1,3 +1,9 @@
+/* CreateDate: 02/13/2013 14:43:50.013 , ModifyDate: 08/31/2020 11:05:25.053 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE TABLE [dbo].[FactCommissionHeader](
 	[CommissionHeaderKey] [int] IDENTITY(1,1) NOT NULL,
 	[CommissionTypeID] [int] NOT NULL,
@@ -91,3 +97,4 @@ CREATE NONCLUSTERED INDEX [IX_FactCommissionHeader_SalesOrderKey_INCL] ON [dbo].
 	[SalesOrderKey] ASC
 )
 INCLUDE([CommissionHeaderKey]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO

@@ -1,3 +1,9 @@
+/* CreateDate: 08/03/2011 12:36:30.767 , ModifyDate: 02/12/2020 15:41:18.530 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /*******************************************************************************************************
 
 PROCEDURE:				sprpt_TM_Summary
@@ -232,3 +238,4 @@ FROM    #Centers ctr
 			ON l.Center = ctr.CenterSSID
 		LEFT OUTER JOIN #shows s
 			ON s.Center = ctr.CenterSSID
+GO

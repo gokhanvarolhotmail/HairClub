@@ -1,3 +1,9 @@
+/* CreateDate: 03/22/2017 15:18:51.560 , ModifyDate: 05/20/2019 10:40:18.327 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /*==============================================================================
 PROCEDURE:				spRpt_ConversionNewBusinessRetentionDetailsConversions
 DESTINATION SERVER:		SQL06
@@ -396,3 +402,4 @@ FROM #Centers C
 WHERE CONV.ClientKey IS NOT NULL
 
 END
+GO

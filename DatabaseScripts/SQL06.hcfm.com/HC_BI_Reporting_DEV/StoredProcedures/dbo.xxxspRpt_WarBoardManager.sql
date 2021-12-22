@@ -1,3 +1,9 @@
+/* CreateDate: 05/05/2015 16:15:23.413 , ModifyDate: 10/10/2018 14:21:16.763 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /*
 ==============================================================================
 
@@ -298,3 +304,4 @@ INNER JOIN #Centers CTR
 	ON F.CenterNumber = CTR.CenterNumber
 --ORDER BY 1
 END
+GO

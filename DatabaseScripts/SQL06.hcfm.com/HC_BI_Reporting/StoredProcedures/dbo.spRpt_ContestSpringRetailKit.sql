@@ -1,3 +1,9 @@
+/* CreateDate: 03/28/2016 12:05:39.963 , ModifyDate: 04/01/2016 13:06:58.610 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				[spRpt_ContestSpringRetailKit]
 DESTINATION SERVER:		SQL06
@@ -227,3 +233,4 @@ SELECT  C.MainGroupID
 
 
 END
+GO

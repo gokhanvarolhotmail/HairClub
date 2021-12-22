@@ -1,3 +1,9 @@
+/* CreateDate: 10/03/2019 23:03:43.357 , ModifyDate: 10/03/2019 23:03:43.357 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /*-----------------------------------------------------------------------
  [vwFactSalesTransaction_FLASH] is used to retrieve a
  list of Sales Transactions that is brought into the Surgery Flash
@@ -107,3 +113,4 @@ GROUP BY DD.FullDate, fst.OrderDateKey, fst.SalesOrderKey, fst.SalesOrderDetailK
                       fst.S1_DepositsTakenAmt, fst.NB_GrossNB1Cnt, fst.NB_TradCnt, fst.NB_TradAmt, fst.NB_GradCnt, fst.NB_GradAmt, fst.NB_ExtCnt, fst.NB_ExtAmt, fst.NB_AppsCnt,
                       fst.NB_BIOConvCnt, fst.NB_EXTConvCnt, fst.PCP_NB2Amt, fst.PCP_PCPAmt, fst.PCP_BioAmt, fst.PCP_ExtMemAmt, fst.PCPNonPgmAmt, fst.ServiceAmt, fst.RetailAmt,
                       fst.ClientServicedCnt, fst.NetMembershipAmt, fst.S_GrossSurCnt, fst.S_SurCnt, fst.S_SurAmt
+GO

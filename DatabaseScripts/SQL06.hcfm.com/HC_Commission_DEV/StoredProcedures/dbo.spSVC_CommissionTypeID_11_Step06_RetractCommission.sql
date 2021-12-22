@@ -1,3 +1,9 @@
+/* CreateDate: 10/07/2015 15:45:11.663 , ModifyDate: 10/07/2015 15:45:11.663 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spSVC_CommissionTypeID_11_Step06_RetractCommission
 DESCRIPTION:			EXT to Surgery
@@ -67,3 +73,4 @@ WHERE   AuditKey = @AuditID
 ------------------------------------------------------------------------------------------
 
 END
+GO

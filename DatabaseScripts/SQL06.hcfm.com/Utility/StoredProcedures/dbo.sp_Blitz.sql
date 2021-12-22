@@ -1,3 +1,9 @@
+/* CreateDate: 06/09/2014 11:35:45.927 , ModifyDate: 06/09/2014 11:35:45.927 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE PROCEDURE [dbo].[sp_Blitz]
     @CheckUserDatabaseObjects TINYINT = 1 ,
     @CheckProcedureCache TINYINT = 0 ,
@@ -4052,3 +4058,4 @@ AS
                          END DESC
 
     SET NOCOUNT OFF;
+GO

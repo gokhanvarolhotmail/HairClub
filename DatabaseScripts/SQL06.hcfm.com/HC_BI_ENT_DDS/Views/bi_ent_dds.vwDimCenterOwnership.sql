@@ -1,3 +1,9 @@
+/* CreateDate: 01/08/2021 15:21:54.317 , ModifyDate: 01/08/2021 15:21:54.317 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE VIEW [bi_ent_dds].[vwDimCenterOwnership]
 AS
 -------------------------------------------------------------------------
@@ -33,3 +39,4 @@ AS
 			, [RowStartDate]
 			, [RowEndDate]
 	FROM [bi_ent_dds].[DimCenterOwnership]
+GO

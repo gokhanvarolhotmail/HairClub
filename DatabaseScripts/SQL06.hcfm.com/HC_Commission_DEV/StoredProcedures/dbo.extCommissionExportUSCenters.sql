@@ -1,3 +1,9 @@
+/* CreateDate: 03/12/2013 09:58:57.583 , ModifyDate: 03/12/2013 09:58:57.583 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /*
 ==============================================================================
 
@@ -51,3 +57,4 @@ BEGIN
 	,	ISNULL(FCO.EmployeeFullName, FCH.EmployeeFullName)
 
 END
+GO

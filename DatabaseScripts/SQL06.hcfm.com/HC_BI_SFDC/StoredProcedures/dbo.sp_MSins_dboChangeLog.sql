@@ -1,3 +1,9 @@
+/* CreateDate: 10/04/2019 14:09:30.263 , ModifyDate: 10/04/2019 14:09:30.263 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 create procedure [sp_MSins_dboChangeLog]
     @c1 int,
     @c2 uniqueidentifier,
@@ -37,3 +43,4 @@ begin
 		@c10,
 		@c11	)
 end
+GO

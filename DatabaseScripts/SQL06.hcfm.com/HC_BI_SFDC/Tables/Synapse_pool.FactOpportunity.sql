@@ -1,3 +1,9 @@
+/* CreateDate: 06/16/2021 18:23:01.270 , ModifyDate: 06/18/2021 16:45:06.203 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE TABLE [Synapse_pool].[FactOpportunity](
 	[FactDate] [datetime] NULL,
 	[FactDatekey] [int] NULL,
@@ -35,3 +41,4 @@ CREATE TABLE [Synapse_pool].[FactOpportunity](
 	[IsOld] [int] NULL,
 	[CreatedDateEst] [datetime] NULL
 ) ON [PRIMARY]
+GO

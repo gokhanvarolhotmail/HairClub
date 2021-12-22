@@ -1,3 +1,9 @@
+/* CreateDate: 07/09/2012 09:23:00.110 , ModifyDate: 05/08/2019 09:37:57.140 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /*
 ==============================================================================
 
@@ -329,3 +335,4 @@ IF @sType = 'F' AND @Filter = 3  --By Franchise Center
 
 
 END
+GO

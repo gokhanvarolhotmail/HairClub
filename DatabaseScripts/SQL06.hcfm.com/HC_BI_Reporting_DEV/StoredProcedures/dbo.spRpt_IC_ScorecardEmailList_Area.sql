@@ -1,3 +1,9 @@
+/* CreateDate: 05/23/2019 15:57:11.063 , ModifyDate: 12/19/2019 14:09:37.617 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				[spRpt_IC_ScorecardEmailList_Area]
 DESTINATION SERVER:		SQL06
@@ -117,3 +123,4 @@ FROM #ICScorecardEmailList
 WHERE CenterNumber IS NOT NULL
 
 END
+GO

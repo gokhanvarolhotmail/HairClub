@@ -1,3 +1,9 @@
+/* CreateDate: 09/19/2014 23:49:32.087 , ModifyDate: 09/19/2014 23:49:32.087 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE TABLE [dbo].[tempdb_contention_two](
 	[Run Date] [datetime] NOT NULL,
 	[Server Name] [nvarchar](128) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
@@ -18,3 +24,4 @@ CREATE TABLE [dbo].[tempdb_contention_two](
 	[numa_node] [int] NULL,
 	[read_microsec] [bigint] NULL
 ) ON [PRIMARY]
+GO

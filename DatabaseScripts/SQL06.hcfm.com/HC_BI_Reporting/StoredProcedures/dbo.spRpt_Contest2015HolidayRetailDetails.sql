@@ -1,3 +1,9 @@
+/* CreateDate: 10/14/2015 15:50:50.040 , ModifyDate: 10/21/2015 13:10:26.607 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				[spRpt_Contest2015HolidayRetailDetails]
 DESTINATION SERVER:		SQL06
@@ -195,3 +201,4 @@ WHERE Employee2Key = @EmployeeKey
 
 
 END
+GO

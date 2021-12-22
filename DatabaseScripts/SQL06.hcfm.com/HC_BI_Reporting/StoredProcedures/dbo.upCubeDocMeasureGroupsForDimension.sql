@@ -1,3 +1,9 @@
+/* CreateDate: 04/08/2020 11:22:00.430 , ModifyDate: 04/08/2020 11:22:00.430 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE PROCEDURE [dbo].[upCubeDocMeasureGroupsForDimension]
     (@Catalog       VARCHAR(255)
     ,@Cube          VARCHAR(255)
@@ -29,3 +35,4 @@ AS
      WHERE  CAST(mgd.[CATALOG_NAME] AS VARCHAR(255))            = @Catalog
         AND CAST(mgd.[CUBE_NAME] AS VARCHAR(255))               = @Cube
         AND CAST(mgd.[DIMENSION_UNIQUE_NAME] AS VARCHAR(255))   = @Dimension
+GO

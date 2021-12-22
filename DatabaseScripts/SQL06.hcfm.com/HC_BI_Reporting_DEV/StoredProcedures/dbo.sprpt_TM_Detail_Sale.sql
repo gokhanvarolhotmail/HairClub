@@ -1,3 +1,9 @@
+/* CreateDate: 08/19/2011 13:22:26.337 , ModifyDate: 10/01/2019 14:37:20.067 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /*==============================================================================
 
 PROCEDURE:				sprpt_TM_Detail_Sale
@@ -87,3 +93,4 @@ where
 	and da.issale = 1
 	and ActivityDueDate between @BegDt and @EndDt
 order by dc.ContactLastName, dc.ContactFirstName
+GO

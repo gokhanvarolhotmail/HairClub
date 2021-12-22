@@ -1,3 +1,9 @@
+/* CreateDate: 10/07/2016 14:34:57.703 , ModifyDate: 10/24/2019 14:04:37.310 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spSVC_CommissionTypeID_44_Step01_CreateHeader
 DESTINATION SERVER:		SQL06
@@ -240,3 +246,4 @@ WHERE   AuditKey = @AuditID
 ------------------------------------------------------------------------------------------
 
 END
+GO

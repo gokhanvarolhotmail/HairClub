@@ -1,3 +1,9 @@
+/* CreateDate: 09/21/2020 16:49:17.590 , ModifyDate: 09/21/2020 16:49:17.590 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE FUNCTION FindDuplicateLetters
 (
     @String NVARCHAR(50)
@@ -26,3 +32,4 @@ BEGIN
     RETURN @Result
 
 END
+GO

@@ -1,3 +1,9 @@
+/* CreateDate: 01/08/2021 15:21:54.190 , ModifyDate: 01/08/2021 15:21:54.190 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 create procedure [dbo].[sp_MSins_bief_ddsDimDate]
     @c1 int,
     @c2 date,
@@ -304,3 +310,4 @@ begin
 		@c99,
 		@c100	)
 end
+GO

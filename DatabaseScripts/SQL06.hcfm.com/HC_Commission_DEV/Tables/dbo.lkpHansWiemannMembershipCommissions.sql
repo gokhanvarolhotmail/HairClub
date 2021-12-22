@@ -1,3 +1,9 @@
+/* CreateDate: 06/13/2018 10:21:56.923 , ModifyDate: 06/15/2018 09:43:58.953 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE TABLE [dbo].[lkpHansWiemannMembershipCommissions](
 	[HWMembershipCommissionID] [int] IDENTITY(1,1) NOT NULL,
 	[MembershipKey] [int] NULL,
@@ -37,3 +43,4 @@ CREATE NONCLUSTERED INDEX [IX_lkpHansWiemannMembershipCommissions_MembershipSSID
 	[MembershipSSID] ASC
 )
 INCLUDE([ServiceDeduction],[HairSystemDeduction],[Tier1Min],[Tier1Max],[Tier1Pct],[Tier2Min],[Tier2Max],[Tier2Pct]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO

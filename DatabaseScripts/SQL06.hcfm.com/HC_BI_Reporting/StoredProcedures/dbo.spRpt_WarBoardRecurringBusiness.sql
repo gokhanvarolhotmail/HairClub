@@ -1,3 +1,9 @@
+/* CreateDate: 03/07/2016 14:44:46.927 , ModifyDate: 01/28/2020 08:42:32.940 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /*
 ==============================================================================
 
@@ -382,3 +388,4 @@ INNER JOIN #Centers ON #Centers.CenterNumber = #MainGroup.CenterNumber
 
 
 END
+GO

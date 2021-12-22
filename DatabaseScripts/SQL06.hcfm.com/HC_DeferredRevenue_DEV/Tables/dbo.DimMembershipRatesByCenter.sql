@@ -1,3 +1,9 @@
+/* CreateDate: 12/06/2012 15:23:24.957 , ModifyDate: 02/27/2020 23:47:07.270 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE TABLE [dbo].[DimMembershipRatesByCenter](
 	[MembershipRateKey] [int] IDENTITY(1,1) NOT NULL,
 	[CenterKey] [int] NOT NULL,
@@ -24,3 +30,4 @@ CREATE NONCLUSTERED INDEX [IX_DimMembershipRatesByCenter_RateDates] ON [dbo].[Di
 	[RateStartDate] ASC,
 	[RateEndDate] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO

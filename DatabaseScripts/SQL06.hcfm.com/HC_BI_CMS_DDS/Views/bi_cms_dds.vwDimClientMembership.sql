@@ -1,3 +1,9 @@
+/* CreateDate: 10/03/2019 23:03:43.250 , ModifyDate: 07/17/2021 18:26:59.210 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE VIEW [bi_cms_dds].[vwDimClientMembership] AS
 SELECT        bi_cms_dds.DimClientMembership.ClientMembershipKey, bi_cms_dds.DimClientMembership.ClientMembershipSSID, bi_cms_dds.DimClientMembership.ClientKey, bi_cms_dds.DimClientMembership.ClientSSID,
                          bi_cms_dds.DimClientMembership.CenterKey, bi_cms_dds.DimClientMembership.CenterSSID, bi_cms_dds.DimClientMembership.MembershipKey, bi_cms_dds.DimClientMembership.MembershipSSID,
@@ -8,3 +14,4 @@ SELECT        bi_cms_dds.DimClientMembership.ClientMembershipKey, bi_cms_dds.Dim
                          CL.ClientLastName + ', ' + CL.ClientFirstName + ' (' + CAST(CL.ClientIdentifier AS VARCHAR) + ')' AS NameAndID
 FROM            bi_cms_dds.DimClientMembership LEFT OUTER JOIN
                          bi_cms_dds.DimClient AS CL ON bi_cms_dds.DimClientMembership.ClientKey = CL.ClientKey
+GO

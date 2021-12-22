@@ -1,3 +1,9 @@
+/* CreateDate: 09/19/2014 23:49:32.207 , ModifyDate: 09/19/2014 23:49:32.207 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE TABLE [dbo].[tempdb_space_by_session](
 	[Run Date] [datetime] NOT NULL,
 	[Server Name] [nvarchar](128) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
@@ -14,3 +20,4 @@ CREATE TABLE [dbo].[tempdb_space_by_session](
 	[last_write] [datetime] NULL,
 	[program_name] [nvarchar](128) COLLATE SQL_Latin1_General_CP1_CI_AS NULL
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO

@@ -1,3 +1,9 @@
+/* CreateDate: 11/08/2019 08:43:19.793 , ModifyDate: 11/08/2019 08:43:19.793 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				[spRpt_InitialNewStyleSchedulingAnalysis_Detail]
 DESTINATION SERVER:		SQL06
@@ -267,3 +273,4 @@ END
 
 
 END
+GO

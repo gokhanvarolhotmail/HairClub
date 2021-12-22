@@ -1,3 +1,9 @@
+/* CreateDate: 04/04/2017 14:01:02.360 , ModifyDate: 04/04/2017 14:34:34.363 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 VIEW:					[vw__WomenMembershipsUpgrades]
 DESTINATION SERVER:		SQL06
@@ -149,3 +155,4 @@ SELECT RegionSSID
 FROM PMC
 INNER JOIN Payments
 ON Payments.ClientKey = PMC.ClientKey
+GO

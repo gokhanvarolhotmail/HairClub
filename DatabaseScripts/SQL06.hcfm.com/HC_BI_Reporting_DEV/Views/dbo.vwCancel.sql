@@ -1,3 +1,9 @@
+/* CreateDate: 10/24/2013 14:30:03.710 , ModifyDate: 10/24/2013 14:30:51.010 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 VIEW:					vwCancel
 DESTINATION SERVER:		SQL06
@@ -114,3 +120,4 @@ FROM    Data D
         LEFT OUTER JOIN Appt A
             ON D.ClientKey = A.ClientKey
 WHERE   D.CenterNumber LIKE '[278]%'
+GO

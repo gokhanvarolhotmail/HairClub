@@ -1,3 +1,9 @@
+/* CreateDate: 05/18/2015 13:20:59.057 , ModifyDate: 04/17/2020 14:17:26.663 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spRpt_NewBusinessPipeline_EXT
 DESTINATION SERVER:		SQL06
@@ -656,3 +662,4 @@ GROUP BY R.Consultant
 
 
 END
+GO

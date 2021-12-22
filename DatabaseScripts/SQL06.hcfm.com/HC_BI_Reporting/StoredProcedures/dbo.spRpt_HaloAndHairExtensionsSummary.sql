@@ -1,3 +1,9 @@
+/* CreateDate: 07/20/2017 11:57:16.843 , ModifyDate: 03/12/2018 14:30:17.277 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spRpt_HaloAndHairExtensionsSummary
 DESTINATION SERVER:		SQL06
@@ -249,3 +255,4 @@ GROUP BY MainGroupSSID
 
 
 END
+GO

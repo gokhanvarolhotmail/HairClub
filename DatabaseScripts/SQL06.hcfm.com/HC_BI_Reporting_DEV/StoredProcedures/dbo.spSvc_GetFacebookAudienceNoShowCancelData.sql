@@ -1,3 +1,9 @@
+/* CreateDate: 10/12/2016 11:46:30.023 , ModifyDate: 10/12/2016 11:50:59.660 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spSvc_GetFacebookAudienceNoShowCancelData
 DESTINATION SERVER:		SQL06
@@ -51,3 +57,4 @@ INSERT  INTO tmpFacebookAudienceNoShows (
 						AND OA.due_date < DATEADD(DAY, -0, CONVERT(VARCHAR(11), GETDATE(), 101))  )
 
 END
+GO

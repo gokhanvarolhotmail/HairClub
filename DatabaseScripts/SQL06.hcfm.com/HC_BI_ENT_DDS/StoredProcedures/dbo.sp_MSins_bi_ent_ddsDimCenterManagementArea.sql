@@ -1,3 +1,9 @@
+/* CreateDate: 01/08/2021 15:21:53.520 , ModifyDate: 01/08/2021 15:21:53.520 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 create procedure [dbo].[sp_MSins_bi_ent_ddsDimCenterManagementArea]
     @c1 int,
     @c2 int,
@@ -25,3 +31,4 @@ begin
 		@c6,
 		@c7	)
 end
+GO

@@ -1,3 +1,9 @@
+/* CreateDate: 01/29/2014 16:35:10.213 , ModifyDate: 03/15/2018 09:33:05.017 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /******************************************************************************************************************************
 PROCEDURE:				spRpt_EFTFrozenPCP
 DESTINATION SERVER:		SQL06
@@ -240,3 +246,4 @@ WHERE [Status] <> 'OK'
 
 
 END
+GO

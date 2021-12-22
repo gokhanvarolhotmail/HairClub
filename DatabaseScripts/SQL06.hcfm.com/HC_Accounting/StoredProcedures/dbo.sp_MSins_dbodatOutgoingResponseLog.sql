@@ -1,3 +1,9 @@
+/* CreateDate: 09/10/2013 10:38:52.827 , ModifyDate: 09/10/2013 10:38:52.827 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 create procedure [sp_MSins_dbodatOutgoingResponseLog]
     @c1 int,
     @c2 int,
@@ -33,3 +39,4 @@ begin
     @c9,
     default	)
 end
+GO

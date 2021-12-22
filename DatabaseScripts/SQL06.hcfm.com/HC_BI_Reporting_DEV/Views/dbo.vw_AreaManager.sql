@@ -1,3 +1,9 @@
+/* CreateDate: 12/30/2015 15:36:56.123 , ModifyDate: 01/04/2017 14:11:28.500 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 --select * from [vw_AreaManager]ORDER BY RegionSortOrder, EmployeeFullName
 
 --select DISTINCT EmployeeKey, CenterManagementAreaDescription from [vw_AreaManager]
@@ -33,3 +39,4 @@ FROM    HC_BI_ENT_DDS.bi_ent_dds.DimCenter CTR
 WHERE   CTR.CenterSSID LIKE '[2]%'
         AND CTR.Active = 'Y'
 		AND CMA.Active = 'Y'
+GO

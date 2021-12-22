@@ -1,3 +1,9 @@
+/* CreateDate: 09/19/2018 13:59:08.240 , ModifyDate: 09/19/2018 13:59:08.240 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 VIEW:					[vw_BudgetNBSales]
 DESTINATION SERVER:		SQL06
@@ -46,3 +52,4 @@ SELECT   C.CenterSSID
 					AND C.Active = 'Y'
 			   GROUP BY C.CenterSSID
 			   ,        DD.FullDate
+GO

@@ -1,3 +1,9 @@
+/* CreateDate: 09/01/2011 15:19:21.537 , ModifyDate: 05/20/2014 09:45:22.170 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 VIEW:					vw_Lead
 DESTINATION SERVER:		SQL06
@@ -137,3 +143,4 @@ FROM    HC_BI_MKTG_DDS.bi_mktg_dds.vwFactLead Lead
             ON Lead.LeadCreationDateKey = CreateDate.DateKey
         LEFT OUTER JOIN HC_BI_ENT_DDS.bi_ent_dds.vwDimTimeOfDay CreateTime
             ON Lead.LeadCreationTimeKey = CreateTime.TimeOfDayKey
+GO

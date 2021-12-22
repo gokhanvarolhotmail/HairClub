@@ -1,3 +1,9 @@
+/* CreateDate: 04/10/2014 12:16:05.663 , ModifyDate: 04/10/2014 12:16:05.663 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spSvc_BarthMembershipsExport
 DESTINATION SERVER:		SQL06
@@ -44,3 +50,4 @@ FROM    HC_BI_CMS_DDS.bi_cms_dds.DimMembership DM
 ORDER BY DM.MembershipSortOrder
 
 END
+GO

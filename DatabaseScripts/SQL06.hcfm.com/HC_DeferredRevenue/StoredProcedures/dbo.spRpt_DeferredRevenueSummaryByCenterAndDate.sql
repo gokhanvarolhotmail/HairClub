@@ -1,3 +1,9 @@
+/* CreateDate: 02/20/2013 15:27:46.303 , ModifyDate: 04/02/2019 14:43:42.680 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /*
 ==============================================================================
 
@@ -61,3 +67,4 @@ GROUP BY CTR.CenterDescriptionNumber
 ORDER BY CTR.CenterDescriptionNumber
 
 END
+GO

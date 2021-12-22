@@ -1,0 +1,56 @@
+/* CreateDate: 05/10/2018 18:01:57.303 , ModifyDate: 05/10/2018 18:01:57.303 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[JobInfo](
+	[ComputerName] [nvarchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[InstanceName] [nvarchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[SqlInstance] [nvarchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[Enabled] [bit] NULL,
+	[CreateDate] [datetime2](7) NULL,
+	[Parent] [nvarchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[Category] [nvarchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[CategoryType] [tinyint] NULL,
+	[CurrentRunRetryAttempt] [int] NULL,
+	[CurrentRunStatus] [nvarchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[CurrentRunStep] [nvarchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[DateCreated] [datetime2](7) NULL,
+	[DateLastModified] [datetime2](7) NULL,
+	[DeleteLevel] [nvarchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[Description] [nvarchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[EmailLevel] [nvarchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[EventLogLevel] [nvarchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[HasSchedule] [bit] NULL,
+	[HasServer] [bit] NULL,
+	[HasStep] [bit] NULL,
+	[IsEnabled] [bit] NULL,
+	[JobID] [uniqueidentifier] NULL,
+	[JobType] [nvarchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[LastRunDate] [datetime2](7) NULL,
+	[LastRunOutcome] [nvarchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[NetSendLevel] [nvarchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[NextRunDate] [datetime2](7) NULL,
+	[NextRunScheduleID] [int] NULL,
+	[OperatorToEmail] [nvarchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[OperatorToNetSend] [nvarchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[OperatorToPage] [nvarchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[OriginatingServer] [nvarchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[OwnerLoginName] [nvarchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[PageLevel] [nvarchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[StartStepID] [int] NULL,
+	[VersionNumber] [int] NULL,
+	[Name] [nvarchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[CategoryID] [int] NULL,
+	[JobSteps] [nvarchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[JobSchedules] [nvarchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[Urn] [nvarchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[Properties] [nvarchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[DatabaseEngineType] [nvarchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[DatabaseEngineEdition] [nvarchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[ExecutionManager] [nvarchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[UserData] [nvarchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[State] [nvarchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO

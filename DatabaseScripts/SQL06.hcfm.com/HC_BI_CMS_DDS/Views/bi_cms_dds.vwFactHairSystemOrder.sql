@@ -1,3 +1,9 @@
+/* CreateDate: 10/03/2019 23:03:43.970 , ModifyDate: 10/02/2020 10:53:49.770 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE VIEW [bi_cms_dds].[vwFactHairSystemOrder] AS
 -------------------------------------------------------------------------
 -- [vwFactHairSystemOrder] is used to retrieve a
@@ -93,3 +99,4 @@ SELECT	DD.[FullDate] AS [PartitionDate]
 		ON DCM.MembershipKey = DMEM.MembershipKey
 
 WHERE HairSystemOrderDate >= '01/01/2017'
+GO

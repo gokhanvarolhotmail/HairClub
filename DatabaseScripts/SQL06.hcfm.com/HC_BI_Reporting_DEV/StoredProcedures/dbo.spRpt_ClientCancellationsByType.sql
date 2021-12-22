@@ -1,3 +1,9 @@
+/* CreateDate: 12/26/2013 10:24:14.377 , ModifyDate: 01/16/2018 16:49:39.637 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spRpt_ClientCancellationsByType
 DESTINATION SERVER:		SQL06
@@ -247,3 +253,4 @@ GROUP BY CT.MainGroupID
 
 
 END
+GO

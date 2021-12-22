@@ -1,1 +1,2 @@
 CREATE SCHEMA [sf_Copy]
+GO

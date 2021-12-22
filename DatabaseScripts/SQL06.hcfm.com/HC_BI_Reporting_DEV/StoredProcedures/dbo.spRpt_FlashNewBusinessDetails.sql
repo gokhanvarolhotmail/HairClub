@@ -1,3 +1,9 @@
+/* CreateDate: 12/17/2018 11:32:22.173 , ModifyDate: 03/12/2020 13:26:14.793 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spRpt_FlashNewBusinessDetails
 DESTINATION SERVER:		SQL06
@@ -905,3 +911,4 @@ GROUP BY O.ClientIdentifier,
 
 
 END
+GO

@@ -1,3 +1,9 @@
+/* CreateDate: 11/01/2018 15:16:36.700 , ModifyDate: 04/01/2020 11:15:53.770 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:
 DESTINATION SERVER:		SQL06
@@ -310,3 +316,4 @@ FROM	#Center c
 			ON csl.CenterNumber = c.CenterNumber
 
 END
+GO

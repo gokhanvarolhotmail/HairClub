@@ -1,3 +1,9 @@
+/* CreateDate: 08/22/2012 11:59:26.950 , ModifyDate: 04/19/2016 11:22:51.957 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /*===============================================================================================
 Procedure Name:			spRpt_FranchiseSalesDetails
 
@@ -319,3 +325,4 @@ END
 SELECT * FROM #Amt WHERE Amount <> '0.00'
 
 END
+GO

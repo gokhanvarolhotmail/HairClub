@@ -1,3 +1,9 @@
+/* CreateDate: 10/03/2019 23:03:41.230 , ModifyDate: 10/03/2019 23:03:41.230 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 create procedure [sp_MSins_bi_cms_ddsDimHairSystemVendorContract]
     @c1 int,
     @c2 nvarchar(50),
@@ -57,3 +63,4 @@ begin
 		default,
 		@c17	)
 end
+GO

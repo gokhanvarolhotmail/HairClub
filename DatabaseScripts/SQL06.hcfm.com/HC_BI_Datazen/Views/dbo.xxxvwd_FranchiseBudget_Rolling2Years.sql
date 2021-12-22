@@ -1,3 +1,9 @@
+/* CreateDate: 05/18/2016 16:19:00.017 , ModifyDate: 12/21/2016 15:22:53.647 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 VIEW:					vwd_FranchiseBudget_Rolling2Years
 DESTINATION SERVER:		SQL06
@@ -262,3 +268,4 @@ GROUP BY DATEADD(YEAR ,1 ,RS.FirstDateOfMonth)
 	,	S_SurAmt
 	,	NB_XTRAmt
 	,	NetNB1Sales
+GO

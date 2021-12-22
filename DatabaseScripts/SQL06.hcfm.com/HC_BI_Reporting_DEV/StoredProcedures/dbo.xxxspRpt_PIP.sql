@@ -1,3 +1,9 @@
+/* CreateDate: 04/26/2019 17:03:56.410 , ModifyDate: 05/02/2019 14:51:15.663 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				[spRpt_PIP]
 DESTINATION SERVER:		SQL06
@@ -455,3 +461,4 @@ FROM #Final
 
 
 END
+GO

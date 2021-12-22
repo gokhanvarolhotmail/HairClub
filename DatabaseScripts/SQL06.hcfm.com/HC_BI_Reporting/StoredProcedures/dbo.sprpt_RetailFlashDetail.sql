@@ -1,3 +1,9 @@
+/* CreateDate: 10/24/2013 14:02:41.907 , ModifyDate: 01/23/2020 16:22:50.583 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 
 PROCEDURE:				sprpt_RetailFlashDetail	VERSION  1.0
@@ -355,3 +361,4 @@ ORDER BY Employee, ClientName
 
 
 END
+GO

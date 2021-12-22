@@ -1,3 +1,9 @@
+/* CreateDate: 06/30/2014 11:13:37.967 , ModifyDate: 11/14/2014 09:44:52.663 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spSvc_AmplifierDataExport_NewBusinessCancels
 DESTINATION SERVER:		SQL06
@@ -121,3 +127,4 @@ WHERE   DD.FullDate BETWEEN @StartDate AND @EndDate
 		AND ISNULL(CLT.DoNotContactFlag, 0) = 0
 
 END
+GO

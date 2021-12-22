@@ -1,3 +1,9 @@
+/* CreateDate: 12/11/2013 11:19:05.643 , ModifyDate: 10/06/2015 13:55:50.117 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spRpt_ActivePCPClients
 DESTINATION SERVER:		SQL06
@@ -85,3 +91,4 @@ ELSE
 	END
 
 END
+GO

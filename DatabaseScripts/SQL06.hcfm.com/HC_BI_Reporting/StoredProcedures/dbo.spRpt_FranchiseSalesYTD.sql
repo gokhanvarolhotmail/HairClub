@@ -1,3 +1,9 @@
+/* CreateDate: 08/22/2012 09:00:59.467 , ModifyDate: 04/19/2016 11:19:42.000 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /*===============================================================================================
 -- Procedure Name:			spRpt_FranchiseSalesYTD
 -- Created By:             HDu
@@ -293,3 +299,4 @@ SELECT  [#FranchiseSales].[Center] AS 'FranchiseName'
 FROM    [#FranchiseSales]
 ORDER BY [#FranchiseSales].[Center]
 END
+GO

@@ -1,3 +1,9 @@
+/* CreateDate: 06/27/2019 11:36:24.483 , ModifyDate: 03/25/2021 09:07:41.590 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE VIEW [dbo].[vwdbaOrderTender]  AS
 -------------------------------------------------------------------------
 -- [vwDimClient] is used to retrieve a
@@ -68,3 +74,4 @@ GROUP BY DO.SalesOrderInvoiceNumber
 ,		SOT.TenderTypeDescription
 ,       SOT.Amount
 ,       DO.IsOrderVoided
+GO

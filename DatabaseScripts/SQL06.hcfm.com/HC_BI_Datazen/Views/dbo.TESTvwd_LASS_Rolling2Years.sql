@@ -1,3 +1,9 @@
+/* CreateDate: 05/20/2019 17:01:54.457 , ModifyDate: 05/20/2019 17:03:49.120 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 VIEW:					[TESTvwd_LASS_Rolling2Years]
 DESTINATION SERVER:		SQL06
@@ -196,3 +202,4 @@ GROUP BY L.MonthNumber
 	,	SH.Shows
 
     ,	SA.Sales
+GO

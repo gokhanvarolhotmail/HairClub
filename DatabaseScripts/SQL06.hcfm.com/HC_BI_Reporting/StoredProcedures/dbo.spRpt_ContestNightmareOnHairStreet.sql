@@ -1,3 +1,9 @@
+/* CreateDate: 10/22/2018 15:39:12.583 , ModifyDate: 10/29/2018 09:31:06.960 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				[spRpt_ContestNightmareOnHairStreet]
 DESTINATION SERVER:		SQL06
@@ -192,3 +198,4 @@ FROM
 
 
 END
+GO

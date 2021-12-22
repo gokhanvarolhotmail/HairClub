@@ -1,3 +1,9 @@
+/* CreateDate: 10/03/2019 23:03:43.550 , ModifyDate: 10/03/2019 23:03:43.550 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 create VIEW [bi_cms_dds].[vwAppointments]
 AS
 -------------------------------------------------------------------------
@@ -107,3 +113,4 @@ group by
 	,	sc.SalesCodeDescription
 	,	appt.CheckInTime
 	,	appt.CheckOutTime
+GO

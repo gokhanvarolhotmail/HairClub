@@ -1,3 +1,9 @@
+/* CreateDate: 08/12/2015 10:13:20.357 , ModifyDate: 02/19/2018 13:23:09.127 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spRpt_NewBusinessRetention
 DESTINATION SERVER:		SQL06
@@ -238,3 +244,4 @@ FROM    #Centers C
 
 
 END
+GO

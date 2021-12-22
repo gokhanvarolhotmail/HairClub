@@ -1,3 +1,9 @@
+/* CreateDate: 09/03/2021 09:37:06.060 , ModifyDate: 09/03/2021 09:37:11.487 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE TABLE [bi_mktg_dds].[DimPromotionCode](
 	[PromotionCodeKey] [int] NOT NULL,
 	[PromotionCodeSSID] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
@@ -16,3 +22,4 @@ CREATE TABLE [bi_mktg_dds].[DimPromotionCode](
 	[PromotionCodeKey] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
+GO

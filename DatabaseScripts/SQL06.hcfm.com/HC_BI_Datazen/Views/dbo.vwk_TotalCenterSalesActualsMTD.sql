@@ -1,3 +1,9 @@
+/* CreateDate: 08/12/2015 14:41:48.957 , ModifyDate: 08/12/2015 17:16:09.200 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 VIEW:					vwk_TotalCenterSalesActualsMTD
 DESTINATION SERVER:		SQL06
@@ -53,3 +59,4 @@ FROM RetailSales RS,  HC_BI_CMS_DDS.bi_cms_dds.FactSalesTransaction FST
 WHERE   DD.FullDate BETWEEN DATEADD(mm, DATEDIFF(mm, 0, GETDATE()), 0) AND DATEADD(ms, -3, DATEADD(mm, 0, DATEADD(mm, DATEDIFF(mm, 0, GETDATE()) +1, 0)))
 	AND C.CenterSSID LIKE '[2]%'
 GROUP BY ISNULL(RS.RetailSales, 0)
+GO

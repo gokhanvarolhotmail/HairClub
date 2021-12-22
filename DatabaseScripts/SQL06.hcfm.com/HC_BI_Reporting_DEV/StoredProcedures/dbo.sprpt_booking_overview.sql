@@ -1,3 +1,9 @@
+/* CreateDate: 08/31/2011 09:54:55.727 , ModifyDate: 09/01/2011 10:31:59.517 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 
 PROCEDURE:		sprpt_booking_overview
@@ -168,3 +174,4 @@ AS
             ,a.CenterSSID
 
 DROP TABLE #Activity
+GO

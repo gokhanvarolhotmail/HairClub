@@ -1,3 +1,9 @@
+/* CreateDate: 12/12/2018 14:14:31.217 , ModifyDate: 09/02/2021 15:23:26.213 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spRpt_FlashNewBusiness
 DESTINATION SERVER:		SQL06
@@ -662,3 +668,4 @@ SELECT CenterNumber
     ) o_R
 
 END
+GO

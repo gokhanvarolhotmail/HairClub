@@ -1,3 +1,9 @@
+/* CreateDate: 01/08/2021 15:21:54.087 , ModifyDate: 01/08/2021 15:21:54.087 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 create procedure [sp_MSupd_bief_ddsDimTimeOfDay]
 		@c1 int = NULL,
 		@c2 varchar(12) = NULL,
@@ -42,3 +48,4 @@ if @@rowcount = 0
 				exec sp_MSreplraiserror @errorid=20598
 		End
 end
+GO

@@ -1,3 +1,9 @@
+/* CreateDate: 09/03/2021 09:37:08.597 , ModifyDate: 09/03/2021 09:37:08.597 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /****************************************************************************************************
 CHANGE HISTORY:
 11/16/2018 - RH - Added LeadCreationDateKey from FactLead
@@ -185,3 +191,4 @@ WHERE     DE.FullDate BETWEEN '01/01/2017' AND DATEADD(dd,0, DATEDIFF(dd,0,GETUT
 --			,	CASE WHEN FAR.SourceKey IN (471,1301,10257,1343,1865,3427,9987) THEN 1 ELSE 0 END
 --			,	ISNULL(FL.LeadCreationDateKey, -1)
 --			,	ISNULL(fl.LeadCreationTimeKey, -1)
+GO

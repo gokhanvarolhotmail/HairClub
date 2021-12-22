@@ -1,3 +1,9 @@
+/* CreateDate: 07/11/2011 15:45:17.340 , ModifyDate: 06/18/2014 01:38:25.257 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE TABLE [dbo].[EmployeeHoursCertipay](
 	[LastName] [varchar](64) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[FirstName] [varchar](64) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
@@ -33,3 +39,4 @@ CREATE NONCLUSTERED INDEX [IX_EmployeeHoursCertipay_PeriodEndINCL] ON [dbo].[Emp
 	[PeriodEnd] ASC
 )
 INCLUDE([EmployeeID],[SalaryHours],[RegularHours],[TravelHours]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO

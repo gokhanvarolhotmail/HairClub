@@ -1,3 +1,9 @@
+/* CreateDate: 06/16/2021 18:16:34.720 , ModifyDate: 08/04/2021 12:21:41.760 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE TABLE [Synapse_pool].[DimLead](
 	[LeadKey] [int] NULL,
 	[LeadId] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
@@ -89,3 +95,4 @@ GO
 ALTER TABLE [Synapse_pool].[DimLead] ADD  DEFAULT ((0)) FOR [IsDuplicateByEmail]
 GO
 ALTER TABLE [Synapse_pool].[DimLead] ADD  DEFAULT ((0)) FOR [IsDuplicateByName]
+GO

@@ -1,3 +1,9 @@
+/* CreateDate: 02/14/2014 13:54:54.093 , ModifyDate: 01/28/2015 11:22:23.073 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spRpt_ClientHairSystemsException
 DESTINATION SERVER:		SQL06
@@ -275,3 +281,4 @@ BEGIN
 		,	MIN_MembershipDescription
 
 END
+GO

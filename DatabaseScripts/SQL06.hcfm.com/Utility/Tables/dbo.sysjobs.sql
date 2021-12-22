@@ -1,3 +1,9 @@
+/* CreateDate: 07/31/2014 11:56:58.620 , ModifyDate: 07/31/2014 11:56:58.620 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE TABLE [dbo].[sysjobs](
 	[RunDate] [datetime] NOT NULL,
 	[job_id] [uniqueidentifier] NOT NULL,
@@ -20,3 +26,4 @@ CREATE TABLE [dbo].[sysjobs](
 	[date_modified] [datetime] NOT NULL,
 	[version_number] [int] NOT NULL
 ) ON [PRIMARY]
+GO

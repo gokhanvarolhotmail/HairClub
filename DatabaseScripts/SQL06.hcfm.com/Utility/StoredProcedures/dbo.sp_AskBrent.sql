@@ -1,3 +1,9 @@
+/* CreateDate: 06/09/2014 11:35:44.547 , ModifyDate: 06/09/2014 11:35:44.547 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE PROCEDURE [dbo].[sp_AskBrent]
     @Question NVARCHAR(MAX) = NULL ,
     @AsOf DATETIME = NULL ,
@@ -1460,3 +1466,4 @@ END /* ELSE IF @OutputType = 'SCHEMA' */
 
 
 SET NOCOUNT OFF;
+GO

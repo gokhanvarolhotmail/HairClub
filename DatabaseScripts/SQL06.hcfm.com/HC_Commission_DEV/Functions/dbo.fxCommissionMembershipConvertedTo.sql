@@ -1,3 +1,9 @@
+/* CreateDate: 02/05/2013 09:53:44.700 , ModifyDate: 02/05/2013 09:53:47.260 */
+GO
+SET ANSI_NULLS OFF
+GO
+SET QUOTED_IDENTIFIER OFF
+GO
 --select dbo.[fxCommissionMembershipConvertedTo](25909048)
 CREATE FUNCTION [dbo].[fxCommissionMembershipConvertedTo] (
 	@SalesOrderKey INT
@@ -29,3 +35,4 @@ BEGIN
 			AND SC.SalesCodeDepartmentSSID IN (1070, 1080, 1090, 1095, 1099, 1075)
 	)
 END
+GO

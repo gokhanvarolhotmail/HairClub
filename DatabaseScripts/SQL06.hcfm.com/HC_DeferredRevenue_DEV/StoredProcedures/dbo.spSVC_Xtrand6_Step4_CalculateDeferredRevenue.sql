@@ -1,3 +1,9 @@
+/* CreateDate: 02/27/2020 07:44:11.343 , ModifyDate: 02/27/2020 07:44:11.343 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spSVC_Xtrand6_Step4_CalculateDeferredRevenue
 DESTINATION SERVER:		SQL06
@@ -456,3 +462,4 @@ INSERT  INTO FactDeferredRevenueDetails (
 		WHERE	drd.DeferredRevenueDetailsKey IS NULL
 
 END
+GO

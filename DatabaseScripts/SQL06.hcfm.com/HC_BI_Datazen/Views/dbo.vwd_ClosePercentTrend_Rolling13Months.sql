@@ -1,3 +1,9 @@
+/* CreateDate: 07/21/2015 14:57:12.703 , ModifyDate: 05/29/2019 13:42:31.497 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 VIEW:					vwd_ClosePercentTrend_Rolling13Months
 DESTINATION SERVER:		SQL06
@@ -69,3 +75,4 @@ WHERE   DD.FullDate BETWEEN DATEADD(yy, -2, DATEADD(yy, DATEDIFF(yy, 0, GETDATE(
         AND DSOD.IsVoidedFlag = 0
 GROUP BY DC.ReportingCenterSSID
 ,       DD.FirstDateOfMonth
+GO

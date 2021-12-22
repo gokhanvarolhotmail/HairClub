@@ -1,3 +1,9 @@
+/* CreateDate: 10/03/2019 23:03:39.920 , ModifyDate: 10/03/2019 23:03:39.920 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 create procedure [sp_MSins_bi_cms_ddsDimActiveDirectoryGroup]
     @c1 int,
     @c2 nvarchar(50),
@@ -36,3 +42,4 @@ begin
 		default,
 		@c10	)
 end
+GO

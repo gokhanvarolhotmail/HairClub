@@ -1,3 +1,9 @@
+/* CreateDate: 10/03/2019 23:03:39.860 , ModifyDate: 12/21/2021 23:15:38.330 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE TABLE [bi_cms_dds].[DimAccumulatorAdjustment](
 	[AccumulatorAdjustmentKey] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
 	[AccumulatorAdjustmentSSID] [uniqueidentifier] NOT NULL,
@@ -58,3 +64,4 @@ CREATE NONCLUSTERED INDEX [IX_DimAccumulatorAdjustment_SalesOrderDetailKeyAccumu
 	[AccumulatorSSID] ASC
 )
 INCLUDE([AccumulatorKey],[MoneyChange]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO

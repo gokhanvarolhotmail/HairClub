@@ -1,3 +1,9 @@
+/* CreateDate: 04/15/2013 15:46:43.400 , ModifyDate: 11/20/2014 13:16:47.863 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /*==============================================================================
 PROCEDURE:				spRpt_AttritionByGenderConversionDetails
 DESTINATION SERVER:		SQL06
@@ -120,3 +126,4 @@ BEGIN
 	,	cl.ClientFirstName
 
 END
+GO

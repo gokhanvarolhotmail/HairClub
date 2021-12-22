@@ -1,3 +1,9 @@
+/* CreateDate: 07/12/2011 15:27:31.497 , ModifyDate: 06/04/2013 16:23:57.340 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /*
 ==============================================================================
 
@@ -180,3 +186,4 @@ BEGIN
 			,	CL.ClientFullName
 
 END
+GO

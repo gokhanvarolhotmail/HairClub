@@ -1,3 +1,9 @@
+/* CreateDate: 01/05/2016 12:07:37.363 , ModifyDate: 07/13/2018 15:28:43.430 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /*
 ==============================================================================
 
@@ -458,3 +464,4 @@ GROUP BY C.MainGroupID
 
 
 END
+GO

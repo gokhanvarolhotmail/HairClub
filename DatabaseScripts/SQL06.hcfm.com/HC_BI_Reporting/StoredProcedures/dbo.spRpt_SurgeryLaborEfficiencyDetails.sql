@@ -1,3 +1,9 @@
+/* CreateDate: 07/14/2011 08:25:49.997 , ModifyDate: 11/09/2012 10:11:22.360 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /*===============================================================================================
 -- Procedure Name:			spRpt_SurgeryLaborEfficiencyDetails
 -- Procedure Description:
@@ -236,3 +242,4 @@ BEGIN
 	END
 
 END
+GO

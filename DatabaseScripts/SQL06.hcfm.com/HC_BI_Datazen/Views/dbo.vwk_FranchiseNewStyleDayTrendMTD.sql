@@ -1,3 +1,9 @@
+/* CreateDate: 02/08/2016 13:44:34.970 , ModifyDate: 02/08/2016 13:44:34.970 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 VIEW:					vwk_FranchiseNewStyleDayTrendMTD
 DESTINATION SERVER:		SQL06
@@ -41,3 +47,4 @@ WITH    PriorYearMonths
             AND DSC.SalesCodeSSID IN ( 648 )
 	 GROUP BY DD.YearNumber
      ,        DD.MonthNumber
+GO

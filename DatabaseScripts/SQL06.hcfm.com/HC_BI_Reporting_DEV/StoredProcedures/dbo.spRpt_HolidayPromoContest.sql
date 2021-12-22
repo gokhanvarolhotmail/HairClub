@@ -1,3 +1,9 @@
+/* CreateDate: 10/31/2014 10:25:30.787 , ModifyDate: 12/19/2014 10:09:05.720 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /****** Object:  StoredProcedure [dbo].[spRpt_HolidayPromoContest]    Script Date: 11/07/2014 09:35:22 ******/
 
 /***********************************************************************
@@ -133,3 +139,4 @@ BEGIN
 					ON C.CenterSSID = S.CenterSSID)q
 
 END
+GO

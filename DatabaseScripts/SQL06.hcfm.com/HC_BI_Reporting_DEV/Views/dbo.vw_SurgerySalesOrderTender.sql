@@ -1,3 +1,9 @@
+/* CreateDate: 06/07/2011 13:15:26.210 , ModifyDate: 06/07/2011 13:15:26.210 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE VIEW dbo.vw_SurgerySalesOrderTender
 AS
 SELECT     SO.OrderDate AS 'Date', SO.CenterSSID AS 'TrxCenterID', CTR.CenterDescription AS 'TrxCenterDescription',
@@ -29,3 +35,4 @@ FROM         dbo.synHC_CMS_DDS_vwDimSalesOrderTender AS SOT INNER JOIN
                       dbo.synHC_CMS_DDS_vwDimClientMembership AS CLM ON SO.ClientMembershipKey = CLM.ClientMembershipKey INNER JOIN
                       dbo.synHC_CMS_DDS_vwDimMembership AS MEM ON CLM.MembershipKey = MEM.MembershipKey INNER JOIN
                       dbo.synHC_ENT_DDS_vwDimCenter AS CLHMCTR ON CLM.CenterKey = CLHMCTR.CenterKey
+GO

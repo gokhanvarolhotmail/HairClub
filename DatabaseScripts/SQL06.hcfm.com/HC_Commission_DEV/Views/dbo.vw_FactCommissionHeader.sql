@@ -1,3 +1,9 @@
+/* CreateDate: 01/07/2019 11:24:16.843 , ModifyDate: 01/07/2019 11:25:56.123 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 VIEW:					vw_FactCommissionHeader
 DESTINATION SERVER:		SQL06
@@ -48,3 +54,4 @@ FROM    FactCommissionHeader fch
         INNER JOIN HC_BI_CMS_DDS.bi_cms_dds.DimEmployee de
             ON de.EmployeeKey = ISNULL(fco.EmployeeKey, fch.EmployeeKey)
 WHERE	de.EmployeeKey <> -1
+GO

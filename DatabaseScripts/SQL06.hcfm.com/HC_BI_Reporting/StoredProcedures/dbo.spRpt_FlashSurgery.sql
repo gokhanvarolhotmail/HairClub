@@ -1,3 +1,9 @@
+/* CreateDate: 09/19/2013 16:32:48.250 , ModifyDate: 01/29/2021 13:21:22.653 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /*
 ==============================================================================
 
@@ -340,3 +346,4 @@ GROUP BY ISNULL(C.MainGroup, 'Unknown'),
 		 C.SortOrder
 
 END
+GO

@@ -1,3 +1,9 @@
+/* CreateDate: 03/13/2013 11:52:37.803 , ModifyDate: 03/24/2020 17:03:44.343 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /*
 ==============================================================================
 
@@ -119,3 +125,4 @@ ORDER BY ISNULL(fco.EmployeeFullName, fch.EmployeeFullName)
 ,		clt.ClientFullName
 
 END
+GO

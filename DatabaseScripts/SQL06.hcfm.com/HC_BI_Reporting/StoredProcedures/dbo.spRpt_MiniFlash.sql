@@ -1,3 +1,9 @@
+/* CreateDate: 05/09/2013 14:30:16.770 , ModifyDate: 11/11/2021 12:51:12.323 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:
 DESTINATION SERVER:		SQL06
@@ -1176,3 +1182,4 @@ BEGIN
 
 
 END
+GO

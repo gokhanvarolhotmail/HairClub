@@ -1,3 +1,9 @@
+/* CreateDate: 05/20/2016 11:55:30.580 , ModifyDate: 05/20/2016 15:36:38.540 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 VIEW:					[vwd_FranchiseActualCountsPerBusinessSegment]
 DESTINATION SERVER:		SQL06
@@ -27,3 +33,4 @@ AND FirstDateOfMonth >= DATEADD(YEAR,-2,GETUTCDATE())
 ) up
 
 PIVOT (SUM(Sales) FOR BusinessSegment IN (Grad, Trad, Xtrands, EXT))AS pvt
+GO

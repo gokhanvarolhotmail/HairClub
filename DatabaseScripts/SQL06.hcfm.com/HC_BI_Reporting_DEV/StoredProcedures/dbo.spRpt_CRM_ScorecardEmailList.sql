@@ -1,3 +1,9 @@
+/* CreateDate: 07/22/2019 11:57:34.113 , ModifyDate: 08/22/2019 09:11:04.260 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				[spRpt_CRM_ScorecardEmailList]
 DESTINATION SERVER:		SQL06
@@ -149,3 +155,4 @@ FROM #CRMScorecardEmailList
 
 
 END
+GO

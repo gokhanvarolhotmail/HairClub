@@ -1,3 +1,9 @@
+/* CreateDate: 06/16/2014 11:39:07.323 , ModifyDate: 08/04/2014 09:42:04.390 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spSvc_AmplifierDataExport_NoShows
 DESTINATION SERVER:		SQL06
@@ -122,3 +128,4 @@ WHERE   DD_ActivityDueDate.FullDate BETWEEN @StartDate AND @EndDate
 		AND DC.DoNotSolicitFlag = 'N'
 
 END
+GO

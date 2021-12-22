@@ -1,3 +1,9 @@
+/* CreateDate: 07/22/2019 14:22:01.057 , ModifyDate: 04/20/2020 09:07:51.450 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				[spRpt_CRM_ScorecardEmailList]
 DESTINATION SERVER:		SQL06
@@ -79,3 +85,4 @@ SELECT CenterNumber
 FROM #CRMScorecardEmailList
 
 END
+GO

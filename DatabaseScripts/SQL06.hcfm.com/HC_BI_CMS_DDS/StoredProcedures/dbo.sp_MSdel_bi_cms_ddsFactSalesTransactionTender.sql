@@ -1,3 +1,9 @@
+/* CreateDate: 10/03/2019 23:03:42.517 , ModifyDate: 10/03/2019 23:03:42.517 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 create procedure [sp_MSdel_bi_cms_ddsFactSalesTransactionTender]
 		@pkc1 int,
 		@pkc2 int,
@@ -24,3 +30,4 @@ if @@rowcount = 0
 				exec sp_MSreplraiserror @errorid=20598
 		End
 end
+GO

@@ -1,3 +1,9 @@
+/* CreateDate: 10/01/2020 17:07:50.633 , ModifyDate: 11/24/2020 13:13:23.010 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 NAME:					fnIsLead
 DESTINATION SERVER:		SQL05
@@ -186,3 +192,4 @@ INSERT  INTO @IsInvalid
     RETURN
 
 END
+GO

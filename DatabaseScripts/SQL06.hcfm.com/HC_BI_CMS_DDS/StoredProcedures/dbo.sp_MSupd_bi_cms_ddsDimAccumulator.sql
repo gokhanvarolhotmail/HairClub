@@ -1,3 +1,9 @@
+/* CreateDate: 10/03/2019 23:03:39.750 , ModifyDate: 10/03/2019 23:03:39.750 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 create procedure [sp_MSupd_bi_cms_ddsDimAccumulator]
 		@c1 int = NULL,
 		@c2 int = NULL,
@@ -60,3 +66,4 @@ if @@rowcount = 0
 				exec sp_MSreplraiserror @errorid=20598
 		End
 end
+GO

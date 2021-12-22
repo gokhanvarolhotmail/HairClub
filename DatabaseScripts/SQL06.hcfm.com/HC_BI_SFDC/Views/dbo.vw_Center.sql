@@ -1,3 +1,9 @@
+/* CreateDate: 07/13/2020 13:45:46.833 , ModifyDate: 07/13/2020 13:45:46.833 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE VIEW vw_Center AS
 -------------------------------------------------------------------------
 -- [vw_Center] is used to retrieve a
@@ -22,3 +28,4 @@ SELECT CenterNumber AS 'CenterNumber',
        City,
        PostalCode AS 'CenterPostalCode'
 FROM HC_BI_ENT_DDS.[bi_ent_dds].[DimCenter];
+GO

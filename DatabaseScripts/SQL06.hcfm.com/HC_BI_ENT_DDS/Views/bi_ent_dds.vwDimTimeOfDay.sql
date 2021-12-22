@@ -1,3 +1,9 @@
+/* CreateDate: 01/08/2021 15:21:54.503 , ModifyDate: 01/08/2021 15:21:54.503 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE VIEW [bi_ent_dds].[vwDimTimeOfDay]
 AS
 -------------------------------------------------------------------------
@@ -42,3 +48,4 @@ SELECT	  [TimeOfDayKey]
 				END AS 'DayPart'
 		, CASE WHEN TimeOfDayKey <> -1 THEN LEFT(time24,2) + SUBSTRING(time24,4,2) + RIGHT(time24,2) ELSE 'Unknown' END AS 'TimeNumber'
   FROM [bief_dds].[DimTimeOfDay]
+GO

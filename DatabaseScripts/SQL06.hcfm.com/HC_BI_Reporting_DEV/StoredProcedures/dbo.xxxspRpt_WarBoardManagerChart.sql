@@ -1,3 +1,9 @@
+/* CreateDate: 05/06/2015 16:25:00.257 , ModifyDate: 10/10/2018 14:21:24.820 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /*
 ==============================================================================
 
@@ -264,3 +270,4 @@ WHERE TopFive IN(1,2,3,4,5)
 ORDER BY RecurringBusinessSize, [Month]
 
 END
+GO

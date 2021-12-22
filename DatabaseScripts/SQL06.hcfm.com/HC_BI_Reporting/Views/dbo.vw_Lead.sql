@@ -1,3 +1,9 @@
+/* CreateDate: 09/01/2011 15:19:21.537 , ModifyDate: 08/23/2017 16:42:50.207 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 VIEW:					vw_Lead
 DESTINATION SERVER:		SQL06
@@ -248,3 +254,4 @@ FROM    HC_BI_MKTG_DDS.bi_mktg_dds.FactLead fl
                                 AND da.ContactSSID = dc.ContactSSID
                       ORDER BY  da.ActivityDueDate DESC
                     ) o_Appointment
+GO

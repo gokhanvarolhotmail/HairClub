@@ -1,3 +1,9 @@
+/* CreateDate: 05/12/2020 13:47:51.250 , ModifyDate: 05/12/2020 13:47:51.250 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 create procedure [dbo].[sp_MSupd_bi_cms_ddsDimClient]     @c1 int = NULL,     @c2 uniqueidentifier = NULL,     @c3 int = NULL,     @c4 int = NULL,     @c5 nvarchar(50) = NULL,     @c6 nvarchar(20) = NULL,     @c7 nvarchar(50) = NULL,     @c8 int = NULL,     @c9 nvarchar(50) = NULL,     @c10 nvarchar(10) = NULL,     @c11 nvarchar(50) = NULL,     @c12 nvarchar(50) = NULL,     @c13 nvarchar(50) = NULL,     @c14 nvarchar(50) = NULL,     @c15 nvarchar(10) = NULL,     @c16 nvarchar(50) = NULL,     @c17 nvarchar(10) = NULL,     @c18 nvarchar(50) = NULL,     @c19 nvarchar(15) = NULL,     @c20 datetime = NULL,     @c21 int = NULL,     @c22 nvarchar(50) = NULL,     @c23 nvarchar(10) = NULL,     @c24 int = NULL,     @c25 nvarchar(50) = NULL,     @c26 nvarchar(10) = NULL,     @c27 int = NULL,     @c28 nvarchar(50) = NULL,     @c29 nvarchar(10) = NULL,     @c30 int = NULL,     @c31 nvarchar(50) = NULL,     @c32 nvarchar(10) = NULL,     @c33 bit = NULL,     @c34 bit = NULL,     @c35 bit = NULL,     @c36 bit = NULL,     @c37 nvarchar(100) = NULL,     @c38 nvarchar(100) = NULL,     @c39 nvarchar(15) = NULL,     @c40 int = NULL,     @c41 nvarchar(50) = NULL,     @c42 nvarchar(10) = NULL,     @c43 nvarchar(15) = NULL,     @c44 int = NULL,     @c45 nvarchar(50) = NULL,     @c46 nvarchar(10) = NULL,     @c47 nvarchar(15) = NULL,     @c48 int = NULL,     @c49 nvarchar(50) = NULL,     @c50 nvarchar(10) = NULL,     @c51 tinyint = NULL,     @c52 datetime = NULL,     @c53 datetime = NULL,     @c54 varchar(200) = NULL,     @c55 tinyint = NULL,     @c56 int = NULL,     @c57 int = NULL,     @c58 binary(8) = NULL,     @c59 uniqueidentifier = NULL,     @c60 uniqueidentifier = NULL,     @c61 uniqueidentifier = NULL,     @c62 uniqueidentifier = NULL,     @c63 int = NULL,     @c64 money = NULL,     @c65 nvarchar(10) = NULL,     @c66 int = NULL,     @c67 uniqueidentifier = NULL,     @c68 nvarchar(50) = NULL,     @c69 nvarchar(50) = NULL,     @c70 nvarchar(50) = NULL,     @c71 datetime = NULL,     @c72 nvarchar(18) = NULL,     @c73 uniqueidentifier = NULL,     @c74 varbinary(128) = NULL,     @pkc1 int = NULL,     @bitmap binary(10)
 as
 begin   if (substring(@bitmap,1,1) & 1 = 1)
@@ -9,3 +15,4 @@ begin  update [bi_cms_dds].[DimClient] set     [ClientSSID] = case substring(@bi
 where [ClientKey] = @pkc1 if @@rowcount = 0
     if @@microsoftversion>0x07320000
         exec sp_MSreplraiserror 20598 end  end   --
+GO

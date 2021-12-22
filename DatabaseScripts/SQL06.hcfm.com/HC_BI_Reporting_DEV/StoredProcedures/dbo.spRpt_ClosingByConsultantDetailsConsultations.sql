@@ -1,3 +1,9 @@
+/* CreateDate: 05/28/2013 11:28:35.810 , ModifyDate: 12/20/2019 14:32:40.493 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				spRpt_ClosingByConsultantDetailsConsultations
 DESTINATION SERVER:		SQL06
@@ -506,3 +512,4 @@ FROM    #NetConsultations NC
 			ON ld.SFDC_LeadID = NC.SFDC_LeadID
 
 END
+GO

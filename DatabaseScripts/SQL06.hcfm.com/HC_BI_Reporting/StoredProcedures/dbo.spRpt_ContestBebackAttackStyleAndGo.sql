@@ -1,3 +1,9 @@
+/* CreateDate: 10/05/2017 11:29:29.060 , ModifyDate: 10/12/2017 15:06:40.710 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /***********************************************************************
 PROCEDURE:				[spRpt_ContestBebackAttackStyleAndGo]
 DESTINATION SERVER:		SQL06
@@ -236,3 +242,4 @@ ORDER BY C.CenterSortOrder
 
 
 END
+GO

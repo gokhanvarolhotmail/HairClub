@@ -1,3 +1,9 @@
+/* CreateDate: 09/13/2011 15:50:45.860 , ModifyDate: 03/28/2013 15:51:32.103 */
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 /*
 ==============================================================================
 
@@ -131,3 +137,4 @@ CenterType.CenterTypeDescription, CenterType.CenterTypeDescriptionShort
 DROP TABLE #AppointmentData
 
 END
+GO
