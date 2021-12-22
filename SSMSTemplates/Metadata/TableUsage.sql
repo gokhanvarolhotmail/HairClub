@@ -1,14 +1,22 @@
--- Server Start 2021-08-14 20:05:00.277
--- Now	2021-12-21 22:13:32.033
-SELECT
-    [sqlserver_start_time]
-  , GETDATE() AS [Now]
-FROM [sys].[dm_os_sys_info] ;
-
 /*
+-- DELETE SNAPSHOT TABLES
 DROP TABLE [tempdb].[dbo].[index_usage_stats]
 DROP TABLE [tempdb].[dbo].[Objects]
 */
+
+-- Server Start 2021-08-14 20:05:00.277
+-- Now	2021-12-21 22:13:32.033
+SELECT
+    [k].[sqlserver_start_time] AS [ServerStartTime]
+  , GETDATE() AS [Now]
+  , [k].[SnapshotTime]
+  , CAST(DATEDIFF(SECOND, [k].[SnapshotTime], GETDATE()) / 60.0 AS NUMERIC(10, 3)) AS [MinutesSinceSnapshot]
+  , CAST(DATEDIFF(SECOND, [k].[SnapshotTime], GETDATE()) / 3600.0 AS NUMERIC(10, 3)) AS [HoursSinceSnapshot]
+FROM( SELECT
+          [sqlserver_start_time]
+        , ( SELECT [create_date] FROM [tempdb].[sys].[objects] WHERE [object_id] = OBJECT_ID('[tempdb].[dbo].[Objects]')) AS [SnapshotTime]
+      FROM [sys].[dm_os_sys_info] ) AS [k] ;
+
 IF OBJECT_ID('[tempdb].[dbo].[index_usage_stats]') IS NULL
     SELECT *
     INTO [tempdb].[dbo].[index_usage_stats]
