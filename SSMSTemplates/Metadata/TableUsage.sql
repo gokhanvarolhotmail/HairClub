@@ -28,14 +28,14 @@ SELECT
   , [o].[name] AS [ObjectName]
   , [o].[type] AS [ObjectType]
   , QUOTENAME([s].[name]) + '.' + QUOTENAME([o].[name]) AS [FQN]
-  , [p].[rows] AS [Rows]
+  , [p].[Rows] AS [Rows]
   , [o].[create_date]
   , [o].[modify_date]
 INTO [#Objects]
 FROM [HairClubCMS].[sys].[objects] AS [o]
 INNER JOIN [HairClubCMS].[sys].[schemas] AS [s] ON [o].[schema_id] = [s].[schema_id]
 INNER JOIN [HairClubCMS].[sys].[indexes] AS [i] ON [i].[object_id] = [o].[object_id] AND [i].[index_id] <= 1
-INNER JOIN [HairClubCMS].[sys].[partitions] AS [p] ON [p].[object_id] = [o].[object_id] AND [p].[index_id] <= 1
+INNER JOIN( SELECT [object_id], SUM([rows]) AS [Rows] FROM [HairClubCMS].[sys].[partitions] WHERE [index_id] <= 1 GROUP BY [object_id] ) AS [p] ON [p].[object_id] = [o].[object_id]
 WHERE [o].[is_ms_shipped] = 0 ;
 
 IF OBJECT_ID('[tempdb].[dbo].[#Detailed]') IS NOT NULL
@@ -100,3 +100,4 @@ SELECT *
 FROM [#Summary]
 ORDER BY CASE WHEN ISNULL([LastRead], '1900-01-01') > ISNULL([LastWrite], '1900-01-01') THEN [LastRead] ELSE [LastWrite] END DESC
        , [modify_date] DESC ;
+
