@@ -8,8 +8,8 @@ DROP TABLE [tempdb].[dbo].[Objects]
 -- Now	2021-12-21 22:13:32.033
 SELECT
     [k].[sqlserver_start_time] AS [ServerStartTime]
-  , GETDATE() AS [Now]
   , [k].[SnapshotTime]
+  , GETDATE() AS [Now]
   , CAST(DATEDIFF(SECOND, [k].[SnapshotTime], GETDATE()) / 60.0 AS NUMERIC(10, 3)) AS [MinutesSinceSnapshot]
   , CAST(DATEDIFF(SECOND, [k].[SnapshotTime], GETDATE()) / 3600.0 AS NUMERIC(10, 3)) AS [HoursSinceSnapshot]
 FROM( SELECT
