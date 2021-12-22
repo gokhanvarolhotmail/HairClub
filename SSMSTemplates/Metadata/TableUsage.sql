@@ -1,5 +1,7 @@
 -- 2021-08-14 20:05:00.277
-SELECT [sqlserver_start_time]
+SELECT
+    [sqlserver_start_time]
+  , GETDATE() AS [Now]
 FROM [sys].[dm_os_sys_info] ;
 
 IF OBJECT_ID('[tempdb].[dbo].[index_usage_stats]') IS NULL
@@ -26,12 +28,14 @@ SELECT
   , [o].[name] AS [ObjectName]
   , [o].[type] AS [ObjectType]
   , QUOTENAME([s].[name]) + '.' + QUOTENAME([o].[name]) AS [FQN]
+  , [p].[rows] AS [Rows]
   , [o].[create_date]
   , [o].[modify_date]
 INTO [#Objects]
 FROM [HairClubCMS].[sys].[objects] AS [o]
 INNER JOIN [HairClubCMS].[sys].[schemas] AS [s] ON [o].[schema_id] = [s].[schema_id]
 INNER JOIN [HairClubCMS].[sys].[indexes] AS [i] ON [i].[object_id] = [o].[object_id] AND [i].[index_id] <= 1
+INNER JOIN [HairClubCMS].[sys].[partitions] AS [p] ON [p].[object_id] = [o].[object_id] AND [p].[index_id] <= 1
 WHERE [o].[is_ms_shipped] = 0 ;
 
 IF OBJECT_ID('[tempdb].[dbo].[#Detailed]') IS NOT NULL
@@ -44,6 +48,7 @@ SELECT
   , [o].[ObjectName]
   , [o].[ObjectType]
   , [o].[FQN]
+  , [o].[Rows]
   , [o].[create_date]
   , [o].[modify_date]
   , [a].[user_seeks]
@@ -76,6 +81,7 @@ SELECT
   , [ObjectName]
   , MAX([ObjectType]) AS [ObjectType]
   , MAX([FQN]) AS [FQN]
+  , MAX([Rows]) AS [Rows]
   , MAX([create_date]) AS [create_date]
   , MAX([modify_date]) AS [modify_date]
   , SUM([UserSeekDiff] + [UserScanDiff] + [UserLookupDiff]) AS [Reads]
