@@ -1,0 +1,3 @@
+CREATE PROC dbo.spSQLPerf
+AS
+DBCC SQLPERF(logspace)

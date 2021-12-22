@@ -1,0 +1,6 @@
+CREATE	FUNCTION fnIsSale (@ActionCode NVARCHAR(50), @ResultCode NVARCHAR(50))
+RETURNS BIT
+AS
+BEGIN
+	RETURN (CASE WHEN @ResultCode IN ( 'Show Sale' ) THEN 1 ELSE 0 END)
+END

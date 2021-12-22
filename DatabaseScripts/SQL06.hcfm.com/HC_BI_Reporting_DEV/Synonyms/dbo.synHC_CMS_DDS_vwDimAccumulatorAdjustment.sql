@@ -1,0 +1,1 @@
+CREATE SYNONYM [dbo].[synHC_CMS_DDS_vwDimAccumulatorAdjustment] FOR [HC_BI_CMS_DDS].[bi_cms_dds].[vwDimAccumulatorAdjustment]

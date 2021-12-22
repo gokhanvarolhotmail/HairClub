@@ -1,0 +1,11 @@
+CREATE TABLE [dbo].[lkpDataType](
+	[DataTypeID] [int] IDENTITY(1,1) NOT NULL,
+	[DataTypeDescription] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+	[IsActiveFlag] [bit] NOT NULL,
+ CONSTRAINT [PK_lkpDataType] PRIMARY KEY CLUSTERED
+(
+	[DataTypeID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[lkpDataType] ADD  CONSTRAINT [DF_lkpDataType_IsActiveFlag]  DEFAULT ((0)) FOR [IsActiveFlag]

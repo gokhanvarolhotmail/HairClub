@@ -1,0 +1,1 @@
+CREATE SCHEMA [sf_Copy]
