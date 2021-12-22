@@ -91,4 +91,6 @@ SELECT *
 FROM [#Detailed] ;
 
 SELECT *
-FROM [#Summary] ;
+FROM [#Summary]
+ORDER BY CASE WHEN ISNULL([LastRead], '1900-01-01') > ISNULL([LastWrite], '1900-01-01') THEN [LastRead] ELSE [LastWrite] END DESC
+       , [modify_date] DESC ;
