@@ -18,6 +18,24 @@ INTO [#index_usage_stats]
 FROM [sys].[dm_db_index_usage_stats]
 WHERE [object_id] > 0 AND [database_id] = DB_ID('HairClubCMS') ;
 
+IF OBJECT_ID('[tempdb].[dbo].[Objects]') IS NULL
+    SELECT
+        [o].[object_id]
+      , [i].[index_id]
+      , [s].[name] AS [SchemaName]
+      , [o].[name] AS [ObjectName]
+      , [o].[type] AS [ObjectType]
+      , QUOTENAME([s].[name]) + '.' + QUOTENAME([o].[name]) AS [FQN]
+      , [p].[Rows] AS [Rows]
+      , [o].[create_date]
+      , [o].[modify_date]
+    INTO [tempdb].[dbo].[Objects]
+    FROM [HairClubCMS].[sys].[objects] AS [o]
+    INNER JOIN [HairClubCMS].[sys].[schemas] AS [s] ON [o].[schema_id] = [s].[schema_id]
+    INNER JOIN [HairClubCMS].[sys].[indexes] AS [i] ON [i].[object_id] = [o].[object_id] AND [i].[index_id] <= 1
+    INNER JOIN( SELECT [object_id], SUM([rows]) AS [Rows] FROM [HairClubCMS].[sys].[partitions] WHERE [index_id] <= 1 GROUP BY [object_id] ) AS [p] ON [p].[object_id] = [o].[object_id]
+    WHERE [o].[is_ms_shipped] = 0 ;
+
 IF OBJECT_ID('[tempdb].[dbo].[#Objects]') IS NOT NULL
     DROP TABLE [#Objects] ;
 
@@ -76,22 +94,37 @@ IF OBJECT_ID('[tempdb].[dbo].[#Summary]') IS NOT NULL
     DROP TABLE [#Summary] ;
 
 SELECT
-    MAX([IndexType]) AS [IndexType]
-  , [SchemaName]
-  , [ObjectName]
-  , MAX([ObjectType]) AS [ObjectType]
-  , MAX([FQN]) AS [FQN]
-  , MAX([Rows]) AS [Rows]
-  , MAX([create_date]) AS [create_date]
-  , MAX([modify_date]) AS [modify_date]
-  , SUM([UserSeekDiff] + [UserScanDiff] + [UserLookupDiff]) AS [Reads]
-  , SUM([UserUpdateDiff]) AS [Writes]
-  , ( SELECT MAX([d].[Value])FROM( VALUES( MAX([SeekInBetween])), ( MAX([ScanInBetween])), ( MAX([LookupInBetween]))) AS [d]( [Value] ) ) AS [LastRead]
-  , MAX([UpdateInBetween]) AS [LastWrite]
+    [d].[IndexType]
+  , [d].[SchemaName]
+  , [d].[ObjectName]
+  , [d].[ObjectType]
+  , [d].[FQN]
+  , [d].[Rows]
+  , [d].[Rows] - [o].[Rows] AS [RowsDiff]
+  , [d].[create_date]
+  , [d].[modify_date]
+  , [d].[Reads]
+  , [d].[Writes]
+  , [d].[LastRead]
+  , [d].[LastWrite]
 INTO [#Summary]
-FROM [#Detailed]
-GROUP BY [SchemaName]
-       , [ObjectName] ;
+FROM( SELECT
+          MAX([d].[IndexType]) AS [IndexType]
+        , [d].[SchemaName]
+        , [d].[ObjectName]
+        , MAX([d].[ObjectType]) AS [ObjectType]
+        , MAX([d].[FQN]) AS [FQN]
+        , MAX([d].[Rows]) AS [Rows]
+        , MAX([d].[create_date]) AS [create_date]
+        , MAX([d].[modify_date]) AS [modify_date]
+        , SUM([d].[UserSeekDiff] + [d].[UserScanDiff] + [d].[UserLookupDiff]) AS [Reads]
+        , SUM([d].[UserUpdateDiff]) AS [Writes]
+        , ( SELECT MAX([d].[Value])FROM( VALUES( MAX([SeekInBetween])), ( MAX([ScanInBetween])), ( MAX([LookupInBetween]))) AS [d]( [Value] ) ) AS [LastRead]
+        , MAX([d].[UpdateInBetween]) AS [LastWrite]
+      FROM [#Detailed] AS [d]
+      GROUP BY [d].[SchemaName]
+             , [d].[ObjectName] ) AS [d]
+LEFT JOIN [tempdb].[dbo].[objects] AS [o] ON [d].[FQN] = [o].[FQN] ;
 
 SELECT *
 FROM [#Detailed] ;
@@ -100,4 +133,3 @@ SELECT *
 FROM [#Summary]
 ORDER BY CASE WHEN ISNULL([LastRead], '1900-01-01') > ISNULL([LastWrite], '1900-01-01') THEN [LastRead] ELSE [LastWrite] END DESC
        , [modify_date] DESC ;
-
