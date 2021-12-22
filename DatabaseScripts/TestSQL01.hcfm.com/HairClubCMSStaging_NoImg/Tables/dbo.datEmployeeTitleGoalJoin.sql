@@ -1,9 +1,5 @@
 /* CreateDate: 12/16/2019 08:39:37.493 , ModifyDate: 12/16/2019 08:39:38.643 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[datEmployeeTitleGoalJoin](
 	[EmployeeTitleGoalJoinID] [int] IDENTITY(1,1) NOT NULL,
 	[EmployeeTitleGoalJoinSortOrder] [int] NOT NULL,

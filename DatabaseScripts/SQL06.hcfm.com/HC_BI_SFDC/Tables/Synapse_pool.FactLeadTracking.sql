@@ -1,9 +1,5 @@
 /* CreateDate: 08/13/2021 15:33:39.673 , ModifyDate: 08/13/2021 15:40:44.870 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [Synapse_pool].[FactLeadTracking](
 	[LeadKey] [int] NULL,
 	[LeadId] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,

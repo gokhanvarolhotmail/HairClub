@@ -1,9 +1,5 @@
 /* CreateDate: 11/20/2019 09:49:59.503 , ModifyDate: 11/20/2019 09:49:59.503 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dba].[AllocationSummary1_PostAPAdjust](
 	[HairSystemAllocationGUID] [uniqueidentifier] NOT NULL,
 	[HairSystemAllocationDate] [datetime] NULL,

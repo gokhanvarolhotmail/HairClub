@@ -1,9 +1,5 @@
 /* CreateDate: 10/02/2013 14:50:46.860 , ModifyDate: 04/04/2017 09:47:40.457 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				[spRpt_PresidentsClubNewBusinessCorporate]
 DESTINATION SERVER:		SQL06

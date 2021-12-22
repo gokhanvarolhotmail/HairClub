@@ -1,9 +1,5 @@
 /* CreateDate: 10/15/2013 07:36:11.250 , ModifyDate: 09/10/2019 22:34:41.163 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[temp_noble_export_data](
 	[ContactID] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[FirstName] [nchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,

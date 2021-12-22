@@ -1,9 +1,5 @@
 /* CreateDate: 10/04/2010 12:08:52.443 , ModifyDate: 05/26/2020 10:49:49.143 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpScheduleCalendarType](
 	[ScheduleCalendarTypeID] [int] NOT NULL,
 	[ScheduleCalendarTypeSortOrder] [int] NOT NULL,

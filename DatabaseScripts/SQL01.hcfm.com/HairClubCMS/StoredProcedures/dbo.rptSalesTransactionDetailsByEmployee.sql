@@ -1,9 +1,5 @@
 /* CreateDate: 03/13/2014 09:34:05.690 , ModifyDate: 11/18/2016 16:28:38.060 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*
 ==============================================================================
 PROCEDURE:				[rptSalesTransactionDetailsByEmployee]

@@ -1,9 +1,5 @@
 /* CreateDate: 10/01/2018 08:53:16.863 , ModifyDate: 10/01/2018 08:53:16.863 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[bbacctinfo](
 	[bbacctid] [int] NOT NULL,
 	[m_key] [varchar](32) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,

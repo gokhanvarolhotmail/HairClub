@@ -1,9 +1,5 @@
 /* CreateDate: 07/31/2017 06:41:07.470 , ModifyDate: 05/12/2019 22:31:56.913 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				selClientMembershipsForAutoRenewal

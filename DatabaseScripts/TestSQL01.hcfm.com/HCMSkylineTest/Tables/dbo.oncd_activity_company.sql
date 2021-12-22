@@ -1,9 +1,5 @@
 /* CreateDate: 11/08/2012 13:51:06.920 , ModifyDate: 11/08/2012 13:51:07.050 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[oncd_activity_company](
 	[activity_company_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[activity_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,

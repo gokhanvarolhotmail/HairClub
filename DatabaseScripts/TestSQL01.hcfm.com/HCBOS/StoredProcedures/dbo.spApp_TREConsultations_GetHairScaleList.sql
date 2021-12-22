@@ -1,9 +1,5 @@
 /* CreateDate: 09/22/2008 15:06:06.343 , ModifyDate: 01/25/2010 08:11:31.743 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*===============================================================================================
 -- Procedure Name:			spApp_TREConsultations_GetHairScaleList
 -- Procedure Description:

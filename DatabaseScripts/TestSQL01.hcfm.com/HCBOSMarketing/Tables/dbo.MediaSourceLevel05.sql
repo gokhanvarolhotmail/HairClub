@@ -1,9 +1,5 @@
 /* CreateDate: 06/16/2008 17:11:43.043 , ModifyDate: 06/14/2009 09:00:16.110 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[MediaSourceLevel05](
 	[Level05ID] [int] IDENTITY(1,1) NOT NULL,
 	[Level05CreativeCode] [varchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,

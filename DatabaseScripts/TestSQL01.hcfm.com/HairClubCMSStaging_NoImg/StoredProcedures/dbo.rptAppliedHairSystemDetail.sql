@@ -1,9 +1,5 @@
 /* CreateDate: 05/24/2016 11:37:20.037 , ModifyDate: 11/02/2018 13:54:41.850 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*===============================================================================================
  Procedure Name:            [rptAppliedHairSystemDetail]
  Procedure Description:

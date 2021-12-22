@@ -1,9 +1,5 @@
 /* CreateDate: 05/06/2014 14:56:12.827 , ModifyDate: 11/04/2019 08:17:08.510 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				rptAppointmentPhoto

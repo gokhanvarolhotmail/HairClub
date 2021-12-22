@@ -1,9 +1,5 @@
 /* CreateDate: 03/10/2015 11:10:55.900 , ModifyDate: 03/30/2015 09:15:04.570 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*===============================================================================================
  Procedure Name:            [SpRpt_DashbCenterDeclines]
  Procedure Description:

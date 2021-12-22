@@ -1,9 +1,5 @@
 /* CreateDate: 08/03/2017 10:59:17.267 , ModifyDate: 03/26/2019 17:23:29.913 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*===============================================================================================
  Procedure Name:            [rptMembershipPromotionsDetail]
  Procedure Description:     This report is used for Membership Promotions of Type: CENTER and ONCONTACT

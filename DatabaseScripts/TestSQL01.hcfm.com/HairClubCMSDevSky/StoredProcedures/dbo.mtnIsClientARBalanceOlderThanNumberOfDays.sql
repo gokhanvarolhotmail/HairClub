@@ -1,9 +1,5 @@
 /* CreateDate: 11/14/2016 07:44:38.870 , ModifyDate: 12/21/2021 15:15:45.280 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 -- *** SqlDbx Personal Edition ***
 -- !!! Not licensed for commercial use beyound 90 days evaluation period !!!
 -- For version limitations please check http://www.sqldbx.com/personal_edition.htm

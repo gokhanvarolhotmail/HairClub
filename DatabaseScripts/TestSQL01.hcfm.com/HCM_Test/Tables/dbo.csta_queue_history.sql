@@ -1,9 +1,5 @@
 /* CreateDate: 10/15/2013 00:27:22.427 , ModifyDate: 05/21/2015 18:32:21.907 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[csta_queue_history](
 	[queue_history_id] [uniqueidentifier] NOT NULL,
 	[queue_date] [datetime] NULL,

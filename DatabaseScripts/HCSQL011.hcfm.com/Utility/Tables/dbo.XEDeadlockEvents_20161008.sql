@@ -1,9 +1,5 @@
 /* CreateDate: 10/08/2016 19:27:48.577 , ModifyDate: 10/08/2016 19:27:48.577 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[XEDeadlockEvents_20161008](
 	[name] [nvarchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[timestamp] [datetimeoffset](7) NULL,

@@ -1,9 +1,5 @@
 /* CreateDate: 09/03/2021 09:37:07.690 , ModifyDate: 09/03/2021 09:37:14.463 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [bi_mktg_dds].[FactLeadMonthly](
 	[ContactKey] [int] NOT NULL,
 	[LeadCreationDateKey] [int] NOT NULL,

@@ -1,9 +1,5 @@
 /* CreateDate: 04/14/2009 07:33:54.760 , ModifyDate: 02/18/2013 19:04:02.800 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE VIEW [dbo].[vwCfgAccumulator]
 AS
 SELECT     TOP (100) PERCENT a.AccumulatorID, a.AccumulatorSortOrder, a.AccumulatorDescription, a.AccumulatorDescriptionShort,

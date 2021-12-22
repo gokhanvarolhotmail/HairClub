@@ -1,9 +1,5 @@
 /* CreateDate: 02/15/2016 15:59:46.413 , ModifyDate: 02/15/2016 15:59:46.413 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 VIEW:					vw_PCPCounts_Rolling2Months
 DESTINATION SERVER:		SQL06

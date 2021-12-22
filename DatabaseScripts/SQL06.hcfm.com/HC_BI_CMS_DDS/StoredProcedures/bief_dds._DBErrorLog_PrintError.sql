@@ -1,9 +1,5 @@
 /* CreateDate: 10/03/2019 23:03:42.767 , ModifyDate: 10/03/2019 23:03:42.767 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE PROCEDURE [bief_dds].[_DBErrorLog_PrintError]
 AS
 

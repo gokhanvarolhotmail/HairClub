@@ -1,9 +1,5 @@
 /* CreateDate: 08/27/2013 14:18:43.957 , ModifyDate: 05/07/2015 16:12:20.150 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 		PROCEDURE:				dbaGoLiveUpdatesforCenter

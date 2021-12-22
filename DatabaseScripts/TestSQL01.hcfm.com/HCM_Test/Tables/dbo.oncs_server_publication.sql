@@ -1,9 +1,5 @@
 /* CreateDate: 01/18/2005 09:34:19.483 , ModifyDate: 06/21/2012 10:04:45.607 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[oncs_server_publication](
 	[server_publication_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[server_id] [int] NOT NULL,

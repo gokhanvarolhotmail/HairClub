@@ -1,9 +1,5 @@
 /* CreateDate: 01/29/2014 16:35:10.213 , ModifyDate: 03/08/2018 14:20:38.130 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				spRpt_EFTFrozenPCP
 DESTINATION SERVER:		SQL06

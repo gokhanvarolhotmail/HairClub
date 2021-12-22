@@ -1,9 +1,5 @@
 /* CreateDate: 07/31/2017 12:23:46.290 , ModifyDate: 07/31/2017 12:23:46.290 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				extHairClubCMSEarnedSummaryByCountry
 DESTINATION SERVER:		SQL06

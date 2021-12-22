@@ -1,9 +1,5 @@
 /* CreateDate: 07/14/2010 15:37:15.250 , ModifyDate: 07/14/2010 15:37:15.250 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 -- =============================================================================
 -- Create date: 7 July 2010
 -- Description:	Removes the lock on all of the provided user's locked Contacts.

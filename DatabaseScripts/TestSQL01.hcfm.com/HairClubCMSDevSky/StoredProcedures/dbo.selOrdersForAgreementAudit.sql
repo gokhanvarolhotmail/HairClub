@@ -1,9 +1,5 @@
 /* CreateDate: 02/20/2014 08:01:16.680 , ModifyDate: 12/06/2016 15:07:08.367 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				selOrdersForAgreementAudit

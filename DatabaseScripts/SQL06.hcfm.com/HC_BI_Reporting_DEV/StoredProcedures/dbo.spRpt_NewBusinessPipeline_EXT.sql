@@ -1,9 +1,5 @@
 /* CreateDate: 05/18/2015 13:20:59.057 , ModifyDate: 04/15/2020 09:06:46.600 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				spRpt_NewBusinessPipeline_EXT
 DESTINATION SERVER:		SQL06

@@ -1,9 +1,5 @@
 /* CreateDate: 11/14/2011 09:23:51.580 , ModifyDate: 09/10/2019 22:44:47.650 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[cstd_activity_history](
 	[activity_history_id] [int] IDENTITY(1,1) NOT NULL,
 	[activity_history_date] [datetime] NOT NULL,

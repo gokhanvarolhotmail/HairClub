@@ -1,9 +1,5 @@
 /* CreateDate: 07/31/2014 11:56:58.280 , ModifyDate: 07/31/2014 11:56:58.280 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[sysjobactivity](
 	[RunDate] [datetime] NOT NULL,
 	[session_id] [int] NOT NULL,

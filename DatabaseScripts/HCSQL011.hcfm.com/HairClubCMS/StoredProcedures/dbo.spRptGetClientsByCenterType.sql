@@ -1,9 +1,5 @@
 /* CreateDate: 02/09/2021 15:14:10.543 , ModifyDate: 02/09/2021 15:14:10.543 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 -- =============================================
 -- Author:		rrojas
 -- Create date: 01/01/2021 TFS14795

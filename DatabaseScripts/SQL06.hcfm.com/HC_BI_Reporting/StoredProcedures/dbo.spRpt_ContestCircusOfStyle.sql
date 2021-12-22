@@ -1,9 +1,5 @@
 /* CreateDate: 04/05/2018 11:29:56.380 , ModifyDate: 04/06/2018 12:01:25.933 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				[spRpt_ContestCircusOfStyle]
 DESTINATION SERVER:		SQL06

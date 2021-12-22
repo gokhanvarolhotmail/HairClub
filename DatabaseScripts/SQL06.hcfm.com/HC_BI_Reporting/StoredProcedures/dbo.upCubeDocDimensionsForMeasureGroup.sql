@@ -1,9 +1,5 @@
 /* CreateDate: 04/08/2020 11:22:01.257 , ModifyDate: 04/08/2020 11:22:01.257 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE PROCEDURE [dbo].[upCubeDocDimensionsForMeasureGroup]
     (@Catalog       VARCHAR(255)
     ,@Cube          VARCHAR(255)

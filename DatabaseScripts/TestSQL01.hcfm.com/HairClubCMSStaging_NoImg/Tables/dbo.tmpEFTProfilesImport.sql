@@ -1,9 +1,5 @@
 /* CreateDate: 03/15/2016 15:31:49.257 , ModifyDate: 06/24/2019 09:58:26.340 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[tmpEFTProfilesImport](
 	[RowID] [int] IDENTITY(1,1) NOT NULL,
 	[CenterName] [nvarchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,

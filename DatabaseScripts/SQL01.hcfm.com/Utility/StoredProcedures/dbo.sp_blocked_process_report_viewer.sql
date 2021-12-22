@@ -1,9 +1,5 @@
 /* CreateDate: 02/09/2017 15:25:14.537 , ModifyDate: 02/09/2017 15:25:14.607 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE PROCEDURE dbo.sp_blocked_process_report_viewer
 (
 	@Source nvarchar(max),

@@ -1,9 +1,5 @@
 /* CreateDate: 12/19/2018 08:03:27.913 , ModifyDate: 09/23/2019 12:32:36.843 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				selInventoryAuditBatchSerializedDiscrepancies

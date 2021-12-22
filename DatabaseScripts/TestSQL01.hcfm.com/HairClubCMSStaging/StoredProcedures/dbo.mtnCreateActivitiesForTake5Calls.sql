@@ -1,9 +1,5 @@
 /* CreateDate: 10/13/2017 14:10:04.453 , ModifyDate: 10/25/2018 10:25:30.363 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*******************************************************************************************************
 PROCEDURE:				mtnCreateActivitiesForTake5Calls
 DESTINATION SERVER:		SQL01

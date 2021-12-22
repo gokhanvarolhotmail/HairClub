@@ -1,9 +1,5 @@
 /* CreateDate: 07/29/2013 11:53:20.433 , ModifyDate: 08/20/2013 13:39:47.950 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*
 ==============================================================================
 PROCEDURE:				mtnSalesCodeCopyToCenter

@@ -1,9 +1,5 @@
 /* CreateDate: 10/24/2017 12:57:01.650 , ModifyDate: 10/26/2017 14:00:46.610 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				spsvc_MediaLeadUpdate_BI

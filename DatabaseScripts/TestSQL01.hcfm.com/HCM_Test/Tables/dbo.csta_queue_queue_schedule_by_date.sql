@@ -1,9 +1,5 @@
 /* CreateDate: 10/15/2013 00:47:40.107 , ModifyDate: 05/19/2014 08:48:36.153 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[csta_queue_queue_schedule_by_date](
 	[queue_queue_schedule_by_date_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[queue_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,

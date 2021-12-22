@@ -1,9 +1,5 @@
 /* CreateDate: 02/06/2020 08:14:19.357 , ModifyDate: 03/17/2021 09:21:23.583 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				spSvc_IC_WigSales_Step05_RetractCommission
 DESTINATION SERVER:		SQL06

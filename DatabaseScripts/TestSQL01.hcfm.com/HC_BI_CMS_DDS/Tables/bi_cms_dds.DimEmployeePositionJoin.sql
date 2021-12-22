@@ -1,9 +1,5 @@
 /* CreateDate: 01/22/2013 11:19:29.243 , ModifyDate: 09/16/2019 09:33:49.857 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [bi_cms_dds].[DimEmployeePositionJoin](
 	[EmployeeGUID] [uniqueidentifier] NOT NULL,
 	[EmployeePositionID] [int] NOT NULL,

@@ -1,9 +1,5 @@
 /* CreateDate: 05/14/2012 17:33:41.330 , ModifyDate: 02/27/2017 09:49:31.720 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				[selEFTProcessCenterACHExport]
 DESTINATION SERVER:		SQL01

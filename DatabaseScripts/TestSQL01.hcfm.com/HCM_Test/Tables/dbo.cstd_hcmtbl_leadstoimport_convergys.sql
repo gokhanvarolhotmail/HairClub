@@ -1,9 +1,5 @@
 /* CreateDate: 08/06/2007 16:29:38.580 , ModifyDate: 08/06/2007 16:29:48.470 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[cstd_hcmtbl_leadstoimport_convergys](
 	[hcmtbl_leadstoimport_convergys_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[result_code] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,

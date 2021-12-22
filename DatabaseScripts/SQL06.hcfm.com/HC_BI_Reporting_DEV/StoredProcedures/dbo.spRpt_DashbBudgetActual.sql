@@ -1,9 +1,5 @@
 /* CreateDate: 01/06/2015 11:39:33.180 , ModifyDate: 06/04/2015 09:46:15.583 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				SpRpt_DashbBudgetActual
 DESTINATION SERVER:		SQL06

@@ -1,9 +1,5 @@
 /* CreateDate: 11/04/2015 13:41:54.503 , ModifyDate: 11/04/2015 13:41:54.503 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 -- =============================================================================
 -- Create date: 14 November 2011
 -- Description:	Normalizes address naming using onca_address_normalization

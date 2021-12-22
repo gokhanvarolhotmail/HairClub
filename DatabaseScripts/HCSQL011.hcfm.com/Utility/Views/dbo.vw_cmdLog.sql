@@ -1,9 +1,5 @@
 /* CreateDate: 12/15/2021 14:10:56.697 , ModifyDate: 12/15/2021 14:10:56.697 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 Create View vw_cmdLog as
 SELECT top 100 PERCENT
 		[ID]

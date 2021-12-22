@@ -1,9 +1,5 @@
 /* CreateDate: 02/12/2018 17:14:29.283 , ModifyDate: 07/30/2018 05:35:55.163 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[logSalesConsultationReset](
 	[SalesConsultationResetID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
 	[AppointmentGUID] [uniqueidentifier] NULL,

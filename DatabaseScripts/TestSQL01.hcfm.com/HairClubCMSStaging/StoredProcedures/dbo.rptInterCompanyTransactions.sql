@@ -1,9 +1,5 @@
 /* CreateDate: 12/19/2013 07:34:29.420 , ModifyDate: 03/23/2016 11:42:22.327 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*===============================================================================================
  Procedure Name:            rptInterCompanyTransactions
  Procedure Description:     This stored procedure pulls all transactions where the Transaction Center

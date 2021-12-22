@@ -1,9 +1,5 @@
 /* CreateDate: 12/13/2006 11:22:30.113 , ModifyDate: 06/21/2012 10:00:00.373 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[csta_import_value_map](
 	[admin_table_name] [nvarchar](64) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[non_standard_value] [nvarchar](64) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,

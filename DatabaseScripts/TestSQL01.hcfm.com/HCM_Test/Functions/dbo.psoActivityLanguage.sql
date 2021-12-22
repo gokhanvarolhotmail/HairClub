@@ -1,9 +1,5 @@
 /* CreateDate: 10/15/2013 00:09:17.307 , ModifyDate: 10/15/2013 00:09:17.307 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE FUNCTION dbo.psoActivityLanguage
 (
 	@ActivityId	NCHAR(10)

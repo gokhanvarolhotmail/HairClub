@@ -1,9 +1,5 @@
 /* CreateDate: 09/03/2021 09:37:05.640 , ModifyDate: 09/03/2021 10:02:56.920 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [bi_mktg_dds].[DimContactAppend](
 	[ContactAppendKey] [int] NOT NULL,
 	[ContactKey] [int] NULL,

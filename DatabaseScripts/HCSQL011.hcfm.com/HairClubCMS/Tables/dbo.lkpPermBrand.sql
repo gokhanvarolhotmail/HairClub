@@ -1,9 +1,5 @@
 /* CreateDate: 08/27/2008 12:14:07.397 , ModifyDate: 05/26/2020 10:49:44.093 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpPermBrand](
 	[PermBrandID] [int] NOT NULL,
 	[PermBrandSortOrder] [int] NOT NULL,

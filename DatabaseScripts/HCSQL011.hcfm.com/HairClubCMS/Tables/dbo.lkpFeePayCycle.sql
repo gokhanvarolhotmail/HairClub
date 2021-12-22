@@ -1,9 +1,5 @@
 /* CreateDate: 08/27/2008 11:59:04.530 , ModifyDate: 05/26/2020 10:49:41.137 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpFeePayCycle](
 	[FeePayCycleID] [int] NOT NULL,
 	[FeePayCycleSortOrder] [int] NOT NULL,

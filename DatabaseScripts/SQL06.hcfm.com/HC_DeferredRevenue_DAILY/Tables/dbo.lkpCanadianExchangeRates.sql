@@ -1,9 +1,5 @@
 /* CreateDate: 02/21/2013 10:59:30.830 , ModifyDate: 02/21/2013 10:59:30.880 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpCanadianExchangeRates](
 	[ExchangeRateID] [int] IDENTITY(1,1) NOT NULL,
 	[ExchangeRate] [float] NOT NULL,

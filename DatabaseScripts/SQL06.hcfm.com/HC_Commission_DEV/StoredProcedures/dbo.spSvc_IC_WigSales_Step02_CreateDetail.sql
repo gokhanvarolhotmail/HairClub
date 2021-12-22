@@ -1,9 +1,5 @@
 /* CreateDate: 02/06/2020 08:08:37.060 , ModifyDate: 09/16/2020 15:09:54.750 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				spSvc_IC_WigSales_Step02_CreateDetail
 DESTINATION SERVER:		SQL06

@@ -1,9 +1,5 @@
 /* CreateDate: 10/03/2006 10:13:38.170 , ModifyDate: 10/03/2006 10:13:38.170 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 create function dbo.F_START_OF_MONTH
 	( @DAY datetime )
 returns  datetime

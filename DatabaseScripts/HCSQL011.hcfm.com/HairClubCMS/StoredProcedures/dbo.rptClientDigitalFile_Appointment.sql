@@ -1,9 +1,5 @@
 /* CreateDate: 12/18/2015 11:13:41.547 , ModifyDate: 12/18/2015 11:13:41.547 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*===============================================================================================
  Procedure Name:            rptClientDigitalFile_Appointment
  Procedure Description:     This stored procedure provides all of the appointment information for the client digital file.

@@ -1,9 +1,5 @@
 /* CreateDate: 10/08/2015 11:10:09.220 , ModifyDate: 05/08/2020 15:19:43.157 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				spSVC_CommissionTypeID_41_Step03_ValidateDetails
 DESTINATION SERVER:		SQL06

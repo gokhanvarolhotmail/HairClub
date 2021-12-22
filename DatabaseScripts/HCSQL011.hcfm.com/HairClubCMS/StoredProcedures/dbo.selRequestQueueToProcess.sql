@@ -1,9 +1,5 @@
 /* CreateDate: 05/15/2013 13:59:08.280 , ModifyDate: 11/17/2017 10:54:35.433 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				selRequestQueueToProcess

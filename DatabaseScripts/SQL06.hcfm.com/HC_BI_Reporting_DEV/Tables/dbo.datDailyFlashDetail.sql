@@ -1,9 +1,5 @@
 /* CreateDate: 03/18/2021 14:16:08.957 , ModifyDate: 03/18/2021 14:16:08.957 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[datDailyFlashDetail](
 	[FullDate] [datetime] NULL,
 	[DayOfWeekName] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,

@@ -1,9 +1,5 @@
 /* CreateDate: 10/27/2008 13:46:44.447 , ModifyDate: 12/03/2021 10:24:48.690 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[datInventoryTransaction](
 	[InventoryTransactionGUID] [uniqueidentifier] NOT NULL,
 	[EmployeeGUID] [uniqueidentifier] NULL,

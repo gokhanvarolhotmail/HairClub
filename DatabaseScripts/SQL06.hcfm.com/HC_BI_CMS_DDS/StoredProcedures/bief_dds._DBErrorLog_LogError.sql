@@ -1,9 +1,5 @@
 /* CreateDate: 10/03/2019 23:03:42.747 , ModifyDate: 10/03/2019 23:03:42.747 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE PROCEDURE [bief_dds].[_DBErrorLog_LogError]
 (
       @DBErrorLogID		int = 0 OUTPUT -- contains the DBErrorLogID of the row inserted

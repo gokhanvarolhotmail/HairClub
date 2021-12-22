@@ -1,9 +1,5 @@
 /* CreateDate: 10/17/2007 08:50:11.060 , ModifyDate: 04/12/2016 12:05:11.460 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /* -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	SP:	 hcmsp_fullfilments_all
 	Desc: 	This procedure is latest implementation of hcmsp_fullfilments.  The changes that were made

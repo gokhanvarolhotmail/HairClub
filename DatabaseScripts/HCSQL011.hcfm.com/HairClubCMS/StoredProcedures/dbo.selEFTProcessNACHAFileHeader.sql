@@ -1,9 +1,5 @@
 /* CreateDate: 03/24/2015 07:43:43.863 , ModifyDate: 09/26/2016 08:09:21.410 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				[selEFTProcessNACHAFileHeader]
 DESTINATION SERVER:		SQL01

@@ -1,9 +1,5 @@
 /* CreateDate: 10/03/2019 23:03:41.987 , ModifyDate: 10/03/2019 23:03:47.227 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [bi_cms_dds].[DimSecurityElement](
 	[SecurityElementKey] [int] NOT NULL,
 	[SecurityElementSSID] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,

@@ -1,9 +1,5 @@
 /* CreateDate: 04/28/2009 11:42:25.157 , ModifyDate: 04/28/2009 11:42:37.560 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[2ndSurgery04272009](
 	[center] [float] NULL,
 	[client_no] [float] NULL,

@@ -1,9 +1,5 @@
 /* CreateDate: 09/17/2014 16:18:52.333 , ModifyDate: 11/04/2019 08:17:08.810 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*===============================================================================================
  Procedure Name:            rptTVSummaryAnalysis
  Procedure Description:     This stored procedure provides the header information for the rptTVSummaryAnalysis.rdl

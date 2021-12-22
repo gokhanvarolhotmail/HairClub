@@ -1,9 +1,5 @@
 /* CreateDate: 10/11/2013 14:29:25.987 , ModifyDate: 02/03/2015 17:20:37.650 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 FUNCTION: GetCurrentMembershipDescription

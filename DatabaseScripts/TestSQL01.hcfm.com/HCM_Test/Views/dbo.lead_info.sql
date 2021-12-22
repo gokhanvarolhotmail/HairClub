@@ -1,9 +1,5 @@
 /* CreateDate: 06/06/2007 11:22:04.500 , ModifyDate: 11/09/2015 09:03:53.750 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE VIEW [dbo].[lead_info]
 AS
 SELECT  c.contact_id,

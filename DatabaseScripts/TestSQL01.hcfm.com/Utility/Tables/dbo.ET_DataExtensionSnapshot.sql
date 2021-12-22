@@ -1,9 +1,5 @@
 /* CreateDate: 12/07/2014 16:59:15.877 , ModifyDate: 12/07/2014 16:59:15.877 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[ET_DataExtensionSnapshot](
 	[ID] [int] IDENTITY(1,1) NOT NULL,
 	[SnapshotTime] [smalldatetime] NOT NULL,

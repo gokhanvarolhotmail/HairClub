@@ -1,9 +1,5 @@
 /* CreateDate: 09/26/2011 16:03:28.320 , ModifyDate: 12/09/2019 15:38:45.590 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				sprpt_InventoryScanDetails
 DESTINATION SERVER:		SQL01

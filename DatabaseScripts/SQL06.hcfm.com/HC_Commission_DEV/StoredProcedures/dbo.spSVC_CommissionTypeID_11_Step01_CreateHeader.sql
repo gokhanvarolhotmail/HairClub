@@ -1,9 +1,5 @@
 /* CreateDate: 10/06/2015 11:52:08.027 , ModifyDate: 02/16/2017 11:34:57.697 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				spSVC_CommissionTypeID_11_Step01_CreateHeader
 DESCRIPTION:			EXT to Surgery

@@ -1,9 +1,5 @@
 /* CreateDate: 10/08/2021 18:51:05.687 , ModifyDate: 10/08/2021 18:51:05.687 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[SF_Event](
 	[CreatedDate] [datetime] NULL,
 	[Id] [varchar](8000) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,

@@ -1,9 +1,5 @@
 /* CreateDate: 08/24/2012 08:42:24.373 , ModifyDate: 08/24/2012 08:42:24.373 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*===============================================================================================
 -- Procedure Name:			spRpt_FeeCenterDrilldown
 -- Created By:             HDu

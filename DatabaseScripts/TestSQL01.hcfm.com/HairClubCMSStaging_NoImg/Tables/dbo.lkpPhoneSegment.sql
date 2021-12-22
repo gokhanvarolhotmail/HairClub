@@ -1,9 +1,5 @@
 /* CreateDate: 08/27/2012 08:40:09.657 , ModifyDate: 12/03/2021 10:24:48.587 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpPhoneSegment](
 	[PhoneSegmentID] [int] NOT NULL,
 	[PhoneSegmentSortOrder] [int] NOT NULL,

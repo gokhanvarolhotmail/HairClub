@@ -1,9 +1,5 @@
 /* CreateDate: 10/07/2014 10:36:40.370 , ModifyDate: 11/04/2019 08:17:08.750 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				[rptTVComparativePhoto2]

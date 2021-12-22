@@ -1,9 +1,5 @@
 /* CreateDate: 08/27/2008 12:16:40.230 , ModifyDate: 12/07/2021 16:20:16.280 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpRemovalProcess](
 	[RemovalProcessID] [int] NOT NULL,
 	[RemovalProcessSortOrder] [int] NOT NULL,

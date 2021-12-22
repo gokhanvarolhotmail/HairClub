@@ -1,9 +1,5 @@
 /* CreateDate: 02/24/2015 07:35:34.650 , ModifyDate: 12/07/2021 16:20:15.877 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[datCommissionCorrection](
 	[CommissionCorrectionID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
 	[CenterID] [int] NOT NULL,

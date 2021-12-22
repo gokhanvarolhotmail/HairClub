@@ -1,9 +1,5 @@
 /* CreateDate: 10/01/2018 08:53:16.827 , ModifyDate: 10/01/2018 08:53:16.830 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[cardshield_keys_info](
 	[key_id] [bigint] NOT NULL,
 	[flags] [int] NOT NULL,

@@ -1,9 +1,5 @@
 /* CreateDate: 08/12/2015 17:11:39.477 , ModifyDate: 08/13/2015 08:37:29.247 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 VIEW:					vwk_TotalCenterSalesTrendMTD
 DESTINATION SERVER:		SQL06

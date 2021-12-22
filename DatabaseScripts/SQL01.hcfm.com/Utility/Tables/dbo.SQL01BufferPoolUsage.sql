@@ -1,9 +1,5 @@
 /* CreateDate: 08/05/2018 20:56:48.410 , ModifyDate: 08/05/2018 20:56:48.410 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[SQL01BufferPoolUsage](
 	[Object Name] [nvarchar](128) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[index_id] [int] NOT NULL,

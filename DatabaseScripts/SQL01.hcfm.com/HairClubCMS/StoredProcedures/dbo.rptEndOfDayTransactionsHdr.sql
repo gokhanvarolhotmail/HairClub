@@ -1,9 +1,5 @@
 /* CreateDate: 02/18/2013 06:59:50.643 , ModifyDate: 09/19/2013 10:37:13.050 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*===============================================================================================
 -- Procedure Name:			rptEndOfDayTransactionsHdr
 -- Procedure Description:

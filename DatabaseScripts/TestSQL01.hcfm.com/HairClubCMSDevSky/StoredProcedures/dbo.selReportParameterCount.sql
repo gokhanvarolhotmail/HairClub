@@ -1,9 +1,5 @@
 /* CreateDate: 02/28/2011 20:07:11.370 , ModifyDate: 02/27/2017 09:49:34.283 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				selReportParameterCount

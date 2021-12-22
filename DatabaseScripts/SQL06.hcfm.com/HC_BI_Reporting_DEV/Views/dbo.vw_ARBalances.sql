@@ -1,9 +1,5 @@
 /* CreateDate: 11/12/2015 14:44:04.327 , ModifyDate: 06/19/2019 10:46:35.123 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 VIEW:					[vw_ARBalances]
 DESTINATION SERVER:		SQL06

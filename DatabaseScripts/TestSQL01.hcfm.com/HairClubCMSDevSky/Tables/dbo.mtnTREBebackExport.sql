@@ -1,9 +1,5 @@
 /* CreateDate: 09/28/2009 16:51:53.950 , ModifyDate: 12/07/2021 16:20:16.160 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[mtnTREBebackExport](
 	[TREBebackExportID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
 	[ContactID] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,

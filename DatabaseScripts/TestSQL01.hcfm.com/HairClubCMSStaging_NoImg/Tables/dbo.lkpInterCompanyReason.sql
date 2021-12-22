@@ -1,9 +1,5 @@
 /* CreateDate: 10/23/2008 11:15:33.473 , ModifyDate: 12/03/2021 10:24:48.553 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpInterCompanyReason](
 	[InterCompanyReasonID] [int] NOT NULL,
 	[InterCompanyReasonSortOrder] [int] NOT NULL,

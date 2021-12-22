@@ -1,9 +1,5 @@
 /* CreateDate: 09/27/2017 15:19:28.963 , ModifyDate: 09/27/2017 15:19:28.963 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[tmpLendingTreeClients](
 	[FirstName] [nvarchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[LastName] [nvarchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,

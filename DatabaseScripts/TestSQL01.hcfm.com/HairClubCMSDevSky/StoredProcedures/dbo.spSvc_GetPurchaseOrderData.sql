@@ -1,9 +1,5 @@
 /* CreateDate: 05/28/2020 09:49:26.723 , ModifyDate: 08/12/2020 09:29:18.673 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				spSvc_GetPurchaseOrderData
 DESTINATION SERVER:		SQL01

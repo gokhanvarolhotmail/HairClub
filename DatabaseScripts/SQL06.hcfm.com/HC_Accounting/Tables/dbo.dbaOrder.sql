@@ -1,9 +1,5 @@
 /* CreateDate: 10/03/2019 22:32:12.107 , ModifyDate: 03/25/2021 09:59:00.610 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[dbaOrder](
 	[OrderID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
 	[SalesOrderInvoiceNumber] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,

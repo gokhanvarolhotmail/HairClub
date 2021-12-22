@@ -1,9 +1,5 @@
 /* CreateDate: 09/24/2019 11:16:25.240 , ModifyDate: 11/05/2019 08:53:00.317 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				spRpt_EZPayStatus
 DESTINATION SERVER:		SQL06

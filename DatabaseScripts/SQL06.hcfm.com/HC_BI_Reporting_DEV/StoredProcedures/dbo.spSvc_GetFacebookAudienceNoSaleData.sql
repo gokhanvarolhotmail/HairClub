@@ -1,9 +1,5 @@
 /* CreateDate: 10/12/2016 11:45:15.130 , ModifyDate: 10/12/2016 11:51:43.097 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				spSvc_GetFacebookAudienceNoSaleData
 DESTINATION SERVER:		SQL06

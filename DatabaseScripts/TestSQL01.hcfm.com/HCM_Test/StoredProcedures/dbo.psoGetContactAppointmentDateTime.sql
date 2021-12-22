@@ -1,9 +1,5 @@
 /* CreateDate: 01/03/2013 10:22:39.233 , ModifyDate: 01/03/2013 10:22:39.233 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 -- =============================================
 -- Create date: 30 October 2012
 -- Description:	Provides the Due Date and Start Time of the provided Contact's Appointment Activity.

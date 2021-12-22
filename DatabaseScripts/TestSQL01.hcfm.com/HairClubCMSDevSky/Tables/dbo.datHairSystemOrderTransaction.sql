@@ -1,9 +1,5 @@
 /* CreateDate: 12/31/2010 13:21:01.047 , ModifyDate: 12/07/2021 16:20:16.223 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[datHairSystemOrderTransaction](
 	[HairSystemOrderTransactionGUID] [uniqueidentifier] NOT NULL,
 	[CenterID] [int] NOT NULL,

@@ -1,9 +1,5 @@
 /* CreateDate: 05/28/2018 22:15:34.580 , ModifyDate: 09/23/2019 12:34:03.313 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[datInventoryAdjustment](
 	[InventoryAdjustmentID] [int] IDENTITY(1,1) NOT NULL,
 	[CenterID] [int] NOT NULL,

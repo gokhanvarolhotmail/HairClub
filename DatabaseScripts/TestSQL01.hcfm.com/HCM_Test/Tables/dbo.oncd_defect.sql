@@ -1,9 +1,5 @@
 /* CreateDate: 02/04/2005 08:28:19.577 , ModifyDate: 06/21/2012 10:05:29.217 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[oncd_defect](
 	[defect_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[product_code] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,

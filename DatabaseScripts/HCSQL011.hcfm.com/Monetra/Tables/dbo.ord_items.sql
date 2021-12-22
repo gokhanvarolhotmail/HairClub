@@ -1,9 +1,5 @@
 /* CreateDate: 04/26/2021 12:28:48.840 , ModifyDate: 04/26/2021 12:28:48.870 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[ord_items](
 	[id] [bigint] NOT NULL,
 	[order_id] [bigint] NOT NULL,

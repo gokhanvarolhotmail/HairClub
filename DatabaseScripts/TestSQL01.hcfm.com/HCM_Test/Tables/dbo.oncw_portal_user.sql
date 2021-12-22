@@ -1,9 +1,5 @@
 /* CreateDate: 04/13/2006 13:57:45.480 , ModifyDate: 06/21/2012 10:03:46.083 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[oncw_portal_user](
 	[portal_user_id] [nchar](20) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[user_code] [nchar](20) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,

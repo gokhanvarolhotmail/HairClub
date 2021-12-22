@@ -1,9 +1,5 @@
 /* CreateDate: 06/14/2012 13:58:15.197 , ModifyDate: 08/03/2016 14:12:23.447 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				mtnInventoryGetInventoryDatesByCenter
 DESTINATION SERVER:		SQL01

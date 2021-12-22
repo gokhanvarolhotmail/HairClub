@@ -1,9 +1,5 @@
 /* CreateDate: 06/12/2020 14:35:51.083 , ModifyDate: 10/13/2020 16:11:43.367 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE VIEW [dbo].[vw_LeadTest]
 AS
 SELECT	d.FullDate AS 'CreatedDate'

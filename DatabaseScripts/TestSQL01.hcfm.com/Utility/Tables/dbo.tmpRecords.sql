@@ -1,9 +1,5 @@
 /* CreateDate: 05/20/2016 14:21:16.663 , ModifyDate: 05/20/2016 14:21:16.663 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[tmpRecords](
 	[Subscriber_Key] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[Appointment_Guid] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,

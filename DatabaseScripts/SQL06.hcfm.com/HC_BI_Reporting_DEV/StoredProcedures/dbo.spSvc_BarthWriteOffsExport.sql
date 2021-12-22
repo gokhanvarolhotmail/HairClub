@@ -1,9 +1,5 @@
 /* CreateDate: 04/10/2014 12:18:37.497 , ModifyDate: 03/07/2017 18:53:22.740 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				spSvc_BarthWriteOffsExport
 DESTINATION SERVER:		SQL06

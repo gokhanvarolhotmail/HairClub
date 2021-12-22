@@ -1,9 +1,5 @@
 /* CreateDate: 01/09/2007 17:07:14.647 , ModifyDate: 01/09/2007 17:07:14.647 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[hcmtbl_leads_unqualified](
 	[contact_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[first_name] [nchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,

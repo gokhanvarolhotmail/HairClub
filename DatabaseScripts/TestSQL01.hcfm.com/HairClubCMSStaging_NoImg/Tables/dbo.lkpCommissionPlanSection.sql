@@ -1,9 +1,5 @@
 /* CreateDate: 02/24/2015 07:35:34.547 , ModifyDate: 12/03/2021 10:24:48.533 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpCommissionPlanSection](
 	[CommissionPlanSectionID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
 	[CommissionPlanSectionSortOrder] [int] NOT NULL,

@@ -1,9 +1,5 @@
 /* CreateDate: 06/30/2021 13:17:40.593 , ModifyDate: 06/30/2021 13:17:40.777 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpRefersionProcess](
 	[RefersionProcessID] [int] IDENTITY(1,1) NOT NULL,
 	[RefersionProcessDescription] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,

@@ -1,9 +1,5 @@
 /* CreateDate: 11/14/2008 08:34:54.050 , ModifyDate: 12/03/2021 10:24:48.633 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpCountry](
 	[CountryID] [int] NOT NULL,
 	[CountrySortOrder] [int] NOT NULL,

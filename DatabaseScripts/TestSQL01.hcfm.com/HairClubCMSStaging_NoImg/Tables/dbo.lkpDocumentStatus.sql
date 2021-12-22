@@ -1,9 +1,5 @@
 /* CreateDate: 04/30/2018 18:03:59.280 , ModifyDate: 04/30/2018 18:04:02.407 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpDocumentStatus](
 	[DocumentStatusID] [int] NOT NULL,
 	[DocumentStatusSortOrder] [int] NOT NULL,

@@ -1,9 +1,5 @@
 /* CreateDate: 10/03/2019 23:03:43.177 , ModifyDate: 10/03/2019 23:03:43.177 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				sprpt_RetailFlash	VERSION  1.0

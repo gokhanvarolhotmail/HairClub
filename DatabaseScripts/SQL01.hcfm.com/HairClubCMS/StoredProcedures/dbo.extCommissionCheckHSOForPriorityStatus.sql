@@ -1,9 +1,5 @@
 /* CreateDate: 04/10/2017 11:49:44.470 , ModifyDate: 09/17/2017 18:33:04.523 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				extCommissionCheckHSOForPriorityStatus
 DESTINATION SERVER:		SQL01

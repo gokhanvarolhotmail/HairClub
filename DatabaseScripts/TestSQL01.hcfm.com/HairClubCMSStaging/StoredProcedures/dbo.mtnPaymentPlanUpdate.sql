@@ -1,9 +1,5 @@
 /* CreateDate: 08/29/2016 07:23:55.500 , ModifyDate: 12/07/2020 08:08:58.010 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*
 ==============================================================================
 PROCEDURE:				mtnPaymentPlanUpdate

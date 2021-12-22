@@ -1,9 +1,5 @@
 /* CreateDate: 02/21/2018 19:30:23.653 , ModifyDate: 05/04/2018 08:28:07.550 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE PROCEDURE [dbo].[CommandExecute]
 
 @Command nvarchar(max),

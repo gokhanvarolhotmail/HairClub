@@ -1,9 +1,5 @@
 /* CreateDate: 09/25/2009 14:27:17.470 , ModifyDate: 02/17/2013 18:07:59.727 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				extTREConsultationUpdate

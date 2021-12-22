@@ -1,9 +1,5 @@
 /* CreateDate: 07/08/2019 12:54:58.630 , ModifyDate: 07/08/2019 12:54:58.630 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[datInventoryAuditSnapshot_PreSplit](
 	[InventoryAuditSnapshotID] [int] NOT NULL,
 	[SnapshotDate] [datetime] NOT NULL,

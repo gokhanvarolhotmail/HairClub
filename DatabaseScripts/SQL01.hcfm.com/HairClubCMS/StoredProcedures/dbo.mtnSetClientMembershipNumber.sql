@@ -1,9 +1,5 @@
 /* CreateDate: 02/18/2013 07:20:18.313 , ModifyDate: 02/27/2017 09:49:23.133 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				[mtnSetClientMembershipNumber]

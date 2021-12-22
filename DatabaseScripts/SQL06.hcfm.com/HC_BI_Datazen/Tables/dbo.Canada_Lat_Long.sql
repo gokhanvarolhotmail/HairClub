@@ -1,9 +1,5 @@
 /* CreateDate: 11/05/2015 14:40:04.667 , ModifyDate: 11/05/2015 14:40:28.503 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[Canada_Lat_Long](
 	[Country] [nvarchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[PostalCode] [nvarchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,

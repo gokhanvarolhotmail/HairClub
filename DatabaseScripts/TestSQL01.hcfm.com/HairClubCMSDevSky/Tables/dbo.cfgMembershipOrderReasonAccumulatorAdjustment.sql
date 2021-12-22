@@ -1,9 +1,5 @@
 /* CreateDate: 07/10/2017 07:12:40.873 , ModifyDate: 07/10/2017 07:12:41.190 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[cfgMembershipOrderReasonAccumulatorAdjustment](
 	[MembershipOrderReasonAccumulatorAdjustmentID] [int] IDENTITY(1,1) NOT NULL,
 	[MembershipOrderReasonID] [int] NOT NULL,

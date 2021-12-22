@@ -1,9 +1,5 @@
 /* CreateDate: 05/31/2016 07:50:08.517 , ModifyDate: 08/28/2020 17:01:48.140 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				mtnCreateHairOrderInventorySnapshot

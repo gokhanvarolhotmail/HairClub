@@ -1,9 +1,5 @@
 /* CreateDate: 02/18/2013 06:59:50.583 , ModifyDate: 05/26/2020 10:49:24.080 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[datRegisterTender](
 	[RegisterTenderGUID] [uniqueidentifier] NOT NULL,
 	[RegisterLogGUID] [uniqueidentifier] NOT NULL,

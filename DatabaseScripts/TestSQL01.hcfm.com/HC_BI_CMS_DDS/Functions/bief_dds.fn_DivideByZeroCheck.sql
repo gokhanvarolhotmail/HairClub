@@ -1,9 +1,5 @@
 /* CreateDate: 05/03/2010 12:17:24.210 , ModifyDate: 09/16/2019 09:33:49.907 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE  FUNCTION [bief_dds].[fn_DivideByZeroCheck] (@numerator numeric, @denominator numeric)
 -----------------------------------------------------------------------
 -- [fn_DivideByZeroCheck] ensures safe division by zero

@@ -1,9 +1,5 @@
 /* CreateDate: 07/27/2016 14:38:58.077 , ModifyDate: 07/27/2016 14:38:58.127 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpScheduleType](
 	[ScheduleTypeID] [int] IDENTITY(1,1) NOT NULL,
 	[ScheduleTypeDescription] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,

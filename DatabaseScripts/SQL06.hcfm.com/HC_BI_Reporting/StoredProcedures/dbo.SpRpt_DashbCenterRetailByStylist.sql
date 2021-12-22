@@ -1,9 +1,5 @@
 /* CreateDate: 03/02/2015 12:53:27.473 , ModifyDate: 07/29/2015 10:04:18.853 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*===============================================================================================
  Procedure Name:            [SpRpt_DashbCenterRetailByStylist]
  Procedure Description:

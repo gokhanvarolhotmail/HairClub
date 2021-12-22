@@ -1,9 +1,5 @@
 /* CreateDate: 10/06/2015 12:06:56.127 , ModifyDate: 10/07/2015 15:57:08.637 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				spSVC_CommissionTypeID_11_Step04_CalculateCommission
 DESCRIPTION:			EXT to Surgery

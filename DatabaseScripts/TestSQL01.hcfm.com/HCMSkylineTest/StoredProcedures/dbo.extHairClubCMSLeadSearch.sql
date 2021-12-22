@@ -1,9 +1,5 @@
 /* CreateDate: 01/30/2017 13:49:16.803 , ModifyDate: 07/11/2017 10:43:01.323 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE PROCEDURE [dbo].[extHairClubCMSLeadSearch]
 (
 	@CenterNumber nvarchar(10),

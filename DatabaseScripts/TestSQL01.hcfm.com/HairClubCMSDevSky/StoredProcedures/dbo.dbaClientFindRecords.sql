@@ -1,9 +1,5 @@
 /* CreateDate: 06/22/2009 11:18:58.793 , ModifyDate: 02/27/2017 09:49:15.563 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				dbaClientFindRecords

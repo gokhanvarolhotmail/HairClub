@@ -1,9 +1,5 @@
 /* CreateDate: 04/08/2020 11:22:00.117 , ModifyDate: 04/08/2020 11:22:00.117 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE PROCEDURE [dbo].[upCubeDocSearch]
     (@Search        VARCHAR(255)
     ,@Catalog       VARCHAR(255)=NULL

@@ -1,9 +1,5 @@
 /* CreateDate: 08/10/2006 13:53:12.327 , ModifyDate: 01/25/2010 08:11:31.730 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE  PROCEDURE dbo.spapp_Update_CenterClosing
 	@closingID integer,
 	@closedate char(10),

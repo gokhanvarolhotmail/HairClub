@@ -1,9 +1,5 @@
 /* CreateDate: 11/12/2014 09:44:37.153 , ModifyDate: 11/12/2014 09:44:37.153 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[ARTransOriginalFixedNegARCreditRefund](
 	[AccountReceivableID] [int] NULL,
 	[ClientGUID] [nvarchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,

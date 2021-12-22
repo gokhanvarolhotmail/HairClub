@@ -1,9 +1,5 @@
 /* CreateDate: 04/20/2020 15:23:04.000 , ModifyDate: 04/20/2020 15:23:04.437 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[logBosleySalesforce](
 	[ID] [int] IDENTITY(1,1) NOT NULL,
 	[BosleyRequestID] [int] NOT NULL,

@@ -1,9 +1,5 @@
 /* CreateDate: 08/28/2012 11:54:22.157 , ModifyDate: 09/15/2015 13:30:32.970 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*===============================================================================================
 PROCEDURE:	[spRpt_MembershipSummary]
 

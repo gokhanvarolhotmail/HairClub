@@ -1,9 +1,5 @@
 /* CreateDate: 10/30/2008 10:42:15.573 , ModifyDate: 12/07/2021 16:20:15.817 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpAppointmentType](
 	[AppointmentTypeID] [int] NOT NULL,
 	[AppointmentTypeSortOrder] [int] NULL,

@@ -1,9 +1,5 @@
 /* CreateDate: 11/02/2015 10:07:03.333 , ModifyDate: 12/18/2015 10:48:37.047 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[cstd_skip_trace_import](
 	[skip_trace_import_id] [uniqueidentifier] NOT NULL,
 	[skip_trace_import_date] [datetime] NOT NULL,

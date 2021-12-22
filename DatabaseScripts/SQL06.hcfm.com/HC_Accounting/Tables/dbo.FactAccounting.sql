@@ -1,9 +1,5 @@
 /* CreateDate: 10/03/2019 22:32:12.347 , ModifyDate: 11/08/2019 23:11:48.113 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[FactAccounting](
 	[CenterID] [int] NOT NULL,
 	[DateKey] [int] NOT NULL,

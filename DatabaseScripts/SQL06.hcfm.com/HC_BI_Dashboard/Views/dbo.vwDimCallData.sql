@@ -1,9 +1,5 @@
 /* CreateDate: 08/21/2020 12:52:09.270 , ModifyDate: 08/21/2020 12:52:09.270 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 create VIEW dbo.[vwDimCallData]
 AS
 -------------------------------------------------------------------------

@@ -1,9 +1,5 @@
 /* CreateDate: 03/06/2009 13:55:34.443 , ModifyDate: 12/07/2021 16:20:16.043 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[datClientMembershipAccum](
 	[ClientMembershipAccumGUID] [uniqueidentifier] NOT NULL,
 	[ClientMembershipGUID] [uniqueidentifier] NULL,

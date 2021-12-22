@@ -1,9 +1,5 @@
 /* CreateDate: 02/18/2013 06:40:48.923 , ModifyDate: 12/03/2021 10:24:48.637 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpPermOwnHairRods](
 	[PermOwnHairRodsID] [int] NOT NULL,
 	[PermOwnHairRodsSortOrder] [int] NOT NULL,

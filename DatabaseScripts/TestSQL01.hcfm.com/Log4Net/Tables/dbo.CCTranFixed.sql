@@ -1,9 +1,5 @@
 /* CreateDate: 03/05/2014 16:35:06.257 , ModifyDate: 03/05/2014 16:35:06.257 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[CCTranFixed](
 	[SalesOrderGUID] [nvarchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[TaxRate1] [float] NULL,

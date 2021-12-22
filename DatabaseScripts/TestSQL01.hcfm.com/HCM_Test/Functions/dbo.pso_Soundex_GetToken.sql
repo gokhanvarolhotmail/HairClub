@@ -1,9 +1,5 @@
 /* CreateDate: 11/04/2015 13:41:54.483 , ModifyDate: 11/04/2015 13:41:54.483 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 -- =============================================================================
 -- Create date: 10 November 2011
 -- Description:	Gets the token prior to the separator.

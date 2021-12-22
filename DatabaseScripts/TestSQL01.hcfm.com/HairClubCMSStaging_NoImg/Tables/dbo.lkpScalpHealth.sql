@@ -1,9 +1,5 @@
 /* CreateDate: 07/15/2014 08:03:42.067 , ModifyDate: 12/03/2021 10:24:48.577 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpScalpHealth](
 	[ScalpHealthID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
 	[ScalpHealthSortOrder] [int] NOT NULL,

@@ -1,9 +1,5 @@
 /* CreateDate: 09/03/2014 07:45:47.310 , ModifyDate: 12/07/2021 16:20:15.970 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpNoteSubType](
 	[NoteSubTypeID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
 	[NoteSubTypeSortOrder] [int] NOT NULL,

@@ -1,9 +1,5 @@
 /* CreateDate: 12/16/2019 08:39:37.293 , ModifyDate: 12/16/2019 08:39:38.667 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpEmployeeGoalDataType](
 	[EmployeeGoalDataTypeID] [int] IDENTITY(1,1) NOT NULL,
 	[EmployeeGoalDataTypeSortOrder] [int] NOT NULL,

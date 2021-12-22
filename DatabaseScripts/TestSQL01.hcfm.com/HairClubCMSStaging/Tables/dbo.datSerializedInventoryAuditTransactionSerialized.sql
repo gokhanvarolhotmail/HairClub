@@ -1,9 +1,5 @@
 /* CreateDate: 09/23/2019 12:30:42.003 , ModifyDate: 05/26/2020 10:49:41.310 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[datSerializedInventoryAuditTransactionSerialized](
 	[SerializedInventoryAuditTransactionSerializedID] [int] IDENTITY(1,1) NOT NULL,
 	[SerializedInventoryAuditTransactionID] [int] NOT NULL,

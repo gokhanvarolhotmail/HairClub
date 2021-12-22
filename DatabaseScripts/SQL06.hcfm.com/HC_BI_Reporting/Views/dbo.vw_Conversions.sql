@@ -1,9 +1,5 @@
 /* CreateDate: 01/20/2016 13:00:37.350 , ModifyDate: 01/09/2018 14:54:19.703 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 VIEW:					vw_Conversions
 DESTINATION SERVER:		SQL06

@@ -1,9 +1,5 @@
 /* CreateDate: 02/18/2013 06:45:39.297 , ModifyDate: 05/21/2017 22:19:14.913 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				mtnGetCheckedInAppts	VERSION  1.0

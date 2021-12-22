@@ -1,9 +1,5 @@
 /* CreateDate: 08/27/2008 11:29:14.357 , ModifyDate: 05/26/2020 10:49:24.490 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpCenterType](
 	[CenterTypeID] [int] NOT NULL,
 	[CenterTypeSortOrder] [int] NOT NULL,

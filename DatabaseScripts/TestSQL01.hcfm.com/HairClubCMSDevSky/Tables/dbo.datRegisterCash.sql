@@ -1,9 +1,5 @@
 /* CreateDate: 01/21/2014 23:50:00.660 , ModifyDate: 12/07/2021 16:20:16.157 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[datRegisterCash](
 	[RegisterCashGUID] [uniqueidentifier] NOT NULL,
 	[RegisterTenderGUID] [uniqueidentifier] NOT NULL,

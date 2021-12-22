@@ -1,9 +1,5 @@
 /* CreateDate: 04/26/2021 12:28:48.977 , ModifyDate: 04/26/2021 12:28:48.980 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[skylink_installs](
 	[user_id] [int] NOT NULL,
 	[device_id] [varchar](64) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,

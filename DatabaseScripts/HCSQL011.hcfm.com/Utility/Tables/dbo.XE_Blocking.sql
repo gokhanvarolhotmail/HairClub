@@ -1,9 +1,5 @@
 /* CreateDate: 02/09/2017 16:32:24.010 , ModifyDate: 02/09/2017 16:32:24.010 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[XE_Blocking](
 	[name] [nvarchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[timestamp] [datetimeoffset](7) NULL,

@@ -1,9 +1,5 @@
 /* CreateDate: 04/27/2018 15:18:54.343 , ModifyDate: 04/27/2018 15:50:38.117 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				[spRpt_ContestCarnivalOfConversionsDetails]
 DESTINATION SERVER:		SQL06

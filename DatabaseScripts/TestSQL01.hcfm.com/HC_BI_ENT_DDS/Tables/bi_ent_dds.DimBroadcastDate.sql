@@ -1,9 +1,5 @@
 /* CreateDate: 07/11/2012 14:09:14.183 , ModifyDate: 09/16/2019 09:25:18.167 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [bi_ent_dds].[DimBroadcastDate](
 	[DateKey] [int] NOT NULL,
 	[Date] [smalldatetime] NOT NULL,

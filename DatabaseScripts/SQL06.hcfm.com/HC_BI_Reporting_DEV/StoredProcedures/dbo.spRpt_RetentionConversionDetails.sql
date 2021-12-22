@@ -1,9 +1,5 @@
 /* CreateDate: 02/01/2016 17:01:49.330 , ModifyDate: 01/09/2017 22:13:11.200 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*==============================================================================
 PROCEDURE:				spRpt_RetentionConversionDetails
 DESTINATION SERVER:		SQL06

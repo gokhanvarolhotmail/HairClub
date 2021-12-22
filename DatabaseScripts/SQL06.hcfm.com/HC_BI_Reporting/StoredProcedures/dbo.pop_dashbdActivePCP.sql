@@ -1,9 +1,5 @@
 /* CreateDate: 07/03/2014 12:09:00.250 , ModifyDate: 07/14/2014 15:05:27.077 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				[pop_dashbdActivePCP]
 DESTINATION SERVER:		SQL06

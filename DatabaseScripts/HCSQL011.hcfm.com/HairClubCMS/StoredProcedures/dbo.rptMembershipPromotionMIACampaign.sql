@@ -1,9 +1,5 @@
 /* CreateDate: 08/08/2017 13:56:09.360 , ModifyDate: 03/07/2019 13:36:55.630 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*===============================================================================================
  Procedure Name:            [rptMembershipPromotionMIACampaign]
  Procedure Description:     This report is used for Membership Promotions of Type: $1200 Off - Women's 2017 MIA Campaign

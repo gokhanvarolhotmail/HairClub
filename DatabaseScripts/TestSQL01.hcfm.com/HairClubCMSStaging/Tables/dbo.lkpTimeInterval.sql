@@ -1,9 +1,5 @@
 /* CreateDate: 02/18/2013 06:40:48.800 , ModifyDate: 05/26/2020 10:49:24.143 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpTimeInterval](
 	[TimeIntervalID] [int] NOT NULL,
 	[TimeIntervalSortOrder] [int] NOT NULL,

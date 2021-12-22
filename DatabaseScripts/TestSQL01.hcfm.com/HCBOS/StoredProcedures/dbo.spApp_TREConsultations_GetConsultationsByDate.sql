@@ -1,9 +1,5 @@
 /* CreateDate: 08/28/2008 17:43:00.370 , ModifyDate: 01/25/2010 08:11:31.807 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*===============================================================================================
 -- Procedure Name:			spApp_TREConsultations_GetConsultationsByDate
 -- Procedure Description:

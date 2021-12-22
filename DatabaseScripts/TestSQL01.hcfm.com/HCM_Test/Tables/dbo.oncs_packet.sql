@@ -1,9 +1,5 @@
 /* CreateDate: 06/01/2005 12:54:54.737 , ModifyDate: 06/21/2012 10:04:45.403 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[oncs_packet](
 	[packet_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[parent_packet_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,

@@ -1,9 +1,5 @@
 /* CreateDate: 08/27/2008 11:26:31.160 , ModifyDate: 12/03/2021 10:24:48.597 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpAdhesivePerimeter](
 	[AdhesivePerimeterID] [int] NOT NULL,
 	[AdhesivePerimeterSortOrder] [int] NOT NULL,

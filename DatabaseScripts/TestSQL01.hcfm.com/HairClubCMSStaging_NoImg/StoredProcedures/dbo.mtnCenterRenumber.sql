@@ -1,9 +1,5 @@
 /* CreateDate: 02/28/2011 16:11:30.560 , ModifyDate: 02/27/2017 09:49:17.280 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*
 ==============================================================================
 PROCEDURE:                  mtnCenterRenumber

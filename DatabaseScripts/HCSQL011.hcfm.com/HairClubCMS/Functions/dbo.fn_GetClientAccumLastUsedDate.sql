@@ -1,9 +1,5 @@
 /* CreateDate: 03/11/2013 23:45:40.717 , ModifyDate: 12/19/2013 07:35:30.130 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 		PROCEDURE: 				[fn_GetClientAccumLastUsedDate]
 		DESTINATION SERVER:		SQL01

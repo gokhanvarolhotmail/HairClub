@@ -1,9 +1,5 @@
 /* CreateDate: 02/18/2013 06:40:49.017 , ModifyDate: 12/03/2021 10:24:48.660 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpTimeUnit](
 	[TimeUnitID] [int] NOT NULL,
 	[TimeUnitSortOrder] [int] NOT NULL,

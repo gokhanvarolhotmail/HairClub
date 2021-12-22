@@ -1,9 +1,5 @@
 /* CreateDate: 02/10/2020 12:03:11.457 , ModifyDate: 02/17/2020 07:38:42.873 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				spSvc_IC_HaloSales_Step04_AdvanceCommission
 DESTINATION SERVER:		SQL06

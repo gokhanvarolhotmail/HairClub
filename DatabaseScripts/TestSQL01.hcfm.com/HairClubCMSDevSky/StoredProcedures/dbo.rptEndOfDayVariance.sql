@@ -1,9 +1,5 @@
 /* CreateDate: 11/15/2012 10:43:02.177 , ModifyDate: 02/18/2013 19:11:13.413 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*===============================================================================================
 -- Procedure Name:			rptEndOfDayVariance
 -- Procedure Description:

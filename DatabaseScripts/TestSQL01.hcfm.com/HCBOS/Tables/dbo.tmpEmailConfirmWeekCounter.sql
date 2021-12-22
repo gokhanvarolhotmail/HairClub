@@ -1,9 +1,5 @@
 /* CreateDate: 01/11/2007 14:38:29.937 , ModifyDate: 05/08/2010 02:30:11.667 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[tmpEmailConfirmWeekCounter](
 	[WeekCounterId] [int] IDENTITY(1,1) NOT NULL,
 	[WeekOf] [datetime] NULL,

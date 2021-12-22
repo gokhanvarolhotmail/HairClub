@@ -1,9 +1,5 @@
 /* CreateDate: 01/18/2005 09:34:14.187 , ModifyDate: 06/21/2012 10:04:17.277 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[onct_entity_process](
 	[process_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[entity_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,

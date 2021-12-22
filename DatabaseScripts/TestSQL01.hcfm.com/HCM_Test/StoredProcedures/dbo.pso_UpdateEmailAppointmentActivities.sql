@@ -1,9 +1,5 @@
 /* CreateDate: 06/20/2012 11:33:27.750 , ModifyDate: 06/20/2012 11:33:48.280 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 -- =============================================
 -- Create date: 18 June 2012
 -- Description:	Populates and updates cstd_email_dh_appointment_activity

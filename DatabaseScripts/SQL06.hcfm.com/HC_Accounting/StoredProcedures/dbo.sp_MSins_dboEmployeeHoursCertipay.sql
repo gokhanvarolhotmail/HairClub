@@ -1,9 +1,5 @@
 /* CreateDate: 10/03/2019 22:32:12.293 , ModifyDate: 10/03/2019 22:32:12.293 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 create procedure [sp_MSins_dboEmployeeHoursCertipay]
     @c1 varchar(64),
     @c2 varchar(64),

@@ -1,9 +1,5 @@
 /* CreateDate: 08/21/2014 14:57:29.053 , ModifyDate: 09/17/2019 10:27:39.020 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*===============================================================================================
 Procedure Name:				rptTVHairandScalp
 Procedure Description:			This stored procedure provides the data for the Scalp Health grids.

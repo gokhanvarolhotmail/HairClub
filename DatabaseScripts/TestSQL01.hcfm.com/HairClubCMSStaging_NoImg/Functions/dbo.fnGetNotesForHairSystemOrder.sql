@@ -1,9 +1,5 @@
 /* CreateDate: 12/31/2010 13:21:06.703 , ModifyDate: 02/17/2013 18:08:07.893 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 FUNCTION:				fnGetNotesForHairSystemOrder

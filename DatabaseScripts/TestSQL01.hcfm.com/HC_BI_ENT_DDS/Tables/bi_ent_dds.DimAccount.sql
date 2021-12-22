@@ -1,9 +1,5 @@
 /* CreateDate: 04/10/2012 10:57:22.467 , ModifyDate: 09/16/2019 09:25:18.163 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [bi_ent_dds].[DimAccount](
 	[AccountID] [int] NOT NULL,
 	[LedgerGroup] [varchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,

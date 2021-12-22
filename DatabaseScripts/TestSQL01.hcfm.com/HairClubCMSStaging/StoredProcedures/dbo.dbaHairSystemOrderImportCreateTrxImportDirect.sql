@@ -1,9 +1,5 @@
 /* CreateDate: 01/04/2011 12:48:43.053 , ModifyDate: 07/30/2012 10:18:16.603 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*
 ==============================================================================
 PROCEDURE:                    dbaHairSystemOrderImportCreateTrx

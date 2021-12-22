@@ -1,9 +1,5 @@
 /* CreateDate: 04/15/2021 11:17:18.527 , ModifyDate: 05/15/2021 00:07:59.103 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[datScorecardCenterMeasures](
 	[CenterMeasureID] [int] NULL,
 	[MeasureID] [int] NULL,

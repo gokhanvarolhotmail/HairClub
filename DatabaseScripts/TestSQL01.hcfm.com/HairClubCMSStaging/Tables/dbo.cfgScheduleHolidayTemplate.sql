@@ -1,9 +1,5 @@
 /* CreateDate: 12/11/2017 07:01:32.340 , ModifyDate: 12/11/2017 07:01:32.483 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[cfgScheduleHolidayTemplate](
 	[ScheduleHolidayTemplateID] [int] IDENTITY(1,1) NOT NULL,
 	[ScheduleHolidayTemplateDate] [date] NOT NULL,

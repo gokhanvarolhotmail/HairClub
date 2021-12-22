@@ -1,9 +1,5 @@
 /* CreateDate: 08/15/2014 12:35:26.953 , ModifyDate: 05/26/2020 10:49:44.963 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpReportResourceImage](
 	[ReportResourceImageID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
 	[ReportResourceImageName] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,

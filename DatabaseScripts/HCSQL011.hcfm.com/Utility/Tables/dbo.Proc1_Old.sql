@@ -1,9 +1,5 @@
 /* CreateDate: 11/18/2016 15:49:30.997 , ModifyDate: 11/18/2016 15:49:30.997 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[Proc1_Old](
 	[SalesCodeDivisionID] [int] NULL,
 	[SalesCodeDivisionDescription] [nvarchar](100) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,

@@ -1,9 +1,5 @@
 /* CreateDate: 07/20/2017 12:10:40.437 , ModifyDate: 03/12/2018 14:30:09.530 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				spRpt_HaloAndHairExtensionsDetail
 DESTINATION SERVER:		SQL06

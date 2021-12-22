@@ -1,9 +1,5 @@
 /* CreateDate: 01/03/2017 10:50:47.407 , ModifyDate: 01/03/2017 10:50:47.407 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*
 ==============================================================================
 PROCEDURE:				extHairClubCMSGetPastAppointments

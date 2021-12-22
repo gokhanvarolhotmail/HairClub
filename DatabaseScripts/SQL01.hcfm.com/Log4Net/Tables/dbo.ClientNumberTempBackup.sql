@@ -1,9 +1,5 @@
 /* CreateDate: 02/25/2015 16:46:50.843 , ModifyDate: 02/25/2015 16:46:50.843 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[ClientNumberTempBackup](
 	[ClientNumberTempBackupID] [int] IDENTITY(1,1) NOT NULL,
 	[ClientGUID] [uniqueidentifier] NOT NULL,

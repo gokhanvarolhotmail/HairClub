@@ -1,9 +1,5 @@
 /* CreateDate: 09/08/2008 06:14:28.533 , ModifyDate: 09/23/2019 12:29:38.870 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				mtnMembershipAccumAdjustment

@@ -1,9 +1,5 @@
 /* CreateDate: 09/19/2014 23:49:31.177 , ModifyDate: 09/19/2014 23:49:31.177 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[dm_db_file_space_usage](
 	[Run Date] [datetime] NOT NULL,
 	[Server Name] [nvarchar](128) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,

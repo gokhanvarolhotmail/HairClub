@@ -1,9 +1,5 @@
 /* CreateDate: 01/12/2017 14:12:11.257 , ModifyDate: 01/12/2017 14:17:27.710 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE FUNCTION [dbo].[fnSplitInt](
     @sInputList nvarchar(2000) -- List of delimited items
   , @sDelimiter nchar(1) = ',' -- delimiter that separates items

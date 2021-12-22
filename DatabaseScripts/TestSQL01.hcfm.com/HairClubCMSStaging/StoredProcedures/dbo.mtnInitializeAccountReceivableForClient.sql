@@ -1,9 +1,5 @@
 /* CreateDate: 06/10/2013 20:15:02.867 , ModifyDate: 03/05/2015 11:36:46.180 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*
 ==============================================================================
 PROCEDURE:				mtnInitializeAccountReceivableForClient

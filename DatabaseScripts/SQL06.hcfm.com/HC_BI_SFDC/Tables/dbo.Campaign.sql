@@ -1,9 +1,5 @@
 /* CreateDate: 10/04/2019 14:09:30.217 , ModifyDate: 10/14/2020 13:51:02.933 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[Campaign](
 	[Id] [nvarchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[Name] [nvarchar](80) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,

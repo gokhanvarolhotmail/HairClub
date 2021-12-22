@@ -1,9 +1,5 @@
 /* CreateDate: 10/03/2006 10:25:52.403 , ModifyDate: 10/03/2006 10:25:52.403 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 create function dbo.F_END_OF_YEAR
 	( @DAY datetime )
 returns  datetime

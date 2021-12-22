@@ -1,9 +1,5 @@
 /* CreateDate: 02/04/2005 13:09:23.950 , ModifyDate: 06/21/2012 10:00:56.703 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[onca_import_node](
 	[import_node_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[import_code] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,

@@ -1,9 +1,5 @@
 /* CreateDate: 05/06/2013 18:27:13.597 , ModifyDate: 09/17/2017 18:31:19.813 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				selHairSystemOrderClientsForClientSearch

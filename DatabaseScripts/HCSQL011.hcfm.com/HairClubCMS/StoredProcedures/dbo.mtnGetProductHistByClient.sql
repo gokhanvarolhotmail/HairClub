@@ -1,9 +1,5 @@
 /* CreateDate: 04/20/2012 15:39:10.990 , ModifyDate: 02/27/2017 09:49:20.583 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				mtnGetProductHistByClient	VERSION  1.0

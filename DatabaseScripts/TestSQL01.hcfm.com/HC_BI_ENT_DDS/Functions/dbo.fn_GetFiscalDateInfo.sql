@@ -1,9 +1,5 @@
 /* CreateDate: 05/03/2010 12:08:48.977 , ModifyDate: 05/03/2010 12:08:48.977 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE FUNCTION [dbo].[fn_GetFiscalDateInfo] (@Date datetime)
 -----------------------------------------------------------------------
 -- [[fn_GetFiscalInfo]] retrieves the Fiscal Date Info

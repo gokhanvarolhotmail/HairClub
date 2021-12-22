@@ -1,9 +1,5 @@
 /* CreateDate: 12/07/2020 16:29:29.910 , ModifyDate: 12/07/2020 16:29:29.910 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[datNonSerializedInventoryAuditTransaction](
 	[NonSerializedInventoryAuditTransactionID] [int] IDENTITY(1,1) NOT NULL,
 	[NonSerializedInventoryAuditBatchID] [int] NOT NULL,

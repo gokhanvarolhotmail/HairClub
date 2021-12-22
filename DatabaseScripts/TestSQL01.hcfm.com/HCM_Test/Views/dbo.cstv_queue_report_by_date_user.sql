@@ -1,9 +1,5 @@
 /* CreateDate: 10/15/2013 00:28:12.493 , ModifyDate: 01/30/2014 10:33:41.540 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE VIEW [dbo].[cstv_queue_report_by_date_user]
 AS
 SELECT

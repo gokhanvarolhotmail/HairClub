@@ -1,9 +1,5 @@
 /* CreateDate: 09/30/2008 11:57:43.020 , ModifyDate: 06/14/2009 09:00:16.143 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[MediaSourcePhoneSourceAudit](
 	[AuditID] [int] IDENTITY(1,1) NOT NULL,
 	[PhoneID] [int] NULL,

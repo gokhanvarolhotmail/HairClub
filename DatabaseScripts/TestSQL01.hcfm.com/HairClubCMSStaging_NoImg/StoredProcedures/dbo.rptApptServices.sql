@@ -1,9 +1,5 @@
 /* CreateDate: 02/25/2009 08:42:35.497 , ModifyDate: 02/27/2017 09:49:26.027 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				rptApptServices

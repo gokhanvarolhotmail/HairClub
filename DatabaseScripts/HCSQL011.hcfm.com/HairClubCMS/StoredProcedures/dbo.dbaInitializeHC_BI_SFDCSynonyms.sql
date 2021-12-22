@@ -1,9 +1,5 @@
 /* CreateDate: 09/23/2019 12:25:34.437 , ModifyDate: 09/23/2019 12:25:34.437 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*
 ==============================================================================
 PROCEDURE:				dbaInitializeHC_BI_SFDCSynonyms

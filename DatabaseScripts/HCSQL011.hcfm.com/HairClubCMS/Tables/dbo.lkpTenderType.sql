@@ -1,9 +1,5 @@
 /* CreateDate: 01/19/2009 11:51:13.270 , ModifyDate: 05/26/2020 10:49:06.107 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpTenderType](
 	[TenderTypeID] [int] NOT NULL,
 	[TenderTypeSortOrder] [int] NOT NULL,

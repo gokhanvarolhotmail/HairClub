@@ -1,9 +1,5 @@
 /* CreateDate: 01/25/2010 11:09:09.617 , ModifyDate: 06/21/2012 10:05:10.100 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[oncd_project_signoff](
 	[project_signoff_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[user_code] [nchar](20) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,

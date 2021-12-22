@@ -1,9 +1,5 @@
 /* CreateDate: 08/19/2020 09:17:03.827 , ModifyDate: 09/17/2020 16:20:00.740 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE VIEW [bi_mktg_dds].[vwDimCallData]
 AS
 -------------------------------------------------------------------------

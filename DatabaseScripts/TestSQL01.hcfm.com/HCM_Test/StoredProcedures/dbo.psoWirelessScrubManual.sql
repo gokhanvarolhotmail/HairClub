@@ -1,9 +1,5 @@
 /* CreateDate: 09/30/2013 10:50:18.520 , ModifyDate: 09/30/2013 10:50:18.520 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE PROCEDURE [dbo].[psoWirelessScrubManual]
 	@ScrubDirection	NCHAR(6),
 	@UserCode		NCHAR(20)

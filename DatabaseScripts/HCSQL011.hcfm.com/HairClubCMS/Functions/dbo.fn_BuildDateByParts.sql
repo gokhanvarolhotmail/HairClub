@@ -1,9 +1,5 @@
 /* CreateDate: 05/14/2012 17:33:41.217 , ModifyDate: 05/14/2012 17:33:41.217 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 --SELECT [dbo].[fn_BuildDateByParts] (5, 1, 2008)
 CREATE FUNCTION [dbo].[fn_BuildDateByParts] (@DatePartMonth INT, @DatePartDay INT, @DatePartYear INT)
 	RETURNS datetime

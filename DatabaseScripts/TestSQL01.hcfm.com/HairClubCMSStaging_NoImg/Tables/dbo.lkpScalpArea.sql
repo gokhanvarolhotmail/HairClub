@@ -1,9 +1,5 @@
 /* CreateDate: 05/06/2014 09:10:03.880 , ModifyDate: 12/03/2021 10:24:48.617 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpScalpArea](
 	[ScalpAreaID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
 	[ScalpAreaSortOrder] [int] NOT NULL,

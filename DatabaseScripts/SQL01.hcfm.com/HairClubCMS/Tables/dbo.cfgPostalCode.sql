@@ -1,9 +1,5 @@
 /* CreateDate: 08/29/2008 09:52:39.633 , ModifyDate: 05/26/2020 10:49:17.977 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[cfgPostalCode](
 	[zip_code] [int] NOT NULL,
 	[city] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,

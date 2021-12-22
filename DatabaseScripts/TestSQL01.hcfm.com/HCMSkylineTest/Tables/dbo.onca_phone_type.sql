@@ -1,9 +1,5 @@
 /* CreateDate: 11/08/2012 13:36:20.460 , ModifyDate: 07/07/2015 13:03:55.640 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[onca_phone_type](
 	[phone_type_code] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[description] [nchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,

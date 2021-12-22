@@ -1,9 +1,5 @@
 /* CreateDate: 02/18/2013 06:40:48.983 , ModifyDate: 12/07/2021 16:20:16.097 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpScalpPreparation](
 	[ScalpPreparationID] [int] NOT NULL,
 	[ScalpPreparationSortOrder] [int] NOT NULL,

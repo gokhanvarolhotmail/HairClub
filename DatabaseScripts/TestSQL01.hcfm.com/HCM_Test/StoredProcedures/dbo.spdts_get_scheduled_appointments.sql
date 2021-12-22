@@ -1,9 +1,5 @@
 /* CreateDate: 12/12/2006 14:59:08.993 , ModifyDate: 05/01/2010 14:48:10.483 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*
 	** spdts_get_scheduled_appointments **
 	Finds all appointments scheduled going out

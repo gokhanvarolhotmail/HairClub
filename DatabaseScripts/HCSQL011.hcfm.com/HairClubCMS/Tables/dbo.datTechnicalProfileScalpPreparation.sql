@@ -1,9 +1,5 @@
 /* CreateDate: 02/26/2017 22:35:10.607 , ModifyDate: 01/20/2021 08:10:59.057 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[datTechnicalProfileScalpPreparation](
 	[TechnicalProfileScalpPreparationID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
 	[TechnicalProfileID] [int] NOT NULL,

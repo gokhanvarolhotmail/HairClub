@@ -1,9 +1,5 @@
 /* CreateDate: 12/19/2013 07:34:12.210 , ModifyDate: 11/19/2014 15:50:58.533 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				selStylistByCenter

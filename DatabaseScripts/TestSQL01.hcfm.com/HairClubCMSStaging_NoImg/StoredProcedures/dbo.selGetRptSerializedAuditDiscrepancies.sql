@@ -1,9 +1,5 @@
 /* CreateDate: 06/18/2021 12:56:25.197 , ModifyDate: 12/16/2021 14:19:06.313 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 -- =============================================
 -- Author:        rrojas
 -- Create date: 22/06/2021

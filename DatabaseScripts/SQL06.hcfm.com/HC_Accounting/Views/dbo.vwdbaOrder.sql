@@ -1,9 +1,5 @@
 /* CreateDate: 03/08/2016 13:13:35.937 , ModifyDate: 07/24/2019 09:45:50.867 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE VIEW [dbo].[vwdbaOrder]  AS
 -------------------------------------------------------------------------
 -- [vwDimClient] is used to retrieve a

@@ -1,9 +1,5 @@
 /* CreateDate: 02/26/2015 16:47:53.817 , ModifyDate: 03/12/2015 11:33:24.613 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*===============================================================================================
  Procedure Name:            [SpRpt_DashbCenter_90Day]
  Procedure Description:

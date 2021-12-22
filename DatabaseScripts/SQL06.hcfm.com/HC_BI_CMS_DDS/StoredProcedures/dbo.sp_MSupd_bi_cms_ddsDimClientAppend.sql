@@ -1,9 +1,5 @@
 /* CreateDate: 01/02/2017 09:06:12.367 , ModifyDate: 01/02/2017 09:06:12.367 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 create procedure [dbo].[sp_MSupd_bi_cms_ddsDimClientAppend]     @c1 int = NULL,     @c2 int = NULL,     @c3 uniqueidentifier = NULL,     @c4 int = NULL,     @c5 int = NULL,     @c6 int = NULL,     @c7 int = NULL,     @c8 nvarchar(10) = NULL,     @c9 nvarchar(50) = NULL,     @c10 nvarchar(10) = NULL,     @c11 nvarchar(50) = NULL,     @c12 nvarchar(10) = NULL,     @c13 nvarchar(50) = NULL,     @c14 nvarchar(10) = NULL,     @c15 nvarchar(50) = NULL,     @c16 int = NULL,     @c17 nvarchar(10) = NULL,     @c18 nvarchar(10) = NULL,     @c19 nvarchar(10) = NULL,     @c20 nvarchar(10) = NULL,     @c21 nvarchar(10) = NULL,     @c22 nvarchar(50) = NULL,     @c23 nvarchar(10) = NULL,     @c24 nvarchar(10) = NULL,     @c25 nvarchar(10) = NULL,     @c26 nvarchar(10) = NULL,     @c27 nvarchar(10) = NULL,     @c28 nvarchar(10) = NULL,     @c29 nvarchar(10) = NULL,     @c30 nvarchar(10) = NULL,     @c31 nvarchar(10) = NULL,     @c32 nvarchar(10) = NULL,     @c33 nvarchar(10) = NULL,     @c34 nvarchar(10) = NULL,     @c35 nvarchar(10) = NULL,     @c36 nvarchar(10) = NULL,     @c37 varchar(50) = NULL,     @c38 varchar(50) = NULL,     @pkc1 int = NULL,     @bitmap binary(5)
 as
 begin   if (substring(@bitmap,1,1) & 1 = 1)

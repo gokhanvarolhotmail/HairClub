@@ -1,9 +1,5 @@
 /* CreateDate: 03/23/2011 08:38:18.837 , ModifyDate: 09/16/2019 09:33:49.873 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*-----------------------------------------------------------------------
  [vwFactSalesTransaction_FLASH] is used to retrieve a
  list of Sales Transactions that is brought into the Surgery Flash

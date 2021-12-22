@@ -1,9 +1,5 @@
 /* CreateDate: 07/14/2014 14:54:42.400 , ModifyDate: 07/14/2014 14:54:42.400 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[dashbdBudget](
 	[CenterID] [int] NULL,
 	[CenterDescriptionNumber] [nvarchar](100) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,

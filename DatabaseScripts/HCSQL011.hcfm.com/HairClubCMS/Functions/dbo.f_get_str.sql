@@ -1,9 +1,5 @@
 /* CreateDate: 02/18/2013 06:45:39.417 , ModifyDate: 02/27/2017 09:49:36.893 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 create function f_get_str
 (@apptguid uniqueidentifier)
 RETURNS varchar(1000)

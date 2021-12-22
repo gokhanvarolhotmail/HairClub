@@ -1,9 +1,5 @@
 /* CreateDate: 02/18/2013 06:40:48.877 , ModifyDate: 05/26/2020 10:49:25.217 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[datTelemedicineCollaboration](
 	[TelemedicineCollaborationGUID] [uniqueidentifier] NOT NULL,
 	[AppointmentGUID] [uniqueidentifier] NOT NULL,

@@ -1,9 +1,5 @@
 /* CreateDate: 09/04/2007 09:40:44.227 , ModifyDate: 11/02/2015 10:00:43.517 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[hcmtbl_leadstoimport_pagelynx](
 	[territory] [char](6) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[create_date] [varchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,

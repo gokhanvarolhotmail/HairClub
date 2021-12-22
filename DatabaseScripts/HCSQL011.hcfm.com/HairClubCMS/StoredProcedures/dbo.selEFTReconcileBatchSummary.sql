@@ -1,9 +1,5 @@
 /* CreateDate: 05/14/2012 17:41:17.200 , ModifyDate: 07/08/2019 07:55:45.883 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				[selEFTReconcileBatchSummary]
 DESTINATION SERVER:		SQL01

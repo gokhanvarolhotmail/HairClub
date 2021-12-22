@@ -1,9 +1,5 @@
 /* CreateDate: 06/19/2013 23:57:22.580 , ModifyDate: 06/12/2017 16:03:31.820 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*===============================================================================================
 -- Procedure Name:                  rptClientHistoryMembershipUpdates
 -- Procedure Description:

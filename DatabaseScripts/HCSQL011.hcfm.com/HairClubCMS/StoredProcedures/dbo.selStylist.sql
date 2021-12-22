@@ -1,9 +1,5 @@
 /* CreateDate: 11/19/2014 15:32:24.837 , ModifyDate: 11/19/2014 15:32:24.837 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				selStylist

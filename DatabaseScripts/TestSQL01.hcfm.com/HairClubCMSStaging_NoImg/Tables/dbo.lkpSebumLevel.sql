@@ -1,9 +1,5 @@
 /* CreateDate: 08/05/2014 08:15:50.717 , ModifyDate: 12/03/2021 10:24:48.657 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpSebumLevel](
 	[SebumLevelID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
 	[SebumLevelSortOrder] [int] NOT NULL,

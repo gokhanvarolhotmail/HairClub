@@ -1,9 +1,5 @@
 /* CreateDate: 06/09/2014 11:35:46.053 , ModifyDate: 06/09/2014 11:35:46.053 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE PROCEDURE [dbo].[sp_BlitzIndex]
 	@DatabaseName NVARCHAR(128) = null, /*Defaults to current DB if not specified*/
 	@Mode tinyint=0, /*0=diagnose, 1=Summarize, 2=Index Usage Detail, 3=Missing Index Detail*/

@@ -1,9 +1,5 @@
 /* CreateDate: 03/12/2019 09:24:30.090 , ModifyDate: 03/12/2019 09:24:30.090 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[ObjectList](
 	[ItemID] [uniqueidentifier] NOT NULL,
 	[Path] [nvarchar](425) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,

@@ -1,21 +1,18 @@
-/* CreateDate: 12/20/2021 08:07:31.800 , ModifyDate: 12/22/2021 13:51:35.760 */
-GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
+/* CreateDate: 12/20/2021 08:07:31.800 , ModifyDate: 12/22/2021 14:01:40.173 */
 GO
 CREATE view [dbo].[vw_CmdLog] as
-SELECT top 100 percent [ID]
+SELECT top 100 [ID]
       ,[StartTime]
-      ,[EndTime]
+      --,[EndTime]
+	  ,datediff(ss,starttime,endtime) as secs
       ,[DatabaseName]
       ,[CommandType]
-	  ,[SchemaName]
+	  --,[SchemaName]
 	  ,[ObjectName]
-	  ,[IndexName]
 	  ,[StatisticsName]
+	  ,[IndexName]
       --,[ExtendedInfo]
   FROM [dbo].[CommandLog]
-  WHERE [StartTime] >  (getdate()-1)
+  WHERE [StartTime] > (getdate()-1)
   order by ID desc
 GO

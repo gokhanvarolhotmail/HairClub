@@ -1,9 +1,5 @@
 /* CreateDate: 11/28/2017 17:14:58.267 , ModifyDate: 11/28/2017 17:14:58.267 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[XEInfo](
 	[name] [nvarchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[timestamp] [datetimeoffset](7) NULL,

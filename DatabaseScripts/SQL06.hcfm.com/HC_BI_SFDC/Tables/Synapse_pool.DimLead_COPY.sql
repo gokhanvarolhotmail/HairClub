@@ -1,9 +1,5 @@
 /* CreateDate: 06/17/2021 12:02:05.603 , ModifyDate: 06/17/2021 12:02:05.603 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [Synapse_pool].[DimLead_COPY](
 	[LeadKey] [int] NULL,
 	[LeadId] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,

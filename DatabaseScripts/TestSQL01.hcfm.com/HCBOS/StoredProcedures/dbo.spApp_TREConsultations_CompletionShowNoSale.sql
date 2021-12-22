@@ -1,9 +1,5 @@
 /* CreateDate: 09/22/2008 15:03:36.593 , ModifyDate: 01/25/2010 08:11:31.807 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*===============================================================================================
 -- Procedure Name:			spApp_TREConsultations_CompletionShowNoSale
 -- Procedure Description:

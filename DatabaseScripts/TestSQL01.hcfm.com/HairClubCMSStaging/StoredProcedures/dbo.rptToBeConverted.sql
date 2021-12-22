@@ -1,9 +1,5 @@
 /* CreateDate: 10/14/2013 16:35:38.663 , ModifyDate: 05/21/2017 22:19:15.953 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*===============================================================================================
 -- Procedure Name:			rptToBeConverted
 -- Procedure Description:

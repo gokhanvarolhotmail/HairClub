@@ -1,9 +1,5 @@
 /* CreateDate: 02/18/2016 15:38:08.993 , ModifyDate: 11/16/2017 15:48:10.240 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 VIEW:					[vwd_AMPriorityPercent]
 DESTINATION SERVER:		SQL06

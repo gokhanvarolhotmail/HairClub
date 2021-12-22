@@ -1,9 +1,5 @@
 /* CreateDate: 04/13/2016 09:57:40.177 , ModifyDate: 04/13/2016 09:57:40.317 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[cstd_company_gender](
 	[company_gender_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[company_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,

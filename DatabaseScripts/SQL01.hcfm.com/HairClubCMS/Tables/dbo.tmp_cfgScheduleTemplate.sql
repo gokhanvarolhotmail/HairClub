@@ -1,9 +1,5 @@
 /* CreateDate: 03/27/2020 11:44:40.650 , ModifyDate: 03/27/2020 11:44:40.650 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[tmp_cfgScheduleTemplate](
 	[ScheduleTemplateGUID] [uniqueidentifier] NOT NULL,
 	[ScheduleTemplateDayOfWeek] [int] NOT NULL,

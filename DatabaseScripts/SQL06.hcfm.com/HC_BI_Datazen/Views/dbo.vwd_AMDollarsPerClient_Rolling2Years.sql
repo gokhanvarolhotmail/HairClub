@@ -1,9 +1,5 @@
 /* CreateDate: 02/18/2016 08:43:17.867 , ModifyDate: 05/03/2016 09:26:24.500 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 VIEW:					vwd_AMDollarsPerClient_Rolling2Years
 DESTINATION SERVER:		SQL06

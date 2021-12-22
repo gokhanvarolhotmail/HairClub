@@ -1,9 +1,5 @@
 /* CreateDate: 05/20/2014 15:26:53.120 , ModifyDate: 05/20/2014 15:27:24.497 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[tmpBosleyOffices](
 	[SiebelID] [nvarchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[ConectID] [int] NULL,

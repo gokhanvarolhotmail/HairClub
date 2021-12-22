@@ -1,9 +1,5 @@
 /* CreateDate: 02/18/2013 06:55:56.223 , ModifyDate: 01/19/2020 21:51:11.567 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				dbaExpireClientMemberships

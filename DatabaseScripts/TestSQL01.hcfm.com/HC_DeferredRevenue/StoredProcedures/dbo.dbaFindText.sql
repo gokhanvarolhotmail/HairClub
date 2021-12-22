@@ -1,9 +1,5 @@
 /* CreateDate: 11/28/2017 16:44:10.937 , ModifyDate: 11/28/2017 16:44:10.937 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*
 ==============================================================================
 PROCEDURE:				dbaFindText

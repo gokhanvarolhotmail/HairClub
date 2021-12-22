@@ -1,10 +1,6 @@
 /* CreateDate: 01/18/2005 09:34:08.233 , ModifyDate: 09/10/2019 22:56:14.507 */
 /* ***HasTriggers*** TriggerCount: 1 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[oncd_activity_user](
 	[activity_user_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[activity_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
@@ -51,10 +47,6 @@ ALTER TABLE [dbo].[oncd_activity_user]  WITH CHECK ADD  CONSTRAINT [user_activit
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_activity_user] CHECK CONSTRAINT [user_activity_use_495]
-GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
 GO
 -- =============================================================================
 -- Create date: 17 March 2010

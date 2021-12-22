@@ -1,9 +1,5 @@
 /* CreateDate: 03/30/2019 12:36:36.993 , ModifyDate: 03/30/2019 12:36:36.993 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				spSvc_IC_LaserSales_Step06_CloseCommission
 DESTINATION SERVER:		SQL06

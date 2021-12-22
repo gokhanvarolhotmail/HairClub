@@ -1,9 +1,5 @@
 /* CreateDate: 05/11/2009 11:35:51.547 , ModifyDate: 06/21/2012 10:12:24.340 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[cstd_no_exceptions](
 	[no_exception_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[activity_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,

@@ -1,9 +1,5 @@
 /* CreateDate: 06/19/2012 11:14:21.090 , ModifyDate: 09/26/2017 14:26:07.170 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				[selClientEFTForCenterDeclineProcessing]
 DESTINATION SERVER:		SQL01

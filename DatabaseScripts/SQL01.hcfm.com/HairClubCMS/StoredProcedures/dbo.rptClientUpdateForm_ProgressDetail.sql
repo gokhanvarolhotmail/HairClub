@@ -1,9 +1,5 @@
 /* CreateDate: 06/12/2017 13:56:45.100 , ModifyDate: 02/19/2018 15:19:13.943 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*===============================================================================================
  Procedure Name:            [rptContestClientUpdateFormDetail]
  Procedure Description:     This report is used for a contest between Corporate centers

@@ -1,9 +1,5 @@
 /* CreateDate: 06/14/2017 11:18:26.563 , ModifyDate: 06/14/2017 11:18:26.563 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[TEMP_IncomingRequestLog](
 	[IncomingRequestID] [int] NOT NULL,
 	[SalesOrderGUID] [uniqueidentifier] NULL,

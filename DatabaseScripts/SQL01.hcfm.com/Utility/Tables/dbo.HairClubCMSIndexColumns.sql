@@ -1,9 +1,5 @@
 /* CreateDate: 08/05/2018 20:50:56.360 , ModifyDate: 08/05/2018 20:50:56.360 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[HairClubCMSIndexColumns](
 	[ObjectId] [int] NOT NULL,
 	[TableName] [sysname] COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,

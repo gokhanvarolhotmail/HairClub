@@ -1,9 +1,5 @@
 /* CreateDate: 04/14/2009 07:33:54.850 , ModifyDate: 02/18/2013 19:04:03.060 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE VIEW [dbo].[vwCfgMembershipAccum]
 AS
 SELECT     ma.MembershipAccumulatorID, ma.MembershipAccumulatorSortOrder, m.MembershipDescription, a.AccumulatorDescription, ma.InitialQuantity,

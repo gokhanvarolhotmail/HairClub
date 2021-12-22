@@ -1,9 +1,5 @@
 /* CreateDate: 10/03/2019 22:32:12.400 , ModifyDate: 10/03/2019 22:32:14.153 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[FactPCP](
 	[CenterID] [int] NOT NULL,
 	[GenderID] [int] NOT NULL,

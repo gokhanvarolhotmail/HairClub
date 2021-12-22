@@ -1,9 +1,5 @@
 /* CreateDate: 06/07/2012 12:36:19.460 , ModifyDate: 01/30/2014 10:33:41.643 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE VIEW [dbo].[cstv_contact_details]
 AS
 SELECT

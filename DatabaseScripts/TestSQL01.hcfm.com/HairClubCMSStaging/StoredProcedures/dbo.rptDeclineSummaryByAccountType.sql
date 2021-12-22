@@ -1,9 +1,5 @@
 /* CreateDate: 06/19/2013 23:57:22.487 , ModifyDate: 06/19/2013 23:57:22.487 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				rptDeclineSummaryByAccountType

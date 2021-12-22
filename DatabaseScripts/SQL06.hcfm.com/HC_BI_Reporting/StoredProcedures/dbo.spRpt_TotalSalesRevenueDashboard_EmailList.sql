@@ -1,9 +1,5 @@
 /* CreateDate: 08/13/2019 14:47:32.403 , ModifyDate: 09/03/2020 11:23:44.467 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				[spRpt_TotalSalesRevenueDashboard_EmailList]
 DESTINATION SERVER:		SQL06

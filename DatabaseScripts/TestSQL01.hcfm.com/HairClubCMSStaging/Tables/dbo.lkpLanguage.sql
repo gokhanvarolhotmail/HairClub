@@ -1,9 +1,5 @@
 /* CreateDate: 02/08/2016 07:26:53.267 , ModifyDate: 05/26/2020 10:49:06.850 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpLanguage](
 	[LanguageID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
 	[LanguageSortOrder] [int] NOT NULL,

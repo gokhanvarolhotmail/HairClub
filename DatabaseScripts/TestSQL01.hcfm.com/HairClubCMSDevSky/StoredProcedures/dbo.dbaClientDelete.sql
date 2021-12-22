@@ -1,9 +1,5 @@
 /* CreateDate: 10/28/2010 00:49:56.743 , ModifyDate: 02/27/2017 09:49:15.490 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 		PROCEDURE:				dbaClientDelete

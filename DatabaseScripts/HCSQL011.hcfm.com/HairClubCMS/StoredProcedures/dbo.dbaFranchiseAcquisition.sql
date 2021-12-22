@@ -1,9 +1,5 @@
 /* CreateDate: 11/03/2014 11:52:37.747 , ModifyDate: 11/03/2014 11:52:37.747 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				dbaFranchiseAcquisition
 DESTINATION SERVER:		SQL01

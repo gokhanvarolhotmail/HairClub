@@ -1,9 +1,5 @@
 /* CreateDate: 01/03/2013 10:22:38.800 , ModifyDate: 01/03/2013 10:22:38.800 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 -- =============================================
 -- Create date: 30 October 2012
 -- Description:	Calculates the follow up time based on the type and amount to add to the time.

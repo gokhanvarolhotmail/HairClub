@@ -1,9 +1,5 @@
 /* CreateDate: 12/11/2006 10:59:02.677 , ModifyDate: 01/25/2010 08:11:31.777 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 --Updates DNC for HCM
 CREATE   PROCEDURE [dbo].[spsvc_UpdateDncInHCM_OneTime]
 	@scrubDate DateTime

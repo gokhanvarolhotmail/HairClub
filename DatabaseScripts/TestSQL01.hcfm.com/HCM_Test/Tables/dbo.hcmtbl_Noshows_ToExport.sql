@@ -1,9 +1,5 @@
 /* CreateDate: 10/17/2007 08:55:07.387 , ModifyDate: 10/17/2007 08:55:07.390 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[hcmtbl_Noshows_ToExport](
 	[recordId] [varchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[firstName] [varchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,

@@ -1,9 +1,5 @@
 /* CreateDate: 10/30/2008 09:06:22.060 , ModifyDate: 12/03/2021 10:24:48.657 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[cfgCurrencyExchangeRate](
 	[CurrencyExchangeRateID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
 	[CurrencyTypeID] [int] NULL,

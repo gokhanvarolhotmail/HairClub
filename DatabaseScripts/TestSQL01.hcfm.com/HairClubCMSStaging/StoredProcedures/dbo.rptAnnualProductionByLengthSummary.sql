@@ -1,9 +1,5 @@
 /* CreateDate: 10/04/2010 12:09:07.897 , ModifyDate: 02/27/2017 09:49:24.213 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*
 ==============================================================================
 PROCEDURE:				[rptAnnualProductionByLengthSummary]

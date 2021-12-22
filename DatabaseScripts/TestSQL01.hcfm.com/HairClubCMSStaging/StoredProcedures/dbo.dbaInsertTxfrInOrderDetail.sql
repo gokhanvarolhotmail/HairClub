@@ -1,9 +1,5 @@
 /* CreateDate: 12/14/2012 09:59:40.860 , ModifyDate: 12/14/2012 10:01:32.127 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 		PROCEDURE:				dbaInsertTxfrInOrderDetail

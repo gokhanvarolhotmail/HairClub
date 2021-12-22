@@ -1,9 +1,5 @@
 /* CreateDate: 10/02/2019 12:42:53.470 , ModifyDate: 12/17/2021 17:23:45.180 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				spSvc_AppointmentMDP
 DESTINATION SERVER:		SQL06

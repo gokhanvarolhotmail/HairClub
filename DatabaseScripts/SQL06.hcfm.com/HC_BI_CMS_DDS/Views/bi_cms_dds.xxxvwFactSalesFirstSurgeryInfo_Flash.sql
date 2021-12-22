@@ -1,9 +1,5 @@
 /* CreateDate: 10/03/2019 23:03:44.240 , ModifyDate: 10/03/2019 23:03:44.240 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE VIEW [bi_cms_dds].[xxxvwFactSalesFirstSurgeryInfo_Flash]
 AS
 -------------------------------------------------------------------------

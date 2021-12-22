@@ -1,9 +1,5 @@
 /* CreateDate: 10/21/2015 15:24:03.080 , ModifyDate: 01/26/2018 16:30:30.973 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 VIEW:					vwd_PCPCounts_Rolling2Years
 DESTINATION SERVER:		SQL06

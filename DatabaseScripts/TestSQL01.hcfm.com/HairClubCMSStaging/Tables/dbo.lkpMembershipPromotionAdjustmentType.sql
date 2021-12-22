@@ -1,9 +1,5 @@
 /* CreateDate: 07/31/2017 06:33:47.253 , ModifyDate: 07/31/2017 06:33:49.467 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpMembershipPromotionAdjustmentType](
 	[MembershipPromotionAdjustmentTypeID] [int] NOT NULL,
 	[MembershipPromotionAdjustmentTypeSortOrder] [int] NOT NULL,

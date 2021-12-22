@@ -1,9 +1,5 @@
 /* CreateDate: 06/25/2008 12:30:18.267 , ModifyDate: 01/25/2010 08:13:27.480 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE PROCEDURE [dbo].[spApp_MediaSourceTollFreeNumberUpdate]
 	@NumberID			int
 ,	@Number				varchar(15)

@@ -1,9 +1,5 @@
 /* CreateDate: 03/01/2012 07:54:45.580 , ModifyDate: 05/04/2020 10:39:00.483 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*
 ==============================================================================
 PROCEDURE:                  selHairSystemOrderUpdateFactoryShippedCost

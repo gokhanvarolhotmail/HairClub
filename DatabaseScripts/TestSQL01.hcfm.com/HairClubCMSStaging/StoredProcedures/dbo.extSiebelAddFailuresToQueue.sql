@@ -1,9 +1,5 @@
 /* CreateDate: 05/15/2013 14:02:29.240 , ModifyDate: 03/09/2020 15:10:50.647 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				extSiebelAddFailuresToQueue

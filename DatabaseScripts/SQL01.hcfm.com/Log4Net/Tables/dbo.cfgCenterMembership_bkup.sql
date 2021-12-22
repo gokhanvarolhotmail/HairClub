@@ -1,9 +1,5 @@
 /* CreateDate: 12/29/2018 19:56:07.223 , ModifyDate: 12/29/2018 19:56:07.223 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[cfgCenterMembership_bkup](
 	[CenterMembershipID] [int] IDENTITY(1,1) NOT NULL,
 	[CenterID] [int] NOT NULL,

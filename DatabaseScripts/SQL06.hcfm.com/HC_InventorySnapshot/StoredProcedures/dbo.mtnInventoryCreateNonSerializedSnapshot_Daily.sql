@@ -1,9 +1,5 @@
 /* CreateDate: 12/07/2020 16:29:30.083 , ModifyDate: 12/07/2020 16:29:30.083 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE PROCEDURE [dbo].[mtnInventoryCreateNonSerializedSnapshot_Daily]
 AS
 BEGIN

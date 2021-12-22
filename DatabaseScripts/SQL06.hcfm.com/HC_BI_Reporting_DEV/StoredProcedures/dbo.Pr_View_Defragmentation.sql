@@ -1,9 +1,5 @@
 /* CreateDate: 09/04/2012 13:36:18.933 , ModifyDate: 09/04/2012 13:36:18.933 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 Create Proc Pr_View_Defragmentation (@database sysname, @Frag int)
 as
 Declare @dbid int

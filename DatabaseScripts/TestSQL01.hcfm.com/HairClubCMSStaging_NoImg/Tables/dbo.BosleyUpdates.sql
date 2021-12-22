@@ -1,9 +1,5 @@
 /* CreateDate: 08/20/2013 12:22:52.170 , ModifyDate: 08/20/2013 12:22:52.170 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[BosleyUpdates](
 	[RECORDID] [varchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[SIEBELID] [varchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,

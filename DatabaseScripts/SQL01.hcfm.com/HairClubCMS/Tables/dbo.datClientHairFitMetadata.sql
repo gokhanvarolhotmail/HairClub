@@ -1,9 +1,5 @@
 /* CreateDate: 10/07/2019 14:04:05.427 , ModifyDate: 12/04/2019 14:47:03.133 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[datClientHairFitMetadata](
 	[ClientHairFitMetadataID] [int] IDENTITY(1,1) NOT NULL,
 	[ClientGUID] [uniqueidentifier] NOT NULL,

@@ -1,9 +1,5 @@
 /* CreateDate: 11/21/2014 11:36:11.800 , ModifyDate: 12/03/2014 13:14:50.090 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				spSVC_CommissionTypeID_36_Step04_CalculateCommission
 DESTINATION SERVER:		SQL06

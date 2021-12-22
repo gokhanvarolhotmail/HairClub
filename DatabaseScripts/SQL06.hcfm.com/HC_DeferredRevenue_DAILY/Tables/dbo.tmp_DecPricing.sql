@@ -1,9 +1,5 @@
 /* CreateDate: 12/21/2021 08:32:03.443 , ModifyDate: 12/21/2021 08:32:03.443 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[tmp_DecPricing](
 	[ClientGUID] [nvarchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[CenterID] [int] NULL,

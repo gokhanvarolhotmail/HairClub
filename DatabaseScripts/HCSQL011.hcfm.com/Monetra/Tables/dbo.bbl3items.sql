@@ -1,9 +1,5 @@
 /* CreateDate: 10/01/2018 08:53:16.857 , ModifyDate: 10/01/2018 08:53:16.860 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[bbl3items](
 	[bbbatchid] [int] NOT NULL,
 	[bbmerchid] [int] NOT NULL,

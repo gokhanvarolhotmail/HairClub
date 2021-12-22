@@ -1,9 +1,5 @@
 /* CreateDate: 06/22/2017 15:36:42.400 , ModifyDate: 06/22/2017 15:36:42.400 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				extHairClubCMSUpdateSiebelID
 DESTINATION SERVER:		SQL03

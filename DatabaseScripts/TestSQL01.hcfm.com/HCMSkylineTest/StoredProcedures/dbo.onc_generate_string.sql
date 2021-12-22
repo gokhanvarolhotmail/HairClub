@@ -1,7 +1,5 @@
 /* CreateDate: 11/29/2012 15:31:56.620 , ModifyDate: 11/29/2012 15:31:56.620 */
 GO
-SET ANSI_NULLS ON
-GO
 SET QUOTED_IDENTIFIER OFF
 GO
 create PROC [dbo].[onc_generate_string]

@@ -1,9 +1,5 @@
 /* CreateDate: 09/22/2008 15:00:41.360 , ModifyDate: 05/08/2010 02:30:04.673 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[ContactMaritalStatus](
 	[MaritalStatusCode] [varchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[Description] [varchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,

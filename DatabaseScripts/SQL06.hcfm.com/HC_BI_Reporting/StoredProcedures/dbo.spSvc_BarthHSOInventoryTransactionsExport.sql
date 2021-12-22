@@ -1,9 +1,5 @@
 /* CreateDate: 04/10/2014 12:15:12.080 , ModifyDate: 03/01/2017 12:10:52.450 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				spSvc_BarthHSOInventoryTransactionsExport
 DESTINATION SERVER:		SQL06

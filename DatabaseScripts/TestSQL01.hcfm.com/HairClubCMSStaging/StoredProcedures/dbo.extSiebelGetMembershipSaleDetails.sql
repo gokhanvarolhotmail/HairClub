@@ -1,9 +1,5 @@
 /* CreateDate: 04/24/2017 15:54:06.850 , ModifyDate: 03/09/2020 15:10:50.557 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*
 ==============================================================================
 PROCEDURE:				extSiebelGetMembershipSaleDetails

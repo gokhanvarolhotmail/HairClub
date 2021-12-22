@@ -1,9 +1,5 @@
 /* CreateDate: 02/01/2018 17:00:27.800 , ModifyDate: 12/28/2020 14:24:27.510 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				sprpt_ScanProgress
 DESTINATION SERVER:		SQL01

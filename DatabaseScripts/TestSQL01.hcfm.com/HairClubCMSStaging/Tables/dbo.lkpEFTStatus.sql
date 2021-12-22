@@ -1,9 +1,5 @@
 /* CreateDate: 08/27/2008 11:59:23.963 , ModifyDate: 05/26/2020 10:49:41.393 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpEFTStatus](
 	[EFTStatusID] [int] NOT NULL,
 	[EFTStatusSortOrder] [int] NOT NULL,

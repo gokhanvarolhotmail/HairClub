@@ -1,9 +1,5 @@
 /* CreateDate: 05/21/2017 22:29:10.487 , ModifyDate: 05/21/2017 22:29:11.170 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpPhotoBookAgeRange](
 	[PhotoBookAgeRangeID] [int] IDENTITY(1,1) NOT NULL,
 	[PhotoBookAgeRangeSortOrder] [int] NOT NULL,

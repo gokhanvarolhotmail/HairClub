@@ -1,9 +1,5 @@
 /* CreateDate: 11/08/2012 13:49:28.920 , ModifyDate: 11/08/2012 13:49:28.920 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE VIEW [dbo].[vw_Consultations]
 AS
 SELECT  [oncd_contact].[contact_id]

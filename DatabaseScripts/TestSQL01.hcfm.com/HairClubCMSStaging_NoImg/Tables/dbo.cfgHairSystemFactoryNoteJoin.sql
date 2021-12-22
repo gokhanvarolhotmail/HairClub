@@ -1,9 +1,5 @@
 /* CreateDate: 03/08/2011 22:13:51.210 , ModifyDate: 12/03/2021 10:24:48.673 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[cfgHairSystemFactoryNoteJoin](
 	[HairSystemFactoryNoteJoinID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
 	[HairSystemID] [int] NOT NULL,

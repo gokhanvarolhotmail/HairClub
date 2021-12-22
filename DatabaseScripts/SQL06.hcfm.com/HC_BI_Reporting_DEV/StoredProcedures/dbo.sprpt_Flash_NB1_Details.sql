@@ -1,9 +1,5 @@
 /* CreateDate: 09/17/2012 13:45:37.397 , ModifyDate: 09/17/2012 13:45:37.397 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*===============================================================================================
 -- Procedure Name:                sprpt_Flash_NB1_Details
 -- Procedure Description:

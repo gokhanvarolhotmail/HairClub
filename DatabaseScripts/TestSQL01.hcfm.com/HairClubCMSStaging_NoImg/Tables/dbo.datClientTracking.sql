@@ -1,9 +1,5 @@
 /* CreateDate: 08/26/2019 10:57:54.903 , ModifyDate: 08/26/2019 10:57:54.907 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[datClientTracking](
 	[ClientTrackingID] [int] IDENTITY(1,1) NOT NULL,
 	[ClientGUID] [uniqueidentifier] NOT NULL,

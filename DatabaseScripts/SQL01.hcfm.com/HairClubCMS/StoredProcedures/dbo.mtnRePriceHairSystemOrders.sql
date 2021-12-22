@@ -1,9 +1,5 @@
 /* CreateDate: 03/31/2011 16:35:24.907 , ModifyDate: 05/04/2020 10:38:54.083 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*
 ==============================================================================
 PROCEDURE:                  [mtnRePriceHairSystemOrders]

@@ -1,9 +1,5 @@
 /* CreateDate: 01/18/2005 09:34:07.610 , ModifyDate: 06/21/2012 10:00:56.753 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[onca_key_generation](
 	[table_name] [nchar](128) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[column_name] [nchar](128) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,

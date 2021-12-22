@@ -1,9 +1,5 @@
 /* CreateDate: 05/28/2014 15:56:13.803 , ModifyDate: 01/11/2018 12:59:34.590 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				[spRpt_NB1Receivables]
 VERSION:				v1.2

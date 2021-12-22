@@ -1,9 +1,5 @@
 /* CreateDate: 11/30/2018 11:50:41.350 , ModifyDate: 12/04/2018 13:38:54.787 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				spRpt_ConversionOpportunity
 DESTINATION SERVER:		SQL06

@@ -1,9 +1,5 @@
 /* CreateDate: 11/04/2008 12:28:46.533 , ModifyDate: 12/07/2021 16:20:15.937 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpUnitOfMeasure](
 	[UnitOfMeasureID] [int] NOT NULL,
 	[UnitOfMeasureSortOrder] [int] NOT NULL,

@@ -1,9 +1,5 @@
 /* CreateDate: 10/04/2010 12:08:45.650 , ModifyDate: 05/26/2020 10:49:42.170 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[datInventoryShipmentDetail](
 	[InventoryShipmentDetailGUID] [uniqueidentifier] NOT NULL,
 	[InventoryShipmentGUID] [uniqueidentifier] NOT NULL,

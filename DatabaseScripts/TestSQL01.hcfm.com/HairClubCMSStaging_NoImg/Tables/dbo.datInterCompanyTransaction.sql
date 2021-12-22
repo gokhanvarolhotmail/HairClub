@@ -1,9 +1,5 @@
 /* CreateDate: 02/03/2014 08:50:42.613 , ModifyDate: 12/03/2021 10:24:48.723 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[datInterCompanyTransaction](
 	[InterCompanyTransactionId] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
 	[CenterId] [int] NOT NULL,

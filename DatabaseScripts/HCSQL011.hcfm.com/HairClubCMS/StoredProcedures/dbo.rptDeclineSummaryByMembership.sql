@@ -1,9 +1,5 @@
 /* CreateDate: 06/19/2013 23:57:22.503 , ModifyDate: 06/19/2013 23:57:22.503 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				rptDeclineSummaryByMembership

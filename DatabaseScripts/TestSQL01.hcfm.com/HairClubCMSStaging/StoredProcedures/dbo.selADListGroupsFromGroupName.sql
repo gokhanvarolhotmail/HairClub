@@ -1,9 +1,5 @@
 /* CreateDate: 09/30/2015 09:41:28.497 , ModifyDate: 09/30/2015 09:41:28.497 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				selADListGroupsFromGroupName

@@ -1,9 +1,5 @@
 /* CreateDate: 02/17/2021 10:10:34.730 , ModifyDate: 02/19/2021 13:19:06.220 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*
 NOTES
 ***************************

@@ -1,10 +1,6 @@
 /* CreateDate: 01/18/2005 09:34:08.093 , ModifyDate: 09/10/2019 23:07:44.787 */
 /* ***HasTriggers*** TriggerCount: 8 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[oncd_activity](
 	[activity_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[recur_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
@@ -329,10 +325,6 @@ REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_activity] CHECK CONSTRAINT [user_activity_438]
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 -- ============================================================================
 -- Create date: 9 November 2011
 -- Description:	Stores the modifications done to an Activity.
@@ -431,10 +423,6 @@ END
 GO
 ALTER TABLE [dbo].[oncd_activity] DISABLE TRIGGER [pso_ActivityHistory]
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TRIGGER [dbo].[pso_ActivityQueueHistory]
    ON  [dbo].[oncd_activity]
    AFTER INSERT, UPDATE
@@ -454,10 +442,6 @@ BEGIN
 END
 GO
 ALTER TABLE [dbo].[oncd_activity] ENABLE TRIGGER [pso_ActivityQueueHistory]
-GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
 GO
 -- =============================================
 -- Author:		Oncontact PSO Fred Remers
@@ -1135,10 +1119,6 @@ END
 GO
 ALTER TABLE [dbo].[oncd_activity] ENABLE TRIGGER [pso_GenerateFollowupActivity]
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 -- ============================================================================
 -- Create date: 21 September 2011
 -- Project #  : 8
@@ -1219,10 +1199,6 @@ END
 GO
 ALTER TABLE [dbo].[oncd_activity] ENABLE TRIGGER [pso_NobleAdditions]
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 -- ============================================================================
 -- Create date: 21 September 2011
 -- Project #  : 8
@@ -1295,10 +1271,6 @@ BEGIN
 END
 GO
 ALTER TABLE [dbo].[oncd_activity] ENABLE TRIGGER [pso_NobleExclusions]
-GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
 GO
 CREATE TRIGGER [dbo].[pso_oncd_activity_remove_unicode_insert]
    ON  [dbo].[oncd_activity]
@@ -1399,10 +1371,6 @@ END
 GO
 ALTER TABLE [dbo].[oncd_activity] DISABLE TRIGGER [pso_oncd_activity_remove_unicode_insert]
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 -- =============================================
 -- Create date: 24 September 2012
 -- Description:	Removes Unicode
@@ -1462,10 +1430,6 @@ WHERE inserted.activity_id = oncd_activity.activity_id
 END
 GO
 ALTER TABLE [dbo].[oncd_activity] DISABLE TRIGGER [pso_oncd_activity_remove_unicode_UPDATE]
-GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
 GO
 -- ==================================================================
 -- Create date: 25 August 2011

@@ -1,9 +1,5 @@
 /* CreateDate: 04/29/2020 10:49:04.350 , ModifyDate: 04/29/2020 10:49:04.350 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				mtnCheckOutVirtualCenterShowNoSaleConsults
 DESTINATION SERVER:		SQL01

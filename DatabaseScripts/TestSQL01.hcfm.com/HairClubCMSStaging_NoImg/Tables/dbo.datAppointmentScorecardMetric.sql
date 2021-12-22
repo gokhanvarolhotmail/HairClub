@@ -1,9 +1,5 @@
 /* CreateDate: 11/04/2019 08:18:20.467 , ModifyDate: 12/03/2021 10:24:48.623 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[datAppointmentScorecardMetric](
 	[AppointmentScorecardMetricID] [int] IDENTITY(1,1) NOT NULL,
 	[AppointmentScorecardID] [int] NOT NULL,

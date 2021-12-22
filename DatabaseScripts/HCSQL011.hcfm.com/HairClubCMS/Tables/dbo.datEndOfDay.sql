@@ -1,9 +1,5 @@
 /* CreateDate: 02/18/2013 06:59:17.780 , ModifyDate: 05/26/2020 10:49:18.797 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[datEndOfDay](
 	[EndOfDayGUID] [uniqueidentifier] NOT NULL,
 	[EndOfDayDate] [datetime] NOT NULL,

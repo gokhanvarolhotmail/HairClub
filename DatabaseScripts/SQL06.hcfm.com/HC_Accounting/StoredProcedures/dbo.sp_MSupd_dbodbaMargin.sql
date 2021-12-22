@@ -1,9 +1,5 @@
 /* CreateDate: 10/03/2019 22:32:12.040 , ModifyDate: 10/03/2019 22:32:12.040 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 create procedure [sp_MSupd_dbodbaMargin]
 		@c1 int = NULL,
 		@c2 uniqueidentifier = NULL,

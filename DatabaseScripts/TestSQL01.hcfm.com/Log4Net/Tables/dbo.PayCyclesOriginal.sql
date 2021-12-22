@@ -1,9 +1,5 @@
 /* CreateDate: 03/05/2014 17:12:37.547 , ModifyDate: 03/05/2014 17:12:37.547 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[PayCyclesOriginal](
 	[PayCycleTransactionGUID] [nvarchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[PayCycleTransactionTypeID] [float] NULL,

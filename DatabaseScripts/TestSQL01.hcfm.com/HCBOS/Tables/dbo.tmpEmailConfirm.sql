@@ -1,9 +1,5 @@
 /* CreateDate: 01/09/2007 14:02:05.273 , ModifyDate: 05/08/2010 02:30:11.653 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[tmpEmailConfirm](
 	[ConfirmID] [uniqueidentifier] ROWGUIDCOL  NOT NULL,
 	[RecordID] [int] NULL,

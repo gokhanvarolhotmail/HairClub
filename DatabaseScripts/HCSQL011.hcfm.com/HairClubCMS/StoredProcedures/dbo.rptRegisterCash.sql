@@ -1,9 +1,5 @@
 /* CreateDate: 01/24/2014 15:16:31.320 , ModifyDate: 02/03/2014 08:52:23.627 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*===============================================================================================
 -- Procedure Name:			rptRegisterCash
 -- Procedure Description:

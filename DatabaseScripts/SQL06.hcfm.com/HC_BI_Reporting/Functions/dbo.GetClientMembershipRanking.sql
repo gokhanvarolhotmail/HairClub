@@ -1,9 +1,5 @@
 /* CreateDate: 05/29/2014 16:42:37.153 , ModifyDate: 04/17/2015 16:44:47.547 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 FUNCTION:				GetClientMembershipRanking
 DESTINATION SERVER:		SQL06

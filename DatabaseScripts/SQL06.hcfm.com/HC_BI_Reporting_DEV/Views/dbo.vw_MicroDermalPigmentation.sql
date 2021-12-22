@@ -1,9 +1,5 @@
 /* CreateDate: 12/07/2018 15:56:11.473 , ModifyDate: 12/07/2018 15:56:11.473 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 VIEW:					vw_MicroDermalPigmentation
 DESTINATION SERVER:		SQL06

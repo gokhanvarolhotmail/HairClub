@@ -1,9 +1,5 @@
 /* CreateDate: 04/24/2012 13:04:17.220 , ModifyDate: 02/27/2017 09:49:25.017 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*
 ==============================================================================
 PROCEDURE:				[rptAnnualReportByGrey]

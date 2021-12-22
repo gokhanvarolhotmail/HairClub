@@ -1,9 +1,5 @@
 /* CreateDate: 12/09/2008 00:09:48.203 , ModifyDate: 05/01/2010 14:48:11.460 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE PROCEDURE [dbo].[pso_GenerateBrochActivities] AS
 BEGIN
 	DECLARE @contact_id nchar(10)

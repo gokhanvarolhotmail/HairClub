@@ -1,9 +1,5 @@
 /* CreateDate: 10/12/2016 09:01:39.697 , ModifyDate: 08/23/2017 17:45:50.167 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[tmpFacebookAudienceNoSales](
 	[ContactID] [nvarchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[EmailAddress] [nvarchar](100) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,

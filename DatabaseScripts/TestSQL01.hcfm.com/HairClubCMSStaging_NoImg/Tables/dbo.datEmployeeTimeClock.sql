@@ -1,9 +1,5 @@
 /* CreateDate: 08/05/2008 13:30:40.100 , ModifyDate: 12/03/2021 10:24:48.663 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[datEmployeeTimeClock](
 	[EmployeeTimeClockGUID] [uniqueidentifier] NOT NULL,
 	[EmployeeGUID] [uniqueidentifier] NULL,

@@ -1,9 +1,5 @@
 /* CreateDate: 10/10/2016 08:05:31.770 , ModifyDate: 12/03/2021 10:24:48.583 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[cfgCenterManagementArea](
 	[CenterManagementAreaID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
 	[CenterManagementAreaSortOrder] [int] NOT NULL,

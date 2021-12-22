@@ -1,9 +1,5 @@
 /* CreateDate: 07/07/2013 19:23:17.533 , ModifyDate: 07/12/2014 04:23:14.233 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[tmpInfostoreDailyImportLog](
 	[ID] [int] IDENTITY(1,1) NOT NULL,
 	[RunDate] [date] NOT NULL,

@@ -1,9 +1,5 @@
 /* CreateDate: 04/18/2012 16:50:26.520 , ModifyDate: 04/18/2012 16:52:39.527 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE FUNCTION [dbo].[fxNumberToString] (
 	@Number INT)
 RETURNS varchar(120)

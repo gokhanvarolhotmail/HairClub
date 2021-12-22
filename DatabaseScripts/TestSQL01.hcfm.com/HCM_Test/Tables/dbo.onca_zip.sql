@@ -1,9 +1,5 @@
 /* CreateDate: 01/25/2010 10:19:20.670 , ModifyDate: 10/23/2017 12:35:40.163 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[onca_zip](
 	[zip_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[zip_code] [nchar](20) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,

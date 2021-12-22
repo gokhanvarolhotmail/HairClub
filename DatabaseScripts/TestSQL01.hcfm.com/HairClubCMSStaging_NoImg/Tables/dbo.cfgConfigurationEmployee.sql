@@ -1,9 +1,5 @@
 /* CreateDate: 06/20/2011 21:40:07.160 , ModifyDate: 12/03/2021 10:24:48.583 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[cfgConfigurationEmployee](
 	[ConfigurationEmployeeID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
 	[EmployeeGUID] [uniqueidentifier] NOT NULL,

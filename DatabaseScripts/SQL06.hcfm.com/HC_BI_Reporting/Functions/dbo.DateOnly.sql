@@ -1,9 +1,5 @@
 /* CreateDate: 07/14/2011 08:17:01.217 , ModifyDate: 10/05/2012 08:53:41.797 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE FUNCTION [dbo].[DateOnly] (@Date datetime)
 RETURNS varchar(12)
 AS

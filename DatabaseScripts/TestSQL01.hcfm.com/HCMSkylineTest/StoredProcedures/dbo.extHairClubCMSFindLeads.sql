@@ -1,9 +1,5 @@
 /* CreateDate: 11/05/2015 11:12:22.540 , ModifyDate: 11/05/2015 11:12:22.540 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*
 ==============================================================================
 PROCEDURE:				extHairClubCMSFindLeads

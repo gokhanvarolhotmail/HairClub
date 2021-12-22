@@ -1,9 +1,5 @@
 /* CreateDate: 10/17/2007 08:55:07.980 , ModifyDate: 05/01/2010 14:48:10.053 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:		sprpt_CallQueListCount

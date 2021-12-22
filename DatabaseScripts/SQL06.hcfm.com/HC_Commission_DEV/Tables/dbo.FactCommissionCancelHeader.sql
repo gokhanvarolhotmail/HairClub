@@ -1,9 +1,5 @@
 /* CreateDate: 11/02/2012 11:24:57.053 , ModifyDate: 06/18/2014 01:38:27.757 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[FactCommissionCancelHeader](
 	[CancelHeaderKey] [int] IDENTITY(1,1) NOT NULL,
 	[CenterSSID] [int] NOT NULL,

@@ -1,10 +1,6 @@
 /* CreateDate: 09/30/2013 10:49:29.890 , ModifyDate: 09/10/2019 22:44:10.840 */
 /* ***HasTriggers*** TriggerCount: 1 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[cstd_wireless_scrub_history_detail](
 	[wireless_scrub_history_detail_id] [int] IDENTITY(1,1) NOT NULL,
 	[wireless_scrub_history_id] [int] NOT NULL,
@@ -21,10 +17,6 @@ REFERENCES [dbo].[cstd_wireless_scrub_history] ([wireless_scrub_history_id])
 ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[cstd_wireless_scrub_history_detail] CHECK CONSTRAINT [FK_cstd_wireless_scrub_history_detail_cstd_wireless_scrub_history]
-GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
 GO
 CREATE TRIGGER [dbo].[cstd_wireless_scrub_history_detail_insert]
    ON  [dbo].[cstd_wireless_scrub_history_detail]

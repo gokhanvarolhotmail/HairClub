@@ -1,9 +1,5 @@
 /* CreateDate: 03/04/2009 08:46:21.567 , ModifyDate: 02/27/2017 09:49:26.120 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				rptBusinessOverview

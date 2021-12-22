@@ -1,9 +1,5 @@
 /* CreateDate: 07/12/2019 13:55:11.903 , ModifyDate: 07/12/2019 14:02:03.180 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 VIEW:					[vw_MDP]
 DESTINATION SERVER:		SQL06

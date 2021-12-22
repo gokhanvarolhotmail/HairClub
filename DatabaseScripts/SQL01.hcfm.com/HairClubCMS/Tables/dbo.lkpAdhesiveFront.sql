@@ -1,9 +1,5 @@
 /* CreateDate: 08/27/2008 11:26:10.147 , ModifyDate: 05/26/2020 10:49:22.527 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpAdhesiveFront](
 	[AdhesiveFrontID] [int] NOT NULL,
 	[AdhesiveFrontSortOrder] [int] NOT NULL,

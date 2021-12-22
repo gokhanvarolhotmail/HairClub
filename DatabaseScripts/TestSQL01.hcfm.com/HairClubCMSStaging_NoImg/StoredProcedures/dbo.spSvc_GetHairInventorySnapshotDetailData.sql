@@ -1,9 +1,5 @@
 /* CreateDate: 05/29/2020 16:28:31.653 , ModifyDate: 02/11/2021 14:14:01.643 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				spSvc_GetHairInventorySnapshotDetailData
 DESTINATION SERVER:		SQL01

@@ -1,9 +1,5 @@
 /* CreateDate: 10/15/2013 04:44:49.933 , ModifyDate: 10/15/2013 04:44:49.933 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE FUNCTION [dbo].[psoLastActivity]
 (
 	@ContactId	NCHAR(10)

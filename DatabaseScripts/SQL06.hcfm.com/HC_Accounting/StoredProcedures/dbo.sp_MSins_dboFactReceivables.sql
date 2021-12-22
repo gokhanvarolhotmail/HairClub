@@ -1,9 +1,5 @@
 /* CreateDate: 10/03/2019 22:32:12.523 , ModifyDate: 10/03/2019 22:32:12.523 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 create procedure [sp_MSins_dboFactReceivables]
     @c1 int,
     @c2 int,

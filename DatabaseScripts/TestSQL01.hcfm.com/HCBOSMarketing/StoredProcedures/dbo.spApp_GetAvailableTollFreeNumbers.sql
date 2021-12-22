@@ -1,9 +1,5 @@
 /* CreateDate: 09/29/2008 13:14:10.167 , ModifyDate: 02/20/2012 14:55:48.720 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:	spApp_GetAvailableTollFreeNumbers

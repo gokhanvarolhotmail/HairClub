@@ -1,9 +1,5 @@
 /* CreateDate: 01/03/2020 15:46:00.997 , ModifyDate: 12/19/2021 20:26:23.993 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				[spSvc_NewBusinessSalesRefundsSubscription]
 DESTINATION SERVER:		SQL06

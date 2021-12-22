@@ -1,9 +1,5 @@
 /* CreateDate: 02/26/2017 22:35:10.277 , ModifyDate: 12/07/2021 16:20:16.233 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpHairStrandColor](
 	[HairStrandColorID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
 	[HairStrandColorSortOrder] [int] NOT NULL,

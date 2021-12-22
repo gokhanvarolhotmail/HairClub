@@ -1,9 +1,5 @@
 /* CreateDate: 07/03/2013 16:15:21.130 , ModifyDate: 07/29/2013 11:53:38.273 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*
 ==============================================================================
 PROCEDURE:				[mtnAddSalesOrderIndexes]

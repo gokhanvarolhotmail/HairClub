@@ -1,9 +1,5 @@
 /* CreateDate: 10/22/2007 09:46:33.947 , ModifyDate: 10/22/2007 10:23:46.370 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[HC_EXCEPTIONoncd_contact_company](
 	[contact_company_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[contact_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,

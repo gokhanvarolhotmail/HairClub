@@ -1,9 +1,5 @@
 /* CreateDate: 08/27/2008 11:27:12.560 , ModifyDate: 05/26/2020 10:49:23.200 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpAdhesiveSolvent](
 	[AdhesiveSolventID] [int] NOT NULL,
 	[AdhesiveSolventSortOrder] [int] NOT NULL,

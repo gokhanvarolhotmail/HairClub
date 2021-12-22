@@ -1,9 +1,5 @@
 /* CreateDate: 07/21/2015 15:39:14.860 , ModifyDate: 08/10/2015 16:10:53.720 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 VIEW:					vw_LeadsCountMTD
 DESTINATION SERVER:		SQL06

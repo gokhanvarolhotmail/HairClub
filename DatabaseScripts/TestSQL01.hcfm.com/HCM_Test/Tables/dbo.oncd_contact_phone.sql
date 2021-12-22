@@ -1,10 +1,6 @@
 /* CreateDate: 01/18/2005 09:34:09.013 , ModifyDate: 09/10/2019 22:46:08.437 */
 /* ***HasTriggers*** TriggerCount: 5 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[oncd_contact_phone](
 	[contact_phone_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[contact_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
@@ -121,10 +117,6 @@ REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_contact_phone] CHECK CONSTRAINT [user_contact_phon_608]
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 -- =============================================
 -- Create date: 24 September 2012
 -- Description:	Removes Unicode
@@ -181,10 +173,6 @@ END
 GO
 ALTER TABLE [dbo].[oncd_contact_phone] DISABLE TRIGGER [pso_oncd_contact_phone_remove_unicode_insert]
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 -- =============================================
 -- Create date: 24 September 2012
 -- Description:	Removes Unicode
@@ -225,10 +213,6 @@ END
 GO
 ALTER TABLE [dbo].[oncd_contact_phone] DISABLE TRIGGER [pso_oncd_contact_phone_remove_unicode_update]
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TRIGGER [dbo].[pso_PhoneTypeAudit]
    ON  [dbo].[oncd_contact_phone]
    AFTER INSERT, UPDATE
@@ -251,10 +235,6 @@ BEGIN
 END
 GO
 ALTER TABLE [dbo].[oncd_contact_phone] ENABLE TRIGGER [pso_PhoneTypeAudit]
-GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
 GO
 -- =============================================================================
 -- Create date: 22 March 2010
@@ -311,10 +291,6 @@ BEGIN
 END
 GO
 ALTER TABLE [dbo].[oncd_contact_phone] ENABLE TRIGGER [pso_SinglePrimaryPhone]
-GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
 GO
 -- =============================================
 -- Create date: 5 August 2013

@@ -1,9 +1,5 @@
 /* CreateDate: 05/03/2010 12:08:47.477 , ModifyDate: 09/16/2019 09:25:18.263 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [bief_dds].[DimTimeOfDay](
 	[TimeOfDayKey] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
 	[Time] [varchar](12) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,

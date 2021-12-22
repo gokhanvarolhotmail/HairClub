@@ -1,9 +1,5 @@
 /* CreateDate: 11/04/2019 08:17:32.063 , ModifyDate: 11/04/2019 08:17:32.063 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*
 ==============================================================================
 PROCEDURE:				extHCBISFDCGetSourceList

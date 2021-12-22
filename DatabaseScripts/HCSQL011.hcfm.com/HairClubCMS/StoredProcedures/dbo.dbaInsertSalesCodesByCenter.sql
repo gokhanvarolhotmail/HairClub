@@ -1,9 +1,5 @@
 /* CreateDate: 02/04/2013 17:36:51.270 , ModifyDate: 02/08/2013 13:30:32.610 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				dbaInsertSalesCodesByCenter

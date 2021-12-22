@@ -1,9 +1,5 @@
 /* CreateDate: 10/03/2019 23:03:41.183 , ModifyDate: 10/03/2019 23:03:41.183 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 create procedure [sp_MSupd_bi_cms_ddsDimHairSystemType]
 		@c1 int = NULL,
 		@c2 nvarchar(50) = NULL,

@@ -1,9 +1,5 @@
 /* CreateDate: 01/18/2005 09:34:09.373 , ModifyDate: 06/21/2012 10:05:29.323 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[oncd_incident_blob](
 	[attachment_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[attachment_blob] [image] NULL,

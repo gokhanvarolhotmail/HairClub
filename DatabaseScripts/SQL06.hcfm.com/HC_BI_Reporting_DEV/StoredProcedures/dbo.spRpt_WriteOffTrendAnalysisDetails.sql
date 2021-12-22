@@ -1,9 +1,5 @@
 /* CreateDate: 12/05/2013 09:45:20.470 , ModifyDate: 08/04/2015 14:14:05.170 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				spRpt_WriteOffTrendAnalysisDetails
 DESTINATION SERVER:		SQL06

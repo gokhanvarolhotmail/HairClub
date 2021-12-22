@@ -1,9 +1,5 @@
 /* CreateDate: 07/12/2011 10:46:21.440 , ModifyDate: 07/18/2011 10:01:12.627 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				[spRpt_SurgeryAR_Balance]

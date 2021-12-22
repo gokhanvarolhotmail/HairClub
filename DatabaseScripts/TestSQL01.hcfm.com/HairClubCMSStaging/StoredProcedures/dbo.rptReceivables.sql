@@ -1,9 +1,5 @@
 /* CreateDate: 02/18/2013 07:43:35.683 , ModifyDate: 05/17/2019 19:37:06.967 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*===============================================================================================
 -- Procedure Name:                  rptReceivables
 -- Procedure Description:

@@ -1,9 +1,5 @@
 /* CreateDate: 08/27/2008 12:06:18.220 , ModifyDate: 05/26/2020 10:49:42.593 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpMembershipCancelReason](
 	[MembershipCancelReasonID] [int] NOT NULL,
 	[MembershipCancelReasonSortOrder] [int] NOT NULL,

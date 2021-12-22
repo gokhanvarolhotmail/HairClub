@@ -1,9 +1,5 @@
 /* CreateDate: 10/03/2019 23:03:39.660 , ModifyDate: 10/03/2019 23:03:44.713 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [bief_dds].[_DBVersion](
 	[DBVersionMajor] [int] NOT NULL,
 	[DBVersionMinor] [int] NOT NULL,

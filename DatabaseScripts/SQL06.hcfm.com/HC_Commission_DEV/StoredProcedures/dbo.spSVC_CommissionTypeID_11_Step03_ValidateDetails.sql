@@ -1,9 +1,5 @@
 /* CreateDate: 10/06/2015 12:03:41.103 , ModifyDate: 10/07/2015 16:01:12.390 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				spSVC_CommissionTypeID_11_Step03_ValidateDetails
 DESCRIPTION:			EXT to Surgery

@@ -1,9 +1,5 @@
 /* CreateDate: 05/29/2013 13:14:32.837 , ModifyDate: 05/30/2013 10:47:42.337 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				dbaSelectBosleyActivities

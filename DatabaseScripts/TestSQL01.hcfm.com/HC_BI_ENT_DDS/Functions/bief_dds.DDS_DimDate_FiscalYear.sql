@@ -1,9 +1,5 @@
 /* CreateDate: 05/03/2010 12:08:48.920 , ModifyDate: 02/11/2014 14:22:21.217 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*
 	02/11/2014 - MB - Changed function to return actual year as the fiscal year.  Fiscal period now mirrors the calendar.
 */

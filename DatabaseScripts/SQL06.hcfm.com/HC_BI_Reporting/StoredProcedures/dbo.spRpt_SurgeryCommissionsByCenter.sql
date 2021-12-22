@@ -1,9 +1,5 @@
 /* CreateDate: 07/12/2011 13:41:32.860 , ModifyDate: 07/15/2011 13:21:10.070 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*===============================================================================================
 -- Procedure Name:			spRpt_SurgeryCommissionsByCenter
 -- Procedure Description:

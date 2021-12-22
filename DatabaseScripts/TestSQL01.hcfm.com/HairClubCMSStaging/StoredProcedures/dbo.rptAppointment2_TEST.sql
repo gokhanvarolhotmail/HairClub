@@ -1,9 +1,5 @@
 /* CreateDate: 02/17/2017 13:49:22.570 , ModifyDate: 02/17/2017 13:49:22.570 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*===============================================================================================
  Procedure Name:            rptAppointment2_TEST
  Procedure Description:

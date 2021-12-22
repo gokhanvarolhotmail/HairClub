@@ -1,9 +1,5 @@
 /* CreateDate: 04/17/2018 13:25:16.103 , ModifyDate: 04/17/2018 13:25:16.187 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*********************************************************************************************
 Who Is Active? v11.112 (2016-04-14) - Azure Special Edition v2
 (C) 2007-2016, Adam Machanic

@@ -1,9 +1,5 @@
 /* CreateDate: 07/14/2005 14:21:08.307 , ModifyDate: 06/21/2012 10:00:47.803 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[onca_user_outlook_folder](
 	[user_outlook_folder_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[user_code] [nchar](20) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,

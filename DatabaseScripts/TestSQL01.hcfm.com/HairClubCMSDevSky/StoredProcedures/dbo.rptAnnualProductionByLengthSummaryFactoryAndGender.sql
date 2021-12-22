@@ -1,9 +1,5 @@
 /* CreateDate: 10/23/2013 10:48:00.880 , ModifyDate: 01/13/2014 16:40:07.890 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				rptAnnualProductionByLengthSummaryFactoryAndGender
 DESTINATION SERVER:		SQL01

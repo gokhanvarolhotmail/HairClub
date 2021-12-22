@@ -1,9 +1,5 @@
 /* CreateDate: 12/31/2010 13:35:54.217 , ModifyDate: 02/27/2017 09:49:15.710 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*
 ==============================================================================
 PROCEDURE:                    dbaClientMembershipHistoricalImport

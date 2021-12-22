@@ -1,9 +1,5 @@
 /* CreateDate: 12/28/2016 07:03:10.680 , ModifyDate: 12/28/2016 07:03:10.680 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[FullTrichoViewNightlyProcess](
 	[ID] [int] IDENTITY(1,1) NOT NULL,
 	[AppointmentGUID] [uniqueidentifier] NOT NULL,

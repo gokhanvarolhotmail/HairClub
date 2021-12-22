@@ -1,9 +1,5 @@
 /* CreateDate: 08/27/2008 11:32:35.397 , ModifyDate: 12/03/2021 10:24:48.650 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpCreditCardType](
 	[CreditCardTypeID] [int] NOT NULL,
 	[CreditCardTypeSortOrder] [int] NOT NULL,

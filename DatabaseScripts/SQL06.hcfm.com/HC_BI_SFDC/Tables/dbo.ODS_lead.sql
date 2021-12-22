@@ -1,9 +1,5 @@
 /* CreateDate: 10/07/2021 15:45:35.157 , ModifyDate: 10/07/2021 15:45:35.157 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[ODS_lead](
 	[Street] [varchar](400) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[City] [varchar](400) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,

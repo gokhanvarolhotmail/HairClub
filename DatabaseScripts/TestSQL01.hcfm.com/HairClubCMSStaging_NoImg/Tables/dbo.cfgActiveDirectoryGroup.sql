@@ -1,9 +1,5 @@
 /* CreateDate: 07/30/2012 09:01:56.287 , ModifyDate: 12/03/2021 10:24:48.723 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[cfgActiveDirectoryGroup](
 	[ActiveDirectoryGroupID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
 	[ActiveDirectoryGroup] [nvarchar](100) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,

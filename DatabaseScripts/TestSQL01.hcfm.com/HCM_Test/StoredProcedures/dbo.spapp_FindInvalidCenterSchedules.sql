@@ -1,9 +1,5 @@
 /* CreateDate: 09/04/2007 09:33:29.947 , ModifyDate: 05/01/2010 14:48:10.920 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 -- =============================================
 -- Author:			Oncontact PSO Fred Remers
 -- Create date: 	8/21/07

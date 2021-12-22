@@ -1,9 +1,5 @@
 /* CreateDate: 09/28/2009 00:02:00.287 , ModifyDate: 12/03/2021 10:24:48.663 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[cfgConfigurationApplication](
 	[ConfigurationApplicationID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
 	[Version32ReleaseDate] [date] NOT NULL,

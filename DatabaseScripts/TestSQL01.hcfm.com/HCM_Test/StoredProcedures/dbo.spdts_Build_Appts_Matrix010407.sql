@@ -1,9 +1,5 @@
 /* CreateDate: 01/04/2008 11:19:20.303 , ModifyDate: 05/01/2010 14:48:10.547 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE PROCEDURE [dbo].[spdts_Build_Appts_Matrix010407]
 	@days INT --THis is really being fed as a parameter but we don't know how to open the job
 AS

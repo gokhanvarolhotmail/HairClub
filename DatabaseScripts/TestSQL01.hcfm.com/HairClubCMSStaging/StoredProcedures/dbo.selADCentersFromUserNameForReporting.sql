@@ -1,9 +1,5 @@
 /* CreateDate: 01/27/2011 22:24:13.737 , ModifyDate: 08/19/2020 16:31:34.810 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				selADCentersFromUserNameForReporting

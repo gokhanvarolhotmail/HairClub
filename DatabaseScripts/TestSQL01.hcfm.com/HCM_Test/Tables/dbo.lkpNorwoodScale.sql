@@ -1,9 +1,5 @@
 /* CreateDate: 09/29/2016 09:50:49.737 , ModifyDate: 09/29/2016 09:50:49.737 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpNorwoodScale](
 	[NorwoodScaleID] [int] NOT NULL,
 	[BOSNorwoodScaleCode] [nvarchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,

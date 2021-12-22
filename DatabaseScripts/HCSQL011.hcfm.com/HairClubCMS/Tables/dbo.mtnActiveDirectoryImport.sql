@@ -1,9 +1,5 @@
 /* CreateDate: 05/13/2009 06:37:43.917 , ModifyDate: 05/26/2020 10:49:09.967 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[mtnActiveDirectoryImport](
 	[ActiveDirectoryID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
 	[ADSID] [varbinary](100) NULL,

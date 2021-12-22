@@ -1,9 +1,5 @@
 /* CreateDate: 12/31/2010 13:21:03.870 , ModifyDate: 05/28/2015 14:55:09.457 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 FUNCTION:   [fx_GetCMSMembership]

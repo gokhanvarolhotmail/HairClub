@@ -1,9 +1,5 @@
 /* CreateDate: 05/13/2018 21:17:28.850 , ModifyDate: 05/13/2018 21:17:28.850 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[BackupDeviceInfo](
 	[ComputerName] [nvarchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[InstanceName] [nvarchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,

@@ -1,9 +1,5 @@
 /* CreateDate: 06/12/2008 16:36:09.900 , ModifyDate: 01/25/2010 08:13:27.480 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE VIEW [dbo].[TollFreeNumbersConnection_vw]
 AS
 SELECT

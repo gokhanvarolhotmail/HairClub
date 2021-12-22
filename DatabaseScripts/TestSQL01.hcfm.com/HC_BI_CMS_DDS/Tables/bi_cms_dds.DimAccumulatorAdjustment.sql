@@ -1,9 +1,5 @@
 /* CreateDate: 10/05/2010 13:44:08.257 , ModifyDate: 09/16/2019 09:33:49.807 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [bi_cms_dds].[DimAccumulatorAdjustment](
 	[AccumulatorAdjustmentKey] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
 	[AccumulatorAdjustmentSSID] [uniqueidentifier] NOT NULL,

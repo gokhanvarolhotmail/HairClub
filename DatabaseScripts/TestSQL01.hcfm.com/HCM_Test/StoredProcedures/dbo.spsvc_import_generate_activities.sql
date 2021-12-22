@@ -1,9 +1,5 @@
 /* CreateDate: 02/18/2008 11:18:15.343 , ModifyDate: 05/22/2012 11:29:06.963 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:	[spsvc_import_generate_activities]	VERSION  1.0

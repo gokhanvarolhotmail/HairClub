@@ -1,9 +1,5 @@
 /* CreateDate: 06/18/2012 15:11:13.043 , ModifyDate: 02/27/2017 09:49:27.637 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*===============================================================================================
 -- Procedure Name:			rptHairSystemInventorybyClient
 -- Procedure Description:

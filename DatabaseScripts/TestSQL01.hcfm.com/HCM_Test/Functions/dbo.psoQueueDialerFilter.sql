@@ -1,9 +1,5 @@
 /* CreateDate: 10/15/2013 00:29:05.883 , ModifyDate: 10/15/2013 00:29:05.883 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE FUNCTION [dbo].[psoQueueDialerFilter]
 (
 	@Date	DATETIME

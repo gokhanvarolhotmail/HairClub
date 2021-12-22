@@ -1,9 +1,5 @@
 /* CreateDate: 01/29/2014 11:07:02.960 , ModifyDate: 06/17/2019 17:39:04.540 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				spRpt_CorporateStores
 DESTINATION SERVER:		SQL06

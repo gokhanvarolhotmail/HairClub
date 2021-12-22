@@ -1,9 +1,5 @@
 /* CreateDate: 03/04/2013 22:33:51.483 , ModifyDate: 06/17/2013 23:04:32.073 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				extCommissionGetPayPeriods

@@ -1,9 +1,5 @@
 /* CreateDate: 03/30/2019 12:35:24.567 , ModifyDate: 06/03/2019 15:41:17.330 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				spSvc_CRM_Conversions_Step03_ValidateDetails
 DESTINATION SERVER:		SQL06

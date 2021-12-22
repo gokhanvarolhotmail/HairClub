@@ -1,9 +1,5 @@
 /* CreateDate: 01/08/2021 15:21:54.180 , ModifyDate: 05/12/2021 16:27:52.133 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [bief_dds].[DimDate](
 	[DateKey] [int] NOT NULL,
 	[FullDate] [date] NULL,

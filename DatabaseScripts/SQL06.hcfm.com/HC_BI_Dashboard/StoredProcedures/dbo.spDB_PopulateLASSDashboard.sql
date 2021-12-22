@@ -1,9 +1,5 @@
 /* CreateDate: 06/05/2020 07:17:30.237 , ModifyDate: 02/16/2021 15:35:56.883 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				spDB_PopulateLASSDashboard
 DESTINATION SERVER:		SQL06

@@ -1,9 +1,5 @@
 /* CreateDate: 01/21/2014 23:48:16.530 , ModifyDate: 06/25/2021 07:18:53.380 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[datClientMembershipDocument](
 	[ClientMembershipDocumentGUID] [uniqueidentifier] ROWGUIDCOL  NOT NULL,
 	[ClientGUID] [uniqueidentifier] NOT NULL,

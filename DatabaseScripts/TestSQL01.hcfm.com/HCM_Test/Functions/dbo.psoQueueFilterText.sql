@@ -1,9 +1,5 @@
 /* CreateDate: 10/15/2013 00:22:53.433 , ModifyDate: 10/15/2013 00:22:53.433 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE FUNCTION dbo.psoQueueFilterText
 (
 	@QueueId NCHAR(10)

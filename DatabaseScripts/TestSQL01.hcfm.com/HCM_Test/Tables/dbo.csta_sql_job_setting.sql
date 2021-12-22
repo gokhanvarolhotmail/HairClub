@@ -1,9 +1,5 @@
 /* CreateDate: 06/25/2012 10:27:04.873 , ModifyDate: 06/28/2012 09:52:18.173 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[csta_sql_job_setting](
 	[sql_job_setting_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[sql_job_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,

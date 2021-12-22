@@ -1,9 +1,5 @@
 /* CreateDate: 10/28/2008 15:22:20.733 , ModifyDate: 12/03/2021 10:24:48.543 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[datNotesClient](
 	[NotesClientGUID] [uniqueidentifier] NOT NULL,
 	[ClientGUID] [uniqueidentifier] NULL,

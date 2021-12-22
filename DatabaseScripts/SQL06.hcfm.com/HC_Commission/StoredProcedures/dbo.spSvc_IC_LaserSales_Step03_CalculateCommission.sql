@@ -1,9 +1,5 @@
 /* CreateDate: 03/30/2019 12:37:01.437 , ModifyDate: 01/27/2021 16:50:48.590 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				spSvc_IC_LaserSales_Step03_CalculateCommission
 DESTINATION SERVER:		SQL06

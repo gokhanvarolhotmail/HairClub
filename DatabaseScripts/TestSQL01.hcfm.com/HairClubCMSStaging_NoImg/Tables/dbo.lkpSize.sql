@@ -1,9 +1,5 @@
 /* CreateDate: 01/16/2017 18:13:05.650 , ModifyDate: 01/16/2017 18:13:08.390 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpSize](
 	[SizeID] [int] IDENTITY(1,1) NOT NULL,
 	[SizeSortOrder] [int] NOT NULL,

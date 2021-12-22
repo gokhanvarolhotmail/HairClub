@@ -1,9 +1,5 @@
 /* CreateDate: 05/29/2019 14:14:57.260 , ModifyDate: 05/29/2019 14:14:57.260 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[dashNewBusiness](
 	[FirstDateOfMonth] [datetime] NOT NULL,
 	[YearNumber] [int] NOT NULL,

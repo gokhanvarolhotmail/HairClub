@@ -1,9 +1,5 @@
 /* CreateDate: 08/06/2015 15:31:52.990 , ModifyDate: 07/16/2019 15:12:49.400 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				[pop_dashRecurringBusiness]
 DESTINATION SERVER:		SQL06

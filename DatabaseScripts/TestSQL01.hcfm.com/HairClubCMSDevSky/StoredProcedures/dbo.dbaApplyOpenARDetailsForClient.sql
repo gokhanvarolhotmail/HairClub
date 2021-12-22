@@ -1,9 +1,5 @@
 /* CreateDate: 11/12/2014 11:49:28.033 , ModifyDate: 07/20/2021 22:00:25.380 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*
 ==============================================================================
 PROCEDURE:				dbaApplyOpenARDetailsForClient

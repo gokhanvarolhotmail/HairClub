@@ -1,9 +1,5 @@
 /* CreateDate: 08/30/2011 10:32:19.737 , ModifyDate: 12/12/2019 11:44:31.400 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:		sprpt_LASSByMediaLevelsAndTime

@@ -1,9 +1,5 @@
 /* CreateDate: 05/03/2010 12:08:53.120 , ModifyDate: 05/03/2010 12:08:53.120 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 -----------------------------------------------------------------------
 -- [TR_DDLDatabaseTriggerLog] is a Database trigger used to audit
 -- all of the DDL changes made to the database

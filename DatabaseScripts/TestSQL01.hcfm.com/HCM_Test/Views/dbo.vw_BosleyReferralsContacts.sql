@@ -1,9 +1,5 @@
 /* CreateDate: 07/15/2015 13:42:33.617 , ModifyDate: 08/01/2015 10:30:35.917 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 VIEW:					vw_BosleyReferralsContacts
 DESTINATION SERVER:		SQL03

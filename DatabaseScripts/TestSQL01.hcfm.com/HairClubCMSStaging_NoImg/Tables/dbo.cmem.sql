@@ -1,9 +1,5 @@
 /* CreateDate: 06/23/2017 12:36:56.513 , ModifyDate: 06/23/2017 12:36:56.513 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[cmem](
 	[centerid] [int] NULL,
 	[clientmembershipguid] [uniqueidentifier] NOT NULL,

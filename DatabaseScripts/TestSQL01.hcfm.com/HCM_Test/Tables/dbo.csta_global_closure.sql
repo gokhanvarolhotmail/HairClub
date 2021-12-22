@@ -1,9 +1,5 @@
 /* CreateDate: 10/04/2006 16:26:48.547 , ModifyDate: 06/21/2012 10:00:00.127 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[csta_global_closure](
 	[global_closure_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[closure_date] [datetime] NOT NULL,

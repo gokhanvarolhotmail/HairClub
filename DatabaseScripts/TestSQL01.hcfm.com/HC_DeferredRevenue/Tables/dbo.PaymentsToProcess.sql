@@ -1,9 +1,5 @@
 /* CreateDate: 06/11/2013 14:42:26.487 , ModifyDate: 03/29/2014 06:13:51.137 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[PaymentsToProcess](
 	[DeferredRevenueHeaderKey] [int] NULL,
 	[ClientMembershipKey] [int] NULL,

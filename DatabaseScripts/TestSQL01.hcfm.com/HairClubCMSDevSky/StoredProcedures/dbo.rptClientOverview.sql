@@ -1,9 +1,5 @@
 /* CreateDate: 02/18/2013 07:43:35.607 , ModifyDate: 05/20/2019 11:13:01.400 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /****** Object:  StoredProcedure [dbo].[rptClientOverview]    Script Date: 12/11/2013 9:40:56 AM ******/
 
 

@@ -1,9 +1,5 @@
 /* CreateDate: 04/14/2009 07:33:54.883 , ModifyDate: 02/18/2013 19:04:03.177 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE VIEW [dbo].[vwCfgSalesCode]
 AS
 SELECT     sc.SalesCodeID, sc.SalesCodeSortOrder, sc.SalesCodeDescription, sc.SalesCodeDescriptionShort, sct.SalesCodeTypeDescription,

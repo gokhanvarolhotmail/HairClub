@@ -1,9 +1,5 @@
 /* CreateDate: 05/28/2018 22:17:57.727 , ModifyDate: 12/07/2021 16:20:15.987 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpInventoryAuditBatchStatus](
 	[InventoryAuditBatchStatusID] [int] IDENTITY(1,1) NOT NULL,
 	[InventoryAuditBatchStatusSortOrder] [int] NOT NULL,

@@ -1,9 +1,5 @@
 /* CreateDate: 01/10/2014 15:57:54.060 , ModifyDate: 05/07/2015 13:42:16.633 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:	[spSVC_GetJKGClientsForExport]

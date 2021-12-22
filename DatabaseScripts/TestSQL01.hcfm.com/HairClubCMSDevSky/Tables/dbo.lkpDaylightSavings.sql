@@ -1,9 +1,5 @@
 /* CreateDate: 11/18/2016 11:55:05.277 , ModifyDate: 12/07/2021 16:20:16.163 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpDaylightSavings](
 	[DaylightSavingsID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
 	[Year] [int] NOT NULL,

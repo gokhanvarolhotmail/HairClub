@@ -1,9 +1,5 @@
 /* CreateDate: 05/06/2014 09:10:03.770 , ModifyDate: 12/03/2021 10:24:48.613 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpHelpText](
 	[HelpTextID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
 	[HelpTextSortOrder] [int] NOT NULL,

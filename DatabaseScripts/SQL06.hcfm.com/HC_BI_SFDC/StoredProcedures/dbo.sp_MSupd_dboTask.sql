@@ -1,9 +1,5 @@
 /* CreateDate: 06/17/2020 08:30:36.990 , ModifyDate: 06/17/2020 08:30:36.990 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 create procedure [sp_MSupd_dboTask]     @c1 nvarchar(18) = NULL,     @c2 nvarchar(18) = NULL,     @c3 nchar(10) = NULL,     @c4 nchar(10) = NULL,     @c5 nvarchar(50) = NULL,     @c6 nvarchar(50) = NULL,     @c7 nvarchar(50) = NULL,     @c8 nvarchar(50) = NULL,     @c9 nvarchar(50) = NULL,     @c10 datetime = NULL,     @c11 time = NULL,     @c12 datetime = NULL,     @c13 time = NULL,     @c14 nvarchar(18) = NULL,     @c15 nvarchar(50) = NULL,     @c16 datetime = NULL,     @c17 nvarchar(100) = NULL,     @c18 nvarchar(100) = NULL,     @c19 nvarchar(100) = NULL,     @c20 nvarchar(100) = NULL,     @c21 nvarchar(100) = NULL,     @c22 int = NULL,     @c23 nvarchar(102) = NULL,     @c24 decimal(18,2) = NULL,     @c25 nvarchar(100) = NULL,     @c26 nvarchar(200) = NULL,     @c27 nvarchar(50) = NULL,     @c28 nvarchar(50) = NULL,     @c29 nvarchar(50) = NULL,     @c30 nvarchar(50) = NULL,     @c31 nvarchar(50) = NULL,     @c32 nvarchar(50) = NULL,     @c33 datetime = NULL,     @c34 datetime = NULL,     @c35 bit = NULL,     @c36 nvarchar(18) = NULL,     @c37 datetime = NULL,     @c38 nvarchar(18) = NULL,     @c39 datetime = NULL,     @c40 bit = NULL,     @c41 bit = NULL,     @c42 nvarchar(50) = NULL,     @c43 nvarchar(50) = NULL,     @pkc1 nvarchar(18) = NULL,     @bitmap binary(6)
 as
 begin   if (substring(@bitmap,1,1) & 1 = 1)

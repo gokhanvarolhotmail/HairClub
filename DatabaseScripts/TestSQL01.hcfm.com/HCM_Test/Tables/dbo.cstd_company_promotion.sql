@@ -1,9 +1,5 @@
 /* CreateDate: 10/04/2006 16:26:48.377 , ModifyDate: 06/21/2012 10:11:11.920 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[cstd_company_promotion](
 	[company_promotion_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[company_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,

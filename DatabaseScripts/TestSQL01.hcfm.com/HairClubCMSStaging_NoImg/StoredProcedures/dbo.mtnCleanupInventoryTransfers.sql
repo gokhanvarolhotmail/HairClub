@@ -1,9 +1,5 @@
 /* CreateDate: 11/08/2013 12:50:07.350 , ModifyDate: 05/23/2014 09:51:57.087 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*
 ==============================================================================
 PROCEDURE:                  mtnCleanupInventoryTransfers

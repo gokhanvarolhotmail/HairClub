@@ -1,9 +1,5 @@
 /* CreateDate: 08/18/2010 10:01:55.340 , ModifyDate: 08/18/2010 10:01:55.340 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 -- =============================================
 -- Create date: 2 August 2010
 -- Description:	Returns -1 if the Left Date is after the Right Date.

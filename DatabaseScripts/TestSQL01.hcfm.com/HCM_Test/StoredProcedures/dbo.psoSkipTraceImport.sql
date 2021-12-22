@@ -1,9 +1,5 @@
 /* CreateDate: 11/02/2015 10:07:13.880 , ModifyDate: 01/05/2016 16:19:42.637 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 -- =============================================
 -- Author:		Matt Wegner - Workwise
 -- Create date: 2015-05-19

@@ -1,9 +1,5 @@
 /* CreateDate: 01/04/2007 10:34:34.140 , ModifyDate: 06/21/2012 10:11:08.857 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[cstd_appointments_matrix](
 	[MatrixId] [bigint] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
 	[Center] [int] NULL,

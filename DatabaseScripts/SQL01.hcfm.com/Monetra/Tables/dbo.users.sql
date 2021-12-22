@@ -1,9 +1,5 @@
 /* CreateDate: 10/01/2018 08:53:16.047 , ModifyDate: 10/01/2018 08:53:16.057 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[users](
 	[id] [int] NOT NULL,
 	[subuserid] [bigint] NOT NULL,

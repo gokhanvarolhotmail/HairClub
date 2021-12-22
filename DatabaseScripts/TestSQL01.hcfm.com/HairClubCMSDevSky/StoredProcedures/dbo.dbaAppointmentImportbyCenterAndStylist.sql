@@ -1,9 +1,5 @@
 /* CreateDate: 04/28/2015 15:37:44.550 , ModifyDate: 05/26/2015 14:04:51.330 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				dbaAppointmentImportbyCenterAndStylist

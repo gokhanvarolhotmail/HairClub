@@ -1,9 +1,5 @@
 /* CreateDate: 06/11/2012 15:57:30.867 , ModifyDate: 01/20/2016 12:38:07.377 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE VIEW [dbo].[hcmvw_sales_summary] AS
 
 SELECT

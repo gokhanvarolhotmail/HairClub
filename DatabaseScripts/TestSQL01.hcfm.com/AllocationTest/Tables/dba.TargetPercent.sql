@@ -1,9 +1,5 @@
 /* CreateDate: 11/22/2019 14:57:35.363 , ModifyDate: 11/22/2019 14:57:35.363 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dba].[TargetPercent](
 	[TableName] [varchar](14) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[@EndDate] [datetime] NULL,

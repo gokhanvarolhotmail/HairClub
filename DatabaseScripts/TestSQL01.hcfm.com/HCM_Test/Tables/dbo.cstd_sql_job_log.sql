@@ -1,9 +1,5 @@
 /* CreateDate: 10/10/2011 15:19:05.753 , ModifyDate: 09/10/2019 22:49:39.300 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[cstd_sql_job_log](
 	[sql_job_log_id] [int] IDENTITY(1,1) NOT NULL,
 	[name] [nvarchar](128) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,

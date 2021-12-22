@@ -1,9 +1,5 @@
 /* CreateDate: 05/28/2018 22:17:57.707 , ModifyDate: 09/23/2019 12:34:03.330 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpInventoryNotScannedReason](
 	[InventoryNotScannedReasonID] [int] IDENTITY(1,1) NOT NULL,
 	[InventoryNotScannedReasonSortOrder] [int] NOT NULL,

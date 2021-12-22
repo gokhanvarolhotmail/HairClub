@@ -1,9 +1,5 @@
 /* CreateDate: 05/12/2020 13:47:51.240 , ModifyDate: 05/12/2020 13:47:51.240 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 create procedure [dbo].[sp_MSdel_bi_cms_ddsDimClient]     @pkc1 int
 as
 begin   	delete [bi_cms_dds].[DimClient]

@@ -1,9 +1,5 @@
 /* CreateDate: 01/25/2010 10:17:48.330 , ModifyDate: 05/01/2010 14:48:11.740 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE  PROCEDURE onc_create_primary_key (
 @key_length int = 10,
 @table_name varchar(128),

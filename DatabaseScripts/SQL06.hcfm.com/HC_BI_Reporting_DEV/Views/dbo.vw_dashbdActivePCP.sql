@@ -1,9 +1,5 @@
 /* CreateDate: 07/03/2014 11:34:45.377 , ModifyDate: 07/03/2014 11:34:45.377 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 VIEW:					[vw_dashbdActivePCP]
 DESTINATION SERVER:		SQL06

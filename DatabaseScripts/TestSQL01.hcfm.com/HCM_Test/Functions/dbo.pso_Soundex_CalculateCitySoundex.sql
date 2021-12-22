@@ -1,9 +1,5 @@
 /* CreateDate: 11/04/2015 13:41:54.560 , ModifyDate: 11/04/2015 13:41:54.560 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 -- =============================================================================
 -- Create date: 10 November 2011
 -- Description:	Calculates the soundex for the provided city.

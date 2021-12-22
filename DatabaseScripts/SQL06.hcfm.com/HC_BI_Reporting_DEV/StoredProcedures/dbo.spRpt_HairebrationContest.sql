@@ -1,9 +1,5 @@
 /* CreateDate: 08/26/2014 14:16:26.660 , ModifyDate: 10/20/2014 10:59:05.937 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				spRpt_HairebrationContest
 DESTINATION SERVER:		SQL06

@@ -1,9 +1,5 @@
 /* CreateDate: 09/19/2018 11:33:56.003 , ModifyDate: 08/20/2019 17:22:49.860 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 CHANGE HISTORY:
 08/20/2019 - RH - Removed ContactSSID and ActivitySSID

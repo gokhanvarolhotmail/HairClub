@@ -1,9 +1,5 @@
 /* CreateDate: 05/03/2010 12:17:25.420 , ModifyDate: 09/16/2019 09:33:49.877 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE PROCEDURE [bief_dds].[DDS_ErrorLog_Insert]
 			  @EventType				varchar(20) = NULL
 			, @PackageName				varchar(50) = NULL

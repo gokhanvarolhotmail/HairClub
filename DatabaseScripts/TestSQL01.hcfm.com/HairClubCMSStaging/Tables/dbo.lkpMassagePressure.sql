@@ -1,9 +1,5 @@
 /* CreateDate: 02/26/2017 22:35:10.167 , ModifyDate: 02/27/2017 11:58:09.603 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpMassagePressure](
 	[MassagePressureID] [int] IDENTITY(1,1) NOT NULL,
 	[MassagePressureSortOrder] [int] NOT NULL,

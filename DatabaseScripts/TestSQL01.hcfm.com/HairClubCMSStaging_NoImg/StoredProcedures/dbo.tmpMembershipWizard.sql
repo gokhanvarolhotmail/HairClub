@@ -1,9 +1,5 @@
 /* CreateDate: 11/04/2008 11:40:57.650 , ModifyDate: 02/27/2017 09:49:36.203 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				tmpMembershipWizard

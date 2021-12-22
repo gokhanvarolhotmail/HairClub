@@ -1,10 +1,6 @@
 /* CreateDate: 01/18/2005 09:34:09.250 , ModifyDate: 10/23/2017 12:35:40.133 */
 /* ***HasTriggers*** TriggerCount: 1 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[oncd_contact_user](
 	[contact_user_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[contact_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
@@ -56,10 +52,6 @@ ALTER TABLE [dbo].[oncd_contact_user]  WITH CHECK ADD  CONSTRAINT [user_contact_
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_contact_user] CHECK CONSTRAINT [user_contact_user_625]
-GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
 GO
 -- =============================================================================
 -- Create date: 22 March 2010

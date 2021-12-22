@@ -1,9 +1,5 @@
 /* CreateDate: 07/19/2013 16:17:36.607 , ModifyDate: 07/22/2013 09:09:22.253 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				extBosleyProcessCreatePostEXTPayment

@@ -1,9 +1,5 @@
 /* CreateDate: 05/14/2012 17:29:33.130 , ModifyDate: 12/07/2021 16:20:15.853 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpClientAddressType](
 	[ClientAddressTypeID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
 	[ClientAddressTypeSortOrder] [int] NOT NULL,

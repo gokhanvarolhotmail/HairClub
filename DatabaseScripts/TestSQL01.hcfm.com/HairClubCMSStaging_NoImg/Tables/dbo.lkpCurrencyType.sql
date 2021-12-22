@@ -1,9 +1,5 @@
 /* CreateDate: 08/27/2008 11:32:57.360 , ModifyDate: 12/03/2021 10:24:48.653 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpCurrencyType](
 	[CurrencyTypeID] [int] NOT NULL,
 	[CurrencyTypeSortOrder] [int] NOT NULL,

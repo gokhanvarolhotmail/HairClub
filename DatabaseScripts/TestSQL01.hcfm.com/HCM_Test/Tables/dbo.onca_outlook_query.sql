@@ -1,9 +1,5 @@
 /* CreateDate: 06/01/2005 17:18:03.623 , ModifyDate: 06/21/2012 10:00:52.203 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[onca_outlook_query](
 	[outlook_query_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[description] [nchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,

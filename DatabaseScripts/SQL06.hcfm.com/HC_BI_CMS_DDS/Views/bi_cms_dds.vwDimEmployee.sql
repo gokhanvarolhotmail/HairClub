@@ -1,9 +1,5 @@
 /* CreateDate: 10/03/2019 23:03:43.603 , ModifyDate: 10/03/2019 23:03:43.603 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE VIEW [bi_cms_dds].[vwDimEmployee]
 AS
 -------------------------------------------------------------------------

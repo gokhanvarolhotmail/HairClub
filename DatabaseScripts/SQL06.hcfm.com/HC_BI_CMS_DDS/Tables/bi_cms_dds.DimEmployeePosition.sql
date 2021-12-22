@@ -1,9 +1,5 @@
 /* CreateDate: 10/03/2019 23:03:40.377 , ModifyDate: 10/03/2019 23:03:45.903 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [bi_cms_dds].[DimEmployeePosition](
 	[EmployeePositionKey] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
 	[EmployeePositionSSID] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,

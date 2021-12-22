@@ -1,9 +1,5 @@
 /* CreateDate: 03/14/2013 23:16:13.430 , ModifyDate: 06/18/2015 11:05:40.170 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*
 ==============================================================================
 PROCEDURE:				mtnExecuteAccumulatorsOnBatch

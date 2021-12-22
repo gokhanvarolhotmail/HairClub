@@ -1,9 +1,5 @@
 /* CreateDate: 02/22/2016 08:56:32.127 , ModifyDate: 12/07/2021 16:20:15.903 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpHairSystemOrderPriorityReason](
 	[HairSystemOrderPriorityReasonID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
 	[HairSystemOrderPriorityReasonSortOrder] [int] NOT NULL,

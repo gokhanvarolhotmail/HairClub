@@ -1,9 +1,5 @@
 /* CreateDate: 04/10/2014 12:08:56.480 , ModifyDate: 08/07/2018 16:48:33.127 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				spSvc_BarthClientMembershipsExport
 DESTINATION SERVER:		SQL06

@@ -1,9 +1,5 @@
 /* CreateDate: 04/20/2020 15:23:18.373 , ModifyDate: 04/20/2020 15:23:18.373 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				extBosleyQueueSalesforceUpdate

@@ -1,10 +1,6 @@
 /* CreateDate: 01/18/2005 09:34:08.453 , ModifyDate: 10/23/2017 12:35:40.110 */
 /* ***HasTriggers*** TriggerCount: 1 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[oncd_company_address](
 	[company_address_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[company_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
@@ -129,10 +125,6 @@ ALTER TABLE [dbo].[oncd_company_address]  WITH CHECK ADD  CONSTRAINT [user_compa
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_company_address] CHECK CONSTRAINT [user_company_addr_516]
-GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
 GO
 -- =============================================
 -- Author:		Workwise LLC - MJW

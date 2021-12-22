@@ -1,9 +1,5 @@
 /* CreateDate: 10/07/2014 10:38:25.980 , ModifyDate: 01/02/2015 15:58:46.303 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*===============================================================================================
  Procedure Name:				[rptTVComparativeWidthGraph]
  Procedure Description:			This stored procedure provides the data for the Width grids.

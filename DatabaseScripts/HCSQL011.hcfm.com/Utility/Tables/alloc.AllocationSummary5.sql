@@ -1,9 +1,5 @@
 /* CreateDate: 01/15/2020 14:38:25.923 , ModifyDate: 01/15/2020 14:38:25.923 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [alloc].[AllocationSummary5](
 	[VendorID] [int] NULL,
 	[HairSystemHairLengthID] [int] NULL,

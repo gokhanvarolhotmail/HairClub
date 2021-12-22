@@ -1,9 +1,5 @@
 /* CreateDate: 05/14/2012 17:33:37.987 , ModifyDate: 05/26/2020 10:49:45.507 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpNotificationType](
 	[NotificationTypeID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
 	[NotificationTypeSortOrder] [int] NOT NULL,

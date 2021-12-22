@@ -1,9 +1,5 @@
 /* CreateDate: 01/02/2009 12:42:22.463 , ModifyDate: 12/07/2011 16:52:29.727 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*===============================================================================================
 -- Procedure Name:			spSvc_MarketingList_2ndSurgery
 -- Procedure Description:

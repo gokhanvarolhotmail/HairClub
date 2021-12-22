@@ -1,9 +1,5 @@
 /* CreateDate: 09/18/2006 16:13:35.923 , ModifyDate: 01/25/2010 08:11:31.807 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE   PROCEDURE  [dbo].[spapp_Update_NoShows_NextBookings_OLD]
 
 AS

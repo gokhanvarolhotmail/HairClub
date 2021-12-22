@@ -1,9 +1,5 @@
 /* CreateDate: 05/05/2009 15:20:53.723 , ModifyDate: 08/03/2012 10:18:44.100 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 FUNCTION:				FormatPhoneForMediaExport

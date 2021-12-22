@@ -1,9 +1,5 @@
 /* CreateDate: 05/28/2018 22:19:21.543 , ModifyDate: 12/16/2019 08:35:00.243 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[datSalesOrderDetailSerialized](
 	[SalesOrderDetailSerializedID] [int] IDENTITY(1,1) NOT NULL,
 	[SalesOrderDetailGUID] [uniqueidentifier] NOT NULL,

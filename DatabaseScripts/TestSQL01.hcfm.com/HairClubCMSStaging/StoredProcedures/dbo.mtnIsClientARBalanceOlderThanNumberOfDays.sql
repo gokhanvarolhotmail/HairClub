@@ -1,9 +1,5 @@
 /* CreateDate: 11/14/2016 07:44:38.870 , ModifyDate: 01/25/2017 11:47:38.073 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				mtnIsClientARBalanceOlderThanNumberOfDays

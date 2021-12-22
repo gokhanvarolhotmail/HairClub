@@ -1,9 +1,5 @@
 /* CreateDate: 08/10/2019 06:48:09.697 , ModifyDate: 08/10/2019 06:48:09.697 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				spSvc_MP_MDPService_Step05_AdvanceCommission
 DESTINATION SERVER:		SQL06

@@ -1,9 +1,5 @@
 /* CreateDate: 09/28/2009 16:53:04.460 , ModifyDate: 01/25/2010 08:11:31.777 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*===============================================================================================
 -- Procedure Name:			spApp_TREConsultations_CheckForBeBackActivity
 -- Procedure Description:

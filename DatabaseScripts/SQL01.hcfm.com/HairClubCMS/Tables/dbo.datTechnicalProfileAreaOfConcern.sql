@@ -1,9 +1,5 @@
 /* CreateDate: 02/27/2017 11:32:21.907 , ModifyDate: 01/22/2018 05:54:33.817 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[datTechnicalProfileAreaOfConcern](
 	[TechnicalProfileAreaOfConcernID] [int] IDENTITY(1,1) NOT NULL,
 	[TechnicalProfileID] [int] NOT NULL,

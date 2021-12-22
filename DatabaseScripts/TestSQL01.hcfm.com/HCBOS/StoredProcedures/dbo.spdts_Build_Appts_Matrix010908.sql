@@ -1,9 +1,5 @@
 /* CreateDate: 08/13/2007 12:59:50.073 , ModifyDate: 01/25/2010 08:11:31.790 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE   PROCEDURE [dbo].[spdts_Build_Appts_Matrix010908]
 	@days int
 AS

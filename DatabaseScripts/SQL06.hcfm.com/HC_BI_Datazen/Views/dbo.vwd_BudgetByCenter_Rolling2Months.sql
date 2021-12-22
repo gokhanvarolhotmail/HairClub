@@ -1,9 +1,5 @@
 /* CreateDate: 09/08/2015 14:58:04.637 , ModifyDate: 01/26/2018 16:16:24.223 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 VIEW:					vwd_BudgetByCenter_Rolling2Months
 DESTINATION SERVER:		SQL06

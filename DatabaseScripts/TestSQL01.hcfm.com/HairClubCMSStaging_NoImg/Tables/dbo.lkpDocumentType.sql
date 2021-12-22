@@ -1,9 +1,5 @@
 /* CreateDate: 01/21/2014 23:48:16.687 , ModifyDate: 12/03/2021 10:24:48.663 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpDocumentType](
 	[DocumentTypeID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
 	[DocumentTypeSortOrder] [int] NOT NULL,

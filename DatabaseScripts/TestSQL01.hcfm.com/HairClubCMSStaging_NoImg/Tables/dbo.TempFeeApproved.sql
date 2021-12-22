@@ -1,9 +1,5 @@
 /* CreateDate: 06/04/2013 18:00:56.413 , ModifyDate: 06/04/2013 18:00:56.413 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[TempFeeApproved](
 	[ttid] [varchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[msoft_code] [varchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,

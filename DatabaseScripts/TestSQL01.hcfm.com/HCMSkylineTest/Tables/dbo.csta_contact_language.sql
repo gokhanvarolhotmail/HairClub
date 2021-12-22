@@ -1,9 +1,5 @@
 /* CreateDate: 11/08/2012 13:44:37.837 , ModifyDate: 11/08/2012 13:46:26.120 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[csta_contact_language](
 	[language_code] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[description] [nchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,

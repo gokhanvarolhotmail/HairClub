@@ -1,9 +1,5 @@
 /* CreateDate: 05/14/2012 17:41:00.093 , ModifyDate: 03/15/2021 17:51:52.033 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				[selFeeApprovalDatesForCenter]
 DESTINATION SERVER:		SQL01

@@ -1,9 +1,5 @@
 /* CreateDate: 04/02/2014 16:54:31.437 , ModifyDate: 07/12/2014 04:23:14.297 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[tmpReversals](
 	[ReversalsID] [int] IDENTITY(1,1) NOT NULL,
 	[CenterID] [int] NOT NULL,

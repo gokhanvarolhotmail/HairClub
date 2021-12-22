@@ -1,9 +1,5 @@
 /* CreateDate: 12/16/2012 16:44:18.300 , ModifyDate: 07/02/2013 19:51:35.460 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				dbaInsertZeroDollarTenders

@@ -2,8 +2,6 @@
 GO
 SET ANSI_NULLS OFF
 GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE procedure [dbo].[onc_upper_first_character](
 @source_string varchar(4000) output
 )

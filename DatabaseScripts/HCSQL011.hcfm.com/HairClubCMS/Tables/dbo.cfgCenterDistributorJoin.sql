@@ -1,9 +1,5 @@
 /* CreateDate: 05/24/2021 09:10:11.040 , ModifyDate: 05/24/2021 09:10:11.387 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[cfgCenterDistributorJoin](
 	[CenterDistributorId] [int] IDENTITY(1,1) NOT NULL,
 	[CenterId] [int] NOT NULL,

@@ -1,9 +1,5 @@
 /* CreateDate: 01/26/2010 10:12:08.633 , ModifyDate: 01/26/2010 10:12:08.637 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[ASPStateTempSessions](
 	[SessionId] [nvarchar](88) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[Created] [datetime] NOT NULL,

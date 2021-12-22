@@ -1,9 +1,5 @@
 /* CreateDate: 12/09/2013 13:57:29.720 , ModifyDate: 12/09/2013 14:13:00.840 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				spRpt_CommissionClientOverview_CommissionDetail
 DESTINATION SERVER:		SQL06

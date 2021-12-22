@@ -1,9 +1,5 @@
 /* CreateDate: 05/23/2014 09:45:40.863 , ModifyDate: 05/23/2014 09:45:40.863 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE FUNCTION [dbo].[fnGetGreyColor]
 (
 	@HairSystemHairColorDescriptionShort nvarchar(10)

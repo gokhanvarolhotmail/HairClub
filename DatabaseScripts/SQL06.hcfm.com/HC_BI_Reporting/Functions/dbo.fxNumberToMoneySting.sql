@@ -1,9 +1,5 @@
 /* CreateDate: 04/18/2012 17:00:13.110 , ModifyDate: 04/18/2012 17:01:50.813 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE FUNCTION [dbo].[fxNumberToMoneySting] (
 	@Number DECIMAL(25,4))
 RETURNS varchar(120)

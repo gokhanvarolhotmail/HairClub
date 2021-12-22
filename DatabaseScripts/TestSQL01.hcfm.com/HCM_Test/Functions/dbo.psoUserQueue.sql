@@ -1,9 +1,5 @@
 /* CreateDate: 10/15/2013 00:26:57.673 , ModifyDate: 10/15/2013 00:26:57.673 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE FUNCTION [dbo].[psoUserQueue]
 (
 	@UserCode	NCHAR(20)

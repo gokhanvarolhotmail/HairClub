@@ -1,9 +1,5 @@
 /* CreateDate: 05/14/2012 17:29:16.200 , ModifyDate: 05/26/2020 10:49:44.933 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpCenterFeeBatchStatus](
 	[CenterFeeBatchStatusID] [int] NOT NULL,
 	[CenterFeeBatchStatusSortOrder] [int] NOT NULL,

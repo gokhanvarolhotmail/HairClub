@@ -1,9 +1,5 @@
 /* CreateDate: 06/19/2013 14:11:28.100 , ModifyDate: 09/10/2019 22:38:57.603 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[cstd_screen_scrape_log](
 	[screen_scrape_log_id] [int] IDENTITY(1,1) NOT NULL,
 	[log_date] [datetime] NOT NULL,

@@ -1,9 +1,5 @@
 /* CreateDate: 01/24/2019 10:30:43.350 , ModifyDate: 01/24/2019 10:30:43.350 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*===============================================================================================
  Procedure Name:            [rptInventoryAuditAdjustment]
  Procedure Description:

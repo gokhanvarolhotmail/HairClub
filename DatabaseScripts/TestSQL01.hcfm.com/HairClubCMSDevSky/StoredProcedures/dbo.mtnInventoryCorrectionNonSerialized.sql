@@ -1,9 +1,5 @@
 /* CreateDate: 11/27/2018 10:57:41.793 , ModifyDate: 09/23/2019 12:33:10.813 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				mtnInventoryCorrectionNonSerialized

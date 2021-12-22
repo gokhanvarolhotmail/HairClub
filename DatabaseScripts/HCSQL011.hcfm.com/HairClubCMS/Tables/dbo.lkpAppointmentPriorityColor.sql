@@ -1,9 +1,5 @@
 /* CreateDate: 07/27/2015 15:37:09.943 , ModifyDate: 05/26/2020 10:49:14.367 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpAppointmentPriorityColor](
 	[AppointmentPriorityColorID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
 	[AppointmentPriorityColorSortOrder] [int] NOT NULL,

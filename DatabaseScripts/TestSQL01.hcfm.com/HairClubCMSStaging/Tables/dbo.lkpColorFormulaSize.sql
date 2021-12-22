@@ -1,9 +1,5 @@
 /* CreateDate: 08/27/2008 11:31:38.010 , ModifyDate: 05/26/2020 10:49:33.133 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpColorFormulaSize](
 	[ColorFormulaSizeID] [int] NOT NULL,
 	[ColorBrandID] [int] NULL,

@@ -1,9 +1,5 @@
 /* CreateDate: 02/27/2017 06:47:43.240 , ModifyDate: 09/23/2019 12:14:38.597 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 	PROCEDURE:				[selTechnicalProfilesXtrandsForClient]
 	DESTINATION SERVER:		SQL01

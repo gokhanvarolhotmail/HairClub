@@ -1,9 +1,5 @@
 /* CreateDate: 05/20/2016 11:56:39.443 , ModifyDate: 05/20/2016 15:42:56.333 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 VIEW:					[vwd_FranchiseActualRevenuePerBusinessSegment]
 DESTINATION SERVER:		SQL06

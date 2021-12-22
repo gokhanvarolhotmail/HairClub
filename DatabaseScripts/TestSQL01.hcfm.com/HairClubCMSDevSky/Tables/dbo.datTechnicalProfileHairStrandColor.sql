@@ -1,9 +1,5 @@
 /* CreateDate: 02/26/2017 22:34:52.923 , ModifyDate: 12/07/2021 16:20:15.923 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[datTechnicalProfileHairStrandColor](
 	[TechnicalProfileHairStrandColorID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
 	[TechnicalProfileID] [int] NOT NULL,

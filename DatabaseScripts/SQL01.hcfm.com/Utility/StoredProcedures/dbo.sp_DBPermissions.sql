@@ -1,9 +1,5 @@
 /* CreateDate: 08/19/2019 11:04:58.860 , ModifyDate: 08/19/2019 11:04:58.900 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*********************************************************************************************
 sp_DBPermissions V6.1
 Kenneth Fisher

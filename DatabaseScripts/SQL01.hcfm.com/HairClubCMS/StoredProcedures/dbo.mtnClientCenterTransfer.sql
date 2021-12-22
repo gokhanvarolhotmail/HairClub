@@ -1,9 +1,5 @@
 /* CreateDate: 12/19/2013 13:54:21.843 , ModifyDate: 05/27/2016 17:58:35.130 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*
 ==============================================================================
 PROCEDURE:                  mtnClientCenterTransfer

@@ -1,9 +1,5 @@
 /* CreateDate: 03/22/2015 21:26:19.317 , ModifyDate: 11/09/2015 14:32:09.863 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[ActiveProcesses](
 	[ID] [int] IDENTITY(1,1) NOT NULL,
 	[Run Date] [datetime] NULL,

@@ -1,9 +1,5 @@
 /* CreateDate: 12/22/2015 16:02:55.570 , ModifyDate: 12/22/2015 16:02:55.570 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[tmp_cstd_skip_trace_external_import_activity_contact_20151220](
 	[activity_contact_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[activity_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,

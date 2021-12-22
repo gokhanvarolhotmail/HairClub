@@ -1,9 +1,5 @@
 /* CreateDate: 01/31/2014 14:50:38.790 , ModifyDate: 08/23/2019 15:32:19.213 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				spRpt_NationalPricingAnalysisDetails
 DESTINATION SERVER:		SQL06

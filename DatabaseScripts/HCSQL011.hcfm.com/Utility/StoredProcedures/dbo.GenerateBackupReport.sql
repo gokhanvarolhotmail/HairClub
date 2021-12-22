@@ -1,9 +1,5 @@
 /* CreateDate: 05/14/2015 20:35:07.190 , ModifyDate: 05/14/2015 20:40:08.593 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 -- =============================================
 -- Author:		Edmund Poillion
 -- Create date: 5/14/2015

@@ -1,9 +1,5 @@
 /* CreateDate: 04/08/2015 07:53:06.197 , ModifyDate: 12/07/2021 16:20:16.023 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpHairSystemInventoryBatchStatus](
 	[HairSystemInventoryBatchStatusID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
 	[HairSystemInventoryBatchStatusSortOrder] [int] NOT NULL,

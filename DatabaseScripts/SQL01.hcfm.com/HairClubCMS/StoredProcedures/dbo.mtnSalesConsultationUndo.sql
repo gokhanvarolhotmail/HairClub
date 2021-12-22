@@ -1,9 +1,5 @@
 /* CreateDate: 12/18/2017 06:55:50.240 , ModifyDate: 02/12/2018 17:14:29.330 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*
 ==============================================================================
 PROCEDURE:				mtnSalesConsultationUndo

@@ -1,9 +1,5 @@
 /* CreateDate: 11/09/2015 09:04:43.043 , ModifyDate: 03/09/2016 08:16:31.297 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				mtnActivityAdd

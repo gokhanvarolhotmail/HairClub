@@ -1,9 +1,5 @@
 /* CreateDate: 05/03/2010 12:08:47.493 , ModifyDate: 05/03/2010 12:08:47.847 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [bief_dds].[_DBConfig](
 	[setting_name] [varchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[setting_value_bit] [bit] NOT NULL,

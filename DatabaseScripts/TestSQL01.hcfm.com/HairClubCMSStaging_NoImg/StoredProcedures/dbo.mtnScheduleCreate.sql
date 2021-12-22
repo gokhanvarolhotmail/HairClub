@@ -1,9 +1,5 @@
 /* CreateDate: 10/04/2010 12:09:08.140 , ModifyDate: 12/11/2017 07:02:18.917 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*
 ==============================================================================
 PROCEDURE:				mtnScheduleCreate

@@ -1,9 +1,5 @@
 /* CreateDate: 06/03/2014 08:34:30.943 , ModifyDate: 12/07/2021 16:20:15.920 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[cfgCenterTrichoView](
 	[CenterTrichoViewID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
 	[CenterID] [int] NOT NULL,

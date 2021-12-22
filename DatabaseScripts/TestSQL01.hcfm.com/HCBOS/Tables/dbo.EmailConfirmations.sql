@@ -1,9 +1,5 @@
 /* CreateDate: 09/24/2007 16:09:32.553 , ModifyDate: 09/24/2007 16:09:32.583 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[EmailConfirmations](
 	[recordid] [varchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[appt_date] [varchar](20) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,

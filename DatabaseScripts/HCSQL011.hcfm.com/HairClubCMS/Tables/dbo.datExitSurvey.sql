@@ -1,9 +1,5 @@
 /* CreateDate: 10/20/2014 07:54:19.950 , ModifyDate: 10/20/2014 07:54:20.037 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[datExitSurvey](
 	[ExitSurveyID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
 	[ClientGUID] [uniqueidentifier] NULL,

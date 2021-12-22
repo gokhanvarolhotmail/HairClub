@@ -1,9 +1,5 @@
 /* CreateDate: 12/07/2020 07:57:57.430 , ModifyDate: 12/21/2020 07:17:51.727 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				selParLevelsData

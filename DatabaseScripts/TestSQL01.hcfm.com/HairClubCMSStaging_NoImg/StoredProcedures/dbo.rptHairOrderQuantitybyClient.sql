@@ -1,9 +1,5 @@
 /* CreateDate: 04/23/2014 15:18:41.580 , ModifyDate: 09/28/2021 16:35:03.340 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*===============================================================================================
  Procedure Name:            rptHairOrderQuantitybyClient
  Procedure Description:

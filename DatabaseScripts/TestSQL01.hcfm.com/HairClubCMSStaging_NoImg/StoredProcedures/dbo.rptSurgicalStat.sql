@@ -1,9 +1,5 @@
 /* CreateDate: 02/13/2009 10:30:18.833 , ModifyDate: 02/27/2017 09:49:30.520 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				rptSurgicalStat

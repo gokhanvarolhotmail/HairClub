@@ -1,9 +1,5 @@
 /* CreateDate: 04/23/2012 11:36:45.310 , ModifyDate: 12/07/2021 16:20:16.177 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[datInvoiceDetail](
 	[InvoiceDetailGUID] [uniqueidentifier] NOT NULL,
 	[InvoiceGUID] [uniqueidentifier] NOT NULL,

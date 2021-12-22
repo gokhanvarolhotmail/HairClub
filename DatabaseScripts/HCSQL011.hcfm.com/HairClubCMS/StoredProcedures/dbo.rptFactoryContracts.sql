@@ -1,9 +1,5 @@
 /* CreateDate: 06/18/2012 15:11:12.993 , ModifyDate: 10/11/2019 09:59:06.360 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				[rptFactoryContracts]
 DESTINATION SERVER:		SQL01

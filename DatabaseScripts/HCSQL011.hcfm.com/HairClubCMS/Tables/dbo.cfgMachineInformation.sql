@@ -1,9 +1,5 @@
 /* CreateDate: 09/16/2016 06:18:16.567 , ModifyDate: 07/26/2017 04:01:42.440 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[cfgMachineInformation](
 	[MachineInformationId] [int] IDENTITY(1,1) NOT NULL,
 	[MachineName] [nvarchar](100) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,

@@ -1,9 +1,5 @@
 /* CreateDate: 06/09/2014 11:32:00.740 , ModifyDate: 05/23/2017 14:00:40.537 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE PROCEDURE dbo.sp_BlitzIndex
     @DatabaseName NVARCHAR(128) = NULL, /*Defaults to current DB if not specified*/
     @SchemaName NVARCHAR(128) = NULL, /*Requires table_name as well.*/

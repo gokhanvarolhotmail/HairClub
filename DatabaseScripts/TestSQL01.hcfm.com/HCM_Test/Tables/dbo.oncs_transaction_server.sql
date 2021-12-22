@@ -1,9 +1,5 @@
 /* CreateDate: 01/18/2005 09:34:19.700 , ModifyDate: 06/21/2012 10:04:33.437 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[oncs_transaction_server](
 	[transaction_date] [datetime] NOT NULL,
 	[transaction_order] [int] NOT NULL,

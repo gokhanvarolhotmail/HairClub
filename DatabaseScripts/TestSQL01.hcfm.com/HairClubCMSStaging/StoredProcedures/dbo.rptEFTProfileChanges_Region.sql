@@ -1,9 +1,5 @@
 /* CreateDate: 05/25/2017 16:57:17.877 , ModifyDate: 02/12/2018 09:59:08.050 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*===============================================================================================
 -- Procedure Name:				rptEFTProfileChanges_Region
 -- Created By:					Rachelen Hut

@@ -1,9 +1,5 @@
 /* CreateDate: 01/17/2014 15:42:03.783 , ModifyDate: 01/17/2014 15:42:03.783 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[LogDev](
 	[ID] [int] IDENTITY(1,1) NOT NULL,
 	[Date] [datetime] NOT NULL,

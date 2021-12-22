@@ -1,9 +1,5 @@
 /* CreateDate: 06/10/2019 06:44:57.793 , ModifyDate: 06/10/2019 06:44:57.903 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpStyleBookAgeGroup](
 	[StyleBookAgeGroupID] [int] IDENTITY(1,1) NOT NULL,
 	[StyleBookAgeGroupSortOrder] [int] NOT NULL,

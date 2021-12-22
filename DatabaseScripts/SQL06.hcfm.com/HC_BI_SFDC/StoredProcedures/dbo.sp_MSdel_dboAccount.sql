@@ -1,9 +1,5 @@
 /* CreateDate: 11/17/2020 12:12:00.367 , ModifyDate: 11/17/2020 12:12:00.367 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 create procedure [dbo].[sp_MSdel_dboAccount]
 		@pkc1 nvarchar(18)
 as

@@ -1,9 +1,5 @@
 /* CreateDate: 12/21/2014 20:56:49.380 , ModifyDate: 12/21/2014 20:56:49.380 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[DBObjectChangeLog](
 	[Run Time] [datetime] NOT NULL,
 	[Server Name] [nvarchar](128) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,

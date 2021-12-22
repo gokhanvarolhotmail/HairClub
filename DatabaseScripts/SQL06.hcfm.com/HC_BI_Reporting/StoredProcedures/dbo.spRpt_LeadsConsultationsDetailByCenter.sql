@@ -1,9 +1,5 @@
 /* CreateDate: 03/25/2014 15:41:13.400 , ModifyDate: 06/28/2021 15:55:49.533 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				spRpt_LeadsConsultationsDetailByCenter
 DESTINATION SERVER:		SQL06

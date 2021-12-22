@@ -1,9 +1,5 @@
 /* CreateDate: 10/28/2007 04:27:15.110 , ModifyDate: 01/25/2010 08:11:31.790 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE  Procedure [dbo].[spMNT_ShrinkLog]
 as
 

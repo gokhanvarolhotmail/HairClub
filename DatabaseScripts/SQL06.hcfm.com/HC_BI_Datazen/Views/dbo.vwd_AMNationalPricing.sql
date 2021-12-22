@@ -1,9 +1,5 @@
 /* CreateDate: 02/23/2016 09:10:35.410 , ModifyDate: 11/17/2017 09:26:17.510 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 VIEW:					vwd_AMNationalPricing
 DESTINATION SERVER:		SQL06

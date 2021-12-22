@@ -1,9 +1,5 @@
 /* CreateDate: 02/02/2018 12:43:08.303 , ModifyDate: 02/01/2019 16:41:51.520 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				spRpt_DeferredRevenueYears
 DESTINATION SERVER:		SQL06

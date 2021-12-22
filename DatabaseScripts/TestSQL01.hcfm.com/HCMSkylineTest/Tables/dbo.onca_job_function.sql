@@ -1,9 +1,5 @@
 /* CreateDate: 11/08/2012 11:12:50.130 , ModifyDate: 11/08/2012 13:48:44.217 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[onca_job_function](
 	[job_function_code] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[description] [nchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,

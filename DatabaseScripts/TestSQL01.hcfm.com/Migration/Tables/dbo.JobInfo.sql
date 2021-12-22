@@ -1,9 +1,5 @@
 /* CreateDate: 05/10/2018 18:01:57.303 , ModifyDate: 05/10/2018 18:01:57.303 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[JobInfo](
 	[ComputerName] [nvarchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[InstanceName] [nvarchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,

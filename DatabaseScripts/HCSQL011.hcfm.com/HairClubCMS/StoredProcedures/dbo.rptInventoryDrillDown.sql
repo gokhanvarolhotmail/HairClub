@@ -1,9 +1,5 @@
 /* CreateDate: 01/13/2012 10:06:05.563 , ModifyDate: 02/27/2017 09:49:28.337 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE: 				rptInventoryDrillDown
 DESTINATION SERVER:		SQL01

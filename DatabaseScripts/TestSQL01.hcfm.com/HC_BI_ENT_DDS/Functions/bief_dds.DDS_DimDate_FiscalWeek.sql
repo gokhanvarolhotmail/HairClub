@@ -1,9 +1,5 @@
 /* CreateDate: 05/03/2010 12:08:48.907 , ModifyDate: 02/11/2014 14:25:09.123 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*
 	02/11/2014 - MB - Changed function to return actual week as the fiscal week.  Fiscal period now mirrors the calendar.
 */

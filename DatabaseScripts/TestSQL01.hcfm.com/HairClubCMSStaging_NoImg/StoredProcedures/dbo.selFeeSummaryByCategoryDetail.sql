@@ -1,9 +1,5 @@
 /* CreateDate: 05/14/2012 17:40:57.883 , ModifyDate: 02/11/2021 17:49:22.140 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				selFeeSummaryByCategoryDetail

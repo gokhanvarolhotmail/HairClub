@@ -1,9 +1,5 @@
 /* CreateDate: 05/22/2012 16:12:26.997 , ModifyDate: 02/27/2017 09:49:36.047 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE: 	[spApp_TokenTrigger]
 DESTINATION SERVER:	   SQL01

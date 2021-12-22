@@ -1,9 +1,5 @@
 /* CreateDate: 10/10/2007 12:24:38.340 , ModifyDate: 10/10/2007 12:24:38.530 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[InquiryScrubbed](
 	[rowid] [bigint] IDENTITY(1,1) NOT NULL,
 	[Phone] [varchar](15) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,

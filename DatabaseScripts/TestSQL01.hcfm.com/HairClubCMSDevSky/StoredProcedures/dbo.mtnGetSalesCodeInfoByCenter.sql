@@ -1,9 +1,5 @@
 /* CreateDate: 02/18/2013 06:45:39.367 , ModifyDate: 02/27/2017 09:49:21.023 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				mtnGetSalesCodeInfoByCenter	VERSION  1.0

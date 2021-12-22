@@ -1,9 +1,5 @@
 /* CreateDate: 03/12/2014 20:11:31.790 , ModifyDate: 03/12/2014 20:11:31.790 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				dbaAuditEFTDeclineFeesByClientMembership
 DESTINATION SERVER:		SQL01

@@ -1,9 +1,5 @@
 /* CreateDate: 01/25/2010 11:09:10.130 , ModifyDate: 05/01/2010 14:48:09.290 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE VIEW oncv_best_candidate_foreign_key
 AS
 SELECT  candidate.foreign_table_name,

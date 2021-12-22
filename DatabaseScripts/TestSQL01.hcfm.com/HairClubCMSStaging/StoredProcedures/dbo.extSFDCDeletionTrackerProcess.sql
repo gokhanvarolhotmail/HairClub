@@ -1,9 +1,5 @@
 /* CreateDate: 10/22/2020 10:51:53.787 , ModifyDate: 10/22/2020 10:51:53.787 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				extSFDCDeletionTrackerProcess
 DESTINATION SERVER:		SQL01

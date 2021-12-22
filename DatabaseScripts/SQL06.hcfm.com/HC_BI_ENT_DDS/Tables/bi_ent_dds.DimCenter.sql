@@ -1,9 +1,5 @@
 /* CreateDate: 01/08/2021 15:21:53.460 , ModifyDate: 01/08/2021 15:21:54.880 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [bi_ent_dds].[DimCenter](
 	[CenterKey] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
 	[CenterSSID] [int] NOT NULL,

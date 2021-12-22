@@ -1,9 +1,5 @@
 /* CreateDate: 10/14/2013 16:35:38.737 , ModifyDate: 10/14/2013 16:35:38.737 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*===============================================================================================
 -- Procedure Name:			rptDeletedAppointments
 -- Procedure Description:

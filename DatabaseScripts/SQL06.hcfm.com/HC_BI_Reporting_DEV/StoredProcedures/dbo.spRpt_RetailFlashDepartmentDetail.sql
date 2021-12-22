@@ -1,9 +1,5 @@
 /* CreateDate: 11/18/2016 17:02:21.473 , ModifyDate: 02/04/2020 17:15:00.007 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*******************************************************************************************************
 
 PROCEDURE:				[spRpt_RetailFlashDepartmentDetail]

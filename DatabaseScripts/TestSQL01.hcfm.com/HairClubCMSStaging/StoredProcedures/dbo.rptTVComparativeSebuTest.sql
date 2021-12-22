@@ -1,9 +1,5 @@
 /* CreateDate: 10/08/2014 09:04:28.920 , ModifyDate: 08/15/2016 23:40:20.183 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*===============================================================================================
 Procedure Name:				[rptTVComparativeSebuTest]
 Procedure Description:			This stored procedure provides the data for the SebuTest report.

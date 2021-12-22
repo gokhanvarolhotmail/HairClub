@@ -1,9 +1,5 @@
 /* CreateDate: 05/14/2012 17:41:17.787 , ModifyDate: 05/19/2021 09:11:23.200 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				mtnCenterDeclineBatchCreate

@@ -1,9 +1,5 @@
 /* CreateDate: 05/16/2013 18:09:59.673 , ModifyDate: 12/07/2021 16:20:16.247 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[datOutgoingRequestLog](
 	[OutgoingRequestID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
 	[OnContactID] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,

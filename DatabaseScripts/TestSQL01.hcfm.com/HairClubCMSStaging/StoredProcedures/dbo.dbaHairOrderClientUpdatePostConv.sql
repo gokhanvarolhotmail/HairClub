@@ -1,9 +1,5 @@
 /* CreateDate: 12/31/2010 13:37:28.580 , ModifyDate: 07/30/2012 10:18:15.943 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 -- EXEC dbaHairOrderPurchaseOrderImport
 
 CREATE PROCEDURE [dbo].[dbaHairOrderClientUpdatePostConv]

@@ -1,9 +1,5 @@
 /* CreateDate: 09/04/2007 09:40:45.430 , ModifyDate: 06/21/2012 10:12:51.977 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[EmailConfirm](
 	[ConfirmID] [uniqueidentifier] NOT NULL,
 	[MergeField01] [varchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,

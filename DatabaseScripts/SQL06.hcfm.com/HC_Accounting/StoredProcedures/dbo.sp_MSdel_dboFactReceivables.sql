@@ -1,9 +1,5 @@
 /* CreateDate: 10/03/2019 22:32:12.540 , ModifyDate: 10/03/2019 22:32:12.540 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 create procedure [sp_MSdel_dboFactReceivables]
 		@pkc1 int
 as

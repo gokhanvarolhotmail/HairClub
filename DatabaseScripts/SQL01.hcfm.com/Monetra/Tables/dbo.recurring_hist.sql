@@ -1,9 +1,5 @@
 /* CreateDate: 10/01/2018 08:53:16.800 , ModifyDate: 10/01/2018 08:53:16.807 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[recurring_hist](
 	[id] [bigint] NOT NULL,
 	[token] [bigint] NOT NULL,

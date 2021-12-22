@@ -1,9 +1,5 @@
 /* CreateDate: 04/13/2006 13:57:44.400 , ModifyDate: 06/21/2012 10:03:46.000 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[oncw_module](
 	[module_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[control_class] [nvarchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,

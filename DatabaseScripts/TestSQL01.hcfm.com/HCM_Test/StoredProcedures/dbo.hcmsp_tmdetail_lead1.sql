@@ -1,9 +1,5 @@
 /* CreateDate: 10/17/2007 08:55:08.713 , ModifyDate: 05/01/2010 14:48:11.827 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE    PROCEDURE [dbo].[hcmsp_tmdetail_lead1] (@BegDt datetime, @EndDt datetime, @Terr varchar(4))  AS
 
 --*******************************************************************************************************************************

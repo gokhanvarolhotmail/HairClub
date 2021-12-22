@@ -1,9 +1,5 @@
 /* CreateDate: 08/21/2012 10:17:49.420 , ModifyDate: 06/05/2015 12:22:20.100 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				spRpt_FranchiseRoyalty
 DESTINATION SERVER:		SQL06

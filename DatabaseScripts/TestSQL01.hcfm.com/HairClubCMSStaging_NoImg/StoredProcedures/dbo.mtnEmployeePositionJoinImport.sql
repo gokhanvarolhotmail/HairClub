@@ -1,9 +1,5 @@
 /* CreateDate: 02/25/2009 08:43:06.097 , ModifyDate: 12/16/2019 08:40:04.590 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:                    mtnEmployeePositionJoinImport

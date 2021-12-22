@@ -1,9 +1,5 @@
 /* CreateDate: 09/28/2015 08:56:46.540 , ModifyDate: 07/01/2020 04:59:44.657 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[datActivity](
 	[ActivityID] [int] IDENTITY(1,1) NOT NULL,
 	[MasterActivityID] [int] NULL,

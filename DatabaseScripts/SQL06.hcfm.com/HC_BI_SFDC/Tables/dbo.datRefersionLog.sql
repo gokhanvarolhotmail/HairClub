@@ -1,9 +1,5 @@
 /* CreateDate: 06/30/2021 13:17:40.557 , ModifyDate: 06/30/2021 13:17:40.843 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[datRefersionLog](
 	[RefersionLogID] [int] IDENTITY(1,1) NOT NULL,
 	[RefersionProcessID] [int] NOT NULL,

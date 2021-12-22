@@ -1,9 +1,5 @@
 /* CreateDate: 09/19/2012 11:07:32.807 , ModifyDate: 09/19/2012 11:07:32.807 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE: 	[spRpt_CMSAutomaticApplications]
 DESTINATION SERVER:	   HCSQL2\SQL2005

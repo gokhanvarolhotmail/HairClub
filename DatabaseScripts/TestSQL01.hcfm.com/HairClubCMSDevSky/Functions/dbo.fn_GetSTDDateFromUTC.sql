@@ -1,9 +1,5 @@
 /* CreateDate: 02/18/2013 07:28:18.657 , ModifyDate: 11/09/2016 12:19:25.950 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE FUNCTION [dbo].[fn_GetSTDDateFromUTC] (@dDate as DATETIME, @CenterSSID as INT)
 -----------------------------------------------------------------------
 -- [fn_GetUTCDateTime] Takes in a date and a center and returns a

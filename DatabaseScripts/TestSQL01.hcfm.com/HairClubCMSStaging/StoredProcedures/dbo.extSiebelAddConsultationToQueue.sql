@@ -1,9 +1,5 @@
 /* CreateDate: 05/16/2013 14:20:49.423 , ModifyDate: 03/09/2020 15:10:50.430 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				extSiebelAddConsultationToQueue

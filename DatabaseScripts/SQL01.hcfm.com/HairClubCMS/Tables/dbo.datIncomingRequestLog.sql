@@ -1,9 +1,5 @@
 /* CreateDate: 05/28/2013 14:10:34.267 , ModifyDate: 05/26/2020 10:49:23.360 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[datIncomingRequestLog](
 	[IncomingRequestID] [int] IDENTITY(301,1) NOT FOR REPLICATION NOT NULL,
 	[ProcessName] [nvarchar](25) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,

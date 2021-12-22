@@ -1,9 +1,5 @@
 /* CreateDate: 01/08/2009 15:58:51.800 , ModifyDate: 08/03/2010 14:23:06.460 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*===============================================================================================
 -- Procedure Name:			spSvc_MarketingList_Winbacks
 -- Procedure Description:

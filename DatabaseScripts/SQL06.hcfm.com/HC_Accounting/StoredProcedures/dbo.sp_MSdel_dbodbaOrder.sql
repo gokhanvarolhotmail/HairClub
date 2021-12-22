@@ -1,9 +1,5 @@
 /* CreateDate: 03/25/2021 09:59:00.887 , ModifyDate: 03/25/2021 09:59:00.887 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 create procedure [dbo].[sp_MSdel_dbodbaOrder]     @pkc1 int
 as
 begin   	delete [dbo].[dbaOrder]

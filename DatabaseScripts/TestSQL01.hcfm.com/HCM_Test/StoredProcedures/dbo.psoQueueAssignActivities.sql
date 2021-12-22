@@ -1,9 +1,5 @@
 /* CreateDate: 10/15/2013 00:24:26.080 , ModifyDate: 10/27/2014 10:02:44.700 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE PROCEDURE [dbo].[psoQueueAssignActivities]
 AS
 BEGIN

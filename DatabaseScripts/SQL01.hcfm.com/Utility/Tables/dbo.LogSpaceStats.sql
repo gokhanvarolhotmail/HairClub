@@ -1,9 +1,5 @@
 /* CreateDate: 07/20/2014 20:50:06.093 , ModifyDate: 10/19/2018 09:41:23.567 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[LogSpaceStats](
 	[ID] [int] IDENTITY(1,1) NOT NULL,
 	[LogDate] [datetime] NULL,

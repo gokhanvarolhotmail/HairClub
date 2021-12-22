@@ -1,9 +1,5 @@
 /* CreateDate: 05/31/2016 07:50:08.597 , ModifyDate: 01/19/2020 21:51:11.540 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE: 				mtnHairSystemInventoryCorrection
 PURPOSE:				Updates HairSystemOrder statuses and center based on Inventory Scan

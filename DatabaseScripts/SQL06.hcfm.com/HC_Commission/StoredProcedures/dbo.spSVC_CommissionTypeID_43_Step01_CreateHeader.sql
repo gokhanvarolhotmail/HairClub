@@ -1,9 +1,5 @@
 /* CreateDate: 10/07/2016 14:33:45.620 , ModifyDate: 10/24/2019 14:04:05.240 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				spSVC_CommissionTypeID_43_Step01_CreateHeader
 DESTINATION SERVER:		SQL06

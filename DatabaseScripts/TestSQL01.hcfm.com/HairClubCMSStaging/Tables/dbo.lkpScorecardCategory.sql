@@ -1,9 +1,5 @@
 /* CreateDate: 11/04/2019 08:18:20.160 , ModifyDate: 05/26/2020 10:49:23.160 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpScorecardCategory](
 	[ScorecardCategoryID] [int] IDENTITY(1,1) NOT NULL,
 	[ScorecardCategorySortOrder] [int] NOT NULL,

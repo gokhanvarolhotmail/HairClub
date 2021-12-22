@@ -1,9 +1,5 @@
 /* CreateDate: 01/25/2010 11:09:09.723 , ModifyDate: 06/21/2012 10:03:58.390 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[onct_registry_entry_layer_data](
 	[registry_entry_layer_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[registry_serializer_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,

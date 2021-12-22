@@ -1,9 +1,5 @@
 /* CreateDate: 10/04/2019 14:09:30.093 , ModifyDate: 10/04/2019 14:09:30.093 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 create procedure [sp_MSins_dbo_DataFlow]
     @c1 int,
     @c2 varchar(250),

@@ -1,9 +1,5 @@
 /* CreateDate: 03/16/2021 10:54:53.310 , ModifyDate: 03/16/2021 10:54:53.310 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[HairCurl](
 	[HairSystemCurlID] [float] NULL,
 	[HairSystemCurlSortOrder] [float] NULL,

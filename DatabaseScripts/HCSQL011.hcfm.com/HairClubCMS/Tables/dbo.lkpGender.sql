@@ -1,9 +1,5 @@
 /* CreateDate: 01/19/2009 15:23:46.677 , ModifyDate: 05/26/2020 10:49:17.870 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpGender](
 	[GenderID] [int] NOT NULL,
 	[GenderSortOrder] [int] NOT NULL,

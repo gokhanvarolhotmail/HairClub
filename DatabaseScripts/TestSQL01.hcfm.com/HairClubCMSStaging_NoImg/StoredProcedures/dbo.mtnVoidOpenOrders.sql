@@ -1,9 +1,5 @@
 /* CreateDate: 04/23/2009 11:53:36.997 , ModifyDate: 01/14/2019 16:54:56.547 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				mtnVoidOpenOrders

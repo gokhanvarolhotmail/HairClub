@@ -1,9 +1,5 @@
 /* CreateDate: 10/10/2014 10:50:14.410 , ModifyDate: 01/02/2015 15:58:34.633 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*===============================================================================================
  Procedure Name:				[rptTVComparativeHMIGraph]
  Procedure Description:			This stored procedure provides the data for the Density and Width grids

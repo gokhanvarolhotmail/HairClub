@@ -1,9 +1,5 @@
 /* CreateDate: 08/30/2012 13:42:59.697 , ModifyDate: 07/13/2018 14:31:58.447 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:	[spRpt_FranchiseWarBoards_NB2]
 -- Created By:             HDu

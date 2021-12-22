@@ -1,9 +1,5 @@
 /* CreateDate: 05/02/2018 15:44:13.807 , ModifyDate: 05/02/2018 15:44:13.807 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				tmpHansWiemannCreatecONEctHairOrders

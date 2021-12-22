@@ -1,9 +1,5 @@
 /* CreateDate: 02/27/2017 06:47:00.410 , ModifyDate: 09/23/2019 12:13:50.693 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 	PROCEDURE:				[selTechnicalProfilesBioForClient]
 	DESTINATION SERVER:		SQL01

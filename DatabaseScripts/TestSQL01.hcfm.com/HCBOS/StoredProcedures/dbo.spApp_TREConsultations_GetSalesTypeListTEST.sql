@@ -1,9 +1,5 @@
 /* CreateDate: 09/25/2009 17:30:38.293 , ModifyDate: 01/25/2010 08:11:31.777 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*===============================================================================================
 -- Procedure Name:			spApp_TREConsultations_GetSalesTypeList
 -- Procedure Description:

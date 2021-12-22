@@ -1,9 +1,5 @@
 /* CreateDate: 11/05/2020 10:32:48.673 , ModifyDate: 11/05/2020 13:34:41.037 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[tmpCenterManagers](
 	[Area] [nvarchar](100) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[CenterID] [int] NULL,

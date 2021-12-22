@@ -1,9 +1,5 @@
 /* CreateDate: 08/28/2020 15:46:15.727 , ModifyDate: 09/03/2020 11:15:52.077 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				spDB_PopulateNPSDashboard
 DESTINATION SERVER:		SQL06

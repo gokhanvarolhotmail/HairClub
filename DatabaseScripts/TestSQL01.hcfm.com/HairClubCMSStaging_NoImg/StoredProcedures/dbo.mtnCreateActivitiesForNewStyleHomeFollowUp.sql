@@ -1,9 +1,5 @@
 /* CreateDate: 11/04/2019 08:20:44.013 , ModifyDate: 11/04/2019 08:20:44.013 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /**************************************************************************************************************
 PROCEDURE:                  mtnCreateActivitiesForNewStyleHomeFollowUp
 

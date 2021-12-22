@@ -1,9 +1,5 @@
 /* CreateDate: 03/30/2011 09:42:32.767 , ModifyDate: 12/28/2011 17:27:11.600 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE: 				[mtnInventoryDetailsCheckIfOrderExists]
 DESTINATION SERVER:		SQL01

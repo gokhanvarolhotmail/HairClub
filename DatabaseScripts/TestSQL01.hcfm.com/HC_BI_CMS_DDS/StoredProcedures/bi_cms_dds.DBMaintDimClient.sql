@@ -1,9 +1,5 @@
 /* CreateDate: 08/09/2011 10:38:39.940 , ModifyDate: 09/16/2019 09:33:49.907 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 create PROCEDURE [bi_cms_dds].[DBMaintDimClient]
 
 AS

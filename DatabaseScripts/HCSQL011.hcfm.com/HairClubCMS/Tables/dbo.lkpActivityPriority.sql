@@ -1,9 +1,5 @@
 /* CreateDate: 09/14/2015 08:49:17.067 , ModifyDate: 08/29/2016 07:28:03.623 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpActivityPriority](
 	[ActivityPriorityID] [int] IDENTITY(1,1) NOT NULL,
 	[ActivityPrioritySortOrder] [int] NOT NULL,

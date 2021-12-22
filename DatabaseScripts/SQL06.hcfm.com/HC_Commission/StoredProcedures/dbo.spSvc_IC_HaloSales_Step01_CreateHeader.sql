@@ -1,9 +1,5 @@
 /* CreateDate: 02/10/2020 11:53:16.803 , ModifyDate: 03/17/2021 09:24:37.553 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				spSvc_IC_HaloSales_Step01_CreateHeader
 DESTINATION SERVER:		SQL06

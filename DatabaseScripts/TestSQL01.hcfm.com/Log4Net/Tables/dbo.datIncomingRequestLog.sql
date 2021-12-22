@@ -1,9 +1,5 @@
 /* CreateDate: 02/07/2020 00:24:18.037 , ModifyDate: 02/12/2020 12:08:39.673 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[datIncomingRequestLog](
 	[IncomingRequestID] [int] NOT NULL,
 	[ProcessName] [nvarchar](25) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,

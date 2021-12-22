@@ -1,9 +1,5 @@
 /* CreateDate: 02/01/2013 10:04:52.840 , ModifyDate: 12/07/2014 00:35:33.180 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[FactCommissionBatch](
 	[BatchKey] [int] IDENTITY(1,1) NOT NULL,
 	[CenterSSID] [int] NULL,

@@ -1,9 +1,5 @@
 /* CreateDate: 09/27/2021 19:32:37.070 , ModifyDate: 09/28/2021 10:59:47.650 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				spSvc_GetAcquiredClientDataForGeneriCenter
 DESTINATION SERVER:		SQL06

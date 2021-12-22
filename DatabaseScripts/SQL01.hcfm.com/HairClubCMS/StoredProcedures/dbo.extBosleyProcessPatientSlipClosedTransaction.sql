@@ -1,9 +1,5 @@
 /* CreateDate: 05/09/2013 20:28:43.550 , ModifyDate: 03/12/2021 14:38:07.230 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				extBosleyProcessPatientSlipClosedTransaction

@@ -1,9 +1,5 @@
 /* CreateDate: 12/15/2021 17:28:43.360 , ModifyDate: 12/15/2021 17:28:43.360 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[cfgCenterBackup](
 	[CenterID] [int] IDENTITY(1,1) NOT NULL,
 	[CountryID] [int] NULL,

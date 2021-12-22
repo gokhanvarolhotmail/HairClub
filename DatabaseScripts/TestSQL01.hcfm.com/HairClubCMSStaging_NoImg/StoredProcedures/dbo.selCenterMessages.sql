@@ -1,9 +1,5 @@
 /* CreateDate: 05/14/2012 17:41:18.390 , ModifyDate: 08/19/2019 13:13:35.670 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				selCenterMessages

@@ -1,9 +1,5 @@
 /* CreateDate: 10/01/2018 08:53:16.847 , ModifyDate: 10/01/2018 08:53:16.850 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[l3items](
 	[userid] [int] NOT NULL,
 	[ttid] [bigint] NOT NULL,

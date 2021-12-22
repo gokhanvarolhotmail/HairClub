@@ -1,9 +1,5 @@
 /* CreateDate: 05/31/2011 10:32:04.950 , ModifyDate: 09/16/2019 09:33:49.877 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 create  FUNCTION [dbo].[DIVIDE] (@numerator numeric, @denominator numeric)
 RETURNS float
 

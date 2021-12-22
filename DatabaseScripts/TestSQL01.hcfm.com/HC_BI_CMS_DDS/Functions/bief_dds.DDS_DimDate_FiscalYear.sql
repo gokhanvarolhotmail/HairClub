@@ -1,9 +1,5 @@
 /* CreateDate: 05/03/2010 12:17:24.193 , ModifyDate: 09/16/2019 09:33:49.903 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 create function [bief_dds].[DDS_DimDate_FiscalYear] (@date as datetime)
 returns int
 as

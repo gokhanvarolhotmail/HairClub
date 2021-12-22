@@ -1,9 +1,5 @@
 /* CreateDate: 11/08/2007 13:33:38.343 , ModifyDate: 05/01/2010 14:48:10.453 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				spMNT_CleanUpAppointments

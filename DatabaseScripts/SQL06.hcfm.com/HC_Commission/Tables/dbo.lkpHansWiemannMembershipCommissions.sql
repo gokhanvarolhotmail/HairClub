@@ -1,9 +1,5 @@
 /* CreateDate: 06/13/2018 10:21:56.923 , ModifyDate: 06/15/2018 09:43:58.953 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpHansWiemannMembershipCommissions](
 	[HWMembershipCommissionID] [int] IDENTITY(1,1) NOT NULL,
 	[MembershipKey] [int] NULL,

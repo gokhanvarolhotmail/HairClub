@@ -1,9 +1,5 @@
 /* CreateDate: 04/01/2020 17:36:26.467 , ModifyDate: 04/01/2020 17:36:26.467 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*===============================================================================================
  Procedure Name:            [rptEmployeeMembershipDetail]
  Procedure Description:

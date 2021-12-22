@@ -1,9 +1,5 @@
 /* CreateDate: 01/08/2009 15:58:14.503 , ModifyDate: 08/03/2010 14:23:09.410 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*===============================================================================================
 -- Procedure Name:			spSvc_MarketingList_Upgrades
 -- Procedure Description:

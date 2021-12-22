@@ -1,9 +1,5 @@
 /* CreateDate: 08/18/2011 16:33:57.420 , ModifyDate: 01/24/2017 16:50:59.900 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				sprpt_TM_Productivity

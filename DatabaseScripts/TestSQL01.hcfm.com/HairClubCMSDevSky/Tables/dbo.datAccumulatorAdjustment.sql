@@ -1,9 +1,5 @@
 /* CreateDate: 02/04/2009 07:47:04.280 , ModifyDate: 12/07/2021 16:20:15.993 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[datAccumulatorAdjustment](
 	[AccumulatorAdjustmentGUID] [uniqueidentifier] NOT NULL,
 	[ClientMembershipGUID] [uniqueidentifier] NULL,

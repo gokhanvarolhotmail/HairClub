@@ -1,9 +1,5 @@
 /* CreateDate: 04/14/2009 07:33:53.947 , ModifyDate: 02/17/2013 18:07:58.393 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				dbaStagingManualRestoreScript

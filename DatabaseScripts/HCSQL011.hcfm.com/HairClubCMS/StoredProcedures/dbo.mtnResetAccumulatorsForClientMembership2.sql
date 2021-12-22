@@ -1,9 +1,5 @@
 /* CreateDate: 02/18/2014 14:56:52.753 , ModifyDate: 02/18/2014 14:56:52.753 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				mtnResetAccumulatorsForClientMembership

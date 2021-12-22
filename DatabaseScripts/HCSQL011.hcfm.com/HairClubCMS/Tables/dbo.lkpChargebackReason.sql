@@ -1,9 +1,5 @@
 /* CreateDate: 10/07/2013 17:18:46.437 , ModifyDate: 05/26/2020 10:49:24.580 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpChargebackReason](
 	[ChargebackReasonID] [int] NOT NULL,
 	[ChargebackReasonSortOrder] [int] NOT NULL,

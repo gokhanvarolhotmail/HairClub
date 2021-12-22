@@ -1,9 +1,5 @@
 /* CreateDate: 11/06/2019 15:36:09.790 , ModifyDate: 11/07/2019 08:24:10.847 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				spRpt_ActivePCPClients
 DESTINATION SERVER:		SQL06

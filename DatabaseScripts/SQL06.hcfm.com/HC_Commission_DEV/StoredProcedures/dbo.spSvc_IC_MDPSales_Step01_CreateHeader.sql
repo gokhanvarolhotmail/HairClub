@@ -1,9 +1,5 @@
 /* CreateDate: 03/30/2019 12:38:56.963 , ModifyDate: 09/16/2020 15:05:32.060 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				spSvc_IC_MDPSales_Step01_CreateHeader
 DESTINATION SERVER:		SQL06

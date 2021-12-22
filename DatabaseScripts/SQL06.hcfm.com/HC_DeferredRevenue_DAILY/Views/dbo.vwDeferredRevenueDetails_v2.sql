@@ -1,9 +1,5 @@
 /* CreateDate: 12/21/2021 09:00:54.757 , ModifyDate: 12/21/2021 16:26:51.717 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 VIEW:					vwDeferredRevenueDetails_v2
 DESTINATION SERVER:		SQL06

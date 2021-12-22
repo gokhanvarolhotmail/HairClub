@@ -1,9 +1,5 @@
 /* CreateDate: 05/23/2013 23:30:53.107 , ModifyDate: 03/09/2020 15:10:50.663 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				extSiebelAddSurgerySaleToQueue

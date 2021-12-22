@@ -1,9 +1,5 @@
 /* CreateDate: 02/04/2009 09:15:59.620 , ModifyDate: 12/03/2021 10:24:48.653 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpGeneralLedger](
 	[GeneralLedgerID] [int] NOT NULL,
 	[GeneralLedgerSortOrder] [int] NOT NULL,

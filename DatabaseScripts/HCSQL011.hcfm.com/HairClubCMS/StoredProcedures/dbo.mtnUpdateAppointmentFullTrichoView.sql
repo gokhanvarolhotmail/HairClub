@@ -1,9 +1,5 @@
 /* CreateDate: 12/28/2016 07:03:47.130 , ModifyDate: 03/07/2017 11:06:41.810 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				mtnUpdateAppointmentFullTrichoView

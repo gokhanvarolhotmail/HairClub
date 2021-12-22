@@ -1,9 +1,5 @@
 /* CreateDate: 07/18/2018 16:38:31.550 , ModifyDate: 07/30/2018 11:27:55.933 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE PROCEDURE cfgSalesCodeMembership_ins @memberid int,  @SalesCodeDescriptionShort varchar(15), @note varchar(200), @user varchar(20)
 as
 

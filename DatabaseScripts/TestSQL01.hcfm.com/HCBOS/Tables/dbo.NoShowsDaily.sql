@@ -1,9 +1,5 @@
 /* CreateDate: 08/09/2007 14:06:33.907 , ModifyDate: 08/09/2007 14:06:33.937 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[NoShowsDaily](
 	[RowId] [int] IDENTITY(1,1) NOT NULL,
 	[contact_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,

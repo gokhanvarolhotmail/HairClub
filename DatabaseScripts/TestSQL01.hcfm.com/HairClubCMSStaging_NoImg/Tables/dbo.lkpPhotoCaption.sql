@@ -1,9 +1,5 @@
 /* CreateDate: 10/04/2010 12:00:48.590 , ModifyDate: 12/03/2021 10:24:48.570 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpPhotoCaption](
 	[PhotoCaptionID] [int] NOT NULL,
 	[PhotoCaptionSortOrder] [int] NULL,

@@ -1,9 +1,5 @@
 /* CreateDate: 05/28/2018 21:15:38.030 , ModifyDate: 05/29/2018 13:30:26.517 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				dbaCompileInventoryDifferences
 DESTINATION SERVER:		SQL01

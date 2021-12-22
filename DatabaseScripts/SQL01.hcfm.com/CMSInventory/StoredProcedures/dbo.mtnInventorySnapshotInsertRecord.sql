@@ -1,9 +1,5 @@
 /* CreateDate: 03/30/2011 09:42:32.370 , ModifyDate: 12/28/2011 17:27:31.597 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE: 				[mtnInventorySnapshotInsertRecord]
 DESTINATION SERVER:		SQL01

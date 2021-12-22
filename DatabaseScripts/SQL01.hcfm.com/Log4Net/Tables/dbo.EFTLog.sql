@@ -1,9 +1,5 @@
 /* CreateDate: 01/17/2014 15:33:37.603 , ModifyDate: 01/17/2014 15:33:37.603 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[EFTLog](
 	[ID] [int] IDENTITY(1,1) NOT NULL,
 	[Date] [datetime] NOT NULL,

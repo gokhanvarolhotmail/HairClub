@@ -1,9 +1,5 @@
 /* CreateDate: 05/15/2013 13:59:08.300 , ModifyDate: 03/09/2020 15:11:42.550 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				extRequestQueueUpdate

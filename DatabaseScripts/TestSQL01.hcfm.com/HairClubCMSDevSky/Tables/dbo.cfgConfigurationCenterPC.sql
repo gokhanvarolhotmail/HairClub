@@ -1,9 +1,5 @@
 /* CreateDate: 09/10/2014 07:53:57.443 , ModifyDate: 12/07/2021 16:20:16.003 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[cfgConfigurationCenterPC](
 	[ConfigurationCenterPCID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
 	[CenterID] [int] NOT NULL,

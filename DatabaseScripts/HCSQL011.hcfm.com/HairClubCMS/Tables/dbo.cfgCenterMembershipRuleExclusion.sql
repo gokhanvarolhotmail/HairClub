@@ -1,9 +1,5 @@
 /* CreateDate: 03/26/2014 08:12:24.073 , ModifyDate: 05/26/2020 10:49:41.040 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[cfgCenterMembershipRuleExclusion](
 	[CenterMembershipRuleExclusionID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
 	[CenterMembershipID] [int] NOT NULL,

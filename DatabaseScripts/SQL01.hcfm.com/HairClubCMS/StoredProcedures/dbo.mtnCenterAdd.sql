@@ -1,9 +1,5 @@
 /* CreateDate: 09/23/2009 14:09:31.760 , ModifyDate: 05/04/2020 10:40:40.630 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*
 ==============================================================================
 PROCEDURE:                    mtnCenterAdd

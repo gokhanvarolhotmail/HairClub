@@ -1,9 +1,5 @@
 /* CreateDate: 05/14/2012 16:33:50.380 , ModifyDate: 02/27/2017 09:49:35.830 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE: 	[spApp_CreateCenterImportJob]

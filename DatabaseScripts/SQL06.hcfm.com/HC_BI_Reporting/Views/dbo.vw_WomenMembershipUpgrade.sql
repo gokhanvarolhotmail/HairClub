@@ -1,9 +1,5 @@
 /* CreateDate: 04/04/2017 14:01:02.360 , ModifyDate: 04/28/2017 13:35:28.970 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 VIEW:					[vw_WomenMembershipUpgrade]
 DESTINATION SERVER:		SQL06

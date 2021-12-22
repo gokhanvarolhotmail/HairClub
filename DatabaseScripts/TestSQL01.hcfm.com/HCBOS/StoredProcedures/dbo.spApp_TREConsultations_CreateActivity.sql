@@ -1,9 +1,5 @@
 /* CreateDate: 09/22/2008 15:03:53.437 , ModifyDate: 01/25/2010 13:43:09.327 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*===============================================================================================
 -- Procedure Name:			spApp_TREConsultations_CreateActivity
 -- Procedure Description:

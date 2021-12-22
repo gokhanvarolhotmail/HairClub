@@ -1,9 +1,5 @@
 /* CreateDate: 06/25/2012 09:47:42.900 , ModifyDate: 05/28/2018 22:03:28.250 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*
 ==============================================================================
 PROCEDURE:				mtnGetAccountingPriorityBillingExport

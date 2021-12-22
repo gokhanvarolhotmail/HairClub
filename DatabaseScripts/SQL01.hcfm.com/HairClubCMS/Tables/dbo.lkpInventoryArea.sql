@@ -1,9 +1,5 @@
 /* CreateDate: 09/23/2019 12:31:07.687 , ModifyDate: 09/23/2019 12:31:07.690 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpInventoryArea](
 	[InventoryAreaID] [int] IDENTITY(1,1) NOT NULL,
 	[InventoryAreaSortOrder] [int] NOT NULL,

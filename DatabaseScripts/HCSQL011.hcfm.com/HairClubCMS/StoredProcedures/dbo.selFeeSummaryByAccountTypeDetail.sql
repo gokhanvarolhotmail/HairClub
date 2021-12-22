@@ -1,9 +1,5 @@
 /* CreateDate: 05/14/2012 17:40:57.653 , ModifyDate: 03/16/2021 09:43:27.847 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				selFeeSummaryByAccountTypeDetail

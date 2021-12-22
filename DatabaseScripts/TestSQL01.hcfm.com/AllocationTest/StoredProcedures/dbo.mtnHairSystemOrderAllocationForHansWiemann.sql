@@ -1,9 +1,5 @@
 /* CreateDate: 10/31/2019 21:09:58.633 , ModifyDate: 01/06/2020 09:13:01.230 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*
 ==============================================================================
 PROCEDURE:				mtnHairSystemOrderAllocationForHansWiemann

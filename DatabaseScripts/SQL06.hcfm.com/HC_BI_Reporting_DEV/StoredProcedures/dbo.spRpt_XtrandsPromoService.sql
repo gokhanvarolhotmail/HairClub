@@ -1,9 +1,5 @@
 /* CreateDate: 09/14/2015 14:11:08.323 , ModifyDate: 01/05/2017 11:28:05.093 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				spRpt_XtrandsPromoService
 DESTINATION SERVER:		SQL06

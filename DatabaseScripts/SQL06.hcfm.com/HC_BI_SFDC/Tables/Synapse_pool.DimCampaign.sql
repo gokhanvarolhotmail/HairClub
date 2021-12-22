@@ -1,9 +1,5 @@
 /* CreateDate: 06/16/2021 18:17:41.447 , ModifyDate: 06/16/2021 18:17:41.447 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [Synapse_pool].[DimCampaign](
 	[CampaignKey] [int] NULL,
 	[CampaignId] [varchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,

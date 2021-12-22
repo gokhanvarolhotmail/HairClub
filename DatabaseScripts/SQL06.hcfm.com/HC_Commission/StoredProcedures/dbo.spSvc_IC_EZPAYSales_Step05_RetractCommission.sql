@@ -1,9 +1,5 @@
 /* CreateDate: 08/10/2019 08:20:02.243 , ModifyDate: 03/17/2021 09:19:27.620 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				spSvc_IC_EZPAYSales_Step05_RetractCommission
 DESTINATION SERVER:		SQL06

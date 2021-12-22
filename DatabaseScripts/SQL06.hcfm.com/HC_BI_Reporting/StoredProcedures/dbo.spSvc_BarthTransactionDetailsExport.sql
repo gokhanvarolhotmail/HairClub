@@ -1,9 +1,5 @@
 /* CreateDate: 04/10/2014 12:17:02.000 , ModifyDate: 07/26/2021 18:00:40.887 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				spSvc_BarthTransactionDetailsExport
 DESTINATION SERVER:		SQL06

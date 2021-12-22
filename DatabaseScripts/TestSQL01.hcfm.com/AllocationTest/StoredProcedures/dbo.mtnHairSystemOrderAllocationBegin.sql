@@ -1,9 +1,5 @@
 /* CreateDate: 10/31/2019 21:09:58.437 , ModifyDate: 01/06/2020 09:13:00.403 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*
 ==============================================================================
 PROCEDURE:				mtnHairSystemOrderAllocationBegin

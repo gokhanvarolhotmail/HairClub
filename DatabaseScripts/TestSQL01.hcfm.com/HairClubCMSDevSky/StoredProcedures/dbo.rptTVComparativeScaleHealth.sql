@@ -1,9 +1,5 @@
 /* CreateDate: 10/07/2014 10:37:00.740 , ModifyDate: 08/15/2016 23:39:42.980 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*===============================================================================================
  Procedure Name:				rptTVComparativeScaleHealth
  Procedure Description:			This stored procedure provides the data for the Scalp Health grids.

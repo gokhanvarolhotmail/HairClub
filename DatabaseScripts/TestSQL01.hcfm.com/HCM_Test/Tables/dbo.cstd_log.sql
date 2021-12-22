@@ -1,9 +1,5 @@
 /* CreateDate: 01/03/2013 10:22:38.820 , ModifyDate: 01/03/2013 10:22:38.863 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[cstd_log](
 	[id] [int] IDENTITY(1,1) NOT NULL,
 	[message] [nvarchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,

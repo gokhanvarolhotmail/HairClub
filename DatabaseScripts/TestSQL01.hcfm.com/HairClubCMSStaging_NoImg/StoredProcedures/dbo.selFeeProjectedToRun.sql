@@ -1,9 +1,5 @@
 /* CreateDate: 05/14/2012 17:35:09.330 , ModifyDate: 03/16/2021 09:44:38.187 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				selFeeProjectedToRun

@@ -1,9 +1,5 @@
 /* CreateDate: 07/11/2012 12:01:44.853 , ModifyDate: 07/11/2012 12:01:44.853 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE VIEW dbo.cstv_hcmtbl_fulfillments_all AS
 SELECT
 hcmtbl_fulfillments_all.[center address 1] AS [center_address_1],

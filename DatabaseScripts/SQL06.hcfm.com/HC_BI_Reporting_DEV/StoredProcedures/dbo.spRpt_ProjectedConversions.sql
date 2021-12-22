@@ -1,9 +1,5 @@
 /* CreateDate: 08/12/2016 13:58:12.030 , ModifyDate: 03/25/2020 14:18:53.150 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				spRpt_ProjectedConversions
 DESTINATION SERVER:		SQL06

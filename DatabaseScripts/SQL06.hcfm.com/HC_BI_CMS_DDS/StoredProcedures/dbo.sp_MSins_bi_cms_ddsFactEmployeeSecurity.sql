@@ -1,9 +1,5 @@
 /* CreateDate: 10/03/2019 23:03:42.240 , ModifyDate: 10/03/2019 23:03:42.240 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 create procedure [sp_MSins_bi_cms_ddsFactEmployeeSecurity]
     @c1 int,
     @c2 int,

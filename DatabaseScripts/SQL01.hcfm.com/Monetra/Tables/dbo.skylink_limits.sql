@@ -1,9 +1,5 @@
 /* CreateDate: 04/26/2021 12:28:48.983 , ModifyDate: 04/26/2021 12:28:48.990 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[skylink_limits](
 	[user_id] [int] NOT NULL,
 	[ts] [bigint] NOT NULL,

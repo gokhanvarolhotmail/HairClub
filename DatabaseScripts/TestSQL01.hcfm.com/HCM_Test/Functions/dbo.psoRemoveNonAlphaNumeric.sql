@@ -1,9 +1,5 @@
 /* CreateDate: 09/17/2014 10:08:46.887 , ModifyDate: 09/17/2014 10:08:46.887 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE FUNCTION [dbo].[psoRemoveNonAlphaNumeric]
 (
 	-- Add the parameters for the function here

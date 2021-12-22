@@ -1,9 +1,5 @@
 /* CreateDate: 06/29/2011 12:10:28.530 , ModifyDate: 09/16/2019 09:33:49.887 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 create VIEW [bi_cms_dds].[vwAppointments]
 AS
 -------------------------------------------------------------------------

@@ -1,9 +1,5 @@
 /* CreateDate: 01/23/2017 15:39:16.897 , ModifyDate: 05/02/2017 13:10:00.640 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*
 ==============================================================================
 PROCEDURE:				extHairClubCMSCreateActivityForSpecificTime

@@ -1,9 +1,5 @@
 /* CreateDate: 08/15/2016 15:24:19.007 , ModifyDate: 05/13/2020 10:27:45.120 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE VIEW [dbo].[vw_HairSystemOrdersCurrentStatus]
 AS
 SELECT  ctr_hso.CenterID

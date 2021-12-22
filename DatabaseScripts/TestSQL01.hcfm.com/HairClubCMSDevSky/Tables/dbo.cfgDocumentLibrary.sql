@@ -1,9 +1,5 @@
 /* CreateDate: 11/22/2017 14:34:59.983 , ModifyDate: 06/30/2019 00:48:51.980 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[cfgDocumentLibrary](
 	[DocumentLibraryID] [int] NOT NULL,
 	[DocumentLibrarySortOrder] [int] NOT NULL,

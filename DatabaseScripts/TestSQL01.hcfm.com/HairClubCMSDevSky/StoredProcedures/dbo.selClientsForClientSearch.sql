@@ -1,9 +1,5 @@
 /* CreateDate: 05/06/2013 18:27:13.570 , ModifyDate: 05/31/2020 14:30:47.800 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				selClientsForClientSearch

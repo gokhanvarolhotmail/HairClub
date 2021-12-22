@@ -1,9 +1,5 @@
 /* CreateDate: 05/14/2014 09:39:06.530 , ModifyDate: 05/14/2014 10:36:28.227 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE FUNCTION [dbo].[fnGetClientPayCycle]
 (
 	@ClientIdentifier INT

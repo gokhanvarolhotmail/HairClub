@@ -1,9 +1,5 @@
 /* CreateDate: 09/30/2013 10:49:16.807 , ModifyDate: 09/30/2013 10:49:16.807 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE FUNCTION dbo.psoHasValidCellPhone
 (
 	@ContactId	NCHAR(10)

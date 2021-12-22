@@ -1,9 +1,5 @@
 /* CreateDate: 09/30/2009 11:26:39.953 , ModifyDate: 09/30/2009 11:26:39.957 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[BeBacks](
 	[contact_id] [nvarchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[Gender] [nvarchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,

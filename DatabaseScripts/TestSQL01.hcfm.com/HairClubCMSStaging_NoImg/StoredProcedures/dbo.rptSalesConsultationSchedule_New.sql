@@ -1,9 +1,5 @@
 /* CreateDate: 07/30/2018 11:12:33.610 , ModifyDate: 07/30/2018 11:12:33.610 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*
 ==============================================================================
 PROCEDURE:				[rptSalesConsultationSchedule] (extHairClubCMSGetConsultationsByDate - originally)

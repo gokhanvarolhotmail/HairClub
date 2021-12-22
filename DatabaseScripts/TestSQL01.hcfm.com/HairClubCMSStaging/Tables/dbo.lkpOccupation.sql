@@ -1,9 +1,5 @@
 /* CreateDate: 06/30/2014 07:10:21.547 , ModifyDate: 05/26/2020 10:49:44.420 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpOccupation](
 	[OccupationID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
 	[BOSOccupationCode] [nvarchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,

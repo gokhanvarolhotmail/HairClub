@@ -1,9 +1,5 @@
 /* CreateDate: 09/23/2019 12:31:49.617 , ModifyDate: 08/28/2020 17:02:23.460 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				mtnInventoryCreateSerializedSnapshot

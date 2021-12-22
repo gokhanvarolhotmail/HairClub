@@ -1,9 +1,5 @@
 /* CreateDate: 08/17/2015 15:31:38.657 , ModifyDate: 08/31/2015 15:56:09.090 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				extHairClubCMSCreateContact
 DESTINATION SERVER:		SQL03

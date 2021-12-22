@@ -1,9 +1,5 @@
 /* CreateDate: 12/17/2012 11:06:08.290 , ModifyDate: 03/02/2015 14:34:12.583 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				spSVC_PCP_Step4_CalculateDeferredRevenue
 DESTINATION SERVER:		SQL06

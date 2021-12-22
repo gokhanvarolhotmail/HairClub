@@ -1,9 +1,5 @@
 /* CreateDate: 06/10/2019 06:44:57.853 , ModifyDate: 06/10/2019 06:44:57.927 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[datStyleBook](
 	[StyleBookID] [int] IDENTITY(1,1) NOT NULL,
 	[StyleBookSortOrder] [int] NOT NULL,

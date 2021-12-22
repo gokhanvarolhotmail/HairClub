@@ -1,9 +1,5 @@
 /* CreateDate: 06/10/2019 06:44:57.777 , ModifyDate: 06/10/2019 06:44:57.890 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpStyleBookHairLength](
 	[StyleBookHairLengthID] [int] IDENTITY(1,1) NOT NULL,
 	[StyleBookHairLengthSortOrder] [int] NOT NULL,

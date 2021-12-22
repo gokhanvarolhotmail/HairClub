@@ -1,9 +1,5 @@
 /* CreateDate: 06/18/2008 12:36:14.757 , ModifyDate: 01/25/2010 08:13:27.480 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE VIEW [dbo].[MediaSourcesAllNumbers_vw]
 AS
 SELECT

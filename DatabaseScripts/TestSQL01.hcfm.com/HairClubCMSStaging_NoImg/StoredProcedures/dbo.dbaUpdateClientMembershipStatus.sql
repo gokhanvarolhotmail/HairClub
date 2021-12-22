@@ -1,9 +1,5 @@
 /* CreateDate: 01/15/2013 08:14:10.183 , ModifyDate: 03/07/2014 11:54:39.687 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 		PROCEDURE:				dbaUpdateClientMembershipStatus

@@ -1,9 +1,5 @@
 /* CreateDate: 04/10/2014 16:09:56.627 , ModifyDate: 12/24/2014 11:42:04.347 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				spRpt_NewWomensMembership
 DESTINATION SERVER:		SQL06

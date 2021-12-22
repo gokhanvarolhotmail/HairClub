@@ -1,9 +1,5 @@
 /* CreateDate: 11/20/2019 11:56:24.637 , ModifyDate: 11/20/2019 11:56:24.637 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				spSvc_PopulateHRTurnoverDashboard
 DESTINATION SERVER:		SQL06

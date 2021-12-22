@@ -1,9 +1,5 @@
 /* CreateDate: 10/04/2021 14:33:16.943 , ModifyDate: 10/04/2021 14:33:16.943 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[ODS_SF_ServiceAppointment](
 	[CreatedDate] [datetime] NULL,
 	[Id] [varchar](8000) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,

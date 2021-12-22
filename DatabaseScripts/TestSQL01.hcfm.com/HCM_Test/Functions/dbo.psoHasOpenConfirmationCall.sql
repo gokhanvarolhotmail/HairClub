@@ -1,9 +1,5 @@
 /* CreateDate: 10/15/2013 00:19:18.967 , ModifyDate: 10/15/2013 00:19:18.967 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE FUNCTION [dbo].[psoHasOpenConfirmationCall]
 (
 	@ContactId	NCHAR(10)

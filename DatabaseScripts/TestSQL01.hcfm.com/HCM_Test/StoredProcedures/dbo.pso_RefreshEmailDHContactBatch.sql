@@ -1,9 +1,5 @@
 /* CreateDate: 07/21/2014 15:41:36.847 , ModifyDate: 07/21/2014 15:41:36.847 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 -- =============================================
 -- Create date: 18 June 2012
 -- Description:	Refreshes the data for a single contact.

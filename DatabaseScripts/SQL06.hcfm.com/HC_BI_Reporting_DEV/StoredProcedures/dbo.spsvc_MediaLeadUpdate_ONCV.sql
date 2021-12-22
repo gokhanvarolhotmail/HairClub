@@ -1,9 +1,5 @@
 /* CreateDate: 10/05/2012 09:30:43.010 , ModifyDate: 10/31/2013 13:29:22.250 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				spsvc_MediaLeadUpdate_ONCV

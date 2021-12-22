@@ -1,9 +1,5 @@
 /* CreateDate: 12/31/2010 13:33:54.470 , ModifyDate: 02/18/2013 19:04:02.713 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 create VIEW [dbo].[vw_productionorders]
 AS
 SELECT     O.ClientHomeCenterID AS center, OrigClient.ClientNumber_Temp AS clientno, 0 AS newclient, O.HairSystemOrderNumber AS serialnumb, 'zz' AS cd,

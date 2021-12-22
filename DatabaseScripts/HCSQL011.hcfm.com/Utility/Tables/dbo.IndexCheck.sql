@@ -1,9 +1,5 @@
 /* CreateDate: 07/20/2014 23:23:04.570 , ModifyDate: 07/20/2014 23:23:04.570 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[IndexCheck](
 	[RunTime] [datetime] NOT NULL,
 	[DatabaseName] [nvarchar](128) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,

@@ -1,10 +1,6 @@
 /* CreateDate: 10/15/2013 00:24:55.597 , ModifyDate: 05/21/2015 18:32:12.323 */
 /* ***HasTriggers*** TriggerCount: 1 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[csta_queue_user_history](
 	[queue_user_history_id] [uniqueidentifier] NOT NULL,
 	[start_date] [datetime] NULL,
@@ -26,10 +22,6 @@ CREATE NONCLUSTERED INDEX [csta_queue_user_history_i1] ON [dbo].[csta_queue_user
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
 ALTER TABLE [dbo].[csta_queue_user_history] ADD  CONSTRAINT [DF_csta_queue_user_history_queue_user_history_id]  DEFAULT (newid()) FOR [queue_user_history_id]
-GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
 GO
 CREATE TRIGGER [dbo].[pso_SingleActiveQueueHistory]
    ON  [dbo].[csta_queue_user_history]

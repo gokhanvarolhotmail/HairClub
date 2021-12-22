@@ -1,9 +1,5 @@
 /* CreateDate: 10/26/2018 10:27:41.577 , ModifyDate: 12/04/2018 15:32:39.657 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				[rptProductsMatrixMizani]
 DESTINATION SERVER:		SQL01

@@ -1,9 +1,5 @@
 /* CreateDate: 09/06/2011 15:17:40.610 , ModifyDate: 05/20/2014 09:50:09.307 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 VIEW:					vw_ActivityLead
 DESTINATION SERVER:		SQL06

@@ -1,9 +1,5 @@
 /* CreateDate: 03/16/2017 16:10:31.957 , ModifyDate: 03/16/2017 16:10:31.957 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[mtnUpdateHairSystemOrderBySSISlog](
 	[id] [int] IDENTITY(1,1) NOT NULL,
 	[RunTime] [datetime] NULL,

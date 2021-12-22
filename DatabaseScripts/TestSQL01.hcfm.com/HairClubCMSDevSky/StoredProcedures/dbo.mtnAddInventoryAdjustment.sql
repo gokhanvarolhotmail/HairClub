@@ -1,9 +1,5 @@
 /* CreateDate: 07/10/2020 14:09:17.583 , ModifyDate: 07/10/2020 14:09:17.583 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				mtnAddInventoryAdjustment
 DESTINATION SERVER:		SQL01

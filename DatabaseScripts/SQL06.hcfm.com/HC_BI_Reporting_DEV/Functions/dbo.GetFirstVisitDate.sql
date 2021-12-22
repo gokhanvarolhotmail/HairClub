@@ -1,9 +1,5 @@
 /* CreateDate: 05/09/2014 09:40:37.287 , ModifyDate: 08/24/2016 11:37:53.313 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 FUNCTION: GetFirstVisitDate
 

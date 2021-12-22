@@ -1,9 +1,5 @@
 /* CreateDate: 05/06/2019 15:11:41.997 , ModifyDate: 05/07/2019 14:16:36.390 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				spRpt_PIP_RevenuePercent	VERSION  1.0
 DESTINATION SERVER:		SQL06

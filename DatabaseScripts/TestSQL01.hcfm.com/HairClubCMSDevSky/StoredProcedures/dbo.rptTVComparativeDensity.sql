@@ -1,9 +1,5 @@
 /* CreateDate: 10/07/2014 10:34:40.420 , ModifyDate: 11/16/2017 13:18:40.423 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*===============================================================================================
  Procedure Name:				[rptTVComparativeDensity]
  Procedure Description:			This stored procedure provides the data for the Density grids.

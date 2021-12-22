@@ -1,9 +1,5 @@
 /* CreateDate: 10/03/2019 23:03:39.683 , ModifyDate: 10/03/2019 23:03:39.683 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 create procedure [sp_MSdel_bief_dds_DBVersion]
 		@pkc1 int,
 		@pkc2 int,

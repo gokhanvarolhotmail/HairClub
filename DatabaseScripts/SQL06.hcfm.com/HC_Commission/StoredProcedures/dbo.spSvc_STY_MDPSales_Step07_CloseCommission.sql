@@ -1,9 +1,5 @@
 /* CreateDate: 07/30/2019 10:12:02.950 , ModifyDate: 07/30/2019 10:12:02.950 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				spSvc_STY_MDPSales_Step07_CloseCommission
 DESTINATION SERVER:		SQL06

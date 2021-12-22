@@ -1,9 +1,5 @@
 /* CreateDate: 05/08/2013 14:51:59.047 , ModifyDate: 05/08/2013 14:51:59.287 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[CMSCreateClientLog](
 	[RecordID] [int] IDENTITY(1,1) NOT NULL,
 	[Address] [varchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,

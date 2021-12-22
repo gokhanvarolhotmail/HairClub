@@ -1,9 +1,5 @@
 /* CreateDate: 09/30/2013 10:49:43.957 , ModifyDate: 07/21/2014 01:20:44.103 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[cstd_wireless_scrub_history](
 	[wireless_scrub_history_id] [int] IDENTITY(1,1) NOT NULL,
 	[scrub_date] [datetime] NOT NULL,

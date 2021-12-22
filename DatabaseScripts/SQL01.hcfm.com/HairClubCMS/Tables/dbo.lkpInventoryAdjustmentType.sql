@@ -1,9 +1,5 @@
 /* CreateDate: 05/28/2018 22:15:34.530 , ModifyDate: 10/29/2018 17:11:00.300 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpInventoryAdjustmentType](
 	[InventoryAdjustmentTypeID] [int] IDENTITY(1,1) NOT NULL,
 	[InventoryAdjustmentTypeSortOrder] [int] NOT NULL,

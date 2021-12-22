@@ -1,9 +1,5 @@
 /* CreateDate: 07/17/2020 14:10:21.283 , ModifyDate: 09/03/2020 11:17:00.143 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				spDB_PopulateTransactionDashboard
 DESTINATION SERVER:		SQL06

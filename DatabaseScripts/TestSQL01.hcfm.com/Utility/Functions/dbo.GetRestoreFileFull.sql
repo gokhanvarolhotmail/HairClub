@@ -1,9 +1,5 @@
 /* CreateDate: 06/05/2015 10:32:26.927 , ModifyDate: 10/19/2018 22:31:47.980 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE FUNCTION [dbo].[GetRestoreFileFull]
 (
 	@FileNum int

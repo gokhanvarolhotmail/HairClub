@@ -1,9 +1,5 @@
 /* CreateDate: 07/25/2019 13:51:50.430 , ModifyDate: 07/26/2019 16:09:33.303 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				[spRpt_WarBoardStylist]
 DESTINATION SERVER:		SQL06

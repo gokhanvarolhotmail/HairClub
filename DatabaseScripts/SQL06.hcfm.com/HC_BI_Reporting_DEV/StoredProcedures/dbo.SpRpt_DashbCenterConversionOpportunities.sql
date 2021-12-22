@@ -1,9 +1,5 @@
 /* CreateDate: 03/02/2015 15:01:10.253 , ModifyDate: 09/02/2015 09:40:20.113 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*===============================================================================================
  Procedure Name:            [SpRpt_DashbCenterConversionOpportunities]
  Procedure Description:     For the conversion opportunities grid in the Center Flash dashboard

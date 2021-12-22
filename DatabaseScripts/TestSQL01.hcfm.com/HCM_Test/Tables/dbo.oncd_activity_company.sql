@@ -1,10 +1,6 @@
 /* CreateDate: 01/18/2005 09:34:08.140 , ModifyDate: 09/10/2019 22:43:13.113 */
 /* ***HasTriggers*** TriggerCount: 1 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[oncd_activity_company](
 	[activity_company_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[activity_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
@@ -52,10 +48,6 @@ ALTER TABLE [dbo].[oncd_activity_company]  WITH CHECK ADD  CONSTRAINT [user_acti
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_activity_company] CHECK CONSTRAINT [user_activity_com_454]
-GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
 GO
 -- =============================================
 -- Author:		MJW - Workwise, LLC

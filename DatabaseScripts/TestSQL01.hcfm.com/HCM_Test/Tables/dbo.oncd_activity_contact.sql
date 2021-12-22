@@ -1,10 +1,6 @@
 /* CreateDate: 01/18/2005 09:34:08.157 , ModifyDate: 09/10/2019 22:54:57.240 */
 /* ***HasTriggers*** TriggerCount: 2 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[oncd_activity_contact](
 	[activity_contact_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[activity_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
@@ -75,10 +71,6 @@ REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_activity_contact] CHECK CONSTRAINT [user_activity_con_456]
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 -- =============================================
 -- Author:		Oncontact PSO Fred Remers
 -- ALTER  date: 4/23/08
@@ -140,10 +132,6 @@ BEGIN
 END
 GO
 ALTER TABLE [dbo].[oncd_activity_contact] ENABLE TRIGGER [pso_oncd_activity_contact_insert]
-GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
 GO
 CREATE TRIGGER [dbo].[pso_QueueAssignment]
    ON  [dbo].[oncd_activity_contact]

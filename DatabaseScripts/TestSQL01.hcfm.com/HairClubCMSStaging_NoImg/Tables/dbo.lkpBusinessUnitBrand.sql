@@ -1,9 +1,5 @@
 /* CreateDate: 08/27/2008 11:28:45.303 , ModifyDate: 12/03/2021 10:24:48.610 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpBusinessUnitBrand](
 	[BusinessUnitBrandID] [int] NOT NULL,
 	[BusinessUnitBrandSortOrder] [int] NOT NULL,

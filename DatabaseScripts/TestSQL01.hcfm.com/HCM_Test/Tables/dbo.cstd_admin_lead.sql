@@ -1,9 +1,5 @@
 /* CreateDate: 06/18/2013 09:24:41.177 , ModifyDate: 04/10/2017 09:31:56.083 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[cstd_admin_lead](
 	[admin_lead_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[user_code] [nchar](20) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,

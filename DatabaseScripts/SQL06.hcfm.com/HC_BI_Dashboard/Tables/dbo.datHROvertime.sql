@@ -1,9 +1,5 @@
 /* CreateDate: 11/20/2019 11:35:26.420 , ModifyDate: 11/20/2019 11:37:36.120 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[datHROvertime](
 	[CenterNumber] [int] NULL,
 	[TotalHours] [decimal](18, 2) NULL,

@@ -1,9 +1,5 @@
 /* CreateDate: 02/01/2013 10:02:58.137 , ModifyDate: 06/18/2014 01:38:25.557 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[DimCommissionType](
 	[CommissionTypeID] [int] NOT NULL,
 	[SortOrder] [int] NULL,

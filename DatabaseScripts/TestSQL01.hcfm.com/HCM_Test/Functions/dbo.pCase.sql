@@ -1,9 +1,5 @@
 /* CreateDate: 02/19/2013 11:59:05.050 , ModifyDate: 02/19/2013 11:59:05.050 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE FUNCTION [dbo].[pCase]
 (
     @strIn varchar(255)

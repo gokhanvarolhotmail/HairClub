@@ -1,9 +1,5 @@
 /* CreateDate: 06/19/2012 11:14:20.930 , ModifyDate: 03/16/2021 09:45:23.527 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				selEFTCenterResultDeclines

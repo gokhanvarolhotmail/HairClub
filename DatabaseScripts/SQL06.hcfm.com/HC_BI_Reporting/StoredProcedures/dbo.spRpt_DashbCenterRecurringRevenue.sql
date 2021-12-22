@@ -1,9 +1,5 @@
 /* CreateDate: 03/03/2015 16:38:36.970 , ModifyDate: 07/30/2015 10:57:30.170 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				[spRpt_DashbCenterRecurringRevenue]
 DESTINATION SERVER:		SQL06

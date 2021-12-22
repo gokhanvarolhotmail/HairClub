@@ -1,9 +1,5 @@
 /* CreateDate: 05/23/2013 14:02:54.617 , ModifyDate: 03/09/2020 15:10:50.327 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[datRequestQueue](
 	[RequestQueueID] [int] IDENTITY(1,1) NOT NULL,
 	[SiebelID] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,

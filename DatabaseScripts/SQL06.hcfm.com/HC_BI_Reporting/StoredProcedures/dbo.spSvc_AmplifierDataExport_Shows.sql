@@ -1,9 +1,5 @@
 /* CreateDate: 06/16/2014 11:38:51.440 , ModifyDate: 08/04/2014 09:43:21.317 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				spSvc_AmplifierDataExport_Shows
 DESTINATION SERVER:		SQL06

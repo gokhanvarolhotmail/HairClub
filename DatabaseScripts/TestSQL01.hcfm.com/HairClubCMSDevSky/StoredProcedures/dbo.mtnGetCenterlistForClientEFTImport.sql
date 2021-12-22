@@ -1,9 +1,5 @@
 /* CreateDate: 05/14/2012 17:40:59.973 , ModifyDate: 02/27/2017 09:49:20.087 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				mtnGetCenterlistForClientEFTImport

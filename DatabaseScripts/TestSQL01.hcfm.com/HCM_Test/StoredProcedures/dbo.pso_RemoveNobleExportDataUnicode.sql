@@ -1,9 +1,5 @@
 /* CreateDate: 06/04/2012 10:54:00.240 , ModifyDate: 03/13/2013 12:18:21.077 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 -- =============================================
 -- Create date: 4 June 2012
 -- Description:	Removes Unicode from cstd_noble_export_data.

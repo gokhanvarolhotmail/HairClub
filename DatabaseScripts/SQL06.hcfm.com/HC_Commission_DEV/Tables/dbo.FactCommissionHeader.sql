@@ -1,9 +1,5 @@
 /* CreateDate: 02/13/2013 14:43:50.013 , ModifyDate: 08/31/2020 11:05:25.053 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[FactCommissionHeader](
 	[CommissionHeaderKey] [int] IDENTITY(1,1) NOT NULL,
 	[CommissionTypeID] [int] NOT NULL,

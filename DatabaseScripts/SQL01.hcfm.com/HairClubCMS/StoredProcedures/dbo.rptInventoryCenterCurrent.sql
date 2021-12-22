@@ -1,9 +1,5 @@
 /* CreateDate: 10/26/2018 15:39:41.150 , ModifyDate: 03/03/2020 13:16:28.740 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				rptInventoryCenterCurrent

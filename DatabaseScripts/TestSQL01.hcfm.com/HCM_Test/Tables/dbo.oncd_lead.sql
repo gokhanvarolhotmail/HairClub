@@ -1,9 +1,5 @@
 /* CreateDate: 01/25/2010 11:09:09.663 , ModifyDate: 06/21/2012 10:05:19.843 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[oncd_lead](
 	[lead_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[salutation_code] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,

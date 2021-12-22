@@ -1,9 +1,5 @@
 /* CreateDate: 08/27/2008 12:00:38.273 , ModifyDate: 12/07/2021 16:20:16.173 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpFactoryOrderStatus](
 	[FactoryOrderStatusID] [int] NOT NULL,
 	[FactoryOrderStatusSortOrder] [int] NULL,

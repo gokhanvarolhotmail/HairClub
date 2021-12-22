@@ -1,9 +1,5 @@
 /* CreateDate: 04/08/2020 11:22:01.533 , ModifyDate: 04/08/2020 11:22:01.533 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE PROCEDURE [dbo].[upCubeDocAttributesInDimension]
     (@Catalog       VARCHAR(255)
     ,@Cube          VARCHAR(255)

@@ -1,9 +1,5 @@
 /* CreateDate: 10/15/2007 10:40:52.643 , ModifyDate: 05/01/2010 14:48:09.017 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 -- =============================================
 -- Author:		Howard Abelow
 -- Create date: 8/20/2007

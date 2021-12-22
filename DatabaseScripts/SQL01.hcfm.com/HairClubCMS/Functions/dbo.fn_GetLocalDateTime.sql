@@ -1,9 +1,5 @@
 /* CreateDate: 01/10/2012 08:49:31.443 , ModifyDate: 11/09/2016 12:20:25.410 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE: 				[fn_GetLocalDateTime]
 DESTINATION SERVER:		SQL01

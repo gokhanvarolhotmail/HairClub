@@ -1,9 +1,5 @@
 /* CreateDate: 03/26/2021 10:00:44.837 , ModifyDate: 04/01/2021 11:11:46.727 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				spSvc_GetARDetailData
 DESTINATION SERVER:		SQL01

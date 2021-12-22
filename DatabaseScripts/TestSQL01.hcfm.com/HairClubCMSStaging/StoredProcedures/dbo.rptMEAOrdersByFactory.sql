@@ -1,9 +1,5 @@
 /* CreateDate: 02/28/2011 20:07:11.187 , ModifyDate: 02/27/2017 09:49:28.653 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*===============================================================================================
 -- Procedure Name:			rptMEAOrdersByFactory
 -- Procedure Description:

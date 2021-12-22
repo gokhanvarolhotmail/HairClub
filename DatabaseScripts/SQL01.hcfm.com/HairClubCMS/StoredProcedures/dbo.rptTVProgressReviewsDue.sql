@@ -1,9 +1,5 @@
 /* CreateDate: 09/30/2015 14:37:18.317 , ModifyDate: 12/07/2018 09:46:30.563 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*===============================================================================================
  Procedure Name:            rptTVProgressReviewsDue
  Procedure Description:     This stored procedure provides client information such as Last Visit,

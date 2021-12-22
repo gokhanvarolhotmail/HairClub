@@ -1,9 +1,5 @@
 /* CreateDate: 01/08/2021 15:21:53.870 , ModifyDate: 01/08/2021 15:21:55.300 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [bi_ent_dds].[DimIncomeRange](
 	[IncomeRangeKey] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
 	[IncomeRangeSSID] [int] NOT NULL,

@@ -1,9 +1,5 @@
 /* CreateDate: 06/10/2013 20:12:27.190 , ModifyDate: 01/21/2014 23:48:44.130 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				extBosleyUpdateProcedureAppointment

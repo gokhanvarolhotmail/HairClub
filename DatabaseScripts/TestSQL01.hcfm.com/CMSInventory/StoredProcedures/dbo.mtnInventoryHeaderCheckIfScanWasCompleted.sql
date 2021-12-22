@@ -1,9 +1,5 @@
 /* CreateDate: 03/30/2011 09:42:32.563 , ModifyDate: 12/28/2011 17:26:19.823 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE: 				[mtnInventoryHeaderCheckIfScanWasCompleted]
 DESTINATION SERVER:		SQL01

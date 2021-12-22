@@ -1,9 +1,5 @@
 /* CreateDate: 05/28/2020 09:54:05.817 , ModifyDate: 07/01/2020 10:21:52.117 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				spSvc_GetAddOnData
 DESTINATION SERVER:		SQL01

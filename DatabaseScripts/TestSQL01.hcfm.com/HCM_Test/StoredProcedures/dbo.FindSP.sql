@@ -1,9 +1,5 @@
 /* CreateDate: 03/31/2008 09:40:02.290 , ModifyDate: 05/01/2010 14:48:12.180 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 create PROC [dbo].[FindSP]
 	@SearchCrit VARCHAR(1000)
 AS

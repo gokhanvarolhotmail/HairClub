@@ -1,9 +1,5 @@
 /* CreateDate: 05/03/2010 12:17:24.163 , ModifyDate: 09/16/2019 09:33:49.903 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE function [bief_dds].[DDS_DimDate_FiscalPeriod] (@fiscal_week as int)
 returns int
 as

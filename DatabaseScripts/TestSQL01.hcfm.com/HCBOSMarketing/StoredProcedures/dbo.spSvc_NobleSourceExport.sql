@@ -1,9 +1,5 @@
 /* CreateDate: 08/16/2012 08:53:07.597 , ModifyDate: 08/16/2012 08:53:07.597 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:	[spsvc_NobleSourceExport]

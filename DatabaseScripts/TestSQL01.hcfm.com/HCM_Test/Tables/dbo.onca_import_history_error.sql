@@ -1,9 +1,5 @@
 /* CreateDate: 06/01/2005 13:04:49.763 , ModifyDate: 06/21/2012 10:00:56.683 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[onca_import_history_error](
 	[import_history_error_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[import_history_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,

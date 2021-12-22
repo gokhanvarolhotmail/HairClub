@@ -1,9 +1,5 @@
 /* CreateDate: 06/25/2012 10:27:04.780 , ModifyDate: 06/25/2012 10:40:05.670 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 -- =============================================
 -- Create date: 14 June 2012
 -- Description:	Selects data from cstv_email_dh

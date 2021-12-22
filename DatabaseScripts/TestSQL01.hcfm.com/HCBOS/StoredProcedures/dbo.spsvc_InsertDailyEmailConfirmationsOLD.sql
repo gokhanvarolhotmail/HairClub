@@ -1,9 +1,5 @@
 /* CreateDate: 01/08/2007 12:15:19.643 , ModifyDate: 01/25/2010 08:11:31.777 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE PROCEDURE [dbo].[spsvc_InsertDailyEmailConfirmationsOLD]
 
 AS

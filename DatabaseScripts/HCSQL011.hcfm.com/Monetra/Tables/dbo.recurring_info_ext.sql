@@ -1,9 +1,5 @@
 /* CreateDate: 09/30/2019 07:07:32.873 , ModifyDate: 09/30/2019 07:07:32.960 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[recurring_info_ext](
 	[token] [bigint] NOT NULL,
 	[customer_id] [bigint] NOT NULL,

@@ -1,9 +1,5 @@
 /* CreateDate: 09/03/2021 09:37:06.600 , ModifyDate: 09/03/2021 09:37:12.073 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [bi_mktg_dds].[FactActivity](
 	[ActivityDateKey] [int] NOT NULL,
 	[ActivityKey] [int] NOT NULL,

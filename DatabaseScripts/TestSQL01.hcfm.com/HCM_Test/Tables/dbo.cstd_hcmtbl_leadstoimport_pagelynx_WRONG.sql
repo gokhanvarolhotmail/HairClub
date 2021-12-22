@@ -1,9 +1,5 @@
 /* CreateDate: 09/04/2007 09:40:44.243 , ModifyDate: 06/21/2012 10:12:16.303 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[cstd_hcmtbl_leadstoimport_pagelynx_WRONG](
 	[hcmtbl_leadstoimport_pagelynx_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[result_code] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,

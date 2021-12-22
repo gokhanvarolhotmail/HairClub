@@ -1,9 +1,5 @@
 /* CreateDate: 08/02/2018 13:35:50.777 , ModifyDate: 08/02/2018 15:32:47.680 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*===============================================================================================
  Procedure Name:            [rptHWPipeline]
  Procedure Description:

@@ -1,9 +1,5 @@
 /* CreateDate: 04/10/2014 12:16:22.730 , ModifyDate: 10/12/2018 15:56:47.343 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				spSvc_BarthSalesCodesExport
 DESTINATION SERVER:		SQL06

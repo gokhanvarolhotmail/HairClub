@@ -1,9 +1,5 @@
 /* CreateDate: 08/27/2008 11:39:37.957 , ModifyDate: 05/26/2020 10:49:40.080 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpDeveloperVolume](
 	[DeveloperVolumeID] [int] NOT NULL,
 	[DeveloperVolumeSortOrder] [int] NOT NULL,

@@ -1,9 +1,5 @@
 /* CreateDate: 03/14/2013 23:16:13.590 , ModifyDate: 03/14/2013 23:16:13.590 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				selARClientsWithOpenChargesAndCreditsForBatch

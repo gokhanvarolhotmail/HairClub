@@ -1,9 +1,5 @@
 /* CreateDate: 07/30/2012 09:01:56.307 , ModifyDate: 05/26/2020 10:49:48.833 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[cfgActiveDirectoryGroupJoin](
 	[ActiveDirectoryGroupID] [int] NOT NULL,
 	[EmployeePositionID] [int] NOT NULL,

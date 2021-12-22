@@ -1,9 +1,5 @@
 /* CreateDate: 11/29/2018 22:41:55.127 , ModifyDate: 11/29/2018 22:41:55.403 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[datDistributorPurchaseOrder](
 	[DistributorPurchaseOrderID] [int] IDENTITY(1,1) NOT NULL,
 	[PurchaseOrderNumber]  AS ((right('0000'+CONVERT([nvarchar](4),[CenterID]),(4))+'-')+right('0000000'+CONVERT([nvarchar](7),[DistributorPurchaseOrderID]),(7))) PERSISTED,

@@ -1,9 +1,5 @@
 /* CreateDate: 08/27/2008 12:17:00.943 , ModifyDate: 12/07/2021 16:20:16.290 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpRevenueGroup](
 	[RevenueGroupID] [int] NOT NULL,
 	[RevenueGroupSortOrder] [int] NOT NULL,

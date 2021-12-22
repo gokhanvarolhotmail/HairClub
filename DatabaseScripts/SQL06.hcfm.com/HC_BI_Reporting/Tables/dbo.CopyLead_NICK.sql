@@ -1,9 +1,5 @@
 /* CreateDate: 07/08/2021 15:30:53.800 , ModifyDate: 07/08/2021 15:30:53.800 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[CopyLead_NICK](
 	[Id] [nvarchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[ContactID__c] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,

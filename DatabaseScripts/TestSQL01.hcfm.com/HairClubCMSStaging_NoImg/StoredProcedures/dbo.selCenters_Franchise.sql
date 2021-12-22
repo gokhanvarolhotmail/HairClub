@@ -1,9 +1,5 @@
 /* CreateDate: 02/04/2014 13:46:32.593 , ModifyDate: 02/04/2014 13:46:32.593 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*===============================================================================================
  Procedure Name:            [selCenters_Franchise]
  Procedure Description:

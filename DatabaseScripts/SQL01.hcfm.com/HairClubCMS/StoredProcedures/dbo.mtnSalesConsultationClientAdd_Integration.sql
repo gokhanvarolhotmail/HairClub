@@ -1,9 +1,5 @@
 /* CreateDate: 10/30/2017 03:09:46.407 , ModifyDate: 03/08/2021 11:00:15.650 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				mtnSalesConsultationClientAdd_Integration

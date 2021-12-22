@@ -1,9 +1,5 @@
 /* CreateDate: 06/11/2014 08:04:32.537 , ModifyDate: 10/28/2015 10:43:03.967 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[datWaitingListDetail](
 	[WaitingListDetailID] [int] IDENTITY(1,1) NOT NULL,
 	[WaitingListID] [int] NOT NULL,

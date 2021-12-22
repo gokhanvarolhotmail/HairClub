@@ -1,9 +1,5 @@
 /* CreateDate: 03/21/2019 14:46:11.527 , ModifyDate: 03/21/2019 15:20:51.753 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				spRpt_FlashNewBusiness
 DESTINATION SERVER:		SQL06

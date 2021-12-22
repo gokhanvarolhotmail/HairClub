@@ -1,9 +1,5 @@
 /* CreateDate: 01/08/2021 15:21:53.967 , ModifyDate: 01/08/2021 15:21:55.313 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [bi_ent_dds].[DimOccupation](
 	[OccupationKey] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
 	[OccupationSSID] [int] NOT NULL,

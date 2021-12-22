@@ -1,9 +1,5 @@
 /* CreateDate: 06/20/2008 11:25:46.583 , ModifyDate: 06/18/2009 12:48:41.590 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[MediaSourceTollFreeNumbers](
 	[Active] [bit] NULL,
 	[NumberID] [int] IDENTITY(1,1) NOT NULL,

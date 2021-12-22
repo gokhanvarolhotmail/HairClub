@@ -1,9 +1,5 @@
 /* CreateDate: 03/14/2013 10:06:55.427 , ModifyDate: 07/02/2017 15:56:15.287 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				extCommissionHRAuditByCountryAndPayPeriod
 PURPOSE:				Export pay period details for all US centers for Certipay

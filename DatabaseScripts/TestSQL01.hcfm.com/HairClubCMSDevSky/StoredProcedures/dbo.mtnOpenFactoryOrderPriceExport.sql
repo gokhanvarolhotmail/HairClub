@@ -1,9 +1,5 @@
 /* CreateDate: 03/01/2012 07:54:44.450 , ModifyDate: 05/12/2019 23:24:51.650 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE: 				[mtnOpenFactoryOrderPriceExport]
 DESTINATION SERVER:		SQL01

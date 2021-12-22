@@ -1,9 +1,5 @@
 /* CreateDate: 01/08/2021 15:21:53.133 , ModifyDate: 01/08/2021 15:22:34.737 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [bief_dds].[_DBErrorLog](
 	[DBErrorLogID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
 	[ErrorTime] [datetime] NOT NULL,

@@ -1,9 +1,5 @@
 /* CreateDate: 03/20/2009 14:11:51.563 , ModifyDate: 01/07/2016 14:19:18.107 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:		spsvc_DNC_Update_In_HCM

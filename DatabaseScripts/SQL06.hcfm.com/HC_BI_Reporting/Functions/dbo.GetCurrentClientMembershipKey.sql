@@ -1,9 +1,5 @@
 /* CreateDate: 01/03/2014 16:09:15.713 , ModifyDate: 01/09/2018 15:42:01.683 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 FUNCTION: GetCurrentClientMembershipKey

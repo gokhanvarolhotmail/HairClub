@@ -1,9 +1,5 @@
 /* CreateDate: 09/17/2014 10:09:13.697 , ModifyDate: 03/22/2017 16:53:21.263 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE PROCEDURE [dbo].[pso_RefreshCstdContactFlatData]
 AS
 

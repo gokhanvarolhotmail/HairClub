@@ -1,9 +1,5 @@
 /* CreateDate: 08/15/2016 16:00:51.240 , ModifyDate: 01/20/2017 09:54:14.037 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				spRpt_NewBusinessPipeline_ByMainGroupID (XTR+)
 DESTINATION SERVER:		SQL06

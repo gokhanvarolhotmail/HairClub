@@ -1,9 +1,5 @@
 /* CreateDate: 01/29/2016 11:04:23.867 , ModifyDate: 02/24/2017 17:05:56.523 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*
 select * from [vw_AreaManager]
 */

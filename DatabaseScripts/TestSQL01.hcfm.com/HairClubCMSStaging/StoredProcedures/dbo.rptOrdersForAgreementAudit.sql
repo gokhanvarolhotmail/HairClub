@@ -1,9 +1,5 @@
 /* CreateDate: 01/23/2015 11:35:05.337 , ModifyDate: 12/06/2016 15:04:50.220 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				rptOrdersForAgreementAudit

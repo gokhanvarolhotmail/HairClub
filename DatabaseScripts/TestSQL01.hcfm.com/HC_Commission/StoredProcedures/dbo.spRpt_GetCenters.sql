@@ -1,9 +1,5 @@
 /* CreateDate: 02/07/2018 12:46:58.133 , ModifyDate: 02/07/2018 15:18:09.390 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				spRpt_GetCenters
 DESTINATION SERVER:		SQL06

@@ -1,9 +1,5 @@
 /* CreateDate: 09/03/2021 09:37:05.803 , ModifyDate: 09/03/2021 09:37:11.177 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [bi_mktg_dds].[DimContactPhone](
 	[ContactPhoneKey] [int] NOT NULL,
 	[ContactPhoneSSID] [nvarchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,

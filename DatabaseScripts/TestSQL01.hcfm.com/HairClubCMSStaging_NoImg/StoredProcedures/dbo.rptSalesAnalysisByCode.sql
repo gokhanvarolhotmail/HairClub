@@ -1,9 +1,5 @@
 /* CreateDate: 02/18/2013 07:43:35.723 , ModifyDate: 10/04/2017 09:36:26.987 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*
 ==============================================================================
 PROCEDURE:				[rptSalesAnalysisByCode]

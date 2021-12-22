@@ -1,9 +1,5 @@
 /* CreateDate: 05/28/2018 22:15:34.480 , ModifyDate: 11/29/2018 22:41:55.413 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[datDistributorPurchaseOrderDetail](
 	[DistributorPurchaseOrderDetailID] [int] IDENTITY(1,1) NOT NULL,
 	[DistributorPurchaseOrderID] [int] NOT NULL,

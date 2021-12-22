@@ -1,9 +1,5 @@
 /* CreateDate: 11/22/2017 14:34:59.920 , ModifyDate: 11/22/2017 14:35:00.017 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpDocumentLibraryType](
 	[DocumentLibraryTypeID] [int] NOT NULL,
 	[DocumentLibraryTypeSortOrder] [int] NOT NULL,

@@ -1,9 +1,5 @@
 /* CreateDate: 10/25/2018 17:04:08.210 , ModifyDate: 11/09/2020 09:08:24.497 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				rptInventoryAuditWorksheet

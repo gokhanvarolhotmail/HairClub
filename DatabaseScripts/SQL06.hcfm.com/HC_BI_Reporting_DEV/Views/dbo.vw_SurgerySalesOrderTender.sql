@@ -1,9 +1,5 @@
 /* CreateDate: 06/07/2011 13:15:26.210 , ModifyDate: 06/07/2011 13:15:26.210 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE VIEW dbo.vw_SurgerySalesOrderTender
 AS
 SELECT     SO.OrderDate AS 'Date', SO.CenterSSID AS 'TrxCenterID', CTR.CenterDescription AS 'TrxCenterDescription',

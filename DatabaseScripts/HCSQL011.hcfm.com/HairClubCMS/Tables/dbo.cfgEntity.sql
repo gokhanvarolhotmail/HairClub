@@ -1,9 +1,5 @@
 /* CreateDate: 05/02/2016 08:48:51.453 , ModifyDate: 05/02/2016 08:48:52.750 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[cfgEntity](
 	[EntityID] [int] IDENTITY(1,1) NOT NULL,
 	[EntitySortOrder] [int] NOT NULL,

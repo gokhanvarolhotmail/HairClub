@@ -1,9 +1,5 @@
 /* CreateDate: 07/07/2015 16:05:52.317 , ModifyDate: 11/06/2019 10:14:53.567 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*===============================================================================================
  Procedure Name:            rptTVUseAnalysisDetail
  Procedure Description:     This stored procedure provides detail information about TrichoView use per performer in the drill-down

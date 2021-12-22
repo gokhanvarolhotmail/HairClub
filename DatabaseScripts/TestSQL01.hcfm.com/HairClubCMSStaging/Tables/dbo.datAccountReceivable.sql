@@ -1,9 +1,5 @@
 /* CreateDate: 05/14/2012 17:33:38.987 , ModifyDate: 07/02/2021 04:05:12.940 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[datAccountReceivable](
 	[AccountReceivableID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
 	[ClientGUID] [uniqueidentifier] NOT NULL,

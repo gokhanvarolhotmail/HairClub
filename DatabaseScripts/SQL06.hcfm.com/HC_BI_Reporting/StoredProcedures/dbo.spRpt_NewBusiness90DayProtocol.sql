@@ -1,9 +1,5 @@
 /* CreateDate: 11/04/2013 13:38:24.637 , ModifyDate: 07/14/2015 11:53:58.643 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				spRpt_NewBusiness90DayProtocol
 DESTINATION SERVER:		SQL06

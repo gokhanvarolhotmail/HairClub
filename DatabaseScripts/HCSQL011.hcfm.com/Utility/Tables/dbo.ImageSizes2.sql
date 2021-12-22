@@ -1,9 +1,5 @@
 /* CreateDate: 01/24/2017 19:37:29.850 , ModifyDate: 01/24/2017 19:37:29.850 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[ImageSizes2](
 	[AppointmentGUID] [uniqueidentifier] NOT NULL,
 	[CenterID] [int] NULL,

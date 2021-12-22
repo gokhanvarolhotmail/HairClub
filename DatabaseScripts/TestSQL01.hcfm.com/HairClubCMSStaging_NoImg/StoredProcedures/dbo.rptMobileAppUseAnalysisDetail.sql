@@ -1,9 +1,5 @@
 /* CreateDate: 11/20/2015 15:36:49.517 , ModifyDate: 01/22/2018 15:45:19.137 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*===============================================================================================
 PROCEDURE:				[rptMobileAppUseAnalysisDetail]
 VERSION:				v1.0

@@ -1,9 +1,5 @@
 /* CreateDate: 12/07/2021 16:20:34.927 , ModifyDate: 12/07/2021 16:20:34.927 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*
 ==============================================================================
 PROCEDURE:				dbaInitializeCommissionSynonyms

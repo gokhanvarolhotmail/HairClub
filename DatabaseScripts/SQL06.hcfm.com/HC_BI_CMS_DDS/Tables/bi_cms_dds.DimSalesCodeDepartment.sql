@@ -1,9 +1,5 @@
 /* CreateDate: 10/03/2019 23:03:41.557 , ModifyDate: 04/27/2021 15:57:58.023 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [bi_cms_dds].[DimSalesCodeDepartment](
 	[SalesCodeDepartmentKey] [int] NOT NULL,
 	[SalesCodeDepartmentSSID] [int] NOT NULL,

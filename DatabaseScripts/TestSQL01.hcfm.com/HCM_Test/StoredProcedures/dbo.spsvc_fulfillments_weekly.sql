@@ -1,9 +1,5 @@
 /* CreateDate: 10/17/2007 08:48:13.860 , ModifyDate: 10/10/2016 15:38:52.263 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /* -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	SP:	spsvc_fulfillments_weekly
 	Desc: 	This procedure is latest implementation of hcmsp_fullfilments.  The changes that were made

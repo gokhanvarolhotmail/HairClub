@@ -1,9 +1,5 @@
 /* CreateDate: 06/19/2021 08:18:35.077 , ModifyDate: 12/02/2021 08:10:17.640 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				spRpt_DailyFlash
 DESTINATION SERVER:		SQL06

@@ -1,9 +1,5 @@
 /* CreateDate: 09/22/2008 17:36:26.483 , ModifyDate: 01/25/2010 08:11:31.760 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:	[spRpt_NewBusinessConsultationsPriorDate]

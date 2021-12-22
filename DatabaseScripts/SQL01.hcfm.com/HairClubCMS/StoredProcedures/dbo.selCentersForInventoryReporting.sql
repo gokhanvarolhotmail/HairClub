@@ -1,9 +1,5 @@
 /* CreateDate: 10/06/2017 17:10:43.633 , ModifyDate: 02/18/2020 09:54:13.873 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*===============================================================================================
  Procedure Name:            selCentersForInventoryReporting
  Procedure Description:

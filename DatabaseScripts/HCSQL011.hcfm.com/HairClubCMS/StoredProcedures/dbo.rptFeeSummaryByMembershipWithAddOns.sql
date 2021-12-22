@@ -1,9 +1,5 @@
 /* CreateDate: 05/20/2019 11:09:41.523 , ModifyDate: 05/20/2019 11:09:41.523 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				rptFeeSummaryByMembershipWithAddOns

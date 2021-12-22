@@ -1,9 +1,5 @@
 /* CreateDate: 01/08/2021 15:21:54.120 , ModifyDate: 01/08/2021 15:21:54.120 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 create procedure [sp_MSupd_bi_ent_ddsDimTimeZone]
 		@c1 int = NULL,
 		@c2 int = NULL,

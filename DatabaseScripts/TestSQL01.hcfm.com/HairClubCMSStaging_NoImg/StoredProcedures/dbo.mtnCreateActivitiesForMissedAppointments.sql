@@ -1,9 +1,5 @@
 /* CreateDate: 08/15/2017 15:16:12.013 , ModifyDate: 10/25/2018 10:25:30.307 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				mtnCreateActivitiesForMissedAppointments

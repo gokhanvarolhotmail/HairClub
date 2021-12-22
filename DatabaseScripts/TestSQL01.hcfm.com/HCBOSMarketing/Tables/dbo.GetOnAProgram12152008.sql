@@ -1,9 +1,5 @@
 /* CreateDate: 12/15/2008 16:10:52.490 , ModifyDate: 12/15/2008 16:10:52.520 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[GetOnAProgram12152008](
 	[Center No] [float] NULL,
 	[Center Name] [nvarchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,

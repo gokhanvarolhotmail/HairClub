@@ -1,9 +1,5 @@
 /* CreateDate: 10/03/2006 10:25:52.387 , ModifyDate: 10/03/2006 10:25:52.387 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 create function dbo.F_END_OF_DECADE
 	( @DAY datetime )
 returns  datetime

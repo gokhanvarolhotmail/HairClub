@@ -1,9 +1,5 @@
 /* CreateDate: 07/01/2019 18:12:29.070 , ModifyDate: 07/01/2019 18:12:29.070 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				spSvc_STY_Conversions_Step02_CreateDetail
 DESTINATION SERVER:		SQL06

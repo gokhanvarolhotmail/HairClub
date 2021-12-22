@@ -1,9 +1,5 @@
 /* CreateDate: 05/14/2012 17:35:09.393 , ModifyDate: 02/11/2021 18:02:45.150 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				selFeeFrozenProfileExceptions

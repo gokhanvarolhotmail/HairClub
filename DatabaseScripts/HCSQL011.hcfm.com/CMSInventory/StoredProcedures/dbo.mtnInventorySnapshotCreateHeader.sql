@@ -1,9 +1,5 @@
 /* CreateDate: 03/30/2011 09:42:32.400 , ModifyDate: 11/05/2014 07:47:32.437 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE: 				[mtnInventorySnapshotCreateHeader]
 DESTINATION SERVER:		SQL01

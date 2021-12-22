@@ -1,9 +1,5 @@
 /* CreateDate: 01/19/2009 15:39:33.117 , ModifyDate: 12/07/2021 16:20:16.007 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[cfgMembership](
 	[MembershipID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
 	[MembershipSortOrder] [int] NULL,

@@ -1,9 +1,5 @@
 /* CreateDate: 10/15/2014 19:01:17.067 , ModifyDate: 04/26/2017 08:54:39.523 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:
 DESTINATION SERVER:		SQL01

@@ -1,9 +1,5 @@
 /* CreateDate: 09/17/2008 14:54:52.927 , ModifyDate: 12/07/2021 16:20:16.187 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpConfirmationType](
 	[ConfirmationTypeID] [int] NOT NULL,
 	[ConfirmationTypeSortOrder] [int] NOT NULL,

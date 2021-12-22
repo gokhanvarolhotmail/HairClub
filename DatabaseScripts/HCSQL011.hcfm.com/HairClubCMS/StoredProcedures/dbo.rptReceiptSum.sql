@@ -1,9 +1,5 @@
 /* CreateDate: 06/28/2016 12:24:00.580 , ModifyDate: 11/09/2016 16:42:45.227 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				rptReceiptSum

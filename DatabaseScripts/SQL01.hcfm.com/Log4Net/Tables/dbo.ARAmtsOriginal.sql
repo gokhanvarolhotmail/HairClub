@@ -1,9 +1,5 @@
 /* CreateDate: 11/03/2014 15:18:05.840 , ModifyDate: 11/03/2014 15:18:05.840 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[ARAmtsOriginal](
 	[ClientGUID] [varchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[NewARBalance] [money] NULL,

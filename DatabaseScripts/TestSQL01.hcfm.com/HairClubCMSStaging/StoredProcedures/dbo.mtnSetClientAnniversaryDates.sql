@@ -1,9 +1,5 @@
 /* CreateDate: 06/19/2017 06:51:00.123 , ModifyDate: 06/19/2017 06:51:00.123 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*
 ==============================================================================
 PROCEDURE:                  [mtnSetClientAnniversaryDates]

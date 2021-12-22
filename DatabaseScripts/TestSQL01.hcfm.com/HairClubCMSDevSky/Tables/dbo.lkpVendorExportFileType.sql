@@ -1,9 +1,5 @@
 /* CreateDate: 10/14/2011 12:05:45.500 , ModifyDate: 12/07/2021 16:20:15.873 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpVendorExportFileType](
 	[VendorExportFileTypeID] [int] NOT NULL,
 	[VendorExportFileTypeSortOrder] [int] NOT NULL,

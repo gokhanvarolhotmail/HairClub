@@ -1,9 +1,5 @@
 /* CreateDate: 07/12/2011 16:55:15.527 , ModifyDate: 09/11/2012 15:09:46.330 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				[spRpt_SurgeryGraftsAnalysis]

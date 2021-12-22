@@ -1,10 +1,6 @@
 /* CreateDate: 10/04/2006 16:26:48.190 , ModifyDate: 10/23/2017 12:35:40.110 */
 /* ***HasTriggers*** TriggerCount: 1 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[onca_source](
 	[source_code] [nchar](20) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[description] [nchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
@@ -50,10 +46,6 @@ ALTER TABLE [dbo].[onca_source]  WITH CHECK ADD  CONSTRAINT [csta_promotion_code
 REFERENCES [dbo].[csta_promotion_code] ([promotion_code])
 GO
 ALTER TABLE [dbo].[onca_source] CHECK CONSTRAINT [csta_promotion_code_onca_source_773]
-GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
 GO
 -- =============================================
 -- Author:		OnContact PSO Fred Remers

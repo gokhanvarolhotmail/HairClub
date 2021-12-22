@@ -1,9 +1,5 @@
 /* CreateDate: 10/03/2019 23:03:40.550 , ModifyDate: 10/03/2019 23:03:40.550 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 create procedure [sp_MSdel_bi_cms_ddsDimHairSystemDensity]
 		@pkc1 int
 as

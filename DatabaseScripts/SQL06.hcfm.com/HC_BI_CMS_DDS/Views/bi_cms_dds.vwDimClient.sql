@@ -1,9 +1,5 @@
 /* CreateDate: 10/03/2019 23:03:43.233 , ModifyDate: 07/10/2020 13:43:59.177 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE VIEW [bi_cms_dds].[vwDimClient] AS
 -------------------------------------------------------------------------
 -- [vwDimClient] is used to retrieve a

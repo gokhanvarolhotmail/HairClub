@@ -1,9 +1,5 @@
 /* CreateDate: 05/22/2018 15:44:37.893 , ModifyDate: 05/30/2018 15:57:07.570 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /******************************************************************************************************************************
 PROCEDURE:				[spRpt_SalesKPIReview_RB_YTD]
 DESTINATION SERVER:		SQL06

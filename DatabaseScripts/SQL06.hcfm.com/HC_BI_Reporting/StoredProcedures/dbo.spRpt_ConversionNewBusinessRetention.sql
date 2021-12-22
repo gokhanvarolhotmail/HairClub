@@ -1,9 +1,5 @@
 /* CreateDate: 03/22/2017 16:47:43.280 , ModifyDate: 05/20/2019 10:38:18.447 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				spRpt_ConversionNewBusinessRetention
 DESTINATION SERVER:		SQL06

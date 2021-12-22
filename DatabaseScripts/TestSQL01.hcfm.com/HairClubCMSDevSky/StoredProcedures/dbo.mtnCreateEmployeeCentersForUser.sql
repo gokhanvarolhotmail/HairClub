@@ -1,9 +1,5 @@
 /* CreateDate: 07/30/2012 08:54:10.360 , ModifyDate: 02/27/2017 09:49:18.590 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				mtnCreateEmployeeCentersForUser

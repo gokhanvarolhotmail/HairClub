@@ -1,9 +1,5 @@
 /* CreateDate: 07/21/2015 12:33:01.257 , ModifyDate: 08/04/2015 17:13:28.243 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 VIEW:					vw_NewStyleDayCountMTD
 DESTINATION SERVER:		SQL06

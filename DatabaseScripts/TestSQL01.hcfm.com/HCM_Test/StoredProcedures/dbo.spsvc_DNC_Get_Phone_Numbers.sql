@@ -1,9 +1,5 @@
 /* CreateDate: 03/20/2009 14:12:23.743 , ModifyDate: 06/22/2015 11:03:22.567 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:		spsvc_DNC_Get_Phone_Numbers

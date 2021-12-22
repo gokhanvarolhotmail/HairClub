@@ -1,9 +1,5 @@
 /* CreateDate: 10/08/2007 13:39:20.773 , ModifyDate: 05/08/2010 02:30:08.987 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[dnc_staging](
 	[RecordID] [varchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[Phone] [varchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,

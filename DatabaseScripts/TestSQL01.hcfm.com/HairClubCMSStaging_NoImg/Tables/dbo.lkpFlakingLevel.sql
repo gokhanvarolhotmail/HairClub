@@ -1,9 +1,5 @@
 /* CreateDate: 08/05/2014 08:15:50.750 , ModifyDate: 12/03/2021 10:24:48.663 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpFlakingLevel](
 	[FlakingLevelID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
 	[FlakingLevelSortOrder] [int] NOT NULL,

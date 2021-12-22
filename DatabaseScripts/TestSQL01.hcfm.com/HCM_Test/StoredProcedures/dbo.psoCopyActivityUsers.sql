@@ -1,9 +1,5 @@
 /* CreateDate: 01/03/2013 10:22:39.173 , ModifyDate: 01/03/2013 10:22:39.173 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 -- =============================================
 -- Create date: 29 October 2012
 -- Description:	Copies the Activity User records from one Activity to

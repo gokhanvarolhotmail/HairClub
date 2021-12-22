@@ -1,9 +1,5 @@
 /* CreateDate: 05/31/2016 16:09:31.930 , ModifyDate: 01/24/2018 12:33:02.767 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				[spRpt_InitialNewStyleSchedulingAnalysis_Detail]
 DESTINATION SERVER:		SQL06

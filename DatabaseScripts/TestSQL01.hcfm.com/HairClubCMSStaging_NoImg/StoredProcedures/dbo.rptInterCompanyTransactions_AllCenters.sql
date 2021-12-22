@@ -1,9 +1,5 @@
 /* CreateDate: 06/16/2014 16:34:17.283 , ModifyDate: 01/22/2015 13:30:21.970 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*===============================================================================================
  Procedure Name:            rptInterCompanyTransactions_AllCenters
  Procedure Description:

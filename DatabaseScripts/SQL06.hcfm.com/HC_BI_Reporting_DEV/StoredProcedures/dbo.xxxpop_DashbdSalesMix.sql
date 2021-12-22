@@ -1,9 +1,5 @@
 /* CreateDate: 07/14/2014 15:35:53.597 , ModifyDate: 12/19/2016 16:38:12.853 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				[pop_dashbdSalesMix]
 DESTINATION SERVER:		SQL06

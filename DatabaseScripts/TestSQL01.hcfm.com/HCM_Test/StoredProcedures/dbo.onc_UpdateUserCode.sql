@@ -1,9 +1,5 @@
 /* CreateDate: 12/03/2007 12:19:36.050 , ModifyDate: 05/01/2010 14:48:11.647 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 -- =============================================
 -- Author:		Matt Wegner (ONC)
 -- Create date: 2007-11-26

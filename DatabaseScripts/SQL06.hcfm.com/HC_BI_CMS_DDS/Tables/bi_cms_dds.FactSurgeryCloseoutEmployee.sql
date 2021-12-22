@@ -1,9 +1,5 @@
 /* CreateDate: 10/03/2019 23:03:42.560 , ModifyDate: 10/03/2019 23:03:48.670 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [bi_cms_dds].[FactSurgeryCloseoutEmployee](
 	[SurgeryCloseOutEmployeeKey] [int] NOT NULL,
 	[AppointmentKey] [int] NULL,

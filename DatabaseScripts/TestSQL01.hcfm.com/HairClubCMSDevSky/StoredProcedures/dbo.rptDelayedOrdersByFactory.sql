@@ -1,9 +1,5 @@
 /* CreateDate: 10/04/2010 12:09:07.973 , ModifyDate: 01/02/2018 15:23:03.910 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				rptDelayedOrdersByFactory
 DESTINATION SERVER:		SQL01

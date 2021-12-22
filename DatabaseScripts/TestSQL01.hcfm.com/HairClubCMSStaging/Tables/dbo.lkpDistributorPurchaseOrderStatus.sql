@@ -1,9 +1,5 @@
 /* CreateDate: 05/28/2018 22:15:34.370 , ModifyDate: 11/29/2018 22:41:55.350 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpDistributorPurchaseOrderStatus](
 	[DistributorPurchaseOrderStatusID] [int] IDENTITY(1,1) NOT NULL,
 	[DistributorPurchaseOrderStatusSortOrder] [int] NOT NULL,

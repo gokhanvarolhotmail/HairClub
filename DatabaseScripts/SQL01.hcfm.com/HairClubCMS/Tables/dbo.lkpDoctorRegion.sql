@@ -1,9 +1,5 @@
 /* CreateDate: 02/20/2009 09:17:41.397 , ModifyDate: 05/26/2020 10:48:44.630 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpDoctorRegion](
 	[DoctorRegionID] [int] NOT NULL,
 	[DoctorRegionSortOrder] [int] NOT NULL,

@@ -1,9 +1,5 @@
 /* CreateDate: 09/28/2009 00:02:00.170 , ModifyDate: 12/07/2021 16:20:16.103 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[cfgSurgeryGraftPricing](
 	[SurgeryGraftPricingID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
 	[SurgeryGraftPricingSortOrder] [int] NULL,

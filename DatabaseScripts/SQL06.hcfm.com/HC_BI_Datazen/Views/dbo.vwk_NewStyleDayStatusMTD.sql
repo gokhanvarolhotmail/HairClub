@@ -1,9 +1,5 @@
 /* CreateDate: 07/21/2015 12:34:08.077 , ModifyDate: 08/04/2015 17:16:03.197 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 VIEW:					vwk_NewStyleDayStatusMTD
 DESTINATION SERVER:		SQL06

@@ -1,9 +1,5 @@
 /* CreateDate: 12/21/2015 07:09:15.250 , ModifyDate: 12/03/2021 10:24:48.733 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[datClientCreditCard](
 	[ClientCreditCardID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
 	[ClientGUID] [uniqueidentifier] NOT NULL,

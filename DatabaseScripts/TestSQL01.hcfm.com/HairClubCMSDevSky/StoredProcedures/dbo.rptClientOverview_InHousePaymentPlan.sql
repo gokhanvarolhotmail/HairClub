@@ -1,9 +1,5 @@
 /* CreateDate: 09/14/2016 16:52:27.797 , ModifyDate: 10/11/2016 09:25:37.130 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*===============================================================================================
  Procedure Name:				rptClientOverview_InHousePaymentPlan
  Procedure Description:			This is a section in the Client Overview and Membership Summary reports -

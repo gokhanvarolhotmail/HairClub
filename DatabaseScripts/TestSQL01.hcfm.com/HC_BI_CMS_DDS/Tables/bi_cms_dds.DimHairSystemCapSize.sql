@@ -1,9 +1,5 @@
 /* CreateDate: 06/27/2011 15:55:35.187 , ModifyDate: 09/16/2019 09:33:49.830 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [bi_cms_dds].[DimHairSystemCapSize](
 	[HairSystemCapSizeKey] [int] NOT NULL,
 	[HairSystemCapSizeDescription] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,

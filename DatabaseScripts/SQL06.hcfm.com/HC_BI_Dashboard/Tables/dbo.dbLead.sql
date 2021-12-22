@@ -1,9 +1,5 @@
 /* CreateDate: 10/07/2020 13:41:51.080 , ModifyDate: 10/07/2020 13:41:51.283 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[dbLead](
 	[Period] [datetime] NULL,
 	[CreationDate] [datetime] NULL,

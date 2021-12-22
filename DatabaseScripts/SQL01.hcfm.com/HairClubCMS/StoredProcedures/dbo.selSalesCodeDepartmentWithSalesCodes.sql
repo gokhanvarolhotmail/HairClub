@@ -1,9 +1,5 @@
 /* CreateDate: 02/12/2009 11:16:11.537 , ModifyDate: 05/12/2019 23:29:08.023 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 --Delete from [cfgMembershipAccum] Where CreateUser = 'TFS2908'
 --DELETE FROM cfgCenterMembership where CreateUser = 'TFS2908'
 --Delete from [cfgMembershipRule] Where CreateUser = 'TFS2908'

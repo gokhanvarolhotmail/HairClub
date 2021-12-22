@@ -1,9 +1,5 @@
 /* CreateDate: 03/30/2020 11:08:29.000 , ModifyDate: 12/18/2021 17:29:49.830 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				[spSvc_LeadsConsultationsSummaryByCenterSubscription]
 DESTINATION SERVER:		SQL06

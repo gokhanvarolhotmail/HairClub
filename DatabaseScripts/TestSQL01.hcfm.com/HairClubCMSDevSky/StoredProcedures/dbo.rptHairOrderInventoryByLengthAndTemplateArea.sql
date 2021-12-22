@@ -1,9 +1,5 @@
 /* CreateDate: 01/21/2014 10:23:16.277 , ModifyDate: 04/24/2015 14:16:18.990 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				rptHairOrderInventoryByLengthAndTemplateArea
 DESTINATION SERVER:		SQL01

@@ -1,9 +1,5 @@
 /* CreateDate: 03/02/2017 16:50:04.267 , ModifyDate: 03/15/2017 15:35:21.287 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*===============================================================================================
  Procedure Name:            rptAppointment2_AppointmentTicket
  Procedure Description:

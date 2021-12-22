@@ -1,7 +1,5 @@
 /* CreateDate: 11/29/2012 15:32:13.160 , ModifyDate: 11/29/2012 15:32:13.160 */
 GO
-SET ANSI_NULLS ON
-GO
 SET QUOTED_IDENTIFIER OFF
 GO
 create  PROCEDURE [dbo].[onc_sql_return_int] (

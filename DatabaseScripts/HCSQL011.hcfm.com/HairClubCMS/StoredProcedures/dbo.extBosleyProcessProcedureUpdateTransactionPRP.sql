@@ -1,9 +1,5 @@
 /* CreateDate: 05/21/2017 22:25:07.220 , ModifyDate: 03/09/2020 15:11:19.457 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				extBosleyProcessProcedureUpdateTransactionPRP

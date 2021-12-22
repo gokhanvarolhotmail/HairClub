@@ -1,9 +1,5 @@
 /* CreateDate: 05/07/2019 15:33:14.933 , ModifyDate: 05/07/2019 15:33:40.170 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				spRpt_PIP_Detail	VERSION  1.0
 DESTINATION SERVER:		SQL06

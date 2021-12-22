@@ -1,9 +1,5 @@
 /* CreateDate: 10/08/2021 19:02:13.820 , ModifyDate: 10/08/2021 19:02:13.820 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[ODS_ServiceResources](
 	[Id] [nvarchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[OwnerId] [nvarchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,

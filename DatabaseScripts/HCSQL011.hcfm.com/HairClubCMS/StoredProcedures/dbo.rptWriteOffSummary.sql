@@ -1,9 +1,5 @@
 /* CreateDate: 10/07/2013 17:18:48.610 , ModifyDate: 01/07/2016 17:35:45.637 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*===============================================================================================
 -- Procedure Name:			rptWriteOffSummary
 -- Procedure Description:

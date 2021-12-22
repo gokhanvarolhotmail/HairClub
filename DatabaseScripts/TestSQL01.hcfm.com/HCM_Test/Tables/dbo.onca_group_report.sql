@@ -1,9 +1,5 @@
 /* CreateDate: 01/18/2005 09:34:10.327 , ModifyDate: 06/21/2012 10:01:00.540 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[onca_group_report](
 	[group_report_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[group_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,

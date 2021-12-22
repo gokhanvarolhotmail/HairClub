@@ -1,9 +1,5 @@
 /* CreateDate: 10/17/2007 08:55:07.807 , ModifyDate: 05/01/2010 14:48:10.950 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE PROCEDURE [dbo].[spAPP_DeletePhantomConfirm]
 	(	@contact_Id varchar(10) = 'ABR3303714'
 	  ,	@Action_Code varchar(10) = 'CONFIRM'

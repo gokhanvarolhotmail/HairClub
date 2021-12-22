@@ -1,9 +1,5 @@
 /* CreateDate: 08/02/2018 09:11:28.157 , ModifyDate: 08/02/2018 11:31:46.520 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[PerfTest_SQL01](
 	[name] [nvarchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[timestamp] [datetimeoffset](7) NULL,

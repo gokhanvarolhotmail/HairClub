@@ -1,9 +1,5 @@
 /* CreateDate: 06/02/2011 15:18:46.413 , ModifyDate: 02/26/2014 09:55:32.183 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE VIEW [dbo].[vw_SurgerySalesOrderDetail]
 AS
 select

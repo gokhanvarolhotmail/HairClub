@@ -1,9 +1,5 @@
 /* CreateDate: 08/02/2012 10:19:49.890 , ModifyDate: 09/16/2019 09:33:49.860 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [bi_cms_dds].[FactEmployeeSecurity](
 	[EmployeeSecurityKey] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
 	[EmployeeKey] [int] NULL,

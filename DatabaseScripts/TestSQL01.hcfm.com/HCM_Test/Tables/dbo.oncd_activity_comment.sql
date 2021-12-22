@@ -1,9 +1,5 @@
 /* CreateDate: 06/01/2005 13:05:20.513 , ModifyDate: 06/21/2012 10:21:48.807 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[oncd_activity_comment](
 	[activity_comment_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[activity_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,

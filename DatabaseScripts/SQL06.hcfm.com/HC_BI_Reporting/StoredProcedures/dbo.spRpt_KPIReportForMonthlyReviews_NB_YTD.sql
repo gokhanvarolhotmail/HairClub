@@ -1,9 +1,5 @@
 /* CreateDate: 05/09/2018 15:29:50.797 , ModifyDate: 04/02/2020 16:20:01.633 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /******************************************************************************************************************************
 PROCEDURE:				[spRpt_KPIReportForMonthlyReviews_NB_YTD]
 DESTINATION SERVER:		SQL06

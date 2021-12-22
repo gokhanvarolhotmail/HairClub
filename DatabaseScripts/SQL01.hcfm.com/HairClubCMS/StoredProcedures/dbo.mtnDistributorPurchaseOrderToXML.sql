@@ -1,9 +1,5 @@
 /* CreateDate: 12/20/2019 08:49:02.767 , ModifyDate: 05/24/2021 09:10:45.277 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				mtnDistributorPurchaseOrderToXML	VERSION  1.0
 

@@ -1,9 +1,5 @@
 /* CreateDate: 07/14/2014 14:42:46.937 , ModifyDate: 07/14/2014 14:53:16.297 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				pop_dashbdBudget
 DESTINATION SERVER:		SQL06

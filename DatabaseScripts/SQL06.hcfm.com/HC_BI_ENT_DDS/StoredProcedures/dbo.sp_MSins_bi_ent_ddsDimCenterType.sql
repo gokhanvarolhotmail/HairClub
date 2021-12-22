@@ -1,9 +1,5 @@
 /* CreateDate: 01/08/2021 15:21:53.597 , ModifyDate: 01/08/2021 15:21:53.597 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 create procedure [sp_MSins_bi_ent_ddsDimCenterType]
     @c1 int,
     @c2 int,

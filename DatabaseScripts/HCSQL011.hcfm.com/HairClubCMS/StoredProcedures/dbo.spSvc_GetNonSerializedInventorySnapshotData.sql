@@ -1,9 +1,5 @@
 /* CreateDate: 05/28/2020 09:51:47.600 , ModifyDate: 03/09/2021 12:02:40.047 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				spSvc_GetNonSerializedInventorySnapshotData
 DESTINATION SERVER:		SQL01

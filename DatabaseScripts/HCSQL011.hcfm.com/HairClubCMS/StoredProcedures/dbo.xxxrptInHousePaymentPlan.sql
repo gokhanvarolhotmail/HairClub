@@ -1,9 +1,5 @@
 /* CreateDate: 10/03/2016 11:42:22.660 , ModifyDate: 06/21/2019 13:14:17.070 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*
 ==============================================================================
 PROCEDURE:				[rptInHousePaymentPlan]

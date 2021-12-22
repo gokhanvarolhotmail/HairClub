@@ -1,9 +1,5 @@
 /* CreateDate: 01/10/2007 17:12:46.960 , ModifyDate: 01/10/2007 17:12:46.960 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[tmpEmailConfirmHolding](
 	[RecordId] [int] NULL,
 	[MergeField01] [varchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,

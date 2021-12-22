@@ -1,9 +1,5 @@
 /* CreateDate: 10/01/2018 08:53:16.743 , ModifyDate: 10/01/2018 08:53:16.747 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[restrictions](
 	[rest_num] [bigint] NOT NULL,
 	[rest_user] [int] NOT NULL,

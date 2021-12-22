@@ -1,9 +1,5 @@
 /* CreateDate: 08/10/2019 08:20:11.327 , ModifyDate: 08/10/2019 08:20:11.327 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				spSvc_IC_EZPAYSales_Step07_TerminatedEmployee
 DESTINATION SERVER:		SQL06

@@ -1,9 +1,5 @@
 /* CreateDate: 05/29/2018 11:03:37.990 , ModifyDate: 11/29/2018 22:40:44.740 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[tmpInventoryPurchaseOrderStatus](
 	[PONumber] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[OrderId] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,

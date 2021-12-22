@@ -1,9 +1,5 @@
 /* CreateDate: 02/03/2014 08:50:45.010 , ModifyDate: 04/04/2016 08:27:52.207 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				mtnCreateInterCompanyTransaction
 DESTINATION SERVER:		SQL01

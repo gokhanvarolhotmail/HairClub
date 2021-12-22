@@ -1,9 +1,5 @@
 /* CreateDate: 05/31/2012 20:45:21.803 , ModifyDate: 07/08/2019 07:55:45.343 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				[extProcessFeesForCenterFeeBatch]
 DESTINATION SERVER:		SQL01

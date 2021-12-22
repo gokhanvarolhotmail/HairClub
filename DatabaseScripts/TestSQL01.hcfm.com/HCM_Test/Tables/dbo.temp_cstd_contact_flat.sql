@@ -1,9 +1,5 @@
 /* CreateDate: 09/26/2014 21:11:54.040 , ModifyDate: 09/10/2019 22:39:13.247 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[temp_cstd_contact_flat](
 	[contact_flat_id] [uniqueidentifier] NOT NULL,
 	[contact_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,

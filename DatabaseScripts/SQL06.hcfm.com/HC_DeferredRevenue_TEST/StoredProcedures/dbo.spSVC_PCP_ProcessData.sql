@@ -1,9 +1,5 @@
 /* CreateDate: 02/27/2020 07:44:10.833 , ModifyDate: 09/24/2020 12:01:08.917 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				spSVC_PCP_ProcessData
 DESTINATION SERVER:		SQL06

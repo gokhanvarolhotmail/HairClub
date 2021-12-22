@@ -1,9 +1,5 @@
 /* CreateDate: 11/10/2014 16:34:53.077 , ModifyDate: 11/10/2014 16:34:53.077 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[ARTransOriginalFixedDupWriteOffTrans](
 	[AccountReceivableID] [int] NULL,
 	[ClientGUID] [nvarchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,

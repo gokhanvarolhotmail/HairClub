@@ -1,9 +1,5 @@
 /* CreateDate: 06/09/2008 09:37:32.930 , ModifyDate: 01/25/2010 08:13:27.463 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE PROCEDURE spApp_MediaSourceMediaTypeAddNew (
 	@MediaCode		varchar(50)
 ,	@Media			varchar(50)	)

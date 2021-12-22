@@ -1,9 +1,5 @@
 /* CreateDate: 01/29/2020 15:54:46.283 , ModifyDate: 12/18/2021 17:21:01.983 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				spSvc_BosleyMiniFlashSubscription
 DESTINATION SERVER:		SQL06

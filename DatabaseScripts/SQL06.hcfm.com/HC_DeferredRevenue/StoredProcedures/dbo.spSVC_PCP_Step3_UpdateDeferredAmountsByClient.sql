@@ -1,9 +1,5 @@
 /* CreateDate: 12/17/2012 11:05:17.607 , ModifyDate: 02/21/2019 14:39:21.360 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				spSVC_PCP_Step3_UpdateDeferredAmountsByClient
 DESTINATION SERVER:		SQL06

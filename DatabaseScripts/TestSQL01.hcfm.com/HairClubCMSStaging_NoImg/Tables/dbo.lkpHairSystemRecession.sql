@@ -1,9 +1,5 @@
 /* CreateDate: 10/04/2010 12:08:46.123 , ModifyDate: 12/03/2021 10:24:48.597 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpHairSystemRecession](
 	[HairSystemRecessionID] [int] NOT NULL,
 	[HairSystemRecessionSortOrder] [int] NOT NULL,

@@ -1,9 +1,5 @@
 /* CreateDate: 12/31/2010 13:21:00.950 , ModifyDate: 12/03/2021 10:24:48.707 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpHairSystemHoldReason](
 	[HairSystemHoldReasonID] [int] NOT NULL,
 	[HairSystemHoldReasonSortOrder] [int] NOT NULL,

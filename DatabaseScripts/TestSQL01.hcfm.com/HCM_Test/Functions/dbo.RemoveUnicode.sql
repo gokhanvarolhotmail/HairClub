@@ -1,9 +1,5 @@
 /* CreateDate: 01/03/2013 10:22:39.200 , ModifyDate: 03/13/2013 12:20:45.233 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 -- =============================================
 -- Create date: 24 September 2012
 -- Description:	Removes Unicode from provided value.

@@ -1,9 +1,5 @@
 /* CreateDate: 05/14/2012 17:33:41.273 , ModifyDate: 09/17/2017 18:33:02.683 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 	PROCEDURE:				[selProcessFeeForClient]
 	DESTINATION SERVER:		SQL01

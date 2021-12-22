@@ -1,9 +1,5 @@
 /* CreateDate: 01/08/2009 15:59:21.787 , ModifyDate: 02/07/2011 09:11:37.330 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*===============================================================================================
 -- Procedure Name:			spSvc_MarketingList_AllShowNoBuys
 -- Procedure Description:

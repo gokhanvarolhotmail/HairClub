@@ -1,9 +1,5 @@
 /* CreateDate: 09/14/2021 16:40:21.517 , ModifyDate: 09/14/2021 16:40:21.517 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[datSettlementTransactionLog](
 	[SettlementTransactionLogId] [int] IDENTITY(1,1) NOT NULL,
 	[CenterNumber] [int] NOT NULL,

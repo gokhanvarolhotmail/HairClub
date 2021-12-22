@@ -1,9 +1,5 @@
 /* CreateDate: 09/21/2017 16:54:52.430 , ModifyDate: 01/14/2020 13:50:30.040 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				spRpt_BosleyReferralFlash
 DESTINATION SERVER:		SQL06

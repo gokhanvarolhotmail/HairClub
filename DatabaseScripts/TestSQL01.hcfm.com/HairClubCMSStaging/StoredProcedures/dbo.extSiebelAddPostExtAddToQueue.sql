@@ -1,9 +1,5 @@
 /* CreateDate: 06/10/2013 20:12:51.507 , ModifyDate: 03/09/2020 15:10:50.463 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				extSiebelAddPostExtAddToQueue

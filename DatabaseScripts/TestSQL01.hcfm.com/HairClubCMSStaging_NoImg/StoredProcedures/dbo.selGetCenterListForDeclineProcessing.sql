@@ -1,9 +1,5 @@
 /* CreateDate: 06/04/2012 11:13:56.427 , ModifyDate: 05/04/2020 09:59:06.743 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				selGetCenterListForDeclineProcessing

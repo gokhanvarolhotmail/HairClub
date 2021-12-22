@@ -1,9 +1,5 @@
 /* CreateDate: 07/27/2015 14:37:50.557 , ModifyDate: 07/27/2015 14:37:50.557 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 VIEW:					vwk_ServiceSalesStatusMTD
 DESTINATION SERVER:		SQL06

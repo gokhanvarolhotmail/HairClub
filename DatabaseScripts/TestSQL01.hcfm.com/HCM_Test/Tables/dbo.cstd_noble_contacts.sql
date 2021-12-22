@@ -1,9 +1,5 @@
 /* CreateDate: 12/09/2008 00:11:16.500 , ModifyDate: 10/18/2017 02:00:27.377 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[cstd_noble_contacts](
 	[activity_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[status] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,

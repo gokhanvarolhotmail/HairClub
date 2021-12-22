@@ -1,9 +1,5 @@
 /* CreateDate: 08/10/2017 15:45:58.210 , ModifyDate: 08/20/2019 12:08:00.723 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*===============================================================================================
  Procedure Name:            [rptActivityandResultUseAnalysisByCategory_Corporate]
  Procedure Description:     This stored procedure provides information about "Activity and Results" Use per Category/ Sub-Category

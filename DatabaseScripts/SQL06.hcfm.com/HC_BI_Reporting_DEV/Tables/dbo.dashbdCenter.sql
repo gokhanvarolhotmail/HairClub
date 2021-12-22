@@ -1,9 +1,5 @@
 /* CreateDate: 07/15/2014 13:16:24.150 , ModifyDate: 07/15/2014 13:16:24.150 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[dashbdCenter](
 	[CenterKey] [int] NULL,
 	[CenterSSID] [int] NULL,

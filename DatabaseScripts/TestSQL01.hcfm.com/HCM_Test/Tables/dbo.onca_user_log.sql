@@ -1,10 +1,6 @@
 /* CreateDate: 01/18/2005 09:34:12.560 , ModifyDate: 10/15/2013 00:45:57.060 */
 /* ***HasTriggers*** TriggerCount: 2 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[onca_user_log](
 	[user_log_id] [int] NOT NULL,
 	[user_code] [nchar](20) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
@@ -20,10 +16,6 @@ REFERENCES [dbo].[onca_user] ([user_code])
 ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[onca_user_log] CHECK CONSTRAINT [user_user_log_264]
-GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
 GO
 CREATE TRIGGER [dbo].[pso_QueueUserHistory]
    ON  [dbo].[onca_user_log]
@@ -44,10 +36,6 @@ BEGIN
 END
 GO
 ALTER TABLE [dbo].[onca_user_log] ENABLE TRIGGER [pso_QueueUserHistory]
-GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
 GO
 -- =============================================================================
 -- Create date: 7 July 2010

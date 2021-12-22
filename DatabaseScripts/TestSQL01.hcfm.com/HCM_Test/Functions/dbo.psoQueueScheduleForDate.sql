@@ -1,9 +1,5 @@
 /* CreateDate: 10/15/2013 00:22:03.957 , ModifyDate: 10/15/2013 00:22:03.957 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE FUNCTION [dbo].[psoQueueScheduleForDate]
 (
 @Date DATE

@@ -1,9 +1,5 @@
 /* CreateDate: 01/05/2015 15:29:49.957 , ModifyDate: 01/05/2015 15:29:49.957 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				[spRpt_Region]
 DESTINATION SERVER:		SQL06

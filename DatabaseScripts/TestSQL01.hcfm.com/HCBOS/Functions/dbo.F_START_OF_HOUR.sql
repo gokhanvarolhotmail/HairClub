@@ -1,9 +1,5 @@
 /* CreateDate: 10/03/2006 10:13:38.217 , ModifyDate: 10/03/2006 10:13:38.217 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 create function dbo.F_START_OF_HOUR
 	( @DAY datetime )
 returns  datetime

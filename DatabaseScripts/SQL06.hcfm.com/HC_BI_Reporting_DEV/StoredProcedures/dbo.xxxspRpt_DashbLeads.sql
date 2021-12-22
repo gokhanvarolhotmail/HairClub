@@ -1,9 +1,5 @@
 /* CreateDate: 01/05/2015 12:57:00.603 , ModifyDate: 01/07/2016 11:20:45.110 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*===============================================================================================
 -- Procedure Name:			spRpt_DashbLeads
 -- Procedure Description:	This is for the Dashboard dashbLeads

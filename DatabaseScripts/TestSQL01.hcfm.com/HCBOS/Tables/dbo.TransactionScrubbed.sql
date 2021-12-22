@@ -1,9 +1,5 @@
 /* CreateDate: 08/10/2006 13:45:48.660 , ModifyDate: 05/08/2010 02:30:11.683 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[TransactionScrubbed](
 	[Phone] [varchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[LastSaleDate] [datetime] NULL,

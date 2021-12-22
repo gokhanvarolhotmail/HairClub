@@ -1,9 +1,5 @@
 /* CreateDate: 02/18/2013 07:43:35.660 , ModifyDate: 09/13/2019 15:29:51.840 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*===============================================================================================
 -- Procedure Name:			rptMembershipExpiration
 -- Procedure Description:

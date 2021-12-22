@@ -1,9 +1,5 @@
 /* CreateDate: 11/15/2013 10:27:04.410 , ModifyDate: 02/11/2014 13:35:20.017 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 		PROCEDURE:				dbaUpdateHistoricalNotesClient

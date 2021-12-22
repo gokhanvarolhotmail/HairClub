@@ -1,9 +1,5 @@
 /* CreateDate: 10/03/2019 23:03:39.603 , ModifyDate: 10/03/2019 23:03:39.603 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 create procedure [sp_MSins_bief_dds_DBLog]
     @c1 int,
     @c2 datetime,

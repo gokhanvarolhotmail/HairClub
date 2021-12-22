@@ -1,9 +1,5 @@
 /* CreateDate: 12/03/2021 10:25:05.787 , ModifyDate: 12/03/2021 10:25:05.787 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*
 ==============================================================================
 PROCEDURE:				dbaInitializeBICmsDdsSynonyms

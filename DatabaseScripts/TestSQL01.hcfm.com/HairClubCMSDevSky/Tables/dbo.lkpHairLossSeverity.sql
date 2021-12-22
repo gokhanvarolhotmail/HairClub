@@ -1,9 +1,5 @@
 /* CreateDate: 08/05/2014 08:14:37.683 , ModifyDate: 12/07/2021 16:20:16.077 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpHairLossSeverity](
 	[HairLossSeverityID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
 	[HairLossSeveritySortOrder] [int] NOT NULL,

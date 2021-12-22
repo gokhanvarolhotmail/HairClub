@@ -1,9 +1,5 @@
 /* CreateDate: 12/16/2016 11:51:36.493 , ModifyDate: 01/23/2017 16:41:54.037 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				spRpt_ContestNewHairResolution
 DESTINATION SERVER:		SQL06

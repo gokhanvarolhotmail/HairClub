@@ -1,9 +1,5 @@
 /* CreateDate: 07/23/2009 00:10:08.793 , ModifyDate: 02/27/2017 09:49:29.723 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				rptReceiptReturnedInvoices

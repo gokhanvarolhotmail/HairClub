@@ -1,9 +1,5 @@
 /* CreateDate: 10/03/2019 22:32:12.287 , ModifyDate: 10/03/2019 22:32:13.680 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[EmployeeHoursCertipay](
 	[LastName] [varchar](64) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[FirstName] [varchar](64) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,

@@ -1,9 +1,5 @@
 /* CreateDate: 04/14/2009 07:33:54.790 , ModifyDate: 02/18/2013 19:04:02.903 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE VIEW [dbo].[vwCfgCenter]
 AS
 SELECT     c.CenterID, lkpC.CountryDescription, lkpR.RegionDescription, lkpCPG.CenterPayGroupDescription,

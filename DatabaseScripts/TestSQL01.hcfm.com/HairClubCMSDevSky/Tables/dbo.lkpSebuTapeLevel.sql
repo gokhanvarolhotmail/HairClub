@@ -1,9 +1,5 @@
 /* CreateDate: 09/24/2014 22:37:55.020 , ModifyDate: 03/01/2017 08:24:18.797 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpSebuTapeLevel](
 	[SebuTapeLevelID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
 	[SebuTapeLevelSortOrder] [int] NOT NULL,

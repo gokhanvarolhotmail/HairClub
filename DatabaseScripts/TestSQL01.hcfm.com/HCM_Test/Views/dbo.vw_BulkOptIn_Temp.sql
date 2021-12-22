@@ -1,9 +1,5 @@
 /* CreateDate: 07/29/2016 10:55:46.527 , ModifyDate: 08/02/2016 11:50:47.647 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE VIEW [dbo].[vw_BulkOptIn_Temp]
 AS
 SELECT  UPPER(OC.first_name) AS 'FirstName'

@@ -1,9 +1,5 @@
 /* CreateDate: 01/15/2014 15:56:59.407 , ModifyDate: 06/13/2017 14:05:47.820 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*===============================================================================================
 -- Procedure Name:				rptEFTProfileChanges
 -- Procedure Description:

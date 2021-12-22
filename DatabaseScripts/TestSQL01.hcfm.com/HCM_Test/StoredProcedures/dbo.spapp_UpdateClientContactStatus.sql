@@ -1,9 +1,5 @@
 /* CreateDate: 01/22/2008 10:10:17.563 , ModifyDate: 05/01/2010 14:48:10.703 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 -- =============================================
 -- Author:			Hair Club - Kevin Murdoch
 -- Create date: 	01/22/08

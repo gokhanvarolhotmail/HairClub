@@ -1,9 +1,5 @@
 /* CreateDate: 05/21/2017 22:29:10.703 , ModifyDate: 10/30/2017 13:22:11.690 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[datPhotoBookClientFavorite](
 	[PhotoBookClientID] [int] IDENTITY(1,1) NOT NULL,
 	[PhotoBookID] [int] NOT NULL,

@@ -1,9 +1,5 @@
 /* CreateDate: 11/15/2006 11:39:37.763 , ModifyDate: 11/15/2006 11:39:37.763 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[DNCVerificationReport](
 	[SendDate] [datetime] NOT NULL,
 	[TotalSent] [int] NULL,

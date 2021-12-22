@@ -1,9 +1,5 @@
 /* CreateDate: 02/06/2020 08:04:03.090 , ModifyDate: 03/17/2021 09:26:45.270 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				spSvc_IC_WigSales_Step01_CreateHeader
 DESTINATION SERVER:		SQL06

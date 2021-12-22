@@ -1,9 +1,5 @@
 /* CreateDate: 09/03/2008 13:13:58.550 , ModifyDate: 12/03/2021 10:24:48.527 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpSalesCodeDepartment](
 	[SalesCodeDepartmentID] [int] NOT NULL,
 	[SalesCodeDepartmentSortOrder] [int] NOT NULL,

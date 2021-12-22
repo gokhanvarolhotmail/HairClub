@@ -1,9 +1,5 @@
 /* CreateDate: 01/07/2014 09:39:22.097 , ModifyDate: 01/07/2014 13:43:43.643 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*===============================================================================================
 -- Procedure Name:         spSvc_MarketingAutomatedSurgeryList
 -- Procedure Description:  Calculates the closing percente by performer

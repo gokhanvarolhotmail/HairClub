@@ -1,9 +1,5 @@
 /* CreateDate: 09/10/2015 11:39:11.713 , ModifyDate: 01/06/2021 14:39:41.803 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /****** Object:  StoredProcedure [dbo].[pop_dashSalesMix]    Script Date: 5/29/2019 2:31:05 PM ******/
 --SET ANSI_NULLS ON
 --GO

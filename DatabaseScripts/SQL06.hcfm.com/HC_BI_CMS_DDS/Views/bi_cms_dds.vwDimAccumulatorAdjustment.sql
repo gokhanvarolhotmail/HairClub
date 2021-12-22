@@ -1,9 +1,5 @@
 /* CreateDate: 10/03/2019 23:03:43.197 , ModifyDate: 10/03/2019 23:03:43.197 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE VIEW [bi_cms_dds].[vwDimAccumulatorAdjustment]
 AS
 -------------------------------------------------------------------------

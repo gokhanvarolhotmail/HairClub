@@ -1,9 +1,5 @@
 /* CreateDate: 08/28/2013 14:45:57.240 , ModifyDate: 08/28/2013 14:56:21.717 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[DeferredClientsToBeZeroed](
 	[CenterAndClient] [nvarchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[NEW] [float] NULL,

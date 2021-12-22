@@ -1,9 +1,5 @@
 /* CreateDate: 10/26/2016 11:29:32.950 , ModifyDate: 03/05/2018 15:29:23.103 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				[SpRpt_CenterNoShows_CorpSummary]
 DESTINATION SERVER:		SQL06

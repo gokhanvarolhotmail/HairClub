@@ -1,9 +1,5 @@
 /* CreateDate: 12/31/2010 13:21:01.730 , ModifyDate: 05/26/2020 10:49:01.620 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpHairSystemFrontalLaceLength](
 	[HairSystemFrontalLaceLengthID] [int] NOT NULL,
 	[HairSystemFrontalLaceLengthSortOrder] [int] NOT NULL,

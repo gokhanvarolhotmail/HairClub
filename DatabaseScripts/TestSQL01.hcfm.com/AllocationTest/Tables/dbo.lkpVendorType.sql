@@ -1,9 +1,5 @@
 /* CreateDate: 11/01/2019 09:34:53.457 , ModifyDate: 11/01/2019 09:34:53.637 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpVendorType](
 	[VendorTypeID] [int] NOT NULL,
 	[VendorTypeSortOrder] [int] NOT NULL,

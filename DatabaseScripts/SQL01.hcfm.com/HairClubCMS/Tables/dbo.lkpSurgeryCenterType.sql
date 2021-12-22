@@ -1,9 +1,5 @@
 /* CreateDate: 08/27/2008 12:23:45.403 , ModifyDate: 05/26/2020 10:49:01.043 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpSurgeryCenterType](
 	[SurgeryCenterTypeID] [int] NOT NULL,
 	[SurgeryCenterTypeSortOrder] [int] NOT NULL,

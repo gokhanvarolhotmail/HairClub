@@ -1,9 +1,5 @@
 /* CreateDate: 12/18/2006 15:12:00.413 , ModifyDate: 06/21/2012 10:00:01.223 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[csta_script_keyword](
 	[keyword_code] [nchar](20) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[entity_type_code] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,

@@ -1,9 +1,5 @@
 /* CreateDate: 01/15/2007 09:39:49.950 , ModifyDate: 08/09/2007 14:06:28.860 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[NoShowsDailyOLD](
 	[RowId] [int] IDENTITY(1,1) NOT NULL,
 	[RecordId] [int] NOT NULL,

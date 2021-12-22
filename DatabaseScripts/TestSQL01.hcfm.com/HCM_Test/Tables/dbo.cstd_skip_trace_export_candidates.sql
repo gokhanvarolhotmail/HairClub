@@ -1,9 +1,5 @@
 /* CreateDate: 12/04/2015 10:57:02.430 , ModifyDate: 10/23/2017 02:00:02.540 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[cstd_skip_trace_export_candidates](
 	[contact_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[needs_address] [bit] NULL,

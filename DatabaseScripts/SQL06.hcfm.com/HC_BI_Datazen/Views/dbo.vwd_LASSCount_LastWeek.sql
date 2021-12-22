@@ -1,9 +1,5 @@
 /* CreateDate: 07/27/2016 12:46:23.040 , ModifyDate: 07/27/2016 12:46:23.040 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 VIEW:					[vwd_LASSCount_LastWeek]
 DESTINATION SERVER:		SQL06

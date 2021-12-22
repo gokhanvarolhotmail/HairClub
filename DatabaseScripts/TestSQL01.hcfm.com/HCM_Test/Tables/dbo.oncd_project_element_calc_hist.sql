@@ -1,9 +1,5 @@
 /* CreateDate: 01/25/2010 11:09:09.897 , ModifyDate: 06/21/2012 10:05:10.047 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[oncd_project_element_calc_hist](
 	[project_element_calc_hist_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[project_factor_code] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,

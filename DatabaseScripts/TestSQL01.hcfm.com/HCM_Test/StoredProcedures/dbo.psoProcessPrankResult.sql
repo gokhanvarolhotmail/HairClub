@@ -1,9 +1,5 @@
 /* CreateDate: 01/03/2013 10:22:39.293 , ModifyDate: 01/03/2013 10:22:39.293 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 -- =============================================
 -- Create date: 30 October 2012
 -- Description:	Implements the business rules associated with a Prank Result.

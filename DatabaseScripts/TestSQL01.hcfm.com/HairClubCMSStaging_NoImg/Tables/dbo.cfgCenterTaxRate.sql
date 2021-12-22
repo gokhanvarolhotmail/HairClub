@@ -1,9 +1,5 @@
 /* CreateDate: 02/10/2009 08:50:38.477 , ModifyDate: 12/03/2021 10:24:48.733 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[cfgCenterTaxRate](
 	[CenterTaxRateID] [int] NOT NULL,
 	[CenterID] [int] NOT NULL,

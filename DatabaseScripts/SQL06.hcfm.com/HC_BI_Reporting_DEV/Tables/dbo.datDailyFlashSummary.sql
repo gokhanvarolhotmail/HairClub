@@ -1,9 +1,5 @@
 /* CreateDate: 05/25/2021 13:34:13.587 , ModifyDate: 05/25/2021 13:34:13.587 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[datDailyFlashSummary](
 	[ReportDate] [date] NULL,
 	[DateID] [int] NULL,

@@ -1,9 +1,5 @@
 /* CreateDate: 06/18/2020 11:17:37.897 , ModifyDate: 01/05/2021 23:29:27.123 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[dbLASSDashboard](
 	[Area] [nvarchar](100) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[CenterNumber] [int] NULL,

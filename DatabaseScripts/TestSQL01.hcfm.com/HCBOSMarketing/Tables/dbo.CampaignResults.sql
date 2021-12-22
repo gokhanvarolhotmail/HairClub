@@ -1,9 +1,5 @@
 /* CreateDate: 01/09/2009 09:39:53.913 , ModifyDate: 04/27/2011 10:38:34.320 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[CampaignResults](
 	[ResultsID] [int] IDENTITY(1,1) NOT NULL,
 	[CampaignID] [int] NULL,

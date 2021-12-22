@@ -1,9 +1,5 @@
 /* CreateDate: 05/20/2014 08:46:42.050 , ModifyDate: 11/12/2014 16:31:26.623 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				rptXtrandsMembership
 DESTINATION SERVER:		SQL01

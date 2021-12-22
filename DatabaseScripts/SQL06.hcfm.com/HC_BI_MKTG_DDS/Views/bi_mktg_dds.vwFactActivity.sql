@@ -1,9 +1,5 @@
 /* CreateDate: 09/03/2021 09:37:08.537 , ModifyDate: 09/03/2021 09:37:08.537 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE VIEW [bi_mktg_dds].[vwFactActivity]
 AS
 -------------------------------------------------------------------------

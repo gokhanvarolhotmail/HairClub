@@ -1,9 +1,5 @@
 /* CreateDate: 10/30/2008 09:09:19.060 , ModifyDate: 12/07/2021 16:20:16.193 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[cfgResource](
 	[ResourceID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
 	[ResourceSortOrder] [int] NULL,

@@ -1,9 +1,5 @@
 /* CreateDate: 08/27/2008 12:15:41.017 , ModifyDate: 12/03/2021 10:24:48.723 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpRegion](
 	[RegionID] [int] NOT NULL,
 	[RegionSortOrder] [int] NOT NULL,

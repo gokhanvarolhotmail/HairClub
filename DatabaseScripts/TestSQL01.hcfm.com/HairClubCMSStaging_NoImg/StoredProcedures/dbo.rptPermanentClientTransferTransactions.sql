@@ -1,9 +1,5 @@
 /* CreateDate: 04/10/2014 08:41:30.587 , ModifyDate: 01/17/2018 15:24:39.330 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*===============================================================================================
  Procedure Name:            rptPermanentClientTransferTransactions
  Procedure Description:

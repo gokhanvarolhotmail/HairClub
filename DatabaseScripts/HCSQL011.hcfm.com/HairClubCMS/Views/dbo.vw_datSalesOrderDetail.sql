@@ -1,9 +1,5 @@
 /* CreateDate: 02/18/2013 06:45:39.587 , ModifyDate: 11/09/2016 16:43:29.810 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE: 	[vw_datSalesOrderDetail]

@@ -1,9 +1,5 @@
 /* CreateDate: 02/21/2013 11:15:12.533 , ModifyDate: 08/01/2014 15:43:36.950 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 FUNCTION:				CanadianConversion

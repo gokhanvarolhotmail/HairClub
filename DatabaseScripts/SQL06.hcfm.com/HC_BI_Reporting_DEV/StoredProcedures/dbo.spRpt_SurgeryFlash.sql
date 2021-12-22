@@ -1,9 +1,5 @@
 /* CreateDate: 06/01/2011 15:50:36.767 , ModifyDate: 03/06/2014 14:38:08.240 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*
 ==============================================================================
 PROCEDURE:				sprpt_SurgeryFlash

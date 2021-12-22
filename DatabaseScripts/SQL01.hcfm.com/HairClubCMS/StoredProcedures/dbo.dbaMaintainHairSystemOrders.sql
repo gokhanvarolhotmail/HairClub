@@ -1,9 +1,5 @@
 /* CreateDate: 06/06/2011 09:16:11.340 , ModifyDate: 07/30/2012 10:33:38.847 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				dbaMaintainHairSystemOrders
 DESTINATION SERVER:		SQL01/SQL05

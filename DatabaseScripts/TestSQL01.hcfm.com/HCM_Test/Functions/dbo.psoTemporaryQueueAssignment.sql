@@ -1,9 +1,5 @@
 /* CreateDate: 12/17/2013 09:06:40.937 , ModifyDate: 12/17/2013 09:06:40.937 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE FUNCTION dbo.psoTemporaryQueueAssignment
 (
 	@DueDateFull DATETIME, @ActionCode NCHAR(10), @LanguageCode NCHAR(10), @CreationDate DATETIME, @CreatedByUserCode NCHAR(20), @AgeRangeCode NCHAR(10)

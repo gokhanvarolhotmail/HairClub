@@ -1,9 +1,5 @@
 /* CreateDate: 04/26/2021 12:28:48.797 , ModifyDate: 04/26/2021 12:28:48.797 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[merch_images](
 	[ref] [smallint] NOT NULL,
 	[id] [bigint] NOT NULL,

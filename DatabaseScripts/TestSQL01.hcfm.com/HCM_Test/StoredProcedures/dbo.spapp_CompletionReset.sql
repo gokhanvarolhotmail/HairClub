@@ -1,9 +1,5 @@
 /* CreateDate: 09/04/2007 09:40:45.527 , ModifyDate: 06/04/2014 14:17:31.073 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				spapp_CompletionReset
 DESTINATION SERVER:		SQL03

@@ -1,9 +1,5 @@
 /* CreateDate: 05/13/2013 12:11:51.397 , ModifyDate: 12/03/2021 10:24:48.703 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[datOutgoingResponseLog](
 	[OutgoingResponseID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
 	[OutgoingRequestID] [int] NOT NULL,

@@ -1,9 +1,5 @@
 /* CreateDate: 03/22/2016 11:02:14.603 , ModifyDate: 03/22/2016 11:02:14.660 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[cstd_phone_dnc_wireless_job](
 	[phone_dnc_wireless_job_id] [uniqueidentifier] NOT NULL,
 	[export_date] [datetime] NULL,

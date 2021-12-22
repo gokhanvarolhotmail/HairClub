@@ -1,9 +1,5 @@
 /* CreateDate: 08/24/2015 12:43:43.303 , ModifyDate: 08/24/2015 12:43:43.303 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				dbaCopyTrichoViewData

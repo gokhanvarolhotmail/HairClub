@@ -1,9 +1,5 @@
 /* CreateDate: 12/05/2013 15:23:02.400 , ModifyDate: 12/05/2013 16:17:17.303 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				spRpt_SurgeryClientOverview_Transactions
 DESTINATION SERVER:		SQL06

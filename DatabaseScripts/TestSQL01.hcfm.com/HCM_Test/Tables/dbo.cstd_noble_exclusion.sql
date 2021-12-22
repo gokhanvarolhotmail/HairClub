@@ -1,10 +1,6 @@
 /* CreateDate: 09/26/2011 10:55:32.267 , ModifyDate: 08/11/2014 01:01:11.767 */
 /* ***HasTriggers*** TriggerCount: 1 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[cstd_noble_exclusion](
 	[noble_exclusion_id] [int] IDENTITY(1,1) NOT NULL,
 	[activity_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
@@ -31,10 +27,6 @@ ALTER TABLE [dbo].[cstd_noble_exclusion]  WITH CHECK ADD  CONSTRAINT [FK_cstd_no
 REFERENCES [dbo].[oncd_activity] ([activity_id])
 GO
 ALTER TABLE [dbo].[cstd_noble_exclusion] CHECK CONSTRAINT [FK_cstd_noble_exclusion_oncd_activity]
-GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
 GO
 -- =============================================
 -- Create date: 21 September 2011

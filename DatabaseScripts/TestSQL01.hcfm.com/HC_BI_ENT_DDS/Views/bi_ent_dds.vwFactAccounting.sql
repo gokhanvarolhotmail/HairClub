@@ -1,9 +1,5 @@
 /* CreateDate: 11/12/2012 14:15:24.840 , ModifyDate: 09/16/2019 09:25:18.197 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE VIEW [bi_ent_dds].[vwFactAccounting]
 AS
 -------------------------------------------------------------------------

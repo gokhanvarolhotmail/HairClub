@@ -1,9 +1,5 @@
 /* CreateDate: 03/18/2021 14:32:26.600 , ModifyDate: 03/23/2021 12:42:56.680 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				spSvc_PopulateDailyFlashDetail
 DESTINATION SERVER:		SQL06

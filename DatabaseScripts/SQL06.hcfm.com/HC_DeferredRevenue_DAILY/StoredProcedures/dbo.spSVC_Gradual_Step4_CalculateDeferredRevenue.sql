@@ -1,9 +1,5 @@
 /* CreateDate: 02/27/2020 07:44:10.493 , ModifyDate: 12/02/2021 16:09:39.050 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				spSVC_Gradual_Step4_CalculateDeferredRevenue
 DESTINATION SERVER:		SQL06

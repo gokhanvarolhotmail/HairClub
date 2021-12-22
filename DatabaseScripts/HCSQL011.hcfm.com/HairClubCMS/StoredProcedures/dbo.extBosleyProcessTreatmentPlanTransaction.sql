@@ -1,9 +1,5 @@
 /* CreateDate: 05/09/2013 20:28:43.510 , ModifyDate: 03/09/2020 15:11:19.007 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				extBosleyProcessTreatmentPlanTransaction

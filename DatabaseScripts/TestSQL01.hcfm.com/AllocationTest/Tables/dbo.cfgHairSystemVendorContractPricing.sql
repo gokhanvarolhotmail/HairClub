@@ -1,9 +1,5 @@
 /* CreateDate: 11/01/2019 09:34:53.393 , ModifyDate: 11/01/2019 09:34:53.547 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[cfgHairSystemVendorContractPricing](
 	[HairSystemVendorContractPricingID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
 	[HairSystemVendorContractID] [int] NOT NULL,

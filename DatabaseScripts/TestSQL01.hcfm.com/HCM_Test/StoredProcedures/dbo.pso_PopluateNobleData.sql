@@ -1,9 +1,5 @@
 /* CreateDate: 12/09/2008 00:11:46.953 , ModifyDate: 10/27/2014 10:02:38.283 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE PROCEDURE [dbo].[pso_PopluateNobleData] (
 	@filter nchar(1000)
 )

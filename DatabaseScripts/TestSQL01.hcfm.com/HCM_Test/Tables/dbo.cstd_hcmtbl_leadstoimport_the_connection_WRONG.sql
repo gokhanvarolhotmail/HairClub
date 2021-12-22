@@ -1,9 +1,5 @@
 /* CreateDate: 09/04/2007 09:40:45.633 , ModifyDate: 09/04/2007 09:40:45.650 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[cstd_hcmtbl_leadstoimport_the_connection_WRONG](
 	[hcmtbl_leadstoimport_the_connection_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[result_code] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,

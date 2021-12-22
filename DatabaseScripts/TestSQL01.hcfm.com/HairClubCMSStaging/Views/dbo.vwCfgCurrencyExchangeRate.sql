@@ -1,9 +1,5 @@
 /* CreateDate: 04/14/2009 07:33:54.820 , ModifyDate: 02/18/2013 19:04:02.980 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE VIEW [dbo].[vwCfgCurrencyExchangeRate]
 AS
 SELECT     cer.CurrencyExchangeRateID, lkpCT.CurrencyTypeDescription, cer.ExchangeRate, cer.BeginDate, cer.EndDate, cer.IsActiveFlag, cer.CreateDate,

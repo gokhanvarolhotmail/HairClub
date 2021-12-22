@@ -1,9 +1,5 @@
 /* CreateDate: 04/28/2014 11:06:19.667 , ModifyDate: 06/12/2018 11:48:45.937 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				spRpt_EFTAudit
 DESTINATION SERVER:		SQL01

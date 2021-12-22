@@ -1,10 +1,6 @@
 /* CreateDate: 01/18/2005 09:34:08.890 , ModifyDate: 10/23/2017 12:35:40.127 */
 /* ***HasTriggers*** TriggerCount: 3 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[oncd_contact_email](
 	[contact_email_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[contact_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
@@ -72,10 +68,6 @@ REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_contact_email] CHECK CONSTRAINT [user_contact_emai_591]
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 -- =============================================
 -- Create date: 24 September 2012
 -- Description:	Removes Unicode
@@ -118,10 +110,6 @@ END
 GO
 ALTER TABLE [dbo].[oncd_contact_email] DISABLE TRIGGER [pso_oncd_contact_email_remove_unicode_insert]
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 -- =============================================
 -- Create date: 24 September 2012
 -- Description:	Removes Unicode
@@ -152,10 +140,6 @@ WHERE inserted.contact_email_id = oncd_contact_email.contact_email_id
 END
 GO
 ALTER TABLE [dbo].[oncd_contact_email] DISABLE TRIGGER [pso_oncd_contact_email_remove_unicode_update]
-GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
 GO
 -- =============================================================================
 -- Create date: 22 March 2010

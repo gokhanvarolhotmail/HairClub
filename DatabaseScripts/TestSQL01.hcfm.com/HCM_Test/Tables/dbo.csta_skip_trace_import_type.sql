@@ -1,9 +1,5 @@
 /* CreateDate: 11/02/2015 10:07:03.150 , ModifyDate: 11/02/2015 10:07:03.387 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[csta_skip_trace_import_type](
 	[skip_trace_import_type_code] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[description] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,

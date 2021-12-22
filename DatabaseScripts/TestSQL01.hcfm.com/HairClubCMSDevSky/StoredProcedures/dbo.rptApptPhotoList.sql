@@ -1,9 +1,5 @@
 /* CreateDate: 05/09/2014 16:02:08.993 , ModifyDate: 11/17/2014 17:08:04.753 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				rptApptPhotoList

@@ -1,9 +1,5 @@
 /* CreateDate: 02/18/2009 09:01:49.527 , ModifyDate: 02/27/2017 09:49:30.610 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				selADCentersFromUserName

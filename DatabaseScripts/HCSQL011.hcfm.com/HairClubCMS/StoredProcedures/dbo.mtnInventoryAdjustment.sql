@@ -1,9 +1,5 @@
 /* CreateDate: 05/28/2018 22:19:46.370 , ModifyDate: 12/16/2019 08:35:17.213 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE: 				[mtnInventoryAdjustment]
 PURPOSE:				Writes an Inventory Adjustment and Adjusts Counts.

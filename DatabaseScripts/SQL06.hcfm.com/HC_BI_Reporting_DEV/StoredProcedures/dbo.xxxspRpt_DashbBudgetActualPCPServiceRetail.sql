@@ -1,9 +1,5 @@
 /* CreateDate: 02/18/2015 15:26:40.643 , ModifyDate: 01/07/2016 11:19:13.267 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				[spRpt_DashbdBudgetActualPCPServiceRetail]
 DESTINATION SERVER:		SQL06

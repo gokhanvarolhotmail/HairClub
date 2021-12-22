@@ -1,9 +1,5 @@
 /* CreateDate: 08/19/2011 13:10:47.350 , ModifyDate: 08/29/2011 16:26:10.140 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*==============================================================================
 
 PROCEDURE:				sprpt_TM_Detail_Show

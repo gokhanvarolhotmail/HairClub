@@ -1,9 +1,5 @@
 /* CreateDate: 08/10/2006 14:37:17.370 , ModifyDate: 05/08/2010 02:30:04.627 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[Appointments_Matrix](
 	[MatrixId] [bigint] IDENTITY(1,1) NOT NULL,
 	[Center] [int] NULL,

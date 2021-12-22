@@ -1,9 +1,5 @@
 /* CreateDate: 10/08/2007 15:56:59.410 , ModifyDate: 01/25/2010 08:11:31.790 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:		spsvc_GetInquiryFile

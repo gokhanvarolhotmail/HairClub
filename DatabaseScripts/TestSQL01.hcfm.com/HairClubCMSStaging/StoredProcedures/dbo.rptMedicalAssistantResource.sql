@@ -1,9 +1,5 @@
 /* CreateDate: 02/27/2009 11:16:51.633 , ModifyDate: 02/27/2017 09:49:28.820 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				rptMedicalAssistantResource

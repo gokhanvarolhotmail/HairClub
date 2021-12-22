@@ -1,9 +1,5 @@
 /* CreateDate: 01/28/2015 15:41:30.597 , ModifyDate: 01/28/2015 15:41:30.597 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				spSVC_CommissionTypeID_40_Step08_TerminatedEmployee
 DESTINATION SERVER:		SQL06

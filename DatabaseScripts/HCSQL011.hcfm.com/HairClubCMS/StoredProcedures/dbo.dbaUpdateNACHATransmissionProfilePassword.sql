@@ -1,9 +1,5 @@
 /* CreateDate: 09/26/2016 08:09:21.773 , ModifyDate: 09/26/2016 08:09:21.773 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				[dbaUpdateNACHATransmissionProfilePassword]
 DESTINATION SERVER:		SQL01

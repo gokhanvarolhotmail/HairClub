@@ -1,9 +1,5 @@
 /* CreateDate: 09/30/2013 10:51:24.480 , ModifyDate: 09/30/2013 10:51:24.480 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE PROCEDURE [dbo].[psoWirelessScrubDailyImport]
 	@WirelessHistoryId INT OUTPUT
 AS

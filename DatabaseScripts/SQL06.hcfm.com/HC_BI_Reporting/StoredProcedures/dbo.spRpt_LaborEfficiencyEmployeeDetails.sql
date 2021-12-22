@@ -1,9 +1,5 @@
 /* CreateDate: 06/17/2013 15:09:53.807 , ModifyDate: 01/16/2015 13:08:09.637 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				spRpt_LaborEfficiencyEmployeeDetails
 DESTINATION SERVER:		SQL06

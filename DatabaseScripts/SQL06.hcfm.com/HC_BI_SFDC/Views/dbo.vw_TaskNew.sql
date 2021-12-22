@@ -1,9 +1,5 @@
 /* CreateDate: 12/16/2020 14:47:25.397 , ModifyDate: 12/16/2020 14:47:25.397 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 create VIEW [dbo].[vw_TaskNew]
 AS
 SELECT  t.Id

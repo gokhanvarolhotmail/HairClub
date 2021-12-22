@@ -1,9 +1,5 @@
 /* CreateDate: 02/25/2009 12:08:21.830 , ModifyDate: 10/11/2012 10:31:19.183 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE VIEW [dbo].[vwEvent]
 AS
 SELECT dr.ExternalSchedulerResourceID AS ResourceID,

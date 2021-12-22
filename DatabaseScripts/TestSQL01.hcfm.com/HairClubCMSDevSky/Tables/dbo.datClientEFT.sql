@@ -1,9 +1,5 @@
 /* CreateDate: 10/04/2010 12:08:45.083 , ModifyDate: 12/07/2021 16:20:15.963 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[datClientEFT](
 	[ClientEFTGUID] [uniqueidentifier] NOT NULL,
 	[ClientGUID] [uniqueidentifier] NULL,

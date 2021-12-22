@@ -1,9 +1,5 @@
 /* CreateDate: 02/22/2015 22:01:28.947 , ModifyDate: 03/09/2015 15:57:39.913 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*********************************************************************************************
 Who Is Active? v11.11 (2012-03-22)
 (C) 2007-2012, Adam Machanic

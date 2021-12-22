@@ -1,9 +1,5 @@
 /* CreateDate: 05/06/2013 22:24:24.330 , ModifyDate: 05/08/2013 14:53:45.250 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:	spApp_CMSCreateNewClient

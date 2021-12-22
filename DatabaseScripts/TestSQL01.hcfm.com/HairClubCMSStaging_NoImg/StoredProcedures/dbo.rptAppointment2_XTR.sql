@@ -1,9 +1,5 @@
 /* CreateDate: 03/02/2017 16:40:19.327 , ModifyDate: 06/05/2017 11:44:03.030 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*===============================================================================================
  Procedure Name:            rptAppointment2_XTR
  Procedure Description:

@@ -1,9 +1,5 @@
 /* CreateDate: 10/03/2019 23:03:42.283 , ModifyDate: 05/05/2020 23:17:49.363 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [bi_cms_dds].[FactHairSystemOrder](
 	[HairSystemOrderKey] [int] NOT NULL,
 	[HairSystemOrderSSID] [uniqueidentifier] NULL,

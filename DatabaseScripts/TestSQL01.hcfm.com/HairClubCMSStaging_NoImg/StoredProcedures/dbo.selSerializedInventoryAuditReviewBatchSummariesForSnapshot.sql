@@ -1,9 +1,5 @@
 /* CreateDate: 09/23/2019 12:35:16.590 , ModifyDate: 11/05/2019 11:13:55.517 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				selSerializedInventoryAuditReviewBatchSummariesForSnapshot

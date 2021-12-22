@@ -1,9 +1,5 @@
 /* CreateDate: 01/30/2009 10:08:20.163 , ModifyDate: 09/17/2017 18:31:53.630 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				mtnGetInvoiceNumber

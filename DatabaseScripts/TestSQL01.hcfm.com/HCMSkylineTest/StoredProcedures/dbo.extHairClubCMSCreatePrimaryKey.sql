@@ -1,9 +1,5 @@
 /* CreateDate: 08/10/2015 11:43:06.527 , ModifyDate: 08/10/2015 11:43:06.527 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*
 ==============================================================================
 PROCEDURE:				extHairClubCMSCreatePrimaryKey

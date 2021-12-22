@@ -1,9 +1,5 @@
 /* CreateDate: 10/04/2010 12:08:45.350 , ModifyDate: 12/07/2021 16:20:16.047 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[cfgHairSystemAllocationFilterCurl](
 	[HairSystemAllocationFilterCurlID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
 	[VendorID] [int] NOT NULL,

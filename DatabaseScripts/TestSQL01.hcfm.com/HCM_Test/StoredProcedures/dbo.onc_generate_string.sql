@@ -1,7 +1,5 @@
 /* CreateDate: 01/25/2010 10:17:48.267 , ModifyDate: 05/01/2010 14:48:11.710 */
 GO
-SET ANSI_NULLS ON
-GO
 SET QUOTED_IDENTIFIER OFF
 GO
 CREATE PROC onc_generate_string

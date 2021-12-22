@@ -1,9 +1,5 @@
 /* CreateDate: 10/16/2008 14:09:42.197 , ModifyDate: 12/03/2021 10:24:48.643 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[datSchedule](
 	[ScheduleGUID] [uniqueidentifier] NOT NULL,
 	[CenterID] [int] NOT NULL,

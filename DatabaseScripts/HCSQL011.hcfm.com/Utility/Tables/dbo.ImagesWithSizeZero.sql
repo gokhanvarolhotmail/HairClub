@@ -1,9 +1,5 @@
 /* CreateDate: 01/21/2017 19:58:40.820 , ModifyDate: 01/21/2017 19:58:40.820 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[ImagesWithSizeZero](
 	[stream_id] [uniqueidentifier] NOT NULL,
 	[file_stream] [varbinary](max) NULL,

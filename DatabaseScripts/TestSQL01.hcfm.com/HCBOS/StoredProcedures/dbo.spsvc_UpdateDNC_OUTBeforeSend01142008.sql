@@ -1,9 +1,5 @@
 /* CreateDate: 01/14/2008 16:47:19.633 , ModifyDate: 01/25/2010 08:11:31.807 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:		spsvc_UpdateDNC_OUT_BeforeSend

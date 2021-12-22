@@ -1,9 +1,5 @@
 /* CreateDate: 04/08/2019 11:52:08.057 , ModifyDate: 03/04/2020 14:17:58.603 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[dbHRTurnover](
 	[EmployeeFullName] [nvarchar](100) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[CenterID] [int] NOT NULL,

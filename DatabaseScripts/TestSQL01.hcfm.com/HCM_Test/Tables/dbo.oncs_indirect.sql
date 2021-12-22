@@ -1,9 +1,5 @@
 /* CreateDate: 01/18/2005 09:34:18.967 , ModifyDate: 06/21/2012 10:04:45.343 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[oncs_indirect](
 	[indirect_date] [datetime] NOT NULL,
 	[indirect_order] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,

@@ -1,9 +1,5 @@
 /* CreateDate: 03/26/2021 09:59:36.517 , ModifyDate: 03/26/2021 09:59:36.517 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				spSvc_GetARSummaryData
 DESTINATION SERVER:		SQL05

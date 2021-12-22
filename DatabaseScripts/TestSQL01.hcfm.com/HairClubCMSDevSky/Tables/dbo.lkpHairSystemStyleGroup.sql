@@ -1,9 +1,5 @@
 /* CreateDate: 08/29/2016 07:24:52.840 , ModifyDate: 12/07/2021 16:20:16.093 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpHairSystemStyleGroup](
 	[HairSystemStyleGroupID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
 	[HairSystemStyleGroupSortOrder] [int] NOT NULL,

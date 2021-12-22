@@ -1,9 +1,5 @@
 /* CreateDate: 04/08/2013 21:57:35.130 , ModifyDate: 03/05/2020 15:21:10.770 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				mtnClientCreate

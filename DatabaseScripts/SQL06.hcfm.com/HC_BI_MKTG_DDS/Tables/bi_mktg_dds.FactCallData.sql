@@ -1,9 +1,5 @@
 /* CreateDate: 09/03/2021 09:37:07.117 , ModifyDate: 09/03/2021 09:37:13.093 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [bi_mktg_dds].[FactCallData](
 	[CallRecordKey] [int] NOT NULL,
 	[CallDateKey] [int] NOT NULL,

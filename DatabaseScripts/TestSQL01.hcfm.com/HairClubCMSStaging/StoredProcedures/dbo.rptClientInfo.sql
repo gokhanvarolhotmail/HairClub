@@ -1,9 +1,5 @@
 /* CreateDate: 12/17/2015 16:44:05.560 , ModifyDate: 12/18/2015 09:41:08.283 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*===============================================================================================
  Procedure Name:            rptClientInfo
  Procedure Description:     This report is used by Legal for client information in the webpage for ClientDigitalFile

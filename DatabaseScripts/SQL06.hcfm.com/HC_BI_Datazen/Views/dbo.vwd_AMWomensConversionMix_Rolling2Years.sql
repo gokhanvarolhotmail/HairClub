@@ -1,9 +1,5 @@
 /* CreateDate: 02/23/2016 15:29:55.613 , ModifyDate: 01/09/2018 14:59:42.970 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 VIEW:					vwd_AMWomensConversionMix_Rolling2Years
 DESTINATION SERVER:		SQL06

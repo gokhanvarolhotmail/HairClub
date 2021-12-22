@@ -1,9 +1,5 @@
 /* CreateDate: 12/31/2010 13:23:30.813 , ModifyDate: 11/19/2020 15:03:51.063 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				rptHairSystemCurrentStatus

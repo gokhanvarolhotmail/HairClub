@@ -1,9 +1,5 @@
 /* CreateDate: 04/13/2018 16:41:04.263 , ModifyDate: 12/07/2018 09:45:04.047 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*===============================================================================================
  Procedure Name:            rptTVProgressReviewAuditBarth
  Procedure Description:     This stored procedure provides client information such as Last Visit,

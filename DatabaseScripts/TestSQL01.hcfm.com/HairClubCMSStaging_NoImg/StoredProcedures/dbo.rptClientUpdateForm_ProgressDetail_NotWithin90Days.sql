@@ -1,9 +1,5 @@
 /* CreateDate: 09/19/2017 13:33:12.993 , ModifyDate: 09/19/2017 16:52:25.600 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*===============================================================================================
  Procedure Name:            [rptClientUpdateForm_ProgressDetail_NotWithin90Days]
  Procedure Description:     This report is used for a contest between Corporate centers

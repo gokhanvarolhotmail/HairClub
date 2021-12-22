@@ -1,9 +1,5 @@
 /* CreateDate: 02/02/2016 14:00:32.410 , ModifyDate: 01/24/2020 07:41:30.553 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE VIEW [dbo].[vw_HairSystemOrdersReceived]
 AS
 SELECT  HSO.HairSystemOrderNumber AS 'HSONo'

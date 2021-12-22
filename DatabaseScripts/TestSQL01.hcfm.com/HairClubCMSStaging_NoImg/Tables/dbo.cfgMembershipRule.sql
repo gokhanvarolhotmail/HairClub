@@ -1,9 +1,5 @@
 /* CreateDate: 02/12/2009 08:56:02.023 , ModifyDate: 12/03/2021 10:24:48.667 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[cfgMembershipRule](
 	[MembershipRuleID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
 	[MembershipRuleSortOrder] [int] NULL,

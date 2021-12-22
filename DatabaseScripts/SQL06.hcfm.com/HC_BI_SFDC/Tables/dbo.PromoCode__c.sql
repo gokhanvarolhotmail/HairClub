@@ -1,9 +1,5 @@
 /* CreateDate: 10/04/2019 14:09:30.417 , ModifyDate: 10/04/2019 14:09:31.733 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[PromoCode__c](
 	[Id] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
 	[PromoCode__c] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,

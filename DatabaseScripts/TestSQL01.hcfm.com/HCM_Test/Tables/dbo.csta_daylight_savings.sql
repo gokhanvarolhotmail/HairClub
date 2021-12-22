@@ -1,9 +1,5 @@
 /* CreateDate: 08/30/2011 11:12:49.727 , ModifyDate: 06/21/2012 10:00:00.110 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[csta_daylight_savings](
 	[daylight_savings_code] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[year] [int] NOT NULL,

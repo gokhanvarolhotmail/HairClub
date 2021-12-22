@@ -1,9 +1,5 @@
 /* CreateDate: 12/02/2014 12:08:13.377 , ModifyDate: 12/02/2014 12:08:14.013 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[ET_TestData](
 	[Batch] [datetime] NOT NULL,
 	[Appointment_GUID] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,

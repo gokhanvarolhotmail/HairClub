@@ -1,9 +1,5 @@
 /* CreateDate: 05/23/2016 16:21:52.387 , ModifyDate: 07/20/2021 22:00:22.530 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*
 ==============================================================================
 PROCEDURE:		mtnApplySalesOrderToAccountReceivable

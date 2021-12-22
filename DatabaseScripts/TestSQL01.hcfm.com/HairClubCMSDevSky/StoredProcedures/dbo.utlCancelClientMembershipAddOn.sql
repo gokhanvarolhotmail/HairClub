@@ -1,9 +1,5 @@
 /* CreateDate: 09/07/2017 10:35:29.443 , ModifyDate: 09/07/2017 10:35:29.443 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				utlCancelClientMembershipAddOn
 DESTINATION SERVER:		SQL01

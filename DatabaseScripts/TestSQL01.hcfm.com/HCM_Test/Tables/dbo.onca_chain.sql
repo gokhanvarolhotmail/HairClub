@@ -1,9 +1,5 @@
 /* CreateDate: 01/18/2005 09:34:14.670 , ModifyDate: 11/25/2013 09:39:37.640 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[onca_chain](
 	[chain_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[description] [nchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,

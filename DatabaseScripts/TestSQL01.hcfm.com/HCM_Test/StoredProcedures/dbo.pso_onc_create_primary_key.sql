@@ -1,9 +1,5 @@
 /* CreateDate: 01/05/2016 16:04:38.257 , ModifyDate: 08/08/2017 11:39:47.387 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE  PROCEDURE [dbo].[pso_onc_create_primary_key] (
 @key_length int = 10,
 @table_name varchar(128),

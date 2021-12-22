@@ -1,9 +1,5 @@
 /* CreateDate: 07/22/2015 14:24:35.567 , ModifyDate: 07/22/2015 14:26:31.907 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 NAME:					fnGetCentersForUser
 DESTINATION SERVER:		SQL06

@@ -1,9 +1,5 @@
 /* CreateDate: 04/30/2015 17:00:35.010 , ModifyDate: 05/06/2015 11:55:51.280 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 NAME:					fnGetCurrentMembershipDetailsByClientID
 DESTINATION SERVER:		SQL01

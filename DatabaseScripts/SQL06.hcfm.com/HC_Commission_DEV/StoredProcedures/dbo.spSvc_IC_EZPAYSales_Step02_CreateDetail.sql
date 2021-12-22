@@ -1,9 +1,5 @@
 /* CreateDate: 08/10/2019 08:19:46.013 , ModifyDate: 11/08/2019 09:57:32.753 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				spSvc_IC_EZPAYSales_Step02_CreateDetail
 DESTINATION SERVER:		SQL06

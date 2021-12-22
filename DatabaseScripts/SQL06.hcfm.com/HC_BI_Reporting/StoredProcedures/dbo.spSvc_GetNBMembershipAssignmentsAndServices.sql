@@ -1,9 +1,5 @@
 /* CreateDate: 03/26/2021 10:13:50.197 , ModifyDate: 12/06/2021 12:36:13.977 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				spSvc_GetNBMembershipAssignmentsAndServices
 DESTINATION SERVER:		SQL06

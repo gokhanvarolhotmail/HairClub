@@ -1,9 +1,5 @@
 /* CreateDate: 01/14/2019 16:55:03.360 , ModifyDate: 05/22/2019 17:33:24.997 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				selSalesOrdersOutOfBalance

@@ -1,9 +1,5 @@
 /* CreateDate: 12/06/2019 11:00:04.813 , ModifyDate: 12/10/2019 11:32:08.767 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				spSvc_BarthSourceCodeExport
 DESTINATION SERVER:		SQL06

@@ -1,9 +1,5 @@
 /* CreateDate: 06/27/2011 20:31:27.753 , ModifyDate: 02/27/2017 09:49:26.360 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*===============================================================================================
 -- Procedure Name:			rptCreditAndRefusal
 -- Procedure Description:

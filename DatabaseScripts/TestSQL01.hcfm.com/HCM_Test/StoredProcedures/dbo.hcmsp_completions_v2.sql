@@ -1,9 +1,5 @@
 /* CreateDate: 06/06/2007 11:18:34.880 , ModifyDate: 05/01/2010 14:48:12.080 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 -----------------------------------------------------------------
 --3/13/09 Modified by: ONC PSO Fred Remers
 --removed view

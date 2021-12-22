@@ -1,9 +1,5 @@
 /* CreateDate: 09/26/2012 09:21:54.357 , ModifyDate: 11/01/2012 11:36:09.280 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:		spsvc_IMSSourceExport_ONCV

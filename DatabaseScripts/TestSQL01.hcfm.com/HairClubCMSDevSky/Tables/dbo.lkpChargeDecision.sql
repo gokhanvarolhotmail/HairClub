@@ -1,9 +1,5 @@
 /* CreateDate: 02/07/2011 21:37:20.663 , ModifyDate: 12/07/2021 16:20:15.960 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpChargeDecision](
 	[ChargeDecisionID] [int] NOT NULL,
 	[ChargeDecisionSortOrder] [int] NOT NULL,

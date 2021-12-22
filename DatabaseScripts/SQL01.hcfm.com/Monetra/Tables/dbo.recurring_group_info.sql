@@ -1,9 +1,5 @@
 /* CreateDate: 09/30/2019 07:07:32.963 , ModifyDate: 09/30/2019 07:07:32.970 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[recurring_group_info](
 	[id] [bigint] NOT NULL,
 	[flags] [bigint] NULL,

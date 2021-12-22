@@ -1,9 +1,5 @@
 /* CreateDate: 05/19/2014 09:06:53.587 , ModifyDate: 05/09/2019 11:58:40.343 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*===============================================================================================
  Procedure Name:                  rptMonthlyFeeCreditCardSummary
  Procedure Description:

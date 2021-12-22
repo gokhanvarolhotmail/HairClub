@@ -1,9 +1,5 @@
 /* CreateDate: 06/12/2008 11:44:16.097 , ModifyDate: 01/25/2010 08:13:27.463 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE PROCEDURE spApp_MediaSourceGetLevelMediaID (
 	@LevelNum		tinyint
 ,	@Code			varchar(10)

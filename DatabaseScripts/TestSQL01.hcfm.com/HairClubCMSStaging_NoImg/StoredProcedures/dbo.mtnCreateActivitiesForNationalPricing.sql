@@ -1,9 +1,5 @@
 /* CreateDate: 01/10/2018 16:09:59.783 , ModifyDate: 08/17/2020 09:11:34.290 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:                mtnCreateActivitiesForNationalPricing
 DESTINATION SERVER:        SQL01

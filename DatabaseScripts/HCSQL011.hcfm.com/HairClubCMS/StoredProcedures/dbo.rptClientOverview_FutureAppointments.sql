@@ -1,9 +1,5 @@
 /* CreateDate: 12/19/2013 07:34:11.933 , ModifyDate: 05/21/2017 22:19:15.623 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*===============================================================================================
 -- Procedure Name:                  rptClientOverview_FutureAppointments
 -- Procedure Description:

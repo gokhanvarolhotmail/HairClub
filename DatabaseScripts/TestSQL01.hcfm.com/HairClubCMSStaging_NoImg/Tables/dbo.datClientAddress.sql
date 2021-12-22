@@ -1,9 +1,5 @@
 /* CreateDate: 05/14/2012 17:29:33.110 , ModifyDate: 12/03/2021 10:24:48.533 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[datClientAddress](
 	[ClientAddressGUID] [uniqueidentifier] NOT NULL,
 	[ClientAddressTypeID] [int] NOT NULL,

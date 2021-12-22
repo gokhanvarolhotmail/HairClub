@@ -1,9 +1,5 @@
 /* CreateDate: 09/30/2019 07:07:33.023 , ModifyDate: 09/30/2019 07:07:33.027 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[push_events](
 	[id] [bigint] NOT NULL,
 	[endpoint_id] [bigint] NOT NULL,

@@ -1,9 +1,5 @@
 /* CreateDate: 12/01/2006 14:08:24.853 , ModifyDate: 05/01/2010 14:48:08.743 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE   FUNCTION [dbo].TimeForContact (
 	@currentLocalTime datetime = NULL,
 	@currentLocalTimeZoneOffSet float,

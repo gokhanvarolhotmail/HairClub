@@ -1,9 +1,5 @@
 /* CreateDate: 04/24/2017 09:23:44.873 , ModifyDate: 05/27/2021 09:14:40.587 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				extBosleyProcessPatientSlipClosedPRPTransaction

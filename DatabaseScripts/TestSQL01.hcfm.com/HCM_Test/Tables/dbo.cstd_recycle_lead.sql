@@ -1,9 +1,5 @@
 /* CreateDate: 06/18/2013 09:24:41.300 , ModifyDate: 08/11/2014 01:01:12.080 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[cstd_recycle_lead](
 	[recycle_lead_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[user_code] [nchar](20) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,

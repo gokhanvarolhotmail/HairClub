@@ -1,9 +1,5 @@
 /* CreateDate: 01/21/2016 11:47:41.043 , ModifyDate: 07/20/2016 15:19:08.747 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				[pop_MonthlyRetention]
 DESTINATION SERVER:		SQL06

@@ -1,9 +1,5 @@
 /* CreateDate: 04/14/2009 07:33:55.273 , ModifyDate: 12/07/2021 16:20:16.123 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[cfgSecurityGroup](
 	[SecurityGroupID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
 	[EmployeePositionID] [int] NULL,

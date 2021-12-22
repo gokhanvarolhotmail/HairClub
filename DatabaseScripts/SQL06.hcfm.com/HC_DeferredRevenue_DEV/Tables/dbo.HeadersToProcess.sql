@@ -1,9 +1,5 @@
 /* CreateDate: 06/11/2013 11:52:10.727 , ModifyDate: 03/29/2014 06:13:51.067 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[HeadersToProcess](
 	[RowID] [int] IDENTITY(1,1) NOT NULL,
 	[CenterSSID] [int] NULL,

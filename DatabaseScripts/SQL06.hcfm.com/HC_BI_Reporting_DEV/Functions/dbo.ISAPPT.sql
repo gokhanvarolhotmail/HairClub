@@ -1,9 +1,5 @@
 /* CreateDate: 08/30/2011 15:14:53.913 , ModifyDate: 08/30/2011 15:14:53.913 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /* Rewrite for ONCV - Howard Abelow 9/28/2007*/
 
 CREATE FUNCTION [dbo].[ISAPPT]

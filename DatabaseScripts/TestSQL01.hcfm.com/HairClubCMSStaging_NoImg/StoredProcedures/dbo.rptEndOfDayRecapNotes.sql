@@ -1,9 +1,5 @@
 /* CreateDate: 02/18/2013 06:59:50.653 , ModifyDate: 02/18/2013 19:11:13.287 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*===============================================================================================
 -- Procedure Name:			rptEndOfDayRecapNotes
 -- Procedure Description:

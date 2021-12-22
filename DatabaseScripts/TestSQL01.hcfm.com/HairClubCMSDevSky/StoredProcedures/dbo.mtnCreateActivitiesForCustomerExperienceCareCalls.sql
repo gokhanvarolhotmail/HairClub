@@ -1,9 +1,5 @@
 /* CreateDate: 10/13/2017 14:07:29.110 , ModifyDate: 10/14/2020 10:36:07.920 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***************************************************************************************************
 PROCEDURE:				mtnCreateActivitiesForCustomerExperienceCareCalls
 DESTINATION SERVER:		SQL01

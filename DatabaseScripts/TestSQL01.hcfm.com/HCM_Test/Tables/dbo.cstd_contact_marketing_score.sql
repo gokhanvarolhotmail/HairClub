@@ -1,9 +1,5 @@
 /* CreateDate: 11/02/2015 10:01:56.753 , ModifyDate: 10/23/2017 12:35:40.147 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[cstd_contact_marketing_score](
 	[contact_marketing_score_id] [uniqueidentifier] NOT NULL,
 	[contact_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,

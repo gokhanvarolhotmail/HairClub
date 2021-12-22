@@ -1,9 +1,5 @@
 /* CreateDate: 03/11/2021 15:38:03.530 , ModifyDate: 03/11/2021 15:38:03.530 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 create procedure [dbo].[sp_MSdel_dboConsultation_Form__c]     @pkc1 nvarchar(18)
 as
 begin   	delete [dbo].[Consultation_Form__c]

@@ -1,9 +1,5 @@
 /* CreateDate: 10/28/2010 15:03:50.543 , ModifyDate: 06/21/2012 10:00:00.143 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[csta_hair_loss_experience](
 	[hair_loss_experience_code] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[description] [nchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,

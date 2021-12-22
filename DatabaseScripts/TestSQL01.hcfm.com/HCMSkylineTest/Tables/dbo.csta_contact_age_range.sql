@@ -1,9 +1,5 @@
 /* CreateDate: 11/08/2012 11:24:25.537 , ModifyDate: 11/08/2012 13:46:26.063 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[csta_contact_age_range](
 	[age_range_code] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[description] [nchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,

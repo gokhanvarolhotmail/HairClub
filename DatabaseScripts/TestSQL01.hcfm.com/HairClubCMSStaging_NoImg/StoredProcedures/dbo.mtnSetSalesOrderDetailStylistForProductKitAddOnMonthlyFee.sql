@@ -1,9 +1,5 @@
 /* CreateDate: 07/05/2019 13:04:40.457 , ModifyDate: 07/05/2019 13:04:40.457 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				mtnSetSalesOrderDetailStylistForProductKitAddOnMonthlyFee

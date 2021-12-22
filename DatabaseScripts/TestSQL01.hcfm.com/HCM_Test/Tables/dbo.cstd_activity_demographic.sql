@@ -1,9 +1,5 @@
 /* CreateDate: 11/08/2006 14:57:17.183 , ModifyDate: 10/23/2017 12:35:40.123 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[cstd_activity_demographic](
 	[activity_demographic_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[activity_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,

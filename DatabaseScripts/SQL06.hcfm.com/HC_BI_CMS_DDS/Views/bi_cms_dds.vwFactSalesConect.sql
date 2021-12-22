@@ -1,9 +1,5 @@
 /* CreateDate: 10/03/2019 23:03:44.020 , ModifyDate: 02/23/2021 13:20:26.967 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE VIEW [bi_cms_dds].[vwFactSalesConect] AS
 -------------------------------------------------------------------------
 --	[vwFactSalesConect] is used to retrieve a list of Sales Transactions for First Surgery Net Dollars

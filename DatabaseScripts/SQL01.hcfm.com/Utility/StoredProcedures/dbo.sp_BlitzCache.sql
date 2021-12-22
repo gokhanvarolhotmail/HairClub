@@ -1,9 +1,5 @@
 /* CreateDate: 07/09/2014 23:36:58.370 , ModifyDate: 07/18/2017 08:32:36.770 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE PROCEDURE dbo.sp_BlitzCache
     @Help BIT = 0,
     @Top INT = NULL,

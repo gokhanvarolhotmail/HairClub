@@ -1,9 +1,5 @@
 /* CreateDate: 07/29/2014 18:58:53.867 , ModifyDate: 10/27/2017 13:08:16.180 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*
 ==============================================================================
 PROCEDURE:				extHairClubCMSGetConsultationsByDate

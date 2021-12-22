@@ -1,9 +1,5 @@
 /* CreateDate: 10/03/2019 23:03:41.363 , ModifyDate: 10/03/2019 23:03:46.197 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [bi_cms_dds].[DimMembershipOrderReason](
 	[MembershipOrderReasonID] [int] NOT NULL,
 	[MembershipOrderReasonTypeID] [int] NOT NULL,

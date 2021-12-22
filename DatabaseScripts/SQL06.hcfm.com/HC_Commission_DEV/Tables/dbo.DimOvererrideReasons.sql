@@ -1,9 +1,5 @@
 /* CreateDate: 02/01/2013 10:02:57.800 , ModifyDate: 06/18/2014 01:38:25.603 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[DimOvererrideReasons](
 	[ReasonID] [int] NOT NULL,
 	[ReasonDescription] [varchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,

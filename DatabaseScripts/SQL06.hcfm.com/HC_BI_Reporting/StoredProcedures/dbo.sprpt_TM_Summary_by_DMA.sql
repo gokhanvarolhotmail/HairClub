@@ -1,9 +1,5 @@
 /* CreateDate: 08/03/2011 09:48:26.243 , ModifyDate: 08/03/2011 10:31:11.670 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				sprpt_TM_Summary_by_DMA

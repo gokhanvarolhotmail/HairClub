@@ -1,9 +1,5 @@
 /* CreateDate: 05/03/2017 14:11:57.717 , ModifyDate: 12/07/2018 16:20:04.957 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*****************************************************************************************************
 
 PROCEDURE:				[rptMembershipAgreementUploadAnalysisDetail]

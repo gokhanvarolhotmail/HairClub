@@ -1,9 +1,5 @@
 /* CreateDate: 03/30/2011 09:42:32.283 , ModifyDate: 01/24/2012 10:28:28.097 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[HairSystemInventoryDetails](
 	[InventoryDetailsID] [uniqueidentifier] NULL,
 	[InventoryID] [uniqueidentifier] NULL,

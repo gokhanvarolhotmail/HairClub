@@ -1,9 +1,5 @@
 /* CreateDate: 10/03/2019 23:03:43.333 , ModifyDate: 10/02/2020 10:54:04.793 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE VIEW [bi_cms_dds].[vwFactSales] AS
 -------------------------------------------------------------------------
 -- [vwFactSales] is used to retrieve a

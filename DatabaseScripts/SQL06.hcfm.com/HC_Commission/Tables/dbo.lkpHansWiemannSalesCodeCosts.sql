@@ -1,9 +1,5 @@
 /* CreateDate: 06/15/2018 10:09:45.357 , ModifyDate: 06/15/2018 10:09:45.483 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpHansWiemannSalesCodeCosts](
 	[HWSalesCodeCostID] [int] IDENTITY(1,1) NOT NULL,
 	[SalesCodeSSID] [int] NULL,

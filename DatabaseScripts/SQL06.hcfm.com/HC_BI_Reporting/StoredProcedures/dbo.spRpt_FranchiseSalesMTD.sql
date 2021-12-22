@@ -1,9 +1,5 @@
 /* CreateDate: 08/21/2012 16:53:52.493 , ModifyDate: 04/19/2016 11:21:05.953 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*===============================================================================================
 -- Procedure Name:			spRpt_FranchiseSalesMTD
 -- Created By:             HDu

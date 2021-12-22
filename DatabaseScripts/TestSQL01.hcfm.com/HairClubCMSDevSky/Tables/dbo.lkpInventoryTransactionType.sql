@@ -1,9 +1,5 @@
 /* CreateDate: 08/27/2008 12:26:52.253 , ModifyDate: 12/07/2021 16:20:15.900 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpInventoryTransactionType](
 	[InventoryTransactionTypeID] [int] NOT NULL,
 	[InventoryTransactionTypeSortOrder] [int] NULL,

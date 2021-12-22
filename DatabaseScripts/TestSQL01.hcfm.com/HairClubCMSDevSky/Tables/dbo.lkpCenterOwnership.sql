@@ -1,9 +1,5 @@
 /* CreateDate: 03/03/2009 13:24:04.663 , ModifyDate: 12/07/2021 16:20:16.107 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpCenterOwnership](
 	[CenterOwnershipID] [int] NOT NULL,
 	[CenterOwnershipSortOrder] [int] NOT NULL,

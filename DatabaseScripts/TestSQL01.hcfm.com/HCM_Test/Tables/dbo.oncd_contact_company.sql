@@ -1,10 +1,6 @@
 /* CreateDate: 01/18/2005 09:34:08.873 , ModifyDate: 09/10/2019 22:43:25.563 */
 /* ***HasTriggers*** TriggerCount: 3 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[oncd_contact_company](
 	[contact_company_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[contact_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
@@ -95,10 +91,6 @@ REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_contact_company] CHECK CONSTRAINT [user_contact_comp_586]
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 -- ============================================================================
 -- Author:		Oncontact PSO Fred Remers
 -- Create date: 02/17/09
@@ -173,10 +165,6 @@ END
 GO
 ALTER TABLE [dbo].[oncd_contact_company] ENABLE TRIGGER [pso_oncd_contact_company]
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TRIGGER [dbo].[pso_oncd_contact_company_after_delete]
    ON  [dbo].[oncd_contact_company]
    AFTER DELETE
@@ -192,10 +180,6 @@ AS
 	WHERE cstd_contact_flat.contact_id = deleted.contact_id
 GO
 ALTER TABLE [dbo].[oncd_contact_company] ENABLE TRIGGER [pso_oncd_contact_company_after_delete]
-GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
 GO
 CREATE TRIGGER [dbo].[pso_oncd_contact_company_after_insert_update]
    ON  [dbo].[oncd_contact_company]

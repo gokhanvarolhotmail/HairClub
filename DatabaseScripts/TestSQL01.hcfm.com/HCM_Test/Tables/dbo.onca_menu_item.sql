@@ -1,9 +1,5 @@
 /* CreateDate: 01/18/2005 09:34:10.593 , ModifyDate: 07/21/2014 01:22:37.760 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[onca_menu_item](
 	[menu_item_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[folder_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,

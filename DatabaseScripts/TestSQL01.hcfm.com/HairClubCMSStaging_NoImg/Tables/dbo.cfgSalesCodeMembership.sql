@@ -1,9 +1,5 @@
 /* CreateDate: 02/02/2009 08:51:08.987 , ModifyDate: 12/03/2021 10:24:48.580 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[cfgSalesCodeMembership](
 	[SalesCodeMembershipID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
 	[SalesCodeCenterID] [int] NULL,

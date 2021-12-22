@@ -1,9 +1,5 @@
 /* CreateDate: 06/16/2021 07:25:06.893 , ModifyDate: 06/16/2021 07:25:07.780 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [sf_Copy].[Task](
 	[Id] [nvarchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[WhoId] [nvarchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,

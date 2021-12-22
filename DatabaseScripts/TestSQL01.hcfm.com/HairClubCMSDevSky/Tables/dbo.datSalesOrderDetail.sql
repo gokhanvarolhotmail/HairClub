@@ -1,9 +1,5 @@
 /* CreateDate: 03/06/2009 13:55:53.830 , ModifyDate: 12/07/2021 16:20:16.073 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[datSalesOrderDetail](
 	[SalesOrderDetailGUID] [uniqueidentifier] NOT NULL,
 	[TransactionNumber_Temp] [int] NULL,

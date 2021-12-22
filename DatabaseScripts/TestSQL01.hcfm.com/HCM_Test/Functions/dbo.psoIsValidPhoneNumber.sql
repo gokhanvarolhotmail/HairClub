@@ -1,9 +1,5 @@
 /* CreateDate: 09/26/2013 14:54:16.010 , ModifyDate: 09/26/2013 14:54:16.010 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 -- =============================================
 -- Create date: 17 January 2013
 -- Description:	Determines if the provided phone number is valid.

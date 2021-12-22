@@ -1,9 +1,5 @@
 /* CreateDate: 09/14/2011 13:08:44.783 , ModifyDate: 09/15/2011 11:43:20.347 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE VIEW [dbo].[vwAppointments_HD]
 AS
 -------------------------------------------------------------------------

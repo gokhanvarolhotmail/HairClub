@@ -1,9 +1,5 @@
 /* CreateDate: 12/21/2018 15:56:08.377 , ModifyDate: 04/12/2020 22:02:41.640 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				mtnSetNationalMonthlyFeeOnClientMemberships

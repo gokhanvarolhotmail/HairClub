@@ -1,9 +1,5 @@
 /* CreateDate: 06/27/2011 20:28:26.133 , ModifyDate: 10/11/2019 10:00:05.753 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*===============================================================================================
 -- Procedure Name:			rptPricingSummary
 -- Procedure Description:

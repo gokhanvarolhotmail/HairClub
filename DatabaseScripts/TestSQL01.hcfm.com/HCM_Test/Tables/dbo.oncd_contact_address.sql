@@ -1,10 +1,6 @@
 /* CreateDate: 01/18/2005 09:34:08.810 , ModifyDate: 09/10/2019 22:50:00.873 */
 /* ***HasTriggers*** TriggerCount: 6 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[oncd_contact_address](
 	[contact_address_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[contact_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
@@ -135,10 +131,6 @@ REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_contact_address] CHECK CONSTRAINT [user_contact_addr_571]
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TRIGGER [dbo].[pso_oncd_contact_address_after_delete]
    ON  [dbo].[oncd_contact_address]
    AFTER DELETE
@@ -167,10 +159,6 @@ AS
 GO
 ALTER TABLE [dbo].[oncd_contact_address] ENABLE TRIGGER [pso_oncd_contact_address_after_delete]
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TRIGGER [dbo].[pso_oncd_contact_address_after_insert_update]
    ON  [dbo].[oncd_contact_address]
    AFTER INSERT, UPDATE
@@ -198,10 +186,6 @@ AS
 		AND ca2.contact_address_id IS NULL
 GO
 ALTER TABLE [dbo].[oncd_contact_address] ENABLE TRIGGER [pso_oncd_contact_address_after_insert_update]
-GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
 GO
 -- =============================================
 -- Create date: 24 September 2012
@@ -272,10 +256,6 @@ END
 GO
 ALTER TABLE [dbo].[oncd_contact_address] DISABLE TRIGGER [pso_oncd_contact_address_remove_unicode_insert]
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TRIGGER [dbo].[pso_oncd_contact_address_remove_unicode_update]
    ON  [dbo].[oncd_contact_address]
    INSTEAD OF UPDATE
@@ -314,10 +294,6 @@ BEGIN
 END
 GO
 ALTER TABLE [dbo].[oncd_contact_address] DISABLE TRIGGER [pso_oncd_contact_address_remove_unicode_update]
-GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
 GO
 -- =============================================================================
 -- Create date: 22 March 2010
@@ -374,10 +350,6 @@ BEGIN
 END
 GO
 ALTER TABLE [dbo].[oncd_contact_address] ENABLE TRIGGER [pso_SinglePrimaryAddress]
-GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
 GO
 -- =============================================
 -- Author:		Fred Remers

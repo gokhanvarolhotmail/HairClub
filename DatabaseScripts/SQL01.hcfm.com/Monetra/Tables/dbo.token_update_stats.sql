@@ -1,9 +1,5 @@
 /* CreateDate: 09/30/2019 07:07:32.987 , ModifyDate: 09/30/2019 07:07:32.987 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[token_update_stats](
 	[ts] [bigint] NOT NULL,
 	[provider] [varchar](32) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,

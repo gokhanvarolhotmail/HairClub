@@ -1,9 +1,5 @@
 /* CreateDate: 09/12/2007 09:21:41.560 , ModifyDate: 08/08/2017 11:39:46.997 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 --------------------------------------------------------------------------------
 -- PROCEDURE:	[spsvc_import_lead_file]	VERSION  2.0
 -- DESTINATION SERVER:	   HCSQL3\SQL2005

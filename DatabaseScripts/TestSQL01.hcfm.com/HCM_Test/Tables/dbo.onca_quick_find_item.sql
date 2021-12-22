@@ -1,9 +1,5 @@
 /* CreateDate: 02/01/2005 14:59:47.403 , ModifyDate: 06/21/2012 10:00:47.143 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[onca_quick_find_item](
 	[quick_find_item_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[quick_find_group_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,

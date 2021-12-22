@@ -1,9 +1,5 @@
 /* CreateDate: 07/28/2016 16:20:08.163 , ModifyDate: 11/13/2018 10:35:24.677 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*
 ==============================================================================
 PROCEDURE:                  mtnSetAppointmentPriorityColor

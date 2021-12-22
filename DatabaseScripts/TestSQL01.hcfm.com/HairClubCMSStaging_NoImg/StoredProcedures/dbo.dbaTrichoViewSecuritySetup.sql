@@ -1,9 +1,5 @@
 /* CreateDate: 09/24/2014 22:38:26.100 , ModifyDate: 03/18/2015 22:59:26.470 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				dbaTrichoViewSecuritySetup

@@ -1,9 +1,5 @@
 /* CreateDate: 02/19/2009 15:57:28.733 , ModifyDate: 05/26/2020 10:49:49.340 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[cfgEmployeePositionJoin](
 	[EmployeeGUID] [uniqueidentifier] NOT NULL,
 	[EmployeePositionID] [int] NOT NULL,

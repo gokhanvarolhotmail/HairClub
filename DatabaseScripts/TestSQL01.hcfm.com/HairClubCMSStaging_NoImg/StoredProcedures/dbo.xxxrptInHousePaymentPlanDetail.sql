@@ -1,9 +1,5 @@
 /* CreateDate: 10/03/2016 15:00:37.390 , ModifyDate: 06/21/2019 13:14:24.733 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*
 539155 - Cancelled client in 213
 ==============================================================================

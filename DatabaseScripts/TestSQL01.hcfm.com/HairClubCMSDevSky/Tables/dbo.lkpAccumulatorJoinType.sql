@@ -1,9 +1,5 @@
 /* CreateDate: 10/21/2008 18:09:07.303 , ModifyDate: 12/07/2021 16:20:16.220 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpAccumulatorJoinType](
 	[AccumulatorJoinTypeID] [int] NOT NULL,
 	[AccumulatorJoinTypeSortOrder] [int] NOT NULL,

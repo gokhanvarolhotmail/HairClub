@@ -1,9 +1,5 @@
 /* CreateDate: 12/19/2018 08:03:27.960 , ModifyDate: 09/23/2019 12:32:47.897 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				selInventoryAuditBatchProductVariances

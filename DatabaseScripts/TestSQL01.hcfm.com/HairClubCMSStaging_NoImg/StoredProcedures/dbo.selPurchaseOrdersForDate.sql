@@ -1,9 +1,5 @@
 /* CreateDate: 03/19/2013 12:02:22.983 , ModifyDate: 03/19/2013 12:02:22.983 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*********************************************************
   exec selPurchaseOrdersForDate '3/18/13'
 **********************************************************/

@@ -1,9 +1,5 @@
 /* CreateDate: 08/22/2012 15:34:13.967 , ModifyDate: 08/22/2012 15:34:13.967 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*==============================================================================
 PROCEDURE:                               sprpt_FeeCodeReport
 -- Created By:             HDu

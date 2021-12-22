@@ -1,9 +1,5 @@
 /* CreateDate: 01/09/2008 12:54:24.750 , ModifyDate: 04/09/2008 12:11:57.313 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 -- =============================================
 -- Author:		Will Beaton
 -- Create date: 01/09/2008

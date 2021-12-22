@@ -1,9 +1,5 @@
 /* CreateDate: 01/25/2010 11:09:09.630 , ModifyDate: 06/21/2012 10:05:24.160 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[oncd_invoice_time_adjust](
 	[invoice_time_adjust_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[user_code] [nchar](20) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,

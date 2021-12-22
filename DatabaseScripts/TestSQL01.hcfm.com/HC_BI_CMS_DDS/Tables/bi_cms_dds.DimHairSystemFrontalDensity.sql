@@ -1,9 +1,5 @@
 /* CreateDate: 06/27/2011 16:01:44.317 , ModifyDate: 09/16/2019 09:33:49.850 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [bi_cms_dds].[DimHairSystemFrontalDensity](
 	[HairSystemFrontalDensityKey] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
 	[HairSystemFrontalDensitySSID] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,

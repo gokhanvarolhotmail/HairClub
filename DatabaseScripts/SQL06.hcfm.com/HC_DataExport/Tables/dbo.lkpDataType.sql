@@ -1,9 +1,5 @@
 /* CreateDate: 07/27/2016 14:38:02.120 , ModifyDate: 07/27/2016 14:38:02.170 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpDataType](
 	[DataTypeID] [int] IDENTITY(1,1) NOT NULL,
 	[DataTypeDescription] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,

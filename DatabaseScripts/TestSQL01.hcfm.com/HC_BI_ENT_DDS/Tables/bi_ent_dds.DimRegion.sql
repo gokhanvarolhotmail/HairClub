@@ -1,9 +1,5 @@
 /* CreateDate: 07/11/2011 12:13:52.040 , ModifyDate: 09/16/2019 09:25:18.143 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [bi_ent_dds].[DimRegion](
 	[RegionKey] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
 	[RegionSSID] [int] NOT NULL,

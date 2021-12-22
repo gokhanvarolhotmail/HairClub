@@ -1,9 +1,5 @@
 /* CreateDate: 10/31/2014 16:07:00.150 , ModifyDate: 03/05/2015 11:36:42.987 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*
 ==============================================================================
 PROCEDURE:				dbaInitializeAccountReceivableForClientLeavingARTransIntact

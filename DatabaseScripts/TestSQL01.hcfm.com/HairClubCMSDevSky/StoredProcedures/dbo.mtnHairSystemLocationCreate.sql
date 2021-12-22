@@ -1,9 +1,5 @@
 /* CreateDate: 12/31/2010 13:21:06.687 , ModifyDate: 02/27/2017 09:49:21.387 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				mtnHairSystemLocationCreate

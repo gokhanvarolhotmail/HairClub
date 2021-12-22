@@ -1,9 +1,5 @@
 /* CreateDate: 07/31/2014 11:52:07.563 , ModifyDate: 07/31/2014 11:52:07.563 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[sysschedules](
 	[RunDate] [datetime] NOT NULL,
 	[schedule_id] [int] IDENTITY(1,1) NOT NULL,

@@ -1,9 +1,5 @@
 /* CreateDate: 08/27/2008 12:22:11.337 , ModifyDate: 05/26/2020 10:49:00.113 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpSalutation](
 	[SalutationID] [int] NOT NULL,
 	[SalutationSortOrder] [int] NOT NULL,

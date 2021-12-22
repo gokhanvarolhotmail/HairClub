@@ -1,9 +1,5 @@
 /* CreateDate: 01/25/2010 11:09:41.690 , ModifyDate: 06/21/2012 10:03:46.003 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[oncw_control_visibility](
 	[control_visibility_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[portal_page_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,

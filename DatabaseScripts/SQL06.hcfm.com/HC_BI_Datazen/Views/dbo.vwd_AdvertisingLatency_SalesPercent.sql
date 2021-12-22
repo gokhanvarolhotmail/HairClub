@@ -1,9 +1,5 @@
 /* CreateDate: 05/03/2016 09:58:02.537 , ModifyDate: 05/03/2016 11:31:32.487 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 VIEW:					[vwd_AdvertisingLatency_SalesPercent]
 DESTINATION SERVER:		SQL06

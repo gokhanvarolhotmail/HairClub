@@ -1,9 +1,5 @@
 /* CreateDate: 11/15/2006 11:19:30.850 , ModifyDate: 01/25/2010 08:11:31.760 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:	spdts_GetDNCVerificationData	VERSION  1.0

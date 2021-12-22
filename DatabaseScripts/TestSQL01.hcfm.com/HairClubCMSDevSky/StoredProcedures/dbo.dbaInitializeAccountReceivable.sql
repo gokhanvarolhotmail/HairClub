@@ -1,9 +1,5 @@
 /* CreateDate: 02/18/2013 09:37:14.633 , ModifyDate: 03/05/2015 11:36:42.920 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*
 ==============================================================================
 PROCEDURE:				dbaInitializeAccountReceivable

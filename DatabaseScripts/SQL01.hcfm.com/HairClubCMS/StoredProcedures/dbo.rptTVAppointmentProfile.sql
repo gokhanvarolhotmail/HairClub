@@ -1,9 +1,5 @@
 /* CreateDate: 10/17/2014 12:17:57.580 , ModifyDate: 11/04/2019 08:17:08.687 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				rptTVAppointmentProfile

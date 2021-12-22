@@ -1,9 +1,5 @@
 /* CreateDate: 09/26/2012 09:26:02.803 , ModifyDate: 04/30/2015 09:21:39.273 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				spsvc_IMSActivitySummary_ONCV

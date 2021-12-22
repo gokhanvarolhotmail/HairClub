@@ -1,9 +1,5 @@
 /* CreateDate: 07/10/2017 15:54:57.623 , ModifyDate: 12/18/2017 11:17:38.940 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				rptClientPhone

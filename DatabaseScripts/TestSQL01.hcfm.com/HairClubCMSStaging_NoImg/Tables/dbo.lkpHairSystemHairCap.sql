@@ -1,9 +1,5 @@
 /* CreateDate: 10/04/2010 12:08:46.277 , ModifyDate: 12/03/2021 10:24:48.677 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpHairSystemHairCap](
 	[HairSystemHairCapID] [int] NOT NULL,
 	[HairSystemHairCapSortOrder] [int] NOT NULL,

@@ -1,9 +1,5 @@
 /* CreateDate: 05/14/2012 17:35:19.497 , ModifyDate: 12/03/2021 10:24:48.613 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpFeeFreezeReason](
 	[FeeFreezeReasonID] [int] NOT NULL,
 	[FeeFreezeReasonSortOrder] [int] NOT NULL,

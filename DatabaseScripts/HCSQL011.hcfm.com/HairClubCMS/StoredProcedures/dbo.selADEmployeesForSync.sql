@@ -1,9 +1,5 @@
 /* CreateDate: 05/13/2009 06:37:45.430 , ModifyDate: 12/16/2019 08:40:04.503 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				selADEmployeesForSync

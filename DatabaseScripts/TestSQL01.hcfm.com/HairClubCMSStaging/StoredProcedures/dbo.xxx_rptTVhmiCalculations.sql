@@ -1,9 +1,5 @@
 /* CreateDate: 10/13/2014 15:36:03.903 , ModifyDate: 11/11/2014 17:33:17.703 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*===============================================================================================
  Procedure Name:				[rptTVhmiCalculations]
  Procedure Description:			This stored procedure provides the data for the Density and Width grids

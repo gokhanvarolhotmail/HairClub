@@ -1,9 +1,5 @@
 /* CreateDate: 05/01/2018 17:41:20.690 , ModifyDate: 05/13/2019 08:51:48.757 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				rptHairSystemOrder_HW

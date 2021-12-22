@@ -1,9 +1,5 @@
 /* CreateDate: 12/07/2012 09:18:10.553 , ModifyDate: 03/02/2015 14:34:18.370 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				spSVC_PCP_Step1_CreateHeader
 DESTINATION SERVER:		SQL06

@@ -1,9 +1,5 @@
 /* CreateDate: 12/03/2021 10:25:05.887 , ModifyDate: 12/03/2021 10:25:05.887 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*
 ==============================================================================
 PROCEDURE:				dbaInitializeDeferredRevenueSynonyms

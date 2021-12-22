@@ -1,9 +1,5 @@
 /* CreateDate: 02/18/2009 08:20:18.440 , ModifyDate: 12/03/2021 10:24:48.693 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpSecurityElement](
 	[SecurityElementID] [int] NOT NULL,
 	[SecurityElementSortOrder] [int] NOT NULL,

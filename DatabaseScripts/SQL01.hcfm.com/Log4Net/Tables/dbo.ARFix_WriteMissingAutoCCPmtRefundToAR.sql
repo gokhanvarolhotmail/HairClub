@@ -1,9 +1,5 @@
 /* CreateDate: 11/14/2014 15:47:08.230 , ModifyDate: 11/14/2014 15:47:08.230 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[ARFix_WriteMissingAutoCCPmtRefundToAR](
 	[ClientGUID] [varchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[SalesOrderGUID] [varchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,

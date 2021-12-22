@@ -1,10 +1,6 @@
 /* CreateDate: 10/04/2006 16:26:48.313 , ModifyDate: 09/10/2019 22:26:07.447 */
 /* ***HasTriggers*** TriggerCount: 3 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[oncd_contact_source](
 	[contact_source_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[contact_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
@@ -60,10 +56,6 @@ REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_contact_source] CHECK CONSTRAINT [user_contact_sour_617]
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TRIGGER [dbo].[pso_oncd_contact_source_after_delete]
    ON  [dbo].[oncd_contact_source]
    AFTER DELETE
@@ -80,10 +72,6 @@ AS
 GO
 ALTER TABLE [dbo].[oncd_contact_source] ENABLE TRIGGER [pso_oncd_contact_source_after_delete]
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TRIGGER [dbo].[pso_oncd_contact_source_after_insert_update]
    ON  [dbo].[oncd_contact_source]
    AFTER INSERT, UPDATE
@@ -98,10 +86,6 @@ AS
 	INNER JOIN cstd_contact_flat on inserted.contact_id = cstd_contact_flat.contact_id
 GO
 ALTER TABLE [dbo].[oncd_contact_source] ENABLE TRIGGER [pso_oncd_contact_source_after_insert_update]
-GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
 GO
 -- =============================================================================
 -- Create date: 22 March 2010

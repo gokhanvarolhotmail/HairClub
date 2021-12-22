@@ -1,9 +1,5 @@
 /* CreateDate: 05/31/2016 07:49:04.883 , ModifyDate: 05/26/2020 10:49:45.400 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[datHairSystemInventorySnapshot](
 	[HairSystemInventorySnapshotID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
 	[SnapshotDate] [datetime] NOT NULL,

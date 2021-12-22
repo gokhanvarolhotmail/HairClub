@@ -1,9 +1,5 @@
 /* CreateDate: 11/20/2019 11:50:12.677 , ModifyDate: 11/20/2019 11:54:45.310 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				spSvc_PopulateHROpenPositionDashboard
 DESTINATION SERVER:		SQL06

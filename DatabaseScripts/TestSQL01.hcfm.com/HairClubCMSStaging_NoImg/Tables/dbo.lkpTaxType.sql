@@ -1,9 +1,5 @@
 /* CreateDate: 08/27/2008 12:24:14.877 , ModifyDate: 12/03/2021 10:24:48.543 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpTaxType](
 	[TaxTypeID] [int] NOT NULL,
 	[TaxTypeSortOrder] [int] NOT NULL,

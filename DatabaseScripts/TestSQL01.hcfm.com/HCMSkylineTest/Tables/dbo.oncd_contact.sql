@@ -1,9 +1,5 @@
 /* CreateDate: 11/08/2012 11:26:54.097 , ModifyDate: 07/11/2017 10:53:44.310 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[oncd_contact](
 	[contact_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[greeting] [nchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,

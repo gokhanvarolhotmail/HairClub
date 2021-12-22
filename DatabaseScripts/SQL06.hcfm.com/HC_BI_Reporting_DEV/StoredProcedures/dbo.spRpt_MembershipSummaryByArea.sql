@@ -1,9 +1,5 @@
 /* CreateDate: 06/27/2019 14:53:59.730 , ModifyDate: 06/27/2019 16:17:12.610 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*===============================================================================================
 PROCEDURE:	[spRpt_MembershipSummaryByArea]
 

@@ -1,9 +1,5 @@
 /* CreateDate: 05/06/2014 07:46:21.767 , ModifyDate: 12/07/2021 16:20:15.960 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpPhotoType](
 	[PhotoTypeID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
 	[PhotoTypeSortOrder] [int] NOT NULL,

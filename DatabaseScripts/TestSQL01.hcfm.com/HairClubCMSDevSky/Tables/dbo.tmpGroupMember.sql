@@ -1,9 +1,5 @@
 /* CreateDate: 01/27/2011 22:24:13.693 , ModifyDate: 09/18/2017 05:58:17.600 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[tmpGroupMember](
 	[UserLogin] [varchar](100) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[GroupName] [varchar](100) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,

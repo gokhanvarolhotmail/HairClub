@@ -1,10 +1,6 @@
 /* CreateDate: 10/15/2013 00:26:24.653 , ModifyDate: 10/15/2013 00:47:40.137 */
 /* ***HasTriggers*** TriggerCount: 1 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[csta_queue_queue_schedule_by_date_user](
 	[queue_queue_schedule_by_date_user_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[queue_queue_schedule_by_date_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
@@ -47,10 +43,6 @@ ALTER TABLE [dbo].[csta_queue_queue_schedule_by_date_user]  WITH CHECK ADD  CONS
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[csta_queue_queue_schedule_by_date_user] CHECK CONSTRAINT [FK_csta_queue_queue_schedule_by_date_user_updated_by_user]
-GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
 GO
 -- =============================================
 -- Author:		<Author,,Name>

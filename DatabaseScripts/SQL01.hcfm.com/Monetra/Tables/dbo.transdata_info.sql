@@ -1,9 +1,5 @@
 /* CreateDate: 03/18/2019 08:07:58.867 , ModifyDate: 08/16/2019 04:00:24.607 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[transdata_info](
 	[userid] [int] NOT NULL,
 	[ttid] [bigint] NOT NULL,

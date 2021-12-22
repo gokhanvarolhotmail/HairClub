@@ -1,9 +1,5 @@
 /* CreateDate: 04/14/2014 08:01:47.137 , ModifyDate: 05/12/2019 23:28:47.917 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				utlCloseClientMembership
 DESTINATION SERVER:		SQL01

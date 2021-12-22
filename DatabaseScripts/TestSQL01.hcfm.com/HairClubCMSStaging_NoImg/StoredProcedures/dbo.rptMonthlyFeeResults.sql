@@ -1,9 +1,5 @@
 /* CreateDate: 03/12/2014 12:00:11.970 , ModifyDate: 07/23/2019 15:57:57.247 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				rptMonthlyFeeResults
 DESTINATION SERVER:		SQL01

@@ -1,9 +1,5 @@
 /* CreateDate: 06/22/2017 17:21:45.867 , ModifyDate: 06/22/2017 17:21:45.867 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				utilCreateSurgeryClientMembership

@@ -1,9 +1,5 @@
 /* CreateDate: 10/24/2013 09:54:51.523 , ModifyDate: 06/18/2014 01:38:23.807 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[Contest](
 	[ContestSSID] [int] IDENTITY(1,1) NOT NULL,
 	[ContestName] [varchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,

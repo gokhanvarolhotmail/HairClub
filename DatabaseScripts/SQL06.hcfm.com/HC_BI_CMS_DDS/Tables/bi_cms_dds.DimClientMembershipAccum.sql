@@ -1,9 +1,5 @@
 /* CreateDate: 10/03/2019 23:03:40.270 , ModifyDate: 10/04/2019 00:14:16.047 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [bi_cms_dds].[DimClientMembershipAccum](
 	[ClientMembershipAccumKey] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
 	[ClientMembershipAccumSSID] [uniqueidentifier] NOT NULL,

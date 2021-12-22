@@ -1,9 +1,5 @@
 /* CreateDate: 09/25/2006 15:42:50.227 , ModifyDate: 01/25/2010 08:11:31.807 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 --Updates or inserts only true DNC records into new hcmtbl_DNC_Phone table for HCM Update
 
 CREATE    PROCEDURE [dbo].[UpdateDncInHCMDNCPhoneTable]

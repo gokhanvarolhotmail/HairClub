@@ -1,9 +1,5 @@
 /* CreateDate: 11/01/2018 15:01:01.320 , ModifyDate: 11/01/2018 15:01:01.553 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[tmpSalesCodeCreation](
 	[CopyFromSalesCodeDescriptionShort] [nvarchar](15) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[NewSalesCodeDescriptionShort] [nvarchar](15) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,

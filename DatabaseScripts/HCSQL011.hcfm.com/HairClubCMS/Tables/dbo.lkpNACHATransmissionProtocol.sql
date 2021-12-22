@@ -1,9 +1,5 @@
 /* CreateDate: 09/26/2016 08:09:20.937 , ModifyDate: 09/26/2016 08:09:20.993 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpNACHATransmissionProtocol](
 	[NACHATransmissionProtocolID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
 	[NACHATransmissionProtocolSortOrder] [int] NOT NULL,

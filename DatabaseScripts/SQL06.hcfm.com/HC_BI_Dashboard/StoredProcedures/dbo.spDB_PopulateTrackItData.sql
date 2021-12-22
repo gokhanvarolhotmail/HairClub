@@ -1,9 +1,5 @@
 /* CreateDate: 11/12/2019 09:41:16.173 , ModifyDate: 04/30/2020 11:16:20.467 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				spDB_PopulateTrackItData
 DESTINATION SERVER:		SQL06

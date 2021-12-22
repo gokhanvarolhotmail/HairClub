@@ -1,9 +1,5 @@
 /* CreateDate: 10/07/2016 14:33:10.637 , ModifyDate: 10/07/2016 14:33:10.637 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				spSVC_CommissionTypeID_43_Step07_CloseCommission
 DESTINATION SERVER:		SQL06

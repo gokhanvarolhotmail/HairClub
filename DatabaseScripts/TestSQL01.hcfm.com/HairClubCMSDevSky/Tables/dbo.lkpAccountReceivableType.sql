@@ -1,9 +1,5 @@
 /* CreateDate: 05/14/2012 17:33:38.780 , ModifyDate: 12/07/2021 16:20:15.840 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpAccountReceivableType](
 	[AccountReceivableTypeID] [int] NOT NULL,
 	[AccountReceivableTypeSortOrder] [int] NOT NULL,

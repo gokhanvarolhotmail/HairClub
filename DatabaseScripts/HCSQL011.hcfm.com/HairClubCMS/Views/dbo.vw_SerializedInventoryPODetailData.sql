@@ -1,9 +1,5 @@
 /* CreateDate: 09/10/2018 11:04:18.207 , ModifyDate: 09/10/2018 11:10:42.297 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE VIEW [dbo].vw_SerializedInventoryPODetailData
 AS
 

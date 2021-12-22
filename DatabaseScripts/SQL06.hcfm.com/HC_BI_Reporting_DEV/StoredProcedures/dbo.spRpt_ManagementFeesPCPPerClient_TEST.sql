@@ -1,9 +1,5 @@
 /* CreateDate: 04/14/2016 16:13:55.647 , ModifyDate: 04/15/2016 11:28:51.630 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				spRpt_ManagementFeesPCPPerClient_TEST
 DESTINATION SERVER:		SQL06

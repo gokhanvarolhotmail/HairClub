@@ -1,9 +1,5 @@
 /* CreateDate: 09/12/2007 09:21:41.233 , ModifyDate: 08/08/2017 11:39:47.327 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE PROCEDURE [dbo].[spsvc_import_existinglead]
 (
 @fileid				INT,

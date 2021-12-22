@@ -1,9 +1,5 @@
 /* CreateDate: 12/16/2019 08:39:18.437 , ModifyDate: 12/16/2019 08:39:18.437 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /**************************************************************************************************************
 PROCEDURE:                  mtnUpdateClientReferralRequirementsMetDate
 

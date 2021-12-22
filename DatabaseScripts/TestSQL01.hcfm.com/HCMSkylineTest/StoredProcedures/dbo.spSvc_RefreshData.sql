@@ -1,9 +1,5 @@
 /* CreateDate: 07/08/2015 13:41:49.197 , ModifyDate: 07/08/2015 13:54:53.210 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:
 DESTINATION SERVER:		HCTESTCMS

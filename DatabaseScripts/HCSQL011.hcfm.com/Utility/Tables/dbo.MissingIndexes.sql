@@ -1,9 +1,5 @@
 /* CreateDate: 07/28/2014 13:01:16.623 , ModifyDate: 07/28/2014 13:01:16.623 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[MissingIndexes](
 	[RunTime] [datetime] NOT NULL,
 	[index_group_handle] [int] NOT NULL,

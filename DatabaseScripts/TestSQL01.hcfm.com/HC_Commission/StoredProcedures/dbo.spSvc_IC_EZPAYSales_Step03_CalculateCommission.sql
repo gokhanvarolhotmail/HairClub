@@ -1,9 +1,5 @@
 /* CreateDate: 08/10/2019 08:19:50.923 , ModifyDate: 08/12/2019 16:00:09.223 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				spSvc_IC_EZPAYSales_Step03_CalculateCommission
 DESTINATION SERVER:		SQL06

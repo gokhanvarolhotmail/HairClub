@@ -1,9 +1,5 @@
 /* CreateDate: 10/17/2007 08:55:08.040 , ModifyDate: 09/10/2019 22:45:14.680 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[hcmtbl_email_log](
 	[LogId] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
 	[RecordID] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,

@@ -1,9 +1,5 @@
 /* CreateDate: 10/03/2019 23:03:43.130 , ModifyDate: 10/03/2019 23:03:43.130 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE FUNCTION [bief_dds].[fn_GetDatabaseVersion] ()
 -----------------------------------------------------------------------
 -- [fn_GetDatabaseVersion] retrieves the current database version

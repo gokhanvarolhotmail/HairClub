@@ -1,9 +1,5 @@
 /* CreateDate: 09/04/2014 08:59:40.810 , ModifyDate: 10/04/2017 13:34:04.200 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*===============================================================================================
 -- Procedure Name:			spRpt_FranchiseActiveDirectoryEmployeeList
 -- Procedure Description:	Returns a query resultset from the [Clients] table.

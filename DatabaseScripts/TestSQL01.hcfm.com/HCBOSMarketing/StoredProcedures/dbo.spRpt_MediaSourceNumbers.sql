@@ -1,9 +1,5 @@
 /* CreateDate: 08/04/2008 10:37:39.210 , ModifyDate: 01/25/2010 08:13:27.323 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*===============================================================================================
 -- Procedure Name:			spRpt_MediaSourceNumbers
 -- Procedure Description:

@@ -1,9 +1,5 @@
 /* CreateDate: 02/18/2013 07:43:35.710 , ModifyDate: 03/26/2018 10:54:24.663 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				rptFutureAppointments
 DESTINATION SERVER:		SQL01

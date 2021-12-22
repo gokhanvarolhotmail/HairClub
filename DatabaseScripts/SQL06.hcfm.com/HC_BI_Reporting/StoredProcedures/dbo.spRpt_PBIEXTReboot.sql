@@ -1,9 +1,5 @@
 /* CreateDate: 01/22/2019 16:34:50.693 , ModifyDate: 01/22/2019 16:34:50.693 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				spRpt_PBIEXTReboot
 DESTINATION SERVER:		SQL06

@@ -1,9 +1,5 @@
 /* CreateDate: 05/23/2016 15:37:22.273 , ModifyDate: 05/23/2016 15:37:22.273 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				mtnUpdateHairSystemOrderStatusBySSIS
 DESTINATION SERVER:		SQL01

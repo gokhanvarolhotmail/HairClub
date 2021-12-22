@@ -1,9 +1,5 @@
 /* CreateDate: 09/19/2018 14:13:17.267 , ModifyDate: 09/20/2018 13:13:26.807 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 VIEW:					[vw_BudgetNBSales]
 DESTINATION SERVER:		SQL06

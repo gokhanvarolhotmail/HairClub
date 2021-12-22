@@ -1,9 +1,5 @@
 /* CreateDate: 03/22/2016 11:02:14.543 , ModifyDate: 09/10/2019 22:34:21.403 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[cstd_phone_dnc_wireless](
 	[phone_dnc_wireless_id] [uniqueidentifier] NOT NULL,
 	[phonenumber] [nvarchar](30) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,

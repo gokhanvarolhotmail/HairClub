@@ -1,9 +1,5 @@
 /* CreateDate: 10/10/2007 16:26:20.847 , ModifyDate: 01/25/2010 08:11:31.790 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:		spsvc_UpdateDNC_OUTAfterScrubbed

@@ -1,9 +1,5 @@
 /* CreateDate: 05/14/2012 17:33:38.557 , ModifyDate: 12/03/2021 10:24:48.520 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[datPayCycleTransaction](
 	[PayCycleTransactionGUID] [uniqueidentifier] NOT NULL,
 	[PayCycleTransactionTypeID] [int] NOT NULL,

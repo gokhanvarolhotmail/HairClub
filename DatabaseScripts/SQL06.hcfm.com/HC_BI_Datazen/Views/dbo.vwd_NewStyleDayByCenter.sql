@@ -1,9 +1,5 @@
 /* CreateDate: 05/29/2019 15:49:26.487 , ModifyDate: 05/30/2019 09:03:54.990 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 VIEW:					vwd_NewStyleDayByCenter
 DESTINATION SERVER:		SQL06

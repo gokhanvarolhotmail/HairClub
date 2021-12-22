@@ -1,9 +1,5 @@
 /* CreateDate: 10/15/2015 12:52:49.577 , ModifyDate: 11/13/2015 13:29:37.057 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				[spRpt_Contest2015HolidayRetail]
 DESTINATION SERVER:		SQL06

@@ -1,9 +1,5 @@
 /* CreateDate: 01/18/2005 09:34:15.810 , ModifyDate: 06/21/2012 10:00:52.050 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[onca_milestone_status](
 	[milestone_status_code] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[description] [nchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,

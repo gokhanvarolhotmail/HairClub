@@ -1,9 +1,5 @@
 /* CreateDate: 04/14/2014 08:01:47.273 , ModifyDate: 04/12/2020 22:03:51.267 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /**********************************************************************************************************************************************
 PROCEDURE:				mtnTransferClient
 DESTINATION SERVER:		SQL01

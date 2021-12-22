@@ -1,9 +1,5 @@
 /* CreateDate: 08/27/2008 12:16:21.590 , ModifyDate: 12/07/2021 16:20:16.270 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpRelaxerStrength](
 	[RelaxerStrengthID] [int] NOT NULL,
 	[RelaxerStrengthSortOrder] [int] NOT NULL,

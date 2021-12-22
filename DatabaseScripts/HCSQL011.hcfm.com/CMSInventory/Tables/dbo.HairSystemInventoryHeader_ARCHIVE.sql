@@ -1,9 +1,5 @@
 /* CreateDate: 04/22/2011 14:35:47.717 , ModifyDate: 04/22/2011 14:35:47.717 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[HairSystemInventoryHeader_ARCHIVE](
 	[InventoryID] [uniqueidentifier] NULL,
 	[CenterID] [int] NULL,

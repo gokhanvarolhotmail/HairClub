@@ -1,9 +1,5 @@
 /* CreateDate: 04/10/2012 11:09:18.773 , ModifyDate: 09/16/2019 09:25:18.163 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [bi_ent_dds].[FactAccounting](
 	[CenterID] [int] NOT NULL,
 	[DateKey] [int] NOT NULL,

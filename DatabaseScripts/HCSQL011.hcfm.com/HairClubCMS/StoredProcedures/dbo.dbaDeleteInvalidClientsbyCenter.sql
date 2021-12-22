@@ -1,9 +1,5 @@
 /* CreateDate: 01/04/2013 16:54:28.077 , ModifyDate: 02/27/2017 09:49:16.007 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 		PROCEDURE:				dbaDeleteInvalidClientsbyCenter

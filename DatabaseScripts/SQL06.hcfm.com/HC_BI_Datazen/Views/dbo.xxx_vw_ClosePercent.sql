@@ -1,9 +1,5 @@
 /* CreateDate: 07/22/2015 15:38:57.243 , ModifyDate: 08/07/2015 11:30:16.043 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 VIEW:					vw_ClosePercent
 DESTINATION SERVER:		SQL06

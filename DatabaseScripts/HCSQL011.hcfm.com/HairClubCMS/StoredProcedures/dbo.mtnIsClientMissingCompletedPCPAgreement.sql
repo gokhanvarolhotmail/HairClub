@@ -1,9 +1,5 @@
 /* CreateDate: 03/23/2020 07:35:37.043 , ModifyDate: 03/23/2020 07:35:37.043 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				mtnIsClientMissingCompletedPCPAgreement

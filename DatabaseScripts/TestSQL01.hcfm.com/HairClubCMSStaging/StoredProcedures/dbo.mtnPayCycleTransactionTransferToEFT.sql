@@ -1,9 +1,5 @@
 /* CreateDate: 05/14/2012 17:35:10.427 , ModifyDate: 02/27/2017 09:49:22.587 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 		PROCEDURE:				mtnPayCycleTransactionTransferToEFT

@@ -1,9 +1,5 @@
 /* CreateDate: 05/14/2012 17:41:17.427 , ModifyDate: 02/04/2021 08:30:09.040 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*
 ==============================================================================
 PROCEDURE:                  mtnNightlyMaintenance

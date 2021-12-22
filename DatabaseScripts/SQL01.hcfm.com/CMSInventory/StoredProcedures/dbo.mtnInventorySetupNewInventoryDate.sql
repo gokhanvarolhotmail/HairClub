@@ -1,9 +1,5 @@
 /* CreateDate: 08/30/2011 16:19:38.690 , ModifyDate: 12/28/2011 17:41:39.143 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 -- Stored Procedure
 
 /***********************************************************************

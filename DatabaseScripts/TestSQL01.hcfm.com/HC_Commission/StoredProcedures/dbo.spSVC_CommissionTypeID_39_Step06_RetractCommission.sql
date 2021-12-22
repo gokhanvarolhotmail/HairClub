@@ -1,9 +1,5 @@
 /* CreateDate: 01/28/2015 11:05:10.463 , ModifyDate: 01/28/2015 11:05:10.463 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				spSVC_CommissionTypeID_39_Step06_RetractCommission
 DESTINATION SERVER:		SQL06

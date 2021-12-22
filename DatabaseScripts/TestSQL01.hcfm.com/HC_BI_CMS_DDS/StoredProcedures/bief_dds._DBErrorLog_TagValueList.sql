@@ -1,9 +1,5 @@
 /* CreateDate: 05/03/2010 12:17:25.487 , ModifyDate: 09/16/2019 09:33:49.883 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE PROCEDURE [bief_dds].[_DBErrorLog_TagValueList] (
       @List    varchar(1000) OUTPUT
     , @Tag1    varchar(64)  = NULL

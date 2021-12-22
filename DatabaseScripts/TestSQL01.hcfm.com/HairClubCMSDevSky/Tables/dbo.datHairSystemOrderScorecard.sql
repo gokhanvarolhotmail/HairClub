@@ -1,9 +1,5 @@
 /* CreateDate: 11/04/2019 08:18:20.553 , ModifyDate: 12/07/2021 16:20:16.053 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[datHairSystemOrderScorecard](
 	[HairSystemOrderScorecardID] [int] IDENTITY(1,1) NOT NULL,
 	[HairSystemOrderGUID] [uniqueidentifier] NOT NULL,

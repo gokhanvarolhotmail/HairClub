@@ -1,9 +1,5 @@
 /* CreateDate: 11/04/2015 13:41:54.497 , ModifyDate: 11/04/2015 13:41:54.497 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 -- =============================================================================
 -- Create date: 14 November 2011
 -- Description:	Determines if the provided character is a whitespace character.

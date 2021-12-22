@@ -1,9 +1,5 @@
 /* CreateDate: 04/22/2020 14:30:09.320 , ModifyDate: 04/22/2020 14:30:09.320 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				extHairClubCMSGetDeferredBalanceByClient
 DESTINATION SERVER:		SQL06

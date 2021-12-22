@@ -1,9 +1,5 @@
 /* CreateDate: 12/31/2010 13:21:02.413 , ModifyDate: 07/17/2021 04:15:51.793 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[datAccountingExportBatchDetail](
 	[AccountingExportBatchDetailGUID] [uniqueidentifier] NOT NULL,
 	[AccountingExportBatchGUID] [uniqueidentifier] NOT NULL,

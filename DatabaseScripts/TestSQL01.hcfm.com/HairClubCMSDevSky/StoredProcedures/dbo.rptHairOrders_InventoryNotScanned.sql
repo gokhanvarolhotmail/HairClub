@@ -1,9 +1,5 @@
 /* CreateDate: 01/14/2016 15:35:21.940 , ModifyDate: 02/18/2020 11:01:57.397 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				rptHairOrders_InventoryNotScanned
 DESTINATION SERVER:		SQL06

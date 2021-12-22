@@ -1,9 +1,5 @@
 /* CreateDate: 06/28/2017 11:42:11.590 , ModifyDate: 06/28/2017 11:42:12.857 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [bi_cms_dds].[DimClientPhone](
 	[ClientPhoneKey] [int] IDENTITY(1,1) NOT NULL,
 	[ClientPhoneSSID] [int] NOT NULL,

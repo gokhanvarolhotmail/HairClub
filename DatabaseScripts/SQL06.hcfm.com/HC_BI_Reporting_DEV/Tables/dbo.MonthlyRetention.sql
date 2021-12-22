@@ -1,9 +1,5 @@
 /* CreateDate: 07/14/2016 17:17:01.633 , ModifyDate: 07/14/2016 17:17:01.633 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[MonthlyRetention](
 	[MonRetentionSSID] [int] IDENTITY(1,1) NOT NULL,
 	[CenterSSID] [int] NULL,

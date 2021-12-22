@@ -1,9 +1,5 @@
 /* CreateDate: 09/03/2021 09:37:07.333 , ModifyDate: 09/03/2021 09:37:07.333 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 create procedure [dbo].[sp_MSdel_bi_mktg_ddsDimCallDataBP]
 		@pkc1 int
 as

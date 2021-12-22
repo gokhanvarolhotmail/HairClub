@@ -1,9 +1,5 @@
 /* CreateDate: 02/18/2013 07:00:53.980 , ModifyDate: 12/07/2021 16:20:16.037 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpCenterBusinessType](
 	[CenterBusinessTypeID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
 	[CenterBusinessTypeSortOrder] [int] NOT NULL,

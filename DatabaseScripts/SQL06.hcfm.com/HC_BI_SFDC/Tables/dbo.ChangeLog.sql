@@ -1,9 +1,5 @@
 /* CreateDate: 10/04/2019 14:09:30.260 , ModifyDate: 10/04/2019 14:09:31.137 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[ChangeLog](
 	[ChangeLogID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
 	[SessionID] [uniqueidentifier] NULL,

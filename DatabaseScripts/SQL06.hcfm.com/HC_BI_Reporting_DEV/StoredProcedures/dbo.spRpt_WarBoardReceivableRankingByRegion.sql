@@ -1,9 +1,5 @@
 /* CreateDate: 09/17/2012 10:55:46.410 , ModifyDate: 03/15/2018 16:00:40.270 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*==============================================================================
 
 PROCEDURE:				[spRpt_WarBoardReceivableRankingByRegion]

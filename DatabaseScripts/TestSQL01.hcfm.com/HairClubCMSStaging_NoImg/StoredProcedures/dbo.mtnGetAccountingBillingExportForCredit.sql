@@ -1,9 +1,5 @@
 /* CreateDate: 06/06/2011 21:48:20.177 , ModifyDate: 06/26/2018 06:17:54.183 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*
 ==============================================================================
 PROCEDURE:				mtnGetAccountingBillingExportForCredit

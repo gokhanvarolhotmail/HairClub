@@ -1,9 +1,5 @@
 /* CreateDate: 08/03/2015 18:32:14.807 , ModifyDate: 08/03/2015 18:32:15.573 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpCompletedVisitType](
 	[CompletedVisitTypeID] [int] IDENTITY(1,1) NOT NULL,
 	[CompletedVisitTypeSortOrder] [int] NOT NULL,

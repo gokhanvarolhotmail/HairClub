@@ -1,9 +1,5 @@
 /* CreateDate: 05/01/2019 13:20:46.760 , ModifyDate: 08/20/2019 16:39:38.017 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				[spDB_PopulatePIPCount]
 DESTINATION SERVER:		SQL06

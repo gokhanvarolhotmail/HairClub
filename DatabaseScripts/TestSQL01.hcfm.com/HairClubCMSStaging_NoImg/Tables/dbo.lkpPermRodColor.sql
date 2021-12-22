@@ -1,9 +1,5 @@
 /* CreateDate: 08/27/2008 12:14:26.003 , ModifyDate: 12/03/2021 10:24:48.707 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpPermRodColor](
 	[PermRodColorID] [int] NOT NULL,
 	[PermRodColorSortOrder] [int] NOT NULL,

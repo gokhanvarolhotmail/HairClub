@@ -1,9 +1,5 @@
 /* CreateDate: 12/06/2012 15:23:24.957 , ModifyDate: 02/27/2020 23:47:07.270 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[DimMembershipRatesByCenter](
 	[MembershipRateKey] [int] IDENTITY(1,1) NOT NULL,
 	[CenterKey] [int] NOT NULL,

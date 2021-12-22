@@ -1,9 +1,5 @@
 /* CreateDate: 09/03/2021 09:37:08.597 , ModifyDate: 09/03/2021 09:37:08.597 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /****************************************************************************************************
 CHANGE HISTORY:
 11/16/2018 - RH - Added LeadCreationDateKey from FactLead

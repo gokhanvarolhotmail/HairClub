@@ -1,9 +1,5 @@
 /* CreateDate: 08/10/2006 13:53:10.467 , ModifyDate: 01/25/2010 08:11:31.823 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 -- =============================================
 -- INSERTS A CLOSING RECORD FROM THE WEB INTERFACE
 -- =============================================

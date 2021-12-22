@@ -1,9 +1,5 @@
 /* CreateDate: 08/29/2008 09:43:41.043 , ModifyDate: 12/03/2021 10:24:48.573 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpResourceType](
 	[ResourceTypeID] [int] NOT NULL,
 	[ResourceTypeSortOrder] [int] NOT NULL,

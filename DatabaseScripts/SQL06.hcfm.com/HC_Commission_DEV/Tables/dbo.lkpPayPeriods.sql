@@ -1,9 +1,5 @@
 /* CreateDate: 10/10/2012 14:50:39.087 , ModifyDate: 06/18/2014 01:39:27.933 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpPayPeriods](
 	[PayPeriodKey] [int] NOT NULL,
 	[StartDate] [datetime] NULL,

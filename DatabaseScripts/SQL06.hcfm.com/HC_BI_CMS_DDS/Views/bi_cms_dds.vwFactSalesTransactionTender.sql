@@ -1,9 +1,5 @@
 /* CreateDate: 10/03/2019 23:03:44.217 , ModifyDate: 01/31/2021 14:43:48.693 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE VIEW [bi_cms_dds].[vwFactSalesTransactionTender] AS
 -------------------------------------------------------------------------
 -- [vwFactSalesTransactionTender] is used to retrieve a

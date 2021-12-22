@@ -1,9 +1,5 @@
 /* CreateDate: 01/06/2014 13:37:37.840 , ModifyDate: 01/06/2014 13:37:37.840 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE VIEW [dbo].[vw_BarthCenters]
 AS
 

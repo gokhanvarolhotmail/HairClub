@@ -1,9 +1,5 @@
 /* CreateDate: 01/19/2020 21:54:27.407 , ModifyDate: 01/19/2020 21:54:27.407 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				selAvailableAppointmentsForCenterAndDateRangeAndScheduleType

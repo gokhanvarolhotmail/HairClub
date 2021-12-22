@@ -1,9 +1,5 @@
 /* CreateDate: 11/05/2012 11:11:22.167 , ModifyDate: 11/09/2012 15:24:30.763 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*==============================================================================
 PROCEDURE:				spRpt_HairOrdersInventoryCost
 VERSION:				v1.0

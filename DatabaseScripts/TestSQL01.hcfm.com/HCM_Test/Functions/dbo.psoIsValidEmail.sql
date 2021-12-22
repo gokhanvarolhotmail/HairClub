@@ -1,9 +1,5 @@
 /* CreateDate: 06/11/2015 09:29:34.540 , ModifyDate: 07/16/2015 10:00:33.427 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 -- =============================================
 -- Author:		MJW Workwise, LLC
 -- Create date: 2015-06-04

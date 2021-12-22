@@ -1,9 +1,5 @@
 /* CreateDate: 08/10/2006 13:53:11.687 , ModifyDate: 01/25/2010 08:11:31.730 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 -- =============================================
 -- SELECTS ALL CURRENT CLOSINGS FOR THE WEB INETRFACE
 

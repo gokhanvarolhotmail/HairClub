@@ -1,9 +1,5 @@
 /* CreateDate: 06/08/2013 20:31:14.977 , ModifyDate: 06/08/2013 20:31:14.977 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[FactDeferredRevenueTransactions_06082013](
 	[DeferredRevenueHeaderKey] [int] NOT NULL,
 	[DeferredRevenueTransactionsKey] [int] IDENTITY(1,1) NOT NULL,

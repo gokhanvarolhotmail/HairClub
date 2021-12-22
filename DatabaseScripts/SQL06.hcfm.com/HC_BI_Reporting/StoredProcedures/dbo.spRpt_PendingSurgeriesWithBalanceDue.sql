@@ -1,9 +1,5 @@
 /* CreateDate: 06/29/2011 12:12:16.030 , ModifyDate: 06/19/2019 16:38:28.457 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*===============================================================================================
 Procedure Name:			spRpt_PendingSurgeriesWithBalanceDue
 Procedure Description:

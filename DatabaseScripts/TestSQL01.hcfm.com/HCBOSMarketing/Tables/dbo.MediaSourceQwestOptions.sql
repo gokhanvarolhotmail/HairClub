@@ -1,9 +1,5 @@
 /* CreateDate: 06/13/2008 11:36:25.657 , ModifyDate: 06/14/2009 09:00:16.220 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[MediaSourceQwestOptions](
 	[QwestID] [smallint] IDENTITY(1,1) NOT NULL,
 	[Qwest] [char](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,

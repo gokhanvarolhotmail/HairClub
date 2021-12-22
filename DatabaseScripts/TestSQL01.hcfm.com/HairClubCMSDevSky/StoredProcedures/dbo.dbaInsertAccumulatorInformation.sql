@@ -1,9 +1,5 @@
 /* CreateDate: 02/04/2013 17:26:18.817 , ModifyDate: 10/03/2014 09:53:36.477 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				dbaInsertAccumulatorInformation

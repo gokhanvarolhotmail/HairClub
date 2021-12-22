@@ -1,9 +1,5 @@
 /* CreateDate: 04/21/2014 11:32:54.987 , ModifyDate: 08/20/2019 17:39:31.563 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /****** Script Changes***************************************************************
 CHANGE HISTORY:
 01/08/2016 - RH - Changed FactActivityResult to vwFactActivityResult for Consultations

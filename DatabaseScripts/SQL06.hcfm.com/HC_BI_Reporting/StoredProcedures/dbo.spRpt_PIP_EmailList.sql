@@ -1,9 +1,5 @@
 /* CreateDate: 08/08/2019 10:19:15.057 , ModifyDate: 09/03/2020 11:18:16.963 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				[spRpt_PIP_EmailList]
 DESTINATION SERVER:		SQL06

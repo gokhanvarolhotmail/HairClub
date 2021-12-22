@@ -1,9 +1,5 @@
 /* CreateDate: 10/30/2020 17:09:16.150 , ModifyDate: 10/30/2020 17:09:16.150 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				selOnHandCenterInventory

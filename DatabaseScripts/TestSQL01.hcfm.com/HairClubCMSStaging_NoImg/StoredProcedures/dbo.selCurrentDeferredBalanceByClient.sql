@@ -1,9 +1,5 @@
 /* CreateDate: 04/08/2014 10:16:20.580 , ModifyDate: 04/28/2020 16:27:36.750 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				selCurrentDeferredBalanceByClient
 DESTINATION SERVER:		SQL01

@@ -1,9 +1,5 @@
 /* CreateDate: 10/04/2019 14:09:30.270 , ModifyDate: 10/04/2019 14:09:30.270 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 create procedure [sp_MSupd_dboChangeLog]
 		@c1 int = NULL,
 		@c2 uniqueidentifier = NULL,

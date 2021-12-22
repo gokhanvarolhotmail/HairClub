@@ -1,9 +1,5 @@
 /* CreateDate: 01/18/2005 09:34:19.857 , ModifyDate: 06/21/2012 10:04:33.463 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[oncs_transport_ftp](
 	[transport_ftp_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[transport_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,

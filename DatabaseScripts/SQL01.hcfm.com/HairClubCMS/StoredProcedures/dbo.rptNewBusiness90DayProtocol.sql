@@ -1,9 +1,5 @@
 /* CreateDate: 11/19/2012 16:11:59.980 , ModifyDate: 02/27/2017 09:49:28.973 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*===============================================================================================
 -- Procedure Name:			rptNewBusiness90DayProtocol
 -- Procedure Description:

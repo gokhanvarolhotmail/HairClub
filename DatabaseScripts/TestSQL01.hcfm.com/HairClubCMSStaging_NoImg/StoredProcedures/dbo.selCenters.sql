@@ -1,9 +1,5 @@
 /* CreateDate: 02/04/2014 15:11:01.603 , ModifyDate: 01/17/2018 13:41:40.610 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*===============================================================================================
  Procedure Name:            selCenters
  Procedure Description:

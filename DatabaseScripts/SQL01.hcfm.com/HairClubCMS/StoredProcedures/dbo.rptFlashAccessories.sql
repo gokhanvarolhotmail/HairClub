@@ -1,9 +1,5 @@
 /* CreateDate: 11/20/2019 09:38:44.360 , ModifyDate: 11/20/2019 11:55:32.537 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				[rptFlashAccessories]
 DESTINATION SERVER:		SQL01

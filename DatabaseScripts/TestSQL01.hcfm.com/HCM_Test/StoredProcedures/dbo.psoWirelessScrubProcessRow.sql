@@ -1,9 +1,5 @@
 /* CreateDate: 09/30/2013 10:50:10.920 , ModifyDate: 09/30/2013 10:50:10.920 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE PROCEDURE [dbo].[psoWirelessScrubProcessRow]
 	@WirelessScrubHistoryId	NCHAR(10),
 	@FullPhoneNumber		NCHAR(10),

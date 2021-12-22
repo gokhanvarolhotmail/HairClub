@@ -1,9 +1,5 @@
 /* CreateDate: 02/14/2009 12:20:28.570 , ModifyDate: 12/07/2021 16:20:15.913 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[cfgAccumulator](
 	[AccumulatorID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
 	[AccumulatorSortOrder] [int] NULL,

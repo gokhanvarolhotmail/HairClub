@@ -1,9 +1,5 @@
 /* CreateDate: 10/10/2016 15:34:35.910 , ModifyDate: 10/10/2016 15:34:36.093 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[hcmtbl_fulfillments_all](
 	[recordid] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[center number] [int] NOT NULL,

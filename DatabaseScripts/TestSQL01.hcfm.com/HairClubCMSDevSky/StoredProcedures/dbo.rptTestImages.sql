@@ -1,9 +1,5 @@
 /* CreateDate: 09/04/2014 12:24:03.657 , ModifyDate: 09/05/2014 11:06:48.500 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*===============================================================================================
  Procedure Name:				[rptTestImages]
  Procedure Description:			This stored procedure provides the image to test.

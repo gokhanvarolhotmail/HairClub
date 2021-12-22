@@ -1,9 +1,5 @@
 /* CreateDate: 02/09/2007 10:46:30.783 , ModifyDate: 08/11/2014 00:56:18.813 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[cstd_company_schedule_by_date_detail](
 	[company_schedule_by_date_detail_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[company_schedule_by_date_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,

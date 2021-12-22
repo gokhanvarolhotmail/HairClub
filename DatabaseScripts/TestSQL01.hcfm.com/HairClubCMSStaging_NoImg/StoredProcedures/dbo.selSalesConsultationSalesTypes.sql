@@ -1,9 +1,5 @@
 /* CreateDate: 09/23/2019 12:25:13.150 , ModifyDate: 06/15/2021 11:55:19.657 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*
 ==============================================================================
 PROCEDURE:				selSalesConsultationSalesTypes

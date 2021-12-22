@@ -1,9 +1,5 @@
 /* CreateDate: 02/21/2018 19:30:23.833 , ModifyDate: 05/04/2018 08:28:07.793 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE PROCEDURE [dbo].[DatabaseIntegrityCheck]
 
 @Databases nvarchar(max) = NULL,

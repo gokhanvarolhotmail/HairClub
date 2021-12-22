@@ -1,9 +1,5 @@
 /* CreateDate: 05/09/2014 12:41:39.240 , ModifyDate: 06/30/2014 07:11:45.937 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				selFactoryCSVExportForPO
 DESTINATION SERVER:		SQL01

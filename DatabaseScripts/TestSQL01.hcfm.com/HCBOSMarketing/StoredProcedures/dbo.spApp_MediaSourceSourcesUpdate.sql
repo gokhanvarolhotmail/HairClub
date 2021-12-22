@@ -1,9 +1,5 @@
 /* CreateDate: 06/04/2008 12:04:45.230 , ModifyDate: 01/25/2010 08:13:27.463 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE PROCEDURE [dbo].[spApp_MediaSourceSourcesUpdate] (
 	@SourceID			int
 ,	@SourceName			varchar(100)

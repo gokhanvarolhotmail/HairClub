@@ -1,9 +1,5 @@
 /* CreateDate: 05/12/2009 15:15:54.367 , ModifyDate: 01/25/2010 08:13:27.463 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:	spApp_GetMediaSourceSourceNumberAudit

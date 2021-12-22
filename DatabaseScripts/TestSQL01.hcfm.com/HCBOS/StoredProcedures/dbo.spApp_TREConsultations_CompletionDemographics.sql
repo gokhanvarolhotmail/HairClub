@@ -1,9 +1,5 @@
 /* CreateDate: 09/22/2008 15:03:18.047 , ModifyDate: 05/24/2012 13:53:07.487 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*===============================================================================================
 -- Procedure Name:			spApp_TREConsultations_CompletionDemographics
 -- Procedure Description:

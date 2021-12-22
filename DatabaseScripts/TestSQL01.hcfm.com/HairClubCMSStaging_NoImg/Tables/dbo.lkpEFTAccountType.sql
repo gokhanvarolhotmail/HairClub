@@ -1,9 +1,5 @@
 /* CreateDate: 08/27/2008 11:40:01.593 , ModifyDate: 12/03/2021 10:24:48.670 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpEFTAccountType](
 	[EFTAccountTypeID] [int] NOT NULL,
 	[EFTAccountTypeSortOrder] [int] NOT NULL,

@@ -1,9 +1,5 @@
 /* CreateDate: 06/17/2014 17:14:23.507 , ModifyDate: 12/18/2015 11:26:57.863 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*===============================================================================================
  Procedure Name:            [rptNotesClient]
  Procedure Description:

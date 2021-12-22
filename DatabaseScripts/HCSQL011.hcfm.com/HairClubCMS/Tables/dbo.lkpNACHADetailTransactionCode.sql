@@ -1,9 +1,5 @@
 /* CreateDate: 03/24/2015 07:43:18.577 , ModifyDate: 03/24/2015 07:43:18.577 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpNACHADetailTransactionCode](
 	[NACHADetailTransactionCodeID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
 	[NACHADetailTransactionCodeSortOrder] [int] NOT NULL,

@@ -1,9 +1,5 @@
 /* CreateDate: 04/11/2016 14:31:45.823 , ModifyDate: 11/05/2018 15:54:22.643 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*===============================================================================================
 PROCEDURE:				[rptPriorityStatusChangeAnalysisDetail]
 VERSION:				v1.0

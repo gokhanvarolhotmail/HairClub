@@ -1,9 +1,5 @@
 /* CreateDate: 10/14/2014 11:30:47.223 , ModifyDate: 08/15/2016 23:35:38.220 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*===============================================================================================
  Procedure Name:				rptTVComparativeCalculations_2
  Procedure Description:			This stored procedure provides the data for the Density, Width and HMI grids in the Comparative Analysis report.

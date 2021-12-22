@@ -1,9 +1,5 @@
 /* CreateDate: 10/05/2015 17:04:38.517 , ModifyDate: 12/05/2017 15:23:09.040 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*===============================================================================================
  Procedure Name:            rptTVClientHistory
  Procedure Description:     This stored procedure provides client history of TrichoView appointments

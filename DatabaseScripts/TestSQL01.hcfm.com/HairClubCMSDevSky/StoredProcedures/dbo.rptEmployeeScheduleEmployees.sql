@@ -1,9 +1,5 @@
 /* CreateDate: 03/11/2009 12:18:42.837 , ModifyDate: 02/27/2017 09:49:26.960 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				rptEmployeeScheduleEmployees

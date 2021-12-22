@@ -1,10 +1,6 @@
 /* CreateDate: 01/18/2005 09:34:08.373 , ModifyDate: 10/23/2017 12:35:40.107 */
 /* ***HasTriggers*** TriggerCount: 2 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[oncd_company](
 	[company_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[company_name_1] [nchar](100) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
@@ -131,10 +127,6 @@ REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_company] CHECK CONSTRAINT [user_company_507]
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TRIGGER [dbo].[pso_oncd_company_after_delete]
    ON  [dbo].[oncd_company]
    AFTER DELETE
@@ -149,10 +141,6 @@ AS
 	INNER JOIN cstd_contact_flat on cstd_contact_flat.contact_id = oncd_contact_company.contact_id
 GO
 ALTER TABLE [dbo].[oncd_company] ENABLE TRIGGER [pso_oncd_company_after_delete]
-GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
 GO
 CREATE TRIGGER [dbo].[pso_oncd_company_after_update]
    ON  [dbo].[oncd_company]

@@ -1,9 +1,5 @@
 /* CreateDate: 01/30/2009 17:22:13.640 , ModifyDate: 01/30/2009 17:22:13.700 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 -- =============================================
 -- Author:		Alex Pasieka
 -- Create date: 1/28/2009

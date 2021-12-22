@@ -1,9 +1,5 @@
 /* CreateDate: 05/14/2012 17:33:38.163 , ModifyDate: 12/03/2021 10:24:48.733 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[datNotification](
 	[NotificationID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
 	[NotificationDate] [datetime] NOT NULL,

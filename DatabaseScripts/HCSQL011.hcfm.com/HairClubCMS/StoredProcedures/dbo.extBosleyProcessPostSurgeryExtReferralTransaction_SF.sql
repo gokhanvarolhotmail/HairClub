@@ -1,9 +1,5 @@
 /* CreateDate: 12/11/2017 07:03:39.963 , ModifyDate: 11/25/2019 14:38:26.650 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				extBosleyProcessPostSurgeryExtReferralTransaction_SF

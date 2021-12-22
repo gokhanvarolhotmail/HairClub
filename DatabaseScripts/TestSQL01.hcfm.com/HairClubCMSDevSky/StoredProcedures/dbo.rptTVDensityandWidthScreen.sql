@@ -1,9 +1,5 @@
 /* CreateDate: 08/05/2014 09:18:53.393 , ModifyDate: 08/15/2016 23:41:21.380 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*===============================================================================================
  Procedure Name:				rptTVDensityandWidthScreen
  Procedure Description:			This stored procedure provides the data for the Density and Width grids.

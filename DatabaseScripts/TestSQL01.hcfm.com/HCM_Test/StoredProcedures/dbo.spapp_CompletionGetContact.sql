@@ -1,9 +1,5 @@
 /* CreateDate: 09/04/2007 09:40:45.573 , ModifyDate: 05/14/2013 12:14:22.733 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*==============================================================================
 
 PROCEDURE:				spapp_CompletionGetContact

@@ -1,9 +1,5 @@
 /* CreateDate: 12/27/2019 12:36:56.227 , ModifyDate: 12/27/2019 12:36:56.227 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 create procedure [dbo].[sp_MSupd_dboZipCode__c]
 		@c1 nvarchar(18) = NULL,
 		@c2 nvarchar(255) = NULL,

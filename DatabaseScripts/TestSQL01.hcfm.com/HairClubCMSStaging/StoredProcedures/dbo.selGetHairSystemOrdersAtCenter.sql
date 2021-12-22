@@ -1,9 +1,5 @@
 /* CreateDate: 12/07/2020 07:53:14.007 , ModifyDate: 03/01/2021 17:56:29.277 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE PROCEDURE selGetHairSystemOrdersAtCenter
 	-- Add the parameters for the stored procedure here
 	@centerId int = null, --Allow null centers

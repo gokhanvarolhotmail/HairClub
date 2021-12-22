@@ -1,9 +1,5 @@
 /* CreateDate: 07/30/2012 09:01:56.660 , ModifyDate: 02/27/2017 09:49:18.513 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				mtnCreateEmployeeActiveDirectoryGroupJoin

@@ -1,9 +1,5 @@
 /* CreateDate: 11/06/2009 04:31:46.470 , ModifyDate: 02/27/2017 09:49:22.987 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				mtnSalesOrderReversal

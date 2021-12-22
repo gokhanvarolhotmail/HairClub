@@ -1,9 +1,5 @@
 /* CreateDate: 10/01/2012 15:54:35.890 , ModifyDate: 09/16/2019 09:33:49.883 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE VIEW [bi_cms_dds].[vwFactSalesFirstSurgeryInfo]
 AS
 -------------------------------------------------------------------------

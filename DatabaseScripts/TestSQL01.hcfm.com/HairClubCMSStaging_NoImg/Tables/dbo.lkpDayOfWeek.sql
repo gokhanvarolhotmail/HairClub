@@ -1,9 +1,5 @@
 /* CreateDate: 03/18/2014 08:05:08.863 , ModifyDate: 12/03/2021 10:24:48.640 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpDayOfWeek](
 	[DayOfWeekID] [int] NOT NULL,
 	[DayOfWeekSortOrder] [int] NOT NULL,

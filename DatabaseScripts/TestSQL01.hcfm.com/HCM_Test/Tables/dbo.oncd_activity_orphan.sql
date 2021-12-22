@@ -1,9 +1,5 @@
 /* CreateDate: 11/01/2007 17:16:59.593 , ModifyDate: 01/25/2010 11:00:42.413 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[oncd_activity_orphan](
 	[activity_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[recur_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,

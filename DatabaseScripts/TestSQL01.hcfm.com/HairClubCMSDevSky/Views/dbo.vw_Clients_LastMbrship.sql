@@ -1,9 +1,5 @@
 /* CreateDate: 03/28/2011 11:18:39.670 , ModifyDate: 02/18/2013 19:04:02.583 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /****** Script for SelectTopNRows command from SSMS  ******/
 CREATE VIEW [dbo].[vw_Clients_LastMbrship]
 AS

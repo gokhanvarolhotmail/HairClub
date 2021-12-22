@@ -1,9 +1,5 @@
 /* CreateDate: 10/09/2012 09:03:13.417 , ModifyDate: 11/29/2018 13:49:05.963 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*===============================================================================================
 -- Procedure Name:			rptAppliedHairSystemCostDrill
 -- Procedure Description:

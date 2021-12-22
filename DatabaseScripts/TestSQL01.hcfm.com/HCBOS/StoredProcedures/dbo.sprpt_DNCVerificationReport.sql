@@ -1,9 +1,5 @@
 /* CreateDate: 11/14/2006 10:39:22.663 , ModifyDate: 01/25/2010 08:11:31.760 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:	sprpt_DNCVerificationReport	VERSION  1.0

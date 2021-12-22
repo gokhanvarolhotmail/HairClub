@@ -1,9 +1,5 @@
 /* CreateDate: 05/03/2010 12:08:47.740 , ModifyDate: 09/16/2019 09:25:18.157 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [bi_ent_dds].[DimHairLossType](
 	[HairLossTypeKey] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
 	[HairLossTypeSSID] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,

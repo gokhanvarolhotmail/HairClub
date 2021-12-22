@@ -1,10 +1,6 @@
 /* CreateDate: 10/04/2006 16:26:48.517 , ModifyDate: 11/14/2012 17:11:05.687 */
 /* ***HasTriggers*** TriggerCount: 1 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[csta_script_source](
 	[script_source_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[source_code] [nchar](20) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
@@ -29,10 +25,6 @@ ALTER TABLE [dbo].[csta_script_source]  WITH CHECK ADD  CONSTRAINT [onca_source_
 REFERENCES [dbo].[onca_source] ([source_code])
 GO
 ALTER TABLE [dbo].[csta_script_source] CHECK CONSTRAINT [onca_source_csta_script_source_770]
-GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
 GO
 -- =============================================================================
 -- Create date: 14 November 2012

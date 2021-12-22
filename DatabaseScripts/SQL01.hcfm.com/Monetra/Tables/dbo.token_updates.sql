@@ -1,9 +1,5 @@
 /* CreateDate: 09/30/2019 07:07:32.973 , ModifyDate: 10/01/2021 12:11:10.120 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[token_updates](
 	[token] [bigint] NOT NULL,
 	[user_id] [int] NULL,

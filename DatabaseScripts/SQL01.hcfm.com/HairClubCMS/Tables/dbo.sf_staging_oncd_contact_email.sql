@@ -1,9 +1,5 @@
 /* CreateDate: 10/24/2017 14:30:06.510 , ModifyDate: 10/24/2017 14:30:06.510 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[sf_staging_oncd_contact_email](
 	[cst_sfdc_email_id] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[cst_sfdc_lead_id] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,

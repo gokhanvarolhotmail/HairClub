@@ -1,9 +1,5 @@
 /* CreateDate: 04/14/2009 07:33:54.803 , ModifyDate: 02/18/2013 19:04:02.940 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE VIEW [dbo].[vwCfgCenterTaxRate]
 AS
 SELECT     ctr.CenterTaxRateID, c.CenterDescription, lkpTT.TaxTypeDescription, ctr.TaxRate, ctr.IsActiveFlag, ctr.CreateDate, ctr.CreateUser, ctr.LastUpdate,

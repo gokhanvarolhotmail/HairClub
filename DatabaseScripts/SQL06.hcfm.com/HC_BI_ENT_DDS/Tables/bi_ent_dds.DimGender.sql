@@ -1,9 +1,5 @@
 /* CreateDate: 01/08/2021 15:21:53.757 , ModifyDate: 01/08/2021 15:21:55.107 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [bi_ent_dds].[DimGender](
 	[GenderKey] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
 	[GenderSSID] [nvarchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,

@@ -1,9 +1,5 @@
 /* CreateDate: 12/31/2010 13:21:07.010 , ModifyDate: 03/05/2018 08:06:33.673 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*===============================================================================================
 -- Procedure Name:                  rptHairSystemReceiving
 -- Procedure Description:

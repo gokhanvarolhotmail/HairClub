@@ -1,9 +1,5 @@
 /* CreateDate: 09/30/2019 15:16:07.337 , ModifyDate: 10/17/2019 09:33:08.903 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				[spRPT_AppointmentMDP]
 DESTINATION SERVER:		SQL06

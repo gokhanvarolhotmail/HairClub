@@ -1,9 +1,5 @@
 /* CreateDate: 06/20/2018 09:12:51.140 , ModifyDate: 06/20/2018 16:49:40.110 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 		PROCEDURE:				rptMemberWOFutureAppointment

@@ -1,9 +1,5 @@
 /* CreateDate: 02/18/2013 07:43:35.633 , ModifyDate: 01/18/2018 15:12:42.183 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*===============================================================================================
  Procedure Name:            rptDailyStylistSchedule
  Procedure Description:

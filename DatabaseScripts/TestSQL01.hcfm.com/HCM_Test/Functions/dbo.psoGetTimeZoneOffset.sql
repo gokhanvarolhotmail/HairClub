@@ -1,9 +1,5 @@
 /* CreateDate: 01/03/2013 10:22:38.770 , ModifyDate: 01/03/2013 10:22:38.770 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 -- =============================================
 -- Create date: <Create Date, ,>
 -- Description:	<Description, ,>

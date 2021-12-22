@@ -1,9 +1,5 @@
 /* CreateDate: 04/14/2009 07:33:54.900 , ModifyDate: 02/18/2013 19:04:03.213 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE VIEW [dbo].[vwCfgSalesCodeCenter]
 AS
 SELECT     scc.SalesCodeCenterID, c.CenterDescription, sc.SalesCodeDescription, scc.PriceRetail, ctr.TaxRate, ctr2.TaxRate AS Expr1, scc.QuantityOnHand,

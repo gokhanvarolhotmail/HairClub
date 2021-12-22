@@ -1,9 +1,5 @@
 /* CreateDate: 09/26/2012 09:22:39.620 , ModifyDate: 06/18/2018 10:37:08.853 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				spsvc_IMSLeadExport_ONCV

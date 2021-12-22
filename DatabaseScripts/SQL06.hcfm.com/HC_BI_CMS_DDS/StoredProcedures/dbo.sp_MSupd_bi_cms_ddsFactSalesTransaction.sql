@@ -1,9 +1,5 @@
 /* CreateDate: 10/03/2019 23:03:42.450 , ModifyDate: 10/03/2019 23:03:42.450 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 create procedure [dbo].[sp_MSupd_bi_cms_ddsFactSalesTransaction]
 		@c1 int = NULL,
 		@c2 int = NULL,

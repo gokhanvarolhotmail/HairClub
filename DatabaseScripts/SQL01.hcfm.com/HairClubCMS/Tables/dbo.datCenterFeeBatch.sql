@@ -1,9 +1,5 @@
 /* CreateDate: 05/14/2012 17:29:16.290 , ModifyDate: 05/26/2020 10:49:45.267 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[datCenterFeeBatch](
 	[CenterFeeBatchGUID] [uniqueidentifier] NOT NULL,
 	[CenterID] [int] NOT NULL,

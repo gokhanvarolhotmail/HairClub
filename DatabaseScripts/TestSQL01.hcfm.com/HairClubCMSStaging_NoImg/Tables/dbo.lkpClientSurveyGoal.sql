@@ -1,9 +1,5 @@
 /* CreateDate: 10/20/2014 07:50:33.933 , ModifyDate: 07/18/2016 07:45:55.570 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpClientSurveyGoal](
 	[ClientSurveyGoalID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
 	[ClientSurveyGoalSortOrder] [int] NOT NULL,

@@ -1,9 +1,5 @@
 /* CreateDate: 08/02/2016 11:28:44.947 , ModifyDate: 01/16/2020 11:35:19.070 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				spRpt_RetailFlash1000PlusClub_Detail
 DESTINATION SERVER:		SQL06

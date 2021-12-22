@@ -1,9 +1,5 @@
 /* CreateDate: 10/04/2010 12:08:45.740 , ModifyDate: 05/26/2020 10:49:42.543 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpInventoryTransferRequestRejectReason](
 	[InventoryTransferRequestRejectReasonID] [int] NOT NULL,
 	[InventoryTransferRequestRejectReasonSortOrder] [int] NOT NULL,

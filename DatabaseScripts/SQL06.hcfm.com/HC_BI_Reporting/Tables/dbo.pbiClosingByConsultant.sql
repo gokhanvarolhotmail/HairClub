@@ -1,9 +1,5 @@
 /* CreateDate: 09/20/2018 13:50:00.243 , ModifyDate: 09/20/2018 13:50:00.243 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[pbiClosingByConsultant](
 	[CenterManagementAreaSSID] [int] NULL,
 	[CenterManagementAreaDescription] [nvarchar](100) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,

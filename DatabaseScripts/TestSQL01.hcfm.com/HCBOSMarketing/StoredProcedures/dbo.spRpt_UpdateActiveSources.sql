@@ -1,9 +1,5 @@
 /* CreateDate: 11/13/2008 10:49:10.910 , ModifyDate: 01/25/2010 13:09:58.587 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*===============================================================================================
 -- Procedure Name:			spRpt_UpdateActiveSources
 -- Procedure Description:	Update the active and inactive sources in onca_source.

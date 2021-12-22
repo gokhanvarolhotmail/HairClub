@@ -1,9 +1,5 @@
 /* CreateDate: 08/14/2012 15:53:08.953 , ModifyDate: 08/14/2012 15:53:08.953 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE PROCEDURE [bi_mktg_dds].[DBMaintFactActivity]
 
 AS

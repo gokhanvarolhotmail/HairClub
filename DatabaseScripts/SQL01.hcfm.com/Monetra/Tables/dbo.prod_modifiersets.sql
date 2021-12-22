@@ -1,9 +1,5 @@
 /* CreateDate: 04/26/2021 12:28:48.620 , ModifyDate: 04/26/2021 12:28:48.647 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[prod_modifiersets](
 	[id] [bigint] NOT NULL,
 	[user_id] [int] NOT NULL,

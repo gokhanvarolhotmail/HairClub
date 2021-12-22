@@ -1,9 +1,5 @@
 /* CreateDate: 02/06/2020 08:16:37.007 , ModifyDate: 02/17/2020 07:39:45.030 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				spSvc_IC_WigSales_Step07_TerminatedEmployee
 DESTINATION SERVER:		SQL06

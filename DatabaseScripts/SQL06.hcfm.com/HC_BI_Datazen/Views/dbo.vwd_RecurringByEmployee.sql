@@ -1,9 +1,5 @@
 /* CreateDate: 10/01/2015 15:25:18.067 , ModifyDate: 01/26/2018 16:22:53.403 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 VIEW:					vwd_RecurringByEmployee
 DESTINATION SERVER:		SQL06

@@ -1,9 +1,5 @@
 /* CreateDate: 05/14/2012 17:34:46.580 , ModifyDate: 05/08/2019 15:25:42.230 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				rptFeeSummaryByCategory

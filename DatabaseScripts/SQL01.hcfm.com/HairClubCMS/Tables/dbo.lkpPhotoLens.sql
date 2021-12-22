@@ -1,9 +1,5 @@
 /* CreateDate: 05/06/2014 09:10:04.050 , ModifyDate: 05/26/2020 10:49:25.430 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpPhotoLens](
 	[PhotoLensID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
 	[PhotoLensSortOrder] [int] NOT NULL,

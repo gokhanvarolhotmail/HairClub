@@ -1,9 +1,5 @@
 /* CreateDate: 12/06/2017 10:13:46.603 , ModifyDate: 12/12/2017 05:39:36.843 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[tmp_SFDC_HCM_LeadTask](
 	[ID] [int] IDENTITY(1,1) NOT NULL,
 	[cst_sfdc_task_id] [nvarchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,

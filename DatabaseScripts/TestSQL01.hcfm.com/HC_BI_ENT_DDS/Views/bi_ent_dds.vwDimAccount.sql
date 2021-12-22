@@ -1,9 +1,5 @@
 /* CreateDate: 11/12/2012 14:12:43.880 , ModifyDate: 09/16/2019 09:25:18.167 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE VIEW [bi_ent_dds].[vwDimAccount]
 AS
 -------------------------------------------------------------------------

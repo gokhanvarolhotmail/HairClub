@@ -1,9 +1,5 @@
 /* CreateDate: 06/25/2012 09:47:42.927 , ModifyDate: 02/27/2017 09:49:31.383 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				selDeclineBatchSummary

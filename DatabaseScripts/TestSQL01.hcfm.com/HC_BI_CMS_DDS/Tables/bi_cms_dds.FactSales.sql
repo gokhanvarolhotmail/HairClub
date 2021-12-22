@@ -1,9 +1,5 @@
 /* CreateDate: 05/03/2010 12:17:23.263 , ModifyDate: 09/16/2019 09:33:49.833 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [bi_cms_dds].[FactSales](
 	[OrderDateKey] [int] NOT NULL,
 	[SalesOrderKey] [int] NOT NULL,

@@ -1,9 +1,5 @@
 /* CreateDate: 10/17/2007 08:55:07.730 , ModifyDate: 05/01/2010 14:48:09.960 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:		sprpt_ShowRate_By_Confirmation

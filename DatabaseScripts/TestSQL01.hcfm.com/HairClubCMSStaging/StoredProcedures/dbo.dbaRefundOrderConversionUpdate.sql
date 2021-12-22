@@ -1,9 +1,5 @@
 /* CreateDate: 02/26/2013 16:35:41.467 , ModifyDate: 02/26/2013 16:35:41.467 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*
 ==============================================================================
 PROCEDURE:				dbaRefundOrderConversionUpdate

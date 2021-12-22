@@ -1,9 +1,5 @@
 /* CreateDate: 07/19/2016 10:45:13.957 , ModifyDate: 07/19/2016 10:45:13.957 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				mtnClearMonetraIDsForExpiredCreditCards

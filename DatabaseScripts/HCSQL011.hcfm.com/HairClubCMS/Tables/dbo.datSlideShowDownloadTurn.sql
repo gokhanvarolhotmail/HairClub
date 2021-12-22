@@ -1,9 +1,5 @@
 /* CreateDate: 09/23/2019 12:36:10.507 , ModifyDate: 09/23/2019 12:36:10.620 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[datSlideShowDownloadTurn](
 	[SlideShowDownloadTurnID] [int] IDENTITY(1,1) NOT NULL,
 	[CenterID] [int] NOT NULL,

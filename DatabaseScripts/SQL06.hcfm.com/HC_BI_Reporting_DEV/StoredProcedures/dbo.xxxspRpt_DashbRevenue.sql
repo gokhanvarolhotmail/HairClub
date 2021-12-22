@@ -1,9 +1,5 @@
 /* CreateDate: 01/05/2015 16:30:04.540 , ModifyDate: 01/07/2016 11:21:42.950 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*===============================================================================================
 -- Procedure Name:			spRpt_DashbRevenue
 -- Procedure Description:

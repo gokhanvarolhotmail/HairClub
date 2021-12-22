@@ -1,9 +1,5 @@
 /* CreateDate: 10/30/2014 11:35:49.150 , ModifyDate: 10/30/2014 11:35:49.150 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dm].[spBlitzPCacheRaw](
 	[Server Name] [nvarchar](128) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[Check Date] [datetime] NOT NULL,

@@ -1,9 +1,5 @@
 /* CreateDate: 07/16/2020 15:27:07.053 , ModifyDate: 07/16/2020 15:27:07.053 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				mtnLogOutOfBalanceSalesOrders
 DESTINATION SERVER:		SQL01

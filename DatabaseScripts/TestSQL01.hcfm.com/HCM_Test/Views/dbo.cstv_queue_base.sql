@@ -1,9 +1,5 @@
 /* CreateDate: 05/19/2014 08:48:27.367 , ModifyDate: 05/19/2014 08:48:27.367 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE VIEW [dbo].[cstv_queue_base]
 AS
 

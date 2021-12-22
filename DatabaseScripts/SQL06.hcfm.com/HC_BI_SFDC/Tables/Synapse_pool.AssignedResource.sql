@@ -1,9 +1,5 @@
 /* CreateDate: 06/25/2021 16:50:09.617 , ModifyDate: 06/25/2021 16:50:09.617 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [Synapse_pool].[AssignedResource](
 	[Id] [nvarchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[IsDeleted] [bit] NULL,

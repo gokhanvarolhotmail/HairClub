@@ -1,9 +1,5 @@
 /* CreateDate: 08/02/2020 22:03:00.320 , ModifyDate: 12/19/2021 20:27:10.270 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				spSvc_RBFlashSubscription
 DESTINATION SERVER:		SQL06

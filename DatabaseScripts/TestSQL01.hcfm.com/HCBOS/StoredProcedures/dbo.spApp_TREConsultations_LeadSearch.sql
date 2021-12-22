@@ -1,9 +1,5 @@
 /* CreateDate: 09/22/2008 15:07:43.877 , ModifyDate: 10/12/2009 18:58:08.573 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*===============================================================================================
 -- Procedure Name:			spApp_TREConsultations_LeadSearch
 -- Procedure Description:

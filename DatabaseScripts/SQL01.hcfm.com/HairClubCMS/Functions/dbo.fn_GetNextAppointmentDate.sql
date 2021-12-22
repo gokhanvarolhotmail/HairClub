@@ -1,9 +1,5 @@
 /* CreateDate: 02/18/2013 07:43:35.670 , ModifyDate: 02/27/2017 09:49:37.060 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 		PROCEDURE: 				[fn_GetNextAppointmentDate]
 		DESTINATION SERVER:		SQL01

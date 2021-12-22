@@ -1,9 +1,5 @@
 /* CreateDate: 08/07/2014 14:58:31.780 , ModifyDate: 11/17/2014 17:15:49.030 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				rptTVApptPhotoList_TwoPhotos

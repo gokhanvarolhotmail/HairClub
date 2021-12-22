@@ -1,9 +1,5 @@
 /* CreateDate: 06/11/2013 14:53:05.947 , ModifyDate: 03/29/2014 06:13:33.280 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[ClientsToProcess](
 	[RowID] [int] IDENTITY(1,1) NOT NULL,
 	[DeferredRevenueHeaderKey] [int] NULL,

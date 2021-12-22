@@ -1,9 +1,5 @@
 /* CreateDate: 11/01/2019 09:34:53.447 , ModifyDate: 11/01/2019 09:34:53.630 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpNoteType](
 	[NoteTypeID] [int] NOT NULL,
 	[NoteTypeSortOrder] [int] NOT NULL,

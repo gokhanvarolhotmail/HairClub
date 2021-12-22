@@ -1,9 +1,5 @@
 /* CreateDate: 09/26/2016 08:09:20.977 , ModifyDate: 09/26/2016 08:09:21.273 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[cfgNACHATransmissionProfile](
 	[NACHATransmissionProfileID] [int] IDENTITY(1,1) NOT NULL,
 	[NACHATransmissionProtocolID] [int] NOT NULL,

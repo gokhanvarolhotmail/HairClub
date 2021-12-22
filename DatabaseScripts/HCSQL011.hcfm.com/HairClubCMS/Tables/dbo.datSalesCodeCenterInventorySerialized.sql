@@ -1,9 +1,5 @@
 /* CreateDate: 05/28/2018 22:15:34.540 , ModifyDate: 11/14/2018 22:39:56.090 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[datSalesCodeCenterInventorySerialized](
 	[SalesCodeCenterInventorySerializedID] [int] IDENTITY(1,1) NOT NULL,
 	[SalesCodeCenterInventoryID] [int] NOT NULL,

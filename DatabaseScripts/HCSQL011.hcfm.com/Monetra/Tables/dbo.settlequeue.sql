@@ -1,9 +1,5 @@
 /* CreateDate: 10/01/2018 08:53:16.737 , ModifyDate: 10/01/2018 08:53:16.737 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[settlequeue](
 	[userid] [int] NOT NULL,
 	[batch] [int] NOT NULL,

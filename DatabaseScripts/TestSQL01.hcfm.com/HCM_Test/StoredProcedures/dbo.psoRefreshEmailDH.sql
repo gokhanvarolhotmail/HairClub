@@ -1,9 +1,5 @@
 /* CreateDate: 06/20/2012 11:33:05.277 , ModifyDate: 07/23/2014 18:25:23.847 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 -- =============================================
 -- Create date: 18 June 2012
 -- Description:	Performs full population of cstd_email_dh_flat with data.

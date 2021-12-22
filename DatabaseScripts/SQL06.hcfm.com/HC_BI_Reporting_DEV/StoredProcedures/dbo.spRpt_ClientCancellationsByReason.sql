@@ -1,9 +1,5 @@
 /* CreateDate: 08/16/2012 16:16:03.493 , ModifyDate: 05/10/2019 10:37:40.350 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				spRpt_ClientCancellationsByReason
 DESTINATION SERVER:		SQL06

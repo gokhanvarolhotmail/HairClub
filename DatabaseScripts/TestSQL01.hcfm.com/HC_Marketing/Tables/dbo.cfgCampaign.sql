@@ -1,9 +1,5 @@
 /* CreateDate: 04/26/2016 14:32:13.180 , ModifyDate: 04/26/2016 14:32:13.323 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[cfgCampaign](
 	[CampaignID] [int] IDENTITY(1,1) NOT NULL,
 	[CampaignDescription] [nvarchar](250) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,

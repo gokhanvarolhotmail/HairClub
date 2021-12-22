@@ -1,9 +1,5 @@
 /* CreateDate: 07/28/2014 12:59:47.130 , ModifyDate: 07/28/2014 12:59:47.130 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[IndexUsage](
 	[RunTime] [datetime] NOT NULL,
 	[database_id] [smallint] NOT NULL,

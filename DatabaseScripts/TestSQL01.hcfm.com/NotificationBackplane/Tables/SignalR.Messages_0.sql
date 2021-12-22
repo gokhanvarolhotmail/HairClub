@@ -1,9 +1,5 @@
 /* CreateDate: 10/13/2015 12:56:36.510 , ModifyDate: 08/14/2020 14:34:09.733 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [SignalR].[Messages_0](
 	[PayloadId] [bigint] NOT NULL,
 	[Payload] [varbinary](max) NOT NULL,

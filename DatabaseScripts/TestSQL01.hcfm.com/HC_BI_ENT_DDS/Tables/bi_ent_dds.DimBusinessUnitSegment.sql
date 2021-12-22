@@ -1,9 +1,5 @@
 /* CreateDate: 03/26/2018 16:12:16.640 , ModifyDate: 03/26/2018 16:16:46.033 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [bi_ent_dds].[DimBusinessUnitSegment](
 	[BusinessUnitSegmentKey] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
 	[BusinessUnitSegmentSSID] [int] NOT NULL,

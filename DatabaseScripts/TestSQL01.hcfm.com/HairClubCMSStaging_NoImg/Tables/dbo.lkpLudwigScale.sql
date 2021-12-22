@@ -1,9 +1,5 @@
 /* CreateDate: 06/30/2014 07:10:21.703 , ModifyDate: 12/03/2021 10:24:48.720 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpLudwigScale](
 	[LudwigScaleID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
 	[BOSLudwigScaleCode] [nvarchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,

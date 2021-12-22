@@ -1,9 +1,5 @@
 /* CreateDate: 07/23/2015 17:19:56.440 , ModifyDate: 08/12/2015 14:41:10.633 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 VIEW:					vwk_PCPActualsMTD
 DESTINATION SERVER:		SQL06

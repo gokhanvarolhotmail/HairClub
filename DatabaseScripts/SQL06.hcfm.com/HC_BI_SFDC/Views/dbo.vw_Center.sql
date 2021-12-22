@@ -1,9 +1,5 @@
 /* CreateDate: 07/13/2020 13:45:46.833 , ModifyDate: 07/13/2020 13:45:46.833 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE VIEW vw_Center AS
 -------------------------------------------------------------------------
 -- [vw_Center] is used to retrieve a

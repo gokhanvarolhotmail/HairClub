@@ -1,9 +1,5 @@
 /* CreateDate: 01/29/2009 15:36:51.077 , ModifyDate: 11/14/2020 04:11:35.647 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[datAppointment](
 	[AppointmentGUID] [uniqueidentifier] NOT NULL,
 	[AppointmentID_Temp] [int] NULL,

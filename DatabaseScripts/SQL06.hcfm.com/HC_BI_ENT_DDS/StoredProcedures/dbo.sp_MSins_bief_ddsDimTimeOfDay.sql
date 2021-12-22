@@ -1,9 +1,5 @@
 /* CreateDate: 01/08/2021 15:21:54.080 , ModifyDate: 01/08/2021 15:21:54.080 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 create procedure [sp_MSins_bief_ddsDimTimeOfDay]
     @c1 int,
     @c2 varchar(12),

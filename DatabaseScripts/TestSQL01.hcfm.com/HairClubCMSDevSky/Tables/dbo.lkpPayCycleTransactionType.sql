@@ -1,9 +1,5 @@
 /* CreateDate: 05/14/2012 17:33:38.470 , ModifyDate: 12/07/2021 16:20:15.813 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpPayCycleTransactionType](
 	[PayCycleTransactionTypeID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
 	[PayCycleTransactionTypeSortOrder] [int] NOT NULL,

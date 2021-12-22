@@ -1,9 +1,5 @@
 /* CreateDate: 09/26/2016 08:09:21.713 , ModifyDate: 09/26/2016 08:09:21.713 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				[selNACHATransmissionProfile]
 DESTINATION SERVER:		SQL01

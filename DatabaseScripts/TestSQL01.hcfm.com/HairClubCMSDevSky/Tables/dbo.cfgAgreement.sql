@@ -1,9 +1,5 @@
 /* CreateDate: 05/02/2016 08:48:14.940 , ModifyDate: 05/12/2019 22:40:07.417 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[cfgAgreement](
 	[AgreementID] [int] IDENTITY(1,1) NOT NULL,
 	[AgreementSortOrder] [int] NOT NULL,

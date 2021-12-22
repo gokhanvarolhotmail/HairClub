@@ -1,9 +1,5 @@
 /* CreateDate: 10/01/2018 08:53:16.730 , ModifyDate: 10/01/2018 08:53:16.730 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[misc](
 	[db_schema_ver] [varchar](32) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[timeleft] [bigint] NOT NULL,

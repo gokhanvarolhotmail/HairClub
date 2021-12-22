@@ -1,9 +1,5 @@
 /* CreateDate: 01/08/2021 15:21:54.343 , ModifyDate: 01/08/2021 15:21:54.343 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE VIEW [bi_ent_dds].[vwDimDate]
 AS
 -------------------------------------------------------------------------

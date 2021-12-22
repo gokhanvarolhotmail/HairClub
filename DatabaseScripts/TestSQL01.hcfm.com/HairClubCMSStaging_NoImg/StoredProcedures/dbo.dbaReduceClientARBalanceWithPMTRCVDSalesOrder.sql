@@ -1,9 +1,5 @@
 /* CreateDate: 11/12/2014 17:10:43.277 , ModifyDate: 03/05/2015 11:36:43.013 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*
 ==============================================================================
 PROCEDURE:				ReduceClientARBalanceWithPMTRCVDSalesOrder

@@ -1,9 +1,5 @@
 /* CreateDate: 06/18/2009 12:50:06.600 , ModifyDate: 01/25/2010 08:13:27.463 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:	spApp_GetDistinctPhoneNumberBySource

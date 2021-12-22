@@ -1,9 +1,5 @@
 /* CreateDate: 07/01/2016 12:47:31.297 , ModifyDate: 07/01/2016 12:47:31.297 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 VIEW:					[vwd_FranchisePCPCounts]
 DESTINATION SERVER:		SQL06

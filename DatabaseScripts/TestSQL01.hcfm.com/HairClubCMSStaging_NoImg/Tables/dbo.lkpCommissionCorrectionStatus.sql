@@ -1,9 +1,5 @@
 /* CreateDate: 02/24/2015 07:35:34.640 , ModifyDate: 12/03/2021 10:24:48.540 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpCommissionCorrectionStatus](
 	[CommissionCorrectionStatusID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
 	[CommissionCorrectionStatusSortOrder] [int] NOT NULL,

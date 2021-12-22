@@ -1,9 +1,5 @@
 /* CreateDate: 01/31/2017 11:35:02.380 , ModifyDate: 07/12/2017 07:34:15.810 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*
 SET STATISTICS IO ON;
 --exec #extHairClubCMSLeadSearch @CenterNumber='', @LastName='', @FirstName='', @Phone='', @City='', @State=NULL, @Zip='';  --  seconds

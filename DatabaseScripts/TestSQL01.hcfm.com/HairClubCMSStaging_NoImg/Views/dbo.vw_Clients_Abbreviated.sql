@@ -1,9 +1,5 @@
 /* CreateDate: 03/28/2011 11:17:15.193 , ModifyDate: 02/18/2013 19:04:02.453 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE VIEW [dbo].[vw_Clients_Abbreviated]
 AS
 SELECT     cfgCenter_1.CenterID, cfgCenter_1.CenterDescription, cfgCenter_1.CenterDescriptionFullCalc AS CenterName, datClient_1.ClientIdentifier,

@@ -1,9 +1,5 @@
 /* CreateDate: 08/27/2008 12:26:31.083 , ModifyDate: 12/03/2021 10:24:48.557 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpTrainingExercise](
 	[TrainingExerciseID] [int] NOT NULL,
 	[TrainingExerciseSortOrder] [int] NOT NULL,

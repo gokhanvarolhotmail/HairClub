@@ -1,9 +1,5 @@
 /* CreateDate: 07/28/2016 15:10:30.917 , ModifyDate: 08/02/2016 11:48:30.280 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				spSvc_HCM_TEXT_MESSAGES
 DESTINATION SERVER:		SQL03

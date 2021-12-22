@@ -1,9 +1,5 @@
 /* CreateDate: 02/17/2016 11:24:59.010 , ModifyDate: 11/16/2017 15:57:47.230 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 VIEW:					vwd_AMServiceSales_Rolling2Years
 DESTINATION SERVER:		SQL06

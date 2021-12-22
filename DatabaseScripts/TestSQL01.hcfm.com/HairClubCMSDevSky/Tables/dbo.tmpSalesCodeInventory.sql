@@ -1,9 +1,5 @@
 /* CreateDate: 01/27/2021 11:22:42.623 , ModifyDate: 01/27/2021 11:22:42.623 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[tmpSalesCodeInventory](
 	[SalesCodeCenterInventoryID] [float] NULL,
 	[SalesCodeCenterID] [float] NULL,

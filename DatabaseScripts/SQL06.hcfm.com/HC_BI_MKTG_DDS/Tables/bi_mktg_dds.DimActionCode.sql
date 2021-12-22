@@ -1,9 +1,5 @@
 /* CreateDate: 09/03/2021 09:37:05.023 , ModifyDate: 09/03/2021 09:37:08.840 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [bi_mktg_dds].[DimActionCode](
 	[ActionCodeKey] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
 	[ActionCodeSSID] [nvarchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,

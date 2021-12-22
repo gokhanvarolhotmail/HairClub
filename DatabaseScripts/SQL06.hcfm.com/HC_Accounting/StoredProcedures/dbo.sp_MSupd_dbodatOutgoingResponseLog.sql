@@ -1,9 +1,5 @@
 /* CreateDate: 09/10/2013 10:38:52.870 , ModifyDate: 09/10/2013 10:38:52.870 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 create procedure [sp_MSupd_dbodatOutgoingResponseLog]
 		@c1 int = NULL,
 		@c2 int = NULL,

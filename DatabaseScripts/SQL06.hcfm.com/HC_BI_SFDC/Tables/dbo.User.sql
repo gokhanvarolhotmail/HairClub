@@ -1,9 +1,5 @@
 /* CreateDate: 10/04/2019 14:09:30.530 , ModifyDate: 12/22/2021 00:20:03.437 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[User](
 	[Id] [nvarchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[FirstName] [nvarchar](40) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,

@@ -1,9 +1,5 @@
 /* CreateDate: 12/31/2010 13:21:07.093 , ModifyDate: 05/22/2018 14:32:17.467 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				rptHairSystemMembership

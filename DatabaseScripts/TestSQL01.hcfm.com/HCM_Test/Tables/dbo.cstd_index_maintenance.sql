@@ -1,9 +1,5 @@
 /* CreateDate: 12/03/2014 14:31:34.177 , ModifyDate: 12/03/2014 14:31:34.663 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[cstd_index_maintenance](
 	[index_maintenance_id] [uniqueidentifier] NOT NULL,
 	[table_name] [nvarchar](128) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,

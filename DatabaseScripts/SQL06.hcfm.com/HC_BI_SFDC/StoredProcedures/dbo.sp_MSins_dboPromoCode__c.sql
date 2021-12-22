@@ -1,9 +1,5 @@
 /* CreateDate: 10/04/2019 14:09:30.420 , ModifyDate: 10/04/2019 14:09:30.420 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 create procedure [sp_MSins_dboPromoCode__c]
     @c1 int,
     @c2 nvarchar(50),

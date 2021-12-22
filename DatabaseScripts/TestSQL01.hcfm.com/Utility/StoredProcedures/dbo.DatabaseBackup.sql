@@ -1,9 +1,5 @@
 /* CreateDate: 06/09/2014 11:32:56.103 , ModifyDate: 05/25/2015 20:04:22.430 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE PROCEDURE [dbo].[DatabaseBackup]
 
 @Databases nvarchar(max),

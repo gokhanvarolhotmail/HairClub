@@ -1,9 +1,5 @@
 /* CreateDate: 10/30/2015 16:32:00.810 , ModifyDate: 10/30/2015 16:32:00.810 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 VIEW:					[vwd_RetailBudgetByCenter]
 DESTINATION SERVER:		SQL06

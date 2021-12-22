@@ -1,9 +1,5 @@
 /* CreateDate: 02/24/2020 09:00:10.723 , ModifyDate: 02/24/2020 09:00:10.723 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 create procedure [dbo].[sp_MSupd_dboSurvey_Response__c]
 		@c1 nvarchar(18) = NULL,
 		@c2 nvarchar(255) = NULL,

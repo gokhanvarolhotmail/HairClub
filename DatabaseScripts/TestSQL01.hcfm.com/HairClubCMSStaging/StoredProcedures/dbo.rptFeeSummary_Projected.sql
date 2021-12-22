@@ -1,9 +1,5 @@
 /* CreateDate: 04/24/2014 11:26:04.547 , ModifyDate: 05/20/2019 11:11:05.347 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***************************************************************************************************************
 
 PROCEDURE:				rptFeeSummary_Projected

@@ -1,9 +1,5 @@
 /* CreateDate: 01/18/2005 09:34:14.217 , ModifyDate: 06/18/2013 09:24:50.773 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[onct_entity_tree_node](
 	[entity_tree_node_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[entity_tree_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,

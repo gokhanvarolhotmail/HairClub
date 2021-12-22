@@ -1,9 +1,5 @@
 /* CreateDate: 07/11/2011 09:05:48.373 , ModifyDate: 07/11/2011 09:06:33.880 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*===============================================================================================
 -- Procedure Name:			spRpt_SurgeryScheduleByCenterAndDate
 -- Procedure Description:

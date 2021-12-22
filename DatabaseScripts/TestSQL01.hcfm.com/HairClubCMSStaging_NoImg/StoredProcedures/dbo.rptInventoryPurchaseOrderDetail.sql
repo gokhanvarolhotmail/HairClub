@@ -1,9 +1,5 @@
 /* CreateDate: 05/28/2018 22:20:41.807 , ModifyDate: 07/17/2018 07:25:38.027 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				rptInventoryPurchaseOrderDetail

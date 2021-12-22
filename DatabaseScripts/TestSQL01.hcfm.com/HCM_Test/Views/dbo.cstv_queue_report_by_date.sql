@@ -1,9 +1,5 @@
 /* CreateDate: 10/27/2014 10:02:30.963 , ModifyDate: 11/06/2014 16:52:59.847 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE VIEW [dbo].[cstv_queue_report_by_date]
 AS
 SELECT queue_id, CONVERT(datetime,CONVERT(nchar(10),start_date, 121))  AS start_date,

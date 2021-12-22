@@ -1,9 +1,5 @@
 /* CreateDate: 09/17/2015 09:41:54.507 , ModifyDate: 09/17/2015 09:41:54.507 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[cstd_bosley_leads](
 	[ContactOrigin] [nvarchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[ContactStatus] [nvarchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,

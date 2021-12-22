@@ -1,9 +1,5 @@
 /* CreateDate: 04/26/2021 12:28:48.900 , ModifyDate: 04/26/2021 12:28:48.970 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[ord_taxtracking](
 	[user_id] [bigint] NOT NULL,
 	[timestamp_ms] [bigint] NOT NULL,

@@ -1,9 +1,5 @@
 /* CreateDate: 12/21/2020 13:31:09.920 , ModifyDate: 12/21/2020 13:31:17.287 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE VIEW [dbo].[vw_SourceRevenue]
 
 AS

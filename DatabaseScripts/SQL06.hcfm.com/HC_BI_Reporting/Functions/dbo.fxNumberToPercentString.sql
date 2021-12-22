@@ -1,9 +1,5 @@
 /* CreateDate: 04/18/2012 16:51:08.623 , ModifyDate: 04/18/2012 17:02:03.477 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 --select [dbo].[fxPercentToString] (.12)
 CREATE FUNCTION [dbo].[fxNumberToPercentString] (
 	@Number DECIMAL(25,4))

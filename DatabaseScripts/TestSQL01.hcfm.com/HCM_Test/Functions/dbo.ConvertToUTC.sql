@@ -1,9 +1,5 @@
 /* CreateDate: 08/30/2011 11:12:50.353 , ModifyDate: 12/15/2016 09:51:40.963 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 -- =============================================
 -- Create date: 24 August 2011
 -- Description:	Uses the provided time zone code to convert the provided date to UTC.

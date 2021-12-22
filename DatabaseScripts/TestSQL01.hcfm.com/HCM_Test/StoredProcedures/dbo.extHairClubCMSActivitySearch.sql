@@ -1,9 +1,5 @@
 /* CreateDate: 06/16/2014 15:26:37.760 , ModifyDate: 07/30/2014 13:29:22.280 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				extHairClubCMSActivitySearch
 DESTINATION SERVER:		SQL03

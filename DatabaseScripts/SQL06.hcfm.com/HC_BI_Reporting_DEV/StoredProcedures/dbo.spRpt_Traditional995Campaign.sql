@@ -1,9 +1,5 @@
 /* CreateDate: 06/27/2014 09:27:22.020 , ModifyDate: 06/30/2014 15:06:18.293 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				spRpt_Traditional995Campaign
 DESTINATION SERVER:		SQL06

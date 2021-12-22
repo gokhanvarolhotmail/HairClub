@@ -1,10 +1,6 @@
 /* CreateDate: 11/07/2006 10:14:05.273 , ModifyDate: 09/10/2019 22:58:34.990 */
 /* ***HasTriggers*** TriggerCount: 6 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[oncd_contact](
 	[contact_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[greeting] [nchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
@@ -236,10 +232,6 @@ REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_contact] CHECK CONSTRAINT [user_contact_873]
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TRIGGER [dbo].[pso_oncd_contact_after_delete]
    ON  [dbo].[oncd_contact]
    AFTER DELETE
@@ -248,10 +240,6 @@ AS
 	WHERE cstd_contact_flat.contact_id IN (select contact_id from deleted)
 GO
 ALTER TABLE [dbo].[oncd_contact] ENABLE TRIGGER [pso_oncd_contact_after_delete]
-GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
 GO
 CREATE TRIGGER [dbo].[pso_oncd_contact_after_insert]
    ON  [dbo].[oncd_contact]
@@ -304,10 +292,6 @@ AS
 GO
 ALTER TABLE [dbo].[oncd_contact] ENABLE TRIGGER [pso_oncd_contact_after_insert]
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TRIGGER [dbo].[pso_oncd_contact_after_update]
    ON  [dbo].[oncd_contact]
    AFTER UPDATE
@@ -342,10 +326,6 @@ AS
 		inserted.contact_id = cstd_contact_flat.contact_id
 GO
 ALTER TABLE [dbo].[oncd_contact] ENABLE TRIGGER [pso_oncd_contact_after_update]
-GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
 GO
 -- =============================================
 -- Create date: 24 September 2012
@@ -467,10 +447,6 @@ END
 GO
 ALTER TABLE [dbo].[oncd_contact] DISABLE TRIGGER [pso_oncd_contact_remove_unicode_insert]
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 -- =============================================
 -- Create date: 24 September 2012
 -- Description:	Removes Unicode from input data.
@@ -542,10 +518,6 @@ BEGIN
 END
 GO
 ALTER TABLE [dbo].[oncd_contact] DISABLE TRIGGER [pso_oncd_contact_remove_unicode_update]
-GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
 GO
 -- =============================================
 -- Author:		Oncontact PSO Fred Remers

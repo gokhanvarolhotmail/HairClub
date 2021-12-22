@@ -1,9 +1,5 @@
 /* CreateDate: 11/05/2013 10:45:09.490 , ModifyDate: 03/09/2020 15:11:19.530 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				extBosleyProcessSiebelReplaceTransaction

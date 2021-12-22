@@ -1,9 +1,5 @@
 /* CreateDate: 02/20/2013 15:54:22.100 , ModifyDate: 05/21/2017 22:19:14.687 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				mtnClientAddNonSurgeryTRE

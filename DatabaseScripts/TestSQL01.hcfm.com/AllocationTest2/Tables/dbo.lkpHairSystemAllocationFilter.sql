@@ -1,9 +1,5 @@
 /* CreateDate: 10/31/2019 20:53:49.480 , ModifyDate: 11/01/2019 09:57:49.000 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpHairSystemAllocationFilter](
 	[HairSystemAllocationFilterID] [int] NOT NULL,
 	[HairSystemAllocationFilterSortOrder] [int] NOT NULL,

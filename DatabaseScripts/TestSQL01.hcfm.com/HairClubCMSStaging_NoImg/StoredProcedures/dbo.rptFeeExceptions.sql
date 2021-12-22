@@ -1,9 +1,5 @@
 /* CreateDate: 05/14/2012 17:34:46.480 , ModifyDate: 05/21/2019 11:47:33.333 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /**********************************************************************************************************
 
 PROCEDURE:				rptFeeExceptions

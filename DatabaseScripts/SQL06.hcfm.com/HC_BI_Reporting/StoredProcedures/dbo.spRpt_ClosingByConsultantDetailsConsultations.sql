@@ -1,9 +1,5 @@
 /* CreateDate: 05/28/2013 11:28:35.810 , ModifyDate: 07/14/2021 10:44:21.257 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				spRpt_ClosingByConsultantDetailsConsultations
 DESTINATION SERVER:		SQL06

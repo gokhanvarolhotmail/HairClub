@@ -1,9 +1,5 @@
 /* CreateDate: 03/14/2013 23:16:37.120 , ModifyDate: 07/02/2017 15:55:07.287 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				extCommissionEarnedSummaryByEmployeeHR
 PURPOSE:				Export pay period details for all centers for Certipay

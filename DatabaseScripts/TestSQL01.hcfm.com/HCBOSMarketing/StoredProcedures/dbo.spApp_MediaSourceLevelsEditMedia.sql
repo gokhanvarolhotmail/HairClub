@@ -1,9 +1,5 @@
 /* CreateDate: 10/09/2008 16:11:07.217 , ModifyDate: 01/25/2010 08:13:27.387 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 -- EXEC spApp_MediaSourceLevelsEditMedia 4, 'nweb type', 'new web type', 9, 'nweb type', 'new web type'
 
 CREATE PROCEDURE [dbo].[spApp_MediaSourceLevelsEditMedia] (

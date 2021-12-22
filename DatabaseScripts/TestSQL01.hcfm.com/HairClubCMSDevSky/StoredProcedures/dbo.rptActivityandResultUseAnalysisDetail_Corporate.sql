@@ -1,9 +1,5 @@
 /* CreateDate: 03/23/2016 15:56:12.853 , ModifyDate: 03/10/2017 08:55:35.603 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /*===============================================================================================
  Procedure Name:            rptActivityandResultUseAnalysisDetail_Corporate
  Procedure Description:     This stored procedure provides information about "Activity and Results" Use

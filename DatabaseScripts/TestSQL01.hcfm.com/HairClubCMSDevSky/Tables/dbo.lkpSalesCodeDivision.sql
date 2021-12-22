@@ -1,9 +1,5 @@
 /* CreateDate: 08/27/2008 12:21:32.797 , ModifyDate: 12/07/2021 16:20:15.833 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpSalesCodeDivision](
 	[SalesCodeDivisionID] [int] NOT NULL,
 	[SalesCodeDivisionSortOrder] [int] NOT NULL,

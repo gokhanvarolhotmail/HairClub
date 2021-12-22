@@ -1,9 +1,5 @@
 /* CreateDate: 10/04/2010 12:08:45.680 , ModifyDate: 12/07/2021 16:20:16.173 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[datInventoryTransferRequest](
 	[InventoryTransferRequestGUID] [uniqueidentifier] NOT NULL,
 	[InventoryTransferRequestDate] [datetime] NOT NULL,

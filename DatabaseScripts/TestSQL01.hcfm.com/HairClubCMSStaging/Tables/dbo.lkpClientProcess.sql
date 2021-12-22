@@ -1,9 +1,5 @@
 /* CreateDate: 05/14/2012 17:30:06.707 , ModifyDate: 05/26/2020 10:49:28.500 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpClientProcess](
 	[ClientProcessID] [int] NOT NULL,
 	[ClientProcessSortOrder] [int] NOT NULL,

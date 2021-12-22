@@ -1,9 +1,5 @@
 /* CreateDate: 05/18/2015 16:11:36.350 , ModifyDate: 12/02/2019 09:41:28.613 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 PROCEDURE:				spRpt_NewBusinessPipeline_Xtrands
 DESTINATION SERVER:		SQL06

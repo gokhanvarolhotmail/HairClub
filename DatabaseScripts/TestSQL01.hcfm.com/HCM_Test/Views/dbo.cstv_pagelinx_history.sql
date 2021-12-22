@@ -1,9 +1,5 @@
 /* CreateDate: 05/04/2012 12:53:18.817 , ModifyDate: 01/30/2014 10:33:41.740 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE VIEW [dbo].[cstv_pagelinx_history] AS
 
 SELECT

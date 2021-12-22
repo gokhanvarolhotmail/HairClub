@@ -1,9 +1,5 @@
 /* CreateDate: 08/27/2008 12:25:25.747 , ModifyDate: 12/07/2021 16:20:15.890 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[lkpTimeZone](
 	[TimeZoneID] [int] NOT NULL,
 	[TimeZoneSortOrder] [int] NOT NULL,

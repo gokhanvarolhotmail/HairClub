@@ -1,10 +1,6 @@
 /* CreateDate: 10/15/2013 00:25:58.313 , ModifyDate: 07/21/2014 01:13:36.520 */
 /* ***HasTriggers*** TriggerCount: 1 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[csta_queue_queue_schedule_by_day_of_week_user](
 	[queue_queue_schedule_by_day_of_week_user_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[queue_queue_schedule_by_day_of_week_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
@@ -47,10 +43,6 @@ ALTER TABLE [dbo].[csta_queue_queue_schedule_by_day_of_week_user]  WITH CHECK AD
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[csta_queue_queue_schedule_by_day_of_week_user] CHECK CONSTRAINT [FK_csta_queue_queue_schedule_by_day_of_week_user_updated_by_user]
-GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
 GO
 CREATE TRIGGER [dbo].[QueueUpdateByDayOfWeek]
    ON  [dbo].[csta_queue_queue_schedule_by_day_of_week_user]

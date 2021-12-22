@@ -1,9 +1,5 @@
 /* CreateDate: 01/23/2013 14:03:11.863 , ModifyDate: 09/21/2021 00:44:02.043 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[FactCommissionOverride](
 	[OverrideID] [int] IDENTITY(1,1) NOT NULL,
 	[CommissionHeaderKey] [int] NULL,

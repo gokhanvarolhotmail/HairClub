@@ -1,9 +1,5 @@
 /* CreateDate: 03/03/2009 15:06:18.543 , ModifyDate: 02/27/2017 09:49:30.217 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 /***********************************************************************
 
 PROCEDURE:				rptRegisterCloseout

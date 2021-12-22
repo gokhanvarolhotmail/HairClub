@@ -1,9 +1,5 @@
 /* CreateDate: 02/26/2008 17:03:30.853 , ModifyDate: 05/01/2010 14:48:10.397 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 -- =============================================
 -- Create date: 02/26/2008
 -- Description:	Index Defrag

@@ -1,9 +1,5 @@
 /* CreateDate: 06/27/2011 16:01:44.340 , ModifyDate: 09/16/2019 09:33:49.853 */
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [bi_cms_dds].[DimHairSystemDesignTemplate](
 	[HairSystemDesignTemplateKey] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
 	[HairSystemDesignTemplateSSID] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
