@@ -1,9 +1,14 @@
--- 2021-08-14 20:05:00.277
+-- Server Start 2021-08-14 20:05:00.277
+-- Now	2021-12-21 22:13:32.033
 SELECT
     [sqlserver_start_time]
   , GETDATE() AS [Now]
 FROM [sys].[dm_os_sys_info] ;
 
+/*
+DROP TABLE [tempdb].[dbo].[index_usage_stats]
+DROP TABLE [tempdb].[dbo].[Objects]
+*/
 IF OBJECT_ID('[tempdb].[dbo].[index_usage_stats]') IS NULL
     SELECT *
     INTO [tempdb].[dbo].[index_usage_stats]
