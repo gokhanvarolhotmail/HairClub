@@ -36,8 +36,10 @@ ALTER TABLE [dbo].[lkpCountry] ADD  DEFAULT ((0)) FOR [IsAddressRequired]
 GO
 ALTER TABLE [dbo].[lkpCountry] ADD  DEFAULT ((0)) FOR [IsPhoneNumberRequired]
 GO
-ALTER TABLE [dbo].[lkpCountry]  WITH CHECK ADD  CONSTRAINT [FK_lkpCountry_lkpCurrencyType] FOREIGN KEY([CurrencyTypeID])
+ALTER TABLE [dbo].[lkpCountry]  WITH NOCHECK ADD  CONSTRAINT [FK_lkpCountry_lkpCurrencyType] FOREIGN KEY([CurrencyTypeID])
 REFERENCES [dbo].[lkpCurrencyType] ([CurrencyTypeID])
 GO
 ALTER TABLE [dbo].[lkpCountry] CHECK CONSTRAINT [FK_lkpCountry_lkpCurrencyType]
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Determines when on client save if the state and city should be looked up or validated by the zip code.' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'lkpCountry', @level2type=N'COLUMN',@level2name=N'ValidateZipCodeFlag'
 GO

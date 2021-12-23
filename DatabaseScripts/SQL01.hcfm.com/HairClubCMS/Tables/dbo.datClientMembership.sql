@@ -118,37 +118,37 @@ ALTER TABLE [dbo].[datClientMembership] ADD  CONSTRAINT [DF_datClientMembership_
 GO
 ALTER TABLE [dbo].[datClientMembership] ADD  DEFAULT ((0)) FOR [HasInHousePaymentPlan]
 GO
-ALTER TABLE [dbo].[datClientMembership]  WITH CHECK ADD  CONSTRAINT [FK_ClientMembership_Client] FOREIGN KEY([ClientGUID])
+ALTER TABLE [dbo].[datClientMembership]  WITH NOCHECK ADD  CONSTRAINT [FK_ClientMembership_Client] FOREIGN KEY([ClientGUID])
 REFERENCES [dbo].[datClient] ([ClientGUID])
 GO
 ALTER TABLE [dbo].[datClientMembership] CHECK CONSTRAINT [FK_ClientMembership_Client]
 GO
-ALTER TABLE [dbo].[datClientMembership]  WITH CHECK ADD  CONSTRAINT [FK_datClientMembership_cfgCenter] FOREIGN KEY([CenterID])
+ALTER TABLE [dbo].[datClientMembership]  WITH NOCHECK ADD  CONSTRAINT [FK_datClientMembership_cfgCenter] FOREIGN KEY([CenterID])
 REFERENCES [dbo].[cfgCenter] ([CenterID])
 GO
 ALTER TABLE [dbo].[datClientMembership] CHECK CONSTRAINT [FK_datClientMembership_cfgCenter]
 GO
-ALTER TABLE [dbo].[datClientMembership]  WITH CHECK ADD  CONSTRAINT [FK_datClientMembership_cfgMembership] FOREIGN KEY([MembershipID])
+ALTER TABLE [dbo].[datClientMembership]  WITH NOCHECK ADD  CONSTRAINT [FK_datClientMembership_cfgMembership] FOREIGN KEY([MembershipID])
 REFERENCES [dbo].[cfgMembership] ([MembershipID])
 GO
 ALTER TABLE [dbo].[datClientMembership] CHECK CONSTRAINT [FK_datClientMembership_cfgMembership]
 GO
-ALTER TABLE [dbo].[datClientMembership]  WITH CHECK ADD  CONSTRAINT [FK_datClientMembership_datClient] FOREIGN KEY([ClientGUID])
+ALTER TABLE [dbo].[datClientMembership]  WITH NOCHECK ADD  CONSTRAINT [FK_datClientMembership_datClient] FOREIGN KEY([ClientGUID])
 REFERENCES [dbo].[datClient] ([ClientGUID])
 GO
 ALTER TABLE [dbo].[datClientMembership] CHECK CONSTRAINT [FK_datClientMembership_datClient]
 GO
-ALTER TABLE [dbo].[datClientMembership]  WITH CHECK ADD  CONSTRAINT [FK_datClientMembership_lkpClientMembershipStatus] FOREIGN KEY([ClientMembershipStatusID])
+ALTER TABLE [dbo].[datClientMembership]  WITH NOCHECK ADD  CONSTRAINT [FK_datClientMembership_lkpClientMembershipStatus] FOREIGN KEY([ClientMembershipStatusID])
 REFERENCES [dbo].[lkpClientMembershipStatus] ([ClientMembershipStatusID])
 GO
 ALTER TABLE [dbo].[datClientMembership] CHECK CONSTRAINT [FK_datClientMembership_lkpClientMembershipStatus]
 GO
-ALTER TABLE [dbo].[datClientMembership]  WITH CHECK ADD  CONSTRAINT [FK_datClientMembership_lkpMembershipOrderReason] FOREIGN KEY([MembershipCancelReasonID])
+ALTER TABLE [dbo].[datClientMembership]  WITH NOCHECK ADD  CONSTRAINT [FK_datClientMembership_lkpMembershipOrderReason] FOREIGN KEY([MembershipCancelReasonID])
 REFERENCES [dbo].[lkpMembershipOrderReason] ([MembershipOrderReasonID])
 GO
 ALTER TABLE [dbo].[datClientMembership] CHECK CONSTRAINT [FK_datClientMembership_lkpMembershipOrderReason]
 GO
-ALTER TABLE [dbo].[datClientMembership]  WITH CHECK ADD  CONSTRAINT [FK_datClientMembership_MembershipProfileTypeID] FOREIGN KEY([MembershipProfileTypeID])
+ALTER TABLE [dbo].[datClientMembership]  WITH NOCHECK ADD  CONSTRAINT [FK_datClientMembership_MembershipProfileTypeID] FOREIGN KEY([MembershipProfileTypeID])
 REFERENCES [dbo].[lkpMembershipProfileType] ([MembershipProfileTypeID])
 GO
 ALTER TABLE [dbo].[datClientMembership] CHECK CONSTRAINT [FK_datClientMembership_MembershipProfileTypeID]

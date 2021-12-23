@@ -26,7 +26,7 @@ ALTER TABLE [dbo].[lkpScheduleType] ADD  DEFAULT ((0)) FOR [IsActiveFlag]
 GO
 ALTER TABLE [dbo].[lkpScheduleType] ADD  DEFAULT ((0)) FOR [CanScheduleOver]
 GO
-ALTER TABLE [dbo].[lkpScheduleType]  WITH CHECK ADD  CONSTRAINT [FK_lkpScheduleType_lkpScheduleCalendarType] FOREIGN KEY([ScheduleCalendarTypeID])
+ALTER TABLE [dbo].[lkpScheduleType]  WITH NOCHECK ADD  CONSTRAINT [FK_lkpScheduleType_lkpScheduleCalendarType] FOREIGN KEY([ScheduleCalendarTypeID])
 REFERENCES [dbo].[lkpScheduleCalendarType] ([ScheduleCalendarTypeID])
 GO
 ALTER TABLE [dbo].[lkpScheduleType] CHECK CONSTRAINT [FK_lkpScheduleType_lkpScheduleCalendarType]

@@ -19,12 +19,12 @@ CREATE TABLE [dbo].[datSalesOrderDetailSerialized](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[datSalesOrderDetailSerialized]  WITH CHECK ADD  CONSTRAINT [FK_datSalesOrderDetailSerialized_datSalesCodeCenterInventorySerialized] FOREIGN KEY([SalesCodeCenterInventorySerializedID])
+ALTER TABLE [dbo].[datSalesOrderDetailSerialized]  WITH NOCHECK ADD  CONSTRAINT [FK_datSalesOrderDetailSerialized_datSalesCodeCenterInventorySerialized] FOREIGN KEY([SalesCodeCenterInventorySerializedID])
 REFERENCES [dbo].[datSalesCodeCenterInventorySerialized] ([SalesCodeCenterInventorySerializedID])
 GO
 ALTER TABLE [dbo].[datSalesOrderDetailSerialized] CHECK CONSTRAINT [FK_datSalesOrderDetailSerialized_datSalesCodeCenterInventorySerialized]
 GO
-ALTER TABLE [dbo].[datSalesOrderDetailSerialized]  WITH CHECK ADD  CONSTRAINT [FK_datSalesOrderDetailSerialized_datSalesOrderDetail] FOREIGN KEY([SalesOrderDetailGUID])
+ALTER TABLE [dbo].[datSalesOrderDetailSerialized]  WITH NOCHECK ADD  CONSTRAINT [FK_datSalesOrderDetailSerialized_datSalesOrderDetail] FOREIGN KEY([SalesOrderDetailGUID])
 REFERENCES [dbo].[datSalesOrderDetail] ([SalesOrderDetailGUID])
 GO
 ALTER TABLE [dbo].[datSalesOrderDetailSerialized] CHECK CONSTRAINT [FK_datSalesOrderDetailSerialized_datSalesOrderDetail]

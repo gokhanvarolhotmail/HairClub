@@ -34,17 +34,17 @@ CREATE NONCLUSTERED INDEX [onct_entity_process_i4] ON [dbo].[onct_entity_process
 	[object_id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[onct_entity_process]  WITH CHECK ADD  CONSTRAINT [class_entity_proce_193] FOREIGN KEY([class_id])
+ALTER TABLE [dbo].[onct_entity_process]  WITH NOCHECK ADD  CONSTRAINT [class_entity_proce_193] FOREIGN KEY([class_id])
 REFERENCES [dbo].[onct_class] ([class_id])
 GO
 ALTER TABLE [dbo].[onct_entity_process] CHECK CONSTRAINT [class_entity_proce_193]
 GO
-ALTER TABLE [dbo].[onct_entity_process]  WITH CHECK ADD  CONSTRAINT [entity_entity_proce_191] FOREIGN KEY([entity_id])
+ALTER TABLE [dbo].[onct_entity_process]  WITH NOCHECK ADD  CONSTRAINT [entity_entity_proce_191] FOREIGN KEY([entity_id])
 REFERENCES [dbo].[onct_entity] ([entity_id])
 GO
 ALTER TABLE [dbo].[onct_entity_process] CHECK CONSTRAINT [entity_entity_proce_191]
 GO
-ALTER TABLE [dbo].[onct_entity_process]  WITH CHECK ADD  CONSTRAINT [object_entity_proce_192] FOREIGN KEY([object_id])
+ALTER TABLE [dbo].[onct_entity_process]  WITH NOCHECK ADD  CONSTRAINT [object_entity_proce_192] FOREIGN KEY([object_id])
 REFERENCES [dbo].[onct_object] ([object_id])
 GO
 ALTER TABLE [dbo].[onct_entity_process] CHECK CONSTRAINT [object_entity_proce_192]

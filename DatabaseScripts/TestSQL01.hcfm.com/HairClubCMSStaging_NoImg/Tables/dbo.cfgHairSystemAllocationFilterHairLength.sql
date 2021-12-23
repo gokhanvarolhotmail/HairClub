@@ -15,12 +15,12 @@ CREATE TABLE [dbo].[cfgHairSystemAllocationFilterHairLength](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[cfgHairSystemAllocationFilterHairLength]  WITH CHECK ADD  CONSTRAINT [FK_cfgHairSystemAllocationFilterHairLength_cfgVendor] FOREIGN KEY([VendorID])
+ALTER TABLE [dbo].[cfgHairSystemAllocationFilterHairLength]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgHairSystemAllocationFilterHairLength_cfgVendor] FOREIGN KEY([VendorID])
 REFERENCES [dbo].[cfgVendor] ([VendorID])
 GO
 ALTER TABLE [dbo].[cfgHairSystemAllocationFilterHairLength] CHECK CONSTRAINT [FK_cfgHairSystemAllocationFilterHairLength_cfgVendor]
 GO
-ALTER TABLE [dbo].[cfgHairSystemAllocationFilterHairLength]  WITH CHECK ADD  CONSTRAINT [FK_cfgHairSystemAllocationFilterHairLength_lkpHairSystemHairLength] FOREIGN KEY([HairSystemHairLengthID])
+ALTER TABLE [dbo].[cfgHairSystemAllocationFilterHairLength]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgHairSystemAllocationFilterHairLength_lkpHairSystemHairLength] FOREIGN KEY([HairSystemHairLengthID])
 REFERENCES [dbo].[lkpHairSystemHairLength] ([HairSystemHairLengthID])
 GO
 ALTER TABLE [dbo].[cfgHairSystemAllocationFilterHairLength] CHECK CONSTRAINT [FK_cfgHairSystemAllocationFilterHairLength_lkpHairSystemHairLength]

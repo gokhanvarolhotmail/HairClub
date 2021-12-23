@@ -15,12 +15,12 @@ CREATE TABLE [dbo].[cfgHairSystemColorJoin](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[cfgHairSystemColorJoin]  WITH CHECK ADD  CONSTRAINT [FK_cfgHairSystemColorJoin_cfgHairSystem] FOREIGN KEY([HairSystemID])
+ALTER TABLE [dbo].[cfgHairSystemColorJoin]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgHairSystemColorJoin_cfgHairSystem] FOREIGN KEY([HairSystemID])
 REFERENCES [dbo].[cfgHairSystem] ([HairSystemID])
 GO
 ALTER TABLE [dbo].[cfgHairSystemColorJoin] CHECK CONSTRAINT [FK_cfgHairSystemColorJoin_cfgHairSystem]
 GO
-ALTER TABLE [dbo].[cfgHairSystemColorJoin]  WITH CHECK ADD  CONSTRAINT [FK_cfgHairSystemColorJoin_lkpHairSystemHairColor] FOREIGN KEY([HairSystemHairColorID])
+ALTER TABLE [dbo].[cfgHairSystemColorJoin]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgHairSystemColorJoin_lkpHairSystemHairColor] FOREIGN KEY([HairSystemHairColorID])
 REFERENCES [dbo].[lkpHairSystemHairColor] ([HairSystemHairColorID])
 GO
 ALTER TABLE [dbo].[cfgHairSystemColorJoin] CHECK CONSTRAINT [FK_cfgHairSystemColorJoin_lkpHairSystemHairColor]

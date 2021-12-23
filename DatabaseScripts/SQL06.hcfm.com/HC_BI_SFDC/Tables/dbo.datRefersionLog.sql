@@ -33,12 +33,12 @@ CREATE TABLE [dbo].[datRefersionLog](
 GO
 ALTER TABLE [dbo].[datRefersionLog] ADD  CONSTRAINT [DF_datRefersionLog_IsReprocessFlag]  DEFAULT ((0)) FOR [IsReprocessFlag]
 GO
-ALTER TABLE [dbo].[datRefersionLog]  WITH CHECK ADD  CONSTRAINT [FK_datClientMessageLog_lkpRefersionProcess] FOREIGN KEY([RefersionProcessID])
+ALTER TABLE [dbo].[datRefersionLog]  WITH NOCHECK ADD  CONSTRAINT [FK_datClientMessageLog_lkpRefersionProcess] FOREIGN KEY([RefersionProcessID])
 REFERENCES [dbo].[lkpRefersionProcess] ([RefersionProcessID])
 GO
 ALTER TABLE [dbo].[datRefersionLog] CHECK CONSTRAINT [FK_datClientMessageLog_lkpRefersionProcess]
 GO
-ALTER TABLE [dbo].[datRefersionLog]  WITH CHECK ADD  CONSTRAINT [FK_datRefersionLog_lkpRefersionStatus] FOREIGN KEY([RefersionStatusID])
+ALTER TABLE [dbo].[datRefersionLog]  WITH NOCHECK ADD  CONSTRAINT [FK_datRefersionLog_lkpRefersionStatus] FOREIGN KEY([RefersionStatusID])
 REFERENCES [dbo].[lkpRefersionStatus] ([RefersionStatusID])
 GO
 ALTER TABLE [dbo].[datRefersionLog] CHECK CONSTRAINT [FK_datRefersionLog_lkpRefersionStatus]

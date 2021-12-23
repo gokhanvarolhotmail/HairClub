@@ -30,13 +30,13 @@ CREATE NONCLUSTERED INDEX [onct_object_group_member_i3] ON [dbo].[onct_object_gr
 	[object_group_id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[onct_object_group_member]  WITH CHECK ADD  CONSTRAINT [object_group_object_group_184] FOREIGN KEY([object_group_id])
+ALTER TABLE [dbo].[onct_object_group_member]  WITH NOCHECK ADD  CONSTRAINT [object_group_object_group_184] FOREIGN KEY([object_group_id])
 REFERENCES [dbo].[onct_object_group] ([object_group_id])
 ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[onct_object_group_member] CHECK CONSTRAINT [object_group_object_group_184]
 GO
-ALTER TABLE [dbo].[onct_object_group_member]  WITH CHECK ADD  CONSTRAINT [object_object_group_185] FOREIGN KEY([object_id])
+ALTER TABLE [dbo].[onct_object_group_member]  WITH NOCHECK ADD  CONSTRAINT [object_object_group_185] FOREIGN KEY([object_id])
 REFERENCES [dbo].[onct_object] ([object_id])
 ON DELETE CASCADE
 GO

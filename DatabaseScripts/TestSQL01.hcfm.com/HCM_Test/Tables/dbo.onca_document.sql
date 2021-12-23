@@ -22,12 +22,12 @@ REFERENCES [dbo].[onca_action] ([action_code])
 GO
 ALTER TABLE [dbo].[onca_document] CHECK CONSTRAINT [action_document_829]
 GO
-ALTER TABLE [dbo].[onca_document]  WITH CHECK ADD  CONSTRAINT [entity_document_1179] FOREIGN KEY([entity_id])
+ALTER TABLE [dbo].[onca_document]  WITH NOCHECK ADD  CONSTRAINT [entity_document_1179] FOREIGN KEY([entity_id])
 REFERENCES [dbo].[onct_entity] ([entity_id])
 GO
 ALTER TABLE [dbo].[onca_document] CHECK CONSTRAINT [entity_document_1179]
 GO
-ALTER TABLE [dbo].[onca_document]  WITH CHECK ADD  CONSTRAINT [object_document_290] FOREIGN KEY([object_id])
+ALTER TABLE [dbo].[onca_document]  WITH NOCHECK ADD  CONSTRAINT [object_document_290] FOREIGN KEY([object_id])
 REFERENCES [dbo].[onct_object] ([object_id])
 GO
 ALTER TABLE [dbo].[onca_document] CHECK CONSTRAINT [object_document_290]

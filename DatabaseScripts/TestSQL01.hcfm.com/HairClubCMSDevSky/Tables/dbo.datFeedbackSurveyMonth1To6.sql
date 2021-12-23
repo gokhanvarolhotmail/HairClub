@@ -15,12 +15,12 @@ CREATE TABLE [dbo].[datFeedbackSurveyMonth1To6](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[datFeedbackSurveyMonth1To6]  WITH CHECK ADD  CONSTRAINT [FK_datFeedbackSurveyMonth1To6_datFeedbackSurvey] FOREIGN KEY([FeedbackSurveyID])
+ALTER TABLE [dbo].[datFeedbackSurveyMonth1To6]  WITH NOCHECK ADD  CONSTRAINT [FK_datFeedbackSurveyMonth1To6_datFeedbackSurvey] FOREIGN KEY([FeedbackSurveyID])
 REFERENCES [dbo].[datFeedbackSurvey] ([FeedbackSurveyID])
 GO
 ALTER TABLE [dbo].[datFeedbackSurveyMonth1To6] CHECK CONSTRAINT [FK_datFeedbackSurveyMonth1To6_datFeedbackSurvey]
 GO
-ALTER TABLE [dbo].[datFeedbackSurveyMonth1To6]  WITH CHECK ADD  CONSTRAINT [FK_datFeedbackSurveyMonth1To6_lkpFeedbackSurveyMonth1To6] FOREIGN KEY([lkpFeedbackSurveyMonth1To6ID])
+ALTER TABLE [dbo].[datFeedbackSurveyMonth1To6]  WITH NOCHECK ADD  CONSTRAINT [FK_datFeedbackSurveyMonth1To6_lkpFeedbackSurveyMonth1To6] FOREIGN KEY([lkpFeedbackSurveyMonth1To6ID])
 REFERENCES [dbo].[lkpFeedbackSurveyMonth1To6] ([FeedbackSurveyMonth1To6ID])
 GO
 ALTER TABLE [dbo].[datFeedbackSurveyMonth1To6] CHECK CONSTRAINT [FK_datFeedbackSurveyMonth1To6_lkpFeedbackSurveyMonth1To6]

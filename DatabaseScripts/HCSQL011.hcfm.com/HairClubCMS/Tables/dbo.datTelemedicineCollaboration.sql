@@ -17,7 +17,7 @@ CREATE TABLE [dbo].[datTelemedicineCollaboration](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[datTelemedicineCollaboration]  WITH CHECK ADD  CONSTRAINT [FK_datTelemedicineColaboration_datAppointment] FOREIGN KEY([AppointmentGUID])
+ALTER TABLE [dbo].[datTelemedicineCollaboration]  WITH NOCHECK ADD  CONSTRAINT [FK_datTelemedicineColaboration_datAppointment] FOREIGN KEY([AppointmentGUID])
 REFERENCES [dbo].[datAppointment] ([AppointmentGUID])
 GO
 ALTER TABLE [dbo].[datTelemedicineCollaboration] CHECK CONSTRAINT [FK_datTelemedicineColaboration_datAppointment]

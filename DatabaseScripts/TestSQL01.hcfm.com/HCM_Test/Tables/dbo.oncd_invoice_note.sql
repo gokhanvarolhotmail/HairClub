@@ -13,18 +13,18 @@ CREATE TABLE [dbo].[oncd_invoice_note](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[oncd_invoice_note]  WITH CHECK ADD  CONSTRAINT [invoice_invoice_note_1118] FOREIGN KEY([invoice_id])
+ALTER TABLE [dbo].[oncd_invoice_note]  WITH NOCHECK ADD  CONSTRAINT [invoice_invoice_note_1118] FOREIGN KEY([invoice_id])
 REFERENCES [dbo].[oncd_invoice] ([invoice_id])
 ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[oncd_invoice_note] CHECK CONSTRAINT [invoice_invoice_note_1118]
 GO
-ALTER TABLE [dbo].[oncd_invoice_note]  WITH CHECK ADD  CONSTRAINT [user_invoice_note_1119] FOREIGN KEY([updated_by_user_code])
+ALTER TABLE [dbo].[oncd_invoice_note]  WITH NOCHECK ADD  CONSTRAINT [user_invoice_note_1119] FOREIGN KEY([updated_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_invoice_note] CHECK CONSTRAINT [user_invoice_note_1119]
 GO
-ALTER TABLE [dbo].[oncd_invoice_note]  WITH CHECK ADD  CONSTRAINT [user_invoice_note_1120] FOREIGN KEY([created_by_user_code])
+ALTER TABLE [dbo].[oncd_invoice_note]  WITH NOCHECK ADD  CONSTRAINT [user_invoice_note_1120] FOREIGN KEY([created_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_invoice_note] CHECK CONSTRAINT [user_invoice_note_1120]

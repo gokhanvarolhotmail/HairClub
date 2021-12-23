@@ -70,12 +70,12 @@ CREATE NONCLUSTERED INDEX [onct_class_i9] ON [dbo].[onct_class]
 	[checkout_date] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[onct_class]  WITH CHECK ADD  CONSTRAINT [class_catego_class_117] FOREIGN KEY([class_category_code])
+ALTER TABLE [dbo].[onct_class]  WITH NOCHECK ADD  CONSTRAINT [class_catego_class_117] FOREIGN KEY([class_category_code])
 REFERENCES [dbo].[onct_class_category] ([class_category_code])
 GO
 ALTER TABLE [dbo].[onct_class] CHECK CONSTRAINT [class_catego_class_117]
 GO
-ALTER TABLE [dbo].[onct_class]  WITH CHECK ADD  CONSTRAINT [user_class_904] FOREIGN KEY([checkout_user_code])
+ALTER TABLE [dbo].[onct_class]  WITH NOCHECK ADD  CONSTRAINT [user_class_904] FOREIGN KEY([checkout_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[onct_class] CHECK CONSTRAINT [user_class_904]

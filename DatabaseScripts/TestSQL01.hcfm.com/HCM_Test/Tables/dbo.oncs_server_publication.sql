@@ -14,13 +14,13 @@ CREATE TABLE [dbo].[oncs_server_publication](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[oncs_server_publication]  WITH CHECK ADD  CONSTRAINT [publication_server_publi_314] FOREIGN KEY([publication_id])
+ALTER TABLE [dbo].[oncs_server_publication]  WITH NOCHECK ADD  CONSTRAINT [publication_server_publi_314] FOREIGN KEY([publication_id])
 REFERENCES [dbo].[oncs_publication] ([publication_id])
 ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[oncs_server_publication] CHECK CONSTRAINT [publication_server_publi_314]
 GO
-ALTER TABLE [dbo].[oncs_server_publication]  WITH CHECK ADD  CONSTRAINT [server_server_publi_315] FOREIGN KEY([server_id])
+ALTER TABLE [dbo].[oncs_server_publication]  WITH NOCHECK ADD  CONSTRAINT [server_server_publi_315] FOREIGN KEY([server_id])
 REFERENCES [dbo].[oncs_server] ([server_id])
 ON DELETE CASCADE
 GO

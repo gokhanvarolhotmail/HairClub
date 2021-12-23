@@ -9,7 +9,7 @@ CREATE TABLE [dbo].[oncd_defect_blob](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[oncd_defect_blob]  WITH CHECK ADD  CONSTRAINT [defect_attac_defect_blob_222] FOREIGN KEY([attachment_id])
+ALTER TABLE [dbo].[oncd_defect_blob]  WITH NOCHECK ADD  CONSTRAINT [defect_attac_defect_blob_222] FOREIGN KEY([attachment_id])
 REFERENCES [dbo].[oncd_defect_attachment] ([attachment_id])
 ON DELETE CASCADE
 GO

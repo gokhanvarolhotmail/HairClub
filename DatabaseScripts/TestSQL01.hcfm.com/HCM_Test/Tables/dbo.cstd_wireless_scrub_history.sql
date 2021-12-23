@@ -12,8 +12,12 @@ CREATE TABLE [dbo].[cstd_wireless_scrub_history](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[cstd_wireless_scrub_history]  WITH CHECK ADD  CONSTRAINT [FK_cstd_wireless_scrub_history_onca_user] FOREIGN KEY([scrub_user_code])
+ALTER TABLE [dbo].[cstd_wireless_scrub_history]  WITH NOCHECK ADD  CONSTRAINT [FK_cstd_wireless_scrub_history_onca_user] FOREIGN KEY([scrub_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[cstd_wireless_scrub_history] CHECK CONSTRAINT [FK_cstd_wireless_scrub_history_onca_user]
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'DAILY, MANUAL' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'cstd_wireless_scrub_history', @level2type=N'COLUMN',@level2name=N'scrub_type'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'EXPORT, IMPORT' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'cstd_wireless_scrub_history', @level2type=N'COLUMN',@level2name=N'scrub_direction'
 GO

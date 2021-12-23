@@ -17,12 +17,12 @@ CREATE TABLE [dbo].[cfgVendorBusinessUnitBrand](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[cfgVendorBusinessUnitBrand]  WITH CHECK ADD  CONSTRAINT [FK_cfgVendorBusinessUnitBrand_cfgVendor] FOREIGN KEY([VendorID])
+ALTER TABLE [dbo].[cfgVendorBusinessUnitBrand]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgVendorBusinessUnitBrand_cfgVendor] FOREIGN KEY([VendorID])
 REFERENCES [dbo].[cfgVendor] ([VendorID])
 GO
 ALTER TABLE [dbo].[cfgVendorBusinessUnitBrand] CHECK CONSTRAINT [FK_cfgVendorBusinessUnitBrand_cfgVendor]
 GO
-ALTER TABLE [dbo].[cfgVendorBusinessUnitBrand]  WITH CHECK ADD  CONSTRAINT [FK_cfgVendorBusinessUnitBrand_lkpBusinessUnitBrand] FOREIGN KEY([BusinessUnitBrandID])
+ALTER TABLE [dbo].[cfgVendorBusinessUnitBrand]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgVendorBusinessUnitBrand_lkpBusinessUnitBrand] FOREIGN KEY([BusinessUnitBrandID])
 REFERENCES [dbo].[lkpBusinessUnitBrand] ([BusinessUnitBrandID])
 GO
 ALTER TABLE [dbo].[cfgVendorBusinessUnitBrand] CHECK CONSTRAINT [FK_cfgVendorBusinessUnitBrand_lkpBusinessUnitBrand]

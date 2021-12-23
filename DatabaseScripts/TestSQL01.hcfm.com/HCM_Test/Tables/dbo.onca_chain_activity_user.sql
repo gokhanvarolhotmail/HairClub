@@ -13,13 +13,13 @@ CREATE TABLE [dbo].[onca_chain_activity_user](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[onca_chain_activity_user]  WITH CHECK ADD  CONSTRAINT [chain_activi_chain_activi_261] FOREIGN KEY([chain_activity_id])
+ALTER TABLE [dbo].[onca_chain_activity_user]  WITH NOCHECK ADD  CONSTRAINT [chain_activi_chain_activi_261] FOREIGN KEY([chain_activity_id])
 REFERENCES [dbo].[onca_chain_activity] ([chain_activity_id])
 ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[onca_chain_activity_user] CHECK CONSTRAINT [chain_activi_chain_activi_261]
 GO
-ALTER TABLE [dbo].[onca_chain_activity_user]  WITH CHECK ADD  CONSTRAINT [user_chain_activi_815] FOREIGN KEY([user_code])
+ALTER TABLE [dbo].[onca_chain_activity_user]  WITH NOCHECK ADD  CONSTRAINT [user_chain_activi_815] FOREIGN KEY([user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[onca_chain_activity_user] CHECK CONSTRAINT [user_chain_activi_815]

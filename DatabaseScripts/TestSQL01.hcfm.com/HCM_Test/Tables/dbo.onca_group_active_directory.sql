@@ -11,7 +11,7 @@ CREATE TABLE [dbo].[onca_group_active_directory](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[onca_group_active_directory]  WITH CHECK ADD  CONSTRAINT [group_group_active_1170] FOREIGN KEY([group_id])
+ALTER TABLE [dbo].[onca_group_active_directory]  WITH NOCHECK ADD  CONSTRAINT [group_group_active_1170] FOREIGN KEY([group_id])
 REFERENCES [dbo].[onca_group] ([group_id])
 ON DELETE CASCADE
 GO

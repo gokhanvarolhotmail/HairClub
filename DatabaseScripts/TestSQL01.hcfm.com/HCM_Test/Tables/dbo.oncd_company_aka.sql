@@ -30,18 +30,18 @@ CREATE NONCLUSTERED INDEX [oncd_company_aka_i3] ON [dbo].[oncd_company_aka]
 	[company_name_1_search] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[oncd_company_aka]  WITH CHECK ADD  CONSTRAINT [company_company_aka_142] FOREIGN KEY([company_id])
+ALTER TABLE [dbo].[oncd_company_aka]  WITH NOCHECK ADD  CONSTRAINT [company_company_aka_142] FOREIGN KEY([company_id])
 REFERENCES [dbo].[oncd_company] ([company_id])
 ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[oncd_company_aka] CHECK CONSTRAINT [company_company_aka_142]
 GO
-ALTER TABLE [dbo].[oncd_company_aka]  WITH CHECK ADD  CONSTRAINT [user_company_aka_517] FOREIGN KEY([created_by_user_code])
+ALTER TABLE [dbo].[oncd_company_aka]  WITH NOCHECK ADD  CONSTRAINT [user_company_aka_517] FOREIGN KEY([created_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_company_aka] CHECK CONSTRAINT [user_company_aka_517]
 GO
-ALTER TABLE [dbo].[oncd_company_aka]  WITH CHECK ADD  CONSTRAINT [user_company_aka_518] FOREIGN KEY([updated_by_user_code])
+ALTER TABLE [dbo].[oncd_company_aka]  WITH NOCHECK ADD  CONSTRAINT [user_company_aka_518] FOREIGN KEY([updated_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_company_aka] CHECK CONSTRAINT [user_company_aka_518]

@@ -42,27 +42,27 @@ ALTER TABLE [dbo].[datSalesOrderTender] ADD  CONSTRAINT [DF_datSalesOrderTender_
 GO
 ALTER TABLE [dbo].[datSalesOrderTender] ADD  CONSTRAINT [DF_datSalesOrderTender_EntrySortOrder]  DEFAULT ((1)) FOR [EntrySortOrder]
 GO
-ALTER TABLE [dbo].[datSalesOrderTender]  WITH CHECK ADD  CONSTRAINT [FK_datSalesOrderTender_datSalesOrder] FOREIGN KEY([SalesOrderGUID])
+ALTER TABLE [dbo].[datSalesOrderTender]  WITH NOCHECK ADD  CONSTRAINT [FK_datSalesOrderTender_datSalesOrder] FOREIGN KEY([SalesOrderGUID])
 REFERENCES [dbo].[datSalesOrder] ([SalesOrderGUID])
 GO
 ALTER TABLE [dbo].[datSalesOrderTender] CHECK CONSTRAINT [FK_datSalesOrderTender_datSalesOrder]
 GO
-ALTER TABLE [dbo].[datSalesOrderTender]  WITH CHECK ADD  CONSTRAINT [FK_datSalesOrderTender_lkpCreditCardType] FOREIGN KEY([CreditCardTypeID])
+ALTER TABLE [dbo].[datSalesOrderTender]  WITH NOCHECK ADD  CONSTRAINT [FK_datSalesOrderTender_lkpCreditCardType] FOREIGN KEY([CreditCardTypeID])
 REFERENCES [dbo].[lkpCreditCardType] ([CreditCardTypeID])
 GO
 ALTER TABLE [dbo].[datSalesOrderTender] CHECK CONSTRAINT [FK_datSalesOrderTender_lkpCreditCardType]
 GO
-ALTER TABLE [dbo].[datSalesOrderTender]  WITH CHECK ADD  CONSTRAINT [FK_datSalesOrderTender_lkpFinanceCompany] FOREIGN KEY([FinanceCompanyID])
+ALTER TABLE [dbo].[datSalesOrderTender]  WITH NOCHECK ADD  CONSTRAINT [FK_datSalesOrderTender_lkpFinanceCompany] FOREIGN KEY([FinanceCompanyID])
 REFERENCES [dbo].[lkpFinanceCompany] ([FinanceCompanyID])
 GO
 ALTER TABLE [dbo].[datSalesOrderTender] CHECK CONSTRAINT [FK_datSalesOrderTender_lkpFinanceCompany]
 GO
-ALTER TABLE [dbo].[datSalesOrderTender]  WITH CHECK ADD  CONSTRAINT [FK_datSalesOrderTender_lkpInterCompanyReason] FOREIGN KEY([InterCompanyReasonID])
+ALTER TABLE [dbo].[datSalesOrderTender]  WITH NOCHECK ADD  CONSTRAINT [FK_datSalesOrderTender_lkpInterCompanyReason] FOREIGN KEY([InterCompanyReasonID])
 REFERENCES [dbo].[lkpInterCompanyReason] ([InterCompanyReasonID])
 GO
 ALTER TABLE [dbo].[datSalesOrderTender] CHECK CONSTRAINT [FK_datSalesOrderTender_lkpInterCompanyReason]
 GO
-ALTER TABLE [dbo].[datSalesOrderTender]  WITH CHECK ADD  CONSTRAINT [FK_datSalesOrderTender_lkpTenderType] FOREIGN KEY([TenderTypeID])
+ALTER TABLE [dbo].[datSalesOrderTender]  WITH NOCHECK ADD  CONSTRAINT [FK_datSalesOrderTender_lkpTenderType] FOREIGN KEY([TenderTypeID])
 REFERENCES [dbo].[lkpTenderType] ([TenderTypeID])
 GO
 ALTER TABLE [dbo].[datSalesOrderTender] CHECK CONSTRAINT [FK_datSalesOrderTender_lkpTenderType]

@@ -35,23 +35,23 @@ CREATE NONCLUSTERED INDEX [oncd_company_email_i3] ON [dbo].[oncd_company_email]
 	[active] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[oncd_company_email]  WITH CHECK ADD  CONSTRAINT [company_company_emai_90] FOREIGN KEY([company_id])
+ALTER TABLE [dbo].[oncd_company_email]  WITH NOCHECK ADD  CONSTRAINT [company_company_emai_90] FOREIGN KEY([company_id])
 REFERENCES [dbo].[oncd_company] ([company_id])
 ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[oncd_company_email] CHECK CONSTRAINT [company_company_emai_90]
 GO
-ALTER TABLE [dbo].[oncd_company_email]  WITH CHECK ADD  CONSTRAINT [email_type_company_emai_522] FOREIGN KEY([email_type_code])
+ALTER TABLE [dbo].[oncd_company_email]  WITH NOCHECK ADD  CONSTRAINT [email_type_company_emai_522] FOREIGN KEY([email_type_code])
 REFERENCES [dbo].[onca_email_type] ([email_type_code])
 GO
 ALTER TABLE [dbo].[oncd_company_email] CHECK CONSTRAINT [email_type_company_emai_522]
 GO
-ALTER TABLE [dbo].[oncd_company_email]  WITH CHECK ADD  CONSTRAINT [user_company_emai_523] FOREIGN KEY([updated_by_user_code])
+ALTER TABLE [dbo].[oncd_company_email]  WITH NOCHECK ADD  CONSTRAINT [user_company_emai_523] FOREIGN KEY([updated_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_company_email] CHECK CONSTRAINT [user_company_emai_523]
 GO
-ALTER TABLE [dbo].[oncd_company_email]  WITH CHECK ADD  CONSTRAINT [user_company_emai_524] FOREIGN KEY([created_by_user_code])
+ALTER TABLE [dbo].[oncd_company_email]  WITH NOCHECK ADD  CONSTRAINT [user_company_emai_524] FOREIGN KEY([created_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_company_email] CHECK CONSTRAINT [user_company_emai_524]

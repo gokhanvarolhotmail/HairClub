@@ -62,17 +62,17 @@ CREATE NONCLUSTERED INDEX [cstd_contact_completion_i3] ON [dbo].[cstd_contact_co
 	[contact_id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[cstd_contact_completion]  WITH CHECK ADD  CONSTRAINT [onca_user_cstd_contact_completion_783] FOREIGN KEY([created_by_user_code])
+ALTER TABLE [dbo].[cstd_contact_completion]  WITH NOCHECK ADD  CONSTRAINT [onca_user_cstd_contact_completion_783] FOREIGN KEY([created_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[cstd_contact_completion] CHECK CONSTRAINT [onca_user_cstd_contact_completion_783]
 GO
-ALTER TABLE [dbo].[cstd_contact_completion]  WITH CHECK ADD  CONSTRAINT [onca_user_cstd_contact_completion_784] FOREIGN KEY([updated_by_user_code])
+ALTER TABLE [dbo].[cstd_contact_completion]  WITH NOCHECK ADD  CONSTRAINT [onca_user_cstd_contact_completion_784] FOREIGN KEY([updated_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[cstd_contact_completion] CHECK CONSTRAINT [onca_user_cstd_contact_completion_784]
 GO
-ALTER TABLE [dbo].[cstd_contact_completion]  WITH CHECK ADD  CONSTRAINT [oncd_contact_cstd_contact_completion_782] FOREIGN KEY([contact_id])
+ALTER TABLE [dbo].[cstd_contact_completion]  WITH NOCHECK ADD  CONSTRAINT [oncd_contact_cstd_contact_completion_782] FOREIGN KEY([contact_id])
 REFERENCES [dbo].[oncd_contact] ([contact_id])
 ON DELETE CASCADE
 GO

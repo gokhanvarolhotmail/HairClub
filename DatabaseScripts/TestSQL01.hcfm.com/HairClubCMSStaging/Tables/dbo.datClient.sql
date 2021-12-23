@@ -199,57 +199,57 @@ ALTER TABLE [dbo].[datClient] ADD  DEFAULT ((0)) FOR [IsAutoRenewDisabled]
 GO
 ALTER TABLE [dbo].[datClient] ADD  DEFAULT ((0)) FOR [IsBioGraftClient]
 GO
-ALTER TABLE [dbo].[datClient]  WITH CHECK ADD  CONSTRAINT [FK_datClient_cfgCenter] FOREIGN KEY([CenterID])
+ALTER TABLE [dbo].[datClient]  WITH NOCHECK ADD  CONSTRAINT [FK_datClient_cfgCenter] FOREIGN KEY([CenterID])
 REFERENCES [dbo].[cfgCenter] ([CenterID])
 GO
 ALTER TABLE [dbo].[datClient] CHECK CONSTRAINT [FK_datClient_cfgCenter]
 GO
-ALTER TABLE [dbo].[datClient]  WITH CHECK ADD  CONSTRAINT [FK_datClient_CurrentMDPClientMembershipGUID] FOREIGN KEY([CurrentMDPClientMembershipGUID])
+ALTER TABLE [dbo].[datClient]  WITH NOCHECK ADD  CONSTRAINT [FK_datClient_CurrentMDPClientMembershipGUID] FOREIGN KEY([CurrentMDPClientMembershipGUID])
 REFERENCES [dbo].[datClientMembership] ([ClientMembershipGUID])
 GO
 ALTER TABLE [dbo].[datClient] CHECK CONSTRAINT [FK_datClient_CurrentMDPClientMembershipGUID]
 GO
-ALTER TABLE [dbo].[datClient]  WITH CHECK ADD  CONSTRAINT [FK_datClient_datClientMembership_CurrentBioMatrixClientMembershipGUID] FOREIGN KEY([CurrentBioMatrixClientMembershipGUID])
+ALTER TABLE [dbo].[datClient]  WITH NOCHECK ADD  CONSTRAINT [FK_datClient_datClientMembership_CurrentBioMatrixClientMembershipGUID] FOREIGN KEY([CurrentBioMatrixClientMembershipGUID])
 REFERENCES [dbo].[datClientMembership] ([ClientMembershipGUID])
 GO
 ALTER TABLE [dbo].[datClient] CHECK CONSTRAINT [FK_datClient_datClientMembership_CurrentBioMatrixClientMembershipGUID]
 GO
-ALTER TABLE [dbo].[datClient]  WITH CHECK ADD  CONSTRAINT [FK_datClient_datClientMembership_CurrentExtremeTherapyClientMembershipGUID] FOREIGN KEY([CurrentExtremeTherapyClientMembershipGUID])
+ALTER TABLE [dbo].[datClient]  WITH NOCHECK ADD  CONSTRAINT [FK_datClient_datClientMembership_CurrentExtremeTherapyClientMembershipGUID] FOREIGN KEY([CurrentExtremeTherapyClientMembershipGUID])
 REFERENCES [dbo].[datClientMembership] ([ClientMembershipGUID])
 GO
 ALTER TABLE [dbo].[datClient] CHECK CONSTRAINT [FK_datClient_datClientMembership_CurrentExtremeTherapyClientMembershipGUID]
 GO
-ALTER TABLE [dbo].[datClient]  WITH CHECK ADD  CONSTRAINT [FK_datClient_datClientMembership_CurrentSurgeryClientMembershipGUID] FOREIGN KEY([CurrentSurgeryClientMembershipGUID])
+ALTER TABLE [dbo].[datClient]  WITH NOCHECK ADD  CONSTRAINT [FK_datClient_datClientMembership_CurrentSurgeryClientMembershipGUID] FOREIGN KEY([CurrentSurgeryClientMembershipGUID])
 REFERENCES [dbo].[datClientMembership] ([ClientMembershipGUID])
 GO
 ALTER TABLE [dbo].[datClient] CHECK CONSTRAINT [FK_datClient_datClientMembership_CurrentSurgeryClientMembershipGUID]
 GO
-ALTER TABLE [dbo].[datClient]  WITH CHECK ADD  CONSTRAINT [FK_datClient_datClientMembership_CurrentXtrandsClientMembershipGUID] FOREIGN KEY([CurrentXtrandsClientMembershipGUID])
+ALTER TABLE [dbo].[datClient]  WITH NOCHECK ADD  CONSTRAINT [FK_datClient_datClientMembership_CurrentXtrandsClientMembershipGUID] FOREIGN KEY([CurrentXtrandsClientMembershipGUID])
 REFERENCES [dbo].[datClientMembership] ([ClientMembershipGUID])
 GO
 ALTER TABLE [dbo].[datClient] CHECK CONSTRAINT [FK_datClient_datClientMembership_CurrentXtrandsClientMembershipGUID]
 GO
-ALTER TABLE [dbo].[datClient]  WITH CHECK ADD  CONSTRAINT [FK_datClient_lkpCountry] FOREIGN KEY([CountryID])
+ALTER TABLE [dbo].[datClient]  WITH NOCHECK ADD  CONSTRAINT [FK_datClient_lkpCountry] FOREIGN KEY([CountryID])
 REFERENCES [dbo].[lkpCountry] ([CountryID])
 GO
 ALTER TABLE [dbo].[datClient] CHECK CONSTRAINT [FK_datClient_lkpCountry]
 GO
-ALTER TABLE [dbo].[datClient]  WITH CHECK ADD  CONSTRAINT [FK_datClient_lkpGender] FOREIGN KEY([GenderID])
+ALTER TABLE [dbo].[datClient]  WITH NOCHECK ADD  CONSTRAINT [FK_datClient_lkpGender] FOREIGN KEY([GenderID])
 REFERENCES [dbo].[lkpGender] ([GenderID])
 GO
 ALTER TABLE [dbo].[datClient] CHECK CONSTRAINT [FK_datClient_lkpGender]
 GO
-ALTER TABLE [dbo].[datClient]  WITH CHECK ADD  CONSTRAINT [FK_datClient_lkpLanguage] FOREIGN KEY([LanguageID])
+ALTER TABLE [dbo].[datClient]  WITH NOCHECK ADD  CONSTRAINT [FK_datClient_lkpLanguage] FOREIGN KEY([LanguageID])
 REFERENCES [dbo].[lkpLanguage] ([LanguageID])
 GO
 ALTER TABLE [dbo].[datClient] CHECK CONSTRAINT [FK_datClient_lkpLanguage]
 GO
-ALTER TABLE [dbo].[datClient]  WITH CHECK ADD  CONSTRAINT [FK_datClient_lkpSalutation] FOREIGN KEY([SalutationID])
+ALTER TABLE [dbo].[datClient]  WITH NOCHECK ADD  CONSTRAINT [FK_datClient_lkpSalutation] FOREIGN KEY([SalutationID])
 REFERENCES [dbo].[lkpSalutation] ([SalutationID])
 GO
 ALTER TABLE [dbo].[datClient] CHECK CONSTRAINT [FK_datClient_lkpSalutation]
 GO
-ALTER TABLE [dbo].[datClient]  WITH CHECK ADD  CONSTRAINT [FK_datClient_lkpState] FOREIGN KEY([StateID])
+ALTER TABLE [dbo].[datClient]  WITH NOCHECK ADD  CONSTRAINT [FK_datClient_lkpState] FOREIGN KEY([StateID])
 REFERENCES [dbo].[lkpState] ([StateID])
 GO
 ALTER TABLE [dbo].[datClient] CHECK CONSTRAINT [FK_datClient_lkpState]

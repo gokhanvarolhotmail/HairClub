@@ -21,33 +21,33 @@ CREATE TABLE [dbo].[oncd_project_element_hist](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[oncd_project_element_hist]  WITH CHECK ADD  CONSTRAINT [project_elem_project_elem_1001] FOREIGN KEY([project_element_id])
+ALTER TABLE [dbo].[oncd_project_element_hist]  WITH NOCHECK ADD  CONSTRAINT [project_elem_project_elem_1001] FOREIGN KEY([project_element_id])
 REFERENCES [dbo].[oncd_project_element] ([project_element_id])
 GO
 ALTER TABLE [dbo].[oncd_project_element_hist] CHECK CONSTRAINT [project_elem_project_elem_1001]
 GO
-ALTER TABLE [dbo].[oncd_project_element_hist]  WITH CHECK ADD  CONSTRAINT [project_elem_project_elem_1002] FOREIGN KEY([project_element_status_code])
+ALTER TABLE [dbo].[oncd_project_element_hist]  WITH NOCHECK ADD  CONSTRAINT [project_elem_project_elem_1002] FOREIGN KEY([project_element_status_code])
 REFERENCES [dbo].[onca_project_element_status] ([project_element_status_code])
 GO
 ALTER TABLE [dbo].[oncd_project_element_hist] CHECK CONSTRAINT [project_elem_project_elem_1002]
 GO
-ALTER TABLE [dbo].[oncd_project_element_hist]  WITH CHECK ADD  CONSTRAINT [project_revi_project_elem_763] FOREIGN KEY([project_revision_id])
+ALTER TABLE [dbo].[oncd_project_element_hist]  WITH NOCHECK ADD  CONSTRAINT [project_revi_project_elem_763] FOREIGN KEY([project_revision_id])
 REFERENCES [dbo].[oncd_project_revision] ([project_revision_id])
 ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[oncd_project_element_hist] CHECK CONSTRAINT [project_revi_project_elem_763]
 GO
-ALTER TABLE [dbo].[oncd_project_element_hist]  WITH CHECK ADD  CONSTRAINT [rate_project_elem_1003] FOREIGN KEY([rate_code])
+ALTER TABLE [dbo].[oncd_project_element_hist]  WITH NOCHECK ADD  CONSTRAINT [rate_project_elem_1003] FOREIGN KEY([rate_code])
 REFERENCES [dbo].[onca_rate] ([rate_code])
 GO
 ALTER TABLE [dbo].[oncd_project_element_hist] CHECK CONSTRAINT [rate_project_elem_1003]
 GO
-ALTER TABLE [dbo].[oncd_project_element_hist]  WITH CHECK ADD  CONSTRAINT [user_project_elem_1000] FOREIGN KEY([updated_by_user_code])
+ALTER TABLE [dbo].[oncd_project_element_hist]  WITH NOCHECK ADD  CONSTRAINT [user_project_elem_1000] FOREIGN KEY([updated_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_project_element_hist] CHECK CONSTRAINT [user_project_elem_1000]
 GO
-ALTER TABLE [dbo].[oncd_project_element_hist]  WITH CHECK ADD  CONSTRAINT [user_project_elem_999] FOREIGN KEY([created_by_user_code])
+ALTER TABLE [dbo].[oncd_project_element_hist]  WITH NOCHECK ADD  CONSTRAINT [user_project_elem_999] FOREIGN KEY([created_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_project_element_hist] CHECK CONSTRAINT [user_project_elem_999]

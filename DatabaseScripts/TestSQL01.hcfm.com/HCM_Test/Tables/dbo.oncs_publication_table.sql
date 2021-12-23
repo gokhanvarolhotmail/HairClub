@@ -13,24 +13,24 @@ CREATE TABLE [dbo].[oncs_publication_table](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[oncs_publication_table]  WITH CHECK ADD  CONSTRAINT [publication__publication__353] FOREIGN KEY([parent_node_id])
+ALTER TABLE [dbo].[oncs_publication_table]  WITH NOCHECK ADD  CONSTRAINT [publication__publication__353] FOREIGN KEY([parent_node_id])
 REFERENCES [dbo].[oncs_publication_table] ([publication_table_id])
 GO
 ALTER TABLE [dbo].[oncs_publication_table] CHECK CONSTRAINT [publication__publication__353]
 GO
-ALTER TABLE [dbo].[oncs_publication_table]  WITH CHECK ADD  CONSTRAINT [publication_publication__307] FOREIGN KEY([publication_id])
+ALTER TABLE [dbo].[oncs_publication_table]  WITH NOCHECK ADD  CONSTRAINT [publication_publication__307] FOREIGN KEY([publication_id])
 REFERENCES [dbo].[oncs_publication] ([publication_id])
 ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[oncs_publication_table] CHECK CONSTRAINT [publication_publication__307]
 GO
-ALTER TABLE [dbo].[oncs_publication_table]  WITH CHECK ADD  CONSTRAINT [table_publication__352] FOREIGN KEY([table_name])
+ALTER TABLE [dbo].[oncs_publication_table]  WITH NOCHECK ADD  CONSTRAINT [table_publication__352] FOREIGN KEY([table_name])
 REFERENCES [dbo].[onct_table] ([table_name])
 ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[oncs_publication_table] CHECK CONSTRAINT [table_publication__352]
 GO
-ALTER TABLE [dbo].[oncs_publication_table]  WITH CHECK ADD  CONSTRAINT [table_relati_publication__356] FOREIGN KEY([table_relation_member_id])
+ALTER TABLE [dbo].[oncs_publication_table]  WITH NOCHECK ADD  CONSTRAINT [table_relati_publication__356] FOREIGN KEY([table_relation_member_id])
 REFERENCES [dbo].[onct_table_relation_member] ([table_relation_member_id])
 GO
 ALTER TABLE [dbo].[oncs_publication_table] CHECK CONSTRAINT [table_relati_publication__356]

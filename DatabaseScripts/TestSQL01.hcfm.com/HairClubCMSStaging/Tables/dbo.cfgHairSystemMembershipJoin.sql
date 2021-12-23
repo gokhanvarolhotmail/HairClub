@@ -21,12 +21,12 @@ CREATE NONCLUSTERED INDEX [IX_cfgHairSystemMembershipJoin_HairSystemID_Membershi
 	[MembershipID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[cfgHairSystemMembershipJoin]  WITH CHECK ADD  CONSTRAINT [FK_cfgHairSystemMembershipJoin_cfgHairSystem] FOREIGN KEY([HairSystemID])
+ALTER TABLE [dbo].[cfgHairSystemMembershipJoin]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgHairSystemMembershipJoin_cfgHairSystem] FOREIGN KEY([HairSystemID])
 REFERENCES [dbo].[cfgHairSystem] ([HairSystemID])
 GO
 ALTER TABLE [dbo].[cfgHairSystemMembershipJoin] CHECK CONSTRAINT [FK_cfgHairSystemMembershipJoin_cfgHairSystem]
 GO
-ALTER TABLE [dbo].[cfgHairSystemMembershipJoin]  WITH CHECK ADD  CONSTRAINT [FK_cfgHairSystemMembershipJoin_cfgMembership] FOREIGN KEY([MembershipID])
+ALTER TABLE [dbo].[cfgHairSystemMembershipJoin]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgHairSystemMembershipJoin_cfgMembership] FOREIGN KEY([MembershipID])
 REFERENCES [dbo].[cfgMembership] ([MembershipID])
 GO
 ALTER TABLE [dbo].[cfgHairSystemMembershipJoin] CHECK CONSTRAINT [FK_cfgHairSystemMembershipJoin_cfgMembership]

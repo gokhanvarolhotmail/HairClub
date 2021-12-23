@@ -23,27 +23,27 @@ ALTER TABLE [dbo].[datHairSystemInventoryBatch] ADD  CONSTRAINT [DF_datHairSyste
 GO
 ALTER TABLE [dbo].[datHairSystemInventoryBatch] ADD  CONSTRAINT [DF_datHairSystemInventoryBatch_IsAdjustmentCompleted]  DEFAULT ((0)) FOR [IsAdjustmentCompleted]
 GO
-ALTER TABLE [dbo].[datHairSystemInventoryBatch]  WITH CHECK ADD  CONSTRAINT [FK_datHairSystemInventoryBatch_cfgCenter] FOREIGN KEY([CenterID])
+ALTER TABLE [dbo].[datHairSystemInventoryBatch]  WITH NOCHECK ADD  CONSTRAINT [FK_datHairSystemInventoryBatch_cfgCenter] FOREIGN KEY([CenterID])
 REFERENCES [dbo].[cfgCenter] ([CenterID])
 GO
 ALTER TABLE [dbo].[datHairSystemInventoryBatch] CHECK CONSTRAINT [FK_datHairSystemInventoryBatch_cfgCenter]
 GO
-ALTER TABLE [dbo].[datHairSystemInventoryBatch]  WITH CHECK ADD  CONSTRAINT [FK_datHairSystemInventoryBatch_datEmployee] FOREIGN KEY([ScanCompleteEmployeeGUID])
+ALTER TABLE [dbo].[datHairSystemInventoryBatch]  WITH NOCHECK ADD  CONSTRAINT [FK_datHairSystemInventoryBatch_datEmployee] FOREIGN KEY([ScanCompleteEmployeeGUID])
 REFERENCES [dbo].[datEmployee] ([EmployeeGUID])
 GO
 ALTER TABLE [dbo].[datHairSystemInventoryBatch] CHECK CONSTRAINT [FK_datHairSystemInventoryBatch_datEmployee]
 GO
-ALTER TABLE [dbo].[datHairSystemInventoryBatch]  WITH CHECK ADD  CONSTRAINT [FK_datHairSystemInventoryBatch_datHairSystemInventoryBatch] FOREIGN KEY([HairSystemInventoryBatchID])
+ALTER TABLE [dbo].[datHairSystemInventoryBatch]  WITH NOCHECK ADD  CONSTRAINT [FK_datHairSystemInventoryBatch_datHairSystemInventoryBatch] FOREIGN KEY([HairSystemInventoryBatchID])
 REFERENCES [dbo].[datHairSystemInventoryBatch] ([HairSystemInventoryBatchID])
 GO
 ALTER TABLE [dbo].[datHairSystemInventoryBatch] CHECK CONSTRAINT [FK_datHairSystemInventoryBatch_datHairSystemInventoryBatch]
 GO
-ALTER TABLE [dbo].[datHairSystemInventoryBatch]  WITH CHECK ADD  CONSTRAINT [FK_datHairSystemInventoryBatch_datHairSystemInventorySnapshot] FOREIGN KEY([HairSystemInventorySnapshotID])
+ALTER TABLE [dbo].[datHairSystemInventoryBatch]  WITH NOCHECK ADD  CONSTRAINT [FK_datHairSystemInventoryBatch_datHairSystemInventorySnapshot] FOREIGN KEY([HairSystemInventorySnapshotID])
 REFERENCES [dbo].[datHairSystemInventorySnapshot] ([HairSystemInventorySnapshotID])
 GO
 ALTER TABLE [dbo].[datHairSystemInventoryBatch] CHECK CONSTRAINT [FK_datHairSystemInventoryBatch_datHairSystemInventorySnapshot]
 GO
-ALTER TABLE [dbo].[datHairSystemInventoryBatch]  WITH CHECK ADD  CONSTRAINT [FK_datHairSystemInventoryBatch_lkpHairSystemInventoryBatchStatus] FOREIGN KEY([HairSystemInventoryBatchStatusID])
+ALTER TABLE [dbo].[datHairSystemInventoryBatch]  WITH NOCHECK ADD  CONSTRAINT [FK_datHairSystemInventoryBatch_lkpHairSystemInventoryBatchStatus] FOREIGN KEY([HairSystemInventoryBatchStatusID])
 REFERENCES [dbo].[lkpHairSystemInventoryBatchStatus] ([HairSystemInventoryBatchStatusID])
 GO
 ALTER TABLE [dbo].[datHairSystemInventoryBatch] CHECK CONSTRAINT [FK_datHairSystemInventoryBatch_lkpHairSystemInventoryBatchStatus]

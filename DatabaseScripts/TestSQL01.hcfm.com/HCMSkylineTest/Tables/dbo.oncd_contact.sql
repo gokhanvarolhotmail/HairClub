@@ -91,67 +91,67 @@ ALTER TABLE [dbo].[oncd_contact] ADD  DEFAULT ('N') FOR [cst_do_not_mail]
 GO
 ALTER TABLE [dbo].[oncd_contact] ADD  CONSTRAINT [DEFALUT_DNTEXT_N]  DEFAULT ('N') FOR [cst_do_not_text]
 GO
-ALTER TABLE [dbo].[oncd_contact]  WITH CHECK ADD  CONSTRAINT [contact_meth_contact_563] FOREIGN KEY([contact_method_code])
+ALTER TABLE [dbo].[oncd_contact]  WITH NOCHECK ADD  CONSTRAINT [contact_meth_contact_563] FOREIGN KEY([contact_method_code])
 REFERENCES [dbo].[onca_contact_method] ([contact_method_code])
 GO
 ALTER TABLE [dbo].[oncd_contact] CHECK CONSTRAINT [contact_meth_contact_563]
 GO
-ALTER TABLE [dbo].[oncd_contact]  WITH CHECK ADD  CONSTRAINT [contact_stat_contact_562] FOREIGN KEY([contact_status_code])
+ALTER TABLE [dbo].[oncd_contact]  WITH NOCHECK ADD  CONSTRAINT [contact_stat_contact_562] FOREIGN KEY([contact_status_code])
 REFERENCES [dbo].[onca_contact_status] ([contact_status_code])
 GO
 ALTER TABLE [dbo].[oncd_contact] CHECK CONSTRAINT [contact_stat_contact_562]
 GO
-ALTER TABLE [dbo].[oncd_contact]  WITH CHECK ADD  CONSTRAINT [csta_contact_age_range_oncd_contact_734] FOREIGN KEY([cst_age_range_code])
+ALTER TABLE [dbo].[oncd_contact]  WITH NOCHECK ADD  CONSTRAINT [csta_contact_age_range_oncd_contact_734] FOREIGN KEY([cst_age_range_code])
 REFERENCES [dbo].[csta_contact_age_range] ([age_range_code])
 GO
 ALTER TABLE [dbo].[oncd_contact] CHECK CONSTRAINT [csta_contact_age_range_oncd_contact_734]
 GO
-ALTER TABLE [dbo].[oncd_contact]  WITH CHECK ADD  CONSTRAINT [csta_contact_hair_loss_oncd_contact_733] FOREIGN KEY([cst_hair_loss_code])
+ALTER TABLE [dbo].[oncd_contact]  WITH NOCHECK ADD  CONSTRAINT [csta_contact_hair_loss_oncd_contact_733] FOREIGN KEY([cst_hair_loss_code])
 REFERENCES [dbo].[csta_contact_hair_loss] ([hair_loss_code])
 GO
 ALTER TABLE [dbo].[oncd_contact] CHECK CONSTRAINT [csta_contact_hair_loss_oncd_contact_733]
 GO
-ALTER TABLE [dbo].[oncd_contact]  WITH CHECK ADD  CONSTRAINT [FK_oncd_contact_csta_contact_accomodation] FOREIGN KEY([cst_contact_accomodation_code])
+ALTER TABLE [dbo].[oncd_contact]  WITH NOCHECK ADD  CONSTRAINT [FK_oncd_contact_csta_contact_accomodation] FOREIGN KEY([cst_contact_accomodation_code])
 REFERENCES [dbo].[csta_contact_accomodation] ([contact_accomodation_code])
 GO
 ALTER TABLE [dbo].[oncd_contact] CHECK CONSTRAINT [FK_oncd_contact_csta_contact_accomodation]
 GO
-ALTER TABLE [dbo].[oncd_contact]  WITH CHECK ADD  CONSTRAINT [FK_oncd_contact_csta_hair_loss_experience] FOREIGN KEY([cst_hair_loss_experience_code])
+ALTER TABLE [dbo].[oncd_contact]  WITH NOCHECK ADD  CONSTRAINT [FK_oncd_contact_csta_hair_loss_experience] FOREIGN KEY([cst_hair_loss_experience_code])
 REFERENCES [dbo].[csta_hair_loss_experience] ([hair_loss_experience_code])
 GO
 ALTER TABLE [dbo].[oncd_contact] CHECK CONSTRAINT [FK_oncd_contact_csta_hair_loss_experience]
 GO
-ALTER TABLE [dbo].[oncd_contact]  WITH CHECK ADD  CONSTRAINT [FK_oncd_contact_csta_hair_loss_family] FOREIGN KEY([cst_hair_loss_family_code])
+ALTER TABLE [dbo].[oncd_contact]  WITH NOCHECK ADD  CONSTRAINT [FK_oncd_contact_csta_hair_loss_family] FOREIGN KEY([cst_hair_loss_family_code])
 REFERENCES [dbo].[csta_hair_loss_family] ([hair_loss_family_code])
 GO
 ALTER TABLE [dbo].[oncd_contact] CHECK CONSTRAINT [FK_oncd_contact_csta_hair_loss_family]
 GO
-ALTER TABLE [dbo].[oncd_contact]  WITH CHECK ADD  CONSTRAINT [FK_oncd_contact_csta_hair_loss_spot] FOREIGN KEY([cst_hair_loss_spot_code])
+ALTER TABLE [dbo].[oncd_contact]  WITH NOCHECK ADD  CONSTRAINT [FK_oncd_contact_csta_hair_loss_spot] FOREIGN KEY([cst_hair_loss_spot_code])
 REFERENCES [dbo].[csta_hair_loss_spot] ([hair_loss_spot_code])
 GO
 ALTER TABLE [dbo].[oncd_contact] CHECK CONSTRAINT [FK_oncd_contact_csta_hair_loss_spot]
 GO
-ALTER TABLE [dbo].[oncd_contact]  WITH CHECK ADD  CONSTRAINT [FK_oncd_contact_csta_promotion_code] FOREIGN KEY([cst_promotion_code])
+ALTER TABLE [dbo].[oncd_contact]  WITH NOCHECK ADD  CONSTRAINT [FK_oncd_contact_csta_promotion_code] FOREIGN KEY([cst_promotion_code])
 REFERENCES [dbo].[csta_promotion_code] ([promotion_code])
 GO
 ALTER TABLE [dbo].[oncd_contact] CHECK CONSTRAINT [FK_oncd_contact_csta_promotion_code]
 GO
-ALTER TABLE [dbo].[oncd_contact]  WITH CHECK ADD  CONSTRAINT [salutation_contact_561] FOREIGN KEY([salutation_code])
+ALTER TABLE [dbo].[oncd_contact]  WITH NOCHECK ADD  CONSTRAINT [salutation_contact_561] FOREIGN KEY([salutation_code])
 REFERENCES [dbo].[onca_salutation] ([salutation_code])
 GO
 ALTER TABLE [dbo].[oncd_contact] CHECK CONSTRAINT [salutation_contact_561]
 GO
-ALTER TABLE [dbo].[oncd_contact]  WITH CHECK ADD  CONSTRAINT [user_contact_564] FOREIGN KEY([created_by_user_code])
+ALTER TABLE [dbo].[oncd_contact]  WITH NOCHECK ADD  CONSTRAINT [user_contact_564] FOREIGN KEY([created_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_contact] CHECK CONSTRAINT [user_contact_564]
 GO
-ALTER TABLE [dbo].[oncd_contact]  WITH CHECK ADD  CONSTRAINT [user_contact_565] FOREIGN KEY([updated_by_user_code])
+ALTER TABLE [dbo].[oncd_contact]  WITH NOCHECK ADD  CONSTRAINT [user_contact_565] FOREIGN KEY([updated_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_contact] CHECK CONSTRAINT [user_contact_565]
 GO
-ALTER TABLE [dbo].[oncd_contact]  WITH CHECK ADD  CONSTRAINT [user_contact_873] FOREIGN KEY([status_updated_by_user_code])
+ALTER TABLE [dbo].[oncd_contact]  WITH NOCHECK ADD  CONSTRAINT [user_contact_873] FOREIGN KEY([status_updated_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_contact] CHECK CONSTRAINT [user_contact_873]

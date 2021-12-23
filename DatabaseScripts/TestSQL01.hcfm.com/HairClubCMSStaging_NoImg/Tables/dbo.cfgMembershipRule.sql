@@ -54,77 +54,77 @@ ALTER TABLE [dbo].[cfgMembershipRule] ADD  CONSTRAINT [DF_cfgMembershipRule_IsAc
 GO
 ALTER TABLE [dbo].[cfgMembershipRule] ADD  CONSTRAINT [DF_cfgMembershipRule_CenterBusinessTypeID]  DEFAULT ((3)) FOR [CenterBusinessTypeID]
 GO
-ALTER TABLE [dbo].[cfgMembershipRule]  WITH CHECK ADD  CONSTRAINT [FK_cfgMembershipBusinessRule_cfgMembership] FOREIGN KEY([CurrentMembershipID])
+ALTER TABLE [dbo].[cfgMembershipRule]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgMembershipBusinessRule_cfgMembership] FOREIGN KEY([CurrentMembershipID])
 REFERENCES [dbo].[cfgMembership] ([MembershipID])
 GO
 ALTER TABLE [dbo].[cfgMembershipRule] CHECK CONSTRAINT [FK_cfgMembershipBusinessRule_cfgMembership]
 GO
-ALTER TABLE [dbo].[cfgMembershipRule]  WITH CHECK ADD  CONSTRAINT [FK_cfgMembershipBusinessRule_cfgSalesCodeMembership] FOREIGN KEY([SalesCodeID])
+ALTER TABLE [dbo].[cfgMembershipRule]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgMembershipBusinessRule_cfgSalesCodeMembership] FOREIGN KEY([SalesCodeID])
 REFERENCES [dbo].[cfgSalesCode] ([SalesCodeID])
 GO
 ALTER TABLE [dbo].[cfgMembershipRule] CHECK CONSTRAINT [FK_cfgMembershipBusinessRule_cfgSalesCodeMembership]
 GO
-ALTER TABLE [dbo].[cfgMembershipRule]  WITH CHECK ADD  CONSTRAINT [FK_cfgMembershipRule_cfgAddOn] FOREIGN KEY([AddOnID])
+ALTER TABLE [dbo].[cfgMembershipRule]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgMembershipRule_cfgAddOn] FOREIGN KEY([AddOnID])
 REFERENCES [dbo].[cfgAddOn] ([AddOnID])
 GO
 ALTER TABLE [dbo].[cfgMembershipRule] CHECK CONSTRAINT [FK_cfgMembershipRule_cfgAddOn]
 GO
-ALTER TABLE [dbo].[cfgMembershipRule]  WITH CHECK ADD  CONSTRAINT [FK_cfgMembershipRule_cfgMembership] FOREIGN KEY([NewMembershipID])
+ALTER TABLE [dbo].[cfgMembershipRule]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgMembershipRule_cfgMembership] FOREIGN KEY([NewMembershipID])
 REFERENCES [dbo].[cfgMembership] ([MembershipID])
 GO
 ALTER TABLE [dbo].[cfgMembershipRule] CHECK CONSTRAINT [FK_cfgMembershipRule_cfgMembership]
 GO
-ALTER TABLE [dbo].[cfgMembershipRule]  WITH CHECK ADD  CONSTRAINT [FK_cfgMembershipRule_cfgMembership1] FOREIGN KEY([AdditionalNewMembershipID])
+ALTER TABLE [dbo].[cfgMembershipRule]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgMembershipRule_cfgMembership1] FOREIGN KEY([AdditionalNewMembershipID])
 REFERENCES [dbo].[cfgMembership] ([MembershipID])
 GO
 ALTER TABLE [dbo].[cfgMembershipRule] CHECK CONSTRAINT [FK_cfgMembershipRule_cfgMembership1]
 GO
-ALTER TABLE [dbo].[cfgMembershipRule]  WITH CHECK ADD  CONSTRAINT [FK_cfgMembershipRule_cfgMembershipRule] FOREIGN KEY([MembershipRuleID])
+ALTER TABLE [dbo].[cfgMembershipRule]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgMembershipRule_cfgMembershipRule] FOREIGN KEY([MembershipRuleID])
 REFERENCES [dbo].[cfgMembershipRule] ([MembershipRuleID])
 GO
 ALTER TABLE [dbo].[cfgMembershipRule] CHECK CONSTRAINT [FK_cfgMembershipRule_cfgMembershipRule]
 GO
-ALTER TABLE [dbo].[cfgMembershipRule]  WITH CHECK ADD  CONSTRAINT [FK_cfgMembershipRule_cfgSalesCode] FOREIGN KEY([FromCancelledMembershipSalesCodeID])
+ALTER TABLE [dbo].[cfgMembershipRule]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgMembershipRule_cfgSalesCode] FOREIGN KEY([FromCancelledMembershipSalesCodeID])
 REFERENCES [dbo].[cfgSalesCode] ([SalesCodeID])
 GO
 ALTER TABLE [dbo].[cfgMembershipRule] CHECK CONSTRAINT [FK_cfgMembershipRule_cfgSalesCode]
 GO
-ALTER TABLE [dbo].[cfgMembershipRule]  WITH CHECK ADD  CONSTRAINT [FK_cfgMembershipRule_cfgSalesCode1] FOREIGN KEY([MembershipCancelSalesCodeID])
+ALTER TABLE [dbo].[cfgMembershipRule]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgMembershipRule_cfgSalesCode1] FOREIGN KEY([MembershipCancelSalesCodeID])
 REFERENCES [dbo].[cfgSalesCode] ([SalesCodeID])
 GO
 ALTER TABLE [dbo].[cfgMembershipRule] CHECK CONSTRAINT [FK_cfgMembershipRule_cfgSalesCode1]
 GO
-ALTER TABLE [dbo].[cfgMembershipRule]  WITH CHECK ADD  CONSTRAINT [FK_cfgMembershipRule_cfgSalesCode2] FOREIGN KEY([AssociatedAddOnSalesCodeID])
+ALTER TABLE [dbo].[cfgMembershipRule]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgMembershipRule_cfgSalesCode2] FOREIGN KEY([AssociatedAddOnSalesCodeID])
 REFERENCES [dbo].[cfgSalesCode] ([SalesCodeID])
 GO
 ALTER TABLE [dbo].[cfgMembershipRule] CHECK CONSTRAINT [FK_cfgMembershipRule_cfgSalesCode2]
 GO
-ALTER TABLE [dbo].[cfgMembershipRule]  WITH CHECK ADD  CONSTRAINT [FK_cfgMembershipRule_lkpCenterBusinessType] FOREIGN KEY([CenterBusinessTypeID])
+ALTER TABLE [dbo].[cfgMembershipRule]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgMembershipRule_lkpCenterBusinessType] FOREIGN KEY([CenterBusinessTypeID])
 REFERENCES [dbo].[lkpCenterBusinessType] ([CenterBusinessTypeID])
 GO
 ALTER TABLE [dbo].[cfgMembershipRule] CHECK CONSTRAINT [FK_cfgMembershipRule_lkpCenterBusinessType]
 GO
-ALTER TABLE [dbo].[cfgMembershipRule]  WITH CHECK ADD  CONSTRAINT [FK_cfgMembershipRule_lkpClientMembershipAddOnStatus] FOREIGN KEY([AssociatedAddOnNewClientMembershipAddOnStatusID])
+ALTER TABLE [dbo].[cfgMembershipRule]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgMembershipRule_lkpClientMembershipAddOnStatus] FOREIGN KEY([AssociatedAddOnNewClientMembershipAddOnStatusID])
 REFERENCES [dbo].[lkpClientMembershipAddOnStatus] ([ClientMembershipAddOnStatusID])
 GO
 ALTER TABLE [dbo].[cfgMembershipRule] CHECK CONSTRAINT [FK_cfgMembershipRule_lkpClientMembershipAddOnStatus]
 GO
-ALTER TABLE [dbo].[cfgMembershipRule]  WITH CHECK ADD  CONSTRAINT [FK_cfgMembershipRule_lkpClientMembershipStatus] FOREIGN KEY([CurrentMembershipStatusID])
+ALTER TABLE [dbo].[cfgMembershipRule]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgMembershipRule_lkpClientMembershipStatus] FOREIGN KEY([CurrentMembershipStatusID])
 REFERENCES [dbo].[lkpClientMembershipStatus] ([ClientMembershipStatusID])
 GO
 ALTER TABLE [dbo].[cfgMembershipRule] CHECK CONSTRAINT [FK_cfgMembershipRule_lkpClientMembershipStatus]
 GO
-ALTER TABLE [dbo].[cfgMembershipRule]  WITH CHECK ADD  CONSTRAINT [FK_cfgMembershipRule_lkpClientMembershipStatus_ReplaceCurrent] FOREIGN KEY([ReplaceCurrentClientMembershipStatusID])
+ALTER TABLE [dbo].[cfgMembershipRule]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgMembershipRule_lkpClientMembershipStatus_ReplaceCurrent] FOREIGN KEY([ReplaceCurrentClientMembershipStatusID])
 REFERENCES [dbo].[lkpClientMembershipStatus] ([ClientMembershipStatusID])
 GO
 ALTER TABLE [dbo].[cfgMembershipRule] CHECK CONSTRAINT [FK_cfgMembershipRule_lkpClientMembershipStatus_ReplaceCurrent]
 GO
-ALTER TABLE [dbo].[cfgMembershipRule]  WITH CHECK ADD  CONSTRAINT [FK_cfgMembershipRule_lkpClientMembershipStatus1] FOREIGN KEY([NewMembershipStatusID])
+ALTER TABLE [dbo].[cfgMembershipRule]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgMembershipRule_lkpClientMembershipStatus1] FOREIGN KEY([NewMembershipStatusID])
 REFERENCES [dbo].[lkpClientMembershipStatus] ([ClientMembershipStatusID])
 GO
 ALTER TABLE [dbo].[cfgMembershipRule] CHECK CONSTRAINT [FK_cfgMembershipRule_lkpClientMembershipStatus1]
 GO
-ALTER TABLE [dbo].[cfgMembershipRule]  WITH CHECK ADD  CONSTRAINT [FK_cfgMembershipRule_lkpMembershipRuleType] FOREIGN KEY([MembershipRuleTypeID])
+ALTER TABLE [dbo].[cfgMembershipRule]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgMembershipRule_lkpMembershipRuleType] FOREIGN KEY([MembershipRuleTypeID])
 REFERENCES [dbo].[lkpMembershipRuleType] ([MembershipRuleTypeID])
 GO
 ALTER TABLE [dbo].[cfgMembershipRule] CHECK CONSTRAINT [FK_cfgMembershipRule_lkpMembershipRuleType]

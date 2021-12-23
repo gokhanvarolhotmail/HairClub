@@ -18,28 +18,28 @@ CREATE TABLE [dbo].[oncd_contact_user](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[oncd_contact_user]  WITH CHECK ADD  CONSTRAINT [contact_contact_user_75] FOREIGN KEY([contact_id])
+ALTER TABLE [dbo].[oncd_contact_user]  WITH NOCHECK ADD  CONSTRAINT [contact_contact_user_75] FOREIGN KEY([contact_id])
 REFERENCES [dbo].[oncd_contact] ([contact_id])
 ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[oncd_contact_user] CHECK CONSTRAINT [contact_contact_user_75]
 GO
-ALTER TABLE [dbo].[oncd_contact_user]  WITH CHECK ADD  CONSTRAINT [job_function_contact_user_626] FOREIGN KEY([job_function_code])
+ALTER TABLE [dbo].[oncd_contact_user]  WITH NOCHECK ADD  CONSTRAINT [job_function_contact_user_626] FOREIGN KEY([job_function_code])
 REFERENCES [dbo].[onca_job_function] ([job_function_code])
 GO
 ALTER TABLE [dbo].[oncd_contact_user] CHECK CONSTRAINT [job_function_contact_user_626]
 GO
-ALTER TABLE [dbo].[oncd_contact_user]  WITH CHECK ADD  CONSTRAINT [user_contact_user_623] FOREIGN KEY([user_code])
+ALTER TABLE [dbo].[oncd_contact_user]  WITH NOCHECK ADD  CONSTRAINT [user_contact_user_623] FOREIGN KEY([user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_contact_user] CHECK CONSTRAINT [user_contact_user_623]
 GO
-ALTER TABLE [dbo].[oncd_contact_user]  WITH CHECK ADD  CONSTRAINT [user_contact_user_624] FOREIGN KEY([created_by_user_code])
+ALTER TABLE [dbo].[oncd_contact_user]  WITH NOCHECK ADD  CONSTRAINT [user_contact_user_624] FOREIGN KEY([created_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_contact_user] CHECK CONSTRAINT [user_contact_user_624]
 GO
-ALTER TABLE [dbo].[oncd_contact_user]  WITH CHECK ADD  CONSTRAINT [user_contact_user_625] FOREIGN KEY([updated_by_user_code])
+ALTER TABLE [dbo].[oncd_contact_user]  WITH NOCHECK ADD  CONSTRAINT [user_contact_user_625] FOREIGN KEY([updated_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_contact_user] CHECK CONSTRAINT [user_contact_user_625]

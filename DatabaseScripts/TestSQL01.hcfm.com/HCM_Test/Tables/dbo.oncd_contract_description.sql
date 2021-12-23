@@ -13,18 +13,18 @@ CREATE TABLE [dbo].[oncd_contract_description](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[oncd_contract_description]  WITH CHECK ADD  CONSTRAINT [contract_contract_des_335] FOREIGN KEY([contract_id])
+ALTER TABLE [dbo].[oncd_contract_description]  WITH NOCHECK ADD  CONSTRAINT [contract_contract_des_335] FOREIGN KEY([contract_id])
 REFERENCES [dbo].[oncd_contract] ([contract_id])
 ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[oncd_contract_description] CHECK CONSTRAINT [contract_contract_des_335]
 GO
-ALTER TABLE [dbo].[oncd_contract_description]  WITH CHECK ADD  CONSTRAINT [user_contract_des_632] FOREIGN KEY([created_by_user_code])
+ALTER TABLE [dbo].[oncd_contract_description]  WITH NOCHECK ADD  CONSTRAINT [user_contract_des_632] FOREIGN KEY([created_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_contract_description] CHECK CONSTRAINT [user_contract_des_632]
 GO
-ALTER TABLE [dbo].[oncd_contract_description]  WITH CHECK ADD  CONSTRAINT [user_contract_des_633] FOREIGN KEY([updated_by_user_code])
+ALTER TABLE [dbo].[oncd_contract_description]  WITH NOCHECK ADD  CONSTRAINT [user_contract_des_633] FOREIGN KEY([updated_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_contract_description] CHECK CONSTRAINT [user_contract_des_633]

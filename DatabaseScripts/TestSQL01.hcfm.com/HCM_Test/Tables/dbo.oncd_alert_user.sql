@@ -22,23 +22,23 @@ CREATE NONCLUSTERED INDEX [oncd_alert_user_i2] ON [dbo].[oncd_alert_user]
 	[user_code] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[oncd_alert_user]  WITH CHECK ADD  CONSTRAINT [alert_alert_user_398] FOREIGN KEY([alert_id])
+ALTER TABLE [dbo].[oncd_alert_user]  WITH NOCHECK ADD  CONSTRAINT [alert_alert_user_398] FOREIGN KEY([alert_id])
 REFERENCES [dbo].[oncd_alert] ([alert_id])
 ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[oncd_alert_user] CHECK CONSTRAINT [alert_alert_user_398]
 GO
-ALTER TABLE [dbo].[oncd_alert_user]  WITH CHECK ADD  CONSTRAINT [user_alert_user_498] FOREIGN KEY([user_code])
+ALTER TABLE [dbo].[oncd_alert_user]  WITH NOCHECK ADD  CONSTRAINT [user_alert_user_498] FOREIGN KEY([user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_alert_user] CHECK CONSTRAINT [user_alert_user_498]
 GO
-ALTER TABLE [dbo].[oncd_alert_user]  WITH CHECK ADD  CONSTRAINT [user_alert_user_499] FOREIGN KEY([created_by_user_code])
+ALTER TABLE [dbo].[oncd_alert_user]  WITH NOCHECK ADD  CONSTRAINT [user_alert_user_499] FOREIGN KEY([created_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_alert_user] CHECK CONSTRAINT [user_alert_user_499]
 GO
-ALTER TABLE [dbo].[oncd_alert_user]  WITH CHECK ADD  CONSTRAINT [user_alert_user_500] FOREIGN KEY([updated_by_user_code])
+ALTER TABLE [dbo].[oncd_alert_user]  WITH NOCHECK ADD  CONSTRAINT [user_alert_user_500] FOREIGN KEY([updated_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_alert_user] CHECK CONSTRAINT [user_alert_user_500]

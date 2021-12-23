@@ -26,7 +26,7 @@ CREATE NONCLUSTERED INDEX [IX_cfgHairSystemAllocationFilterDesignTemplateArea_Te
 	[TemplateAreaMinimum] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[cfgHairSystemAllocationFilterDesignTemplateArea]  WITH CHECK ADD  CONSTRAINT [FK_cfgHairSystemAllocationFilterDesignTemplateArea_cfgVendor] FOREIGN KEY([VendorID])
+ALTER TABLE [dbo].[cfgHairSystemAllocationFilterDesignTemplateArea]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgHairSystemAllocationFilterDesignTemplateArea_cfgVendor] FOREIGN KEY([VendorID])
 REFERENCES [dbo].[cfgVendor] ([VendorID])
 GO
 ALTER TABLE [dbo].[cfgHairSystemAllocationFilterDesignTemplateArea] CHECK CONSTRAINT [FK_cfgHairSystemAllocationFilterDesignTemplateArea_cfgVendor]

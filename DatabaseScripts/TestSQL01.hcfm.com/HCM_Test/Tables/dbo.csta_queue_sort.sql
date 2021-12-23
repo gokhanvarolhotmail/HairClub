@@ -17,7 +17,7 @@ CREATE TABLE [dbo].[csta_queue_sort](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[csta_queue_sort]  WITH CHECK ADD  CONSTRAINT [FK_csta_queue_sort_created_by_user] FOREIGN KEY([created_by_user_code])
+ALTER TABLE [dbo].[csta_queue_sort]  WITH NOCHECK ADD  CONSTRAINT [FK_csta_queue_sort_created_by_user] FOREIGN KEY([created_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[csta_queue_sort] CHECK CONSTRAINT [FK_csta_queue_sort_created_by_user]
@@ -28,7 +28,7 @@ ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[csta_queue_sort] CHECK CONSTRAINT [FK_csta_queue_sort_csta_queue]
 GO
-ALTER TABLE [dbo].[csta_queue_sort]  WITH CHECK ADD  CONSTRAINT [FK_csta_queue_sort_updated_by_user] FOREIGN KEY([updated_by_user_code])
+ALTER TABLE [dbo].[csta_queue_sort]  WITH NOCHECK ADD  CONSTRAINT [FK_csta_queue_sort_updated_by_user] FOREIGN KEY([updated_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[csta_queue_sort] CHECK CONSTRAINT [FK_csta_queue_sort_updated_by_user]

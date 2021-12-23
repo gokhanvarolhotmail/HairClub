@@ -36,7 +36,7 @@ ALTER TABLE [dbo].[cfgCenterTrichoView] ADD  DEFAULT ((0)) FOR [IsScalpHealthAva
 GO
 ALTER TABLE [dbo].[cfgCenterTrichoView] ADD  DEFAULT ((0)) FOR [IsHighResUploadAvailable]
 GO
-ALTER TABLE [dbo].[cfgCenterTrichoView]  WITH CHECK ADD  CONSTRAINT [FK_cfgCenterTrichoView_cfgCenter] FOREIGN KEY([CenterID])
+ALTER TABLE [dbo].[cfgCenterTrichoView]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgCenterTrichoView_cfgCenter] FOREIGN KEY([CenterID])
 REFERENCES [dbo].[cfgCenter] ([CenterID])
 GO
 ALTER TABLE [dbo].[cfgCenterTrichoView] CHECK CONSTRAINT [FK_cfgCenterTrichoView_cfgCenter]

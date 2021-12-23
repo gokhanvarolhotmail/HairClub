@@ -27,38 +27,38 @@ ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[onca_milestone_activity] CHECK CONSTRAINT [action_milestone_ac_270]
 GO
-ALTER TABLE [dbo].[onca_milestone_activity]  WITH CHECK ADD  CONSTRAINT [address_type_milestone_ac_845] FOREIGN KEY([batch_address_type_code])
+ALTER TABLE [dbo].[onca_milestone_activity]  WITH NOCHECK ADD  CONSTRAINT [address_type_milestone_ac_845] FOREIGN KEY([batch_address_type_code])
 REFERENCES [dbo].[onca_address_type] ([address_type_code])
 GO
 ALTER TABLE [dbo].[onca_milestone_activity] CHECK CONSTRAINT [address_type_milestone_ac_845]
 GO
-ALTER TABLE [dbo].[onca_milestone_activity]  WITH CHECK ADD  CONSTRAINT [batch_status_milestone_ac_849] FOREIGN KEY([batch_status_code])
+ALTER TABLE [dbo].[onca_milestone_activity]  WITH NOCHECK ADD  CONSTRAINT [batch_status_milestone_ac_849] FOREIGN KEY([batch_status_code])
 REFERENCES [dbo].[onca_batch_status] ([batch_status_code])
 GO
 ALTER TABLE [dbo].[onca_milestone_activity] CHECK CONSTRAINT [batch_status_milestone_ac_849]
 GO
-ALTER TABLE [dbo].[onca_milestone_activity]  WITH CHECK ADD  CONSTRAINT [campaign_milestone_ac_850] FOREIGN KEY([campaign_code])
+ALTER TABLE [dbo].[onca_milestone_activity]  WITH NOCHECK ADD  CONSTRAINT [campaign_milestone_ac_850] FOREIGN KEY([campaign_code])
 REFERENCES [dbo].[onca_campaign] ([campaign_code])
 GO
 ALTER TABLE [dbo].[onca_milestone_activity] CHECK CONSTRAINT [campaign_milestone_ac_850]
 GO
-ALTER TABLE [dbo].[onca_milestone_activity]  WITH CHECK ADD  CONSTRAINT [milestone_milestone_ac_272] FOREIGN KEY([milestone_id])
+ALTER TABLE [dbo].[onca_milestone_activity]  WITH NOCHECK ADD  CONSTRAINT [milestone_milestone_ac_272] FOREIGN KEY([milestone_id])
 REFERENCES [dbo].[onca_milestone] ([milestone_id])
 ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[onca_milestone_activity] CHECK CONSTRAINT [milestone_milestone_ac_272]
 GO
-ALTER TABLE [dbo].[onca_milestone_activity]  WITH CHECK ADD  CONSTRAINT [project_milestone_ac_851] FOREIGN KEY([project_code])
+ALTER TABLE [dbo].[onca_milestone_activity]  WITH NOCHECK ADD  CONSTRAINT [project_milestone_ac_851] FOREIGN KEY([project_code])
 REFERENCES [dbo].[onca_project] ([project_code])
 GO
 ALTER TABLE [dbo].[onca_milestone_activity] CHECK CONSTRAINT [project_milestone_ac_851]
 GO
-ALTER TABLE [dbo].[onca_milestone_activity]  WITH CHECK ADD  CONSTRAINT [result_milestone_ac_848] FOREIGN KEY([batch_result_code])
+ALTER TABLE [dbo].[onca_milestone_activity]  WITH NOCHECK ADD  CONSTRAINT [result_milestone_ac_848] FOREIGN KEY([batch_result_code])
 REFERENCES [dbo].[onca_result] ([result_code])
 GO
 ALTER TABLE [dbo].[onca_milestone_activity] CHECK CONSTRAINT [result_milestone_ac_848]
 GO
-ALTER TABLE [dbo].[onca_milestone_activity]  WITH CHECK ADD  CONSTRAINT [source_milestone_ac_852] FOREIGN KEY([source_code])
+ALTER TABLE [dbo].[onca_milestone_activity]  WITH NOCHECK ADD  CONSTRAINT [source_milestone_ac_852] FOREIGN KEY([source_code])
 REFERENCES [dbo].[onca_source] ([source_code])
 GO
 ALTER TABLE [dbo].[onca_milestone_activity] CHECK CONSTRAINT [source_milestone_ac_852]

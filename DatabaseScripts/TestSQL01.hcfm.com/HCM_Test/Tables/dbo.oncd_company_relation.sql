@@ -21,17 +21,17 @@ CREATE NONCLUSTERED INDEX [oncd_company_relation_i2] ON [dbo].[oncd_company_rela
 	[company_relation_code] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[oncd_company_relation]  WITH CHECK ADD  CONSTRAINT [company_rela_company_rela_544] FOREIGN KEY([company_relation_code])
+ALTER TABLE [dbo].[oncd_company_relation]  WITH NOCHECK ADD  CONSTRAINT [company_rela_company_rela_544] FOREIGN KEY([company_relation_code])
 REFERENCES [dbo].[onca_company_relation] ([company_relation_code])
 GO
 ALTER TABLE [dbo].[oncd_company_relation] CHECK CONSTRAINT [company_rela_company_rela_544]
 GO
-ALTER TABLE [dbo].[oncd_company_relation]  WITH CHECK ADD  CONSTRAINT [user_company_rela_545] FOREIGN KEY([created_by_user_code])
+ALTER TABLE [dbo].[oncd_company_relation]  WITH NOCHECK ADD  CONSTRAINT [user_company_rela_545] FOREIGN KEY([created_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_company_relation] CHECK CONSTRAINT [user_company_rela_545]
 GO
-ALTER TABLE [dbo].[oncd_company_relation]  WITH CHECK ADD  CONSTRAINT [user_company_rela_546] FOREIGN KEY([updated_by_user_code])
+ALTER TABLE [dbo].[oncd_company_relation]  WITH NOCHECK ADD  CONSTRAINT [user_company_rela_546] FOREIGN KEY([updated_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_company_relation] CHECK CONSTRAINT [user_company_rela_546]

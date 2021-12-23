@@ -37,7 +37,7 @@ ALTER TABLE [dbo].[cfgConfigurationBusinessUnitBrand] ADD  DEFAULT ((0)) FOR [Is
 GO
 ALTER TABLE [dbo].[cfgConfigurationBusinessUnitBrand] ADD  DEFAULT ((0)) FOR [IsInventoryEnabled]
 GO
-ALTER TABLE [dbo].[cfgConfigurationBusinessUnitBrand]  WITH CHECK ADD  CONSTRAINT [FK_cfgConfigurationBusinessUnitBrand_lkpBusinessUnitBrand] FOREIGN KEY([BusinessUnitBrandID])
+ALTER TABLE [dbo].[cfgConfigurationBusinessUnitBrand]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgConfigurationBusinessUnitBrand_lkpBusinessUnitBrand] FOREIGN KEY([BusinessUnitBrandID])
 REFERENCES [dbo].[lkpBusinessUnitBrand] ([BusinessUnitBrandID])
 GO
 ALTER TABLE [dbo].[cfgConfigurationBusinessUnitBrand] CHECK CONSTRAINT [FK_cfgConfigurationBusinessUnitBrand_lkpBusinessUnitBrand]

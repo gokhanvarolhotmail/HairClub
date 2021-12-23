@@ -17,7 +17,7 @@ CREATE TABLE [dbo].[lkpPhoneSegment](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[lkpPhoneSegment]  WITH CHECK ADD  CONSTRAINT [FK_lkpPhoneSegment_lkpPhoneSegment] FOREIGN KEY([PhoneSegmentID])
+ALTER TABLE [dbo].[lkpPhoneSegment]  WITH NOCHECK ADD  CONSTRAINT [FK_lkpPhoneSegment_lkpPhoneSegment] FOREIGN KEY([PhoneSegmentID])
 REFERENCES [dbo].[lkpPhoneSegment] ([PhoneSegmentID])
 GO
 ALTER TABLE [dbo].[lkpPhoneSegment] CHECK CONSTRAINT [FK_lkpPhoneSegment_lkpPhoneSegment]

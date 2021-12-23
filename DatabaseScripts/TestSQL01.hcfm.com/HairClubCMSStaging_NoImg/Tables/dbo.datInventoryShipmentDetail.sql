@@ -39,32 +39,32 @@ CREATE NONCLUSTERED INDEX [IX_datInventoryShipmentDetail_InventoryTransferReques
 )
 INCLUDE([InventoryShipmentGUID]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[datInventoryShipmentDetail]  WITH CHECK ADD  CONSTRAINT [FK_datInventoryShipmentDetail_datHairSystemOrder] FOREIGN KEY([HairSystemOrderGUID])
+ALTER TABLE [dbo].[datInventoryShipmentDetail]  WITH NOCHECK ADD  CONSTRAINT [FK_datInventoryShipmentDetail_datHairSystemOrder] FOREIGN KEY([HairSystemOrderGUID])
 REFERENCES [dbo].[datHairSystemOrder] ([HairSystemOrderGUID])
 GO
 ALTER TABLE [dbo].[datInventoryShipmentDetail] CHECK CONSTRAINT [FK_datInventoryShipmentDetail_datHairSystemOrder]
 GO
-ALTER TABLE [dbo].[datInventoryShipmentDetail]  WITH CHECK ADD  CONSTRAINT [FK_datInventoryShipmentDetail_datInventoryShipment] FOREIGN KEY([InventoryShipmentGUID])
+ALTER TABLE [dbo].[datInventoryShipmentDetail]  WITH NOCHECK ADD  CONSTRAINT [FK_datInventoryShipmentDetail_datInventoryShipment] FOREIGN KEY([InventoryShipmentGUID])
 REFERENCES [dbo].[datInventoryShipment] ([InventoryShipmentGUID])
 GO
 ALTER TABLE [dbo].[datInventoryShipmentDetail] CHECK CONSTRAINT [FK_datInventoryShipmentDetail_datInventoryShipment]
 GO
-ALTER TABLE [dbo].[datInventoryShipmentDetail]  WITH CHECK ADD  CONSTRAINT [FK_datInventoryShipmentDetail_datInventoryTransferRequest] FOREIGN KEY([InventoryTransferRequestGUID])
+ALTER TABLE [dbo].[datInventoryShipmentDetail]  WITH NOCHECK ADD  CONSTRAINT [FK_datInventoryShipmentDetail_datInventoryTransferRequest] FOREIGN KEY([InventoryTransferRequestGUID])
 REFERENCES [dbo].[datInventoryTransferRequest] ([InventoryTransferRequestGUID])
 GO
 ALTER TABLE [dbo].[datInventoryShipmentDetail] CHECK CONSTRAINT [FK_datInventoryShipmentDetail_datInventoryTransferRequest]
 GO
-ALTER TABLE [dbo].[datInventoryShipmentDetail]  WITH CHECK ADD  CONSTRAINT [FK_datInventoryShipmentDetail_HairSystemCenterContractPricingID] FOREIGN KEY([PriorityHairSystemCenterContractPricingID])
+ALTER TABLE [dbo].[datInventoryShipmentDetail]  WITH NOCHECK ADD  CONSTRAINT [FK_datInventoryShipmentDetail_HairSystemCenterContractPricingID] FOREIGN KEY([PriorityHairSystemCenterContractPricingID])
 REFERENCES [dbo].[cfgHairSystemCenterContractPricing] ([HairSystemCenterContractPricingID])
 GO
 ALTER TABLE [dbo].[datInventoryShipmentDetail] CHECK CONSTRAINT [FK_datInventoryShipmentDetail_HairSystemCenterContractPricingID]
 GO
-ALTER TABLE [dbo].[datInventoryShipmentDetail]  WITH CHECK ADD  CONSTRAINT [FK_datInventoryShipmentDetail_lkpInventoryShipmentDetailStatus] FOREIGN KEY([InventoryShipmentDetailStatusID])
+ALTER TABLE [dbo].[datInventoryShipmentDetail]  WITH NOCHECK ADD  CONSTRAINT [FK_datInventoryShipmentDetail_lkpInventoryShipmentDetailStatus] FOREIGN KEY([InventoryShipmentDetailStatusID])
 REFERENCES [dbo].[lkpInventoryShipmentDetailStatus] ([InventoryShipmentDetailStatusID])
 GO
 ALTER TABLE [dbo].[datInventoryShipmentDetail] CHECK CONSTRAINT [FK_datInventoryShipmentDetail_lkpInventoryShipmentDetailStatus]
 GO
-ALTER TABLE [dbo].[datInventoryShipmentDetail]  WITH CHECK ADD  CONSTRAINT [FK_datInventoryShipmentDetail_lkpInventoryShipmentReason] FOREIGN KEY([InventoryShipmentReasonID])
+ALTER TABLE [dbo].[datInventoryShipmentDetail]  WITH NOCHECK ADD  CONSTRAINT [FK_datInventoryShipmentDetail_lkpInventoryShipmentReason] FOREIGN KEY([InventoryShipmentReasonID])
 REFERENCES [dbo].[lkpInventoryShipmentReason] ([InventoryShipmentReasonID])
 GO
 ALTER TABLE [dbo].[datInventoryShipmentDetail] CHECK CONSTRAINT [FK_datInventoryShipmentDetail_lkpInventoryShipmentReason]

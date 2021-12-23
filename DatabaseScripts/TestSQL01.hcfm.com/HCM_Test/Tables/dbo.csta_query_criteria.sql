@@ -13,12 +13,12 @@ CREATE TABLE [dbo].[csta_query_criteria](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[csta_query_criteria]  WITH CHECK ADD  CONSTRAINT [onca_user_csta_query_criteria_760] FOREIGN KEY([created_by_user_code])
+ALTER TABLE [dbo].[csta_query_criteria]  WITH NOCHECK ADD  CONSTRAINT [onca_user_csta_query_criteria_760] FOREIGN KEY([created_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[csta_query_criteria] CHECK CONSTRAINT [onca_user_csta_query_criteria_760]
 GO
-ALTER TABLE [dbo].[csta_query_criteria]  WITH CHECK ADD  CONSTRAINT [onca_user_csta_query_criteria_761] FOREIGN KEY([updated_by_user_code])
+ALTER TABLE [dbo].[csta_query_criteria]  WITH NOCHECK ADD  CONSTRAINT [onca_user_csta_query_criteria_761] FOREIGN KEY([updated_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[csta_query_criteria] CHECK CONSTRAINT [onca_user_csta_query_criteria_761]

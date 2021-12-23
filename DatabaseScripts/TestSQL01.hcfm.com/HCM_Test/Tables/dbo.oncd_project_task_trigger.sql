@@ -11,18 +11,18 @@ CREATE TABLE [dbo].[oncd_project_task_trigger](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[oncd_project_task_trigger]  WITH CHECK ADD  CONSTRAINT [project_mile_project_task_760] FOREIGN KEY([project_milestone_id])
+ALTER TABLE [dbo].[oncd_project_task_trigger]  WITH NOCHECK ADD  CONSTRAINT [project_mile_project_task_760] FOREIGN KEY([project_milestone_id])
 REFERENCES [dbo].[oncd_project_milestone] ([project_milestone_id])
 ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[oncd_project_task_trigger] CHECK CONSTRAINT [project_mile_project_task_760]
 GO
-ALTER TABLE [dbo].[oncd_project_task_trigger]  WITH CHECK ADD  CONSTRAINT [project_task_project_task_1056] FOREIGN KEY([project_task_status_code])
+ALTER TABLE [dbo].[oncd_project_task_trigger]  WITH NOCHECK ADD  CONSTRAINT [project_task_project_task_1056] FOREIGN KEY([project_task_status_code])
 REFERENCES [dbo].[onca_project_task_status] ([project_task_status_code])
 GO
 ALTER TABLE [dbo].[oncd_project_task_trigger] CHECK CONSTRAINT [project_task_project_task_1056]
 GO
-ALTER TABLE [dbo].[oncd_project_task_trigger]  WITH CHECK ADD  CONSTRAINT [project_task_project_task_779] FOREIGN KEY([project_task_id])
+ALTER TABLE [dbo].[oncd_project_task_trigger]  WITH NOCHECK ADD  CONSTRAINT [project_task_project_task_779] FOREIGN KEY([project_task_id])
 REFERENCES [dbo].[oncd_project_task] ([project_task_id])
 GO
 ALTER TABLE [dbo].[oncd_project_task_trigger] CHECK CONSTRAINT [project_task_project_task_779]

@@ -14,13 +14,13 @@ CREATE TABLE [dbo].[oncs_publication_indirect](
 GO
 ALTER TABLE [dbo].[oncs_publication_indirect] ADD  CONSTRAINT [DF__oncs_publ__sql_a__39E294A9]  DEFAULT ('BOTH') FOR [sql_action_supported]
 GO
-ALTER TABLE [dbo].[oncs_publication_indirect]  WITH CHECK ADD  CONSTRAINT [publication__publication__310] FOREIGN KEY([indirect_id])
+ALTER TABLE [dbo].[oncs_publication_indirect]  WITH NOCHECK ADD  CONSTRAINT [publication__publication__310] FOREIGN KEY([indirect_id])
 REFERENCES [dbo].[oncs_publication_node] ([publication_node_id])
 ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[oncs_publication_indirect] CHECK CONSTRAINT [publication__publication__310]
 GO
-ALTER TABLE [dbo].[oncs_publication_indirect]  WITH CHECK ADD  CONSTRAINT [publication__publication__311] FOREIGN KEY([publication_node_id])
+ALTER TABLE [dbo].[oncs_publication_indirect]  WITH NOCHECK ADD  CONSTRAINT [publication__publication__311] FOREIGN KEY([publication_node_id])
 REFERENCES [dbo].[oncs_publication_node] ([publication_node_id])
 GO
 ALTER TABLE [dbo].[oncs_publication_indirect] CHECK CONSTRAINT [publication__publication__311]

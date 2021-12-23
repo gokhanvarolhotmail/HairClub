@@ -18,22 +18,22 @@ CREATE TABLE [dbo].[oncd_project_element_calc_hist](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[oncd_project_element_calc_hist]  WITH CHECK ADD  CONSTRAINT [project_elem_project_elem_996] FOREIGN KEY([project_element_calc_id])
+ALTER TABLE [dbo].[oncd_project_element_calc_hist]  WITH NOCHECK ADD  CONSTRAINT [project_elem_project_elem_996] FOREIGN KEY([project_element_calc_id])
 REFERENCES [dbo].[oncd_project_element_calc] ([project_element_calc_id])
 GO
 ALTER TABLE [dbo].[oncd_project_element_calc_hist] CHECK CONSTRAINT [project_elem_project_elem_996]
 GO
-ALTER TABLE [dbo].[oncd_project_element_calc_hist]  WITH CHECK ADD  CONSTRAINT [project_elem_project_elem_997] FOREIGN KEY([project_element_id])
+ALTER TABLE [dbo].[oncd_project_element_calc_hist]  WITH NOCHECK ADD  CONSTRAINT [project_elem_project_elem_997] FOREIGN KEY([project_element_id])
 REFERENCES [dbo].[oncd_project_element] ([project_element_id])
 GO
 ALTER TABLE [dbo].[oncd_project_element_calc_hist] CHECK CONSTRAINT [project_elem_project_elem_997]
 GO
-ALTER TABLE [dbo].[oncd_project_element_calc_hist]  WITH CHECK ADD  CONSTRAINT [project_fact_project_elem_998] FOREIGN KEY([project_factor_code])
+ALTER TABLE [dbo].[oncd_project_element_calc_hist]  WITH NOCHECK ADD  CONSTRAINT [project_fact_project_elem_998] FOREIGN KEY([project_factor_code])
 REFERENCES [dbo].[onca_project_factor] ([project_factor_code])
 GO
 ALTER TABLE [dbo].[oncd_project_element_calc_hist] CHECK CONSTRAINT [project_fact_project_elem_998]
 GO
-ALTER TABLE [dbo].[oncd_project_element_calc_hist]  WITH CHECK ADD  CONSTRAINT [project_revi_project_elem_762] FOREIGN KEY([project_revision_id])
+ALTER TABLE [dbo].[oncd_project_element_calc_hist]  WITH NOCHECK ADD  CONSTRAINT [project_revi_project_elem_762] FOREIGN KEY([project_revision_id])
 REFERENCES [dbo].[oncd_project_revision] ([project_revision_id])
 GO
 ALTER TABLE [dbo].[oncd_project_element_calc_hist] CHECK CONSTRAINT [project_revi_project_elem_762]

@@ -20,7 +20,7 @@ CREATE TABLE [dbo].[lkpHairSystemStyle](
 GO
 ALTER TABLE [dbo].[lkpHairSystemStyle] ADD  DEFAULT ((0)) FOR [IsActiveFlag]
 GO
-ALTER TABLE [dbo].[lkpHairSystemStyle]  WITH CHECK ADD  CONSTRAINT [FK_lkpHairSystemStyle_lkpHairSystemStyleGroup] FOREIGN KEY([HairSystemStyleGroupID])
+ALTER TABLE [dbo].[lkpHairSystemStyle]  WITH NOCHECK ADD  CONSTRAINT [FK_lkpHairSystemStyle_lkpHairSystemStyleGroup] FOREIGN KEY([HairSystemStyleGroupID])
 REFERENCES [dbo].[lkpHairSystemStyleGroup] ([HairSystemStyleGroupID])
 GO
 ALTER TABLE [dbo].[lkpHairSystemStyle] CHECK CONSTRAINT [FK_lkpHairSystemStyle_lkpHairSystemStyleGroup]

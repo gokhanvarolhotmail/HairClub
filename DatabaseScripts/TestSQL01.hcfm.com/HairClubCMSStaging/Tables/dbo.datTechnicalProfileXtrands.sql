@@ -34,52 +34,52 @@ CREATE TABLE [dbo].[datTechnicalProfileXtrands](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[datTechnicalProfileXtrands]  WITH CHECK ADD  CONSTRAINT [FK_datTechnicalProfileXtrands_cfgSalesCode] FOREIGN KEY([LaserDeviceSalesCodeID])
+ALTER TABLE [dbo].[datTechnicalProfileXtrands]  WITH NOCHECK ADD  CONSTRAINT [FK_datTechnicalProfileXtrands_cfgSalesCode] FOREIGN KEY([LaserDeviceSalesCodeID])
 REFERENCES [dbo].[cfgSalesCode] ([SalesCodeID])
 GO
 ALTER TABLE [dbo].[datTechnicalProfileXtrands] CHECK CONSTRAINT [FK_datTechnicalProfileXtrands_cfgSalesCode]
 GO
-ALTER TABLE [dbo].[datTechnicalProfileXtrands]  WITH CHECK ADD  CONSTRAINT [FK_datTechnicalProfileXtrands_cfgSalesCode_OtherService] FOREIGN KEY([OtherServiceSalesCodeID])
+ALTER TABLE [dbo].[datTechnicalProfileXtrands]  WITH NOCHECK ADD  CONSTRAINT [FK_datTechnicalProfileXtrands_cfgSalesCode_OtherService] FOREIGN KEY([OtherServiceSalesCodeID])
 REFERENCES [dbo].[cfgSalesCode] ([SalesCodeID])
 GO
 ALTER TABLE [dbo].[datTechnicalProfileXtrands] CHECK CONSTRAINT [FK_datTechnicalProfileXtrands_cfgSalesCode_OtherService]
 GO
-ALTER TABLE [dbo].[datTechnicalProfileXtrands]  WITH CHECK ADD  CONSTRAINT [FK_datTechnicalProfileXtrands_cfgSalesCode1] FOREIGN KEY([ShampooSalesCodeID])
+ALTER TABLE [dbo].[datTechnicalProfileXtrands]  WITH NOCHECK ADD  CONSTRAINT [FK_datTechnicalProfileXtrands_cfgSalesCode1] FOREIGN KEY([ShampooSalesCodeID])
 REFERENCES [dbo].[cfgSalesCode] ([SalesCodeID])
 GO
 ALTER TABLE [dbo].[datTechnicalProfileXtrands] CHECK CONSTRAINT [FK_datTechnicalProfileXtrands_cfgSalesCode1]
 GO
-ALTER TABLE [dbo].[datTechnicalProfileXtrands]  WITH CHECK ADD  CONSTRAINT [FK_datTechnicalProfileXtrands_cfgSalesCode2] FOREIGN KEY([ConditionerSalesCodeID])
+ALTER TABLE [dbo].[datTechnicalProfileXtrands]  WITH NOCHECK ADD  CONSTRAINT [FK_datTechnicalProfileXtrands_cfgSalesCode2] FOREIGN KEY([ConditionerSalesCodeID])
 REFERENCES [dbo].[cfgSalesCode] ([SalesCodeID])
 GO
 ALTER TABLE [dbo].[datTechnicalProfileXtrands] CHECK CONSTRAINT [FK_datTechnicalProfileXtrands_cfgSalesCode2]
 GO
-ALTER TABLE [dbo].[datTechnicalProfileXtrands]  WITH CHECK ADD  CONSTRAINT [FK_datTechnicalProfileXtrands_cfgSalesCode3] FOREIGN KEY([MinoxidilSalesCodeID])
+ALTER TABLE [dbo].[datTechnicalProfileXtrands]  WITH NOCHECK ADD  CONSTRAINT [FK_datTechnicalProfileXtrands_cfgSalesCode3] FOREIGN KEY([MinoxidilSalesCodeID])
 REFERENCES [dbo].[cfgSalesCode] ([SalesCodeID])
 GO
 ALTER TABLE [dbo].[datTechnicalProfileXtrands] CHECK CONSTRAINT [FK_datTechnicalProfileXtrands_cfgSalesCode3]
 GO
-ALTER TABLE [dbo].[datTechnicalProfileXtrands]  WITH CHECK ADD  CONSTRAINT [FK_datTechnicalProfileXtrands_datTechnicalProfile] FOREIGN KEY([TechnicalProfileID])
+ALTER TABLE [dbo].[datTechnicalProfileXtrands]  WITH NOCHECK ADD  CONSTRAINT [FK_datTechnicalProfileXtrands_datTechnicalProfile] FOREIGN KEY([TechnicalProfileID])
 REFERENCES [dbo].[datTechnicalProfile] ([TechnicalProfileID])
 GO
 ALTER TABLE [dbo].[datTechnicalProfileXtrands] CHECK CONSTRAINT [FK_datTechnicalProfileXtrands_datTechnicalProfile]
 GO
-ALTER TABLE [dbo].[datTechnicalProfileXtrands]  WITH CHECK ADD  CONSTRAINT [FK_datTechnicalProfileXtrands_lkpHairHealth] FOREIGN KEY([HairHealthID])
+ALTER TABLE [dbo].[datTechnicalProfileXtrands]  WITH NOCHECK ADD  CONSTRAINT [FK_datTechnicalProfileXtrands_lkpHairHealth] FOREIGN KEY([HairHealthID])
 REFERENCES [dbo].[lkpHairHealth] ([HairHealthID])
 GO
 ALTER TABLE [dbo].[datTechnicalProfileXtrands] CHECK CONSTRAINT [FK_datTechnicalProfileXtrands_lkpHairHealth]
 GO
-ALTER TABLE [dbo].[datTechnicalProfileXtrands]  WITH CHECK ADD  CONSTRAINT [FK_datTechnicalProfileXtrands_lkpHairStrandGroup] FOREIGN KEY([HairStrandGroupID])
+ALTER TABLE [dbo].[datTechnicalProfileXtrands]  WITH NOCHECK ADD  CONSTRAINT [FK_datTechnicalProfileXtrands_lkpHairStrandGroup] FOREIGN KEY([HairStrandGroupID])
 REFERENCES [dbo].[lkpHairStrandGroup] ([HairStrandGroupID])
 GO
 ALTER TABLE [dbo].[datTechnicalProfileXtrands] CHECK CONSTRAINT [FK_datTechnicalProfileXtrands_lkpHairStrandGroup]
 GO
-ALTER TABLE [dbo].[datTechnicalProfileXtrands]  WITH CHECK ADD  CONSTRAINT [FK_datTechnicalProfileXtrands_lkpTimeUnit] FOREIGN KEY([ServiceTimeUnitID])
+ALTER TABLE [dbo].[datTechnicalProfileXtrands]  WITH NOCHECK ADD  CONSTRAINT [FK_datTechnicalProfileXtrands_lkpTimeUnit] FOREIGN KEY([ServiceTimeUnitID])
 REFERENCES [dbo].[lkpTimeUnit] ([TimeUnitID])
 GO
 ALTER TABLE [dbo].[datTechnicalProfileXtrands] CHECK CONSTRAINT [FK_datTechnicalProfileXtrands_lkpTimeUnit]
 GO
-ALTER TABLE [dbo].[datTechnicalProfileXtrands]  WITH CHECK ADD  CONSTRAINT [FK_datTechnicalProfileXtrands_lkpTimeUnit_OtherService] FOREIGN KEY([OtherServiceTimeUnitID])
+ALTER TABLE [dbo].[datTechnicalProfileXtrands]  WITH NOCHECK ADD  CONSTRAINT [FK_datTechnicalProfileXtrands_lkpTimeUnit_OtherService] FOREIGN KEY([OtherServiceTimeUnitID])
 REFERENCES [dbo].[lkpTimeUnit] ([TimeUnitID])
 GO
 ALTER TABLE [dbo].[datTechnicalProfileXtrands] CHECK CONSTRAINT [FK_datTechnicalProfileXtrands_lkpTimeUnit_OtherService]

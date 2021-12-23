@@ -19,7 +19,7 @@ CREATE TABLE [dbo].[datClientHairFitMetadata](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[datClientHairFitMetadata]  WITH CHECK ADD  CONSTRAINT [FK_datClientHairFitMetadata_datClient] FOREIGN KEY([ClientGUID])
+ALTER TABLE [dbo].[datClientHairFitMetadata]  WITH NOCHECK ADD  CONSTRAINT [FK_datClientHairFitMetadata_datClient] FOREIGN KEY([ClientGUID])
 REFERENCES [dbo].[datClient] ([ClientGUID])
 GO
 ALTER TABLE [dbo].[datClientHairFitMetadata] CHECK CONSTRAINT [FK_datClientHairFitMetadata_datClient]

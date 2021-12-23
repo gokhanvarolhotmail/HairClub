@@ -34,23 +34,23 @@ ALTER TABLE [dbo].[oncd_project_user_task] ADD  DEFAULT ((1)) FOR [task_priority
 GO
 ALTER TABLE [dbo].[oncd_project_user_task] ADD  DEFAULT ((0)) FOR [project_user_task_time]
 GO
-ALTER TABLE [dbo].[oncd_project_user_task]  WITH CHECK ADD  CONSTRAINT [project_task_project_user_781] FOREIGN KEY([project_task_id])
+ALTER TABLE [dbo].[oncd_project_user_task]  WITH NOCHECK ADD  CONSTRAINT [project_task_project_user_781] FOREIGN KEY([project_task_id])
 REFERENCES [dbo].[oncd_project_task] ([project_task_id])
 ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[oncd_project_user_task] CHECK CONSTRAINT [project_task_project_user_781]
 GO
-ALTER TABLE [dbo].[oncd_project_user_task]  WITH CHECK ADD  CONSTRAINT [project_user_project_user_784] FOREIGN KEY([project_user_id])
+ALTER TABLE [dbo].[oncd_project_user_task]  WITH NOCHECK ADD  CONSTRAINT [project_user_project_user_784] FOREIGN KEY([project_user_id])
 REFERENCES [dbo].[oncd_project_user] ([project_user_id])
 GO
 ALTER TABLE [dbo].[oncd_project_user_task] CHECK CONSTRAINT [project_user_project_user_784]
 GO
-ALTER TABLE [dbo].[oncd_project_user_task]  WITH CHECK ADD  CONSTRAINT [user_project_user_1073] FOREIGN KEY([created_by_user_code])
+ALTER TABLE [dbo].[oncd_project_user_task]  WITH NOCHECK ADD  CONSTRAINT [user_project_user_1073] FOREIGN KEY([created_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_project_user_task] CHECK CONSTRAINT [user_project_user_1073]
 GO
-ALTER TABLE [dbo].[oncd_project_user_task]  WITH CHECK ADD  CONSTRAINT [user_project_user_1074] FOREIGN KEY([updated_by_user_code])
+ALTER TABLE [dbo].[oncd_project_user_task]  WITH NOCHECK ADD  CONSTRAINT [user_project_user_1074] FOREIGN KEY([updated_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_project_user_task] CHECK CONSTRAINT [user_project_user_1074]

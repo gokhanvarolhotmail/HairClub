@@ -31,7 +31,7 @@ CREATE NONCLUSTERED INDEX [IX_cfgHairSystemLocation_CabinetDrawerBin] ON [dbo].[
 GO
 ALTER TABLE [dbo].[cfgHairSystemLocation] ADD  DEFAULT ((0)) FOR [IsActiveFlag]
 GO
-ALTER TABLE [dbo].[cfgHairSystemLocation]  WITH CHECK ADD  CONSTRAINT [FK_cfgHairSystemLocation_cfgCenter] FOREIGN KEY([CenterID])
+ALTER TABLE [dbo].[cfgHairSystemLocation]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgHairSystemLocation_cfgCenter] FOREIGN KEY([CenterID])
 REFERENCES [dbo].[cfgCenter] ([CenterID])
 GO
 ALTER TABLE [dbo].[cfgHairSystemLocation] CHECK CONSTRAINT [FK_cfgHairSystemLocation_cfgCenter]

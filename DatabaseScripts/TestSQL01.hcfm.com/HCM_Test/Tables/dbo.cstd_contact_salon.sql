@@ -19,13 +19,13 @@ CREATE NONCLUSTERED INDEX [cstd_contact_salon_i1] ON [dbo].[cstd_contact_salon]
 	[contact_id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[cstd_contact_salon]  WITH CHECK ADD  CONSTRAINT [cstd_contact_salon_oncd_contact] FOREIGN KEY([contact_id])
+ALTER TABLE [dbo].[cstd_contact_salon]  WITH NOCHECK ADD  CONSTRAINT [cstd_contact_salon_oncd_contact] FOREIGN KEY([contact_id])
 REFERENCES [dbo].[oncd_contact] ([contact_id])
 ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[cstd_contact_salon] CHECK CONSTRAINT [cstd_contact_salon_oncd_contact]
 GO
-ALTER TABLE [dbo].[cstd_contact_salon]  WITH CHECK ADD  CONSTRAINT [locking_user_contact] FOREIGN KEY([locked_by_user_code])
+ALTER TABLE [dbo].[cstd_contact_salon]  WITH NOCHECK ADD  CONSTRAINT [locking_user_contact] FOREIGN KEY([locked_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[cstd_contact_salon] CHECK CONSTRAINT [locking_user_contact]

@@ -15,7 +15,7 @@ CREATE TABLE [dbo].[oncs_transaction_server_error](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[oncs_transaction_server_error]  WITH CHECK ADD  CONSTRAINT [transaction__transaction__397] FOREIGN KEY([transaction_date], [server_id], [transaction_order])
+ALTER TABLE [dbo].[oncs_transaction_server_error]  WITH NOCHECK ADD  CONSTRAINT [transaction__transaction__397] FOREIGN KEY([transaction_date], [server_id], [transaction_order])
 REFERENCES [dbo].[oncs_transaction_server] ([transaction_date], [server_id], [transaction_order])
 ON DELETE CASCADE
 GO

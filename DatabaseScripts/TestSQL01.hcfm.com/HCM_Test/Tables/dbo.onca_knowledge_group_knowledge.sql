@@ -10,13 +10,13 @@ CREATE TABLE [dbo].[onca_knowledge_group_knowledge](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[onca_knowledge_group_knowledge]  WITH CHECK ADD  CONSTRAINT [knowledge_gr_knowledge_gr_334] FOREIGN KEY([knowledge_group_id])
+ALTER TABLE [dbo].[onca_knowledge_group_knowledge]  WITH NOCHECK ADD  CONSTRAINT [knowledge_gr_knowledge_gr_334] FOREIGN KEY([knowledge_group_id])
 REFERENCES [dbo].[onca_knowledge_group] ([knowledge_group_id])
 ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[onca_knowledge_group_knowledge] CHECK CONSTRAINT [knowledge_gr_knowledge_gr_334]
 GO
-ALTER TABLE [dbo].[onca_knowledge_group_knowledge]  WITH CHECK ADD  CONSTRAINT [knowledge_knowledge_gr_1186] FOREIGN KEY([knowledge_id])
+ALTER TABLE [dbo].[onca_knowledge_group_knowledge]  WITH NOCHECK ADD  CONSTRAINT [knowledge_knowledge_gr_1186] FOREIGN KEY([knowledge_id])
 REFERENCES [dbo].[oncd_knowledge] ([knowledge_id])
 GO
 ALTER TABLE [dbo].[onca_knowledge_group_knowledge] CHECK CONSTRAINT [knowledge_knowledge_gr_1186]

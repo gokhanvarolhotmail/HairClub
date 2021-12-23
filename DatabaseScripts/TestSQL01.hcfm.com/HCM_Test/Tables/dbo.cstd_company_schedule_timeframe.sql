@@ -24,18 +24,18 @@ CREATE NONCLUSTERED INDEX [cstd_company_schedule_timeframe_i2] ON [dbo].[cstd_co
 GO
 ALTER TABLE [dbo].[cstd_company_schedule_timeframe] ADD  CONSTRAINT [DF__cstd_comp__activ__542C7691]  DEFAULT ('Y') FOR [active]
 GO
-ALTER TABLE [dbo].[cstd_company_schedule_timeframe]  WITH CHECK ADD  CONSTRAINT [cstd_company_schedule_cstd_company_schedule_timeframe_727] FOREIGN KEY([company_schedule_id])
+ALTER TABLE [dbo].[cstd_company_schedule_timeframe]  WITH NOCHECK ADD  CONSTRAINT [cstd_company_schedule_cstd_company_schedule_timeframe_727] FOREIGN KEY([company_schedule_id])
 REFERENCES [dbo].[cstd_company_schedule] ([company_schedule_id])
 ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[cstd_company_schedule_timeframe] CHECK CONSTRAINT [cstd_company_schedule_cstd_company_schedule_timeframe_727]
 GO
-ALTER TABLE [dbo].[cstd_company_schedule_timeframe]  WITH CHECK ADD  CONSTRAINT [onca_user_cstd_company_schedule_timeframe_751] FOREIGN KEY([created_by_user_code])
+ALTER TABLE [dbo].[cstd_company_schedule_timeframe]  WITH NOCHECK ADD  CONSTRAINT [onca_user_cstd_company_schedule_timeframe_751] FOREIGN KEY([created_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[cstd_company_schedule_timeframe] CHECK CONSTRAINT [onca_user_cstd_company_schedule_timeframe_751]
 GO
-ALTER TABLE [dbo].[cstd_company_schedule_timeframe]  WITH CHECK ADD  CONSTRAINT [onca_user_cstd_company_schedule_timeframe_752] FOREIGN KEY([updated_by_user_code])
+ALTER TABLE [dbo].[cstd_company_schedule_timeframe]  WITH NOCHECK ADD  CONSTRAINT [onca_user_cstd_company_schedule_timeframe_752] FOREIGN KEY([updated_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[cstd_company_schedule_timeframe] CHECK CONSTRAINT [onca_user_cstd_company_schedule_timeframe_752]

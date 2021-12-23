@@ -20,12 +20,12 @@ CREATE TABLE [dbo].[datTechnicalProfileHairStrandColor](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[datTechnicalProfileHairStrandColor]  WITH CHECK ADD  CONSTRAINT [FK_datTechnicalProfileHairStrandColor_datTechnicalProfile] FOREIGN KEY([TechnicalProfileID])
+ALTER TABLE [dbo].[datTechnicalProfileHairStrandColor]  WITH NOCHECK ADD  CONSTRAINT [FK_datTechnicalProfileHairStrandColor_datTechnicalProfile] FOREIGN KEY([TechnicalProfileID])
 REFERENCES [dbo].[datTechnicalProfile] ([TechnicalProfileID])
 GO
 ALTER TABLE [dbo].[datTechnicalProfileHairStrandColor] CHECK CONSTRAINT [FK_datTechnicalProfileHairStrandColor_datTechnicalProfile]
 GO
-ALTER TABLE [dbo].[datTechnicalProfileHairStrandColor]  WITH CHECK ADD  CONSTRAINT [FK_datTechnicalProfileHairStrandColor_lkpHairStrandColor] FOREIGN KEY([HairStrandColorID])
+ALTER TABLE [dbo].[datTechnicalProfileHairStrandColor]  WITH NOCHECK ADD  CONSTRAINT [FK_datTechnicalProfileHairStrandColor_lkpHairStrandColor] FOREIGN KEY([HairStrandColorID])
 REFERENCES [dbo].[lkpHairStrandColor] ([HairStrandColorID])
 GO
 ALTER TABLE [dbo].[datTechnicalProfileHairStrandColor] CHECK CONSTRAINT [FK_datTechnicalProfileHairStrandColor_lkpHairStrandColor]

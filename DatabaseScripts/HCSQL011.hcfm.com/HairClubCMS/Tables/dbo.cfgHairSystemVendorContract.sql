@@ -34,7 +34,7 @@ CREATE NONCLUSTERED INDEX [IX_cfgHairSystemVendorContract_ContractName] ON [dbo]
 GO
 ALTER TABLE [dbo].[cfgHairSystemVendorContract] ADD  CONSTRAINT [DF_cfgHairSystemVendorContract_IsRepair]  DEFAULT ((0)) FOR [IsRepair]
 GO
-ALTER TABLE [dbo].[cfgHairSystemVendorContract]  WITH CHECK ADD  CONSTRAINT [FK_cfgHairSystemVendorContract_cfgVendor] FOREIGN KEY([VendorID])
+ALTER TABLE [dbo].[cfgHairSystemVendorContract]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgHairSystemVendorContract_cfgVendor] FOREIGN KEY([VendorID])
 REFERENCES [dbo].[cfgVendor] ([VendorID])
 GO
 ALTER TABLE [dbo].[cfgHairSystemVendorContract] CHECK CONSTRAINT [FK_cfgHairSystemVendorContract_cfgVendor]

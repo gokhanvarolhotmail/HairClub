@@ -9,3 +9,7 @@ RETURNS [bit] WITH EXECUTE AS CALLER
 AS
 EXTERNAL NAME [Oncontact.PSO.BusinessLogic].[UserDefinedFunctions].[psoIsCenterExceptionScheduled]
 GO
+EXEC sys.sp_addextendedproperty @name=N'SqlAssemblyFile', @value=N'psoCenterOpen.cs' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'FUNCTION',@level1name=N'psoIsCenterExceptionScheduled'
+GO
+EXEC sys.sp_addextendedproperty @name=N'SqlAssemblyFileLine', @value=N'64' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'FUNCTION',@level1name=N'psoIsCenterExceptionScheduled'
+GO

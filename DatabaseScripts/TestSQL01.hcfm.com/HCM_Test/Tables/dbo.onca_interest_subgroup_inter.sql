@@ -11,12 +11,12 @@ CREATE TABLE [dbo].[onca_interest_subgroup_inter](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[onca_interest_subgroup_inter]  WITH CHECK ADD  CONSTRAINT [interest_interest_sub_786] FOREIGN KEY([interest_code])
+ALTER TABLE [dbo].[onca_interest_subgroup_inter]  WITH NOCHECK ADD  CONSTRAINT [interest_interest_sub_786] FOREIGN KEY([interest_code])
 REFERENCES [dbo].[onca_interest] ([interest_code])
 GO
 ALTER TABLE [dbo].[onca_interest_subgroup_inter] CHECK CONSTRAINT [interest_interest_sub_786]
 GO
-ALTER TABLE [dbo].[onca_interest_subgroup_inter]  WITH CHECK ADD  CONSTRAINT [interest_sub_interest_sub_787] FOREIGN KEY([interest_sub_code])
+ALTER TABLE [dbo].[onca_interest_subgroup_inter]  WITH NOCHECK ADD  CONSTRAINT [interest_sub_interest_sub_787] FOREIGN KEY([interest_sub_code])
 REFERENCES [dbo].[onca_interest_subgroup] ([interest_sub_code])
 GO
 ALTER TABLE [dbo].[onca_interest_subgroup_inter] CHECK CONSTRAINT [interest_sub_interest_sub_787]

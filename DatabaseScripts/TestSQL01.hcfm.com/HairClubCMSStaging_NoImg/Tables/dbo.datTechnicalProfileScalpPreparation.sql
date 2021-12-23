@@ -20,12 +20,12 @@ CREATE NONCLUSTERED INDEX [IX_datTechnicalProfileScalpPreparation_TechnicalProfi
 	[TechnicalProfileID] DESC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[datTechnicalProfileScalpPreparation]  WITH CHECK ADD  CONSTRAINT [FK_datTechnicalProfileScalpPreparation_datTechnicalProfile] FOREIGN KEY([TechnicalProfileID])
+ALTER TABLE [dbo].[datTechnicalProfileScalpPreparation]  WITH NOCHECK ADD  CONSTRAINT [FK_datTechnicalProfileScalpPreparation_datTechnicalProfile] FOREIGN KEY([TechnicalProfileID])
 REFERENCES [dbo].[datTechnicalProfile] ([TechnicalProfileID])
 GO
 ALTER TABLE [dbo].[datTechnicalProfileScalpPreparation] CHECK CONSTRAINT [FK_datTechnicalProfileScalpPreparation_datTechnicalProfile]
 GO
-ALTER TABLE [dbo].[datTechnicalProfileScalpPreparation]  WITH CHECK ADD  CONSTRAINT [FK_datTechnicalProfileScalpPreparation_lkpScalpPreparation] FOREIGN KEY([ScalpPreparationID])
+ALTER TABLE [dbo].[datTechnicalProfileScalpPreparation]  WITH NOCHECK ADD  CONSTRAINT [FK_datTechnicalProfileScalpPreparation_lkpScalpPreparation] FOREIGN KEY([ScalpPreparationID])
 REFERENCES [dbo].[lkpScalpPreparation] ([ScalpPreparationID])
 GO
 ALTER TABLE [dbo].[datTechnicalProfileScalpPreparation] CHECK CONSTRAINT [FK_datTechnicalProfileScalpPreparation_lkpScalpPreparation]

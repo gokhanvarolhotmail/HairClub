@@ -24,23 +24,23 @@ CREATE NONCLUSTERED INDEX [oncd_invoice_time_adjust_i2] ON [dbo].[oncd_invoice_t
 	[invoice_time_id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[oncd_invoice_time_adjust]  WITH CHECK ADD  CONSTRAINT [invoice_time_invoice_time_740] FOREIGN KEY([invoice_time_id])
+ALTER TABLE [dbo].[oncd_invoice_time_adjust]  WITH NOCHECK ADD  CONSTRAINT [invoice_time_invoice_time_740] FOREIGN KEY([invoice_time_id])
 REFERENCES [dbo].[oncd_invoice_time] ([invoice_time_id])
 ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[oncd_invoice_time_adjust] CHECK CONSTRAINT [invoice_time_invoice_time_740]
 GO
-ALTER TABLE [dbo].[oncd_invoice_time_adjust]  WITH CHECK ADD  CONSTRAINT [user_invoice_time_972] FOREIGN KEY([created_by_user_code])
+ALTER TABLE [dbo].[oncd_invoice_time_adjust]  WITH NOCHECK ADD  CONSTRAINT [user_invoice_time_972] FOREIGN KEY([created_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_invoice_time_adjust] CHECK CONSTRAINT [user_invoice_time_972]
 GO
-ALTER TABLE [dbo].[oncd_invoice_time_adjust]  WITH CHECK ADD  CONSTRAINT [user_invoice_time_973] FOREIGN KEY([updated_by_user_code])
+ALTER TABLE [dbo].[oncd_invoice_time_adjust]  WITH NOCHECK ADD  CONSTRAINT [user_invoice_time_973] FOREIGN KEY([updated_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_invoice_time_adjust] CHECK CONSTRAINT [user_invoice_time_973]
 GO
-ALTER TABLE [dbo].[oncd_invoice_time_adjust]  WITH CHECK ADD  CONSTRAINT [user_invoice_time_974] FOREIGN KEY([user_code])
+ALTER TABLE [dbo].[oncd_invoice_time_adjust]  WITH NOCHECK ADD  CONSTRAINT [user_invoice_time_974] FOREIGN KEY([user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_invoice_time_adjust] CHECK CONSTRAINT [user_invoice_time_974]

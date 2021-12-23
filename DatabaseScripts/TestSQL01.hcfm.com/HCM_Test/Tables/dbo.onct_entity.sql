@@ -34,7 +34,7 @@ CREATE NONCLUSTERED INDEX [onct_entity_i4] ON [dbo].[onct_entity]
 	[window_id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[onct_entity]  WITH CHECK ADD  CONSTRAINT [table_entity_294] FOREIGN KEY([table_name])
+ALTER TABLE [dbo].[onct_entity]  WITH NOCHECK ADD  CONSTRAINT [table_entity_294] FOREIGN KEY([table_name])
 REFERENCES [dbo].[onct_table] ([table_name])
 ON DELETE CASCADE
 GO

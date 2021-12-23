@@ -17,7 +17,7 @@ CREATE TABLE [dbo].[oncs_publication_table_filter](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[oncs_publication_table_filter]  WITH CHECK ADD  CONSTRAINT [publication__publication__359] FOREIGN KEY([publication_table_id])
+ALTER TABLE [dbo].[oncs_publication_table_filter]  WITH NOCHECK ADD  CONSTRAINT [publication__publication__359] FOREIGN KEY([publication_table_id])
 REFERENCES [dbo].[oncs_publication_table] ([publication_table_id])
 ON DELETE CASCADE
 GO

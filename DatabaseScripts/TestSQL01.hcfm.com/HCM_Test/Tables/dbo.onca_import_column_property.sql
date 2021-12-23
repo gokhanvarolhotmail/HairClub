@@ -15,7 +15,7 @@ CREATE TABLE [dbo].[onca_import_column_property](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[onca_import_column_property]  WITH CHECK ADD  CONSTRAINT [import_colum_import_colum_371] FOREIGN KEY([import_column_id])
+ALTER TABLE [dbo].[onca_import_column_property]  WITH NOCHECK ADD  CONSTRAINT [import_colum_import_colum_371] FOREIGN KEY([import_column_id])
 REFERENCES [dbo].[onca_import_column] ([import_column_id])
 ON DELETE CASCADE
 GO

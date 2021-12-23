@@ -16,7 +16,7 @@ ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[onca_action_action_set] CHECK CONSTRAINT [action_action_actio_128]
 GO
-ALTER TABLE [dbo].[onca_action_action_set]  WITH CHECK ADD  CONSTRAINT [action_set_action_actio_129] FOREIGN KEY([action_set_code])
+ALTER TABLE [dbo].[onca_action_action_set]  WITH NOCHECK ADD  CONSTRAINT [action_set_action_actio_129] FOREIGN KEY([action_set_code])
 REFERENCES [dbo].[onca_action_set] ([action_set_code])
 ON DELETE CASCADE
 GO

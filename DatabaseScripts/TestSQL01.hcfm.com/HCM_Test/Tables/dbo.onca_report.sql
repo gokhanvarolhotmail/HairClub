@@ -15,12 +15,12 @@ CREATE TABLE [dbo].[onca_report](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[onca_report]  WITH CHECK ADD  CONSTRAINT [entity_report_1183] FOREIGN KEY([entity_id])
+ALTER TABLE [dbo].[onca_report]  WITH NOCHECK ADD  CONSTRAINT [entity_report_1183] FOREIGN KEY([entity_id])
 REFERENCES [dbo].[onct_entity] ([entity_id])
 GO
 ALTER TABLE [dbo].[onca_report] CHECK CONSTRAINT [entity_report_1183]
 GO
-ALTER TABLE [dbo].[onca_report]  WITH CHECK ADD  CONSTRAINT [object_report_289] FOREIGN KEY([object_id])
+ALTER TABLE [dbo].[onca_report]  WITH NOCHECK ADD  CONSTRAINT [object_report_289] FOREIGN KEY([object_id])
 REFERENCES [dbo].[onct_object] ([object_id])
 ON DELETE CASCADE
 GO

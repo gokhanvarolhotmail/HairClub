@@ -38,23 +38,23 @@ CREATE NONCLUSTERED INDEX [oncd_contact_outlook_i4] ON [dbo].[oncd_contact_outlo
 	[user_code] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[oncd_contact_outlook]  WITH CHECK ADD  CONSTRAINT [contact_contact_outl_69] FOREIGN KEY([contact_id])
+ALTER TABLE [dbo].[oncd_contact_outlook]  WITH NOCHECK ADD  CONSTRAINT [contact_contact_outl_69] FOREIGN KEY([contact_id])
 REFERENCES [dbo].[oncd_contact] ([contact_id])
 ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[oncd_contact_outlook] CHECK CONSTRAINT [contact_contact_outl_69]
 GO
-ALTER TABLE [dbo].[oncd_contact_outlook]  WITH CHECK ADD  CONSTRAINT [user_contact_outl_604] FOREIGN KEY([user_code])
+ALTER TABLE [dbo].[oncd_contact_outlook]  WITH NOCHECK ADD  CONSTRAINT [user_contact_outl_604] FOREIGN KEY([user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_contact_outlook] CHECK CONSTRAINT [user_contact_outl_604]
 GO
-ALTER TABLE [dbo].[oncd_contact_outlook]  WITH CHECK ADD  CONSTRAINT [user_contact_outl_605] FOREIGN KEY([created_by_user_code])
+ALTER TABLE [dbo].[oncd_contact_outlook]  WITH NOCHECK ADD  CONSTRAINT [user_contact_outl_605] FOREIGN KEY([created_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_contact_outlook] CHECK CONSTRAINT [user_contact_outl_605]
 GO
-ALTER TABLE [dbo].[oncd_contact_outlook]  WITH CHECK ADD  CONSTRAINT [user_contact_outl_606] FOREIGN KEY([updated_by_user_code])
+ALTER TABLE [dbo].[oncd_contact_outlook]  WITH NOCHECK ADD  CONSTRAINT [user_contact_outl_606] FOREIGN KEY([updated_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_contact_outlook] CHECK CONSTRAINT [user_contact_outl_606]

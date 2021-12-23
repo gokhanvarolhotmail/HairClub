@@ -11,7 +11,7 @@ CREATE TABLE [dbo].[onca_import_history_error](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[onca_import_history_error]  WITH CHECK ADD  CONSTRAINT [import_histo_import_histo_373] FOREIGN KEY([import_history_id])
+ALTER TABLE [dbo].[onca_import_history_error]  WITH NOCHECK ADD  CONSTRAINT [import_histo_import_histo_373] FOREIGN KEY([import_history_id])
 REFERENCES [dbo].[onca_import_history] ([import_history_id])
 ON DELETE CASCADE
 GO

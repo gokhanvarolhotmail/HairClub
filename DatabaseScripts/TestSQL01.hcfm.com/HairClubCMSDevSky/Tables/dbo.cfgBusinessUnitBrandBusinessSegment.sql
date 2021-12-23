@@ -21,12 +21,12 @@ CREATE TABLE [dbo].[cfgBusinessUnitBrandBusinessSegment](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[cfgBusinessUnitBrandBusinessSegment]  WITH CHECK ADD  CONSTRAINT [FK_cfgBusinessUnitBrandBusinessSegment_lkpBusinessSegment] FOREIGN KEY([BusinessSegmentID])
+ALTER TABLE [dbo].[cfgBusinessUnitBrandBusinessSegment]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgBusinessUnitBrandBusinessSegment_lkpBusinessSegment] FOREIGN KEY([BusinessSegmentID])
 REFERENCES [dbo].[lkpBusinessSegment] ([BusinessSegmentID])
 GO
 ALTER TABLE [dbo].[cfgBusinessUnitBrandBusinessSegment] CHECK CONSTRAINT [FK_cfgBusinessUnitBrandBusinessSegment_lkpBusinessSegment]
 GO
-ALTER TABLE [dbo].[cfgBusinessUnitBrandBusinessSegment]  WITH CHECK ADD  CONSTRAINT [FK_cfgBusinessUnitBrandBusinessSegment_lkpBusinessUnitBrand] FOREIGN KEY([BusinessUnitBrandID])
+ALTER TABLE [dbo].[cfgBusinessUnitBrandBusinessSegment]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgBusinessUnitBrandBusinessSegment_lkpBusinessUnitBrand] FOREIGN KEY([BusinessUnitBrandID])
 REFERENCES [dbo].[lkpBusinessUnitBrand] ([BusinessUnitBrandID])
 GO
 ALTER TABLE [dbo].[cfgBusinessUnitBrandBusinessSegment] CHECK CONSTRAINT [FK_cfgBusinessUnitBrandBusinessSegment_lkpBusinessUnitBrand]

@@ -29,43 +29,43 @@ CREATE TABLE [dbo].[oncd_company_address](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[oncd_company_address]  WITH CHECK ADD  CONSTRAINT [address_type_company_addr_510] FOREIGN KEY([address_type_code])
+ALTER TABLE [dbo].[oncd_company_address]  WITH NOCHECK ADD  CONSTRAINT [address_type_company_addr_510] FOREIGN KEY([address_type_code])
 REFERENCES [dbo].[onca_address_type] ([address_type_code])
 GO
 ALTER TABLE [dbo].[oncd_company_address] CHECK CONSTRAINT [address_type_company_addr_510]
 GO
-ALTER TABLE [dbo].[oncd_company_address]  WITH CHECK ADD  CONSTRAINT [company_company_addr_94] FOREIGN KEY([company_id])
+ALTER TABLE [dbo].[oncd_company_address]  WITH NOCHECK ADD  CONSTRAINT [company_company_addr_94] FOREIGN KEY([company_id])
 REFERENCES [dbo].[oncd_company] ([company_id])
 ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[oncd_company_address] CHECK CONSTRAINT [company_company_addr_94]
 GO
-ALTER TABLE [dbo].[oncd_company_address]  WITH CHECK ADD  CONSTRAINT [country_company_addr_513] FOREIGN KEY([country_code])
+ALTER TABLE [dbo].[oncd_company_address]  WITH NOCHECK ADD  CONSTRAINT [country_company_addr_513] FOREIGN KEY([country_code])
 REFERENCES [dbo].[onca_country] ([country_code])
 GO
 ALTER TABLE [dbo].[oncd_company_address] CHECK CONSTRAINT [country_company_addr_513]
 GO
-ALTER TABLE [dbo].[oncd_company_address]  WITH CHECK ADD  CONSTRAINT [county_company_addr_512] FOREIGN KEY([county_code])
+ALTER TABLE [dbo].[oncd_company_address]  WITH NOCHECK ADD  CONSTRAINT [county_company_addr_512] FOREIGN KEY([county_code])
 REFERENCES [dbo].[onca_county] ([county_code])
 GO
 ALTER TABLE [dbo].[oncd_company_address] CHECK CONSTRAINT [county_company_addr_512]
 GO
-ALTER TABLE [dbo].[oncd_company_address]  WITH CHECK ADD  CONSTRAINT [state_company_addr_511] FOREIGN KEY([state_code])
+ALTER TABLE [dbo].[oncd_company_address]  WITH NOCHECK ADD  CONSTRAINT [state_company_addr_511] FOREIGN KEY([state_code])
 REFERENCES [dbo].[onca_state] ([state_code])
 GO
 ALTER TABLE [dbo].[oncd_company_address] CHECK CONSTRAINT [state_company_addr_511]
 GO
-ALTER TABLE [dbo].[oncd_company_address]  WITH CHECK ADD  CONSTRAINT [time_zone_company_addr_514] FOREIGN KEY([time_zone_code])
+ALTER TABLE [dbo].[oncd_company_address]  WITH NOCHECK ADD  CONSTRAINT [time_zone_company_addr_514] FOREIGN KEY([time_zone_code])
 REFERENCES [dbo].[onca_time_zone] ([time_zone_code])
 GO
 ALTER TABLE [dbo].[oncd_company_address] CHECK CONSTRAINT [time_zone_company_addr_514]
 GO
-ALTER TABLE [dbo].[oncd_company_address]  WITH CHECK ADD  CONSTRAINT [user_company_addr_515] FOREIGN KEY([created_by_user_code])
+ALTER TABLE [dbo].[oncd_company_address]  WITH NOCHECK ADD  CONSTRAINT [user_company_addr_515] FOREIGN KEY([created_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_company_address] CHECK CONSTRAINT [user_company_addr_515]
 GO
-ALTER TABLE [dbo].[oncd_company_address]  WITH CHECK ADD  CONSTRAINT [user_company_addr_516] FOREIGN KEY([updated_by_user_code])
+ALTER TABLE [dbo].[oncd_company_address]  WITH NOCHECK ADD  CONSTRAINT [user_company_addr_516] FOREIGN KEY([updated_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_company_address] CHECK CONSTRAINT [user_company_addr_516]

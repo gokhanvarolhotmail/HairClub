@@ -15,13 +15,13 @@ CREATE TABLE [dbo].[csta_script_source](
 GO
 ALTER TABLE [dbo].[csta_script_source] ADD  CONSTRAINT [DF__csta_scri__activ__0F824689]  DEFAULT ('Y') FOR [active]
 GO
-ALTER TABLE [dbo].[csta_script_source]  WITH CHECK ADD  CONSTRAINT [csta_script_csta_script_source_724] FOREIGN KEY([script_code])
+ALTER TABLE [dbo].[csta_script_source]  WITH NOCHECK ADD  CONSTRAINT [csta_script_csta_script_source_724] FOREIGN KEY([script_code])
 REFERENCES [dbo].[csta_script] ([script_code])
 ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[csta_script_source] CHECK CONSTRAINT [csta_script_csta_script_source_724]
 GO
-ALTER TABLE [dbo].[csta_script_source]  WITH CHECK ADD  CONSTRAINT [onca_source_csta_script_source_770] FOREIGN KEY([source_code])
+ALTER TABLE [dbo].[csta_script_source]  WITH NOCHECK ADD  CONSTRAINT [onca_source_csta_script_source_770] FOREIGN KEY([source_code])
 REFERENCES [dbo].[onca_source] ([source_code])
 GO
 ALTER TABLE [dbo].[csta_script_source] CHECK CONSTRAINT [onca_source_csta_script_source_770]

@@ -20,17 +20,17 @@ CREATE TABLE [dbo].[onca_county](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[onca_county]  WITH CHECK ADD  CONSTRAINT [country_county_817] FOREIGN KEY([country_code])
+ALTER TABLE [dbo].[onca_county]  WITH NOCHECK ADD  CONSTRAINT [country_county_817] FOREIGN KEY([country_code])
 REFERENCES [dbo].[onca_country] ([country_code])
 GO
 ALTER TABLE [dbo].[onca_county] CHECK CONSTRAINT [country_county_817]
 GO
-ALTER TABLE [dbo].[onca_county]  WITH CHECK ADD  CONSTRAINT [state_county_818] FOREIGN KEY([state_code])
+ALTER TABLE [dbo].[onca_county]  WITH NOCHECK ADD  CONSTRAINT [state_county_818] FOREIGN KEY([state_code])
 REFERENCES [dbo].[onca_state] ([state_code])
 GO
 ALTER TABLE [dbo].[onca_county] CHECK CONSTRAINT [state_county_818]
 GO
-ALTER TABLE [dbo].[onca_county]  WITH CHECK ADD  CONSTRAINT [time_zone_county_819] FOREIGN KEY([time_zone_code])
+ALTER TABLE [dbo].[onca_county]  WITH NOCHECK ADD  CONSTRAINT [time_zone_county_819] FOREIGN KEY([time_zone_code])
 REFERENCES [dbo].[onca_time_zone] ([time_zone_code])
 GO
 ALTER TABLE [dbo].[onca_county] CHECK CONSTRAINT [time_zone_county_819]

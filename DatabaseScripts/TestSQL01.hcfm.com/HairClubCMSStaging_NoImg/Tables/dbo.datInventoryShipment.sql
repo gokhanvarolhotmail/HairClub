@@ -62,37 +62,37 @@ ALTER TABLE [dbo].[datInventoryShipment] ADD  DEFAULT ((0)) FOR [InvoiceActualTo
 GO
 ALTER TABLE [dbo].[datInventoryShipment] ADD  DEFAULT ((0)) FOR [InvoiceActualCount]
 GO
-ALTER TABLE [dbo].[datInventoryShipment]  WITH CHECK ADD  CONSTRAINT [FK_datInventoryShipment_cfgCenter] FOREIGN KEY([ShipFromCenterID])
+ALTER TABLE [dbo].[datInventoryShipment]  WITH NOCHECK ADD  CONSTRAINT [FK_datInventoryShipment_cfgCenter] FOREIGN KEY([ShipFromCenterID])
 REFERENCES [dbo].[cfgCenter] ([CenterID])
 GO
 ALTER TABLE [dbo].[datInventoryShipment] CHECK CONSTRAINT [FK_datInventoryShipment_cfgCenter]
 GO
-ALTER TABLE [dbo].[datInventoryShipment]  WITH CHECK ADD  CONSTRAINT [FK_datInventoryShipment_cfgCenter1] FOREIGN KEY([ShipToCenterID])
+ALTER TABLE [dbo].[datInventoryShipment]  WITH NOCHECK ADD  CONSTRAINT [FK_datInventoryShipment_cfgCenter1] FOREIGN KEY([ShipToCenterID])
 REFERENCES [dbo].[cfgCenter] ([CenterID])
 GO
 ALTER TABLE [dbo].[datInventoryShipment] CHECK CONSTRAINT [FK_datInventoryShipment_cfgCenter1]
 GO
-ALTER TABLE [dbo].[datInventoryShipment]  WITH CHECK ADD  CONSTRAINT [FK_datInventoryShipment_cfgVendor] FOREIGN KEY([ShipFromVendorID])
+ALTER TABLE [dbo].[datInventoryShipment]  WITH NOCHECK ADD  CONSTRAINT [FK_datInventoryShipment_cfgVendor] FOREIGN KEY([ShipFromVendorID])
 REFERENCES [dbo].[cfgVendor] ([VendorID])
 GO
 ALTER TABLE [dbo].[datInventoryShipment] CHECK CONSTRAINT [FK_datInventoryShipment_cfgVendor]
 GO
-ALTER TABLE [dbo].[datInventoryShipment]  WITH CHECK ADD  CONSTRAINT [FK_datInventoryShipment_cfgVendor1] FOREIGN KEY([ShipToVendorID])
+ALTER TABLE [dbo].[datInventoryShipment]  WITH NOCHECK ADD  CONSTRAINT [FK_datInventoryShipment_cfgVendor1] FOREIGN KEY([ShipToVendorID])
 REFERENCES [dbo].[cfgVendor] ([VendorID])
 GO
 ALTER TABLE [dbo].[datInventoryShipment] CHECK CONSTRAINT [FK_datInventoryShipment_cfgVendor1]
 GO
-ALTER TABLE [dbo].[datInventoryShipment]  WITH CHECK ADD  CONSTRAINT [FK_datInventoryShipment_lkpInventoryShipmentStatus] FOREIGN KEY([InventoryShipmentStatusID])
+ALTER TABLE [dbo].[datInventoryShipment]  WITH NOCHECK ADD  CONSTRAINT [FK_datInventoryShipment_lkpInventoryShipmentStatus] FOREIGN KEY([InventoryShipmentStatusID])
 REFERENCES [dbo].[lkpInventoryShipmentStatus] ([InventoryShipmentStatusID])
 GO
 ALTER TABLE [dbo].[datInventoryShipment] CHECK CONSTRAINT [FK_datInventoryShipment_lkpInventoryShipmentStatus]
 GO
-ALTER TABLE [dbo].[datInventoryShipment]  WITH CHECK ADD  CONSTRAINT [FK_datInventoryShipment_lkpInventoryShipmentType] FOREIGN KEY([InventoryShipmentTypeID])
+ALTER TABLE [dbo].[datInventoryShipment]  WITH NOCHECK ADD  CONSTRAINT [FK_datInventoryShipment_lkpInventoryShipmentType] FOREIGN KEY([InventoryShipmentTypeID])
 REFERENCES [dbo].[lkpInventoryShipmentType] ([InventoryShipmentTypeID])
 GO
 ALTER TABLE [dbo].[datInventoryShipment] CHECK CONSTRAINT [FK_datInventoryShipment_lkpInventoryShipmentType]
 GO
-ALTER TABLE [dbo].[datInventoryShipment]  WITH CHECK ADD  CONSTRAINT [FK_datInventoryShipment_lkpShipmentMethod] FOREIGN KEY([ShipmentMethodID])
+ALTER TABLE [dbo].[datInventoryShipment]  WITH NOCHECK ADD  CONSTRAINT [FK_datInventoryShipment_lkpShipmentMethod] FOREIGN KEY([ShipmentMethodID])
 REFERENCES [dbo].[lkpShipmentMethod] ([ShipmentMethodID])
 GO
 ALTER TABLE [dbo].[datInventoryShipment] CHECK CONSTRAINT [FK_datInventoryShipment_lkpShipmentMethod]

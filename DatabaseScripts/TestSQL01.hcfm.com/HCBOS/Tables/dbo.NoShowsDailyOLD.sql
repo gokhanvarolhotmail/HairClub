@@ -17,3 +17,5 @@ CREATE TABLE [dbo].[NoShowsDailyOLD](
 GO
 ALTER TABLE [dbo].[NoShowsDailyOLD] ADD  CONSTRAINT [DF_NoShowsDaily_SentEmailOLD]  DEFAULT (0) FOR [SentEmail]
 GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'In relation to initial no show week' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'NoShowsDailyOLD', @level2type=N'COLUMN',@level2name=N'BookedWeekNumber'
+GO

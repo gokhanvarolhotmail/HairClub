@@ -10,13 +10,13 @@ CREATE TABLE [dbo].[onca_document_group_document](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[onca_document_group_document]  WITH CHECK ADD  CONSTRAINT [document_document_gro_240] FOREIGN KEY([document_id])
+ALTER TABLE [dbo].[onca_document_group_document]  WITH NOCHECK ADD  CONSTRAINT [document_document_gro_240] FOREIGN KEY([document_id])
 REFERENCES [dbo].[onca_document] ([document_id])
 ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[onca_document_group_document] CHECK CONSTRAINT [document_document_gro_240]
 GO
-ALTER TABLE [dbo].[onca_document_group_document]  WITH CHECK ADD  CONSTRAINT [document_gro_document_gro_239] FOREIGN KEY([document_group_id])
+ALTER TABLE [dbo].[onca_document_group_document]  WITH NOCHECK ADD  CONSTRAINT [document_gro_document_gro_239] FOREIGN KEY([document_group_id])
 REFERENCES [dbo].[onca_document_group] ([document_group_id])
 ON DELETE CASCADE
 GO

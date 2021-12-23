@@ -32,12 +32,12 @@ CREATE UNIQUE NONCLUSTERED INDEX [onct_toolbox_group_item_i3] ON [dbo].[onct_too
 	[class_id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[onct_toolbox_group_item]  WITH CHECK ADD  CONSTRAINT [class_toolbox_grou_116] FOREIGN KEY([class_id])
+ALTER TABLE [dbo].[onct_toolbox_group_item]  WITH NOCHECK ADD  CONSTRAINT [class_toolbox_grou_116] FOREIGN KEY([class_id])
 REFERENCES [dbo].[onct_class] ([class_id])
 GO
 ALTER TABLE [dbo].[onct_toolbox_group_item] CHECK CONSTRAINT [class_toolbox_grou_116]
 GO
-ALTER TABLE [dbo].[onct_toolbox_group_item]  WITH CHECK ADD  CONSTRAINT [toolbox_grou_toolbox_grou_57] FOREIGN KEY([toolbox_group_id])
+ALTER TABLE [dbo].[onct_toolbox_group_item]  WITH NOCHECK ADD  CONSTRAINT [toolbox_grou_toolbox_grou_57] FOREIGN KEY([toolbox_group_id])
 REFERENCES [dbo].[onct_toolbox_group] ([toolbox_group_id])
 GO
 ALTER TABLE [dbo].[onct_toolbox_group_item] CHECK CONSTRAINT [toolbox_grou_toolbox_grou_57]

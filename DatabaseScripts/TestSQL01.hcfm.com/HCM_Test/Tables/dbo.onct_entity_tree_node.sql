@@ -41,24 +41,24 @@ CREATE NONCLUSTERED INDEX [onct_entity_tree_node_i5] ON [dbo].[onct_entity_tree_
 	[parent_node_id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[onct_entity_tree_node]  WITH CHECK ADD  CONSTRAINT [entity_entity_tree__340] FOREIGN KEY([entity_id])
+ALTER TABLE [dbo].[onct_entity_tree_node]  WITH NOCHECK ADD  CONSTRAINT [entity_entity_tree__340] FOREIGN KEY([entity_id])
 REFERENCES [dbo].[onct_entity] ([entity_id])
 ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[onct_entity_tree_node] CHECK CONSTRAINT [entity_entity_tree__340]
 GO
-ALTER TABLE [dbo].[onct_entity_tree_node]  WITH CHECK ADD  CONSTRAINT [entity_tree__entity_tree__195] FOREIGN KEY([parent_node_id])
+ALTER TABLE [dbo].[onct_entity_tree_node]  WITH NOCHECK ADD  CONSTRAINT [entity_tree__entity_tree__195] FOREIGN KEY([parent_node_id])
 REFERENCES [dbo].[onct_entity_tree_node] ([entity_tree_node_id])
 GO
 ALTER TABLE [dbo].[onct_entity_tree_node] CHECK CONSTRAINT [entity_tree__entity_tree__195]
 GO
-ALTER TABLE [dbo].[onct_entity_tree_node]  WITH CHECK ADD  CONSTRAINT [entity_tree_entity_tree__194] FOREIGN KEY([entity_tree_id])
+ALTER TABLE [dbo].[onct_entity_tree_node]  WITH NOCHECK ADD  CONSTRAINT [entity_tree_entity_tree__194] FOREIGN KEY([entity_tree_id])
 REFERENCES [dbo].[onct_entity_tree] ([entity_tree_id])
 ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[onct_entity_tree_node] CHECK CONSTRAINT [entity_tree_entity_tree__194]
 GO
-ALTER TABLE [dbo].[onct_entity_tree_node]  WITH CHECK ADD  CONSTRAINT [table_relati_entity_tree__349] FOREIGN KEY([table_relation_id])
+ALTER TABLE [dbo].[onct_entity_tree_node]  WITH NOCHECK ADD  CONSTRAINT [table_relati_entity_tree__349] FOREIGN KEY([table_relation_id])
 REFERENCES [dbo].[onct_table_relation] ([table_relation_id])
 ON DELETE CASCADE
 GO

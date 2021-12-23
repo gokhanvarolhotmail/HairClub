@@ -15,12 +15,12 @@ CREATE TABLE [dbo].[datPhotoBookPhotoBookAgeRange](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[datPhotoBookPhotoBookAgeRange]  WITH CHECK ADD  CONSTRAINT [FK_datPhotoBookPhotoBookAgeRange_datPhotoBook] FOREIGN KEY([PhotoBookID])
+ALTER TABLE [dbo].[datPhotoBookPhotoBookAgeRange]  WITH NOCHECK ADD  CONSTRAINT [FK_datPhotoBookPhotoBookAgeRange_datPhotoBook] FOREIGN KEY([PhotoBookID])
 REFERENCES [dbo].[datPhotoBook] ([PhotoBookID])
 GO
 ALTER TABLE [dbo].[datPhotoBookPhotoBookAgeRange] CHECK CONSTRAINT [FK_datPhotoBookPhotoBookAgeRange_datPhotoBook]
 GO
-ALTER TABLE [dbo].[datPhotoBookPhotoBookAgeRange]  WITH CHECK ADD  CONSTRAINT [FK_datPhotoBookPhotoBookAgeRange_lkpPhotoBookAgeRange] FOREIGN KEY([PhotoBookAgeRangeID])
+ALTER TABLE [dbo].[datPhotoBookPhotoBookAgeRange]  WITH NOCHECK ADD  CONSTRAINT [FK_datPhotoBookPhotoBookAgeRange_lkpPhotoBookAgeRange] FOREIGN KEY([PhotoBookAgeRangeID])
 REFERENCES [dbo].[lkpPhotoBookAgeRange] ([PhotoBookAgeRangeID])
 GO
 ALTER TABLE [dbo].[datPhotoBookPhotoBookAgeRange] CHECK CONSTRAINT [FK_datPhotoBookPhotoBookAgeRange_lkpPhotoBookAgeRange]

@@ -13,7 +13,7 @@ CREATE TABLE [dbo].[oncs_task_apply_error](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[oncs_task_apply_error]  WITH CHECK ADD  CONSTRAINT [task_apply_task_apply_e_407] FOREIGN KEY([packet_id], [task_id])
+ALTER TABLE [dbo].[oncs_task_apply_error]  WITH NOCHECK ADD  CONSTRAINT [task_apply_task_apply_e_407] FOREIGN KEY([packet_id], [task_id])
 REFERENCES [dbo].[oncs_task_apply] ([packet_id], [task_id])
 ON DELETE CASCADE
 GO

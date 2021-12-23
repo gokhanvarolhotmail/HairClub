@@ -65,37 +65,37 @@ CREATE NONCLUSTERED INDEX [oncd_contract_i6] ON [dbo].[oncd_contract]
 	[active] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[oncd_contract]  WITH CHECK ADD  CONSTRAINT [company_contract_141] FOREIGN KEY([company_id])
+ALTER TABLE [dbo].[oncd_contract]  WITH NOCHECK ADD  CONSTRAINT [company_contract_141] FOREIGN KEY([company_id])
 REFERENCES [dbo].[oncd_company] ([company_id])
 GO
 ALTER TABLE [dbo].[oncd_contract] CHECK CONSTRAINT [company_contract_141]
 GO
-ALTER TABLE [dbo].[oncd_contract]  WITH CHECK ADD  CONSTRAINT [contact_contract_337] FOREIGN KEY([contact_id])
+ALTER TABLE [dbo].[oncd_contract]  WITH NOCHECK ADD  CONSTRAINT [contact_contract_337] FOREIGN KEY([contact_id])
 REFERENCES [dbo].[oncd_contact] ([contact_id])
 GO
 ALTER TABLE [dbo].[oncd_contract] CHECK CONSTRAINT [contact_contract_337]
 GO
-ALTER TABLE [dbo].[oncd_contract]  WITH CHECK ADD  CONSTRAINT [contract_sta_contract_630] FOREIGN KEY([contract_status_code])
+ALTER TABLE [dbo].[oncd_contract]  WITH NOCHECK ADD  CONSTRAINT [contract_sta_contract_630] FOREIGN KEY([contract_status_code])
 REFERENCES [dbo].[onca_contract_status] ([contract_status_code])
 GO
 ALTER TABLE [dbo].[oncd_contract] CHECK CONSTRAINT [contract_sta_contract_630]
 GO
-ALTER TABLE [dbo].[oncd_contract]  WITH CHECK ADD  CONSTRAINT [contract_typ_contract_631] FOREIGN KEY([contract_type_code])
+ALTER TABLE [dbo].[oncd_contract]  WITH NOCHECK ADD  CONSTRAINT [contract_typ_contract_631] FOREIGN KEY([contract_type_code])
 REFERENCES [dbo].[onca_contract_type] ([contract_type_code])
 GO
 ALTER TABLE [dbo].[oncd_contract] CHECK CONSTRAINT [contract_typ_contract_631]
 GO
-ALTER TABLE [dbo].[oncd_contract]  WITH CHECK ADD  CONSTRAINT [user_contract_627] FOREIGN KEY([status_updated_by_user_code])
+ALTER TABLE [dbo].[oncd_contract]  WITH NOCHECK ADD  CONSTRAINT [user_contract_627] FOREIGN KEY([status_updated_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_contract] CHECK CONSTRAINT [user_contract_627]
 GO
-ALTER TABLE [dbo].[oncd_contract]  WITH CHECK ADD  CONSTRAINT [user_contract_628] FOREIGN KEY([created_by_user_code])
+ALTER TABLE [dbo].[oncd_contract]  WITH NOCHECK ADD  CONSTRAINT [user_contract_628] FOREIGN KEY([created_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_contract] CHECK CONSTRAINT [user_contract_628]
 GO
-ALTER TABLE [dbo].[oncd_contract]  WITH CHECK ADD  CONSTRAINT [user_contract_629] FOREIGN KEY([updated_by_user_code])
+ALTER TABLE [dbo].[oncd_contract]  WITH NOCHECK ADD  CONSTRAINT [user_contract_629] FOREIGN KEY([updated_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_contract] CHECK CONSTRAINT [user_contract_629]

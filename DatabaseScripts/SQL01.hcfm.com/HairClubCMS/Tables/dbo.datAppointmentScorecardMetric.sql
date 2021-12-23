@@ -16,12 +16,12 @@ CREATE TABLE [dbo].[datAppointmentScorecardMetric](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[datAppointmentScorecardMetric]  WITH CHECK ADD  CONSTRAINT [FK_datAppointmentScorecardMetric_datAppointmentScorecard] FOREIGN KEY([AppointmentScorecardID])
+ALTER TABLE [dbo].[datAppointmentScorecardMetric]  WITH NOCHECK ADD  CONSTRAINT [FK_datAppointmentScorecardMetric_datAppointmentScorecard] FOREIGN KEY([AppointmentScorecardID])
 REFERENCES [dbo].[datAppointmentScorecard] ([AppointmentScorecardID])
 GO
 ALTER TABLE [dbo].[datAppointmentScorecardMetric] CHECK CONSTRAINT [FK_datAppointmentScorecardMetric_datAppointmentScorecard]
 GO
-ALTER TABLE [dbo].[datAppointmentScorecardMetric]  WITH CHECK ADD  CONSTRAINT [FK_datAppointmentScorecardMetric_lkpScorecardMetric] FOREIGN KEY([ScorecardMetricID])
+ALTER TABLE [dbo].[datAppointmentScorecardMetric]  WITH NOCHECK ADD  CONSTRAINT [FK_datAppointmentScorecardMetric_lkpScorecardMetric] FOREIGN KEY([ScorecardMetricID])
 REFERENCES [dbo].[lkpScorecardMetric] ([ScorecardMetricID])
 GO
 ALTER TABLE [dbo].[datAppointmentScorecardMetric] CHECK CONSTRAINT [FK_datAppointmentScorecardMetric_lkpScorecardMetric]

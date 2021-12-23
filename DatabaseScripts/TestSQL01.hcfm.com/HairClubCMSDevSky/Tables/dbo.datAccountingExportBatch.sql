@@ -26,7 +26,7 @@ ALTER TABLE [dbo].[datAccountingExportBatch] ADD  DEFAULT ((0)) FOR [InvoiceAmou
 GO
 ALTER TABLE [dbo].[datAccountingExportBatch] ADD  DEFAULT ((0)) FOR [FreightAmount]
 GO
-ALTER TABLE [dbo].[datAccountingExportBatch]  WITH CHECK ADD  CONSTRAINT [FK_datAccountingExportBatch_lkpAccountingExportBatchType] FOREIGN KEY([AccountingExportBatchTypeID])
+ALTER TABLE [dbo].[datAccountingExportBatch]  WITH NOCHECK ADD  CONSTRAINT [FK_datAccountingExportBatch_lkpAccountingExportBatchType] FOREIGN KEY([AccountingExportBatchTypeID])
 REFERENCES [dbo].[lkpAccountingExportBatchType] ([AccountingExportBatchTypeID])
 GO
 ALTER TABLE [dbo].[datAccountingExportBatch] CHECK CONSTRAINT [FK_datAccountingExportBatch_lkpAccountingExportBatchType]

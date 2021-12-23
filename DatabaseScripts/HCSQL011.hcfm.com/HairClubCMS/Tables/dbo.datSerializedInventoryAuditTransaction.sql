@@ -18,12 +18,12 @@ CREATE TABLE [dbo].[datSerializedInventoryAuditTransaction](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[datSerializedInventoryAuditTransaction]  WITH CHECK ADD  CONSTRAINT [FK_datSerializedInventoryAuditTransaction_cfgSalesCode] FOREIGN KEY([SalesCodeID])
+ALTER TABLE [dbo].[datSerializedInventoryAuditTransaction]  WITH NOCHECK ADD  CONSTRAINT [FK_datSerializedInventoryAuditTransaction_cfgSalesCode] FOREIGN KEY([SalesCodeID])
 REFERENCES [dbo].[cfgSalesCode] ([SalesCodeID])
 GO
 ALTER TABLE [dbo].[datSerializedInventoryAuditTransaction] CHECK CONSTRAINT [FK_datSerializedInventoryAuditTransaction_cfgSalesCode]
 GO
-ALTER TABLE [dbo].[datSerializedInventoryAuditTransaction]  WITH CHECK ADD  CONSTRAINT [FK_datSerializedInventoryAuditTransaction_datSerializedInventoryAuditBatch] FOREIGN KEY([SerializedInventoryAuditBatchID])
+ALTER TABLE [dbo].[datSerializedInventoryAuditTransaction]  WITH NOCHECK ADD  CONSTRAINT [FK_datSerializedInventoryAuditTransaction_datSerializedInventoryAuditBatch] FOREIGN KEY([SerializedInventoryAuditBatchID])
 REFERENCES [dbo].[datSerializedInventoryAuditBatch] ([SerializedInventoryAuditBatchID])
 GO
 ALTER TABLE [dbo].[datSerializedInventoryAuditTransaction] CHECK CONSTRAINT [FK_datSerializedInventoryAuditTransaction_datSerializedInventoryAuditBatch]

@@ -9,7 +9,7 @@ CREATE TABLE [dbo].[oncd_project_signoff_blob](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[oncd_project_signoff_blob]  WITH CHECK ADD  CONSTRAINT [project_sign_project_sign_775] FOREIGN KEY([attachment_id])
+ALTER TABLE [dbo].[oncd_project_signoff_blob]  WITH NOCHECK ADD  CONSTRAINT [project_sign_project_sign_775] FOREIGN KEY([attachment_id])
 REFERENCES [dbo].[oncd_project_signoff_attach] ([attachment_id])
 ON DELETE CASCADE
 GO

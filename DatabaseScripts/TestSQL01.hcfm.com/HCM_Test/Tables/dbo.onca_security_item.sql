@@ -16,18 +16,18 @@ CREATE TABLE [dbo].[onca_security_item](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[onca_security_item]  WITH CHECK ADD  CONSTRAINT [condition_security_ite_253] FOREIGN KEY([condition_id])
+ALTER TABLE [dbo].[onca_security_item]  WITH NOCHECK ADD  CONSTRAINT [condition_security_ite_253] FOREIGN KEY([condition_id])
 REFERENCES [dbo].[onca_condition] ([condition_id])
 GO
 ALTER TABLE [dbo].[onca_security_item] CHECK CONSTRAINT [condition_security_ite_253]
 GO
-ALTER TABLE [dbo].[onca_security_item]  WITH CHECK ADD  CONSTRAINT [object_security_ite_292] FOREIGN KEY([object_id])
+ALTER TABLE [dbo].[onca_security_item]  WITH NOCHECK ADD  CONSTRAINT [object_security_ite_292] FOREIGN KEY([object_id])
 REFERENCES [dbo].[onct_object] ([object_id])
 ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[onca_security_item] CHECK CONSTRAINT [object_security_ite_292]
 GO
-ALTER TABLE [dbo].[onca_security_item]  WITH CHECK ADD  CONSTRAINT [security_set_security_ite_252] FOREIGN KEY([security_set_id])
+ALTER TABLE [dbo].[onca_security_item]  WITH NOCHECK ADD  CONSTRAINT [security_set_security_ite_252] FOREIGN KEY([security_set_id])
 REFERENCES [dbo].[onca_security_set] ([security_set_id])
 ON DELETE CASCADE
 GO

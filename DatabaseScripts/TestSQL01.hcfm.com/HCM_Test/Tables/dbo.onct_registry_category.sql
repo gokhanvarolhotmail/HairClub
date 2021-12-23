@@ -28,12 +28,12 @@ CREATE NONCLUSTERED INDEX [onct_registry_category_i2] ON [dbo].[onct_registry_ca
 	[registry_project_template_id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[onct_registry_category]  WITH CHECK ADD  CONSTRAINT [registry_ent_registry_cat_1178] FOREIGN KEY([generator_registry_entry_id])
+ALTER TABLE [dbo].[onct_registry_category]  WITH NOCHECK ADD  CONSTRAINT [registry_ent_registry_cat_1178] FOREIGN KEY([generator_registry_entry_id])
 REFERENCES [dbo].[onct_registry_entry] ([registry_entry_id])
 GO
 ALTER TABLE [dbo].[onct_registry_category] CHECK CONSTRAINT [registry_ent_registry_cat_1178]
 GO
-ALTER TABLE [dbo].[onct_registry_category]  WITH CHECK ADD  CONSTRAINT [registry_pro_registry_cat_1174] FOREIGN KEY([registry_project_template_id])
+ALTER TABLE [dbo].[onct_registry_category]  WITH NOCHECK ADD  CONSTRAINT [registry_pro_registry_cat_1174] FOREIGN KEY([registry_project_template_id])
 REFERENCES [dbo].[onct_registry_project_template] ([registry_project_template_id])
 GO
 ALTER TABLE [dbo].[onct_registry_category] CHECK CONSTRAINT [registry_pro_registry_cat_1174]

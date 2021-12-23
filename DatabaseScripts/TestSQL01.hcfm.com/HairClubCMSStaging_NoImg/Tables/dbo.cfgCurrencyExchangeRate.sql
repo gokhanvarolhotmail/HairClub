@@ -22,7 +22,7 @@ ALTER TABLE [dbo].[cfgCurrencyExchangeRate] ADD  CONSTRAINT [DF_cfgCurrencyExcha
 GO
 ALTER TABLE [dbo].[cfgCurrencyExchangeRate] ADD  CONSTRAINT [DF_cfgCurrencyExchangeRate_IsActiveFlag]  DEFAULT ((1)) FOR [IsActiveFlag]
 GO
-ALTER TABLE [dbo].[cfgCurrencyExchangeRate]  WITH CHECK ADD  CONSTRAINT [FK_cfgCurrencyExchangeRate_lkpCurrencyType] FOREIGN KEY([CurrencyTypeID])
+ALTER TABLE [dbo].[cfgCurrencyExchangeRate]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgCurrencyExchangeRate_lkpCurrencyType] FOREIGN KEY([CurrencyTypeID])
 REFERENCES [dbo].[lkpCurrencyType] ([CurrencyTypeID])
 GO
 ALTER TABLE [dbo].[cfgCurrencyExchangeRate] CHECK CONSTRAINT [FK_cfgCurrencyExchangeRate_lkpCurrencyType]

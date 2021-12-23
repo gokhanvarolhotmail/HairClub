@@ -31,12 +31,12 @@ CREATE NONCLUSTERED INDEX [IX_datHairSystemOrderMeasurement_HairSystemOrderGUID]
 	[HairSystemOrderGUID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[datHairSystemOrderMeasurement]  WITH CHECK ADD  CONSTRAINT [FK_datHairSystemOrderMeasurement_datHairSystemOrder] FOREIGN KEY([HairSystemOrderGUID])
+ALTER TABLE [dbo].[datHairSystemOrderMeasurement]  WITH NOCHECK ADD  CONSTRAINT [FK_datHairSystemOrderMeasurement_datHairSystemOrder] FOREIGN KEY([HairSystemOrderGUID])
 REFERENCES [dbo].[datHairSystemOrder] ([HairSystemOrderGUID])
 GO
 ALTER TABLE [dbo].[datHairSystemOrderMeasurement] CHECK CONSTRAINT [FK_datHairSystemOrderMeasurement_datHairSystemOrder]
 GO
-ALTER TABLE [dbo].[datHairSystemOrderMeasurement]  WITH CHECK ADD  CONSTRAINT [FK_datHairSystemOrderMeasurement_lkpHairSystemRecession] FOREIGN KEY([HairSystemRecessionID])
+ALTER TABLE [dbo].[datHairSystemOrderMeasurement]  WITH NOCHECK ADD  CONSTRAINT [FK_datHairSystemOrderMeasurement_lkpHairSystemRecession] FOREIGN KEY([HairSystemRecessionID])
 REFERENCES [dbo].[lkpHairSystemRecession] ([HairSystemRecessionID])
 GO
 ALTER TABLE [dbo].[datHairSystemOrderMeasurement] CHECK CONSTRAINT [FK_datHairSystemOrderMeasurement_lkpHairSystemRecession]

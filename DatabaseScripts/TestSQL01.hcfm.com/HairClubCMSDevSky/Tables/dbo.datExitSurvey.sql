@@ -19,12 +19,12 @@ CREATE TABLE [dbo].[datExitSurvey](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[datExitSurvey]  WITH CHECK ADD  CONSTRAINT [FK_datExitSurvey_datAppointment] FOREIGN KEY([AppointmentGUID])
+ALTER TABLE [dbo].[datExitSurvey]  WITH NOCHECK ADD  CONSTRAINT [FK_datExitSurvey_datAppointment] FOREIGN KEY([AppointmentGUID])
 REFERENCES [dbo].[datAppointment] ([AppointmentGUID])
 GO
 ALTER TABLE [dbo].[datExitSurvey] CHECK CONSTRAINT [FK_datExitSurvey_datAppointment]
 GO
-ALTER TABLE [dbo].[datExitSurvey]  WITH CHECK ADD  CONSTRAINT [FK_datExitSurvey_datClient] FOREIGN KEY([ClientGUID])
+ALTER TABLE [dbo].[datExitSurvey]  WITH NOCHECK ADD  CONSTRAINT [FK_datExitSurvey_datClient] FOREIGN KEY([ClientGUID])
 REFERENCES [dbo].[datClient] ([ClientGUID])
 GO
 ALTER TABLE [dbo].[datExitSurvey] CHECK CONSTRAINT [FK_datExitSurvey_datClient]

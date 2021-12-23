@@ -59,52 +59,52 @@ CREATE NONCLUSTERED INDEX [oncd_defect_i5] ON [dbo].[oncd_defect]
 	[defect_status_code] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[oncd_defect]  WITH CHECK ADD  CONSTRAINT [defect_statu_defect_640] FOREIGN KEY([defect_status_code])
+ALTER TABLE [dbo].[oncd_defect]  WITH NOCHECK ADD  CONSTRAINT [defect_statu_defect_640] FOREIGN KEY([defect_status_code])
 REFERENCES [dbo].[onca_defect_status] ([defect_status_code])
 GO
 ALTER TABLE [dbo].[oncd_defect] CHECK CONSTRAINT [defect_statu_defect_640]
 GO
-ALTER TABLE [dbo].[oncd_defect]  WITH CHECK ADD  CONSTRAINT [defect_type_defect_641] FOREIGN KEY([defect_type_code])
+ALTER TABLE [dbo].[oncd_defect]  WITH NOCHECK ADD  CONSTRAINT [defect_type_defect_641] FOREIGN KEY([defect_type_code])
 REFERENCES [dbo].[onca_defect_type] ([defect_type_code])
 GO
 ALTER TABLE [dbo].[oncd_defect] CHECK CONSTRAINT [defect_type_defect_641]
 GO
-ALTER TABLE [dbo].[oncd_defect]  WITH CHECK ADD  CONSTRAINT [product_defect_639] FOREIGN KEY([product_code])
+ALTER TABLE [dbo].[oncd_defect]  WITH NOCHECK ADD  CONSTRAINT [product_defect_639] FOREIGN KEY([product_code])
 REFERENCES [dbo].[onca_product] ([product_code])
 GO
 ALTER TABLE [dbo].[oncd_defect] CHECK CONSTRAINT [product_defect_639]
 GO
-ALTER TABLE [dbo].[oncd_defect]  WITH CHECK ADD  CONSTRAINT [product_part_defect_1090] FOREIGN KEY([part_code])
+ALTER TABLE [dbo].[oncd_defect]  WITH NOCHECK ADD  CONSTRAINT [product_part_defect_1090] FOREIGN KEY([part_code])
 REFERENCES [dbo].[onca_product_part] ([part_code])
 GO
 ALTER TABLE [dbo].[oncd_defect] CHECK CONSTRAINT [product_part_defect_1090]
 GO
-ALTER TABLE [dbo].[oncd_defect]  WITH CHECK ADD  CONSTRAINT [product_vers_defect_1091] FOREIGN KEY([version_code])
+ALTER TABLE [dbo].[oncd_defect]  WITH NOCHECK ADD  CONSTRAINT [product_vers_defect_1091] FOREIGN KEY([version_code])
 REFERENCES [dbo].[onca_product_version] ([version_code])
 GO
 ALTER TABLE [dbo].[oncd_defect] CHECK CONSTRAINT [product_vers_defect_1091]
 GO
-ALTER TABLE [dbo].[oncd_defect]  WITH CHECK ADD  CONSTRAINT [user_defect_634] FOREIGN KEY([assigned_to_user_code])
+ALTER TABLE [dbo].[oncd_defect]  WITH NOCHECK ADD  CONSTRAINT [user_defect_634] FOREIGN KEY([assigned_to_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_defect] CHECK CONSTRAINT [user_defect_634]
 GO
-ALTER TABLE [dbo].[oncd_defect]  WITH CHECK ADD  CONSTRAINT [user_defect_635] FOREIGN KEY([status_updated_by_user_code])
+ALTER TABLE [dbo].[oncd_defect]  WITH NOCHECK ADD  CONSTRAINT [user_defect_635] FOREIGN KEY([status_updated_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_defect] CHECK CONSTRAINT [user_defect_635]
 GO
-ALTER TABLE [dbo].[oncd_defect]  WITH CHECK ADD  CONSTRAINT [user_defect_636] FOREIGN KEY([completed_by_user_code])
+ALTER TABLE [dbo].[oncd_defect]  WITH NOCHECK ADD  CONSTRAINT [user_defect_636] FOREIGN KEY([completed_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_defect] CHECK CONSTRAINT [user_defect_636]
 GO
-ALTER TABLE [dbo].[oncd_defect]  WITH CHECK ADD  CONSTRAINT [user_defect_637] FOREIGN KEY([created_by_user_code])
+ALTER TABLE [dbo].[oncd_defect]  WITH NOCHECK ADD  CONSTRAINT [user_defect_637] FOREIGN KEY([created_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_defect] CHECK CONSTRAINT [user_defect_637]
 GO
-ALTER TABLE [dbo].[oncd_defect]  WITH CHECK ADD  CONSTRAINT [user_defect_638] FOREIGN KEY([updated_by_user_code])
+ALTER TABLE [dbo].[oncd_defect]  WITH NOCHECK ADD  CONSTRAINT [user_defect_638] FOREIGN KEY([updated_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_defect] CHECK CONSTRAINT [user_defect_638]

@@ -51,49 +51,49 @@ CREATE NONCLUSTERED INDEX [IX_datNotesClient_SalesOrderGuid] ON [dbo].[datNotesC
 GO
 ALTER TABLE [dbo].[datNotesClient] ADD  DEFAULT ((0)) FOR [IsFlagged]
 GO
-ALTER TABLE [dbo].[datNotesClient]  WITH CHECK ADD  CONSTRAINT [FK_datNotesClient_datAppointment] FOREIGN KEY([AppointmentGUID])
+ALTER TABLE [dbo].[datNotesClient]  WITH NOCHECK ADD  CONSTRAINT [FK_datNotesClient_datAppointment] FOREIGN KEY([AppointmentGUID])
 REFERENCES [dbo].[datAppointment] ([AppointmentGUID])
 ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[datNotesClient] CHECK CONSTRAINT [FK_datNotesClient_datAppointment]
 GO
-ALTER TABLE [dbo].[datNotesClient]  WITH CHECK ADD  CONSTRAINT [FK_datNotesClient_datClient] FOREIGN KEY([ClientGUID])
+ALTER TABLE [dbo].[datNotesClient]  WITH NOCHECK ADD  CONSTRAINT [FK_datNotesClient_datClient] FOREIGN KEY([ClientGUID])
 REFERENCES [dbo].[datClient] ([ClientGUID])
 GO
 ALTER TABLE [dbo].[datNotesClient] CHECK CONSTRAINT [FK_datNotesClient_datClient]
 GO
-ALTER TABLE [dbo].[datNotesClient]  WITH CHECK ADD  CONSTRAINT [FK_datNotesClient_datClientMembership] FOREIGN KEY([ClientMembershipGUID])
+ALTER TABLE [dbo].[datNotesClient]  WITH NOCHECK ADD  CONSTRAINT [FK_datNotesClient_datClientMembership] FOREIGN KEY([ClientMembershipGUID])
 REFERENCES [dbo].[datClientMembership] ([ClientMembershipGUID])
 GO
 ALTER TABLE [dbo].[datNotesClient] CHECK CONSTRAINT [FK_datNotesClient_datClientMembership]
 GO
-ALTER TABLE [dbo].[datNotesClient]  WITH CHECK ADD  CONSTRAINT [FK_datNotesClient_datEmployee] FOREIGN KEY([EmployeeGUID])
+ALTER TABLE [dbo].[datNotesClient]  WITH NOCHECK ADD  CONSTRAINT [FK_datNotesClient_datEmployee] FOREIGN KEY([EmployeeGUID])
 REFERENCES [dbo].[datEmployee] ([EmployeeGUID])
 GO
 ALTER TABLE [dbo].[datNotesClient] CHECK CONSTRAINT [FK_datNotesClient_datEmployee]
 GO
-ALTER TABLE [dbo].[datNotesClient]  WITH CHECK ADD  CONSTRAINT [FK_datNotesClient_datHairSystemOrder] FOREIGN KEY([HairSystemOrderGUID])
+ALTER TABLE [dbo].[datNotesClient]  WITH NOCHECK ADD  CONSTRAINT [FK_datNotesClient_datHairSystemOrder] FOREIGN KEY([HairSystemOrderGUID])
 REFERENCES [dbo].[datHairSystemOrder] ([HairSystemOrderGUID])
 GO
 ALTER TABLE [dbo].[datNotesClient] CHECK CONSTRAINT [FK_datNotesClient_datHairSystemOrder]
 GO
-ALTER TABLE [dbo].[datNotesClient]  WITH CHECK ADD  CONSTRAINT [FK_datNotesClient_datSalesOrder] FOREIGN KEY([SalesOrderGUID])
+ALTER TABLE [dbo].[datNotesClient]  WITH NOCHECK ADD  CONSTRAINT [FK_datNotesClient_datSalesOrder] FOREIGN KEY([SalesOrderGUID])
 REFERENCES [dbo].[datSalesOrder] ([SalesOrderGUID])
 ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[datNotesClient] CHECK CONSTRAINT [FK_datNotesClient_datSalesOrder]
 GO
-ALTER TABLE [dbo].[datNotesClient]  WITH CHECK ADD  CONSTRAINT [FK_datNotesClient_lkpNoteSubType] FOREIGN KEY([NoteSubTypeID])
+ALTER TABLE [dbo].[datNotesClient]  WITH NOCHECK ADD  CONSTRAINT [FK_datNotesClient_lkpNoteSubType] FOREIGN KEY([NoteSubTypeID])
 REFERENCES [dbo].[lkpNoteSubType] ([NoteSubTypeID])
 GO
 ALTER TABLE [dbo].[datNotesClient] CHECK CONSTRAINT [FK_datNotesClient_lkpNoteSubType]
 GO
-ALTER TABLE [dbo].[datNotesClient]  WITH CHECK ADD  CONSTRAINT [FK_datNotesClient_lkpNoteType] FOREIGN KEY([NoteTypeID])
+ALTER TABLE [dbo].[datNotesClient]  WITH NOCHECK ADD  CONSTRAINT [FK_datNotesClient_lkpNoteType] FOREIGN KEY([NoteTypeID])
 REFERENCES [dbo].[lkpNoteType] ([NoteTypeID])
 GO
 ALTER TABLE [dbo].[datNotesClient] CHECK CONSTRAINT [FK_datNotesClient_lkpNoteType]
 GO
-ALTER TABLE [dbo].[datNotesClient]  WITH CHECK ADD  CONSTRAINT [FK_datNotesClient_lkpScorecardCategory] FOREIGN KEY([ScorecardCategoryID])
+ALTER TABLE [dbo].[datNotesClient]  WITH NOCHECK ADD  CONSTRAINT [FK_datNotesClient_lkpScorecardCategory] FOREIGN KEY([ScorecardCategoryID])
 REFERENCES [dbo].[lkpScorecardCategory] ([ScorecardCategoryID])
 GO
 ALTER TABLE [dbo].[datNotesClient] CHECK CONSTRAINT [FK_datNotesClient_lkpScorecardCategory]

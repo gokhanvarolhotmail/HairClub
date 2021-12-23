@@ -12,7 +12,7 @@ CREATE TABLE [dbo].[onca_product](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[onca_product]  WITH CHECK ADD  CONSTRAINT [manufacturer_product_856] FOREIGN KEY([manufacturer_code])
+ALTER TABLE [dbo].[onca_product]  WITH NOCHECK ADD  CONSTRAINT [manufacturer_product_856] FOREIGN KEY([manufacturer_code])
 REFERENCES [dbo].[onca_manufacturer] ([manufacturer_code])
 GO
 ALTER TABLE [dbo].[onca_product] CHECK CONSTRAINT [manufacturer_product_856]

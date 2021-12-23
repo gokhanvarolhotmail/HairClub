@@ -15,7 +15,7 @@ CREATE TABLE [dbo].[oncs_transaction_apply_error](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[oncs_transaction_apply_error]  WITH CHECK ADD  CONSTRAINT [transaction__transaction__382] FOREIGN KEY([packet_id], [transaction_date], [transaction_order])
+ALTER TABLE [dbo].[oncs_transaction_apply_error]  WITH NOCHECK ADD  CONSTRAINT [transaction__transaction__382] FOREIGN KEY([packet_id], [transaction_date], [transaction_order])
 REFERENCES [dbo].[oncs_transaction_apply] ([packet_id], [transaction_date], [transaction_order])
 ON DELETE CASCADE
 GO

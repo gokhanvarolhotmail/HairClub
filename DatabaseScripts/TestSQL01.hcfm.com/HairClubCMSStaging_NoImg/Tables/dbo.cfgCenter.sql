@@ -54,97 +54,97 @@ CREATE TABLE [dbo].[cfgCenter](
 GO
 ALTER TABLE [dbo].[cfgCenter] ADD  CONSTRAINT [DF_cfgCenter_IsActiveFlag]  DEFAULT ((1)) FOR [IsActiveFlag]
 GO
-ALTER TABLE [dbo].[cfgCenter]  WITH CHECK ADD  CONSTRAINT [FK_cfgCenter_cfgCenter_AliasSurgeryCenterID] FOREIGN KEY([AliasSurgeryCenterID])
+ALTER TABLE [dbo].[cfgCenter]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgCenter_cfgCenter_AliasSurgeryCenterID] FOREIGN KEY([AliasSurgeryCenterID])
 REFERENCES [dbo].[cfgCenter] ([CenterID])
 GO
 ALTER TABLE [dbo].[cfgCenter] CHECK CONSTRAINT [FK_cfgCenter_cfgCenter_AliasSurgeryCenterID]
 GO
-ALTER TABLE [dbo].[cfgCenter]  WITH CHECK ADD  CONSTRAINT [FK_cfgCenter_cfgCenter_SurgeryHubCenterID] FOREIGN KEY([SurgeryHubCenterID])
+ALTER TABLE [dbo].[cfgCenter]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgCenter_cfgCenter_SurgeryHubCenterID] FOREIGN KEY([SurgeryHubCenterID])
 REFERENCES [dbo].[cfgCenter] ([CenterID])
 GO
 ALTER TABLE [dbo].[cfgCenter] CHECK CONSTRAINT [FK_cfgCenter_cfgCenter_SurgeryHubCenterID]
 GO
-ALTER TABLE [dbo].[cfgCenter]  WITH CHECK ADD  CONSTRAINT [FK_cfgCenter_cfgCenterManagementArea] FOREIGN KEY([CenterManagementAreaID])
+ALTER TABLE [dbo].[cfgCenter]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgCenter_cfgCenterManagementArea] FOREIGN KEY([CenterManagementAreaID])
 REFERENCES [dbo].[cfgCenterManagementArea] ([CenterManagementAreaID])
 GO
 ALTER TABLE [dbo].[cfgCenter] CHECK CONSTRAINT [FK_cfgCenter_cfgCenterManagementArea]
 GO
-ALTER TABLE [dbo].[cfgCenter]  WITH CHECK ADD  CONSTRAINT [FK_cfgCenter_datEmployee] FOREIGN KEY([EmployeeDoctorGUID])
+ALTER TABLE [dbo].[cfgCenter]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgCenter_datEmployee] FOREIGN KEY([EmployeeDoctorGUID])
 REFERENCES [dbo].[datEmployee] ([EmployeeGUID])
 GO
 ALTER TABLE [dbo].[cfgCenter] CHECK CONSTRAINT [FK_cfgCenter_datEmployee]
 GO
-ALTER TABLE [dbo].[cfgCenter]  WITH CHECK ADD  CONSTRAINT [FK_cfgCenter_datEmployee1] FOREIGN KEY([RegionRSMMembershipAdvisorGuid])
+ALTER TABLE [dbo].[cfgCenter]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgCenter_datEmployee1] FOREIGN KEY([RegionRSMMembershipAdvisorGuid])
 REFERENCES [dbo].[datEmployee] ([EmployeeGUID])
 GO
 ALTER TABLE [dbo].[cfgCenter] CHECK CONSTRAINT [FK_cfgCenter_datEmployee1]
 GO
-ALTER TABLE [dbo].[cfgCenter]  WITH CHECK ADD  CONSTRAINT [FK_cfgCenter_datEmployee2] FOREIGN KEY([RegionRSMNBConsultantGuid])
+ALTER TABLE [dbo].[cfgCenter]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgCenter_datEmployee2] FOREIGN KEY([RegionRSMNBConsultantGuid])
 REFERENCES [dbo].[datEmployee] ([EmployeeGUID])
 GO
 ALTER TABLE [dbo].[cfgCenter] CHECK CONSTRAINT [FK_cfgCenter_datEmployee2]
 GO
-ALTER TABLE [dbo].[cfgCenter]  WITH CHECK ADD  CONSTRAINT [FK_cfgCenter_datEmployee3] FOREIGN KEY([RegionRTMTechnicalManagerGuid])
+ALTER TABLE [dbo].[cfgCenter]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgCenter_datEmployee3] FOREIGN KEY([RegionRTMTechnicalManagerGuid])
 REFERENCES [dbo].[datEmployee] ([EmployeeGUID])
 GO
 ALTER TABLE [dbo].[cfgCenter] CHECK CONSTRAINT [FK_cfgCenter_datEmployee3]
 GO
-ALTER TABLE [dbo].[cfgCenter]  WITH CHECK ADD  CONSTRAINT [FK_cfgCenter_lkpBusinessUnit] FOREIGN KEY([CenterOwnershipID])
+ALTER TABLE [dbo].[cfgCenter]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgCenter_lkpBusinessUnit] FOREIGN KEY([CenterOwnershipID])
 REFERENCES [dbo].[lkpCenterOwnership] ([CenterOwnershipID])
 GO
 ALTER TABLE [dbo].[cfgCenter] CHECK CONSTRAINT [FK_cfgCenter_lkpBusinessUnit]
 GO
-ALTER TABLE [dbo].[cfgCenter]  WITH CHECK ADD  CONSTRAINT [FK_cfgCenter_lkpBusinessUnitBrand] FOREIGN KEY([BusinessUnitBrandID])
+ALTER TABLE [dbo].[cfgCenter]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgCenter_lkpBusinessUnitBrand] FOREIGN KEY([BusinessUnitBrandID])
 REFERENCES [dbo].[lkpBusinessUnitBrand] ([BusinessUnitBrandID])
 GO
 ALTER TABLE [dbo].[cfgCenter] CHECK CONSTRAINT [FK_cfgCenter_lkpBusinessUnitBrand]
 GO
-ALTER TABLE [dbo].[cfgCenter]  WITH CHECK ADD  CONSTRAINT [FK_cfgCenter_lkpCenterPayGroup] FOREIGN KEY([CenterPayGroupID])
+ALTER TABLE [dbo].[cfgCenter]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgCenter_lkpCenterPayGroup] FOREIGN KEY([CenterPayGroupID])
 REFERENCES [dbo].[lkpCenterPayGroup] ([CenterPayGroupID])
 GO
 ALTER TABLE [dbo].[cfgCenter] CHECK CONSTRAINT [FK_cfgCenter_lkpCenterPayGroup]
 GO
-ALTER TABLE [dbo].[cfgCenter]  WITH CHECK ADD  CONSTRAINT [FK_cfgCenter_lkpCenterType] FOREIGN KEY([CenterTypeID])
+ALTER TABLE [dbo].[cfgCenter]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgCenter_lkpCenterType] FOREIGN KEY([CenterTypeID])
 REFERENCES [dbo].[lkpCenterType] ([CenterTypeID])
 GO
 ALTER TABLE [dbo].[cfgCenter] CHECK CONSTRAINT [FK_cfgCenter_lkpCenterType]
 GO
-ALTER TABLE [dbo].[cfgCenter]  WITH CHECK ADD  CONSTRAINT [FK_cfgCenter_lkpCountry] FOREIGN KEY([CountryID])
+ALTER TABLE [dbo].[cfgCenter]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgCenter_lkpCountry] FOREIGN KEY([CountryID])
 REFERENCES [dbo].[lkpCountry] ([CountryID])
 GO
 ALTER TABLE [dbo].[cfgCenter] CHECK CONSTRAINT [FK_cfgCenter_lkpCountry]
 GO
-ALTER TABLE [dbo].[cfgCenter]  WITH CHECK ADD  CONSTRAINT [FK_cfgCenter_lkpDoctorRegion] FOREIGN KEY([DoctorRegionID])
+ALTER TABLE [dbo].[cfgCenter]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgCenter_lkpDoctorRegion] FOREIGN KEY([DoctorRegionID])
 REFERENCES [dbo].[lkpDoctorRegion] ([DoctorRegionID])
 GO
 ALTER TABLE [dbo].[cfgCenter] CHECK CONSTRAINT [FK_cfgCenter_lkpDoctorRegion]
 GO
-ALTER TABLE [dbo].[cfgCenter]  WITH CHECK ADD  CONSTRAINT [FK_cfgCenter_lkpPhoneType] FOREIGN KEY([Phone1TypeID])
+ALTER TABLE [dbo].[cfgCenter]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgCenter_lkpPhoneType] FOREIGN KEY([Phone1TypeID])
 REFERENCES [dbo].[lkpPhoneType] ([PhoneTypeID])
 GO
 ALTER TABLE [dbo].[cfgCenter] CHECK CONSTRAINT [FK_cfgCenter_lkpPhoneType]
 GO
-ALTER TABLE [dbo].[cfgCenter]  WITH CHECK ADD  CONSTRAINT [FK_cfgCenter_lkpPhoneType1] FOREIGN KEY([Phone2TypeID])
+ALTER TABLE [dbo].[cfgCenter]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgCenter_lkpPhoneType1] FOREIGN KEY([Phone2TypeID])
 REFERENCES [dbo].[lkpPhoneType] ([PhoneTypeID])
 GO
 ALTER TABLE [dbo].[cfgCenter] CHECK CONSTRAINT [FK_cfgCenter_lkpPhoneType1]
 GO
-ALTER TABLE [dbo].[cfgCenter]  WITH CHECK ADD  CONSTRAINT [FK_cfgCenter_lkpPhoneType2] FOREIGN KEY([Phone3TypeID])
+ALTER TABLE [dbo].[cfgCenter]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgCenter_lkpPhoneType2] FOREIGN KEY([Phone3TypeID])
 REFERENCES [dbo].[lkpPhoneType] ([PhoneTypeID])
 GO
 ALTER TABLE [dbo].[cfgCenter] CHECK CONSTRAINT [FK_cfgCenter_lkpPhoneType2]
 GO
-ALTER TABLE [dbo].[cfgCenter]  WITH CHECK ADD  CONSTRAINT [FK_cfgCenter_lkpRegion] FOREIGN KEY([RegionID])
+ALTER TABLE [dbo].[cfgCenter]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgCenter_lkpRegion] FOREIGN KEY([RegionID])
 REFERENCES [dbo].[lkpRegion] ([RegionID])
 GO
 ALTER TABLE [dbo].[cfgCenter] CHECK CONSTRAINT [FK_cfgCenter_lkpRegion]
 GO
-ALTER TABLE [dbo].[cfgCenter]  WITH CHECK ADD  CONSTRAINT [FK_cfgCenter_lkpState] FOREIGN KEY([StateID])
+ALTER TABLE [dbo].[cfgCenter]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgCenter_lkpState] FOREIGN KEY([StateID])
 REFERENCES [dbo].[lkpState] ([StateID])
 GO
 ALTER TABLE [dbo].[cfgCenter] CHECK CONSTRAINT [FK_cfgCenter_lkpState]
 GO
-ALTER TABLE [dbo].[cfgCenter]  WITH CHECK ADD  CONSTRAINT [FK_cfgCenter_lkpTimeZone] FOREIGN KEY([TimeZoneID])
+ALTER TABLE [dbo].[cfgCenter]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgCenter_lkpTimeZone] FOREIGN KEY([TimeZoneID])
 REFERENCES [dbo].[lkpTimeZone] ([TimeZoneID])
 GO
 ALTER TABLE [dbo].[cfgCenter] CHECK CONSTRAINT [FK_cfgCenter_lkpTimeZone]

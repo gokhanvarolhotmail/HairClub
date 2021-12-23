@@ -37,17 +37,17 @@ CREATE NONCLUSTERED INDEX [IX_cfgHairSystemVendorContractPricing_HairSystemAreaR
 GO
 ALTER TABLE [dbo].[cfgHairSystemVendorContractPricing] ADD  DEFAULT ((0)) FOR [IsContractPriceInActive]
 GO
-ALTER TABLE [dbo].[cfgHairSystemVendorContractPricing]  WITH CHECK ADD  CONSTRAINT [FK_cfgHairSystemVendorContractPricing_cfgHairSystemVendorContract] FOREIGN KEY([HairSystemVendorContractID])
+ALTER TABLE [dbo].[cfgHairSystemVendorContractPricing]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgHairSystemVendorContractPricing_cfgHairSystemVendorContract] FOREIGN KEY([HairSystemVendorContractID])
 REFERENCES [dbo].[cfgHairSystemVendorContract] ([HairSystemVendorContractID])
 GO
 ALTER TABLE [dbo].[cfgHairSystemVendorContractPricing] CHECK CONSTRAINT [FK_cfgHairSystemVendorContractPricing_cfgHairSystemVendorContract]
 GO
-ALTER TABLE [dbo].[cfgHairSystemVendorContractPricing]  WITH CHECK ADD  CONSTRAINT [FK_cfgHairSystemVendorContractPricing_lkpHairSystemHairCap] FOREIGN KEY([HairSystemHairCapID])
+ALTER TABLE [dbo].[cfgHairSystemVendorContractPricing]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgHairSystemVendorContractPricing_lkpHairSystemHairCap] FOREIGN KEY([HairSystemHairCapID])
 REFERENCES [dbo].[lkpHairSystemHairCap] ([HairSystemHairCapID])
 GO
 ALTER TABLE [dbo].[cfgHairSystemVendorContractPricing] CHECK CONSTRAINT [FK_cfgHairSystemVendorContractPricing_lkpHairSystemHairCap]
 GO
-ALTER TABLE [dbo].[cfgHairSystemVendorContractPricing]  WITH CHECK ADD  CONSTRAINT [FK_cfgHairSystemVendorContractPricing_lkpHairSystemHairLength] FOREIGN KEY([HairSystemHairLengthID])
+ALTER TABLE [dbo].[cfgHairSystemVendorContractPricing]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgHairSystemVendorContractPricing_lkpHairSystemHairLength] FOREIGN KEY([HairSystemHairLengthID])
 REFERENCES [dbo].[lkpHairSystemHairLength] ([HairSystemHairLengthID])
 GO
 ALTER TABLE [dbo].[cfgHairSystemVendorContractPricing] CHECK CONSTRAINT [FK_cfgHairSystemVendorContractPricing_lkpHairSystemHairLength]

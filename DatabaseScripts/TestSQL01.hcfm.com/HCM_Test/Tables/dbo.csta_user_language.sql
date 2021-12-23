@@ -10,7 +10,7 @@ CREATE TABLE [dbo].[csta_user_language](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[csta_user_language]  WITH CHECK ADD  CONSTRAINT [onca_user_csta_user_language_125] FOREIGN KEY([user_code])
+ALTER TABLE [dbo].[csta_user_language]  WITH NOCHECK ADD  CONSTRAINT [onca_user_csta_user_language_125] FOREIGN KEY([user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 ON DELETE CASCADE
 GO

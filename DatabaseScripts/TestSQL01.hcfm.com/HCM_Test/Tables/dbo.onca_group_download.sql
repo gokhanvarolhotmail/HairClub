@@ -24,13 +24,13 @@ CREATE NONCLUSTERED INDEX [onca_group_download_i2] ON [dbo].[onca_group_download
 	[download_group_id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[onca_group_download]  WITH CHECK ADD  CONSTRAINT [download_gro_group_downlo_420] FOREIGN KEY([download_group_id])
+ALTER TABLE [dbo].[onca_group_download]  WITH NOCHECK ADD  CONSTRAINT [download_gro_group_downlo_420] FOREIGN KEY([download_group_id])
 REFERENCES [dbo].[onca_download_group] ([download_group_id])
 ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[onca_group_download] CHECK CONSTRAINT [download_gro_group_downlo_420]
 GO
-ALTER TABLE [dbo].[onca_group_download]  WITH CHECK ADD  CONSTRAINT [group_group_downlo_416] FOREIGN KEY([group_id])
+ALTER TABLE [dbo].[onca_group_download]  WITH NOCHECK ADD  CONSTRAINT [group_group_downlo_416] FOREIGN KEY([group_id])
 REFERENCES [dbo].[onca_group] ([group_id])
 ON DELETE CASCADE
 GO

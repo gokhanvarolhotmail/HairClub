@@ -15,12 +15,12 @@ CREATE TABLE [dbo].[datPhotoBookEthnicity](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[datPhotoBookEthnicity]  WITH CHECK ADD  CONSTRAINT [FK_datPhotoBookEthnicity_datPhotoBook] FOREIGN KEY([PhotoBookID])
+ALTER TABLE [dbo].[datPhotoBookEthnicity]  WITH NOCHECK ADD  CONSTRAINT [FK_datPhotoBookEthnicity_datPhotoBook] FOREIGN KEY([PhotoBookID])
 REFERENCES [dbo].[datPhotoBook] ([PhotoBookID])
 GO
 ALTER TABLE [dbo].[datPhotoBookEthnicity] CHECK CONSTRAINT [FK_datPhotoBookEthnicity_datPhotoBook]
 GO
-ALTER TABLE [dbo].[datPhotoBookEthnicity]  WITH CHECK ADD  CONSTRAINT [FK_datPhotoBookEthnicity_lkpEthnicity] FOREIGN KEY([EthnicityID])
+ALTER TABLE [dbo].[datPhotoBookEthnicity]  WITH NOCHECK ADD  CONSTRAINT [FK_datPhotoBookEthnicity_lkpEthnicity] FOREIGN KEY([EthnicityID])
 REFERENCES [dbo].[lkpEthnicity] ([EthnicityID])
 GO
 ALTER TABLE [dbo].[datPhotoBookEthnicity] CHECK CONSTRAINT [FK_datPhotoBookEthnicity_lkpEthnicity]

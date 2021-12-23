@@ -13,7 +13,7 @@ CREATE TABLE [dbo].[onca_milestone_activity_note](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[onca_milestone_activity_note]  WITH CHECK ADD  CONSTRAINT [milestone_ac_milestone_ac_271] FOREIGN KEY([milestone_activity_id])
+ALTER TABLE [dbo].[onca_milestone_activity_note]  WITH NOCHECK ADD  CONSTRAINT [milestone_ac_milestone_ac_271] FOREIGN KEY([milestone_activity_id])
 REFERENCES [dbo].[onca_milestone_activity] ([milestone_activity_id])
 ON DELETE CASCADE
 GO

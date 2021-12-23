@@ -51,12 +51,12 @@ ALTER TABLE [dbo].[cfgNACHAFileProfile] ADD  DEFAULT ('1') FOR [BatchHeaderOrigi
 GO
 ALTER TABLE [dbo].[cfgNACHAFileProfile] ADD  DEFAULT ('6') FOR [EntryDetailRecordTypeCode]
 GO
-ALTER TABLE [dbo].[cfgNACHAFileProfile]  WITH CHECK ADD  CONSTRAINT [FK_cfgNACHAFileProfile_cfgNACHATransmissionProfile] FOREIGN KEY([NACHATransmissionProfileID])
+ALTER TABLE [dbo].[cfgNACHAFileProfile]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgNACHAFileProfile_cfgNACHATransmissionProfile] FOREIGN KEY([NACHATransmissionProfileID])
 REFERENCES [dbo].[cfgNACHATransmissionProfile] ([NACHATransmissionProfileID])
 GO
 ALTER TABLE [dbo].[cfgNACHAFileProfile] CHECK CONSTRAINT [FK_cfgNACHAFileProfile_cfgNACHATransmissionProfile]
 GO
-ALTER TABLE [dbo].[cfgNACHAFileProfile]  WITH CHECK ADD  CONSTRAINT [FK_cfgNACHAFileProfile_lkpCountry] FOREIGN KEY([CountryID])
+ALTER TABLE [dbo].[cfgNACHAFileProfile]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgNACHAFileProfile_lkpCountry] FOREIGN KEY([CountryID])
 REFERENCES [dbo].[lkpCountry] ([CountryID])
 GO
 ALTER TABLE [dbo].[cfgNACHAFileProfile] CHECK CONSTRAINT [FK_cfgNACHAFileProfile_lkpCountry]

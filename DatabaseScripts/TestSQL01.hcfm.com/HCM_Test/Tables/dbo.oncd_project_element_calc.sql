@@ -17,13 +17,13 @@ CREATE TABLE [dbo].[oncd_project_element_calc](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[oncd_project_element_calc]  WITH CHECK ADD  CONSTRAINT [project_elem_project_elem_753] FOREIGN KEY([project_element_id])
+ALTER TABLE [dbo].[oncd_project_element_calc]  WITH NOCHECK ADD  CONSTRAINT [project_elem_project_elem_753] FOREIGN KEY([project_element_id])
 REFERENCES [dbo].[oncd_project_element] ([project_element_id])
 ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[oncd_project_element_calc] CHECK CONSTRAINT [project_elem_project_elem_753]
 GO
-ALTER TABLE [dbo].[oncd_project_element_calc]  WITH CHECK ADD  CONSTRAINT [project_fact_project_elem_995] FOREIGN KEY([project_factor_code])
+ALTER TABLE [dbo].[oncd_project_element_calc]  WITH NOCHECK ADD  CONSTRAINT [project_fact_project_elem_995] FOREIGN KEY([project_factor_code])
 REFERENCES [dbo].[onca_project_factor] ([project_factor_code])
 GO
 ALTER TABLE [dbo].[oncd_project_element_calc] CHECK CONSTRAINT [project_fact_project_elem_995]

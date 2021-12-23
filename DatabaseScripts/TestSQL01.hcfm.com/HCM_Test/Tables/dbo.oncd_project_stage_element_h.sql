@@ -12,23 +12,23 @@ CREATE TABLE [dbo].[oncd_project_stage_element_h](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[oncd_project_stage_element_h]  WITH CHECK ADD  CONSTRAINT [project_elem_project_stag_1033] FOREIGN KEY([project_element_id])
+ALTER TABLE [dbo].[oncd_project_stage_element_h]  WITH NOCHECK ADD  CONSTRAINT [project_elem_project_stag_1033] FOREIGN KEY([project_element_id])
 REFERENCES [dbo].[oncd_project_element] ([project_element_id])
 GO
 ALTER TABLE [dbo].[oncd_project_stage_element_h] CHECK CONSTRAINT [project_elem_project_stag_1033]
 GO
-ALTER TABLE [dbo].[oncd_project_stage_element_h]  WITH CHECK ADD  CONSTRAINT [project_revi_project_stag_766] FOREIGN KEY([project_revision_id])
+ALTER TABLE [dbo].[oncd_project_stage_element_h]  WITH NOCHECK ADD  CONSTRAINT [project_revi_project_stag_766] FOREIGN KEY([project_revision_id])
 REFERENCES [dbo].[oncd_project_revision] ([project_revision_id])
 ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[oncd_project_stage_element_h] CHECK CONSTRAINT [project_revi_project_stag_766]
 GO
-ALTER TABLE [dbo].[oncd_project_stage_element_h]  WITH CHECK ADD  CONSTRAINT [project_stag_project_stag_1032] FOREIGN KEY([project_stage_element_id])
+ALTER TABLE [dbo].[oncd_project_stage_element_h]  WITH NOCHECK ADD  CONSTRAINT [project_stag_project_stag_1032] FOREIGN KEY([project_stage_element_id])
 REFERENCES [dbo].[oncd_project_stage_element] ([project_stage_element_id])
 GO
 ALTER TABLE [dbo].[oncd_project_stage_element_h] CHECK CONSTRAINT [project_stag_project_stag_1032]
 GO
-ALTER TABLE [dbo].[oncd_project_stage_element_h]  WITH CHECK ADD  CONSTRAINT [project_stag_project_stag_1034] FOREIGN KEY([project_stage_id])
+ALTER TABLE [dbo].[oncd_project_stage_element_h]  WITH NOCHECK ADD  CONSTRAINT [project_stag_project_stag_1034] FOREIGN KEY([project_stage_id])
 REFERENCES [dbo].[oncd_project_stage] ([project_stage_id])
 GO
 ALTER TABLE [dbo].[oncd_project_stage_element_h] CHECK CONSTRAINT [project_stag_project_stag_1034]

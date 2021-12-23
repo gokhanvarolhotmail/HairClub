@@ -21,22 +21,22 @@ CREATE TABLE [dbo].[datFactoryOrder](
 GO
 ALTER TABLE [dbo].[datFactoryOrder] ADD  CONSTRAINT [DF_datFactoryOrder_IsHS4Flag]  DEFAULT ((0)) FOR [IsHS4Flag]
 GO
-ALTER TABLE [dbo].[datFactoryOrder]  WITH CHECK ADD  CONSTRAINT [FK_datFactoryOrder_datClient] FOREIGN KEY([ClientGUID])
+ALTER TABLE [dbo].[datFactoryOrder]  WITH NOCHECK ADD  CONSTRAINT [FK_datFactoryOrder_datClient] FOREIGN KEY([ClientGUID])
 REFERENCES [dbo].[datClient] ([ClientGUID])
 GO
 ALTER TABLE [dbo].[datFactoryOrder] CHECK CONSTRAINT [FK_datFactoryOrder_datClient]
 GO
-ALTER TABLE [dbo].[datFactoryOrder]  WITH CHECK ADD  CONSTRAINT [FK_datFactoryOrder_datClient1] FOREIGN KEY([UsedByClientGUID])
+ALTER TABLE [dbo].[datFactoryOrder]  WITH NOCHECK ADD  CONSTRAINT [FK_datFactoryOrder_datClient1] FOREIGN KEY([UsedByClientGUID])
 REFERENCES [dbo].[datClient] ([ClientGUID])
 GO
 ALTER TABLE [dbo].[datFactoryOrder] CHECK CONSTRAINT [FK_datFactoryOrder_datClient1]
 GO
-ALTER TABLE [dbo].[datFactoryOrder]  WITH CHECK ADD  CONSTRAINT [FK_datFactoryOrder_lkpFactoryOrderStatus] FOREIGN KEY([FactoryOrderStatusID])
+ALTER TABLE [dbo].[datFactoryOrder]  WITH NOCHECK ADD  CONSTRAINT [FK_datFactoryOrder_lkpFactoryOrderStatus] FOREIGN KEY([FactoryOrderStatusID])
 REFERENCES [dbo].[lkpFactoryOrderStatus] ([FactoryOrderStatusID])
 GO
 ALTER TABLE [dbo].[datFactoryOrder] CHECK CONSTRAINT [FK_datFactoryOrder_lkpFactoryOrderStatus]
 GO
-ALTER TABLE [dbo].[datFactoryOrder]  WITH CHECK ADD  CONSTRAINT [FK_datFactoryOrder_lkpHairSystemType] FOREIGN KEY([HairSystemTypeID])
+ALTER TABLE [dbo].[datFactoryOrder]  WITH NOCHECK ADD  CONSTRAINT [FK_datFactoryOrder_lkpHairSystemType] FOREIGN KEY([HairSystemTypeID])
 REFERENCES [dbo].[lkpHairSystemType] ([HairSystemTypeID])
 GO
 ALTER TABLE [dbo].[datFactoryOrder] CHECK CONSTRAINT [FK_datFactoryOrder_lkpHairSystemType]

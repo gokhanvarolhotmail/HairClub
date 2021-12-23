@@ -39,7 +39,7 @@ CREATE NONCLUSTERED INDEX [IX_cstd_phone_dnc_phonenumber] ON [dbo].[cstd_phone_d
 	[dnc_flag] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[cstd_phone_dnc_wireless_job_detail]  WITH CHECK ADD  CONSTRAINT [cstd_phone_dnc_wireless_job_detai_cstd_phone_dnc_wireless_job] FOREIGN KEY([phone_dnc_wireless_job_id])
+ALTER TABLE [dbo].[cstd_phone_dnc_wireless_job_detail]  WITH NOCHECK ADD  CONSTRAINT [cstd_phone_dnc_wireless_job_detai_cstd_phone_dnc_wireless_job] FOREIGN KEY([phone_dnc_wireless_job_id])
 REFERENCES [dbo].[cstd_phone_dnc_wireless_job] ([phone_dnc_wireless_job_id])
 ON DELETE CASCADE
 GO

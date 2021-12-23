@@ -20,7 +20,7 @@ CREATE TABLE [dbo].[cstd_hcmtbl_noshows_toexport](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[cstd_hcmtbl_noshows_toexport]  WITH CHECK ADD  CONSTRAINT [oncd_contact_cstd_hcmtbl_noshows_toexport_813] FOREIGN KEY([contact_id])
+ALTER TABLE [dbo].[cstd_hcmtbl_noshows_toexport]  WITH NOCHECK ADD  CONSTRAINT [oncd_contact_cstd_hcmtbl_noshows_toexport_813] FOREIGN KEY([contact_id])
 REFERENCES [dbo].[oncd_contact] ([contact_id])
 ON DELETE CASCADE
 GO

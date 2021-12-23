@@ -23,12 +23,12 @@ CREATE NONCLUSTERED INDEX [IX_datClientExperienceSurvey_ClientGUID] ON [dbo].[da
 )
 INCLUDE([CompletedDate]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[datClientExperienceSurvey]  WITH CHECK ADD  CONSTRAINT [FK_datClientExperienceSurvey_datClient] FOREIGN KEY([ClientGUID])
+ALTER TABLE [dbo].[datClientExperienceSurvey]  WITH NOCHECK ADD  CONSTRAINT [FK_datClientExperienceSurvey_datClient] FOREIGN KEY([ClientGUID])
 REFERENCES [dbo].[datClient] ([ClientGUID])
 GO
 ALTER TABLE [dbo].[datClientExperienceSurvey] CHECK CONSTRAINT [FK_datClientExperienceSurvey_datClient]
 GO
-ALTER TABLE [dbo].[datClientExperienceSurvey]  WITH CHECK ADD  CONSTRAINT [FK_datClientExperienceSurvey_datEmployee] FOREIGN KEY([CompletedByEmployeeGUID])
+ALTER TABLE [dbo].[datClientExperienceSurvey]  WITH NOCHECK ADD  CONSTRAINT [FK_datClientExperienceSurvey_datEmployee] FOREIGN KEY([CompletedByEmployeeGUID])
 REFERENCES [dbo].[datEmployee] ([EmployeeGUID])
 GO
 ALTER TABLE [dbo].[datClientExperienceSurvey] CHECK CONSTRAINT [FK_datClientExperienceSurvey_datEmployee]

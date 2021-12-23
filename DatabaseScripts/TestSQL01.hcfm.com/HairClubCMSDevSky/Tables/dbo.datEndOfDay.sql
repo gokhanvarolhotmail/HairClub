@@ -28,12 +28,12 @@ CREATE NONCLUSTERED INDEX [IX_datEndOfDay_EndOfDayDate_CenterID] ON [dbo].[datEn
 )
 INCLUDE([DepositNumber],[EmployeeGUID],[CloseDate]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[datEndOfDay]  WITH CHECK ADD  CONSTRAINT [FK_datEndOfDay_cfgCenter] FOREIGN KEY([CenterID])
+ALTER TABLE [dbo].[datEndOfDay]  WITH NOCHECK ADD  CONSTRAINT [FK_datEndOfDay_cfgCenter] FOREIGN KEY([CenterID])
 REFERENCES [dbo].[cfgCenter] ([CenterID])
 GO
 ALTER TABLE [dbo].[datEndOfDay] CHECK CONSTRAINT [FK_datEndOfDay_cfgCenter]
 GO
-ALTER TABLE [dbo].[datEndOfDay]  WITH CHECK ADD  CONSTRAINT [FK_datEndOfDay_datEmployee] FOREIGN KEY([EmployeeGUID])
+ALTER TABLE [dbo].[datEndOfDay]  WITH NOCHECK ADD  CONSTRAINT [FK_datEndOfDay_datEmployee] FOREIGN KEY([EmployeeGUID])
 REFERENCES [dbo].[datEmployee] ([EmployeeGUID])
 GO
 ALTER TABLE [dbo].[datEndOfDay] CHECK CONSTRAINT [FK_datEndOfDay_datEmployee]

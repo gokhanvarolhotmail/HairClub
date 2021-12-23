@@ -25,18 +25,18 @@ CREATE NONCLUSTERED INDEX [oncd_order_attachment_i2] ON [dbo].[oncd_order_attach
 	[sort_order] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[oncd_order_attachment]  WITH CHECK ADD  CONSTRAINT [order_order_attach_175] FOREIGN KEY([order_id])
+ALTER TABLE [dbo].[oncd_order_attachment]  WITH NOCHECK ADD  CONSTRAINT [order_order_attach_175] FOREIGN KEY([order_id])
 REFERENCES [dbo].[oncd_order] ([order_id])
 ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[oncd_order_attachment] CHECK CONSTRAINT [order_order_attach_175]
 GO
-ALTER TABLE [dbo].[oncd_order_attachment]  WITH CHECK ADD  CONSTRAINT [user_order_attach_714] FOREIGN KEY([created_by_user_code])
+ALTER TABLE [dbo].[oncd_order_attachment]  WITH NOCHECK ADD  CONSTRAINT [user_order_attach_714] FOREIGN KEY([created_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_order_attachment] CHECK CONSTRAINT [user_order_attach_714]
 GO
-ALTER TABLE [dbo].[oncd_order_attachment]  WITH CHECK ADD  CONSTRAINT [user_order_attach_715] FOREIGN KEY([updated_by_user_code])
+ALTER TABLE [dbo].[oncd_order_attachment]  WITH NOCHECK ADD  CONSTRAINT [user_order_attach_715] FOREIGN KEY([updated_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_order_attachment] CHECK CONSTRAINT [user_order_attach_715]

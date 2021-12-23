@@ -27,12 +27,12 @@ CREATE NONCLUSTERED INDEX [IX_datSalesCodeCenterInventorySerialized_SerialNumber
 	[SerialNumber] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[datSalesCodeCenterInventorySerialized]  WITH CHECK ADD  CONSTRAINT [FK_datSalesCodeCenterInventorySerialized_datSalesCodeCenterInventory] FOREIGN KEY([SalesCodeCenterInventoryID])
+ALTER TABLE [dbo].[datSalesCodeCenterInventorySerialized]  WITH NOCHECK ADD  CONSTRAINT [FK_datSalesCodeCenterInventorySerialized_datSalesCodeCenterInventory] FOREIGN KEY([SalesCodeCenterInventoryID])
 REFERENCES [dbo].[datSalesCodeCenterInventory] ([SalesCodeCenterInventoryID])
 GO
 ALTER TABLE [dbo].[datSalesCodeCenterInventorySerialized] CHECK CONSTRAINT [FK_datSalesCodeCenterInventorySerialized_datSalesCodeCenterInventory]
 GO
-ALTER TABLE [dbo].[datSalesCodeCenterInventorySerialized]  WITH CHECK ADD  CONSTRAINT [FK_datSalesCodeCenterInventorySerialized_lkpSerializedInventoryStatus] FOREIGN KEY([SerializedInventoryStatusID])
+ALTER TABLE [dbo].[datSalesCodeCenterInventorySerialized]  WITH NOCHECK ADD  CONSTRAINT [FK_datSalesCodeCenterInventorySerialized_lkpSerializedInventoryStatus] FOREIGN KEY([SerializedInventoryStatusID])
 REFERENCES [dbo].[lkpSerializedInventoryStatus] ([SerializedInventoryStatusID])
 GO
 ALTER TABLE [dbo].[datSalesCodeCenterInventorySerialized] CHECK CONSTRAINT [FK_datSalesCodeCenterInventorySerialized_lkpSerializedInventoryStatus]

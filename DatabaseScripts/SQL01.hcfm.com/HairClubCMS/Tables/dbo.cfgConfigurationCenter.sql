@@ -100,47 +100,47 @@ ALTER TABLE [dbo].[cfgConfigurationCenter] ADD  DEFAULT ((0)) FOR [IsNonSerializ
 GO
 ALTER TABLE [dbo].[cfgConfigurationCenter] ADD  DEFAULT ((0)) FOR [IncludeInNationalPricingRenewal]
 GO
-ALTER TABLE [dbo].[cfgConfigurationCenter]  WITH CHECK ADD  CONSTRAINT [FK_cfgConfigurationCenter_cfgCenter] FOREIGN KEY([CenterID])
+ALTER TABLE [dbo].[cfgConfigurationCenter]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgConfigurationCenter_cfgCenter] FOREIGN KEY([CenterID])
 REFERENCES [dbo].[cfgCenter] ([CenterID])
 GO
 ALTER TABLE [dbo].[cfgConfigurationCenter] CHECK CONSTRAINT [FK_cfgConfigurationCenter_cfgCenter]
 GO
-ALTER TABLE [dbo].[cfgConfigurationCenter]  WITH CHECK ADD  CONSTRAINT [FK_cfgConfigurationCenter_cfgEntity] FOREIGN KEY([EntityID])
+ALTER TABLE [dbo].[cfgConfigurationCenter]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgConfigurationCenter_cfgEntity] FOREIGN KEY([EntityID])
 REFERENCES [dbo].[cfgEntity] ([EntityID])
 GO
 ALTER TABLE [dbo].[cfgConfigurationCenter] CHECK CONSTRAINT [FK_cfgConfigurationCenter_cfgEntity]
 GO
-ALTER TABLE [dbo].[cfgConfigurationCenter]  WITH CHECK ADD  CONSTRAINT [FK_cfgConfigurationCenter_cfgMembership] FOREIGN KEY([NewClientMembershipID])
+ALTER TABLE [dbo].[cfgConfigurationCenter]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgConfigurationCenter_cfgMembership] FOREIGN KEY([NewClientMembershipID])
 REFERENCES [dbo].[cfgMembership] ([MembershipID])
 GO
 ALTER TABLE [dbo].[cfgConfigurationCenter] CHECK CONSTRAINT [FK_cfgConfigurationCenter_cfgMembership]
 GO
-ALTER TABLE [dbo].[cfgConfigurationCenter]  WITH CHECK ADD  CONSTRAINT [FK_cfgConfigurationCenter_cfgNACHAFileProfile] FOREIGN KEY([NACHAFileProfileID])
+ALTER TABLE [dbo].[cfgConfigurationCenter]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgConfigurationCenter_cfgNACHAFileProfile] FOREIGN KEY([NACHAFileProfileID])
 REFERENCES [dbo].[cfgNACHAFileProfile] ([NACHAFileProfileID])
 GO
 ALTER TABLE [dbo].[cfgConfigurationCenter] CHECK CONSTRAINT [FK_cfgConfigurationCenter_cfgNACHAFileProfile]
 GO
-ALTER TABLE [dbo].[cfgConfigurationCenter]  WITH CHECK ADD  CONSTRAINT [FK_cfgConfigurationCenter_lkpCenterBusinessType] FOREIGN KEY([CenterBusinessTypeID])
+ALTER TABLE [dbo].[cfgConfigurationCenter]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgConfigurationCenter_lkpCenterBusinessType] FOREIGN KEY([CenterBusinessTypeID])
 REFERENCES [dbo].[lkpCenterBusinessType] ([CenterBusinessTypeID])
 GO
 ALTER TABLE [dbo].[cfgConfigurationCenter] CHECK CONSTRAINT [FK_cfgConfigurationCenter_lkpCenterBusinessType]
 GO
-ALTER TABLE [dbo].[cfgConfigurationCenter]  WITH CHECK ADD  CONSTRAINT [FK_cfgConfigurationCenter_lkpGeneralLedger_AccountingExportReceiveAPDebitGLNumber] FOREIGN KEY([AccountingExportReceiveAPDebitGLNumber])
+ALTER TABLE [dbo].[cfgConfigurationCenter]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgConfigurationCenter_lkpGeneralLedger_AccountingExportReceiveAPDebitGLNumber] FOREIGN KEY([AccountingExportReceiveAPDebitGLNumber])
 REFERENCES [dbo].[lkpGeneralLedger] ([GeneralLedgerID])
 GO
 ALTER TABLE [dbo].[cfgConfigurationCenter] CHECK CONSTRAINT [FK_cfgConfigurationCenter_lkpGeneralLedger_AccountingExportReceiveAPDebitGLNumber]
 GO
-ALTER TABLE [dbo].[cfgConfigurationCenter]  WITH CHECK ADD  CONSTRAINT [FK_cfgConfigurationCenter_lkpLanguage] FOREIGN KEY([LanguageID])
+ALTER TABLE [dbo].[cfgConfigurationCenter]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgConfigurationCenter_lkpLanguage] FOREIGN KEY([LanguageID])
 REFERENCES [dbo].[lkpLanguage] ([LanguageID])
 GO
 ALTER TABLE [dbo].[cfgConfigurationCenter] CHECK CONSTRAINT [FK_cfgConfigurationCenter_lkpLanguage]
 GO
-ALTER TABLE [dbo].[cfgConfigurationCenter]  WITH CHECK ADD  CONSTRAINT [FK_cfgConfigurationCenter_lkpSizeNewBusiness] FOREIGN KEY([NewBusinessSizeID])
+ALTER TABLE [dbo].[cfgConfigurationCenter]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgConfigurationCenter_lkpSizeNewBusiness] FOREIGN KEY([NewBusinessSizeID])
 REFERENCES [dbo].[lkpSize] ([SizeID])
 GO
 ALTER TABLE [dbo].[cfgConfigurationCenter] CHECK CONSTRAINT [FK_cfgConfigurationCenter_lkpSizeNewBusiness]
 GO
-ALTER TABLE [dbo].[cfgConfigurationCenter]  WITH CHECK ADD  CONSTRAINT [FK_cfgConfigurationCenter_lkpSizeRecurringBusiness] FOREIGN KEY([RecurringBusinessSizeID])
+ALTER TABLE [dbo].[cfgConfigurationCenter]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgConfigurationCenter_lkpSizeRecurringBusiness] FOREIGN KEY([RecurringBusinessSizeID])
 REFERENCES [dbo].[lkpSize] ([SizeID])
 GO
 ALTER TABLE [dbo].[cfgConfigurationCenter] CHECK CONSTRAINT [FK_cfgConfigurationCenter_lkpSizeRecurringBusiness]

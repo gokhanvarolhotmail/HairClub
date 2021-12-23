@@ -13,18 +13,22 @@ CREATE TABLE [dbo].[oncd_activity_note](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[oncd_activity_note]  WITH CHECK ADD  CONSTRAINT [activity_activity_not_102] FOREIGN KEY([activity_id])
+CREATE FULLTEXT INDEX ON [dbo].[oncd_activity_note]
+KEY INDEX [pk_oncd_activity_note]ON ([oncd_activity_note], FILEGROUP [PRIMARY])
+WITH (CHANGE_TRACKING = AUTO, STOPLIST = SYSTEM)
+GO
+ALTER TABLE [dbo].[oncd_activity_note]  WITH NOCHECK ADD  CONSTRAINT [activity_activity_not_102] FOREIGN KEY([activity_id])
 REFERENCES [dbo].[oncd_activity] ([activity_id])
 ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[oncd_activity_note] CHECK CONSTRAINT [activity_activity_not_102]
 GO
-ALTER TABLE [dbo].[oncd_activity_note]  WITH CHECK ADD  CONSTRAINT [user_activity_not_463] FOREIGN KEY([created_by_user_code])
+ALTER TABLE [dbo].[oncd_activity_note]  WITH NOCHECK ADD  CONSTRAINT [user_activity_not_463] FOREIGN KEY([created_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_activity_note] CHECK CONSTRAINT [user_activity_not_463]
 GO
-ALTER TABLE [dbo].[oncd_activity_note]  WITH CHECK ADD  CONSTRAINT [user_activity_not_464] FOREIGN KEY([updated_by_user_code])
+ALTER TABLE [dbo].[oncd_activity_note]  WITH NOCHECK ADD  CONSTRAINT [user_activity_not_464] FOREIGN KEY([updated_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_activity_note] CHECK CONSTRAINT [user_activity_not_464]

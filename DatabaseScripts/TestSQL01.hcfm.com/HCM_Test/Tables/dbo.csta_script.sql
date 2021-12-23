@@ -26,27 +26,27 @@ ALTER TABLE [dbo].[csta_script] ADD  CONSTRAINT [DF__csta_scri__activ__08D548FA]
 GO
 ALTER TABLE [dbo].[csta_script] ADD  CONSTRAINT [DF__csta_scri__defau__09C96D33]  DEFAULT (' ') FOR [default_flag]
 GO
-ALTER TABLE [dbo].[csta_script]  WITH CHECK ADD  CONSTRAINT [csta_contact_language_csta_script_817] FOREIGN KEY([language_code])
+ALTER TABLE [dbo].[csta_script]  WITH NOCHECK ADD  CONSTRAINT [csta_contact_language_csta_script_817] FOREIGN KEY([language_code])
 REFERENCES [dbo].[csta_contact_language] ([language_code])
 GO
 ALTER TABLE [dbo].[csta_script] CHECK CONSTRAINT [csta_contact_language_csta_script_817]
 GO
-ALTER TABLE [dbo].[csta_script]  WITH CHECK ADD  CONSTRAINT [csta_script_category_csta_script_761] FOREIGN KEY([category_code])
+ALTER TABLE [dbo].[csta_script]  WITH NOCHECK ADD  CONSTRAINT [csta_script_category_csta_script_761] FOREIGN KEY([category_code])
 REFERENCES [dbo].[csta_script_category] ([category_code])
 GO
 ALTER TABLE [dbo].[csta_script] CHECK CONSTRAINT [csta_script_category_csta_script_761]
 GO
-ALTER TABLE [dbo].[csta_script]  WITH CHECK ADD  CONSTRAINT [csta_script_type_csta_script_762] FOREIGN KEY([type_code])
+ALTER TABLE [dbo].[csta_script]  WITH NOCHECK ADD  CONSTRAINT [csta_script_type_csta_script_762] FOREIGN KEY([type_code])
 REFERENCES [dbo].[csta_script_type] ([type_code])
 GO
 ALTER TABLE [dbo].[csta_script] CHECK CONSTRAINT [csta_script_type_csta_script_762]
 GO
-ALTER TABLE [dbo].[csta_script]  WITH CHECK ADD  CONSTRAINT [onca_user_csta_script_771] FOREIGN KEY([created_by_user_code])
+ALTER TABLE [dbo].[csta_script]  WITH NOCHECK ADD  CONSTRAINT [onca_user_csta_script_771] FOREIGN KEY([created_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[csta_script] CHECK CONSTRAINT [onca_user_csta_script_771]
 GO
-ALTER TABLE [dbo].[csta_script]  WITH CHECK ADD  CONSTRAINT [onca_user_csta_script_772] FOREIGN KEY([updated_by_user_code])
+ALTER TABLE [dbo].[csta_script]  WITH NOCHECK ADD  CONSTRAINT [onca_user_csta_script_772] FOREIGN KEY([updated_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[csta_script] CHECK CONSTRAINT [onca_user_csta_script_772]

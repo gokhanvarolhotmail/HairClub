@@ -38,17 +38,17 @@ CREATE NONCLUSTERED INDEX [oncw_portal_user_i4] ON [dbo].[oncw_portal_user]
 	[UserId] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[oncw_portal_user]  WITH CHECK ADD  CONSTRAINT [company_portal_user_944] FOREIGN KEY([company_id])
+ALTER TABLE [dbo].[oncw_portal_user]  WITH NOCHECK ADD  CONSTRAINT [company_portal_user_944] FOREIGN KEY([company_id])
 REFERENCES [dbo].[oncd_company] ([company_id])
 GO
 ALTER TABLE [dbo].[oncw_portal_user] CHECK CONSTRAINT [company_portal_user_944]
 GO
-ALTER TABLE [dbo].[oncw_portal_user]  WITH CHECK ADD  CONSTRAINT [contact_portal_user_943] FOREIGN KEY([contact_id])
+ALTER TABLE [dbo].[oncw_portal_user]  WITH NOCHECK ADD  CONSTRAINT [contact_portal_user_943] FOREIGN KEY([contact_id])
 REFERENCES [dbo].[oncd_contact] ([contact_id])
 GO
 ALTER TABLE [dbo].[oncw_portal_user] CHECK CONSTRAINT [contact_portal_user_943]
 GO
-ALTER TABLE [dbo].[oncw_portal_user]  WITH CHECK ADD  CONSTRAINT [user_portal_user_942] FOREIGN KEY([user_code])
+ALTER TABLE [dbo].[oncw_portal_user]  WITH NOCHECK ADD  CONSTRAINT [user_portal_user_942] FOREIGN KEY([user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncw_portal_user] CHECK CONSTRAINT [user_portal_user_942]

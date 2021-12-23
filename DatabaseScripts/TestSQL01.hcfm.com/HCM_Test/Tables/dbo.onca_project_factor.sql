@@ -13,7 +13,7 @@ CREATE TABLE [dbo].[onca_project_factor](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[onca_project_factor]  WITH CHECK ADD  CONSTRAINT [project_task_project_fact_734] FOREIGN KEY([project_task_code])
+ALTER TABLE [dbo].[onca_project_factor]  WITH NOCHECK ADD  CONSTRAINT [project_task_project_fact_734] FOREIGN KEY([project_task_code])
 REFERENCES [dbo].[onca_project_task] ([project_task_code])
 ON DELETE CASCADE
 GO

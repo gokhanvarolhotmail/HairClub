@@ -22,23 +22,23 @@ CREATE TABLE [dbo].[oncd_company_phone](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[oncd_company_phone]  WITH CHECK ADD  CONSTRAINT [company_company_phon_93] FOREIGN KEY([company_id])
+ALTER TABLE [dbo].[oncd_company_phone]  WITH NOCHECK ADD  CONSTRAINT [company_company_phon_93] FOREIGN KEY([company_id])
 REFERENCES [dbo].[oncd_company] ([company_id])
 ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[oncd_company_phone] CHECK CONSTRAINT [company_company_phon_93]
 GO
-ALTER TABLE [dbo].[oncd_company_phone]  WITH CHECK ADD  CONSTRAINT [phone_type_company_phon_540] FOREIGN KEY([phone_type_code])
+ALTER TABLE [dbo].[oncd_company_phone]  WITH NOCHECK ADD  CONSTRAINT [phone_type_company_phon_540] FOREIGN KEY([phone_type_code])
 REFERENCES [dbo].[onca_phone_type] ([phone_type_code])
 GO
 ALTER TABLE [dbo].[oncd_company_phone] CHECK CONSTRAINT [phone_type_company_phon_540]
 GO
-ALTER TABLE [dbo].[oncd_company_phone]  WITH CHECK ADD  CONSTRAINT [user_company_phon_538] FOREIGN KEY([created_by_user_code])
+ALTER TABLE [dbo].[oncd_company_phone]  WITH NOCHECK ADD  CONSTRAINT [user_company_phon_538] FOREIGN KEY([created_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_company_phone] CHECK CONSTRAINT [user_company_phon_538]
 GO
-ALTER TABLE [dbo].[oncd_company_phone]  WITH CHECK ADD  CONSTRAINT [user_company_phon_539] FOREIGN KEY([updated_by_user_code])
+ALTER TABLE [dbo].[oncd_company_phone]  WITH NOCHECK ADD  CONSTRAINT [user_company_phon_539] FOREIGN KEY([updated_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_company_phone] CHECK CONSTRAINT [user_company_phon_539]

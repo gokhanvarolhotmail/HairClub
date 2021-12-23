@@ -31,7 +31,7 @@ ALTER TABLE [dbo].[cfgHairSystemCenterContract] ADD  DEFAULT ((0)) FOR [IsActive
 GO
 ALTER TABLE [dbo].[cfgHairSystemCenterContract] ADD  CONSTRAINT [DF_cfgHairSystemCenterContract_IsPriorityContract]  DEFAULT ((0)) FOR [IsPriorityContract]
 GO
-ALTER TABLE [dbo].[cfgHairSystemCenterContract]  WITH CHECK ADD  CONSTRAINT [FK_cfgHairSystemCenterContract_cfgCenter] FOREIGN KEY([CenterID])
+ALTER TABLE [dbo].[cfgHairSystemCenterContract]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgHairSystemCenterContract_cfgCenter] FOREIGN KEY([CenterID])
 REFERENCES [dbo].[cfgCenter] ([CenterID])
 GO
 ALTER TABLE [dbo].[cfgHairSystemCenterContract] CHECK CONSTRAINT [FK_cfgHairSystemCenterContract_cfgCenter]

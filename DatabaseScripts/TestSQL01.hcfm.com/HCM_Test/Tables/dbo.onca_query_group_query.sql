@@ -10,13 +10,13 @@ CREATE TABLE [dbo].[onca_query_group_query](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[onca_query_group_query]  WITH CHECK ADD  CONSTRAINT [object_query_group_288] FOREIGN KEY([object_id])
+ALTER TABLE [dbo].[onca_query_group_query]  WITH NOCHECK ADD  CONSTRAINT [object_query_group_288] FOREIGN KEY([object_id])
 REFERENCES [dbo].[onct_object] ([object_id])
 ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[onca_query_group_query] CHECK CONSTRAINT [object_query_group_288]
 GO
-ALTER TABLE [dbo].[onca_query_group_query]  WITH CHECK ADD  CONSTRAINT [query_group_query_group__247] FOREIGN KEY([query_group_id])
+ALTER TABLE [dbo].[onca_query_group_query]  WITH NOCHECK ADD  CONSTRAINT [query_group_query_group__247] FOREIGN KEY([query_group_id])
 REFERENCES [dbo].[onca_query_group] ([query_group_id])
 ON DELETE CASCADE
 GO

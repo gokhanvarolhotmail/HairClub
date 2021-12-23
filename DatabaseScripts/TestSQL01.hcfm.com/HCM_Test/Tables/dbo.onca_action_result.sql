@@ -29,7 +29,7 @@ ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[onca_action_result] CHECK CONSTRAINT [action_action_resul_125]
 GO
-ALTER TABLE [dbo].[onca_action_result]  WITH CHECK ADD  CONSTRAINT [chain_action_resul_802] FOREIGN KEY([chain_id])
+ALTER TABLE [dbo].[onca_action_result]  WITH NOCHECK ADD  CONSTRAINT [chain_action_resul_802] FOREIGN KEY([chain_id])
 REFERENCES [dbo].[onca_chain] ([chain_id])
 GO
 ALTER TABLE [dbo].[onca_action_result] CHECK CONSTRAINT [chain_action_resul_802]
@@ -39,7 +39,7 @@ REFERENCES [dbo].[onca_action] ([action_code])
 GO
 ALTER TABLE [dbo].[onca_action_result] CHECK CONSTRAINT [onca_action_onca_action_result_822]
 GO
-ALTER TABLE [dbo].[onca_action_result]  WITH CHECK ADD  CONSTRAINT [result_action_resul_126] FOREIGN KEY([result_code])
+ALTER TABLE [dbo].[onca_action_result]  WITH NOCHECK ADD  CONSTRAINT [result_action_resul_126] FOREIGN KEY([result_code])
 REFERENCES [dbo].[onca_result] ([result_code])
 ON DELETE CASCADE
 GO

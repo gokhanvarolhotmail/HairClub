@@ -29,13 +29,13 @@ CREATE NONCLUSTERED INDEX [oncw_page_role_module_i2] ON [dbo].[oncw_page_role_mo
 	[container_id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[oncw_page_role_module]  WITH CHECK ADD  CONSTRAINT [portal_page_page_role_mo_414] FOREIGN KEY([portal_page_id])
+ALTER TABLE [dbo].[oncw_page_role_module]  WITH NOCHECK ADD  CONSTRAINT [portal_page_page_role_mo_414] FOREIGN KEY([portal_page_id])
 REFERENCES [dbo].[oncw_portal_page] ([portal_page_id])
 ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[oncw_page_role_module] CHECK CONSTRAINT [portal_page_page_role_mo_414]
 GO
-ALTER TABLE [dbo].[oncw_page_role_module]  WITH CHECK ADD  CONSTRAINT [role_module_page_role_mo_415] FOREIGN KEY([role_module_id])
+ALTER TABLE [dbo].[oncw_page_role_module]  WITH NOCHECK ADD  CONSTRAINT [role_module_page_role_mo_415] FOREIGN KEY([role_module_id])
 REFERENCES [dbo].[oncw_role_module] ([role_module_id])
 ON DELETE CASCADE
 GO

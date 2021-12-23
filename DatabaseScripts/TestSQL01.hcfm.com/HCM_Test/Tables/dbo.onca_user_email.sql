@@ -15,12 +15,12 @@ CREATE TABLE [dbo].[onca_user_email](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[onca_user_email]  WITH CHECK ADD  CONSTRAINT [email_type_user_email_865] FOREIGN KEY([email_type_code])
+ALTER TABLE [dbo].[onca_user_email]  WITH NOCHECK ADD  CONSTRAINT [email_type_user_email_865] FOREIGN KEY([email_type_code])
 REFERENCES [dbo].[onca_email_type] ([email_type_code])
 GO
 ALTER TABLE [dbo].[onca_user_email] CHECK CONSTRAINT [email_type_user_email_865]
 GO
-ALTER TABLE [dbo].[onca_user_email]  WITH CHECK ADD  CONSTRAINT [user_user_email_135] FOREIGN KEY([user_code])
+ALTER TABLE [dbo].[onca_user_email]  WITH NOCHECK ADD  CONSTRAINT [user_user_email_135] FOREIGN KEY([user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 ON DELETE CASCADE
 GO

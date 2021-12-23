@@ -35,12 +35,12 @@ ALTER TABLE [dbo].[cfgRegister] ADD  DEFAULT ((0)) FOR [CanRunEndOfDay]
 GO
 ALTER TABLE [dbo].[cfgRegister] ADD  CONSTRAINT [DF_cfgRegister_IsActiveFlag]  DEFAULT ((1)) FOR [IsActiveFlag]
 GO
-ALTER TABLE [dbo].[cfgRegister]  WITH CHECK ADD  CONSTRAINT [FK_cfgRegister_cfgCenter] FOREIGN KEY([CenterID])
+ALTER TABLE [dbo].[cfgRegister]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgRegister_cfgCenter] FOREIGN KEY([CenterID])
 REFERENCES [dbo].[cfgCenter] ([CenterID])
 GO
 ALTER TABLE [dbo].[cfgRegister] CHECK CONSTRAINT [FK_cfgRegister_cfgCenter]
 GO
-ALTER TABLE [dbo].[cfgRegister]  WITH CHECK ADD  CONSTRAINT [FK_cfgRegister_cfgRegister] FOREIGN KEY([CashRegisterID])
+ALTER TABLE [dbo].[cfgRegister]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgRegister_cfgRegister] FOREIGN KEY([CashRegisterID])
 REFERENCES [dbo].[cfgRegister] ([RegisterID])
 GO
 ALTER TABLE [dbo].[cfgRegister] CHECK CONSTRAINT [FK_cfgRegister_cfgRegister]

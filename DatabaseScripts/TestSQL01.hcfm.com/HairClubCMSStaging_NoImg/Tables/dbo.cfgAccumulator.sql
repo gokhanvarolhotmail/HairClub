@@ -44,18 +44,20 @@ ALTER TABLE [dbo].[cfgAccumulator] ADD  CONSTRAINT [DF_cfgAccumulator_IsActiveFl
 GO
 ALTER TABLE [dbo].[cfgAccumulator] ADD  DEFAULT ((0)) FOR [IsVisibleToClient]
 GO
-ALTER TABLE [dbo].[cfgAccumulator]  WITH CHECK ADD  CONSTRAINT [FK_cfgAccumulator_lkpAccumulatorActionType1] FOREIGN KEY([SchedulerActionTypeID])
+ALTER TABLE [dbo].[cfgAccumulator]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgAccumulator_lkpAccumulatorActionType1] FOREIGN KEY([SchedulerActionTypeID])
 REFERENCES [dbo].[lkpAccumulatorActionType] ([AccumulatorActionTypeID])
 GO
 ALTER TABLE [dbo].[cfgAccumulator] CHECK CONSTRAINT [FK_cfgAccumulator_lkpAccumulatorActionType1]
 GO
-ALTER TABLE [dbo].[cfgAccumulator]  WITH CHECK ADD  CONSTRAINT [FK_cfgAccumulator_lkpAccumulatorAdjustmentType2] FOREIGN KEY([SchedulerAdjustmentTypeID])
+ALTER TABLE [dbo].[cfgAccumulator]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgAccumulator_lkpAccumulatorAdjustmentType2] FOREIGN KEY([SchedulerAdjustmentTypeID])
 REFERENCES [dbo].[lkpAccumulatorAdjustmentType] ([AccumulatorAdjustmentTypeID])
 GO
 ALTER TABLE [dbo].[cfgAccumulator] CHECK CONSTRAINT [FK_cfgAccumulator_lkpAccumulatorAdjustmentType2]
 GO
-ALTER TABLE [dbo].[cfgAccumulator]  WITH CHECK ADD  CONSTRAINT [FK_cfgAccumulator_lkpAccumulatorDataType] FOREIGN KEY([AccumulatorDataTypeID])
+ALTER TABLE [dbo].[cfgAccumulator]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgAccumulator_lkpAccumulatorDataType] FOREIGN KEY([AccumulatorDataTypeID])
 REFERENCES [dbo].[lkpAccumulatorDataType] ([AccumulatorDataTypeID])
 GO
 ALTER TABLE [dbo].[cfgAccumulator] CHECK CONSTRAINT [FK_cfgAccumulator_lkpAccumulatorDataType]
+GO
+EXEC sys.sp_addextendedproperty @name=N'Description', @value=N'Configuration table that houses different accumulators for each memberships. Accumulators can include membership benefit quantities (Hair Systems, Services, Product Kits), Dates (last service, first application) and Money (contract balance, retail dollars, service dollars, membership dollars)' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'cfgAccumulator'
 GO

@@ -21,7 +21,7 @@ CREATE TABLE [dbo].[cfgDocumentLibrary](
 GO
 ALTER TABLE [dbo].[cfgDocumentLibrary] ADD  DEFAULT ((0)) FOR [IsActiveFlag]
 GO
-ALTER TABLE [dbo].[cfgDocumentLibrary]  WITH CHECK ADD  CONSTRAINT [FK_cfgDocumentLibrary_lkpDocumentLibraryType_DocumentLibraryTypeID] FOREIGN KEY([DocumentLibraryTypeID])
+ALTER TABLE [dbo].[cfgDocumentLibrary]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgDocumentLibrary_lkpDocumentLibraryType_DocumentLibraryTypeID] FOREIGN KEY([DocumentLibraryTypeID])
 REFERENCES [dbo].[lkpDocumentLibraryType] ([DocumentLibraryTypeID])
 GO
 ALTER TABLE [dbo].[cfgDocumentLibrary] CHECK CONSTRAINT [FK_cfgDocumentLibrary_lkpDocumentLibraryType_DocumentLibraryTypeID]

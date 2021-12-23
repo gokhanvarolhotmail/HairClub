@@ -17,12 +17,12 @@ CREATE TABLE [dbo].[datSurgeryCloseoutEmployee](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[datSurgeryCloseoutEmployee]  WITH CHECK ADD  CONSTRAINT [FK_datSurgeryCloseoutEmployee_datAppointment] FOREIGN KEY([AppointmentGUID])
+ALTER TABLE [dbo].[datSurgeryCloseoutEmployee]  WITH NOCHECK ADD  CONSTRAINT [FK_datSurgeryCloseoutEmployee_datAppointment] FOREIGN KEY([AppointmentGUID])
 REFERENCES [dbo].[datAppointment] ([AppointmentGUID])
 GO
 ALTER TABLE [dbo].[datSurgeryCloseoutEmployee] CHECK CONSTRAINT [FK_datSurgeryCloseoutEmployee_datAppointment]
 GO
-ALTER TABLE [dbo].[datSurgeryCloseoutEmployee]  WITH CHECK ADD  CONSTRAINT [FK_datSurgeryCloseoutEmployee_datEmployee] FOREIGN KEY([EmployeeGUID])
+ALTER TABLE [dbo].[datSurgeryCloseoutEmployee]  WITH NOCHECK ADD  CONSTRAINT [FK_datSurgeryCloseoutEmployee_datEmployee] FOREIGN KEY([EmployeeGUID])
 REFERENCES [dbo].[datEmployee] ([EmployeeGUID])
 GO
 ALTER TABLE [dbo].[datSurgeryCloseoutEmployee] CHECK CONSTRAINT [FK_datSurgeryCloseoutEmployee_datEmployee]

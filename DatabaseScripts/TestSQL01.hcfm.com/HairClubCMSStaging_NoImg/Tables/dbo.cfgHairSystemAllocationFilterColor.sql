@@ -15,12 +15,12 @@ CREATE TABLE [dbo].[cfgHairSystemAllocationFilterColor](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[cfgHairSystemAllocationFilterColor]  WITH CHECK ADD  CONSTRAINT [FK_cfgHairSystemAllocationFilterColor_cfgVendor] FOREIGN KEY([VendorID])
+ALTER TABLE [dbo].[cfgHairSystemAllocationFilterColor]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgHairSystemAllocationFilterColor_cfgVendor] FOREIGN KEY([VendorID])
 REFERENCES [dbo].[cfgVendor] ([VendorID])
 GO
 ALTER TABLE [dbo].[cfgHairSystemAllocationFilterColor] CHECK CONSTRAINT [FK_cfgHairSystemAllocationFilterColor_cfgVendor]
 GO
-ALTER TABLE [dbo].[cfgHairSystemAllocationFilterColor]  WITH CHECK ADD  CONSTRAINT [FK_cfgHairSystemAllocationFilterColor_lkpHairSystemHairColor] FOREIGN KEY([HairSystemHairColorID])
+ALTER TABLE [dbo].[cfgHairSystemAllocationFilterColor]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgHairSystemAllocationFilterColor_lkpHairSystemHairColor] FOREIGN KEY([HairSystemHairColorID])
 REFERENCES [dbo].[lkpHairSystemHairColor] ([HairSystemHairColorID])
 GO
 ALTER TABLE [dbo].[cfgHairSystemAllocationFilterColor] CHECK CONSTRAINT [FK_cfgHairSystemAllocationFilterColor_lkpHairSystemHairColor]

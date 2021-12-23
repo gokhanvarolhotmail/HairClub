@@ -11,7 +11,7 @@ CREATE TABLE [dbo].[oncs_task_server_error](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[oncs_task_server_error]  WITH CHECK ADD  CONSTRAINT [task_server_task_server__408] FOREIGN KEY([task_server_id])
+ALTER TABLE [dbo].[oncs_task_server_error]  WITH NOCHECK ADD  CONSTRAINT [task_server_task_server__408] FOREIGN KEY([task_server_id])
 REFERENCES [dbo].[oncs_task_server] ([task_server_id])
 ON DELETE CASCADE
 GO

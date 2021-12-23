@@ -9,3 +9,7 @@ RETURNS [bit] WITH EXECUTE AS CALLER
 AS
 EXTERNAL NAME [Oncontact.PSO.BusinessLogic].[UserDefinedFunctions].[psoIsGlobalClosure]
 GO
+EXEC sys.sp_addextendedproperty @name=N'SqlAssemblyFile', @value=N'psoCenterOpen.cs' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'FUNCTION',@level1name=N'psoIsGlobalClosure'
+GO
+EXEC sys.sp_addextendedproperty @name=N'SqlAssemblyFileLine', @value=N'147' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'FUNCTION',@level1name=N'psoIsGlobalClosure'
+GO

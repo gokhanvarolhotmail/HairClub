@@ -41,27 +41,27 @@ CREATE NONCLUSTERED INDEX [IX_datWaitingList_ClientGUID] ON [dbo].[datWaitingLis
 	[EndDate] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[datWaitingList]  WITH CHECK ADD  CONSTRAINT [FK_datWaitingList_cfgCenter] FOREIGN KEY([CenterID])
+ALTER TABLE [dbo].[datWaitingList]  WITH NOCHECK ADD  CONSTRAINT [FK_datWaitingList_cfgCenter] FOREIGN KEY([CenterID])
 REFERENCES [dbo].[cfgCenter] ([CenterID])
 GO
 ALTER TABLE [dbo].[datWaitingList] CHECK CONSTRAINT [FK_datWaitingList_cfgCenter]
 GO
-ALTER TABLE [dbo].[datWaitingList]  WITH CHECK ADD  CONSTRAINT [FK_datWaitingList_datAppointment] FOREIGN KEY([AppointmentGUID])
+ALTER TABLE [dbo].[datWaitingList]  WITH NOCHECK ADD  CONSTRAINT [FK_datWaitingList_datAppointment] FOREIGN KEY([AppointmentGUID])
 REFERENCES [dbo].[datAppointment] ([AppointmentGUID])
 GO
 ALTER TABLE [dbo].[datWaitingList] CHECK CONSTRAINT [FK_datWaitingList_datAppointment]
 GO
-ALTER TABLE [dbo].[datWaitingList]  WITH CHECK ADD  CONSTRAINT [FK_datWaitingList_datClient] FOREIGN KEY([ClientGUID])
+ALTER TABLE [dbo].[datWaitingList]  WITH NOCHECK ADD  CONSTRAINT [FK_datWaitingList_datClient] FOREIGN KEY([ClientGUID])
 REFERENCES [dbo].[datClient] ([ClientGUID])
 GO
 ALTER TABLE [dbo].[datWaitingList] CHECK CONSTRAINT [FK_datWaitingList_datClient]
 GO
-ALTER TABLE [dbo].[datWaitingList]  WITH CHECK ADD  CONSTRAINT [FK_datWaitingList_datClientMembership] FOREIGN KEY([ClientMembershipGUID])
+ALTER TABLE [dbo].[datWaitingList]  WITH NOCHECK ADD  CONSTRAINT [FK_datWaitingList_datClientMembership] FOREIGN KEY([ClientMembershipGUID])
 REFERENCES [dbo].[datClientMembership] ([ClientMembershipGUID])
 GO
 ALTER TABLE [dbo].[datWaitingList] CHECK CONSTRAINT [FK_datWaitingList_datClientMembership]
 GO
-ALTER TABLE [dbo].[datWaitingList]  WITH CHECK ADD  CONSTRAINT [FK_datWaitingList_LkpWaitingListPriority] FOREIGN KEY([WaitingListPriorityID])
+ALTER TABLE [dbo].[datWaitingList]  WITH NOCHECK ADD  CONSTRAINT [FK_datWaitingList_LkpWaitingListPriority] FOREIGN KEY([WaitingListPriorityID])
 REFERENCES [dbo].[lkpWaitingListPriority] ([WaitingListPriorityID])
 GO
 ALTER TABLE [dbo].[datWaitingList] CHECK CONSTRAINT [FK_datWaitingList_LkpWaitingListPriority]

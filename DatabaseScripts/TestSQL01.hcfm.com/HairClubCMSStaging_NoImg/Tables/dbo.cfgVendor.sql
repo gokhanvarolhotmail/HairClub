@@ -51,12 +51,12 @@ ALTER TABLE [dbo].[cfgVendor] ADD  DEFAULT ((0)) FOR [IsActiveFlag]
 GO
 ALTER TABLE [dbo].[cfgVendor] ADD  CONSTRAINT [DF_cfgVendor_VendorExportFileTypeID]  DEFAULT ((1)) FOR [VendorExportFileTypeID]
 GO
-ALTER TABLE [dbo].[cfgVendor]  WITH CHECK ADD  CONSTRAINT [FK_cfgVendor_lkpVendorExportFileType] FOREIGN KEY([VendorExportFileTypeID])
+ALTER TABLE [dbo].[cfgVendor]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgVendor_lkpVendorExportFileType] FOREIGN KEY([VendorExportFileTypeID])
 REFERENCES [dbo].[lkpVendorExportFileType] ([VendorExportFileTypeID])
 GO
 ALTER TABLE [dbo].[cfgVendor] CHECK CONSTRAINT [FK_cfgVendor_lkpVendorExportFileType]
 GO
-ALTER TABLE [dbo].[cfgVendor]  WITH CHECK ADD  CONSTRAINT [FK_cfgVendor_lkpVendorType] FOREIGN KEY([VendorTypeID])
+ALTER TABLE [dbo].[cfgVendor]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgVendor_lkpVendorType] FOREIGN KEY([VendorTypeID])
 REFERENCES [dbo].[lkpVendorType] ([VendorTypeID])
 GO
 ALTER TABLE [dbo].[cfgVendor] CHECK CONSTRAINT [FK_cfgVendor_lkpVendorType]

@@ -20,12 +20,12 @@ CREATE TABLE [dbo].[datTechnicalProfileStylingProduct](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[datTechnicalProfileStylingProduct]  WITH CHECK ADD  CONSTRAINT [FK_datTechnicalProfileStylingProduct_cfgSalesCode] FOREIGN KEY([SalesCodeID])
+ALTER TABLE [dbo].[datTechnicalProfileStylingProduct]  WITH NOCHECK ADD  CONSTRAINT [FK_datTechnicalProfileStylingProduct_cfgSalesCode] FOREIGN KEY([SalesCodeID])
 REFERENCES [dbo].[cfgSalesCode] ([SalesCodeID])
 GO
 ALTER TABLE [dbo].[datTechnicalProfileStylingProduct] CHECK CONSTRAINT [FK_datTechnicalProfileStylingProduct_cfgSalesCode]
 GO
-ALTER TABLE [dbo].[datTechnicalProfileStylingProduct]  WITH CHECK ADD  CONSTRAINT [FK_datTechnicalProfileStylingProduct_datTechnicalProfile] FOREIGN KEY([TechnicalProfileID])
+ALTER TABLE [dbo].[datTechnicalProfileStylingProduct]  WITH NOCHECK ADD  CONSTRAINT [FK_datTechnicalProfileStylingProduct_datTechnicalProfile] FOREIGN KEY([TechnicalProfileID])
 REFERENCES [dbo].[datTechnicalProfile] ([TechnicalProfileID])
 GO
 ALTER TABLE [dbo].[datTechnicalProfileStylingProduct] CHECK CONSTRAINT [FK_datTechnicalProfileStylingProduct_datTechnicalProfile]

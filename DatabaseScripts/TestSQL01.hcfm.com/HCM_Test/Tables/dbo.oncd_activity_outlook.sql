@@ -31,23 +31,23 @@ CREATE NONCLUSTERED INDEX [oncd_activity_outlook_i3] ON [dbo].[oncd_activity_out
 	[activity_id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[oncd_activity_outlook]  WITH CHECK ADD  CONSTRAINT [activity_activity_out_298] FOREIGN KEY([activity_id])
+ALTER TABLE [dbo].[oncd_activity_outlook]  WITH NOCHECK ADD  CONSTRAINT [activity_activity_out_298] FOREIGN KEY([activity_id])
 REFERENCES [dbo].[oncd_activity] ([activity_id])
 ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[oncd_activity_outlook] CHECK CONSTRAINT [activity_activity_out_298]
 GO
-ALTER TABLE [dbo].[oncd_activity_outlook]  WITH CHECK ADD  CONSTRAINT [user_activity_out_465] FOREIGN KEY([user_code])
+ALTER TABLE [dbo].[oncd_activity_outlook]  WITH NOCHECK ADD  CONSTRAINT [user_activity_out_465] FOREIGN KEY([user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_activity_outlook] CHECK CONSTRAINT [user_activity_out_465]
 GO
-ALTER TABLE [dbo].[oncd_activity_outlook]  WITH CHECK ADD  CONSTRAINT [user_activity_out_466] FOREIGN KEY([created_by_user_code])
+ALTER TABLE [dbo].[oncd_activity_outlook]  WITH NOCHECK ADD  CONSTRAINT [user_activity_out_466] FOREIGN KEY([created_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_activity_outlook] CHECK CONSTRAINT [user_activity_out_466]
 GO
-ALTER TABLE [dbo].[oncd_activity_outlook]  WITH CHECK ADD  CONSTRAINT [user_activity_out_467] FOREIGN KEY([updated_by_user_code])
+ALTER TABLE [dbo].[oncd_activity_outlook]  WITH NOCHECK ADD  CONSTRAINT [user_activity_out_467] FOREIGN KEY([updated_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_activity_outlook] CHECK CONSTRAINT [user_activity_out_467]

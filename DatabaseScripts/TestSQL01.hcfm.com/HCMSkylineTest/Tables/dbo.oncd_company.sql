@@ -35,7 +35,7 @@ CREATE TABLE [dbo].[oncd_company](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[oncd_company]  WITH CHECK ADD  CONSTRAINT [company_company_329] FOREIGN KEY([parent_company_id])
+ALTER TABLE [dbo].[oncd_company]  WITH NOCHECK ADD  CONSTRAINT [company_company_329] FOREIGN KEY([parent_company_id])
 REFERENCES [dbo].[oncd_company] ([company_id])
 GO
 ALTER TABLE [dbo].[oncd_company] CHECK CONSTRAINT [company_company_329]

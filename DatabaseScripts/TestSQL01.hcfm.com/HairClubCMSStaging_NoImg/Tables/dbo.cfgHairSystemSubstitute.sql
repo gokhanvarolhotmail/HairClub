@@ -23,12 +23,12 @@ CREATE TABLE [dbo].[cfgHairSystemSubstitute](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[cfgHairSystemSubstitute]  WITH CHECK ADD  CONSTRAINT [FK_cfgHairSystemSubstitute_cfgHairSystem] FOREIGN KEY([HairSystemID])
+ALTER TABLE [dbo].[cfgHairSystemSubstitute]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgHairSystemSubstitute_cfgHairSystem] FOREIGN KEY([HairSystemID])
 REFERENCES [dbo].[cfgHairSystem] ([HairSystemID])
 GO
 ALTER TABLE [dbo].[cfgHairSystemSubstitute] CHECK CONSTRAINT [FK_cfgHairSystemSubstitute_cfgHairSystem]
 GO
-ALTER TABLE [dbo].[cfgHairSystemSubstitute]  WITH CHECK ADD  CONSTRAINT [FK_cfgHairSystemSubstitute_cfgHairSystem_SubstituteHairSystem] FOREIGN KEY([SubstituteHairSystemID])
+ALTER TABLE [dbo].[cfgHairSystemSubstitute]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgHairSystemSubstitute_cfgHairSystem_SubstituteHairSystem] FOREIGN KEY([SubstituteHairSystemID])
 REFERENCES [dbo].[cfgHairSystem] ([HairSystemID])
 GO
 ALTER TABLE [dbo].[cfgHairSystemSubstitute] CHECK CONSTRAINT [FK_cfgHairSystemSubstitute_cfgHairSystem_SubstituteHairSystem]

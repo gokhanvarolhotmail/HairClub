@@ -29,12 +29,12 @@ CREATE NONCLUSTERED INDEX [onct_table_relation_member_i3] ON [dbo].[onct_table_r
 	[table_name] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[onct_table_relation_member]  WITH CHECK ADD  CONSTRAINT [table_relati_table_relati_342] FOREIGN KEY([table_relation_id])
+ALTER TABLE [dbo].[onct_table_relation_member]  WITH NOCHECK ADD  CONSTRAINT [table_relati_table_relati_342] FOREIGN KEY([table_relation_id])
 REFERENCES [dbo].[onct_table_relation] ([table_relation_id])
 GO
 ALTER TABLE [dbo].[onct_table_relation_member] CHECK CONSTRAINT [table_relati_table_relati_342]
 GO
-ALTER TABLE [dbo].[onct_table_relation_member]  WITH CHECK ADD  CONSTRAINT [table_table_relati_341] FOREIGN KEY([table_name])
+ALTER TABLE [dbo].[onct_table_relation_member]  WITH NOCHECK ADD  CONSTRAINT [table_table_relati_341] FOREIGN KEY([table_name])
 REFERENCES [dbo].[onct_table] ([table_name])
 GO
 ALTER TABLE [dbo].[onct_table_relation_member] CHECK CONSTRAINT [table_table_relati_341]

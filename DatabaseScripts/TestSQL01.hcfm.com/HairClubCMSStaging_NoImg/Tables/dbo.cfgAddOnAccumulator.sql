@@ -16,12 +16,12 @@ CREATE TABLE [dbo].[cfgAddOnAccumulator](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[cfgAddOnAccumulator]  WITH CHECK ADD  CONSTRAINT [FK_cfgAddOnAccumulator_cfgAccumulator] FOREIGN KEY([AccumulatorID])
+ALTER TABLE [dbo].[cfgAddOnAccumulator]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgAddOnAccumulator_cfgAccumulator] FOREIGN KEY([AccumulatorID])
 REFERENCES [dbo].[cfgAccumulator] ([AccumulatorID])
 GO
 ALTER TABLE [dbo].[cfgAddOnAccumulator] CHECK CONSTRAINT [FK_cfgAddOnAccumulator_cfgAccumulator]
 GO
-ALTER TABLE [dbo].[cfgAddOnAccumulator]  WITH CHECK ADD  CONSTRAINT [FK_cfgAddOnAccumulator_cfgAddOn] FOREIGN KEY([AddOnID])
+ALTER TABLE [dbo].[cfgAddOnAccumulator]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgAddOnAccumulator_cfgAddOn] FOREIGN KEY([AddOnID])
 REFERENCES [dbo].[cfgAddOn] ([AddOnID])
 GO
 ALTER TABLE [dbo].[cfgAddOnAccumulator] CHECK CONSTRAINT [FK_cfgAddOnAccumulator_cfgAddOn]

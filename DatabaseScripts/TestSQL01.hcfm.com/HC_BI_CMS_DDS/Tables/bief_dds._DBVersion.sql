@@ -25,3 +25,15 @@ ALTER TABLE [bief_dds].[_DBVersion] ADD  CONSTRAINT [DF__DBVersion_DBVersionRevi
 GO
 ALTER TABLE [bief_dds].[_DBVersion] ADD  CONSTRAINT [DF__DBVersion_RowUpdateDate]  DEFAULT (getdate()) FOR [RowUpdateDate]
 GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Database Major Version' , @level0type=N'SCHEMA',@level0name=N'bief_dds', @level1type=N'TABLE',@level1name=N'_DBVersion', @level2type=N'COLUMN',@level2name=N'DBVersionMajor'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Database Minor Version' , @level0type=N'SCHEMA',@level0name=N'bief_dds', @level1type=N'TABLE',@level1name=N'_DBVersion', @level2type=N'COLUMN',@level2name=N'DBVersionMinor'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Database Build Version' , @level0type=N'SCHEMA',@level0name=N'bief_dds', @level1type=N'TABLE',@level1name=N'_DBVersion', @level2type=N'COLUMN',@level2name=N'DBVersionBuild'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Database Revison Version' , @level0type=N'SCHEMA',@level0name=N'bief_dds', @level1type=N'TABLE',@level1name=N'_DBVersion', @level2type=N'COLUMN',@level2name=N'DBVersionRevision'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Date and time the record was last updated.' , @level0type=N'SCHEMA',@level0name=N'bief_dds', @level1type=N'TABLE',@level1name=N'_DBVersion', @level2type=N'COLUMN',@level2name=N'RowUpdateDate'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Identifies the Database Version' , @level0type=N'SCHEMA',@level0name=N'bief_dds', @level1type=N'TABLE',@level1name=N'_DBVersion'
+GO

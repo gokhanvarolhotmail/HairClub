@@ -12,7 +12,7 @@ CREATE TABLE [dbo].[cstd_wireless_scrub_history_detail](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, DATA_COMPRESSION = PAGE) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[cstd_wireless_scrub_history_detail]  WITH CHECK ADD  CONSTRAINT [FK_cstd_wireless_scrub_history_detail_cstd_wireless_scrub_history] FOREIGN KEY([wireless_scrub_history_id])
+ALTER TABLE [dbo].[cstd_wireless_scrub_history_detail]  WITH NOCHECK ADD  CONSTRAINT [FK_cstd_wireless_scrub_history_detail_cstd_wireless_scrub_history] FOREIGN KEY([wireless_scrub_history_id])
 REFERENCES [dbo].[cstd_wireless_scrub_history] ([wireless_scrub_history_id])
 ON DELETE CASCADE
 GO

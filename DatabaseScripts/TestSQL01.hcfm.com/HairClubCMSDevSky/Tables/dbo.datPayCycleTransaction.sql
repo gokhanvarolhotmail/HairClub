@@ -82,27 +82,27 @@ CREATE NONCLUSTERED INDEX [IX_datPayCycleTransaction_ClientGUID_CreateDate_IsSuc
 	[CreateDate] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[datPayCycleTransaction]  WITH CHECK ADD  CONSTRAINT [FK_datPayCycleTransaction_datCenterDeclineBatch1] FOREIGN KEY([CenterDeclineBatchGUID])
+ALTER TABLE [dbo].[datPayCycleTransaction]  WITH NOCHECK ADD  CONSTRAINT [FK_datPayCycleTransaction_datCenterDeclineBatch1] FOREIGN KEY([CenterDeclineBatchGUID])
 REFERENCES [dbo].[datCenterDeclineBatch] ([CenterDeclineBatchGUID])
 GO
 ALTER TABLE [dbo].[datPayCycleTransaction] CHECK CONSTRAINT [FK_datPayCycleTransaction_datCenterDeclineBatch1]
 GO
-ALTER TABLE [dbo].[datPayCycleTransaction]  WITH CHECK ADD  CONSTRAINT [FK_datPayCycleTransaction_datCenterFeeBatch1] FOREIGN KEY([CenterFeeBatchGUID])
+ALTER TABLE [dbo].[datPayCycleTransaction]  WITH NOCHECK ADD  CONSTRAINT [FK_datPayCycleTransaction_datCenterFeeBatch1] FOREIGN KEY([CenterFeeBatchGUID])
 REFERENCES [dbo].[datCenterFeeBatch] ([CenterFeeBatchGUID])
 GO
 ALTER TABLE [dbo].[datPayCycleTransaction] CHECK CONSTRAINT [FK_datPayCycleTransaction_datCenterFeeBatch1]
 GO
-ALTER TABLE [dbo].[datPayCycleTransaction]  WITH CHECK ADD  CONSTRAINT [FK_datPayCycleTransaction_datClient1] FOREIGN KEY([ClientGUID])
+ALTER TABLE [dbo].[datPayCycleTransaction]  WITH NOCHECK ADD  CONSTRAINT [FK_datPayCycleTransaction_datClient1] FOREIGN KEY([ClientGUID])
 REFERENCES [dbo].[datClient] ([ClientGUID])
 GO
 ALTER TABLE [dbo].[datPayCycleTransaction] CHECK CONSTRAINT [FK_datPayCycleTransaction_datClient1]
 GO
-ALTER TABLE [dbo].[datPayCycleTransaction]  WITH CHECK ADD  CONSTRAINT [FK_datPayCycleTransaction_datSalesOrder] FOREIGN KEY([SalesOrderGUID])
+ALTER TABLE [dbo].[datPayCycleTransaction]  WITH NOCHECK ADD  CONSTRAINT [FK_datPayCycleTransaction_datSalesOrder] FOREIGN KEY([SalesOrderGUID])
 REFERENCES [dbo].[datSalesOrder] ([SalesOrderGUID])
 GO
 ALTER TABLE [dbo].[datPayCycleTransaction] CHECK CONSTRAINT [FK_datPayCycleTransaction_datSalesOrder]
 GO
-ALTER TABLE [dbo].[datPayCycleTransaction]  WITH CHECK ADD  CONSTRAINT [FK_datPayCycleTransaction_lkpPayCycleTransactionType1] FOREIGN KEY([PayCycleTransactionTypeID])
+ALTER TABLE [dbo].[datPayCycleTransaction]  WITH NOCHECK ADD  CONSTRAINT [FK_datPayCycleTransaction_lkpPayCycleTransactionType1] FOREIGN KEY([PayCycleTransactionTypeID])
 REFERENCES [dbo].[lkpPayCycleTransactionType] ([PayCycleTransactionTypeID])
 GO
 ALTER TABLE [dbo].[datPayCycleTransaction] CHECK CONSTRAINT [FK_datPayCycleTransaction_lkpPayCycleTransactionType1]

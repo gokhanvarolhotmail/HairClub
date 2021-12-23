@@ -12,12 +12,12 @@ CREATE TABLE [dbo].[cstd_phone_dnc_wireless_job](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[cstd_phone_dnc_wireless_job]  WITH CHECK ADD  CONSTRAINT [cstd_phone_dnc_wireless_job_onca_user_1] FOREIGN KEY([exported_by_user_code])
+ALTER TABLE [dbo].[cstd_phone_dnc_wireless_job]  WITH NOCHECK ADD  CONSTRAINT [cstd_phone_dnc_wireless_job_onca_user_1] FOREIGN KEY([exported_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[cstd_phone_dnc_wireless_job] CHECK CONSTRAINT [cstd_phone_dnc_wireless_job_onca_user_1]
 GO
-ALTER TABLE [dbo].[cstd_phone_dnc_wireless_job]  WITH CHECK ADD  CONSTRAINT [cstd_phone_dnc_wireless_job_onca_user_2] FOREIGN KEY([imported_by_user_code])
+ALTER TABLE [dbo].[cstd_phone_dnc_wireless_job]  WITH NOCHECK ADD  CONSTRAINT [cstd_phone_dnc_wireless_job_onca_user_2] FOREIGN KEY([imported_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[cstd_phone_dnc_wireless_job] CHECK CONSTRAINT [cstd_phone_dnc_wireless_job_onca_user_2]

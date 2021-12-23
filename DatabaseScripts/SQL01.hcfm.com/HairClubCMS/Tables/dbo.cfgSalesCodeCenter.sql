@@ -38,27 +38,27 @@ CREATE NONCLUSTERED INDEX [IX_cfgSalesCodeCenter_SalesCodeID] ON [dbo].[cfgSales
 GO
 ALTER TABLE [dbo].[cfgSalesCodeCenter] ADD  CONSTRAINT [DF_cfgSalesCodeCenter_IsActiveFlag]  DEFAULT ((1)) FOR [IsActiveFlag]
 GO
-ALTER TABLE [dbo].[cfgSalesCodeCenter]  WITH CHECK ADD  CONSTRAINT [FK_cfgSalesCodeCenter_cfgAgreement] FOREIGN KEY([AgreementID])
+ALTER TABLE [dbo].[cfgSalesCodeCenter]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgSalesCodeCenter_cfgAgreement] FOREIGN KEY([AgreementID])
 REFERENCES [dbo].[cfgAgreement] ([AgreementID])
 GO
 ALTER TABLE [dbo].[cfgSalesCodeCenter] CHECK CONSTRAINT [FK_cfgSalesCodeCenter_cfgAgreement]
 GO
-ALTER TABLE [dbo].[cfgSalesCodeCenter]  WITH CHECK ADD  CONSTRAINT [FK_cfgSalesCodeCenter_cfgCenter] FOREIGN KEY([CenterID])
+ALTER TABLE [dbo].[cfgSalesCodeCenter]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgSalesCodeCenter_cfgCenter] FOREIGN KEY([CenterID])
 REFERENCES [dbo].[cfgCenter] ([CenterID])
 GO
 ALTER TABLE [dbo].[cfgSalesCodeCenter] CHECK CONSTRAINT [FK_cfgSalesCodeCenter_cfgCenter]
 GO
-ALTER TABLE [dbo].[cfgSalesCodeCenter]  WITH CHECK ADD  CONSTRAINT [FK_cfgSalesCodeCenter_cfgCenterTaxRate] FOREIGN KEY([TaxRate1ID])
+ALTER TABLE [dbo].[cfgSalesCodeCenter]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgSalesCodeCenter_cfgCenterTaxRate] FOREIGN KEY([TaxRate1ID])
 REFERENCES [dbo].[cfgCenterTaxRate] ([CenterTaxRateID])
 GO
 ALTER TABLE [dbo].[cfgSalesCodeCenter] CHECK CONSTRAINT [FK_cfgSalesCodeCenter_cfgCenterTaxRate]
 GO
-ALTER TABLE [dbo].[cfgSalesCodeCenter]  WITH CHECK ADD  CONSTRAINT [FK_cfgSalesCodeCenter_cfgCenterTaxRate1] FOREIGN KEY([TaxRate2ID])
+ALTER TABLE [dbo].[cfgSalesCodeCenter]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgSalesCodeCenter_cfgCenterTaxRate1] FOREIGN KEY([TaxRate2ID])
 REFERENCES [dbo].[cfgCenterTaxRate] ([CenterTaxRateID])
 GO
 ALTER TABLE [dbo].[cfgSalesCodeCenter] CHECK CONSTRAINT [FK_cfgSalesCodeCenter_cfgCenterTaxRate1]
 GO
-ALTER TABLE [dbo].[cfgSalesCodeCenter]  WITH CHECK ADD  CONSTRAINT [FK_cfgSalesCodeCenter_cfgSalesCode] FOREIGN KEY([SalesCodeID])
+ALTER TABLE [dbo].[cfgSalesCodeCenter]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgSalesCodeCenter_cfgSalesCode] FOREIGN KEY([SalesCodeID])
 REFERENCES [dbo].[cfgSalesCode] ([SalesCodeID])
 GO
 ALTER TABLE [dbo].[cfgSalesCodeCenter] CHECK CONSTRAINT [FK_cfgSalesCodeCenter_cfgSalesCode]

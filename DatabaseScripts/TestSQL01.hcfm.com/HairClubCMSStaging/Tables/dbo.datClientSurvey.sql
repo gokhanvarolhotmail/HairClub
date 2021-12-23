@@ -37,17 +37,17 @@ CREATE TABLE [dbo].[datClientSurvey](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[datClientSurvey]  WITH CHECK ADD  CONSTRAINT [FK_datClientSurvey_datAppointment] FOREIGN KEY([AppointmentGUID])
+ALTER TABLE [dbo].[datClientSurvey]  WITH NOCHECK ADD  CONSTRAINT [FK_datClientSurvey_datAppointment] FOREIGN KEY([AppointmentGUID])
 REFERENCES [dbo].[datAppointment] ([AppointmentGUID])
 GO
 ALTER TABLE [dbo].[datClientSurvey] CHECK CONSTRAINT [FK_datClientSurvey_datAppointment]
 GO
-ALTER TABLE [dbo].[datClientSurvey]  WITH CHECK ADD  CONSTRAINT [FK_datClientSurvey_datClient] FOREIGN KEY([ClientGUID])
+ALTER TABLE [dbo].[datClientSurvey]  WITH NOCHECK ADD  CONSTRAINT [FK_datClientSurvey_datClient] FOREIGN KEY([ClientGUID])
 REFERENCES [dbo].[datClient] ([ClientGUID])
 GO
 ALTER TABLE [dbo].[datClientSurvey] CHECK CONSTRAINT [FK_datClientSurvey_datClient]
 GO
-ALTER TABLE [dbo].[datClientSurvey]  WITH CHECK ADD  CONSTRAINT [FK_datClientSurvey_lkpClientSurveyHearAbout] FOREIGN KEY([HearAboutID])
+ALTER TABLE [dbo].[datClientSurvey]  WITH NOCHECK ADD  CONSTRAINT [FK_datClientSurvey_lkpClientSurveyHearAbout] FOREIGN KEY([HearAboutID])
 REFERENCES [dbo].[lkpClientSurveyHearAbout] ([ClientSurveyHearAboutID])
 GO
 ALTER TABLE [dbo].[datClientSurvey] CHECK CONSTRAINT [FK_datClientSurvey_lkpClientSurveyHearAbout]

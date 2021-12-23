@@ -22,7 +22,7 @@ REFERENCES [dbo].[onca_phone_type] ([phone_type_code])
 GO
 ALTER TABLE [dbo].[onca_user_phone] CHECK CONSTRAINT [phone_type_user_phone_868]
 GO
-ALTER TABLE [dbo].[onca_user_phone]  WITH CHECK ADD  CONSTRAINT [user_user_phone_136] FOREIGN KEY([user_code])
+ALTER TABLE [dbo].[onca_user_phone]  WITH NOCHECK ADD  CONSTRAINT [user_user_phone_136] FOREIGN KEY([user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 ON DELETE CASCADE
 GO

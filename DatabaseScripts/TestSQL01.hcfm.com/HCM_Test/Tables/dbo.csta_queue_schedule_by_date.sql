@@ -22,12 +22,12 @@ CREATE UNIQUE NONCLUSTERED INDEX [csta_queue_schedule_by_date_i2] ON [dbo].[csta
 GO
 ALTER TABLE [dbo].[csta_queue_schedule_by_date] ADD  CONSTRAINT [DF_csta_queue_schedule_by_date_active]  DEFAULT (N'Y') FOR [active]
 GO
-ALTER TABLE [dbo].[csta_queue_schedule_by_date]  WITH CHECK ADD  CONSTRAINT [FK_csta_queue_schedule_by_date_created_by_user] FOREIGN KEY([created_by_user_code])
+ALTER TABLE [dbo].[csta_queue_schedule_by_date]  WITH NOCHECK ADD  CONSTRAINT [FK_csta_queue_schedule_by_date_created_by_user] FOREIGN KEY([created_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[csta_queue_schedule_by_date] CHECK CONSTRAINT [FK_csta_queue_schedule_by_date_created_by_user]
 GO
-ALTER TABLE [dbo].[csta_queue_schedule_by_date]  WITH CHECK ADD  CONSTRAINT [FK_csta_queue_schedule_by_date_updated_by_user] FOREIGN KEY([updated_by_user_code])
+ALTER TABLE [dbo].[csta_queue_schedule_by_date]  WITH NOCHECK ADD  CONSTRAINT [FK_csta_queue_schedule_by_date_updated_by_user] FOREIGN KEY([updated_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[csta_queue_schedule_by_date] CHECK CONSTRAINT [FK_csta_queue_schedule_by_date_updated_by_user]

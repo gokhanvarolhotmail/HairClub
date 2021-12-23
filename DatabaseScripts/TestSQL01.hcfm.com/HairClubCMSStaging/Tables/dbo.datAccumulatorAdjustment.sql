@@ -44,37 +44,37 @@ CREATE NONCLUSTERED INDEX [IX_datAccumulatorAdjustment_SalesOrderDetailGUID] ON 
 	[SalesOrderDetailGUID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[datAccumulatorAdjustment]  WITH CHECK ADD  CONSTRAINT [FK_datAccumulatorAdjustment_cfgAccumulator] FOREIGN KEY([AccumulatorID])
+ALTER TABLE [dbo].[datAccumulatorAdjustment]  WITH NOCHECK ADD  CONSTRAINT [FK_datAccumulatorAdjustment_cfgAccumulator] FOREIGN KEY([AccumulatorID])
 REFERENCES [dbo].[cfgAccumulator] ([AccumulatorID])
 GO
 ALTER TABLE [dbo].[datAccumulatorAdjustment] CHECK CONSTRAINT [FK_datAccumulatorAdjustment_cfgAccumulator]
 GO
-ALTER TABLE [dbo].[datAccumulatorAdjustment]  WITH CHECK ADD  CONSTRAINT [FK_datAccumulatorAdjustment_datAppointment] FOREIGN KEY([AppointmentGUID])
+ALTER TABLE [dbo].[datAccumulatorAdjustment]  WITH NOCHECK ADD  CONSTRAINT [FK_datAccumulatorAdjustment_datAppointment] FOREIGN KEY([AppointmentGUID])
 REFERENCES [dbo].[datAppointment] ([AppointmentGUID])
 GO
 ALTER TABLE [dbo].[datAccumulatorAdjustment] CHECK CONSTRAINT [FK_datAccumulatorAdjustment_datAppointment]
 GO
-ALTER TABLE [dbo].[datAccumulatorAdjustment]  WITH CHECK ADD  CONSTRAINT [FK_datAccumulatorAdjustment_datClientMembership] FOREIGN KEY([ClientMembershipGUID])
+ALTER TABLE [dbo].[datAccumulatorAdjustment]  WITH NOCHECK ADD  CONSTRAINT [FK_datAccumulatorAdjustment_datClientMembership] FOREIGN KEY([ClientMembershipGUID])
 REFERENCES [dbo].[datClientMembership] ([ClientMembershipGUID])
 GO
 ALTER TABLE [dbo].[datAccumulatorAdjustment] CHECK CONSTRAINT [FK_datAccumulatorAdjustment_datClientMembership]
 GO
-ALTER TABLE [dbo].[datAccumulatorAdjustment]  WITH CHECK ADD  CONSTRAINT [FK_datAccumulatorAdjustment_datClientMembershipAddOn] FOREIGN KEY([ClientMembershipAddOnID])
+ALTER TABLE [dbo].[datAccumulatorAdjustment]  WITH NOCHECK ADD  CONSTRAINT [FK_datAccumulatorAdjustment_datClientMembershipAddOn] FOREIGN KEY([ClientMembershipAddOnID])
 REFERENCES [dbo].[datClientMembershipAddOn] ([ClientMembershipAddOnID])
 GO
 ALTER TABLE [dbo].[datAccumulatorAdjustment] CHECK CONSTRAINT [FK_datAccumulatorAdjustment_datClientMembershipAddOn]
 GO
-ALTER TABLE [dbo].[datAccumulatorAdjustment]  WITH CHECK ADD  CONSTRAINT [FK_datAccumulatorAdjustment_datSalesOrderDetail] FOREIGN KEY([SalesOrderDetailGUID])
+ALTER TABLE [dbo].[datAccumulatorAdjustment]  WITH NOCHECK ADD  CONSTRAINT [FK_datAccumulatorAdjustment_datSalesOrderDetail] FOREIGN KEY([SalesOrderDetailGUID])
 REFERENCES [dbo].[datSalesOrderDetail] ([SalesOrderDetailGUID])
 GO
 ALTER TABLE [dbo].[datAccumulatorAdjustment] CHECK CONSTRAINT [FK_datAccumulatorAdjustment_datSalesOrderDetail]
 GO
-ALTER TABLE [dbo].[datAccumulatorAdjustment]  WITH CHECK ADD  CONSTRAINT [FK_datAccumulatorAdjustment_datSalesOrderTender] FOREIGN KEY([SalesOrderTenderGuid])
+ALTER TABLE [dbo].[datAccumulatorAdjustment]  WITH NOCHECK ADD  CONSTRAINT [FK_datAccumulatorAdjustment_datSalesOrderTender] FOREIGN KEY([SalesOrderTenderGuid])
 REFERENCES [dbo].[datSalesOrderTender] ([SalesOrderTenderGUID])
 GO
 ALTER TABLE [dbo].[datAccumulatorAdjustment] CHECK CONSTRAINT [FK_datAccumulatorAdjustment_datSalesOrderTender]
 GO
-ALTER TABLE [dbo].[datAccumulatorAdjustment]  WITH CHECK ADD  CONSTRAINT [FK_datAccumulatorAdjustment_lkpAccumulatorActionType] FOREIGN KEY([AccumulatorActionTypeID])
+ALTER TABLE [dbo].[datAccumulatorAdjustment]  WITH NOCHECK ADD  CONSTRAINT [FK_datAccumulatorAdjustment_lkpAccumulatorActionType] FOREIGN KEY([AccumulatorActionTypeID])
 REFERENCES [dbo].[lkpAccumulatorActionType] ([AccumulatorActionTypeID])
 GO
 ALTER TABLE [dbo].[datAccumulatorAdjustment] CHECK CONSTRAINT [FK_datAccumulatorAdjustment_lkpAccumulatorActionType]

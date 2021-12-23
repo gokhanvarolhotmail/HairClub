@@ -12,7 +12,7 @@ CREATE TABLE [dbo].[onca_dashboard](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[onca_dashboard]  WITH CHECK ADD  CONSTRAINT [object_dashboard_433] FOREIGN KEY([object_id])
+ALTER TABLE [dbo].[onca_dashboard]  WITH NOCHECK ADD  CONSTRAINT [object_dashboard_433] FOREIGN KEY([object_id])
 REFERENCES [dbo].[onct_object] ([object_id])
 GO
 ALTER TABLE [dbo].[onca_dashboard] CHECK CONSTRAINT [object_dashboard_433]

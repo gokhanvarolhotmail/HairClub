@@ -21,17 +21,17 @@ CREATE TABLE [dbo].[datAppointmentSebuTape](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[datAppointmentSebuTape]  WITH CHECK ADD  CONSTRAINT [FK_datAppointmentSebuTape_datAppointment] FOREIGN KEY([AppointmentGUID])
+ALTER TABLE [dbo].[datAppointmentSebuTape]  WITH NOCHECK ADD  CONSTRAINT [FK_datAppointmentSebuTape_datAppointment] FOREIGN KEY([AppointmentGUID])
 REFERENCES [dbo].[datAppointment] ([AppointmentGUID])
 GO
 ALTER TABLE [dbo].[datAppointmentSebuTape] CHECK CONSTRAINT [FK_datAppointmentSebuTape_datAppointment]
 GO
-ALTER TABLE [dbo].[datAppointmentSebuTape]  WITH CHECK ADD  CONSTRAINT [FK_datAppointmentSebuTape_lkpScalpRegion] FOREIGN KEY([ScalpRegionID])
+ALTER TABLE [dbo].[datAppointmentSebuTape]  WITH NOCHECK ADD  CONSTRAINT [FK_datAppointmentSebuTape_lkpScalpRegion] FOREIGN KEY([ScalpRegionID])
 REFERENCES [dbo].[lkpScalpRegion] ([ScalpRegionID])
 GO
 ALTER TABLE [dbo].[datAppointmentSebuTape] CHECK CONSTRAINT [FK_datAppointmentSebuTape_lkpScalpRegion]
 GO
-ALTER TABLE [dbo].[datAppointmentSebuTape]  WITH CHECK ADD  CONSTRAINT [FK_datAppointmentSebuTape_lkpSebuTapeLevel] FOREIGN KEY([SebuTapeLevelID])
+ALTER TABLE [dbo].[datAppointmentSebuTape]  WITH NOCHECK ADD  CONSTRAINT [FK_datAppointmentSebuTape_lkpSebuTapeLevel] FOREIGN KEY([SebuTapeLevelID])
 REFERENCES [dbo].[lkpSebuTapeLevel] ([SebuTapeLevelID])
 GO
 ALTER TABLE [dbo].[datAppointmentSebuTape] CHECK CONSTRAINT [FK_datAppointmentSebuTape_lkpSebuTapeLevel]

@@ -15,13 +15,13 @@ CREATE TABLE [dbo].[oncs_indirect_member](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[oncs_indirect_member]  WITH CHECK ADD  CONSTRAINT [indirect_indirect_mem_302] FOREIGN KEY([indirect_date], [indirect_order])
+ALTER TABLE [dbo].[oncs_indirect_member]  WITH NOCHECK ADD  CONSTRAINT [indirect_indirect_mem_302] FOREIGN KEY([indirect_date], [indirect_order])
 REFERENCES [dbo].[oncs_indirect] ([indirect_date], [indirect_order])
 ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[oncs_indirect_member] CHECK CONSTRAINT [indirect_indirect_mem_302]
 GO
-ALTER TABLE [dbo].[oncs_indirect_member]  WITH CHECK ADD  CONSTRAINT [transaction_indirect_mem_303] FOREIGN KEY([transaction_date], [transaction_order])
+ALTER TABLE [dbo].[oncs_indirect_member]  WITH NOCHECK ADD  CONSTRAINT [transaction_indirect_mem_303] FOREIGN KEY([transaction_date], [transaction_order])
 REFERENCES [dbo].[oncs_transaction] ([transaction_date], [transaction_order])
 ON DELETE CASCADE
 GO

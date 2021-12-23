@@ -22,12 +22,12 @@ ALTER TABLE [dbo].[cfgCenterTaxRate] ADD  CONSTRAINT [DF_cfgCenterTaxRate_TaxRat
 GO
 ALTER TABLE [dbo].[cfgCenterTaxRate] ADD  CONSTRAINT [DF_cfgCenterTaxRate_IsActiveFlag]  DEFAULT ((1)) FOR [IsActiveFlag]
 GO
-ALTER TABLE [dbo].[cfgCenterTaxRate]  WITH CHECK ADD  CONSTRAINT [FK_cfgCenterTaxRate_cfgCenter] FOREIGN KEY([CenterID])
+ALTER TABLE [dbo].[cfgCenterTaxRate]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgCenterTaxRate_cfgCenter] FOREIGN KEY([CenterID])
 REFERENCES [dbo].[cfgCenter] ([CenterID])
 GO
 ALTER TABLE [dbo].[cfgCenterTaxRate] CHECK CONSTRAINT [FK_cfgCenterTaxRate_cfgCenter]
 GO
-ALTER TABLE [dbo].[cfgCenterTaxRate]  WITH CHECK ADD  CONSTRAINT [FK_cfgCenterTaxRate_lkpTaxType] FOREIGN KEY([TaxTypeID])
+ALTER TABLE [dbo].[cfgCenterTaxRate]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgCenterTaxRate_lkpTaxType] FOREIGN KEY([TaxTypeID])
 REFERENCES [dbo].[lkpTaxType] ([TaxTypeID])
 GO
 ALTER TABLE [dbo].[cfgCenterTaxRate] CHECK CONSTRAINT [FK_cfgCenterTaxRate_lkpTaxType]

@@ -24,17 +24,17 @@ CREATE TABLE [dbo].[datPaymentPlan](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[datPaymentPlan]  WITH CHECK ADD  CONSTRAINT [FK_datPaymentPlan_datClient] FOREIGN KEY([ClientGUID])
+ALTER TABLE [dbo].[datPaymentPlan]  WITH NOCHECK ADD  CONSTRAINT [FK_datPaymentPlan_datClient] FOREIGN KEY([ClientGUID])
 REFERENCES [dbo].[datClient] ([ClientGUID])
 GO
 ALTER TABLE [dbo].[datPaymentPlan] CHECK CONSTRAINT [FK_datPaymentPlan_datClient]
 GO
-ALTER TABLE [dbo].[datPaymentPlan]  WITH CHECK ADD  CONSTRAINT [FK_datPaymentPlan_datClientMembership] FOREIGN KEY([ClientMembershipGUID])
+ALTER TABLE [dbo].[datPaymentPlan]  WITH NOCHECK ADD  CONSTRAINT [FK_datPaymentPlan_datClientMembership] FOREIGN KEY([ClientMembershipGUID])
 REFERENCES [dbo].[datClientMembership] ([ClientMembershipGUID])
 GO
 ALTER TABLE [dbo].[datPaymentPlan] CHECK CONSTRAINT [FK_datPaymentPlan_datClientMembership]
 GO
-ALTER TABLE [dbo].[datPaymentPlan]  WITH CHECK ADD  CONSTRAINT [FK_datPaymentPlan_lkpPaymentPlanStatus] FOREIGN KEY([PaymentPlanStatusID])
+ALTER TABLE [dbo].[datPaymentPlan]  WITH NOCHECK ADD  CONSTRAINT [FK_datPaymentPlan_lkpPaymentPlanStatus] FOREIGN KEY([PaymentPlanStatusID])
 REFERENCES [dbo].[lkpPaymentPlanStatus] ([PaymentPlanStatusID])
 GO
 ALTER TABLE [dbo].[datPaymentPlan] CHECK CONSTRAINT [FK_datPaymentPlan_lkpPaymentPlanStatus]

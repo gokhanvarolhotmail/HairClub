@@ -22,7 +22,7 @@ CREATE TABLE [dbo].[lkpPhotoCaption](
 GO
 ALTER TABLE [dbo].[lkpPhotoCaption] ADD  DEFAULT ((0)) FOR [IsActiveFlag]
 GO
-ALTER TABLE [dbo].[lkpPhotoCaption]  WITH CHECK ADD  CONSTRAINT [FK_lkpPhotoCaption_lkpBusinessSegment] FOREIGN KEY([BusinessSegmentID])
+ALTER TABLE [dbo].[lkpPhotoCaption]  WITH NOCHECK ADD  CONSTRAINT [FK_lkpPhotoCaption_lkpBusinessSegment] FOREIGN KEY([BusinessSegmentID])
 REFERENCES [dbo].[lkpBusinessSegment] ([BusinessSegmentID])
 GO
 ALTER TABLE [dbo].[lkpPhotoCaption] CHECK CONSTRAINT [FK_lkpPhotoCaption_lkpBusinessSegment]

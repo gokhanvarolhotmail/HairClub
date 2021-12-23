@@ -34,29 +34,29 @@ CREATE NONCLUSTERED INDEX [oncd_opportunity_contact_i3] ON [dbo].[oncd_opportuni
 	[contact_id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[oncd_opportunity_contact]  WITH CHECK ADD  CONSTRAINT [contact_opportunity__332] FOREIGN KEY([contact_id])
+ALTER TABLE [dbo].[oncd_opportunity_contact]  WITH NOCHECK ADD  CONSTRAINT [contact_opportunity__332] FOREIGN KEY([contact_id])
 REFERENCES [dbo].[oncd_contact] ([contact_id])
 ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[oncd_opportunity_contact] CHECK CONSTRAINT [contact_opportunity__332]
 GO
-ALTER TABLE [dbo].[oncd_opportunity_contact]  WITH CHECK ADD  CONSTRAINT [opportunity__opportunity__686] FOREIGN KEY([opportunity_role_code])
+ALTER TABLE [dbo].[oncd_opportunity_contact]  WITH NOCHECK ADD  CONSTRAINT [opportunity__opportunity__686] FOREIGN KEY([opportunity_role_code])
 REFERENCES [dbo].[onca_opportunity_role] ([opportunity_role_code])
 GO
 ALTER TABLE [dbo].[oncd_opportunity_contact] CHECK CONSTRAINT [opportunity__opportunity__686]
 GO
-ALTER TABLE [dbo].[oncd_opportunity_contact]  WITH CHECK ADD  CONSTRAINT [opportunity_opportunity__151] FOREIGN KEY([opportunity_id])
+ALTER TABLE [dbo].[oncd_opportunity_contact]  WITH NOCHECK ADD  CONSTRAINT [opportunity_opportunity__151] FOREIGN KEY([opportunity_id])
 REFERENCES [dbo].[oncd_opportunity] ([opportunity_id])
 ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[oncd_opportunity_contact] CHECK CONSTRAINT [opportunity_opportunity__151]
 GO
-ALTER TABLE [dbo].[oncd_opportunity_contact]  WITH CHECK ADD  CONSTRAINT [user_opportunity__687] FOREIGN KEY([created_by_user_code])
+ALTER TABLE [dbo].[oncd_opportunity_contact]  WITH NOCHECK ADD  CONSTRAINT [user_opportunity__687] FOREIGN KEY([created_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_opportunity_contact] CHECK CONSTRAINT [user_opportunity__687]
 GO
-ALTER TABLE [dbo].[oncd_opportunity_contact]  WITH CHECK ADD  CONSTRAINT [user_opportunity__688] FOREIGN KEY([updated_by_user_code])
+ALTER TABLE [dbo].[oncd_opportunity_contact]  WITH NOCHECK ADD  CONSTRAINT [user_opportunity__688] FOREIGN KEY([updated_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_opportunity_contact] CHECK CONSTRAINT [user_opportunity__688]

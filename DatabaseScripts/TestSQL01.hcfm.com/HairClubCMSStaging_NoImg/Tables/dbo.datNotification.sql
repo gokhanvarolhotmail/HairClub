@@ -45,32 +45,32 @@ INCLUDE([NotificationTypeID],[ClientGUID]) WITH (PAD_INDEX = OFF, STATISTICS_NOR
 GO
 ALTER TABLE [dbo].[datNotification] ADD  DEFAULT ((0)) FOR [IsHairOrderRequestedFlag]
 GO
-ALTER TABLE [dbo].[datNotification]  WITH CHECK ADD  CONSTRAINT [FK_datNotification_cfgCenter] FOREIGN KEY([CenterID])
+ALTER TABLE [dbo].[datNotification]  WITH NOCHECK ADD  CONSTRAINT [FK_datNotification_cfgCenter] FOREIGN KEY([CenterID])
 REFERENCES [dbo].[cfgCenter] ([CenterID])
 GO
 ALTER TABLE [dbo].[datNotification] CHECK CONSTRAINT [FK_datNotification_cfgCenter]
 GO
-ALTER TABLE [dbo].[datNotification]  WITH CHECK ADD  CONSTRAINT [FK_datNotification_datAppointment] FOREIGN KEY([AppointmentGUID])
+ALTER TABLE [dbo].[datNotification]  WITH NOCHECK ADD  CONSTRAINT [FK_datNotification_datAppointment] FOREIGN KEY([AppointmentGUID])
 REFERENCES [dbo].[datAppointment] ([AppointmentGUID])
 GO
 ALTER TABLE [dbo].[datNotification] CHECK CONSTRAINT [FK_datNotification_datAppointment]
 GO
-ALTER TABLE [dbo].[datNotification]  WITH CHECK ADD  CONSTRAINT [FK_datNotification_datClient] FOREIGN KEY([ClientGUID])
+ALTER TABLE [dbo].[datNotification]  WITH NOCHECK ADD  CONSTRAINT [FK_datNotification_datClient] FOREIGN KEY([ClientGUID])
 REFERENCES [dbo].[datClient] ([ClientGUID])
 GO
 ALTER TABLE [dbo].[datNotification] CHECK CONSTRAINT [FK_datNotification_datClient]
 GO
-ALTER TABLE [dbo].[datNotification]  WITH CHECK ADD  CONSTRAINT [FK_datNotification_lkpFeePayCycle] FOREIGN KEY([FeePayCycleID])
+ALTER TABLE [dbo].[datNotification]  WITH NOCHECK ADD  CONSTRAINT [FK_datNotification_lkpFeePayCycle] FOREIGN KEY([FeePayCycleID])
 REFERENCES [dbo].[lkpFeePayCycle] ([FeePayCycleID])
 GO
 ALTER TABLE [dbo].[datNotification] CHECK CONSTRAINT [FK_datNotification_lkpFeePayCycle]
 GO
-ALTER TABLE [dbo].[datNotification]  WITH CHECK ADD  CONSTRAINT [FK_datNotification_lkpNotificationType] FOREIGN KEY([NotificationTypeID])
+ALTER TABLE [dbo].[datNotification]  WITH NOCHECK ADD  CONSTRAINT [FK_datNotification_lkpNotificationType] FOREIGN KEY([NotificationTypeID])
 REFERENCES [dbo].[lkpNotificationType] ([NotificationTypeID])
 GO
 ALTER TABLE [dbo].[datNotification] CHECK CONSTRAINT [FK_datNotification_lkpNotificationType]
 GO
-ALTER TABLE [dbo].[datNotification]  WITH CHECK ADD  CONSTRAINT [FK_datNotification_VisitingCenterID] FOREIGN KEY([VisitingCenterID])
+ALTER TABLE [dbo].[datNotification]  WITH NOCHECK ADD  CONSTRAINT [FK_datNotification_VisitingCenterID] FOREIGN KEY([VisitingCenterID])
 REFERENCES [dbo].[cfgCenter] ([CenterID])
 GO
 ALTER TABLE [dbo].[datNotification] CHECK CONSTRAINT [FK_datNotification_VisitingCenterID]

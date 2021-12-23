@@ -18,23 +18,23 @@ CREATE TABLE [dbo].[onca_menu_item](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[onca_menu_item]  WITH CHECK ADD  CONSTRAINT [menu_folder_menu_item_258] FOREIGN KEY([folder_id])
+ALTER TABLE [dbo].[onca_menu_item]  WITH NOCHECK ADD  CONSTRAINT [menu_folder_menu_item_258] FOREIGN KEY([folder_id])
 REFERENCES [dbo].[onca_menu_folder] ([folder_id])
 ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[onca_menu_item] CHECK CONSTRAINT [menu_folder_menu_item_258]
 GO
-ALTER TABLE [dbo].[onca_menu_item]  WITH CHECK ADD  CONSTRAINT [menu_menu_item_259] FOREIGN KEY([menu_id])
+ALTER TABLE [dbo].[onca_menu_item]  WITH NOCHECK ADD  CONSTRAINT [menu_menu_item_259] FOREIGN KEY([menu_id])
 REFERENCES [dbo].[onca_menu] ([menu_id])
 GO
 ALTER TABLE [dbo].[onca_menu_item] CHECK CONSTRAINT [menu_menu_item_259]
 GO
-ALTER TABLE [dbo].[onca_menu_item]  WITH CHECK ADD  CONSTRAINT [object_menu_item_1181] FOREIGN KEY([object_id])
+ALTER TABLE [dbo].[onca_menu_item]  WITH NOCHECK ADD  CONSTRAINT [object_menu_item_1181] FOREIGN KEY([object_id])
 REFERENCES [dbo].[onct_object] ([object_id])
 GO
 ALTER TABLE [dbo].[onca_menu_item] CHECK CONSTRAINT [object_menu_item_1181]
 GO
-ALTER TABLE [dbo].[onca_menu_item]  WITH CHECK ADD  CONSTRAINT [user_menu_item_843] FOREIGN KEY([created_by_user_code])
+ALTER TABLE [dbo].[onca_menu_item]  WITH NOCHECK ADD  CONSTRAINT [user_menu_item_843] FOREIGN KEY([created_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[onca_menu_item] CHECK CONSTRAINT [user_menu_item_843]

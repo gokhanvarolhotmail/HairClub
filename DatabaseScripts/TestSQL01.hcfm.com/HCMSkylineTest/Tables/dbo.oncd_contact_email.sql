@@ -20,23 +20,23 @@ CREATE TABLE [dbo].[oncd_contact_email](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[oncd_contact_email]  WITH CHECK ADD  CONSTRAINT [contact_contact_emai_76] FOREIGN KEY([contact_id])
+ALTER TABLE [dbo].[oncd_contact_email]  WITH NOCHECK ADD  CONSTRAINT [contact_contact_emai_76] FOREIGN KEY([contact_id])
 REFERENCES [dbo].[oncd_contact] ([contact_id])
 ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[oncd_contact_email] CHECK CONSTRAINT [contact_contact_emai_76]
 GO
-ALTER TABLE [dbo].[oncd_contact_email]  WITH CHECK ADD  CONSTRAINT [email_type_contact_emai_592] FOREIGN KEY([email_type_code])
+ALTER TABLE [dbo].[oncd_contact_email]  WITH NOCHECK ADD  CONSTRAINT [email_type_contact_emai_592] FOREIGN KEY([email_type_code])
 REFERENCES [dbo].[onca_email_type] ([email_type_code])
 GO
 ALTER TABLE [dbo].[oncd_contact_email] CHECK CONSTRAINT [email_type_contact_emai_592]
 GO
-ALTER TABLE [dbo].[oncd_contact_email]  WITH CHECK ADD  CONSTRAINT [user_contact_emai_590] FOREIGN KEY([created_by_user_code])
+ALTER TABLE [dbo].[oncd_contact_email]  WITH NOCHECK ADD  CONSTRAINT [user_contact_emai_590] FOREIGN KEY([created_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_contact_email] CHECK CONSTRAINT [user_contact_emai_590]
 GO
-ALTER TABLE [dbo].[oncd_contact_email]  WITH CHECK ADD  CONSTRAINT [user_contact_emai_591] FOREIGN KEY([updated_by_user_code])
+ALTER TABLE [dbo].[oncd_contact_email]  WITH NOCHECK ADD  CONSTRAINT [user_contact_emai_591] FOREIGN KEY([updated_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_contact_email] CHECK CONSTRAINT [user_contact_emai_591]

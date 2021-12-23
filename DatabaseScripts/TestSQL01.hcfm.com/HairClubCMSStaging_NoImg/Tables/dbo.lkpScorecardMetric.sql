@@ -18,7 +18,7 @@ CREATE TABLE [dbo].[lkpScorecardMetric](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[lkpScorecardMetric]  WITH CHECK ADD  CONSTRAINT [FK_lkpScorecardMetric_lkpScorecardCategory] FOREIGN KEY([ScorecardCategoryID])
+ALTER TABLE [dbo].[lkpScorecardMetric]  WITH NOCHECK ADD  CONSTRAINT [FK_lkpScorecardMetric_lkpScorecardCategory] FOREIGN KEY([ScorecardCategoryID])
 REFERENCES [dbo].[lkpScorecardCategory] ([ScorecardCategoryID])
 GO
 ALTER TABLE [dbo].[lkpScorecardMetric] CHECK CONSTRAINT [FK_lkpScorecardMetric_lkpScorecardCategory]

@@ -23,12 +23,12 @@ CREATE NONCLUSTERED INDEX [IX_datAccountReceivableJoin_ARChargeID_ARPaymentID] O
 )
 INCLUDE([AccountReceivableJoinID],[Amount]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[datAccountReceivableJoin]  WITH CHECK ADD  CONSTRAINT [FK_datAccountReceivableJoin_datAccountReceivable] FOREIGN KEY([ARPaymentID])
+ALTER TABLE [dbo].[datAccountReceivableJoin]  WITH NOCHECK ADD  CONSTRAINT [FK_datAccountReceivableJoin_datAccountReceivable] FOREIGN KEY([ARPaymentID])
 REFERENCES [dbo].[datAccountReceivable] ([AccountReceivableID])
 GO
 ALTER TABLE [dbo].[datAccountReceivableJoin] CHECK CONSTRAINT [FK_datAccountReceivableJoin_datAccountReceivable]
 GO
-ALTER TABLE [dbo].[datAccountReceivableJoin]  WITH CHECK ADD  CONSTRAINT [FK_datAccountReceivableJoin_datAccountReceivable1] FOREIGN KEY([ARChargeID])
+ALTER TABLE [dbo].[datAccountReceivableJoin]  WITH NOCHECK ADD  CONSTRAINT [FK_datAccountReceivableJoin_datAccountReceivable1] FOREIGN KEY([ARChargeID])
 REFERENCES [dbo].[datAccountReceivable] ([AccountReceivableID])
 GO
 ALTER TABLE [dbo].[datAccountReceivableJoin] CHECK CONSTRAINT [FK_datAccountReceivableJoin_datAccountReceivable1]

@@ -24,22 +24,22 @@ CREATE TABLE [dbo].[onca_import](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[onca_import]  WITH CHECK ADD  CONSTRAINT [class_import_374] FOREIGN KEY([import_class_id])
+ALTER TABLE [dbo].[onca_import]  WITH NOCHECK ADD  CONSTRAINT [class_import_374] FOREIGN KEY([import_class_id])
 REFERENCES [dbo].[onct_class] ([class_id])
 GO
 ALTER TABLE [dbo].[onca_import] CHECK CONSTRAINT [class_import_374]
 GO
-ALTER TABLE [dbo].[onca_import]  WITH CHECK ADD  CONSTRAINT [class_import_392] FOREIGN KEY([source_table_class_id])
+ALTER TABLE [dbo].[onca_import]  WITH NOCHECK ADD  CONSTRAINT [class_import_392] FOREIGN KEY([source_table_class_id])
 REFERENCES [dbo].[onct_class] ([class_id])
 GO
 ALTER TABLE [dbo].[onca_import] CHECK CONSTRAINT [class_import_392]
 GO
-ALTER TABLE [dbo].[onca_import]  WITH CHECK ADD  CONSTRAINT [data_import_372] FOREIGN KEY([data_code])
+ALTER TABLE [dbo].[onca_import]  WITH NOCHECK ADD  CONSTRAINT [data_import_372] FOREIGN KEY([data_code])
 REFERENCES [dbo].[onca_data] ([data_code])
 GO
 ALTER TABLE [dbo].[onca_import] CHECK CONSTRAINT [data_import_372]
 GO
-ALTER TABLE [dbo].[onca_import]  WITH CHECK ADD  CONSTRAINT [user_import_836] FOREIGN KEY([user_code])
+ALTER TABLE [dbo].[onca_import]  WITH NOCHECK ADD  CONSTRAINT [user_import_836] FOREIGN KEY([user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[onca_import] CHECK CONSTRAINT [user_import_836]

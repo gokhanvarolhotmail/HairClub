@@ -18,12 +18,12 @@ CREATE TABLE [dbo].[oncs_apply_condition](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[oncs_apply_condition]  WITH CHECK ADD  CONSTRAINT [condition_apply_condit_879] FOREIGN KEY([condition_id])
+ALTER TABLE [dbo].[oncs_apply_condition]  WITH NOCHECK ADD  CONSTRAINT [condition_apply_condit_879] FOREIGN KEY([condition_id])
 REFERENCES [dbo].[onca_condition] ([condition_id])
 GO
 ALTER TABLE [dbo].[oncs_apply_condition] CHECK CONSTRAINT [condition_apply_condit_879]
 GO
-ALTER TABLE [dbo].[oncs_apply_condition]  WITH CHECK ADD  CONSTRAINT [server_apply_condit_396] FOREIGN KEY([server_id])
+ALTER TABLE [dbo].[oncs_apply_condition]  WITH NOCHECK ADD  CONSTRAINT [server_apply_condit_396] FOREIGN KEY([server_id])
 REFERENCES [dbo].[oncs_server] ([server_id])
 ON DELETE CASCADE
 GO

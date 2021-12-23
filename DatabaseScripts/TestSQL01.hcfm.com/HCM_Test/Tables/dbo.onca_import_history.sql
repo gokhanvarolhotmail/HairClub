@@ -21,7 +21,7 @@ CREATE NONCLUSTERED INDEX [onca_import_history_i2] ON [dbo].[onca_import_history
 	[import_code] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[onca_import_history]  WITH CHECK ADD  CONSTRAINT [import_import_histo_368] FOREIGN KEY([import_code])
+ALTER TABLE [dbo].[onca_import_history]  WITH NOCHECK ADD  CONSTRAINT [import_import_histo_368] FOREIGN KEY([import_code])
 REFERENCES [dbo].[onca_import] ([import_code])
 ON DELETE CASCADE
 GO

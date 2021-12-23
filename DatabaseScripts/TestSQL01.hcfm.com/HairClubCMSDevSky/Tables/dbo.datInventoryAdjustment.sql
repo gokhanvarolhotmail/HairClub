@@ -24,47 +24,47 @@ CREATE TABLE [dbo].[datInventoryAdjustment](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[datInventoryAdjustment]  WITH CHECK ADD  CONSTRAINT [FK_datInventoryAdjustment_cfgCenter] FOREIGN KEY([CenterID])
+ALTER TABLE [dbo].[datInventoryAdjustment]  WITH NOCHECK ADD  CONSTRAINT [FK_datInventoryAdjustment_cfgCenter] FOREIGN KEY([CenterID])
 REFERENCES [dbo].[cfgCenter] ([CenterID])
 GO
 ALTER TABLE [dbo].[datInventoryAdjustment] CHECK CONSTRAINT [FK_datInventoryAdjustment_cfgCenter]
 GO
-ALTER TABLE [dbo].[datInventoryAdjustment]  WITH CHECK ADD  CONSTRAINT [FK_datInventoryAdjustment_cfgCenter2] FOREIGN KEY([TransferToCenterID])
+ALTER TABLE [dbo].[datInventoryAdjustment]  WITH NOCHECK ADD  CONSTRAINT [FK_datInventoryAdjustment_cfgCenter2] FOREIGN KEY([TransferToCenterID])
 REFERENCES [dbo].[cfgCenter] ([CenterID])
 GO
 ALTER TABLE [dbo].[datInventoryAdjustment] CHECK CONSTRAINT [FK_datInventoryAdjustment_cfgCenter2]
 GO
-ALTER TABLE [dbo].[datInventoryAdjustment]  WITH CHECK ADD  CONSTRAINT [FK_datInventoryAdjustment_cfgCenter3] FOREIGN KEY([TransferFromCenterID])
+ALTER TABLE [dbo].[datInventoryAdjustment]  WITH NOCHECK ADD  CONSTRAINT [FK_datInventoryAdjustment_cfgCenter3] FOREIGN KEY([TransferFromCenterID])
 REFERENCES [dbo].[cfgCenter] ([CenterID])
 GO
 ALTER TABLE [dbo].[datInventoryAdjustment] CHECK CONSTRAINT [FK_datInventoryAdjustment_cfgCenter3]
 GO
-ALTER TABLE [dbo].[datInventoryAdjustment]  WITH CHECK ADD  CONSTRAINT [FK_datInventoryAdjustment_datDistributorPurchaseOrder] FOREIGN KEY([DistributorPurchaseOrderID])
+ALTER TABLE [dbo].[datInventoryAdjustment]  WITH NOCHECK ADD  CONSTRAINT [FK_datInventoryAdjustment_datDistributorPurchaseOrder] FOREIGN KEY([DistributorPurchaseOrderID])
 REFERENCES [dbo].[datDistributorPurchaseOrder] ([DistributorPurchaseOrderID])
 GO
 ALTER TABLE [dbo].[datInventoryAdjustment] CHECK CONSTRAINT [FK_datInventoryAdjustment_datDistributorPurchaseOrder]
 GO
-ALTER TABLE [dbo].[datInventoryAdjustment]  WITH CHECK ADD  CONSTRAINT [FK_datInventoryAdjustment_datEmployee] FOREIGN KEY([EmployeeGUID])
+ALTER TABLE [dbo].[datInventoryAdjustment]  WITH NOCHECK ADD  CONSTRAINT [FK_datInventoryAdjustment_datEmployee] FOREIGN KEY([EmployeeGUID])
 REFERENCES [dbo].[datEmployee] ([EmployeeGUID])
 GO
 ALTER TABLE [dbo].[datInventoryAdjustment] CHECK CONSTRAINT [FK_datInventoryAdjustment_datEmployee]
 GO
-ALTER TABLE [dbo].[datInventoryAdjustment]  WITH CHECK ADD  CONSTRAINT [FK_datInventoryAdjustment_datNonSerializedInventoryAuditBatch] FOREIGN KEY([NonSerializedInventoryAuditBatchID])
+ALTER TABLE [dbo].[datInventoryAdjustment]  WITH NOCHECK ADD  CONSTRAINT [FK_datInventoryAdjustment_datNonSerializedInventoryAuditBatch] FOREIGN KEY([NonSerializedInventoryAuditBatchID])
 REFERENCES [dbo].[datNonSerializedInventoryAuditBatch] ([NonSerializedInventoryAuditBatchID])
 GO
 ALTER TABLE [dbo].[datInventoryAdjustment] CHECK CONSTRAINT [FK_datInventoryAdjustment_datNonSerializedInventoryAuditBatch]
 GO
-ALTER TABLE [dbo].[datInventoryAdjustment]  WITH CHECK ADD  CONSTRAINT [FK_datInventoryAdjustment_datSalesOrder] FOREIGN KEY([SalesOrderGUID])
+ALTER TABLE [dbo].[datInventoryAdjustment]  WITH NOCHECK ADD  CONSTRAINT [FK_datInventoryAdjustment_datSalesOrder] FOREIGN KEY([SalesOrderGUID])
 REFERENCES [dbo].[datSalesOrder] ([SalesOrderGUID])
 GO
 ALTER TABLE [dbo].[datInventoryAdjustment] CHECK CONSTRAINT [FK_datInventoryAdjustment_datSalesOrder]
 GO
-ALTER TABLE [dbo].[datInventoryAdjustment]  WITH CHECK ADD  CONSTRAINT [FK_datInventoryAdjustment_datSerializedInventoryAuditBatch] FOREIGN KEY([SerializedInventoryAuditBatchID])
+ALTER TABLE [dbo].[datInventoryAdjustment]  WITH NOCHECK ADD  CONSTRAINT [FK_datInventoryAdjustment_datSerializedInventoryAuditBatch] FOREIGN KEY([SerializedInventoryAuditBatchID])
 REFERENCES [dbo].[datSerializedInventoryAuditBatch] ([SerializedInventoryAuditBatchID])
 GO
 ALTER TABLE [dbo].[datInventoryAdjustment] CHECK CONSTRAINT [FK_datInventoryAdjustment_datSerializedInventoryAuditBatch]
 GO
-ALTER TABLE [dbo].[datInventoryAdjustment]  WITH CHECK ADD  CONSTRAINT [FK_datInventoryAdjustment_lkpInventoryAdjustmentType] FOREIGN KEY([InventoryAdjustmentTypeID])
+ALTER TABLE [dbo].[datInventoryAdjustment]  WITH NOCHECK ADD  CONSTRAINT [FK_datInventoryAdjustment_lkpInventoryAdjustmentType] FOREIGN KEY([InventoryAdjustmentTypeID])
 REFERENCES [dbo].[lkpInventoryAdjustmentType] ([InventoryAdjustmentTypeID])
 GO
 ALTER TABLE [dbo].[datInventoryAdjustment] CHECK CONSTRAINT [FK_datInventoryAdjustment_lkpInventoryAdjustmentType]

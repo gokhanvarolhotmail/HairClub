@@ -33,23 +33,23 @@ ALTER TABLE [dbo].[cstd_activity_recovery] ADD  CONSTRAINT [DF__cstd_acti__sign_
 GO
 ALTER TABLE [dbo].[cstd_activity_recovery] ADD  CONSTRAINT [DF__cstd_acti__sched__44EA3301]  DEFAULT (' ') FOR [scheduled_day_flag]
 GO
-ALTER TABLE [dbo].[cstd_activity_recovery]  WITH CHECK ADD  CONSTRAINT [onca_user_cstd_activity_recovery_737] FOREIGN KEY([created_by_user_code])
+ALTER TABLE [dbo].[cstd_activity_recovery]  WITH NOCHECK ADD  CONSTRAINT [onca_user_cstd_activity_recovery_737] FOREIGN KEY([created_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[cstd_activity_recovery] CHECK CONSTRAINT [onca_user_cstd_activity_recovery_737]
 GO
-ALTER TABLE [dbo].[cstd_activity_recovery]  WITH CHECK ADD  CONSTRAINT [onca_user_cstd_activity_recovery_738] FOREIGN KEY([updated_by_user_code])
+ALTER TABLE [dbo].[cstd_activity_recovery]  WITH NOCHECK ADD  CONSTRAINT [onca_user_cstd_activity_recovery_738] FOREIGN KEY([updated_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[cstd_activity_recovery] CHECK CONSTRAINT [onca_user_cstd_activity_recovery_738]
 GO
-ALTER TABLE [dbo].[cstd_activity_recovery]  WITH CHECK ADD  CONSTRAINT [oncd_activity_cstd_activity_recovery_781] FOREIGN KEY([activity_id])
+ALTER TABLE [dbo].[cstd_activity_recovery]  WITH NOCHECK ADD  CONSTRAINT [oncd_activity_cstd_activity_recovery_781] FOREIGN KEY([activity_id])
 REFERENCES [dbo].[oncd_activity] ([activity_id])
 ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[cstd_activity_recovery] CHECK CONSTRAINT [oncd_activity_cstd_activity_recovery_781]
 GO
-ALTER TABLE [dbo].[cstd_activity_recovery]  WITH CHECK ADD  CONSTRAINT [oncd_company_cstd_activity_recovery_780] FOREIGN KEY([company_id])
+ALTER TABLE [dbo].[cstd_activity_recovery]  WITH NOCHECK ADD  CONSTRAINT [oncd_company_cstd_activity_recovery_780] FOREIGN KEY([company_id])
 REFERENCES [dbo].[oncd_company] ([company_id])
 ON DELETE CASCADE
 GO

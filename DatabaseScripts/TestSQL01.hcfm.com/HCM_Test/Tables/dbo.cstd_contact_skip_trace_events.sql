@@ -20,7 +20,7 @@ CREATE TABLE [dbo].[cstd_contact_skip_trace_events](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[cstd_contact_skip_trace_events]  WITH CHECK ADD  CONSTRAINT [contact_skip_trace_events_contact] FOREIGN KEY([contact_id])
+ALTER TABLE [dbo].[cstd_contact_skip_trace_events]  WITH NOCHECK ADD  CONSTRAINT [contact_skip_trace_events_contact] FOREIGN KEY([contact_id])
 REFERENCES [dbo].[oncd_contact] ([contact_id])
 GO
 ALTER TABLE [dbo].[cstd_contact_skip_trace_events] CHECK CONSTRAINT [contact_skip_trace_events_contact]

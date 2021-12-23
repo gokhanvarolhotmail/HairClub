@@ -22,22 +22,22 @@ CREATE TABLE [dbo].[cfgScheduleHolidayTemplate](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[cfgScheduleHolidayTemplate]  WITH CHECK ADD  CONSTRAINT [FK_cfgScheduleHolidayTemplate_lkpCenterType] FOREIGN KEY([CenterTypeID])
+ALTER TABLE [dbo].[cfgScheduleHolidayTemplate]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgScheduleHolidayTemplate_lkpCenterType] FOREIGN KEY([CenterTypeID])
 REFERENCES [dbo].[lkpCenterType] ([CenterTypeID])
 GO
 ALTER TABLE [dbo].[cfgScheduleHolidayTemplate] CHECK CONSTRAINT [FK_cfgScheduleHolidayTemplate_lkpCenterType]
 GO
-ALTER TABLE [dbo].[cfgScheduleHolidayTemplate]  WITH CHECK ADD  CONSTRAINT [FK_cfgScheduleHolidayTemplate_lkpCountry] FOREIGN KEY([CountryID])
+ALTER TABLE [dbo].[cfgScheduleHolidayTemplate]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgScheduleHolidayTemplate_lkpCountry] FOREIGN KEY([CountryID])
 REFERENCES [dbo].[lkpCountry] ([CountryID])
 GO
 ALTER TABLE [dbo].[cfgScheduleHolidayTemplate] CHECK CONSTRAINT [FK_cfgScheduleHolidayTemplate_lkpCountry]
 GO
-ALTER TABLE [dbo].[cfgScheduleHolidayTemplate]  WITH CHECK ADD  CONSTRAINT [FK_cfgScheduleHolidayTemplate_lkpScheduleCalendarType] FOREIGN KEY([ScheduleCalendarTypeID])
+ALTER TABLE [dbo].[cfgScheduleHolidayTemplate]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgScheduleHolidayTemplate_lkpScheduleCalendarType] FOREIGN KEY([ScheduleCalendarTypeID])
 REFERENCES [dbo].[lkpScheduleCalendarType] ([ScheduleCalendarTypeID])
 GO
 ALTER TABLE [dbo].[cfgScheduleHolidayTemplate] CHECK CONSTRAINT [FK_cfgScheduleHolidayTemplate_lkpScheduleCalendarType]
 GO
-ALTER TABLE [dbo].[cfgScheduleHolidayTemplate]  WITH CHECK ADD  CONSTRAINT [FK_cfgScheduleHolidayTemplate_lkpScheduleType] FOREIGN KEY([ScheduleTypeID])
+ALTER TABLE [dbo].[cfgScheduleHolidayTemplate]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgScheduleHolidayTemplate_lkpScheduleType] FOREIGN KEY([ScheduleTypeID])
 REFERENCES [dbo].[lkpScheduleType] ([ScheduleTypeID])
 GO
 ALTER TABLE [dbo].[cfgScheduleHolidayTemplate] CHECK CONSTRAINT [FK_cfgScheduleHolidayTemplate_lkpScheduleType]

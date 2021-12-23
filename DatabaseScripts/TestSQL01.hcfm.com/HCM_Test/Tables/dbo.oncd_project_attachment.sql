@@ -24,18 +24,18 @@ CREATE NONCLUSTERED INDEX [oncd_project_attachment_i2_] ON [dbo].[oncd_project_a
 	[project_id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[oncd_project_attachment]  WITH CHECK ADD  CONSTRAINT [project_project_atta_741] FOREIGN KEY([project_id])
+ALTER TABLE [dbo].[oncd_project_attachment]  WITH NOCHECK ADD  CONSTRAINT [project_project_atta_741] FOREIGN KEY([project_id])
 REFERENCES [dbo].[oncd_project] ([project_id])
 ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[oncd_project_attachment] CHECK CONSTRAINT [project_project_atta_741]
 GO
-ALTER TABLE [dbo].[oncd_project_attachment]  WITH CHECK ADD  CONSTRAINT [user_project_atta_978] FOREIGN KEY([created_by_user_code])
+ALTER TABLE [dbo].[oncd_project_attachment]  WITH NOCHECK ADD  CONSTRAINT [user_project_atta_978] FOREIGN KEY([created_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_project_attachment] CHECK CONSTRAINT [user_project_atta_978]
 GO
-ALTER TABLE [dbo].[oncd_project_attachment]  WITH CHECK ADD  CONSTRAINT [user_project_atta_979] FOREIGN KEY([updated_by_user_code])
+ALTER TABLE [dbo].[oncd_project_attachment]  WITH NOCHECK ADD  CONSTRAINT [user_project_atta_979] FOREIGN KEY([updated_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_project_attachment] CHECK CONSTRAINT [user_project_atta_979]

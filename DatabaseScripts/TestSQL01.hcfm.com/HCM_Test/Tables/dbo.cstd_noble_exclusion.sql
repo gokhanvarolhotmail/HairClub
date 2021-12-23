@@ -23,7 +23,7 @@ ALTER TABLE [dbo].[cstd_noble_exclusion] ADD  CONSTRAINT [DF_cstd_noble_exclusio
 GO
 ALTER TABLE [dbo].[cstd_noble_exclusion] ADD  CONSTRAINT [DF_cstd_noble_exclusions_output_flag]  DEFAULT ('N') FOR [output_flag]
 GO
-ALTER TABLE [dbo].[cstd_noble_exclusion]  WITH CHECK ADD  CONSTRAINT [FK_cstd_noble_exclusion_oncd_activity] FOREIGN KEY([activity_id])
+ALTER TABLE [dbo].[cstd_noble_exclusion]  WITH NOCHECK ADD  CONSTRAINT [FK_cstd_noble_exclusion_oncd_activity] FOREIGN KEY([activity_id])
 REFERENCES [dbo].[oncd_activity] ([activity_id])
 GO
 ALTER TABLE [dbo].[cstd_noble_exclusion] CHECK CONSTRAINT [FK_cstd_noble_exclusion_oncd_activity]

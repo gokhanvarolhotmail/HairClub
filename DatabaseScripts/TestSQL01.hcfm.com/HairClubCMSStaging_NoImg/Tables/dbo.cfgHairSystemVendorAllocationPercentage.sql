@@ -18,7 +18,7 @@ CREATE TABLE [dbo].[cfgHairSystemVendorAllocationPercentage](
 GO
 ALTER TABLE [dbo].[cfgHairSystemVendorAllocationPercentage] ADD  DEFAULT ((1)) FOR [IsContractPriceActive]
 GO
-ALTER TABLE [dbo].[cfgHairSystemVendorAllocationPercentage]  WITH CHECK ADD  CONSTRAINT [FK_cfgHairSystemVendorAllocationPercentage_cfgVendor] FOREIGN KEY([VendorID])
+ALTER TABLE [dbo].[cfgHairSystemVendorAllocationPercentage]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgHairSystemVendorAllocationPercentage_cfgVendor] FOREIGN KEY([VendorID])
 REFERENCES [dbo].[cfgVendor] ([VendorID])
 GO
 ALTER TABLE [dbo].[cfgHairSystemVendorAllocationPercentage] CHECK CONSTRAINT [FK_cfgHairSystemVendorAllocationPercentage_cfgVendor]

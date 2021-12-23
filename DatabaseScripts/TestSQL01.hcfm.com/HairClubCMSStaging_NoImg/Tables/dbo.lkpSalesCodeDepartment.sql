@@ -20,7 +20,7 @@ CREATE TABLE [dbo].[lkpSalesCodeDepartment](
 GO
 ALTER TABLE [dbo].[lkpSalesCodeDepartment] ADD  CONSTRAINT [DF_lkpSalesCodeDepartment_IsActiveFlag]  DEFAULT ((1)) FOR [IsActiveFlag]
 GO
-ALTER TABLE [dbo].[lkpSalesCodeDepartment]  WITH CHECK ADD  CONSTRAINT [FK_lkpSalesCodeDepartment_lkpSalesCodeDivision] FOREIGN KEY([SalesCodeDivisionID])
+ALTER TABLE [dbo].[lkpSalesCodeDepartment]  WITH NOCHECK ADD  CONSTRAINT [FK_lkpSalesCodeDepartment_lkpSalesCodeDivision] FOREIGN KEY([SalesCodeDivisionID])
 REFERENCES [dbo].[lkpSalesCodeDivision] ([SalesCodeDivisionID])
 GO
 ALTER TABLE [dbo].[lkpSalesCodeDepartment] CHECK CONSTRAINT [FK_lkpSalesCodeDepartment_lkpSalesCodeDivision]

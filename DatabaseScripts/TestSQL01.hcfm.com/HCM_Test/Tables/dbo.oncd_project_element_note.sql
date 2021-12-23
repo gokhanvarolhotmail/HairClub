@@ -13,18 +13,18 @@ CREATE TABLE [dbo].[oncd_project_element_note](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[oncd_project_element_note]  WITH CHECK ADD  CONSTRAINT [project_elem_project_elem_754] FOREIGN KEY([project_element_id])
+ALTER TABLE [dbo].[oncd_project_element_note]  WITH NOCHECK ADD  CONSTRAINT [project_elem_project_elem_754] FOREIGN KEY([project_element_id])
 REFERENCES [dbo].[oncd_project_element] ([project_element_id])
 ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[oncd_project_element_note] CHECK CONSTRAINT [project_elem_project_elem_754]
 GO
-ALTER TABLE [dbo].[oncd_project_element_note]  WITH CHECK ADD  CONSTRAINT [user_project_elem_1004] FOREIGN KEY([created_by_user_code])
+ALTER TABLE [dbo].[oncd_project_element_note]  WITH NOCHECK ADD  CONSTRAINT [user_project_elem_1004] FOREIGN KEY([created_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_project_element_note] CHECK CONSTRAINT [user_project_elem_1004]
 GO
-ALTER TABLE [dbo].[oncd_project_element_note]  WITH CHECK ADD  CONSTRAINT [user_project_elem_1005] FOREIGN KEY([updated_by_user_code])
+ALTER TABLE [dbo].[oncd_project_element_note]  WITH NOCHECK ADD  CONSTRAINT [user_project_elem_1005] FOREIGN KEY([updated_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_project_element_note] CHECK CONSTRAINT [user_project_elem_1005]

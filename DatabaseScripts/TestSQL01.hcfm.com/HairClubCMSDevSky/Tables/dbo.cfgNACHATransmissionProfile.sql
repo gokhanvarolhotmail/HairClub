@@ -23,7 +23,7 @@ CREATE TABLE [dbo].[cfgNACHATransmissionProfile](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[cfgNACHATransmissionProfile]  WITH CHECK ADD  CONSTRAINT [FK_cfgNACHATransmissionProfile_lkpNACHATransmissionProtocol] FOREIGN KEY([NACHATransmissionProtocolID])
+ALTER TABLE [dbo].[cfgNACHATransmissionProfile]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgNACHATransmissionProfile_lkpNACHATransmissionProtocol] FOREIGN KEY([NACHATransmissionProtocolID])
 REFERENCES [dbo].[lkpNACHATransmissionProtocol] ([NACHATransmissionProtocolID])
 GO
 ALTER TABLE [dbo].[cfgNACHATransmissionProfile] CHECK CONSTRAINT [FK_cfgNACHATransmissionProfile_lkpNACHATransmissionProtocol]

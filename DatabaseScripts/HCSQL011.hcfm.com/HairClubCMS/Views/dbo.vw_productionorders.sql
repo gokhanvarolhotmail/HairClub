@@ -103,3 +103,702 @@ FROM         dbo.datHairSystemOrder AS O LEFT OUTER JOIN
                       dbo.datPurchaseOrder as po on pod.PurchaseOrderGUID = po.PurchaseOrderGUID left outer join
                       dbo.cfgVendor vdr on po.VendorID = vdr.VendorID
 GO
+EXEC sys.sp_addextendedproperty @name=N'MS_DiagramPane1', @value=N'[0E232FF0-B466-11cf-A24F-00AA00A3EFFF, 1.00]
+Begin DesignProperties =
+   Begin PaneConfigurations =
+      Begin PaneConfiguration = 0
+         NumPanes = 4
+         Configuration = "(H (1[40] 4[20] 2[20] 3) )"
+      End
+      Begin PaneConfiguration = 1
+         NumPanes = 3
+         Configuration = "(H (1 [50] 4 [25] 3))"
+      End
+      Begin PaneConfiguration = 2
+         NumPanes = 3
+         Configuration = "(H (1 [50] 2 [25] 3))"
+      End
+      Begin PaneConfiguration = 3
+         NumPanes = 3
+         Configuration = "(H (4 [30] 2 [40] 3))"
+      End
+      Begin PaneConfiguration = 4
+         NumPanes = 2
+         Configuration = "(H (1 [56] 3))"
+      End
+      Begin PaneConfiguration = 5
+         NumPanes = 2
+         Configuration = "(H (2 [66] 3))"
+      End
+      Begin PaneConfiguration = 6
+         NumPanes = 2
+         Configuration = "(H (4 [50] 3))"
+      End
+      Begin PaneConfiguration = 7
+         NumPanes = 1
+         Configuration = "(V (3))"
+      End
+      Begin PaneConfiguration = 8
+         NumPanes = 3
+         Configuration = "(H (1[56] 4[18] 2) )"
+      End
+      Begin PaneConfiguration = 9
+         NumPanes = 2
+         Configuration = "(H (1 [75] 4))"
+      End
+      Begin PaneConfiguration = 10
+         NumPanes = 2
+         Configuration = "(H (1[66] 2) )"
+      End
+      Begin PaneConfiguration = 11
+         NumPanes = 2
+         Configuration = "(H (4 [60] 2))"
+      End
+      Begin PaneConfiguration = 12
+         NumPanes = 1
+         Configuration = "(H (1) )"
+      End
+      Begin PaneConfiguration = 13
+         NumPanes = 1
+         Configuration = "(V (4))"
+      End
+      Begin PaneConfiguration = 14
+         NumPanes = 1
+         Configuration = "(V (2))"
+      End
+      ActivePaneConfig = 0
+   End
+   Begin DiagramPane =
+      Begin Origin =
+         Top = 0
+         Left = 0
+      End
+      Begin Tables =
+         Begin Table = "O"
+            Begin Extent =
+               Top = 6
+               Left = 38
+               Bottom = 125
+               Right = 353
+            End
+            DisplayFlags = 280
+            TopColumn = 0
+         End
+         Begin Table = "lkpHairSystemOrderStatus"
+            Begin Extent =
+               Top = 6
+               Left = 391
+               Bottom = 125
+               Right = 672
+            End
+            DisplayFlags = 280
+            TopColumn = 0
+         End
+         Begin Table = "Client"
+            Begin Extent =
+               Top = 126
+               Left = 38
+               Bottom = 245
+               Right = 353
+            End
+            DisplayFlags = 280
+            TopColumn = 0
+         End
+         Begin Table = "OrigClient"
+            Begin Extent =
+               Top = 126
+               Left = 391
+               Bottom = 245
+               Right = 706
+            End
+            DisplayFlags = 280
+            TopColumn = 0
+         End
+         Begin Table = "datClientMembership"
+            Begin Extent =
+               Top = 246
+               Left = 38
+               Bottom = 365
+               Right = 263
+            End
+            DisplayFlags = 280
+            TopColumn = 0
+         End
+         Begin Table = "cfgMembership"
+            Begin Extent =
+               Top = 246
+               Left = 301
+               Bottom = 365
+               Right = 526
+            End
+            DisplayFlags = 280
+            TopColumn = 0
+         End
+         Begin Table = "cfgHairSystem"
+            Begin Extent =
+               Top = 246
+               Left = 564
+               Bottom = 365
+               Right = 786
+           ' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'VIEW',@level1name=N'vw_productionorders'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_DiagramPane2', @value=N' End
+            DisplayFlags = 280
+            TopColumn = 0
+         End
+         Begin Table = "OrigHairSystemOrder"
+            Begin Extent =
+               Top = 366
+               Left = 38
+               Bottom = 485
+               Right = 353
+            End
+            DisplayFlags = 280
+            TopColumn = 0
+         End
+         Begin Table = "lkpHairSystemMatrixColor"
+            Begin Extent =
+               Top = 366
+               Left = 391
+               Bottom = 485
+               Right = 668
+            End
+            DisplayFlags = 280
+            TopColumn = 0
+         End
+         Begin Table = "lkpHairSystemDesignTemplate"
+            Begin Extent =
+               Top = 486
+               Left = 38
+               Bottom = 605
+               Right = 336
+            End
+            DisplayFlags = 280
+            TopColumn = 0
+         End
+         Begin Table = "lkpHairSystemRecession"
+            Begin Extent =
+               Top = 486
+               Left = 374
+               Bottom = 605
+               Right = 644
+            End
+            DisplayFlags = 280
+            TopColumn = 0
+         End
+         Begin Table = "lkpHairSystemDensity"
+            Begin Extent =
+               Top = 606
+               Left = 38
+               Bottom = 725
+               Right = 296
+            End
+            DisplayFlags = 280
+            TopColumn = 0
+         End
+         Begin Table = "lkpHairSystemFrontalDensity"
+            Begin Extent =
+               Top = 606
+               Left = 334
+               Bottom = 725
+               Right = 626
+            End
+            DisplayFlags = 280
+            TopColumn = 0
+         End
+         Begin Table = "lkpHairSystemHairLength"
+            Begin Extent =
+               Top = 726
+               Left = 38
+               Bottom = 845
+               Right = 312
+            End
+            DisplayFlags = 280
+            TopColumn = 0
+         End
+         Begin Table = "lkpHairSystemFrontalDesign"
+            Begin Extent =
+               Top = 726
+               Left = 350
+               Bottom = 845
+               Right = 638
+            End
+            DisplayFlags = 280
+            TopColumn = 0
+         End
+         Begin Table = "lkpHairSystemCurl"
+            Begin Extent =
+               Top = 846
+               Left = 38
+               Bottom = 965
+               Right = 279
+            End
+            DisplayFlags = 280
+            TopColumn = 0
+         End
+         Begin Table = "lkpHairSystemStyle"
+            Begin Extent =
+               Top = 846
+               Left = 317
+               Bottom = 965
+               Right = 563
+            End
+            DisplayFlags = 280
+            TopColumn = 0
+         End
+         Begin Table = "chmmain"
+            Begin Extent =
+               Top = 966
+               Left = 38
+               Bottom = 1085
+               Right = 317
+            End
+            DisplayFlags = 280
+            TopColumn = 0
+         End
+         Begin Table = "cfrmain"
+            Begin Extent =
+               Top = 966
+               Left = 355
+               Bottom = 1085
+               Right = 621
+            End
+            DisplayFlags = 280
+            TopColumn = 0
+         End
+         Begin Table = "ctmmain"
+            Begin Extent =
+               Top = 1086
+               Left = 38
+               Bottom = 1205
+               Right = 304
+            End
+            DisplayFlags = 280
+            TopColumn = 0
+         End
+         Begin Table = "ctomain"
+            Begin Extent =
+               Top = 1086
+           ' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'VIEW',@level1name=N'vw_productionorders'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_DiagramPane3', @value=N'    Left = 342
+               Bottom = 1205
+               Right = 608
+            End
+            DisplayFlags = 280
+            TopColumn = 0
+         End
+         Begin Table = "csdmain"
+            Begin Extent =
+               Top = 1206
+               Left = 38
+               Bottom = 1325
+               Right = 304
+            End
+            DisplayFlags = 280
+            TopColumn = 0
+         End
+         Begin Table = "ccrmain"
+            Begin Extent =
+               Top = 1206
+               Left = 342
+               Bottom = 1325
+               Right = 608
+            End
+            DisplayFlags = 280
+            TopColumn = 0
+         End
+         Begin Table = "cbkmain"
+            Begin Extent =
+               Top = 1326
+               Left = 38
+               Bottom = 1445
+               Right = 304
+            End
+            DisplayFlags = 280
+            TopColumn = 0
+         End
+         Begin Table = "chmh1"
+            Begin Extent =
+               Top = 1326
+               Left = 342
+               Bottom = 1445
+               Right = 621
+            End
+            DisplayFlags = 280
+            TopColumn = 0
+         End
+         Begin Table = "chlh1"
+            Begin Extent =
+               Top = 1446
+               Left = 38
+               Bottom = 1565
+               Right = 301
+            End
+            DisplayFlags = 280
+            TopColumn = 0
+         End
+         Begin Table = "cfrh1"
+            Begin Extent =
+               Top = 1446
+               Left = 339
+               Bottom = 1565
+               Right = 605
+            End
+            DisplayFlags = 280
+            TopColumn = 0
+         End
+         Begin Table = "pfrh1"
+            Begin Extent =
+               Top = 1566
+               Left = 38
+               Bottom = 1685
+               Right = 340
+            End
+            DisplayFlags = 280
+            TopColumn = 0
+         End
+         Begin Table = "ctmh1"
+            Begin Extent =
+               Top = 1566
+               Left = 378
+               Bottom = 1685
+               Right = 644
+            End
+            DisplayFlags = 280
+            TopColumn = 0
+         End
+         Begin Table = "ptmh1"
+            Begin Extent =
+               Top = 1686
+               Left = 38
+               Bottom = 1805
+               Right = 340
+            End
+            DisplayFlags = 280
+            TopColumn = 0
+         End
+         Begin Table = "ctoh1"
+            Begin Extent =
+               Top = 1686
+               Left = 378
+               Bottom = 1805
+               Right = 644
+            End
+            DisplayFlags = 280
+            TopColumn = 0
+         End
+         Begin Table = "ptoh1"
+            Begin Extent =
+               Top = 1806
+               Left = 38
+               Bottom = 1925
+               Right = 340
+            End
+            DisplayFlags = 280
+            TopColumn = 0
+         End
+         Begin Table = "csdh1"
+            Begin Extent =
+               Top = 1806
+               Left = 378
+               Bottom = 1925
+               Right = 644
+            End
+            DisplayFlags = 280
+            TopColumn = 0
+         End
+         Begin Table = "psdh1"
+            Begin Extent =
+               Top = 1926
+               Left = 38
+               Bottom = 2045
+               Right = 340
+            End
+            DisplayFlags = 280
+            TopColumn = 0
+         End
+         Begin Table = "ccrh1"
+            Begin Extent =
+               Top = 1926
+               Left = 378
+               Bottom = 2045
+               Right =' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'VIEW',@level1name=N'vw_productionorders'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_DiagramPane4', @value=N' 644
+            End
+            DisplayFlags = 280
+            TopColumn = 0
+         End
+         Begin Table = "pcrh1"
+            Begin Extent =
+               Top = 2046
+               Left = 38
+               Bottom = 2165
+               Right = 340
+            End
+            DisplayFlags = 280
+            TopColumn = 0
+         End
+         Begin Table = "cbkh1"
+            Begin Extent =
+               Top = 2046
+               Left = 378
+               Bottom = 2165
+               Right = 644
+            End
+            DisplayFlags = 280
+            TopColumn = 0
+         End
+         Begin Table = "pbkh1"
+            Begin Extent =
+               Top = 2166
+               Left = 38
+               Bottom = 2285
+               Right = 340
+            End
+            DisplayFlags = 280
+            TopColumn = 0
+         End
+         Begin Table = "chmh2"
+            Begin Extent =
+               Top = 2166
+               Left = 378
+               Bottom = 2285
+               Right = 657
+            End
+            DisplayFlags = 280
+            TopColumn = 0
+         End
+         Begin Table = "chlh2"
+            Begin Extent =
+               Top = 2286
+               Left = 38
+               Bottom = 2405
+               Right = 301
+            End
+            DisplayFlags = 280
+            TopColumn = 0
+         End
+         Begin Table = "cfrh2"
+            Begin Extent =
+               Top = 2286
+               Left = 339
+               Bottom = 2405
+               Right = 605
+            End
+            DisplayFlags = 280
+            TopColumn = 0
+         End
+         Begin Table = "pfrh2"
+            Begin Extent =
+               Top = 2406
+               Left = 38
+               Bottom = 2525
+               Right = 340
+            End
+            DisplayFlags = 280
+            TopColumn = 0
+         End
+         Begin Table = "ctmh2"
+            Begin Extent =
+               Top = 2406
+               Left = 378
+               Bottom = 2525
+               Right = 644
+            End
+            DisplayFlags = 280
+            TopColumn = 0
+         End
+         Begin Table = "ptmh2"
+            Begin Extent =
+               Top = 2526
+               Left = 38
+               Bottom = 2645
+               Right = 340
+            End
+            DisplayFlags = 280
+            TopColumn = 0
+         End
+         Begin Table = "ctoh2"
+            Begin Extent =
+               Top = 2526
+               Left = 378
+               Bottom = 2645
+               Right = 644
+            End
+            DisplayFlags = 280
+            TopColumn = 0
+         End
+         Begin Table = "ptoh2"
+            Begin Extent =
+               Top = 2646
+               Left = 38
+               Bottom = 2765
+               Right = 340
+            End
+            DisplayFlags = 280
+            TopColumn = 0
+         End
+         Begin Table = "csdh2"
+            Begin Extent =
+               Top = 2646
+               Left = 378
+               Bottom = 2765
+               Right = 644
+            End
+            DisplayFlags = 280
+            TopColumn = 0
+         End
+         Begin Table = "psdh2"
+            Begin Extent =
+               Top = 2766
+               Left = 38
+               Bottom = 2885
+               Right = 340
+            End
+            DisplayFlags = 280
+            TopColumn = 0
+         End
+         Begin Table = "ccrh2"
+            Begin Extent =
+               Top = 2766
+               Left = 378
+               Bottom = 2885
+               Right = 644
+            End
+            DisplayFlags = 280
+            TopColu' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'VIEW',@level1name=N'vw_productionorders'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_DiagramPane5', @value=N'mn = 0
+         End
+         Begin Table = "pcrh2"
+            Begin Extent =
+               Top = 2886
+               Left = 38
+               Bottom = 3005
+               Right = 340
+            End
+            DisplayFlags = 280
+            TopColumn = 0
+         End
+         Begin Table = "cbkh2"
+            Begin Extent =
+               Top = 2886
+               Left = 378
+               Bottom = 3005
+               Right = 644
+            End
+            DisplayFlags = 280
+            TopColumn = 0
+         End
+         Begin Table = "pbkh2"
+            Begin Extent =
+               Top = 3006
+               Left = 38
+               Bottom = 3125
+               Right = 340
+            End
+            DisplayFlags = 280
+            TopColumn = 0
+         End
+         Begin Table = "chmgr"
+            Begin Extent =
+               Top = 3006
+               Left = 378
+               Bottom = 3125
+               Right = 657
+            End
+            DisplayFlags = 280
+            TopColumn = 0
+         End
+         Begin Table = "cfrgr"
+            Begin Extent =
+               Top = 3126
+               Left = 38
+               Bottom = 3245
+               Right = 340
+            End
+            DisplayFlags = 280
+            TopColumn = 0
+         End
+         Begin Table = "ctmgr"
+            Begin Extent =
+               Top = 3126
+               Left = 378
+               Bottom = 3245
+               Right = 680
+            End
+            DisplayFlags = 280
+            TopColumn = 0
+         End
+         Begin Table = "ctogr"
+            Begin Extent =
+               Top = 3246
+               Left = 38
+               Bottom = 3365
+               Right = 340
+            End
+            DisplayFlags = 280
+            TopColumn = 0
+         End
+         Begin Table = "csdgr"
+            Begin Extent =
+               Top = 3246
+               Left = 378
+               Bottom = 3365
+               Right = 680
+            End
+            DisplayFlags = 280
+            TopColumn = 0
+         End
+         Begin Table = "ccrgr"
+            Begin Extent =
+               Top = 3366
+               Left = 38
+               Bottom = 3485
+               Right = 340
+            End
+            DisplayFlags = 280
+            TopColumn = 0
+         End
+         Begin Table = "cbkgr"
+            Begin Extent =
+               Top = 3366
+               Left = 378
+               Bottom = 3485
+               Right = 680
+            End
+            DisplayFlags = 280
+            TopColumn = 0
+         End
+      End
+   End
+   Begin SQLPane =
+   End
+   Begin DataPane =
+      Begin ParameterDefaults = ""
+      End
+   End
+   Begin CriteriaPane =
+      Begin ColumnWidths = 11
+         Column = 1440
+         Alias = 1650
+         Table = 1635
+         Output = 720
+         Append = 1400
+         NewValue = 1170
+         SortType = 1350
+         SortOrder = 1410
+         GroupBy = 1350
+         Filter = 1350
+         Or = 1350
+         Or = 1350
+         Or = 1350
+      End
+   End
+End
+' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'VIEW',@level1name=N'vw_productionorders'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_DiagramPaneCount', @value=5 , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'VIEW',@level1name=N'vw_productionorders'
+GO

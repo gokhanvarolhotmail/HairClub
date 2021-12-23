@@ -30,27 +30,27 @@ ALTER TABLE [dbo].[onca_action] ADD  CONSTRAINT [DF_onca_action_cst_noble_additi
 GO
 ALTER TABLE [dbo].[onca_action] ADD  CONSTRAINT [DF_onca_action_cst_is_outbound_call]  DEFAULT ('N') FOR [cst_is_outbound_call]
 GO
-ALTER TABLE [dbo].[onca_action]  WITH CHECK ADD  CONSTRAINT [action_type_action_266] FOREIGN KEY([action_type_code])
+ALTER TABLE [dbo].[onca_action]  WITH NOCHECK ADD  CONSTRAINT [action_type_action_266] FOREIGN KEY([action_type_code])
 REFERENCES [dbo].[onca_action_type] ([action_type_code])
 GO
 ALTER TABLE [dbo].[onca_action] CHECK CONSTRAINT [action_type_action_266]
 GO
-ALTER TABLE [dbo].[onca_action]  WITH CHECK ADD  CONSTRAINT [campaign_action_799] FOREIGN KEY([campaign_code])
+ALTER TABLE [dbo].[onca_action]  WITH NOCHECK ADD  CONSTRAINT [campaign_action_799] FOREIGN KEY([campaign_code])
 REFERENCES [dbo].[onca_campaign] ([campaign_code])
 GO
 ALTER TABLE [dbo].[onca_action] CHECK CONSTRAINT [campaign_action_799]
 GO
-ALTER TABLE [dbo].[onca_action]  WITH CHECK ADD  CONSTRAINT [chain_action_800] FOREIGN KEY([chain_id])
+ALTER TABLE [dbo].[onca_action]  WITH NOCHECK ADD  CONSTRAINT [chain_action_800] FOREIGN KEY([chain_id])
 REFERENCES [dbo].[onca_chain] ([chain_id])
 GO
 ALTER TABLE [dbo].[onca_action] CHECK CONSTRAINT [chain_action_800]
 GO
-ALTER TABLE [dbo].[onca_action]  WITH CHECK ADD  CONSTRAINT [FK_onca_action_csta_script_category] FOREIGN KEY([cst_category_code])
+ALTER TABLE [dbo].[onca_action]  WITH NOCHECK ADD  CONSTRAINT [FK_onca_action_csta_script_category] FOREIGN KEY([cst_category_code])
 REFERENCES [dbo].[csta_script_category] ([category_code])
 GO
 ALTER TABLE [dbo].[onca_action] CHECK CONSTRAINT [FK_onca_action_csta_script_category]
 GO
-ALTER TABLE [dbo].[onca_action]  WITH CHECK ADD  CONSTRAINT [source_action_801] FOREIGN KEY([source_code])
+ALTER TABLE [dbo].[onca_action]  WITH NOCHECK ADD  CONSTRAINT [source_action_801] FOREIGN KEY([source_code])
 REFERENCES [dbo].[onca_source] ([source_code])
 GO
 ALTER TABLE [dbo].[onca_action] CHECK CONSTRAINT [source_action_801]

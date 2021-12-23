@@ -31,29 +31,29 @@ CREATE NONCLUSTERED INDEX [oncd_invoice_time_i3] ON [dbo].[oncd_invoice_time]
 	[project_time_id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[oncd_invoice_time]  WITH CHECK ADD  CONSTRAINT [invoice_invoice_time_738] FOREIGN KEY([invoice_id])
+ALTER TABLE [dbo].[oncd_invoice_time]  WITH NOCHECK ADD  CONSTRAINT [invoice_invoice_time_738] FOREIGN KEY([invoice_id])
 REFERENCES [dbo].[oncd_invoice] ([invoice_id])
 ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[oncd_invoice_time] CHECK CONSTRAINT [invoice_invoice_time_738]
 GO
-ALTER TABLE [dbo].[oncd_invoice_time]  WITH CHECK ADD  CONSTRAINT [project_time_invoice_time_782] FOREIGN KEY([project_time_id])
+ALTER TABLE [dbo].[oncd_invoice_time]  WITH NOCHECK ADD  CONSTRAINT [project_time_invoice_time_782] FOREIGN KEY([project_time_id])
 REFERENCES [dbo].[oncd_project_time] ([project_time_id])
 ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[oncd_invoice_time] CHECK CONSTRAINT [project_time_invoice_time_782]
 GO
-ALTER TABLE [dbo].[oncd_invoice_time]  WITH CHECK ADD  CONSTRAINT [user_invoice_time_1147] FOREIGN KEY([approved_by_user_code])
+ALTER TABLE [dbo].[oncd_invoice_time]  WITH NOCHECK ADD  CONSTRAINT [user_invoice_time_1147] FOREIGN KEY([approved_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_invoice_time] CHECK CONSTRAINT [user_invoice_time_1147]
 GO
-ALTER TABLE [dbo].[oncd_invoice_time]  WITH CHECK ADD  CONSTRAINT [user_invoice_time_970] FOREIGN KEY([created_by_user_code])
+ALTER TABLE [dbo].[oncd_invoice_time]  WITH NOCHECK ADD  CONSTRAINT [user_invoice_time_970] FOREIGN KEY([created_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_invoice_time] CHECK CONSTRAINT [user_invoice_time_970]
 GO
-ALTER TABLE [dbo].[oncd_invoice_time]  WITH CHECK ADD  CONSTRAINT [user_invoice_time_971] FOREIGN KEY([updated_by_user_code])
+ALTER TABLE [dbo].[oncd_invoice_time]  WITH NOCHECK ADD  CONSTRAINT [user_invoice_time_971] FOREIGN KEY([updated_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_invoice_time] CHECK CONSTRAINT [user_invoice_time_971]

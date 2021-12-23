@@ -15,12 +15,12 @@ CREATE TABLE [dbo].[cfgHairSystemVendorContractHairSystemCurl](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[cfgHairSystemVendorContractHairSystemCurl]  WITH CHECK ADD  CONSTRAINT [FK_cfgHairSystemVendorContractHairSystemCurl_cfgHairSystemVendorContract] FOREIGN KEY([HairSystemVendorContractID])
+ALTER TABLE [dbo].[cfgHairSystemVendorContractHairSystemCurl]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgHairSystemVendorContractHairSystemCurl_cfgHairSystemVendorContract] FOREIGN KEY([HairSystemVendorContractID])
 REFERENCES [dbo].[cfgHairSystemVendorContract] ([HairSystemVendorContractID])
 GO
 ALTER TABLE [dbo].[cfgHairSystemVendorContractHairSystemCurl] CHECK CONSTRAINT [FK_cfgHairSystemVendorContractHairSystemCurl_cfgHairSystemVendorContract]
 GO
-ALTER TABLE [dbo].[cfgHairSystemVendorContractHairSystemCurl]  WITH CHECK ADD  CONSTRAINT [FK_cfgHairSystemVendorContractHairSystemCurl_lkpHairSystemCurl] FOREIGN KEY([HairSystemCurlID])
+ALTER TABLE [dbo].[cfgHairSystemVendorContractHairSystemCurl]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgHairSystemVendorContractHairSystemCurl_lkpHairSystemCurl] FOREIGN KEY([HairSystemCurlID])
 REFERENCES [dbo].[lkpHairSystemCurl] ([HairSystemCurlID])
 GO
 ALTER TABLE [dbo].[cfgHairSystemVendorContractHairSystemCurl] CHECK CONSTRAINT [FK_cfgHairSystemVendorContractHairSystemCurl_lkpHairSystemCurl]

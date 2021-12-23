@@ -18,12 +18,12 @@ CREATE TABLE [dbo].[oncs_transaction_apply](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[oncs_transaction_apply]  WITH CHECK ADD  CONSTRAINT [action_transaction_897] FOREIGN KEY([sql_action_code])
+ALTER TABLE [dbo].[oncs_transaction_apply]  WITH NOCHECK ADD  CONSTRAINT [action_transaction_897] FOREIGN KEY([sql_action_code])
 REFERENCES [dbo].[onca_action] ([action_code])
 GO
 ALTER TABLE [dbo].[oncs_transaction_apply] CHECK CONSTRAINT [action_transaction_897]
 GO
-ALTER TABLE [dbo].[oncs_transaction_apply]  WITH CHECK ADD  CONSTRAINT [packet_transaction__387] FOREIGN KEY([packet_id])
+ALTER TABLE [dbo].[oncs_transaction_apply]  WITH NOCHECK ADD  CONSTRAINT [packet_transaction__387] FOREIGN KEY([packet_id])
 REFERENCES [dbo].[oncs_packet] ([packet_id])
 ON DELETE CASCADE
 GO

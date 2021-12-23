@@ -55,27 +55,27 @@ ALTER TABLE [dbo].[datCenterFeeBatch] ADD  DEFAULT ((0)) FOR [AreARPaymentsAppli
 GO
 ALTER TABLE [dbo].[datCenterFeeBatch] ADD  CONSTRAINT [DF_datCenterFeeBatch_IsNACHAFileCreated]  DEFAULT ((0)) FOR [IsNACHAFileCreated]
 GO
-ALTER TABLE [dbo].[datCenterFeeBatch]  WITH CHECK ADD  CONSTRAINT [FK_datCenterFeeBatch_cfgCenter] FOREIGN KEY([CenterID])
+ALTER TABLE [dbo].[datCenterFeeBatch]  WITH NOCHECK ADD  CONSTRAINT [FK_datCenterFeeBatch_cfgCenter] FOREIGN KEY([CenterID])
 REFERENCES [dbo].[cfgCenter] ([CenterID])
 GO
 ALTER TABLE [dbo].[datCenterFeeBatch] CHECK CONSTRAINT [FK_datCenterFeeBatch_cfgCenter]
 GO
-ALTER TABLE [dbo].[datCenterFeeBatch]  WITH CHECK ADD  CONSTRAINT [FK_datCenterFeeBatch_datEmployee] FOREIGN KEY([ApprovedByEmployeeGUID])
+ALTER TABLE [dbo].[datCenterFeeBatch]  WITH NOCHECK ADD  CONSTRAINT [FK_datCenterFeeBatch_datEmployee] FOREIGN KEY([ApprovedByEmployeeGUID])
 REFERENCES [dbo].[datEmployee] ([EmployeeGUID])
 GO
 ALTER TABLE [dbo].[datCenterFeeBatch] CHECK CONSTRAINT [FK_datCenterFeeBatch_datEmployee]
 GO
-ALTER TABLE [dbo].[datCenterFeeBatch]  WITH CHECK ADD  CONSTRAINT [FK_datCenterFeeBatch_datEmployee1] FOREIGN KEY([RunByEmployeeGUID])
+ALTER TABLE [dbo].[datCenterFeeBatch]  WITH NOCHECK ADD  CONSTRAINT [FK_datCenterFeeBatch_datEmployee1] FOREIGN KEY([RunByEmployeeGUID])
 REFERENCES [dbo].[datEmployee] ([EmployeeGUID])
 GO
 ALTER TABLE [dbo].[datCenterFeeBatch] CHECK CONSTRAINT [FK_datCenterFeeBatch_datEmployee1]
 GO
-ALTER TABLE [dbo].[datCenterFeeBatch]  WITH CHECK ADD  CONSTRAINT [FK_datCenterFeeBatch_lkpFeeCenterBatchStatus] FOREIGN KEY([CenterFeeBatchStatusId])
+ALTER TABLE [dbo].[datCenterFeeBatch]  WITH NOCHECK ADD  CONSTRAINT [FK_datCenterFeeBatch_lkpFeeCenterBatchStatus] FOREIGN KEY([CenterFeeBatchStatusId])
 REFERENCES [dbo].[lkpCenterFeeBatchStatus] ([CenterFeeBatchStatusID])
 GO
 ALTER TABLE [dbo].[datCenterFeeBatch] CHECK CONSTRAINT [FK_datCenterFeeBatch_lkpFeeCenterBatchStatus]
 GO
-ALTER TABLE [dbo].[datCenterFeeBatch]  WITH CHECK ADD  CONSTRAINT [FK_datCenterFeeBatch_lkpFeePayCycle] FOREIGN KEY([FeePayCycleID])
+ALTER TABLE [dbo].[datCenterFeeBatch]  WITH NOCHECK ADD  CONSTRAINT [FK_datCenterFeeBatch_lkpFeePayCycle] FOREIGN KEY([FeePayCycleID])
 REFERENCES [dbo].[lkpFeePayCycle] ([FeePayCycleID])
 ON UPDATE CASCADE
 ON DELETE CASCADE

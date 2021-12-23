@@ -12,13 +12,13 @@ CREATE TABLE [dbo].[oncd_project_revision](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[oncd_project_revision]  WITH CHECK ADD  CONSTRAINT [project_project_revi_747] FOREIGN KEY([project_id])
+ALTER TABLE [dbo].[oncd_project_revision]  WITH NOCHECK ADD  CONSTRAINT [project_project_revi_747] FOREIGN KEY([project_id])
 REFERENCES [dbo].[oncd_project] ([project_id])
 ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[oncd_project_revision] CHECK CONSTRAINT [project_project_revi_747]
 GO
-ALTER TABLE [dbo].[oncd_project_revision]  WITH CHECK ADD  CONSTRAINT [user_project_revi_1023] FOREIGN KEY([user_code])
+ALTER TABLE [dbo].[oncd_project_revision]  WITH NOCHECK ADD  CONSTRAINT [user_project_revi_1023] FOREIGN KEY([user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_project_revision] CHECK CONSTRAINT [user_project_revi_1023]

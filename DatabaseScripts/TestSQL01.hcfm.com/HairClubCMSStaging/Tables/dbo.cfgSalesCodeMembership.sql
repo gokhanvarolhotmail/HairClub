@@ -43,22 +43,22 @@ ALTER TABLE [dbo].[cfgSalesCodeMembership] ADD  CONSTRAINT [DF_cfgSalesCodeMembe
 GO
 ALTER TABLE [dbo].[cfgSalesCodeMembership] ADD  DEFAULT ((0)) FOR [IsFinancedToARFlag]
 GO
-ALTER TABLE [dbo].[cfgSalesCodeMembership]  WITH CHECK ADD  CONSTRAINT [FK_cfgSalesCodeMembership_cfgCenterTaxRate] FOREIGN KEY([TaxRate1ID])
+ALTER TABLE [dbo].[cfgSalesCodeMembership]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgSalesCodeMembership_cfgCenterTaxRate] FOREIGN KEY([TaxRate1ID])
 REFERENCES [dbo].[cfgCenterTaxRate] ([CenterTaxRateID])
 GO
 ALTER TABLE [dbo].[cfgSalesCodeMembership] CHECK CONSTRAINT [FK_cfgSalesCodeMembership_cfgCenterTaxRate]
 GO
-ALTER TABLE [dbo].[cfgSalesCodeMembership]  WITH CHECK ADD  CONSTRAINT [FK_cfgSalesCodeMembership_cfgCenterTaxRate1] FOREIGN KEY([TaxRate2ID])
+ALTER TABLE [dbo].[cfgSalesCodeMembership]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgSalesCodeMembership_cfgCenterTaxRate1] FOREIGN KEY([TaxRate2ID])
 REFERENCES [dbo].[cfgCenterTaxRate] ([CenterTaxRateID])
 GO
 ALTER TABLE [dbo].[cfgSalesCodeMembership] CHECK CONSTRAINT [FK_cfgSalesCodeMembership_cfgCenterTaxRate1]
 GO
-ALTER TABLE [dbo].[cfgSalesCodeMembership]  WITH CHECK ADD  CONSTRAINT [FK_cfgSalesCodeMembership_cfgMembership] FOREIGN KEY([MembershipID])
+ALTER TABLE [dbo].[cfgSalesCodeMembership]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgSalesCodeMembership_cfgMembership] FOREIGN KEY([MembershipID])
 REFERENCES [dbo].[cfgMembership] ([MembershipID])
 GO
 ALTER TABLE [dbo].[cfgSalesCodeMembership] CHECK CONSTRAINT [FK_cfgSalesCodeMembership_cfgMembership]
 GO
-ALTER TABLE [dbo].[cfgSalesCodeMembership]  WITH CHECK ADD  CONSTRAINT [FK_cfgSalesCodeMembership_cfgSalesCodeCenter] FOREIGN KEY([SalesCodeCenterID])
+ALTER TABLE [dbo].[cfgSalesCodeMembership]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgSalesCodeMembership_cfgSalesCodeCenter] FOREIGN KEY([SalesCodeCenterID])
 REFERENCES [dbo].[cfgSalesCodeCenter] ([SalesCodeCenterID])
 GO
 ALTER TABLE [dbo].[cfgSalesCodeMembership] CHECK CONSTRAINT [FK_cfgSalesCodeMembership_cfgSalesCodeCenter]

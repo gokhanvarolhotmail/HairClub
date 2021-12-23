@@ -22,12 +22,12 @@ CREATE TABLE [dbo].[lkpPhoneType](
 GO
 ALTER TABLE [dbo].[lkpPhoneType] ADD  CONSTRAINT [DF_lkpPhoneType_IsActiveFlag]  DEFAULT ((1)) FOR [IsActiveFlag]
 GO
-ALTER TABLE [dbo].[lkpPhoneType]  WITH CHECK ADD  CONSTRAINT [FK_lkpPhoneType_lkpPhoneSegment] FOREIGN KEY([PhoneSegmentId])
+ALTER TABLE [dbo].[lkpPhoneType]  WITH NOCHECK ADD  CONSTRAINT [FK_lkpPhoneType_lkpPhoneSegment] FOREIGN KEY([PhoneSegmentId])
 REFERENCES [dbo].[lkpPhoneSegment] ([PhoneSegmentID])
 GO
 ALTER TABLE [dbo].[lkpPhoneType] CHECK CONSTRAINT [FK_lkpPhoneType_lkpPhoneSegment]
 GO
-ALTER TABLE [dbo].[lkpPhoneType]  WITH CHECK ADD  CONSTRAINT [FK_lkpPhoneType_lkpPhoneType] FOREIGN KEY([PhoneTypeID])
+ALTER TABLE [dbo].[lkpPhoneType]  WITH NOCHECK ADD  CONSTRAINT [FK_lkpPhoneType_lkpPhoneType] FOREIGN KEY([PhoneTypeID])
 REFERENCES [dbo].[lkpPhoneType] ([PhoneTypeID])
 GO
 ALTER TABLE [dbo].[lkpPhoneType] CHECK CONSTRAINT [FK_lkpPhoneType_lkpPhoneType]

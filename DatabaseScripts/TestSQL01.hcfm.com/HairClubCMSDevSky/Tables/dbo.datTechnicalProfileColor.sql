@@ -29,42 +29,42 @@ CREATE TABLE [dbo].[datTechnicalProfileColor](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[datTechnicalProfileColor]  WITH CHECK ADD  CONSTRAINT [FK_datTechnicalProfileColor_datTechnicalProfile] FOREIGN KEY([TechnicalProfileID])
+ALTER TABLE [dbo].[datTechnicalProfileColor]  WITH NOCHECK ADD  CONSTRAINT [FK_datTechnicalProfileColor_datTechnicalProfile] FOREIGN KEY([TechnicalProfileID])
 REFERENCES [dbo].[datTechnicalProfile] ([TechnicalProfileID])
 GO
 ALTER TABLE [dbo].[datTechnicalProfileColor] CHECK CONSTRAINT [FK_datTechnicalProfileColor_datTechnicalProfile]
 GO
-ALTER TABLE [dbo].[datTechnicalProfileColor]  WITH CHECK ADD  CONSTRAINT [FK_datTechnicalProfileColor_lkpColorBrand] FOREIGN KEY([ColorBrandID])
+ALTER TABLE [dbo].[datTechnicalProfileColor]  WITH NOCHECK ADD  CONSTRAINT [FK_datTechnicalProfileColor_lkpColorBrand] FOREIGN KEY([ColorBrandID])
 REFERENCES [dbo].[lkpColorBrand] ([ColorBrandID])
 GO
 ALTER TABLE [dbo].[datTechnicalProfileColor] CHECK CONSTRAINT [FK_datTechnicalProfileColor_lkpColorBrand]
 GO
-ALTER TABLE [dbo].[datTechnicalProfileColor]  WITH CHECK ADD  CONSTRAINT [FK_datTechnicalProfileColor_lkpColorFormulaSize1] FOREIGN KEY([ColorFormulaSize1ID])
+ALTER TABLE [dbo].[datTechnicalProfileColor]  WITH NOCHECK ADD  CONSTRAINT [FK_datTechnicalProfileColor_lkpColorFormulaSize1] FOREIGN KEY([ColorFormulaSize1ID])
 REFERENCES [dbo].[lkpColorFormulaSize] ([ColorFormulaSizeID])
 GO
 ALTER TABLE [dbo].[datTechnicalProfileColor] CHECK CONSTRAINT [FK_datTechnicalProfileColor_lkpColorFormulaSize1]
 GO
-ALTER TABLE [dbo].[datTechnicalProfileColor]  WITH CHECK ADD  CONSTRAINT [FK_datTechnicalProfileColor_lkpColorFormulaSize2] FOREIGN KEY([ColorFormulaSize2ID])
+ALTER TABLE [dbo].[datTechnicalProfileColor]  WITH NOCHECK ADD  CONSTRAINT [FK_datTechnicalProfileColor_lkpColorFormulaSize2] FOREIGN KEY([ColorFormulaSize2ID])
 REFERENCES [dbo].[lkpColorFormulaSize] ([ColorFormulaSizeID])
 GO
 ALTER TABLE [dbo].[datTechnicalProfileColor] CHECK CONSTRAINT [FK_datTechnicalProfileColor_lkpColorFormulaSize2]
 GO
-ALTER TABLE [dbo].[datTechnicalProfileColor]  WITH CHECK ADD  CONSTRAINT [FK_datTechnicalProfileColor_lkpColorFormulaSize3] FOREIGN KEY([ColorFormulaSize3ID])
+ALTER TABLE [dbo].[datTechnicalProfileColor]  WITH NOCHECK ADD  CONSTRAINT [FK_datTechnicalProfileColor_lkpColorFormulaSize3] FOREIGN KEY([ColorFormulaSize3ID])
 REFERENCES [dbo].[lkpColorFormulaSize] ([ColorFormulaSizeID])
 GO
 ALTER TABLE [dbo].[datTechnicalProfileColor] CHECK CONSTRAINT [FK_datTechnicalProfileColor_lkpColorFormulaSize3]
 GO
-ALTER TABLE [dbo].[datTechnicalProfileColor]  WITH CHECK ADD  CONSTRAINT [FK_datTechnicalProfileColor_lkpDeveloperSize] FOREIGN KEY([DeveloperSizeID])
+ALTER TABLE [dbo].[datTechnicalProfileColor]  WITH NOCHECK ADD  CONSTRAINT [FK_datTechnicalProfileColor_lkpDeveloperSize] FOREIGN KEY([DeveloperSizeID])
 REFERENCES [dbo].[lkpDeveloperSize] ([DeveloperSizeID])
 GO
 ALTER TABLE [dbo].[datTechnicalProfileColor] CHECK CONSTRAINT [FK_datTechnicalProfileColor_lkpDeveloperSize]
 GO
-ALTER TABLE [dbo].[datTechnicalProfileColor]  WITH CHECK ADD  CONSTRAINT [FK_datTechnicalProfileColor_lkpDeveloperVolume] FOREIGN KEY([DeveloperVolumeID])
+ALTER TABLE [dbo].[datTechnicalProfileColor]  WITH NOCHECK ADD  CONSTRAINT [FK_datTechnicalProfileColor_lkpDeveloperVolume] FOREIGN KEY([DeveloperVolumeID])
 REFERENCES [dbo].[lkpDeveloperVolume] ([DeveloperVolumeID])
 GO
 ALTER TABLE [dbo].[datTechnicalProfileColor] CHECK CONSTRAINT [FK_datTechnicalProfileColor_lkpDeveloperVolume]
 GO
-ALTER TABLE [dbo].[datTechnicalProfileColor]  WITH CHECK ADD  CONSTRAINT [FK_datTechnicalProfileColor_lkpTimeUnit] FOREIGN KEY([ColorProcessingTimeUnitID])
+ALTER TABLE [dbo].[datTechnicalProfileColor]  WITH NOCHECK ADD  CONSTRAINT [FK_datTechnicalProfileColor_lkpTimeUnit] FOREIGN KEY([ColorProcessingTimeUnitID])
 REFERENCES [dbo].[lkpTimeUnit] ([TimeUnitID])
 GO
 ALTER TABLE [dbo].[datTechnicalProfileColor] CHECK CONSTRAINT [FK_datTechnicalProfileColor_lkpTimeUnit]

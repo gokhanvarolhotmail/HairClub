@@ -48,28 +48,28 @@ CREATE NONCLUSTERED INDEX [oncd_company_campaign_i5] ON [dbo].[oncd_company_camp
 	[campaign_status_code] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[oncd_company_campaign]  WITH CHECK ADD  CONSTRAINT [campaign_company_camp_521] FOREIGN KEY([campaign_code])
+ALTER TABLE [dbo].[oncd_company_campaign]  WITH NOCHECK ADD  CONSTRAINT [campaign_company_camp_521] FOREIGN KEY([campaign_code])
 REFERENCES [dbo].[onca_campaign] ([campaign_code])
 GO
 ALTER TABLE [dbo].[oncd_company_campaign] CHECK CONSTRAINT [campaign_company_camp_521]
 GO
-ALTER TABLE [dbo].[oncd_company_campaign]  WITH CHECK ADD  CONSTRAINT [campaign_sta_company_camp_578] FOREIGN KEY([campaign_status_code])
+ALTER TABLE [dbo].[oncd_company_campaign]  WITH NOCHECK ADD  CONSTRAINT [campaign_sta_company_camp_578] FOREIGN KEY([campaign_status_code])
 REFERENCES [dbo].[onca_campaign_status] ([campaign_status_code])
 GO
 ALTER TABLE [dbo].[oncd_company_campaign] CHECK CONSTRAINT [campaign_sta_company_camp_578]
 GO
-ALTER TABLE [dbo].[oncd_company_campaign]  WITH CHECK ADD  CONSTRAINT [company_company_camp_80] FOREIGN KEY([company_id])
+ALTER TABLE [dbo].[oncd_company_campaign]  WITH NOCHECK ADD  CONSTRAINT [company_company_camp_80] FOREIGN KEY([company_id])
 REFERENCES [dbo].[oncd_company] ([company_id])
 ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[oncd_company_campaign] CHECK CONSTRAINT [company_company_camp_80]
 GO
-ALTER TABLE [dbo].[oncd_company_campaign]  WITH CHECK ADD  CONSTRAINT [user_company_camp_581] FOREIGN KEY([created_by_user_code])
+ALTER TABLE [dbo].[oncd_company_campaign]  WITH NOCHECK ADD  CONSTRAINT [user_company_camp_581] FOREIGN KEY([created_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_company_campaign] CHECK CONSTRAINT [user_company_camp_581]
 GO
-ALTER TABLE [dbo].[oncd_company_campaign]  WITH CHECK ADD  CONSTRAINT [user_company_camp_582] FOREIGN KEY([updated_by_user_code])
+ALTER TABLE [dbo].[oncd_company_campaign]  WITH NOCHECK ADD  CONSTRAINT [user_company_camp_582] FOREIGN KEY([updated_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_company_campaign] CHECK CONSTRAINT [user_company_camp_582]

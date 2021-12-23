@@ -28,32 +28,32 @@ CREATE NONCLUSTERED INDEX [oncd_project_signoff_i2] ON [dbo].[oncd_project_signo
 	[project_id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[oncd_project_signoff]  WITH CHECK ADD  CONSTRAINT [company_project_sign_1024] FOREIGN KEY([company_id])
+ALTER TABLE [dbo].[oncd_project_signoff]  WITH NOCHECK ADD  CONSTRAINT [company_project_sign_1024] FOREIGN KEY([company_id])
 REFERENCES [dbo].[oncd_company] ([company_id])
 GO
 ALTER TABLE [dbo].[oncd_project_signoff] CHECK CONSTRAINT [company_project_sign_1024]
 GO
-ALTER TABLE [dbo].[oncd_project_signoff]  WITH CHECK ADD  CONSTRAINT [contact_project_sign_1025] FOREIGN KEY([contact_id])
+ALTER TABLE [dbo].[oncd_project_signoff]  WITH NOCHECK ADD  CONSTRAINT [contact_project_sign_1025] FOREIGN KEY([contact_id])
 REFERENCES [dbo].[oncd_contact] ([contact_id])
 GO
 ALTER TABLE [dbo].[oncd_project_signoff] CHECK CONSTRAINT [contact_project_sign_1025]
 GO
-ALTER TABLE [dbo].[oncd_project_signoff]  WITH CHECK ADD  CONSTRAINT [project_project_sign_950] FOREIGN KEY([project_id])
+ALTER TABLE [dbo].[oncd_project_signoff]  WITH NOCHECK ADD  CONSTRAINT [project_project_sign_950] FOREIGN KEY([project_id])
 REFERENCES [dbo].[oncd_project] ([project_id])
 GO
 ALTER TABLE [dbo].[oncd_project_signoff] CHECK CONSTRAINT [project_project_sign_950]
 GO
-ALTER TABLE [dbo].[oncd_project_signoff]  WITH CHECK ADD  CONSTRAINT [user_project_sign_1026] FOREIGN KEY([user_code])
+ALTER TABLE [dbo].[oncd_project_signoff]  WITH NOCHECK ADD  CONSTRAINT [user_project_sign_1026] FOREIGN KEY([user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_project_signoff] CHECK CONSTRAINT [user_project_sign_1026]
 GO
-ALTER TABLE [dbo].[oncd_project_signoff]  WITH CHECK ADD  CONSTRAINT [user_project_sign_953] FOREIGN KEY([created_by_user_code])
+ALTER TABLE [dbo].[oncd_project_signoff]  WITH NOCHECK ADD  CONSTRAINT [user_project_sign_953] FOREIGN KEY([created_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_project_signoff] CHECK CONSTRAINT [user_project_sign_953]
 GO
-ALTER TABLE [dbo].[oncd_project_signoff]  WITH CHECK ADD  CONSTRAINT [user_project_sign_954] FOREIGN KEY([updated_by_user_code])
+ALTER TABLE [dbo].[oncd_project_signoff]  WITH NOCHECK ADD  CONSTRAINT [user_project_sign_954] FOREIGN KEY([updated_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_project_signoff] CHECK CONSTRAINT [user_project_sign_954]

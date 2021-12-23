@@ -42,17 +42,17 @@ ALTER TABLE [dbo].[cfgHairSystemCenterContractPricing] ADD  DEFAULT ((0)) FOR [H
 GO
 ALTER TABLE [dbo].[cfgHairSystemCenterContractPricing] ADD  DEFAULT ((0)) FOR [HairSystemAreaRangeEnd]
 GO
-ALTER TABLE [dbo].[cfgHairSystemCenterContractPricing]  WITH CHECK ADD  CONSTRAINT [cfgHairSystemCenterContractPricing_cfgHairSystem] FOREIGN KEY([HairSystemID])
+ALTER TABLE [dbo].[cfgHairSystemCenterContractPricing]  WITH NOCHECK ADD  CONSTRAINT [cfgHairSystemCenterContractPricing_cfgHairSystem] FOREIGN KEY([HairSystemID])
 REFERENCES [dbo].[cfgHairSystem] ([HairSystemID])
 GO
 ALTER TABLE [dbo].[cfgHairSystemCenterContractPricing] CHECK CONSTRAINT [cfgHairSystemCenterContractPricing_cfgHairSystem]
 GO
-ALTER TABLE [dbo].[cfgHairSystemCenterContractPricing]  WITH CHECK ADD  CONSTRAINT [cfgHairSystemCenterContractPricing_lkpHairSystemHairLength] FOREIGN KEY([HairSystemHairLengthID])
+ALTER TABLE [dbo].[cfgHairSystemCenterContractPricing]  WITH NOCHECK ADD  CONSTRAINT [cfgHairSystemCenterContractPricing_lkpHairSystemHairLength] FOREIGN KEY([HairSystemHairLengthID])
 REFERENCES [dbo].[lkpHairSystemHairLength] ([HairSystemHairLengthID])
 GO
 ALTER TABLE [dbo].[cfgHairSystemCenterContractPricing] CHECK CONSTRAINT [cfgHairSystemCenterContractPricing_lkpHairSystemHairLength]
 GO
-ALTER TABLE [dbo].[cfgHairSystemCenterContractPricing]  WITH CHECK ADD  CONSTRAINT [FK_cfgHairSystemCenterContractPricing_cfgHairSystemCenterContract] FOREIGN KEY([HairSystemCenterContractID])
+ALTER TABLE [dbo].[cfgHairSystemCenterContractPricing]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgHairSystemCenterContractPricing_cfgHairSystemCenterContract] FOREIGN KEY([HairSystemCenterContractID])
 REFERENCES [dbo].[cfgHairSystemCenterContract] ([HairSystemCenterContractID])
 GO
 ALTER TABLE [dbo].[cfgHairSystemCenterContractPricing] CHECK CONSTRAINT [FK_cfgHairSystemCenterContractPricing_cfgHairSystemCenterContract]

@@ -11,7 +11,7 @@ CREATE TABLE [dbo].[onca_outlook_query](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[onca_outlook_query]  WITH CHECK ADD  CONSTRAINT [sql_outlook_quer_1182] FOREIGN KEY([sql_id])
+ALTER TABLE [dbo].[onca_outlook_query]  WITH NOCHECK ADD  CONSTRAINT [sql_outlook_quer_1182] FOREIGN KEY([sql_id])
 REFERENCES [dbo].[onct_sql] ([sql_id])
 GO
 ALTER TABLE [dbo].[onca_outlook_query] CHECK CONSTRAINT [sql_outlook_quer_1182]

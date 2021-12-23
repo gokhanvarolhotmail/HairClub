@@ -25,17 +25,17 @@ CREATE NONCLUSTERED INDEX [IX_datInventoryAdjustmentDetailSerialized_SerialNumbe
 	[SerialNumber] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[datInventoryAdjustmentDetailSerialized]  WITH CHECK ADD  CONSTRAINT [FK_datInventoryAdjustmentDetailSerialized_datInventoryAdjustmentDetail] FOREIGN KEY([InventoryAdjustmentDetailID])
+ALTER TABLE [dbo].[datInventoryAdjustmentDetailSerialized]  WITH NOCHECK ADD  CONSTRAINT [FK_datInventoryAdjustmentDetailSerialized_datInventoryAdjustmentDetail] FOREIGN KEY([InventoryAdjustmentDetailID])
 REFERENCES [dbo].[datInventoryAdjustmentDetail] ([InventoryAdjustmentDetailID])
 GO
 ALTER TABLE [dbo].[datInventoryAdjustmentDetailSerialized] CHECK CONSTRAINT [FK_datInventoryAdjustmentDetailSerialized_datInventoryAdjustmentDetail]
 GO
-ALTER TABLE [dbo].[datInventoryAdjustmentDetailSerialized]  WITH CHECK ADD  CONSTRAINT [FK_datInventoryAdjustmentDetailSerialized_datSerializedInventoryAuditTransactionSerialized] FOREIGN KEY([SerializedInventoryAuditTransactionSerializedID])
+ALTER TABLE [dbo].[datInventoryAdjustmentDetailSerialized]  WITH NOCHECK ADD  CONSTRAINT [FK_datInventoryAdjustmentDetailSerialized_datSerializedInventoryAuditTransactionSerialized] FOREIGN KEY([SerializedInventoryAuditTransactionSerializedID])
 REFERENCES [dbo].[datSerializedInventoryAuditTransactionSerialized] ([SerializedInventoryAuditTransactionSerializedID])
 GO
 ALTER TABLE [dbo].[datInventoryAdjustmentDetailSerialized] CHECK CONSTRAINT [FK_datInventoryAdjustmentDetailSerialized_datSerializedInventoryAuditTransactionSerialized]
 GO
-ALTER TABLE [dbo].[datInventoryAdjustmentDetailSerialized]  WITH CHECK ADD  CONSTRAINT [FK_datInventoryAdjustmentDetailSerialized_lkpSerializedInventoryStatus] FOREIGN KEY([NewSerializedInventoryStatusID])
+ALTER TABLE [dbo].[datInventoryAdjustmentDetailSerialized]  WITH NOCHECK ADD  CONSTRAINT [FK_datInventoryAdjustmentDetailSerialized_lkpSerializedInventoryStatus] FOREIGN KEY([NewSerializedInventoryStatusID])
 REFERENCES [dbo].[lkpSerializedInventoryStatus] ([SerializedInventoryStatusID])
 GO
 ALTER TABLE [dbo].[datInventoryAdjustmentDetailSerialized] CHECK CONSTRAINT [FK_datInventoryAdjustmentDetailSerialized_lkpSerializedInventoryStatus]

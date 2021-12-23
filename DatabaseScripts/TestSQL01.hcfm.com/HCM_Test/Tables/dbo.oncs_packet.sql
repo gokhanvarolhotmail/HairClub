@@ -39,17 +39,17 @@ CREATE NONCLUSTERED INDEX [oncs_packet_i5] ON [dbo].[oncs_packet]
 	[acknowledged_flag] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[oncs_packet]  WITH CHECK ADD  CONSTRAINT [packet_packet_379] FOREIGN KEY([parent_packet_id])
+ALTER TABLE [dbo].[oncs_packet]  WITH NOCHECK ADD  CONSTRAINT [packet_packet_379] FOREIGN KEY([parent_packet_id])
 REFERENCES [dbo].[oncs_packet] ([packet_id])
 GO
 ALTER TABLE [dbo].[oncs_packet] CHECK CONSTRAINT [packet_packet_379]
 GO
-ALTER TABLE [dbo].[oncs_packet]  WITH CHECK ADD  CONSTRAINT [server_packet_880] FOREIGN KEY([creation_server_id])
+ALTER TABLE [dbo].[oncs_packet]  WITH NOCHECK ADD  CONSTRAINT [server_packet_880] FOREIGN KEY([creation_server_id])
 REFERENCES [dbo].[oncs_server] ([server_id])
 GO
 ALTER TABLE [dbo].[oncs_packet] CHECK CONSTRAINT [server_packet_880]
 GO
-ALTER TABLE [dbo].[oncs_packet]  WITH CHECK ADD  CONSTRAINT [server_packet_881] FOREIGN KEY([destination_server_id])
+ALTER TABLE [dbo].[oncs_packet]  WITH NOCHECK ADD  CONSTRAINT [server_packet_881] FOREIGN KEY([destination_server_id])
 REFERENCES [dbo].[oncs_server] ([server_id])
 GO
 ALTER TABLE [dbo].[oncs_packet] CHECK CONSTRAINT [server_packet_881]

@@ -35,42 +35,42 @@ CREATE NONCLUSTERED INDEX [IX_datCommissionCorrection_CenterID_PayPeriodKey] ON 
 	[PayPeriodKey] DESC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[datCommissionCorrection]  WITH CHECK ADD  CONSTRAINT [FK_datCommissionCorrection_cfgCenter] FOREIGN KEY([CenterID])
+ALTER TABLE [dbo].[datCommissionCorrection]  WITH NOCHECK ADD  CONSTRAINT [FK_datCommissionCorrection_cfgCenter] FOREIGN KEY([CenterID])
 REFERENCES [dbo].[cfgCenter] ([CenterID])
 GO
 ALTER TABLE [dbo].[datCommissionCorrection] CHECK CONSTRAINT [FK_datCommissionCorrection_cfgCenter]
 GO
-ALTER TABLE [dbo].[datCommissionCorrection]  WITH CHECK ADD  CONSTRAINT [FK_datCommissionCorrection_datClient] FOREIGN KEY([ClientGUID])
+ALTER TABLE [dbo].[datCommissionCorrection]  WITH NOCHECK ADD  CONSTRAINT [FK_datCommissionCorrection_datClient] FOREIGN KEY([ClientGUID])
 REFERENCES [dbo].[datClient] ([ClientGUID])
 GO
 ALTER TABLE [dbo].[datCommissionCorrection] CHECK CONSTRAINT [FK_datCommissionCorrection_datClient]
 GO
-ALTER TABLE [dbo].[datCommissionCorrection]  WITH CHECK ADD  CONSTRAINT [FK_datCommissionCorrection_datEmployee] FOREIGN KEY([EmployeeGUID])
+ALTER TABLE [dbo].[datCommissionCorrection]  WITH NOCHECK ADD  CONSTRAINT [FK_datCommissionCorrection_datEmployee] FOREIGN KEY([EmployeeGUID])
 REFERENCES [dbo].[datEmployee] ([EmployeeGUID])
 GO
 ALTER TABLE [dbo].[datCommissionCorrection] CHECK CONSTRAINT [FK_datCommissionCorrection_datEmployee]
 GO
-ALTER TABLE [dbo].[datCommissionCorrection]  WITH CHECK ADD  CONSTRAINT [FK_datCommissionCorrection_lkpCommissionAdjustmentReason] FOREIGN KEY([CommissionAdjustmentReasonID])
+ALTER TABLE [dbo].[datCommissionCorrection]  WITH NOCHECK ADD  CONSTRAINT [FK_datCommissionCorrection_lkpCommissionAdjustmentReason] FOREIGN KEY([CommissionAdjustmentReasonID])
 REFERENCES [dbo].[lkpCommissionAdjustmentReason] ([CommissionAdjustmentReasonID])
 GO
 ALTER TABLE [dbo].[datCommissionCorrection] CHECK CONSTRAINT [FK_datCommissionCorrection_lkpCommissionAdjustmentReason]
 GO
-ALTER TABLE [dbo].[datCommissionCorrection]  WITH CHECK ADD  CONSTRAINT [FK_datCommissionCorrection_lkpCommissionCorrectionStatus] FOREIGN KEY([CommissionCorrectionStatusID])
+ALTER TABLE [dbo].[datCommissionCorrection]  WITH NOCHECK ADD  CONSTRAINT [FK_datCommissionCorrection_lkpCommissionCorrectionStatus] FOREIGN KEY([CommissionCorrectionStatusID])
 REFERENCES [dbo].[lkpCommissionCorrectionStatus] ([CommissionCorrectionStatusID])
 GO
 ALTER TABLE [dbo].[datCommissionCorrection] CHECK CONSTRAINT [FK_datCommissionCorrection_lkpCommissionCorrectionStatus]
 GO
-ALTER TABLE [dbo].[datCommissionCorrection]  WITH CHECK ADD  CONSTRAINT [FK_datCommissionCorrection_lkpCommissionPlan] FOREIGN KEY([CommissionPlanID])
+ALTER TABLE [dbo].[datCommissionCorrection]  WITH NOCHECK ADD  CONSTRAINT [FK_datCommissionCorrection_lkpCommissionPlan] FOREIGN KEY([CommissionPlanID])
 REFERENCES [dbo].[lkpCommissionPlan] ([CommissionPlanID])
 GO
 ALTER TABLE [dbo].[datCommissionCorrection] CHECK CONSTRAINT [FK_datCommissionCorrection_lkpCommissionPlan]
 GO
-ALTER TABLE [dbo].[datCommissionCorrection]  WITH CHECK ADD  CONSTRAINT [FK_datCommissionCorrection_lkpCommissionPlanSection] FOREIGN KEY([CommissionPlanSectionID])
+ALTER TABLE [dbo].[datCommissionCorrection]  WITH NOCHECK ADD  CONSTRAINT [FK_datCommissionCorrection_lkpCommissionPlanSection] FOREIGN KEY([CommissionPlanSectionID])
 REFERENCES [dbo].[lkpCommissionPlanSection] ([CommissionPlanSectionID])
 GO
 ALTER TABLE [dbo].[datCommissionCorrection] CHECK CONSTRAINT [FK_datCommissionCorrection_lkpCommissionPlanSection]
 GO
-ALTER TABLE [dbo].[datCommissionCorrection]  WITH CHECK ADD  CONSTRAINT [FK_datCommissionCorrection_lkpEmployeePosition] FOREIGN KEY([EmployeePositionID])
+ALTER TABLE [dbo].[datCommissionCorrection]  WITH NOCHECK ADD  CONSTRAINT [FK_datCommissionCorrection_lkpEmployeePosition] FOREIGN KEY([EmployeePositionID])
 REFERENCES [dbo].[lkpEmployeePosition] ([EmployeePositionID])
 GO
 ALTER TABLE [dbo].[datCommissionCorrection] CHECK CONSTRAINT [FK_datCommissionCorrection_lkpEmployeePosition]

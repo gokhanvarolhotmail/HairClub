@@ -31,23 +31,23 @@ CREATE NONCLUSTERED INDEX [oncd_activity_lotus_i3] ON [dbo].[oncd_activity_lotus
 	[activity_id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[oncd_activity_lotus]  WITH CHECK ADD  CONSTRAINT [activity_activity_lot_721] FOREIGN KEY([activity_id])
+ALTER TABLE [dbo].[oncd_activity_lotus]  WITH NOCHECK ADD  CONSTRAINT [activity_activity_lot_721] FOREIGN KEY([activity_id])
 REFERENCES [dbo].[oncd_activity] ([activity_id])
 ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[oncd_activity_lotus] CHECK CONSTRAINT [activity_activity_lot_721]
 GO
-ALTER TABLE [dbo].[oncd_activity_lotus]  WITH CHECK ADD  CONSTRAINT [user_activity_lot_724] FOREIGN KEY([created_by_user_code])
+ALTER TABLE [dbo].[oncd_activity_lotus]  WITH NOCHECK ADD  CONSTRAINT [user_activity_lot_724] FOREIGN KEY([created_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_activity_lotus] CHECK CONSTRAINT [user_activity_lot_724]
 GO
-ALTER TABLE [dbo].[oncd_activity_lotus]  WITH CHECK ADD  CONSTRAINT [user_activity_lot_725] FOREIGN KEY([updated_by_user_code])
+ALTER TABLE [dbo].[oncd_activity_lotus]  WITH NOCHECK ADD  CONSTRAINT [user_activity_lot_725] FOREIGN KEY([updated_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_activity_lotus] CHECK CONSTRAINT [user_activity_lot_725]
 GO
-ALTER TABLE [dbo].[oncd_activity_lotus]  WITH CHECK ADD  CONSTRAINT [user_activity_lot_726] FOREIGN KEY([user_code])
+ALTER TABLE [dbo].[oncd_activity_lotus]  WITH NOCHECK ADD  CONSTRAINT [user_activity_lot_726] FOREIGN KEY([user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_activity_lotus] CHECK CONSTRAINT [user_activity_lot_726]

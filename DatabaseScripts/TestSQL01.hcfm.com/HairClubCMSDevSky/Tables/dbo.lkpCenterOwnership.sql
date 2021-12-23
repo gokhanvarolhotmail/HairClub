@@ -29,12 +29,12 @@ CREATE TABLE [dbo].[lkpCenterOwnership](
 GO
 ALTER TABLE [dbo].[lkpCenterOwnership] ADD  DEFAULT ((0)) FOR [IsClientExperienceSurveyEnabled]
 GO
-ALTER TABLE [dbo].[lkpCenterOwnership]  WITH CHECK ADD  CONSTRAINT [FK_lkpCenterOwnership_lkpCountry] FOREIGN KEY([CountryID])
+ALTER TABLE [dbo].[lkpCenterOwnership]  WITH NOCHECK ADD  CONSTRAINT [FK_lkpCenterOwnership_lkpCountry] FOREIGN KEY([CountryID])
 REFERENCES [dbo].[lkpCountry] ([CountryID])
 GO
 ALTER TABLE [dbo].[lkpCenterOwnership] CHECK CONSTRAINT [FK_lkpCenterOwnership_lkpCountry]
 GO
-ALTER TABLE [dbo].[lkpCenterOwnership]  WITH CHECK ADD  CONSTRAINT [FK_lkpCenterOwnership_lkpState] FOREIGN KEY([StateID])
+ALTER TABLE [dbo].[lkpCenterOwnership]  WITH NOCHECK ADD  CONSTRAINT [FK_lkpCenterOwnership_lkpState] FOREIGN KEY([StateID])
 REFERENCES [dbo].[lkpState] ([StateID])
 GO
 ALTER TABLE [dbo].[lkpCenterOwnership] CHECK CONSTRAINT [FK_lkpCenterOwnership_lkpState]

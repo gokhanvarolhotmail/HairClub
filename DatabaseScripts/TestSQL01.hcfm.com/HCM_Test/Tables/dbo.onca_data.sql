@@ -15,12 +15,12 @@ CREATE TABLE [dbo].[onca_data](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[onca_data]  WITH CHECK ADD  CONSTRAINT [class_data_393] FOREIGN KEY([class_id])
+ALTER TABLE [dbo].[onca_data]  WITH NOCHECK ADD  CONSTRAINT [class_data_393] FOREIGN KEY([class_id])
 REFERENCES [dbo].[onct_class] ([class_id])
 GO
 ALTER TABLE [dbo].[onca_data] CHECK CONSTRAINT [class_data_393]
 GO
-ALTER TABLE [dbo].[onca_data]  WITH CHECK ADD  CONSTRAINT [data_format_data_327] FOREIGN KEY([data_format_code])
+ALTER TABLE [dbo].[onca_data]  WITH NOCHECK ADD  CONSTRAINT [data_format_data_327] FOREIGN KEY([data_format_code])
 REFERENCES [dbo].[onca_data_format] ([data_format_code])
 GO
 ALTER TABLE [dbo].[onca_data] CHECK CONSTRAINT [data_format_data_327]
