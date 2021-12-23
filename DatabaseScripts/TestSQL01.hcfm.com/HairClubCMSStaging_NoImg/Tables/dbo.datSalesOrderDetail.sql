@@ -97,92 +97,92 @@ ALTER TABLE [dbo].[datSalesOrderDetail] ADD  DEFAULT ((1)) FOR [EntrySortOrder]
 GO
 ALTER TABLE [dbo].[datSalesOrderDetail] ADD  CONSTRAINT [DF_datSalesOrderDetail_BenefitTrackingEnabledFlag]  DEFAULT ((1)) FOR [BenefitTrackingEnabledFlag]
 GO
-ALTER TABLE [dbo].[datSalesOrderDetail]  WITH NOCHECK ADD  CONSTRAINT [FK_datSalesOrderDetail_cfgCenter] FOREIGN KEY([NewCenterID])
+ALTER TABLE [dbo].[datSalesOrderDetail]  WITH CHECK ADD  CONSTRAINT [FK_datSalesOrderDetail_cfgCenter] FOREIGN KEY([NewCenterID])
 REFERENCES [dbo].[cfgCenter] ([CenterID])
 GO
 ALTER TABLE [dbo].[datSalesOrderDetail] CHECK CONSTRAINT [FK_datSalesOrderDetail_cfgCenter]
 GO
-ALTER TABLE [dbo].[datSalesOrderDetail]  WITH NOCHECK ADD  CONSTRAINT [FK_datSalesOrderDetail_cfgMembershipPromotion] FOREIGN KEY([MembershipPromotionID])
+ALTER TABLE [dbo].[datSalesOrderDetail]  WITH CHECK ADD  CONSTRAINT [FK_datSalesOrderDetail_cfgMembershipPromotion] FOREIGN KEY([MembershipPromotionID])
 REFERENCES [dbo].[cfgMembershipPromotion] ([MembershipPromotionID])
 GO
 ALTER TABLE [dbo].[datSalesOrderDetail] CHECK CONSTRAINT [FK_datSalesOrderDetail_cfgMembershipPromotion]
 GO
-ALTER TABLE [dbo].[datSalesOrderDetail]  WITH NOCHECK ADD  CONSTRAINT [FK_datSalesOrderDetail_cfgMembershipPromotion_NCC] FOREIGN KEY([NCCMembershipPromotionID])
+ALTER TABLE [dbo].[datSalesOrderDetail]  WITH CHECK ADD  CONSTRAINT [FK_datSalesOrderDetail_cfgMembershipPromotion_NCC] FOREIGN KEY([NCCMembershipPromotionID])
 REFERENCES [dbo].[cfgMembershipPromotion] ([MembershipPromotionID])
 GO
 ALTER TABLE [dbo].[datSalesOrderDetail] CHECK CONSTRAINT [FK_datSalesOrderDetail_cfgMembershipPromotion_NCC]
 GO
-ALTER TABLE [dbo].[datSalesOrderDetail]  WITH NOCHECK ADD  CONSTRAINT [FK_datSalesOrderDetail_cfgSalesCode] FOREIGN KEY([SalesCodeID])
+ALTER TABLE [dbo].[datSalesOrderDetail]  WITH CHECK ADD  CONSTRAINT [FK_datSalesOrderDetail_cfgSalesCode] FOREIGN KEY([SalesCodeID])
 REFERENCES [dbo].[cfgSalesCode] ([SalesCodeID])
 GO
 ALTER TABLE [dbo].[datSalesOrderDetail] CHECK CONSTRAINT [FK_datSalesOrderDetail_cfgSalesCode]
 GO
-ALTER TABLE [dbo].[datSalesOrderDetail]  WITH NOCHECK ADD  CONSTRAINT [FK_datSalesOrderDetail_datClientMembership] FOREIGN KEY([PreviousClientMembershipGUID])
+ALTER TABLE [dbo].[datSalesOrderDetail]  WITH CHECK ADD  CONSTRAINT [FK_datSalesOrderDetail_datClientMembership] FOREIGN KEY([PreviousClientMembershipGUID])
 REFERENCES [dbo].[datClientMembership] ([ClientMembershipGUID])
 GO
 ALTER TABLE [dbo].[datSalesOrderDetail] CHECK CONSTRAINT [FK_datSalesOrderDetail_datClientMembership]
 GO
-ALTER TABLE [dbo].[datSalesOrderDetail]  WITH NOCHECK ADD  CONSTRAINT [FK_datSalesOrderDetail_datClientMembershipAddOn] FOREIGN KEY([ClientMembershipAddOnID])
+ALTER TABLE [dbo].[datSalesOrderDetail]  WITH CHECK ADD  CONSTRAINT [FK_datSalesOrderDetail_datClientMembershipAddOn] FOREIGN KEY([ClientMembershipAddOnID])
 REFERENCES [dbo].[datClientMembershipAddOn] ([ClientMembershipAddOnID])
 GO
 ALTER TABLE [dbo].[datSalesOrderDetail] CHECK CONSTRAINT [FK_datSalesOrderDetail_datClientMembershipAddOn]
 GO
-ALTER TABLE [dbo].[datSalesOrderDetail]  WITH NOCHECK ADD  CONSTRAINT [FK_datSalesOrderDetail_datEmployee] FOREIGN KEY([Employee1GUID])
+ALTER TABLE [dbo].[datSalesOrderDetail]  WITH CHECK ADD  CONSTRAINT [FK_datSalesOrderDetail_datEmployee] FOREIGN KEY([Employee1GUID])
 REFERENCES [dbo].[datEmployee] ([EmployeeGUID])
 GO
 ALTER TABLE [dbo].[datSalesOrderDetail] CHECK CONSTRAINT [FK_datSalesOrderDetail_datEmployee]
 GO
-ALTER TABLE [dbo].[datSalesOrderDetail]  WITH NOCHECK ADD  CONSTRAINT [FK_datSalesOrderDetail_datEmployee1] FOREIGN KEY([Employee2GUID])
+ALTER TABLE [dbo].[datSalesOrderDetail]  WITH CHECK ADD  CONSTRAINT [FK_datSalesOrderDetail_datEmployee1] FOREIGN KEY([Employee2GUID])
 REFERENCES [dbo].[datEmployee] ([EmployeeGUID])
 GO
 ALTER TABLE [dbo].[datSalesOrderDetail] CHECK CONSTRAINT [FK_datSalesOrderDetail_datEmployee1]
 GO
-ALTER TABLE [dbo].[datSalesOrderDetail]  WITH NOCHECK ADD  CONSTRAINT [FK_datSalesOrderDetail_datEmployee2] FOREIGN KEY([Employee3GUID])
+ALTER TABLE [dbo].[datSalesOrderDetail]  WITH CHECK ADD  CONSTRAINT [FK_datSalesOrderDetail_datEmployee2] FOREIGN KEY([Employee3GUID])
 REFERENCES [dbo].[datEmployee] ([EmployeeGUID])
 GO
 ALTER TABLE [dbo].[datSalesOrderDetail] CHECK CONSTRAINT [FK_datSalesOrderDetail_datEmployee2]
 GO
-ALTER TABLE [dbo].[datSalesOrderDetail]  WITH NOCHECK ADD  CONSTRAINT [FK_datSalesOrderDetail_datEmployee3] FOREIGN KEY([Employee4GUID])
+ALTER TABLE [dbo].[datSalesOrderDetail]  WITH CHECK ADD  CONSTRAINT [FK_datSalesOrderDetail_datEmployee3] FOREIGN KEY([Employee4GUID])
 REFERENCES [dbo].[datEmployee] ([EmployeeGUID])
 GO
 ALTER TABLE [dbo].[datSalesOrderDetail] CHECK CONSTRAINT [FK_datSalesOrderDetail_datEmployee3]
 GO
-ALTER TABLE [dbo].[datSalesOrderDetail]  WITH NOCHECK ADD  CONSTRAINT [FK_datSalesOrderDetail_datHairSystemOrder] FOREIGN KEY([HairSystemOrderGUID])
+ALTER TABLE [dbo].[datSalesOrderDetail]  WITH CHECK ADD  CONSTRAINT [FK_datSalesOrderDetail_datHairSystemOrder] FOREIGN KEY([HairSystemOrderGUID])
 REFERENCES [dbo].[datHairSystemOrder] ([HairSystemOrderGUID])
 GO
 ALTER TABLE [dbo].[datSalesOrderDetail] CHECK CONSTRAINT [FK_datSalesOrderDetail_datHairSystemOrder]
 GO
-ALTER TABLE [dbo].[datSalesOrderDetail]  WITH NOCHECK ADD  CONSTRAINT [FK_datSalesOrderDetail_datSalesOrder] FOREIGN KEY([SalesOrderGUID])
+ALTER TABLE [dbo].[datSalesOrderDetail]  WITH CHECK ADD  CONSTRAINT [FK_datSalesOrderDetail_datSalesOrder] FOREIGN KEY([SalesOrderGUID])
 REFERENCES [dbo].[datSalesOrder] ([SalesOrderGUID])
 GO
 ALTER TABLE [dbo].[datSalesOrderDetail] CHECK CONSTRAINT [FK_datSalesOrderDetail_datSalesOrder]
 GO
-ALTER TABLE [dbo].[datSalesOrderDetail]  WITH NOCHECK ADD  CONSTRAINT [FK_datSalesOrderDetail_datSalesOrderDetail] FOREIGN KEY([RefundedSalesOrderDetailGUID])
+ALTER TABLE [dbo].[datSalesOrderDetail]  WITH CHECK ADD  CONSTRAINT [FK_datSalesOrderDetail_datSalesOrderDetail] FOREIGN KEY([RefundedSalesOrderDetailGUID])
 REFERENCES [dbo].[datSalesOrderDetail] ([SalesOrderDetailGUID])
 GO
 ALTER TABLE [dbo].[datSalesOrderDetail] CHECK CONSTRAINT [FK_datSalesOrderDetail_datSalesOrderDetail]
 GO
-ALTER TABLE [dbo].[datSalesOrderDetail]  WITH NOCHECK ADD  CONSTRAINT [FK_datSalesOrderDetail_datSalesOrderDetail2] FOREIGN KEY([WriteOffSalesOrderDetailGUID])
+ALTER TABLE [dbo].[datSalesOrderDetail]  WITH CHECK ADD  CONSTRAINT [FK_datSalesOrderDetail_datSalesOrderDetail2] FOREIGN KEY([WriteOffSalesOrderDetailGUID])
 REFERENCES [dbo].[datSalesOrderDetail] ([SalesOrderDetailGUID])
 GO
 ALTER TABLE [dbo].[datSalesOrderDetail] CHECK CONSTRAINT [FK_datSalesOrderDetail_datSalesOrderDetail2]
 GO
-ALTER TABLE [dbo].[datSalesOrderDetail]  WITH NOCHECK ADD  CONSTRAINT [FK_datSalesOrderDetail_lkpDiscountType] FOREIGN KEY([DiscountTypeID])
+ALTER TABLE [dbo].[datSalesOrderDetail]  WITH CHECK ADD  CONSTRAINT [FK_datSalesOrderDetail_lkpDiscountType] FOREIGN KEY([DiscountTypeID])
 REFERENCES [dbo].[lkpDiscountType] ([DiscountTypeID])
 GO
 ALTER TABLE [dbo].[datSalesOrderDetail] CHECK CONSTRAINT [FK_datSalesOrderDetail_lkpDiscountType]
 GO
-ALTER TABLE [dbo].[datSalesOrderDetail]  WITH NOCHECK ADD  CONSTRAINT [FK_datSalesOrderDetail_lkpMembershipOrderReason] FOREIGN KEY([MembershipOrderReasonID])
+ALTER TABLE [dbo].[datSalesOrderDetail]  WITH CHECK ADD  CONSTRAINT [FK_datSalesOrderDetail_lkpMembershipOrderReason] FOREIGN KEY([MembershipOrderReasonID])
 REFERENCES [dbo].[lkpMembershipOrderReason] ([MembershipOrderReasonID])
 GO
 ALTER TABLE [dbo].[datSalesOrderDetail] CHECK CONSTRAINT [FK_datSalesOrderDetail_lkpMembershipOrderReason]
 GO
-ALTER TABLE [dbo].[datSalesOrderDetail]  WITH NOCHECK ADD  CONSTRAINT [FK_datSalesOrderDetail_lkpTaxType1] FOREIGN KEY([TaxType1ID])
+ALTER TABLE [dbo].[datSalesOrderDetail]  WITH CHECK ADD  CONSTRAINT [FK_datSalesOrderDetail_lkpTaxType1] FOREIGN KEY([TaxType1ID])
 REFERENCES [dbo].[lkpTaxType] ([TaxTypeID])
 GO
 ALTER TABLE [dbo].[datSalesOrderDetail] CHECK CONSTRAINT [FK_datSalesOrderDetail_lkpTaxType1]
 GO
-ALTER TABLE [dbo].[datSalesOrderDetail]  WITH NOCHECK ADD  CONSTRAINT [FK_datSalesOrderDetail_lkpTaxType2] FOREIGN KEY([TaxType2ID])
+ALTER TABLE [dbo].[datSalesOrderDetail]  WITH CHECK ADD  CONSTRAINT [FK_datSalesOrderDetail_lkpTaxType2] FOREIGN KEY([TaxType2ID])
 REFERENCES [dbo].[lkpTaxType] ([TaxTypeID])
 GO
 ALTER TABLE [dbo].[datSalesOrderDetail] CHECK CONSTRAINT [FK_datSalesOrderDetail_lkpTaxType2]

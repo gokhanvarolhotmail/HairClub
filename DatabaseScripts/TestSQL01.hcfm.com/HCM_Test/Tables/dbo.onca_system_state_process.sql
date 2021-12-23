@@ -10,13 +10,13 @@ CREATE TABLE [dbo].[onca_system_state_process](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[onca_system_state_process]  WITH NOCHECK ADD  CONSTRAINT [system_proce_system_state_321] FOREIGN KEY([system_process_code])
+ALTER TABLE [dbo].[onca_system_state_process]  WITH CHECK ADD  CONSTRAINT [system_proce_system_state_321] FOREIGN KEY([system_process_code])
 REFERENCES [dbo].[onca_system_process] ([system_process_code])
 ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[onca_system_state_process] CHECK CONSTRAINT [system_proce_system_state_321]
 GO
-ALTER TABLE [dbo].[onca_system_state_process]  WITH NOCHECK ADD  CONSTRAINT [system_state_system_state_322] FOREIGN KEY([system_state_code])
+ALTER TABLE [dbo].[onca_system_state_process]  WITH CHECK ADD  CONSTRAINT [system_state_system_state_322] FOREIGN KEY([system_state_code])
 REFERENCES [dbo].[onca_system_state] ([system_state_code])
 ON DELETE CASCADE
 GO

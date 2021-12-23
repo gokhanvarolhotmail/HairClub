@@ -148,62 +148,62 @@ ALTER TABLE [dbo].[cfgSalesCode] ADD  DEFAULT ((0)) FOR [CanBeManagedByClient]
 GO
 ALTER TABLE [dbo].[cfgSalesCode] ADD  DEFAULT ((0)) FOR [IsManagedByClientOnly]
 GO
-ALTER TABLE [dbo].[cfgSalesCode]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgSalesCode_cfgHairSystem] FOREIGN KEY([HairSystemID])
+ALTER TABLE [dbo].[cfgSalesCode]  WITH CHECK ADD  CONSTRAINT [FK_cfgSalesCode_cfgHairSystem] FOREIGN KEY([HairSystemID])
 REFERENCES [dbo].[cfgHairSystem] ([HairSystemID])
 GO
 ALTER TABLE [dbo].[cfgSalesCode] CHECK CONSTRAINT [FK_cfgSalesCode_cfgHairSystem]
 GO
-ALTER TABLE [dbo].[cfgSalesCode]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgSalesCode_cfgSalesCode] FOREIGN KEY([InventorySalesCodeID])
+ALTER TABLE [dbo].[cfgSalesCode]  WITH CHECK ADD  CONSTRAINT [FK_cfgSalesCode_cfgSalesCode] FOREIGN KEY([InventorySalesCodeID])
 REFERENCES [dbo].[cfgSalesCode] ([SalesCodeID])
 GO
 ALTER TABLE [dbo].[cfgSalesCode] CHECK CONSTRAINT [FK_cfgSalesCode_cfgSalesCode]
 GO
-ALTER TABLE [dbo].[cfgSalesCode]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgSalesCode_cfgVendor] FOREIGN KEY([VendorID])
+ALTER TABLE [dbo].[cfgSalesCode]  WITH CHECK ADD  CONSTRAINT [FK_cfgSalesCode_cfgVendor] FOREIGN KEY([VendorID])
 REFERENCES [dbo].[cfgVendor] ([VendorID])
 GO
 ALTER TABLE [dbo].[cfgSalesCode] CHECK CONSTRAINT [FK_cfgSalesCode_cfgVendor]
 GO
-ALTER TABLE [dbo].[cfgSalesCode]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgSalesCode_lkpBrand] FOREIGN KEY([BrandID])
+ALTER TABLE [dbo].[cfgSalesCode]  WITH CHECK ADD  CONSTRAINT [FK_cfgSalesCode_lkpBrand] FOREIGN KEY([BrandID])
 REFERENCES [dbo].[lkpBrand] ([BrandID])
 GO
 ALTER TABLE [dbo].[cfgSalesCode] CHECK CONSTRAINT [FK_cfgSalesCode_lkpBrand]
 GO
-ALTER TABLE [dbo].[cfgSalesCode]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgSalesCode_lkpGeneralLedger] FOREIGN KEY([GLNumber])
+ALTER TABLE [dbo].[cfgSalesCode]  WITH CHECK ADD  CONSTRAINT [FK_cfgSalesCode_lkpGeneralLedger] FOREIGN KEY([GLNumber])
 REFERENCES [dbo].[lkpGeneralLedger] ([GeneralLedgerID])
 GO
 ALTER TABLE [dbo].[cfgSalesCode] CHECK CONSTRAINT [FK_cfgSalesCode_lkpGeneralLedger]
 GO
-ALTER TABLE [dbo].[cfgSalesCode]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgSalesCode_lkpGeneralLedger1] FOREIGN KEY([BIOGeneralLedgerID])
+ALTER TABLE [dbo].[cfgSalesCode]  WITH CHECK ADD  CONSTRAINT [FK_cfgSalesCode_lkpGeneralLedger1] FOREIGN KEY([BIOGeneralLedgerID])
 REFERENCES [dbo].[lkpGeneralLedger] ([GeneralLedgerID])
 GO
 ALTER TABLE [dbo].[cfgSalesCode] CHECK CONSTRAINT [FK_cfgSalesCode_lkpGeneralLedger1]
 GO
-ALTER TABLE [dbo].[cfgSalesCode]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgSalesCode_lkpGeneralLedger2] FOREIGN KEY([EXTGeneralLedgerID])
+ALTER TABLE [dbo].[cfgSalesCode]  WITH CHECK ADD  CONSTRAINT [FK_cfgSalesCode_lkpGeneralLedger2] FOREIGN KEY([EXTGeneralLedgerID])
 REFERENCES [dbo].[lkpGeneralLedger] ([GeneralLedgerID])
 GO
 ALTER TABLE [dbo].[cfgSalesCode] CHECK CONSTRAINT [FK_cfgSalesCode_lkpGeneralLedger2]
 GO
-ALTER TABLE [dbo].[cfgSalesCode]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgSalesCode_lkpGeneralLedger3] FOREIGN KEY([SURGeneralLedgerID])
+ALTER TABLE [dbo].[cfgSalesCode]  WITH CHECK ADD  CONSTRAINT [FK_cfgSalesCode_lkpGeneralLedger3] FOREIGN KEY([SURGeneralLedgerID])
 REFERENCES [dbo].[lkpGeneralLedger] ([GeneralLedgerID])
 GO
 ALTER TABLE [dbo].[cfgSalesCode] CHECK CONSTRAINT [FK_cfgSalesCode_lkpGeneralLedger3]
 GO
-ALTER TABLE [dbo].[cfgSalesCode]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgSalesCode_lkpGeneralLedger4] FOREIGN KEY([XTRGeneralLedgerID])
+ALTER TABLE [dbo].[cfgSalesCode]  WITH CHECK ADD  CONSTRAINT [FK_cfgSalesCode_lkpGeneralLedger4] FOREIGN KEY([XTRGeneralLedgerID])
 REFERENCES [dbo].[lkpGeneralLedger] ([GeneralLedgerID])
 GO
 ALTER TABLE [dbo].[cfgSalesCode] CHECK CONSTRAINT [FK_cfgSalesCode_lkpGeneralLedger4]
 GO
-ALTER TABLE [dbo].[cfgSalesCode]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgSalesCode_lkpSalesCodeDepartment] FOREIGN KEY([SalesCodeDepartmentID])
+ALTER TABLE [dbo].[cfgSalesCode]  WITH CHECK ADD  CONSTRAINT [FK_cfgSalesCode_lkpSalesCodeDepartment] FOREIGN KEY([SalesCodeDepartmentID])
 REFERENCES [dbo].[lkpSalesCodeDepartment] ([SalesCodeDepartmentID])
 GO
 ALTER TABLE [dbo].[cfgSalesCode] CHECK CONSTRAINT [FK_cfgSalesCode_lkpSalesCodeDepartment]
 GO
-ALTER TABLE [dbo].[cfgSalesCode]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgSalesCode_lkpSalesCodeType] FOREIGN KEY([SalesCodeTypeID])
+ALTER TABLE [dbo].[cfgSalesCode]  WITH CHECK ADD  CONSTRAINT [FK_cfgSalesCode_lkpSalesCodeType] FOREIGN KEY([SalesCodeTypeID])
 REFERENCES [dbo].[lkpSalesCodeType] ([SalesCodeTypeID])
 GO
 ALTER TABLE [dbo].[cfgSalesCode] CHECK CONSTRAINT [FK_cfgSalesCode_lkpSalesCodeType]
 GO
-ALTER TABLE [dbo].[cfgSalesCode]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgSalesCode_lkpUnitOfMeasure] FOREIGN KEY([PackUnitOfMeasureID])
+ALTER TABLE [dbo].[cfgSalesCode]  WITH CHECK ADD  CONSTRAINT [FK_cfgSalesCode_lkpUnitOfMeasure] FOREIGN KEY([PackUnitOfMeasureID])
 REFERENCES [dbo].[lkpUnitOfMeasure] ([UnitOfMeasureID])
 GO
 ALTER TABLE [dbo].[cfgSalesCode] CHECK CONSTRAINT [FK_cfgSalesCode_lkpUnitOfMeasure]

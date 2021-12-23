@@ -20,27 +20,27 @@ CREATE TABLE [dbo].[cstd_recycle_lead](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[cstd_recycle_lead]  WITH NOCHECK ADD  CONSTRAINT [FK_cstd_recycle_lead_created_by_user] FOREIGN KEY([created_by_user_code])
+ALTER TABLE [dbo].[cstd_recycle_lead]  WITH CHECK ADD  CONSTRAINT [FK_cstd_recycle_lead_created_by_user] FOREIGN KEY([created_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[cstd_recycle_lead] CHECK CONSTRAINT [FK_cstd_recycle_lead_created_by_user]
 GO
-ALTER TABLE [dbo].[cstd_recycle_lead]  WITH NOCHECK ADD  CONSTRAINT [FK_cstd_recycle_lead_cstd_recycle_lead] FOREIGN KEY([recycle_lead_id])
+ALTER TABLE [dbo].[cstd_recycle_lead]  WITH CHECK ADD  CONSTRAINT [FK_cstd_recycle_lead_cstd_recycle_lead] FOREIGN KEY([recycle_lead_id])
 REFERENCES [dbo].[cstd_recycle_lead] ([recycle_lead_id])
 GO
 ALTER TABLE [dbo].[cstd_recycle_lead] CHECK CONSTRAINT [FK_cstd_recycle_lead_cstd_recycle_lead]
 GO
-ALTER TABLE [dbo].[cstd_recycle_lead]  WITH NOCHECK ADD  CONSTRAINT [FK_cstd_recycle_lead_onca_source] FOREIGN KEY([source_code])
+ALTER TABLE [dbo].[cstd_recycle_lead]  WITH CHECK ADD  CONSTRAINT [FK_cstd_recycle_lead_onca_source] FOREIGN KEY([source_code])
 REFERENCES [dbo].[onca_source] ([source_code])
 GO
 ALTER TABLE [dbo].[cstd_recycle_lead] CHECK CONSTRAINT [FK_cstd_recycle_lead_onca_source]
 GO
-ALTER TABLE [dbo].[cstd_recycle_lead]  WITH NOCHECK ADD  CONSTRAINT [FK_cstd_recycle_lead_onca_user] FOREIGN KEY([user_code])
+ALTER TABLE [dbo].[cstd_recycle_lead]  WITH CHECK ADD  CONSTRAINT [FK_cstd_recycle_lead_onca_user] FOREIGN KEY([user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[cstd_recycle_lead] CHECK CONSTRAINT [FK_cstd_recycle_lead_onca_user]
 GO
-ALTER TABLE [dbo].[cstd_recycle_lead]  WITH NOCHECK ADD  CONSTRAINT [FK_cstd_recycle_lead_updated_by_user] FOREIGN KEY([updated_by_user_code])
+ALTER TABLE [dbo].[cstd_recycle_lead]  WITH CHECK ADD  CONSTRAINT [FK_cstd_recycle_lead_updated_by_user] FOREIGN KEY([updated_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[cstd_recycle_lead] CHECK CONSTRAINT [FK_cstd_recycle_lead_updated_by_user]

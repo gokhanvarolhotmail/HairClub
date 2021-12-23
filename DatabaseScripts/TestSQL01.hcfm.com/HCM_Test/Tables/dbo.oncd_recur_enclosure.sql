@@ -25,23 +25,23 @@ CREATE NONCLUSTERED INDEX [oncd_recur_enclosure_i2] ON [dbo].[oncd_recur_enclosu
 	[sort_order] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[oncd_recur_enclosure]  WITH NOCHECK ADD  CONSTRAINT [enclosure_recur_enclos_487] FOREIGN KEY([enclosure_code])
+ALTER TABLE [dbo].[oncd_recur_enclosure]  WITH CHECK ADD  CONSTRAINT [enclosure_recur_enclos_487] FOREIGN KEY([enclosure_code])
 REFERENCES [dbo].[onca_enclosure] ([enclosure_code])
 GO
 ALTER TABLE [dbo].[oncd_recur_enclosure] CHECK CONSTRAINT [enclosure_recur_enclos_487]
 GO
-ALTER TABLE [dbo].[oncd_recur_enclosure]  WITH NOCHECK ADD  CONSTRAINT [recur_recur_enclos_210] FOREIGN KEY([recur_id])
+ALTER TABLE [dbo].[oncd_recur_enclosure]  WITH CHECK ADD  CONSTRAINT [recur_recur_enclos_210] FOREIGN KEY([recur_id])
 REFERENCES [dbo].[oncd_recur] ([recur_id])
 ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[oncd_recur_enclosure] CHECK CONSTRAINT [recur_recur_enclos_210]
 GO
-ALTER TABLE [dbo].[oncd_recur_enclosure]  WITH NOCHECK ADD  CONSTRAINT [user_recur_enclos_485] FOREIGN KEY([created_by_user_code])
+ALTER TABLE [dbo].[oncd_recur_enclosure]  WITH CHECK ADD  CONSTRAINT [user_recur_enclos_485] FOREIGN KEY([created_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_recur_enclosure] CHECK CONSTRAINT [user_recur_enclos_485]
 GO
-ALTER TABLE [dbo].[oncd_recur_enclosure]  WITH NOCHECK ADD  CONSTRAINT [user_recur_enclos_486] FOREIGN KEY([updated_by_user_code])
+ALTER TABLE [dbo].[oncd_recur_enclosure]  WITH CHECK ADD  CONSTRAINT [user_recur_enclos_486] FOREIGN KEY([updated_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_recur_enclosure] CHECK CONSTRAINT [user_recur_enclos_486]

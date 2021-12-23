@@ -19,7 +19,7 @@ CREATE TABLE [dbo].[lkpActivitySubCategory](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[lkpActivitySubCategory]  WITH NOCHECK ADD  CONSTRAINT [FK_lkpActivitySubCategory_lkpActivityCategory] FOREIGN KEY([ActivityCategoryID])
+ALTER TABLE [dbo].[lkpActivitySubCategory]  WITH CHECK ADD  CONSTRAINT [FK_lkpActivitySubCategory_lkpActivityCategory] FOREIGN KEY([ActivityCategoryID])
 REFERENCES [dbo].[lkpActivityCategory] ([ActivityCategoryID])
 GO
 ALTER TABLE [dbo].[lkpActivitySubCategory] CHECK CONSTRAINT [FK_lkpActivitySubCategory_lkpActivityCategory]

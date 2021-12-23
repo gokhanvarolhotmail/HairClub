@@ -12,7 +12,7 @@ CREATE TABLE [dbo].[onct_registry_assembly_prov](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[onct_registry_assembly_prov]  WITH NOCHECK ADD  CONSTRAINT [registry_ent_registry_ass_1108] FOREIGN KEY([registry_entry_id])
+ALTER TABLE [dbo].[onct_registry_assembly_prov]  WITH CHECK ADD  CONSTRAINT [registry_ent_registry_ass_1108] FOREIGN KEY([registry_entry_id])
 REFERENCES [dbo].[onct_registry_entry] ([registry_entry_id])
 ON DELETE CASCADE
 GO

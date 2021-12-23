@@ -12,7 +12,7 @@ CREATE TABLE [dbo].[onca_state](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[onca_state]  WITH NOCHECK ADD  CONSTRAINT [country_state_857] FOREIGN KEY([country_code])
+ALTER TABLE [dbo].[onca_state]  WITH CHECK ADD  CONSTRAINT [country_state_857] FOREIGN KEY([country_code])
 REFERENCES [dbo].[onca_country] ([country_code])
 GO
 ALTER TABLE [dbo].[onca_state] CHECK CONSTRAINT [country_state_857]

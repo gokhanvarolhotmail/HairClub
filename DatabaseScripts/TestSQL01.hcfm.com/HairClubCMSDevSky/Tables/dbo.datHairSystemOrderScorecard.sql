@@ -20,17 +20,17 @@ CREATE TABLE [dbo].[datHairSystemOrderScorecard](
 GO
 ALTER TABLE [dbo].[datHairSystemOrderScorecard] ADD  DEFAULT ((0)) FOR [IsFailProcess]
 GO
-ALTER TABLE [dbo].[datHairSystemOrderScorecard]  WITH NOCHECK ADD  CONSTRAINT [FK_datHairSystemOrderScorecard_datEmployee] FOREIGN KEY([CompletedByEmployeeGUID])
+ALTER TABLE [dbo].[datHairSystemOrderScorecard]  WITH CHECK ADD  CONSTRAINT [FK_datHairSystemOrderScorecard_datEmployee] FOREIGN KEY([CompletedByEmployeeGUID])
 REFERENCES [dbo].[datEmployee] ([EmployeeGUID])
 GO
 ALTER TABLE [dbo].[datHairSystemOrderScorecard] CHECK CONSTRAINT [FK_datHairSystemOrderScorecard_datEmployee]
 GO
-ALTER TABLE [dbo].[datHairSystemOrderScorecard]  WITH NOCHECK ADD  CONSTRAINT [FK_datHairSystemOrderScorecard_datHairSystemOrder] FOREIGN KEY([HairSystemOrderGUID])
+ALTER TABLE [dbo].[datHairSystemOrderScorecard]  WITH CHECK ADD  CONSTRAINT [FK_datHairSystemOrderScorecard_datHairSystemOrder] FOREIGN KEY([HairSystemOrderGUID])
 REFERENCES [dbo].[datHairSystemOrder] ([HairSystemOrderGUID])
 GO
 ALTER TABLE [dbo].[datHairSystemOrderScorecard] CHECK CONSTRAINT [FK_datHairSystemOrderScorecard_datHairSystemOrder]
 GO
-ALTER TABLE [dbo].[datHairSystemOrderScorecard]  WITH NOCHECK ADD  CONSTRAINT [FK_datHairSystemOrderScorecard_lkpScorecardCategory] FOREIGN KEY([ScorecardCategoryID])
+ALTER TABLE [dbo].[datHairSystemOrderScorecard]  WITH CHECK ADD  CONSTRAINT [FK_datHairSystemOrderScorecard_lkpScorecardCategory] FOREIGN KEY([ScorecardCategoryID])
 REFERENCES [dbo].[lkpScorecardCategory] ([ScorecardCategoryID])
 GO
 ALTER TABLE [dbo].[datHairSystemOrderScorecard] CHECK CONSTRAINT [FK_datHairSystemOrderScorecard_lkpScorecardCategory]

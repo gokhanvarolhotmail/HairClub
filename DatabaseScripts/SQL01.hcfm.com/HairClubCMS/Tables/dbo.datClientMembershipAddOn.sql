@@ -29,17 +29,17 @@ CREATE NONCLUSTERED INDEX [IX_datClientMembershipAddOn_ClientMembershipGUID] ON 
 )
 INCLUDE([ClientMembershipAddOnID],[AddOnID],[ClientMembershipAddOnStatusID],[MonthlyFee],[ContractPrice],[ContractPaidAmount]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[datClientMembershipAddOn]  WITH NOCHECK ADD  CONSTRAINT [FK_datClientMembershipAddOn_cfgAddOn] FOREIGN KEY([AddOnID])
+ALTER TABLE [dbo].[datClientMembershipAddOn]  WITH CHECK ADD  CONSTRAINT [FK_datClientMembershipAddOn_cfgAddOn] FOREIGN KEY([AddOnID])
 REFERENCES [dbo].[cfgAddOn] ([AddOnID])
 GO
 ALTER TABLE [dbo].[datClientMembershipAddOn] CHECK CONSTRAINT [FK_datClientMembershipAddOn_cfgAddOn]
 GO
-ALTER TABLE [dbo].[datClientMembershipAddOn]  WITH NOCHECK ADD  CONSTRAINT [FK_datClientMembershipAddOn_datClientMembership] FOREIGN KEY([ClientMembershipGUID])
+ALTER TABLE [dbo].[datClientMembershipAddOn]  WITH CHECK ADD  CONSTRAINT [FK_datClientMembershipAddOn_datClientMembership] FOREIGN KEY([ClientMembershipGUID])
 REFERENCES [dbo].[datClientMembership] ([ClientMembershipGUID])
 GO
 ALTER TABLE [dbo].[datClientMembershipAddOn] CHECK CONSTRAINT [FK_datClientMembershipAddOn_datClientMembership]
 GO
-ALTER TABLE [dbo].[datClientMembershipAddOn]  WITH NOCHECK ADD  CONSTRAINT [FK_datClientMembershipAddOn_lkpClientMembershipAddOnStatus] FOREIGN KEY([ClientMembershipAddOnStatusID])
+ALTER TABLE [dbo].[datClientMembershipAddOn]  WITH CHECK ADD  CONSTRAINT [FK_datClientMembershipAddOn_lkpClientMembershipAddOnStatus] FOREIGN KEY([ClientMembershipAddOnStatusID])
 REFERENCES [dbo].[lkpClientMembershipAddOnStatus] ([ClientMembershipAddOnStatusID])
 GO
 ALTER TABLE [dbo].[datClientMembershipAddOn] CHECK CONSTRAINT [FK_datClientMembershipAddOn_lkpClientMembershipAddOnStatus]

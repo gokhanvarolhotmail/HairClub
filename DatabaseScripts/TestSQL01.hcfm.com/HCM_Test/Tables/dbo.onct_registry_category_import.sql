@@ -25,7 +25,7 @@ CREATE UNIQUE NONCLUSTERED INDEX [onct_registry_category_impo_i2] ON [dbo].[onct
 	[import_namespace] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[onct_registry_category_import]  WITH NOCHECK ADD  CONSTRAINT [registry_cat_registry_cat_1173] FOREIGN KEY([registry_category_id])
+ALTER TABLE [dbo].[onct_registry_category_import]  WITH CHECK ADD  CONSTRAINT [registry_cat_registry_cat_1173] FOREIGN KEY([registry_category_id])
 REFERENCES [dbo].[onct_registry_category] ([registry_category_id])
 GO
 ALTER TABLE [dbo].[onct_registry_category_import] CHECK CONSTRAINT [registry_cat_registry_cat_1173]

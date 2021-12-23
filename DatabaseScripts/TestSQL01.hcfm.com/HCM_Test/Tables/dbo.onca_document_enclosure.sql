@@ -12,12 +12,12 @@ CREATE TABLE [dbo].[onca_document_enclosure](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[onca_document_enclosure]  WITH NOCHECK ADD  CONSTRAINT [document_document_enc_244] FOREIGN KEY([document_id])
+ALTER TABLE [dbo].[onca_document_enclosure]  WITH CHECK ADD  CONSTRAINT [document_document_enc_244] FOREIGN KEY([document_id])
 REFERENCES [dbo].[onca_document] ([document_id])
 GO
 ALTER TABLE [dbo].[onca_document_enclosure] CHECK CONSTRAINT [document_document_enc_244]
 GO
-ALTER TABLE [dbo].[onca_document_enclosure]  WITH NOCHECK ADD  CONSTRAINT [enclosure_document_enc_830] FOREIGN KEY([enclosure_code])
+ALTER TABLE [dbo].[onca_document_enclosure]  WITH CHECK ADD  CONSTRAINT [enclosure_document_enc_830] FOREIGN KEY([enclosure_code])
 REFERENCES [dbo].[onca_enclosure] ([enclosure_code])
 GO
 ALTER TABLE [dbo].[onca_document_enclosure] CHECK CONSTRAINT [enclosure_document_enc_830]

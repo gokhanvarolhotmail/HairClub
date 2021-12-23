@@ -41,28 +41,28 @@ CREATE NONCLUSTERED INDEX [oncd_company_source_i4] ON [dbo].[oncd_company_source
 	[media_code] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[oncd_company_source]  WITH NOCHECK ADD  CONSTRAINT [company_company_sour_82] FOREIGN KEY([company_id])
+ALTER TABLE [dbo].[oncd_company_source]  WITH CHECK ADD  CONSTRAINT [company_company_sour_82] FOREIGN KEY([company_id])
 REFERENCES [dbo].[oncd_company] ([company_id])
 ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[oncd_company_source] CHECK CONSTRAINT [company_company_sour_82]
 GO
-ALTER TABLE [dbo].[oncd_company_source]  WITH NOCHECK ADD  CONSTRAINT [media_company_sour_551] FOREIGN KEY([media_code])
+ALTER TABLE [dbo].[oncd_company_source]  WITH CHECK ADD  CONSTRAINT [media_company_sour_551] FOREIGN KEY([media_code])
 REFERENCES [dbo].[onca_media] ([media_code])
 GO
 ALTER TABLE [dbo].[oncd_company_source] CHECK CONSTRAINT [media_company_sour_551]
 GO
-ALTER TABLE [dbo].[oncd_company_source]  WITH NOCHECK ADD  CONSTRAINT [source_company_sour_550] FOREIGN KEY([source_code])
+ALTER TABLE [dbo].[oncd_company_source]  WITH CHECK ADD  CONSTRAINT [source_company_sour_550] FOREIGN KEY([source_code])
 REFERENCES [dbo].[onca_source] ([source_code])
 GO
 ALTER TABLE [dbo].[oncd_company_source] CHECK CONSTRAINT [source_company_sour_550]
 GO
-ALTER TABLE [dbo].[oncd_company_source]  WITH NOCHECK ADD  CONSTRAINT [user_company_sour_552] FOREIGN KEY([updated_by_user_code])
+ALTER TABLE [dbo].[oncd_company_source]  WITH CHECK ADD  CONSTRAINT [user_company_sour_552] FOREIGN KEY([updated_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_company_source] CHECK CONSTRAINT [user_company_sour_552]
 GO
-ALTER TABLE [dbo].[oncd_company_source]  WITH NOCHECK ADD  CONSTRAINT [user_company_sour_553] FOREIGN KEY([created_by_user_code])
+ALTER TABLE [dbo].[oncd_company_source]  WITH CHECK ADD  CONSTRAINT [user_company_sour_553] FOREIGN KEY([created_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_company_source] CHECK CONSTRAINT [user_company_sour_553]

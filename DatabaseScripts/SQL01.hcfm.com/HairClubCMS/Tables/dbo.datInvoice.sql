@@ -21,7 +21,7 @@ CREATE TABLE [dbo].[datInvoice](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[datInvoice]  WITH NOCHECK ADD  CONSTRAINT [FK_Invoice_lkpShipmentMethod] FOREIGN KEY([ShipmentMethodID])
+ALTER TABLE [dbo].[datInvoice]  WITH CHECK ADD  CONSTRAINT [FK_Invoice_lkpShipmentMethod] FOREIGN KEY([ShipmentMethodID])
 REFERENCES [dbo].[lkpShipmentMethod] ([ShipmentMethodID])
 GO
 ALTER TABLE [dbo].[datInvoice] CHECK CONSTRAINT [FK_Invoice_lkpShipmentMethod]

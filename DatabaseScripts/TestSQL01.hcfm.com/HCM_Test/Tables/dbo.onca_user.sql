@@ -37,22 +37,22 @@ CREATE TABLE [dbo].[onca_user](
 GO
 ALTER TABLE [dbo].[onca_user] ADD  CONSTRAINT [DF_onca_user_cst_is_queue_user]  DEFAULT (N'Y') FOR [cst_is_queue_user]
 GO
-ALTER TABLE [dbo].[onca_user]  WITH NOCHECK ADD  CONSTRAINT [action_set_user_859] FOREIGN KEY([action_set_code])
+ALTER TABLE [dbo].[onca_user]  WITH CHECK ADD  CONSTRAINT [action_set_user_859] FOREIGN KEY([action_set_code])
 REFERENCES [dbo].[onca_action_set] ([action_set_code])
 GO
 ALTER TABLE [dbo].[onca_user] CHECK CONSTRAINT [action_set_user_859]
 GO
-ALTER TABLE [dbo].[onca_user]  WITH NOCHECK ADD  CONSTRAINT [department_user_227] FOREIGN KEY([department_code])
+ALTER TABLE [dbo].[onca_user]  WITH CHECK ADD  CONSTRAINT [department_user_227] FOREIGN KEY([department_code])
 REFERENCES [dbo].[onca_department] ([department_code])
 GO
 ALTER TABLE [dbo].[onca_user] CHECK CONSTRAINT [department_user_227]
 GO
-ALTER TABLE [dbo].[onca_user]  WITH NOCHECK ADD  CONSTRAINT [job_function_user_265] FOREIGN KEY([job_function_code])
+ALTER TABLE [dbo].[onca_user]  WITH CHECK ADD  CONSTRAINT [job_function_user_265] FOREIGN KEY([job_function_code])
 REFERENCES [dbo].[onca_job_function] ([job_function_code])
 GO
 ALTER TABLE [dbo].[onca_user] CHECK CONSTRAINT [job_function_user_265]
 GO
-ALTER TABLE [dbo].[onca_user]  WITH NOCHECK ADD  CONSTRAINT [object_user_1185] FOREIGN KEY([startup_object_id])
+ALTER TABLE [dbo].[onca_user]  WITH CHECK ADD  CONSTRAINT [object_user_1185] FOREIGN KEY([startup_object_id])
 REFERENCES [dbo].[onct_object] ([object_id])
 GO
 ALTER TABLE [dbo].[onca_user] CHECK CONSTRAINT [object_user_1185]

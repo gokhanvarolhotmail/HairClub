@@ -26,7 +26,7 @@ CREATE NONCLUSTERED INDEX [skip_trace_export_detail_entity] ON [dbo].[cstd_skip_
 )
 INCLUDE([skip_trace_export_detail_id],[process_address_flag],[process_email_flag],[process_phone_flag]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[cstd_skip_trace_export_detail]  WITH NOCHECK ADD  CONSTRAINT [cstd_skip_trace_export_detail_export_id] FOREIGN KEY([skip_trace_export_id])
+ALTER TABLE [dbo].[cstd_skip_trace_export_detail]  WITH CHECK ADD  CONSTRAINT [cstd_skip_trace_export_detail_export_id] FOREIGN KEY([skip_trace_export_id])
 REFERENCES [dbo].[cstd_skip_trace_export] ([skip_trace_export_id])
 ON DELETE CASCADE
 GO

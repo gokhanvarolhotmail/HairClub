@@ -19,22 +19,22 @@ CREATE TABLE [dbo].[cstd_company_language](
 GO
 ALTER TABLE [dbo].[cstd_company_language] ADD  CONSTRAINT [DF__cstd_comp__prima__4E739D3B]  DEFAULT (' ') FOR [primary_flag]
 GO
-ALTER TABLE [dbo].[cstd_company_language]  WITH NOCHECK ADD  CONSTRAINT [csta_contact_language_cstd_company_language_746] FOREIGN KEY([language_code])
+ALTER TABLE [dbo].[cstd_company_language]  WITH CHECK ADD  CONSTRAINT [csta_contact_language_cstd_company_language_746] FOREIGN KEY([language_code])
 REFERENCES [dbo].[csta_contact_language] ([language_code])
 GO
 ALTER TABLE [dbo].[cstd_company_language] CHECK CONSTRAINT [csta_contact_language_cstd_company_language_746]
 GO
-ALTER TABLE [dbo].[cstd_company_language]  WITH NOCHECK ADD  CONSTRAINT [onca_user_cstd_company_language_747] FOREIGN KEY([created_by_user_code])
+ALTER TABLE [dbo].[cstd_company_language]  WITH CHECK ADD  CONSTRAINT [onca_user_cstd_company_language_747] FOREIGN KEY([created_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[cstd_company_language] CHECK CONSTRAINT [onca_user_cstd_company_language_747]
 GO
-ALTER TABLE [dbo].[cstd_company_language]  WITH NOCHECK ADD  CONSTRAINT [onca_user_cstd_company_language_748] FOREIGN KEY([updated_by_user_code])
+ALTER TABLE [dbo].[cstd_company_language]  WITH CHECK ADD  CONSTRAINT [onca_user_cstd_company_language_748] FOREIGN KEY([updated_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[cstd_company_language] CHECK CONSTRAINT [onca_user_cstd_company_language_748]
 GO
-ALTER TABLE [dbo].[cstd_company_language]  WITH NOCHECK ADD  CONSTRAINT [oncd_company_cstd_company_language_745] FOREIGN KEY([company_id])
+ALTER TABLE [dbo].[cstd_company_language]  WITH CHECK ADD  CONSTRAINT [oncd_company_cstd_company_language_745] FOREIGN KEY([company_id])
 REFERENCES [dbo].[oncd_company] ([company_id])
 ON DELETE CASCADE
 GO

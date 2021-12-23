@@ -30,18 +30,18 @@ CREATE NONCLUSTERED INDEX [oncd_defect_version_i3] ON [dbo].[oncd_defect_version
 	[version_code] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[oncd_defect_version]  WITH NOCHECK ADD  CONSTRAINT [defect_defect_versi_339] FOREIGN KEY([defect_id])
+ALTER TABLE [dbo].[oncd_defect_version]  WITH CHECK ADD  CONSTRAINT [defect_defect_versi_339] FOREIGN KEY([defect_id])
 REFERENCES [dbo].[oncd_defect] ([defect_id])
 ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[oncd_defect_version] CHECK CONSTRAINT [defect_defect_versi_339]
 GO
-ALTER TABLE [dbo].[oncd_defect_version]  WITH NOCHECK ADD  CONSTRAINT [user_defect_versi_652] FOREIGN KEY([created_by_user_code])
+ALTER TABLE [dbo].[oncd_defect_version]  WITH CHECK ADD  CONSTRAINT [user_defect_versi_652] FOREIGN KEY([created_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_defect_version] CHECK CONSTRAINT [user_defect_versi_652]
 GO
-ALTER TABLE [dbo].[oncd_defect_version]  WITH NOCHECK ADD  CONSTRAINT [user_defect_versi_653] FOREIGN KEY([updated_by_user_code])
+ALTER TABLE [dbo].[oncd_defect_version]  WITH CHECK ADD  CONSTRAINT [user_defect_versi_653] FOREIGN KEY([updated_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_defect_version] CHECK CONSTRAINT [user_defect_versi_653]

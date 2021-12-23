@@ -23,7 +23,7 @@ CREATE NONCLUSTERED INDEX [onca_data_column_i2] ON [dbo].[onca_data_column]
 	[column_name] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[onca_data_column]  WITH NOCHECK ADD  CONSTRAINT [data_data_column_326] FOREIGN KEY([data_code])
+ALTER TABLE [dbo].[onca_data_column]  WITH CHECK ADD  CONSTRAINT [data_data_column_326] FOREIGN KEY([data_code])
 REFERENCES [dbo].[onca_data] ([data_code])
 ON DELETE CASCADE
 GO

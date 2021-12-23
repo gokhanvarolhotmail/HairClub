@@ -38,7 +38,7 @@ CREATE NONCLUSTERED INDEX [IX_cfgVendorContact_LastName] ON [dbo].[cfgVendorCont
 GO
 ALTER TABLE [dbo].[cfgVendorContact] ADD  DEFAULT ((0)) FOR [IsActiveFlag]
 GO
-ALTER TABLE [dbo].[cfgVendorContact]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgVendorContact_cfgVendor] FOREIGN KEY([VendorID])
+ALTER TABLE [dbo].[cfgVendorContact]  WITH CHECK ADD  CONSTRAINT [FK_cfgVendorContact_cfgVendor] FOREIGN KEY([VendorID])
 REFERENCES [dbo].[cfgVendor] ([VendorID])
 GO
 ALTER TABLE [dbo].[cfgVendorContact] CHECK CONSTRAINT [FK_cfgVendorContact_cfgVendor]

@@ -15,12 +15,12 @@ CREATE TABLE [dbo].[datClientSurveyAreaAffected](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[datClientSurveyAreaAffected]  WITH NOCHECK ADD  CONSTRAINT [FK_datClientSurveyAreaAffected_datClientSurvey] FOREIGN KEY([ClientSurveyID])
+ALTER TABLE [dbo].[datClientSurveyAreaAffected]  WITH CHECK ADD  CONSTRAINT [FK_datClientSurveyAreaAffected_datClientSurvey] FOREIGN KEY([ClientSurveyID])
 REFERENCES [dbo].[datClientSurvey] ([ClientSurveyID])
 GO
 ALTER TABLE [dbo].[datClientSurveyAreaAffected] CHECK CONSTRAINT [FK_datClientSurveyAreaAffected_datClientSurvey]
 GO
-ALTER TABLE [dbo].[datClientSurveyAreaAffected]  WITH NOCHECK ADD  CONSTRAINT [FK_datClientSurveyAreaAffected_lkpClientSurveyAreaAffected] FOREIGN KEY([lkpClientSurveyAreaAffectedID])
+ALTER TABLE [dbo].[datClientSurveyAreaAffected]  WITH CHECK ADD  CONSTRAINT [FK_datClientSurveyAreaAffected_lkpClientSurveyAreaAffected] FOREIGN KEY([lkpClientSurveyAreaAffectedID])
 REFERENCES [dbo].[lkpClientSurveyAreaAffected] ([ClientSurveyAreaAffectedID])
 GO
 ALTER TABLE [dbo].[datClientSurveyAreaAffected] CHECK CONSTRAINT [FK_datClientSurveyAreaAffected_lkpClientSurveyAreaAffected]

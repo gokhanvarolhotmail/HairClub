@@ -13,7 +13,7 @@ CREATE TABLE [dbo].[oncs_transport_ftp](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[oncs_transport_ftp]  WITH NOCHECK ADD  CONSTRAINT [transport_transport_ft_318] FOREIGN KEY([transport_id])
+ALTER TABLE [dbo].[oncs_transport_ftp]  WITH CHECK ADD  CONSTRAINT [transport_transport_ft_318] FOREIGN KEY([transport_id])
 REFERENCES [dbo].[oncs_transport] ([transport_id])
 ON DELETE CASCADE
 GO

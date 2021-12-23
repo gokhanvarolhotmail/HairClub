@@ -15,12 +15,12 @@ CREATE TABLE [dbo].[datPhotoBookPhotoBookSurgeryType](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[datPhotoBookPhotoBookSurgeryType]  WITH NOCHECK ADD  CONSTRAINT [FK_datPhotoBookPhotoBookSurgeryType_datPhotoBook] FOREIGN KEY([PhotoBookID])
+ALTER TABLE [dbo].[datPhotoBookPhotoBookSurgeryType]  WITH CHECK ADD  CONSTRAINT [FK_datPhotoBookPhotoBookSurgeryType_datPhotoBook] FOREIGN KEY([PhotoBookID])
 REFERENCES [dbo].[datPhotoBook] ([PhotoBookID])
 GO
 ALTER TABLE [dbo].[datPhotoBookPhotoBookSurgeryType] CHECK CONSTRAINT [FK_datPhotoBookPhotoBookSurgeryType_datPhotoBook]
 GO
-ALTER TABLE [dbo].[datPhotoBookPhotoBookSurgeryType]  WITH NOCHECK ADD  CONSTRAINT [FK_datPhotoBookPhotoBookSurgeryType_lkpPhotoBookSurgeryType] FOREIGN KEY([PhotoBookSurgeryTypeID])
+ALTER TABLE [dbo].[datPhotoBookPhotoBookSurgeryType]  WITH CHECK ADD  CONSTRAINT [FK_datPhotoBookPhotoBookSurgeryType_lkpPhotoBookSurgeryType] FOREIGN KEY([PhotoBookSurgeryTypeID])
 REFERENCES [dbo].[lkpPhotoBookSurgeryType] ([PhotoBookSurgeryTypeID])
 GO
 ALTER TABLE [dbo].[datPhotoBookPhotoBookSurgeryType] CHECK CONSTRAINT [FK_datPhotoBookPhotoBookSurgeryType_lkpPhotoBookSurgeryType]

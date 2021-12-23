@@ -12,7 +12,7 @@ CREATE TABLE [dbo].[onct_registry_serializer](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[onct_registry_serializer]  WITH NOCHECK ADD  CONSTRAINT [registry_ent_registry_ser_1112] FOREIGN KEY([registry_entry_id])
+ALTER TABLE [dbo].[onct_registry_serializer]  WITH CHECK ADD  CONSTRAINT [registry_ent_registry_ser_1112] FOREIGN KEY([registry_entry_id])
 REFERENCES [dbo].[onct_registry_entry] ([registry_entry_id])
 GO
 ALTER TABLE [dbo].[onct_registry_serializer] CHECK CONSTRAINT [registry_ent_registry_ser_1112]

@@ -20,7 +20,7 @@ CREATE TABLE [dbo].[lkpResourceType](
 GO
 ALTER TABLE [dbo].[lkpResourceType] ADD  CONSTRAINT [DF_lkpResourceType_IsActiveFlag]  DEFAULT ((1)) FOR [IsActiveFlag]
 GO
-ALTER TABLE [dbo].[lkpResourceType]  WITH NOCHECK ADD  CONSTRAINT [FK_lkpResourceType_cfgCenter] FOREIGN KEY([CenterID])
+ALTER TABLE [dbo].[lkpResourceType]  WITH CHECK ADD  CONSTRAINT [FK_lkpResourceType_cfgCenter] FOREIGN KEY([CenterID])
 REFERENCES [dbo].[cfgCenter] ([CenterID])
 GO
 ALTER TABLE [dbo].[lkpResourceType] CHECK CONSTRAINT [FK_lkpResourceType_cfgCenter]

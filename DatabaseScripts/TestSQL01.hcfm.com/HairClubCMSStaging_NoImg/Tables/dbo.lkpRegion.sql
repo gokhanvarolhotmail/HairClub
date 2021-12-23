@@ -22,7 +22,7 @@ CREATE TABLE [dbo].[lkpRegion](
 GO
 ALTER TABLE [dbo].[lkpRegion] ADD  CONSTRAINT [DF_lkpRegion_IsActiveFlag]  DEFAULT ((1)) FOR [IsActiveFlag]
 GO
-ALTER TABLE [dbo].[lkpRegion]  WITH NOCHECK ADD  CONSTRAINT [FK_lkpRegion_datEmployee] FOREIGN KEY([RegionalVicePresidentGUID])
+ALTER TABLE [dbo].[lkpRegion]  WITH CHECK ADD  CONSTRAINT [FK_lkpRegion_datEmployee] FOREIGN KEY([RegionalVicePresidentGUID])
 REFERENCES [dbo].[datEmployee] ([EmployeeGUID])
 GO
 ALTER TABLE [dbo].[lkpRegion] CHECK CONSTRAINT [FK_lkpRegion_datEmployee]

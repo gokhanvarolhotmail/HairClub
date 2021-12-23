@@ -13,12 +13,12 @@ CREATE TABLE [dbo].[onca_territory_user](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[onca_territory_user]  WITH NOCHECK ADD  CONSTRAINT [territory_territory_us_226] FOREIGN KEY([territory_code])
+ALTER TABLE [dbo].[onca_territory_user]  WITH CHECK ADD  CONSTRAINT [territory_territory_us_226] FOREIGN KEY([territory_code])
 REFERENCES [dbo].[onca_territory] ([territory_code])
 GO
 ALTER TABLE [dbo].[onca_territory_user] CHECK CONSTRAINT [territory_territory_us_226]
 GO
-ALTER TABLE [dbo].[onca_territory_user]  WITH NOCHECK ADD  CONSTRAINT [user_territory_us_225] FOREIGN KEY([user_code])
+ALTER TABLE [dbo].[onca_territory_user]  WITH CHECK ADD  CONSTRAINT [user_territory_us_225] FOREIGN KEY([user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 ON DELETE CASCADE
 GO

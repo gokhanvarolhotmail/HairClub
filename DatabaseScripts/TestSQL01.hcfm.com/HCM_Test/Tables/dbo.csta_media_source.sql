@@ -14,7 +14,7 @@ CREATE TABLE [dbo].[csta_media_source](
 GO
 ALTER TABLE [dbo].[csta_media_source] ADD  CONSTRAINT [DF__csta_medi__activ__7775B2CE]  DEFAULT ('Y') FOR [active]
 GO
-ALTER TABLE [dbo].[csta_media_source]  WITH NOCHECK ADD  CONSTRAINT [onca_source_csta_media_source_815] FOREIGN KEY([source_code])
+ALTER TABLE [dbo].[csta_media_source]  WITH CHECK ADD  CONSTRAINT [onca_source_csta_media_source_815] FOREIGN KEY([source_code])
 REFERENCES [dbo].[onca_source] ([source_code])
 GO
 ALTER TABLE [dbo].[csta_media_source] CHECK CONSTRAINT [onca_source_csta_media_source_815]

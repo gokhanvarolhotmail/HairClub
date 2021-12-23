@@ -23,7 +23,7 @@ CREATE NONCLUSTERED INDEX [hcmtbl_file_import_file_detail_i2] ON [dbo].[hcmtbl_f
 	[lineitem_id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[hcmtbl_file_import_file_detail]  WITH NOCHECK ADD  CONSTRAINT [cstd_file_import_file_header_cstd_file_import_file_detail_786] FOREIGN KEY([file_id])
+ALTER TABLE [dbo].[hcmtbl_file_import_file_detail]  WITH CHECK ADD  CONSTRAINT [cstd_file_import_file_header_cstd_file_import_file_detail_786] FOREIGN KEY([file_id])
 REFERENCES [dbo].[hcmtbl_file_import_file_header] ([file_id])
 ON DELETE CASCADE
 GO

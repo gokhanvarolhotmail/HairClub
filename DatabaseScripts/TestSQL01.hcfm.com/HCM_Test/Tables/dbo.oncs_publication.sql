@@ -14,12 +14,12 @@ CREATE TABLE [dbo].[oncs_publication](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[oncs_publication]  WITH NOCHECK ADD  CONSTRAINT [user_publication_882] FOREIGN KEY([created_by_user_code])
+ALTER TABLE [dbo].[oncs_publication]  WITH CHECK ADD  CONSTRAINT [user_publication_882] FOREIGN KEY([created_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncs_publication] CHECK CONSTRAINT [user_publication_882]
 GO
-ALTER TABLE [dbo].[oncs_publication]  WITH NOCHECK ADD  CONSTRAINT [user_publication_883] FOREIGN KEY([updated_by_user_code])
+ALTER TABLE [dbo].[oncs_publication]  WITH CHECK ADD  CONSTRAINT [user_publication_883] FOREIGN KEY([updated_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncs_publication] CHECK CONSTRAINT [user_publication_883]

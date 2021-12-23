@@ -12,13 +12,13 @@ CREATE TABLE [dbo].[onct_registry_entry_layer_type](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[onct_registry_entry_layer_type]  WITH NOCHECK ADD  CONSTRAINT [registry_ass_registry_ent_1097] FOREIGN KEY([registry_assembly_id])
+ALTER TABLE [dbo].[onct_registry_entry_layer_type]  WITH CHECK ADD  CONSTRAINT [registry_ass_registry_ent_1097] FOREIGN KEY([registry_assembly_id])
 REFERENCES [dbo].[onct_registry_assembly] ([registry_assembly_id])
 ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[onct_registry_entry_layer_type] CHECK CONSTRAINT [registry_ass_registry_ent_1097]
 GO
-ALTER TABLE [dbo].[onct_registry_entry_layer_type]  WITH NOCHECK ADD  CONSTRAINT [registry_ent_registry_ent_1095] FOREIGN KEY([registry_entry_layer_id])
+ALTER TABLE [dbo].[onct_registry_entry_layer_type]  WITH CHECK ADD  CONSTRAINT [registry_ent_registry_ent_1095] FOREIGN KEY([registry_entry_layer_id])
 REFERENCES [dbo].[onct_registry_entry_layer] ([registry_entry_layer_id])
 ON DELETE CASCADE
 GO

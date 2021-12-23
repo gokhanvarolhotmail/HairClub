@@ -20,7 +20,7 @@ CREATE TABLE [dbo].[lkpMembershipCancelReason](
 GO
 ALTER TABLE [dbo].[lkpMembershipCancelReason] ADD  CONSTRAINT [DF_lkpMembershipCancelReason_IsActiveFlag]  DEFAULT ((1)) FOR [IsActiveFlag]
 GO
-ALTER TABLE [dbo].[lkpMembershipCancelReason]  WITH NOCHECK ADD  CONSTRAINT [FK_lkpMembershipCancelReason_lkpRevenueGroup] FOREIGN KEY([RevenueGroupID])
+ALTER TABLE [dbo].[lkpMembershipCancelReason]  WITH CHECK ADD  CONSTRAINT [FK_lkpMembershipCancelReason_lkpRevenueGroup] FOREIGN KEY([RevenueGroupID])
 REFERENCES [dbo].[lkpRevenueGroup] ([RevenueGroupID])
 GO
 ALTER TABLE [dbo].[lkpMembershipCancelReason] CHECK CONSTRAINT [FK_lkpMembershipCancelReason_lkpRevenueGroup]

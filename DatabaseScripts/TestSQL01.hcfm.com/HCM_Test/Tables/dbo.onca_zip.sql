@@ -33,17 +33,17 @@ CREATE UNIQUE NONCLUSTERED INDEX [onca_zip_i2] ON [dbo].[onca_zip]
 	[country_code] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[onca_zip]  WITH NOCHECK ADD  CONSTRAINT [country_zip_793] FOREIGN KEY([country_code])
+ALTER TABLE [dbo].[onca_zip]  WITH CHECK ADD  CONSTRAINT [country_zip_793] FOREIGN KEY([country_code])
 REFERENCES [dbo].[onca_country] ([country_code])
 GO
 ALTER TABLE [dbo].[onca_zip] CHECK CONSTRAINT [country_zip_793]
 GO
-ALTER TABLE [dbo].[onca_zip]  WITH NOCHECK ADD  CONSTRAINT [county_zip_794] FOREIGN KEY([county_code])
+ALTER TABLE [dbo].[onca_zip]  WITH CHECK ADD  CONSTRAINT [county_zip_794] FOREIGN KEY([county_code])
 REFERENCES [dbo].[onca_county] ([county_code])
 GO
 ALTER TABLE [dbo].[onca_zip] CHECK CONSTRAINT [county_zip_794]
 GO
-ALTER TABLE [dbo].[onca_zip]  WITH NOCHECK ADD  CONSTRAINT [state_zip_795] FOREIGN KEY([state_code])
+ALTER TABLE [dbo].[onca_zip]  WITH CHECK ADD  CONSTRAINT [state_zip_795] FOREIGN KEY([state_code])
 REFERENCES [dbo].[onca_state] ([state_code])
 GO
 ALTER TABLE [dbo].[onca_zip] CHECK CONSTRAINT [state_zip_795]

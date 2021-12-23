@@ -15,12 +15,12 @@ CREATE TABLE [dbo].[cfgCenterFeePayCycle](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[cfgCenterFeePayCycle]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgCenterFeePayCycle_cfgCenter] FOREIGN KEY([CenterID])
+ALTER TABLE [dbo].[cfgCenterFeePayCycle]  WITH CHECK ADD  CONSTRAINT [FK_cfgCenterFeePayCycle_cfgCenter] FOREIGN KEY([CenterID])
 REFERENCES [dbo].[cfgCenter] ([CenterID])
 GO
 ALTER TABLE [dbo].[cfgCenterFeePayCycle] CHECK CONSTRAINT [FK_cfgCenterFeePayCycle_cfgCenter]
 GO
-ALTER TABLE [dbo].[cfgCenterFeePayCycle]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgCenterFeePayCycle_lkpFeePayCycle] FOREIGN KEY([FeePayCycleID])
+ALTER TABLE [dbo].[cfgCenterFeePayCycle]  WITH CHECK ADD  CONSTRAINT [FK_cfgCenterFeePayCycle_lkpFeePayCycle] FOREIGN KEY([FeePayCycleID])
 REFERENCES [dbo].[lkpFeePayCycle] ([FeePayCycleID])
 GO
 ALTER TABLE [dbo].[cfgCenterFeePayCycle] CHECK CONSTRAINT [FK_cfgCenterFeePayCycle_lkpFeePayCycle]

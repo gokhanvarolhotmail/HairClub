@@ -42,28 +42,28 @@ CREATE NONCLUSTERED INDEX [oncd_contact_email_i2] ON [dbo].[oncd_contact_email]
 GO
 ALTER TABLE [dbo].[oncd_contact_email] ADD  CONSTRAINT [DF_oncd_contact_email_cst_valid_flag]  DEFAULT (N'Y') FOR [cst_valid_flag]
 GO
-ALTER TABLE [dbo].[oncd_contact_email]  WITH NOCHECK ADD  CONSTRAINT [contact_contact_emai_76] FOREIGN KEY([contact_id])
+ALTER TABLE [dbo].[oncd_contact_email]  WITH CHECK ADD  CONSTRAINT [contact_contact_emai_76] FOREIGN KEY([contact_id])
 REFERENCES [dbo].[oncd_contact] ([contact_id])
 ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[oncd_contact_email] CHECK CONSTRAINT [contact_contact_emai_76]
 GO
-ALTER TABLE [dbo].[oncd_contact_email]  WITH NOCHECK ADD  CONSTRAINT [contact_email_vendor] FOREIGN KEY([cst_skip_trace_vendor_code])
+ALTER TABLE [dbo].[oncd_contact_email]  WITH CHECK ADD  CONSTRAINT [contact_email_vendor] FOREIGN KEY([cst_skip_trace_vendor_code])
 REFERENCES [dbo].[csta_skip_trace_vendor] ([skip_trace_vendor_code])
 GO
 ALTER TABLE [dbo].[oncd_contact_email] CHECK CONSTRAINT [contact_email_vendor]
 GO
-ALTER TABLE [dbo].[oncd_contact_email]  WITH NOCHECK ADD  CONSTRAINT [email_type_contact_emai_592] FOREIGN KEY([email_type_code])
+ALTER TABLE [dbo].[oncd_contact_email]  WITH CHECK ADD  CONSTRAINT [email_type_contact_emai_592] FOREIGN KEY([email_type_code])
 REFERENCES [dbo].[onca_email_type] ([email_type_code])
 GO
 ALTER TABLE [dbo].[oncd_contact_email] CHECK CONSTRAINT [email_type_contact_emai_592]
 GO
-ALTER TABLE [dbo].[oncd_contact_email]  WITH NOCHECK ADD  CONSTRAINT [user_contact_emai_590] FOREIGN KEY([created_by_user_code])
+ALTER TABLE [dbo].[oncd_contact_email]  WITH CHECK ADD  CONSTRAINT [user_contact_emai_590] FOREIGN KEY([created_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_contact_email] CHECK CONSTRAINT [user_contact_emai_590]
 GO
-ALTER TABLE [dbo].[oncd_contact_email]  WITH NOCHECK ADD  CONSTRAINT [user_contact_emai_591] FOREIGN KEY([updated_by_user_code])
+ALTER TABLE [dbo].[oncd_contact_email]  WITH CHECK ADD  CONSTRAINT [user_contact_emai_591] FOREIGN KEY([updated_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_contact_email] CHECK CONSTRAINT [user_contact_emai_591]

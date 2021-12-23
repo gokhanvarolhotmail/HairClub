@@ -18,7 +18,7 @@ CREATE TABLE [dbo].[cfgCenterManagementArea](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[cfgCenterManagementArea]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgCenterManagementArea_datEmployee] FOREIGN KEY([OperationsManagerGUID])
+ALTER TABLE [dbo].[cfgCenterManagementArea]  WITH CHECK ADD  CONSTRAINT [FK_cfgCenterManagementArea_datEmployee] FOREIGN KEY([OperationsManagerGUID])
 REFERENCES [dbo].[datEmployee] ([EmployeeGUID])
 GO
 ALTER TABLE [dbo].[cfgCenterManagementArea] CHECK CONSTRAINT [FK_cfgCenterManagementArea_datEmployee]

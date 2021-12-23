@@ -15,12 +15,12 @@ CREATE TABLE [dbo].[cfgHairSystemAllocationFilterDesignTemplate](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[cfgHairSystemAllocationFilterDesignTemplate]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgHairSystemAllocationFilterDesignTemplate_cfgVendor] FOREIGN KEY([VendorID])
+ALTER TABLE [dbo].[cfgHairSystemAllocationFilterDesignTemplate]  WITH CHECK ADD  CONSTRAINT [FK_cfgHairSystemAllocationFilterDesignTemplate_cfgVendor] FOREIGN KEY([VendorID])
 REFERENCES [dbo].[cfgVendor] ([VendorID])
 GO
 ALTER TABLE [dbo].[cfgHairSystemAllocationFilterDesignTemplate] CHECK CONSTRAINT [FK_cfgHairSystemAllocationFilterDesignTemplate_cfgVendor]
 GO
-ALTER TABLE [dbo].[cfgHairSystemAllocationFilterDesignTemplate]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgHairSystemAllocationFilterDesignTemplate_lkpHairSystemDesignTemplate] FOREIGN KEY([HairSystemDesignTemplateID])
+ALTER TABLE [dbo].[cfgHairSystemAllocationFilterDesignTemplate]  WITH CHECK ADD  CONSTRAINT [FK_cfgHairSystemAllocationFilterDesignTemplate_lkpHairSystemDesignTemplate] FOREIGN KEY([HairSystemDesignTemplateID])
 REFERENCES [dbo].[lkpHairSystemDesignTemplate] ([HairSystemDesignTemplateID])
 GO
 ALTER TABLE [dbo].[cfgHairSystemAllocationFilterDesignTemplate] CHECK CONSTRAINT [FK_cfgHairSystemAllocationFilterDesignTemplate_lkpHairSystemDesignTemplate]

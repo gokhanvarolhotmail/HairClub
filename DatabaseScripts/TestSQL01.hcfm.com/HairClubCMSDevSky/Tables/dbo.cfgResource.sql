@@ -40,12 +40,12 @@ CREATE NONCLUSTERED INDEX [IX_cfgResource_ResourceSortOrder] ON [dbo].[cfgResour
 GO
 ALTER TABLE [dbo].[cfgResource] ADD  CONSTRAINT [DF_cfgResource_IsActiveFlag]  DEFAULT ((1)) FOR [IsActiveFlag]
 GO
-ALTER TABLE [dbo].[cfgResource]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgResource_cfgCenter] FOREIGN KEY([CenterID])
+ALTER TABLE [dbo].[cfgResource]  WITH CHECK ADD  CONSTRAINT [FK_cfgResource_cfgCenter] FOREIGN KEY([CenterID])
 REFERENCES [dbo].[cfgCenter] ([CenterID])
 GO
 ALTER TABLE [dbo].[cfgResource] CHECK CONSTRAINT [FK_cfgResource_cfgCenter]
 GO
-ALTER TABLE [dbo].[cfgResource]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgResource_lkpResourceType] FOREIGN KEY([ResourceTypeID])
+ALTER TABLE [dbo].[cfgResource]  WITH CHECK ADD  CONSTRAINT [FK_cfgResource_lkpResourceType] FOREIGN KEY([ResourceTypeID])
 REFERENCES [dbo].[lkpResourceType] ([ResourceTypeID])
 GO
 ALTER TABLE [dbo].[cfgResource] CHECK CONSTRAINT [FK_cfgResource_lkpResourceType]

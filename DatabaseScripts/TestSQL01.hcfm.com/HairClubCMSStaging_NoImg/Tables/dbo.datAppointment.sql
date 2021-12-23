@@ -172,62 +172,62 @@ ALTER TABLE [dbo].[datAppointment] ADD  DEFAULT ((0)) FOR [IsAuthorizedFlag]
 GO
 ALTER TABLE [dbo].[datAppointment] ADD  CONSTRAINT [DF_datAppointment_IsFullTrichoView]  DEFAULT ((0)) FOR [IsFullTrichoView]
 GO
-ALTER TABLE [dbo].[datAppointment]  WITH NOCHECK ADD  CONSTRAINT [FK_datAppointment_cfgCenter] FOREIGN KEY([CenterID])
+ALTER TABLE [dbo].[datAppointment]  WITH CHECK ADD  CONSTRAINT [FK_datAppointment_cfgCenter] FOREIGN KEY([CenterID])
 REFERENCES [dbo].[cfgCenter] ([CenterID])
 GO
 ALTER TABLE [dbo].[datAppointment] CHECK CONSTRAINT [FK_datAppointment_cfgCenter]
 GO
-ALTER TABLE [dbo].[datAppointment]  WITH NOCHECK ADD  CONSTRAINT [FK_datAppointment_cfgCenter1] FOREIGN KEY([ClientHomeCenterID])
+ALTER TABLE [dbo].[datAppointment]  WITH CHECK ADD  CONSTRAINT [FK_datAppointment_cfgCenter1] FOREIGN KEY([ClientHomeCenterID])
 REFERENCES [dbo].[cfgCenter] ([CenterID])
 GO
 ALTER TABLE [dbo].[datAppointment] CHECK CONSTRAINT [FK_datAppointment_cfgCenter1]
 GO
-ALTER TABLE [dbo].[datAppointment]  WITH NOCHECK ADD  CONSTRAINT [FK_datAppointment_cfgResource] FOREIGN KEY([ResourceID])
+ALTER TABLE [dbo].[datAppointment]  WITH CHECK ADD  CONSTRAINT [FK_datAppointment_cfgResource] FOREIGN KEY([ResourceID])
 REFERENCES [dbo].[cfgResource] ([ResourceID])
 GO
 ALTER TABLE [dbo].[datAppointment] CHECK CONSTRAINT [FK_datAppointment_cfgResource]
 GO
-ALTER TABLE [dbo].[datAppointment]  WITH NOCHECK ADD  CONSTRAINT [FK_datAppointment_datAppointment] FOREIGN KEY([ParentAppointmentGUID])
+ALTER TABLE [dbo].[datAppointment]  WITH CHECK ADD  CONSTRAINT [FK_datAppointment_datAppointment] FOREIGN KEY([ParentAppointmentGUID])
 REFERENCES [dbo].[datAppointment] ([AppointmentGUID])
 GO
 ALTER TABLE [dbo].[datAppointment] CHECK CONSTRAINT [FK_datAppointment_datAppointment]
 GO
-ALTER TABLE [dbo].[datAppointment]  WITH NOCHECK ADD  CONSTRAINT [FK_datAppointment_datClient] FOREIGN KEY([ClientGUID])
+ALTER TABLE [dbo].[datAppointment]  WITH CHECK ADD  CONSTRAINT [FK_datAppointment_datClient] FOREIGN KEY([ClientGUID])
 REFERENCES [dbo].[datClient] ([ClientGUID])
 GO
 ALTER TABLE [dbo].[datAppointment] CHECK CONSTRAINT [FK_datAppointment_datClient]
 GO
-ALTER TABLE [dbo].[datAppointment]  WITH NOCHECK ADD  CONSTRAINT [FK_datAppointment_datClientMembership] FOREIGN KEY([ClientMembershipGUID])
+ALTER TABLE [dbo].[datAppointment]  WITH CHECK ADD  CONSTRAINT [FK_datAppointment_datClientMembership] FOREIGN KEY([ClientMembershipGUID])
 REFERENCES [dbo].[datClientMembership] ([ClientMembershipGUID])
 GO
 ALTER TABLE [dbo].[datAppointment] CHECK CONSTRAINT [FK_datAppointment_datClientMembership]
 GO
-ALTER TABLE [dbo].[datAppointment]  WITH NOCHECK ADD  CONSTRAINT [FK_datAppointment_lkpAppointmentPriorityColor] FOREIGN KEY([AppointmentPriorityColorID])
+ALTER TABLE [dbo].[datAppointment]  WITH CHECK ADD  CONSTRAINT [FK_datAppointment_lkpAppointmentPriorityColor] FOREIGN KEY([AppointmentPriorityColorID])
 REFERENCES [dbo].[lkpAppointmentPriorityColor] ([AppointmentPriorityColorID])
 GO
 ALTER TABLE [dbo].[datAppointment] CHECK CONSTRAINT [FK_datAppointment_lkpAppointmentPriorityColor]
 GO
-ALTER TABLE [dbo].[datAppointment]  WITH NOCHECK ADD  CONSTRAINT [FK_datAppointment_lkpAppointmentStatus] FOREIGN KEY([AppointmentStatusID])
+ALTER TABLE [dbo].[datAppointment]  WITH CHECK ADD  CONSTRAINT [FK_datAppointment_lkpAppointmentStatus] FOREIGN KEY([AppointmentStatusID])
 REFERENCES [dbo].[lkpAppointmentStatus] ([AppointmentStatusID])
 GO
 ALTER TABLE [dbo].[datAppointment] CHECK CONSTRAINT [FK_datAppointment_lkpAppointmentStatus]
 GO
-ALTER TABLE [dbo].[datAppointment]  WITH NOCHECK ADD  CONSTRAINT [FK_datAppointment_lkpAppointmentType] FOREIGN KEY([AppointmentTypeID])
+ALTER TABLE [dbo].[datAppointment]  WITH CHECK ADD  CONSTRAINT [FK_datAppointment_lkpAppointmentType] FOREIGN KEY([AppointmentTypeID])
 REFERENCES [dbo].[lkpAppointmentType] ([AppointmentTypeID])
 GO
 ALTER TABLE [dbo].[datAppointment] CHECK CONSTRAINT [FK_datAppointment_lkpAppointmentType]
 GO
-ALTER TABLE [dbo].[datAppointment]  WITH NOCHECK ADD  CONSTRAINT [FK_datAppointment_lkpCompletedVisitType] FOREIGN KEY([CompletedVisitTypeID])
+ALTER TABLE [dbo].[datAppointment]  WITH CHECK ADD  CONSTRAINT [FK_datAppointment_lkpCompletedVisitType] FOREIGN KEY([CompletedVisitTypeID])
 REFERENCES [dbo].[lkpCompletedVisitType] ([CompletedVisitTypeID])
 GO
 ALTER TABLE [dbo].[datAppointment] CHECK CONSTRAINT [FK_datAppointment_lkpCompletedVisitType]
 GO
-ALTER TABLE [dbo].[datAppointment]  WITH NOCHECK ADD  CONSTRAINT [FK_datAppointment_lkpConfirmationType] FOREIGN KEY([ConfirmationTypeID])
+ALTER TABLE [dbo].[datAppointment]  WITH CHECK ADD  CONSTRAINT [FK_datAppointment_lkpConfirmationType] FOREIGN KEY([ConfirmationTypeID])
 REFERENCES [dbo].[lkpConfirmationType] ([ConfirmationTypeID])
 GO
 ALTER TABLE [dbo].[datAppointment] CHECK CONSTRAINT [FK_datAppointment_lkpConfirmationType]
 GO
-ALTER TABLE [dbo].[datAppointment]  WITH NOCHECK ADD  CONSTRAINT [FK_datAppointment_lkpScalpHealth] FOREIGN KEY([ScalpHealthID])
+ALTER TABLE [dbo].[datAppointment]  WITH CHECK ADD  CONSTRAINT [FK_datAppointment_lkpScalpHealth] FOREIGN KEY([ScalpHealthID])
 REFERENCES [dbo].[lkpScalpHealth] ([ScalpHealthID])
 GO
 ALTER TABLE [dbo].[datAppointment] CHECK CONSTRAINT [FK_datAppointment_lkpScalpHealth]

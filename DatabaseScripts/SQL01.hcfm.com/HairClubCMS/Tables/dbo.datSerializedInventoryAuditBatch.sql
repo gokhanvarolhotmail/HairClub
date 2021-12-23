@@ -22,27 +22,27 @@ CREATE TABLE [dbo].[datSerializedInventoryAuditBatch](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[datSerializedInventoryAuditBatch]  WITH NOCHECK ADD  CONSTRAINT [FK_datSerializedInventoryAuditBatch_cfgCenter] FOREIGN KEY([CenterID])
+ALTER TABLE [dbo].[datSerializedInventoryAuditBatch]  WITH CHECK ADD  CONSTRAINT [FK_datSerializedInventoryAuditBatch_cfgCenter] FOREIGN KEY([CenterID])
 REFERENCES [dbo].[cfgCenter] ([CenterID])
 GO
 ALTER TABLE [dbo].[datSerializedInventoryAuditBatch] CHECK CONSTRAINT [FK_datSerializedInventoryAuditBatch_cfgCenter]
 GO
-ALTER TABLE [dbo].[datSerializedInventoryAuditBatch]  WITH NOCHECK ADD  CONSTRAINT [FK_datSerializedInventoryAuditBatch_datEmployee_CompletedByEmployee] FOREIGN KEY([CompletedByEmployeeGUID])
+ALTER TABLE [dbo].[datSerializedInventoryAuditBatch]  WITH CHECK ADD  CONSTRAINT [FK_datSerializedInventoryAuditBatch_datEmployee_CompletedByEmployee] FOREIGN KEY([CompletedByEmployeeGUID])
 REFERENCES [dbo].[datEmployee] ([EmployeeGUID])
 GO
 ALTER TABLE [dbo].[datSerializedInventoryAuditBatch] CHECK CONSTRAINT [FK_datSerializedInventoryAuditBatch_datEmployee_CompletedByEmployee]
 GO
-ALTER TABLE [dbo].[datSerializedInventoryAuditBatch]  WITH NOCHECK ADD  CONSTRAINT [FK_datSerializedInventoryAuditBatch_datEmployee_ReviewedByEmployee] FOREIGN KEY([ReviewCompletedByEmployeeGUID])
+ALTER TABLE [dbo].[datSerializedInventoryAuditBatch]  WITH CHECK ADD  CONSTRAINT [FK_datSerializedInventoryAuditBatch_datEmployee_ReviewedByEmployee] FOREIGN KEY([ReviewCompletedByEmployeeGUID])
 REFERENCES [dbo].[datEmployee] ([EmployeeGUID])
 GO
 ALTER TABLE [dbo].[datSerializedInventoryAuditBatch] CHECK CONSTRAINT [FK_datSerializedInventoryAuditBatch_datEmployee_ReviewedByEmployee]
 GO
-ALTER TABLE [dbo].[datSerializedInventoryAuditBatch]  WITH NOCHECK ADD  CONSTRAINT [FK_datSerializedInventoryAuditBatch_datSerializedInventoryAuditSnapshot] FOREIGN KEY([SerializedInventoryAuditSnapshotID])
+ALTER TABLE [dbo].[datSerializedInventoryAuditBatch]  WITH CHECK ADD  CONSTRAINT [FK_datSerializedInventoryAuditBatch_datSerializedInventoryAuditSnapshot] FOREIGN KEY([SerializedInventoryAuditSnapshotID])
 REFERENCES [dbo].[datSerializedInventoryAuditSnapshot] ([SerializedInventoryAuditSnapshotID])
 GO
 ALTER TABLE [dbo].[datSerializedInventoryAuditBatch] CHECK CONSTRAINT [FK_datSerializedInventoryAuditBatch_datSerializedInventoryAuditSnapshot]
 GO
-ALTER TABLE [dbo].[datSerializedInventoryAuditBatch]  WITH NOCHECK ADD  CONSTRAINT [FK_datSerializedInventoryAuditBatch_lkpInventoryAuditBatchStatus] FOREIGN KEY([InventoryAuditBatchStatusID])
+ALTER TABLE [dbo].[datSerializedInventoryAuditBatch]  WITH CHECK ADD  CONSTRAINT [FK_datSerializedInventoryAuditBatch_lkpInventoryAuditBatchStatus] FOREIGN KEY([InventoryAuditBatchStatusID])
 REFERENCES [dbo].[lkpInventoryAuditBatchStatus] ([InventoryAuditBatchStatusID])
 GO
 ALTER TABLE [dbo].[datSerializedInventoryAuditBatch] CHECK CONSTRAINT [FK_datSerializedInventoryAuditBatch_lkpInventoryAuditBatchStatus]

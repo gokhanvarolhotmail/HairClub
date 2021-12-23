@@ -11,12 +11,12 @@ CREATE TABLE [dbo].[onca_menu_folder](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[onca_menu_folder]  WITH NOCHECK ADD  CONSTRAINT [menu_folder_menu_folder_257] FOREIGN KEY([parent_folder_id])
+ALTER TABLE [dbo].[onca_menu_folder]  WITH CHECK ADD  CONSTRAINT [menu_folder_menu_folder_257] FOREIGN KEY([parent_folder_id])
 REFERENCES [dbo].[onca_menu_folder] ([folder_id])
 GO
 ALTER TABLE [dbo].[onca_menu_folder] CHECK CONSTRAINT [menu_folder_menu_folder_257]
 GO
-ALTER TABLE [dbo].[onca_menu_folder]  WITH NOCHECK ADD  CONSTRAINT [menu_menu_folder_256] FOREIGN KEY([menu_id])
+ALTER TABLE [dbo].[onca_menu_folder]  WITH CHECK ADD  CONSTRAINT [menu_menu_folder_256] FOREIGN KEY([menu_id])
 REFERENCES [dbo].[onca_menu] ([menu_id])
 GO
 ALTER TABLE [dbo].[onca_menu_folder] CHECK CONSTRAINT [menu_menu_folder_256]

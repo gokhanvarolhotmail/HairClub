@@ -15,27 +15,27 @@ CREATE TABLE [dbo].[oncd_company_rate](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[oncd_company_rate]  WITH NOCHECK ADD  CONSTRAINT [company_company_rate_957] FOREIGN KEY([company_id])
+ALTER TABLE [dbo].[oncd_company_rate]  WITH CHECK ADD  CONSTRAINT [company_company_rate_957] FOREIGN KEY([company_id])
 REFERENCES [dbo].[oncd_company] ([company_id])
 GO
 ALTER TABLE [dbo].[oncd_company_rate] CHECK CONSTRAINT [company_company_rate_957]
 GO
-ALTER TABLE [dbo].[oncd_company_rate]  WITH NOCHECK ADD  CONSTRAINT [rate_company_rate_1077] FOREIGN KEY([rate_code])
+ALTER TABLE [dbo].[oncd_company_rate]  WITH CHECK ADD  CONSTRAINT [rate_company_rate_1077] FOREIGN KEY([rate_code])
 REFERENCES [dbo].[onca_rate] ([rate_code])
 GO
 ALTER TABLE [dbo].[oncd_company_rate] CHECK CONSTRAINT [rate_company_rate_1077]
 GO
-ALTER TABLE [dbo].[oncd_company_rate]  WITH NOCHECK ADD  CONSTRAINT [user_company_rate_958] FOREIGN KEY([created_by_user_code])
+ALTER TABLE [dbo].[oncd_company_rate]  WITH CHECK ADD  CONSTRAINT [user_company_rate_958] FOREIGN KEY([created_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_company_rate] CHECK CONSTRAINT [user_company_rate_958]
 GO
-ALTER TABLE [dbo].[oncd_company_rate]  WITH NOCHECK ADD  CONSTRAINT [user_company_rate_959] FOREIGN KEY([updated_by_user_code])
+ALTER TABLE [dbo].[oncd_company_rate]  WITH CHECK ADD  CONSTRAINT [user_company_rate_959] FOREIGN KEY([updated_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_company_rate] CHECK CONSTRAINT [user_company_rate_959]
 GO
-ALTER TABLE [dbo].[oncd_company_rate]  WITH NOCHECK ADD  CONSTRAINT [user_company_rate_960] FOREIGN KEY([user_code])
+ALTER TABLE [dbo].[oncd_company_rate]  WITH CHECK ADD  CONSTRAINT [user_company_rate_960] FOREIGN KEY([user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_company_rate] CHECK CONSTRAINT [user_company_rate_960]

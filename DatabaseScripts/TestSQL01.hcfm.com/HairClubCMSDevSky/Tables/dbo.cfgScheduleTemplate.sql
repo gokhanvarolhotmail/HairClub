@@ -27,22 +27,22 @@ CREATE NONCLUSTERED INDEX [IX_cfgScheduleTemplate_EmployeeGUID] ON [dbo].[cfgSch
 	[EmployeeGUID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[cfgScheduleTemplate]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgScheduleTemplate_cfgCenter] FOREIGN KEY([CenterID])
+ALTER TABLE [dbo].[cfgScheduleTemplate]  WITH CHECK ADD  CONSTRAINT [FK_cfgScheduleTemplate_cfgCenter] FOREIGN KEY([CenterID])
 REFERENCES [dbo].[cfgCenter] ([CenterID])
 GO
 ALTER TABLE [dbo].[cfgScheduleTemplate] CHECK CONSTRAINT [FK_cfgScheduleTemplate_cfgCenter]
 GO
-ALTER TABLE [dbo].[cfgScheduleTemplate]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgScheduleTemplate_datEmployee] FOREIGN KEY([EmployeeGUID])
+ALTER TABLE [dbo].[cfgScheduleTemplate]  WITH CHECK ADD  CONSTRAINT [FK_cfgScheduleTemplate_datEmployee] FOREIGN KEY([EmployeeGUID])
 REFERENCES [dbo].[datEmployee] ([EmployeeGUID])
 GO
 ALTER TABLE [dbo].[cfgScheduleTemplate] CHECK CONSTRAINT [FK_cfgScheduleTemplate_datEmployee]
 GO
-ALTER TABLE [dbo].[cfgScheduleTemplate]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgScheduleTemplate_lkpScheduleCalendarType] FOREIGN KEY([ScheduleCalendarTypeID])
+ALTER TABLE [dbo].[cfgScheduleTemplate]  WITH CHECK ADD  CONSTRAINT [FK_cfgScheduleTemplate_lkpScheduleCalendarType] FOREIGN KEY([ScheduleCalendarTypeID])
 REFERENCES [dbo].[lkpScheduleCalendarType] ([ScheduleCalendarTypeID])
 GO
 ALTER TABLE [dbo].[cfgScheduleTemplate] CHECK CONSTRAINT [FK_cfgScheduleTemplate_lkpScheduleCalendarType]
 GO
-ALTER TABLE [dbo].[cfgScheduleTemplate]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgScheduleTemplate_lkpScheduleType] FOREIGN KEY([ScheduleTypeID])
+ALTER TABLE [dbo].[cfgScheduleTemplate]  WITH CHECK ADD  CONSTRAINT [FK_cfgScheduleTemplate_lkpScheduleType] FOREIGN KEY([ScheduleTypeID])
 REFERENCES [dbo].[lkpScheduleType] ([ScheduleTypeID])
 GO
 ALTER TABLE [dbo].[cfgScheduleTemplate] CHECK CONSTRAINT [FK_cfgScheduleTemplate_lkpScheduleType]

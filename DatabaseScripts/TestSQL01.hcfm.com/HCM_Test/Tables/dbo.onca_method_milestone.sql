@@ -13,13 +13,13 @@ CREATE TABLE [dbo].[onca_method_milestone](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[onca_method_milestone]  WITH NOCHECK ADD  CONSTRAINT [method_method_miles_267] FOREIGN KEY([method_id])
+ALTER TABLE [dbo].[onca_method_milestone]  WITH CHECK ADD  CONSTRAINT [method_method_miles_267] FOREIGN KEY([method_id])
 REFERENCES [dbo].[onca_method] ([method_id])
 ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[onca_method_milestone] CHECK CONSTRAINT [method_method_miles_267]
 GO
-ALTER TABLE [dbo].[onca_method_milestone]  WITH NOCHECK ADD  CONSTRAINT [milestone_method_miles_268] FOREIGN KEY([milestone_id])
+ALTER TABLE [dbo].[onca_method_milestone]  WITH CHECK ADD  CONSTRAINT [milestone_method_miles_268] FOREIGN KEY([milestone_id])
 REFERENCES [dbo].[onca_milestone] ([milestone_id])
 ON DELETE CASCADE
 GO

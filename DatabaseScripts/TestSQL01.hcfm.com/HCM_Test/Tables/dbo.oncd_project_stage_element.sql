@@ -10,12 +10,12 @@ CREATE TABLE [dbo].[oncd_project_stage_element](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[oncd_project_stage_element]  WITH NOCHECK ADD  CONSTRAINT [project_elem_project_stag_755] FOREIGN KEY([project_element_id])
+ALTER TABLE [dbo].[oncd_project_stage_element]  WITH CHECK ADD  CONSTRAINT [project_elem_project_stag_755] FOREIGN KEY([project_element_id])
 REFERENCES [dbo].[oncd_project_element] ([project_element_id])
 GO
 ALTER TABLE [dbo].[oncd_project_stage_element] CHECK CONSTRAINT [project_elem_project_stag_755]
 GO
-ALTER TABLE [dbo].[oncd_project_stage_element]  WITH NOCHECK ADD  CONSTRAINT [project_stag_project_stag_776] FOREIGN KEY([project_stage_id])
+ALTER TABLE [dbo].[oncd_project_stage_element]  WITH CHECK ADD  CONSTRAINT [project_stag_project_stag_776] FOREIGN KEY([project_stage_id])
 REFERENCES [dbo].[oncd_project_stage] ([project_stage_id])
 ON DELETE CASCADE
 GO

@@ -72,27 +72,27 @@ ALTER TABLE [dbo].[cfgMembership] ADD  DEFAULT ((349)) FOR [DefaultPaymentSalesC
 GO
 ALTER TABLE [dbo].[cfgMembership] ADD  CONSTRAINT [DF_cfgMembership_CanCheckinForConsultation]  DEFAULT ((0)) FOR [CanCheckinForConsultation]
 GO
-ALTER TABLE [dbo].[cfgMembership]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgMembership_cfgSalesCode] FOREIGN KEY([DefaultPaymentSalesCodeID])
+ALTER TABLE [dbo].[cfgMembership]  WITH CHECK ADD  CONSTRAINT [FK_cfgMembership_cfgSalesCode] FOREIGN KEY([DefaultPaymentSalesCodeID])
 REFERENCES [dbo].[cfgSalesCode] ([SalesCodeID])
 GO
 ALTER TABLE [dbo].[cfgMembership] CHECK CONSTRAINT [FK_cfgMembership_cfgSalesCode]
 GO
-ALTER TABLE [dbo].[cfgMembership]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgMembership_lkpBusinessSegment] FOREIGN KEY([BusinessSegmentID])
+ALTER TABLE [dbo].[cfgMembership]  WITH CHECK ADD  CONSTRAINT [FK_cfgMembership_lkpBusinessSegment] FOREIGN KEY([BusinessSegmentID])
 REFERENCES [dbo].[lkpBusinessSegment] ([BusinessSegmentID])
 GO
 ALTER TABLE [dbo].[cfgMembership] CHECK CONSTRAINT [FK_cfgMembership_lkpBusinessSegment]
 GO
-ALTER TABLE [dbo].[cfgMembership]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgMembership_lkpGender] FOREIGN KEY([GenderID])
+ALTER TABLE [dbo].[cfgMembership]  WITH CHECK ADD  CONSTRAINT [FK_cfgMembership_lkpGender] FOREIGN KEY([GenderID])
 REFERENCES [dbo].[lkpGender] ([GenderID])
 GO
 ALTER TABLE [dbo].[cfgMembership] CHECK CONSTRAINT [FK_cfgMembership_lkpGender]
 GO
-ALTER TABLE [dbo].[cfgMembership]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgMembership_lkpGeneralLedger] FOREIGN KEY([HairSystemGeneralLedgerID])
+ALTER TABLE [dbo].[cfgMembership]  WITH CHECK ADD  CONSTRAINT [FK_cfgMembership_lkpGeneralLedger] FOREIGN KEY([HairSystemGeneralLedgerID])
 REFERENCES [dbo].[lkpGeneralLedger] ([GeneralLedgerID])
 GO
 ALTER TABLE [dbo].[cfgMembership] CHECK CONSTRAINT [FK_cfgMembership_lkpGeneralLedger]
 GO
-ALTER TABLE [dbo].[cfgMembership]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgMembership_lkpRevenueGroup] FOREIGN KEY([RevenueGroupID])
+ALTER TABLE [dbo].[cfgMembership]  WITH CHECK ADD  CONSTRAINT [FK_cfgMembership_lkpRevenueGroup] FOREIGN KEY([RevenueGroupID])
 REFERENCES [dbo].[lkpRevenueGroup] ([RevenueGroupID])
 GO
 ALTER TABLE [dbo].[cfgMembership] CHECK CONSTRAINT [FK_cfgMembership_lkpRevenueGroup]

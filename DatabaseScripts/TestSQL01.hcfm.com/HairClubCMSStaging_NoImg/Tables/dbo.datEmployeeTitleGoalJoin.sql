@@ -20,17 +20,17 @@ CREATE TABLE [dbo].[datEmployeeTitleGoalJoin](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[datEmployeeTitleGoalJoin]  WITH NOCHECK ADD  CONSTRAINT [FK_datEmployeeTitleGoalJoin_cfgEmployeeGoal] FOREIGN KEY([EmployeeGoalID])
+ALTER TABLE [dbo].[datEmployeeTitleGoalJoin]  WITH CHECK ADD  CONSTRAINT [FK_datEmployeeTitleGoalJoin_cfgEmployeeGoal] FOREIGN KEY([EmployeeGoalID])
 REFERENCES [dbo].[cfgEmployeeGoal] ([EmployeeGoalID])
 GO
 ALTER TABLE [dbo].[datEmployeeTitleGoalJoin] CHECK CONSTRAINT [FK_datEmployeeTitleGoalJoin_cfgEmployeeGoal]
 GO
-ALTER TABLE [dbo].[datEmployeeTitleGoalJoin]  WITH NOCHECK ADD  CONSTRAINT [FK_datEmployeeTitleGoalJoin_lkpEmployeeGoalDataType] FOREIGN KEY([EmployeeGoalDataTypeID])
+ALTER TABLE [dbo].[datEmployeeTitleGoalJoin]  WITH CHECK ADD  CONSTRAINT [FK_datEmployeeTitleGoalJoin_lkpEmployeeGoalDataType] FOREIGN KEY([EmployeeGoalDataTypeID])
 REFERENCES [dbo].[lkpEmployeeGoalDataType] ([EmployeeGoalDataTypeID])
 GO
 ALTER TABLE [dbo].[datEmployeeTitleGoalJoin] CHECK CONSTRAINT [FK_datEmployeeTitleGoalJoin_lkpEmployeeGoalDataType]
 GO
-ALTER TABLE [dbo].[datEmployeeTitleGoalJoin]  WITH NOCHECK ADD  CONSTRAINT [FK_datEmployeeTitleGoalJoin_lkpEmployeeTitle] FOREIGN KEY([EmployeeTitleID])
+ALTER TABLE [dbo].[datEmployeeTitleGoalJoin]  WITH CHECK ADD  CONSTRAINT [FK_datEmployeeTitleGoalJoin_lkpEmployeeTitle] FOREIGN KEY([EmployeeTitleID])
 REFERENCES [dbo].[lkpEmployeeTitle] ([EmployeeTitleID])
 GO
 ALTER TABLE [dbo].[datEmployeeTitleGoalJoin] CHECK CONSTRAINT [FK_datEmployeeTitleGoalJoin_lkpEmployeeTitle]

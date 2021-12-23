@@ -11,7 +11,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[csta_cache_server_dir]  WITH NOCHECK ADD  CONSTRAINT [cache_server_dir_cache_server_name] FOREIGN KEY([cache_server_id])
+ALTER TABLE [dbo].[csta_cache_server_dir]  WITH CHECK ADD  CONSTRAINT [cache_server_dir_cache_server_name] FOREIGN KEY([cache_server_id])
 REFERENCES [dbo].[csta_cache_server_name] ([cache_server_id])
 ON DELETE CASCADE
 GO

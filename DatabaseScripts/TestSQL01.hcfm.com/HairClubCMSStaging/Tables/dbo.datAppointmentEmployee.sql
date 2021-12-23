@@ -39,13 +39,13 @@ CREATE UNIQUE NONCLUSTERED INDEX [UK_datAppointmentEmployee_Keys] ON [dbo].[datA
 	[AppointmentEmployeeGUID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[datAppointmentEmployee]  WITH NOCHECK ADD  CONSTRAINT [FK_datAppointmentEmployee_datAppointment] FOREIGN KEY([AppointmentGUID])
+ALTER TABLE [dbo].[datAppointmentEmployee]  WITH CHECK ADD  CONSTRAINT [FK_datAppointmentEmployee_datAppointment] FOREIGN KEY([AppointmentGUID])
 REFERENCES [dbo].[datAppointment] ([AppointmentGUID])
 ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[datAppointmentEmployee] CHECK CONSTRAINT [FK_datAppointmentEmployee_datAppointment]
 GO
-ALTER TABLE [dbo].[datAppointmentEmployee]  WITH NOCHECK ADD  CONSTRAINT [FK_datAppointmentEmployee_datEmployee] FOREIGN KEY([EmployeeGUID])
+ALTER TABLE [dbo].[datAppointmentEmployee]  WITH CHECK ADD  CONSTRAINT [FK_datAppointmentEmployee_datEmployee] FOREIGN KEY([EmployeeGUID])
 REFERENCES [dbo].[datEmployee] ([EmployeeGUID])
 GO
 ALTER TABLE [dbo].[datAppointmentEmployee] CHECK CONSTRAINT [FK_datAppointmentEmployee_datEmployee]

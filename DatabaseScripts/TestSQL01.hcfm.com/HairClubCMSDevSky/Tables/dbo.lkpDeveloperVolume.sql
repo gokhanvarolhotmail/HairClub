@@ -20,7 +20,7 @@ CREATE TABLE [dbo].[lkpDeveloperVolume](
 GO
 ALTER TABLE [dbo].[lkpDeveloperVolume] ADD  CONSTRAINT [DF_lkpDeveloperVolume_IsActiveFlag]  DEFAULT ((1)) FOR [IsActiveFlag]
 GO
-ALTER TABLE [dbo].[lkpDeveloperVolume]  WITH NOCHECK ADD  CONSTRAINT [FK_lkpDeveloperVolume_lkpColorBrand] FOREIGN KEY([ColorBrandID])
+ALTER TABLE [dbo].[lkpDeveloperVolume]  WITH CHECK ADD  CONSTRAINT [FK_lkpDeveloperVolume_lkpColorBrand] FOREIGN KEY([ColorBrandID])
 REFERENCES [dbo].[lkpColorBrand] ([ColorBrandID])
 GO
 ALTER TABLE [dbo].[lkpDeveloperVolume] CHECK CONSTRAINT [FK_lkpDeveloperVolume_lkpColorBrand]

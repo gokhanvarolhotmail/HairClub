@@ -33,27 +33,27 @@ CREATE NONCLUSTERED INDEX [IX_cfgCenerMembershipAddOn_CenterMembershipID_AddOnID
 )
 INCLUDE([MonthlyFeeSalesCodeID]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[cfgCenterMembershipAddOn]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgCenterMembershipAddOn_cfgAddOn] FOREIGN KEY([AddOnID])
+ALTER TABLE [dbo].[cfgCenterMembershipAddOn]  WITH CHECK ADD  CONSTRAINT [FK_cfgCenterMembershipAddOn_cfgAddOn] FOREIGN KEY([AddOnID])
 REFERENCES [dbo].[cfgAddOn] ([AddOnID])
 GO
 ALTER TABLE [dbo].[cfgCenterMembershipAddOn] CHECK CONSTRAINT [FK_cfgCenterMembershipAddOn_cfgAddOn]
 GO
-ALTER TABLE [dbo].[cfgCenterMembershipAddOn]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgCenterMembershipAddOn_cfgAgreement] FOREIGN KEY([AgreementID])
+ALTER TABLE [dbo].[cfgCenterMembershipAddOn]  WITH CHECK ADD  CONSTRAINT [FK_cfgCenterMembershipAddOn_cfgAgreement] FOREIGN KEY([AgreementID])
 REFERENCES [dbo].[cfgAgreement] ([AgreementID])
 GO
 ALTER TABLE [dbo].[cfgCenterMembershipAddOn] CHECK CONSTRAINT [FK_cfgCenterMembershipAddOn_cfgAgreement]
 GO
-ALTER TABLE [dbo].[cfgCenterMembershipAddOn]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgCenterMembershipAddOn_cfgCenterMembership] FOREIGN KEY([CenterMembershipID])
+ALTER TABLE [dbo].[cfgCenterMembershipAddOn]  WITH CHECK ADD  CONSTRAINT [FK_cfgCenterMembershipAddOn_cfgCenterMembership] FOREIGN KEY([CenterMembershipID])
 REFERENCES [dbo].[cfgCenterMembership] ([CenterMembershipID])
 GO
 ALTER TABLE [dbo].[cfgCenterMembershipAddOn] CHECK CONSTRAINT [FK_cfgCenterMembershipAddOn_cfgCenterMembership]
 GO
-ALTER TABLE [dbo].[cfgCenterMembershipAddOn]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgCenterMembershipAddOn_cfgSalesCode] FOREIGN KEY([PaymentSalesCodeID])
+ALTER TABLE [dbo].[cfgCenterMembershipAddOn]  WITH CHECK ADD  CONSTRAINT [FK_cfgCenterMembershipAddOn_cfgSalesCode] FOREIGN KEY([PaymentSalesCodeID])
 REFERENCES [dbo].[cfgSalesCode] ([SalesCodeID])
 GO
 ALTER TABLE [dbo].[cfgCenterMembershipAddOn] CHECK CONSTRAINT [FK_cfgCenterMembershipAddOn_cfgSalesCode]
 GO
-ALTER TABLE [dbo].[cfgCenterMembershipAddOn]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgCenterMembershipAddOn_cfgSalesCode1] FOREIGN KEY([MonthlyFeeSalesCodeID])
+ALTER TABLE [dbo].[cfgCenterMembershipAddOn]  WITH CHECK ADD  CONSTRAINT [FK_cfgCenterMembershipAddOn_cfgSalesCode1] FOREIGN KEY([MonthlyFeeSalesCodeID])
 REFERENCES [dbo].[cfgSalesCode] ([SalesCodeID])
 GO
 ALTER TABLE [dbo].[cfgCenterMembershipAddOn] CHECK CONSTRAINT [FK_cfgCenterMembershipAddOn_cfgSalesCode1]

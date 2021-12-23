@@ -39,32 +39,32 @@ CREATE NONCLUSTERED INDEX [oncd_invoice_i4_] ON [dbo].[oncd_invoice]
 	[invoice_status_code] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[oncd_invoice]  WITH NOCHECK ADD  CONSTRAINT [company_invoice_961] FOREIGN KEY([company_id])
+ALTER TABLE [dbo].[oncd_invoice]  WITH CHECK ADD  CONSTRAINT [company_invoice_961] FOREIGN KEY([company_id])
 REFERENCES [dbo].[oncd_company] ([company_id])
 GO
 ALTER TABLE [dbo].[oncd_invoice] CHECK CONSTRAINT [company_invoice_961]
 GO
-ALTER TABLE [dbo].[oncd_invoice]  WITH NOCHECK ADD  CONSTRAINT [contact_invoice_962] FOREIGN KEY([contact_id])
+ALTER TABLE [dbo].[oncd_invoice]  WITH CHECK ADD  CONSTRAINT [contact_invoice_962] FOREIGN KEY([contact_id])
 REFERENCES [dbo].[oncd_contact] ([contact_id])
 GO
 ALTER TABLE [dbo].[oncd_invoice] CHECK CONSTRAINT [contact_invoice_962]
 GO
-ALTER TABLE [dbo].[oncd_invoice]  WITH NOCHECK ADD  CONSTRAINT [invoice_stat_invoice_1078] FOREIGN KEY([invoice_status_code])
+ALTER TABLE [dbo].[oncd_invoice]  WITH CHECK ADD  CONSTRAINT [invoice_stat_invoice_1078] FOREIGN KEY([invoice_status_code])
 REFERENCES [dbo].[onca_invoice_status] ([invoice_status_code])
 GO
 ALTER TABLE [dbo].[oncd_invoice] CHECK CONSTRAINT [invoice_stat_invoice_1078]
 GO
-ALTER TABLE [dbo].[oncd_invoice]  WITH NOCHECK ADD  CONSTRAINT [user_invoice_963] FOREIGN KEY([created_by_user_code])
+ALTER TABLE [dbo].[oncd_invoice]  WITH CHECK ADD  CONSTRAINT [user_invoice_963] FOREIGN KEY([created_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_invoice] CHECK CONSTRAINT [user_invoice_963]
 GO
-ALTER TABLE [dbo].[oncd_invoice]  WITH NOCHECK ADD  CONSTRAINT [user_invoice_964] FOREIGN KEY([updated_by_user_code])
+ALTER TABLE [dbo].[oncd_invoice]  WITH CHECK ADD  CONSTRAINT [user_invoice_964] FOREIGN KEY([updated_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_invoice] CHECK CONSTRAINT [user_invoice_964]
 GO
-ALTER TABLE [dbo].[oncd_invoice]  WITH NOCHECK ADD  CONSTRAINT [user_invoice_965] FOREIGN KEY([user_code])
+ALTER TABLE [dbo].[oncd_invoice]  WITH CHECK ADD  CONSTRAINT [user_invoice_965] FOREIGN KEY([user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_invoice] CHECK CONSTRAINT [user_invoice_965]

@@ -44,17 +44,17 @@ CREATE NONCLUSTERED INDEX [RP_datPurchaseOrderDetail_HairSystemOrderGUID] ON [db
 	[HairSystemOrderGUID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[datPurchaseOrderDetail]  WITH NOCHECK ADD  CONSTRAINT [FK_datPurchaseOrderDetail_datHairSystemOrder] FOREIGN KEY([HairSystemOrderGUID])
+ALTER TABLE [dbo].[datPurchaseOrderDetail]  WITH CHECK ADD  CONSTRAINT [FK_datPurchaseOrderDetail_datHairSystemOrder] FOREIGN KEY([HairSystemOrderGUID])
 REFERENCES [dbo].[datHairSystemOrder] ([HairSystemOrderGUID])
 GO
 ALTER TABLE [dbo].[datPurchaseOrderDetail] CHECK CONSTRAINT [FK_datPurchaseOrderDetail_datHairSystemOrder]
 GO
-ALTER TABLE [dbo].[datPurchaseOrderDetail]  WITH NOCHECK ADD  CONSTRAINT [FK_datPurchaseOrderDetail_datPurchaseOrder] FOREIGN KEY([PurchaseOrderGUID])
+ALTER TABLE [dbo].[datPurchaseOrderDetail]  WITH CHECK ADD  CONSTRAINT [FK_datPurchaseOrderDetail_datPurchaseOrder] FOREIGN KEY([PurchaseOrderGUID])
 REFERENCES [dbo].[datPurchaseOrder] ([PurchaseOrderGUID])
 GO
 ALTER TABLE [dbo].[datPurchaseOrderDetail] CHECK CONSTRAINT [FK_datPurchaseOrderDetail_datPurchaseOrder]
 GO
-ALTER TABLE [dbo].[datPurchaseOrderDetail]  WITH NOCHECK ADD  CONSTRAINT [FK_datPurchaseOrderDetail_lkpHairSystemAllocationFilter] FOREIGN KEY([HairSystemAllocationFilterID])
+ALTER TABLE [dbo].[datPurchaseOrderDetail]  WITH CHECK ADD  CONSTRAINT [FK_datPurchaseOrderDetail_lkpHairSystemAllocationFilter] FOREIGN KEY([HairSystemAllocationFilterID])
 REFERENCES [dbo].[lkpHairSystemAllocationFilter] ([HairSystemAllocationFilterID])
 GO
 ALTER TABLE [dbo].[datPurchaseOrderDetail] CHECK CONSTRAINT [FK_datPurchaseOrderDetail_lkpHairSystemAllocationFilter]

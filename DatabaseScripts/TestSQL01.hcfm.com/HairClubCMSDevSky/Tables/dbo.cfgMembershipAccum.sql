@@ -20,12 +20,12 @@ CREATE TABLE [dbo].[cfgMembershipAccum](
 GO
 ALTER TABLE [dbo].[cfgMembershipAccum] ADD  CONSTRAINT [DF_cfgMembershipAccum_IsActiveFlag]  DEFAULT ((1)) FOR [IsActiveFlag]
 GO
-ALTER TABLE [dbo].[cfgMembershipAccum]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgMembershipAccum_cfgAccumulator] FOREIGN KEY([AccumulatorID])
+ALTER TABLE [dbo].[cfgMembershipAccum]  WITH CHECK ADD  CONSTRAINT [FK_cfgMembershipAccum_cfgAccumulator] FOREIGN KEY([AccumulatorID])
 REFERENCES [dbo].[cfgAccumulator] ([AccumulatorID])
 GO
 ALTER TABLE [dbo].[cfgMembershipAccum] CHECK CONSTRAINT [FK_cfgMembershipAccum_cfgAccumulator]
 GO
-ALTER TABLE [dbo].[cfgMembershipAccum]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgMembershipAccum_cfgMembership] FOREIGN KEY([MembershipID])
+ALTER TABLE [dbo].[cfgMembershipAccum]  WITH CHECK ADD  CONSTRAINT [FK_cfgMembershipAccum_cfgMembership] FOREIGN KEY([MembershipID])
 REFERENCES [dbo].[cfgMembership] ([MembershipID])
 GO
 ALTER TABLE [dbo].[cfgMembershipAccum] CHECK CONSTRAINT [FK_cfgMembershipAccum_cfgMembership]

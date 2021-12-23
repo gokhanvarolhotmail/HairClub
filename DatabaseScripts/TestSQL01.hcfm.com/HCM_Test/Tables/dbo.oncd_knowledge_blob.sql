@@ -9,7 +9,7 @@ CREATE TABLE [dbo].[oncd_knowledge_blob](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[oncd_knowledge_blob]  WITH NOCHECK ADD  CONSTRAINT [knowledge_at_knowledge_bl_206] FOREIGN KEY([attachment_id])
+ALTER TABLE [dbo].[oncd_knowledge_blob]  WITH CHECK ADD  CONSTRAINT [knowledge_at_knowledge_bl_206] FOREIGN KEY([attachment_id])
 REFERENCES [dbo].[oncd_knowledge_attachment] ([attachment_id])
 ON DELETE CASCADE
 GO

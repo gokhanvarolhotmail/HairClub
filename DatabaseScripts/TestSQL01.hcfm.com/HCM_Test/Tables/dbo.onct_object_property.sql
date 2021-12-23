@@ -40,7 +40,7 @@ CREATE NONCLUSTERED INDEX [onct_object_property_i4] ON [dbo].[onct_object_proper
 )
 INCLUDE([property_name],[property_value],[sort_order],[multiline]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[onct_object_property]  WITH NOCHECK ADD  CONSTRAINT [object_object_prope_54] FOREIGN KEY([object_id])
+ALTER TABLE [dbo].[onct_object_property]  WITH CHECK ADD  CONSTRAINT [object_object_prope_54] FOREIGN KEY([object_id])
 REFERENCES [dbo].[onct_object] ([object_id])
 ON DELETE CASCADE
 GO

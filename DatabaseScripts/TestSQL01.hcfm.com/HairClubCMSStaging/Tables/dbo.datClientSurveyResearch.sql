@@ -15,12 +15,12 @@ CREATE TABLE [dbo].[datClientSurveyResearch](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[datClientSurveyResearch]  WITH NOCHECK ADD  CONSTRAINT [FK_datClientSurveyResearch_datClientSurvey] FOREIGN KEY([ClientSurveyID])
+ALTER TABLE [dbo].[datClientSurveyResearch]  WITH CHECK ADD  CONSTRAINT [FK_datClientSurveyResearch_datClientSurvey] FOREIGN KEY([ClientSurveyID])
 REFERENCES [dbo].[datClientSurvey] ([ClientSurveyID])
 GO
 ALTER TABLE [dbo].[datClientSurveyResearch] CHECK CONSTRAINT [FK_datClientSurveyResearch_datClientSurvey]
 GO
-ALTER TABLE [dbo].[datClientSurveyResearch]  WITH NOCHECK ADD  CONSTRAINT [FK_datClientSurveyResearch_lkpClientSurveyResearch] FOREIGN KEY([lkpClientSurveyResearchID])
+ALTER TABLE [dbo].[datClientSurveyResearch]  WITH CHECK ADD  CONSTRAINT [FK_datClientSurveyResearch_lkpClientSurveyResearch] FOREIGN KEY([lkpClientSurveyResearchID])
 REFERENCES [dbo].[lkpClientSurveyResearch] ([ClientSurveyResearchID])
 GO
 ALTER TABLE [dbo].[datClientSurveyResearch] CHECK CONSTRAINT [FK_datClientSurveyResearch_lkpClientSurveyResearch]

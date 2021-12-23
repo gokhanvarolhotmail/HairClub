@@ -48,12 +48,12 @@ ALTER TABLE [dbo].[cfgHairSystem] ADD  DEFAULT ((0)) FOR [UseHairSystemFrontalLa
 GO
 ALTER TABLE [dbo].[cfgHairSystem] ADD  DEFAULT ((1)) FOR [AllowFashionHairlineHighlightsFlag]
 GO
-ALTER TABLE [dbo].[cfgHairSystem]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgHairSystem_lkpHairSystemGroup] FOREIGN KEY([HairSystemGroupID])
+ALTER TABLE [dbo].[cfgHairSystem]  WITH CHECK ADD  CONSTRAINT [FK_cfgHairSystem_lkpHairSystemGroup] FOREIGN KEY([HairSystemGroupID])
 REFERENCES [dbo].[lkpHairSystemGroup] ([HairSystemGroupID])
 GO
 ALTER TABLE [dbo].[cfgHairSystem] CHECK CONSTRAINT [FK_cfgHairSystem_lkpHairSystemGroup]
 GO
-ALTER TABLE [dbo].[cfgHairSystem]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgHairSystem_lkpHairSystemType] FOREIGN KEY([HairSystemTypeID])
+ALTER TABLE [dbo].[cfgHairSystem]  WITH CHECK ADD  CONSTRAINT [FK_cfgHairSystem_lkpHairSystemType] FOREIGN KEY([HairSystemTypeID])
 REFERENCES [dbo].[lkpHairSystemType] ([HairSystemTypeID])
 GO
 ALTER TABLE [dbo].[cfgHairSystem] CHECK CONSTRAINT [FK_cfgHairSystem_lkpHairSystemType]

@@ -11,12 +11,12 @@ CREATE TABLE [dbo].[onca_product_part_product](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[onca_product_part_product]  WITH NOCHECK ADD  CONSTRAINT [product_part_product_part_1083] FOREIGN KEY([part_code])
+ALTER TABLE [dbo].[onca_product_part_product]  WITH CHECK ADD  CONSTRAINT [product_part_product_part_1083] FOREIGN KEY([part_code])
 REFERENCES [dbo].[onca_product_part] ([part_code])
 GO
 ALTER TABLE [dbo].[onca_product_part_product] CHECK CONSTRAINT [product_part_product_part_1083]
 GO
-ALTER TABLE [dbo].[onca_product_part_product]  WITH NOCHECK ADD  CONSTRAINT [product_product_part_1084] FOREIGN KEY([product_code])
+ALTER TABLE [dbo].[onca_product_part_product]  WITH CHECK ADD  CONSTRAINT [product_product_part_1084] FOREIGN KEY([product_code])
 REFERENCES [dbo].[onca_product] ([product_code])
 GO
 ALTER TABLE [dbo].[onca_product_part_product] CHECK CONSTRAINT [product_product_part_1084]

@@ -13,18 +13,18 @@ CREATE TABLE [dbo].[cstd_admin_lead_note](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[cstd_admin_lead_note]  WITH NOCHECK ADD  CONSTRAINT [FK_cstd_admin_lead_note_created_by_user] FOREIGN KEY([created_by_user_code])
+ALTER TABLE [dbo].[cstd_admin_lead_note]  WITH CHECK ADD  CONSTRAINT [FK_cstd_admin_lead_note_created_by_user] FOREIGN KEY([created_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[cstd_admin_lead_note] CHECK CONSTRAINT [FK_cstd_admin_lead_note_created_by_user]
 GO
-ALTER TABLE [dbo].[cstd_admin_lead_note]  WITH NOCHECK ADD  CONSTRAINT [FK_cstd_admin_lead_note_cstd_admin_lead] FOREIGN KEY([admin_lead_id])
+ALTER TABLE [dbo].[cstd_admin_lead_note]  WITH CHECK ADD  CONSTRAINT [FK_cstd_admin_lead_note_cstd_admin_lead] FOREIGN KEY([admin_lead_id])
 REFERENCES [dbo].[cstd_admin_lead] ([admin_lead_id])
 ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[cstd_admin_lead_note] CHECK CONSTRAINT [FK_cstd_admin_lead_note_cstd_admin_lead]
 GO
-ALTER TABLE [dbo].[cstd_admin_lead_note]  WITH NOCHECK ADD  CONSTRAINT [FK_cstd_admin_lead_note_updated_by_user] FOREIGN KEY([updated_by_user_code])
+ALTER TABLE [dbo].[cstd_admin_lead_note]  WITH CHECK ADD  CONSTRAINT [FK_cstd_admin_lead_note_updated_by_user] FOREIGN KEY([updated_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[cstd_admin_lead_note] CHECK CONSTRAINT [FK_cstd_admin_lead_note_updated_by_user]

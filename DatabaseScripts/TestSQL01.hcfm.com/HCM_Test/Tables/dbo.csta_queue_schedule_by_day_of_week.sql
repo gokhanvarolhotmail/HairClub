@@ -17,12 +17,12 @@ CREATE TABLE [dbo].[csta_queue_schedule_by_day_of_week](
 GO
 ALTER TABLE [dbo].[csta_queue_schedule_by_day_of_week] ADD  CONSTRAINT [DF_csta_queue_schedule_by_day_of_week_active]  DEFAULT (N'Y') FOR [active]
 GO
-ALTER TABLE [dbo].[csta_queue_schedule_by_day_of_week]  WITH NOCHECK ADD  CONSTRAINT [FK_csta_queue_schedule_by_day_of_week_created_by_user] FOREIGN KEY([created_by_user_code])
+ALTER TABLE [dbo].[csta_queue_schedule_by_day_of_week]  WITH CHECK ADD  CONSTRAINT [FK_csta_queue_schedule_by_day_of_week_created_by_user] FOREIGN KEY([created_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[csta_queue_schedule_by_day_of_week] CHECK CONSTRAINT [FK_csta_queue_schedule_by_day_of_week_created_by_user]
 GO
-ALTER TABLE [dbo].[csta_queue_schedule_by_day_of_week]  WITH NOCHECK ADD  CONSTRAINT [FK_csta_queue_schedule_by_day_of_week_updated_by_user] FOREIGN KEY([updated_by_user_code])
+ALTER TABLE [dbo].[csta_queue_schedule_by_day_of_week]  WITH CHECK ADD  CONSTRAINT [FK_csta_queue_schedule_by_day_of_week_updated_by_user] FOREIGN KEY([updated_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[csta_queue_schedule_by_day_of_week] CHECK CONSTRAINT [FK_csta_queue_schedule_by_day_of_week_updated_by_user]

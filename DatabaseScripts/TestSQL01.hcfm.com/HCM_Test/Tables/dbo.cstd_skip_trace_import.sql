@@ -15,27 +15,27 @@ CREATE TABLE [dbo].[cstd_skip_trace_import](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[cstd_skip_trace_import]  WITH NOCHECK ADD  CONSTRAINT [import_import_status] FOREIGN KEY([skip_trace_import_status_code])
+ALTER TABLE [dbo].[cstd_skip_trace_import]  WITH CHECK ADD  CONSTRAINT [import_import_status] FOREIGN KEY([skip_trace_import_status_code])
 REFERENCES [dbo].[csta_skip_trace_import_status] ([skip_trace_import_status_code])
 GO
 ALTER TABLE [dbo].[cstd_skip_trace_import] CHECK CONSTRAINT [import_import_status]
 GO
-ALTER TABLE [dbo].[cstd_skip_trace_import]  WITH NOCHECK ADD  CONSTRAINT [import_import_target] FOREIGN KEY([skip_trace_import_target_code])
+ALTER TABLE [dbo].[cstd_skip_trace_import]  WITH CHECK ADD  CONSTRAINT [import_import_target] FOREIGN KEY([skip_trace_import_target_code])
 REFERENCES [dbo].[csta_skip_trace_import_target] ([skip_trace_import_target_code])
 GO
 ALTER TABLE [dbo].[cstd_skip_trace_import] CHECK CONSTRAINT [import_import_target]
 GO
-ALTER TABLE [dbo].[cstd_skip_trace_import]  WITH NOCHECK ADD  CONSTRAINT [import_import_type] FOREIGN KEY([skip_trace_import_type_code])
+ALTER TABLE [dbo].[cstd_skip_trace_import]  WITH CHECK ADD  CONSTRAINT [import_import_type] FOREIGN KEY([skip_trace_import_type_code])
 REFERENCES [dbo].[csta_skip_trace_import_type] ([skip_trace_import_type_code])
 GO
 ALTER TABLE [dbo].[cstd_skip_trace_import] CHECK CONSTRAINT [import_import_type]
 GO
-ALTER TABLE [dbo].[cstd_skip_trace_import]  WITH NOCHECK ADD  CONSTRAINT [import_user] FOREIGN KEY([skip_trace_import_user_code])
+ALTER TABLE [dbo].[cstd_skip_trace_import]  WITH CHECK ADD  CONSTRAINT [import_user] FOREIGN KEY([skip_trace_import_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[cstd_skip_trace_import] CHECK CONSTRAINT [import_user]
 GO
-ALTER TABLE [dbo].[cstd_skip_trace_import]  WITH NOCHECK ADD  CONSTRAINT [import_vendor] FOREIGN KEY([skip_trace_vendor_code])
+ALTER TABLE [dbo].[cstd_skip_trace_import]  WITH CHECK ADD  CONSTRAINT [import_vendor] FOREIGN KEY([skip_trace_vendor_code])
 REFERENCES [dbo].[csta_skip_trace_vendor] ([skip_trace_vendor_code])
 ON DELETE SET NULL
 GO

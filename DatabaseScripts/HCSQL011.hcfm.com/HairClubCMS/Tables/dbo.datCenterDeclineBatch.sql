@@ -33,17 +33,17 @@ INCLUDE([CenterDeclineBatchGUID],[CenterFeeBatchGUID]) WITH (PAD_INDEX = OFF, ST
 GO
 ALTER TABLE [dbo].[datCenterDeclineBatch] ADD  DEFAULT ((0)) FOR [IsExported]
 GO
-ALTER TABLE [dbo].[datCenterDeclineBatch]  WITH NOCHECK ADD  CONSTRAINT [FK_datCenterDeclineBatch_datCenterFeeBatch] FOREIGN KEY([CenterFeeBatchGUID])
+ALTER TABLE [dbo].[datCenterDeclineBatch]  WITH CHECK ADD  CONSTRAINT [FK_datCenterDeclineBatch_datCenterFeeBatch] FOREIGN KEY([CenterFeeBatchGUID])
 REFERENCES [dbo].[datCenterFeeBatch] ([CenterFeeBatchGUID])
 GO
 ALTER TABLE [dbo].[datCenterDeclineBatch] CHECK CONSTRAINT [FK_datCenterDeclineBatch_datCenterFeeBatch]
 GO
-ALTER TABLE [dbo].[datCenterDeclineBatch]  WITH NOCHECK ADD  CONSTRAINT [FK_datCenterDeclineBatch_datEmployee] FOREIGN KEY([RunByEmployeeGUID])
+ALTER TABLE [dbo].[datCenterDeclineBatch]  WITH CHECK ADD  CONSTRAINT [FK_datCenterDeclineBatch_datEmployee] FOREIGN KEY([RunByEmployeeGUID])
 REFERENCES [dbo].[datEmployee] ([EmployeeGUID])
 GO
 ALTER TABLE [dbo].[datCenterDeclineBatch] CHECK CONSTRAINT [FK_datCenterDeclineBatch_datEmployee]
 GO
-ALTER TABLE [dbo].[datCenterDeclineBatch]  WITH NOCHECK ADD  CONSTRAINT [FK_datCenterDeclineBatch_lkpCenterDeclineBatchStatus] FOREIGN KEY([CenterDeclineBatchStatusID])
+ALTER TABLE [dbo].[datCenterDeclineBatch]  WITH CHECK ADD  CONSTRAINT [FK_datCenterDeclineBatch_lkpCenterDeclineBatchStatus] FOREIGN KEY([CenterDeclineBatchStatusID])
 REFERENCES [dbo].[lkpCenterDeclineBatchStatus] ([CenterDeclineBatchStatusID])
 GO
 ALTER TABLE [dbo].[datCenterDeclineBatch] CHECK CONSTRAINT [FK_datCenterDeclineBatch_lkpCenterDeclineBatchStatus]

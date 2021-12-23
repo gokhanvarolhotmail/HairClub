@@ -16,17 +16,17 @@ CREATE TABLE [dbo].[cstd_contact_marketing_score](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[cstd_contact_marketing_score]  WITH NOCHECK ADD  CONSTRAINT [contact_marketing_score_contact] FOREIGN KEY([contact_id])
+ALTER TABLE [dbo].[cstd_contact_marketing_score]  WITH CHECK ADD  CONSTRAINT [contact_marketing_score_contact] FOREIGN KEY([contact_id])
 REFERENCES [dbo].[oncd_contact] ([contact_id])
 GO
 ALTER TABLE [dbo].[cstd_contact_marketing_score] CHECK CONSTRAINT [contact_marketing_score_contact]
 GO
-ALTER TABLE [dbo].[cstd_contact_marketing_score]  WITH NOCHECK ADD  CONSTRAINT [contact_marketing_score_created_by] FOREIGN KEY([created_by_user_code])
+ALTER TABLE [dbo].[cstd_contact_marketing_score]  WITH CHECK ADD  CONSTRAINT [contact_marketing_score_created_by] FOREIGN KEY([created_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[cstd_contact_marketing_score] CHECK CONSTRAINT [contact_marketing_score_created_by]
 GO
-ALTER TABLE [dbo].[cstd_contact_marketing_score]  WITH NOCHECK ADD  CONSTRAINT [contact_marketing_score_updated_by] FOREIGN KEY([updated_by_user_code])
+ALTER TABLE [dbo].[cstd_contact_marketing_score]  WITH CHECK ADD  CONSTRAINT [contact_marketing_score_updated_by] FOREIGN KEY([updated_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[cstd_contact_marketing_score] CHECK CONSTRAINT [contact_marketing_score_updated_by]

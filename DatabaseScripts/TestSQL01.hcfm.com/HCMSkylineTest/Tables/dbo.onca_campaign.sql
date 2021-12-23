@@ -26,17 +26,17 @@ CREATE TABLE [dbo].[onca_campaign](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[onca_campaign]  WITH NOCHECK ADD  CONSTRAINT [campaign_sta_campaign_1139] FOREIGN KEY([campaign_status])
+ALTER TABLE [dbo].[onca_campaign]  WITH CHECK ADD  CONSTRAINT [campaign_sta_campaign_1139] FOREIGN KEY([campaign_status])
 REFERENCES [dbo].[onca_campaign_status] ([campaign_status_code])
 GO
 ALTER TABLE [dbo].[onca_campaign] CHECK CONSTRAINT [campaign_sta_campaign_1139]
 GO
-ALTER TABLE [dbo].[onca_campaign]  WITH NOCHECK ADD  CONSTRAINT [method_campaign_1140] FOREIGN KEY([campaign_method_code])
+ALTER TABLE [dbo].[onca_campaign]  WITH CHECK ADD  CONSTRAINT [method_campaign_1140] FOREIGN KEY([campaign_method_code])
 REFERENCES [dbo].[onca_method] ([method_id])
 GO
 ALTER TABLE [dbo].[onca_campaign] CHECK CONSTRAINT [method_campaign_1140]
 GO
-ALTER TABLE [dbo].[onca_campaign]  WITH NOCHECK ADD  CONSTRAINT [user_campaign_807] FOREIGN KEY([manager_user_code])
+ALTER TABLE [dbo].[onca_campaign]  WITH CHECK ADD  CONSTRAINT [user_campaign_807] FOREIGN KEY([manager_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[onca_campaign] CHECK CONSTRAINT [user_campaign_807]

@@ -40,47 +40,47 @@ INCLUDE([EthnicityID],[OccupationID],[MaritalStatusID],[LudwigScaleID],[NorwoodS
 GO
 ALTER TABLE [dbo].[datClientDemographic] ADD  DEFAULT ((0)) FOR [IsPotentialModel]
 GO
-ALTER TABLE [dbo].[datClientDemographic]  WITH NOCHECK ADD  CONSTRAINT [FK_datClientDemographic_datClient] FOREIGN KEY([ClientGUID])
+ALTER TABLE [dbo].[datClientDemographic]  WITH CHECK ADD  CONSTRAINT [FK_datClientDemographic_datClient] FOREIGN KEY([ClientGUID])
 REFERENCES [dbo].[datClient] ([ClientGUID])
 GO
 ALTER TABLE [dbo].[datClientDemographic] CHECK CONSTRAINT [FK_datClientDemographic_datClient]
 GO
-ALTER TABLE [dbo].[datClientDemographic]  WITH NOCHECK ADD  CONSTRAINT [FK_datClientDemographic_datEmployee] FOREIGN KEY([LastConsultantGUID])
+ALTER TABLE [dbo].[datClientDemographic]  WITH CHECK ADD  CONSTRAINT [FK_datClientDemographic_datEmployee] FOREIGN KEY([LastConsultantGUID])
 REFERENCES [dbo].[datEmployee] ([EmployeeGUID])
 GO
 ALTER TABLE [dbo].[datClientDemographic] CHECK CONSTRAINT [FK_datClientDemographic_datEmployee]
 GO
-ALTER TABLE [dbo].[datClientDemographic]  WITH NOCHECK ADD  CONSTRAINT [FK_datClientDemographic_lkpBusinessSegment] FOREIGN KEY([SolutionOfferedID])
+ALTER TABLE [dbo].[datClientDemographic]  WITH CHECK ADD  CONSTRAINT [FK_datClientDemographic_lkpBusinessSegment] FOREIGN KEY([SolutionOfferedID])
 REFERENCES [dbo].[lkpBusinessSegment] ([BusinessSegmentID])
 GO
 ALTER TABLE [dbo].[datClientDemographic] CHECK CONSTRAINT [FK_datClientDemographic_lkpBusinessSegment]
 GO
-ALTER TABLE [dbo].[datClientDemographic]  WITH NOCHECK ADD  CONSTRAINT [FK_datClientDemographic_lkpDISCStyle] FOREIGN KEY([DISCStyleID])
+ALTER TABLE [dbo].[datClientDemographic]  WITH CHECK ADD  CONSTRAINT [FK_datClientDemographic_lkpDISCStyle] FOREIGN KEY([DISCStyleID])
 REFERENCES [dbo].[lkpDISCStyle] ([DISCStyleID])
 GO
 ALTER TABLE [dbo].[datClientDemographic] CHECK CONSTRAINT [FK_datClientDemographic_lkpDISCStyle]
 GO
-ALTER TABLE [dbo].[datClientDemographic]  WITH NOCHECK ADD  CONSTRAINT [FK_datClientDemographic_lkpEthnicity] FOREIGN KEY([EthnicityID])
+ALTER TABLE [dbo].[datClientDemographic]  WITH CHECK ADD  CONSTRAINT [FK_datClientDemographic_lkpEthnicity] FOREIGN KEY([EthnicityID])
 REFERENCES [dbo].[lkpEthnicity] ([EthnicityID])
 GO
 ALTER TABLE [dbo].[datClientDemographic] CHECK CONSTRAINT [FK_datClientDemographic_lkpEthnicity]
 GO
-ALTER TABLE [dbo].[datClientDemographic]  WITH NOCHECK ADD  CONSTRAINT [FK_datClientDemographic_lkpLudwigScale] FOREIGN KEY([LudwigScaleID])
+ALTER TABLE [dbo].[datClientDemographic]  WITH CHECK ADD  CONSTRAINT [FK_datClientDemographic_lkpLudwigScale] FOREIGN KEY([LudwigScaleID])
 REFERENCES [dbo].[lkpLudwigScale] ([LudwigScaleID])
 GO
 ALTER TABLE [dbo].[datClientDemographic] CHECK CONSTRAINT [FK_datClientDemographic_lkpLudwigScale]
 GO
-ALTER TABLE [dbo].[datClientDemographic]  WITH NOCHECK ADD  CONSTRAINT [FK_datClientDemographic_lkpMaritalStatus] FOREIGN KEY([MaritalStatusID])
+ALTER TABLE [dbo].[datClientDemographic]  WITH CHECK ADD  CONSTRAINT [FK_datClientDemographic_lkpMaritalStatus] FOREIGN KEY([MaritalStatusID])
 REFERENCES [dbo].[lkpMaritalStatus] ([MaritalStatusID])
 GO
 ALTER TABLE [dbo].[datClientDemographic] CHECK CONSTRAINT [FK_datClientDemographic_lkpMaritalStatus]
 GO
-ALTER TABLE [dbo].[datClientDemographic]  WITH NOCHECK ADD  CONSTRAINT [FK_datClientDemographic_lkpNorwoodScale] FOREIGN KEY([NorwoodScaleID])
+ALTER TABLE [dbo].[datClientDemographic]  WITH CHECK ADD  CONSTRAINT [FK_datClientDemographic_lkpNorwoodScale] FOREIGN KEY([NorwoodScaleID])
 REFERENCES [dbo].[lkpNorwoodScale] ([NorwoodScaleID])
 GO
 ALTER TABLE [dbo].[datClientDemographic] CHECK CONSTRAINT [FK_datClientDemographic_lkpNorwoodScale]
 GO
-ALTER TABLE [dbo].[datClientDemographic]  WITH NOCHECK ADD  CONSTRAINT [FK_datClientDemographic_lkpOccupation] FOREIGN KEY([OccupationID])
+ALTER TABLE [dbo].[datClientDemographic]  WITH CHECK ADD  CONSTRAINT [FK_datClientDemographic_lkpOccupation] FOREIGN KEY([OccupationID])
 REFERENCES [dbo].[lkpOccupation] ([OccupationID])
 GO
 ALTER TABLE [dbo].[datClientDemographic] CHECK CONSTRAINT [FK_datClientDemographic_lkpOccupation]

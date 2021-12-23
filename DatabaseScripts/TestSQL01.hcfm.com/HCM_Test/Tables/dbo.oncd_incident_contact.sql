@@ -34,29 +34,29 @@ CREATE NONCLUSTERED INDEX [oncd_incident_contact_i3] ON [dbo].[oncd_incident_con
 	[contact_id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[oncd_incident_contact]  WITH NOCHECK ADD  CONSTRAINT [contact_incident_con_144] FOREIGN KEY([contact_id])
+ALTER TABLE [dbo].[oncd_incident_contact]  WITH CHECK ADD  CONSTRAINT [contact_incident_con_144] FOREIGN KEY([contact_id])
 REFERENCES [dbo].[oncd_contact] ([contact_id])
 ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[oncd_incident_contact] CHECK CONSTRAINT [contact_incident_con_144]
 GO
-ALTER TABLE [dbo].[oncd_incident_contact]  WITH NOCHECK ADD  CONSTRAINT [incident_incident_con_143] FOREIGN KEY([incident_id])
+ALTER TABLE [dbo].[oncd_incident_contact]  WITH CHECK ADD  CONSTRAINT [incident_incident_con_143] FOREIGN KEY([incident_id])
 REFERENCES [dbo].[oncd_incident] ([incident_id])
 ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[oncd_incident_contact] CHECK CONSTRAINT [incident_incident_con_143]
 GO
-ALTER TABLE [dbo].[oncd_incident_contact]  WITH NOCHECK ADD  CONSTRAINT [incident_rol_incident_con_666] FOREIGN KEY([incident_role_code])
+ALTER TABLE [dbo].[oncd_incident_contact]  WITH CHECK ADD  CONSTRAINT [incident_rol_incident_con_666] FOREIGN KEY([incident_role_code])
 REFERENCES [dbo].[onca_incident_role] ([incident_role_code])
 GO
 ALTER TABLE [dbo].[oncd_incident_contact] CHECK CONSTRAINT [incident_rol_incident_con_666]
 GO
-ALTER TABLE [dbo].[oncd_incident_contact]  WITH NOCHECK ADD  CONSTRAINT [user_incident_con_664] FOREIGN KEY([created_by_user_code])
+ALTER TABLE [dbo].[oncd_incident_contact]  WITH CHECK ADD  CONSTRAINT [user_incident_con_664] FOREIGN KEY([created_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_incident_contact] CHECK CONSTRAINT [user_incident_con_664]
 GO
-ALTER TABLE [dbo].[oncd_incident_contact]  WITH NOCHECK ADD  CONSTRAINT [user_incident_con_665] FOREIGN KEY([updated_by_user_code])
+ALTER TABLE [dbo].[oncd_incident_contact]  WITH CHECK ADD  CONSTRAINT [user_incident_con_665] FOREIGN KEY([updated_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_incident_contact] CHECK CONSTRAINT [user_incident_con_665]

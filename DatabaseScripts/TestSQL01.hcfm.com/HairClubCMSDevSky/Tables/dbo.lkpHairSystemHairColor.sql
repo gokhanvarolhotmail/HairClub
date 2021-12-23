@@ -26,7 +26,7 @@ ALTER TABLE [dbo].[lkpHairSystemHairColor] ADD  DEFAULT ((0)) FOR [IsActiveFlag]
 GO
 ALTER TABLE [dbo].[lkpHairSystemHairColor] ADD  DEFAULT ((0)) FOR [IsHairSampleFlag]
 GO
-ALTER TABLE [dbo].[lkpHairSystemHairColor]  WITH NOCHECK ADD  CONSTRAINT [FK_lkpHairSystemHairColor_lkpHairSystemHairColorGroup] FOREIGN KEY([HairSystemHairColorGroupID])
+ALTER TABLE [dbo].[lkpHairSystemHairColor]  WITH CHECK ADD  CONSTRAINT [FK_lkpHairSystemHairColor_lkpHairSystemHairColorGroup] FOREIGN KEY([HairSystemHairColorGroupID])
 REFERENCES [dbo].[lkpHairSystemHairColorGroup] ([HairSystemHairColorGroupID])
 GO
 ALTER TABLE [dbo].[lkpHairSystemHairColor] CHECK CONSTRAINT [FK_lkpHairSystemHairColor_lkpHairSystemHairColorGroup]

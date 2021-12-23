@@ -13,17 +13,17 @@ CREATE TABLE [dbo].[oncd_contact_relation](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[oncd_contact_relation]  WITH NOCHECK ADD  CONSTRAINT [contact_rela_contact_rela_612] FOREIGN KEY([contact_relation_code])
+ALTER TABLE [dbo].[oncd_contact_relation]  WITH CHECK ADD  CONSTRAINT [contact_rela_contact_rela_612] FOREIGN KEY([contact_relation_code])
 REFERENCES [dbo].[onca_contact_relation] ([contact_relation_code])
 GO
 ALTER TABLE [dbo].[oncd_contact_relation] CHECK CONSTRAINT [contact_rela_contact_rela_612]
 GO
-ALTER TABLE [dbo].[oncd_contact_relation]  WITH NOCHECK ADD  CONSTRAINT [user_contact_rela_610] FOREIGN KEY([created_by_user_code])
+ALTER TABLE [dbo].[oncd_contact_relation]  WITH CHECK ADD  CONSTRAINT [user_contact_rela_610] FOREIGN KEY([created_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_contact_relation] CHECK CONSTRAINT [user_contact_rela_610]
 GO
-ALTER TABLE [dbo].[oncd_contact_relation]  WITH NOCHECK ADD  CONSTRAINT [user_contact_rela_611] FOREIGN KEY([updated_by_user_code])
+ALTER TABLE [dbo].[oncd_contact_relation]  WITH CHECK ADD  CONSTRAINT [user_contact_rela_611] FOREIGN KEY([updated_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_contact_relation] CHECK CONSTRAINT [user_contact_rela_611]

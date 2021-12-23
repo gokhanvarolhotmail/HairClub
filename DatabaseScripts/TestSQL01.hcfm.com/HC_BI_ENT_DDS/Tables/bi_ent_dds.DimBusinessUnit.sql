@@ -40,7 +40,7 @@ ALTER TABLE [bi_ent_dds].[DimBusinessUnit] ADD  CONSTRAINT [DF_DimBusinessUnit_I
 GO
 ALTER TABLE [bi_ent_dds].[DimBusinessUnit] ADD  CONSTRAINT [MSrepl_tran_version_default_D837A145_C6AA_4929_AB44_34D8EEBEC4B7_101575400]  DEFAULT (newid()) FOR [msrepl_tran_version]
 GO
-ALTER TABLE [bi_ent_dds].[DimBusinessUnit]  WITH NOCHECK ADD  CONSTRAINT [FK_DimBusinessUnit_DimBusinessUnitBrand_BusinessUnitBrandKey] FOREIGN KEY([BusinessUnitBrandKey])
+ALTER TABLE [bi_ent_dds].[DimBusinessUnit]  WITH CHECK ADD  CONSTRAINT [FK_DimBusinessUnit_DimBusinessUnitBrand_BusinessUnitBrandKey] FOREIGN KEY([BusinessUnitBrandKey])
 REFERENCES [bi_ent_dds].[DimBusinessUnitBrand] ([BusinessUnitBrandKey])
 GO
 ALTER TABLE [bi_ent_dds].[DimBusinessUnit] CHECK CONSTRAINT [FK_DimBusinessUnit_DimBusinessUnitBrand_BusinessUnitBrandKey]

@@ -17,7 +17,7 @@ CREATE TABLE [dbo].[onca_document_attachment](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[onca_document_attachment]  WITH NOCHECK ADD  CONSTRAINT [document_document_att_1167] FOREIGN KEY([document_id])
+ALTER TABLE [dbo].[onca_document_attachment]  WITH CHECK ADD  CONSTRAINT [document_document_att_1167] FOREIGN KEY([document_id])
 REFERENCES [dbo].[onca_document] ([document_id])
 ON DELETE CASCADE
 GO

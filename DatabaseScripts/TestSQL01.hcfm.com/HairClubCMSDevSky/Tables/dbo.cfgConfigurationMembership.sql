@@ -55,22 +55,22 @@ ALTER TABLE [dbo].[cfgConfigurationMembership] ADD  DEFAULT ((0)) FOR [CanTransf
 GO
 ALTER TABLE [dbo].[cfgConfigurationMembership] ADD  DEFAULT ((0)) FOR [IsContractAdjustedOnInitialApp]
 GO
-ALTER TABLE [dbo].[cfgConfigurationMembership]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgConfigurationMembership_cfgMembership] FOREIGN KEY([MembershipID])
+ALTER TABLE [dbo].[cfgConfigurationMembership]  WITH CHECK ADD  CONSTRAINT [FK_cfgConfigurationMembership_cfgMembership] FOREIGN KEY([MembershipID])
 REFERENCES [dbo].[cfgMembership] ([MembershipID])
 GO
 ALTER TABLE [dbo].[cfgConfigurationMembership] CHECK CONSTRAINT [FK_cfgConfigurationMembership_cfgMembership]
 GO
-ALTER TABLE [dbo].[cfgConfigurationMembership]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgConfigurationMembership_cfgSalesCode] FOREIGN KEY([CancellationFeeSalesCodeID])
+ALTER TABLE [dbo].[cfgConfigurationMembership]  WITH CHECK ADD  CONSTRAINT [FK_cfgConfigurationMembership_cfgSalesCode] FOREIGN KEY([CancellationFeeSalesCodeID])
 REFERENCES [dbo].[cfgSalesCode] ([SalesCodeID])
 GO
 ALTER TABLE [dbo].[cfgConfigurationMembership] CHECK CONSTRAINT [FK_cfgConfigurationMembership_cfgSalesCode]
 GO
-ALTER TABLE [dbo].[cfgConfigurationMembership]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgConfigurationMembership_cfgSalesCode1] FOREIGN KEY([NoShowFeeSalesCodeID])
+ALTER TABLE [dbo].[cfgConfigurationMembership]  WITH CHECK ADD  CONSTRAINT [FK_cfgConfigurationMembership_cfgSalesCode1] FOREIGN KEY([NoShowFeeSalesCodeID])
 REFERENCES [dbo].[cfgSalesCode] ([SalesCodeID])
 GO
 ALTER TABLE [dbo].[cfgConfigurationMembership] CHECK CONSTRAINT [FK_cfgConfigurationMembership_cfgSalesCode1]
 GO
-ALTER TABLE [dbo].[cfgConfigurationMembership]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgConfigurationMembership_cfgSalesCode2] FOREIGN KEY([RescheduleFeeSalesCodeID])
+ALTER TABLE [dbo].[cfgConfigurationMembership]  WITH CHECK ADD  CONSTRAINT [FK_cfgConfigurationMembership_cfgSalesCode2] FOREIGN KEY([RescheduleFeeSalesCodeID])
 REFERENCES [dbo].[cfgSalesCode] ([SalesCodeID])
 GO
 ALTER TABLE [dbo].[cfgConfigurationMembership] CHECK CONSTRAINT [FK_cfgConfigurationMembership_cfgSalesCode2]

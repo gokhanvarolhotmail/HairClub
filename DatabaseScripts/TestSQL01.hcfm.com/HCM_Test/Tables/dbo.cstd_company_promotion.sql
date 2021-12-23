@@ -18,22 +18,22 @@ CREATE TABLE [dbo].[cstd_company_promotion](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[cstd_company_promotion]  WITH NOCHECK ADD  CONSTRAINT [onca_action_set_cstd_company_promotion_760] FOREIGN KEY([action_set_code])
+ALTER TABLE [dbo].[cstd_company_promotion]  WITH CHECK ADD  CONSTRAINT [onca_action_set_cstd_company_promotion_760] FOREIGN KEY([action_set_code])
 REFERENCES [dbo].[onca_action_set] ([action_set_code])
 GO
 ALTER TABLE [dbo].[cstd_company_promotion] CHECK CONSTRAINT [onca_action_set_cstd_company_promotion_760]
 GO
-ALTER TABLE [dbo].[cstd_company_promotion]  WITH NOCHECK ADD  CONSTRAINT [onca_user_cstd_company_promotion_743] FOREIGN KEY([created_by_user_code])
+ALTER TABLE [dbo].[cstd_company_promotion]  WITH CHECK ADD  CONSTRAINT [onca_user_cstd_company_promotion_743] FOREIGN KEY([created_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[cstd_company_promotion] CHECK CONSTRAINT [onca_user_cstd_company_promotion_743]
 GO
-ALTER TABLE [dbo].[cstd_company_promotion]  WITH NOCHECK ADD  CONSTRAINT [onca_user_cstd_company_promotion_744] FOREIGN KEY([updated_by_user_code])
+ALTER TABLE [dbo].[cstd_company_promotion]  WITH CHECK ADD  CONSTRAINT [onca_user_cstd_company_promotion_744] FOREIGN KEY([updated_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[cstd_company_promotion] CHECK CONSTRAINT [onca_user_cstd_company_promotion_744]
 GO
-ALTER TABLE [dbo].[cstd_company_promotion]  WITH NOCHECK ADD  CONSTRAINT [oncd_company_cstd_company_promotion_741] FOREIGN KEY([company_id])
+ALTER TABLE [dbo].[cstd_company_promotion]  WITH CHECK ADD  CONSTRAINT [oncd_company_cstd_company_promotion_741] FOREIGN KEY([company_id])
 REFERENCES [dbo].[oncd_company] ([company_id])
 ON DELETE CASCADE
 GO

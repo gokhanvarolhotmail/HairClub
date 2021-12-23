@@ -20,7 +20,7 @@ CREATE TABLE [dbo].[lkpColorFormula](
 GO
 ALTER TABLE [dbo].[lkpColorFormula] ADD  CONSTRAINT [DF_lkpColorFormula_IsActiveFlag]  DEFAULT ((1)) FOR [IsActiveFlag]
 GO
-ALTER TABLE [dbo].[lkpColorFormula]  WITH NOCHECK ADD  CONSTRAINT [FK_lkpColorFormula_lkpColorBrand] FOREIGN KEY([ColorBrandID])
+ALTER TABLE [dbo].[lkpColorFormula]  WITH CHECK ADD  CONSTRAINT [FK_lkpColorFormula_lkpColorBrand] FOREIGN KEY([ColorBrandID])
 REFERENCES [dbo].[lkpColorBrand] ([ColorBrandID])
 GO
 ALTER TABLE [dbo].[lkpColorFormula] CHECK CONSTRAINT [FK_lkpColorFormula_lkpColorBrand]

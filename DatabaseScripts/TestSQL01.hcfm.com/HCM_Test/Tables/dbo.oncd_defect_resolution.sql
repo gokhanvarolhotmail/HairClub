@@ -42,28 +42,28 @@ CREATE FULLTEXT INDEX ON [dbo].[oncd_defect_resolution]
 KEY INDEX [pk_oncd_defect_resolution]ON ([oncd_defect_resolution], FILEGROUP [PRIMARY])
 WITH (CHANGE_TRACKING = AUTO, STOPLIST = SYSTEM)
 GO
-ALTER TABLE [dbo].[oncd_defect_resolution]  WITH NOCHECK ADD  CONSTRAINT [defect_defect_resol_223] FOREIGN KEY([defect_id])
+ALTER TABLE [dbo].[oncd_defect_resolution]  WITH CHECK ADD  CONSTRAINT [defect_defect_resol_223] FOREIGN KEY([defect_id])
 REFERENCES [dbo].[oncd_defect] ([defect_id])
 ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[oncd_defect_resolution] CHECK CONSTRAINT [defect_defect_resol_223]
 GO
-ALTER TABLE [dbo].[oncd_defect_resolution]  WITH NOCHECK ADD  CONSTRAINT [resolution_s_defect_resol_647] FOREIGN KEY([resolution_status_code])
+ALTER TABLE [dbo].[oncd_defect_resolution]  WITH CHECK ADD  CONSTRAINT [resolution_s_defect_resol_647] FOREIGN KEY([resolution_status_code])
 REFERENCES [dbo].[onca_resolution_status] ([resolution_status_code])
 GO
 ALTER TABLE [dbo].[oncd_defect_resolution] CHECK CONSTRAINT [resolution_s_defect_resol_647]
 GO
-ALTER TABLE [dbo].[oncd_defect_resolution]  WITH NOCHECK ADD  CONSTRAINT [user_defect_resol_644] FOREIGN KEY([updated_by_user_code])
+ALTER TABLE [dbo].[oncd_defect_resolution]  WITH CHECK ADD  CONSTRAINT [user_defect_resol_644] FOREIGN KEY([updated_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_defect_resolution] CHECK CONSTRAINT [user_defect_resol_644]
 GO
-ALTER TABLE [dbo].[oncd_defect_resolution]  WITH NOCHECK ADD  CONSTRAINT [user_defect_resol_645] FOREIGN KEY([created_by_user_code])
+ALTER TABLE [dbo].[oncd_defect_resolution]  WITH CHECK ADD  CONSTRAINT [user_defect_resol_645] FOREIGN KEY([created_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_defect_resolution] CHECK CONSTRAINT [user_defect_resol_645]
 GO
-ALTER TABLE [dbo].[oncd_defect_resolution]  WITH NOCHECK ADD  CONSTRAINT [user_defect_resol_646] FOREIGN KEY([status_updated_by_user_code])
+ALTER TABLE [dbo].[oncd_defect_resolution]  WITH CHECK ADD  CONSTRAINT [user_defect_resol_646] FOREIGN KEY([status_updated_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_defect_resolution] CHECK CONSTRAINT [user_defect_resol_646]

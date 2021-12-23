@@ -18,12 +18,12 @@ CREATE TABLE [dbo].[datClientTrackingPlan](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[datClientTrackingPlan]  WITH NOCHECK ADD  CONSTRAINT [FK_datClientTrackingPlan_datClient] FOREIGN KEY([ClientGUID])
+ALTER TABLE [dbo].[datClientTrackingPlan]  WITH CHECK ADD  CONSTRAINT [FK_datClientTrackingPlan_datClient] FOREIGN KEY([ClientGUID])
 REFERENCES [dbo].[datClient] ([ClientGUID])
 GO
 ALTER TABLE [dbo].[datClientTrackingPlan] CHECK CONSTRAINT [FK_datClientTrackingPlan_datClient]
 GO
-ALTER TABLE [dbo].[datClientTrackingPlan]  WITH NOCHECK ADD  CONSTRAINT [FK_datClientTrackingPlan_lkpDayOfWeek] FOREIGN KEY([DayOfWeekID])
+ALTER TABLE [dbo].[datClientTrackingPlan]  WITH CHECK ADD  CONSTRAINT [FK_datClientTrackingPlan_lkpDayOfWeek] FOREIGN KEY([DayOfWeekID])
 REFERENCES [dbo].[lkpDayOfWeek] ([DayOfWeekID])
 GO
 ALTER TABLE [dbo].[datClientTrackingPlan] CHECK CONSTRAINT [FK_datClientTrackingPlan_lkpDayOfWeek]

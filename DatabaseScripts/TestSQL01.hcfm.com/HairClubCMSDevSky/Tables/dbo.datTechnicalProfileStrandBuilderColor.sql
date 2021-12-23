@@ -20,12 +20,12 @@ CREATE TABLE [dbo].[datTechnicalProfileStrandBuilderColor](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[datTechnicalProfileStrandBuilderColor]  WITH NOCHECK ADD  CONSTRAINT [FK_datTechnicalProfileStrandBuilderColor_datTechnicalProfile] FOREIGN KEY([TechnicalProfileID])
+ALTER TABLE [dbo].[datTechnicalProfileStrandBuilderColor]  WITH CHECK ADD  CONSTRAINT [FK_datTechnicalProfileStrandBuilderColor_datTechnicalProfile] FOREIGN KEY([TechnicalProfileID])
 REFERENCES [dbo].[datTechnicalProfile] ([TechnicalProfileID])
 GO
 ALTER TABLE [dbo].[datTechnicalProfileStrandBuilderColor] CHECK CONSTRAINT [FK_datTechnicalProfileStrandBuilderColor_datTechnicalProfile]
 GO
-ALTER TABLE [dbo].[datTechnicalProfileStrandBuilderColor]  WITH NOCHECK ADD  CONSTRAINT [FK_datTechnicalProfileStrandBuilderColor_lkpStrandBuilderColor] FOREIGN KEY([StrandBuilderColorID])
+ALTER TABLE [dbo].[datTechnicalProfileStrandBuilderColor]  WITH CHECK ADD  CONSTRAINT [FK_datTechnicalProfileStrandBuilderColor_lkpStrandBuilderColor] FOREIGN KEY([StrandBuilderColorID])
 REFERENCES [dbo].[lkpStrandBuilderColor] ([StrandBuilderColorID])
 GO
 ALTER TABLE [dbo].[datTechnicalProfileStrandBuilderColor] CHECK CONSTRAINT [FK_datTechnicalProfileStrandBuilderColor_lkpStrandBuilderColor]

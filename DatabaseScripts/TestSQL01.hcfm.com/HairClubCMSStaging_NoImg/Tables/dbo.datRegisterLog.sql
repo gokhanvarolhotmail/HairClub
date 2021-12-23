@@ -29,17 +29,17 @@ CREATE UNIQUE NONCLUSTERED INDEX [NK_datRegisterLog] ON [dbo].[datRegisterLog]
 	[EndOfDayGUID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[datRegisterLog]  WITH NOCHECK ADD  CONSTRAINT [FK_datRegisterLog_cfgRegister] FOREIGN KEY([RegisterID])
+ALTER TABLE [dbo].[datRegisterLog]  WITH CHECK ADD  CONSTRAINT [FK_datRegisterLog_cfgRegister] FOREIGN KEY([RegisterID])
 REFERENCES [dbo].[cfgRegister] ([RegisterID])
 GO
 ALTER TABLE [dbo].[datRegisterLog] CHECK CONSTRAINT [FK_datRegisterLog_cfgRegister]
 GO
-ALTER TABLE [dbo].[datRegisterLog]  WITH NOCHECK ADD  CONSTRAINT [FK_datRegisterLog_datEmployee] FOREIGN KEY([EmployeeGUID])
+ALTER TABLE [dbo].[datRegisterLog]  WITH CHECK ADD  CONSTRAINT [FK_datRegisterLog_datEmployee] FOREIGN KEY([EmployeeGUID])
 REFERENCES [dbo].[datEmployee] ([EmployeeGUID])
 GO
 ALTER TABLE [dbo].[datRegisterLog] CHECK CONSTRAINT [FK_datRegisterLog_datEmployee]
 GO
-ALTER TABLE [dbo].[datRegisterLog]  WITH NOCHECK ADD  CONSTRAINT [FK_datRegisterLog_datEndOfDay] FOREIGN KEY([EndOfDayGUID])
+ALTER TABLE [dbo].[datRegisterLog]  WITH CHECK ADD  CONSTRAINT [FK_datRegisterLog_datEndOfDay] FOREIGN KEY([EndOfDayGUID])
 REFERENCES [dbo].[datEndOfDay] ([EndOfDayGUID])
 GO
 ALTER TABLE [dbo].[datRegisterLog] CHECK CONSTRAINT [FK_datRegisterLog_datEndOfDay]

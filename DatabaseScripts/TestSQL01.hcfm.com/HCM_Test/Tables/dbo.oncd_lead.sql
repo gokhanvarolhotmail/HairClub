@@ -34,27 +34,27 @@ CREATE TABLE [dbo].[oncd_lead](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[oncd_lead]  WITH NOCHECK ADD  CONSTRAINT [country_lead_1142] FOREIGN KEY([country_code])
+ALTER TABLE [dbo].[oncd_lead]  WITH CHECK ADD  CONSTRAINT [country_lead_1142] FOREIGN KEY([country_code])
 REFERENCES [dbo].[onca_country] ([country_code])
 GO
 ALTER TABLE [dbo].[oncd_lead] CHECK CONSTRAINT [country_lead_1142]
 GO
-ALTER TABLE [dbo].[oncd_lead]  WITH NOCHECK ADD  CONSTRAINT [salutation_lead_1144] FOREIGN KEY([salutation_code])
+ALTER TABLE [dbo].[oncd_lead]  WITH CHECK ADD  CONSTRAINT [salutation_lead_1144] FOREIGN KEY([salutation_code])
 REFERENCES [dbo].[onca_salutation] ([salutation_code])
 GO
 ALTER TABLE [dbo].[oncd_lead] CHECK CONSTRAINT [salutation_lead_1144]
 GO
-ALTER TABLE [dbo].[oncd_lead]  WITH NOCHECK ADD  CONSTRAINT [source_lead_1143] FOREIGN KEY([source_code])
+ALTER TABLE [dbo].[oncd_lead]  WITH CHECK ADD  CONSTRAINT [source_lead_1143] FOREIGN KEY([source_code])
 REFERENCES [dbo].[onca_source] ([source_code])
 GO
 ALTER TABLE [dbo].[oncd_lead] CHECK CONSTRAINT [source_lead_1143]
 GO
-ALTER TABLE [dbo].[oncd_lead]  WITH NOCHECK ADD  CONSTRAINT [state_lead_1141] FOREIGN KEY([state_code])
+ALTER TABLE [dbo].[oncd_lead]  WITH CHECK ADD  CONSTRAINT [state_lead_1141] FOREIGN KEY([state_code])
 REFERENCES [dbo].[onca_state] ([state_code])
 GO
 ALTER TABLE [dbo].[oncd_lead] CHECK CONSTRAINT [state_lead_1141]
 GO
-ALTER TABLE [dbo].[oncd_lead]  WITH NOCHECK ADD  CONSTRAINT [user_lead_1146] FOREIGN KEY([updated_by_user_code])
+ALTER TABLE [dbo].[oncd_lead]  WITH CHECK ADD  CONSTRAINT [user_lead_1146] FOREIGN KEY([updated_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_lead] CHECK CONSTRAINT [user_lead_1146]

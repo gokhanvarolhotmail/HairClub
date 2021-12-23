@@ -31,17 +31,17 @@ CREATE NONCLUSTERED INDEX [IX_datTechnicalProfile_ClientGUID_TechnicalProfileDat
 )
 INCLUDE([TechnicalProfileID],[EmployeeGUID],[SalesOrderGUID],[Notes],[LastUpdateUser]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[datTechnicalProfile]  WITH NOCHECK ADD  CONSTRAINT [FK_datTechnicalProfile_datClient] FOREIGN KEY([ClientGUID])
+ALTER TABLE [dbo].[datTechnicalProfile]  WITH CHECK ADD  CONSTRAINT [FK_datTechnicalProfile_datClient] FOREIGN KEY([ClientGUID])
 REFERENCES [dbo].[datClient] ([ClientGUID])
 GO
 ALTER TABLE [dbo].[datTechnicalProfile] CHECK CONSTRAINT [FK_datTechnicalProfile_datClient]
 GO
-ALTER TABLE [dbo].[datTechnicalProfile]  WITH NOCHECK ADD  CONSTRAINT [FK_datTechnicalProfile_datEmployee] FOREIGN KEY([EmployeeGUID])
+ALTER TABLE [dbo].[datTechnicalProfile]  WITH CHECK ADD  CONSTRAINT [FK_datTechnicalProfile_datEmployee] FOREIGN KEY([EmployeeGUID])
 REFERENCES [dbo].[datEmployee] ([EmployeeGUID])
 GO
 ALTER TABLE [dbo].[datTechnicalProfile] CHECK CONSTRAINT [FK_datTechnicalProfile_datEmployee]
 GO
-ALTER TABLE [dbo].[datTechnicalProfile]  WITH NOCHECK ADD  CONSTRAINT [FK_datTechnicalProfile_datSalesOrder] FOREIGN KEY([SalesOrderGUID])
+ALTER TABLE [dbo].[datTechnicalProfile]  WITH CHECK ADD  CONSTRAINT [FK_datTechnicalProfile_datSalesOrder] FOREIGN KEY([SalesOrderGUID])
 REFERENCES [dbo].[datSalesOrder] ([SalesOrderGUID])
 GO
 ALTER TABLE [dbo].[datTechnicalProfile] CHECK CONSTRAINT [FK_datTechnicalProfile_datSalesOrder]

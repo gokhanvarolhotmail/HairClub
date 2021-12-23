@@ -17,18 +17,18 @@ CREATE FULLTEXT INDEX ON [dbo].[oncd_knowledge_note]
 KEY INDEX [pk_oncd_knowledge_note]ON ([oncd_knowledge_note], FILEGROUP [PRIMARY])
 WITH (CHANGE_TRACKING = AUTO, STOPLIST = SYSTEM)
 GO
-ALTER TABLE [dbo].[oncd_knowledge_note]  WITH NOCHECK ADD  CONSTRAINT [knowledge_knowledge_no_207] FOREIGN KEY([knowledge_id])
+ALTER TABLE [dbo].[oncd_knowledge_note]  WITH CHECK ADD  CONSTRAINT [knowledge_knowledge_no_207] FOREIGN KEY([knowledge_id])
 REFERENCES [dbo].[oncd_knowledge] ([knowledge_id])
 ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[oncd_knowledge_note] CHECK CONSTRAINT [knowledge_knowledge_no_207]
 GO
-ALTER TABLE [dbo].[oncd_knowledge_note]  WITH NOCHECK ADD  CONSTRAINT [user_knowledge_no_671] FOREIGN KEY([created_by_user_code])
+ALTER TABLE [dbo].[oncd_knowledge_note]  WITH CHECK ADD  CONSTRAINT [user_knowledge_no_671] FOREIGN KEY([created_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_knowledge_note] CHECK CONSTRAINT [user_knowledge_no_671]
 GO
-ALTER TABLE [dbo].[oncd_knowledge_note]  WITH NOCHECK ADD  CONSTRAINT [user_knowledge_no_672] FOREIGN KEY([updated_by_user_code])
+ALTER TABLE [dbo].[oncd_knowledge_note]  WITH CHECK ADD  CONSTRAINT [user_knowledge_no_672] FOREIGN KEY([updated_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_knowledge_note] CHECK CONSTRAINT [user_knowledge_no_672]

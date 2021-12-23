@@ -48,32 +48,32 @@ CREATE NONCLUSTERED INDEX [IX_datClientTransaction_ClientGUID] ON [dbo].[datClie
 	[ClientGUID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[datClientTransaction]  WITH NOCHECK ADD  CONSTRAINT [FK_datClientTransaction_datClient] FOREIGN KEY([ClientGUID])
+ALTER TABLE [dbo].[datClientTransaction]  WITH CHECK ADD  CONSTRAINT [FK_datClientTransaction_datClient] FOREIGN KEY([ClientGUID])
 REFERENCES [dbo].[datClient] ([ClientGUID])
 GO
 ALTER TABLE [dbo].[datClientTransaction] CHECK CONSTRAINT [FK_datClientTransaction_datClient]
 GO
-ALTER TABLE [dbo].[datClientTransaction]  WITH NOCHECK ADD  CONSTRAINT [FK_datClientTransaction_lkpClientProcess] FOREIGN KEY([ClientProcessID])
+ALTER TABLE [dbo].[datClientTransaction]  WITH CHECK ADD  CONSTRAINT [FK_datClientTransaction_lkpClientProcess] FOREIGN KEY([ClientProcessID])
 REFERENCES [dbo].[lkpClientProcess] ([ClientProcessID])
 GO
 ALTER TABLE [dbo].[datClientTransaction] CHECK CONSTRAINT [FK_datClientTransaction_lkpClientProcess]
 GO
-ALTER TABLE [dbo].[datClientTransaction]  WITH NOCHECK ADD  CONSTRAINT [FK_datClientTransaction_lkpFeeFreezeReason] FOREIGN KEY([FeeFreezeReasonID])
+ALTER TABLE [dbo].[datClientTransaction]  WITH CHECK ADD  CONSTRAINT [FK_datClientTransaction_lkpFeeFreezeReason] FOREIGN KEY([FeeFreezeReasonID])
 REFERENCES [dbo].[lkpFeeFreezeReason] ([FeeFreezeReasonID])
 GO
 ALTER TABLE [dbo].[datClientTransaction] CHECK CONSTRAINT [FK_datClientTransaction_lkpFeeFreezeReason]
 GO
-ALTER TABLE [dbo].[datClientTransaction]  WITH NOCHECK ADD  CONSTRAINT [FK_datClientTransaction_lkpFeeFreezeReasonPrevious] FOREIGN KEY([PreviousFeeFreezeReasonID])
+ALTER TABLE [dbo].[datClientTransaction]  WITH CHECK ADD  CONSTRAINT [FK_datClientTransaction_lkpFeeFreezeReasonPrevious] FOREIGN KEY([PreviousFeeFreezeReasonID])
 REFERENCES [dbo].[lkpFeeFreezeReason] ([FeeFreezeReasonID])
 GO
 ALTER TABLE [dbo].[datClientTransaction] CHECK CONSTRAINT [FK_datClientTransaction_lkpFeeFreezeReasonPrevious]
 GO
-ALTER TABLE [dbo].[datClientTransaction]  WITH NOCHECK ADD  CONSTRAINT [FK_datClientTransaction_lkpFeePayCycle] FOREIGN KEY([FeePayCycleId])
+ALTER TABLE [dbo].[datClientTransaction]  WITH CHECK ADD  CONSTRAINT [FK_datClientTransaction_lkpFeePayCycle] FOREIGN KEY([FeePayCycleId])
 REFERENCES [dbo].[lkpFeePayCycle] ([FeePayCycleID])
 GO
 ALTER TABLE [dbo].[datClientTransaction] CHECK CONSTRAINT [FK_datClientTransaction_lkpFeePayCycle]
 GO
-ALTER TABLE [dbo].[datClientTransaction]  WITH NOCHECK ADD  CONSTRAINT [FK_datClientTransaction_lkpFeePayCyclePrevious] FOREIGN KEY([PreviousFeePayCycleId])
+ALTER TABLE [dbo].[datClientTransaction]  WITH CHECK ADD  CONSTRAINT [FK_datClientTransaction_lkpFeePayCyclePrevious] FOREIGN KEY([PreviousFeePayCycleId])
 REFERENCES [dbo].[lkpFeePayCycle] ([FeePayCycleID])
 GO
 ALTER TABLE [dbo].[datClientTransaction] CHECK CONSTRAINT [FK_datClientTransaction_lkpFeePayCyclePrevious]

@@ -17,13 +17,13 @@ CREATE TABLE [dbo].[oncs_publication_node_filter](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[oncs_publication_node_filter]  WITH NOCHECK ADD  CONSTRAINT [publication__publication__312] FOREIGN KEY([publication_node_id])
+ALTER TABLE [dbo].[oncs_publication_node_filter]  WITH CHECK ADD  CONSTRAINT [publication__publication__312] FOREIGN KEY([publication_node_id])
 REFERENCES [dbo].[oncs_publication_node] ([publication_node_id])
 ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[oncs_publication_node_filter] CHECK CONSTRAINT [publication__publication__312]
 GO
-ALTER TABLE [dbo].[oncs_publication_node_filter]  WITH NOCHECK ADD  CONSTRAINT [table_column_publication__350] FOREIGN KEY([table_name], [column_name])
+ALTER TABLE [dbo].[oncs_publication_node_filter]  WITH CHECK ADD  CONSTRAINT [table_column_publication__350] FOREIGN KEY([table_name], [column_name])
 REFERENCES [dbo].[onct_table_column] ([table_name], [column_name])
 GO
 ALTER TABLE [dbo].[oncs_publication_node_filter] CHECK CONSTRAINT [table_column_publication__350]

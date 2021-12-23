@@ -29,23 +29,23 @@ CREATE NONCLUSTERED INDEX [oncd_contact_lotus_i3] ON [dbo].[oncd_contact_lotus]
 	[notes_id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[oncd_contact_lotus]  WITH NOCHECK ADD  CONSTRAINT [contact_contact_lotu_202] FOREIGN KEY([contact_id])
+ALTER TABLE [dbo].[oncd_contact_lotus]  WITH CHECK ADD  CONSTRAINT [contact_contact_lotu_202] FOREIGN KEY([contact_id])
 REFERENCES [dbo].[oncd_contact] ([contact_id])
 ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[oncd_contact_lotus] CHECK CONSTRAINT [contact_contact_lotu_202]
 GO
-ALTER TABLE [dbo].[oncd_contact_lotus]  WITH NOCHECK ADD  CONSTRAINT [user_contact_lotu_600] FOREIGN KEY([created_by_user_code])
+ALTER TABLE [dbo].[oncd_contact_lotus]  WITH CHECK ADD  CONSTRAINT [user_contact_lotu_600] FOREIGN KEY([created_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_contact_lotus] CHECK CONSTRAINT [user_contact_lotu_600]
 GO
-ALTER TABLE [dbo].[oncd_contact_lotus]  WITH NOCHECK ADD  CONSTRAINT [user_contact_lotu_601] FOREIGN KEY([updated_by_user_code])
+ALTER TABLE [dbo].[oncd_contact_lotus]  WITH CHECK ADD  CONSTRAINT [user_contact_lotu_601] FOREIGN KEY([updated_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_contact_lotus] CHECK CONSTRAINT [user_contact_lotu_601]
 GO
-ALTER TABLE [dbo].[oncd_contact_lotus]  WITH NOCHECK ADD  CONSTRAINT [user_contact_lotu_788] FOREIGN KEY([user_code])
+ALTER TABLE [dbo].[oncd_contact_lotus]  WITH CHECK ADD  CONSTRAINT [user_contact_lotu_788] FOREIGN KEY([user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_contact_lotus] CHECK CONSTRAINT [user_contact_lotu_788]

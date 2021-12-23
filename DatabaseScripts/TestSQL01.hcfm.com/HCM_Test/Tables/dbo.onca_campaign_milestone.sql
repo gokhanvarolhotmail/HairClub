@@ -42,22 +42,22 @@ CREATE NONCLUSTERED INDEX [oncd_campaign_milestone_i4] ON [dbo].[onca_campaign_m
 	[milestone_status_code] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[onca_campaign_milestone]  WITH NOCHECK ADD  CONSTRAINT [campaign_campaign_mil_1132] FOREIGN KEY([campaign_code])
+ALTER TABLE [dbo].[onca_campaign_milestone]  WITH CHECK ADD  CONSTRAINT [campaign_campaign_mil_1132] FOREIGN KEY([campaign_code])
 REFERENCES [dbo].[onca_campaign] ([campaign_code])
 GO
 ALTER TABLE [dbo].[onca_campaign_milestone] CHECK CONSTRAINT [campaign_campaign_mil_1132]
 GO
-ALTER TABLE [dbo].[onca_campaign_milestone]  WITH NOCHECK ADD  CONSTRAINT [milestone_campaign_mil_1137] FOREIGN KEY([milestone_id])
+ALTER TABLE [dbo].[onca_campaign_milestone]  WITH CHECK ADD  CONSTRAINT [milestone_campaign_mil_1137] FOREIGN KEY([milestone_id])
 REFERENCES [dbo].[onca_milestone] ([milestone_id])
 GO
 ALTER TABLE [dbo].[onca_campaign_milestone] CHECK CONSTRAINT [milestone_campaign_mil_1137]
 GO
-ALTER TABLE [dbo].[onca_campaign_milestone]  WITH NOCHECK ADD  CONSTRAINT [milestone_st_campaign_mil_1136] FOREIGN KEY([milestone_status_code])
+ALTER TABLE [dbo].[onca_campaign_milestone]  WITH CHECK ADD  CONSTRAINT [milestone_st_campaign_mil_1136] FOREIGN KEY([milestone_status_code])
 REFERENCES [dbo].[onca_milestone_status] ([milestone_status_code])
 GO
 ALTER TABLE [dbo].[onca_campaign_milestone] CHECK CONSTRAINT [milestone_st_campaign_mil_1136]
 GO
-ALTER TABLE [dbo].[onca_campaign_milestone]  WITH NOCHECK ADD  CONSTRAINT [user_campaign_mil_1135] FOREIGN KEY([status_updated_by_user_code])
+ALTER TABLE [dbo].[onca_campaign_milestone]  WITH CHECK ADD  CONSTRAINT [user_campaign_mil_1135] FOREIGN KEY([status_updated_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[onca_campaign_milestone] CHECK CONSTRAINT [user_campaign_mil_1135]

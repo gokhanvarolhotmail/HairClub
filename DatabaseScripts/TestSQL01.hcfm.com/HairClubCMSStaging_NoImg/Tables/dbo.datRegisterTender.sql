@@ -26,12 +26,12 @@ CREATE NONCLUSTERED INDEX [IX_datRegisterTender_RegisterLogGUID] ON [dbo].[datRe
 )
 INCLUDE([TenderTypeID],[RegisterQuantity],[RegisterTotal],[TotalVariance]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[datRegisterTender]  WITH NOCHECK ADD  CONSTRAINT [FK_datRegisterTender_datRegisterLog] FOREIGN KEY([RegisterLogGUID])
+ALTER TABLE [dbo].[datRegisterTender]  WITH CHECK ADD  CONSTRAINT [FK_datRegisterTender_datRegisterLog] FOREIGN KEY([RegisterLogGUID])
 REFERENCES [dbo].[datRegisterLog] ([RegisterLogGUID])
 GO
 ALTER TABLE [dbo].[datRegisterTender] CHECK CONSTRAINT [FK_datRegisterTender_datRegisterLog]
 GO
-ALTER TABLE [dbo].[datRegisterTender]  WITH NOCHECK ADD  CONSTRAINT [FK_datRegisterTender_lkpTenderType] FOREIGN KEY([TenderTypeID])
+ALTER TABLE [dbo].[datRegisterTender]  WITH CHECK ADD  CONSTRAINT [FK_datRegisterTender_lkpTenderType] FOREIGN KEY([TenderTypeID])
 REFERENCES [dbo].[lkpTenderType] ([TenderTypeID])
 GO
 ALTER TABLE [dbo].[datRegisterTender] CHECK CONSTRAINT [FK_datRegisterTender_lkpTenderType]

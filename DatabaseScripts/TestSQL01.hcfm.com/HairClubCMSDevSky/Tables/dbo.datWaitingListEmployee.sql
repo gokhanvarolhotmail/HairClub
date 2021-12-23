@@ -21,12 +21,12 @@ CREATE NONCLUSTERED INDEX [IX_datWaitingListEmployee_WaitingListID] ON [dbo].[da
 )
 INCLUDE([WaitingListEmployeeID],[EmployeeGUID],[CreateDate],[CreateUser],[LastUpdate],[LastUpdateUser],[UpdateStamp]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[datWaitingListEmployee]  WITH NOCHECK ADD  CONSTRAINT [FK_datWaitingListEmployee_datEmployee] FOREIGN KEY([EmployeeGUID])
+ALTER TABLE [dbo].[datWaitingListEmployee]  WITH CHECK ADD  CONSTRAINT [FK_datWaitingListEmployee_datEmployee] FOREIGN KEY([EmployeeGUID])
 REFERENCES [dbo].[datEmployee] ([EmployeeGUID])
 GO
 ALTER TABLE [dbo].[datWaitingListEmployee] CHECK CONSTRAINT [FK_datWaitingListEmployee_datEmployee]
 GO
-ALTER TABLE [dbo].[datWaitingListEmployee]  WITH NOCHECK ADD  CONSTRAINT [FK_datWaitingListEmployee_datWaitingList] FOREIGN KEY([WaitingListID])
+ALTER TABLE [dbo].[datWaitingListEmployee]  WITH CHECK ADD  CONSTRAINT [FK_datWaitingListEmployee_datWaitingList] FOREIGN KEY([WaitingListID])
 REFERENCES [dbo].[datWaitingList] ([WaitingListID])
 GO
 ALTER TABLE [dbo].[datWaitingListEmployee] CHECK CONSTRAINT [FK_datWaitingListEmployee_datWaitingList]

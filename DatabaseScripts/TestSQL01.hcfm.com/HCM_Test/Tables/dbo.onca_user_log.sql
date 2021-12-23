@@ -11,7 +11,7 @@ CREATE TABLE [dbo].[onca_user_log](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[onca_user_log]  WITH NOCHECK ADD  CONSTRAINT [user_user_log_264] FOREIGN KEY([user_code])
+ALTER TABLE [dbo].[onca_user_log]  WITH CHECK ADD  CONSTRAINT [user_user_log_264] FOREIGN KEY([user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 ON DELETE CASCADE
 GO

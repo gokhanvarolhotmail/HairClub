@@ -31,23 +31,23 @@ CREATE NONCLUSTERED INDEX [oncd_company_territory_i3] ON [dbo].[oncd_company_ter
 	[territory_code] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[oncd_company_territory]  WITH NOCHECK ADD  CONSTRAINT [company_company_terr_89] FOREIGN KEY([company_id])
+ALTER TABLE [dbo].[oncd_company_territory]  WITH CHECK ADD  CONSTRAINT [company_company_terr_89] FOREIGN KEY([company_id])
 REFERENCES [dbo].[oncd_company] ([company_id])
 ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[oncd_company_territory] CHECK CONSTRAINT [company_company_terr_89]
 GO
-ALTER TABLE [dbo].[oncd_company_territory]  WITH NOCHECK ADD  CONSTRAINT [territory_company_terr_556] FOREIGN KEY([territory_code])
+ALTER TABLE [dbo].[oncd_company_territory]  WITH CHECK ADD  CONSTRAINT [territory_company_terr_556] FOREIGN KEY([territory_code])
 REFERENCES [dbo].[onca_territory] ([territory_code])
 GO
 ALTER TABLE [dbo].[oncd_company_territory] CHECK CONSTRAINT [territory_company_terr_556]
 GO
-ALTER TABLE [dbo].[oncd_company_territory]  WITH NOCHECK ADD  CONSTRAINT [user_company_terr_554] FOREIGN KEY([created_by_user_code])
+ALTER TABLE [dbo].[oncd_company_territory]  WITH CHECK ADD  CONSTRAINT [user_company_terr_554] FOREIGN KEY([created_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_company_territory] CHECK CONSTRAINT [user_company_terr_554]
 GO
-ALTER TABLE [dbo].[oncd_company_territory]  WITH NOCHECK ADD  CONSTRAINT [user_company_terr_555] FOREIGN KEY([updated_by_user_code])
+ALTER TABLE [dbo].[oncd_company_territory]  WITH CHECK ADD  CONSTRAINT [user_company_terr_555] FOREIGN KEY([updated_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_company_territory] CHECK CONSTRAINT [user_company_terr_555]

@@ -23,7 +23,7 @@ CREATE UNIQUE NONCLUSTERED INDEX [csta_queue_queue_schedule_by_day_of_week_user_
 	[user_code] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[csta_queue_queue_schedule_by_day_of_week_user]  WITH NOCHECK ADD  CONSTRAINT [FK_csta_queue_queue_schedule_by_day_of_week_user_created_by_user] FOREIGN KEY([created_by_user_code])
+ALTER TABLE [dbo].[csta_queue_queue_schedule_by_day_of_week_user]  WITH CHECK ADD  CONSTRAINT [FK_csta_queue_queue_schedule_by_day_of_week_user_created_by_user] FOREIGN KEY([created_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[csta_queue_queue_schedule_by_day_of_week_user] CHECK CONSTRAINT [FK_csta_queue_queue_schedule_by_day_of_week_user_created_by_user]
@@ -34,12 +34,12 @@ ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[csta_queue_queue_schedule_by_day_of_week_user] CHECK CONSTRAINT [FK_csta_queue_queue_schedule_by_day_of_week_user_csta_queue_queue_schedule_by_day_of_week]
 GO
-ALTER TABLE [dbo].[csta_queue_queue_schedule_by_day_of_week_user]  WITH NOCHECK ADD  CONSTRAINT [FK_csta_queue_queue_schedule_by_day_of_week_user_onca_user] FOREIGN KEY([user_code])
+ALTER TABLE [dbo].[csta_queue_queue_schedule_by_day_of_week_user]  WITH CHECK ADD  CONSTRAINT [FK_csta_queue_queue_schedule_by_day_of_week_user_onca_user] FOREIGN KEY([user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[csta_queue_queue_schedule_by_day_of_week_user] CHECK CONSTRAINT [FK_csta_queue_queue_schedule_by_day_of_week_user_onca_user]
 GO
-ALTER TABLE [dbo].[csta_queue_queue_schedule_by_day_of_week_user]  WITH NOCHECK ADD  CONSTRAINT [FK_csta_queue_queue_schedule_by_day_of_week_user_updated_by_user] FOREIGN KEY([updated_by_user_code])
+ALTER TABLE [dbo].[csta_queue_queue_schedule_by_day_of_week_user]  WITH CHECK ADD  CONSTRAINT [FK_csta_queue_queue_schedule_by_day_of_week_user_updated_by_user] FOREIGN KEY([updated_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[csta_queue_queue_schedule_by_day_of_week_user] CHECK CONSTRAINT [FK_csta_queue_queue_schedule_by_day_of_week_user_updated_by_user]

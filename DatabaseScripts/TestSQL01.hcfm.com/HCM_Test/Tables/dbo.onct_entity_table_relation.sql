@@ -24,13 +24,13 @@ CREATE NONCLUSTERED INDEX [onct_entity_table_relation_i3] ON [dbo].[onct_entity_
 	[table_relation_member_id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[onct_entity_table_relation]  WITH NOCHECK ADD  CONSTRAINT [entity_entity_table_346] FOREIGN KEY([entity_id])
+ALTER TABLE [dbo].[onct_entity_table_relation]  WITH CHECK ADD  CONSTRAINT [entity_entity_table_346] FOREIGN KEY([entity_id])
 REFERENCES [dbo].[onct_entity] ([entity_id])
 ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[onct_entity_table_relation] CHECK CONSTRAINT [entity_entity_table_346]
 GO
-ALTER TABLE [dbo].[onct_entity_table_relation]  WITH NOCHECK ADD  CONSTRAINT [table_relati_entity_table_345] FOREIGN KEY([table_relation_member_id])
+ALTER TABLE [dbo].[onct_entity_table_relation]  WITH CHECK ADD  CONSTRAINT [table_relati_entity_table_345] FOREIGN KEY([table_relation_member_id])
 REFERENCES [dbo].[onct_table_relation_member] ([table_relation_member_id])
 ON DELETE CASCADE
 GO

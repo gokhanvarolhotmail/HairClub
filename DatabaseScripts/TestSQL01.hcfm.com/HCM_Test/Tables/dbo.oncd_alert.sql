@@ -18,17 +18,17 @@ CREATE TABLE [dbo].[oncd_alert](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[oncd_alert]  WITH NOCHECK ADD  CONSTRAINT [entity_alert_869] FOREIGN KEY([entity_id])
+ALTER TABLE [dbo].[oncd_alert]  WITH CHECK ADD  CONSTRAINT [entity_alert_869] FOREIGN KEY([entity_id])
 REFERENCES [dbo].[onct_entity] ([entity_id])
 GO
 ALTER TABLE [dbo].[oncd_alert] CHECK CONSTRAINT [entity_alert_869]
 GO
-ALTER TABLE [dbo].[oncd_alert]  WITH NOCHECK ADD  CONSTRAINT [user_alert_496] FOREIGN KEY([created_by_user_code])
+ALTER TABLE [dbo].[oncd_alert]  WITH CHECK ADD  CONSTRAINT [user_alert_496] FOREIGN KEY([created_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_alert] CHECK CONSTRAINT [user_alert_496]
 GO
-ALTER TABLE [dbo].[oncd_alert]  WITH NOCHECK ADD  CONSTRAINT [user_alert_497] FOREIGN KEY([updated_by_user_code])
+ALTER TABLE [dbo].[oncd_alert]  WITH CHECK ADD  CONSTRAINT [user_alert_497] FOREIGN KEY([updated_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_alert] CHECK CONSTRAINT [user_alert_497]

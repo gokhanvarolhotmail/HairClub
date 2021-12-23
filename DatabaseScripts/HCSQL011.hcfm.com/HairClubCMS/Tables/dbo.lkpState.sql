@@ -20,7 +20,7 @@ CREATE TABLE [dbo].[lkpState](
 GO
 ALTER TABLE [dbo].[lkpState] ADD  CONSTRAINT [DF_lkpState_IsActiveFlag]  DEFAULT ((1)) FOR [IsActiveFlag]
 GO
-ALTER TABLE [dbo].[lkpState]  WITH NOCHECK ADD  CONSTRAINT [FK_lkpState_lkpCountry] FOREIGN KEY([CountryID])
+ALTER TABLE [dbo].[lkpState]  WITH CHECK ADD  CONSTRAINT [FK_lkpState_lkpCountry] FOREIGN KEY([CountryID])
 REFERENCES [dbo].[lkpCountry] ([CountryID])
 GO
 ALTER TABLE [dbo].[lkpState] CHECK CONSTRAINT [FK_lkpState_lkpCountry]

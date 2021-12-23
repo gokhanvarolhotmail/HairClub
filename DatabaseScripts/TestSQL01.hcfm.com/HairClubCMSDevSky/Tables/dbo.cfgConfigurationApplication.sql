@@ -59,12 +59,12 @@ ALTER TABLE [dbo].[cfgConfigurationApplication] ADD  DEFAULT ((80)) FOR [PhotoQu
 GO
 ALTER TABLE [dbo].[cfgConfigurationApplication] ADD  DEFAULT ((1)) FOR [IsPreviousConsultationWarningEnabled]
 GO
-ALTER TABLE [dbo].[cfgConfigurationApplication]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgConfigurationApplication_lkpGeneralLedger_AccountingExportReceiveAPCreditGLNumber] FOREIGN KEY([AccountingExportReceiveAPCreditGLNumber])
+ALTER TABLE [dbo].[cfgConfigurationApplication]  WITH CHECK ADD  CONSTRAINT [FK_cfgConfigurationApplication_lkpGeneralLedger_AccountingExportReceiveAPCreditGLNumber] FOREIGN KEY([AccountingExportReceiveAPCreditGLNumber])
 REFERENCES [dbo].[lkpGeneralLedger] ([GeneralLedgerID])
 GO
 ALTER TABLE [dbo].[cfgConfigurationApplication] CHECK CONSTRAINT [FK_cfgConfigurationApplication_lkpGeneralLedger_AccountingExportReceiveAPCreditGLNumber]
 GO
-ALTER TABLE [dbo].[cfgConfigurationApplication]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgConfigurationApplication_lkpGeneralLedger_AccountingExportReceiveAPVarianceGLNumber] FOREIGN KEY([AccountingExportReceiveAPVarianceGLNumber])
+ALTER TABLE [dbo].[cfgConfigurationApplication]  WITH CHECK ADD  CONSTRAINT [FK_cfgConfigurationApplication_lkpGeneralLedger_AccountingExportReceiveAPVarianceGLNumber] FOREIGN KEY([AccountingExportReceiveAPVarianceGLNumber])
 REFERENCES [dbo].[lkpGeneralLedger] ([GeneralLedgerID])
 GO
 ALTER TABLE [dbo].[cfgConfigurationApplication] CHECK CONSTRAINT [FK_cfgConfigurationApplication_lkpGeneralLedger_AccountingExportReceiveAPVarianceGLNumber]

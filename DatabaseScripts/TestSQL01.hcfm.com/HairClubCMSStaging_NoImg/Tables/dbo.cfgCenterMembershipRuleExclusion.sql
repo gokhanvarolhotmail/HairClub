@@ -17,17 +17,17 @@ CREATE TABLE [dbo].[cfgCenterMembershipRuleExclusion](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[cfgCenterMembershipRuleExclusion]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgCenterMembershipRuleExclusion_cfgCenterMembership] FOREIGN KEY([CenterMembershipID])
+ALTER TABLE [dbo].[cfgCenterMembershipRuleExclusion]  WITH CHECK ADD  CONSTRAINT [FK_cfgCenterMembershipRuleExclusion_cfgCenterMembership] FOREIGN KEY([CenterMembershipID])
 REFERENCES [dbo].[cfgCenterMembership] ([CenterMembershipID])
 GO
 ALTER TABLE [dbo].[cfgCenterMembershipRuleExclusion] CHECK CONSTRAINT [FK_cfgCenterMembershipRuleExclusion_cfgCenterMembership]
 GO
-ALTER TABLE [dbo].[cfgCenterMembershipRuleExclusion]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgCenterMembershipRuleExclusion_cfgMembership] FOREIGN KEY([NewMembershipID])
+ALTER TABLE [dbo].[cfgCenterMembershipRuleExclusion]  WITH CHECK ADD  CONSTRAINT [FK_cfgCenterMembershipRuleExclusion_cfgMembership] FOREIGN KEY([NewMembershipID])
 REFERENCES [dbo].[cfgMembership] ([MembershipID])
 GO
 ALTER TABLE [dbo].[cfgCenterMembershipRuleExclusion] CHECK CONSTRAINT [FK_cfgCenterMembershipRuleExclusion_cfgMembership]
 GO
-ALTER TABLE [dbo].[cfgCenterMembershipRuleExclusion]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgCenterMembershipRuleExclusion_lkpMembershipRuleType] FOREIGN KEY([MembershipRuleTypeID])
+ALTER TABLE [dbo].[cfgCenterMembershipRuleExclusion]  WITH CHECK ADD  CONSTRAINT [FK_cfgCenterMembershipRuleExclusion_lkpMembershipRuleType] FOREIGN KEY([MembershipRuleTypeID])
 REFERENCES [dbo].[lkpMembershipRuleType] ([MembershipRuleTypeID])
 GO
 ALTER TABLE [dbo].[cfgCenterMembershipRuleExclusion] CHECK CONSTRAINT [FK_cfgCenterMembershipRuleExclusion_lkpMembershipRuleType]

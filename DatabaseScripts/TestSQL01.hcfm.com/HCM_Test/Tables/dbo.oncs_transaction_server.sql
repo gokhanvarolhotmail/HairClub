@@ -16,12 +16,12 @@ CREATE TABLE [dbo].[oncs_transaction_server](
 GO
 ALTER TABLE [dbo].[oncs_transaction_server] ADD  CONSTRAINT [DF__oncs_tran__trans__4C0144E4]  DEFAULT ('NEW') FOR [transaction_status_code]
 GO
-ALTER TABLE [dbo].[oncs_transaction_server]  WITH NOCHECK ADD  CONSTRAINT [server_transaction__900] FOREIGN KEY([server_id])
+ALTER TABLE [dbo].[oncs_transaction_server]  WITH CHECK ADD  CONSTRAINT [server_transaction__900] FOREIGN KEY([server_id])
 REFERENCES [dbo].[oncs_server] ([server_id])
 GO
 ALTER TABLE [dbo].[oncs_transaction_server] CHECK CONSTRAINT [server_transaction__900]
 GO
-ALTER TABLE [dbo].[oncs_transaction_server]  WITH NOCHECK ADD  CONSTRAINT [transaction_transaction__305] FOREIGN KEY([transaction_date], [transaction_order])
+ALTER TABLE [dbo].[oncs_transaction_server]  WITH CHECK ADD  CONSTRAINT [transaction_transaction__305] FOREIGN KEY([transaction_date], [transaction_order])
 REFERENCES [dbo].[oncs_transaction] ([transaction_date], [transaction_order])
 ON DELETE CASCADE
 GO

@@ -104,82 +104,82 @@ ALTER TABLE [dbo].[datHairSystemOrderTransaction] ADD  DEFAULT ((0)) FOR [CostFa
 GO
 ALTER TABLE [dbo].[datHairSystemOrderTransaction] ADD  DEFAULT ((0)) FOR [PreviousCostFactoryShipped]
 GO
-ALTER TABLE [dbo].[datHairSystemOrderTransaction]  WITH NOCHECK ADD  CONSTRAINT [FK_datHairSystemOrderTransaction_cfgCenter] FOREIGN KEY([CenterID])
+ALTER TABLE [dbo].[datHairSystemOrderTransaction]  WITH CHECK ADD  CONSTRAINT [FK_datHairSystemOrderTransaction_cfgCenter] FOREIGN KEY([CenterID])
 REFERENCES [dbo].[cfgCenter] ([CenterID])
 GO
 ALTER TABLE [dbo].[datHairSystemOrderTransaction] CHECK CONSTRAINT [FK_datHairSystemOrderTransaction_cfgCenter]
 GO
-ALTER TABLE [dbo].[datHairSystemOrderTransaction]  WITH NOCHECK ADD  CONSTRAINT [FK_datHairSystemOrderTransaction_cfgCenter_ClientHomeCenterID] FOREIGN KEY([ClientHomeCenterID])
+ALTER TABLE [dbo].[datHairSystemOrderTransaction]  WITH CHECK ADD  CONSTRAINT [FK_datHairSystemOrderTransaction_cfgCenter_ClientHomeCenterID] FOREIGN KEY([ClientHomeCenterID])
 REFERENCES [dbo].[cfgCenter] ([CenterID])
 GO
 ALTER TABLE [dbo].[datHairSystemOrderTransaction] CHECK CONSTRAINT [FK_datHairSystemOrderTransaction_cfgCenter_ClientHomeCenterID]
 GO
-ALTER TABLE [dbo].[datHairSystemOrderTransaction]  WITH NOCHECK ADD  CONSTRAINT [FK_datHairSystemOrderTransaction_cfgCenter_PreviousCenterID] FOREIGN KEY([PreviousCenterID])
+ALTER TABLE [dbo].[datHairSystemOrderTransaction]  WITH CHECK ADD  CONSTRAINT [FK_datHairSystemOrderTransaction_cfgCenter_PreviousCenterID] FOREIGN KEY([PreviousCenterID])
 REFERENCES [dbo].[cfgCenter] ([CenterID])
 GO
 ALTER TABLE [dbo].[datHairSystemOrderTransaction] CHECK CONSTRAINT [FK_datHairSystemOrderTransaction_cfgCenter_PreviousCenterID]
 GO
-ALTER TABLE [dbo].[datHairSystemOrderTransaction]  WITH NOCHECK ADD  CONSTRAINT [FK_datHairSystemOrderTransaction_datClient] FOREIGN KEY([ClientGUID])
+ALTER TABLE [dbo].[datHairSystemOrderTransaction]  WITH CHECK ADD  CONSTRAINT [FK_datHairSystemOrderTransaction_datClient] FOREIGN KEY([ClientGUID])
 REFERENCES [dbo].[datClient] ([ClientGUID])
 GO
 ALTER TABLE [dbo].[datHairSystemOrderTransaction] CHECK CONSTRAINT [FK_datHairSystemOrderTransaction_datClient]
 GO
-ALTER TABLE [dbo].[datHairSystemOrderTransaction]  WITH NOCHECK ADD  CONSTRAINT [FK_datHairSystemOrderTransaction_datClientMembership] FOREIGN KEY([ClientMembershipGUID])
+ALTER TABLE [dbo].[datHairSystemOrderTransaction]  WITH CHECK ADD  CONSTRAINT [FK_datHairSystemOrderTransaction_datClientMembership] FOREIGN KEY([ClientMembershipGUID])
 REFERENCES [dbo].[datClientMembership] ([ClientMembershipGUID])
 GO
 ALTER TABLE [dbo].[datHairSystemOrderTransaction] CHECK CONSTRAINT [FK_datHairSystemOrderTransaction_datClientMembership]
 GO
-ALTER TABLE [dbo].[datHairSystemOrderTransaction]  WITH NOCHECK ADD  CONSTRAINT [FK_datHairSystemOrderTransaction_datClientMembership_PreviousClientMembershipGUID] FOREIGN KEY([PreviousClientMembershipGUID])
+ALTER TABLE [dbo].[datHairSystemOrderTransaction]  WITH CHECK ADD  CONSTRAINT [FK_datHairSystemOrderTransaction_datClientMembership_PreviousClientMembershipGUID] FOREIGN KEY([PreviousClientMembershipGUID])
 REFERENCES [dbo].[datClientMembership] ([ClientMembershipGUID])
 GO
 ALTER TABLE [dbo].[datHairSystemOrderTransaction] CHECK CONSTRAINT [FK_datHairSystemOrderTransaction_datClientMembership_PreviousClientMembershipGUID]
 GO
-ALTER TABLE [dbo].[datHairSystemOrderTransaction]  WITH NOCHECK ADD  CONSTRAINT [FK_datHairSystemOrderTransaction_datEmployee] FOREIGN KEY([EmployeeGUID])
+ALTER TABLE [dbo].[datHairSystemOrderTransaction]  WITH CHECK ADD  CONSTRAINT [FK_datHairSystemOrderTransaction_datEmployee] FOREIGN KEY([EmployeeGUID])
 REFERENCES [dbo].[datEmployee] ([EmployeeGUID])
 GO
 ALTER TABLE [dbo].[datHairSystemOrderTransaction] CHECK CONSTRAINT [FK_datHairSystemOrderTransaction_datEmployee]
 GO
-ALTER TABLE [dbo].[datHairSystemOrderTransaction]  WITH NOCHECK ADD  CONSTRAINT [FK_datHairSystemOrderTransaction_datHairSystemOrder] FOREIGN KEY([HairSystemOrderGUID])
+ALTER TABLE [dbo].[datHairSystemOrderTransaction]  WITH CHECK ADD  CONSTRAINT [FK_datHairSystemOrderTransaction_datHairSystemOrder] FOREIGN KEY([HairSystemOrderGUID])
 REFERENCES [dbo].[datHairSystemOrder] ([HairSystemOrderGUID])
 GO
 ALTER TABLE [dbo].[datHairSystemOrderTransaction] CHECK CONSTRAINT [FK_datHairSystemOrderTransaction_datHairSystemOrder]
 GO
-ALTER TABLE [dbo].[datHairSystemOrderTransaction]  WITH NOCHECK ADD  CONSTRAINT [FK_datHairSystemOrderTransaction_datInventoryShipmentDetail] FOREIGN KEY([InventoryShipmentDetailGUID])
+ALTER TABLE [dbo].[datHairSystemOrderTransaction]  WITH CHECK ADD  CONSTRAINT [FK_datHairSystemOrderTransaction_datInventoryShipmentDetail] FOREIGN KEY([InventoryShipmentDetailGUID])
 REFERENCES [dbo].[datInventoryShipmentDetail] ([InventoryShipmentDetailGUID])
 GO
 ALTER TABLE [dbo].[datHairSystemOrderTransaction] CHECK CONSTRAINT [FK_datHairSystemOrderTransaction_datInventoryShipmentDetail]
 GO
-ALTER TABLE [dbo].[datHairSystemOrderTransaction]  WITH NOCHECK ADD  CONSTRAINT [FK_datHairSystemOrderTransaction_datInventoryTransferRequest] FOREIGN KEY([InventoryTransferRequestGUID])
+ALTER TABLE [dbo].[datHairSystemOrderTransaction]  WITH CHECK ADD  CONSTRAINT [FK_datHairSystemOrderTransaction_datInventoryTransferRequest] FOREIGN KEY([InventoryTransferRequestGUID])
 REFERENCES [dbo].[datInventoryTransferRequest] ([InventoryTransferRequestGUID])
 GO
 ALTER TABLE [dbo].[datHairSystemOrderTransaction] CHECK CONSTRAINT [FK_datHairSystemOrderTransaction_datInventoryTransferRequest]
 GO
-ALTER TABLE [dbo].[datHairSystemOrderTransaction]  WITH NOCHECK ADD  CONSTRAINT [FK_datHairSystemOrderTransaction_datPurchaseOrderDetail] FOREIGN KEY([PurchaseOrderDetailGUID])
+ALTER TABLE [dbo].[datHairSystemOrderTransaction]  WITH CHECK ADD  CONSTRAINT [FK_datHairSystemOrderTransaction_datPurchaseOrderDetail] FOREIGN KEY([PurchaseOrderDetailGUID])
 REFERENCES [dbo].[datPurchaseOrderDetail] ([PurchaseOrderDetailGUID])
 GO
 ALTER TABLE [dbo].[datHairSystemOrderTransaction] CHECK CONSTRAINT [FK_datHairSystemOrderTransaction_datPurchaseOrderDetail]
 GO
-ALTER TABLE [dbo].[datHairSystemOrderTransaction]  WITH NOCHECK ADD  CONSTRAINT [FK_datHairSystemOrderTransaction_datSalesOrderDetail] FOREIGN KEY([SalesOrderDetailGuid])
+ALTER TABLE [dbo].[datHairSystemOrderTransaction]  WITH CHECK ADD  CONSTRAINT [FK_datHairSystemOrderTransaction_datSalesOrderDetail] FOREIGN KEY([SalesOrderDetailGuid])
 REFERENCES [dbo].[datSalesOrderDetail] ([SalesOrderDetailGUID])
 GO
 ALTER TABLE [dbo].[datHairSystemOrderTransaction] CHECK CONSTRAINT [FK_datHairSystemOrderTransaction_datSalesOrderDetail]
 GO
-ALTER TABLE [dbo].[datHairSystemOrderTransaction]  WITH NOCHECK ADD  CONSTRAINT [FK_datHairSystemOrderTransaction_lkpHairSystemOrderPriorityReason] FOREIGN KEY([HairSystemOrderPriorityReasonID])
+ALTER TABLE [dbo].[datHairSystemOrderTransaction]  WITH CHECK ADD  CONSTRAINT [FK_datHairSystemOrderTransaction_lkpHairSystemOrderPriorityReason] FOREIGN KEY([HairSystemOrderPriorityReasonID])
 REFERENCES [dbo].[lkpHairSystemOrderPriorityReason] ([HairSystemOrderPriorityReasonID])
 GO
 ALTER TABLE [dbo].[datHairSystemOrderTransaction] CHECK CONSTRAINT [FK_datHairSystemOrderTransaction_lkpHairSystemOrderPriorityReason]
 GO
-ALTER TABLE [dbo].[datHairSystemOrderTransaction]  WITH NOCHECK ADD  CONSTRAINT [FK_datHairSystemOrderTransaction_lkpHairSystemOrderProcess] FOREIGN KEY([HairSystemOrderProcessID])
+ALTER TABLE [dbo].[datHairSystemOrderTransaction]  WITH CHECK ADD  CONSTRAINT [FK_datHairSystemOrderTransaction_lkpHairSystemOrderProcess] FOREIGN KEY([HairSystemOrderProcessID])
 REFERENCES [dbo].[lkpHairSystemOrderProcess] ([HairSystemOrderProcessID])
 GO
 ALTER TABLE [dbo].[datHairSystemOrderTransaction] CHECK CONSTRAINT [FK_datHairSystemOrderTransaction_lkpHairSystemOrderProcess]
 GO
-ALTER TABLE [dbo].[datHairSystemOrderTransaction]  WITH NOCHECK ADD  CONSTRAINT [FK_datHairSystemOrderTransaction_lkpHairSystemOrderStatus_NewHairSystemOrderStatusID] FOREIGN KEY([NewHairSystemOrderStatusID])
+ALTER TABLE [dbo].[datHairSystemOrderTransaction]  WITH CHECK ADD  CONSTRAINT [FK_datHairSystemOrderTransaction_lkpHairSystemOrderStatus_NewHairSystemOrderStatusID] FOREIGN KEY([NewHairSystemOrderStatusID])
 REFERENCES [dbo].[lkpHairSystemOrderStatus] ([HairSystemOrderStatusID])
 GO
 ALTER TABLE [dbo].[datHairSystemOrderTransaction] CHECK CONSTRAINT [FK_datHairSystemOrderTransaction_lkpHairSystemOrderStatus_NewHairSystemOrderStatusID]
 GO
-ALTER TABLE [dbo].[datHairSystemOrderTransaction]  WITH NOCHECK ADD  CONSTRAINT [FK_datHairSystemOrderTransaction_lkpHairSystemOrderStatus_PreviousHairSystemOrderStatusID] FOREIGN KEY([PreviousHairSystemOrderStatusID])
+ALTER TABLE [dbo].[datHairSystemOrderTransaction]  WITH CHECK ADD  CONSTRAINT [FK_datHairSystemOrderTransaction_lkpHairSystemOrderStatus_PreviousHairSystemOrderStatusID] FOREIGN KEY([PreviousHairSystemOrderStatusID])
 REFERENCES [dbo].[lkpHairSystemOrderStatus] ([HairSystemOrderStatusID])
 GO
 ALTER TABLE [dbo].[datHairSystemOrderTransaction] CHECK CONSTRAINT [FK_datHairSystemOrderTransaction_lkpHairSystemOrderStatus_PreviousHairSystemOrderStatusID]

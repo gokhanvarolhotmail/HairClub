@@ -36,42 +36,42 @@ CREATE TABLE [dbo].[cstd_hcmtbl_leadstoimport_pagelynx_WRONG](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[cstd_hcmtbl_leadstoimport_pagelynx_WRONG]  WITH NOCHECK ADD  CONSTRAINT [csta_contact_age_range_cstd_hcmtbl_leadstoimport_pagelynx_799] FOREIGN KEY([age_range_code])
+ALTER TABLE [dbo].[cstd_hcmtbl_leadstoimport_pagelynx_WRONG]  WITH CHECK ADD  CONSTRAINT [csta_contact_age_range_cstd_hcmtbl_leadstoimport_pagelynx_799] FOREIGN KEY([age_range_code])
 REFERENCES [dbo].[csta_contact_age_range] ([age_range_code])
 GO
 ALTER TABLE [dbo].[cstd_hcmtbl_leadstoimport_pagelynx_WRONG] CHECK CONSTRAINT [csta_contact_age_range_cstd_hcmtbl_leadstoimport_pagelynx_799]
 GO
-ALTER TABLE [dbo].[cstd_hcmtbl_leadstoimport_pagelynx_WRONG]  WITH NOCHECK ADD  CONSTRAINT [csta_contact_hair_loss_cstd_hcmtbl_leadstoimport_pagelynx_800] FOREIGN KEY([hair_loss_code])
+ALTER TABLE [dbo].[cstd_hcmtbl_leadstoimport_pagelynx_WRONG]  WITH CHECK ADD  CONSTRAINT [csta_contact_hair_loss_cstd_hcmtbl_leadstoimport_pagelynx_800] FOREIGN KEY([hair_loss_code])
 REFERENCES [dbo].[csta_contact_hair_loss] ([hair_loss_code])
 GO
 ALTER TABLE [dbo].[cstd_hcmtbl_leadstoimport_pagelynx_WRONG] CHECK CONSTRAINT [csta_contact_hair_loss_cstd_hcmtbl_leadstoimport_pagelynx_800]
 GO
-ALTER TABLE [dbo].[cstd_hcmtbl_leadstoimport_pagelynx_WRONG]  WITH NOCHECK ADD  CONSTRAINT [csta_promotion_code_cstd_hcmtbl_leadstoimport_pagelynx_798] FOREIGN KEY([promotion_code])
+ALTER TABLE [dbo].[cstd_hcmtbl_leadstoimport_pagelynx_WRONG]  WITH CHECK ADD  CONSTRAINT [csta_promotion_code_cstd_hcmtbl_leadstoimport_pagelynx_798] FOREIGN KEY([promotion_code])
 REFERENCES [dbo].[csta_promotion_code] ([promotion_code])
 GO
 ALTER TABLE [dbo].[cstd_hcmtbl_leadstoimport_pagelynx_WRONG] CHECK CONSTRAINT [csta_promotion_code_cstd_hcmtbl_leadstoimport_pagelynx_798]
 GO
-ALTER TABLE [dbo].[cstd_hcmtbl_leadstoimport_pagelynx_WRONG]  WITH NOCHECK ADD  CONSTRAINT [onca_action_cstd_hcmtbl_leadstoimport_pagelynx_795] FOREIGN KEY([action_code])
+ALTER TABLE [dbo].[cstd_hcmtbl_leadstoimport_pagelynx_WRONG]  WITH CHECK ADD  CONSTRAINT [onca_action_cstd_hcmtbl_leadstoimport_pagelynx_795] FOREIGN KEY([action_code])
 REFERENCES [dbo].[onca_action] ([action_code])
 GO
 ALTER TABLE [dbo].[cstd_hcmtbl_leadstoimport_pagelynx_WRONG] CHECK CONSTRAINT [onca_action_cstd_hcmtbl_leadstoimport_pagelynx_795]
 GO
-ALTER TABLE [dbo].[cstd_hcmtbl_leadstoimport_pagelynx_WRONG]  WITH NOCHECK ADD  CONSTRAINT [onca_result_cstd_hcmtbl_leadstoimport_pagelynx_796] FOREIGN KEY([result_code])
+ALTER TABLE [dbo].[cstd_hcmtbl_leadstoimport_pagelynx_WRONG]  WITH CHECK ADD  CONSTRAINT [onca_result_cstd_hcmtbl_leadstoimport_pagelynx_796] FOREIGN KEY([result_code])
 REFERENCES [dbo].[onca_result] ([result_code])
 GO
 ALTER TABLE [dbo].[cstd_hcmtbl_leadstoimport_pagelynx_WRONG] CHECK CONSTRAINT [onca_result_cstd_hcmtbl_leadstoimport_pagelynx_796]
 GO
-ALTER TABLE [dbo].[cstd_hcmtbl_leadstoimport_pagelynx_WRONG]  WITH NOCHECK ADD  CONSTRAINT [onca_source_cstd_hcmtbl_leadstoimport_pagelynx_797] FOREIGN KEY([source_code])
+ALTER TABLE [dbo].[cstd_hcmtbl_leadstoimport_pagelynx_WRONG]  WITH CHECK ADD  CONSTRAINT [onca_source_cstd_hcmtbl_leadstoimport_pagelynx_797] FOREIGN KEY([source_code])
 REFERENCES [dbo].[onca_source] ([source_code])
 GO
 ALTER TABLE [dbo].[cstd_hcmtbl_leadstoimport_pagelynx_WRONG] CHECK CONSTRAINT [onca_source_cstd_hcmtbl_leadstoimport_pagelynx_797]
 GO
-ALTER TABLE [dbo].[cstd_hcmtbl_leadstoimport_pagelynx_WRONG]  WITH NOCHECK ADD  CONSTRAINT [onca_user_cstd_hcmtbl_leadstoimport_pagelynx_794] FOREIGN KEY([created_by_user_code])
+ALTER TABLE [dbo].[cstd_hcmtbl_leadstoimport_pagelynx_WRONG]  WITH CHECK ADD  CONSTRAINT [onca_user_cstd_hcmtbl_leadstoimport_pagelynx_794] FOREIGN KEY([created_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[cstd_hcmtbl_leadstoimport_pagelynx_WRONG] CHECK CONSTRAINT [onca_user_cstd_hcmtbl_leadstoimport_pagelynx_794]
 GO
-ALTER TABLE [dbo].[cstd_hcmtbl_leadstoimport_pagelynx_WRONG]  WITH NOCHECK ADD  CONSTRAINT [oncd_contact_cstd_hcmtbl_leadstoimport_pagelynx_793] FOREIGN KEY([contact_id])
+ALTER TABLE [dbo].[cstd_hcmtbl_leadstoimport_pagelynx_WRONG]  WITH CHECK ADD  CONSTRAINT [oncd_contact_cstd_hcmtbl_leadstoimport_pagelynx_793] FOREIGN KEY([contact_id])
 REFERENCES [dbo].[oncd_contact] ([contact_id])
 ON DELETE CASCADE
 GO

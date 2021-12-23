@@ -15,13 +15,13 @@ CREATE TABLE [dbo].[oncs_server_user](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[oncs_server_user]  WITH NOCHECK ADD  CONSTRAINT [server_server_user_306] FOREIGN KEY([server_id])
+ALTER TABLE [dbo].[oncs_server_user]  WITH CHECK ADD  CONSTRAINT [server_server_user_306] FOREIGN KEY([server_id])
 REFERENCES [dbo].[oncs_server] ([server_id])
 ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[oncs_server_user] CHECK CONSTRAINT [server_server_user_306]
 GO
-ALTER TABLE [dbo].[oncs_server_user]  WITH NOCHECK ADD  CONSTRAINT [user_server_user_890] FOREIGN KEY([user_code])
+ALTER TABLE [dbo].[oncs_server_user]  WITH CHECK ADD  CONSTRAINT [user_server_user_890] FOREIGN KEY([user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncs_server_user] CHECK CONSTRAINT [user_server_user_890]

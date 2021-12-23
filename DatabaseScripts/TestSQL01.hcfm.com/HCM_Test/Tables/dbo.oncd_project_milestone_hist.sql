@@ -18,32 +18,32 @@ CREATE TABLE [dbo].[oncd_project_milestone_hist](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[oncd_project_milestone_hist]  WITH NOCHECK ADD  CONSTRAINT [project_mile_project_mile_1018] FOREIGN KEY([project_milestone_id])
+ALTER TABLE [dbo].[oncd_project_milestone_hist]  WITH CHECK ADD  CONSTRAINT [project_mile_project_mile_1018] FOREIGN KEY([project_milestone_id])
 REFERENCES [dbo].[oncd_project_milestone] ([project_milestone_id])
 GO
 ALTER TABLE [dbo].[oncd_project_milestone_hist] CHECK CONSTRAINT [project_mile_project_mile_1018]
 GO
-ALTER TABLE [dbo].[oncd_project_milestone_hist]  WITH NOCHECK ADD  CONSTRAINT [project_mile_project_mile_1020] FOREIGN KEY([project_milestone_status_code])
+ALTER TABLE [dbo].[oncd_project_milestone_hist]  WITH CHECK ADD  CONSTRAINT [project_mile_project_mile_1020] FOREIGN KEY([project_milestone_status_code])
 REFERENCES [dbo].[onca_project_milestone_status] ([project_milestone_status_code])
 GO
 ALTER TABLE [dbo].[oncd_project_milestone_hist] CHECK CONSTRAINT [project_mile_project_mile_1020]
 GO
-ALTER TABLE [dbo].[oncd_project_milestone_hist]  WITH NOCHECK ADD  CONSTRAINT [project_project_mile_1019] FOREIGN KEY([project_id])
+ALTER TABLE [dbo].[oncd_project_milestone_hist]  WITH CHECK ADD  CONSTRAINT [project_project_mile_1019] FOREIGN KEY([project_id])
 REFERENCES [dbo].[oncd_project] ([project_id])
 GO
 ALTER TABLE [dbo].[oncd_project_milestone_hist] CHECK CONSTRAINT [project_project_mile_1019]
 GO
-ALTER TABLE [dbo].[oncd_project_milestone_hist]  WITH NOCHECK ADD  CONSTRAINT [project_revi_project_mile_765] FOREIGN KEY([project_revision_id])
+ALTER TABLE [dbo].[oncd_project_milestone_hist]  WITH CHECK ADD  CONSTRAINT [project_revi_project_mile_765] FOREIGN KEY([project_revision_id])
 REFERENCES [dbo].[oncd_project_revision] ([project_revision_id])
 GO
 ALTER TABLE [dbo].[oncd_project_milestone_hist] CHECK CONSTRAINT [project_revi_project_mile_765]
 GO
-ALTER TABLE [dbo].[oncd_project_milestone_hist]  WITH NOCHECK ADD  CONSTRAINT [user_project_mile_1016] FOREIGN KEY([created_by_user_code])
+ALTER TABLE [dbo].[oncd_project_milestone_hist]  WITH CHECK ADD  CONSTRAINT [user_project_mile_1016] FOREIGN KEY([created_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_project_milestone_hist] CHECK CONSTRAINT [user_project_mile_1016]
 GO
-ALTER TABLE [dbo].[oncd_project_milestone_hist]  WITH NOCHECK ADD  CONSTRAINT [user_project_mile_1017] FOREIGN KEY([updated_by_user_code])
+ALTER TABLE [dbo].[oncd_project_milestone_hist]  WITH CHECK ADD  CONSTRAINT [user_project_mile_1017] FOREIGN KEY([updated_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_project_milestone_hist] CHECK CONSTRAINT [user_project_mile_1017]

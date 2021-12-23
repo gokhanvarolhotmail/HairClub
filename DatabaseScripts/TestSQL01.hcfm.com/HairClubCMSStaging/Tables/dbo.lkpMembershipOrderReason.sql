@@ -20,17 +20,17 @@ CREATE TABLE [dbo].[lkpMembershipOrderReason](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[lkpMembershipOrderReason]  WITH NOCHECK ADD  CONSTRAINT [FK_lkpMembershipOrderReason_lkpBusinessSegment] FOREIGN KEY([BusinessSegmentID])
+ALTER TABLE [dbo].[lkpMembershipOrderReason]  WITH CHECK ADD  CONSTRAINT [FK_lkpMembershipOrderReason_lkpBusinessSegment] FOREIGN KEY([BusinessSegmentID])
 REFERENCES [dbo].[lkpBusinessSegment] ([BusinessSegmentID])
 GO
 ALTER TABLE [dbo].[lkpMembershipOrderReason] CHECK CONSTRAINT [FK_lkpMembershipOrderReason_lkpBusinessSegment]
 GO
-ALTER TABLE [dbo].[lkpMembershipOrderReason]  WITH NOCHECK ADD  CONSTRAINT [FK_lkpMembershipOrderReason_lkpMembershipOrderReasonType] FOREIGN KEY([MembershipOrderReasonTypeID])
+ALTER TABLE [dbo].[lkpMembershipOrderReason]  WITH CHECK ADD  CONSTRAINT [FK_lkpMembershipOrderReason_lkpMembershipOrderReasonType] FOREIGN KEY([MembershipOrderReasonTypeID])
 REFERENCES [dbo].[lkpMembershipOrderReasonType] ([MembershipOrderReasonTypeID])
 GO
 ALTER TABLE [dbo].[lkpMembershipOrderReason] CHECK CONSTRAINT [FK_lkpMembershipOrderReason_lkpMembershipOrderReasonType]
 GO
-ALTER TABLE [dbo].[lkpMembershipOrderReason]  WITH NOCHECK ADD  CONSTRAINT [FK_lkpMembershipOrderReason_lkpRevenueGroup] FOREIGN KEY([RevenueTypeID])
+ALTER TABLE [dbo].[lkpMembershipOrderReason]  WITH CHECK ADD  CONSTRAINT [FK_lkpMembershipOrderReason_lkpRevenueGroup] FOREIGN KEY([RevenueTypeID])
 REFERENCES [dbo].[lkpRevenueGroup] ([RevenueGroupID])
 GO
 ALTER TABLE [dbo].[lkpMembershipOrderReason] CHECK CONSTRAINT [FK_lkpMembershipOrderReason_lkpRevenueGroup]

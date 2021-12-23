@@ -11,7 +11,7 @@ CREATE TABLE [dbo].[csta_sql_job_setting](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[csta_sql_job_setting]  WITH NOCHECK ADD  CONSTRAINT [FK_csta_sql_job_setting_csta_sql_job] FOREIGN KEY([sql_job_id])
+ALTER TABLE [dbo].[csta_sql_job_setting]  WITH CHECK ADD  CONSTRAINT [FK_csta_sql_job_setting_csta_sql_job] FOREIGN KEY([sql_job_id])
 REFERENCES [dbo].[csta_sql_job] ([sql_job_id])
 ON DELETE CASCADE
 GO

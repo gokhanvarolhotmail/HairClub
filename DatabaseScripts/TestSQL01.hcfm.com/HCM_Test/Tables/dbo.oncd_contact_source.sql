@@ -30,28 +30,28 @@ CREATE NONCLUSTERED INDEX [oncd_contact_source_i2] ON [dbo].[oncd_contact_source
 )
 INCLUDE([source_code]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[oncd_contact_source]  WITH NOCHECK ADD  CONSTRAINT [contact_contact_sour_70] FOREIGN KEY([contact_id])
+ALTER TABLE [dbo].[oncd_contact_source]  WITH CHECK ADD  CONSTRAINT [contact_contact_sour_70] FOREIGN KEY([contact_id])
 REFERENCES [dbo].[oncd_contact] ([contact_id])
 ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[oncd_contact_source] CHECK CONSTRAINT [contact_contact_sour_70]
 GO
-ALTER TABLE [dbo].[oncd_contact_source]  WITH NOCHECK ADD  CONSTRAINT [media_contact_sour_618] FOREIGN KEY([media_code])
+ALTER TABLE [dbo].[oncd_contact_source]  WITH CHECK ADD  CONSTRAINT [media_contact_sour_618] FOREIGN KEY([media_code])
 REFERENCES [dbo].[onca_media] ([media_code])
 GO
 ALTER TABLE [dbo].[oncd_contact_source] CHECK CONSTRAINT [media_contact_sour_618]
 GO
-ALTER TABLE [dbo].[oncd_contact_source]  WITH NOCHECK ADD  CONSTRAINT [source_contact_sour_619] FOREIGN KEY([source_code])
+ALTER TABLE [dbo].[oncd_contact_source]  WITH CHECK ADD  CONSTRAINT [source_contact_sour_619] FOREIGN KEY([source_code])
 REFERENCES [dbo].[onca_source] ([source_code])
 GO
 ALTER TABLE [dbo].[oncd_contact_source] CHECK CONSTRAINT [source_contact_sour_619]
 GO
-ALTER TABLE [dbo].[oncd_contact_source]  WITH NOCHECK ADD  CONSTRAINT [user_contact_sour_616] FOREIGN KEY([created_by_user_code])
+ALTER TABLE [dbo].[oncd_contact_source]  WITH CHECK ADD  CONSTRAINT [user_contact_sour_616] FOREIGN KEY([created_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_contact_source] CHECK CONSTRAINT [user_contact_sour_616]
 GO
-ALTER TABLE [dbo].[oncd_contact_source]  WITH NOCHECK ADD  CONSTRAINT [user_contact_sour_617] FOREIGN KEY([updated_by_user_code])
+ALTER TABLE [dbo].[oncd_contact_source]  WITH CHECK ADD  CONSTRAINT [user_contact_sour_617] FOREIGN KEY([updated_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_contact_source] CHECK CONSTRAINT [user_contact_sour_617]

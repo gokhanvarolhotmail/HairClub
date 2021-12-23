@@ -27,27 +27,27 @@ CREATE TABLE [dbo].[datDistributorPurchaseOrder](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[datDistributorPurchaseOrder]  WITH NOCHECK ADD  CONSTRAINT [FK_datDistributorPurchaseOrder_cfgCenter] FOREIGN KEY([DistributorCenterID])
+ALTER TABLE [dbo].[datDistributorPurchaseOrder]  WITH CHECK ADD  CONSTRAINT [FK_datDistributorPurchaseOrder_cfgCenter] FOREIGN KEY([DistributorCenterID])
 REFERENCES [dbo].[cfgCenter] ([CenterID])
 GO
 ALTER TABLE [dbo].[datDistributorPurchaseOrder] CHECK CONSTRAINT [FK_datDistributorPurchaseOrder_cfgCenter]
 GO
-ALTER TABLE [dbo].[datDistributorPurchaseOrder]  WITH NOCHECK ADD  CONSTRAINT [FK_datDistributorPurchaseOrder_cfgCenter1] FOREIGN KEY([CenterID])
+ALTER TABLE [dbo].[datDistributorPurchaseOrder]  WITH CHECK ADD  CONSTRAINT [FK_datDistributorPurchaseOrder_cfgCenter1] FOREIGN KEY([CenterID])
 REFERENCES [dbo].[cfgCenter] ([CenterID])
 GO
 ALTER TABLE [dbo].[datDistributorPurchaseOrder] CHECK CONSTRAINT [FK_datDistributorPurchaseOrder_cfgCenter1]
 GO
-ALTER TABLE [dbo].[datDistributorPurchaseOrder]  WITH NOCHECK ADD  CONSTRAINT [FK_datDistributorPurchaseOrder_datEmployee] FOREIGN KEY([EmployeeGUID])
+ALTER TABLE [dbo].[datDistributorPurchaseOrder]  WITH CHECK ADD  CONSTRAINT [FK_datDistributorPurchaseOrder_datEmployee] FOREIGN KEY([EmployeeGUID])
 REFERENCES [dbo].[datEmployee] ([EmployeeGUID])
 GO
 ALTER TABLE [dbo].[datDistributorPurchaseOrder] CHECK CONSTRAINT [FK_datDistributorPurchaseOrder_datEmployee]
 GO
-ALTER TABLE [dbo].[datDistributorPurchaseOrder]  WITH NOCHECK ADD  CONSTRAINT [FK_datDistributorPurchaseOrder_lkpDistributorPurchaseOrderStatus] FOREIGN KEY([DistributorPurchaseOrderStatusID])
+ALTER TABLE [dbo].[datDistributorPurchaseOrder]  WITH CHECK ADD  CONSTRAINT [FK_datDistributorPurchaseOrder_lkpDistributorPurchaseOrderStatus] FOREIGN KEY([DistributorPurchaseOrderStatusID])
 REFERENCES [dbo].[lkpDistributorPurchaseOrderStatus] ([DistributorPurchaseOrderStatusID])
 GO
 ALTER TABLE [dbo].[datDistributorPurchaseOrder] CHECK CONSTRAINT [FK_datDistributorPurchaseOrder_lkpDistributorPurchaseOrderStatus]
 GO
-ALTER TABLE [dbo].[datDistributorPurchaseOrder]  WITH NOCHECK ADD  CONSTRAINT [FK_datDistributorPurchaseOrder_lkpDistributorPurchaseOrderType] FOREIGN KEY([DistributorPurchaseOrderTypeID])
+ALTER TABLE [dbo].[datDistributorPurchaseOrder]  WITH CHECK ADD  CONSTRAINT [FK_datDistributorPurchaseOrder_lkpDistributorPurchaseOrderType] FOREIGN KEY([DistributorPurchaseOrderTypeID])
 REFERENCES [dbo].[lkpDistributorPurchaseOrderType] ([DistributorPurchaseOrderTypeID])
 GO
 ALTER TABLE [dbo].[datDistributorPurchaseOrder] CHECK CONSTRAINT [FK_datDistributorPurchaseOrder_lkpDistributorPurchaseOrderType]

@@ -41,17 +41,17 @@ CREATE NONCLUSTERED INDEX [cstd_company_zip_code_i3] ON [dbo].[cstd_company_zip_
 GO
 ALTER TABLE [dbo].[cstd_company_zip_code] ADD  CONSTRAINT [DF__cstd_comp__adi_f__russ]  DEFAULT (' ') FOR [adi_flag]
 GO
-ALTER TABLE [dbo].[cstd_company_zip_code]  WITH NOCHECK ADD  CONSTRAINT [onca_user_cstd_company_zip_code_778] FOREIGN KEY([created_by_user_code])
+ALTER TABLE [dbo].[cstd_company_zip_code]  WITH CHECK ADD  CONSTRAINT [onca_user_cstd_company_zip_code_778] FOREIGN KEY([created_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[cstd_company_zip_code] CHECK CONSTRAINT [onca_user_cstd_company_zip_code_778]
 GO
-ALTER TABLE [dbo].[cstd_company_zip_code]  WITH NOCHECK ADD  CONSTRAINT [onca_user_cstd_company_zip_code_779] FOREIGN KEY([updated_by_user_code])
+ALTER TABLE [dbo].[cstd_company_zip_code]  WITH CHECK ADD  CONSTRAINT [onca_user_cstd_company_zip_code_779] FOREIGN KEY([updated_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[cstd_company_zip_code] CHECK CONSTRAINT [onca_user_cstd_company_zip_code_779]
 GO
-ALTER TABLE [dbo].[cstd_company_zip_code]  WITH NOCHECK ADD  CONSTRAINT [oncd_company_cstd_company_zip_code_777] FOREIGN KEY([company_id])
+ALTER TABLE [dbo].[cstd_company_zip_code]  WITH CHECK ADD  CONSTRAINT [oncd_company_cstd_company_zip_code_777] FOREIGN KEY([company_id])
 REFERENCES [dbo].[oncd_company] ([company_id])
 ON DELETE CASCADE
 GO

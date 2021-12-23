@@ -32,7 +32,7 @@ ALTER TABLE [dbo].[lkpHairSystemCurl] ADD  DEFAULT ((0)) FOR [IsAllowHumanGreyPe
 GO
 ALTER TABLE [dbo].[lkpHairSystemCurl] ADD  DEFAULT ((1)) FOR [IsAllowSyntheticGreyPercentageFlag]
 GO
-ALTER TABLE [dbo].[lkpHairSystemCurl]  WITH NOCHECK ADD  CONSTRAINT [FK_lkpHairSystemCurl_lkpHairSystemCurlGroup] FOREIGN KEY([HairSystemCurlGroupID])
+ALTER TABLE [dbo].[lkpHairSystemCurl]  WITH CHECK ADD  CONSTRAINT [FK_lkpHairSystemCurl_lkpHairSystemCurlGroup] FOREIGN KEY([HairSystemCurlGroupID])
 REFERENCES [dbo].[lkpHairSystemCurlGroup] ([HairSystemCurlGroupID])
 GO
 ALTER TABLE [dbo].[lkpHairSystemCurl] CHECK CONSTRAINT [FK_lkpHairSystemCurl_lkpHairSystemCurlGroup]

@@ -25,28 +25,28 @@ CREATE NONCLUSTERED INDEX [oncd_project_task_i2_] ON [dbo].[oncd_project_task]
 	[project_element_id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[oncd_project_task]  WITH NOCHECK ADD  CONSTRAINT [project_elem_project_task_756] FOREIGN KEY([project_element_id])
+ALTER TABLE [dbo].[oncd_project_task]  WITH CHECK ADD  CONSTRAINT [project_elem_project_task_756] FOREIGN KEY([project_element_id])
 REFERENCES [dbo].[oncd_project_element] ([project_element_id])
 ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[oncd_project_task] CHECK CONSTRAINT [project_elem_project_task_756]
 GO
-ALTER TABLE [dbo].[oncd_project_task]  WITH NOCHECK ADD  CONSTRAINT [project_task_project_task_1042] FOREIGN KEY([project_task_status_code])
+ALTER TABLE [dbo].[oncd_project_task]  WITH CHECK ADD  CONSTRAINT [project_task_project_task_1042] FOREIGN KEY([project_task_status_code])
 REFERENCES [dbo].[onca_project_task_status] ([project_task_status_code])
 GO
 ALTER TABLE [dbo].[oncd_project_task] CHECK CONSTRAINT [project_task_project_task_1042]
 GO
-ALTER TABLE [dbo].[oncd_project_task]  WITH NOCHECK ADD  CONSTRAINT [project_task_project_task_1188] FOREIGN KEY([project_task_code])
+ALTER TABLE [dbo].[oncd_project_task]  WITH CHECK ADD  CONSTRAINT [project_task_project_task_1188] FOREIGN KEY([project_task_code])
 REFERENCES [dbo].[onca_project_task] ([project_task_code])
 GO
 ALTER TABLE [dbo].[oncd_project_task] CHECK CONSTRAINT [project_task_project_task_1188]
 GO
-ALTER TABLE [dbo].[oncd_project_task]  WITH NOCHECK ADD  CONSTRAINT [user_project_task_1040] FOREIGN KEY([created_by_user_code])
+ALTER TABLE [dbo].[oncd_project_task]  WITH CHECK ADD  CONSTRAINT [user_project_task_1040] FOREIGN KEY([created_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_project_task] CHECK CONSTRAINT [user_project_task_1040]
 GO
-ALTER TABLE [dbo].[oncd_project_task]  WITH NOCHECK ADD  CONSTRAINT [user_project_task_1041] FOREIGN KEY([updated_by_user_code])
+ALTER TABLE [dbo].[oncd_project_task]  WITH CHECK ADD  CONSTRAINT [user_project_task_1041] FOREIGN KEY([updated_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_project_task] CHECK CONSTRAINT [user_project_task_1041]

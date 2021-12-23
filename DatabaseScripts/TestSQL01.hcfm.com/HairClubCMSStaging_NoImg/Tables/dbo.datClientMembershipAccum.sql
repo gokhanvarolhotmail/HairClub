@@ -41,17 +41,17 @@ INCLUDE([UsedAccumQuantity],[AccumMoney],[AccumDate],[TotalAccumQuantity],[Creat
 GO
 ALTER TABLE [dbo].[datClientMembershipAccum] ADD  CONSTRAINT [DF_datClientMembershipAccum_AccumMoney]  DEFAULT ((0)) FOR [AccumMoney]
 GO
-ALTER TABLE [dbo].[datClientMembershipAccum]  WITH NOCHECK ADD  CONSTRAINT [FK_datClientMembershipAccum_cfgAccumulator] FOREIGN KEY([AccumulatorID])
+ALTER TABLE [dbo].[datClientMembershipAccum]  WITH CHECK ADD  CONSTRAINT [FK_datClientMembershipAccum_cfgAccumulator] FOREIGN KEY([AccumulatorID])
 REFERENCES [dbo].[cfgAccumulator] ([AccumulatorID])
 GO
 ALTER TABLE [dbo].[datClientMembershipAccum] CHECK CONSTRAINT [FK_datClientMembershipAccum_cfgAccumulator]
 GO
-ALTER TABLE [dbo].[datClientMembershipAccum]  WITH NOCHECK ADD  CONSTRAINT [FK_datClientMembershipAccum_datClientMembership] FOREIGN KEY([ClientMembershipGUID])
+ALTER TABLE [dbo].[datClientMembershipAccum]  WITH CHECK ADD  CONSTRAINT [FK_datClientMembershipAccum_datClientMembership] FOREIGN KEY([ClientMembershipGUID])
 REFERENCES [dbo].[datClientMembership] ([ClientMembershipGUID])
 GO
 ALTER TABLE [dbo].[datClientMembershipAccum] CHECK CONSTRAINT [FK_datClientMembershipAccum_datClientMembership]
 GO
-ALTER TABLE [dbo].[datClientMembershipAccum]  WITH NOCHECK ADD  CONSTRAINT [FK_datClientMembershipAccum_datClientMembershipAddOn] FOREIGN KEY([ClientMembershipAddOnID])
+ALTER TABLE [dbo].[datClientMembershipAccum]  WITH CHECK ADD  CONSTRAINT [FK_datClientMembershipAccum_datClientMembershipAddOn] FOREIGN KEY([ClientMembershipAddOnID])
 REFERENCES [dbo].[datClientMembershipAddOn] ([ClientMembershipAddOnID])
 GO
 ALTER TABLE [dbo].[datClientMembershipAccum] CHECK CONSTRAINT [FK_datClientMembershipAccum_datClientMembershipAddOn]

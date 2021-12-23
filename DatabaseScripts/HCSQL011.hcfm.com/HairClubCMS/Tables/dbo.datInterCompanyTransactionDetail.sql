@@ -20,17 +20,17 @@ CREATE TABLE [dbo].[datInterCompanyTransactionDetail](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[datInterCompanyTransactionDetail]  WITH NOCHECK ADD  CONSTRAINT [FK_datInterCompanyTransactionDetail_cfgSalesCode] FOREIGN KEY([SalesCodeId])
+ALTER TABLE [dbo].[datInterCompanyTransactionDetail]  WITH CHECK ADD  CONSTRAINT [FK_datInterCompanyTransactionDetail_cfgSalesCode] FOREIGN KEY([SalesCodeId])
 REFERENCES [dbo].[cfgSalesCode] ([SalesCodeID])
 GO
 ALTER TABLE [dbo].[datInterCompanyTransactionDetail] CHECK CONSTRAINT [FK_datInterCompanyTransactionDetail_cfgSalesCode]
 GO
-ALTER TABLE [dbo].[datInterCompanyTransactionDetail]  WITH NOCHECK ADD  CONSTRAINT [FK_datInterCompanyTransactionDetail_datInterCompanyTransaction] FOREIGN KEY([InterCompanyTransactionId])
+ALTER TABLE [dbo].[datInterCompanyTransactionDetail]  WITH CHECK ADD  CONSTRAINT [FK_datInterCompanyTransactionDetail_datInterCompanyTransaction] FOREIGN KEY([InterCompanyTransactionId])
 REFERENCES [dbo].[datInterCompanyTransaction] ([InterCompanyTransactionId])
 GO
 ALTER TABLE [dbo].[datInterCompanyTransactionDetail] CHECK CONSTRAINT [FK_datInterCompanyTransactionDetail_datInterCompanyTransaction]
 GO
-ALTER TABLE [dbo].[datInterCompanyTransactionDetail]  WITH NOCHECK ADD  CONSTRAINT [FK_datInterCompanyTransactionDetail_datSalesOrderDetail] FOREIGN KEY([SalesOrderDetailGUID])
+ALTER TABLE [dbo].[datInterCompanyTransactionDetail]  WITH CHECK ADD  CONSTRAINT [FK_datInterCompanyTransactionDetail_datSalesOrderDetail] FOREIGN KEY([SalesOrderDetailGUID])
 REFERENCES [dbo].[datSalesOrderDetail] ([SalesOrderDetailGUID])
 GO
 ALTER TABLE [dbo].[datInterCompanyTransactionDetail] CHECK CONSTRAINT [FK_datInterCompanyTransactionDetail_datSalesOrderDetail]

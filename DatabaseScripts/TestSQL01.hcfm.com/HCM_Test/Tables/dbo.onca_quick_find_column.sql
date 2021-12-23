@@ -15,7 +15,7 @@ CREATE TABLE [dbo].[onca_quick_find_column](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[onca_quick_find_column]  WITH NOCHECK ADD  CONSTRAINT [quick_find_quick_find_c_364] FOREIGN KEY([quick_find_id])
+ALTER TABLE [dbo].[onca_quick_find_column]  WITH CHECK ADD  CONSTRAINT [quick_find_quick_find_c_364] FOREIGN KEY([quick_find_id])
 REFERENCES [dbo].[onca_quick_find] ([quick_find_id])
 ON DELETE CASCADE
 GO

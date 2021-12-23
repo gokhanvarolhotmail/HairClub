@@ -20,7 +20,7 @@ CREATE NONCLUSTERED INDEX [oncd_duplication_set_item_i2] ON [dbo].[oncd_duplicat
 	[set_id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[oncd_duplication_set_item]  WITH NOCHECK ADD  CONSTRAINT [duplication__duplication__336] FOREIGN KEY([set_id])
+ALTER TABLE [dbo].[oncd_duplication_set_item]  WITH CHECK ADD  CONSTRAINT [duplication__duplication__336] FOREIGN KEY([set_id])
 REFERENCES [dbo].[oncd_duplication_set] ([set_id])
 ON DELETE CASCADE
 GO

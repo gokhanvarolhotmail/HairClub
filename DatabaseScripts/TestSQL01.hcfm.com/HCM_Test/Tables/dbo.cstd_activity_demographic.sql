@@ -38,32 +38,32 @@ CREATE NONCLUSTERED INDEX [IX_cstd_activity_demographic_Creation_date] ON [dbo].
 	[creation_date] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[cstd_activity_demographic]  WITH NOCHECK ADD  CONSTRAINT [csta_contact_ethnicity_cstd_activity_demographic_807] FOREIGN KEY([ethnicity_code])
+ALTER TABLE [dbo].[cstd_activity_demographic]  WITH CHECK ADD  CONSTRAINT [csta_contact_ethnicity_cstd_activity_demographic_807] FOREIGN KEY([ethnicity_code])
 REFERENCES [dbo].[csta_contact_ethnicity] ([ethnicity_code])
 GO
 ALTER TABLE [dbo].[cstd_activity_demographic] CHECK CONSTRAINT [csta_contact_ethnicity_cstd_activity_demographic_807]
 GO
-ALTER TABLE [dbo].[cstd_activity_demographic]  WITH NOCHECK ADD  CONSTRAINT [csta_contact_maritalstatus_cstd_activity_demographic_808] FOREIGN KEY([maritalstatus_code])
+ALTER TABLE [dbo].[cstd_activity_demographic]  WITH CHECK ADD  CONSTRAINT [csta_contact_maritalstatus_cstd_activity_demographic_808] FOREIGN KEY([maritalstatus_code])
 REFERENCES [dbo].[csta_contact_maritalstatus] ([maritalstatus_code])
 GO
 ALTER TABLE [dbo].[cstd_activity_demographic] CHECK CONSTRAINT [csta_contact_maritalstatus_cstd_activity_demographic_808]
 GO
-ALTER TABLE [dbo].[cstd_activity_demographic]  WITH NOCHECK ADD  CONSTRAINT [csta_contact_occupation_cstd_activity_demographic_806] FOREIGN KEY([occupation_code])
+ALTER TABLE [dbo].[cstd_activity_demographic]  WITH CHECK ADD  CONSTRAINT [csta_contact_occupation_cstd_activity_demographic_806] FOREIGN KEY([occupation_code])
 REFERENCES [dbo].[csta_contact_occupation] ([occupation_code])
 GO
 ALTER TABLE [dbo].[cstd_activity_demographic] CHECK CONSTRAINT [csta_contact_occupation_cstd_activity_demographic_806]
 GO
-ALTER TABLE [dbo].[cstd_activity_demographic]  WITH NOCHECK ADD  CONSTRAINT [onca_user_cstd_activity_demographic_809] FOREIGN KEY([created_by_user_code])
+ALTER TABLE [dbo].[cstd_activity_demographic]  WITH CHECK ADD  CONSTRAINT [onca_user_cstd_activity_demographic_809] FOREIGN KEY([created_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[cstd_activity_demographic] CHECK CONSTRAINT [onca_user_cstd_activity_demographic_809]
 GO
-ALTER TABLE [dbo].[cstd_activity_demographic]  WITH NOCHECK ADD  CONSTRAINT [onca_user_cstd_activity_demographic_810] FOREIGN KEY([updated_by_user_code])
+ALTER TABLE [dbo].[cstd_activity_demographic]  WITH CHECK ADD  CONSTRAINT [onca_user_cstd_activity_demographic_810] FOREIGN KEY([updated_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[cstd_activity_demographic] CHECK CONSTRAINT [onca_user_cstd_activity_demographic_810]
 GO
-ALTER TABLE [dbo].[cstd_activity_demographic]  WITH NOCHECK ADD  CONSTRAINT [oncd_activity_cstd_activity_demographic_805] FOREIGN KEY([activity_id])
+ALTER TABLE [dbo].[cstd_activity_demographic]  WITH CHECK ADD  CONSTRAINT [oncd_activity_cstd_activity_demographic_805] FOREIGN KEY([activity_id])
 REFERENCES [dbo].[oncd_activity] ([activity_id])
 GO
 ALTER TABLE [dbo].[cstd_activity_demographic] CHECK CONSTRAINT [oncd_activity_cstd_activity_demographic_805]

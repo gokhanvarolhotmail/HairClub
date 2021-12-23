@@ -26,17 +26,17 @@ CREATE NONCLUSTERED INDEX [oncd_project_company_i3_] ON [dbo].[oncd_project_comp
 	[company_id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[oncd_project_company]  WITH NOCHECK ADD  CONSTRAINT [company_project_comp_980] FOREIGN KEY([company_id])
+ALTER TABLE [dbo].[oncd_project_company]  WITH CHECK ADD  CONSTRAINT [company_project_comp_980] FOREIGN KEY([company_id])
 REFERENCES [dbo].[oncd_company] ([company_id])
 GO
 ALTER TABLE [dbo].[oncd_project_company] CHECK CONSTRAINT [company_project_comp_980]
 GO
-ALTER TABLE [dbo].[oncd_project_company]  WITH NOCHECK ADD  CONSTRAINT [project_comp_project_comp_981] FOREIGN KEY([project_company_role_code])
+ALTER TABLE [dbo].[oncd_project_company]  WITH CHECK ADD  CONSTRAINT [project_comp_project_comp_981] FOREIGN KEY([project_company_role_code])
 REFERENCES [dbo].[onca_project_company_role] ([project_company_role_code])
 GO
 ALTER TABLE [dbo].[oncd_project_company] CHECK CONSTRAINT [project_comp_project_comp_981]
 GO
-ALTER TABLE [dbo].[oncd_project_company]  WITH NOCHECK ADD  CONSTRAINT [project_project_comp_742] FOREIGN KEY([project_id])
+ALTER TABLE [dbo].[oncd_project_company]  WITH CHECK ADD  CONSTRAINT [project_project_comp_742] FOREIGN KEY([project_id])
 REFERENCES [dbo].[oncd_project] ([project_id])
 GO
 ALTER TABLE [dbo].[oncd_project_company] CHECK CONSTRAINT [project_project_comp_742]

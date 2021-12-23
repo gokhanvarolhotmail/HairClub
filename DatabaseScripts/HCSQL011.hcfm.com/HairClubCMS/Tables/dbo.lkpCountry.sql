@@ -36,7 +36,7 @@ ALTER TABLE [dbo].[lkpCountry] ADD  DEFAULT ((0)) FOR [IsAddressRequired]
 GO
 ALTER TABLE [dbo].[lkpCountry] ADD  DEFAULT ((0)) FOR [IsPhoneNumberRequired]
 GO
-ALTER TABLE [dbo].[lkpCountry]  WITH NOCHECK ADD  CONSTRAINT [FK_lkpCountry_lkpCurrencyType] FOREIGN KEY([CurrencyTypeID])
+ALTER TABLE [dbo].[lkpCountry]  WITH CHECK ADD  CONSTRAINT [FK_lkpCountry_lkpCurrencyType] FOREIGN KEY([CurrencyTypeID])
 REFERENCES [dbo].[lkpCurrencyType] ([CurrencyTypeID])
 GO
 ALTER TABLE [dbo].[lkpCountry] CHECK CONSTRAINT [FK_lkpCountry_lkpCurrencyType]

@@ -14,12 +14,12 @@ CREATE TABLE [dbo].[onct_registry_assembly](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[onct_registry_assembly]  WITH NOCHECK ADD  CONSTRAINT [layer_registry_ass_1177] FOREIGN KEY([layer_code])
+ALTER TABLE [dbo].[onct_registry_assembly]  WITH CHECK ADD  CONSTRAINT [layer_registry_ass_1177] FOREIGN KEY([layer_code])
 REFERENCES [dbo].[onct_layer] ([layer_code])
 GO
 ALTER TABLE [dbo].[onct_registry_assembly] CHECK CONSTRAINT [layer_registry_ass_1177]
 GO
-ALTER TABLE [dbo].[onct_registry_assembly]  WITH NOCHECK ADD  CONSTRAINT [registry_ass_registry_ass_1109] FOREIGN KEY([registry_assembly_provider_id])
+ALTER TABLE [dbo].[onct_registry_assembly]  WITH CHECK ADD  CONSTRAINT [registry_ass_registry_ass_1109] FOREIGN KEY([registry_assembly_provider_id])
 REFERENCES [dbo].[onct_registry_assembly_prov] ([registry_assembly_provider_id])
 GO
 ALTER TABLE [dbo].[onct_registry_assembly] CHECK CONSTRAINT [registry_ass_registry_ass_1109]

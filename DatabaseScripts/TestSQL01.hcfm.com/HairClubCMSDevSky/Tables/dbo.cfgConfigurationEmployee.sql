@@ -18,17 +18,17 @@ CREATE TABLE [dbo].[cfgConfigurationEmployee](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[cfgConfigurationEmployee]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgConfigurationEmployee_cfgConfigurationEmployee] FOREIGN KEY([ConfigurationEmployeeID])
+ALTER TABLE [dbo].[cfgConfigurationEmployee]  WITH CHECK ADD  CONSTRAINT [FK_cfgConfigurationEmployee_cfgConfigurationEmployee] FOREIGN KEY([ConfigurationEmployeeID])
 REFERENCES [dbo].[cfgConfigurationEmployee] ([ConfigurationEmployeeID])
 GO
 ALTER TABLE [dbo].[cfgConfigurationEmployee] CHECK CONSTRAINT [FK_cfgConfigurationEmployee_cfgConfigurationEmployee]
 GO
-ALTER TABLE [dbo].[cfgConfigurationEmployee]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgConfigurationEmployee_datEmployee] FOREIGN KEY([EmployeeGUID])
+ALTER TABLE [dbo].[cfgConfigurationEmployee]  WITH CHECK ADD  CONSTRAINT [FK_cfgConfigurationEmployee_datEmployee] FOREIGN KEY([EmployeeGUID])
 REFERENCES [dbo].[datEmployee] ([EmployeeGUID])
 GO
 ALTER TABLE [dbo].[cfgConfigurationEmployee] CHECK CONSTRAINT [FK_cfgConfigurationEmployee_datEmployee]
 GO
-ALTER TABLE [dbo].[cfgConfigurationEmployee]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgConfigurationEmployee_lkpLanguage] FOREIGN KEY([LanguageID])
+ALTER TABLE [dbo].[cfgConfigurationEmployee]  WITH CHECK ADD  CONSTRAINT [FK_cfgConfigurationEmployee_lkpLanguage] FOREIGN KEY([LanguageID])
 REFERENCES [dbo].[lkpLanguage] ([LanguageID])
 GO
 ALTER TABLE [dbo].[cfgConfigurationEmployee] CHECK CONSTRAINT [FK_cfgConfigurationEmployee_lkpLanguage]

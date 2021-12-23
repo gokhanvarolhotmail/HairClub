@@ -16,23 +16,23 @@ CREATE TABLE [dbo].[oncd_project_milestone](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[oncd_project_milestone]  WITH NOCHECK ADD  CONSTRAINT [project_mile_project_mile_1015] FOREIGN KEY([project_milestone_status_code])
+ALTER TABLE [dbo].[oncd_project_milestone]  WITH CHECK ADD  CONSTRAINT [project_mile_project_mile_1015] FOREIGN KEY([project_milestone_status_code])
 REFERENCES [dbo].[onca_project_milestone_status] ([project_milestone_status_code])
 GO
 ALTER TABLE [dbo].[oncd_project_milestone] CHECK CONSTRAINT [project_mile_project_mile_1015]
 GO
-ALTER TABLE [dbo].[oncd_project_milestone]  WITH NOCHECK ADD  CONSTRAINT [project_project_mile_745] FOREIGN KEY([project_id])
+ALTER TABLE [dbo].[oncd_project_milestone]  WITH CHECK ADD  CONSTRAINT [project_project_mile_745] FOREIGN KEY([project_id])
 REFERENCES [dbo].[oncd_project] ([project_id])
 ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[oncd_project_milestone] CHECK CONSTRAINT [project_project_mile_745]
 GO
-ALTER TABLE [dbo].[oncd_project_milestone]  WITH NOCHECK ADD  CONSTRAINT [user_project_mile_1013] FOREIGN KEY([created_by_user_code])
+ALTER TABLE [dbo].[oncd_project_milestone]  WITH CHECK ADD  CONSTRAINT [user_project_mile_1013] FOREIGN KEY([created_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_project_milestone] CHECK CONSTRAINT [user_project_mile_1013]
 GO
-ALTER TABLE [dbo].[oncd_project_milestone]  WITH NOCHECK ADD  CONSTRAINT [user_project_mile_1014] FOREIGN KEY([updated_by_user_code])
+ALTER TABLE [dbo].[oncd_project_milestone]  WITH CHECK ADD  CONSTRAINT [user_project_mile_1014] FOREIGN KEY([updated_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_project_milestone] CHECK CONSTRAINT [user_project_mile_1014]

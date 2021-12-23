@@ -20,18 +20,18 @@ ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[csta_queue_user] CHECK CONSTRAINT [csta_queue_csta_queue_user_726]
 GO
-ALTER TABLE [dbo].[csta_queue_user]  WITH NOCHECK ADD  CONSTRAINT [onca_user_csta_queue_user_763] FOREIGN KEY([updated_by_user_code])
+ALTER TABLE [dbo].[csta_queue_user]  WITH CHECK ADD  CONSTRAINT [onca_user_csta_queue_user_763] FOREIGN KEY([updated_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[csta_queue_user] CHECK CONSTRAINT [onca_user_csta_queue_user_763]
 GO
-ALTER TABLE [dbo].[csta_queue_user]  WITH NOCHECK ADD  CONSTRAINT [onca_user_csta_queue_user_764] FOREIGN KEY([user_code])
+ALTER TABLE [dbo].[csta_queue_user]  WITH CHECK ADD  CONSTRAINT [onca_user_csta_queue_user_764] FOREIGN KEY([user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[csta_queue_user] CHECK CONSTRAINT [onca_user_csta_queue_user_764]
 GO
-ALTER TABLE [dbo].[csta_queue_user]  WITH NOCHECK ADD  CONSTRAINT [onca_user_csta_queue_user_765] FOREIGN KEY([created_by_user_code])
+ALTER TABLE [dbo].[csta_queue_user]  WITH CHECK ADD  CONSTRAINT [onca_user_csta_queue_user_765] FOREIGN KEY([created_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[csta_queue_user] CHECK CONSTRAINT [onca_user_csta_queue_user_765]

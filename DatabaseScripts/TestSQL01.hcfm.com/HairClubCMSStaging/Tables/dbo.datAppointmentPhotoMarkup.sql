@@ -37,17 +37,17 @@ INCLUDE([AppointmentPhotoMarkupID],[Rotation],[Distance]) WITH (PAD_INDEX = OFF,
 GO
 ALTER TABLE [dbo].[datAppointmentPhotoMarkup] ADD  CONSTRAINT [DF_datAppointmentPhotoMarkup_SequenceOrder]  DEFAULT ((0)) FOR [SequenceOrder]
 GO
-ALTER TABLE [dbo].[datAppointmentPhotoMarkup]  WITH NOCHECK ADD  CONSTRAINT [FK_datAppointmentPhotoMarkup_datAppointmentPhoto] FOREIGN KEY([AppointmentPhotoID])
+ALTER TABLE [dbo].[datAppointmentPhotoMarkup]  WITH CHECK ADD  CONSTRAINT [FK_datAppointmentPhotoMarkup_datAppointmentPhoto] FOREIGN KEY([AppointmentPhotoID])
 REFERENCES [dbo].[datAppointmentPhoto] ([AppointmentPhotoID])
 GO
 ALTER TABLE [dbo].[datAppointmentPhotoMarkup] CHECK CONSTRAINT [FK_datAppointmentPhotoMarkup_datAppointmentPhoto]
 GO
-ALTER TABLE [dbo].[datAppointmentPhotoMarkup]  WITH NOCHECK ADD  CONSTRAINT [FK_datAppointmentPhotoMarkup_lkpPhotoMarkupImageType] FOREIGN KEY([PhotoMarkupImageTypeID])
+ALTER TABLE [dbo].[datAppointmentPhotoMarkup]  WITH CHECK ADD  CONSTRAINT [FK_datAppointmentPhotoMarkup_lkpPhotoMarkupImageType] FOREIGN KEY([PhotoMarkupImageTypeID])
 REFERENCES [dbo].[lkpPhotoMarkupImageType] ([PhotoMarkupImageTypeID])
 GO
 ALTER TABLE [dbo].[datAppointmentPhotoMarkup] CHECK CONSTRAINT [FK_datAppointmentPhotoMarkup_lkpPhotoMarkupImageType]
 GO
-ALTER TABLE [dbo].[datAppointmentPhotoMarkup]  WITH NOCHECK ADD  CONSTRAINT [FK_datAppointmentPhotoMarkup_lkpPhotoMarkupType] FOREIGN KEY([PhotoMarkupTypeID])
+ALTER TABLE [dbo].[datAppointmentPhotoMarkup]  WITH CHECK ADD  CONSTRAINT [FK_datAppointmentPhotoMarkup_lkpPhotoMarkupType] FOREIGN KEY([PhotoMarkupTypeID])
 REFERENCES [dbo].[lkpPhotoMarkupType] ([PhotoMarkupTypeID])
 GO
 ALTER TABLE [dbo].[datAppointmentPhotoMarkup] CHECK CONSTRAINT [FK_datAppointmentPhotoMarkup_lkpPhotoMarkupType]

@@ -17,17 +17,17 @@ CREATE TABLE [dbo].[datAppointmentScorecard](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[datAppointmentScorecard]  WITH NOCHECK ADD  CONSTRAINT [FK_datAppointmentScorecard_datAppointment] FOREIGN KEY([AppointmentGUID])
+ALTER TABLE [dbo].[datAppointmentScorecard]  WITH CHECK ADD  CONSTRAINT [FK_datAppointmentScorecard_datAppointment] FOREIGN KEY([AppointmentGUID])
 REFERENCES [dbo].[datAppointment] ([AppointmentGUID])
 GO
 ALTER TABLE [dbo].[datAppointmentScorecard] CHECK CONSTRAINT [FK_datAppointmentScorecard_datAppointment]
 GO
-ALTER TABLE [dbo].[datAppointmentScorecard]  WITH NOCHECK ADD  CONSTRAINT [FK_datAppointmentScorecard_datEmployee] FOREIGN KEY([CompletedByEmployeeGUID])
+ALTER TABLE [dbo].[datAppointmentScorecard]  WITH CHECK ADD  CONSTRAINT [FK_datAppointmentScorecard_datEmployee] FOREIGN KEY([CompletedByEmployeeGUID])
 REFERENCES [dbo].[datEmployee] ([EmployeeGUID])
 GO
 ALTER TABLE [dbo].[datAppointmentScorecard] CHECK CONSTRAINT [FK_datAppointmentScorecard_datEmployee]
 GO
-ALTER TABLE [dbo].[datAppointmentScorecard]  WITH NOCHECK ADD  CONSTRAINT [FK_datAppointmentScorecard_lkpScorecardCategory] FOREIGN KEY([ScorecardCategoryID])
+ALTER TABLE [dbo].[datAppointmentScorecard]  WITH CHECK ADD  CONSTRAINT [FK_datAppointmentScorecard_lkpScorecardCategory] FOREIGN KEY([ScorecardCategoryID])
 REFERENCES [dbo].[lkpScorecardCategory] ([ScorecardCategoryID])
 GO
 ALTER TABLE [dbo].[datAppointmentScorecard] CHECK CONSTRAINT [FK_datAppointmentScorecard_lkpScorecardCategory]

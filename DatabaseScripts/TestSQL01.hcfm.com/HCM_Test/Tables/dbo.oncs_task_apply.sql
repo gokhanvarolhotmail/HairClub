@@ -20,13 +20,13 @@ CREATE NONCLUSTERED INDEX [oncs_task_apply_i1] ON [dbo].[oncs_task_apply]
 	[task_id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[oncs_task_apply]  WITH NOCHECK ADD  CONSTRAINT [packet_task_apply_427] FOREIGN KEY([packet_id])
+ALTER TABLE [dbo].[oncs_task_apply]  WITH CHECK ADD  CONSTRAINT [packet_task_apply_427] FOREIGN KEY([packet_id])
 REFERENCES [dbo].[oncs_packet] ([packet_id])
 ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[oncs_task_apply] CHECK CONSTRAINT [packet_task_apply_427]
 GO
-ALTER TABLE [dbo].[oncs_task_apply]  WITH NOCHECK ADD  CONSTRAINT [task_task_apply_893] FOREIGN KEY([task_id])
+ALTER TABLE [dbo].[oncs_task_apply]  WITH CHECK ADD  CONSTRAINT [task_task_apply_893] FOREIGN KEY([task_id])
 REFERENCES [dbo].[oncs_task] ([task_id])
 GO
 ALTER TABLE [dbo].[oncs_task_apply] CHECK CONSTRAINT [task_task_apply_893]

@@ -18,7 +18,7 @@ CREATE UNIQUE NONCLUSTERED INDEX [UQ__csta_script_text__0CA5D9DE] ON [dbo].[csta
 	[script_code] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[csta_script_text]  WITH NOCHECK ADD  CONSTRAINT [csta_script_csta_script_text_723] FOREIGN KEY([script_code])
+ALTER TABLE [dbo].[csta_script_text]  WITH CHECK ADD  CONSTRAINT [csta_script_csta_script_text_723] FOREIGN KEY([script_code])
 REFERENCES [dbo].[csta_script] ([script_code])
 ON DELETE CASCADE
 GO

@@ -11,7 +11,7 @@ CREATE TABLE [dbo].[onct_table](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[onct_table]  WITH NOCHECK ADD  CONSTRAINT [layer_table_1123] FOREIGN KEY([layer_code])
+ALTER TABLE [dbo].[onct_table]  WITH CHECK ADD  CONSTRAINT [layer_table_1123] FOREIGN KEY([layer_code])
 REFERENCES [dbo].[onct_layer] ([layer_code])
 GO
 ALTER TABLE [dbo].[onct_table] CHECK CONSTRAINT [layer_table_1123]

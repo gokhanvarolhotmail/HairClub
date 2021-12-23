@@ -41,28 +41,28 @@ CREATE NONCLUSTERED INDEX [oncd_company_list_i4] ON [dbo].[oncd_company_list]
 	[list_subgroup_code] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[oncd_company_list]  WITH NOCHECK ADD  CONSTRAINT [company_company_list_85] FOREIGN KEY([company_id])
+ALTER TABLE [dbo].[oncd_company_list]  WITH CHECK ADD  CONSTRAINT [company_company_list_85] FOREIGN KEY([company_id])
 REFERENCES [dbo].[oncd_company] ([company_id])
 ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[oncd_company_list] CHECK CONSTRAINT [company_company_list_85]
 GO
-ALTER TABLE [dbo].[oncd_company_list]  WITH NOCHECK ADD  CONSTRAINT [list_company_list_530] FOREIGN KEY([list_code])
+ALTER TABLE [dbo].[oncd_company_list]  WITH CHECK ADD  CONSTRAINT [list_company_list_530] FOREIGN KEY([list_code])
 REFERENCES [dbo].[onca_list] ([list_code])
 GO
 ALTER TABLE [dbo].[oncd_company_list] CHECK CONSTRAINT [list_company_list_530]
 GO
-ALTER TABLE [dbo].[oncd_company_list]  WITH NOCHECK ADD  CONSTRAINT [list_subgrou_company_list_1165] FOREIGN KEY([list_subgroup_code])
+ALTER TABLE [dbo].[oncd_company_list]  WITH CHECK ADD  CONSTRAINT [list_subgrou_company_list_1165] FOREIGN KEY([list_subgroup_code])
 REFERENCES [dbo].[onca_list_subgroup] ([list_subgroup_code])
 GO
 ALTER TABLE [dbo].[oncd_company_list] CHECK CONSTRAINT [list_subgrou_company_list_1165]
 GO
-ALTER TABLE [dbo].[oncd_company_list]  WITH NOCHECK ADD  CONSTRAINT [user_company_list_531] FOREIGN KEY([created_by_user_code])
+ALTER TABLE [dbo].[oncd_company_list]  WITH CHECK ADD  CONSTRAINT [user_company_list_531] FOREIGN KEY([created_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_company_list] CHECK CONSTRAINT [user_company_list_531]
 GO
-ALTER TABLE [dbo].[oncd_company_list]  WITH NOCHECK ADD  CONSTRAINT [user_company_list_532] FOREIGN KEY([updated_by_user_code])
+ALTER TABLE [dbo].[oncd_company_list]  WITH CHECK ADD  CONSTRAINT [user_company_list_532] FOREIGN KEY([updated_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_company_list] CHECK CONSTRAINT [user_company_list_532]

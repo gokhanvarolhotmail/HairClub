@@ -30,28 +30,28 @@ ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[onca_chain_activity] CHECK CONSTRAINT [action_chain_activi_263]
 GO
-ALTER TABLE [dbo].[onca_chain_activity]  WITH NOCHECK ADD  CONSTRAINT [address_type_chain_activi_811] FOREIGN KEY([batch_address_type_code])
+ALTER TABLE [dbo].[onca_chain_activity]  WITH CHECK ADD  CONSTRAINT [address_type_chain_activi_811] FOREIGN KEY([batch_address_type_code])
 REFERENCES [dbo].[onca_address_type] ([address_type_code])
 GO
 ALTER TABLE [dbo].[onca_chain_activity] CHECK CONSTRAINT [address_type_chain_activi_811]
 GO
-ALTER TABLE [dbo].[onca_chain_activity]  WITH NOCHECK ADD  CONSTRAINT [batch_status_chain_activi_813] FOREIGN KEY([batch_status_code])
+ALTER TABLE [dbo].[onca_chain_activity]  WITH CHECK ADD  CONSTRAINT [batch_status_chain_activi_813] FOREIGN KEY([batch_status_code])
 REFERENCES [dbo].[onca_batch_status] ([batch_status_code])
 GO
 ALTER TABLE [dbo].[onca_chain_activity] CHECK CONSTRAINT [batch_status_chain_activi_813]
 GO
-ALTER TABLE [dbo].[onca_chain_activity]  WITH NOCHECK ADD  CONSTRAINT [chain_chain_activi_260] FOREIGN KEY([chain_id])
+ALTER TABLE [dbo].[onca_chain_activity]  WITH CHECK ADD  CONSTRAINT [chain_chain_activi_260] FOREIGN KEY([chain_id])
 REFERENCES [dbo].[onca_chain] ([chain_id])
 ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[onca_chain_activity] CHECK CONSTRAINT [chain_chain_activi_260]
 GO
-ALTER TABLE [dbo].[onca_chain_activity]  WITH NOCHECK ADD  CONSTRAINT [result_chain_activi_812] FOREIGN KEY([batch_result_code])
+ALTER TABLE [dbo].[onca_chain_activity]  WITH CHECK ADD  CONSTRAINT [result_chain_activi_812] FOREIGN KEY([batch_result_code])
 REFERENCES [dbo].[onca_result] ([result_code])
 GO
 ALTER TABLE [dbo].[onca_chain_activity] CHECK CONSTRAINT [result_chain_activi_812]
 GO
-ALTER TABLE [dbo].[onca_chain_activity]  WITH NOCHECK ADD  CONSTRAINT [result_chain_activi_814] FOREIGN KEY([result_code])
+ALTER TABLE [dbo].[onca_chain_activity]  WITH CHECK ADD  CONSTRAINT [result_chain_activi_814] FOREIGN KEY([result_code])
 REFERENCES [dbo].[onca_result] ([result_code])
 GO
 ALTER TABLE [dbo].[onca_chain_activity] CHECK CONSTRAINT [result_chain_activi_814]

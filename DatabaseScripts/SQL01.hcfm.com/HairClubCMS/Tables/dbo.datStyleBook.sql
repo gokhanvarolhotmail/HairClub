@@ -20,12 +20,12 @@ CREATE TABLE [dbo].[datStyleBook](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[datStyleBook]  WITH NOCHECK ADD  CONSTRAINT [FK_datStyleBook_lkpGender] FOREIGN KEY([GenderID])
+ALTER TABLE [dbo].[datStyleBook]  WITH CHECK ADD  CONSTRAINT [FK_datStyleBook_lkpGender] FOREIGN KEY([GenderID])
 REFERENCES [dbo].[lkpGender] ([GenderID])
 GO
 ALTER TABLE [dbo].[datStyleBook] CHECK CONSTRAINT [FK_datStyleBook_lkpGender]
 GO
-ALTER TABLE [dbo].[datStyleBook]  WITH NOCHECK ADD  CONSTRAINT [FK_datStyleBook_lkpStyleBookHairType] FOREIGN KEY([StyleBookHairTypeID])
+ALTER TABLE [dbo].[datStyleBook]  WITH CHECK ADD  CONSTRAINT [FK_datStyleBook_lkpStyleBookHairType] FOREIGN KEY([StyleBookHairTypeID])
 REFERENCES [dbo].[lkpStyleBookHairType] ([StyleBookHairTypeID])
 GO
 ALTER TABLE [dbo].[datStyleBook] CHECK CONSTRAINT [FK_datStyleBook_lkpStyleBookHairType]

@@ -58,22 +58,22 @@ CREATE NONCLUSTERED INDEX [oncd_campaign_product_i6] ON [dbo].[onca_campaign_pro
 	[serial_number] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[onca_campaign_product]  WITH NOCHECK ADD  CONSTRAINT [campaign_campaign_pro_1126] FOREIGN KEY([campaign_code])
+ALTER TABLE [dbo].[onca_campaign_product]  WITH CHECK ADD  CONSTRAINT [campaign_campaign_pro_1126] FOREIGN KEY([campaign_code])
 REFERENCES [dbo].[onca_campaign] ([campaign_code])
 GO
 ALTER TABLE [dbo].[onca_campaign_product] CHECK CONSTRAINT [campaign_campaign_pro_1126]
 GO
-ALTER TABLE [dbo].[onca_campaign_product]  WITH NOCHECK ADD  CONSTRAINT [contract_campaign_pro_1130] FOREIGN KEY([contract_id])
+ALTER TABLE [dbo].[onca_campaign_product]  WITH CHECK ADD  CONSTRAINT [contract_campaign_pro_1130] FOREIGN KEY([contract_id])
 REFERENCES [dbo].[oncd_contract] ([contract_id])
 GO
 ALTER TABLE [dbo].[onca_campaign_product] CHECK CONSTRAINT [contract_campaign_pro_1130]
 GO
-ALTER TABLE [dbo].[onca_campaign_product]  WITH NOCHECK ADD  CONSTRAINT [product_campaign_pro_1129] FOREIGN KEY([product_code])
+ALTER TABLE [dbo].[onca_campaign_product]  WITH CHECK ADD  CONSTRAINT [product_campaign_pro_1129] FOREIGN KEY([product_code])
 REFERENCES [dbo].[onca_product] ([product_code])
 GO
 ALTER TABLE [dbo].[onca_campaign_product] CHECK CONSTRAINT [product_campaign_pro_1129]
 GO
-ALTER TABLE [dbo].[onca_campaign_product]  WITH NOCHECK ADD  CONSTRAINT [product_vers_campaign_pro_1131] FOREIGN KEY([version_code])
+ALTER TABLE [dbo].[onca_campaign_product]  WITH CHECK ADD  CONSTRAINT [product_vers_campaign_pro_1131] FOREIGN KEY([version_code])
 REFERENCES [dbo].[onca_product_version] ([version_code])
 GO
 ALTER TABLE [dbo].[onca_campaign_product] CHECK CONSTRAINT [product_vers_campaign_pro_1131]

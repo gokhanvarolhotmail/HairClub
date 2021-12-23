@@ -11,7 +11,7 @@ CREATE TABLE [dbo].[onca_setting](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[onca_setting]  WITH NOCHECK ADD  CONSTRAINT [setting_grou_setting_243] FOREIGN KEY([setting_group_id])
+ALTER TABLE [dbo].[onca_setting]  WITH CHECK ADD  CONSTRAINT [setting_grou_setting_243] FOREIGN KEY([setting_group_id])
 REFERENCES [dbo].[onca_setting_group] ([setting_group_id])
 ON DELETE CASCADE
 GO

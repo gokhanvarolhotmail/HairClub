@@ -41,32 +41,32 @@ INCLUDE([ToClientMembershipGUID],[FromClientMembershipGUID]) WITH (PAD_INDEX = O
 GO
 ALTER TABLE [dbo].[datInventoryTransferRequest] ADD  DEFAULT ((0)) FOR [IsRejectedFlag]
 GO
-ALTER TABLE [dbo].[datInventoryTransferRequest]  WITH NOCHECK ADD  CONSTRAINT [FK_datInventoryTransferRequest_cfgCenter_FromCenterID] FOREIGN KEY([FromCenterID])
+ALTER TABLE [dbo].[datInventoryTransferRequest]  WITH CHECK ADD  CONSTRAINT [FK_datInventoryTransferRequest_cfgCenter_FromCenterID] FOREIGN KEY([FromCenterID])
 REFERENCES [dbo].[cfgCenter] ([CenterID])
 GO
 ALTER TABLE [dbo].[datInventoryTransferRequest] CHECK CONSTRAINT [FK_datInventoryTransferRequest_cfgCenter_FromCenterID]
 GO
-ALTER TABLE [dbo].[datInventoryTransferRequest]  WITH NOCHECK ADD  CONSTRAINT [FK_datInventoryTransferRequest_cfgCenter_ToCenterID] FOREIGN KEY([ToCenterID])
+ALTER TABLE [dbo].[datInventoryTransferRequest]  WITH CHECK ADD  CONSTRAINT [FK_datInventoryTransferRequest_cfgCenter_ToCenterID] FOREIGN KEY([ToCenterID])
 REFERENCES [dbo].[cfgCenter] ([CenterID])
 GO
 ALTER TABLE [dbo].[datInventoryTransferRequest] CHECK CONSTRAINT [FK_datInventoryTransferRequest_cfgCenter_ToCenterID]
 GO
-ALTER TABLE [dbo].[datInventoryTransferRequest]  WITH NOCHECK ADD  CONSTRAINT [FK_datInventoryTransferRequest_datClientMembership_FromClientMembershipGUID] FOREIGN KEY([FromClientMembershipGUID])
+ALTER TABLE [dbo].[datInventoryTransferRequest]  WITH CHECK ADD  CONSTRAINT [FK_datInventoryTransferRequest_datClientMembership_FromClientMembershipGUID] FOREIGN KEY([FromClientMembershipGUID])
 REFERENCES [dbo].[datClientMembership] ([ClientMembershipGUID])
 GO
 ALTER TABLE [dbo].[datInventoryTransferRequest] CHECK CONSTRAINT [FK_datInventoryTransferRequest_datClientMembership_FromClientMembershipGUID]
 GO
-ALTER TABLE [dbo].[datInventoryTransferRequest]  WITH NOCHECK ADD  CONSTRAINT [FK_datInventoryTransferRequest_datClientMembership_ToClientMembershipGUID] FOREIGN KEY([ToClientMembershipGUID])
+ALTER TABLE [dbo].[datInventoryTransferRequest]  WITH CHECK ADD  CONSTRAINT [FK_datInventoryTransferRequest_datClientMembership_ToClientMembershipGUID] FOREIGN KEY([ToClientMembershipGUID])
 REFERENCES [dbo].[datClientMembership] ([ClientMembershipGUID])
 GO
 ALTER TABLE [dbo].[datInventoryTransferRequest] CHECK CONSTRAINT [FK_datInventoryTransferRequest_datClientMembership_ToClientMembershipGUID]
 GO
-ALTER TABLE [dbo].[datInventoryTransferRequest]  WITH NOCHECK ADD  CONSTRAINT [FK_datInventoryTransferRequest_datHairSystemOrder] FOREIGN KEY([HairSystemOrderGUID])
+ALTER TABLE [dbo].[datInventoryTransferRequest]  WITH CHECK ADD  CONSTRAINT [FK_datInventoryTransferRequest_datHairSystemOrder] FOREIGN KEY([HairSystemOrderGUID])
 REFERENCES [dbo].[datHairSystemOrder] ([HairSystemOrderGUID])
 GO
 ALTER TABLE [dbo].[datInventoryTransferRequest] CHECK CONSTRAINT [FK_datInventoryTransferRequest_datHairSystemOrder]
 GO
-ALTER TABLE [dbo].[datInventoryTransferRequest]  WITH NOCHECK ADD  CONSTRAINT [FK_datInventoryTransferRequest_lkpHairSystemOrderStatus] FOREIGN KEY([OriginalHairSystemOrderStatusID])
+ALTER TABLE [dbo].[datInventoryTransferRequest]  WITH CHECK ADD  CONSTRAINT [FK_datInventoryTransferRequest_lkpHairSystemOrderStatus] FOREIGN KEY([OriginalHairSystemOrderStatusID])
 REFERENCES [dbo].[lkpHairSystemOrderStatus] ([HairSystemOrderStatusID])
 GO
 ALTER TABLE [dbo].[datInventoryTransferRequest] CHECK CONSTRAINT [FK_datInventoryTransferRequest_lkpHairSystemOrderStatus]
@@ -76,7 +76,7 @@ REFERENCES [dbo].[lkpInventoryTransferRequestRejectReason] ([InventoryTransferRe
 GO
 ALTER TABLE [dbo].[datInventoryTransferRequest] CHECK CONSTRAINT [FK_datInventoryTransferRequest_lkpInventoryTransferRequestRejectReason]
 GO
-ALTER TABLE [dbo].[datInventoryTransferRequest]  WITH NOCHECK ADD  CONSTRAINT [FK_datInventoryTransferRequest_lkpInventoryTransferRequestStatus] FOREIGN KEY([InventoryTransferRequestStatusID])
+ALTER TABLE [dbo].[datInventoryTransferRequest]  WITH CHECK ADD  CONSTRAINT [FK_datInventoryTransferRequest_lkpInventoryTransferRequestStatus] FOREIGN KEY([InventoryTransferRequestStatusID])
 REFERENCES [dbo].[lkpInventoryTransferRequestStatus] ([InventoryTransferRequestStatusID])
 GO
 ALTER TABLE [dbo].[datInventoryTransferRequest] CHECK CONSTRAINT [FK_datInventoryTransferRequest_lkpInventoryTransferRequestStatus]

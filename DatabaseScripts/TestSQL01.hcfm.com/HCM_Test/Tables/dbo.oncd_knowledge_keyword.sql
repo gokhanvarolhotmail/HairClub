@@ -26,7 +26,7 @@ CREATE NONCLUSTERED INDEX [oncd_knowledge_keyword_i3] ON [dbo].[oncd_knowledge_k
 	[keyword] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[oncd_knowledge_keyword]  WITH NOCHECK ADD  CONSTRAINT [knowledge_knowledge_ke_204] FOREIGN KEY([knowledge_id])
+ALTER TABLE [dbo].[oncd_knowledge_keyword]  WITH CHECK ADD  CONSTRAINT [knowledge_knowledge_ke_204] FOREIGN KEY([knowledge_id])
 REFERENCES [dbo].[oncd_knowledge] ([knowledge_id])
 ON DELETE CASCADE
 GO

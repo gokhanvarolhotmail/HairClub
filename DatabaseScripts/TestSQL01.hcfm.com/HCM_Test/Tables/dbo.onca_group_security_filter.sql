@@ -10,13 +10,13 @@ CREATE TABLE [dbo].[onca_group_security_filter](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[onca_group_security_filter]  WITH NOCHECK ADD  CONSTRAINT [group_group_securi_323] FOREIGN KEY([group_id])
+ALTER TABLE [dbo].[onca_group_security_filter]  WITH CHECK ADD  CONSTRAINT [group_group_securi_323] FOREIGN KEY([group_id])
 REFERENCES [dbo].[onca_group] ([group_id])
 ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[onca_group_security_filter] CHECK CONSTRAINT [group_group_securi_323]
 GO
-ALTER TABLE [dbo].[onca_group_security_filter]  WITH NOCHECK ADD  CONSTRAINT [security_fil_group_securi_324] FOREIGN KEY([security_filter_id])
+ALTER TABLE [dbo].[onca_group_security_filter]  WITH CHECK ADD  CONSTRAINT [security_fil_group_securi_324] FOREIGN KEY([security_filter_id])
 REFERENCES [dbo].[onca_security_filter] ([security_filter_id])
 ON DELETE CASCADE
 GO

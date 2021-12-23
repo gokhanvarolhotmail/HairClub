@@ -11,13 +11,13 @@ CREATE TABLE [dbo].[onca_outlook_query_item](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[onca_outlook_query_item]  WITH NOCHECK ADD  CONSTRAINT [outlook_quer_outlook_quer_399] FOREIGN KEY([outlook_query_menu_id])
+ALTER TABLE [dbo].[onca_outlook_query_item]  WITH CHECK ADD  CONSTRAINT [outlook_quer_outlook_quer_399] FOREIGN KEY([outlook_query_menu_id])
 REFERENCES [dbo].[onca_outlook_query_menu] ([outlook_query_menu_id])
 ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[onca_outlook_query_item] CHECK CONSTRAINT [outlook_quer_outlook_quer_399]
 GO
-ALTER TABLE [dbo].[onca_outlook_query_item]  WITH NOCHECK ADD  CONSTRAINT [outlook_quer_outlook_quer_400] FOREIGN KEY([outlook_query_id])
+ALTER TABLE [dbo].[onca_outlook_query_item]  WITH CHECK ADD  CONSTRAINT [outlook_quer_outlook_quer_400] FOREIGN KEY([outlook_query_id])
 REFERENCES [dbo].[onca_outlook_query] ([outlook_query_id])
 ON DELETE CASCADE
 GO

@@ -23,7 +23,7 @@ ALTER TABLE [dbo].[lkpChargeDecision] ADD  CONSTRAINT [DF_lkpCreditDecision_IsAc
 GO
 ALTER TABLE [dbo].[lkpChargeDecision] ADD  CONSTRAINT [DF_lkpCreditDecision_IsCreditApproved]  DEFAULT ((0)) FOR [IsCreditApproved]
 GO
-ALTER TABLE [dbo].[lkpChargeDecision]  WITH NOCHECK ADD  CONSTRAINT [FK_lkpChargeDecision_cfgVendor] FOREIGN KEY([VendorID])
+ALTER TABLE [dbo].[lkpChargeDecision]  WITH CHECK ADD  CONSTRAINT [FK_lkpChargeDecision_cfgVendor] FOREIGN KEY([VendorID])
 REFERENCES [dbo].[cfgVendor] ([VendorID])
 GO
 ALTER TABLE [dbo].[lkpChargeDecision] CHECK CONSTRAINT [FK_lkpChargeDecision_cfgVendor]

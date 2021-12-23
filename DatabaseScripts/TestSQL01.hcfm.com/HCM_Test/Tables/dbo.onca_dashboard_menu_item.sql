@@ -13,13 +13,13 @@ CREATE TABLE [dbo].[onca_dashboard_menu_item](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[onca_dashboard_menu_item]  WITH NOCHECK ADD  CONSTRAINT [dashboard_dashboard_me_431] FOREIGN KEY([dashboard_id])
+ALTER TABLE [dbo].[onca_dashboard_menu_item]  WITH CHECK ADD  CONSTRAINT [dashboard_dashboard_me_431] FOREIGN KEY([dashboard_id])
 REFERENCES [dbo].[onca_dashboard] ([dashboard_id])
 ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[onca_dashboard_menu_item] CHECK CONSTRAINT [dashboard_dashboard_me_431]
 GO
-ALTER TABLE [dbo].[onca_dashboard_menu_item]  WITH NOCHECK ADD  CONSTRAINT [dashboard_me_dashboard_me_432] FOREIGN KEY([dashboard_menu_id])
+ALTER TABLE [dbo].[onca_dashboard_menu_item]  WITH CHECK ADD  CONSTRAINT [dashboard_me_dashboard_me_432] FOREIGN KEY([dashboard_menu_id])
 REFERENCES [dbo].[onca_dashboard_menu] ([dashboard_menu_id])
 ON DELETE CASCADE
 GO

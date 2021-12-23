@@ -22,12 +22,12 @@ CREATE NONCLUSTERED INDEX [IX_datNonSerializedInventoryAuditTransactionArea_NonS
 )
 INCLUDE([QuantityEntered]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[datNonSerializedInventoryAuditTransactionArea]  WITH NOCHECK ADD  CONSTRAINT [FK_datNonSerializedInventoryAuditTransactionArea_datNonSerializedInventoryAuditTransaction] FOREIGN KEY([NonSerializedInventoryAuditTransactionID])
+ALTER TABLE [dbo].[datNonSerializedInventoryAuditTransactionArea]  WITH CHECK ADD  CONSTRAINT [FK_datNonSerializedInventoryAuditTransactionArea_datNonSerializedInventoryAuditTransaction] FOREIGN KEY([NonSerializedInventoryAuditTransactionID])
 REFERENCES [dbo].[datNonSerializedInventoryAuditTransaction] ([NonSerializedInventoryAuditTransactionID])
 GO
 ALTER TABLE [dbo].[datNonSerializedInventoryAuditTransactionArea] CHECK CONSTRAINT [FK_datNonSerializedInventoryAuditTransactionArea_datNonSerializedInventoryAuditTransaction]
 GO
-ALTER TABLE [dbo].[datNonSerializedInventoryAuditTransactionArea]  WITH NOCHECK ADD  CONSTRAINT [FK_datNonSerializedInventoryAuditTransactionArea_lkpInventoryArea] FOREIGN KEY([InventoryAreaID])
+ALTER TABLE [dbo].[datNonSerializedInventoryAuditTransactionArea]  WITH CHECK ADD  CONSTRAINT [FK_datNonSerializedInventoryAuditTransactionArea_lkpInventoryArea] FOREIGN KEY([InventoryAreaID])
 REFERENCES [dbo].[lkpInventoryArea] ([InventoryAreaID])
 GO
 ALTER TABLE [dbo].[datNonSerializedInventoryAuditTransactionArea] CHECK CONSTRAINT [FK_datNonSerializedInventoryAuditTransactionArea_lkpInventoryArea]

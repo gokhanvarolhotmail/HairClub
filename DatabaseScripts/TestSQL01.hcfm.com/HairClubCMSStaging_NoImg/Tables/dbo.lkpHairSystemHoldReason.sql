@@ -18,7 +18,7 @@ CREATE TABLE [dbo].[lkpHairSystemHoldReason](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[lkpHairSystemHoldReason]  WITH NOCHECK ADD  CONSTRAINT [FK_lkpHairSystemHoldReason_cfgCenter] FOREIGN KEY([CenterID])
+ALTER TABLE [dbo].[lkpHairSystemHoldReason]  WITH CHECK ADD  CONSTRAINT [FK_lkpHairSystemHoldReason_cfgCenter] FOREIGN KEY([CenterID])
 REFERENCES [dbo].[cfgCenter] ([CenterID])
 GO
 ALTER TABLE [dbo].[lkpHairSystemHoldReason] CHECK CONSTRAINT [FK_lkpHairSystemHoldReason_cfgCenter]

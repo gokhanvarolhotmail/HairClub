@@ -28,13 +28,13 @@ CREATE NONCLUSTERED INDEX [oncw_control_visibility_i2] ON [dbo].[oncw_control_vi
 	[role_id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[oncw_control_visibility]  WITH NOCHECK ADD  CONSTRAINT [portal_page_control_visi_413] FOREIGN KEY([portal_page_id])
+ALTER TABLE [dbo].[oncw_control_visibility]  WITH CHECK ADD  CONSTRAINT [portal_page_control_visi_413] FOREIGN KEY([portal_page_id])
 REFERENCES [dbo].[oncw_portal_page] ([portal_page_id])
 ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[oncw_control_visibility] CHECK CONSTRAINT [portal_page_control_visi_413]
 GO
-ALTER TABLE [dbo].[oncw_control_visibility]  WITH NOCHECK ADD  CONSTRAINT [role_control_visi_1162] FOREIGN KEY([role_id])
+ALTER TABLE [dbo].[oncw_control_visibility]  WITH CHECK ADD  CONSTRAINT [role_control_visi_1162] FOREIGN KEY([role_id])
 REFERENCES [dbo].[oncw_role] ([role_id])
 ON DELETE CASCADE
 GO

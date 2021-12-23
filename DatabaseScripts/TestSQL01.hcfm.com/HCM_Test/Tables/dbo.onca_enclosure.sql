@@ -14,7 +14,7 @@ CREATE TABLE [dbo].[onca_enclosure](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[onca_enclosure]  WITH NOCHECK ADD  CONSTRAINT [cost_group_enclosure_833] FOREIGN KEY([cost_group_code])
+ALTER TABLE [dbo].[onca_enclosure]  WITH CHECK ADD  CONSTRAINT [cost_group_enclosure_833] FOREIGN KEY([cost_group_code])
 REFERENCES [dbo].[onca_cost_group] ([cost_group_code])
 GO
 ALTER TABLE [dbo].[onca_enclosure] CHECK CONSTRAINT [cost_group_enclosure_833]

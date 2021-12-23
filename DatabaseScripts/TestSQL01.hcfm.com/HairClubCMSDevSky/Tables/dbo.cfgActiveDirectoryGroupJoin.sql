@@ -16,12 +16,12 @@ CREATE TABLE [dbo].[cfgActiveDirectoryGroupJoin](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[cfgActiveDirectoryGroupJoin]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgActiveDirectoryGroupJoin_cfgActiveDirectoryGroup] FOREIGN KEY([ActiveDirectoryGroupID])
+ALTER TABLE [dbo].[cfgActiveDirectoryGroupJoin]  WITH CHECK ADD  CONSTRAINT [FK_cfgActiveDirectoryGroupJoin_cfgActiveDirectoryGroup] FOREIGN KEY([ActiveDirectoryGroupID])
 REFERENCES [dbo].[cfgActiveDirectoryGroup] ([ActiveDirectoryGroupID])
 GO
 ALTER TABLE [dbo].[cfgActiveDirectoryGroupJoin] CHECK CONSTRAINT [FK_cfgActiveDirectoryGroupJoin_cfgActiveDirectoryGroup]
 GO
-ALTER TABLE [dbo].[cfgActiveDirectoryGroupJoin]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgActiveDirectoryGroupJoin_lkpEmployeePosition] FOREIGN KEY([EmployeePositionID])
+ALTER TABLE [dbo].[cfgActiveDirectoryGroupJoin]  WITH CHECK ADD  CONSTRAINT [FK_cfgActiveDirectoryGroupJoin_lkpEmployeePosition] FOREIGN KEY([EmployeePositionID])
 REFERENCES [dbo].[lkpEmployeePosition] ([EmployeePositionID])
 GO
 ALTER TABLE [dbo].[cfgActiveDirectoryGroupJoin] CHECK CONSTRAINT [FK_cfgActiveDirectoryGroupJoin_lkpEmployeePosition]

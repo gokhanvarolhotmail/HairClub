@@ -34,12 +34,12 @@ CREATE TABLE [dbo].[datCreditCardTransactionLog](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[datCreditCardTransactionLog]  WITH NOCHECK ADD  CONSTRAINT [FK_datCreditCardTransactionLog_datSalesOrder] FOREIGN KEY([SalesOrderGUID])
+ALTER TABLE [dbo].[datCreditCardTransactionLog]  WITH CHECK ADD  CONSTRAINT [FK_datCreditCardTransactionLog_datSalesOrder] FOREIGN KEY([SalesOrderGUID])
 REFERENCES [dbo].[datSalesOrder] ([SalesOrderGUID])
 GO
 ALTER TABLE [dbo].[datCreditCardTransactionLog] CHECK CONSTRAINT [FK_datCreditCardTransactionLog_datSalesOrder]
 GO
-ALTER TABLE [dbo].[datCreditCardTransactionLog]  WITH NOCHECK ADD  CONSTRAINT [FK_datCreditCardTransactionLog_datSalesOrderTender] FOREIGN KEY([SalesOrderTenderGUID])
+ALTER TABLE [dbo].[datCreditCardTransactionLog]  WITH CHECK ADD  CONSTRAINT [FK_datCreditCardTransactionLog_datSalesOrderTender] FOREIGN KEY([SalesOrderTenderGUID])
 REFERENCES [dbo].[datSalesOrderTender] ([SalesOrderTenderGUID])
 GO
 ALTER TABLE [dbo].[datCreditCardTransactionLog] CHECK CONSTRAINT [FK_datCreditCardTransactionLog_datSalesOrderTender]

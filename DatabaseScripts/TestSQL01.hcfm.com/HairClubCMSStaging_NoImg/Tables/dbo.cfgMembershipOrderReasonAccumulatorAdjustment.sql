@@ -17,12 +17,12 @@ CREATE TABLE [dbo].[cfgMembershipOrderReasonAccumulatorAdjustment](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[cfgMembershipOrderReasonAccumulatorAdjustment]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgMembershipOrderReasonAccumulatorAdjustment_cfgAccumulator] FOREIGN KEY([AccumulatorID])
+ALTER TABLE [dbo].[cfgMembershipOrderReasonAccumulatorAdjustment]  WITH CHECK ADD  CONSTRAINT [FK_cfgMembershipOrderReasonAccumulatorAdjustment_cfgAccumulator] FOREIGN KEY([AccumulatorID])
 REFERENCES [dbo].[cfgAccumulator] ([AccumulatorID])
 GO
 ALTER TABLE [dbo].[cfgMembershipOrderReasonAccumulatorAdjustment] CHECK CONSTRAINT [FK_cfgMembershipOrderReasonAccumulatorAdjustment_cfgAccumulator]
 GO
-ALTER TABLE [dbo].[cfgMembershipOrderReasonAccumulatorAdjustment]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgMembershipOrderReasonAccumulatorAdjustment_lkpMembershipOrderReason] FOREIGN KEY([MembershipOrderReasonID])
+ALTER TABLE [dbo].[cfgMembershipOrderReasonAccumulatorAdjustment]  WITH CHECK ADD  CONSTRAINT [FK_cfgMembershipOrderReasonAccumulatorAdjustment_lkpMembershipOrderReason] FOREIGN KEY([MembershipOrderReasonID])
 REFERENCES [dbo].[lkpMembershipOrderReason] ([MembershipOrderReasonID])
 GO
 ALTER TABLE [dbo].[cfgMembershipOrderReasonAccumulatorAdjustment] CHECK CONSTRAINT [FK_cfgMembershipOrderReasonAccumulatorAdjustment_lkpMembershipOrderReason]

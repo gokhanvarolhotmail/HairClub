@@ -16,7 +16,7 @@ CREATE TABLE [dbo].[datPaymentPlanJournal](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[datPaymentPlanJournal]  WITH NOCHECK ADD  CONSTRAINT [FK_datPaymentPlanJournal_datPaymentPlan] FOREIGN KEY([PaymentPlanID])
+ALTER TABLE [dbo].[datPaymentPlanJournal]  WITH CHECK ADD  CONSTRAINT [FK_datPaymentPlanJournal_datPaymentPlan] FOREIGN KEY([PaymentPlanID])
 REFERENCES [dbo].[datPaymentPlan] ([PaymentPlanID])
 GO
 ALTER TABLE [dbo].[datPaymentPlanJournal] CHECK CONSTRAINT [FK_datPaymentPlanJournal_datPaymentPlan]

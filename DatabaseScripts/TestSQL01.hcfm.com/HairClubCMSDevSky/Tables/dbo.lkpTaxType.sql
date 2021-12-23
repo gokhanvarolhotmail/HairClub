@@ -20,7 +20,7 @@ CREATE TABLE [dbo].[lkpTaxType](
 GO
 ALTER TABLE [dbo].[lkpTaxType] ADD  CONSTRAINT [DF_lkpTaxType_IsActiveFlag]  DEFAULT ((1)) FOR [IsActiveFlag]
 GO
-ALTER TABLE [dbo].[lkpTaxType]  WITH NOCHECK ADD  CONSTRAINT [FK_lkpTaxType_lkpGeneralLedger] FOREIGN KEY([GeneralLedgerID])
+ALTER TABLE [dbo].[lkpTaxType]  WITH CHECK ADD  CONSTRAINT [FK_lkpTaxType_lkpGeneralLedger] FOREIGN KEY([GeneralLedgerID])
 REFERENCES [dbo].[lkpGeneralLedger] ([GeneralLedgerID])
 GO
 ALTER TABLE [dbo].[lkpTaxType] CHECK CONSTRAINT [FK_lkpTaxType_lkpGeneralLedger]

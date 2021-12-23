@@ -31,12 +31,12 @@ CREATE UNIQUE NONCLUSTERED INDEX [onct_table_column_i3] ON [dbo].[onct_table_col
 	[column_name] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[onct_table_column]  WITH NOCHECK ADD  CONSTRAINT [layer_table_column_1124] FOREIGN KEY([layer_code])
+ALTER TABLE [dbo].[onct_table_column]  WITH CHECK ADD  CONSTRAINT [layer_table_column_1124] FOREIGN KEY([layer_code])
 REFERENCES [dbo].[onct_layer] ([layer_code])
 GO
 ALTER TABLE [dbo].[onct_table_column] CHECK CONSTRAINT [layer_table_column_1124]
 GO
-ALTER TABLE [dbo].[onct_table_column]  WITH NOCHECK ADD  CONSTRAINT [table_table_column_293] FOREIGN KEY([table_name])
+ALTER TABLE [dbo].[onct_table_column]  WITH CHECK ADD  CONSTRAINT [table_table_column_293] FOREIGN KEY([table_name])
 REFERENCES [dbo].[onct_table] ([table_name])
 ON DELETE CASCADE
 GO

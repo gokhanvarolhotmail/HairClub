@@ -34,23 +34,23 @@ CREATE NONCLUSTERED INDEX [oncd_contact_phone_i2] ON [dbo].[oncd_contact_phone]
 )
 INCLUDE([area_code],[phone_number]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[oncd_contact_phone]  WITH NOCHECK ADD  CONSTRAINT [contact_contact_phon_72] FOREIGN KEY([contact_id])
+ALTER TABLE [dbo].[oncd_contact_phone]  WITH CHECK ADD  CONSTRAINT [contact_contact_phon_72] FOREIGN KEY([contact_id])
 REFERENCES [dbo].[oncd_contact] ([contact_id])
 ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[oncd_contact_phone] CHECK CONSTRAINT [contact_contact_phon_72]
 GO
-ALTER TABLE [dbo].[oncd_contact_phone]  WITH NOCHECK ADD  CONSTRAINT [phone_type_contact_phon_609] FOREIGN KEY([phone_type_code])
+ALTER TABLE [dbo].[oncd_contact_phone]  WITH CHECK ADD  CONSTRAINT [phone_type_contact_phon_609] FOREIGN KEY([phone_type_code])
 REFERENCES [dbo].[onca_phone_type] ([phone_type_code])
 GO
 ALTER TABLE [dbo].[oncd_contact_phone] CHECK CONSTRAINT [phone_type_contact_phon_609]
 GO
-ALTER TABLE [dbo].[oncd_contact_phone]  WITH NOCHECK ADD  CONSTRAINT [user_contact_phon_607] FOREIGN KEY([created_by_user_code])
+ALTER TABLE [dbo].[oncd_contact_phone]  WITH CHECK ADD  CONSTRAINT [user_contact_phon_607] FOREIGN KEY([created_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_contact_phone] CHECK CONSTRAINT [user_contact_phon_607]
 GO
-ALTER TABLE [dbo].[oncd_contact_phone]  WITH NOCHECK ADD  CONSTRAINT [user_contact_phon_608] FOREIGN KEY([updated_by_user_code])
+ALTER TABLE [dbo].[oncd_contact_phone]  WITH CHECK ADD  CONSTRAINT [user_contact_phon_608] FOREIGN KEY([updated_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_contact_phone] CHECK CONSTRAINT [user_contact_phon_608]

@@ -16,9 +16,9 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[cfgCenterDistributorJoin]  WITH NOCHECK ADD FOREIGN KEY([CenterId])
+ALTER TABLE [dbo].[cfgCenterDistributorJoin]  WITH CHECK ADD FOREIGN KEY([CenterId])
 REFERENCES [dbo].[cfgCenter] ([CenterID])
 GO
-ALTER TABLE [dbo].[cfgCenterDistributorJoin]  WITH NOCHECK ADD FOREIGN KEY([DistributorId])
+ALTER TABLE [dbo].[cfgCenterDistributorJoin]  WITH CHECK ADD FOREIGN KEY([DistributorId])
 REFERENCES [dbo].[cfgCenter] ([CenterID])
 GO

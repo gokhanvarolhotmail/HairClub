@@ -24,13 +24,13 @@ CREATE NONCLUSTERED INDEX [onct_entity_filter_i2] ON [dbo].[onct_entity_filter]
 	[entity_id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[onct_entity_filter]  WITH NOCHECK ADD  CONSTRAINT [entity_entity_filte_347] FOREIGN KEY([entity_id])
+ALTER TABLE [dbo].[onct_entity_filter]  WITH CHECK ADD  CONSTRAINT [entity_entity_filte_347] FOREIGN KEY([entity_id])
 REFERENCES [dbo].[onct_entity] ([entity_id])
 ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[onct_entity_filter] CHECK CONSTRAINT [entity_entity_filte_347]
 GO
-ALTER TABLE [dbo].[onct_entity_filter]  WITH NOCHECK ADD  CONSTRAINT [table_column_entity_filte_348] FOREIGN KEY([table_name], [column_name])
+ALTER TABLE [dbo].[onct_entity_filter]  WITH CHECK ADD  CONSTRAINT [table_column_entity_filte_348] FOREIGN KEY([table_name], [column_name])
 REFERENCES [dbo].[onct_table_column] ([table_name], [column_name])
 GO
 ALTER TABLE [dbo].[onct_entity_filter] CHECK CONSTRAINT [table_column_entity_filte_348]

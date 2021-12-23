@@ -22,22 +22,22 @@ CREATE TABLE [dbo].[datInventoryTransaction](
 GO
 ALTER TABLE [dbo].[datInventoryTransaction] ADD  CONSTRAINT [DF_datInventoryTransaction_ResetQuantityFlag]  DEFAULT ((0)) FOR [ResetQuantityFlag]
 GO
-ALTER TABLE [dbo].[datInventoryTransaction]  WITH NOCHECK ADD  CONSTRAINT [FK_datInventoryTransaction_cfgSalesCodeCenter] FOREIGN KEY([SalesCodeCenterID])
+ALTER TABLE [dbo].[datInventoryTransaction]  WITH CHECK ADD  CONSTRAINT [FK_datInventoryTransaction_cfgSalesCodeCenter] FOREIGN KEY([SalesCodeCenterID])
 REFERENCES [dbo].[cfgSalesCodeCenter] ([SalesCodeCenterID])
 GO
 ALTER TABLE [dbo].[datInventoryTransaction] CHECK CONSTRAINT [FK_datInventoryTransaction_cfgSalesCodeCenter]
 GO
-ALTER TABLE [dbo].[datInventoryTransaction]  WITH NOCHECK ADD  CONSTRAINT [FK_datInventoryTransaction_datEmployee] FOREIGN KEY([EmployeeGUID])
+ALTER TABLE [dbo].[datInventoryTransaction]  WITH CHECK ADD  CONSTRAINT [FK_datInventoryTransaction_datEmployee] FOREIGN KEY([EmployeeGUID])
 REFERENCES [dbo].[datEmployee] ([EmployeeGUID])
 GO
 ALTER TABLE [dbo].[datInventoryTransaction] CHECK CONSTRAINT [FK_datInventoryTransaction_datEmployee]
 GO
-ALTER TABLE [dbo].[datInventoryTransaction]  WITH NOCHECK ADD  CONSTRAINT [FK_datInventoryTransaction_lkpHairSystemHoldReason] FOREIGN KEY([HairSystemHoldReasonID])
+ALTER TABLE [dbo].[datInventoryTransaction]  WITH CHECK ADD  CONSTRAINT [FK_datInventoryTransaction_lkpHairSystemHoldReason] FOREIGN KEY([HairSystemHoldReasonID])
 REFERENCES [dbo].[lkpHairSystemHoldReason] ([HairSystemHoldReasonID])
 GO
 ALTER TABLE [dbo].[datInventoryTransaction] CHECK CONSTRAINT [FK_datInventoryTransaction_lkpHairSystemHoldReason]
 GO
-ALTER TABLE [dbo].[datInventoryTransaction]  WITH NOCHECK ADD  CONSTRAINT [FK_datInventoryTransaction_lkpInventoryTransactionType] FOREIGN KEY([InventoryTransactionTypeID])
+ALTER TABLE [dbo].[datInventoryTransaction]  WITH CHECK ADD  CONSTRAINT [FK_datInventoryTransaction_lkpInventoryTransactionType] FOREIGN KEY([InventoryTransactionTypeID])
 REFERENCES [dbo].[lkpInventoryTransactionType] ([InventoryTransactionTypeID])
 GO
 ALTER TABLE [dbo].[datInventoryTransaction] CHECK CONSTRAINT [FK_datInventoryTransaction_lkpInventoryTransactionType]

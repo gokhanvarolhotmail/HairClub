@@ -31,17 +31,17 @@ CREATE NONCLUSTERED INDEX [oncd_knowlege_i2] ON [dbo].[oncd_knowledge]
 	[entity_id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[oncd_knowledge]  WITH NOCHECK ADD  CONSTRAINT [entity_knowledge_876] FOREIGN KEY([entity_id])
+ALTER TABLE [dbo].[oncd_knowledge]  WITH CHECK ADD  CONSTRAINT [entity_knowledge_876] FOREIGN KEY([entity_id])
 REFERENCES [dbo].[onct_entity] ([entity_id])
 GO
 ALTER TABLE [dbo].[oncd_knowledge] CHECK CONSTRAINT [entity_knowledge_876]
 GO
-ALTER TABLE [dbo].[oncd_knowledge]  WITH NOCHECK ADD  CONSTRAINT [user_knowledge_667] FOREIGN KEY([created_by_user_code])
+ALTER TABLE [dbo].[oncd_knowledge]  WITH CHECK ADD  CONSTRAINT [user_knowledge_667] FOREIGN KEY([created_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_knowledge] CHECK CONSTRAINT [user_knowledge_667]
 GO
-ALTER TABLE [dbo].[oncd_knowledge]  WITH NOCHECK ADD  CONSTRAINT [user_knowledge_668] FOREIGN KEY([updated_by_user_code])
+ALTER TABLE [dbo].[oncd_knowledge]  WITH CHECK ADD  CONSTRAINT [user_knowledge_668] FOREIGN KEY([updated_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_knowledge] CHECK CONSTRAINT [user_knowledge_668]

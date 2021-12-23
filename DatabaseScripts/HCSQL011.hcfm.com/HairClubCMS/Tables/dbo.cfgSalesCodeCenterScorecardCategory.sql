@@ -16,12 +16,12 @@ CREATE TABLE [dbo].[cfgSalesCodeCenterScorecardCategory](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[cfgSalesCodeCenterScorecardCategory]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgSalesCodeCenterScorecardCategory_cfgSalesCodeCenter] FOREIGN KEY([SalesCodeCenterID])
+ALTER TABLE [dbo].[cfgSalesCodeCenterScorecardCategory]  WITH CHECK ADD  CONSTRAINT [FK_cfgSalesCodeCenterScorecardCategory_cfgSalesCodeCenter] FOREIGN KEY([SalesCodeCenterID])
 REFERENCES [dbo].[cfgSalesCodeCenter] ([SalesCodeCenterID])
 GO
 ALTER TABLE [dbo].[cfgSalesCodeCenterScorecardCategory] CHECK CONSTRAINT [FK_cfgSalesCodeCenterScorecardCategory_cfgSalesCodeCenter]
 GO
-ALTER TABLE [dbo].[cfgSalesCodeCenterScorecardCategory]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgSalesCodeCenterScorecardCategory_lkpScorecardCategory] FOREIGN KEY([ScorecardCategoryID])
+ALTER TABLE [dbo].[cfgSalesCodeCenterScorecardCategory]  WITH CHECK ADD  CONSTRAINT [FK_cfgSalesCodeCenterScorecardCategory_lkpScorecardCategory] FOREIGN KEY([ScorecardCategoryID])
 REFERENCES [dbo].[lkpScorecardCategory] ([ScorecardCategoryID])
 GO
 ALTER TABLE [dbo].[cfgSalesCodeCenterScorecardCategory] CHECK CONSTRAINT [FK_cfgSalesCodeCenterScorecardCategory_lkpScorecardCategory]

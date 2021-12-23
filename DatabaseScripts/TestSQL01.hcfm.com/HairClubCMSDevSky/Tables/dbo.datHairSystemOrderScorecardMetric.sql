@@ -16,12 +16,12 @@ CREATE TABLE [dbo].[datHairSystemOrderScorecardMetric](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[datHairSystemOrderScorecardMetric]  WITH NOCHECK ADD  CONSTRAINT [FK_datHairSystemOrderScorecardMetric_datHairSystemOrderScorecard] FOREIGN KEY([HairSystemOrderScorecardID])
+ALTER TABLE [dbo].[datHairSystemOrderScorecardMetric]  WITH CHECK ADD  CONSTRAINT [FK_datHairSystemOrderScorecardMetric_datHairSystemOrderScorecard] FOREIGN KEY([HairSystemOrderScorecardID])
 REFERENCES [dbo].[datHairSystemOrderScorecard] ([HairSystemOrderScorecardID])
 GO
 ALTER TABLE [dbo].[datHairSystemOrderScorecardMetric] CHECK CONSTRAINT [FK_datHairSystemOrderScorecardMetric_datHairSystemOrderScorecard]
 GO
-ALTER TABLE [dbo].[datHairSystemOrderScorecardMetric]  WITH NOCHECK ADD  CONSTRAINT [FK_datHairSystemOrderScorecardMetric_lkpScorecardMetric] FOREIGN KEY([ScorecardMetricID])
+ALTER TABLE [dbo].[datHairSystemOrderScorecardMetric]  WITH CHECK ADD  CONSTRAINT [FK_datHairSystemOrderScorecardMetric_lkpScorecardMetric] FOREIGN KEY([ScorecardMetricID])
 REFERENCES [dbo].[lkpScorecardMetric] ([ScorecardMetricID])
 GO
 ALTER TABLE [dbo].[datHairSystemOrderScorecardMetric] CHECK CONSTRAINT [FK_datHairSystemOrderScorecardMetric_lkpScorecardMetric]

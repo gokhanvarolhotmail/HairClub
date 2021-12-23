@@ -80,53 +80,53 @@ ALTER TABLE [dbo].[oncd_contact_address] ADD  CONSTRAINT [DF_oncd_contact_addres
 GO
 ALTER TABLE [dbo].[oncd_contact_address] ADD  CONSTRAINT [DF_oncd_contact_address_cst_active]  DEFAULT (N'Y') FOR [cst_active]
 GO
-ALTER TABLE [dbo].[oncd_contact_address]  WITH NOCHECK ADD  CONSTRAINT [address_type_contact_addr_566] FOREIGN KEY([address_type_code])
+ALTER TABLE [dbo].[oncd_contact_address]  WITH CHECK ADD  CONSTRAINT [address_type_contact_addr_566] FOREIGN KEY([address_type_code])
 REFERENCES [dbo].[onca_address_type] ([address_type_code])
 GO
 ALTER TABLE [dbo].[oncd_contact_address] CHECK CONSTRAINT [address_type_contact_addr_566]
 GO
-ALTER TABLE [dbo].[oncd_contact_address]  WITH NOCHECK ADD  CONSTRAINT [company_addr_contact_addr_798] FOREIGN KEY([company_address_id])
+ALTER TABLE [dbo].[oncd_contact_address]  WITH CHECK ADD  CONSTRAINT [company_addr_contact_addr_798] FOREIGN KEY([company_address_id])
 REFERENCES [dbo].[oncd_company_address] ([company_address_id])
 GO
 ALTER TABLE [dbo].[oncd_contact_address] CHECK CONSTRAINT [company_addr_contact_addr_798]
 GO
-ALTER TABLE [dbo].[oncd_contact_address]  WITH NOCHECK ADD  CONSTRAINT [contact_addr_vendor] FOREIGN KEY([cst_skip_trace_vendor_code])
+ALTER TABLE [dbo].[oncd_contact_address]  WITH CHECK ADD  CONSTRAINT [contact_addr_vendor] FOREIGN KEY([cst_skip_trace_vendor_code])
 REFERENCES [dbo].[csta_skip_trace_vendor] ([skip_trace_vendor_code])
 GO
 ALTER TABLE [dbo].[oncd_contact_address] CHECK CONSTRAINT [contact_addr_vendor]
 GO
-ALTER TABLE [dbo].[oncd_contact_address]  WITH NOCHECK ADD  CONSTRAINT [contact_contact_addr_64] FOREIGN KEY([contact_id])
+ALTER TABLE [dbo].[oncd_contact_address]  WITH CHECK ADD  CONSTRAINT [contact_contact_addr_64] FOREIGN KEY([contact_id])
 REFERENCES [dbo].[oncd_contact] ([contact_id])
 ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[oncd_contact_address] CHECK CONSTRAINT [contact_contact_addr_64]
 GO
-ALTER TABLE [dbo].[oncd_contact_address]  WITH NOCHECK ADD  CONSTRAINT [country_contact_addr_567] FOREIGN KEY([country_code])
+ALTER TABLE [dbo].[oncd_contact_address]  WITH CHECK ADD  CONSTRAINT [country_contact_addr_567] FOREIGN KEY([country_code])
 REFERENCES [dbo].[onca_country] ([country_code])
 GO
 ALTER TABLE [dbo].[oncd_contact_address] CHECK CONSTRAINT [country_contact_addr_567]
 GO
-ALTER TABLE [dbo].[oncd_contact_address]  WITH NOCHECK ADD  CONSTRAINT [county_contact_addr_568] FOREIGN KEY([county_code])
+ALTER TABLE [dbo].[oncd_contact_address]  WITH CHECK ADD  CONSTRAINT [county_contact_addr_568] FOREIGN KEY([county_code])
 REFERENCES [dbo].[onca_county] ([county_code])
 GO
 ALTER TABLE [dbo].[oncd_contact_address] CHECK CONSTRAINT [county_contact_addr_568]
 GO
-ALTER TABLE [dbo].[oncd_contact_address]  WITH NOCHECK ADD  CONSTRAINT [state_contact_addr_572] FOREIGN KEY([state_code])
+ALTER TABLE [dbo].[oncd_contact_address]  WITH CHECK ADD  CONSTRAINT [state_contact_addr_572] FOREIGN KEY([state_code])
 REFERENCES [dbo].[onca_state] ([state_code])
 GO
 ALTER TABLE [dbo].[oncd_contact_address] CHECK CONSTRAINT [state_contact_addr_572]
 GO
-ALTER TABLE [dbo].[oncd_contact_address]  WITH NOCHECK ADD  CONSTRAINT [time_zone_contact_addr_573] FOREIGN KEY([time_zone_code])
+ALTER TABLE [dbo].[oncd_contact_address]  WITH CHECK ADD  CONSTRAINT [time_zone_contact_addr_573] FOREIGN KEY([time_zone_code])
 REFERENCES [dbo].[onca_time_zone] ([time_zone_code])
 GO
 ALTER TABLE [dbo].[oncd_contact_address] CHECK CONSTRAINT [time_zone_contact_addr_573]
 GO
-ALTER TABLE [dbo].[oncd_contact_address]  WITH NOCHECK ADD  CONSTRAINT [user_contact_addr_570] FOREIGN KEY([updated_by_user_code])
+ALTER TABLE [dbo].[oncd_contact_address]  WITH CHECK ADD  CONSTRAINT [user_contact_addr_570] FOREIGN KEY([updated_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_contact_address] CHECK CONSTRAINT [user_contact_addr_570]
 GO
-ALTER TABLE [dbo].[oncd_contact_address]  WITH NOCHECK ADD  CONSTRAINT [user_contact_addr_571] FOREIGN KEY([created_by_user_code])
+ALTER TABLE [dbo].[oncd_contact_address]  WITH CHECK ADD  CONSTRAINT [user_contact_addr_571] FOREIGN KEY([created_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_contact_address] CHECK CONSTRAINT [user_contact_addr_571]

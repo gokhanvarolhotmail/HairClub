@@ -22,7 +22,7 @@ CREATE TABLE [dbo].[onca_system](
 GO
 ALTER TABLE [dbo].[onca_system] ADD  CONSTRAINT [DF__onca_syst__is_sy__1F98B2C1]  DEFAULT ('N') FOR [is_sync_filtered]
 GO
-ALTER TABLE [dbo].[onca_system]  WITH NOCHECK ADD  CONSTRAINT [system_state_system_320] FOREIGN KEY([system_state_code])
+ALTER TABLE [dbo].[onca_system]  WITH CHECK ADD  CONSTRAINT [system_state_system_320] FOREIGN KEY([system_state_code])
 REFERENCES [dbo].[onca_system_state] ([system_state_code])
 GO
 ALTER TABLE [dbo].[onca_system] CHECK CONSTRAINT [system_state_system_320]

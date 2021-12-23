@@ -17,17 +17,17 @@ CREATE FULLTEXT INDEX ON [dbo].[oncd_defect_description]
 KEY INDEX [pk_oncd_defect_description]ON ([oncd_defect_description], FILEGROUP [PRIMARY])
 WITH (CHANGE_TRACKING = AUTO, STOPLIST = SYSTEM)
 GO
-ALTER TABLE [dbo].[oncd_defect_description]  WITH NOCHECK ADD  CONSTRAINT [defect_defect_descr_220] FOREIGN KEY([defect_id])
+ALTER TABLE [dbo].[oncd_defect_description]  WITH CHECK ADD  CONSTRAINT [defect_defect_descr_220] FOREIGN KEY([defect_id])
 REFERENCES [dbo].[oncd_defect] ([defect_id])
 GO
 ALTER TABLE [dbo].[oncd_defect_description] CHECK CONSTRAINT [defect_defect_descr_220]
 GO
-ALTER TABLE [dbo].[oncd_defect_description]  WITH NOCHECK ADD  CONSTRAINT [user_defect_descr_874] FOREIGN KEY([created_by_user_code])
+ALTER TABLE [dbo].[oncd_defect_description]  WITH CHECK ADD  CONSTRAINT [user_defect_descr_874] FOREIGN KEY([created_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_defect_description] CHECK CONSTRAINT [user_defect_descr_874]
 GO
-ALTER TABLE [dbo].[oncd_defect_description]  WITH NOCHECK ADD  CONSTRAINT [user_defect_descr_875] FOREIGN KEY([updated_by_user_code])
+ALTER TABLE [dbo].[oncd_defect_description]  WITH CHECK ADD  CONSTRAINT [user_defect_descr_875] FOREIGN KEY([updated_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_defect_description] CHECK CONSTRAINT [user_defect_descr_875]

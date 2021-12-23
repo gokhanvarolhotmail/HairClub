@@ -15,12 +15,12 @@ CREATE TABLE [dbo].[datStyleBookStyleBookAgeGroup](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[datStyleBookStyleBookAgeGroup]  WITH NOCHECK ADD  CONSTRAINT [FK_datStyleBookStyleBookAgeGroup_datStyleBook] FOREIGN KEY([StyleBookID])
+ALTER TABLE [dbo].[datStyleBookStyleBookAgeGroup]  WITH CHECK ADD  CONSTRAINT [FK_datStyleBookStyleBookAgeGroup_datStyleBook] FOREIGN KEY([StyleBookID])
 REFERENCES [dbo].[datStyleBook] ([StyleBookID])
 GO
 ALTER TABLE [dbo].[datStyleBookStyleBookAgeGroup] CHECK CONSTRAINT [FK_datStyleBookStyleBookAgeGroup_datStyleBook]
 GO
-ALTER TABLE [dbo].[datStyleBookStyleBookAgeGroup]  WITH NOCHECK ADD  CONSTRAINT [FK_datStyleBookStyleBookAgeGroup_lkpStyleBookAgeGroup] FOREIGN KEY([StyleBookAgeGroupID])
+ALTER TABLE [dbo].[datStyleBookStyleBookAgeGroup]  WITH CHECK ADD  CONSTRAINT [FK_datStyleBookStyleBookAgeGroup_lkpStyleBookAgeGroup] FOREIGN KEY([StyleBookAgeGroupID])
 REFERENCES [dbo].[lkpStyleBookAgeGroup] ([StyleBookAgeGroupID])
 GO
 ALTER TABLE [dbo].[datStyleBookStyleBookAgeGroup] CHECK CONSTRAINT [FK_datStyleBookStyleBookAgeGroup_lkpStyleBookAgeGroup]

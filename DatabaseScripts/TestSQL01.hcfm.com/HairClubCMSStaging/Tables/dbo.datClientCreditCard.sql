@@ -25,12 +25,12 @@ CREATE NONCLUSTERED INDEX [IX_datClientCreditCard_ClientGUID] ON [dbo].[datClien
 	[ClientGUID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[datClientCreditCard]  WITH NOCHECK ADD  CONSTRAINT [FK_datClientCreditCard_datClient] FOREIGN KEY([ClientGUID])
+ALTER TABLE [dbo].[datClientCreditCard]  WITH CHECK ADD  CONSTRAINT [FK_datClientCreditCard_datClient] FOREIGN KEY([ClientGUID])
 REFERENCES [dbo].[datClient] ([ClientGUID])
 GO
 ALTER TABLE [dbo].[datClientCreditCard] CHECK CONSTRAINT [FK_datClientCreditCard_datClient]
 GO
-ALTER TABLE [dbo].[datClientCreditCard]  WITH NOCHECK ADD  CONSTRAINT [FK_datClientCreditCard_lkpCreditCardType] FOREIGN KEY([CreditCardTypeID])
+ALTER TABLE [dbo].[datClientCreditCard]  WITH CHECK ADD  CONSTRAINT [FK_datClientCreditCard_lkpCreditCardType] FOREIGN KEY([CreditCardTypeID])
 REFERENCES [dbo].[lkpCreditCardType] ([CreditCardTypeID])
 GO
 ALTER TABLE [dbo].[datClientCreditCard] CHECK CONSTRAINT [FK_datClientCreditCard_lkpCreditCardType]

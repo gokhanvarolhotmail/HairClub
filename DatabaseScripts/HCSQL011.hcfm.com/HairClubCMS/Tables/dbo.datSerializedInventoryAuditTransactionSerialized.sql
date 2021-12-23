@@ -28,37 +28,37 @@ CREATE TABLE [dbo].[datSerializedInventoryAuditTransactionSerialized](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[datSerializedInventoryAuditTransactionSerialized]  WITH NOCHECK ADD  CONSTRAINT [FK_datSerializedInventoryAuditTransactionSerialized_cfgCenter] FOREIGN KEY([ScannedCenterID])
+ALTER TABLE [dbo].[datSerializedInventoryAuditTransactionSerialized]  WITH CHECK ADD  CONSTRAINT [FK_datSerializedInventoryAuditTransactionSerialized_cfgCenter] FOREIGN KEY([ScannedCenterID])
 REFERENCES [dbo].[cfgCenter] ([CenterID])
 GO
 ALTER TABLE [dbo].[datSerializedInventoryAuditTransactionSerialized] CHECK CONSTRAINT [FK_datSerializedInventoryAuditTransactionSerialized_cfgCenter]
 GO
-ALTER TABLE [dbo].[datSerializedInventoryAuditTransactionSerialized]  WITH NOCHECK ADD  CONSTRAINT [FK_datSerializedInventoryAuditTransactionSerialized_datEmployee] FOREIGN KEY([ScannedEmployeeGUID])
+ALTER TABLE [dbo].[datSerializedInventoryAuditTransactionSerialized]  WITH CHECK ADD  CONSTRAINT [FK_datSerializedInventoryAuditTransactionSerialized_datEmployee] FOREIGN KEY([ScannedEmployeeGUID])
 REFERENCES [dbo].[datEmployee] ([EmployeeGUID])
 GO
 ALTER TABLE [dbo].[datSerializedInventoryAuditTransactionSerialized] CHECK CONSTRAINT [FK_datSerializedInventoryAuditTransactionSerialized_datEmployee]
 GO
-ALTER TABLE [dbo].[datSerializedInventoryAuditTransactionSerialized]  WITH NOCHECK ADD  CONSTRAINT [FK_datSerializedInventoryAuditTransactionSerialized_datInventoryAdjustment] FOREIGN KEY([InventoryAdjustmentIdAtTimeOfSnapshot])
+ALTER TABLE [dbo].[datSerializedInventoryAuditTransactionSerialized]  WITH CHECK ADD  CONSTRAINT [FK_datSerializedInventoryAuditTransactionSerialized_datInventoryAdjustment] FOREIGN KEY([InventoryAdjustmentIdAtTimeOfSnapshot])
 REFERENCES [dbo].[datInventoryAdjustment] ([InventoryAdjustmentID])
 GO
 ALTER TABLE [dbo].[datSerializedInventoryAuditTransactionSerialized] CHECK CONSTRAINT [FK_datSerializedInventoryAuditTransactionSerialized_datInventoryAdjustment]
 GO
-ALTER TABLE [dbo].[datSerializedInventoryAuditTransactionSerialized]  WITH NOCHECK ADD  CONSTRAINT [FK_datSerializedInventoryAuditTransactionSerialized_datSerializedInventoryAuditBatch] FOREIGN KEY([ScannedSerializedInventoryAuditBatchID])
+ALTER TABLE [dbo].[datSerializedInventoryAuditTransactionSerialized]  WITH CHECK ADD  CONSTRAINT [FK_datSerializedInventoryAuditTransactionSerialized_datSerializedInventoryAuditBatch] FOREIGN KEY([ScannedSerializedInventoryAuditBatchID])
 REFERENCES [dbo].[datSerializedInventoryAuditBatch] ([SerializedInventoryAuditBatchID])
 GO
 ALTER TABLE [dbo].[datSerializedInventoryAuditTransactionSerialized] CHECK CONSTRAINT [FK_datSerializedInventoryAuditTransactionSerialized_datSerializedInventoryAuditBatch]
 GO
-ALTER TABLE [dbo].[datSerializedInventoryAuditTransactionSerialized]  WITH NOCHECK ADD  CONSTRAINT [FK_datSerializedInventoryAuditTransactionSerialized_datSerializedInventoryAuditTransaction] FOREIGN KEY([SerializedInventoryAuditTransactionID])
+ALTER TABLE [dbo].[datSerializedInventoryAuditTransactionSerialized]  WITH CHECK ADD  CONSTRAINT [FK_datSerializedInventoryAuditTransactionSerialized_datSerializedInventoryAuditTransaction] FOREIGN KEY([SerializedInventoryAuditTransactionID])
 REFERENCES [dbo].[datSerializedInventoryAuditTransaction] ([SerializedInventoryAuditTransactionID])
 GO
 ALTER TABLE [dbo].[datSerializedInventoryAuditTransactionSerialized] CHECK CONSTRAINT [FK_datSerializedInventoryAuditTransactionSerialized_datSerializedInventoryAuditTransaction]
 GO
-ALTER TABLE [dbo].[datSerializedInventoryAuditTransactionSerialized]  WITH NOCHECK ADD  CONSTRAINT [FK_datSerializedInventoryAuditTransactionSerialized_lkpInventoryNotScannedReason] FOREIGN KEY([InventoryNotScannedReasonID])
+ALTER TABLE [dbo].[datSerializedInventoryAuditTransactionSerialized]  WITH CHECK ADD  CONSTRAINT [FK_datSerializedInventoryAuditTransactionSerialized_lkpInventoryNotScannedReason] FOREIGN KEY([InventoryNotScannedReasonID])
 REFERENCES [dbo].[lkpInventoryNotScannedReason] ([InventoryNotScannedReasonID])
 GO
 ALTER TABLE [dbo].[datSerializedInventoryAuditTransactionSerialized] CHECK CONSTRAINT [FK_datSerializedInventoryAuditTransactionSerialized_lkpInventoryNotScannedReason]
 GO
-ALTER TABLE [dbo].[datSerializedInventoryAuditTransactionSerialized]  WITH NOCHECK ADD  CONSTRAINT [FK_datSerializedInventoryAuditTransactionSerialized_lkpSerializedInventoryStatus] FOREIGN KEY([SerializedInventoryStatusID])
+ALTER TABLE [dbo].[datSerializedInventoryAuditTransactionSerialized]  WITH CHECK ADD  CONSTRAINT [FK_datSerializedInventoryAuditTransactionSerialized_lkpSerializedInventoryStatus] FOREIGN KEY([SerializedInventoryStatusID])
 REFERENCES [dbo].[lkpSerializedInventoryStatus] ([SerializedInventoryStatusID])
 GO
 ALTER TABLE [dbo].[datSerializedInventoryAuditTransactionSerialized] CHECK CONSTRAINT [FK_datSerializedInventoryAuditTransactionSerialized_lkpSerializedInventoryStatus]

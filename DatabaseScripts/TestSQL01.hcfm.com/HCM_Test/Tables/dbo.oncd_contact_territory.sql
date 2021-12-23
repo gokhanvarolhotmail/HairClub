@@ -16,23 +16,23 @@ CREATE TABLE [dbo].[oncd_contact_territory](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[oncd_contact_territory]  WITH NOCHECK ADD  CONSTRAINT [contact_contact_terr_67] FOREIGN KEY([contact_id])
+ALTER TABLE [dbo].[oncd_contact_territory]  WITH CHECK ADD  CONSTRAINT [contact_contact_terr_67] FOREIGN KEY([contact_id])
 REFERENCES [dbo].[oncd_contact] ([contact_id])
 ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[oncd_contact_territory] CHECK CONSTRAINT [contact_contact_terr_67]
 GO
-ALTER TABLE [dbo].[oncd_contact_territory]  WITH NOCHECK ADD  CONSTRAINT [territory_contact_terr_622] FOREIGN KEY([territory_code])
+ALTER TABLE [dbo].[oncd_contact_territory]  WITH CHECK ADD  CONSTRAINT [territory_contact_terr_622] FOREIGN KEY([territory_code])
 REFERENCES [dbo].[onca_territory] ([territory_code])
 GO
 ALTER TABLE [dbo].[oncd_contact_territory] CHECK CONSTRAINT [territory_contact_terr_622]
 GO
-ALTER TABLE [dbo].[oncd_contact_territory]  WITH NOCHECK ADD  CONSTRAINT [user_contact_terr_620] FOREIGN KEY([created_by_user_code])
+ALTER TABLE [dbo].[oncd_contact_territory]  WITH CHECK ADD  CONSTRAINT [user_contact_terr_620] FOREIGN KEY([created_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_contact_territory] CHECK CONSTRAINT [user_contact_terr_620]
 GO
-ALTER TABLE [dbo].[oncd_contact_territory]  WITH NOCHECK ADD  CONSTRAINT [user_contact_terr_621] FOREIGN KEY([updated_by_user_code])
+ALTER TABLE [dbo].[oncd_contact_territory]  WITH CHECK ADD  CONSTRAINT [user_contact_terr_621] FOREIGN KEY([updated_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_contact_territory] CHECK CONSTRAINT [user_contact_terr_621]

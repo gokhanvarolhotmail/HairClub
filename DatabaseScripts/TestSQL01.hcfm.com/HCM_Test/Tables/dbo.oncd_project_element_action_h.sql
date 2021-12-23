@@ -12,22 +12,22 @@ CREATE TABLE [dbo].[oncd_project_element_action_h](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[oncd_project_element_action_h]  WITH NOCHECK ADD  CONSTRAINT [project_elem_project_elem_992] FOREIGN KEY([project_element_action_id])
+ALTER TABLE [dbo].[oncd_project_element_action_h]  WITH CHECK ADD  CONSTRAINT [project_elem_project_elem_992] FOREIGN KEY([project_element_action_id])
 REFERENCES [dbo].[oncd_project_element_action] ([project_element_action_id])
 GO
 ALTER TABLE [dbo].[oncd_project_element_action_h] CHECK CONSTRAINT [project_elem_project_elem_992]
 GO
-ALTER TABLE [dbo].[oncd_project_element_action_h]  WITH NOCHECK ADD  CONSTRAINT [project_elem_project_elem_993] FOREIGN KEY([project_element_id])
+ALTER TABLE [dbo].[oncd_project_element_action_h]  WITH CHECK ADD  CONSTRAINT [project_elem_project_elem_993] FOREIGN KEY([project_element_id])
 REFERENCES [dbo].[oncd_project_element] ([project_element_id])
 GO
 ALTER TABLE [dbo].[oncd_project_element_action_h] CHECK CONSTRAINT [project_elem_project_elem_993]
 GO
-ALTER TABLE [dbo].[oncd_project_element_action_h]  WITH NOCHECK ADD  CONSTRAINT [project_mile_project_elem_994] FOREIGN KEY([project_milestone_id])
+ALTER TABLE [dbo].[oncd_project_element_action_h]  WITH CHECK ADD  CONSTRAINT [project_mile_project_elem_994] FOREIGN KEY([project_milestone_id])
 REFERENCES [dbo].[oncd_project_milestone] ([project_milestone_id])
 GO
 ALTER TABLE [dbo].[oncd_project_element_action_h] CHECK CONSTRAINT [project_mile_project_elem_994]
 GO
-ALTER TABLE [dbo].[oncd_project_element_action_h]  WITH NOCHECK ADD  CONSTRAINT [project_revi_project_elem_761] FOREIGN KEY([project_revision_id])
+ALTER TABLE [dbo].[oncd_project_element_action_h]  WITH CHECK ADD  CONSTRAINT [project_revi_project_elem_761] FOREIGN KEY([project_revision_id])
 REFERENCES [dbo].[oncd_project_revision] ([project_revision_id])
 GO
 ALTER TABLE [dbo].[oncd_project_element_action_h] CHECK CONSTRAINT [project_revi_project_elem_761]

@@ -22,12 +22,12 @@ CREATE TABLE [dbo].[lkpTenderType](
 GO
 ALTER TABLE [dbo].[lkpTenderType] ADD  CONSTRAINT [DF_lkpTenderType_IsActiveFlag]  DEFAULT ((1)) FOR [IsActiveFlag]
 GO
-ALTER TABLE [dbo].[lkpTenderType]  WITH NOCHECK ADD  CONSTRAINT [FK_lkpTenderType_lkpGeneralLedger] FOREIGN KEY([EFTGeneralLedgerID])
+ALTER TABLE [dbo].[lkpTenderType]  WITH CHECK ADD  CONSTRAINT [FK_lkpTenderType_lkpGeneralLedger] FOREIGN KEY([EFTGeneralLedgerID])
 REFERENCES [dbo].[lkpGeneralLedger] ([GeneralLedgerID])
 GO
 ALTER TABLE [dbo].[lkpTenderType] CHECK CONSTRAINT [FK_lkpTenderType_lkpGeneralLedger]
 GO
-ALTER TABLE [dbo].[lkpTenderType]  WITH NOCHECK ADD  CONSTRAINT [FK_lkpTenderType_lkpGeneralLedger1] FOREIGN KEY([GeneralLedgerID])
+ALTER TABLE [dbo].[lkpTenderType]  WITH CHECK ADD  CONSTRAINT [FK_lkpTenderType_lkpGeneralLedger1] FOREIGN KEY([GeneralLedgerID])
 REFERENCES [dbo].[lkpGeneralLedger] ([GeneralLedgerID])
 GO
 ALTER TABLE [dbo].[lkpTenderType] CHECK CONSTRAINT [FK_lkpTenderType_lkpGeneralLedger1]

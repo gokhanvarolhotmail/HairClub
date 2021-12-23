@@ -101,32 +101,32 @@ ALTER TABLE [dbo].[datEmployee] ADD  CONSTRAINT [DF_datEmployee_IsSchedulerViewO
 GO
 ALTER TABLE [dbo].[datEmployee] ADD  CONSTRAINT [DF_datEmployee_IsActiveFlag]  DEFAULT ((1)) FOR [IsActiveFlag]
 GO
-ALTER TABLE [dbo].[datEmployee]  WITH NOCHECK ADD  CONSTRAINT [FK_datEmployee_cfgCenter] FOREIGN KEY([CenterID])
+ALTER TABLE [dbo].[datEmployee]  WITH CHECK ADD  CONSTRAINT [FK_datEmployee_cfgCenter] FOREIGN KEY([CenterID])
 REFERENCES [dbo].[cfgCenter] ([CenterID])
 GO
 ALTER TABLE [dbo].[datEmployee] CHECK CONSTRAINT [FK_datEmployee_cfgCenter]
 GO
-ALTER TABLE [dbo].[datEmployee]  WITH NOCHECK ADD  CONSTRAINT [FK_datEmployee_cfgResource] FOREIGN KEY([ResourceID])
+ALTER TABLE [dbo].[datEmployee]  WITH CHECK ADD  CONSTRAINT [FK_datEmployee_cfgResource] FOREIGN KEY([ResourceID])
 REFERENCES [dbo].[cfgResource] ([ResourceID])
 GO
 ALTER TABLE [dbo].[datEmployee] CHECK CONSTRAINT [FK_datEmployee_cfgResource]
 GO
-ALTER TABLE [dbo].[datEmployee]  WITH NOCHECK ADD  CONSTRAINT [FK_datEmployee_lkpEmployeeTitle] FOREIGN KEY([EmployeeTitleID])
+ALTER TABLE [dbo].[datEmployee]  WITH CHECK ADD  CONSTRAINT [FK_datEmployee_lkpEmployeeTitle] FOREIGN KEY([EmployeeTitleID])
 REFERENCES [dbo].[lkpEmployeeTitle] ([EmployeeTitleID])
 GO
 ALTER TABLE [dbo].[datEmployee] CHECK CONSTRAINT [FK_datEmployee_lkpEmployeeTitle]
 GO
-ALTER TABLE [dbo].[datEmployee]  WITH NOCHECK ADD  CONSTRAINT [FK_datEmployee_lkpSalutation] FOREIGN KEY([SalutationID])
+ALTER TABLE [dbo].[datEmployee]  WITH CHECK ADD  CONSTRAINT [FK_datEmployee_lkpSalutation] FOREIGN KEY([SalutationID])
 REFERENCES [dbo].[lkpSalutation] ([SalutationID])
 GO
 ALTER TABLE [dbo].[datEmployee] CHECK CONSTRAINT [FK_datEmployee_lkpSalutation]
 GO
-ALTER TABLE [dbo].[datEmployee]  WITH NOCHECK ADD  CONSTRAINT [FK_datEmployee_lkpState] FOREIGN KEY([StateID])
+ALTER TABLE [dbo].[datEmployee]  WITH CHECK ADD  CONSTRAINT [FK_datEmployee_lkpState] FOREIGN KEY([StateID])
 REFERENCES [dbo].[lkpState] ([StateID])
 GO
 ALTER TABLE [dbo].[datEmployee] CHECK CONSTRAINT [FK_datEmployee_lkpState]
 GO
-ALTER TABLE [dbo].[datEmployee]  WITH NOCHECK ADD  CONSTRAINT [FK_datEmployee_lkpTrainingExercise] FOREIGN KEY([TrainingExerciseID])
+ALTER TABLE [dbo].[datEmployee]  WITH CHECK ADD  CONSTRAINT [FK_datEmployee_lkpTrainingExercise] FOREIGN KEY([TrainingExerciseID])
 REFERENCES [dbo].[lkpTrainingExercise] ([TrainingExerciseID])
 GO
 ALTER TABLE [dbo].[datEmployee] CHECK CONSTRAINT [FK_datEmployee_lkpTrainingExercise]

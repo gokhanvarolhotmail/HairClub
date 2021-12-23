@@ -23,18 +23,18 @@ CREATE TABLE [dbo].[onca_import_node](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[onca_import_node]  WITH NOCHECK ADD  CONSTRAINT [class_import_node_394] FOREIGN KEY([class_id])
+ALTER TABLE [dbo].[onca_import_node]  WITH CHECK ADD  CONSTRAINT [class_import_node_394] FOREIGN KEY([class_id])
 REFERENCES [dbo].[onct_class] ([class_id])
 GO
 ALTER TABLE [dbo].[onca_import_node] CHECK CONSTRAINT [class_import_node_394]
 GO
-ALTER TABLE [dbo].[onca_import_node]  WITH NOCHECK ADD  CONSTRAINT [import_import_node_369] FOREIGN KEY([import_code])
+ALTER TABLE [dbo].[onca_import_node]  WITH CHECK ADD  CONSTRAINT [import_import_node_369] FOREIGN KEY([import_code])
 REFERENCES [dbo].[onca_import] ([import_code])
 ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[onca_import_node] CHECK CONSTRAINT [import_import_node_369]
 GO
-ALTER TABLE [dbo].[onca_import_node]  WITH NOCHECK ADD  CONSTRAINT [table_relati_import_node_1180] FOREIGN KEY([table_relation_member_id])
+ALTER TABLE [dbo].[onca_import_node]  WITH CHECK ADD  CONSTRAINT [table_relati_import_node_1180] FOREIGN KEY([table_relation_member_id])
 REFERENCES [dbo].[onct_table_relation_member] ([table_relation_member_id])
 GO
 ALTER TABLE [dbo].[onca_import_node] CHECK CONSTRAINT [table_relati_import_node_1180]

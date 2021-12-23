@@ -58,33 +58,33 @@ CREATE NONCLUSTERED INDEX [oncd_company_product_i6] ON [dbo].[oncd_company_produ
 	[serial_number] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[oncd_company_product]  WITH NOCHECK ADD  CONSTRAINT [company_company_prod_171] FOREIGN KEY([company_id])
+ALTER TABLE [dbo].[oncd_company_product]  WITH CHECK ADD  CONSTRAINT [company_company_prod_171] FOREIGN KEY([company_id])
 REFERENCES [dbo].[oncd_company] ([company_id])
 ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[oncd_company_product] CHECK CONSTRAINT [company_company_prod_171]
 GO
-ALTER TABLE [dbo].[oncd_company_product]  WITH NOCHECK ADD  CONSTRAINT [contract_company_prod_330] FOREIGN KEY([contract_id])
+ALTER TABLE [dbo].[oncd_company_product]  WITH CHECK ADD  CONSTRAINT [contract_company_prod_330] FOREIGN KEY([contract_id])
 REFERENCES [dbo].[oncd_contract] ([contract_id])
 GO
 ALTER TABLE [dbo].[oncd_company_product] CHECK CONSTRAINT [contract_company_prod_330]
 GO
-ALTER TABLE [dbo].[oncd_company_product]  WITH NOCHECK ADD  CONSTRAINT [product_company_prod_543] FOREIGN KEY([product_code])
+ALTER TABLE [dbo].[oncd_company_product]  WITH CHECK ADD  CONSTRAINT [product_company_prod_543] FOREIGN KEY([product_code])
 REFERENCES [dbo].[onca_product] ([product_code])
 GO
 ALTER TABLE [dbo].[oncd_company_product] CHECK CONSTRAINT [product_company_prod_543]
 GO
-ALTER TABLE [dbo].[oncd_company_product]  WITH NOCHECK ADD  CONSTRAINT [product_vers_company_prod_1089] FOREIGN KEY([version_code])
+ALTER TABLE [dbo].[oncd_company_product]  WITH CHECK ADD  CONSTRAINT [product_vers_company_prod_1089] FOREIGN KEY([version_code])
 REFERENCES [dbo].[onca_product_version] ([version_code])
 GO
 ALTER TABLE [dbo].[oncd_company_product] CHECK CONSTRAINT [product_vers_company_prod_1089]
 GO
-ALTER TABLE [dbo].[oncd_company_product]  WITH NOCHECK ADD  CONSTRAINT [user_company_prod_541] FOREIGN KEY([created_by_user_code])
+ALTER TABLE [dbo].[oncd_company_product]  WITH CHECK ADD  CONSTRAINT [user_company_prod_541] FOREIGN KEY([created_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_company_product] CHECK CONSTRAINT [user_company_prod_541]
 GO
-ALTER TABLE [dbo].[oncd_company_product]  WITH NOCHECK ADD  CONSTRAINT [user_company_prod_542] FOREIGN KEY([updated_by_user_code])
+ALTER TABLE [dbo].[oncd_company_product]  WITH CHECK ADD  CONSTRAINT [user_company_prod_542] FOREIGN KEY([updated_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_company_product] CHECK CONSTRAINT [user_company_prod_542]

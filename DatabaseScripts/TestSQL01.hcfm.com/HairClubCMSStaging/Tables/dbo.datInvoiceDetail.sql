@@ -24,12 +24,12 @@ CREATE NONCLUSTERED INDEX [IX_datInvoiceDetail_InvoiceGUID_HairSystemOrderNumber
 	[HairSystemOrderNumber] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[datInvoiceDetail]  WITH NOCHECK ADD  CONSTRAINT [FK_datInvoiceDetail_datHairSystemOrder] FOREIGN KEY([HairSystemOrderGUID])
+ALTER TABLE [dbo].[datInvoiceDetail]  WITH CHECK ADD  CONSTRAINT [FK_datInvoiceDetail_datHairSystemOrder] FOREIGN KEY([HairSystemOrderGUID])
 REFERENCES [dbo].[datHairSystemOrder] ([HairSystemOrderGUID])
 GO
 ALTER TABLE [dbo].[datInvoiceDetail] CHECK CONSTRAINT [FK_datInvoiceDetail_datHairSystemOrder]
 GO
-ALTER TABLE [dbo].[datInvoiceDetail]  WITH NOCHECK ADD  CONSTRAINT [FK_datInvoiceDetail_datInvoice] FOREIGN KEY([InvoiceGUID])
+ALTER TABLE [dbo].[datInvoiceDetail]  WITH CHECK ADD  CONSTRAINT [FK_datInvoiceDetail_datInvoice] FOREIGN KEY([InvoiceGUID])
 REFERENCES [dbo].[datInvoice] ([InvoiceGUID])
 GO
 ALTER TABLE [dbo].[datInvoiceDetail] CHECK CONSTRAINT [FK_datInvoiceDetail_datInvoice]

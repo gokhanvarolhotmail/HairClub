@@ -11,13 +11,13 @@ CREATE TABLE [dbo].[onca_quick_find_item](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[onca_quick_find_item]  WITH NOCHECK ADD  CONSTRAINT [quick_find_g_quick_find_i_362] FOREIGN KEY([quick_find_group_id])
+ALTER TABLE [dbo].[onca_quick_find_item]  WITH CHECK ADD  CONSTRAINT [quick_find_g_quick_find_i_362] FOREIGN KEY([quick_find_group_id])
 REFERENCES [dbo].[onca_quick_find_group] ([quick_find_group_id])
 ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[onca_quick_find_item] CHECK CONSTRAINT [quick_find_g_quick_find_i_362]
 GO
-ALTER TABLE [dbo].[onca_quick_find_item]  WITH NOCHECK ADD  CONSTRAINT [quick_find_quick_find_i_363] FOREIGN KEY([quick_find_id])
+ALTER TABLE [dbo].[onca_quick_find_item]  WITH CHECK ADD  CONSTRAINT [quick_find_quick_find_i_363] FOREIGN KEY([quick_find_id])
 REFERENCES [dbo].[onca_quick_find] ([quick_find_id])
 ON DELETE CASCADE
 GO

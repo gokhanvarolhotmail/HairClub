@@ -24,23 +24,23 @@ CREATE NONCLUSTERED INDEX [oncd_recur_cost_i2] ON [dbo].[oncd_recur_cost]
 	[sort_order] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[oncd_recur_cost]  WITH NOCHECK ADD  CONSTRAINT [cost_group_recur_cost_482] FOREIGN KEY([cost_group_code])
+ALTER TABLE [dbo].[oncd_recur_cost]  WITH CHECK ADD  CONSTRAINT [cost_group_recur_cost_482] FOREIGN KEY([cost_group_code])
 REFERENCES [dbo].[onca_cost_group] ([cost_group_code])
 GO
 ALTER TABLE [dbo].[oncd_recur_cost] CHECK CONSTRAINT [cost_group_recur_cost_482]
 GO
-ALTER TABLE [dbo].[oncd_recur_cost]  WITH NOCHECK ADD  CONSTRAINT [recur_recur_cost_212] FOREIGN KEY([recur_id])
+ALTER TABLE [dbo].[oncd_recur_cost]  WITH CHECK ADD  CONSTRAINT [recur_recur_cost_212] FOREIGN KEY([recur_id])
 REFERENCES [dbo].[oncd_recur] ([recur_id])
 ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[oncd_recur_cost] CHECK CONSTRAINT [recur_recur_cost_212]
 GO
-ALTER TABLE [dbo].[oncd_recur_cost]  WITH NOCHECK ADD  CONSTRAINT [user_recur_cost_483] FOREIGN KEY([updated_by_user_code])
+ALTER TABLE [dbo].[oncd_recur_cost]  WITH CHECK ADD  CONSTRAINT [user_recur_cost_483] FOREIGN KEY([updated_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_recur_cost] CHECK CONSTRAINT [user_recur_cost_483]
 GO
-ALTER TABLE [dbo].[oncd_recur_cost]  WITH NOCHECK ADD  CONSTRAINT [user_recur_cost_484] FOREIGN KEY([created_by_user_code])
+ALTER TABLE [dbo].[oncd_recur_cost]  WITH CHECK ADD  CONSTRAINT [user_recur_cost_484] FOREIGN KEY([created_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_recur_cost] CHECK CONSTRAINT [user_recur_cost_484]

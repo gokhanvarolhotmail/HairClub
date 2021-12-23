@@ -15,7 +15,7 @@ CREATE TABLE [dbo].[oncw_security_item](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[oncw_security_item]  WITH NOCHECK ADD  CONSTRAINT [security_set_security_ite_1161] FOREIGN KEY([security_set_id])
+ALTER TABLE [dbo].[oncw_security_item]  WITH CHECK ADD  CONSTRAINT [security_set_security_ite_1161] FOREIGN KEY([security_set_id])
 REFERENCES [dbo].[oncw_security_set] ([security_set_id])
 ON DELETE CASCADE
 GO

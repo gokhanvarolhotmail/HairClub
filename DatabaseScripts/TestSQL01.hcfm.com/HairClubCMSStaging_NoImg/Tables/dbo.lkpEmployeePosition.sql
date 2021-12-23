@@ -78,7 +78,7 @@ ALTER TABLE [dbo].[lkpEmployeePosition] ADD  DEFAULT ((0)) FOR [IsMembershipTech
 GO
 ALTER TABLE [dbo].[lkpEmployeePosition] ADD  DEFAULT ((1)) FOR [CanAssignActivityTo]
 GO
-ALTER TABLE [dbo].[lkpEmployeePosition]  WITH NOCHECK ADD  CONSTRAINT [FK_lkpEmployeePosition_lkpEmployeePositionTrainingGroup] FOREIGN KEY([EmployeePositionTrainingGroupID])
+ALTER TABLE [dbo].[lkpEmployeePosition]  WITH CHECK ADD  CONSTRAINT [FK_lkpEmployeePosition_lkpEmployeePositionTrainingGroup] FOREIGN KEY([EmployeePositionTrainingGroupID])
 REFERENCES [dbo].[lkpEmployeePositionTrainingGroup] ([EmployeePositionTrainingGroupID])
 GO
 ALTER TABLE [dbo].[lkpEmployeePosition] CHECK CONSTRAINT [FK_lkpEmployeePosition_lkpEmployeePositionTrainingGroup]

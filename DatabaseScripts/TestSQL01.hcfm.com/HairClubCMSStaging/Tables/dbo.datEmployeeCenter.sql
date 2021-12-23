@@ -44,12 +44,12 @@ ALTER TABLE [dbo].[datEmployeeCenter] ADD  DEFAULT ((1)) FOR [IsActiveFlag]
 GO
 ALTER TABLE [dbo].[datEmployeeCenter] ADD  DEFAULT ((1)) FOR [SequenceNumber]
 GO
-ALTER TABLE [dbo].[datEmployeeCenter]  WITH NOCHECK ADD  CONSTRAINT [FK_datEmployeeCenter_cfgCenter2] FOREIGN KEY([CenterID])
+ALTER TABLE [dbo].[datEmployeeCenter]  WITH CHECK ADD  CONSTRAINT [FK_datEmployeeCenter_cfgCenter2] FOREIGN KEY([CenterID])
 REFERENCES [dbo].[cfgCenter] ([CenterID])
 GO
 ALTER TABLE [dbo].[datEmployeeCenter] CHECK CONSTRAINT [FK_datEmployeeCenter_cfgCenter2]
 GO
-ALTER TABLE [dbo].[datEmployeeCenter]  WITH NOCHECK ADD  CONSTRAINT [FK_datEmployeeCenter_datEmployee2] FOREIGN KEY([EmployeeGUID])
+ALTER TABLE [dbo].[datEmployeeCenter]  WITH CHECK ADD  CONSTRAINT [FK_datEmployeeCenter_datEmployee2] FOREIGN KEY([EmployeeGUID])
 REFERENCES [dbo].[datEmployee] ([EmployeeGUID])
 GO
 ALTER TABLE [dbo].[datEmployeeCenter] CHECK CONSTRAINT [FK_datEmployeeCenter_datEmployee2]

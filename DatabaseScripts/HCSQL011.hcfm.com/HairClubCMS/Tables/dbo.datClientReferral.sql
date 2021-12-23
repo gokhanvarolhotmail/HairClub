@@ -23,22 +23,22 @@ CREATE TABLE [dbo].[datClientReferral](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[datClientReferral]  WITH NOCHECK ADD  CONSTRAINT [FK_datClientReferral_datClient_ClientGUID] FOREIGN KEY([ClientGUID])
+ALTER TABLE [dbo].[datClientReferral]  WITH CHECK ADD  CONSTRAINT [FK_datClientReferral_datClient_ClientGUID] FOREIGN KEY([ClientGUID])
 REFERENCES [dbo].[datClient] ([ClientGUID])
 GO
 ALTER TABLE [dbo].[datClientReferral] CHECK CONSTRAINT [FK_datClientReferral_datClient_ClientGUID]
 GO
-ALTER TABLE [dbo].[datClientReferral]  WITH NOCHECK ADD  CONSTRAINT [FK_datClientReferral_datClient_ClientReferredGUID] FOREIGN KEY([ClientReferredGUID])
+ALTER TABLE [dbo].[datClientReferral]  WITH CHECK ADD  CONSTRAINT [FK_datClientReferral_datClient_ClientReferredGUID] FOREIGN KEY([ClientReferredGUID])
 REFERENCES [dbo].[datClient] ([ClientGUID])
 GO
 ALTER TABLE [dbo].[datClientReferral] CHECK CONSTRAINT [FK_datClientReferral_datClient_ClientReferredGUID]
 GO
-ALTER TABLE [dbo].[datClientReferral]  WITH NOCHECK ADD  CONSTRAINT [FK_datClientReferral_datEmployee] FOREIGN KEY([EnteredBy])
+ALTER TABLE [dbo].[datClientReferral]  WITH CHECK ADD  CONSTRAINT [FK_datClientReferral_datEmployee] FOREIGN KEY([EnteredBy])
 REFERENCES [dbo].[datEmployee] ([EmployeeGUID])
 GO
 ALTER TABLE [dbo].[datClientReferral] CHECK CONSTRAINT [FK_datClientReferral_datEmployee]
 GO
-ALTER TABLE [dbo].[datClientReferral]  WITH NOCHECK ADD  CONSTRAINT [FK_datClientReferral_datEmployee_EmployeeGUID] FOREIGN KEY([EmployeeGUID])
+ALTER TABLE [dbo].[datClientReferral]  WITH CHECK ADD  CONSTRAINT [FK_datClientReferral_datEmployee_EmployeeGUID] FOREIGN KEY([EmployeeGUID])
 REFERENCES [dbo].[datEmployee] ([EmployeeGUID])
 GO
 ALTER TABLE [dbo].[datClientReferral] CHECK CONSTRAINT [FK_datClientReferral_datEmployee_EmployeeGUID]

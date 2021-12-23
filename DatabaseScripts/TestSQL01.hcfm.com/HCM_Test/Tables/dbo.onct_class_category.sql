@@ -25,7 +25,7 @@ CREATE NONCLUSTERED INDEX [onct_class_category_i2] ON [dbo].[onct_class_category
 	[parent_class_category_code] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[onct_class_category]  WITH NOCHECK ADD  CONSTRAINT [class_catego_class_catego_300] FOREIGN KEY([parent_class_category_code])
+ALTER TABLE [dbo].[onct_class_category]  WITH CHECK ADD  CONSTRAINT [class_catego_class_catego_300] FOREIGN KEY([parent_class_category_code])
 REFERENCES [dbo].[onct_class_category] ([class_category_code])
 GO
 ALTER TABLE [dbo].[onct_class_category] CHECK CONSTRAINT [class_catego_class_catego_300]

@@ -31,17 +31,17 @@ CREATE TABLE [dbo].[cfgAddOn](
 GO
 ALTER TABLE [dbo].[cfgAddOn] ADD  CONSTRAINT [DF_cfgAddOn_IsMultipleAddAllowed]  DEFAULT ((0)) FOR [IsMultipleAddAllowed]
 GO
-ALTER TABLE [dbo].[cfgAddOn]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgAddOn_cfgSalesCode] FOREIGN KEY([PaymentSalesCodeID])
+ALTER TABLE [dbo].[cfgAddOn]  WITH CHECK ADD  CONSTRAINT [FK_cfgAddOn_cfgSalesCode] FOREIGN KEY([PaymentSalesCodeID])
 REFERENCES [dbo].[cfgSalesCode] ([SalesCodeID])
 GO
 ALTER TABLE [dbo].[cfgAddOn] CHECK CONSTRAINT [FK_cfgAddOn_cfgSalesCode]
 GO
-ALTER TABLE [dbo].[cfgAddOn]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgAddOn_cfgSalesCode1] FOREIGN KEY([MonthlyFeeSalesCodeID])
+ALTER TABLE [dbo].[cfgAddOn]  WITH CHECK ADD  CONSTRAINT [FK_cfgAddOn_cfgSalesCode1] FOREIGN KEY([MonthlyFeeSalesCodeID])
 REFERENCES [dbo].[cfgSalesCode] ([SalesCodeID])
 GO
 ALTER TABLE [dbo].[cfgAddOn] CHECK CONSTRAINT [FK_cfgAddOn_cfgSalesCode1]
 GO
-ALTER TABLE [dbo].[cfgAddOn]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgAddOn_lkpAddOnType] FOREIGN KEY([AddOnTypeID])
+ALTER TABLE [dbo].[cfgAddOn]  WITH CHECK ADD  CONSTRAINT [FK_cfgAddOn_lkpAddOnType] FOREIGN KEY([AddOnTypeID])
 REFERENCES [dbo].[lkpAddOnType] ([AddOnTypeID])
 GO
 ALTER TABLE [dbo].[cfgAddOn] CHECK CONSTRAINT [FK_cfgAddOn_lkpAddOnType]

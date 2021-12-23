@@ -18,12 +18,12 @@ CREATE TABLE [dbo].[cfgHairSystemAttributeMapping](
 GO
 ALTER TABLE [dbo].[cfgHairSystemAttributeMapping] ADD  DEFAULT ((0)) FOR [IsBaseColorFlag]
 GO
-ALTER TABLE [dbo].[cfgHairSystemAttributeMapping]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgHairSystemAttributeMapping_lkpHairSystemCurl] FOREIGN KEY([HairSystemCurlID])
+ALTER TABLE [dbo].[cfgHairSystemAttributeMapping]  WITH CHECK ADD  CONSTRAINT [FK_cfgHairSystemAttributeMapping_lkpHairSystemCurl] FOREIGN KEY([HairSystemCurlID])
 REFERENCES [dbo].[lkpHairSystemCurl] ([HairSystemCurlID])
 GO
 ALTER TABLE [dbo].[cfgHairSystemAttributeMapping] CHECK CONSTRAINT [FK_cfgHairSystemAttributeMapping_lkpHairSystemCurl]
 GO
-ALTER TABLE [dbo].[cfgHairSystemAttributeMapping]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgHairSystemAttributeMapping_lkpHairSystemHairMaterial] FOREIGN KEY([HairSystemHairMaterialID])
+ALTER TABLE [dbo].[cfgHairSystemAttributeMapping]  WITH CHECK ADD  CONSTRAINT [FK_cfgHairSystemAttributeMapping_lkpHairSystemHairMaterial] FOREIGN KEY([HairSystemHairMaterialID])
 REFERENCES [dbo].[lkpHairSystemHairMaterial] ([HairSystemHairMaterialID])
 GO
 ALTER TABLE [dbo].[cfgHairSystemAttributeMapping] CHECK CONSTRAINT [FK_cfgHairSystemAttributeMapping_lkpHairSystemHairMaterial]

@@ -25,12 +25,12 @@ CREATE UNIQUE NONCLUSTERED INDEX [UK_cfgEmployeePositionJoin_EmployeePositionID_
 GO
 ALTER TABLE [dbo].[cfgEmployeePositionJoin] ADD  CONSTRAINT [DF_cfgEmployeePositionJoin_IsActiveFlag]  DEFAULT ((1)) FOR [IsActiveFlag]
 GO
-ALTER TABLE [dbo].[cfgEmployeePositionJoin]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgEmployeePositionJoin_datEmployee] FOREIGN KEY([EmployeeGUID])
+ALTER TABLE [dbo].[cfgEmployeePositionJoin]  WITH CHECK ADD  CONSTRAINT [FK_cfgEmployeePositionJoin_datEmployee] FOREIGN KEY([EmployeeGUID])
 REFERENCES [dbo].[datEmployee] ([EmployeeGUID])
 GO
 ALTER TABLE [dbo].[cfgEmployeePositionJoin] CHECK CONSTRAINT [FK_cfgEmployeePositionJoin_datEmployee]
 GO
-ALTER TABLE [dbo].[cfgEmployeePositionJoin]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgEmployeePositionJoin_lkpEmployeePosition] FOREIGN KEY([EmployeePositionID])
+ALTER TABLE [dbo].[cfgEmployeePositionJoin]  WITH CHECK ADD  CONSTRAINT [FK_cfgEmployeePositionJoin_lkpEmployeePosition] FOREIGN KEY([EmployeePositionID])
 REFERENCES [dbo].[lkpEmployeePosition] ([EmployeePositionID])
 GO
 ALTER TABLE [dbo].[cfgEmployeePositionJoin] CHECK CONSTRAINT [FK_cfgEmployeePositionJoin_lkpEmployeePosition]

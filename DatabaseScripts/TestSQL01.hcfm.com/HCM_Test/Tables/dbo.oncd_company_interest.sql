@@ -51,33 +51,33 @@ CREATE NONCLUSTERED INDEX [oncd_company_interest_i5] ON [dbo].[oncd_company_inte
 	[interest_status_code] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[oncd_company_interest]  WITH NOCHECK ADD  CONSTRAINT [company_company_inte_91] FOREIGN KEY([company_id])
+ALTER TABLE [dbo].[oncd_company_interest]  WITH CHECK ADD  CONSTRAINT [company_company_inte_91] FOREIGN KEY([company_id])
 REFERENCES [dbo].[oncd_company] ([company_id])
 ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[oncd_company_interest] CHECK CONSTRAINT [company_company_inte_91]
 GO
-ALTER TABLE [dbo].[oncd_company_interest]  WITH NOCHECK ADD  CONSTRAINT [interest_company_inte_525] FOREIGN KEY([interest_code])
+ALTER TABLE [dbo].[oncd_company_interest]  WITH CHECK ADD  CONSTRAINT [interest_company_inte_525] FOREIGN KEY([interest_code])
 REFERENCES [dbo].[onca_interest] ([interest_code])
 GO
 ALTER TABLE [dbo].[oncd_company_interest] CHECK CONSTRAINT [interest_company_inte_525]
 GO
-ALTER TABLE [dbo].[oncd_company_interest]  WITH NOCHECK ADD  CONSTRAINT [interest_sta_company_inte_527] FOREIGN KEY([interest_status_code])
+ALTER TABLE [dbo].[oncd_company_interest]  WITH CHECK ADD  CONSTRAINT [interest_sta_company_inte_527] FOREIGN KEY([interest_status_code])
 REFERENCES [dbo].[onca_interest_status] ([interest_status_code])
 GO
 ALTER TABLE [dbo].[oncd_company_interest] CHECK CONSTRAINT [interest_sta_company_inte_527]
 GO
-ALTER TABLE [dbo].[oncd_company_interest]  WITH NOCHECK ADD  CONSTRAINT [interest_sub_company_inte_1164] FOREIGN KEY([interest_sub_code])
+ALTER TABLE [dbo].[oncd_company_interest]  WITH CHECK ADD  CONSTRAINT [interest_sub_company_inte_1164] FOREIGN KEY([interest_sub_code])
 REFERENCES [dbo].[onca_interest_subgroup] ([interest_sub_code])
 GO
 ALTER TABLE [dbo].[oncd_company_interest] CHECK CONSTRAINT [interest_sub_company_inte_1164]
 GO
-ALTER TABLE [dbo].[oncd_company_interest]  WITH NOCHECK ADD  CONSTRAINT [user_company_inte_528] FOREIGN KEY([updated_by_user_code])
+ALTER TABLE [dbo].[oncd_company_interest]  WITH CHECK ADD  CONSTRAINT [user_company_inte_528] FOREIGN KEY([updated_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_company_interest] CHECK CONSTRAINT [user_company_inte_528]
 GO
-ALTER TABLE [dbo].[oncd_company_interest]  WITH NOCHECK ADD  CONSTRAINT [user_company_inte_529] FOREIGN KEY([created_by_user_code])
+ALTER TABLE [dbo].[oncd_company_interest]  WITH CHECK ADD  CONSTRAINT [user_company_inte_529] FOREIGN KEY([created_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_company_interest] CHECK CONSTRAINT [user_company_inte_529]

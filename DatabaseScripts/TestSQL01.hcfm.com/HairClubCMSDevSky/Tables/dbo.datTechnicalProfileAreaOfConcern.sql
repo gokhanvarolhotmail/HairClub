@@ -20,12 +20,12 @@ CREATE TABLE [dbo].[datTechnicalProfileAreaOfConcern](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[datTechnicalProfileAreaOfConcern]  WITH NOCHECK ADD  CONSTRAINT [FK_datTechnicalProfileAreaOfConcern_datTechnicalProfile] FOREIGN KEY([TechnicalProfileID])
+ALTER TABLE [dbo].[datTechnicalProfileAreaOfConcern]  WITH CHECK ADD  CONSTRAINT [FK_datTechnicalProfileAreaOfConcern_datTechnicalProfile] FOREIGN KEY([TechnicalProfileID])
 REFERENCES [dbo].[datTechnicalProfile] ([TechnicalProfileID])
 GO
 ALTER TABLE [dbo].[datTechnicalProfileAreaOfConcern] CHECK CONSTRAINT [FK_datTechnicalProfileAreaOfConcern_datTechnicalProfile]
 GO
-ALTER TABLE [dbo].[datTechnicalProfileAreaOfConcern]  WITH NOCHECK ADD  CONSTRAINT [FK_datTechnicalProfileAreaOfConcern_lkpScalpRegion] FOREIGN KEY([ScalpRegionID])
+ALTER TABLE [dbo].[datTechnicalProfileAreaOfConcern]  WITH CHECK ADD  CONSTRAINT [FK_datTechnicalProfileAreaOfConcern_lkpScalpRegion] FOREIGN KEY([ScalpRegionID])
 REFERENCES [dbo].[lkpScalpRegion] ([ScalpRegionID])
 GO
 ALTER TABLE [dbo].[datTechnicalProfileAreaOfConcern] CHECK CONSTRAINT [FK_datTechnicalProfileAreaOfConcern_lkpScalpRegion]

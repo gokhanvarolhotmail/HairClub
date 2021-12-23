@@ -17,12 +17,12 @@ CREATE TABLE [dbo].[cfgSalesCodeCenterContractPricing](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[cfgSalesCodeCenterContractPricing]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgSalesCodeCenterContractPricing_cfgSalesCode] FOREIGN KEY([SalesCodeID])
+ALTER TABLE [dbo].[cfgSalesCodeCenterContractPricing]  WITH CHECK ADD  CONSTRAINT [FK_cfgSalesCodeCenterContractPricing_cfgSalesCode] FOREIGN KEY([SalesCodeID])
 REFERENCES [dbo].[cfgSalesCode] ([SalesCodeID])
 GO
 ALTER TABLE [dbo].[cfgSalesCodeCenterContractPricing] CHECK CONSTRAINT [FK_cfgSalesCodeCenterContractPricing_cfgSalesCode]
 GO
-ALTER TABLE [dbo].[cfgSalesCodeCenterContractPricing]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgSalesCodeCenterContractPricing_cfgSalesCodeCenterContract] FOREIGN KEY([SalesCodeCenterContractID])
+ALTER TABLE [dbo].[cfgSalesCodeCenterContractPricing]  WITH CHECK ADD  CONSTRAINT [FK_cfgSalesCodeCenterContractPricing_cfgSalesCodeCenterContract] FOREIGN KEY([SalesCodeCenterContractID])
 REFERENCES [dbo].[cfgSalesCodeCenterContract] ([SalesCodeCenterContractID])
 GO
 ALTER TABLE [dbo].[cfgSalesCodeCenterContractPricing] CHECK CONSTRAINT [FK_cfgSalesCodeCenterContractPricing_cfgSalesCodeCenterContract]

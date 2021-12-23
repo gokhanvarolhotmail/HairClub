@@ -50,42 +50,42 @@ ALTER TABLE [dbo].[datAppointmentPhoto] ADD  CONSTRAINT [DF_datAppointmentPhoto_
 GO
 ALTER TABLE [dbo].[datAppointmentPhoto] ADD  CONSTRAINT [DF_datAppointmentPhoto_AverageWidth]  DEFAULT ((0)) FOR [AverageWidth]
 GO
-ALTER TABLE [dbo].[datAppointmentPhoto]  WITH NOCHECK ADD  CONSTRAINT [FK_datAppointmentPhoto_datAppointment] FOREIGN KEY([AppointmentGUID])
+ALTER TABLE [dbo].[datAppointmentPhoto]  WITH CHECK ADD  CONSTRAINT [FK_datAppointmentPhoto_datAppointment] FOREIGN KEY([AppointmentGUID])
 REFERENCES [dbo].[datAppointment] ([AppointmentGUID])
 GO
 ALTER TABLE [dbo].[datAppointmentPhoto] CHECK CONSTRAINT [FK_datAppointmentPhoto_datAppointment]
 GO
-ALTER TABLE [dbo].[datAppointmentPhoto]  WITH NOCHECK ADD  CONSTRAINT [FK_datAppointmentPhoto_datClient] FOREIGN KEY([ClientGUID])
+ALTER TABLE [dbo].[datAppointmentPhoto]  WITH CHECK ADD  CONSTRAINT [FK_datAppointmentPhoto_datClient] FOREIGN KEY([ClientGUID])
 REFERENCES [dbo].[datClient] ([ClientGUID])
 GO
 ALTER TABLE [dbo].[datAppointmentPhoto] CHECK CONSTRAINT [FK_datAppointmentPhoto_datClient]
 GO
-ALTER TABLE [dbo].[datAppointmentPhoto]  WITH NOCHECK ADD  CONSTRAINT [FK_datAppointmentPhoto_lkpPhotoCaption] FOREIGN KEY([PhotoCaptionID])
+ALTER TABLE [dbo].[datAppointmentPhoto]  WITH CHECK ADD  CONSTRAINT [FK_datAppointmentPhoto_lkpPhotoCaption] FOREIGN KEY([PhotoCaptionID])
 REFERENCES [dbo].[lkpPhotoCaption] ([PhotoCaptionID])
 GO
 ALTER TABLE [dbo].[datAppointmentPhoto] CHECK CONSTRAINT [FK_datAppointmentPhoto_lkpPhotoCaption]
 GO
-ALTER TABLE [dbo].[datAppointmentPhoto]  WITH NOCHECK ADD  CONSTRAINT [FK_datAppointmentPhoto_lkpPhotoLens] FOREIGN KEY([PhotoLensID])
+ALTER TABLE [dbo].[datAppointmentPhoto]  WITH CHECK ADD  CONSTRAINT [FK_datAppointmentPhoto_lkpPhotoLens] FOREIGN KEY([PhotoLensID])
 REFERENCES [dbo].[lkpPhotoLens] ([PhotoLensID])
 GO
 ALTER TABLE [dbo].[datAppointmentPhoto] CHECK CONSTRAINT [FK_datAppointmentPhoto_lkpPhotoLens]
 GO
-ALTER TABLE [dbo].[datAppointmentPhoto]  WITH NOCHECK ADD  CONSTRAINT [FK_datAppointmentPhoto_lkpPhotoLightType] FOREIGN KEY([PhotoLightTypeID])
+ALTER TABLE [dbo].[datAppointmentPhoto]  WITH CHECK ADD  CONSTRAINT [FK_datAppointmentPhoto_lkpPhotoLightType] FOREIGN KEY([PhotoLightTypeID])
 REFERENCES [dbo].[lkpPhotoLightType] ([PhotoLightTypeID])
 GO
 ALTER TABLE [dbo].[datAppointmentPhoto] CHECK CONSTRAINT [FK_datAppointmentPhoto_lkpPhotoLightType]
 GO
-ALTER TABLE [dbo].[datAppointmentPhoto]  WITH NOCHECK ADD  CONSTRAINT [FK_datAppointmentPhoto_lkpPhotoType] FOREIGN KEY([PhotoTypeID])
+ALTER TABLE [dbo].[datAppointmentPhoto]  WITH CHECK ADD  CONSTRAINT [FK_datAppointmentPhoto_lkpPhotoType] FOREIGN KEY([PhotoTypeID])
 REFERENCES [dbo].[lkpPhotoType] ([PhotoTypeID])
 GO
 ALTER TABLE [dbo].[datAppointmentPhoto] CHECK CONSTRAINT [FK_datAppointmentPhoto_lkpPhotoType]
 GO
-ALTER TABLE [dbo].[datAppointmentPhoto]  WITH NOCHECK ADD  CONSTRAINT [FK_datAppointmentPhoto_lkpScalpArea] FOREIGN KEY([ScalpAreaID])
+ALTER TABLE [dbo].[datAppointmentPhoto]  WITH CHECK ADD  CONSTRAINT [FK_datAppointmentPhoto_lkpScalpArea] FOREIGN KEY([ScalpAreaID])
 REFERENCES [dbo].[lkpScalpArea] ([ScalpAreaID])
 GO
 ALTER TABLE [dbo].[datAppointmentPhoto] CHECK CONSTRAINT [FK_datAppointmentPhoto_lkpScalpArea]
 GO
-ALTER TABLE [dbo].[datAppointmentPhoto]  WITH NOCHECK ADD  CONSTRAINT [FK_datAppointmentPhoto_lkpScalpRegion] FOREIGN KEY([ScalpRegionID])
+ALTER TABLE [dbo].[datAppointmentPhoto]  WITH CHECK ADD  CONSTRAINT [FK_datAppointmentPhoto_lkpScalpRegion] FOREIGN KEY([ScalpRegionID])
 REFERENCES [dbo].[lkpScalpRegion] ([ScalpRegionID])
 GO
 ALTER TABLE [dbo].[datAppointmentPhoto] CHECK CONSTRAINT [FK_datAppointmentPhoto_lkpScalpRegion]

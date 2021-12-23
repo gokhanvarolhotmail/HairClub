@@ -27,42 +27,42 @@ CREATE TABLE [dbo].[lkpReportResourceImage](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[lkpReportResourceImage]  WITH NOCHECK ADD  CONSTRAINT [FK_lkpReportResourceImage_lkpEthnicity] FOREIGN KEY([EthnicityID])
+ALTER TABLE [dbo].[lkpReportResourceImage]  WITH CHECK ADD  CONSTRAINT [FK_lkpReportResourceImage_lkpEthnicity] FOREIGN KEY([EthnicityID])
 REFERENCES [dbo].[lkpEthnicity] ([EthnicityID])
 GO
 ALTER TABLE [dbo].[lkpReportResourceImage] CHECK CONSTRAINT [FK_lkpReportResourceImage_lkpEthnicity]
 GO
-ALTER TABLE [dbo].[lkpReportResourceImage]  WITH NOCHECK ADD  CONSTRAINT [FK_lkpReportResourceImage_lkpFlakingLevel] FOREIGN KEY([FlakingLevelID])
+ALTER TABLE [dbo].[lkpReportResourceImage]  WITH CHECK ADD  CONSTRAINT [FK_lkpReportResourceImage_lkpFlakingLevel] FOREIGN KEY([FlakingLevelID])
 REFERENCES [dbo].[lkpFlakingLevel] ([FlakingLevelID])
 GO
 ALTER TABLE [dbo].[lkpReportResourceImage] CHECK CONSTRAINT [FK_lkpReportResourceImage_lkpFlakingLevel]
 GO
-ALTER TABLE [dbo].[lkpReportResourceImage]  WITH NOCHECK ADD  CONSTRAINT [FK_lkpReportResourceImage_lkpGender] FOREIGN KEY([GenderID])
+ALTER TABLE [dbo].[lkpReportResourceImage]  WITH CHECK ADD  CONSTRAINT [FK_lkpReportResourceImage_lkpGender] FOREIGN KEY([GenderID])
 REFERENCES [dbo].[lkpGender] ([GenderID])
 GO
 ALTER TABLE [dbo].[lkpReportResourceImage] CHECK CONSTRAINT [FK_lkpReportResourceImage_lkpGender]
 GO
-ALTER TABLE [dbo].[lkpReportResourceImage]  WITH NOCHECK ADD  CONSTRAINT [FK_lkpReportResourceImage_lkpLudwigScale] FOREIGN KEY([LudwigScaleID])
+ALTER TABLE [dbo].[lkpReportResourceImage]  WITH CHECK ADD  CONSTRAINT [FK_lkpReportResourceImage_lkpLudwigScale] FOREIGN KEY([LudwigScaleID])
 REFERENCES [dbo].[lkpLudwigScale] ([LudwigScaleID])
 GO
 ALTER TABLE [dbo].[lkpReportResourceImage] CHECK CONSTRAINT [FK_lkpReportResourceImage_lkpLudwigScale]
 GO
-ALTER TABLE [dbo].[lkpReportResourceImage]  WITH NOCHECK ADD  CONSTRAINT [FK_lkpReportResourceImage_lkpScalpHealth] FOREIGN KEY([ScalpHealthID])
+ALTER TABLE [dbo].[lkpReportResourceImage]  WITH CHECK ADD  CONSTRAINT [FK_lkpReportResourceImage_lkpScalpHealth] FOREIGN KEY([ScalpHealthID])
 REFERENCES [dbo].[lkpScalpHealth] ([ScalpHealthID])
 GO
 ALTER TABLE [dbo].[lkpReportResourceImage] CHECK CONSTRAINT [FK_lkpReportResourceImage_lkpScalpHealth]
 GO
-ALTER TABLE [dbo].[lkpReportResourceImage]  WITH NOCHECK ADD  CONSTRAINT [FK_lkpReportResourceImage_lkpScalpRegion] FOREIGN KEY([ScalpRegionID])
+ALTER TABLE [dbo].[lkpReportResourceImage]  WITH CHECK ADD  CONSTRAINT [FK_lkpReportResourceImage_lkpScalpRegion] FOREIGN KEY([ScalpRegionID])
 REFERENCES [dbo].[lkpScalpRegion] ([ScalpRegionID])
 GO
 ALTER TABLE [dbo].[lkpReportResourceImage] CHECK CONSTRAINT [FK_lkpReportResourceImage_lkpScalpRegion]
 GO
-ALTER TABLE [dbo].[lkpReportResourceImage]  WITH NOCHECK ADD  CONSTRAINT [FK_lkpReportResourceImage_lkpSebumLevel] FOREIGN KEY([SebumLevelID])
+ALTER TABLE [dbo].[lkpReportResourceImage]  WITH CHECK ADD  CONSTRAINT [FK_lkpReportResourceImage_lkpSebumLevel] FOREIGN KEY([SebumLevelID])
 REFERENCES [dbo].[lkpSebumLevel] ([SebumLevelID])
 GO
 ALTER TABLE [dbo].[lkpReportResourceImage] CHECK CONSTRAINT [FK_lkpReportResourceImage_lkpSebumLevel]
 GO
-ALTER TABLE [dbo].[lkpReportResourceImage]  WITH NOCHECK ADD  CONSTRAINT [FK_lkpReportResourceImage_lkpSorenessLevel] FOREIGN KEY([SorenessLevelID])
+ALTER TABLE [dbo].[lkpReportResourceImage]  WITH CHECK ADD  CONSTRAINT [FK_lkpReportResourceImage_lkpSorenessLevel] FOREIGN KEY([SorenessLevelID])
 REFERENCES [dbo].[lkpSorenessLevel] ([SorenessLevelID])
 GO
 ALTER TABLE [dbo].[lkpReportResourceImage] CHECK CONSTRAINT [FK_lkpReportResourceImage_lkpSorenessLevel]

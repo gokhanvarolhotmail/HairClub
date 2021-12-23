@@ -19,7 +19,7 @@ CREATE TABLE [dbo].[datStyleBookPhoto](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[datStyleBookPhoto]  WITH NOCHECK ADD  CONSTRAINT [FK_datStyleBookPhoto_datStyleBook] FOREIGN KEY([StyleBookID])
+ALTER TABLE [dbo].[datStyleBookPhoto]  WITH CHECK ADD  CONSTRAINT [FK_datStyleBookPhoto_datStyleBook] FOREIGN KEY([StyleBookID])
 REFERENCES [dbo].[datStyleBook] ([StyleBookID])
 GO
 ALTER TABLE [dbo].[datStyleBookPhoto] CHECK CONSTRAINT [FK_datStyleBookPhoto_datStyleBook]

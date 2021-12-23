@@ -34,7 +34,7 @@ CREATE NONCLUSTERED INDEX [IX_cfgSurgeryGraftPricing_SurgeryGraftPricingSortOrde
 	[SurgeryGraftPricingSortOrder] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[cfgSurgeryGraftPricing]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgSurgeryGraftPricing_cfgCenter] FOREIGN KEY([CenterID])
+ALTER TABLE [dbo].[cfgSurgeryGraftPricing]  WITH CHECK ADD  CONSTRAINT [FK_cfgSurgeryGraftPricing_cfgCenter] FOREIGN KEY([CenterID])
 REFERENCES [dbo].[cfgCenter] ([CenterID])
 GO
 ALTER TABLE [dbo].[cfgSurgeryGraftPricing] CHECK CONSTRAINT [FK_cfgSurgeryGraftPricing_cfgCenter]

@@ -18,24 +18,24 @@ CREATE TABLE [dbo].[oncd_activity_contact](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[oncd_activity_contact]  WITH NOCHECK ADD  CONSTRAINT [activity_activity_con_98] FOREIGN KEY([activity_id])
+ALTER TABLE [dbo].[oncd_activity_contact]  WITH CHECK ADD  CONSTRAINT [activity_activity_con_98] FOREIGN KEY([activity_id])
 REFERENCES [dbo].[oncd_activity] ([activity_id])
 ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[oncd_activity_contact] CHECK CONSTRAINT [activity_activity_con_98]
 GO
-ALTER TABLE [dbo].[oncd_activity_contact]  WITH NOCHECK ADD  CONSTRAINT [contact_activity_con_104] FOREIGN KEY([contact_id])
+ALTER TABLE [dbo].[oncd_activity_contact]  WITH CHECK ADD  CONSTRAINT [contact_activity_con_104] FOREIGN KEY([contact_id])
 REFERENCES [dbo].[oncd_contact] ([contact_id])
 ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[oncd_activity_contact] CHECK CONSTRAINT [contact_activity_con_104]
 GO
-ALTER TABLE [dbo].[oncd_activity_contact]  WITH NOCHECK ADD  CONSTRAINT [user_activity_con_455] FOREIGN KEY([created_by_user_code])
+ALTER TABLE [dbo].[oncd_activity_contact]  WITH CHECK ADD  CONSTRAINT [user_activity_con_455] FOREIGN KEY([created_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_activity_contact] CHECK CONSTRAINT [user_activity_con_455]
 GO
-ALTER TABLE [dbo].[oncd_activity_contact]  WITH NOCHECK ADD  CONSTRAINT [user_activity_con_456] FOREIGN KEY([updated_by_user_code])
+ALTER TABLE [dbo].[oncd_activity_contact]  WITH CHECK ADD  CONSTRAINT [user_activity_con_456] FOREIGN KEY([updated_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_activity_contact] CHECK CONSTRAINT [user_activity_con_456]

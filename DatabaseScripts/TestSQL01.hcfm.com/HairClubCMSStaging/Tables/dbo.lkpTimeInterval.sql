@@ -23,7 +23,7 @@ CREATE TABLE [dbo].[lkpTimeInterval](
 GO
 ALTER TABLE [dbo].[lkpTimeInterval] ADD  CONSTRAINT [DF_lkpTimeInterval_IsActiveFlag]  DEFAULT ((1)) FOR [IsActiveFlag]
 GO
-ALTER TABLE [dbo].[lkpTimeInterval]  WITH NOCHECK ADD  CONSTRAINT [FK_lkpTimeInterval_lkpTimeUnit] FOREIGN KEY([TimeUnitID])
+ALTER TABLE [dbo].[lkpTimeInterval]  WITH CHECK ADD  CONSTRAINT [FK_lkpTimeInterval_lkpTimeUnit] FOREIGN KEY([TimeUnitID])
 REFERENCES [dbo].[lkpTimeUnit] ([TimeUnitID])
 GO
 ALTER TABLE [dbo].[lkpTimeInterval] CHECK CONSTRAINT [FK_lkpTimeInterval_lkpTimeUnit]

@@ -56,7 +56,7 @@ ALTER TABLE [dbo].[datRegisterCash] ADD  CONSTRAINT [DF_datRegisterCash_NickelCo
 GO
 ALTER TABLE [dbo].[datRegisterCash] ADD  CONSTRAINT [DF_datRegisterCash_PennyCount]  DEFAULT ((0)) FOR [PennyCount]
 GO
-ALTER TABLE [dbo].[datRegisterCash]  WITH NOCHECK ADD  CONSTRAINT [FK_datRegisterCash_datRegisterTender] FOREIGN KEY([RegisterTenderGUID])
+ALTER TABLE [dbo].[datRegisterCash]  WITH CHECK ADD  CONSTRAINT [FK_datRegisterCash_datRegisterTender] FOREIGN KEY([RegisterTenderGUID])
 REFERENCES [dbo].[datRegisterTender] ([RegisterTenderGUID])
 GO
 ALTER TABLE [dbo].[datRegisterCash] CHECK CONSTRAINT [FK_datRegisterCash_datRegisterTender]

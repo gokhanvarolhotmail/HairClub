@@ -21,12 +21,12 @@ CREATE NONCLUSTERED INDEX [IX_cfgHairSystemVendorContractHairSystem_HairSystemVe
 	[HairSystemID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[cfgHairSystemVendorContractHairSystem]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgHairSystemVendorContractHairSystem_cfgHairSystem] FOREIGN KEY([HairSystemID])
+ALTER TABLE [dbo].[cfgHairSystemVendorContractHairSystem]  WITH CHECK ADD  CONSTRAINT [FK_cfgHairSystemVendorContractHairSystem_cfgHairSystem] FOREIGN KEY([HairSystemID])
 REFERENCES [dbo].[cfgHairSystem] ([HairSystemID])
 GO
 ALTER TABLE [dbo].[cfgHairSystemVendorContractHairSystem] CHECK CONSTRAINT [FK_cfgHairSystemVendorContractHairSystem_cfgHairSystem]
 GO
-ALTER TABLE [dbo].[cfgHairSystemVendorContractHairSystem]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgHairSystemVendorContractHairSystem_cfgHairSystemVendorContract] FOREIGN KEY([HairSystemVendorContractID])
+ALTER TABLE [dbo].[cfgHairSystemVendorContractHairSystem]  WITH CHECK ADD  CONSTRAINT [FK_cfgHairSystemVendorContractHairSystem_cfgHairSystemVendorContract] FOREIGN KEY([HairSystemVendorContractID])
 REFERENCES [dbo].[cfgHairSystemVendorContract] ([HairSystemVendorContractID])
 GO
 ALTER TABLE [dbo].[cfgHairSystemVendorContractHairSystem] CHECK CONSTRAINT [FK_cfgHairSystemVendorContractHairSystem_cfgHairSystemVendorContract]

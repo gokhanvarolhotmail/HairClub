@@ -102,72 +102,72 @@ CREATE NONCLUSTERED INDEX [oncd_incident_i9] ON [dbo].[oncd_incident]
 	[incident_status_code] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[oncd_incident]  WITH NOCHECK ADD  CONSTRAINT [company_incident_217] FOREIGN KEY([company_id])
+ALTER TABLE [dbo].[oncd_incident]  WITH CHECK ADD  CONSTRAINT [company_incident_217] FOREIGN KEY([company_id])
 REFERENCES [dbo].[oncd_company] ([company_id])
 GO
 ALTER TABLE [dbo].[oncd_incident] CHECK CONSTRAINT [company_incident_217]
 GO
-ALTER TABLE [dbo].[oncd_incident]  WITH NOCHECK ADD  CONSTRAINT [contract_incident_375] FOREIGN KEY([contract_id])
+ALTER TABLE [dbo].[oncd_incident]  WITH CHECK ADD  CONSTRAINT [contract_incident_375] FOREIGN KEY([contract_id])
 REFERENCES [dbo].[oncd_contract] ([contract_id])
 GO
 ALTER TABLE [dbo].[oncd_incident] CHECK CONSTRAINT [contract_incident_375]
 GO
-ALTER TABLE [dbo].[oncd_incident]  WITH NOCHECK ADD  CONSTRAINT [defect_incident_282] FOREIGN KEY([defect_id])
+ALTER TABLE [dbo].[oncd_incident]  WITH CHECK ADD  CONSTRAINT [defect_incident_282] FOREIGN KEY([defect_id])
 REFERENCES [dbo].[oncd_defect] ([defect_id])
 GO
 ALTER TABLE [dbo].[oncd_incident] CHECK CONSTRAINT [defect_incident_282]
 GO
-ALTER TABLE [dbo].[oncd_incident]  WITH NOCHECK ADD  CONSTRAINT [defect_resol_incident_283] FOREIGN KEY([resolution_id])
+ALTER TABLE [dbo].[oncd_incident]  WITH CHECK ADD  CONSTRAINT [defect_resol_incident_283] FOREIGN KEY([resolution_id])
 REFERENCES [dbo].[oncd_defect_resolution] ([resolution_id])
 GO
 ALTER TABLE [dbo].[oncd_incident] CHECK CONSTRAINT [defect_resol_incident_283]
 GO
-ALTER TABLE [dbo].[oncd_incident]  WITH NOCHECK ADD  CONSTRAINT [incident_sta_incident_660] FOREIGN KEY([incident_status_code])
+ALTER TABLE [dbo].[oncd_incident]  WITH CHECK ADD  CONSTRAINT [incident_sta_incident_660] FOREIGN KEY([incident_status_code])
 REFERENCES [dbo].[onca_incident_status] ([incident_status_code])
 GO
 ALTER TABLE [dbo].[oncd_incident] CHECK CONSTRAINT [incident_sta_incident_660]
 GO
-ALTER TABLE [dbo].[oncd_incident]  WITH NOCHECK ADD  CONSTRAINT [incident_typ_incident_661] FOREIGN KEY([incident_type_code])
+ALTER TABLE [dbo].[oncd_incident]  WITH CHECK ADD  CONSTRAINT [incident_typ_incident_661] FOREIGN KEY([incident_type_code])
 REFERENCES [dbo].[onca_incident_type] ([incident_type_code])
 GO
 ALTER TABLE [dbo].[oncd_incident] CHECK CONSTRAINT [incident_typ_incident_661]
 GO
-ALTER TABLE [dbo].[oncd_incident]  WITH NOCHECK ADD  CONSTRAINT [product_incident_659] FOREIGN KEY([product_code])
+ALTER TABLE [dbo].[oncd_incident]  WITH CHECK ADD  CONSTRAINT [product_incident_659] FOREIGN KEY([product_code])
 REFERENCES [dbo].[onca_product] ([product_code])
 GO
 ALTER TABLE [dbo].[oncd_incident] CHECK CONSTRAINT [product_incident_659]
 GO
-ALTER TABLE [dbo].[oncd_incident]  WITH NOCHECK ADD  CONSTRAINT [product_part_incident_1088] FOREIGN KEY([part_code])
+ALTER TABLE [dbo].[oncd_incident]  WITH CHECK ADD  CONSTRAINT [product_part_incident_1088] FOREIGN KEY([part_code])
 REFERENCES [dbo].[onca_product_part] ([part_code])
 GO
 ALTER TABLE [dbo].[oncd_incident] CHECK CONSTRAINT [product_part_incident_1088]
 GO
-ALTER TABLE [dbo].[oncd_incident]  WITH NOCHECK ADD  CONSTRAINT [product_vers_incident_1087] FOREIGN KEY([version_code])
+ALTER TABLE [dbo].[oncd_incident]  WITH CHECK ADD  CONSTRAINT [product_vers_incident_1087] FOREIGN KEY([version_code])
 REFERENCES [dbo].[onca_product_version] ([version_code])
 GO
 ALTER TABLE [dbo].[oncd_incident] CHECK CONSTRAINT [product_vers_incident_1087]
 GO
-ALTER TABLE [dbo].[oncd_incident]  WITH NOCHECK ADD  CONSTRAINT [user_incident_654] FOREIGN KEY([assigned_to_user_code])
+ALTER TABLE [dbo].[oncd_incident]  WITH CHECK ADD  CONSTRAINT [user_incident_654] FOREIGN KEY([assigned_to_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_incident] CHECK CONSTRAINT [user_incident_654]
 GO
-ALTER TABLE [dbo].[oncd_incident]  WITH NOCHECK ADD  CONSTRAINT [user_incident_655] FOREIGN KEY([completed_by_user_code])
+ALTER TABLE [dbo].[oncd_incident]  WITH CHECK ADD  CONSTRAINT [user_incident_655] FOREIGN KEY([completed_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_incident] CHECK CONSTRAINT [user_incident_655]
 GO
-ALTER TABLE [dbo].[oncd_incident]  WITH NOCHECK ADD  CONSTRAINT [user_incident_656] FOREIGN KEY([status_updated_by_user_code])
+ALTER TABLE [dbo].[oncd_incident]  WITH CHECK ADD  CONSTRAINT [user_incident_656] FOREIGN KEY([status_updated_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_incident] CHECK CONSTRAINT [user_incident_656]
 GO
-ALTER TABLE [dbo].[oncd_incident]  WITH NOCHECK ADD  CONSTRAINT [user_incident_657] FOREIGN KEY([created_by_user_code])
+ALTER TABLE [dbo].[oncd_incident]  WITH CHECK ADD  CONSTRAINT [user_incident_657] FOREIGN KEY([created_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_incident] CHECK CONSTRAINT [user_incident_657]
 GO
-ALTER TABLE [dbo].[oncd_incident]  WITH NOCHECK ADD  CONSTRAINT [user_incident_658] FOREIGN KEY([updated_by_user_code])
+ALTER TABLE [dbo].[oncd_incident]  WITH CHECK ADD  CONSTRAINT [user_incident_658] FOREIGN KEY([updated_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_incident] CHECK CONSTRAINT [user_incident_658]

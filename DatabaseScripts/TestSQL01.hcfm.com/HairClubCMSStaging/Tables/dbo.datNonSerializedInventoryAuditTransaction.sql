@@ -25,12 +25,12 @@ CREATE NONCLUSTERED INDEX [IX_datNonSerializedInventoryAuditTransaction_NonSeria
 )
 INCLUDE([SalesCodeID],[QuantityExpected]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[datNonSerializedInventoryAuditTransaction]  WITH NOCHECK ADD  CONSTRAINT [FK_datNonSerializedInventoryAuditTransaction_cfgSalesCode] FOREIGN KEY([SalesCodeID])
+ALTER TABLE [dbo].[datNonSerializedInventoryAuditTransaction]  WITH CHECK ADD  CONSTRAINT [FK_datNonSerializedInventoryAuditTransaction_cfgSalesCode] FOREIGN KEY([SalesCodeID])
 REFERENCES [dbo].[cfgSalesCode] ([SalesCodeID])
 GO
 ALTER TABLE [dbo].[datNonSerializedInventoryAuditTransaction] CHECK CONSTRAINT [FK_datNonSerializedInventoryAuditTransaction_cfgSalesCode]
 GO
-ALTER TABLE [dbo].[datNonSerializedInventoryAuditTransaction]  WITH NOCHECK ADD  CONSTRAINT [FK_datNonSerializedInventoryAuditTransaction_datNonSerializedInventoryAuditBatch] FOREIGN KEY([NonSerializedInventoryAuditBatchID])
+ALTER TABLE [dbo].[datNonSerializedInventoryAuditTransaction]  WITH CHECK ADD  CONSTRAINT [FK_datNonSerializedInventoryAuditTransaction_datNonSerializedInventoryAuditBatch] FOREIGN KEY([NonSerializedInventoryAuditBatchID])
 REFERENCES [dbo].[datNonSerializedInventoryAuditBatch] ([NonSerializedInventoryAuditBatchID])
 GO
 ALTER TABLE [dbo].[datNonSerializedInventoryAuditTransaction] CHECK CONSTRAINT [FK_datNonSerializedInventoryAuditTransaction_datNonSerializedInventoryAuditBatch]

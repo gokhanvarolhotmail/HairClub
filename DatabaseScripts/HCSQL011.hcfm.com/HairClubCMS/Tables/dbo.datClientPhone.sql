@@ -33,12 +33,12 @@ CREATE NONCLUSTERED INDEX [NC_datClientPhone_ClientGUID] ON [dbo].[datClientPhon
 	[ClientGUID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[datClientPhone]  WITH NOCHECK ADD  CONSTRAINT [FK_datClientPhone_datClient] FOREIGN KEY([ClientGUID])
+ALTER TABLE [dbo].[datClientPhone]  WITH CHECK ADD  CONSTRAINT [FK_datClientPhone_datClient] FOREIGN KEY([ClientGUID])
 REFERENCES [dbo].[datClient] ([ClientGUID])
 GO
 ALTER TABLE [dbo].[datClientPhone] CHECK CONSTRAINT [FK_datClientPhone_datClient]
 GO
-ALTER TABLE [dbo].[datClientPhone]  WITH NOCHECK ADD  CONSTRAINT [FK_datClientPhone_lkpPhoneType] FOREIGN KEY([PhoneTypeID])
+ALTER TABLE [dbo].[datClientPhone]  WITH CHECK ADD  CONSTRAINT [FK_datClientPhone_lkpPhoneType] FOREIGN KEY([PhoneTypeID])
 REFERENCES [dbo].[lkpPhoneType] ([PhoneTypeID])
 GO
 ALTER TABLE [dbo].[datClientPhone] CHECK CONSTRAINT [FK_datClientPhone_lkpPhoneType]

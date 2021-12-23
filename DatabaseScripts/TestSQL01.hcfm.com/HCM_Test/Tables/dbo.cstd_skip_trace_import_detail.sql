@@ -74,13 +74,13 @@ CREATE NONCLUSTERED INDEX [skip_trace_import_detail_i1] ON [dbo].[cstd_skip_trac
 )
 INCLUDE([row_number],[data_block_number]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[cstd_skip_trace_import_detail]  WITH NOCHECK ADD  CONSTRAINT [import_detail_import] FOREIGN KEY([skip_trace_import_id])
+ALTER TABLE [dbo].[cstd_skip_trace_import_detail]  WITH CHECK ADD  CONSTRAINT [import_detail_import] FOREIGN KEY([skip_trace_import_id])
 REFERENCES [dbo].[cstd_skip_trace_import] ([skip_trace_import_id])
 ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[cstd_skip_trace_import_detail] CHECK CONSTRAINT [import_detail_import]
 GO
-ALTER TABLE [dbo].[cstd_skip_trace_import_detail]  WITH NOCHECK ADD  CONSTRAINT [import_detail_row_processing_status] FOREIGN KEY([skip_trace_import_row_processing_status_code])
+ALTER TABLE [dbo].[cstd_skip_trace_import_detail]  WITH CHECK ADD  CONSTRAINT [import_detail_row_processing_status] FOREIGN KEY([skip_trace_import_row_processing_status_code])
 REFERENCES [dbo].[csta_skip_trace_import_row_processing_status] ([skip_trace_import_row_processing_status_code])
 GO
 ALTER TABLE [dbo].[cstd_skip_trace_import_detail] CHECK CONSTRAINT [import_detail_row_processing_status]

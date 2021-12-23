@@ -32,22 +32,22 @@ CREATE NONCLUSTERED INDEX [IX_datClientMembershipDocument_DocumentTypeID] ON [db
 )
 INCLUDE([ClientMembershipDocumentGUID],[ClientMembershipGUID]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[datClientMembershipDocument]  WITH NOCHECK ADD  CONSTRAINT [FK_datClientMembershipDocument_datClient] FOREIGN KEY([ClientGUID])
+ALTER TABLE [dbo].[datClientMembershipDocument]  WITH CHECK ADD  CONSTRAINT [FK_datClientMembershipDocument_datClient] FOREIGN KEY([ClientGUID])
 REFERENCES [dbo].[datClient] ([ClientGUID])
 GO
 ALTER TABLE [dbo].[datClientMembershipDocument] CHECK CONSTRAINT [FK_datClientMembershipDocument_datClient]
 GO
-ALTER TABLE [dbo].[datClientMembershipDocument]  WITH NOCHECK ADD  CONSTRAINT [FK_datClientMembershipDocument_datClientMembership] FOREIGN KEY([ClientMembershipGUID])
+ALTER TABLE [dbo].[datClientMembershipDocument]  WITH CHECK ADD  CONSTRAINT [FK_datClientMembershipDocument_datClientMembership] FOREIGN KEY([ClientMembershipGUID])
 REFERENCES [dbo].[datClientMembership] ([ClientMembershipGUID])
 GO
 ALTER TABLE [dbo].[datClientMembershipDocument] CHECK CONSTRAINT [FK_datClientMembershipDocument_datClientMembership]
 GO
-ALTER TABLE [dbo].[datClientMembershipDocument]  WITH NOCHECK ADD  CONSTRAINT [FK_datClientMembershipDocument_lkpDocumentStatus] FOREIGN KEY([DocumentStatusID])
+ALTER TABLE [dbo].[datClientMembershipDocument]  WITH CHECK ADD  CONSTRAINT [FK_datClientMembershipDocument_lkpDocumentStatus] FOREIGN KEY([DocumentStatusID])
 REFERENCES [dbo].[lkpDocumentStatus] ([DocumentStatusID])
 GO
 ALTER TABLE [dbo].[datClientMembershipDocument] CHECK CONSTRAINT [FK_datClientMembershipDocument_lkpDocumentStatus]
 GO
-ALTER TABLE [dbo].[datClientMembershipDocument]  WITH NOCHECK ADD  CONSTRAINT [FK_datClientMembershipDocument_lkpDocumentType] FOREIGN KEY([DocumentTypeID])
+ALTER TABLE [dbo].[datClientMembershipDocument]  WITH CHECK ADD  CONSTRAINT [FK_datClientMembershipDocument_lkpDocumentType] FOREIGN KEY([DocumentTypeID])
 REFERENCES [dbo].[lkpDocumentType] ([DocumentTypeID])
 GO
 ALTER TABLE [dbo].[datClientMembershipDocument] CHECK CONSTRAINT [FK_datClientMembershipDocument_lkpDocumentType]

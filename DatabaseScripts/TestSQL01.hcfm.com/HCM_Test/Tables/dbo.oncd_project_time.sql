@@ -39,23 +39,23 @@ CREATE NONCLUSTERED INDEX [index_oncd_project_time_i4] ON [dbo].[oncd_project_ti
 	[project_time_date] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[oncd_project_time]  WITH NOCHECK ADD  CONSTRAINT [project_task_project_time_780] FOREIGN KEY([project_task_id])
+ALTER TABLE [dbo].[oncd_project_time]  WITH CHECK ADD  CONSTRAINT [project_task_project_time_780] FOREIGN KEY([project_task_id])
 REFERENCES [dbo].[oncd_project_task] ([project_task_id])
 ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[oncd_project_time] CHECK CONSTRAINT [project_task_project_time_780]
 GO
-ALTER TABLE [dbo].[oncd_project_time]  WITH NOCHECK ADD  CONSTRAINT [user_project_time_1059] FOREIGN KEY([created_by_user_code])
+ALTER TABLE [dbo].[oncd_project_time]  WITH CHECK ADD  CONSTRAINT [user_project_time_1059] FOREIGN KEY([created_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_project_time] CHECK CONSTRAINT [user_project_time_1059]
 GO
-ALTER TABLE [dbo].[oncd_project_time]  WITH NOCHECK ADD  CONSTRAINT [user_project_time_1060] FOREIGN KEY([updated_by_user_code])
+ALTER TABLE [dbo].[oncd_project_time]  WITH CHECK ADD  CONSTRAINT [user_project_time_1060] FOREIGN KEY([updated_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_project_time] CHECK CONSTRAINT [user_project_time_1060]
 GO
-ALTER TABLE [dbo].[oncd_project_time]  WITH NOCHECK ADD  CONSTRAINT [user_project_time_1061] FOREIGN KEY([user_code])
+ALTER TABLE [dbo].[oncd_project_time]  WITH CHECK ADD  CONSTRAINT [user_project_time_1061] FOREIGN KEY([user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[oncd_project_time] CHECK CONSTRAINT [user_project_time_1061]

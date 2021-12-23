@@ -39,22 +39,22 @@ CREATE NONCLUSTERED INDEX [IX_datPurchaseOrder_VendorID] ON [dbo].[datPurchaseOr
 )
 INCLUDE([PurchaseOrderGUID],[HairSystemAllocationGUID],[PurchaseOrderTypeID]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[datPurchaseOrder]  WITH NOCHECK ADD  CONSTRAINT [FK_datPurchaseOrder_cfgVendor] FOREIGN KEY([VendorID])
+ALTER TABLE [dbo].[datPurchaseOrder]  WITH CHECK ADD  CONSTRAINT [FK_datPurchaseOrder_cfgVendor] FOREIGN KEY([VendorID])
 REFERENCES [dbo].[cfgVendor] ([VendorID])
 GO
 ALTER TABLE [dbo].[datPurchaseOrder] CHECK CONSTRAINT [FK_datPurchaseOrder_cfgVendor]
 GO
-ALTER TABLE [dbo].[datPurchaseOrder]  WITH NOCHECK ADD  CONSTRAINT [FK_datPurchaseOrder_datHairSystemAllocation] FOREIGN KEY([HairSystemAllocationGUID])
+ALTER TABLE [dbo].[datPurchaseOrder]  WITH CHECK ADD  CONSTRAINT [FK_datPurchaseOrder_datHairSystemAllocation] FOREIGN KEY([HairSystemAllocationGUID])
 REFERENCES [dbo].[datHairSystemAllocation] ([HairSystemAllocationGUID])
 GO
 ALTER TABLE [dbo].[datPurchaseOrder] CHECK CONSTRAINT [FK_datPurchaseOrder_datHairSystemAllocation]
 GO
-ALTER TABLE [dbo].[datPurchaseOrder]  WITH NOCHECK ADD  CONSTRAINT [FK_datPurchaseOrder_lkpPurchaseOrderStatus] FOREIGN KEY([PurchaseOrderStatusID])
+ALTER TABLE [dbo].[datPurchaseOrder]  WITH CHECK ADD  CONSTRAINT [FK_datPurchaseOrder_lkpPurchaseOrderStatus] FOREIGN KEY([PurchaseOrderStatusID])
 REFERENCES [dbo].[lkpPurchaseOrderStatus] ([PurchaseOrderStatusID])
 GO
 ALTER TABLE [dbo].[datPurchaseOrder] CHECK CONSTRAINT [FK_datPurchaseOrder_lkpPurchaseOrderStatus]
 GO
-ALTER TABLE [dbo].[datPurchaseOrder]  WITH NOCHECK ADD  CONSTRAINT [FK_datPurchaseOrder_lkpPurchaseOrderType] FOREIGN KEY([PurchaseOrderTypeID])
+ALTER TABLE [dbo].[datPurchaseOrder]  WITH CHECK ADD  CONSTRAINT [FK_datPurchaseOrder_lkpPurchaseOrderType] FOREIGN KEY([PurchaseOrderTypeID])
 REFERENCES [dbo].[lkpPurchaseOrderType] ([PurchaseOrderTypeID])
 GO
 ALTER TABLE [dbo].[datPurchaseOrder] CHECK CONSTRAINT [FK_datPurchaseOrder_lkpPurchaseOrderType]

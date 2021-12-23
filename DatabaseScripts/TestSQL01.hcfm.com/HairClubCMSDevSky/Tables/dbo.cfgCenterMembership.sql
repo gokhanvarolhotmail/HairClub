@@ -40,17 +40,17 @@ INCLUDE([CenterID],[ContractPriceMale],[ContractPriceFemale]) WITH (PAD_INDEX = 
 GO
 ALTER TABLE [dbo].[cfgCenterMembership] ADD  DEFAULT ((0)) FOR [CanUseInHousePaymentPlan]
 GO
-ALTER TABLE [dbo].[cfgCenterMembership]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgCenterMembership_cfgAgreement] FOREIGN KEY([AgreementID])
+ALTER TABLE [dbo].[cfgCenterMembership]  WITH CHECK ADD  CONSTRAINT [FK_cfgCenterMembership_cfgAgreement] FOREIGN KEY([AgreementID])
 REFERENCES [dbo].[cfgAgreement] ([AgreementID])
 GO
 ALTER TABLE [dbo].[cfgCenterMembership] CHECK CONSTRAINT [FK_cfgCenterMembership_cfgAgreement]
 GO
-ALTER TABLE [dbo].[cfgCenterMembership]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgCenterMembership_cfgCenter] FOREIGN KEY([CenterID])
+ALTER TABLE [dbo].[cfgCenterMembership]  WITH CHECK ADD  CONSTRAINT [FK_cfgCenterMembership_cfgCenter] FOREIGN KEY([CenterID])
 REFERENCES [dbo].[cfgCenter] ([CenterID])
 GO
 ALTER TABLE [dbo].[cfgCenterMembership] CHECK CONSTRAINT [FK_cfgCenterMembership_cfgCenter]
 GO
-ALTER TABLE [dbo].[cfgCenterMembership]  WITH NOCHECK ADD  CONSTRAINT [FK_cfgCenterMembership_cfgMembership] FOREIGN KEY([MembershipID])
+ALTER TABLE [dbo].[cfgCenterMembership]  WITH CHECK ADD  CONSTRAINT [FK_cfgCenterMembership_cfgMembership] FOREIGN KEY([MembershipID])
 REFERENCES [dbo].[cfgMembership] ([MembershipID])
 GO
 ALTER TABLE [dbo].[cfgCenterMembership] CHECK CONSTRAINT [FK_cfgCenterMembership_cfgMembership]

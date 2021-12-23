@@ -29,17 +29,17 @@ CREATE NONCLUSTERED INDEX [oncs_server_i2] ON [dbo].[oncs_server]
 	[is_active_for_extract] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[oncs_server]  WITH NOCHECK ADD  CONSTRAINT [packet_server_391] FOREIGN KEY([last_applied_packet_id])
+ALTER TABLE [dbo].[oncs_server]  WITH CHECK ADD  CONSTRAINT [packet_server_391] FOREIGN KEY([last_applied_packet_id])
 REFERENCES [dbo].[oncs_packet] ([packet_id])
 GO
 ALTER TABLE [dbo].[oncs_server] CHECK CONSTRAINT [packet_server_391]
 GO
-ALTER TABLE [dbo].[oncs_server]  WITH NOCHECK ADD  CONSTRAINT [packet_server_395] FOREIGN KEY([last_extracted_packet_id])
+ALTER TABLE [dbo].[oncs_server]  WITH CHECK ADD  CONSTRAINT [packet_server_395] FOREIGN KEY([last_extracted_packet_id])
 REFERENCES [dbo].[oncs_packet] ([packet_id])
 GO
 ALTER TABLE [dbo].[oncs_server] CHECK CONSTRAINT [packet_server_395]
 GO
-ALTER TABLE [dbo].[oncs_server]  WITH NOCHECK ADD  CONSTRAINT [transport_server_313] FOREIGN KEY([transport_id])
+ALTER TABLE [dbo].[oncs_server]  WITH CHECK ADD  CONSTRAINT [transport_server_313] FOREIGN KEY([transport_id])
 REFERENCES [dbo].[oncs_transport] ([transport_id])
 GO
 ALTER TABLE [dbo].[oncs_server] CHECK CONSTRAINT [transport_server_313]

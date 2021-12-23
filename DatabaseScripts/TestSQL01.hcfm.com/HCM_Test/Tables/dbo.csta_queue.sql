@@ -20,22 +20,22 @@ CREATE TABLE [dbo].[csta_queue](
 GO
 ALTER TABLE [dbo].[csta_queue] ADD  CONSTRAINT [DF__csta_queu__activ__1CDC41A7]  DEFAULT ('Y') FOR [active]
 GO
-ALTER TABLE [dbo].[csta_queue]  WITH NOCHECK ADD  CONSTRAINT [onca_campaign_csta_queue_001] FOREIGN KEY([campaign_code])
+ALTER TABLE [dbo].[csta_queue]  WITH CHECK ADD  CONSTRAINT [onca_campaign_csta_queue_001] FOREIGN KEY([campaign_code])
 REFERENCES [dbo].[onca_campaign] ([campaign_code])
 GO
 ALTER TABLE [dbo].[csta_queue] CHECK CONSTRAINT [onca_campaign_csta_queue_001]
 GO
-ALTER TABLE [dbo].[csta_queue]  WITH NOCHECK ADD  CONSTRAINT [onca_user_csta_queue_767] FOREIGN KEY([created_by_user_code])
+ALTER TABLE [dbo].[csta_queue]  WITH CHECK ADD  CONSTRAINT [onca_user_csta_queue_767] FOREIGN KEY([created_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[csta_queue] CHECK CONSTRAINT [onca_user_csta_queue_767]
 GO
-ALTER TABLE [dbo].[csta_queue]  WITH NOCHECK ADD  CONSTRAINT [onca_user_csta_queue_768] FOREIGN KEY([updated_by_user_code])
+ALTER TABLE [dbo].[csta_queue]  WITH CHECK ADD  CONSTRAINT [onca_user_csta_queue_768] FOREIGN KEY([updated_by_user_code])
 REFERENCES [dbo].[onca_user] ([user_code])
 GO
 ALTER TABLE [dbo].[csta_queue] CHECK CONSTRAINT [onca_user_csta_queue_768]
 GO
-ALTER TABLE [dbo].[csta_queue]  WITH NOCHECK ADD  CONSTRAINT [onct_object_csta_queue_766] FOREIGN KEY([object_id])
+ALTER TABLE [dbo].[csta_queue]  WITH CHECK ADD  CONSTRAINT [onct_object_csta_queue_766] FOREIGN KEY([object_id])
 REFERENCES [dbo].[onct_object] ([object_id])
 GO
 ALTER TABLE [dbo].[csta_queue] CHECK CONSTRAINT [onct_object_csta_queue_766]

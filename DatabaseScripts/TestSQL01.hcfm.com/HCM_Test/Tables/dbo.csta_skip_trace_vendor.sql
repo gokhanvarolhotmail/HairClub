@@ -50,22 +50,22 @@ ALTER TABLE [dbo].[csta_skip_trace_vendor] ADD  DEFAULT ('N') FOR [phone_primary
 GO
 ALTER TABLE [dbo].[csta_skip_trace_vendor] ADD  DEFAULT ('Y') FOR [active_ftp]
 GO
-ALTER TABLE [dbo].[csta_skip_trace_vendor]  WITH NOCHECK ADD  CONSTRAINT [address_next_vendor] FOREIGN KEY([address_next_vendor_code])
+ALTER TABLE [dbo].[csta_skip_trace_vendor]  WITH CHECK ADD  CONSTRAINT [address_next_vendor] FOREIGN KEY([address_next_vendor_code])
 REFERENCES [dbo].[csta_skip_trace_vendor] ([skip_trace_vendor_code])
 GO
 ALTER TABLE [dbo].[csta_skip_trace_vendor] CHECK CONSTRAINT [address_next_vendor]
 GO
-ALTER TABLE [dbo].[csta_skip_trace_vendor]  WITH NOCHECK ADD  CONSTRAINT [email_next_vendor] FOREIGN KEY([email_next_vendor_code])
+ALTER TABLE [dbo].[csta_skip_trace_vendor]  WITH CHECK ADD  CONSTRAINT [email_next_vendor] FOREIGN KEY([email_next_vendor_code])
 REFERENCES [dbo].[csta_skip_trace_vendor] ([skip_trace_vendor_code])
 GO
 ALTER TABLE [dbo].[csta_skip_trace_vendor] CHECK CONSTRAINT [email_next_vendor]
 GO
-ALTER TABLE [dbo].[csta_skip_trace_vendor]  WITH NOCHECK ADD  CONSTRAINT [phone_next_vendor] FOREIGN KEY([phone_next_vendor_code])
+ALTER TABLE [dbo].[csta_skip_trace_vendor]  WITH CHECK ADD  CONSTRAINT [phone_next_vendor] FOREIGN KEY([phone_next_vendor_code])
 REFERENCES [dbo].[csta_skip_trace_vendor] ([skip_trace_vendor_code])
 GO
 ALTER TABLE [dbo].[csta_skip_trace_vendor] CHECK CONSTRAINT [phone_next_vendor]
 GO
-ALTER TABLE [dbo].[csta_skip_trace_vendor]  WITH NOCHECK ADD  CONSTRAINT [vendor_state] FOREIGN KEY([state_code])
+ALTER TABLE [dbo].[csta_skip_trace_vendor]  WITH CHECK ADD  CONSTRAINT [vendor_state] FOREIGN KEY([state_code])
 REFERENCES [dbo].[onca_state] ([state_code])
 GO
 ALTER TABLE [dbo].[csta_skip_trace_vendor] CHECK CONSTRAINT [vendor_state]

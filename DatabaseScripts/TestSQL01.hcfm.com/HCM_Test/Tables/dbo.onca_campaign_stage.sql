@@ -17,13 +17,13 @@ CREATE TABLE [dbo].[onca_campaign_stage](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[onca_campaign_stage]  WITH NOCHECK ADD  CONSTRAINT [campaign_campaign_sta_275] FOREIGN KEY([campaign_code])
+ALTER TABLE [dbo].[onca_campaign_stage]  WITH CHECK ADD  CONSTRAINT [campaign_campaign_sta_275] FOREIGN KEY([campaign_code])
 REFERENCES [dbo].[onca_campaign] ([campaign_code])
 ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[onca_campaign_stage] CHECK CONSTRAINT [campaign_campaign_sta_275]
 GO
-ALTER TABLE [dbo].[onca_campaign_stage]  WITH NOCHECK ADD  CONSTRAINT [stage_status_campaign_sta_276] FOREIGN KEY([stage_status_code])
+ALTER TABLE [dbo].[onca_campaign_stage]  WITH CHECK ADD  CONSTRAINT [stage_status_campaign_sta_276] FOREIGN KEY([stage_status_code])
 REFERENCES [dbo].[onca_stage_status] ([stage_status_code])
 GO
 ALTER TABLE [dbo].[onca_campaign_stage] CHECK CONSTRAINT [stage_status_campaign_sta_276]

@@ -53,7 +53,7 @@ CREATE TABLE [dbo].[oncd_activity](
 GO
 ALTER TABLE [dbo].[oncd_activity] ADD  CONSTRAINT [DF_oncd_activity_cst_brochure_download]  DEFAULT (N'N') FOR [cst_brochure_download]
 GO
-ALTER TABLE [dbo].[oncd_activity]  WITH NOCHECK ADD  CONSTRAINT [FK_oncd_activity_csta_promotion_code] FOREIGN KEY([cst_promotion_code])
+ALTER TABLE [dbo].[oncd_activity]  WITH CHECK ADD  CONSTRAINT [FK_oncd_activity_csta_promotion_code] FOREIGN KEY([cst_promotion_code])
 REFERENCES [dbo].[csta_promotion_code] ([promotion_code])
 GO
 ALTER TABLE [dbo].[oncd_activity] CHECK CONSTRAINT [FK_oncd_activity_csta_promotion_code]
