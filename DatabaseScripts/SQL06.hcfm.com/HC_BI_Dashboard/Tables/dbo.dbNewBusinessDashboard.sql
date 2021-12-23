@@ -1,4 +1,4 @@
-/* CreateDate: 03/25/2019 15:31:05.427 , ModifyDate: 12/21/2021 23:47:21.537 */
+/* CreateDate: 03/25/2019 15:31:05.427 , ModifyDate: 12/22/2021 23:49:32.410 */
 GO
 CREATE TABLE [dbo].[dbNewBusinessDashboard](
 	[Area] [varchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
