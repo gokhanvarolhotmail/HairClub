@@ -1,2 +1,0 @@
-CREATE SCHEMA [BUILTIN\Administrators]
-GO
