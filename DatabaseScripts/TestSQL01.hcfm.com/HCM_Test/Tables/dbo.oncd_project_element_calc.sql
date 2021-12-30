@@ -1,0 +1,30 @@
+/* CreateDate: 01/25/2010 11:09:10.053 , ModifyDate: 06/21/2012 10:05:10.047 */
+GO
+CREATE TABLE [dbo].[oncd_project_element_calc](
+	[project_element_calc_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+	[project_element_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+	[description] [nchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[factor] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+	[quantity] [int] NOT NULL,
+	[calc_time] [int] NULL,
+	[factor_type_flag] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+	[override] [nchar](1) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+	[sort_order] [int] NULL,
+	[project_factor_code] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+ CONSTRAINT [pk_oncd_project_element_calc] PRIMARY KEY CLUSTERED
+(
+	[project_element_calc_id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[oncd_project_element_calc]  WITH CHECK ADD  CONSTRAINT [project_elem_project_elem_753] FOREIGN KEY([project_element_id])
+REFERENCES [dbo].[oncd_project_element] ([project_element_id])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[oncd_project_element_calc] CHECK CONSTRAINT [project_elem_project_elem_753]
+GO
+ALTER TABLE [dbo].[oncd_project_element_calc]  WITH CHECK ADD  CONSTRAINT [project_fact_project_elem_995] FOREIGN KEY([project_factor_code])
+REFERENCES [dbo].[onca_project_factor] ([project_factor_code])
+GO
+ALTER TABLE [dbo].[oncd_project_element_calc] CHECK CONSTRAINT [project_fact_project_elem_995]
+GO

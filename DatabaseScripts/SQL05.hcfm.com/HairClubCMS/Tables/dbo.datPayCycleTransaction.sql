@@ -1,0 +1,43 @@
+/* CreateDate: 05/05/2020 17:42:51.630 , ModifyDate: 05/05/2020 18:34:11.073 */
+GO
+CREATE TABLE [dbo].[datPayCycleTransaction](
+	[PayCycleTransactionGUID] [uniqueidentifier] NOT NULL,
+	[PayCycleTransactionTypeID] [int] NOT NULL,
+	[CenterFeeBatchGUID] [uniqueidentifier] NOT NULL,
+	[CenterDeclineBatchGUID] [uniqueidentifier] NULL,
+	[SalesOrderGUID] [uniqueidentifier] NOT NULL,
+	[ClientGUID] [uniqueidentifier] NOT NULL,
+	[ProcessorTransactionID] [bigint] NULL,
+	[ApprovalCode] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[FeeAmount] [money] NOT NULL,
+	[TaxAmount] [money] NOT NULL,
+	[ChargeAmount] [money] NOT NULL,
+	[Verbiage] [nvarchar](100) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[SoftCode] [nvarchar](30) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[HardCode] [nvarchar](30) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[Last4Digits] [nvarchar](4) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[ExpirationDate] [nvarchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[IsTokenUsedFlag] [bit] NOT NULL,
+	[IsCardPresentFlag] [bit] NOT NULL,
+	[IsSuccessfulFlag] [bit] NOT NULL,
+	[IsReprocessFlag] [bit] NOT NULL,
+	[TransactionErrorMessage] [nvarchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[AVSResult] [nvarchar](20) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[HCStatusCode] [nchar](1) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[CreateDate] [datetime] NOT NULL,
+	[CreateUser] [nvarchar](25) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+	[LastUpdate] [datetime] NOT NULL,
+	[LastUpdateUser] [nvarchar](25) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+	[UpdateStamp] [timestamp] NOT NULL,
+ CONSTRAINT [PK_datPayCycleTransaction] PRIMARY KEY CLUSTERED
+(
+	[PayCycleTransactionGUID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [FG_CDC]
+) ON [FG_CDC] TEXTIMAGE_ON [FG_CDC]
+GO
+CREATE NONCLUSTERED INDEX [IX_datPayCycleTransaction_CenterFeeBatchGUID] ON [dbo].[datPayCycleTransaction]
+(
+	[CenterFeeBatchGUID] ASC
+)
+INCLUDE([PayCycleTransactionTypeID],[CenterDeclineBatchGUID],[SalesOrderGUID],[ClientGUID],[ApprovalCode],[FeeAmount],[TaxAmount],[ChargeAmount],[Verbiage],[Last4Digits],[ExpirationDate],[IsSuccessfulFlag],[IsReprocessFlag],[CreateDate]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO

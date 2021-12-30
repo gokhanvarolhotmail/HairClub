@@ -1,0 +1,10 @@
+/* CreateDate: 09/04/2007 09:40:45.633 , ModifyDate: 05/01/2010 14:48:08.960 */
+GO
+CREATE FUNCTION [dbo].[ISBEBACK] (@act_code varchar(10))
+RETURNS bit AS
+BEGIN
+RETURN(
+CASE WHEN @act_code IN('BEBACK') THEN 1 ELSE  0 END
+)
+END
+GO

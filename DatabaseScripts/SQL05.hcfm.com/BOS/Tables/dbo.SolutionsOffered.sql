@@ -1,0 +1,24 @@
+/* CreateDate: 04/17/2017 09:48:03.703 , ModifyDate: 04/26/2018 09:34:33.970 */
+GO
+CREATE TABLE [dbo].[SolutionsOffered](
+	[SolutionsCode] [varchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+	[Description] [varchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[Active] [int] NULL,
+	[SortOrder] [int] NULL,
+	[BusinessUnitBrandDescriptionShort] [nvarchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NULL
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING ON
+GO
+CREATE UNIQUE CLUSTERED INDEX [PK_SolutionsOffered] ON [dbo].[SolutionsOffered]
+(
+	[SolutionsCode] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO
+SET ANSI_PADDING ON
+GO
+CREATE NONCLUSTERED INDEX [IX_SolutionsOffered_SolutionsCode] ON [dbo].[SolutionsOffered]
+(
+	[SolutionsCode] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO

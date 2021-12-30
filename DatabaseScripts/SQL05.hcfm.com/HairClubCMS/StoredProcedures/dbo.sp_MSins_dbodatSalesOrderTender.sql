@@ -1,0 +1,65 @@
+/* CreateDate: 05/05/2020 17:42:48.390 , ModifyDate: 05/05/2020 17:42:48.390 */
+GO
+create procedure [sp_MSins_dbodatSalesOrderTender]
+    @c1 uniqueidentifier,
+    @c2 uniqueidentifier,
+    @c3 int,
+    @c4 money,
+    @c5 int,
+    @c6 nvarchar(4),
+    @c7 nvarchar(100),
+    @c8 int,
+    @c9 int,
+    @c10 int,
+    @c11 datetime,
+    @c12 nvarchar(25),
+    @c13 datetime,
+    @c14 nvarchar(25),
+    @c15 money,
+    @c16 bigint,
+    @c17 int,
+    @c18 money
+as
+begin
+	insert into [dbo].[datSalesOrderTender] (
+		[SalesOrderTenderGUID],
+		[SalesOrderGUID],
+		[TenderTypeID],
+		[Amount],
+		[CheckNumber],
+		[CreditCardLast4Digits],
+		[ApprovalCode],
+		[CreditCardTypeID],
+		[FinanceCompanyID],
+		[InterCompanyReasonID],
+		[CreateDate],
+		[CreateUser],
+		[LastUpdate],
+		[LastUpdateUser],
+		[UpdateStamp],
+		[RefundAmount],
+		[MonetraTransactionId],
+		[EntrySortOrder],
+		[CashCollected]
+	) values (
+		@c1,
+		@c2,
+		@c3,
+		@c4,
+		@c5,
+		@c6,
+		@c7,
+		@c8,
+		@c9,
+		@c10,
+		@c11,
+		@c12,
+		@c13,
+		@c14,
+		default,
+		@c15,
+		@c16,
+		@c17,
+		@c18	)
+end
+GO

@@ -1,0 +1,9 @@
+/* CreateDate: 09/29/2020 16:41:54.270 , ModifyDate: 09/29/2020 16:41:54.270 */
+GO
+CREATE	FUNCTION fnIsNoShow (@ActionCode NVARCHAR(50), @ResultCode NVARCHAR(50))
+RETURNS BIT
+AS
+BEGIN
+	RETURN (CASE WHEN @ResultCode IN ( 'No Show' ) THEN 1 ELSE 0 END)
+END
+GO

@@ -1,0 +1,66 @@
+/* CreateDate: 05/05/2020 17:42:40.477 , ModifyDate: 05/05/2020 17:42:40.477 */
+GO
+create procedure [dbo].[sp_MSins_dbocfgCenterMembershipAddOn]
+    @c1 int,
+    @c2 int,
+    @c3 int,
+    @c4 bit,
+    @c5 datetime,
+    @c6 nvarchar(25),
+    @c7 datetime,
+    @c8 nvarchar(25),
+    @c9 binary(8),
+    @c10 money,
+    @c11 money,
+    @c12 money,
+    @c13 int,
+    @c14 int,
+    @c15 int,
+    @c16 int,
+    @c17 int,
+    @c18 int,
+    @c19 money
+as
+begin
+	insert into [dbo].[cfgCenterMembershipAddOn] (
+		[CenterMembershipAddOnID],
+		[CenterMembershipID],
+		[AddOnID],
+		[IsActiveFlag],
+		[CreateDate],
+		[CreateUser],
+		[LastUpdate],
+		[LastUpdateUser],
+		[UpdateStamp],
+		[PriceDefault],
+		[PriceMinimum],
+		[PriceMaximum],
+		[QuantityMinimum],
+		[QuantityMaximum],
+		[PaymentSalesCodeID],
+		[MonthlyFeeSalesCodeID],
+		[AgreementID],
+		[QuantityIntervalMultiplier],
+		[ValuationPrice]
+	) values (
+		@c1,
+		@c2,
+		@c3,
+		@c4,
+		@c5,
+		@c6,
+		@c7,
+		@c8,
+		@c9,
+		@c10,
+		@c11,
+		@c12,
+		@c13,
+		@c14,
+		@c15,
+		@c16,
+		@c17,
+		@c18,
+		@c19	)
+end
+GO

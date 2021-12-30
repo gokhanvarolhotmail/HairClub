@@ -1,0 +1,66 @@
+/* CreateDate: 01/03/2018 16:31:36.530 , ModifyDate: 01/03/2018 16:31:36.530 */
+GO
+create procedure [dbo].[sp_MSins_dbocstd_text_msg_log]
+    @c1 int,
+    @c2 nchar(10),
+    @c3 nchar(10),
+    @c4 nchar(10),
+    @c5 nchar(20),
+    @c6 nchar(20),
+    @c7 nchar(20),
+    @c8 nchar(20),
+    @c9 nchar(20),
+    @c10 nchar(11),
+    @c11 datetime,
+    @c12 nchar(255),
+    @c13 nchar(100),
+    @c14 nchar(10),
+    @c15 nchar(10),
+    @c16 nchar(6),
+    @c17 datetime,
+    @c18 nchar(20),
+    @c19 datetime
+as
+begin
+	insert into [dbo].[cstd_text_msg_log](
+		[log_id],
+		[activity_id],
+		[appointment_activity_id],
+		[contact_id],
+		[reference],
+		[customer_id],
+		[message_log_id],
+		[message_id],
+		[result_status],
+		[phone],
+		[appt_date_time],
+		[return_text],
+		[company_name_1],
+		[time_zone_code],
+		[language_code],
+		[action],
+		[creation_date],
+		[created_by_user_code],
+		[process_date]
+	) values (
+    @c1,
+    @c2,
+    @c3,
+    @c4,
+    @c5,
+    @c6,
+    @c7,
+    @c8,
+    @c9,
+    @c10,
+    @c11,
+    @c12,
+    @c13,
+    @c14,
+    @c15,
+    @c16,
+    @c17,
+    @c18,
+    @c19	)
+end
+GO

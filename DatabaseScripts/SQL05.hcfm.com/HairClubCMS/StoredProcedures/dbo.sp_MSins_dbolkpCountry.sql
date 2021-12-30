@@ -1,0 +1,65 @@
+/* CreateDate: 05/05/2020 17:42:38.847 , ModifyDate: 05/05/2020 17:42:38.847 */
+GO
+create procedure [sp_MSins_dbolkpCountry]
+    @c1 int,
+    @c2 int,
+    @c3 nvarchar(100),
+    @c4 nvarchar(10),
+    @c5 int,
+    @c6 bit,
+    @c7 bit,
+    @c8 datetime,
+    @c9 nvarchar(25),
+    @c10 datetime,
+    @c11 nvarchar(25),
+    @c12 bit,
+    @c13 bit,
+    @c14 bit,
+    @c15 nvarchar(50),
+    @c16 nvarchar(500),
+    @c17 nvarchar(100),
+    @c18 nvarchar(10)
+as
+begin
+	insert into [dbo].[lkpCountry] (
+		[CountryID],
+		[CountrySortOrder],
+		[CountryDescription],
+		[CountryDescriptionShort],
+		[CurrencyTypeID],
+		[ValidateZipCodeFlag],
+		[IsActiveFlag],
+		[CreateDate],
+		[CreateUser],
+		[LastUpdate],
+		[LastUpdateUser],
+		[UpdateStamp],
+		[IsStateEnabled],
+		[IsAddressRequired],
+		[IsPhoneNumberRequired],
+		[PhoneNumberMask],
+		[PhoneNumberValidationRegEx],
+		[PhoneNumberDisplayFormat],
+		[PhoneCountryCode]
+	) values (
+		@c1,
+		@c2,
+		@c3,
+		@c4,
+		@c5,
+		@c6,
+		@c7,
+		@c8,
+		@c9,
+		@c10,
+		@c11,
+		default,
+		@c12,
+		@c13,
+		@c14,
+		@c15,
+		@c16,
+		@c17,
+		@c18	)
+end
+GO

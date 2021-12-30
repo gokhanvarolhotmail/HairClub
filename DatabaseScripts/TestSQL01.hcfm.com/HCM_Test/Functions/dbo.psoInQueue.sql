@@ -1,0 +1,14 @@
+/* CreateDate: 10/15/2013 00:34:53.650 , ModifyDate: 10/15/2013 00:34:53.650 */
+GO
+CREATE FUNCTION dbo.psoInQueue
+(
+	@ContactId	NCHAR(10)
+)
+RETURNS NCHAR(10)
+AS
+BEGIN
+
+
+	RETURN @ContactId
+END
+GO

@@ -1,0 +1,12 @@
+/* CreateDate: 05/23/2013 11:10:03.137 , ModifyDate: 03/01/2017 08:25:58.173 */
+GO
+CREATE TABLE [dbo].[tmpGroupMember](
+	[UserLogin] [varchar](100) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+	[GroupName] [varchar](100) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+ CONSTRAINT [PK_tmpGroupMember] PRIMARY KEY CLUSTERED
+(
+	[UserLogin] ASC,
+	[GroupName] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [FG_CDC]
+) ON [FG_CDC]
+GO

@@ -1,0 +1,68 @@
+/* CreateDate: 05/05/2020 17:42:40.427 , ModifyDate: 05/05/2020 17:42:40.427 */
+GO
+create procedure [sp_MSins_dbocfgCenterMembership]
+    @c1 int,
+    @c2 int,
+    @c3 int,
+    @c4 bit,
+    @c5 datetime,
+    @c6 nvarchar(25),
+    @c7 datetime,
+    @c8 nvarchar(25),
+    @c9 money,
+    @c10 money,
+    @c11 int,
+    @c12 int,
+    @c13 bit,
+    @c14 money,
+    @c15 int,
+    @c16 int,
+    @c17 money,
+    @c18 bit,
+    @c19 money
+as
+begin
+	insert into [dbo].[cfgCenterMembership] (
+		[CenterMembershipID],
+		[CenterID],
+		[MembershipID],
+		[IsActiveFlag],
+		[CreateDate],
+		[CreateUser],
+		[LastUpdate],
+		[LastUpdateUser],
+		[UpdateStamp],
+		[ContractPriceMale],
+		[ContractPriceFemale],
+		[NumRenewalDays],
+		[AgreementID],
+		[CanUseInHousePaymentPlan],
+		[DownpaymentMinimumAmount],
+		[MinNumberOfPayments],
+		[MaxNumberOfPayments],
+		[MinimumPaymentPlanAmount],
+		[DoesNewBusinessHairOrderRestrictionsApply],
+		[ValuationPrice]
+	) values (
+		@c1,
+		@c2,
+		@c3,
+		@c4,
+		@c5,
+		@c6,
+		@c7,
+		@c8,
+		default,
+		@c9,
+		@c10,
+		@c11,
+		@c12,
+		@c13,
+		@c14,
+		@c15,
+		@c16,
+		@c17,
+		@c18,
+		@c19	)
+end
+GO

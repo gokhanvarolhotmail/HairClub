@@ -1,0 +1,37 @@
+/* CreateDate: 12/12/2019 16:09:25.417 , ModifyDate: 12/12/2019 16:09:25.417 */
+GO
+/***********************************************************************
+		PROCEDURE: 				[fn_GetNextAppointmentDate]
+		DESTINATION SERVER:		SQL01
+		DESTINATION DATABASE:	HairClubCMS
+		AUTHOR:					Michael Maass
+		DATE IMPLEMENTED:		2013-01-15
+		--------------------------------------------------------------------------------------------------------
+		NOTES:
+			5/22/13	MLM - Fixed Issue with Future Appointments not displaying correctly.
+		--------------------------------------------------------------------------------------------------------
+		Sample Execution:
+		SELECT dbo.[fn_GetNextAppointmentDate] ('8A839DD5-C833-4381-A9D4-1210506EB644')
+		***********************************************************************/
+		CREATE FUNCTION [dbo].[fn_GetNextAppointmentDate]
+		(
+			@ClientMembershipGUID CHAR(36)
+		)
+		RETURNS DATETIME
+		AS
+		BEGIN
+
+			DECLARE @NextAppointmentDate DATETIME
+
+			SELECT top 1 @NextAppointmentDate = a.AppointmentDate
+			FROM datAppointment a
+			Where a.AppointmentDate > CAST(GETDATE() as DATE)
+				AND a.ClientMembershipGUID = @ClientMembershipGUID
+				AND a.IsDeletedFlag = 0
+				AND a.CheckedInFlag = 0
+			Order by a.StartDateTimeCalc
+
+			RETURN @NextAppointmentDate
+
+		END
+GO

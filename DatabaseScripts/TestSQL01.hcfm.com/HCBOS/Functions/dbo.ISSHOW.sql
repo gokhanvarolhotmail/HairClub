@@ -1,0 +1,12 @@
+/* CreateDate: 08/14/2007 19:00:11.533 , ModifyDate: 08/14/2007 19:00:11.533 */
+GO
+CREATE FUNCTION ISSHOW (@result_code char(6))
+RETURNS bit AS
+BEGIN
+RETURN(
+CASE WHEN @result_code LIKE 'S%'
+THEN 1
+ELSE 0 END
+)
+END
+GO

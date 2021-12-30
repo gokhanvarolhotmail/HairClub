@@ -1,0 +1,4 @@
+/* CreateDate: 07/25/2018 13:07:36.090 , ModifyDate: 07/25/2018 13:07:36.090 */
+GO
+create procedure [dbo].[sp_MSins_dbooncd_contact_source]     @c1 nchar(10),     @c2 nchar(10),     @c3 nchar(30),     @c4 nchar(10),     @c5 int,     @c6 datetime,     @c7 datetime,     @c8 nchar(20),     @c9 datetime,     @c10 nchar(20),     @c11 nchar(1),     @c12 int,     @c13 nchar(10) as begin   	insert into [dbo].[oncd_contact_source]( 		[contact_source_id], 		[contact_id], 		[source_code], 		[media_code], 		[sort_order], 		[assignment_date], 		[creation_date], 		[created_by_user_code], 		[updated_date], 		[updated_by_user_code], 		[primary_flag], 		[cst_dnis_number], 		[cst_sub_source_code] 	) values (     @c1,     @c2,     @c3,     @c4,     @c5,     @c6,     @c7,     @c8,     @c9,     @c10,     @c11,     @c12,     @c13	)  end    --
+GO

@@ -1,0 +1,65 @@
+/* CreateDate: 05/05/2020 17:42:50.257 , ModifyDate: 05/05/2020 17:42:50.257 */
+GO
+create procedure [sp_MSins_dbodatHairSystemOrderMeasurement]
+    @c1 uniqueidentifier,
+    @c2 uniqueidentifier,
+    @c3 decimal(10,4),
+    @c4 decimal(10,4),
+    @c5 decimal(10,4),
+    @c6 decimal(10,4),
+    @c7 decimal(10,4),
+    @c8 decimal(10,4),
+    @c9 decimal(10,4),
+    @c10 decimal(10,4),
+    @c11 decimal(10,4),
+    @c12 int,
+    @c13 bit,
+    @c14 int,
+    @c15 datetime,
+    @c16 nvarchar(25),
+    @c17 datetime,
+    @c18 nvarchar(25)
+as
+begin
+	insert into [dbo].[datHairSystemOrderMeasurement] (
+		[HairSystemOrderMeasurementGUID],
+		[HairSystemOrderGUID],
+		[StartingPointMeasurement],
+		[CircumferenceMeasurement],
+		[FrontToBackMeasurement],
+		[EarToEarOverFrontMeasurement],
+		[EarToEarOverTopMeasurement],
+		[SideburnToSideburnMeasurement],
+		[TempleToTempleMeasurement],
+		[NapeAreaMeasurement],
+		[FrontLaceMeasurement],
+		[HairSystemRecessionID],
+		[AreSideburnsAndTemplesLaceFlag],
+		[SideburnTemplateDiagram],
+		[CreateDate],
+		[CreateUser],
+		[LastUpdate],
+		[LastUpdateUser],
+		[UpdateStamp]
+	) values (
+		@c1,
+		@c2,
+		@c3,
+		@c4,
+		@c5,
+		@c6,
+		@c7,
+		@c8,
+		@c9,
+		@c10,
+		@c11,
+		@c12,
+		@c13,
+		@c14,
+		@c15,
+		@c16,
+		@c17,
+		@c18,
+		default	)
+end
+GO

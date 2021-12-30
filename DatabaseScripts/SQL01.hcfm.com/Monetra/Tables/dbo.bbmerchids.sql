@@ -1,0 +1,18 @@
+/* CreateDate: 10/01/2018 08:53:16.870 , ModifyDate: 10/01/2018 08:53:16.873 */
+GO
+CREATE TABLE [dbo].[bbmerchids](
+	[bbmerchid] [int] NOT NULL,
+	[bbacctid] [int] NOT NULL,
+	[descr] [varchar](2048) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[authtoken] [varchar](128) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+PRIMARY KEY CLUSTERED
+(
+	[bbmerchid] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+CREATE NONCLUSTERED INDEX [i_bbmerchids_bbacctid] ON [dbo].[bbmerchids]
+(
+	[bbacctid] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO

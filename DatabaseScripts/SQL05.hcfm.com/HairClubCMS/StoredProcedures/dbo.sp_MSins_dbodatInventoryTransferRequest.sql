@@ -1,0 +1,65 @@
+/* CreateDate: 05/05/2020 17:42:50.413 , ModifyDate: 05/05/2020 17:42:50.413 */
+GO
+create procedure [sp_MSins_dbodatInventoryTransferRequest]
+    @c1 uniqueidentifier,
+    @c2 datetime,
+    @c3 int,
+    @c4 int,
+    @c5 bit,
+    @c6 int,
+    @c7 uniqueidentifier,
+    @c8 int,
+    @c9 int,
+    @c10 uniqueidentifier,
+    @c11 uniqueidentifier,
+    @c12 text,
+    @c13 datetime,
+    @c14 datetime,
+    @c15 datetime,
+    @c16 nvarchar(25),
+    @c17 datetime,
+    @c18 nvarchar(25)
+as
+begin
+	insert into [dbo].[datInventoryTransferRequest] (
+		[InventoryTransferRequestGUID],
+		[InventoryTransferRequestDate],
+		[InventoryTransferRequestStatusID],
+		[InventoryTransferRequestRejectReasonID],
+		[IsRejectedFlag],
+		[OriginalHairSystemOrderStatusID],
+		[HairSystemOrderGUID],
+		[FromCenterID],
+		[ToCenterID],
+		[FromClientMembershipGUID],
+		[ToClientMembershipGUID],
+		[InventoryTransferRequestNote],
+		[LastStatusChangeDate],
+		[CompleteDate],
+		[CreateDate],
+		[CreateUser],
+		[LastUpdate],
+		[LastUpdateUser],
+		[UpdateStamp]
+	) values (
+		@c1,
+		@c2,
+		@c3,
+		@c4,
+		@c5,
+		@c6,
+		@c7,
+		@c8,
+		@c9,
+		@c10,
+		@c11,
+		@c12,
+		@c13,
+		@c14,
+		@c15,
+		@c16,
+		@c17,
+		@c18,
+		default	)
+end
+GO

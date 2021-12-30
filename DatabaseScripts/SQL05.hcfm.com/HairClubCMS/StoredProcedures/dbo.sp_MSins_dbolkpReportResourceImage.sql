@@ -1,0 +1,68 @@
+/* CreateDate: 05/05/2020 17:42:55.133 , ModifyDate: 05/05/2020 17:42:55.133 */
+GO
+create procedure [sp_MSins_dbolkpReportResourceImage]
+    @c1 int,
+    @c2 nvarchar(50),
+    @c3 varbinary(max),
+    @c4 int,
+    @c5 int,
+    @c6 int,
+    @c7 int,
+    @c8 int,
+    @c9 int,
+    @c10 nvarchar(50),
+    @c11 int,
+    @c12 int,
+    @c13 int,
+    @c14 bit,
+    @c15 datetime,
+    @c16 nvarchar(25),
+    @c17 datetime,
+    @c18 nvarchar(25),
+    @c19 nvarchar(50)
+as
+begin
+	insert into [dbo].[lkpReportResourceImage] (
+		[ReportResourceImageID],
+		[ReportResourceImageName],
+		[ReportResourceImage],
+		[NorwoodScaleID],
+		[LudwigScaleID],
+		[ScalpHealthID],
+		[ScalpRegionID],
+		[EthnicityID],
+		[GenderID],
+		[MimeType],
+		[SorenessLevelID],
+		[SebumLevelID],
+		[FlakingLevelID],
+		[IsActiveFlag],
+		[CreateDate],
+		[CreateUser],
+		[LastUpdate],
+		[LastUpdateUser],
+		[UpdateStamp],
+		[RRImageCategory]
+	) values (
+		@c1,
+		@c2,
+		@c3,
+		@c4,
+		@c5,
+		@c6,
+		@c7,
+		@c8,
+		@c9,
+		@c10,
+		@c11,
+		@c12,
+		@c13,
+		@c14,
+		@c15,
+		@c16,
+		@c17,
+		@c18,
+		default,
+		@c19	)
+end
+GO

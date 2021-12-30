@@ -1,0 +1,65 @@
+/* CreateDate: 05/05/2020 17:42:51.893 , ModifyDate: 05/05/2020 17:42:51.893 */
+GO
+create procedure [sp_MSins_dbodatRegisterCash]
+    @c1 uniqueidentifier,
+    @c2 uniqueidentifier,
+    @c3 int,
+    @c4 int,
+    @c5 int,
+    @c6 int,
+    @c7 int,
+    @c8 int,
+    @c9 int,
+    @c10 int,
+    @c11 int,
+    @c12 int,
+    @c13 int,
+    @c14 int,
+    @c15 datetime,
+    @c16 nvarchar(25),
+    @c17 datetime,
+    @c18 nvarchar(25)
+as
+begin
+	insert into [dbo].[datRegisterCash] (
+		[RegisterCashGUID],
+		[RegisterTenderGUID],
+		[HundredCount],
+		[FiftyCount],
+		[TwentyCount],
+		[TenCount],
+		[FiveCount],
+		[OneCount],
+		[DollarCount],
+		[HalfDollarCount],
+		[QuarterCount],
+		[DimeCount],
+		[NickelCount],
+		[PennyCount],
+		[CreateDate],
+		[CreateUser],
+		[LastUpdate],
+		[LastUpdateUser],
+		[UpdateStamp]
+	) values (
+		@c1,
+		@c2,
+		@c3,
+		@c4,
+		@c5,
+		@c6,
+		@c7,
+		@c8,
+		@c9,
+		@c10,
+		@c11,
+		@c12,
+		@c13,
+		@c14,
+		@c15,
+		@c16,
+		@c17,
+		@c18,
+		default	)
+end
+GO

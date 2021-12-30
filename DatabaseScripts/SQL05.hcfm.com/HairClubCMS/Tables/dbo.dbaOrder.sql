@@ -1,0 +1,53 @@
+/* CreateDate: 12/07/2012 12:07:08.280 , ModifyDate: 03/01/2017 08:26:11.350 */
+GO
+CREATE TABLE [dbo].[dbaOrder](
+	[OrderID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
+	[SalesOrderInvoiceNumber] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+	[SalesOrderlineID] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+	[ReferenceSalesOrderInvoiceNumber] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[TransactionCenterID] [int] NOT NULL,
+	[TransactionCenterName] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+	[ClientHomeCenterID] [int] NOT NULL,
+	[ClientHomeCenterName] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+	[OrderDate] [datetime] NOT NULL,
+	[IsOrderInBalance] [bit] NOT NULL,
+	[IsOrderVoided] [bit] NOT NULL,
+	[IsOrderClosed] [bit] NOT NULL,
+	[ClientIdentifier] [int] NOT NULL,
+	[LastName] [nvarchar](100) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+	[FirstName] [nvarchar](100) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+	[MembershipID] [int] NOT NULL,
+	[MembershipDescription] [nvarchar](100) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+	[BusinessSegment] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+	[ClientMembershipIdentifier] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[Division] [int] NULL,
+	[DivisionDescription] [nvarchar](100) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[Department] [int] NULL,
+	[DepartmentDescription] [nvarchar](100) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[Code] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+	[SalesCodeDescription] [nvarchar](100) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[SalesCodeId] [int] NULL,
+	[UnitPrice] [money] NULL,
+	[Quantity] [int] NULL,
+	[QuantityPrice] [money] NULL,
+	[Discount] [money] NULL,
+	[NetPrice] [money] NULL,
+	[Tax] [money] NULL,
+	[Price] [money] NULL,
+	[Tender] [money] NULL,
+	[RecordLastUpdate] [datetime] NOT NULL,
+	[SalesOrderLastUpdate] [datetime] NOT NULL,
+	[SalesOrderGuid] [uniqueidentifier] NOT NULL,
+	[ReferenceSalesOrderGuid] [uniqueidentifier] NULL,
+	[SalesOrderDetailGuid] [uniqueidentifier] NULL,
+	[SalesOrderTenderGuid] [uniqueidentifier] NULL,
+	[CreateDate] [datetime] NOT NULL,
+	[CreateUser] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+	[LastUpdate] [datetime] NOT NULL,
+	[LastUpdateUser] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+ CONSTRAINT [PK_dbaOrder] PRIMARY KEY CLUSTERED
+(
+	[OrderID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [FG_CDC]
+) ON [FG_CDC]
+GO

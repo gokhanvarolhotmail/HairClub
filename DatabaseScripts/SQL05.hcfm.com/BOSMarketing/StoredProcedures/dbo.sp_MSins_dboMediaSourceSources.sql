@@ -1,0 +1,4 @@
+/* CreateDate: 04/23/2018 16:25:13.630 , ModifyDate: 04/23/2018 16:25:13.630 */
+GO
+create procedure [sp_MSins_dboMediaSourceSources]     @c1 int,     @c2 varchar(50),     @c3 varchar(100),     @c4 int,     @c5 tinyint,     @c6 smallint,     @c7 int,     @c8 int,     @c9 int,     @c10 int,     @c11 smalldatetime,     @c12 smalldatetime,     @c13 smalldatetime,     @c14 smalldatetime,     @c15 varchar(1000),     @c16 char(1),     @c17 char(1) as begin   	insert into [dbo].[MediaSourceSources]( 		[SourceID], 		[SourceCode], 		[SourceName], 		[PhoneID], 		[NumberTypeID], 		[MediaID], 		[Level02ID], 		[Level03ID], 		[Level04ID], 		[Level05ID], 		[StartDate], 		[EndDate], 		[CreationDate], 		[LastUpdateDate], 		[Description], 		[IsInHouseSourceFlag], 		[IsHansWiemannSourceFlag] 	) values (     @c1,     @c2,     @c3,     @c4,     @c5,     @c6,     @c7,     @c8,     @c9,     @c10,     @c11,     @c12,     @c13,     @c14,     @c15,     @c16,     @c17	)  end    --
+GO

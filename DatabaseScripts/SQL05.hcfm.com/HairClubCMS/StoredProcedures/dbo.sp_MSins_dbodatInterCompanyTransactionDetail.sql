@@ -1,0 +1,44 @@
+/* CreateDate: 05/05/2020 17:42:50.963 , ModifyDate: 05/05/2020 17:42:50.963 */
+GO
+create procedure [sp_MSins_dbodatInterCompanyTransactionDetail]
+    @c1 int,
+    @c2 int,
+    @c3 uniqueidentifier,
+    @c4 int,
+    @c5 int,
+    @c6 money,
+    @c7 money,
+    @c8 datetime,
+    @c9 nvarchar(25),
+    @c10 datetime,
+    @c11 nvarchar(25)
+as
+begin
+	insert into [dbo].[datInterCompanyTransactionDetail] (
+		[InterCompanyTransactionDetailId],
+		[InterCompanyTransactionId],
+		[SalesOrderDetailGUID],
+		[SalesCodeId],
+		[Quantity],
+		[Price],
+		[AmountCollected],
+		[CreateDate],
+		[CreateUser],
+		[LastUpdate],
+		[LastUpdateUser],
+		[UpdateStamp]
+	) values (
+		@c1,
+		@c2,
+		@c3,
+		@c4,
+		@c5,
+		@c6,
+		@c7,
+		@c8,
+		@c9,
+		@c10,
+		@c11,
+		default	)
+end
+GO
