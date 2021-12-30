@@ -1,4 +1,4 @@
-/* CreateDate: 12/30/2021 08:55:42.033 , ModifyDate: 12/30/2021 11:25:44.990 */
+/* CreateDate: 12/30/2021 08:55:42.033 , ModifyDate: 12/30/2021 12:01:25.243 */
 GO
 CREATE VIEW [dbo].[vwAppointments_HD_v2]
 AS
@@ -55,8 +55,7 @@ SELECT
 	--	AppointmentDurationCalc
 	--	CreateDate
 	--	CreateUser
-	,	FST.[PromotionCodeKey]
-	,	cpm.[MembershipPromotionID]
+	,	SOD.[MembershipPromotion]
 	,	cpm.[MembershipPromotionDescription]
 	,   max(CASE WHEN memaccum.AccumulatorSSID IN ( 12 ) THEN memaccum.TotalAccumQuantity
                  ELSE 0
@@ -83,8 +82,10 @@ FROM synHC_CMS_DDS_vwDimAppointment appt
 		ON CL.contactkey = FAR.ContactKey AND FAR.Consultation = 1
 	INNER JOIN HC_BI_CMS_DDS.[bi_cms_dds].[FactSalesTransaction] FST
 		ON FST.ClientKey = appt.ClientKey
+	INNER JOIN HC_BI_CMS_DDS.[bi_cms_dds].[DimSalesOrderDetail] SOD
+		ON SOD.[SalesOrderDetailKey]= FST.[SalesOrderDetailKey]
 	LEFT OUTER JOIN [dbo].[synHairclubCMS_cfgMembershipPromotion] cpm on
-			cpm.[MembershipPromotionID]= FST.[PromotionCodeKey]
+			SOD.[MembershipPromotion] = cpm.[MembershipPromotionDescriptionShort]
 			and cpm.[MembershipPromotionTypeID] = 2
 	LEFT OUTER  JOIN synHC_ENT_DDS_vwDimDoctorRegion docreg on
 		clctr.DoctorRegionKey = docreg.DoctorRegionKey
@@ -125,7 +126,6 @@ group by
 	,	sc.SalesCodeDescription
 	,	appt.CheckInTime
 	,	appt.CheckOutTime
-	,	FST.[PromotionCodeKey]
-	,	cpm.[MembershipPromotionID]
+	,	SOD.[MembershipPromotion]
 	,	cpm.[MembershipPromotionDescription]
 GO
