@@ -55,27 +55,25 @@ EXEC [dbo].[mtnHairSystemInventoryCorrection] NULL, @HairSystemInventorySnapshot
 
 /*
 DECLARE @HairSystemInventorySnapshotID INT ;
-DECLARE @CenterID INT = 100 ;
 
 SELECT TOP 1
        @HairSystemInventorySnapshotID = [hsis].[HairSystemInventorySnapshotID]
 FROM [dbo].[datHairSystemInventorySnapshot] AS [hsis]
 ORDER BY [hsis].[CreateDate] DESC ;
 
-PRINT @HairSystemInventorySnapshotID ;
-
 SELECT *
 FROM [dbo].[datHairSystemInventoryBatch] AS [hsib]
-WHERE [hsib].[HairSystemInventorySnapshotID] = @HairSystemInventorySnapshotID AND [hsib].[CenterID] = @CenterID ;
+WHERE [hsib].[HairSystemInventorySnapshotID] = @HairSystemInventorySnapshotID AND [hsib].[CenterID] IN (100) ;
 
 UPDATE [hsit]
 SET
-    [hsit].[IsExcludedFromCorrections] = 1
-  , [hsit].[ExclusionReason] = 'This location is unable to perform any inventory this month.'
+    [hsit].[IsExcludedFromCorrections] = 0
+  , [hsit].[ExclusionReason] = 'This location should not be excluded from inventory this month.'
+  , [hsit].[ExclusionReason] = 'This location should not be excluded from inventory this month.'
   , [hsit].[LastUpdate] = GETUTCDATE()
-  , [hsit].[LastUpdateUser] = 'mkunchum'
+  , [hsit].[LastUpdateUser] = 'cczencz' ;
 FROM [dbo].[datHairSystemInventoryTransaction] AS [hsit]
-WHERE [hsit].[HairSystemInventoryBatchID] = @HairSystemInventorySnapshotID ;
+WHERE [hsit].[HairSystemInventoryBatchID] IN (9559) ;
 
 EXEC [dbo].[mtnHairSystemInventoryCorrection] NULL, @HairSystemInventorySnapshotID ;
 */
