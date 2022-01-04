@@ -61,6 +61,7 @@ SELECT
   , 'sa-Inv' /*@User*/
   , GETUTCDATE()
   , 'sa-Inv' /*@User*/
+SELECT COUNT(1)
 FROM [dbo].[datHairSystemOrder] AS [hso]
 INNER JOIN [dbo].[datHairSystemInventoryTransaction] AS [hstran] ON [hso].[HairSystemOrderNumber] = [hstran].[HairSystemOrderNumber]
 INNER JOIN [dbo].[datHairSystemInventoryBatch] AS [batch] ON [hstran].[HairSystemInventoryBatchID] = [batch].[HairSystemInventoryBatchID]
@@ -68,10 +69,12 @@ INNER JOIN [dbo].[lkpHairSystemOrderStatus] AS [st] ON [st].[HairSystemOrderStat
 INNER JOIN [dbo].[datClientMembership] AS [cm] ON [hso].[ClientMembershipGUID] = [cm].[ClientMembershipGUID]
 WHERE [batch].[HairSystemInventorySnapshotID] = 86 /*@HairSystemInventorySnapshotID*/
   AND [batch].[HairSystemInventoryBatchStatusID] = 4 /*@HairSystemInventoryCompletedBatchStatusID*/
-  AND [batch].[IsAdjustmentCompleted] <> 1 AND [st].[HairSystemOrderStatusDescriptionShort] NOT IN ('HQ-Ship', 'XferReq', 'XferAccept', 'XferRefuse', 'CTR-Ship', 'HQ-FShip', 'ShipCorp', 'Allocated', 'ORDER', 'FAC-Ship', 'TRAIN')
-
-  AND [hstran].[ScannedCenterID] IS NOT NULL AND [hstran].[IsInTransit] = 0 AND [hstran].[IsExcludedFromCorrections] = 0 AND [hso].[LastUpdate] < [batch].[CreateDate]
-
+  --AND [batch].[IsAdjustmentCompleted] <> 1
+  AND [st].[HairSystemOrderStatusDescriptionShort] NOT IN ('HQ-Ship', 'XferReq', 'XferAccept', 'XferRefuse', 'CTR-Ship', 'HQ-FShip', 'ShipCorp', 'Allocated', 'ORDER', 'FAC-Ship', 'TRAIN')
+  AND [hstran].[ScannedCenterID] IS NOT NULL
+  AND [hstran].[IsInTransit] = 0
+  AND [hstran].[IsExcludedFromCorrections] = 0
+  AND [hso].[LastUpdate] < [batch].[CreateDate]
   AND [hso].[CenterID] <> [hstran].[ScannedCenterID] AND ( [hso].[CenterID] = NULL /*@CenterID*/ OR NULL /*@CenterID*/ IS NULL ) -- Do we want to check the center on the batch?
 ;
 
@@ -158,6 +161,7 @@ SELECT
   , 'sa-Inv' /*@User*/
   , GETUTCDATE()
   , 'sa-Inv' /*@User*/
+SELECT COUNT(1)
 FROM [dbo].[datHairSystemOrder] AS [hso]
 INNER JOIN [dbo].[datHairSystemInventoryTransaction] AS [hstran] ON [hso].[HairSystemOrderNumber] = [hstran].[HairSystemOrderNumber]
 INNER JOIN [dbo].[lkpHairSystemOrderStatus] AS [st] ON [st].[HairSystemOrderStatusID] = [hstran].[HairSystemOrderStatusID]
@@ -165,7 +169,7 @@ INNER JOIN [dbo].[datHairSystemInventoryBatch] AS [batch] ON [hstran].[HairSyste
 INNER JOIN [dbo].[datClientMembership] AS [cm] ON [hso].[ClientMembershipGUID] = [cm].[ClientMembershipGUID]
 WHERE [batch].[HairSystemInventorySnapshotID] = 86 /*@HairSystemInventorySnapshotID*/
   AND [batch].[HairSystemInventoryBatchStatusID] = 4 /*@HairSystemInventoryCompletedBatchStatusID*/
-  AND [batch].[IsAdjustmentCompleted] <> 1
+  --AND [batch].[IsAdjustmentCompleted] <> 1
   AND [st].[HairSystemOrderStatusDescriptionShort] IN ('Conversion', 'APPLIED', 'INVNS')
   AND [hstran].[ScannedCenterID] IS NOT NULL
   AND [hstran].[IsInTransit] = 0
