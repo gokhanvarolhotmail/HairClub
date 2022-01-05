@@ -1,4 +1,4 @@
-/* CreateDate: 05/05/2020 17:42:51.150 , ModifyDate: 12/24/2021 19:03:19.740 */
+/* CreateDate: 05/05/2020 17:42:51.150 , ModifyDate: 01/04/2022 18:49:21.780 */
 GO
 CREATE TABLE [dbo].[datInvoiceDetail](
 	[InvoiceDetailGUID] [uniqueidentifier] NOT NULL,

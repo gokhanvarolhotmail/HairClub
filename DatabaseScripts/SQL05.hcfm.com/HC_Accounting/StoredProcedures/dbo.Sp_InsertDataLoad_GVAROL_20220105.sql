@@ -1,16 +1,27 @@
-/* CreateDate: 12/13/2018 11:59:47.203 , ModifyDate: 01/05/2022 09:55:04.687 */
+/* CreateDate: 01/05/2022 09:53:22.380 , ModifyDate: 01/05/2022 09:53:22.380 */
 GO
 --step 1 truncate and upload xls into GPConsolidatedStage.ie truncate table GPConsolidatedStage
 --step 2 run dbo.Sp_InsertDataLoad @year  i.e EXEC Sp_InsertDataLoad '2020'
 --setp 3 run spApp_PopulateBudgetFromLoadTable i.e. exec spApp_PopulateBudgetFromLoadTable
 
-CREATE PROC [dbo].[Sp_InsertDataLoad]
+CREATE PROC [dbo].[Sp_InsertDataLoad_GVAROL_20220105]
     @year VARCHAR(4)
 AS
 
 --Remove null data
 DELETE FROM [dbo].[GPConsolidatedStage]
-WHERE [Period1] IS NULL AND [Period2] IS NULL AND [Period3] IS NULL AND [Period4] IS NULL AND [Period5] IS NULL AND [Period6] IS NULL AND [Period7] IS NULL AND [Period8] IS NULL AND [Period9] IS NULL AND [Period10] IS NULL AND [Period11] IS NULL AND [Period12] IS NULL ;
+WHERE ISNULL([Period1], '') = ''
+  AND ISNULL([Period2], '') = ''
+  AND ISNULL([Period3], '') = ''
+  AND ISNULL([Period4], '') = ''
+  AND ISNULL([Period5], '') = ''
+  AND ISNULL([Period6], '') = ''
+  AND ISNULL([Period7], '') = ''
+  AND ISNULL([Period8], '') = ''
+  AND ISNULL([Period9], '') = ''
+  AND ISNULL([Period10], '') = ''
+  AND ISNULL([Period11], '') = ''
+  AND ISNULL([Period12], '') = '' ;
 
 TRUNCATE TABLE [dbo].[DataLoad] ;
 
@@ -27,7 +38,7 @@ SELECT
   , 'Budget'
   , 'Yes'
 FROM [dbo].[GPConsolidatedStage]
-WHERE [Period1] IS NOT NULL ;
+WHERE ISNULL([Period1], '') <> '' ;
 
 INSERT INTO [dbo].[DataLoad]
 SELECT
@@ -40,7 +51,7 @@ SELECT
   , 'Budget'
   , 'Yes'
 FROM [dbo].[GPConsolidatedStage]
-WHERE [Period2] IS NOT NULL ;
+WHERE ISNULL([Period2], '') <> '' ;
 
 INSERT INTO [dbo].[DataLoad]
 SELECT
@@ -53,7 +64,7 @@ SELECT
   , 'Budget'
   , 'Yes'
 FROM [dbo].[GPConsolidatedStage]
-WHERE [Period3] IS NOT NULL ;
+WHERE ISNULL([Period3], '') <> '' ;
 
 INSERT INTO [dbo].[DataLoad]
 SELECT
@@ -66,7 +77,7 @@ SELECT
   , 'Budget'
   , 'Yes'
 FROM [dbo].[GPConsolidatedStage]
-WHERE [Period4] IS NOT NULL ;
+WHERE ISNULL([Period4], '') <> '' ;
 
 INSERT INTO [dbo].[DataLoad]
 SELECT
@@ -79,7 +90,7 @@ SELECT
   , 'Budget'
   , 'Yes'
 FROM [dbo].[GPConsolidatedStage]
-WHERE [Period5] IS NOT NULL ;
+WHERE ISNULL([Period5], '') <> '' ;
 
 INSERT INTO [dbo].[DataLoad]
 SELECT
@@ -92,7 +103,7 @@ SELECT
   , 'Budget'
   , 'Yes'
 FROM [dbo].[GPConsolidatedStage]
-WHERE [Period6] IS NOT NULL ;
+WHERE ISNULL([Period6], '') <> '' ;
 
 INSERT INTO [dbo].[DataLoad]
 SELECT
@@ -105,7 +116,7 @@ SELECT
   , 'Budget'
   , 'Yes'
 FROM [dbo].[GPConsolidatedStage]
-WHERE [Period7] IS NOT NULL ;
+WHERE ISNULL([Period7], '') <> '' ;
 
 INSERT INTO [dbo].[DataLoad]
 SELECT
@@ -118,7 +129,7 @@ SELECT
   , 'Budget'
   , 'Yes'
 FROM [dbo].[GPConsolidatedStage]
-WHERE [Period8] IS NOT NULL ;
+WHERE ISNULL([Period8], '') <> '' ;
 
 INSERT INTO [dbo].[DataLoad]
 SELECT
@@ -131,7 +142,7 @@ SELECT
   , 'Budget'
   , 'Yes'
 FROM [dbo].[GPConsolidatedStage]
-WHERE [Period9] IS NOT NULL ;
+WHERE ISNULL([Period9], '') <> '' ;
 
 INSERT INTO [dbo].[DataLoad]
 SELECT
@@ -144,7 +155,7 @@ SELECT
   , 'Budget'
   , 'Yes'
 FROM [dbo].[GPConsolidatedStage]
-WHERE [Period10] IS NOT NULL ;
+WHERE ISNULL([Period10], '') <> '' ;
 
 INSERT INTO [dbo].[DataLoad]
 SELECT
@@ -157,7 +168,7 @@ SELECT
   , 'Budget'
   , 'Yes'
 FROM [dbo].[GPConsolidatedStage]
-WHERE [Period11] IS NOT NULL ;
+WHERE ISNULL([Period11], '') <> '' ;
 
 INSERT INTO [dbo].[DataLoad]
 SELECT
@@ -170,5 +181,5 @@ SELECT
   , 'Budget'
   , 'Yes'
 FROM [dbo].[GPConsolidatedStage]
-WHERE [Period12] IS NOT NULL ;
+WHERE ISNULL([Period12], '') <> '' ;
 GO

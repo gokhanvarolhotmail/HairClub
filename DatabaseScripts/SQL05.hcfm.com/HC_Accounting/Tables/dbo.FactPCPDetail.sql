@@ -1,4 +1,4 @@
-/* CreateDate: 03/19/2013 14:15:40.323 , ModifyDate: 12/17/2021 20:18:41.730 */
+/* CreateDate: 03/19/2013 14:15:40.323 , ModifyDate: 01/03/2022 19:22:26.230 */
 GO
 CREATE TABLE [dbo].[FactPCPDetail](
 	[ID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
