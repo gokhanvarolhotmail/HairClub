@@ -1,0 +1,588 @@
+﻿<Dimension xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+  <ID>HSO-Hair System Order</ID>
+  <Name>HSO-Hair System Order</Name>
+  <CreatedTimestamp>2012-04-03T23:41:06.75Z</CreatedTimestamp>
+  <LastSchemaUpdate>2021-08-30T23:44:47.426667Z</LastSchemaUpdate>
+  <Annotations>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramLayout</Name>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowFriendlyNames</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowRelationshipNames</Name>
+      <Value>false</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:UseDiagramDefaultLayout</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortLeft</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortTop</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingLeft</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingTop</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramZoom</Name>
+      <Value>100</Value>
+    </Annotation>
+  </Annotations>
+  <LastProcessed>2021-12-29T09:54:16.05Z</LastProcessed>
+  <State>Processed</State>
+  <Source xsi:type="DataSourceViewBinding">
+    <DataSourceViewID>HC_BI_ENT_DDS</DataSourceViewID>
+  </Source>
+  <ErrorConfiguration>
+    <KeyNotFound>ReportAndStop</KeyNotFound>
+    <KeyDuplicate>ReportAndStop</KeyDuplicate>
+    <NullKeyNotAllowed>ReportAndStop</NullKeyNotAllowed>
+  </ErrorConfiguration>
+  <CurrentStorageMode>Molap</CurrentStorageMode>
+  <Language>1033</Language>
+  <Collation>Latin1_General_CI_AS</Collation>
+  <UnknownMemberName>Unknown</UnknownMemberName>
+  <Attributes>
+    <Attribute>
+      <ID>Hair System Order Key</ID>
+      <Name>Hair System Order Key</Name>
+      <Usage>Key</Usage>
+      <KeyColumns>
+        <KeyColumn>
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding">
+            <TableID>bi_cms_dds_vwDimHairSystemOrder</TableID>
+            <ColumnID>HairSystemOrderKey</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn>
+        <DataType>WChar</DataType>
+        <Source xsi:type="ColumnBinding">
+          <TableID>bi_cms_dds_vwDimHairSystemOrder</TableID>
+          <ColumnID>HairSystemOrderNumber</ColumnID>
+        </Source>
+      </NameColumn>
+      <AttributeRelationships>
+        <AttributeRelationship>
+          <AttributeID>Hair System Order SSID</AttributeID>
+          <Name>Hair System Order SSID</Name>
+        </AttributeRelationship>
+        <AttributeRelationship>
+          <AttributeID>Hair System Order Number</AttributeID>
+          <Name>Hair System Order Number</Name>
+        </AttributeRelationship>
+        <AttributeRelationship>
+          <AttributeID>Template Width</AttributeID>
+          <Name>Template Width</Name>
+        </AttributeRelationship>
+        <AttributeRelationship>
+          <AttributeID>Template Height</AttributeID>
+          <Name>Template Height</Name>
+        </AttributeRelationship>
+        <AttributeRelationship>
+          <AttributeID>Template Area</AttributeID>
+          <Name>Template Area</Name>
+        </AttributeRelationship>
+        <AttributeRelationship>
+          <AttributeID>Hair System Repair Reason Description</AttributeID>
+          <Name>Hair System Repair Reason Description</Name>
+        </AttributeRelationship>
+        <AttributeRelationship>
+          <AttributeID>Hair System Redo Reason Description</AttributeID>
+          <Name>Hair System Redo Reason Description</Name>
+        </AttributeRelationship>
+        <AttributeRelationship>
+          <AttributeID>Is Allocated Flag</AttributeID>
+          <Name>Is Allocated Flag</Name>
+        </AttributeRelationship>
+        <AttributeRelationship>
+          <AttributeID>Is Cancelled Flag</AttributeID>
+          <Name>Is Cancelled Flag</Name>
+        </AttributeRelationship>
+        <AttributeRelationship>
+          <AttributeID>Is Zero Cost Flag</AttributeID>
+          <Name>Is Zero Cost Flag</Name>
+        </AttributeRelationship>
+        <AttributeRelationship>
+          <AttributeID>Is Zero Price Flag</AttributeID>
+          <Name>Is Zero Price Flag</Name>
+        </AttributeRelationship>
+        <AttributeRelationship>
+          <AttributeID>Is On Hold For Review Flag</AttributeID>
+          <Name>Is On Hold For Review Flag</Name>
+        </AttributeRelationship>
+        <AttributeRelationship>
+          <AttributeID>Is Sample Order Flag</AttributeID>
+          <Name>Is Sample Order Flag</Name>
+        </AttributeRelationship>
+        <AttributeRelationship>
+          <AttributeID>Is Repair Order Flag</AttributeID>
+          <Name>Is Repair Order Flag</Name>
+        </AttributeRelationship>
+        <AttributeRelationship>
+          <AttributeID>Is Redo Order Flag</AttributeID>
+          <Name>Is Redo Order Flag</Name>
+        </AttributeRelationship>
+        <AttributeRelationship>
+          <AttributeID>Is Rush Order Flag</AttributeID>
+          <Name>Is Rush Order Flag</Name>
+        </AttributeRelationship>
+        <AttributeRelationship>
+          <AttributeID>Is Stock Inventory Flag</AttributeID>
+          <Name>Is Stock Inventory Flag</Name>
+        </AttributeRelationship>
+        <AttributeRelationship>
+          <AttributeID>Factory SSID</AttributeID>
+          <Name>Factory SSID</Name>
+        </AttributeRelationship>
+      </AttributeRelationships>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute>
+      <ID>Hair System Order SSID</ID>
+      <Name>Hair System Order SSID</Name>
+      <KeyColumns>
+        <KeyColumn>
+          <DataType>WChar</DataType>
+          <Source xsi:type="ColumnBinding">
+            <TableID>bi_cms_dds_vwDimHairSystemOrder</TableID>
+            <ColumnID>HairSystemOrderSSID</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn>
+        <DataType>WChar</DataType>
+        <Source xsi:type="ColumnBinding">
+          <TableID>bi_cms_dds_vwDimHairSystemOrder</TableID>
+          <ColumnID>HairSystemOrderSSID</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyVisible>false</AttributeHierarchyVisible>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute>
+      <ID>Hair System Order Number</ID>
+      <Name>Hair System Order Number</Name>
+      <KeyColumns>
+        <KeyColumn>
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding">
+            <TableID>bi_cms_dds_vwDimHairSystemOrder</TableID>
+            <ColumnID>HairSystemOrderNumber</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn>
+        <DataType>WChar</DataType>
+        <Source xsi:type="ColumnBinding">
+          <TableID>bi_cms_dds_vwDimHairSystemOrder</TableID>
+          <ColumnID>HairSystemOrderNumber</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyVisible>false</AttributeHierarchyVisible>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute>
+      <ID>Template Width</ID>
+      <Name>Template Width</Name>
+      <KeyColumns>
+        <KeyColumn>
+          <DataType>Double</DataType>
+          <Source xsi:type="ColumnBinding">
+            <TableID>bi_cms_dds_vwDimHairSystemOrder</TableID>
+            <ColumnID>TemplateWidth</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn>
+        <DataType>WChar</DataType>
+        <Source xsi:type="ColumnBinding">
+          <TableID>bi_cms_dds_vwDimHairSystemOrder</TableID>
+          <ColumnID>TemplateWidth</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyVisible>false</AttributeHierarchyVisible>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute>
+      <ID>Template Height</ID>
+      <Name>Template Height</Name>
+      <KeyColumns>
+        <KeyColumn>
+          <DataType>Double</DataType>
+          <Source xsi:type="ColumnBinding">
+            <TableID>bi_cms_dds_vwDimHairSystemOrder</TableID>
+            <ColumnID>TemplateHeight</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn>
+        <DataType>WChar</DataType>
+        <Source xsi:type="ColumnBinding">
+          <TableID>bi_cms_dds_vwDimHairSystemOrder</TableID>
+          <ColumnID>TemplateHeight</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyVisible>false</AttributeHierarchyVisible>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute>
+      <ID>Template Area</ID>
+      <Name>Template Area</Name>
+      <KeyColumns>
+        <KeyColumn>
+          <DataType>Double</DataType>
+          <Source xsi:type="ColumnBinding">
+            <TableID>bi_cms_dds_vwDimHairSystemOrder</TableID>
+            <ColumnID>TemplateArea</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn>
+        <DataType>WChar</DataType>
+        <Source xsi:type="ColumnBinding">
+          <TableID>bi_cms_dds_vwDimHairSystemOrder</TableID>
+          <ColumnID>TemplateArea</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyVisible>false</AttributeHierarchyVisible>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute>
+      <ID>Hair System Repair Reason Description</ID>
+      <Name>Repair Reason Description</Name>
+      <KeyColumns>
+        <KeyColumn>
+          <DataType>WChar</DataType>
+          <DataSize>50</DataSize>
+          <Source xsi:type="ColumnBinding">
+            <TableID>bi_cms_dds_vwDimHairSystemOrder</TableID>
+            <ColumnID>HairSystemRepairReasonDescription</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn>
+        <DataType>WChar</DataType>
+        <DataSize>50</DataSize>
+        <Source xsi:type="ColumnBinding">
+          <TableID>bi_cms_dds_vwDimHairSystemOrder</TableID>
+          <ColumnID>HairSystemRepairReasonDescription</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute>
+      <ID>Hair System Redo Reason Description</ID>
+      <Name>Redo Reason Description</Name>
+      <KeyColumns>
+        <KeyColumn>
+          <DataType>WChar</DataType>
+          <DataSize>50</DataSize>
+          <Source xsi:type="ColumnBinding">
+            <TableID>bi_cms_dds_vwDimHairSystemOrder</TableID>
+            <ColumnID>HairSystemRedoReasonDescription</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn>
+        <DataType>WChar</DataType>
+        <DataSize>50</DataSize>
+        <Source xsi:type="ColumnBinding">
+          <TableID>bi_cms_dds_vwDimHairSystemOrder</TableID>
+          <ColumnID>HairSystemRedoReasonDescription</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute>
+      <ID>Is Allocated Flag</ID>
+      <Name>Is Allocated Flag</Name>
+      <KeyColumns>
+        <KeyColumn>
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding">
+            <TableID>bi_cms_dds_vwDimHairSystemOrder</TableID>
+            <ColumnID>IsAllocatedFlag</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn>
+        <DataType>WChar</DataType>
+        <Source xsi:type="ColumnBinding">
+          <TableID>bi_cms_dds_vwDimHairSystemOrder</TableID>
+          <ColumnID>IsAllocatedFlag</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute>
+      <ID>Is Cancelled Flag</ID>
+      <Name>Is Cancelled Flag</Name>
+      <KeyColumns>
+        <KeyColumn>
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding">
+            <TableID>bi_cms_dds_vwDimHairSystemOrder</TableID>
+            <ColumnID>IsCancelledFlag</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn>
+        <DataType>WChar</DataType>
+        <Source xsi:type="ColumnBinding">
+          <TableID>bi_cms_dds_vwDimHairSystemOrder</TableID>
+          <ColumnID>IsCancelledFlag</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute>
+      <ID>Is Zero Cost Flag</ID>
+      <Name>Is Zero Cost Flag</Name>
+      <KeyColumns>
+        <KeyColumn>
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding">
+            <TableID>bi_cms_dds_vwDimHairSystemOrder</TableID>
+            <ColumnID>IsZeroCostFlag</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn>
+        <DataType>WChar</DataType>
+        <Source xsi:type="ColumnBinding">
+          <TableID>bi_cms_dds_vwDimHairSystemOrder</TableID>
+          <ColumnID>IsZeroCostFlag</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute>
+      <ID>Is Zero Price Flag</ID>
+      <Name>Is Zero Price Flag</Name>
+      <KeyColumns>
+        <KeyColumn>
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding">
+            <TableID>bi_cms_dds_vwDimHairSystemOrder</TableID>
+            <ColumnID>IsZeroPriceFlag</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn>
+        <DataType>WChar</DataType>
+        <Source xsi:type="ColumnBinding">
+          <TableID>bi_cms_dds_vwDimHairSystemOrder</TableID>
+          <ColumnID>IsZeroPriceFlag</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute>
+      <ID>Is On Hold For Review Flag</ID>
+      <Name>Is On Hold For Review Flag</Name>
+      <KeyColumns>
+        <KeyColumn>
+          <DataType>Boolean</DataType>
+          <Source xsi:type="ColumnBinding">
+            <TableID>bi_cms_dds_vwDimHairSystemOrder</TableID>
+            <ColumnID>IsOnHoldForReviewFlag</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn>
+        <DataType>WChar</DataType>
+        <Source xsi:type="ColumnBinding">
+          <TableID>bi_cms_dds_vwDimHairSystemOrder</TableID>
+          <ColumnID>IsOnHoldForReviewFlag</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute>
+      <ID>Is Sample Order Flag</ID>
+      <Name>Is Sample Order Flag</Name>
+      <KeyColumns>
+        <KeyColumn>
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding">
+            <TableID>bi_cms_dds_vwDimHairSystemOrder</TableID>
+            <ColumnID>IsSampleOrderFlag</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn>
+        <DataType>WChar</DataType>
+        <Source xsi:type="ColumnBinding">
+          <TableID>bi_cms_dds_vwDimHairSystemOrder</TableID>
+          <ColumnID>IsSampleOrderFlag</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute>
+      <ID>Is Repair Order Flag</ID>
+      <Name>Is Repair Order Flag</Name>
+      <KeyColumns>
+        <KeyColumn>
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding">
+            <TableID>bi_cms_dds_vwDimHairSystemOrder</TableID>
+            <ColumnID>IsRepairOrderFlag</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn>
+        <DataType>WChar</DataType>
+        <Source xsi:type="ColumnBinding">
+          <TableID>bi_cms_dds_vwDimHairSystemOrder</TableID>
+          <ColumnID>IsRepairOrderFlag</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute>
+      <ID>Is Redo Order Flag</ID>
+      <Name>Is Redo Order Flag</Name>
+      <KeyColumns>
+        <KeyColumn>
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding">
+            <TableID>bi_cms_dds_vwDimHairSystemOrder</TableID>
+            <ColumnID>IsRedoOrderFlag</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn>
+        <DataType>WChar</DataType>
+        <Source xsi:type="ColumnBinding">
+          <TableID>bi_cms_dds_vwDimHairSystemOrder</TableID>
+          <ColumnID>IsRedoOrderFlag</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute>
+      <ID>Is Rush Order Flag</ID>
+      <Name>Is Rush Order Flag</Name>
+      <KeyColumns>
+        <KeyColumn>
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding">
+            <TableID>bi_cms_dds_vwDimHairSystemOrder</TableID>
+            <ColumnID>IsRushOrderFlag</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn>
+        <DataType>WChar</DataType>
+        <Source xsi:type="ColumnBinding">
+          <TableID>bi_cms_dds_vwDimHairSystemOrder</TableID>
+          <ColumnID>IsRushOrderFlag</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute>
+      <ID>Is Stock Inventory Flag</ID>
+      <Name>Is Stock Inventory Flag</Name>
+      <KeyColumns>
+        <KeyColumn>
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding">
+            <TableID>bi_cms_dds_vwDimHairSystemOrder</TableID>
+            <ColumnID>IsStockInventoryFlag</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn>
+        <DataType>WChar</DataType>
+        <Source xsi:type="ColumnBinding">
+          <TableID>bi_cms_dds_vwDimHairSystemOrder</TableID>
+          <ColumnID>IsStockInventoryFlag</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute>
+      <ID>Factory SSID</ID>
+      <Name>Factory SSID</Name>
+      <KeyColumns>
+        <KeyColumn>
+          <DataType>WChar</DataType>
+          <DataSize>50</DataSize>
+          <Source xsi:type="ColumnBinding">
+            <TableID>bi_cms_dds_vwDimHairSystemOrder</TableID>
+            <ColumnID>FactorySSID</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn>
+        <DataType>WChar</DataType>
+        <DataSize>50</DataSize>
+        <Source xsi:type="ColumnBinding">
+          <TableID>bi_cms_dds_vwDimHairSystemOrder</TableID>
+          <ColumnID>FactorySSID</ColumnID>
+        </Source>
+      </NameColumn>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+  </Attributes>
+  <ProactiveCaching>
+    <SilenceInterval>-PT1S</SilenceInterval>
+    <Latency>-PT1S</Latency>
+    <SilenceOverrideInterval>-PT1S</SilenceOverrideInterval>
+    <ForceRebuildInterval>-PT1S</ForceRebuildInterval>
+    <Source xsi:type="ProactiveCachingInheritedBinding" />
+  </ProactiveCaching>
+  <ddl300:ProcessingState>Unprocessed</ddl300:ProcessingState>
+</Dimension>

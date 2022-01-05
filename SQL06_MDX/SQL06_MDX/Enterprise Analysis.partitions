@@ -1,0 +1,612 @@
+﻿<Cube xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="c2b044de-8c81-4368-8974-a767716d5884" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+  <ID>Enterprise Analysis</ID>
+  <MeasureGroups>
+    <MeasureGroup>
+      <ID>Vw Fact Activity Results</ID>
+      <Partitions>
+        <Partition dwd:design-time-name="7e4ff19f-4982-4771-b745-75e8c7ef187b">
+          <ID>Consultations 2015</ID>
+          <Name>Consultations 2016 thru 2021</Name>
+          <CreatedTimestamp>2014-01-07T16:19:43.53Z</CreatedTimestamp>
+          <LastSchemaUpdate>2021-08-30T23:48:23.95Z</LastSchemaUpdate>
+          <LastProcessed>2021-12-29T10:04:56.746667Z</LastProcessed>
+          <State>Processed</State>
+          <Source xsi:type="QueryBinding" dwd:design-time-name="a3f2df16-9dfd-4071-bf4d-bfb0bb30a7bc">
+            <DataSourceID>HC_BI_MKTG_DDS</DataSourceID>
+            <QueryDefinition>SELECT *		FROM [bi_mktg_dds].[vwFactActivityResults]
+WHERE    DatePart(year, [bi_mktg_dds].[vwFactActivityResults].[PartitionDate]) between 2016 and 2021</QueryDefinition>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+          <ProactiveCaching dwd:design-time-name="12e42d45-0564-4ba0-ac2a-e05f3798886a">
+            <SilenceInterval>-PT1S</SilenceInterval>
+            <Latency>-PT1S</Latency>
+            <SilenceOverrideInterval>-PT1S</SilenceOverrideInterval>
+            <ForceRebuildInterval>-PT1S</ForceRebuildInterval>
+            <Source xsi:type="ProactiveCachingInheritedBinding" dwd:design-time-name="160d845a-5a5c-465b-8621-f6deda27d791" />
+          </ProactiveCaching>
+          <EstimatedSize>110083065</EstimatedSize>
+        </Partition>
+      </Partitions>
+    </MeasureGroup>
+    <MeasureGroup>
+      <ID>Vw Fact Activity</ID>
+      <Partitions>
+        <Partition dwd:design-time-name="15974ebf-135e-46a4-b01f-4a6ba0dcfa49">
+          <ID>Activities 2018</ID>
+          <Name>Activities 2018</Name>
+          <CreatedTimestamp>2018-01-03T14:57:33.53Z</CreatedTimestamp>
+          <LastSchemaUpdate>2021-08-30T23:48:24.123333Z</LastSchemaUpdate>
+          <LastProcessed>2021-12-29T10:04:38.493333Z</LastProcessed>
+          <State>Processed</State>
+          <Source xsi:type="QueryBinding" dwd:design-time-name="0db0640c-067f-4979-a3c8-c7ec71853070">
+            <DataSourceID>HC_BI_MKTG_DDS</DataSourceID>
+            <QueryDefinition>SELECT *		FROM [bi_mktg_dds].[vwFactActivity]
+WHERE    DatePart(year, [bi_mktg_dds].[vwFactActivity].[PartitionDate]) = 2018</QueryDefinition>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+          <ProactiveCaching dwd:design-time-name="14a85a60-e882-4e4e-afe1-b55c5e0e37ba">
+            <SilenceInterval>-PT1S</SilenceInterval>
+            <Latency>-PT1S</Latency>
+            <SilenceOverrideInterval>-PT1S</SilenceOverrideInterval>
+            <ForceRebuildInterval>-PT1S</ForceRebuildInterval>
+            <Source xsi:type="ProactiveCachingInheritedBinding" dwd:design-time-name="b6992f9a-1f8d-4ad7-8338-fead0b0035a1" />
+          </ProactiveCaching>
+          <EstimatedSize>164946341</EstimatedSize>
+        </Partition>
+        <Partition dwd:design-time-name="9aa878e1-a5d9-4314-9105-fc1098507894">
+          <ID>Activities 2019</ID>
+          <Name>Activities 2019</Name>
+          <CreatedTimestamp>2019-01-03T17:28:42.613333Z</CreatedTimestamp>
+          <LastSchemaUpdate>2021-08-30T23:48:24.17Z</LastSchemaUpdate>
+          <LastProcessed>2021-12-29T10:04:44.686667Z</LastProcessed>
+          <State>Processed</State>
+          <Source xsi:type="QueryBinding" dwd:design-time-name="2095c374-1110-4803-b30a-4e461e1632fa">
+            <DataSourceID>HC_BI_MKTG_DDS</DataSourceID>
+            <QueryDefinition>SELECT *		FROM [bi_mktg_dds].[vwFactActivity]
+WHERE    DatePart(year, [bi_mktg_dds].[vwFactActivity].[PartitionDate]) = 2019</QueryDefinition>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+          <ProactiveCaching dwd:design-time-name="eba97d65-0849-4e94-93ab-1aceb6660536">
+            <SilenceInterval>-PT1S</SilenceInterval>
+            <Latency>-PT1S</Latency>
+            <SilenceOverrideInterval>-PT1S</SilenceOverrideInterval>
+            <ForceRebuildInterval>-PT1S</ForceRebuildInterval>
+            <Source xsi:type="ProactiveCachingInheritedBinding" dwd:design-time-name="4c11a259-45bc-430f-8724-58c3a3b3d38a" />
+          </ProactiveCaching>
+          <EstimatedSize>143585284</EstimatedSize>
+        </Partition>
+        <Partition dwd:design-time-name="ea54db03-4cd1-40c3-ac69-bff9f699a377">
+          <ID>Activities 2020</ID>
+          <Name>Activities 2020</Name>
+          <CreatedTimestamp>2020-01-08T19:16:07.09Z</CreatedTimestamp>
+          <LastSchemaUpdate>2021-08-30T23:48:24.216667Z</LastSchemaUpdate>
+          <LastProcessed>2021-12-29T10:03:26.856667Z</LastProcessed>
+          <State>Processed</State>
+          <Source xsi:type="QueryBinding" dwd:design-time-name="6fca51ae-379e-4111-8d6c-9d52843d0101">
+            <DataSourceID>HC_BI_MKTG_DDS</DataSourceID>
+            <QueryDefinition>SELECT *		FROM [bi_mktg_dds].[vwFactActivity]
+WHERE    DatePart(year, [bi_mktg_dds].[vwFactActivity].[PartitionDate]) = 2020</QueryDefinition>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+          <ProactiveCaching dwd:design-time-name="93f8b266-7ef5-48c3-96c1-93ead20c1171">
+            <SilenceInterval>-PT1S</SilenceInterval>
+            <Latency>-PT1S</Latency>
+            <SilenceOverrideInterval>-PT1S</SilenceOverrideInterval>
+            <ForceRebuildInterval>-PT1S</ForceRebuildInterval>
+            <Source xsi:type="ProactiveCachingInheritedBinding" dwd:design-time-name="9423aef5-5646-4047-81d3-da3b2e82ad14" />
+          </ProactiveCaching>
+          <EstimatedSize>119588459</EstimatedSize>
+        </Partition>
+        <Partition dwd:design-time-name="414a9751-5172-4171-a705-972df11a9bc8">
+          <ID>Vw Fact Activity</ID>
+          <Name>Activities 2021</Name>
+          <CreatedTimestamp>2021-01-04T13:37:56.963333Z</CreatedTimestamp>
+          <LastSchemaUpdate>2021-08-30T23:48:24.263333Z</LastSchemaUpdate>
+          <LastProcessed>2021-12-29T10:04:20.6Z</LastProcessed>
+          <State>Processed</State>
+          <Source xsi:type="QueryBinding" dwd:design-time-name="ecfa31f5-011f-4e36-82b6-114e46f5e7e1">
+            <DataSourceID>HC_BI_MKTG_DDS</DataSourceID>
+            <QueryDefinition>SELECT *		FROM [bi_mktg_dds].[vwFactActivity]
+WHERE    DatePart(year, [bi_mktg_dds].[vwFactActivity].[PartitionDate]) = 2021</QueryDefinition>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+          <ProactiveCaching dwd:design-time-name="077eb967-d2e8-41d2-a849-94f711c8df9a">
+            <SilenceInterval>-PT1S</SilenceInterval>
+            <Latency>-PT1S</Latency>
+            <SilenceOverrideInterval>-PT1S</SilenceOverrideInterval>
+            <ForceRebuildInterval>-PT1S</ForceRebuildInterval>
+            <Source xsi:type="ProactiveCachingInheritedBinding" dwd:design-time-name="b9843ac4-30bb-40d1-9260-f43d99d4553e" />
+          </ProactiveCaching>
+          <EstimatedSize>94649627</EstimatedSize>
+        </Partition>
+      </Partitions>
+    </MeasureGroup>
+    <MeasureGroup>
+      <ID>Vw Fact Lead</ID>
+      <Partitions>
+        <Partition dwd:design-time-name="e54fdb02-e5fe-4bfc-8daa-330f277c66ff">
+          <ID>Leads 2015</ID>
+          <Name>Leads 2016 thru 2021</Name>
+          <CreatedTimestamp>2014-01-07T16:19:46.333333Z</CreatedTimestamp>
+          <LastSchemaUpdate>2021-08-30T23:48:24.356667Z</LastSchemaUpdate>
+          <LastProcessed>2021-12-29T10:05:16.543333Z</LastProcessed>
+          <State>Processed</State>
+          <Source xsi:type="QueryBinding" dwd:design-time-name="c3779f81-639a-4245-8164-4dc74a721a96">
+            <DataSourceID>HC_BI_MKTG_DDS</DataSourceID>
+            <QueryDefinition>SELECT *			FROM [bi_mktg_dds].[vwFactLead]
+WHERE    DatePart(year, [bi_mktg_dds].[vwFactLead].[PartitionDate]) between 2016 and 2021</QueryDefinition>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+          <ProactiveCaching dwd:design-time-name="502a60a7-e0c0-4052-a1c5-00a51c793253">
+            <SilenceInterval>-PT1S</SilenceInterval>
+            <Latency>-PT1S</Latency>
+            <SilenceOverrideInterval>-PT1S</SilenceOverrideInterval>
+            <ForceRebuildInterval>-PT1S</ForceRebuildInterval>
+            <Source xsi:type="ProactiveCachingInheritedBinding" dwd:design-time-name="e113f6d1-6cb9-4e8c-9689-1d524b04e516" />
+          </ProactiveCaching>
+          <EstimatedSize>126569937</EstimatedSize>
+        </Partition>
+        <Partition dwd:design-time-name="f969fd8b-b543-48f9-b617-632d70e2a6db">
+          <ID>Leads 1998 thru 2015</ID>
+          <Name>Leads 2010 thru 2015</Name>
+          <CreatedTimestamp>2021-04-14T13:55:10.34Z</CreatedTimestamp>
+          <LastSchemaUpdate>2021-08-30T23:48:24.403333Z</LastSchemaUpdate>
+          <LastProcessed>2021-12-29T10:05:21.41Z</LastProcessed>
+          <State>Processed</State>
+          <Source xsi:type="QueryBinding" dwd:design-time-name="91f034c3-e31e-4f36-b8d8-b3cfafc3d277">
+            <DataSourceID>HC_BI_MKTG_DDS</DataSourceID>
+            <QueryDefinition>SELECT *			FROM [bi_mktg_dds].[vwFactLead]
+WHERE    DatePart(year, [bi_mktg_dds].[vwFactLead].[PartitionDate]) between 2010 and 2015</QueryDefinition>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+          <ProactiveCaching dwd:design-time-name="fe0d6749-204e-41be-a6ad-265a4f396207">
+            <SilenceInterval>-PT1S</SilenceInterval>
+            <Latency>-PT1S</Latency>
+            <SilenceOverrideInterval>-PT1S</SilenceOverrideInterval>
+            <ForceRebuildInterval>-PT1S</ForceRebuildInterval>
+            <Source xsi:type="ProactiveCachingInheritedBinding" dwd:design-time-name="eba45429-70e7-43f6-a7e3-3f4a743e7060" />
+          </ProactiveCaching>
+          <EstimatedSize>112806147</EstimatedSize>
+        </Partition>
+        <Partition dwd:design-time-name="e3c758fb-5d1a-4e99-bf6e-503c86479d2c">
+          <ID>Leads 1998 thru 2009</ID>
+          <Name>Leads 1998 thru 2009</Name>
+          <CreatedTimestamp>2021-04-14T14:04:33.36Z</CreatedTimestamp>
+          <LastSchemaUpdate>2021-08-30T23:48:24.45Z</LastSchemaUpdate>
+          <LastProcessed>2021-12-29T10:05:08.976667Z</LastProcessed>
+          <State>Processed</State>
+          <Source xsi:type="QueryBinding" dwd:design-time-name="ea348a52-1ba0-435e-8747-3f355c8f6b4f">
+            <DataSourceID>HC_BI_MKTG_DDS</DataSourceID>
+            <QueryDefinition>SELECT *			FROM [bi_mktg_dds].[vwFactLead]
+WHERE    DatePart(year, [bi_mktg_dds].[vwFactLead].[PartitionDate]) between 1998 and 2009</QueryDefinition>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+          <ProactiveCaching dwd:design-time-name="90f705c2-c909-49a3-b02b-53092010afb3">
+            <SilenceInterval>-PT1S</SilenceInterval>
+            <Latency>-PT1S</Latency>
+            <SilenceOverrideInterval>-PT1S</SilenceOverrideInterval>
+            <ForceRebuildInterval>-PT1S</ForceRebuildInterval>
+            <Source xsi:type="ProactiveCachingInheritedBinding" dwd:design-time-name="4c7f08d3-6884-40c0-872f-698c3a9893ad" />
+          </ProactiveCaching>
+          <EstimatedSize>208004144</EstimatedSize>
+        </Partition>
+      </Partitions>
+    </MeasureGroup>
+    <MeasureGroup>
+      <ID>Vw Fact Sales Transaction Tender</ID>
+      <Partitions>
+        <Partition dwd:design-time-name="270f9853-8999-446f-be9e-87540537ea8f">
+          <ID>Sales Transaction Tender 2011</ID>
+          <Name>Sales Transaction Tender 2019</Name>
+          <CreatedTimestamp>2012-04-03T23:41:09.306667Z</CreatedTimestamp>
+          <LastSchemaUpdate>2021-08-30T23:48:24.543333Z</LastSchemaUpdate>
+          <LastProcessed>2021-12-29T10:03:39.12Z</LastProcessed>
+          <State>Processed</State>
+          <Source xsi:type="QueryBinding" dwd:design-time-name="6a05ace1-0139-4360-b58c-c6723330b1fd">
+            <DataSourceID>HC_BI_CMS_DDS</DataSourceID>
+            <QueryDefinition>SELECT [bi_cms_dds].[vwFactSalesTransactionTender].[PartitionDate],[bi_cms_dds].[vwFactSalesTransactionTender].[OrderDateKey],[bi_cms_dds].[vwFactSalesTransactionTender].[SalesOrderKey],[bi_cms_dds].[vwFactSalesTransactionTender].[SalesOrderTenderKey],[bi_cms_dds].[vwFactSalesTransactionTender].[SalesOrderTypeKey],[bi_cms_dds].[vwFactSalesTransactionTender].[CenterKey],[bi_cms_dds].[vwFactSalesTransactionTender].[ClientKey],[bi_cms_dds].[vwFactSalesTransactionTender].[MembershipKey],[bi_cms_dds].[vwFactSalesTransactionTender].[ClientMembershipKey],[bi_cms_dds].[vwFactSalesTransactionTender].[TenderTypeKey],[bi_cms_dds].[vwFactSalesTransactionTender].[TenderAmount], contactKey, GenderKey, OccupationKey, EthnicityKey, MaritalStatusKey, HairLossTypeKey, AgeRangeKey, PromotionCodeKey,[bi_cms_dds].[vwFactSalesTransactionTender].[AccountID]
+		FROM [bi_cms_dds].[vwFactSalesTransactionTender]
+WHERE    DatePart(year, [bi_cms_dds].[vwFactSalesTransactionTender].[PartitionDate]) = 2019</QueryDefinition>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+          <ProactiveCaching dwd:design-time-name="22d9a7de-e230-4f93-89e0-c2126c3ebe73">
+            <SilenceInterval>-PT1S</SilenceInterval>
+            <Latency>-PT1S</Latency>
+            <SilenceOverrideInterval>-PT1S</SilenceOverrideInterval>
+            <ForceRebuildInterval>-PT1S</ForceRebuildInterval>
+            <Source xsi:type="ProactiveCachingInheritedBinding" dwd:design-time-name="a5b6999f-f4d4-4810-90da-bb7cb5e278ce" />
+          </ProactiveCaching>
+          <EstimatedSize>159040335</EstimatedSize>
+        </Partition>
+        <Partition dwd:design-time-name="c22766f3-13cd-48ef-9a35-7a445945016f">
+          <ID>Sales Transaction Tender 2017</ID>
+          <Name>Sales Transaction Tender 2017</Name>
+          <CreatedTimestamp>2017-01-03T21:57:59.64Z</CreatedTimestamp>
+          <LastSchemaUpdate>2021-08-30T23:48:24.576667Z</LastSchemaUpdate>
+          <LastProcessed>2021-12-29T10:04:44.813333Z</LastProcessed>
+          <State>Processed</State>
+          <Source xsi:type="QueryBinding" dwd:design-time-name="3682e831-eb9c-4b50-8903-34526ba0405b">
+            <DataSourceID>HC_BI_CMS_DDS</DataSourceID>
+            <QueryDefinition>SELECT [bi_cms_dds].[vwFactSalesTransactionTender].[PartitionDate],[bi_cms_dds].[vwFactSalesTransactionTender].[OrderDateKey],[bi_cms_dds].[vwFactSalesTransactionTender].[SalesOrderKey],[bi_cms_dds].[vwFactSalesTransactionTender].[SalesOrderTenderKey],[bi_cms_dds].[vwFactSalesTransactionTender].[SalesOrderTypeKey],[bi_cms_dds].[vwFactSalesTransactionTender].[CenterKey],[bi_cms_dds].[vwFactSalesTransactionTender].[ClientKey],[bi_cms_dds].[vwFactSalesTransactionTender].[MembershipKey],[bi_cms_dds].[vwFactSalesTransactionTender].[ClientMembershipKey],[bi_cms_dds].[vwFactSalesTransactionTender].[TenderTypeKey],[bi_cms_dds].[vwFactSalesTransactionTender].[TenderAmount],[bi_cms_dds].[vwFactSalesTransactionTender].[contactkey],[bi_cms_dds].[vwFactSalesTransactionTender].[GenderKey],[bi_cms_dds].[vwFactSalesTransactionTender].[OccupationKey],[bi_cms_dds].[vwFactSalesTransactionTender].[EthnicityKey],[bi_cms_dds].[vwFactSalesTransactionTender].[MaritalStatusKey],[bi_cms_dds].[vwFactSalesTransactionTender].[HairLossTypeKey],[bi_cms_dds].[vwFactSalesTransactionTender].[AgeRangeKey],[bi_cms_dds].[vwFactSalesTransactionTender].[PromotionCodeKey],[OrderDateKey] AS [MarketingDate],[bi_cms_dds].[vwFactSalesTransactionTender].[AccountID]
+FROM [bi_cms_dds].[vwFactSalesTransactionTender]
+	WHERE    DatePart(year, [bi_cms_dds].[vwFactSalesTransactionTender].[PartitionDate]) = 2017</QueryDefinition>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+          <ProactiveCaching dwd:design-time-name="f6214eda-fdfa-4a9a-a4e8-9c985d6543d4">
+            <SilenceInterval>-PT1S</SilenceInterval>
+            <Latency>-PT1S</Latency>
+            <SilenceOverrideInterval>-PT1S</SilenceOverrideInterval>
+            <ForceRebuildInterval>-PT1S</ForceRebuildInterval>
+            <Source xsi:type="ProactiveCachingInheritedBinding" dwd:design-time-name="d550baa5-e55a-43ee-96f6-05fdbcd9c156" />
+          </ProactiveCaching>
+          <EstimatedSize>159168958</EstimatedSize>
+        </Partition>
+        <Partition dwd:design-time-name="33571db0-ae92-458d-8368-e75608499f46">
+          <ID>Sales Transaction Tender 2018</ID>
+          <Name>Sales Transaction Tender 2018</Name>
+          <CreatedTimestamp>2018-01-03T14:59:33.436667Z</CreatedTimestamp>
+          <LastSchemaUpdate>2021-08-30T23:48:24.623333Z</LastSchemaUpdate>
+          <LastProcessed>2021-12-29T10:04:17.76Z</LastProcessed>
+          <State>Processed</State>
+          <Source xsi:type="QueryBinding" dwd:design-time-name="a23a4d11-0213-45ea-8b43-6b46ca4e478c">
+            <DataSourceID>HC_BI_CMS_DDS</DataSourceID>
+            <QueryDefinition>SELECT [bi_cms_dds].[vwFactSalesTransactionTender].[PartitionDate],[bi_cms_dds].[vwFactSalesTransactionTender].[OrderDateKey],[bi_cms_dds].[vwFactSalesTransactionTender].[SalesOrderKey],[bi_cms_dds].[vwFactSalesTransactionTender].[SalesOrderTenderKey],[bi_cms_dds].[vwFactSalesTransactionTender].[SalesOrderTypeKey],[bi_cms_dds].[vwFactSalesTransactionTender].[CenterKey],[bi_cms_dds].[vwFactSalesTransactionTender].[ClientKey],[bi_cms_dds].[vwFactSalesTransactionTender].[MembershipKey],[bi_cms_dds].[vwFactSalesTransactionTender].[ClientMembershipKey],[bi_cms_dds].[vwFactSalesTransactionTender].[TenderTypeKey],[bi_cms_dds].[vwFactSalesTransactionTender].[TenderAmount],[bi_cms_dds].[vwFactSalesTransactionTender].[contactkey],[bi_cms_dds].[vwFactSalesTransactionTender].[GenderKey],[bi_cms_dds].[vwFactSalesTransactionTender].[OccupationKey],[bi_cms_dds].[vwFactSalesTransactionTender].[EthnicityKey],[bi_cms_dds].[vwFactSalesTransactionTender].[MaritalStatusKey],[bi_cms_dds].[vwFactSalesTransactionTender].[HairLossTypeKey],[bi_cms_dds].[vwFactSalesTransactionTender].[AgeRangeKey],[bi_cms_dds].[vwFactSalesTransactionTender].[PromotionCodeKey],[OrderDateKey] AS [MarketingDate],[bi_cms_dds].[vwFactSalesTransactionTender].[AccountID]
+FROM [bi_cms_dds].[vwFactSalesTransactionTender]
+	WHERE    DatePart(year, [bi_cms_dds].[vwFactSalesTransactionTender].[PartitionDate]) = 2018</QueryDefinition>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+          <ProactiveCaching dwd:design-time-name="52571e97-edf5-42b0-a8fd-d18b06f22536">
+            <SilenceInterval>-PT1S</SilenceInterval>
+            <Latency>-PT1S</Latency>
+            <SilenceOverrideInterval>-PT1S</SilenceOverrideInterval>
+            <ForceRebuildInterval>-PT1S</ForceRebuildInterval>
+            <Source xsi:type="ProactiveCachingInheritedBinding" dwd:design-time-name="c5610ff6-f0da-4dab-b856-272917a24d10" />
+          </ProactiveCaching>
+          <EstimatedSize>156679050</EstimatedSize>
+        </Partition>
+        <Partition dwd:design-time-name="1d15bdbd-886d-4d00-9d83-c196fb007bc7">
+          <ID>Vw Fact Sales Transaction Tender</ID>
+          <Name>Sales Transaction Tender 2020</Name>
+          <CreatedTimestamp>2020-01-08T19:16:07.653333Z</CreatedTimestamp>
+          <LastSchemaUpdate>2021-08-30T23:48:24.67Z</LastSchemaUpdate>
+          <LastProcessed>2021-12-29T10:05:10.536667Z</LastProcessed>
+          <State>Processed</State>
+          <Source xsi:type="QueryBinding" dwd:design-time-name="c967256f-504b-4df9-ab82-36ada7051e66">
+            <DataSourceID>HC_BI_CMS_DDS</DataSourceID>
+            <QueryDefinition>SELECT [bi_cms_dds].[vwFactSalesTransactionTender].[PartitionDate],[bi_cms_dds].[vwFactSalesTransactionTender].[OrderDateKey],[bi_cms_dds].[vwFactSalesTransactionTender].[SalesOrderKey],[bi_cms_dds].[vwFactSalesTransactionTender].[SalesOrderTenderKey],[bi_cms_dds].[vwFactSalesTransactionTender].[SalesOrderTypeKey],[bi_cms_dds].[vwFactSalesTransactionTender].[CenterKey],[bi_cms_dds].[vwFactSalesTransactionTender].[ClientKey],[bi_cms_dds].[vwFactSalesTransactionTender].[MembershipKey],[bi_cms_dds].[vwFactSalesTransactionTender].[ClientMembershipKey],[bi_cms_dds].[vwFactSalesTransactionTender].[TenderTypeKey],[bi_cms_dds].[vwFactSalesTransactionTender].[TenderAmount], contactKey, GenderKey, OccupationKey, EthnicityKey, MaritalStatusKey, HairLossTypeKey, AgeRangeKey, PromotionCodeKey,[bi_cms_dds].[vwFactSalesTransactionTender].[AccountID]
+		FROM [bi_cms_dds].[vwFactSalesTransactionTender]
+WHERE    DatePart(year, [bi_cms_dds].[vwFactSalesTransactionTender].[PartitionDate]) = 2020</QueryDefinition>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+          <ProactiveCaching dwd:design-time-name="5b0765b0-fa9b-42ac-ac39-a27f4d10e235">
+            <SilenceInterval>-PT1S</SilenceInterval>
+            <Latency>-PT1S</Latency>
+            <SilenceOverrideInterval>-PT1S</SilenceOverrideInterval>
+            <ForceRebuildInterval>-PT1S</ForceRebuildInterval>
+            <Source xsi:type="ProactiveCachingInheritedBinding" dwd:design-time-name="7156fdba-0bad-412e-bc92-060da1d8196e" />
+          </ProactiveCaching>
+          <EstimatedSize>139410926</EstimatedSize>
+        </Partition>
+        <Partition dwd:design-time-name="abb10ee0-0337-4f7b-ba24-19a0961ef0f2">
+          <ID>Vw Fact Sales Transaction Tender 1</ID>
+          <Name>Sales Transaction Tender 2021</Name>
+          <CreatedTimestamp>2021-01-04T13:37:57.2Z</CreatedTimestamp>
+          <LastSchemaUpdate>2021-08-30T23:48:24.716667Z</LastSchemaUpdate>
+          <LastProcessed>2021-12-29T10:03:31.413333Z</LastProcessed>
+          <State>Processed</State>
+          <Source xsi:type="QueryBinding" dwd:design-time-name="9d2ee810-fdb4-43ee-8115-c3cda50ee16a">
+            <DataSourceID>HC_BI_CMS_DDS</DataSourceID>
+            <QueryDefinition>SELECT [bi_cms_dds].[vwFactSalesTransactionTender].[PartitionDate],[bi_cms_dds].[vwFactSalesTransactionTender].[OrderDateKey],[bi_cms_dds].[vwFactSalesTransactionTender].[SalesOrderKey],[bi_cms_dds].[vwFactSalesTransactionTender].[SalesOrderTenderKey],[bi_cms_dds].[vwFactSalesTransactionTender].[SalesOrderTypeKey],[bi_cms_dds].[vwFactSalesTransactionTender].[CenterKey],[bi_cms_dds].[vwFactSalesTransactionTender].[ClientKey],[bi_cms_dds].[vwFactSalesTransactionTender].[MembershipKey],[bi_cms_dds].[vwFactSalesTransactionTender].[ClientMembershipKey],[bi_cms_dds].[vwFactSalesTransactionTender].[TenderTypeKey],[bi_cms_dds].[vwFactSalesTransactionTender].[TenderAmount], contactKey, GenderKey, OccupationKey, EthnicityKey, MaritalStatusKey, HairLossTypeKey, AgeRangeKey, PromotionCodeKey,[bi_cms_dds].[vwFactSalesTransactionTender].[AccountID]
+		FROM [bi_cms_dds].[vwFactSalesTransactionTender]
+WHERE    DatePart(year, [bi_cms_dds].[vwFactSalesTransactionTender].[PartitionDate]) = 2021</QueryDefinition>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+          <ProactiveCaching dwd:design-time-name="1239f525-8765-4699-82e3-085eb17d1be8">
+            <SilenceInterval>-PT1S</SilenceInterval>
+            <Latency>-PT1S</Latency>
+            <SilenceOverrideInterval>-PT1S</SilenceOverrideInterval>
+            <ForceRebuildInterval>-PT1S</ForceRebuildInterval>
+            <Source xsi:type="ProactiveCachingInheritedBinding" dwd:design-time-name="e2954f71-6c6f-44f6-8557-ae73807096cf" />
+          </ProactiveCaching>
+          <EstimatedSize>144672534</EstimatedSize>
+        </Partition>
+      </Partitions>
+    </MeasureGroup>
+    <MeasureGroup>
+      <ID>Vw Fact Hair System Order</ID>
+      <Partitions>
+        <Partition dwd:design-time-name="22f8c414-d21b-480e-bdef-8d4a21c6b8a3">
+          <ID>FactHairSystemOrder 2015</ID>
+          <Name>FactHairSystemOrder 2017 through 2021</Name>
+          <CreatedTimestamp>2014-01-07T16:19:52.233333Z</CreatedTimestamp>
+          <LastSchemaUpdate>2021-08-30T23:48:24.793333Z</LastSchemaUpdate>
+          <LastProcessed>2021-12-29T10:04:40.816667Z</LastProcessed>
+          <State>Processed</State>
+          <Source xsi:type="QueryBinding" dwd:design-time-name="cf5bc851-4db6-4237-af4b-7a657a01f490">
+            <DataSourceID>HC_BI_CMS_DDS</DataSourceID>
+            <QueryDefinition>SELECT  [bi_cms_dds].[vwFactHairSystemOrder].[HairSystemOrderKey],[bi_cms_dds].[vwFactHairSystemOrder].[HairSystemOrderSSID],[bi_cms_dds].[vwFactHairSystemOrder].[HairSystemOrderNumber],[bi_cms_dds].[vwFactHairSystemOrder].[HairSystemOrderDateKey],[bi_cms_dds].[vwFactHairSystemOrder].[HairSystemOrderDate],[bi_cms_dds].[vwFactHairSystemOrder].[HairSystemDueDateKey],[bi_cms_dds].[vwFactHairSystemOrder].[HairSystemDueDate],[bi_cms_dds].[vwFactHairSystemOrder].[HairSystemAllocationDateKey],[bi_cms_dds].[vwFactHairSystemOrder].[HairSystemAlocationDate],[bi_cms_dds].[vwFactHairSystemOrder].[HairSystemReceivedDateKey],[bi_cms_dds].[vwFactHairSystemOrder].[HairSystemReceivedDate],[bi_cms_dds].[vwFactHairSystemOrder].[HairSystemShippedDateKey],[bi_cms_dds].[vwFactHairSystemOrder].[HairSystemShippedDate],[bi_cms_dds].[vwFactHairSystemOrder].[HairSystemAppliedDateKey],[bi_cms_dds].[vwFactHairSystemOrder].[HairSystemAppliedDate],[bi_cms_dds].[vwFactHairSystemOrder].[CenterKey],[vwFactHairSystemOrder].[ClientHomeCenterKey],[bi_cms_dds].[vwFactHairSystemOrder].[ClientKey],[bi_cms_dds].[vwFactHairSystemOrder].[ClientMembershipKey],[bi_cms_dds].[vwFactHairSystemOrder].[OrigClientSSID],[bi_cms_dds].[vwFactHairSystemOrder].[OrigClientMembershipSSID],[bi_cms_dds].[vwFactHairSystemOrder].[HairSystemHairLengthKey],[bi_cms_dds].[vwFactHairSystemOrder].[HairSystemTypeKey],[bi_cms_dds].[vwFactHairSystemOrder].[HairSystemTextureKey],[bi_cms_dds].[vwFactHairSystemOrder].[HairSystemMatrixColorKey],[bi_cms_dds].[vwFactHairSystemOrder].[HairSystemDensityKey],[bi_cms_dds].[vwFactHairSystemOrder].[HairSystemFrontalDensityKey],[bi_cms_dds].[vwFactHairSystemOrder].[HairSystemStyleKey],[bi_cms_dds].[vwFactHairSystemOrder].[HairSystemDesignTemplateKey],[bi_cms_dds].[vwFactHairSystemOrder].[HairSystemRecessionKey],[bi_cms_dds].[vwFactHairSystemOrder].[HairSystemTopHairColorKey],[bi_cms_dds].[vwFactHairSystemOrder].[MeasurementsByEmployeeKey],[bi_cms_dds].[vwFactHairSystemOrder].[CapSizeKey],[bi_cms_dds].[vwFactHairSystemOrder].[TemplateWidth],[bi_cms_dds].[vwFactHairSystemOrder].[TemplateHeight],[bi_cms_dds].[vwFactHairSystemOrder].[TemplateArea],[bi_cms_dds].[vwFactHairSystemOrder].[FactorySSID],[bi_cms_dds].[vwFactHairSystemOrder].[HairSystemOrderStatusKey],[bi_cms_dds].[vwFactHairSystemOrder].[CostContract],[bi_cms_dds].[vwFactHairSystemOrder].[CostActual],[bi_cms_dds].[vwFactHairSystemOrder].[PriceContract],[bi_cms_dds].[vwFactHairSystemOrder].[DaystoDelivery],[bi_cms_dds].[vwFactHairSystemOrder].[HairSystemRepairReasonSSID],[bi_cms_dds].[vwFactHairSystemOrder].[HairSystemRepairReasonDescription],[bi_cms_dds].[vwFactHairSystemOrder].[HairSystemRedoReasonSSID],[bi_cms_dds].[vwFactHairSystemOrder].[HairSystemRedoReasonDescription],[bi_cms_dds].[vwFactHairSystemOrder].[IsOnHoldForReviewFlag],[bi_cms_dds].[vwFactHairSystemOrder].[IsSampleOrderFlag],[bi_cms_dds].[vwFactHairSystemOrder].[IsRepairOrderFlag],[bi_cms_dds].[vwFactHairSystemOrder].[IsRedoOrderFlag],[bi_cms_dds].[vwFactHairSystemOrder].[IsRushOrderFlag],[bi_cms_dds].[vwFactHairSystemOrder].[IsStockInventoryFlag],[bi_cms_dds].[vwFactHairSystemOrder].[InsertAuditKey],[bi_cms_dds].[vwFactHairSystemOrder].[UpdateAuditKey],[bi_cms_dds].[vwFactHairSystemOrder].[HairSystemVendorContractKey],[bi_cms_dds].[vwFactHairSystemOrder].[PartitionDate],[bi_cms_dds].[vwFactHairSystemOrder].[OrderDate],[bi_cms_dds].[vwFactHairSystemOrder].[DaysSinceAllocation]
+
+, [bi_cms_dds].[vwFactHairSystemOrder].[GenderKey], [bi_cms_dds].[vwFactHairSystemOrder].[MembershipKey],  CONVERT(float, 0.00) AS AverageHairSystemCost, 
+                      CONVERT(float, 0.00) AS AverageHairSystemPrice, CONVERT(int, 0) AS AverageDeliveryDays
+		FROM [bi_cms_dds].[vwFactHairSystemOrder]
+		WHERE   Year( [bi_cms_dds].[vwFactHairSystemOrder].[PartitionDate]) between 2017 and 2021</QueryDefinition>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+          <ProactiveCaching dwd:design-time-name="1c92d3d8-e98e-42bd-92b2-5b196efb849d">
+            <SilenceInterval>-PT1S</SilenceInterval>
+            <Latency>-PT1S</Latency>
+            <SilenceOverrideInterval>-PT1S</SilenceOverrideInterval>
+            <ForceRebuildInterval>-PT1S</ForceRebuildInterval>
+            <Source xsi:type="ProactiveCachingInheritedBinding" dwd:design-time-name="db84a3d7-e7a0-44df-80f5-e6acfdd31056" />
+          </ProactiveCaching>
+          <EstimatedSize>147665373</EstimatedSize>
+        </Partition>
+      </Partitions>
+    </MeasureGroup>
+    <MeasureGroup>
+      <ID>Vw Fact Sales Conect</ID>
+      <Partitions>
+        <Partition dwd:design-time-name="34db1195-e244-491f-b662-34bbd430a535">
+          <ID>FactSalesConect 2017</ID>
+          <Name>FactSalesConect 2017</Name>
+          <CreatedTimestamp>2017-01-03T21:58:00.776667Z</CreatedTimestamp>
+          <LastSchemaUpdate>2021-08-30T23:48:24.903333Z</LastSchemaUpdate>
+          <LastProcessed>2021-12-29T10:06:59.66Z</LastProcessed>
+          <State>Processed</State>
+          <Source xsi:type="QueryBinding" dwd:design-time-name="21d5be0e-b2c3-4413-8b51-10bf62b874a0">
+            <DataSourceID>HC_BI_CMS_DDS</DataSourceID>
+            <QueryDefinition>SELECT * FROM [bi_cms_dds].[vwFactSalesConect]
+		WHERE    orderdatekey between 20170101 and 20171231</QueryDefinition>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+          <ProactiveCaching dwd:design-time-name="e6a22bfb-4a82-4725-bf5b-c5ca92fa5923">
+            <SilenceInterval>-PT1S</SilenceInterval>
+            <Latency>-PT1S</Latency>
+            <SilenceOverrideInterval>-PT1S</SilenceOverrideInterval>
+            <ForceRebuildInterval>-PT1S</ForceRebuildInterval>
+            <Source xsi:type="ProactiveCachingInheritedBinding" dwd:design-time-name="02689a2e-77ab-4dc6-8ff2-19508e13e056" />
+          </ProactiveCaching>
+          <EstimatedSize>397928488</EstimatedSize>
+        </Partition>
+        <Partition dwd:design-time-name="48b0b902-7de1-4514-b2ef-8b114f9901f4">
+          <ID>FactSalescONEct 2018</ID>
+          <Name>FactSalescONEct 2018</Name>
+          <CreatedTimestamp>2018-01-03T14:58:39.49Z</CreatedTimestamp>
+          <LastSchemaUpdate>2021-08-30T23:48:24.95Z</LastSchemaUpdate>
+          <LastProcessed>2021-12-29T10:06:54.683333Z</LastProcessed>
+          <State>Processed</State>
+          <Source xsi:type="QueryBinding" dwd:design-time-name="62a48a70-0bef-430d-b128-79c43100a6b9">
+            <DataSourceID>HC_BI_CMS_DDS</DataSourceID>
+            <QueryDefinition>SELECT * FROM [bi_cms_dds].[vwFactSalesConect]
+		WHERE    orderdatekey between 20180101 and 20181231</QueryDefinition>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+          <ProactiveCaching dwd:design-time-name="86d9d474-bb19-4159-b661-bf768e242fa9">
+            <SilenceInterval>-PT1S</SilenceInterval>
+            <Latency>-PT1S</Latency>
+            <SilenceOverrideInterval>-PT1S</SilenceOverrideInterval>
+            <ForceRebuildInterval>-PT1S</ForceRebuildInterval>
+            <Source xsi:type="ProactiveCachingInheritedBinding" dwd:design-time-name="7ad17e17-c99c-461c-9f53-1391b729de2e" />
+          </ProactiveCaching>
+          <EstimatedSize>398215287</EstimatedSize>
+        </Partition>
+        <Partition dwd:design-time-name="a04ab58a-c662-473a-bf85-0317b9e6c763">
+          <ID>Vw Fact Sales Conect</ID>
+          <Name>FactSalescONEct 2019</Name>
+          <CreatedTimestamp>2019-01-03T17:28:44.046667Z</CreatedTimestamp>
+          <LastSchemaUpdate>2021-08-30T23:48:24.996667Z</LastSchemaUpdate>
+          <LastProcessed>2021-12-29T10:06:58.91Z</LastProcessed>
+          <State>Processed</State>
+          <Source xsi:type="QueryBinding" dwd:design-time-name="4fe4b7a9-a3c6-42c2-aae0-a0bd2abfffb7">
+            <DataSourceID>HC_BI_CMS_DDS</DataSourceID>
+            <QueryDefinition>SELECT * FROM [bi_cms_dds].[vwFactSalesConect]
+		WHERE    orderdatekey between 20190101 and 20191231</QueryDefinition>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+          <ProactiveCaching dwd:design-time-name="b4021c38-6724-43b8-b4bb-1cc8da87333a">
+            <SilenceInterval>-PT1S</SilenceInterval>
+            <Latency>-PT1S</Latency>
+            <SilenceOverrideInterval>-PT1S</SilenceOverrideInterval>
+            <ForceRebuildInterval>-PT1S</ForceRebuildInterval>
+            <Source xsi:type="ProactiveCachingInheritedBinding" dwd:design-time-name="d37ee297-7e05-4ba0-b87e-76808bf21386" />
+          </ProactiveCaching>
+          <EstimatedSize>407234641</EstimatedSize>
+        </Partition>
+        <Partition dwd:design-time-name="08e49f94-899f-4872-8398-4a3b5b094e55">
+          <ID>FactSalescONEct 2020</ID>
+          <Name>FactSalescONEct 2020</Name>
+          <CreatedTimestamp>2020-01-08T19:09:23.566667Z</CreatedTimestamp>
+          <LastSchemaUpdate>2021-08-30T23:48:25.06Z</LastSchemaUpdate>
+          <LastProcessed>2021-12-29T10:06:43.933333Z</LastProcessed>
+          <State>Processed</State>
+          <Source xsi:type="QueryBinding" dwd:design-time-name="b30976db-0a95-4ad1-99c7-c82eeee2efe5">
+            <DataSourceID>HC_BI_CMS_DDS</DataSourceID>
+            <QueryDefinition>SELECT * FROM [bi_cms_dds].[vwFactSalesConect]
+		WHERE    orderdatekey between 20200101 and 20201231</QueryDefinition>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+          <ProactiveCaching dwd:design-time-name="a9a88c25-9183-42cb-b884-6cf4214820d2">
+            <SilenceInterval>-PT1S</SilenceInterval>
+            <Latency>-PT1S</Latency>
+            <SilenceOverrideInterval>-PT1S</SilenceOverrideInterval>
+            <ForceRebuildInterval>-PT1S</ForceRebuildInterval>
+            <Source xsi:type="ProactiveCachingInheritedBinding" dwd:design-time-name="5e0139b0-451e-421d-a867-69c4c2cd0d38" />
+          </ProactiveCaching>
+          <EstimatedSize>396375217</EstimatedSize>
+        </Partition>
+        <Partition dwd:design-time-name="b27bd919-1f2b-4e40-92ee-214a7d86c127">
+          <ID>FactSalescONEct 2021</ID>
+          <Name>FactSalescONEct 2021</Name>
+          <CreatedTimestamp>2021-01-04T13:37:57.416667Z</CreatedTimestamp>
+          <LastSchemaUpdate>2021-08-30T23:48:25.106667Z</LastSchemaUpdate>
+          <LastProcessed>2021-12-29T10:07:19.566667Z</LastProcessed>
+          <State>Processed</State>
+          <Source xsi:type="QueryBinding" dwd:design-time-name="de3c05a6-5931-4f59-b9fb-005766b4646e">
+            <DataSourceID>HC_BI_CMS_DDS</DataSourceID>
+            <QueryDefinition>SELECT * FROM [bi_cms_dds].[vwFactSalesConect]
+		WHERE    orderdatekey between 20210101 and 20211231</QueryDefinition>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+          <ProactiveCaching dwd:design-time-name="04d0cecc-c28e-4421-94d9-0e9697361556">
+            <SilenceInterval>-PT1S</SilenceInterval>
+            <Latency>-PT1S</Latency>
+            <SilenceOverrideInterval>-PT1S</SilenceOverrideInterval>
+            <ForceRebuildInterval>-PT1S</ForceRebuildInterval>
+            <Source xsi:type="ProactiveCachingInheritedBinding" dwd:design-time-name="a8449286-7bc1-4654-8d48-15707d43d755" />
+          </ProactiveCaching>
+          <EstimatedSize>372984065</EstimatedSize>
+        </Partition>
+      </Partitions>
+    </MeasureGroup>
+    <MeasureGroup>
+      <ID>Vw Fact Accounting</ID>
+      <Partitions>
+        <Partition dwd:design-time-name="16e88136-6934-431c-8d85-bd74f403a4ba">
+          <ID>Vw Fact Accounting</ID>
+          <Name>Vw Fact Accounting</Name>
+          <CreatedTimestamp>2012-11-12T19:39:34.94Z</CreatedTimestamp>
+          <LastSchemaUpdate>2021-08-30T23:48:25.183333Z</LastSchemaUpdate>
+          <LastProcessed>2021-12-29T10:04:49.57Z</LastProcessed>
+          <State>Processed</State>
+          <Source xsi:type="DsvTableBinding" dwd:design-time-name="2afb53fb-453f-4b7c-8217-08013cdbab89">
+            <DataSourceViewID>HC_BI_ENT_DDS</DataSourceViewID>
+            <TableID>bi_ent_dds_vwFactAccounting</TableID>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+          <ProactiveCaching dwd:design-time-name="bade8cd2-b15e-4630-ba22-c46243b8c801">
+            <SilenceInterval>-PT1S</SilenceInterval>
+            <Latency>-PT1S</Latency>
+            <SilenceOverrideInterval>-PT1S</SilenceOverrideInterval>
+            <ForceRebuildInterval>-PT1S</ForceRebuildInterval>
+            <Source xsi:type="ProactiveCachingInheritedBinding" dwd:design-time-name="869b70e4-a90f-4a98-83ae-2a2d85f598f0" />
+          </ProactiveCaching>
+          <EstimatedSize>102286310</EstimatedSize>
+        </Partition>
+      </Partitions>
+    </MeasureGroup>
+    <MeasureGroup>
+      <ID>Vw Fact PCP Detail</ID>
+      <Partitions>
+        <Partition dwd:design-time-name="dc54e4b6-52ca-4a93-8d71-3c15cada3936">
+          <ID>Vw Fact PCP Detail</ID>
+          <Name>Vw Fact PCP Detail</Name>
+          <CreatedTimestamp>2013-03-26T17:59:56.366667Z</CreatedTimestamp>
+          <LastSchemaUpdate>2021-08-30T23:48:25.246667Z</LastSchemaUpdate>
+          <LastProcessed>2021-12-29T10:05:35.543333Z</LastProcessed>
+          <State>Processed</State>
+          <Source xsi:type="DsvTableBinding" dwd:design-time-name="42bcbcac-0420-410c-9078-1871ae5cce78">
+            <DataSourceViewID>HC_BI_ENT_DDS</DataSourceViewID>
+            <TableID>dbo_vwFactPCPDetail</TableID>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+          <ProactiveCaching dwd:design-time-name="1886792a-fe77-48be-9498-9ef26703d2ff">
+            <SilenceInterval>-PT1S</SilenceInterval>
+            <Latency>-PT1S</Latency>
+            <SilenceOverrideInterval>-PT1S</SilenceOverrideInterval>
+            <ForceRebuildInterval>-PT1S</ForceRebuildInterval>
+            <Source xsi:type="ProactiveCachingInheritedBinding" dwd:design-time-name="ebc3b8ae-78c4-4067-9e3a-0cd670f73960" />
+          </ProactiveCaching>
+          <EstimatedSize>170187147</EstimatedSize>
+        </Partition>
+      </Partitions>
+    </MeasureGroup>
+    <MeasureGroup>
+      <ID>Vw Fact Call Data</ID>
+      <Partitions>
+        <Partition dwd:design-time-name="ea9feebf-81f8-40e2-96d1-7022860ce418">
+          <ID>Vw Fact Call Data</ID>
+          <Name>Vw Fact Call Data</Name>
+          <CreatedTimestamp>2020-06-04T15:21:00.223333Z</CreatedTimestamp>
+          <LastSchemaUpdate>2021-08-30T23:48:25.323333Z</LastSchemaUpdate>
+          <LastProcessed>2021-12-29T10:03:32.803333Z</LastProcessed>
+          <State>Processed</State>
+          <Source xsi:type="DsvTableBinding" dwd:design-time-name="21124b1c-8a4e-40ca-bd15-7f959f2a5194">
+            <DataSourceViewID>HC_BI_ENT_DDS</DataSourceViewID>
+            <TableID>bi_mktg_dds_vwFactCallData</TableID>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+          <ProactiveCaching dwd:design-time-name="80a96c1d-314a-489b-afc7-9fdb329418ce">
+            <SilenceInterval>-PT1S</SilenceInterval>
+            <Latency>-PT1S</Latency>
+            <SilenceOverrideInterval>-PT1S</SilenceOverrideInterval>
+            <ForceRebuildInterval>-PT1S</ForceRebuildInterval>
+            <Source xsi:type="ProactiveCachingInheritedBinding" dwd:design-time-name="443ab7ce-79d9-4bbd-9f0f-5de1fe740fbc" />
+          </ProactiveCaching>
+          <EstimatedSize>176683986</EstimatedSize>
+        </Partition>
+      </Partitions>
+    </MeasureGroup>
+    <MeasureGroup>
+      <ID>Vw Fact Lead Monthly</ID>
+      <Partitions>
+        <Partition dwd:design-time-name="b5b58e52-b262-4839-9ab5-2bac45a96cd3">
+          <ID>Vw Fact Lead Monthly</ID>
+          <Name>Vw Fact Lead Monthly</Name>
+          <CreatedTimestamp>2021-04-27T17:03:55.51Z</CreatedTimestamp>
+          <LastSchemaUpdate>2021-08-30T23:48:25.403333Z</LastSchemaUpdate>
+          <LastProcessed>2021-12-29T10:02:33.473333Z</LastProcessed>
+          <State>Processed</State>
+          <Source xsi:type="DsvTableBinding" dwd:design-time-name="671f761e-538c-40b3-9aab-93ce1a69e69c">
+            <DataSourceViewID>HC_BI_ENT_DDS</DataSourceViewID>
+            <TableID>bi_mktg_dds_vwFactLeadMonthly</TableID>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+          <ProactiveCaching dwd:design-time-name="c90a584c-84f5-4ae5-b23c-a00fbead3bcb">
+            <SilenceInterval>-PT1S</SilenceInterval>
+            <Latency>-PT1S</Latency>
+            <SilenceOverrideInterval>-PT1S</SilenceOverrideInterval>
+            <ForceRebuildInterval>-PT1S</ForceRebuildInterval>
+            <Source xsi:type="ProactiveCachingInheritedBinding" dwd:design-time-name="45d99f01-8ece-4753-8dab-21c22a0093ec" />
+          </ProactiveCaching>
+          <EstimatedSize>14094835</EstimatedSize>
+        </Partition>
+      </Partitions>
+    </MeasureGroup>
+  </MeasureGroups>
+</Cube>
