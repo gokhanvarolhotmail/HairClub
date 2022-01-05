@@ -1,4 +1,4 @@
-/* CreateDate: 02/18/2013 06:40:48.923 , ModifyDate: 12/28/2021 09:20:54.553 */
+/* CreateDate: 02/18/2013 06:40:48.923 , ModifyDate: 01/04/2022 10:56:36.850 */
 GO
 CREATE TABLE [dbo].[lkpPermOwnHairRods](
 	[PermOwnHairRodsID] [int] NOT NULL,

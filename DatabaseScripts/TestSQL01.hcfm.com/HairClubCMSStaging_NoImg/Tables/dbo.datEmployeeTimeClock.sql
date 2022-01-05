@@ -1,4 +1,4 @@
-/* CreateDate: 08/05/2008 13:30:40.100 , ModifyDate: 12/28/2021 09:20:54.580 */
+/* CreateDate: 08/05/2008 13:30:40.100 , ModifyDate: 01/04/2022 10:56:36.877 */
 GO
 CREATE TABLE [dbo].[datEmployeeTimeClock](
 	[EmployeeTimeClockGUID] [uniqueidentifier] NOT NULL,

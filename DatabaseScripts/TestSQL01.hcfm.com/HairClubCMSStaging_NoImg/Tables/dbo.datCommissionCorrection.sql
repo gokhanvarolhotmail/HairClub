@@ -1,4 +1,4 @@
-/* CreateDate: 02/24/2015 07:35:34.650 , ModifyDate: 12/28/2021 09:20:54.460 */
+/* CreateDate: 02/24/2015 07:35:34.650 , ModifyDate: 01/04/2022 10:56:36.753 */
 GO
 CREATE TABLE [dbo].[datCommissionCorrection](
 	[CommissionCorrectionID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,

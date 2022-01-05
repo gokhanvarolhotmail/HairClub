@@ -1,4 +1,4 @@
-/* CreateDate: 10/04/2010 12:08:46.023 , ModifyDate: 12/28/2021 09:20:54.477 */
+/* CreateDate: 10/04/2010 12:08:46.023 , ModifyDate: 01/04/2022 10:56:36.767 */
 GO
 CREATE TABLE [dbo].[lkpHairSystemHairLength](
 	[HairSystemHairLengthID] [int] NOT NULL,

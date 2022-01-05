@@ -1,4 +1,4 @@
-/* CreateDate: 06/30/2014 07:10:21.703 , ModifyDate: 12/28/2021 09:20:54.637 */
+/* CreateDate: 06/30/2014 07:10:21.703 , ModifyDate: 01/04/2022 10:56:36.937 */
 GO
 CREATE TABLE [dbo].[lkpLudwigScale](
 	[LudwigScaleID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,

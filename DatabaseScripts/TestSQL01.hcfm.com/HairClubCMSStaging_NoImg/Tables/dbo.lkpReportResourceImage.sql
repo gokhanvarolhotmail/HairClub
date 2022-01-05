@@ -1,4 +1,4 @@
-/* CreateDate: 08/15/2014 12:35:26.953 , ModifyDate: 12/28/2021 09:20:54.633 */
+/* CreateDate: 08/15/2014 12:35:26.953 , ModifyDate: 01/04/2022 10:56:36.933 */
 GO
 CREATE TABLE [dbo].[lkpReportResourceImage](
 	[ReportResourceImageID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,

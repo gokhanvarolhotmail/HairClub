@@ -1,4 +1,4 @@
-/* CreateDate: 10/04/2010 12:08:45.680 , ModifyDate: 12/28/2021 09:20:54.603 */
+/* CreateDate: 10/04/2010 12:08:45.680 , ModifyDate: 01/04/2022 10:56:36.903 */
 GO
 CREATE TABLE [dbo].[datInventoryTransferRequest](
 	[InventoryTransferRequestGUID] [uniqueidentifier] NOT NULL,

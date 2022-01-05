@@ -1,4 +1,4 @@
-/* CreateDate: 05/14/2012 17:29:16.507 , ModifyDate: 12/28/2021 09:20:54.653 */
+/* CreateDate: 05/14/2012 17:29:16.507 , ModifyDate: 01/04/2022 10:56:36.957 */
 GO
 CREATE TABLE [dbo].[datCenterDeclineBatch](
 	[CenterDeclineBatchGUID] [uniqueidentifier] NOT NULL,

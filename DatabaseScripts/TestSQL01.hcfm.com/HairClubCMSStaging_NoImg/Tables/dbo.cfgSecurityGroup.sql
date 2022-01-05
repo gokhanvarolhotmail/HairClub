@@ -1,4 +1,4 @@
-/* CreateDate: 04/14/2009 07:33:55.273 , ModifyDate: 12/28/2021 09:20:54.583 */
+/* CreateDate: 04/14/2009 07:33:55.273 , ModifyDate: 01/04/2022 10:56:36.880 */
 GO
 CREATE TABLE [dbo].[cfgSecurityGroup](
 	[SecurityGroupID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,

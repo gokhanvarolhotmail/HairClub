@@ -1,4 +1,4 @@
-/* CreateDate: 08/29/2008 09:17:12.750 , ModifyDate: 12/28/2021 09:20:54.483 */
+/* CreateDate: 08/29/2008 09:17:12.750 , ModifyDate: 01/04/2022 10:56:36.773 */
 GO
 CREATE TABLE [dbo].[datAppointmentDetail](
 	[AppointmentDetailGUID] [uniqueidentifier] NOT NULL,

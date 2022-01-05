@@ -1,4 +1,4 @@
-/* CreateDate: 05/14/2012 17:33:38.470 , ModifyDate: 12/28/2021 09:20:54.430 */
+/* CreateDate: 05/14/2012 17:33:38.470 , ModifyDate: 01/04/2022 10:56:36.720 */
 GO
 CREATE TABLE [dbo].[lkpPayCycleTransactionType](
 	[PayCycleTransactionTypeID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,

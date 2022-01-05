@@ -1,4 +1,4 @@
-/* CreateDate: 11/04/2019 08:18:20.367 , ModifyDate: 12/28/2021 09:20:54.527 */
+/* CreateDate: 11/04/2019 08:18:20.367 , ModifyDate: 01/04/2022 10:56:36.823 */
 GO
 CREATE TABLE [dbo].[datAppointmentScorecard](
 	[AppointmentScorecardID] [int] IDENTITY(1,1) NOT NULL,

@@ -1,4 +1,4 @@
-/* CreateDate: 08/27/2008 12:06:18.220 , ModifyDate: 12/28/2021 09:20:54.610 */
+/* CreateDate: 08/27/2008 12:06:18.220 , ModifyDate: 01/04/2022 10:56:36.910 */
 GO
 CREATE TABLE [dbo].[lkpMembershipCancelReason](
 	[MembershipCancelReasonID] [int] NOT NULL,

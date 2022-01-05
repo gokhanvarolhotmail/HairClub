@@ -1,4 +1,4 @@
-/* CreateDate: 08/27/2008 12:14:26.003 , ModifyDate: 12/28/2021 09:20:54.623 */
+/* CreateDate: 08/27/2008 12:14:26.003 , ModifyDate: 01/04/2022 10:56:36.923 */
 GO
 CREATE TABLE [dbo].[lkpPermRodColor](
 	[PermRodColorID] [int] NOT NULL,

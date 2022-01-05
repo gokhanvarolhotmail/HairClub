@@ -1,4 +1,4 @@
-/* CreateDate: 03/20/2009 10:29:24.960 , ModifyDate: 12/28/2021 09:20:54.617 */
+/* CreateDate: 03/20/2009 10:29:24.960 , ModifyDate: 01/04/2022 10:56:36.917 */
 GO
 CREATE TABLE [dbo].[datClient](
 	[ClientGUID] [uniqueidentifier] NOT NULL,

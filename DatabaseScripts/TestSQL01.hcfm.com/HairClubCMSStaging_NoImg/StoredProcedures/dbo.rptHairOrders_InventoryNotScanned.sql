@@ -1,4 +1,4 @@
-/* CreateDate: 01/14/2016 15:35:21.940 , ModifyDate: 02/18/2020 11:01:57.397 */
+/* CreateDate: 01/14/2016 15:35:21.940 , ModifyDate: 12/29/2021 12:31:07.860 */
 GO
 /***********************************************************************
 PROCEDURE:				rptHairOrders_InventoryNotScanned
@@ -54,32 +54,14 @@ CREATE TABLE #Centers(
 )
 
 /******************** Find Centers *******************************************************/
-
-IF @CenterID = 0
-BEGIN
-INSERT INTO #Centers
-SELECT CC.CenterID
-,	CC.CenterDescription
-FROM dbo.cfgCenter CC
-INNER JOIN dbo.lkpCenterType CT
-	ON CT.CenterTypeID = CC.CenterTypeID
-WHERE CT.CenterTypeDescriptionShort = 'C'
-AND CC.IsActiveFlag = 1
-AND CC.CenterID <> 100
-END
-ELSE
-BEGIN
 INSERT INTO #Centers
 SELECT CC.CenterID
 ,	CC.CenterDescription
 FROM dbo.cfgCenter CC
 WHERE CC.CenterID = @CenterID
-END
 
 
 /******************** Select statement *******************************************************/
-IF @CenterID = 100  --Pull Corporate even if it isn't showing as completed
-BEGIN
 SELECT  c.CenterDescriptionFullCalc
 ,       c.CenterID
 ,       cl.ClientIdentifier
@@ -114,50 +96,9 @@ FROM    dbo.datHairSystemInventorySnapshot his
 WHERE   YEAR(his.SnapshotDate) = @InventoryYear
 		AND MONTH(his.SnapshotDate) = @InventoryMonth
 		AND DAY(his.SnapshotDate) = @InventoryDay
-		AND c.CenterID = 100
-		AND hit.HairSystemOrderStatusID IN ( 4, 6 ) --CENT and PRIORITY
-END
-ELSE
-BEGIN
-SELECT  c.CenterDescriptionFullCalc
-,       c.CenterID
-,       cl.ClientIdentifier
-,		cl.ClientFullNameAlt2Calc
-,       cm.MembershipDescription AS 'ClientMembership'
-,       hso.HairSystemOrderNumber
-,       hso.HairSystemOrderDate
-,       dbo.fn_GetSTDDateFromUTC(hso.LastUpdate, @CenterID) AS 'LastUpdate'
-,       st.HairSystemOrderStatusDescriptionShort AS 'CurrentStatus'
-,		CAST(CAST(hso.TemplateWidthActualCalc AS DECIMAL(11,2)) AS VARCHAR(6)) + ' x '+ CAST(CAST(hso.TemplateHeightActualCalc AS DECIMAL(11,2)) AS VARCHAR(6)) AS 'WidthLength'
-FROM    dbo.datHairSystemInventorySnapshot his
-		INNER JOIN dbo.datHairSystemInventoryBatch hib
-			ON hib.HairSystemInventorySnapshotID = his.HairSystemInventorySnapshotID
-		INNER JOIN dbo.datHairSystemInventoryTransaction hit
-			ON hit.HairSystemInventoryBatchID = hib.HairSystemInventoryBatchID
-        INNER JOIN dbo.cfgCenter c
-            ON c.CenterID = COALESCE(hit.ScannedCenterID, hib.CenterID)
-		INNER JOIN #Centers ctr
-			ON ctr.CenterID = c.CenterID
-		INNER JOIN dbo.datClientMembership dcm
-			ON dcm.ClientMembershipGUID = hit.ClientMembershipGUID
-		INNER JOIN dbo.cfgMembership cm
-			ON cm.MembershipID = dcm.MembershipID
-		INNER JOIN dbo.lkpHairSystemInventoryBatchStatus bs
-			ON bs.HairSystemInventoryBatchStatusID = hib.HairSystemInventoryBatchStatusID
-        LEFT JOIN dbo.datClient cl
-            ON cl.ClientGUID = hit.ClientGUID
-        LEFT JOIN dbo.datHairSystemOrder hso
-            ON hso.HairSystemOrderNumber = hit.HairSystemOrderNumber
-        LEFT JOIN dbo.lkpHairSystemOrderStatus st
-            ON st.HairSystemOrderStatusID = hso.HairSystemOrderStatusID
-WHERE   YEAR(his.SnapshotDate) = @InventoryYear
-		AND MONTH(his.SnapshotDate) = @InventoryMonth
-		AND DAY(his.SnapshotDate) = @InventoryDay
-		AND (c.CenterID = 100 OR bs.HairSystemInventoryBatchStatusDescriptionShort = 'Completed')
-		AND (c.CenterID = 100 OR hit.ScannedDate IS NULL)
-        AND hit.HairSystemOrderStatusID IN ( 4, 6 )
-
-END
+		AND (bs.HairSystemInventoryBatchStatusDescriptionShort = 'Completed')
+		AND (hit.ScannedDate IS NULL)
+        AND hit.HairSystemOrderStatusID IN (4,6)
 
 END
 GO

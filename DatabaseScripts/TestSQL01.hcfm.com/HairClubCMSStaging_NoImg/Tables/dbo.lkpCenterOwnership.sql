@@ -1,4 +1,4 @@
-/* CreateDate: 03/03/2009 13:24:04.663 , ModifyDate: 12/28/2021 09:20:54.573 */
+/* CreateDate: 03/03/2009 13:24:04.663 , ModifyDate: 01/04/2022 10:56:36.870 */
 GO
 CREATE TABLE [dbo].[lkpCenterOwnership](
 	[CenterOwnershipID] [int] NOT NULL,

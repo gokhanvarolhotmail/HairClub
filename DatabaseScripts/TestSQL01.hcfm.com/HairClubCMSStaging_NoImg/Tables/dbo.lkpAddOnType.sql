@@ -1,4 +1,4 @@
-/* CreateDate: 04/24/2017 08:10:29.220 , ModifyDate: 12/28/2021 09:20:54.623 */
+/* CreateDate: 04/24/2017 08:10:29.220 , ModifyDate: 01/04/2022 10:56:36.920 */
 GO
 CREATE TABLE [dbo].[lkpAddOnType](
 	[AddOnTypeID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,

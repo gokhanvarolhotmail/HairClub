@@ -1,4 +1,4 @@
-/* CreateDate: 08/27/2008 12:25:25.747 , ModifyDate: 12/28/2021 09:20:54.467 */
+/* CreateDate: 08/27/2008 12:25:25.747 , ModifyDate: 01/04/2022 10:56:36.757 */
 GO
 CREATE TABLE [dbo].[lkpTimeZone](
 	[TimeZoneID] [int] NOT NULL,

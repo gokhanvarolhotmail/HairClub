@@ -1,4 +1,4 @@
-/* CreateDate: 08/27/2008 11:30:41.997 , ModifyDate: 12/28/2021 09:20:54.543 */
+/* CreateDate: 08/27/2008 11:30:41.997 , ModifyDate: 01/04/2022 10:56:36.840 */
 GO
 CREATE TABLE [dbo].[lkpColorBrand](
 	[ColorBrandID] [int] NOT NULL,

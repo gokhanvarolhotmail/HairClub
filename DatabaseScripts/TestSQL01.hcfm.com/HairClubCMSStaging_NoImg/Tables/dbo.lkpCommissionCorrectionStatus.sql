@@ -1,4 +1,4 @@
-/* CreateDate: 02/24/2015 07:35:34.640 , ModifyDate: 12/28/2021 09:20:54.453 */
+/* CreateDate: 02/24/2015 07:35:34.640 , ModifyDate: 01/04/2022 10:56:36.743 */
 GO
 CREATE TABLE [dbo].[lkpCommissionCorrectionStatus](
 	[CommissionCorrectionStatusID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,

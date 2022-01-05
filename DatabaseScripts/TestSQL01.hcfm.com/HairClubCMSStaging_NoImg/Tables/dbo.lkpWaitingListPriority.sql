@@ -1,4 +1,4 @@
-/* CreateDate: 06/11/2014 08:04:32.227 , ModifyDate: 12/28/2021 09:20:54.520 */
+/* CreateDate: 06/11/2014 08:04:32.227 , ModifyDate: 01/04/2022 10:56:36.813 */
 GO
 CREATE TABLE [dbo].[lkpWaitingListPriority](
 	[WaitingListPriorityID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,

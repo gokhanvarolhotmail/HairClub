@@ -1,4 +1,4 @@
-/* CreateDate: 02/18/2013 06:40:48.960 , ModifyDate: 12/28/2021 09:20:54.563 */
+/* CreateDate: 02/18/2013 06:40:48.960 , ModifyDate: 01/04/2022 10:56:36.860 */
 GO
 CREATE TABLE [dbo].[lkpSalesCodeImage](
 	[SalesCodeID] [nvarchar](25) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,

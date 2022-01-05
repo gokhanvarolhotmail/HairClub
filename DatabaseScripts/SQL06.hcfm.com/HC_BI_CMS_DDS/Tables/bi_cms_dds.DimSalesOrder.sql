@@ -1,4 +1,4 @@
-/* CreateDate: 10/03/2019 23:03:41.723 , ModifyDate: 12/02/2021 23:26:25.090 */
+/* CreateDate: 10/03/2019 23:03:41.723 , ModifyDate: 01/04/2022 23:19:11.980 */
 GO
 CREATE TABLE [bi_cms_dds].[DimSalesOrder](
 	[SalesOrderKey] [int] NOT NULL,

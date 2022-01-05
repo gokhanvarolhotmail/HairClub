@@ -1,4 +1,4 @@
-/* CreateDate: 08/27/2008 11:29:36.960 , ModifyDate: 12/28/2021 09:20:54.533 */
+/* CreateDate: 08/27/2008 11:29:36.960 , ModifyDate: 01/04/2022 10:56:36.830 */
 GO
 CREATE TABLE [dbo].[lkpCenterPayGroup](
 	[CenterPayGroupID] [int] NOT NULL,

@@ -1,4 +1,4 @@
-/* CreateDate: 08/27/2008 12:15:41.017 , ModifyDate: 12/28/2021 09:20:54.640 */
+/* CreateDate: 08/27/2008 12:15:41.017 , ModifyDate: 01/04/2022 10:56:36.940 */
 GO
 CREATE TABLE [dbo].[lkpRegion](
 	[RegionID] [int] NOT NULL,

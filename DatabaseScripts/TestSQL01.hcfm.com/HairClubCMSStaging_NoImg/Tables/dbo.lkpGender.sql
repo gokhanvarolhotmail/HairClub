@@ -1,4 +1,4 @@
-/* CreateDate: 01/19/2009 15:23:46.677 , ModifyDate: 12/28/2021 09:20:54.493 */
+/* CreateDate: 01/19/2009 15:23:46.677 , ModifyDate: 01/04/2022 10:56:36.783 */
 GO
 CREATE TABLE [dbo].[lkpGender](
 	[GenderID] [int] NOT NULL,

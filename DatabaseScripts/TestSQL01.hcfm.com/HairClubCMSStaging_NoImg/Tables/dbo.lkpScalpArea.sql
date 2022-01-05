@@ -1,4 +1,4 @@
-/* CreateDate: 05/06/2014 09:10:03.880 , ModifyDate: 12/28/2021 09:20:54.530 */
+/* CreateDate: 05/06/2014 09:10:03.880 , ModifyDate: 01/04/2022 10:56:36.827 */
 GO
 CREATE TABLE [dbo].[lkpScalpArea](
 	[ScalpAreaID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,

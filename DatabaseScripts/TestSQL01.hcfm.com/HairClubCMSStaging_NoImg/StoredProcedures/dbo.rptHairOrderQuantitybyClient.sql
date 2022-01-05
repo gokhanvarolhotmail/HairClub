@@ -1,4 +1,4 @@
-/* CreateDate: 04/23/2014 15:18:41.580 , ModifyDate: 12/28/2021 09:22:34.390 */
+/* CreateDate: 04/23/2014 15:18:41.580 , ModifyDate: 09/28/2021 16:35:03.340 */
 GO
 /*===============================================================================================
  Procedure Name:            rptHairOrderQuantitybyClient
@@ -358,30 +358,30 @@ BEGIN
     select tmpData.*, gms.membershipGroup,
            case
 
-            when ((gms.MembershipGroup like '%Basic%' or  gms.MembershipGroup like '%Ruby%')  and (tmpData.QaNeeded+tmpData.InCenter+tmpData.QuantityAtCenterAndOrdered)<=1) then 2
-            when ((gms.MembershipGroup like '%Basic%' or  gms.MembershipGroup like '%Ruby%')  and (tmpData.QaNeeded+tmpData.InCenter+tmpData.QuantityAtCenterAndOrdered)=2) then 1
-            when ((gms.MembershipGroup like '%Basic%' or  gms.MembershipGroup like '%Ruby%')  and (tmpData.QaNeeded+tmpData.InCenter+tmpData.QuantityAtCenterAndOrdered)>=3) then 0
-
-
-            when ((gms.MembershipGroup like '%Bronze%' or  gms.MembershipGroup like '%Emerald%' or  gms.MembershipGroup like '%Silver%' or gms.MembershipGroup like '%Gold%' or gms.MembershipGroup like '%Sapphire%' )  and (tmpData.QaNeeded+tmpData.InCenter+tmpData.QuantityAtCenterAndOrdered)<=1) then 2
-            when ((gms.MembershipGroup like '%Bronze%' or  gms.MembershipGroup like '%Emerald%' or  gms.MembershipGroup like '%Silver%' or gms.MembershipGroup like '%Gold%' or gms.MembershipGroup like '%Sapphire%' )  and (tmpData.QaNeeded+tmpData.InCenter+tmpData.QuantityAtCenterAndOrdered)=2) then 2
-            when ((gms.MembershipGroup like '%Bronze%' or  gms.MembershipGroup like '%Emerald%' or  gms.MembershipGroup like '%Silver%' or gms.MembershipGroup like '%Gold%' or gms.MembershipGroup like '%Sapphire%' )  and (tmpData.QaNeeded+tmpData.InCenter+tmpData.QuantityAtCenterAndOrdered)>=3) then 1
-
-            when ((gms.MembershipGroup like '%Diamond%' or  gms.MembershipGroup like '%Platinum%')  and (tmpData.QaNeeded+tmpData.InCenter+tmpData.QuantityAtCenterAndOrdered)<=1) then 4
-            when ((gms.MembershipGroup like '%Diamond%' or  gms.MembershipGroup like '%Platinum%')  and (tmpData.QaNeeded+tmpData.InCenter+tmpData.QuantityAtCenterAndOrdered)=2) then 4
-            when ((gms.MembershipGroup like '%Diamond%' or  gms.MembershipGroup like '%Platinum%')  and (tmpData.QaNeeded+tmpData.InCenter+tmpData.QuantityAtCenterAndOrdered)>=3) then 3
-
-            when ((gms.MembershipGroup like '%Executive%')  and (tmpData.QaNeeded+tmpData.InCenter+tmpData.QuantityAtCenterAndOrdered)<=1) then 5
-            when ((gms.MembershipGroup like '%Executive%')  and (tmpData.QaNeeded+tmpData.InCenter+tmpData.QuantityAtCenterAndOrdered)=2) then 5
-            when ((gms.MembershipGroup like '%Executive%')  and (tmpData.QaNeeded+tmpData.InCenter+tmpData.QuantityAtCenterAndOrdered)>=3) then 4
-
-            when ((gms.MembershipGroup like '%Presidential%')  and (tmpData.QaNeeded+tmpData.InCenter+tmpData.QuantityAtCenterAndOrdered)<=1) then 6
-            when ((gms.MembershipGroup like '%Presidential%')  and (tmpData.QaNeeded+tmpData.InCenter+tmpData.QuantityAtCenterAndOrdered)=2) then 6
-            when ((gms.MembershipGroup like '%Presidential%')  and (tmpData.QaNeeded+tmpData.InCenter+tmpData.QuantityAtCenterAndOrdered)>=3) then 5
-
-            when ((gms.MembershipGroup like '%Premier%')  and (tmpData.QaNeeded+tmpData.InCenter+tmpData.QuantityAtCenterAndOrdered)<=1) then 16
-            when ((gms.MembershipGroup like '%Premier%')  and (tmpData.QaNeeded+tmpData.InCenter+tmpData.QuantityAtCenterAndOrdered)=2) then 16
-            when ((gms.MembershipGroup like '%Premier%')  and (tmpData.QaNeeded+tmpData.InCenter+tmpData.QuantityAtCenterAndOrdered)>=3) then 10
+            when (gms.MembershipGroup like '%Xtrands+%'  or  gms.MembershipGroup like '%EmployeeRetail%') and tmpData.QuantityAtCenterAndOrdered=0 then 0
+            when (gms.MembershipGroup like '%Xtrands+%'  or  gms.MembershipGroup like '%EmployeeRetail%')  and tmpData.QuantityAtCenterAndOrdered=1 then 0
+            when (gms.MembershipGroup like '%Xtrands+%'  or  gms.MembershipGroup like '%EmployeeRetail%') and tmpData.QuantityAtCenterAndOrdered=2  then  0
+            when (gms.MembershipGroup like '%Basic%' or  gms.MembershipGroup like '%Ruby%' or gms.MembershipGroup like '%HCFK%') and tmpData.QuantityAtCenterAndOrdered=0 then 2
+            when (gms.MembershipGroup like '%Basic%' or  gms.MembershipGroup like '%Ruby%' or gms.MembershipGroup like '%HCFK%') and tmpData.QuantityAtCenterAndOrdered=1 then 2
+            when (gms.MembershipGroup like '%Basic%' or  gms.MembershipGroup like '%Ruby%' or gms.MembershipGroup like '%HCFK%') and tmpData.QuantityAtCenterAndOrdered=2 then 1
+            when (gms.MembershipGroup like '%Bronze%' or  gms.MembershipGroup like '%Emerald%' or gms.MembershipGroup like '%Silver%') and tmpData.QuantityAtCenterAndOrdered=0 then 2
+            when (gms.MembershipGroup like '%Bronze%' or  gms.MembershipGroup like '%Emerald%' or gms.MembershipGroup like '%Silver%') and tmpData.QuantityAtCenterAndOrdered=1 then 2
+            when (gms.MembershipGroup like '%Bronze%' or  gms.MembershipGroup like '%Emerald%' or  gms.MembershipGroup like '%Silver%') and tmpData.QuantityAtCenterAndOrdered=2 then 2
+            when (gms.MembershipGroup like '%Gold%' or  gms.MembershipGroup like '%Sapphire%') and tmpData.QuantityAtCenterAndOrdered=0 then 3
+            when (gms.MembershipGroup like '%Gold%' or  gms.MembershipGroup like '%Sapphire%') and tmpData.QuantityAtCenterAndOrdered=1 then 3
+            when (gms.MembershipGroup like '%Gold%' or  gms.MembershipGroup like '%Sapphire%') and tmpData.QuantityAtCenterAndOrdered=2 then 3
+            when gms.MembershipGroup like '%Diamond%' and tmpData.QuantityAtCenterAndOrdered=0 then 4
+            when gms.MembershipGroup like '%Diamond%' and tmpData.QuantityAtCenterAndOrdered=1 then 4
+            when gms.MembershipGroup like '%Diamond%' and tmpData.QuantityAtCenterAndOrdered=2 then 3
+            when (gms.MembershipGroup like '%Platinum%' or  gms.MembershipGroup like '%Executive%') and tmpData.QuantityAtCenterAndOrdered=0 then 6
+            when (gms.MembershipGroup like '%Platinum%' or  gms.MembershipGroup like '%Executive%') and tmpData.QuantityAtCenterAndOrdered=1 then 6
+            when (gms.MembershipGroup like '%Platinum%' or  gms.MembershipGroup like '%Executive%') and tmpData.QuantityAtCenterAndOrdered=2 then 5
+            when gms.MembershipGroup like '%Presidential%' and tmpData.QuantityAtCenterAndOrdered=0 then 12
+            when gms.MembershipGroup like '%Presidential%' and tmpData.QuantityAtCenterAndOrdered=1 then 12
+            when gms.MembershipGroup like '%Presidential%' and tmpData.QuantityAtCenterAndOrdered=2 then 12
+            when gms.MembershipGroup like '%Premier%' and tmpData.QuantityAtCenterAndOrdered=0 then 18
+            when gms.MembershipGroup like '%Premier%' and tmpData.QuantityAtCenterAndOrdered=1 then 18
+            when gms.MembershipGroup like '%Premier%' and tmpData.QuantityAtCenterAndOrdered=2 then 18
 
             else 0  -- if not any of this conditions the field should be 0
 

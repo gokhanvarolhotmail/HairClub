@@ -1,4 +1,4 @@
-/* CreateDate: 08/05/2008 13:37:18.210 , ModifyDate: 12/28/2021 09:20:54.587 */
+/* CreateDate: 08/05/2008 13:37:18.210 , ModifyDate: 01/04/2022 10:56:36.883 */
 GO
 CREATE TABLE [dbo].[datFactoryOrder](
 	[FactoryOrderGUID] [uniqueidentifier] NOT NULL,

@@ -1,4 +1,4 @@
-/* CreateDate: 10/10/2016 08:05:31.770 , ModifyDate: 12/28/2021 09:20:54.500 */
+/* CreateDate: 10/10/2016 08:05:31.770 , ModifyDate: 01/04/2022 10:56:36.790 */
 GO
 CREATE TABLE [dbo].[cfgCenterManagementArea](
 	[CenterManagementAreaID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,

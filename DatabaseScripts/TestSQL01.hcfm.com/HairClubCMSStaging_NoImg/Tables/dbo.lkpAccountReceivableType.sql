@@ -1,4 +1,4 @@
-/* CreateDate: 05/14/2012 17:33:38.780 , ModifyDate: 12/28/2021 09:20:54.443 */
+/* CreateDate: 05/14/2012 17:33:38.780 , ModifyDate: 01/04/2022 10:56:36.733 */
 GO
 CREATE TABLE [dbo].[lkpAccountReceivableType](
 	[AccountReceivableTypeID] [int] NOT NULL,

@@ -1,4 +1,4 @@
-/* CreateDate: 09/03/2014 07:45:47.310 , ModifyDate: 12/28/2021 09:20:54.507 */
+/* CreateDate: 09/03/2014 07:45:47.310 , ModifyDate: 01/04/2022 10:56:36.797 */
 GO
 CREATE TABLE [dbo].[lkpNoteSubType](
 	[NoteSubTypeID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,

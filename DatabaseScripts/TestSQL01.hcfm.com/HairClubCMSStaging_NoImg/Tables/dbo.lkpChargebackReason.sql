@@ -1,4 +1,4 @@
-/* CreateDate: 10/07/2013 17:18:46.437 , ModifyDate: 12/28/2021 09:20:54.530 */
+/* CreateDate: 10/07/2013 17:18:46.437 , ModifyDate: 01/04/2022 10:56:36.823 */
 GO
 CREATE TABLE [dbo].[lkpChargebackReason](
 	[ChargebackReasonID] [int] NOT NULL,

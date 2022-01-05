@@ -1,4 +1,4 @@
-/* CreateDate: 08/27/2008 12:16:21.590 , ModifyDate: 12/28/2021 09:20:54.653 */
+/* CreateDate: 08/27/2008 12:16:21.590 , ModifyDate: 01/04/2022 10:56:36.953 */
 GO
 CREATE TABLE [dbo].[lkpRelaxerStrength](
 	[RelaxerStrengthID] [int] NOT NULL,

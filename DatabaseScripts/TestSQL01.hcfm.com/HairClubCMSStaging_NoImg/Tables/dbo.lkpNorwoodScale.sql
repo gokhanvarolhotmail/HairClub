@@ -1,4 +1,4 @@
-/* CreateDate: 06/30/2014 07:10:21.657 , ModifyDate: 12/28/2021 09:20:54.633 */
+/* CreateDate: 06/30/2014 07:10:21.657 , ModifyDate: 01/04/2022 10:56:36.933 */
 GO
 CREATE TABLE [dbo].[lkpNorwoodScale](
 	[NorwoodScaleID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,

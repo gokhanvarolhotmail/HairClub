@@ -1,4 +1,4 @@
-/* CreateDate: 05/20/2014 07:52:23.083 , ModifyDate: 12/28/2021 09:20:54.463 */
+/* CreateDate: 05/20/2014 07:52:23.083 , ModifyDate: 01/04/2022 10:56:36.753 */
 GO
 CREATE TABLE [dbo].[lkpPhotoMarkupImageType](
 	[PhotoMarkupImageTypeID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,

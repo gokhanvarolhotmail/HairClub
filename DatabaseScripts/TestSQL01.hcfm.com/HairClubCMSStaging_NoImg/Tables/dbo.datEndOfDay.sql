@@ -1,4 +1,4 @@
-/* CreateDate: 02/18/2013 06:59:17.780 , ModifyDate: 12/28/2021 09:20:54.503 */
+/* CreateDate: 02/18/2013 06:59:17.780 , ModifyDate: 01/04/2022 10:56:36.797 */
 GO
 CREATE TABLE [dbo].[datEndOfDay](
 	[EndOfDayGUID] [uniqueidentifier] NOT NULL,

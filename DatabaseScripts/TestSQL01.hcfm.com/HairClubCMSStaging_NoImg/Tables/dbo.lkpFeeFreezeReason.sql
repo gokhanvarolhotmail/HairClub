@@ -1,4 +1,4 @@
-/* CreateDate: 05/14/2012 17:35:19.497 , ModifyDate: 12/28/2021 09:20:54.530 */
+/* CreateDate: 05/14/2012 17:35:19.497 , ModifyDate: 01/04/2022 10:56:36.823 */
 GO
 CREATE TABLE [dbo].[lkpFeeFreezeReason](
 	[FeeFreezeReasonID] [int] NOT NULL,

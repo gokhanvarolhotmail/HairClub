@@ -1,4 +1,4 @@
-/* CreateDate: 05/14/2012 17:33:38.987 , ModifyDate: 12/28/2021 09:20:54.447 */
+/* CreateDate: 05/14/2012 17:33:38.987 , ModifyDate: 01/04/2022 10:56:36.737 */
 GO
 CREATE TABLE [dbo].[datAccountReceivable](
 	[AccountReceivableID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,

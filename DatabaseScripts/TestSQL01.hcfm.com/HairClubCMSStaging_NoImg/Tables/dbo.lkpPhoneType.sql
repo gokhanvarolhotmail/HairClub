@@ -1,4 +1,4 @@
-/* CreateDate: 01/28/2009 16:12:57.067 , ModifyDate: 12/28/2021 09:20:54.600 */
+/* CreateDate: 01/28/2009 16:12:57.067 , ModifyDate: 01/04/2022 10:56:36.900 */
 GO
 CREATE TABLE [dbo].[lkpPhoneType](
 	[PhoneTypeID] [int] NOT NULL,

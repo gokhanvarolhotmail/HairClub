@@ -1,4 +1,4 @@
-/* CreateDate: 03/26/2014 08:12:24.073 , ModifyDate: 12/28/2021 09:20:54.590 */
+/* CreateDate: 03/26/2014 08:12:24.073 , ModifyDate: 01/04/2022 10:56:36.890 */
 GO
 CREATE TABLE [dbo].[cfgCenterMembershipRuleExclusion](
 	[CenterMembershipRuleExclusionID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,

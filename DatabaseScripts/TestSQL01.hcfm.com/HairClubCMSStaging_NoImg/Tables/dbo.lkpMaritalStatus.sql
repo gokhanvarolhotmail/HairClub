@@ -1,4 +1,4 @@
-/* CreateDate: 06/30/2014 07:10:21.610 , ModifyDate: 12/28/2021 09:20:54.630 */
+/* CreateDate: 06/30/2014 07:10:21.610 , ModifyDate: 01/04/2022 10:56:36.930 */
 GO
 CREATE TABLE [dbo].[lkpMaritalStatus](
 	[MaritalStatusID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,

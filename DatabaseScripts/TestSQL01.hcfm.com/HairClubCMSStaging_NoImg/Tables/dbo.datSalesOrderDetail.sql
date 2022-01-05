@@ -1,4 +1,4 @@
-/* CreateDate: 03/06/2009 13:55:53.830 , ModifyDate: 12/28/2021 09:20:54.557 */
+/* CreateDate: 03/06/2009 13:55:53.830 , ModifyDate: 01/04/2022 10:56:36.853 */
 GO
 CREATE TABLE [dbo].[datSalesOrderDetail](
 	[SalesOrderDetailGUID] [uniqueidentifier] NOT NULL,

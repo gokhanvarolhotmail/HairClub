@@ -1,4 +1,4 @@
-/* CreateDate: 12/28/2021 09:21:12.967 , ModifyDate: 12/28/2021 09:21:12.967 */
+/* CreateDate: 01/04/2022 10:56:55.427 , ModifyDate: 01/04/2022 10:56:55.427 */
 GO
 CREATE SYNONYM [dbo].[DeferredRevenue_FactDeferredRevenueDetails_TABLE] FOR [HC_DeferredRevenue].[dbo].[FactDeferredRevenueDetails]
 GO

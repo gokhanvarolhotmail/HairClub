@@ -1,4 +1,4 @@
-/* CreateDate: 01/19/2009 11:51:13.270 , ModifyDate: 12/28/2021 09:20:54.460 */
+/* CreateDate: 01/19/2009 11:51:13.270 , ModifyDate: 01/04/2022 10:56:36.750 */
 GO
 CREATE TABLE [dbo].[lkpTenderType](
 	[TenderTypeID] [int] NOT NULL,

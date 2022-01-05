@@ -1,4 +1,4 @@
-/* CreateDate: 08/27/2008 12:24:14.877 , ModifyDate: 12/28/2021 09:20:54.457 */
+/* CreateDate: 08/27/2008 12:24:14.877 , ModifyDate: 01/04/2022 10:56:36.747 */
 GO
 CREATE TABLE [dbo].[lkpTaxType](
 	[TaxTypeID] [int] NOT NULL,

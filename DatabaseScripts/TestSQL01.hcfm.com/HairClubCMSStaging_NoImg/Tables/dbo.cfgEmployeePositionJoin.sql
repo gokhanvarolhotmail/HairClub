@@ -1,4 +1,4 @@
-/* CreateDate: 02/19/2009 15:57:28.733 , ModifyDate: 12/28/2021 09:20:54.657 */
+/* CreateDate: 02/19/2009 15:57:28.733 , ModifyDate: 01/04/2022 10:56:36.957 */
 GO
 CREATE TABLE [dbo].[cfgEmployeePositionJoin](
 	[EmployeeGUID] [uniqueidentifier] NOT NULL,

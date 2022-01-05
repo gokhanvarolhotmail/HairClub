@@ -1,4 +1,4 @@
-/* CreateDate: 08/27/2008 11:28:45.303 , ModifyDate: 12/28/2021 09:20:54.523 */
+/* CreateDate: 08/27/2008 11:28:45.303 , ModifyDate: 01/04/2022 10:56:36.820 */
 GO
 CREATE TABLE [dbo].[lkpBusinessUnitBrand](
 	[BusinessUnitBrandID] [int] NOT NULL,

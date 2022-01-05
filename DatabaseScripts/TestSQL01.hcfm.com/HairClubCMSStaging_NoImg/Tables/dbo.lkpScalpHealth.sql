@@ -1,4 +1,4 @@
-/* CreateDate: 07/15/2014 08:03:42.067 , ModifyDate: 12/28/2021 09:20:54.493 */
+/* CreateDate: 07/15/2014 08:03:42.067 , ModifyDate: 01/04/2022 10:56:36.783 */
 GO
 CREATE TABLE [dbo].[lkpScalpHealth](
 	[ScalpHealthID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,

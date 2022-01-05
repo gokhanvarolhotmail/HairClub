@@ -1,4 +1,4 @@
-/* CreateDate: 10/04/2010 12:08:45.830 , ModifyDate: 12/28/2021 09:20:54.630 */
+/* CreateDate: 10/04/2010 12:08:45.830 , ModifyDate: 01/04/2022 10:56:36.930 */
 GO
 CREATE TABLE [dbo].[cfgHairSystemAttributeMapping](
 	[HairSystemAttributeMappingID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,

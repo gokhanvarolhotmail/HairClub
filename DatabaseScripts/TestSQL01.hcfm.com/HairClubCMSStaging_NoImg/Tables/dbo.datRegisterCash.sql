@@ -1,4 +1,4 @@
-/* CreateDate: 01/21/2014 23:50:00.660 , ModifyDate: 12/28/2021 09:20:54.597 */
+/* CreateDate: 01/21/2014 23:50:00.660 , ModifyDate: 01/04/2022 10:56:36.897 */
 GO
 CREATE TABLE [dbo].[datRegisterCash](
 	[RegisterCashGUID] [uniqueidentifier] NOT NULL,

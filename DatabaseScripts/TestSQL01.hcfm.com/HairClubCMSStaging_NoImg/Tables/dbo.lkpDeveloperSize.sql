@@ -1,4 +1,4 @@
-/* CreateDate: 08/27/2008 11:39:13.417 , ModifyDate: 12/28/2021 09:20:54.573 */
+/* CreateDate: 08/27/2008 11:39:13.417 , ModifyDate: 01/04/2022 10:56:36.873 */
 GO
 CREATE TABLE [dbo].[lkpDeveloperSize](
 	[DeveloperSizeID] [int] NOT NULL,

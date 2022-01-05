@@ -1,4 +1,4 @@
-/* CreateDate: 06/30/2014 07:10:21.547 , ModifyDate: 12/28/2021 09:20:54.627 */
+/* CreateDate: 06/30/2014 07:10:21.547 , ModifyDate: 01/04/2022 10:56:36.927 */
 GO
 CREATE TABLE [dbo].[lkpOccupation](
 	[OccupationID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,

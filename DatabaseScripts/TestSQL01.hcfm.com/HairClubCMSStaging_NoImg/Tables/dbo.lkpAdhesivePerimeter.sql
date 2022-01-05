@@ -1,4 +1,4 @@
-/* CreateDate: 08/27/2008 11:26:31.160 , ModifyDate: 12/28/2021 09:20:54.510 */
+/* CreateDate: 08/27/2008 11:26:31.160 , ModifyDate: 01/04/2022 10:56:36.803 */
 GO
 CREATE TABLE [dbo].[lkpAdhesivePerimeter](
 	[AdhesivePerimeterID] [int] NOT NULL,

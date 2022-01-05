@@ -1,4 +1,4 @@
-/* CreateDate: 11/14/2008 08:34:54.050 , ModifyDate: 12/28/2021 09:20:54.547 */
+/* CreateDate: 11/14/2008 08:34:54.050 , ModifyDate: 01/04/2022 10:56:36.843 */
 GO
 CREATE TABLE [dbo].[lkpCountry](
 	[CountryID] [int] NOT NULL,
