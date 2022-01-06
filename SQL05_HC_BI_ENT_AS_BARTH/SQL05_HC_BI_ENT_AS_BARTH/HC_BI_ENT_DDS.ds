@@ -1,0 +1,38 @@
+﻿<DataSource xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xsi:type="RelationalDataSource" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+  <ID>HC_BI_ENT_DDS</ID>
+  <Name>HC_BI_ENT_DDS</Name>
+  <CreatedTimestamp>2012-04-03T23:41:06.27Z</CreatedTimestamp>
+  <LastSchemaUpdate>2014-04-10T17:45:54.34Z</LastSchemaUpdate>
+  <ConnectionString>Provider=SQLNCLI11;Data Source=lpc:sql05;Integrated Security=SSPI;Initial Catalog=HC_BI_ENT_DDS</ConnectionString>
+  <ConnectionStringSecurity>Unchanged</ConnectionStringSecurity>
+  <ImpersonationInfo>
+    <ImpersonationMode>Default</ImpersonationMode>
+    <ImpersonationInfoSecurity>Unchanged</ImpersonationInfoSecurity>
+  </ImpersonationInfo>
+  <Timeout>PT0S</Timeout>
+  <DataSourcePermissions>
+    <DataSourcePermission>
+      <ID>DataSourcePermission</ID>
+      <Name>DataSourcePermission</Name>
+      <CreatedTimestamp>2012-12-01T05:03:29.166667Z</CreatedTimestamp>
+      <LastSchemaUpdate>2014-03-25T14:40:53.74Z</LastSchemaUpdate>
+      <RoleID>Role 1</RoleID>
+    </DataSourcePermission>
+    <DataSourcePermission>
+      <ID>DataSourcePermission 1</ID>
+      <Name>DataSourcePermission 1</Name>
+      <CreatedTimestamp>2014-03-31T17:13:10.05Z</CreatedTimestamp>
+      <LastSchemaUpdate>2014-04-04T14:27:51.97Z</LastSchemaUpdate>
+      <RoleID>Role 2</RoleID>
+      <Read>Allowed</Read>
+    </DataSourcePermission>
+    <DataSourcePermission>
+      <ID>DataSourcePermission 2</ID>
+      <Name>DataSourcePermission 2</Name>
+      <CreatedTimestamp>2014-05-06T15:24:48.58Z</CreatedTimestamp>
+      <LastSchemaUpdate>2014-05-06T15:24:48.58Z</LastSchemaUpdate>
+      <RoleID>Role</RoleID>
+      <Read>Allowed</Read>
+    </DataSourcePermission>
+  </DataSourcePermissions>
+</DataSource>

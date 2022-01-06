@@ -1,0 +1,149 @@
+﻿<Project xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0">
+  <ProductVersion>15.0.19623.0</ProductVersion>
+  <SchemaVersion>9.0.2.10</SchemaVersion>
+  <State>$base64$PFNvdXJjZUNvbnRyb2xJbmZvIHhtbG5zOnhzZD0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEiIHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEtaW5zdGFuY2UiIHhtbG5zOmRkbDI9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDAzL2VuZ2luZS8yIiB4bWxuczpkZGwyXzI9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDAzL2VuZ2luZS8yLzIiIHhtbG5zOmRkbDEwMF8xMDA9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDA4L2VuZ2luZS8xMDAvMTAwIiB4bWxuczpkZGwyMDA9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDEwL2VuZ2luZS8yMDAiIHhtbG5zOmRkbDIwMF8yMDA9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDEwL2VuZ2luZS8yMDAvMjAwIiB4bWxuczpkZGwzMDA9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDExL2VuZ2luZS8zMDAiIHhtbG5zOmRkbDMwMF8zMDA9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDExL2VuZ2luZS8zMDAvMzAwIiB4bWxuczpkZGw0MDA9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDEyL2VuZ2luZS80MDAiIHhtbG5zOmRkbDQwMF80MDA9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDEyL2VuZ2luZS80MDAvNDAwIiB4bWxuczpkZGw1MDA9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDEzL2VuZ2luZS81MDAiIHhtbG5zOmRkbDUwMF81MDA9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDEzL2VuZ2luZS81MDAvNTAwIiB4bWxuczpkd2Q9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vRGF0YVdhcmVob3VzZS9EZXNpZ25lci8xLjAiPg0KICA8RW5hYmxlZD5mYWxzZTwvRW5hYmxlZD4NCiAgPFByb2plY3ROYW1lPjwvUHJvamVjdE5hbWU+DQogIDxBdXhQYXRoPjwvQXV4UGF0aD4NCiAgPExvY2FsUGF0aD48L0xvY2FsUGF0aD4NCiAgPFByb3ZpZGVyPjwvUHJvdmlkZXI+DQo8L1NvdXJjZUNvbnRyb2xJbmZvPg==</State>
+  <Database>
+    <Name>SQL06_Tfs_Analysis.database</Name>
+    <FullPath>SQL06_Tfs_Analysis.database</FullPath>
+  </Database>
+  <Cubes>
+    <ProjectItem>
+      <Name>Team System.cube</Name>
+      <FullPath>Team System.cube</FullPath>
+      <Dependencies>
+        <ProjectItem>
+          <Name>Team System.partitions</Name>
+          <FullPath>Team System.partitions</FullPath>
+        </ProjectItem>
+      </Dependencies>
+    </ProjectItem>
+  </Cubes>
+  <Dimensions>
+    <ProjectItem>
+      <Name>Assembly.dim</Name>
+      <FullPath>Assembly.dim</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Build Flavor.dim</Name>
+      <FullPath>Build Flavor.dim</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Build Platform.dim</Name>
+      <FullPath>Build Platform.dim</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Build Quality.dim</Name>
+      <FullPath>Build Quality.dim</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Build Status.dim</Name>
+      <FullPath>Build Status.dim</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Build.dim</Name>
+      <FullPath>Build.dim</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Date.dim</Name>
+      <FullPath>Date.dim</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Team Project Reference.dim</Name>
+      <FullPath>Team Project Reference.dim</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Team Project.dim</Name>
+      <FullPath>Team Project.dim</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Test Case.dim</Name>
+      <FullPath>Test Case.dim</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Test Configuration.dim</Name>
+      <FullPath>Test Configuration.dim</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Test Plan.dim</Name>
+      <FullPath>Test Plan.dim</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Test Result.dim</Name>
+      <FullPath>Test Result.dim</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Test Run.dim</Name>
+      <FullPath>Test Run.dim</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Test Suite.dim</Name>
+      <FullPath>Test Suite.dim</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Today.dim</Name>
+      <FullPath>Today.dim</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Tool Artifact Display Url.dim</Name>
+      <FullPath>Tool Artifact Display Url.dim</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Version Control Changeset.dim</Name>
+      <FullPath>Version Control Changeset.dim</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Version Control File.dim</Name>
+      <FullPath>Version Control File.dim</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Work Item Category.dim</Name>
+      <FullPath>Work Item Category.dim</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Work Item Link Type.dim</Name>
+      <FullPath>Work Item Link Type.dim</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Work Item Tree.dim</Name>
+      <FullPath>Work Item Tree.dim</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Work Item.dim</Name>
+      <FullPath>Work Item.dim</FullPath>
+    </ProjectItem>
+  </Dimensions>
+  <DataSources>
+    <ProjectItem>
+      <Name>Tfs_AnalysisDataSource.ds</Name>
+      <FullPath>Tfs_AnalysisDataSource.ds</FullPath>
+    </ProjectItem>
+  </DataSources>
+  <DataSourceViews>
+    <ProjectItem>
+      <Name>Tfs_AnalysisDataSourceView.dsv</Name>
+      <FullPath>Tfs_AnalysisDataSourceView.dsv</FullPath>
+    </ProjectItem>
+  </DataSourceViews>
+  <Roles>
+    <ProjectItem>
+      <Name>TeamInternational.role</Name>
+      <FullPath>TeamInternational.role</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>TfsWarehouseAdministrator.role</Name>
+      <FullPath>TfsWarehouseAdministrator.role</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>TfsWarehouseDataReader.role</Name>
+      <FullPath>TfsWarehouseDataReader.role</FullPath>
+    </ProjectItem>
+  </Roles>
+  <Configurations>
+    <Configuration>
+      <Name>Development</Name>
+      <Options>
+        <DeploymentServerEdition>Enterprise</DeploymentServerEdition>
+      </Options>
+    </Configuration>
+  </Configurations>
+</Project>

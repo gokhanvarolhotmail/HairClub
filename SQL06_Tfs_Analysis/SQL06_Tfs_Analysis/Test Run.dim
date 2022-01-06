@@ -1,0 +1,1358 @@
+﻿<Dimension xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+  <ID>Run</ID>
+  <Name>Test Run</Name>
+  <CreatedTimestamp>2013-08-21T22:15:40.39Z</CreatedTimestamp>
+  <LastSchemaUpdate>2013-08-21T22:15:44.093333Z</LastSchemaUpdate>
+  <Annotations>
+    <Annotation>
+      <Name>Owner</Name>
+      <Value>Microsoft.VSTS</Value>
+    </Annotation>
+  </Annotations>
+  <LastProcessed>2022-01-06T07:00:50.723333Z</LastProcessed>
+  <State>Processed</State>
+  <Source xsi:type="DataSourceViewBinding">
+    <DataSourceViewID>Tfs_AnalysisDataSourceView</DataSourceViewID>
+  </Source>
+  <UnknownMember>Visible</UnknownMember>
+  <ErrorConfiguration />
+  <CurrentStorageMode>Molap</CurrentStorageMode>
+  <Language>1033</Language>
+  <Collation>Latin1_General_CI_AS</Collation>
+  <UnknownMemberName>Unknown</UnknownMemberName>
+  <UnknownMemberTranslations>
+    <UnknownMemberTranslation>
+      <Language>1033</Language>
+      <Caption>Unknown</Caption>
+    </UnknownMemberTranslation>
+  </UnknownMemberTranslations>
+  <Translations>
+    <Translation>
+      <Language>1033</Language>
+      <Caption>Test Run</Caption>
+    </Translation>
+  </Translations>
+  <Attributes>
+    <Attribute>
+      <ID>TestRunSK</ID>
+      <Name>Test Run</Name>
+      <Usage>Key</Usage>
+      <KeyColumns>
+        <KeyColumn>
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding">
+            <TableID>dbo_vDimTestRunOverlay</TableID>
+            <ColumnID>TestRunSK</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn>
+        <DataType>WChar</DataType>
+        <NullProcessing>ZeroOrBlank</NullProcessing>
+        <Source xsi:type="ColumnBinding">
+          <TableID>dbo_vDimTestRunOverlay</TableID>
+          <ColumnID>TestRunSK</ColumnID>
+        </Source>
+      </NameColumn>
+      <Translations>
+        <Translation>
+          <Language>1033</Language>
+          <Caption>Test Run</Caption>
+        </Translation>
+      </Translations>
+      <AttributeRelationships>
+        <AttributeRelationship>
+          <AttributeID>TestRunId</AttributeID>
+          <Name>Test Run ID</Name>
+          <Translations>
+            <Translation>
+              <Language>1033</Language>
+              <Caption>Test Run Id</Caption>
+            </Translation>
+          </Translations>
+        </AttributeRelationship>
+        <AttributeRelationship>
+          <AttributeID>Title</AttributeID>
+          <Name>Title</Name>
+          <Translations>
+            <Translation>
+              <Language>1033</Language>
+              <Caption>Test Run Title</Caption>
+            </Translation>
+          </Translations>
+        </AttributeRelationship>
+        <AttributeRelationship>
+          <AttributeID>State</AttributeID>
+          <Name>State</Name>
+          <Translations>
+            <Translation>
+              <Language>1033</Language>
+              <Caption>Test Run State</Caption>
+            </Translation>
+          </Translations>
+        </AttributeRelationship>
+        <AttributeRelationship>
+          <AttributeID>CreationDate</AttributeID>
+          <Name>Creation Date</Name>
+          <Translations>
+            <Translation>
+              <Language>1033</Language>
+              <Caption>Creation Date</Caption>
+            </Translation>
+          </Translations>
+        </AttributeRelationship>
+        <AttributeRelationship>
+          <AttributeID>StartDate</AttributeID>
+          <Name>Start Date</Name>
+          <Translations>
+            <Translation>
+              <Language>1033</Language>
+              <Caption>Start Date</Caption>
+            </Translation>
+          </Translations>
+        </AttributeRelationship>
+        <AttributeRelationship>
+          <AttributeID>CompleteDate</AttributeID>
+          <Name>Complete Date</Name>
+          <Translations>
+            <Translation>
+              <Language>1033</Language>
+              <Caption>Complete Date</Caption>
+            </Translation>
+          </Translations>
+        </AttributeRelationship>
+        <AttributeRelationship>
+          <AttributeID>RunOwnerName</AttributeID>
+          <Name>Owner</Name>
+          <Translations>
+            <Translation>
+              <Language>1033</Language>
+              <Caption>Test Run Owner</Caption>
+            </Translation>
+          </Translations>
+        </AttributeRelationship>
+        <AttributeRelationship>
+          <AttributeID>State Id</AttributeID>
+          <Name>Test Run State Id</Name>
+          <Translations>
+            <Translation>
+              <Language>1033</Language>
+              <Caption>Test Run State Id</Caption>
+            </Translation>
+          </Translations>
+        </AttributeRelationship>
+        <AttributeRelationship>
+          <AttributeID>IsAutomated</AttributeID>
+          <Name>Is Automated</Name>
+          <Translations>
+            <Translation>
+              <Language>1033</Language>
+              <Caption>Is Automated</Caption>
+            </Translation>
+          </Translations>
+        </AttributeRelationship>
+        <AttributeRelationship>
+          <AttributeID>IsBuildVerificationRun</AttributeID>
+          <Name>Is Build Verification Run</Name>
+          <Translations>
+            <Translation>
+              <Language>1033</Language>
+              <Caption>Is Build Verification Run</Caption>
+            </Translation>
+          </Translations>
+        </AttributeRelationship>
+      </AttributeRelationships>
+      <AttributeHierarchyVisible>false</AttributeHierarchyVisible>
+      <InstanceSelection>DropDown</InstanceSelection>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute>
+      <Annotations>
+        <Annotation>
+          <Name>Owner</Name>
+          <Value>Microsoft.VSTS</Value>
+        </Annotation>
+      </Annotations>
+      <ID>TestRunId</ID>
+      <Name>Test Run ID</Name>
+      <KeyColumns>
+        <KeyColumn>
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding">
+            <TableID>dbo_vDimTestRunOverlay</TableID>
+            <ColumnID>TestRunId</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn>
+        <DataType>WChar</DataType>
+        <Source xsi:type="ColumnBinding">
+          <TableID>dbo_vDimTestRunOverlay</TableID>
+          <ColumnID>TestRunId</ColumnID>
+        </Source>
+      </NameColumn>
+      <Translations>
+        <Translation>
+          <Language>1033</Language>
+          <Caption>Test Run Id</Caption>
+        </Translation>
+      </Translations>
+      <OrderBy>Key</OrderBy>
+      <InstanceSelection>DropDown</InstanceSelection>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute>
+      <Annotations>
+        <Annotation>
+          <Name>Owner</Name>
+          <Value>Microsoft.VSTS</Value>
+        </Annotation>
+      </Annotations>
+      <ID>Title</ID>
+      <Name>Test Run Title</Name>
+      <KeyColumns>
+        <KeyColumn>
+          <DataType>WChar</DataType>
+          <DataSize>256</DataSize>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding">
+            <TableID>dbo_vDimTestRunOverlay</TableID>
+            <ColumnID>Title</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn>
+        <DataType>WChar</DataType>
+        <DataSize>256</DataSize>
+        <Source xsi:type="ColumnBinding">
+          <TableID>dbo_vDimTestRunOverlay</TableID>
+          <ColumnID>Title</ColumnID>
+        </Source>
+      </NameColumn>
+      <Translations>
+        <Translation>
+          <Language>1033</Language>
+          <Caption>Test Run Title</Caption>
+        </Translation>
+      </Translations>
+      <OrderBy>Key</OrderBy>
+      <InstanceSelection>DropDown</InstanceSelection>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute>
+      <Annotations>
+        <Annotation>
+          <Name>Owner</Name>
+          <Value>Microsoft.VSTS</Value>
+        </Annotation>
+      </Annotations>
+      <ID>State</ID>
+      <Name>Test Run State</Name>
+      <KeyColumns>
+        <KeyColumn>
+          <DataType>WChar</DataType>
+          <DataSize>64</DataSize>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding">
+            <TableID>dbo_vDimTestRunOverlay</TableID>
+            <ColumnID>State</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn>
+        <DataType>WChar</DataType>
+        <DataSize>64</DataSize>
+        <Source xsi:type="ColumnBinding">
+          <TableID>dbo_vDimTestRunOverlay</TableID>
+          <ColumnID>State</ColumnID>
+        </Source>
+      </NameColumn>
+      <Translations>
+        <Translation>
+          <Language>1033</Language>
+          <Caption>Test Run State</Caption>
+        </Translation>
+      </Translations>
+      <OrderBy>Key</OrderBy>
+      <InstanceSelection>DropDown</InstanceSelection>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute>
+      <Annotations>
+        <Annotation>
+          <Name>Owner</Name>
+          <Value>Microsoft.VSTS</Value>
+        </Annotation>
+      </Annotations>
+      <ID>CreationDate</ID>
+      <Name>Creation Date</Name>
+      <KeyColumns>
+        <KeyColumn>
+          <DataType>Date</DataType>
+          <DataSize>30</DataSize>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding">
+            <TableID>dbo_vDimTestRunOverlay</TableID>
+            <ColumnID>CreationDate__DateOnly</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn>
+        <DataType>WChar</DataType>
+        <DataSize>30</DataSize>
+        <Source xsi:type="ColumnBinding">
+          <TableID>dbo_vDimTestRunOverlay</TableID>
+          <ColumnID>CreationDate__DateString</ColumnID>
+        </Source>
+      </NameColumn>
+      <Translations>
+        <Translation>
+          <Language>1033</Language>
+          <Caption>Creation Date</Caption>
+        </Translation>
+      </Translations>
+      <AttributeRelationships>
+        <AttributeRelationship>
+          <AttributeID>CreationDate__Week</AttributeID>
+          <Name>Creation Date__Week</Name>
+          <Translations>
+            <Translation>
+              <Language>1033</Language>
+              <Caption>Creation Date Week</Caption>
+            </Translation>
+          </Translations>
+        </AttributeRelationship>
+        <AttributeRelationship>
+          <AttributeID>CreationDate__Month</AttributeID>
+          <Name>Creation Date__Month</Name>
+          <Translations>
+            <Translation>
+              <Language>1033</Language>
+              <Caption>Creation Date Month</Caption>
+            </Translation>
+          </Translations>
+        </AttributeRelationship>
+      </AttributeRelationships>
+      <OrderBy>Key</OrderBy>
+      <ValueColumn>
+        <DataType>Date</DataType>
+        <Source xsi:type="ColumnBinding">
+          <TableID>dbo_vDimTestRunOverlay</TableID>
+          <ColumnID>CreationDate__DateOnly</ColumnID>
+        </Source>
+      </ValueColumn>
+      <InstanceSelection>DropDown</InstanceSelection>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute>
+      <Annotations>
+        <Annotation>
+          <Name>RunOwnerSK</Name>
+          <Value>Microsoft.VSTS</Value>
+        </Annotation>
+      </Annotations>
+      <ID>StartDate</ID>
+      <Name>Start Date</Name>
+      <KeyColumns>
+        <KeyColumn>
+          <DataType>Date</DataType>
+          <DataSize>30</DataSize>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding">
+            <TableID>dbo_vDimTestRunOverlay</TableID>
+            <ColumnID>StartDate__DateOnly</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn>
+        <DataType>WChar</DataType>
+        <DataSize>30</DataSize>
+        <Source xsi:type="ColumnBinding">
+          <TableID>dbo_vDimTestRunOverlay</TableID>
+          <ColumnID>StartDate__DateString</ColumnID>
+        </Source>
+      </NameColumn>
+      <Translations>
+        <Translation>
+          <Language>1033</Language>
+          <Caption>Start Date</Caption>
+        </Translation>
+      </Translations>
+      <AttributeRelationships>
+        <AttributeRelationship>
+          <AttributeID>StartDate__Month</AttributeID>
+          <Name>Start Date__Month</Name>
+          <Translations>
+            <Translation>
+              <Language>1033</Language>
+              <Caption>Start Date Month</Caption>
+            </Translation>
+          </Translations>
+        </AttributeRelationship>
+        <AttributeRelationship>
+          <AttributeID>StartDate__Week</AttributeID>
+          <Name>Start Date__Week</Name>
+          <Translations>
+            <Translation>
+              <Language>1033</Language>
+              <Caption>Start Date Week</Caption>
+            </Translation>
+          </Translations>
+        </AttributeRelationship>
+      </AttributeRelationships>
+      <OrderBy>Key</OrderBy>
+      <ValueColumn>
+        <DataType>Date</DataType>
+        <Source xsi:type="ColumnBinding">
+          <TableID>dbo_vDimTestRunOverlay</TableID>
+          <ColumnID>StartDate__DateOnly</ColumnID>
+        </Source>
+      </ValueColumn>
+      <InstanceSelection>DropDown</InstanceSelection>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute>
+      <Annotations>
+        <Annotation>
+          <Name>Owner</Name>
+          <Value>Microsoft.VSTS</Value>
+        </Annotation>
+      </Annotations>
+      <ID>CompleteDate</ID>
+      <Name>Complete Date</Name>
+      <KeyColumns>
+        <KeyColumn>
+          <DataType>Date</DataType>
+          <DataSize>30</DataSize>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding">
+            <TableID>dbo_vDimTestRunOverlay</TableID>
+            <ColumnID>CompleteDate__DateOnly</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn>
+        <DataType>WChar</DataType>
+        <DataSize>30</DataSize>
+        <Source xsi:type="ColumnBinding">
+          <TableID>dbo_vDimTestRunOverlay</TableID>
+          <ColumnID>CompleteDate__DateString</ColumnID>
+        </Source>
+      </NameColumn>
+      <Translations>
+        <Translation>
+          <Language>1033</Language>
+          <Caption>Complete Date</Caption>
+        </Translation>
+      </Translations>
+      <AttributeRelationships>
+        <AttributeRelationship>
+          <AttributeID>CompleteDate__Month</AttributeID>
+          <Name>Complete Date__Month</Name>
+          <Translations>
+            <Translation>
+              <Language>1033</Language>
+              <Caption>Complete Date Month</Caption>
+            </Translation>
+          </Translations>
+        </AttributeRelationship>
+        <AttributeRelationship>
+          <AttributeID>CompleteDate__Week</AttributeID>
+          <Name>Complete Date__Week</Name>
+          <Translations>
+            <Translation>
+              <Language>1033</Language>
+              <Caption>Complete Date Week</Caption>
+            </Translation>
+          </Translations>
+        </AttributeRelationship>
+      </AttributeRelationships>
+      <OrderBy>Key</OrderBy>
+      <ValueColumn>
+        <DataType>Date</DataType>
+        <Source xsi:type="ColumnBinding">
+          <TableID>dbo_vDimTestRunOverlay</TableID>
+          <ColumnID>CompleteDate__DateOnly</ColumnID>
+        </Source>
+      </ValueColumn>
+      <InstanceSelection>DropDown</InstanceSelection>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute>
+      <ID>CreationDate__Year</ID>
+      <Name>CreationDate__Year</Name>
+      <KeyColumns>
+        <KeyColumn>
+          <DataType>Date</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding">
+            <TableID>dbo_vDimTestRunOverlay</TableID>
+            <ColumnID>CreationDate__Year</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn>
+        <DataType>WChar</DataType>
+        <DataSize>30</DataSize>
+        <Source xsi:type="ColumnBinding">
+          <TableID>dbo_vDimTestRunOverlay</TableID>
+          <ColumnID>CreationDate__YearString</ColumnID>
+        </Source>
+      </NameColumn>
+      <Translations>
+        <Translation>
+          <Language>1033</Language>
+          <Caption>Creation Date Year</Caption>
+        </Translation>
+      </Translations>
+      <OrderBy>Key</OrderBy>
+      <ValueColumn>
+        <DataType>Date</DataType>
+        <Source xsi:type="ColumnBinding">
+          <TableID>dbo_vDimTestRunOverlay</TableID>
+          <ColumnID>CreationDate__Year</ColumnID>
+        </Source>
+      </ValueColumn>
+      <AttributeHierarchyVisible>false</AttributeHierarchyVisible>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute>
+      <ID>CreationDate__Month</ID>
+      <Name>CreationDate__Month</Name>
+      <KeyColumns>
+        <KeyColumn>
+          <DataType>Date</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding">
+            <TableID>dbo_vDimTestRunOverlay</TableID>
+            <ColumnID>CreationDate__Month</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn>
+        <DataType>WChar</DataType>
+        <DataSize>30</DataSize>
+        <Source xsi:type="ColumnBinding">
+          <TableID>dbo_vDimTestRunOverlay</TableID>
+          <ColumnID>CreationDate__MonthString</ColumnID>
+        </Source>
+      </NameColumn>
+      <Translations>
+        <Translation>
+          <Language>1033</Language>
+          <Caption>Creation Date Month</Caption>
+        </Translation>
+      </Translations>
+      <AttributeRelationships>
+        <AttributeRelationship>
+          <AttributeID>CreationDate__Year</AttributeID>
+          <Name>Creation Date__Year</Name>
+          <Translations>
+            <Translation>
+              <Language>1033</Language>
+              <Caption>Creation Date Year</Caption>
+            </Translation>
+          </Translations>
+        </AttributeRelationship>
+      </AttributeRelationships>
+      <OrderBy>Key</OrderBy>
+      <ValueColumn>
+        <DataType>Date</DataType>
+        <Source xsi:type="ColumnBinding">
+          <TableID>dbo_vDimTestRunOverlay</TableID>
+          <ColumnID>CreationDate__Month</ColumnID>
+        </Source>
+      </ValueColumn>
+      <AttributeHierarchyVisible>false</AttributeHierarchyVisible>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute>
+      <ID>CreationDate__Week</ID>
+      <Name>CreationDate__Week</Name>
+      <KeyColumns>
+        <KeyColumn>
+          <DataType>Date</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding">
+            <TableID>dbo_vDimTestRunOverlay</TableID>
+            <ColumnID>CreationDate__Week</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn>
+        <DataType>WChar</DataType>
+        <DataSize>30</DataSize>
+        <Source xsi:type="ColumnBinding">
+          <TableID>dbo_vDimTestRunOverlay</TableID>
+          <ColumnID>CreationDate__WeekString</ColumnID>
+        </Source>
+      </NameColumn>
+      <Translations>
+        <Translation>
+          <Language>1033</Language>
+          <Caption>Creation Date Week</Caption>
+        </Translation>
+      </Translations>
+      <AttributeRelationships>
+        <AttributeRelationship>
+          <AttributeID>CreationDate__Year</AttributeID>
+          <Name>Creation Date__Year</Name>
+          <Translations>
+            <Translation>
+              <Language>1033</Language>
+              <Caption>Creation Date Year</Caption>
+            </Translation>
+          </Translations>
+        </AttributeRelationship>
+      </AttributeRelationships>
+      <OrderBy>Key</OrderBy>
+      <ValueColumn>
+        <DataType>Date</DataType>
+        <Source xsi:type="ColumnBinding">
+          <TableID>dbo_vDimTestRunOverlay</TableID>
+          <ColumnID>CreationDate__Week</ColumnID>
+        </Source>
+      </ValueColumn>
+      <AttributeHierarchyVisible>false</AttributeHierarchyVisible>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute>
+      <ID>StartDate__Year</ID>
+      <Name>StartDate__Year</Name>
+      <KeyColumns>
+        <KeyColumn>
+          <DataType>Date</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding">
+            <TableID>dbo_vDimTestRunOverlay</TableID>
+            <ColumnID>StartDate__Year</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn>
+        <DataType>WChar</DataType>
+        <DataSize>30</DataSize>
+        <Source xsi:type="ColumnBinding">
+          <TableID>dbo_vDimTestRunOverlay</TableID>
+          <ColumnID>StartDate__YearString</ColumnID>
+        </Source>
+      </NameColumn>
+      <Translations>
+        <Translation>
+          <Language>1033</Language>
+          <Caption>Start Date Year</Caption>
+        </Translation>
+      </Translations>
+      <OrderBy>Key</OrderBy>
+      <ValueColumn>
+        <DataType>Date</DataType>
+        <Source xsi:type="ColumnBinding">
+          <TableID>dbo_vDimTestRunOverlay</TableID>
+          <ColumnID>StartDate__Year</ColumnID>
+        </Source>
+      </ValueColumn>
+      <AttributeHierarchyVisible>false</AttributeHierarchyVisible>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute>
+      <ID>StartDate__Month</ID>
+      <Name>StartDate__Month</Name>
+      <KeyColumns>
+        <KeyColumn>
+          <DataType>Date</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding">
+            <TableID>dbo_vDimTestRunOverlay</TableID>
+            <ColumnID>StartDate__Month</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn>
+        <DataType>WChar</DataType>
+        <DataSize>30</DataSize>
+        <Source xsi:type="ColumnBinding">
+          <TableID>dbo_vDimTestRunOverlay</TableID>
+          <ColumnID>StartDate__MonthString</ColumnID>
+        </Source>
+      </NameColumn>
+      <Translations>
+        <Translation>
+          <Language>1033</Language>
+          <Caption>Start Date Month</Caption>
+        </Translation>
+      </Translations>
+      <AttributeRelationships>
+        <AttributeRelationship>
+          <AttributeID>StartDate__Year</AttributeID>
+          <Name>Start Date__Year</Name>
+          <Translations>
+            <Translation>
+              <Language>1033</Language>
+              <Caption>Start Date Year</Caption>
+            </Translation>
+          </Translations>
+        </AttributeRelationship>
+      </AttributeRelationships>
+      <OrderBy>Key</OrderBy>
+      <ValueColumn>
+        <DataType>Date</DataType>
+        <Source xsi:type="ColumnBinding">
+          <TableID>dbo_vDimTestRunOverlay</TableID>
+          <ColumnID>StartDate__Month</ColumnID>
+        </Source>
+      </ValueColumn>
+      <AttributeHierarchyVisible>false</AttributeHierarchyVisible>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute>
+      <ID>StartDate__Week</ID>
+      <Name>StartDate__Week</Name>
+      <KeyColumns>
+        <KeyColumn>
+          <DataType>Date</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding">
+            <TableID>dbo_vDimTestRunOverlay</TableID>
+            <ColumnID>StartDate__Week</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn>
+        <DataType>WChar</DataType>
+        <DataSize>30</DataSize>
+        <Source xsi:type="ColumnBinding">
+          <TableID>dbo_vDimTestRunOverlay</TableID>
+          <ColumnID>StartDate__WeekString</ColumnID>
+        </Source>
+      </NameColumn>
+      <Translations>
+        <Translation>
+          <Language>1033</Language>
+          <Caption>Start Date Week</Caption>
+        </Translation>
+      </Translations>
+      <AttributeRelationships>
+        <AttributeRelationship>
+          <AttributeID>StartDate__Year</AttributeID>
+          <Name>Start Date__Year</Name>
+          <Translations>
+            <Translation>
+              <Language>1033</Language>
+              <Caption>Start Date Year</Caption>
+            </Translation>
+          </Translations>
+        </AttributeRelationship>
+      </AttributeRelationships>
+      <OrderBy>Key</OrderBy>
+      <ValueColumn>
+        <DataType>Date</DataType>
+        <Source xsi:type="ColumnBinding">
+          <TableID>dbo_vDimTestRunOverlay</TableID>
+          <ColumnID>StartDate__Week</ColumnID>
+        </Source>
+      </ValueColumn>
+      <AttributeHierarchyVisible>false</AttributeHierarchyVisible>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute>
+      <ID>CompleteDate__Year</ID>
+      <Name>CompleteDate__Year</Name>
+      <KeyColumns>
+        <KeyColumn>
+          <DataType>Date</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding">
+            <TableID>dbo_vDimTestRunOverlay</TableID>
+            <ColumnID>CompleteDate__Year</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn>
+        <DataType>WChar</DataType>
+        <DataSize>30</DataSize>
+        <Source xsi:type="ColumnBinding">
+          <TableID>dbo_vDimTestRunOverlay</TableID>
+          <ColumnID>CompleteDate__YearString</ColumnID>
+        </Source>
+      </NameColumn>
+      <Translations>
+        <Translation>
+          <Language>1033</Language>
+          <Caption>Complete Date Year</Caption>
+        </Translation>
+      </Translations>
+      <OrderBy>Key</OrderBy>
+      <ValueColumn>
+        <DataType>Date</DataType>
+        <Source xsi:type="ColumnBinding">
+          <TableID>dbo_vDimTestRunOverlay</TableID>
+          <ColumnID>CompleteDate__Year</ColumnID>
+        </Source>
+      </ValueColumn>
+      <AttributeHierarchyVisible>false</AttributeHierarchyVisible>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute>
+      <ID>CompleteDate__Month</ID>
+      <Name>CompleteDate__Month</Name>
+      <KeyColumns>
+        <KeyColumn>
+          <DataType>Date</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding">
+            <TableID>dbo_vDimTestRunOverlay</TableID>
+            <ColumnID>CompleteDate__Month</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn>
+        <DataType>WChar</DataType>
+        <DataSize>30</DataSize>
+        <Source xsi:type="ColumnBinding">
+          <TableID>dbo_vDimTestRunOverlay</TableID>
+          <ColumnID>CompleteDate__MonthString</ColumnID>
+        </Source>
+      </NameColumn>
+      <Translations>
+        <Translation>
+          <Language>1033</Language>
+          <Caption>Complete Date Month</Caption>
+        </Translation>
+      </Translations>
+      <AttributeRelationships>
+        <AttributeRelationship>
+          <AttributeID>CompleteDate__Year</AttributeID>
+          <Name>Complete Date__Year</Name>
+          <Translations>
+            <Translation>
+              <Language>1033</Language>
+              <Caption>Complete Date Year</Caption>
+            </Translation>
+          </Translations>
+        </AttributeRelationship>
+      </AttributeRelationships>
+      <OrderBy>Key</OrderBy>
+      <ValueColumn>
+        <DataType>Date</DataType>
+        <Source xsi:type="ColumnBinding">
+          <TableID>dbo_vDimTestRunOverlay</TableID>
+          <ColumnID>CompleteDate__Month</ColumnID>
+        </Source>
+      </ValueColumn>
+      <AttributeHierarchyVisible>false</AttributeHierarchyVisible>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute>
+      <ID>CompleteDate__Week</ID>
+      <Name>CompleteDate__Week</Name>
+      <KeyColumns>
+        <KeyColumn>
+          <DataType>Date</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding">
+            <TableID>dbo_vDimTestRunOverlay</TableID>
+            <ColumnID>CompleteDate__Week</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn>
+        <DataType>WChar</DataType>
+        <DataSize>30</DataSize>
+        <Source xsi:type="ColumnBinding">
+          <TableID>dbo_vDimTestRunOverlay</TableID>
+          <ColumnID>CompleteDate__WeekString</ColumnID>
+        </Source>
+      </NameColumn>
+      <Translations>
+        <Translation>
+          <Language>1033</Language>
+          <Caption>Complete Date Week</Caption>
+        </Translation>
+      </Translations>
+      <AttributeRelationships>
+        <AttributeRelationship>
+          <AttributeID>CompleteDate__Year</AttributeID>
+          <Name>Complete Date__Year</Name>
+          <Translations>
+            <Translation>
+              <Language>1033</Language>
+              <Caption>Complete Date Year</Caption>
+            </Translation>
+          </Translations>
+        </AttributeRelationship>
+      </AttributeRelationships>
+      <OrderBy>Key</OrderBy>
+      <ValueColumn>
+        <DataType>Date</DataType>
+        <Source xsi:type="ColumnBinding">
+          <TableID>dbo_vDimTestRunOverlay</TableID>
+          <ColumnID>CompleteDate__Week</ColumnID>
+        </Source>
+      </ValueColumn>
+      <AttributeHierarchyVisible>false</AttributeHierarchyVisible>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute>
+      <ID>RunOwnerName</ID>
+      <Name>Test Run Owner</Name>
+      <KeyColumns>
+        <KeyColumn>
+          <DataType>WChar</DataType>
+          <DataSize>256</DataSize>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding">
+            <TableID>dbo_vDimTestRunOverlay</TableID>
+            <ColumnID>RunOwner__SID</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn>
+        <DataType>WChar</DataType>
+        <DataSize>256</DataSize>
+        <Source xsi:type="ColumnBinding">
+          <TableID>dbo_vDimTestRunOverlay</TableID>
+          <ColumnID>RunOwner__Name</ColumnID>
+        </Source>
+      </NameColumn>
+      <Translations>
+        <Translation>
+          <Language>1033</Language>
+          <Caption>Test Run Owner</Caption>
+        </Translation>
+      </Translations>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute>
+      <ID>State Id</ID>
+      <Name>Test Run State Id</Name>
+      <KeyColumns>
+        <KeyColumn>
+          <DataType>UnsignedTinyInt</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding">
+            <TableID>dbo_vDimTestRunOverlay</TableID>
+            <ColumnID>StateId</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn>
+        <DataType>WChar</DataType>
+        <Source xsi:type="ColumnBinding">
+          <TableID>dbo_vDimTestRunOverlay</TableID>
+          <ColumnID>StateId</ColumnID>
+        </Source>
+      </NameColumn>
+      <Translations>
+        <Translation>
+          <Language>1033</Language>
+          <Caption>Test Run State Id</Caption>
+        </Translation>
+      </Translations>
+      <OrderBy>Key</OrderBy>
+      <InstanceSelection>DropDown</InstanceSelection>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute>
+      <ID>IsAutomated</ID>
+      <Name>Is Automated</Name>
+      <KeyColumns>
+        <KeyColumn>
+          <DataType>Boolean</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding">
+            <TableID>dbo_vDimTestRunOverlay</TableID>
+            <ColumnID>IsAutomated</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn>
+        <DataType>WChar</DataType>
+        <Source xsi:type="ColumnBinding">
+          <TableID>dbo_vDimTestRunOverlay</TableID>
+          <ColumnID>IsAutomated</ColumnID>
+        </Source>
+      </NameColumn>
+      <Translations>
+        <Translation>
+          <Language>1033</Language>
+          <Caption>Is Automated</Caption>
+        </Translation>
+      </Translations>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute>
+      <ID>IsBuildVerificationRun</ID>
+      <Name>Is Build Verification Run</Name>
+      <KeyColumns>
+        <KeyColumn>
+          <DataType>Boolean</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding">
+            <TableID>dbo_vDimTestRunOverlay</TableID>
+            <ColumnID>IsBuildVerificationRun</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn>
+        <DataType>WChar</DataType>
+        <Source xsi:type="ColumnBinding">
+          <TableID>dbo_vDimTestRunOverlay</TableID>
+          <ColumnID>IsBuildVerificationRun</ColumnID>
+        </Source>
+      </NameColumn>
+      <Translations>
+        <Translation>
+          <Language>1033</Language>
+          <Caption>Is Build Verification Run</Caption>
+        </Translation>
+      </Translations>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+  </Attributes>
+  <AttributeAllMemberTranslations>
+    <AttributeAllMemberTranslation>
+      <Language>1033</Language>
+      <Caption>All</Caption>
+    </AttributeAllMemberTranslation>
+  </AttributeAllMemberTranslations>
+  <Hierarchies>
+    <Hierarchy>
+      <ID>Complete Date Hierarchy By Month</ID>
+      <Name>Complete Date Hierarchy By Month</Name>
+      <Translations>
+        <Translation>
+          <Language>1033</Language>
+          <Caption>Complete Date Hierarchy By Month</Caption>
+        </Translation>
+      </Translations>
+      <AllMemberTranslations>
+        <AllMemberTranslation>
+          <Language>1033</Language>
+          <Caption>All</Caption>
+        </AllMemberTranslation>
+      </AllMemberTranslations>
+      <Levels>
+        <Level>
+          <ID>Year</ID>
+          <Name>Year</Name>
+          <SourceAttributeID>CompleteDate__Year</SourceAttributeID>
+          <Translations>
+            <Translation>
+              <Language>1033</Language>
+              <Caption>Year</Caption>
+            </Translation>
+          </Translations>
+        </Level>
+        <Level>
+          <ID>Month</ID>
+          <Name>Month</Name>
+          <SourceAttributeID>CompleteDate__Month</SourceAttributeID>
+          <Translations>
+            <Translation>
+              <Language>1033</Language>
+              <Caption>Month</Caption>
+            </Translation>
+          </Translations>
+        </Level>
+        <Level>
+          <ID>Date</ID>
+          <Name>Date</Name>
+          <SourceAttributeID>CompleteDate</SourceAttributeID>
+          <Translations>
+            <Translation>
+              <Language>1033</Language>
+              <Caption>Date</Caption>
+            </Translation>
+          </Translations>
+        </Level>
+      </Levels>
+    </Hierarchy>
+    <Hierarchy>
+      <ID>Complete Date Hierarchy By Week</ID>
+      <Name>Complete Date Hierarchy By Week</Name>
+      <Translations>
+        <Translation>
+          <Language>1033</Language>
+          <Caption>Complete Date Hierarchy By Week</Caption>
+        </Translation>
+      </Translations>
+      <AllMemberTranslations>
+        <AllMemberTranslation>
+          <Language>1033</Language>
+          <Caption>All</Caption>
+        </AllMemberTranslation>
+      </AllMemberTranslations>
+      <Levels>
+        <Level>
+          <ID>Year</ID>
+          <Name>Year</Name>
+          <SourceAttributeID>CompleteDate__Year</SourceAttributeID>
+          <Translations>
+            <Translation>
+              <Language>1033</Language>
+              <Caption>Year</Caption>
+            </Translation>
+          </Translations>
+        </Level>
+        <Level>
+          <ID>Week</ID>
+          <Name>Week</Name>
+          <SourceAttributeID>CompleteDate__Week</SourceAttributeID>
+          <Translations>
+            <Translation>
+              <Language>1033</Language>
+              <Caption>Week</Caption>
+            </Translation>
+          </Translations>
+        </Level>
+        <Level>
+          <ID>Date</ID>
+          <Name>Date</Name>
+          <SourceAttributeID>CompleteDate</SourceAttributeID>
+          <Translations>
+            <Translation>
+              <Language>1033</Language>
+              <Caption>Date</Caption>
+            </Translation>
+          </Translations>
+        </Level>
+      </Levels>
+    </Hierarchy>
+    <Hierarchy>
+      <ID>Creation Date Hierarchy By Month</ID>
+      <Name>Creation Date Hierarchy By Month</Name>
+      <Translations>
+        <Translation>
+          <Language>1033</Language>
+          <Caption>Creation Date Hierarchy By Month</Caption>
+        </Translation>
+      </Translations>
+      <AllMemberTranslations>
+        <AllMemberTranslation>
+          <Language>1033</Language>
+          <Caption>All</Caption>
+        </AllMemberTranslation>
+      </AllMemberTranslations>
+      <Levels>
+        <Level>
+          <ID>Year</ID>
+          <Name>Year</Name>
+          <SourceAttributeID>CreationDate__Year</SourceAttributeID>
+          <Translations>
+            <Translation>
+              <Language>1033</Language>
+              <Caption>Year</Caption>
+            </Translation>
+          </Translations>
+        </Level>
+        <Level>
+          <ID>Month</ID>
+          <Name>Month</Name>
+          <SourceAttributeID>CreationDate__Month</SourceAttributeID>
+          <Translations>
+            <Translation>
+              <Language>1033</Language>
+              <Caption>Month</Caption>
+            </Translation>
+          </Translations>
+        </Level>
+        <Level>
+          <ID>Date</ID>
+          <Name>Date</Name>
+          <SourceAttributeID>CreationDate</SourceAttributeID>
+          <Translations>
+            <Translation>
+              <Language>1033</Language>
+              <Caption>Date</Caption>
+            </Translation>
+          </Translations>
+        </Level>
+      </Levels>
+    </Hierarchy>
+    <Hierarchy>
+      <ID>Creation Date Hierarchy By Week</ID>
+      <Name>Creation Date Hierarchy By Week</Name>
+      <Translations>
+        <Translation>
+          <Language>1033</Language>
+          <Caption>Creation Date Hierarchy By Week</Caption>
+        </Translation>
+      </Translations>
+      <AllMemberTranslations>
+        <AllMemberTranslation>
+          <Language>1033</Language>
+          <Caption>All</Caption>
+        </AllMemberTranslation>
+      </AllMemberTranslations>
+      <Levels>
+        <Level>
+          <ID>Year</ID>
+          <Name>Year</Name>
+          <SourceAttributeID>CreationDate__Year</SourceAttributeID>
+          <Translations>
+            <Translation>
+              <Language>1033</Language>
+              <Caption>Year</Caption>
+            </Translation>
+          </Translations>
+        </Level>
+        <Level>
+          <ID>Week</ID>
+          <Name>Week</Name>
+          <SourceAttributeID>CreationDate__Week</SourceAttributeID>
+          <Translations>
+            <Translation>
+              <Language>1033</Language>
+              <Caption>Week</Caption>
+            </Translation>
+          </Translations>
+        </Level>
+        <Level>
+          <ID>Date</ID>
+          <Name>Date</Name>
+          <SourceAttributeID>CreationDate</SourceAttributeID>
+          <Translations>
+            <Translation>
+              <Language>1033</Language>
+              <Caption>Date</Caption>
+            </Translation>
+          </Translations>
+        </Level>
+      </Levels>
+    </Hierarchy>
+    <Hierarchy>
+      <ID>Start Date Hierarchy By Month</ID>
+      <Name>Start Date Hierarchy By Month</Name>
+      <Translations>
+        <Translation>
+          <Language>1033</Language>
+          <Caption>Start Date Hierarchy By Month</Caption>
+        </Translation>
+      </Translations>
+      <AllMemberTranslations>
+        <AllMemberTranslation>
+          <Language>1033</Language>
+          <Caption>All</Caption>
+        </AllMemberTranslation>
+      </AllMemberTranslations>
+      <Levels>
+        <Level>
+          <ID>Year</ID>
+          <Name>Year</Name>
+          <SourceAttributeID>StartDate__Year</SourceAttributeID>
+          <Translations>
+            <Translation>
+              <Language>1033</Language>
+              <Caption>Year</Caption>
+            </Translation>
+          </Translations>
+        </Level>
+        <Level>
+          <ID>Month</ID>
+          <Name>Month</Name>
+          <SourceAttributeID>StartDate__Month</SourceAttributeID>
+          <Translations>
+            <Translation>
+              <Language>1033</Language>
+              <Caption>Month</Caption>
+            </Translation>
+          </Translations>
+        </Level>
+        <Level>
+          <ID>Date</ID>
+          <Name>Date</Name>
+          <SourceAttributeID>StartDate</SourceAttributeID>
+          <Translations>
+            <Translation>
+              <Language>1033</Language>
+              <Caption>Date</Caption>
+            </Translation>
+          </Translations>
+        </Level>
+      </Levels>
+    </Hierarchy>
+    <Hierarchy>
+      <ID>Start Date Hierarchy By Week</ID>
+      <Name>Start Date Hierarchy By Week</Name>
+      <Translations>
+        <Translation>
+          <Language>1033</Language>
+          <Caption>Start Date Hierarchy By Week</Caption>
+        </Translation>
+      </Translations>
+      <AllMemberTranslations>
+        <AllMemberTranslation>
+          <Language>1033</Language>
+          <Caption>All</Caption>
+        </AllMemberTranslation>
+      </AllMemberTranslations>
+      <Levels>
+        <Level>
+          <ID>Year</ID>
+          <Name>Year</Name>
+          <SourceAttributeID>StartDate__Year</SourceAttributeID>
+          <Translations>
+            <Translation>
+              <Language>1033</Language>
+              <Caption>Year</Caption>
+            </Translation>
+          </Translations>
+        </Level>
+        <Level>
+          <ID>Week</ID>
+          <Name>Week</Name>
+          <SourceAttributeID>StartDate__Week</SourceAttributeID>
+          <Translations>
+            <Translation>
+              <Language>1033</Language>
+              <Caption>Week</Caption>
+            </Translation>
+          </Translations>
+        </Level>
+        <Level>
+          <ID>Date</ID>
+          <Name>Date</Name>
+          <SourceAttributeID>StartDate</SourceAttributeID>
+          <Translations>
+            <Translation>
+              <Language>1033</Language>
+              <Caption>Date</Caption>
+            </Translation>
+          </Translations>
+        </Level>
+      </Levels>
+    </Hierarchy>
+  </Hierarchies>
+  <ProactiveCaching>
+    <SilenceInterval>-PT1S</SilenceInterval>
+    <Latency>-PT1S</Latency>
+    <SilenceOverrideInterval>-PT1S</SilenceOverrideInterval>
+    <ForceRebuildInterval>-PT1S</ForceRebuildInterval>
+    <Source xsi:type="ProactiveCachingInheritedBinding" />
+  </ProactiveCaching>
+  <ddl300:ProcessingState>Unprocessed</ddl300:ProcessingState>
+</Dimension>

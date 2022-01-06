@@ -1,0 +1,52 @@
+﻿<Role xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+  <ID>Role</ID>
+  <Name>GeneralAccess</Name>
+  <CreatedTimestamp>2012-04-03T23:41:06.253333Z</CreatedTimestamp>
+  <LastSchemaUpdate>2014-05-06T16:07:21.706667Z</LastSchemaUpdate>
+  <Members>
+    <Member>
+      <Name>HCFM\125 - Information Technology</Name>
+      <Sid>S-1-5-21-1078081533-920026266-725345543-20258</Sid>
+    </Member>
+    <Member>
+      <Name>HCFM\900 - Advertising</Name>
+      <Sid>S-1-5-21-1078081533-920026266-725345543-20266</Sid>
+    </Member>
+    <Member>
+      <Name>HCFM\Role_Ops Sales Manager</Name>
+      <Sid>S-1-5-21-1078081533-920026266-725345543-20064</Sid>
+    </Member>
+    <Member>
+      <Name>HCFM\100 - Executive</Name>
+      <Sid>S-1-5-21-1078081533-920026266-725345543-20263</Sid>
+    </Member>
+    <Member>
+      <Name>HCFM\910 - NCC</Name>
+      <Sid>S-1-5-21-1078081533-920026266-725345543-20267</Sid>
+    </Member>
+    <Member>
+      <Name>HCFM\Role_Ops Managing Director</Name>
+      <Sid>S-1-5-21-1078081533-920026266-725345543-20254</Sid>
+    </Member>
+    <Member>
+      <Name>HCFM\120 - Accounting</Name>
+      <Sid>S-1-5-21-1078081533-920026266-725345543-20265</Sid>
+    </Member>
+    <Member>
+      <Name>HCFM\Role_Ops Regional Technical Manager</Name>
+      <Sid>S-1-5-21-1078081533-920026266-725345543-20325</Sid>
+    </Member>
+    <Member>
+      <Name>HCFM\115 - Production</Name>
+      <Sid>S-1-5-21-1078081533-920026266-725345543-20264</Sid>
+    </Member>
+    <Member>
+      <Name>HCFM\Role_Ops Sales Consultant</Name>
+      <Sid>S-1-5-21-1078081533-920026266-725345543-20256</Sid>
+    </Member>
+    <Member>
+      <Name>HCFM\Role_Vice President Administrative</Name>
+      <Sid>S-1-5-21-1078081533-920026266-725345543-22978</Sid>
+    </Member>
+  </Members>
+</Role>

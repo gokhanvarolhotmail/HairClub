@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32002.261
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{D2ABAB84-BF74-430A-B69E-9DC6D40DDA17}") = "SQL06_HC_BI_ENT_AS", "SQL06_HC_BI_ENT_AS\SQL06_HC_BI_ENT_AS.dwproj", "{4D1B4297-4CD7-4F9C-9B77-873DC7C0B724}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4D1B4297-4CD7-4F9C-9B77-873DC7C0B724}.Development|Default.ActiveCfg = Development
+		{4D1B4297-4CD7-4F9C-9B77-873DC7C0B724}.Development|Default.Build.0 = Development
+		{4D1B4297-4CD7-4F9C-9B77-873DC7C0B724}.Development|Default.Deploy.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {18D13EC3-1613-4275-80C0-610B3E1492F8}
+	EndGlobalSection
+EndGlobal

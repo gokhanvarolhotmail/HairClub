@@ -1,0 +1,58 @@
+﻿<Database xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="093c6b8c-994a-45d3-a09e-97bd673c6e2d" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+  <ID>SQL06_HC_BI_ENT_AS</ID>
+  <Name>SQL06_HC_BI_ENT_AS</Name>
+  <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+  <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+  <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
+  <State>Unprocessed</State>
+  <LastUpdate>0001-01-01T00:00:00Z</LastUpdate>
+  <Language>1033</Language>
+  <Collation>Latin1_General_CI_AS</Collation>
+  <EstimatedSize>46561013177</EstimatedSize>
+  <DataSourceImpersonationInfo>
+    <ImpersonationMode>Default</ImpersonationMode>
+    <ImpersonationInfoSecurity>Unchanged</ImpersonationInfoSecurity>
+  </DataSourceImpersonationInfo>
+  <DatabasePermissions>
+    <DatabasePermission dwd:design-time-name="42deadec-3fc4-4243-8308-7abd9361aa10">
+      <ID>DatabasePermission</ID>
+      <Name>DatabasePermission</Name>
+      <CreatedTimestamp>2012-04-03T23:41:10.253333Z</CreatedTimestamp>
+      <LastSchemaUpdate>2017-08-23T12:11:51.506667Z</LastSchemaUpdate>
+      <RoleID>Role</RoleID>
+      <ReadDefinition>Allowed</ReadDefinition>
+      <Read>Allowed</Read>
+    </DatabasePermission>
+    <DatabasePermission dwd:design-time-name="94a16f17-9519-4ad2-9393-eef89720a209">
+      <ID>DatabasePermission 1</ID>
+      <Name>DatabasePermission 1</Name>
+      <CreatedTimestamp>2012-11-30T21:10:26.16Z</CreatedTimestamp>
+      <LastSchemaUpdate>2017-08-23T12:11:51.52Z</LastSchemaUpdate>
+      <RoleID>Role 1</RoleID>
+      <Process>true</Process>
+      <ReadDefinition>Allowed</ReadDefinition>
+      <Read>Allowed</Read>
+      <Administer>true</Administer>
+    </DatabasePermission>
+    <DatabasePermission dwd:design-time-name="9c113254-a1bc-4bbf-b8dc-805fcb8d7bac">
+      <ID>DatabasePermission 2</ID>
+      <Name>DatabasePermission 2</Name>
+      <CreatedTimestamp>2017-01-03T21:58:01.59Z</CreatedTimestamp>
+      <LastSchemaUpdate>2017-08-23T12:11:51.52Z</LastSchemaUpdate>
+      <RoleID>Role 2</RoleID>
+      <ReadDefinition>Allowed</ReadDefinition>
+      <Read>Allowed</Read>
+    </DatabasePermission>
+    <DatabasePermission dwd:design-time-name="110bcb61-2e51-4d0c-abbb-3311087f6b7c">
+      <ID>DatabasePermission 3</ID>
+      <Name>DatabasePermission 3</Name>
+      <CreatedTimestamp>2021-06-08T21:57:08.736667Z</CreatedTimestamp>
+      <LastSchemaUpdate>2021-06-08T21:57:08.736667Z</LastSchemaUpdate>
+      <RoleID>Role 3</RoleID>
+      <Process>true</Process>
+      <ReadDefinition>Allowed</ReadDefinition>
+      <Read>Allowed</Read>
+      <Administer>true</Administer>
+    </DatabasePermission>
+  </DatabasePermissions>
+</Database>
