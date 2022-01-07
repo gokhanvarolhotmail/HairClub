@@ -1,4 +1,4 @@
-/* CreateDate: 03/05/2019 14:56:38.753 , ModifyDate: 02/02/2021 11:02:24.557 */
+/* CreateDate: 01/06/2022 10:36:13.070 , ModifyDate: 01/06/2022 10:36:13.070 */
 GO
 /*
 ==============================================================================
@@ -413,43 +413,43 @@ SELECT C.MainGroupID
 ,	C.CenterDescriptionNumber
 ,	ROUND(ISNULL(S.NetNB1Count,0),0)  AS 'NetNB1CountActual'
 
-,	CASE WHEN ROUND(ISNULL(A.NetNB1CountBudget,0),0)= 0 THEN 1 ELSE ROUND(ISNULL(A.NetNB1CountBudget,0),0) END AS 'NetNB1CountBudget'
+,	CASE WHEN (ISNULL(A.NetNB1CountBudget,0))= 0 THEN 1 ELSE ISNULL(A.NetNB1CountBudget,0) END AS 'NetNB1CountBudget'
 ,	CASE WHEN ROUND(ISNULL(A.NetNB1CountBudget,0),0)= 0 THEN (ROUND(ISNULL(S.NetNB1Count,0),0)) ELSE (ROUND(ISNULL(S.NetNB1Count,0),0) - ROUND(ISNULL(A.NetNB1CountBudget,0),0)) END AS 'NetNB1CountDiff'
 ,	CASE WHEN ROUND(ISNULL(A.NetNB1CountBudget,0),0)= 0 THEN dbo.DIVIDE_DECIMAL(ROUND(ISNULL(S.NetNB1Count,0),0), 1)
 		ELSE dbo.DIVIDE_DECIMAL( ROUND(ISNULL(S.NetNB1Count,0),0), ROUND(ISNULL(A.NetNB1CountBudget,0),0) ) END AS 'NetNB1CountPercent'
 
-,	ROUND(ISNULL(S.NetNB1Amount,0),0)  AS 'NetNb1RevenueActual'
+,	ISNULL(S.NetNB1Amount,0)  AS 'NetNb1RevenueActual'
 ,	CASE WHEN ROUND(ISNULL(A.NetNb1RevenueBudget,0),0) = 0 THEN 1 ELSE ROUND(ISNULL(A.NetNb1RevenueBudget,0),0) END AS 'NetNb1RevenueBudget'
 ,	CASE WHEN ROUND(ISNULL(A.NetNb1RevenueBudget,0),0) = 0 THEN (ROUND(ISNULL(S.NetNB1Amount,0),0)) - 1 ELSE ROUND(ISNULL(S.NetNB1Amount,0),0) - ROUND(ISNULL(A.NetNb1RevenueBudget,0),0)END AS 'NetNB1RevenueDiff'
 ,	CASE WHEN ROUND(ISNULL(A.NetNb1RevenueBudget,0),0) = 0 THEN dbo.DIVIDE_DECIMAL(ROUND(ISNULL(S.NetNB1Amount,0),0), 1) ELSE dbo.DIVIDE_DECIMAL(ROUND(ISNULL(S.NetNB1Amount,0),0), ROUND(ISNULL(A.NetNb1RevenueBudget,0),0))	END AS 'NetNB1RevenuePercent'
 
 
-,	ROUND(ISNULL(A.ApplicationsActual,0),0) AS 'ApplicationsActual'
+,	ISNULL(A.ApplicationsActual,0) AS 'ApplicationsActual'
 ,	CASE WHEN ROUND(ISNULL(A.ApplicationsBudget,0),0) = 0 THEN 1 ELSE ROUND(ISNULL(A.ApplicationsBudget,0),0) END  AS 'ApplicationsBudget'
 ,	CASE WHEN ROUND(ISNULL(A.ApplicationsBudget,0),0) = 0 THEN (ROUND(ISNULL(A.ApplicationsActual,0),0) - 1) ELSE ROUND(ISNULL(A.ApplicationsActual,0),0) - ROUND(ISNULL(A.ApplicationsBudget,0),0)END AS 'ApplicationDiff'
 ,	CASE WHEN ROUND(ISNULL(A.ApplicationsBudget,0),0)= 0 THEN dbo.DIVIDE_DECIMAL(ROUND(ISNULL(A.ApplicationsActual,0),0), 1) ELSE dbo.DIVIDE_DECIMAL(ROUND(ISNULL(A.ApplicationsActual,0),0), ROUND(ISNULL(A.ApplicationsBudget,0),0))	END AS 'ApplicationPercent'
 
-,	ROUND(ISNULL(A.BIOConversionsActual,0),0) AS 'BIOConversionsActual'
+,	ISNULL(A.BIOConversionsActual,0) AS 'BIOConversionsActual'
 ,	CASE WHEN ROUND(ISNULL(A.BIOConversionsBudget,0),0) = 0 THEN 1 ELSE ROUND(ISNULL(A.BIOConversionsBudget,0),0) END AS 'BIOConversionsBudget'
 ,	CASE WHEN ROUND(ISNULL(A.BIOConversionsBudget,0),0) = 0 THEN (ROUND(ISNULL(A.BIOConversionsActual,0),0) - 1) ELSE ROUND(ISNULL(A.BIOConversionsActual,0),0) - ROUND(ISNULL(A.BIOConversionsBudget,0),0)END AS 'BIOConversionDiff'
 ,	CASE WHEN ROUND(ISNULL(A.BIOConversionsBudget,0),0)= 0 THEN dbo.DIVIDE_DECIMAL(ROUND(ISNULL(A.BIOConversionsActual,0),0), 1) ELSE dbo.DIVIDE_DECIMAL(ROUND(ISNULL(A.BIOConversionsActual,0),0), ROUND(ISNULL(A.BIOConversionsBudget,0),0))	END AS 'BIOConversionPercent'
 
-,	ROUND(ISNULL(A.EXTConversionsActual,0),0) AS 'EXTConversionsActual'
+,	ISNULL(A.EXTConversionsActual,0) AS 'EXTConversionsActual'
 ,	CASE WHEN ROUND(ISNULL(A.EXTConversionsBudget,0),0) = 0 THEN 1 ELSE ROUND(ISNULL(A.EXTConversionsBudget,0),0) END AS 'EXTConversionsBudget'
 ,	CASE WHEN ROUND(ISNULL(A.EXTConversionsBudget,0),0) = 0 THEN (ROUND(ISNULL(A.EXTConversionsActual,0),0) - 1) ELSE ROUND(ISNULL(A.EXTConversionsActual,0),0) - ROUND(ISNULL(A.EXTConversionsBudget,0),0) END AS 'EXTConversionDiff'
 ,	CASE WHEN ROUND(ISNULL(A.EXTConversionsBudget,0),0)= 0 THEN dbo.DIVIDE_DECIMAL(ROUND(ISNULL(A.EXTConversionsActual,0),0), 1) ELSE dbo.DIVIDE_DECIMAL(ROUND(ISNULL(A.EXTConversionsActual,0),0), ROUND(ISNULL(A.EXTConversionsBudget,0),0))	END AS 'EXTConversionPercent'
 
-,	ROUND(ISNULL(A.XtrandsConversionsActual,0),0) AS 'XtrandsConversionsActual'
+,	ISNULL(A.XtrandsConversionsActual,0) AS 'XtrandsConversionsActual'
 ,	CASE WHEN ROUND(ISNULL(A.XtrandsConversionsBudget,0),0) = 0 THEN 1 ELSE ROUND(ISNULL(A.XtrandsConversionsBudget,0),0) END AS 'XtrandsConversionsBudget'
 ,	CASE WHEN ROUND(ISNULL(A.XtrandsConversionsBudget,0),0) = 0 THEN (ROUND(ISNULL(A.XtrandsConversionsActual,0),0) - 1) ELSE ROUND(ISNULL(A.XtrandsConversionsActual,0),0) - ROUND(ISNULL(A.XtrandsConversionsBudget,0),0)END AS 'XtrandsConversionDiff'
 ,	CASE WHEN ROUND(ISNULL(A.XtrandsConversionsBudget,0),0)= 0 THEN dbo.DIVIDE_DECIMAL(ROUND(ISNULL(A.XtrandsConversionsActual,0),0), 1) ELSE dbo.DIVIDE_DECIMAL(ROUND(ISNULL(A.XtrandsConversionsActual,0),0), ROUND(ISNULL(A.XtrandsConversionsBudget,0),0))	END AS 'XtrandsConversionPercent'
 
-,	ROUND(ISNULL(A.PCPRevenueActual,0),0) AS 'PCPRevenueActual'
+,	ISNULL(A.PCPRevenueActual,0) AS 'PCPRevenueActual'
 ,	CASE WHEN ROUND(ISNULL(A.PCPRevenueBudget,0),0) = 0 THEN 1 ELSE ROUND(ISNULL(A.PCPRevenueBudget,0),0) END AS 'PCPRevenueBudget'
 ,	CASE WHEN ROUND(ISNULL(A.PCPRevenueBudget,0),0) = 0 THEN (ROUND(ISNULL(A.PCPRevenueActual,0),0) - 1) ELSE ROUND(ISNULL(A.PCPRevenueActual,0),0) - ROUND(ISNULL(A.PCPRevenueBudget,0),0)END AS 'PCPDiff'
 ,	CASE WHEN ROUND(ISNULL(A.PCPRevenueBudget,0),0)= 0 THEN dbo.DIVIDE_DECIMAL(ROUND(ISNULL(A.PCPRevenueActual,0),0),1) ELSE dbo.DIVIDE_DECIMAL(ROUND(ISNULL(A.PCPRevenueActual,0),0), ROUND(ISNULL(A.PCPRevenueBudget,0),0)) 	END AS 'PCPPercent'
 
-,	ROUND(ISNULL(A.TotalRevenueActual,0),0) AS 'TotalRevenueActual'
+,	ISNULL(A.TotalRevenueActual,0) AS 'TotalRevenueActual'
 ,	CASE WHEN ROUND(ISNULL(A.TotalRevenueBudget,0),0) = 0 THEN 1 ELSE ROUND(ISNULL(A.TotalRevenueBudget,0),0) END  AS 'TotalRevenueBudget'
 ,	CASE WHEN ROUND(ISNULL(A.TotalRevenueBudget,0),0) = 0 THEN (ROUND(ISNULL(A.TotalRevenueActual,0),0)- 1) ELSE (ROUND(ISNULL(A.TotalRevenueActual,0),0) ) - ROUND(ISNULL(A.TotalRevenueBudget,0),0) END AS 'TotalDiff'
 ,	CASE WHEN ROUND(ISNULL(A.TotalRevenueBudget,0),0) = 0 THEN dbo.DIVIDE_DECIMAL(ROUND(ISNULL(A.TotalRevenueActual,0),0) , 1) ELSE dbo.DIVIDE_DECIMAL((ROUND(ISNULL(A.TotalRevenueActual,0),0) ), ROUND(ISNULL(A.TotalRevenueBudget,0),0)) 	END AS 'TotalPercent'
@@ -510,7 +510,7 @@ GROUP BY C.MainGroupID
 ,	A.TotalRevenueActual
 ,	A.TotalRevenueBudget
 ,	ISNULL(S.NetNB1Count,0)
-,	ROUND(ISNULL(S.NetNB1Count,0),0)
+,	ISNULL(S.NetNB1Count,0)
 ,	ISNULL(Cons.Consultations,0)
 ,	ISNULL(bb.BeBacks, 0)
 ,	ISNULL(Cons.BeBacksToExclude,0)
