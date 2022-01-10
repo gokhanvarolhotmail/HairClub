@@ -439,3 +439,6 @@ FROM (VALUES
 
 SELECT @Output ;
 GO
+EXEC sys.sp_MS_marksystemobject
+    sp_Values
+GO
