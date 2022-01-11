@@ -1,6 +1,6 @@
 use master
 go
-CREATE LOGIN [gvarol@hairclub.com] FROM EXTERNAL PROVIDER;
+CREATE LOGIN [gvarol@hairclub.com] FROM EXTERNAL PROVIDER
 ALTER SERVER ROLE sysadmin ADD MEMBER [gvarol@hairclub.com];
 
 
