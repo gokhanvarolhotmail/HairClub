@@ -1,4 +1,6 @@
-CREATE FUNCTION [dbo].[sp_GetNumbers]( @StartVal INT, @EndVal INT )
+USE [master]
+GO
+ALTER FUNCTION [dbo].[sp_GetNumbers]( @StartVal INT, @EndVal INT )
 RETURNS @Digits TABLE( [digit] INT )
 AS
     BEGIN
@@ -275,7 +277,7 @@ AS
         RETURN ;
     END ;
 GO
-CREATE PROCEDURE [dbo].[sp_Values]
+ALTER PROCEDURE [dbo].[sp_Values]
     @Input           NVARCHAR(MAX) = NULL
   , @Chunk           INT           = NULL
   , @ColumnDelimiter NVARCHAR(1) = NULL
@@ -350,7 +352,7 @@ IF OBJECT_ID('tempdb..#FieldLimit') IS NOT NULL
 
 SELECT [digit] AS [FieldNum]
 INTO [#FieldLimit]
-FROM [dbo].[sp_GetNumbers](1, @ColCnt) ;
+FROM [master].[dbo].[sp_GetNumbers](1, @ColCnt) ;
 
 CREATE UNIQUE CLUSTERED INDEX [FieldNum] ON [#FieldLimit]( [FieldNum] ) ;
 
