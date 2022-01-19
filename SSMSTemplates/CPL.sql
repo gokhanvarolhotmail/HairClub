@@ -73,4 +73,5 @@ GROUP BY [k].[Dt] ;
 --       , [k].[AgencyName] ;
 SELECT *
 FROM [#Step2]
+WHERE dt <= GETDATE()
 ORDER BY [Dt] DESC ;
