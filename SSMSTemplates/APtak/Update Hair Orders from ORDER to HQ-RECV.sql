@@ -1,3 +1,5 @@
+USE [HairClubCMSStaging_NoImg]
+
 DECLARE @GETUTCDATE DATETIME2 = GETUTCDATE() ;
 
 IF OBJECT_ID('[tempdb]..[#HairSystemOrderNumbers]') IS NOT NULL
