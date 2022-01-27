@@ -98,6 +98,8 @@ FROM( VALUES( 6387427 )
           , ( 6452693 )
           , ( 6453061 )) AS [vdata]( [HairSystemOrderNumber] ) ;
 
+DECLARE @HairSystemOrderNumberCnt INT = @@ROWCOUNT ;
+
 SET XACT_ABORT ON ;
 
 BEGIN TRANSACTION ;
@@ -173,6 +175,11 @@ FROM [dbo].[datHairSystemOrder] AS [hso]
 INNER JOIN [dbo].[datPurchaseOrderDetail] AS [pod] ON [hso].[HairSystemOrderGUID] = [pod].[HairSystemOrderGUID]
 INNER JOIN [dbo].[datPurchaseOrder] AS [po] ON [pod].[PurchaseOrderGUID] = [po].[PurchaseOrderGUID]
 WHERE [hso].[HairSystemOrderNumber] IN( SELECT [HairSystemOrderNumber] FROM [#HairSystemOrderNumbers] ) ;
+
+IF @@ROWCOUNT = @HairSystemOrderNumberCnt
+    COMMIT ;
+ELSE
+    ROLLBACK ;
 
 -- COMMIT
 -- ROLLBACK
