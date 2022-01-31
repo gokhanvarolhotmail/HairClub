@@ -1,0 +1,2241 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="3/14/2019 10:21:13 AM"
+  DTS:CreationName="SSIS.Package.3"
+  DTS:CreatorComputerName="ITWS10"
+  DTS:CreatorName="HCFM\jlee"
+  DTS:DTSID="{750ABAD0-E4E8-4148-9F85-A48FEFA06C37}"
+  DTS:ExecutableType="SSIS.Package.3"
+  DTS:LastModifiedProductVersion="11.0.6020.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="GreenTreeBrochureExport"
+  DTS:PackageType="5"
+  DTS:ProtectionLevel="5"
+  DTS:VersionBuild="29"
+  DTS:VersionGUID="{F29C4B24-CE24-4C0F-81B8-40F04362443B}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">6</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[FTP Connection Manager]"
+      DTS:CreationName="FTP"
+      DTS:DTSID="{692A4119-4861-4F6D-B194-E23F428153A2}"
+      DTS:ObjectName="FTP Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="gtmsftp.com:21">
+          <DTS:FtpConnection
+            DTS:ServerName="gtmsftp.com"
+            DTS:ServerUserName="HAIRCLUB@gtmsftp.com"
+            DTS:UsePassiveMode="True">
+            <DTS:Property
+              DTS:Name="ServerPassword"
+              Sensitive="1">hairclub-GTMS-01</DTS:Property>
+          </DTS:FtpConnection>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[GreenTree Daily File]"
+      DTS:CreationName="FLATFILE"
+      DTS:DelayValidation="True"
+      DTS:DTSID="{CCAE5549-D0C1-453E-8388-78C1D4CDD03F}"
+      DTS:ObjectName="GreenTree Daily File">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::sAttachments]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x0022_"
+          DTS:CodePage="1252">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="10"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="recordid"
+              DTS:DTSID="{379A40E9-45D4-4F20-B965-0A2A7E9342C4}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="3"
+              DTS:TextQualified="True"
+              DTS:ObjectName="center number"
+              DTS:DTSID="{D649F10B-2960-4B65-8AA6-735057A152C3}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="3"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="center name"
+              DTS:DTSID="{3B97A1A8-94C2-4310-939D-B1FF40454229}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="center address 1"
+              DTS:DTSID="{6B1BCACE-CA71-4BA0-83DE-DB0374AA62A5}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="center address 2"
+              DTS:DTSID="{933B296E-B04A-464B-BB33-1C97C412C0F0}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="center city"
+              DTS:DTSID="{4F10C379-0B07-4252-9928-B7ACD8E26FA5}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="10"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="center state"
+              DTS:DTSID="{41D07814-E0BF-48E4-A34C-7E9E07D29AE1}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="10"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="center zip"
+              DTS:DTSID="{34138F98-1BAA-43E8-A661-B41CAA6C65B6}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="contact fname"
+              DTS:DTSID="{06695F1C-9708-469A-9437-0A39B9AB7FF0}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="contact lname"
+              DTS:DTSID="{94408C98-BE86-46CC-9FE0-6A0CD525DCB6}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="60"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="contact city"
+              DTS:DTSID="{A951BA03-CAA3-48B9-B353-964C0C29E4DE}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="20"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="contact state"
+              DTS:DTSID="{2CD209E2-142F-4769-BE53-B5EA5878077F}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="15"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="contact zip"
+              DTS:DTSID="{0896920E-2D35-4AEB-AC7A-C3965F59CF4A}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="135"
+              DTS:TextQualified="True"
+              DTS:ObjectName="contact create date"
+              DTS:DTSID="{8A0C3055-D824-4ABB-8838-A58BF7DE21F7}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="promo"
+              DTS:DTSID="{DC27499A-8177-40C7-A025-92596EACDFB2}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="10"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="cst_gender"
+              DTS:DTSID="{8CB2BBD2-538D-4684-9DD8-5FACC9D3D21E}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="2"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="type"
+              DTS:DTSID="{73740389-AB1E-4618-AD51-99A80B3D2D1C}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="20"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="filename"
+              DTS:DTSID="{8FBB4903-3319-4A27-8BA7-287D772E18E7}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="100"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="email"
+              DTS:DTSID="{F63C41C5-EB6F-4C7C-9227-DC3E26C9BC28}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="60"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="contact address 1"
+              DTS:DTSID="{01590747-185D-414F-88FE-160426412564}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="60"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="contact address 2"
+              DTS:DTSID="{ADE7040B-8AED-4FC6-9367-58BF0A17F305}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="20"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="create by"
+              DTS:DTSID="{1B309CDB-B923-4106-89DD-5004FDA4BEEB}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="1"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="promo2"
+              DTS:DTSID="{4195A400-2C07-432D-9397-F4C3021BB07C}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="phone"
+              DTS:DTSID="{D095E5AE-6D82-419B-BF26-42E1BAACA2B5}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[HC_MARKETING.ADO.NET]"
+      DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+      DTS:DTSID="{1B55DF45-BA88-4EB6-9B63-11982F45F6B6}"
+      DTS:ObjectName="HC_MARKETING.ADO.NET">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=SQL05;Initial Catalog=HC_Marketing;Integrated Security=True;Application Name=SSIS-HCMExpDailyBrochureFulfillment-{1B55DF45-BA88-4EB6-9B63-11982F45F6B6}HCM.ADO.NET;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[HC_MARKETING.OLEDB]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{20453525-7F66-4107-BD8B-CDB13B6E8FA4}"
+      DTS:ObjectName="HC_MARKETING.OLEDB">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=SQL05;Initial Catalog=HC_Marketing;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{0527693E-F887-4D01-9CB5-D5AE4D6C80DC}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[User::sFileDir]+&quot;HCM&quot;+Replace(RIGHT((DT_WSTR,2)MONTH( GETDATE()), 2) + &quot;-&quot;+ RIGHT( (DT_WSTR,2)DAY(GETDATE()), 2) + &quot;-&quot; +(DT_WSTR,4)YEAR(GETDATE()), &quot;-&quot;,&quot;&quot;)+&quot;.txt&quot;"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="RemotePath">
+      <DTS:VariableValue
+        DTS:DataType="8">\\SQL06\Automated Tasks\Fulfillments\HCM3142019.txt</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{C5CDECA1-22B1-4FE4-ACED-72410BB2C453}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="sAttachments">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{3D7B0936-3C7F-496C-96FB-E14AE1ED3C8D}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="sFileDir">
+      <DTS:VariableValue
+        DTS:DataType="8">\\SQL06\Automated Tasks\Fulfillments\</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{B1326DDA-0FD7-4A69-A9E7-A01AB8861686}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="sStoreProcName">
+      <DTS:VariableValue
+        DTS:DataType="8">dbo.spsvc_fulfillments</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\FTP Task"
+      DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.FtpTask.FtpTask, Microsoft.SqlServer.FtpTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:Description="FTP Task"
+      DTS:DTSID="{be1a5aea-d643-4e38-b4d9-221b7864374e}"
+      DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.FtpTask.FtpTask, Microsoft.SqlServer.FtpTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="FTP Task"
+      DTS:TaskContact="FTP Task; Microsoft Corporation; SQL Server 2016; (c) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <FtpData
+          ConnectionName="{692A4119-4861-4F6D-B194-E23F428153A2}"
+          TaskIsLocalPathVar="True"
+          TaskLocalPath="User::RemotePath"
+          TaskRemotePath="/"
+          TaskOverwriteDest="True" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Script Task"
+      DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ScriptTask.ScriptTask, Microsoft.SqlServer.ScriptTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:Description="Script Task"
+      DTS:DTSID="{BA2ECB37-B07B-4BB2-B541-AD6DB15E63A0}"
+      DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ScriptTask.ScriptTask, Microsoft.SqlServer.ScriptTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Script Task"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ScriptProject
+          Name="ST_599dbdea84f84458a56d734b2642b76e"
+          VSTAMajorVersion="3"
+          VSTAMinorVersion="0"
+          Language="VisualBasic"
+          ReadWriteVariables="User::sAttachments,User::sFileDir">
+          <ProjectItem
+            Name="ST_599dbdea84f84458a56d734b2642b76e.vbproj"
+            Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectTypeGuids>{30D016F9-3734-4E33-A861-5E7D899E18F3};{F184B08F-C81C-45F6-A57F-5ABD9991F28F}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{04834e3a-483e-4528-b821-bef5faa7bcd9}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>My Project</AppDesignerFolder>
+    <RootNamespace>ST_599dbdea84f84458a56d734b2642b76e</RootNamespace>
+    <AssemblyName>ST_599dbdea84f84458a56d734b2642b76e</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>true</ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>.\bin\Debug\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <OutputPath>.\bin\Release\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.SqlServer.ManagedDTS, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.ScriptTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Data" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <AppDesigner Include="My Project\" />
+    <Compile Include="My Project\AssemblyInfo.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ScriptMain.vb">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+
+  <!-- Include the build rules for a VB project.-->
+  <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
+
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{30D016F9-3734-4E33-A861-5E7D899E18F3}">
+        <ProjectProperties HostName="ScriptTask" HostPackage="{B3A685AA-7EAF-4BC6-9940-57959FA5AC07}" ApplicationType="usd" Language="vb" TemplatesPath="" DebugInfoCommandLine="" DebugInfoWorkingDir="" IconImageList="" />
+
+        <Host Name="ScriptTask" IconIndex="">
+        </Host>
+        <ProjectClient>
+          <HostIdentifier>SSIS_ST110</HostIdentifier>
+        </ProjectClient>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>]]></ProjectItem>
+          <ProjectItem
+            Name="ScriptMain.vb"
+            Encoding="UTF8"><![CDATA[#Region "Help:  Introduction to the script task"
+'The Script Task allows you to perform virtually any operation that can be accomplished in
+'a .Net application within the context of an Integration Services control flow. 
+
+'Expand the other regions which have "Help" prefixes for examples of specific ways to use
+'Integration Services features within this script task.
+#End Region
+
+
+#Region "Imports"
+Imports System
+Imports System.Data
+Imports System.Math
+Imports Microsoft.SqlServer.Dts.Runtime
+#End Region
+
+'ScriptMain is the entry point class of the script.  Do not change the name, attributes,
+'or parent of this class.
+<Microsoft.SqlServer.Dts.Tasks.ScriptTask.SSISScriptTaskEntryPointAttribute()> _
+<System.CLSCompliantAttribute(False)> _
+Partial Public Class ScriptMain
+    Inherits Microsoft.SqlServer.Dts.Tasks.ScriptTask.VSTARTScriptObjectModelBase
+
+#Region "Help:  Using Integration Services variables and parameters in a script"
+    'To use a variable in this script, first ensure that the variable has been added to 
+    'either the list contained in the ReadOnlyVariables property or the list contained in 
+    'the ReadWriteVariables property of this script task, according to whether or not your
+    'code needs to write to the variable.  To add the variable, save this script, close this instance of
+    'Visual Studio, and update the ReadOnlyVariables and 
+    'ReadWriteVariables properties in the Script Transformation Editor window.
+    'To use a parameter in this script, follow the same steps. Parameters are always read-only.
+
+    'Example of reading from a variable:
+    ' startTime = Dts.Variables("System::StartTime").Value
+
+    'Example of writing to a variable:
+    ' Dts.Variables("User::myStringVariable").Value = "new value"
+
+    'Example of reading from a package parameter:
+    ' batchId = Dts.Variables("$Package::batchId").Value
+
+    'Example of reading from a project parameter:
+    ' batchId = Dts.Variables("$Project::batchId").Value
+
+    'Example of reading from a sensitive project parameter:
+    ' batchId = Dts.Variables("$Project::batchId").GetSensitiveValue()
+#End Region
+
+#Region "Help:  Firing Integration Services events from a script"
+    'This script task can fire events for logging purposes.
+
+    'Example of firing an error event:
+    ' Dts.Events.FireError(18, "Process Values", "Bad value", "", 0)
+
+    'Example of firing an information event:
+    ' Dts.Events.FireInformation(3, "Process Values", "Processing has started", "", 0, fireAgain)
+
+    'Example of firing a warning event:
+    ' Dts.Events.FireWarning(14, "Process Values", "No values received for input", "", 0)
+#End Region
+
+#Region "Help:  Using Integration Services connection managers in a script"
+    'Some types of connection managers can be used in this script task.  See the topic 
+    '"Working with Connection Managers Programatically" for details.
+
+    'Example of using an ADO.Net connection manager:
+    ' Dim rawConnection As Object = Dts.Connections("Sales DB").AcquireConnection(Dts.Transaction)
+    ' Dim myADONETConnection As SqlConnection = CType(rawConnection, SqlConnection)
+    ' <Use the connection in some code here, then release the connection>
+    ' Dts.Connections("Sales DB").ReleaseConnection(rawConnection)
+
+    'Example of using a File connection manager
+    ' Dim rawConnection As Object = Dts.Connections("Prices.zip").AcquireConnection(Dts.Transaction)
+    ' Dim filePath As String = CType(rawConnection, String)
+    ' <Use the connection in some code here, then release the connection>
+    ' Dts.Connections("Prices.zip").ReleaseConnection(rawConnection)
+#End Region
+
+    'This method is called when this script task executes in the control flow.
+    'Before returning from this method, set the value of Dts.TaskResult to indicate success or failure.
+    'To open Help, press F1.
+
+    Public Sub Main()
+
+
+
+        Dim dtBegin As Date = DateAdd(DateInterval.Day, -1, DateTime.Today)
+        Dim dtEnd As Date = DateTime.Today
+
+
+        Dim strBeginDate As String = String.Format("{0:d}", dtBegin)
+        Dim strEndDate As String = String.Format("{0:d}", dtEnd)
+
+
+
+        Dim strFileName As String = "HCM" & Month(dtEnd).ToString & Microsoft.VisualBasic.DateAndTime.Day(dtEnd).ToString & Year(dtEnd).ToString & ".txt"
+
+        ' set the variables for the dynamic textfile conn string and ftp task
+
+        Dts.Variables("sAttachments").Value = Dts.Variables("sFileDir").Value.ToString & strFileName
+
+        Dts.TaskResult = ScriptResults.Success
+    End Sub
+
+#Region "ScriptResults declaration"
+    'This enum provides a convenient shorthand within the scope of this class for setting the
+    'result of the script.
+
+    'This code was generated automatically.
+    Enum ScriptResults
+        Success = Microsoft.SqlServer.Dts.Runtime.DTSExecResult.Success
+        Failure = Microsoft.SqlServer.Dts.Runtime.DTSExecResult.Failure
+    End Enum
+
+#End Region
+
+End Class]]></ProjectItem>
+          <ProjectItem
+            Name="My Project\Settings.settings"
+            Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)" GeneratedClassNamespace="$safeprojectname" GeneratedClassName="MySettings">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></ProjectItem>
+          <ProjectItem
+            Name="My Project\AssemblyInfo.vb"
+            Encoding="UTF8"><![CDATA[Imports System
+Imports System.Reflection
+Imports System.Runtime.InteropServices
+
+' General Information about an assembly is controlled through the following 
+' set of attributes. Change these attribute values to modify the information
+' associated with an assembly.
+
+' Review the values of the assembly attributes
+
+<Assembly: AssemblyTitle("ST_599dbdea84f84458a56d734b2642b76e")> 
+<Assembly: AssemblyDescription("")> 
+<Assembly: AssemblyCompany("")> 
+<Assembly: AssemblyProduct("ST_599dbdea84f84458a56d734b2642b76e")> 
+<Assembly: AssemblyCopyright("Copyright @  2019")> 
+<Assembly: AssemblyTrademark("")> 
+<Assembly: CLSCompliant(True)> 
+
+<Assembly: ComVisible(False)> 
+
+'The following GUID is for the ID of the typelib if this project is exposed to COM
+<Assembly: Guid("407854e5-d4e7-4f94-b915-4bee17b34ea3")> 
+
+' Version information for an assembly consists of the following four values:
+'
+'      Major Version
+'      Minor Version 
+'      Build Number
+'      Revision
+'
+' You can specify all the values or you can default the Build and Revision Numbers 
+' by using the '*' as shown below:
+' <Assembly: AssemblyVersion("1.0.*")>
+
+<Assembly: AssemblyVersion("1.0.0.0")> 
+<Assembly: AssemblyFileVersion("1.0.0.0")> ]]></ProjectItem>
+          <ProjectItem
+            Name="My Project\Settings.Designer.vb"
+            Encoding="UTF8"><![CDATA['------------------------------------------------------------------------------
+' <autogenerated>
+'     This code was generated by a tool.
+'
+'     Changes to this file may cause incorrect behavior and will be lost if
+'     the code is regenerated.
+' </autogenerated>
+'------------------------------------------------------------------------------
+
+Option Strict Off
+Option Explicit On
+
+
+
+Partial Friend NotInheritable Class MySettings
+    Inherits System.Configuration.ApplicationSettingsBase
+
+    Private Shared m_Value As MySettings
+
+    Private Shared m_SyncObject As Object = New Object
+
+    <System.Diagnostics.DebuggerNonUserCode()> _
+    Public Shared ReadOnly Property Value() As MySettings
+        Get
+            If (MySettings.m_Value Is Nothing) Then
+                System.Threading.Monitor.Enter(MySettings.m_SyncObject)
+                If (MySettings.m_Value Is Nothing) Then
+                    Try
+                        MySettings.m_Value = New MySettings
+                    Finally
+                        System.Threading.Monitor.Exit(MySettings.m_SyncObject)
+                    End Try
+                End If
+            End If
+            Return MySettings.m_Value
+        End Get
+    End Property
+End Class]]></ProjectItem>
+          <ProjectItem
+            Name="Project"
+            Encoding="UTF16LE"><![CDATA[<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
+<c:Project xmlns:c="http://schemas.microsoft.com/codeprojectml/2010/08/main" xmlns:msb="http://schemas.microsoft.com/developer/msbuild/2003" runtimeVersion="3.0" schemaVersion="1.0">
+	<msb:PropertyGroup>
+		<msb:Language>msBuild</msb:Language>
+		<msb:CodeName>ST_599dbdea84f84458a56d734b2642b76e</msb:CodeName>
+		<msb:DisplayName>ST_599dbdea84f84458a56d734b2642b76e</msb:DisplayName>
+		<msb:ProjectId>{B2712032-BC2F-40BE-9004-344CA849C8F7}</msb:ProjectId>
+	</msb:PropertyGroup>
+	<msb:ItemGroup>
+		<msb:Project Include="ST_599dbdea84f84458a56d734b2642b76e.vbproj"/>
+		<msb:File Include="My Project\AssemblyInfo.vb"/>
+		<msb:File Include="ScriptMain.vb"/>
+		<msb:File Include="My Project\Resources.resx"/>
+		<msb:File Include="My Project\Resources.Designer.vb"/>
+		<msb:File Include="My Project\Settings.settings"/>
+		<msb:File Include="My Project\Settings.Designer.vb"/>
+	</msb:ItemGroup>
+</c:Project>]]></ProjectItem>
+          <ProjectItem
+            Name="My Project\Resources.resx"
+            Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+</root>]]></ProjectItem>
+          <ProjectItem
+            Name="My Project\Resources.Designer.vb"
+            Encoding="UTF8"><![CDATA['------------------------------------------------------------------------------
+' <autogenerated>
+'     This code was generated by a tool.
+'
+'     Changes to this file may cause incorrect behavior and will be lost if
+'     the code is regenerated.
+' </autogenerated>
+'------------------------------------------------------------------------------
+
+Option Strict Off
+Option Explicit On
+
+
+Namespace My.Resources
+    
+    '''<summary>
+    '''   A strongly-typed resource class, for looking up localized strings, etc.
+    '''</summary>
+    'This class was auto-generated by the Strongly Typed Resource Builder
+    'class via a tool like ResGen or Visual Studio.NET.
+    'To add or remove a member, edit your .ResX file then rerun ResGen
+    'with the /str option, or rebuild your VS project.
+    Class MyResources
+        
+        Private Shared _resMgr As System.Resources.ResourceManager
+        
+        Private Shared _resCulture As System.Globalization.CultureInfo
+        
+        Friend Sub New()
+            MyBase.New
+        End Sub
+        
+        '''<summary>
+        '''   Returns the cached ResourceManager instance used by this class.
+        '''</summary>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Public Shared ReadOnly Property ResourceManager() As System.Resources.ResourceManager
+            Get
+                If (_resMgr Is Nothing) Then
+                    Dim temp As System.Resources.ResourceManager = New System.Resources.ResourceManager("My.Resources.MyResources", GetType(MyResources).Assembly)
+                    _resMgr = temp
+                End If
+                Return _resMgr
+            End Get
+        End Property
+        
+        '''<summary>
+        '''   Overrides the current thread's CurrentUICulture property for all
+        '''   resource lookups using this strongly typed resource class.
+        '''</summary>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Public Shared Property Culture() As System.Globalization.CultureInfo
+            Get
+                Return _resCulture
+            End Get
+            Set
+                _resCulture = value
+            End Set
+        End Property
+    End Class
+End Namespace]]></ProjectItem>
+          <BinaryItem
+            Name="ST_599dbdea84f84458a56d734b2642b76e.dll">TVqQAAMAAAAEAAAA//8AALgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAgAAAAA4fug4AtAnNIbgBTM0hVGhpcyBwcm9ncmFtIGNhbm5vdCBiZSBydW4gaW4gRE9TIG1v
+ZGUuDQ0KJAAAAAAAAABQRQAATAEDAMZwilwAAAAAAAAAAOAAIiALAVAAABoAAAAIAAAAAAAA3jkA
+AAAgAAAAQAAAAAAAEAAgAAAAAgAABAAAAAAAAAAEAAAAAAAAAACAAAAAAgAAAAAAAAMAQIUAABAA
+ABAAAAAAEAAAEAAAAAAAABAAAAAAAAAAAAAAAIw5AABPAAAAAEAAAEgEAAAAAAAAAAAAAAAAAAAA
+AAAAAGAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAIAAACAAAAAAAAAAAAAAACCAAAEgAAAAAAAAAAAAAAC50ZXh0AAAA5BkAAAAgAAAAGgAAAAIA
+AAAAAAAAAAAAAAAAACAAAGAucnNyYwAAAEgEAAAAQAAAAAYAAAAcAAAAAAAAAAAAAAAAAABAAABA
+LnJlbG9jAAAMAAAAAGAAAAACAAAAIgAAAAAAAAAAAAAAAAAAQAAAQgAAAAAAAAAAAAAAAAAAAADA
+OQAAAAAAAEgAAAACAAUAACMAANQVAAABAAAAAAAAANQ4AAC4AAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAB4CKBgAAAoqHgIoGQAACiqmcxoAAAqAAQAABHMbAAAKgAIA
+AARzHAAACoADAAAEcx0AAAqABAAABCoufgEAAARvHgAACioufgIAAARvHwAACioufgMAAARvIAAA
+CioufgQAAARvIQAACioeAigiAAAKKq5+BQAABC0ecgEAAHDQBQAAAigjAAAKbyQAAApzJQAACoAF
+AAAEfgUAAAQqGn4GAAAEKh4CgAYAAAQqQnMiAAAKKCYAAAqACAAABCoeAignAAAKKgAAGzABAD8A
+AAAAAAAAfgcAAAQtMn4IAAAEKCYAAAooKAAACn4HAAAELRxzDQAABoAHAAAE3hB+CAAABCgmAAAK
+KCkAAArcfgcAAAQqAAEQAAACAB0ADCkAEAAAAAAeAigqAAAKKhMwBADYAAAAAQAAERojAAAAAAAA
+8L8oKwAACigsAAAKCigrAAAKC3IzAABwBowlAAABKC0AAAomcjMAAHAHjCUAAAEoLQAACiYbjS0A
+AAElFnI/AABwoiUXByguAAAKDRIDKC8AAAqiJRgHKDAAAAoNEgMoLwAACqIlGQcoMQAACg0SAygv
+AAAKoiUackcAAHCiKDIAAAoMAigzAAAKbzQAAApyUQAAcG81AAAKAigzAAAKbzQAAApyawAAcG81
+AAAKbzYAAApvNwAACggoOAAACm85AAAKAigzAAAKFm86AAAKKjYCAygmAAAKKDsAAAoqHgIoPAAA
+Ciou0AgAAAIoIwAACioeAig3AAAKKgAAEzABABQAAAACAAARAowFAAAbLQgoAQAAKworAgIKBioi
+A/4VBQAAGyoAAAATMAIAKAAAAAMAABECez4AAApvPwAACgoGjAgAABstEigCAAArCgJ7PgAACgZv
+QAAACgYqSgIoIgAACgJzQQAACn0+AAAKKgBCU0pCAQABAAAAAAAMAAAAdjQuMC4zMDMxOQAAAAAF
+AGwAAAAECAAAI34AAHAIAAA8CQAAI1N0cmluZ3MAAAAArBEAAIAAAAAjVVMALBIAABAAAAAjR1VJ
+RAAAADwSAACYAwAAI0Jsb2IAAAAAAAAAAgAAAVcdogkJDwAAAPoBMwAWAAABAAAAMgAAAAoAAAAM
+AAAAGQAAAAQAAABBAAAAAgAAADcAAAADAAAABAAAAAgAAAAJAAAACAAAAAEAAAAFAAAAAQAAAAMA
+AAADAAAAAgAAAAAATAUBAAAAAAAGAHgDtQcGAB0EtQcGAE8C9gYPAFsIAAAGAJAC+QUGAFsD+QUG
+AAQE+QUGAJgD+QUGALED+QUGANcC+QUGAMwDfQUGAHwCbwcGAPgBbwcGACMD+QUGAPICdwQKABsC
+kAYKAOMBNgUKAGMCNgUOALsBRQcOAMYGCQcGAAsD9gYOAKcCjgcOAL8CkwAGAMsIfQUOAKwGRQcO
+AEADkwAGAG4BfQUOAAEA7QQKAAYCiQUGAIAG1QcGAAsG5AUKAMsBzwUGADIC9gYSAOIDxAQSAJ8B
+xAQGAJoEfQUGAEIBfQUGAIQFfQUGABIBfQUGADMJ+QUGAIoItQcGAO4GZgQOADYBkwAOABcFkwAG
+AJMEfQUGACsAfQUSACQFxAQWAG4ISwEWAAkBSwEGANcGfQUAAAAAMQAAAAAAAQABAAAAAADBBfoI
+TQABAAEAAAAAAMQG+ghRAAEAAgAAARAA0gj6CGEAAQADAAAAAAAXCOYHYQAFAAgAAAEQAHgIsQCB
+AAcADAABAAAApgWxAI0ACQAPAAUBAAA3BwAAYQAJABEABQEAABAAAABhAAkAGAACAQAAqQgAAJkA
+CgAaADEARQYwATEAHAY4ATEAMAZAATEAXgZIAREAzwZQAREAkwFUAREAOwRYAREAxQhcASEA8Aju
+AAYGggBfAVaAmQhiAVaAcwFiAVAgAAAAAAYY4QYGAAEAWCAAAAAABhjhBgYAAQBgIAAAAAARGOcG
+ZgEBAIogAAAAABMItwZqAQEAliAAAAAAEwixBW8BAQCiIAAAAAATCKgGdAEBAK4gAAAAABMIJwd5
+AQEAuiAAAAAAAxjhBgYAAQDCIAAAAAAWCHwGfgEBAO4gAAAAABYIewGDAQEA9SAAAAAAFgiHAYgB
+AQD9IAAAAAARGOcGZgECAA4hAAAAAAYY4QYGAAIAGCEAAAAAFghDBI4BAgB0IQAAAAAGGOEGBgAC
+AHwhAAAAAAYArAUGAAIAYCIAAAAAxgKDCMYAAgBuIgAAAADGAv0AywADAHYiAAAAAIMAawGTAQMA
+giIAAAAAxgKRBJoAAwCMIgAAAAARAG8AmAEDAKwiAAAAAAEAWwCgAQQAuiAAAAAABhjhBgYABQC4
+IgAAAAADCOQASgAFAOwiAAAAAAYY4QYGAAUAAAABAGAEAAABABUGAAABAPQAAAABAPQACQDhBgEA
+EQDhBgYAGQDhBgoAKQDhBhAAMQDhBhAAOQDhBhAAQQDhBhAASQDhBhAAUQDhBhAAWQDhBhUAYQDh
+BhUAaQDhBhAAcQDhBhAAeQDhBhAAgQDhBhoAkQDhBiAAqQDhBgYAsQDhBgYAuQDhBgYA0QDhBiYA
+6QDhBhAACQHhBgYAEQHhBgYAmQDhBgYAoQDhBgYADADhBgYAFADhBgYAHADhBgYAJADhBgYADADk
+AEoAFADkAEoAHADkAEoAJADkAEoAwQDhBgYA2QAkAU8A2QAvCVcA8QDhBl0ASQFXBGUAAQHhBgYA
+UQGxBmoAUQHcCGoAGQHhBgYAKQElCXoAWQGpAIAAaQG+CI0AWQGfBJMAcQGRBJoAWQEhCZMAWQEX
+BpMAaQG3CJ4AGQGhCKQAeQFqCKoAgQF0BbAAiQFDBLcAwQCRBJoAaQG3CLsAiQFNBMEAeQHhCAEA
+wQCDCMYAwQD9AMsAkQHVANcANADwCO4APABDBEoAPABNBAUBPADhBgYACAAsACYBCAAwACsBKQCr
+AFADLgALANABLgATANkBLgAbAPgBLgAjAAECLgArACoCLgAzACoCLgA7AAECLgBDADACLgBLACoC
+LgBTAEcCLgBbACoCLgBjAE0CLgBrAHcCLgBzAIQCQACLACsBQACDAMwCQwB7ANUCQwCDAMwCSQCr
+AGEDYwB7ANUCYwCDAMwCaQCrAHUDgACLACsBgwCTACsBgwCbACsBgwB7ANUCiQCrAIIDoACLACsB
+qQCDAPgBwACLACsByQCDAPgB4ACLACsB4wC7ACsB4wBTACoC6QCzACsBAwGDAMwCAwGjAO4CIwGD
+AMwCIwFbACoCIAKDAMwCIAKLACsBQAKDAMwCQAKLACsBYAKDAMwCYAKLACsBgAKDAMwCgAKLACsB
+oAKLACsBwAKLACsB4AKLACsB4AKDAMwCAAOLACsBIAOLACsBIAODAMwCbwDPAOIABAABAAUABQAG
+AAcACQAIAAAAxgaoAQAAwwWtAQAArAayAQAAOQe3AQAAgAa8AQAAlwHBAQAAYATGAQAA6ADLAQIA
+BAADAAIABQAFAAIABgAHAAIABwAJAAIACQALAAIACgANAAEACwANAAIADgAPAAIAGAARAC4ANQA8
+AEMA1ADnAPYA/QAEgAAAAQAAAAAAAAAAAAAAAACxAAAABAAAAAAAAAAAAAAACwGKAAAAAAAEAAAA
+AAAAAAAAAAALAX0FAAAAAAoAAAAAAAAAAAAAABQBkwAAAAAACwAAAAAAAAAAAAAAHQGlBAAAAAAL
+AAAAAAAAAAAAAAAdAToAAAAAAAAAAAABAAAAIwgAAAgABAAJAAQACgAHAAAAEAASAFkAAAAQACsA
+WQAAAAAALQBZAHsA3QB7AAABAAAAQ29udGV4dFZhbHVlYDEAVGhyZWFkU2FmZU9iamVjdFByb3Zp
+ZGVyYDEASW50MzIAPE1vZHVsZT4ATWljcm9zb2Z0LlNxbFNlcnZlci5NYW5hZ2VkRFRTAFQARGlz
+cG9zZV9fSW5zdGFuY2VfXwBDcmVhdGVfX0luc3RhbmNlX18AdmFsdWVfXwBtc2NvcmxpYgBNaWNy
+b3NvZnQuVmlzdWFsQmFzaWMARGF0ZUFkZABTVF81OTlkYmRlYTg0Zjg0NDU4YTU2ZDczNGIyNjQy
+Yjc2ZQBDcmVhdGVJbnN0YW5jZQBnZXRfR2V0SW5zdGFuY2UAaW5zdGFuY2UAR2V0SGFzaENvZGUA
+VmFyaWFibGUAUnVudGltZVR5cGVIYW5kbGUAR2V0VHlwZUZyb21IYW5kbGUARGF0ZUFuZFRpbWUA
+RGF0ZVRpbWUATWljcm9zb2Z0LlNxbFNlcnZlci5EdHMuUnVudGltZQBHZXRUeXBlAEZhaWx1cmUA
+Z2V0X0N1bHR1cmUAc2V0X0N1bHR1cmUAX3Jlc0N1bHR1cmUAVlNUQVJUU2NyaXB0T2JqZWN0TW9k
+ZWxCYXNlAEFwcGxpY2F0aW9uQmFzZQBBcHBsaWNhdGlvblNldHRpbmdzQmFzZQBFZGl0b3JCcm93
+c2FibGVTdGF0ZQBHdWlkQXR0cmlidXRlAEhlbHBLZXl3b3JkQXR0cmlidXRlAEdlbmVyYXRlZENv
+ZGVBdHRyaWJ1dGUARGVidWdnZXJOb25Vc2VyQ29kZUF0dHJpYnV0ZQBEZWJ1Z2dhYmxlQXR0cmli
+dXRlAEVkaXRvckJyb3dzYWJsZUF0dHJpYnV0ZQBDb21WaXNpYmxlQXR0cmlidXRlAEFzc2VtYmx5
+VGl0bGVBdHRyaWJ1dGUAU3RhbmRhcmRNb2R1bGVBdHRyaWJ1dGUASGlkZU1vZHVsZU5hbWVBdHRy
+aWJ1dGUAQXNzZW1ibHlUcmFkZW1hcmtBdHRyaWJ1dGUAVGFyZ2V0RnJhbWV3b3JrQXR0cmlidXRl
+AERlYnVnZ2VySGlkZGVuQXR0cmlidXRlAEFzc2VtYmx5RmlsZVZlcnNpb25BdHRyaWJ1dGUATXlH
+cm91cENvbGxlY3Rpb25BdHRyaWJ1dGUAQXNzZW1ibHlEZXNjcmlwdGlvbkF0dHJpYnV0ZQBDb21w
+aWxhdGlvblJlbGF4YXRpb25zQXR0cmlidXRlAEFzc2VtYmx5UHJvZHVjdEF0dHJpYnV0ZQBBc3Nl
+bWJseUNvcHlyaWdodEF0dHJpYnV0ZQBDTFNDb21wbGlhbnRBdHRyaWJ1dGUAU1NJU1NjcmlwdFRh
+c2tFbnRyeVBvaW50QXR0cmlidXRlAEFzc2VtYmx5Q29tcGFueUF0dHJpYnV0ZQBSdW50aW1lQ29t
+cGF0aWJpbGl0eUF0dHJpYnV0ZQBtX1ZhbHVlAGdldF9WYWx1ZQBzZXRfVmFsdWUAR2V0T2JqZWN0
+VmFsdWUAU3lzdGVtLlRocmVhZGluZwBTeXN0ZW0uUnVudGltZS5WZXJzaW9uaW5nAFRvU3RyaW5n
+AE1hdGgATW9udGgATWljcm9zb2Z0LlNxbFNlcnZlci5TY3JpcHRUYXNrAE1pY3Jvc29mdC5TcWxT
+ZXJ2ZXIuRHRzLlRhc2tzLlNjcmlwdFRhc2sATWljcm9zb2Z0LlZpc3VhbEJhc2ljLk15U2Vydmlj
+ZXMuSW50ZXJuYWwARGF0ZUludGVydmFsAFNjcmlwdE9iamVjdE1vZGVsAFN5c3RlbS5Db21wb25l
+bnRNb2RlbABTVF81OTlkYmRlYTg0Zjg0NDU4YTU2ZDczNGIyNjQyYjc2ZS5kbGwAZ2V0X0l0ZW0A
+U3lzdGVtAEVudW0AU3lzdGVtLkNvbXBvbmVudE1vZGVsLkRlc2lnbgBTY3JpcHRNYWluAGdldF9B
+cHBsaWNhdGlvbgBNeUFwcGxpY2F0aW9uAFN5c3RlbS5Db25maWd1cmF0aW9uAFN5c3RlbS5HbG9i
+YWxpemF0aW9uAFN5c3RlbS5SZWZsZWN0aW9uAEN1bHR1cmVJbmZvAFllYXIAbV9BcHBPYmplY3RQ
+cm92aWRlcgBtX1VzZXJPYmplY3RQcm92aWRlcgBtX0NvbXB1dGVyT2JqZWN0UHJvdmlkZXIAbV9N
+eVdlYlNlcnZpY2VzT2JqZWN0UHJvdmlkZXIAZ2V0X1Jlc291cmNlTWFuYWdlcgBTeXN0ZW0uQ29k
+ZURvbS5Db21waWxlcgBnZXRfVXNlcgBFbnRlcgBnZXRfQ29tcHV0ZXIATXlDb21wdXRlcgBfcmVz
+TWdyAEFjdGl2YXRvcgAuY3RvcgAuY2N0b3IATW9uaXRvcgBTeXN0ZW0uRGlhZ25vc3RpY3MATWlj
+cm9zb2Z0LlZpc3VhbEJhc2ljLkRldmljZXMAZ2V0X1dlYlNlcnZpY2VzAE15V2ViU2VydmljZXMA
+TWljcm9zb2Z0LlZpc3VhbEJhc2ljLkFwcGxpY2F0aW9uU2VydmljZXMAU3lzdGVtLlJ1bnRpbWUu
+SW50ZXJvcFNlcnZpY2VzAE1pY3Jvc29mdC5WaXN1YWxCYXNpYy5Db21waWxlclNlcnZpY2VzAFN5
+c3RlbS5SdW50aW1lLkNvbXBpbGVyU2VydmljZXMAU3lzdGVtLlJlc291cmNlcwBTVF81OTlkYmRl
+YTg0Zjg0NDU4YTU2ZDczNGIyNjQyYjc2ZS5NeS5SZXNvdXJjZXMATXlSZXNvdXJjZXMAU1RfNTk5
+ZGJkZWE4NGY4NDQ1OGE1NmQ3MzRiMjY0MmI3NmUuUmVzb3VyY2VzLnJlc291cmNlcwBEZWJ1Z2dp
+bmdNb2RlcwBnZXRfVmFyaWFibGVzAE15U2V0dGluZ3MARXF1YWxzAFJ1bnRpbWVIZWxwZXJzAFN1
+Y2Nlc3MAZ2V0X0R0cwBTY3JpcHRSZXN1bHRzAENvbmNhdABGb3JtYXQAbV9TeW5jT2JqZWN0AE15
+UHJvamVjdABFeGl0AHNldF9UYXNrUmVzdWx0AG1fQ29udGV4dABTVF81OTlkYmRlYTg0Zjg0NDU4
+YTU2ZDczNGIyNjQyYjc2ZS5NeQBEYXkAZ2V0X1RvZGF5AGdldF9Bc3NlbWJseQAAMU0AeQAuAFIA
+ZQBzAG8AdQByAGMAZQBzAC4ATQB5AFIAZQBzAG8AdQByAGMAZQBzAAALewAwADoAZAB9AAAHSABD
+AE0AAAkuAHQAeAB0AAAZcwBBAHQAdABhAGMAaABtAGUAbgB0AHMAABFzAEYAaQBsAGUARABpAHIA
+AAAAAF16J8SvG7ZNrELT8vFrmQwABCABAQgDIAABBSABARERBCABAQ4EIAEBAgUgAgEODgUgAQER
+RQcgBAEODg4OBhUSJAESDAYVEiQBEggGFRIkARJlBhUSJAESIAQgABMABwABEm0RgJ0FIAASgKEH
+IAIBDhKAoQQAARwcBAABARwKBwQRgJURgJUOCAUAABGAlQwAAxGAlRGAsQ0RgJUFAAIODhwGAAEI
+EYCVAyAADgUAAQ4dDgUgABKAvQUgABKAwQYgARKAxRwDIAAcBQACDg4OBCABARwEIAECHAMgAAgE
+BwEeAAIeAAUQAQAeAAQKAR4ABAcBEwAGFRIkARMABwYVEnEBEwAGFRJxARMAAhMABAoBEwAFIAEB
+EwAIt3pcVhk04IkIsD9ffxHVCjoIiYRdzYCAzJEEAAAAAAQBAAAABwYVEiQBEgwHBhUSJAESCAcG
+FRIkARJlBwYVEiQBEiADBhJ5AwYSfQMGEhgCBhwCBggDBhEoAwAAAQQAABIMBAAAEggEAAASZQQA
+ABIgBAAAEnkEAAASfQUAAQESfQQAABIYBCAAEm0HEAEBHgAeAAcwAQEBEB4ABAgAEgwECAASCAQI
+ABJlBAgAEiAECAASeQQIABJ9BAgAEhgEKAATAAgBAAgAAAAAAB4BAAEAVAIWV3JhcE5vbkV4Y2Vw
+dGlvblRocm93cwEIAQACAAAAAAAoAQAjU1RfNTk5ZGJkZWE4NGY4NDQ1OGE1NmQ3MzRiMjY0MmI3
+NmUAAAUBAAAAABYBABFDb3B5cmlnaHQgQCAgMjAxOQAABQEAAQAAKQEAJDQwNzg1NGU1LWQ0ZTct
+NGY5NC1iOTE1LTRiZWUxN2IzNGVhMwAADAEABzEuMC4wLjAAAEcBABouTkVURnJhbWV3b3JrLFZl
+cnNpb249djQuMAEAVA4URnJhbWV3b3JrRGlzcGxheU5hbWUQLk5FVCBGcmFtZXdvcmsgNAgBAAEA
+AAAAABgBAApNeVRlbXBsYXRlCDExLjAuMC4wAABhAQA0U3lzdGVtLldlYi5TZXJ2aWNlcy5Qcm90
+b2NvbHMuU29hcEh0dHBDbGllbnRQcm90b2NvbBJDcmVhdGVfX0luc3RhbmNlX18TRGlzcG9zZV9f
+SW5zdGFuY2VfXwAAABABAAtNeS5Db21wdXRlcgAAEwEADk15LkFwcGxpY2F0aW9uAAAMAQAHTXku
+VXNlcgAAEwEADk15LldlYlNlcnZpY2VzAAAAALQAAADOyu++AQAAAJEAAABsU3lzdGVtLlJlc291
+cmNlcy5SZXNvdXJjZVJlYWRlciwgbXNjb3JsaWIsIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1u
+ZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5I1N5c3RlbS5SZXNvdXJjZXMu
+UnVudGltZVJlc291cmNlU2V0AgAAAAAAAAAAAAAAUEFEUEFEULQAAAC0OQAAAAAAAAAAAADOOQAA
+ACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwDkAAAAAAAAAAAAAAABfQ29yRGxsTWFpbgBtc2NvcmVl
+LmRsbAAAAAAA/yUAIAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AQAQAAAAGAAAgAAAAAAAAAAAAAAAAAAAAQABAAAAMAAAgAAAAAAAAAAAAAAAAAAAAQAAAAAASAAA
+AFhAAADsAwAAAAAAAAAAAADsAzQAAABWAFMAXwBWAEUAUgBTAEkATwBOAF8ASQBOAEYATwAAAAAA
+vQTv/gAAAQAAAAEAAAAAAAAAAQAAAAAAPwAAAAAAAAAEAAAAAgAAAAAAAAAAAAAAAAAAAEQAAAAB
+AFYAYQByAEYAaQBsAGUASQBuAGYAbwAAAAAAJAAEAAAAVAByAGEAbgBzAGwAYQB0AGkAbwBuAAAA
+AAAAALAETAMAAAEAUwB0AHIAaQBuAGcARgBpAGwAZQBJAG4AZgBvAAAAKAMAAAEAMAAwADAAMAAw
+ADQAYgAwAAAAGgABAAEAQwBvAG0AbQBlAG4AdABzAAAAAAAAACIAAQABAEMAbwBtAHAAYQBuAHkA
+TgBhAG0AZQAAAAAAAAAAAHAAJAABAEYAaQBsAGUARABlAHMAYwByAGkAcAB0AGkAbwBuAAAAAABT
+AFQAXwA1ADkAOQBkAGIAZABlAGEAOAA0AGYAOAA0ADQANQA4AGEANQA2AGQANwAzADQAYgAyADYA
+NAAyAGIANwA2AGUAAAAwAAgAAQBGAGkAbABlAFYAZQByAHMAaQBvAG4AAAAAADEALgAwAC4AMAAu
+ADAAAABwACgAAQBJAG4AdABlAHIAbgBhAGwATgBhAG0AZQAAAFMAVABfADUAOQA5AGQAYgBkAGUA
+YQA4ADQAZgA4ADQANAA1ADgAYQA1ADYAZAA3ADMANABiADIANgA0ADIAYgA3ADYAZQAuAGQAbABs
+AAAASAASAAEATABlAGcAYQBsAEMAbwBwAHkAcgBpAGcAaAB0AAAAQwBvAHAAeQByAGkAZwBoAHQA
+IABAACAAIAAyADAAMQA5AAAAKgABAAEATABlAGcAYQBsAFQAcgBhAGQAZQBtAGEAcgBrAHMAAAAA
+AAAAAAB4ACgAAQBPAHIAaQBnAGkAbgBhAGwARgBpAGwAZQBuAGEAbQBlAAAAUwBUAF8ANQA5ADkA
+ZABiAGQAZQBhADgANABmADgANAA0ADUAOABhADUANgBkADcAMwA0AGIAMgA2ADQAMgBiADcANgBl
+AC4AZABsAGwAAABoACQAAQBQAHIAbwBkAHUAYwB0AE4AYQBtAGUAAAAAAFMAVABfADUAOQA5AGQA
+YgBkAGUAYQA4ADQAZgA4ADQANAA1ADgAYQA1ADYAZAA3ADMANABiADIANgA0ADIAYgA3ADYAZQAA
+ADQACAABAFAAcgBvAGQAdQBjAHQAVgBlAHIAcwBpAG8AbgAAADEALgAwAC4AMAAuADAAAAA4AAgA
+AQBBAHMAcwBlAG0AYgBsAHkAIABWAGUAcgBzAGkAbwBuAAAAMQAuADAALgAwAC4AMAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAMAAAA4DkAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
+        </ScriptProject>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Sequence Container"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{be498118-9ff5-4165-b504-aae46f93b786}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Sequence Container">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\Create Attachment"
+          DTS:CreationName="SSIS.Pipeline.3"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{aa44ecad-3012-4244-8c9c-12cf6e7b057f}"
+          DTS:ExecutableType="SSIS.Pipeline.3"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Create Attachment"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v9; (C) 2004 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              BLOBTempStoragePath=""
+              bufferTempStoragePath=""
+              engineThreads="5"
+              version="1">
+              <components>
+                <component
+                  refId="Package\Sequence Container\Create Attachment\Attachment file"
+                  componentClassID="{8DA75FED-1B7C-407D-B2AD-2B24209CCCA4}"
+                  contactInfo="Flat File Destination;Microsoft Corporation;Microsoft SqlServer v9; (C) 2005 Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Flat File Destination"
+                  localeId="1033"
+                  name="Attachment file">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      description="Specifies whether the data will overwrite or append to the destination file."
+                      name="Overwrite">true</property>
+                    <property
+                      dataType="System.Null"
+                      description="Specifies the text to write to the destination file before any data is written."
+                      expressionType="Notify"
+                      name="Header" />
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Sequence Container\Create Attachment\Attachment file.Connections[FlatFileConnection]"
+                      connectionManagerID="Package.ConnectionManagers[GreenTree Daily File]"
+                      connectionManagerRefId="Package.ConnectionManagers[GreenTree Daily File]"
+                      name="FlatFileConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Sequence Container\Create Attachment\Attachment file.Inputs[Flat File Destination Input]"
+                      hasSideEffects="true"
+                      name="Flat File Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Sequence Container\Create Attachment\Attachment file.Inputs[Flat File Destination Input].Columns[recordid]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="10"
+                          cachedName="recordid"
+                          externalMetadataColumnId="Package\Sequence Container\Create Attachment\Attachment file.Inputs[Flat File Destination Input].ExternalColumns[recordid]"
+                          lineageId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].Columns[recordid]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Create Attachment\Attachment file.Inputs[Flat File Destination Input].Columns[center number]"
+                          cachedDataType="i4"
+                          cachedName="center number"
+                          externalMetadataColumnId="Package\Sequence Container\Create Attachment\Attachment file.Inputs[Flat File Destination Input].ExternalColumns[center number]"
+                          lineageId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].Columns[center number]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Create Attachment\Attachment file.Inputs[Flat File Destination Input].Columns[center name]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="3"
+                          cachedName="center name"
+                          externalMetadataColumnId="Package\Sequence Container\Create Attachment\Attachment file.Inputs[Flat File Destination Input].ExternalColumns[center name]"
+                          lineageId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].Columns[center name]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Create Attachment\Attachment file.Inputs[Flat File Destination Input].Columns[center address 1]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="center address 1"
+                          externalMetadataColumnId="Package\Sequence Container\Create Attachment\Attachment file.Inputs[Flat File Destination Input].ExternalColumns[center address 1]"
+                          lineageId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].Columns[center address 1]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Create Attachment\Attachment file.Inputs[Flat File Destination Input].Columns[center address 2]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="center address 2"
+                          externalMetadataColumnId="Package\Sequence Container\Create Attachment\Attachment file.Inputs[Flat File Destination Input].ExternalColumns[center address 2]"
+                          lineageId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].Columns[center address 2]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Create Attachment\Attachment file.Inputs[Flat File Destination Input].Columns[center city]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="center city"
+                          externalMetadataColumnId="Package\Sequence Container\Create Attachment\Attachment file.Inputs[Flat File Destination Input].ExternalColumns[center city]"
+                          lineageId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].Columns[center city]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Create Attachment\Attachment file.Inputs[Flat File Destination Input].Columns[center state]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="10"
+                          cachedName="center state"
+                          externalMetadataColumnId="Package\Sequence Container\Create Attachment\Attachment file.Inputs[Flat File Destination Input].ExternalColumns[center state]"
+                          lineageId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].Columns[center state]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Create Attachment\Attachment file.Inputs[Flat File Destination Input].Columns[center zip]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="10"
+                          cachedName="center zip"
+                          externalMetadataColumnId="Package\Sequence Container\Create Attachment\Attachment file.Inputs[Flat File Destination Input].ExternalColumns[center zip]"
+                          lineageId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].Columns[center zip]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Create Attachment\Attachment file.Inputs[Flat File Destination Input].Columns[contact fname]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="contact fname"
+                          externalMetadataColumnId="Package\Sequence Container\Create Attachment\Attachment file.Inputs[Flat File Destination Input].ExternalColumns[contact fname]"
+                          lineageId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].Columns[contact fname]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Create Attachment\Attachment file.Inputs[Flat File Destination Input].Columns[contact lname]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="contact lname"
+                          externalMetadataColumnId="Package\Sequence Container\Create Attachment\Attachment file.Inputs[Flat File Destination Input].ExternalColumns[contact lname]"
+                          lineageId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].Columns[contact lname]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Create Attachment\Attachment file.Inputs[Flat File Destination Input].Columns[contact city]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="60"
+                          cachedName="contact city"
+                          externalMetadataColumnId="Package\Sequence Container\Create Attachment\Attachment file.Inputs[Flat File Destination Input].ExternalColumns[contact city]"
+                          lineageId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].Columns[contact city]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Create Attachment\Attachment file.Inputs[Flat File Destination Input].Columns[contact state]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="20"
+                          cachedName="contact state"
+                          externalMetadataColumnId="Package\Sequence Container\Create Attachment\Attachment file.Inputs[Flat File Destination Input].ExternalColumns[contact state]"
+                          lineageId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].Columns[contact state]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Create Attachment\Attachment file.Inputs[Flat File Destination Input].Columns[contact zip]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="15"
+                          cachedName="contact zip"
+                          externalMetadataColumnId="Package\Sequence Container\Create Attachment\Attachment file.Inputs[Flat File Destination Input].ExternalColumns[contact zip]"
+                          lineageId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].Columns[contact zip]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Create Attachment\Attachment file.Inputs[Flat File Destination Input].Columns[contact create date]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="contact create date"
+                          externalMetadataColumnId="Package\Sequence Container\Create Attachment\Attachment file.Inputs[Flat File Destination Input].ExternalColumns[contact create date]"
+                          lineageId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].Columns[contact create date]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Create Attachment\Attachment file.Inputs[Flat File Destination Input].Columns[promo]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="promo"
+                          externalMetadataColumnId="Package\Sequence Container\Create Attachment\Attachment file.Inputs[Flat File Destination Input].ExternalColumns[promo]"
+                          lineageId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].Columns[promo]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Create Attachment\Attachment file.Inputs[Flat File Destination Input].Columns[create by]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="20"
+                          cachedName="create by"
+                          externalMetadataColumnId="Package\Sequence Container\Create Attachment\Attachment file.Inputs[Flat File Destination Input].ExternalColumns[create by]"
+                          lineageId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].Columns[create by]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Create Attachment\Attachment file.Inputs[Flat File Destination Input].Columns[cst_gender]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="10"
+                          cachedName="cst_gender"
+                          externalMetadataColumnId="Package\Sequence Container\Create Attachment\Attachment file.Inputs[Flat File Destination Input].ExternalColumns[cst_gender]"
+                          lineageId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].Columns[cst_gender]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Create Attachment\Attachment file.Inputs[Flat File Destination Input].Columns[type]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="2"
+                          cachedName="type"
+                          externalMetadataColumnId="Package\Sequence Container\Create Attachment\Attachment file.Inputs[Flat File Destination Input].ExternalColumns[type]"
+                          lineageId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].Columns[type]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Create Attachment\Attachment file.Inputs[Flat File Destination Input].Columns[filename]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="15"
+                          cachedName="filename"
+                          externalMetadataColumnId="Package\Sequence Container\Create Attachment\Attachment file.Inputs[Flat File Destination Input].ExternalColumns[filename]"
+                          lineageId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].Columns[filename]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Create Attachment\Attachment file.Inputs[Flat File Destination Input].Columns[email]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="100"
+                          cachedName="email"
+                          externalMetadataColumnId="Package\Sequence Container\Create Attachment\Attachment file.Inputs[Flat File Destination Input].ExternalColumns[email]"
+                          lineageId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].Columns[email]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Create Attachment\Attachment file.Inputs[Flat File Destination Input].Columns[contact address 1]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="60"
+                          cachedName="contact address 1"
+                          externalMetadataColumnId="Package\Sequence Container\Create Attachment\Attachment file.Inputs[Flat File Destination Input].ExternalColumns[contact address 1]"
+                          lineageId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].Columns[contact address 1]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Create Attachment\Attachment file.Inputs[Flat File Destination Input].Columns[contact address 2]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="60"
+                          cachedName="contact address 2"
+                          externalMetadataColumnId="Package\Sequence Container\Create Attachment\Attachment file.Inputs[Flat File Destination Input].ExternalColumns[contact address 2]"
+                          lineageId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].Columns[contact address 2]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Create Attachment\Attachment file.Inputs[Flat File Destination Input].Columns[promo2]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="1"
+                          cachedName="promo2"
+                          externalMetadataColumnId="Package\Sequence Container\Create Attachment\Attachment file.Inputs[Flat File Destination Input].ExternalColumns[promo2]"
+                          lineageId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].Columns[promo2]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Create Attachment\Attachment file.Inputs[Flat File Destination Input].Columns[phone]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="phone"
+                          externalMetadataColumnId="Package\Sequence Container\Create Attachment\Attachment file.Inputs[Flat File Destination Input].ExternalColumns[phone]"
+                          lineageId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].Columns[phone]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Create Attachment\Attachment file.Inputs[Flat File Destination Input].ExternalColumns[recordid]"
+                          dataType="wstr"
+                          length="10"
+                          name="recordid" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Create Attachment\Attachment file.Inputs[Flat File Destination Input].ExternalColumns[center number]"
+                          dataType="i4"
+                          name="center number" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Create Attachment\Attachment file.Inputs[Flat File Destination Input].ExternalColumns[center name]"
+                          codePage="1252"
+                          dataType="str"
+                          length="3"
+                          name="center name" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Create Attachment\Attachment file.Inputs[Flat File Destination Input].ExternalColumns[center address 1]"
+                          dataType="wstr"
+                          length="50"
+                          name="center address 1" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Create Attachment\Attachment file.Inputs[Flat File Destination Input].ExternalColumns[center address 2]"
+                          dataType="wstr"
+                          length="50"
+                          name="center address 2" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Create Attachment\Attachment file.Inputs[Flat File Destination Input].ExternalColumns[center city]"
+                          dataType="wstr"
+                          length="50"
+                          name="center city" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Create Attachment\Attachment file.Inputs[Flat File Destination Input].ExternalColumns[center state]"
+                          dataType="wstr"
+                          length="10"
+                          name="center state" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Create Attachment\Attachment file.Inputs[Flat File Destination Input].ExternalColumns[center zip]"
+                          dataType="wstr"
+                          length="10"
+                          name="center zip" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Create Attachment\Attachment file.Inputs[Flat File Destination Input].ExternalColumns[contact fname]"
+                          dataType="wstr"
+                          length="50"
+                          name="contact fname" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Create Attachment\Attachment file.Inputs[Flat File Destination Input].ExternalColumns[contact lname]"
+                          dataType="wstr"
+                          length="50"
+                          name="contact lname" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Create Attachment\Attachment file.Inputs[Flat File Destination Input].ExternalColumns[contact address 1]"
+                          dataType="wstr"
+                          length="60"
+                          name="contact address 1" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Create Attachment\Attachment file.Inputs[Flat File Destination Input].ExternalColumns[contact address 2]"
+                          dataType="wstr"
+                          length="60"
+                          name="contact address 2" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Create Attachment\Attachment file.Inputs[Flat File Destination Input].ExternalColumns[contact city]"
+                          dataType="wstr"
+                          length="60"
+                          name="contact city" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Create Attachment\Attachment file.Inputs[Flat File Destination Input].ExternalColumns[contact state]"
+                          dataType="wstr"
+                          length="20"
+                          name="contact state" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Create Attachment\Attachment file.Inputs[Flat File Destination Input].ExternalColumns[contact zip]"
+                          dataType="wstr"
+                          length="15"
+                          name="contact zip" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Create Attachment\Attachment file.Inputs[Flat File Destination Input].ExternalColumns[contact create date]"
+                          dataType="dbTimeStamp"
+                          name="contact create date" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Create Attachment\Attachment file.Inputs[Flat File Destination Input].ExternalColumns[promo]"
+                          dataType="wstr"
+                          length="50"
+                          name="promo" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Create Attachment\Attachment file.Inputs[Flat File Destination Input].ExternalColumns[create by]"
+                          dataType="wstr"
+                          length="20"
+                          name="create by" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Create Attachment\Attachment file.Inputs[Flat File Destination Input].ExternalColumns[promo2]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          name="promo2" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Create Attachment\Attachment file.Inputs[Flat File Destination Input].ExternalColumns[cst_gender]"
+                          dataType="wstr"
+                          length="10"
+                          name="cst_gender" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Create Attachment\Attachment file.Inputs[Flat File Destination Input].ExternalColumns[type]"
+                          codePage="1252"
+                          dataType="str"
+                          length="2"
+                          name="type" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Create Attachment\Attachment file.Inputs[Flat File Destination Input].ExternalColumns[filename]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          name="filename" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Create Attachment\Attachment file.Inputs[Flat File Destination Input].ExternalColumns[email]"
+                          dataType="wstr"
+                          length="100"
+                          name="email" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Create Attachment\Attachment file.Inputs[Flat File Destination Input].ExternalColumns[phone]"
+                          dataType="wstr"
+                          length="50"
+                          name="phone" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                </component>
+                <component
+                  refId="Package\Sequence Container\Create Attachment\Exec Proc"
+                  componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}"
+                  contactInfo="OLE DB Source;Microsoft Corporation;Microsoft SqlServer v9; (C) 2005 Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="Exec Proc"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[hcmtbl_fulfillments_all]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">exec spsvc_fulfillments</property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable">User::sStoreProcName</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Sequence Container\Create Attachment\Exec Proc.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[HC_MARKETING.OLEDB]"
+                      connectionManagerRefId="Package.ConnectionManagers[HC_MARKETING.OLEDB]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].Columns[recordid]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].ExternalColumns[recordid]"
+                          length="10"
+                          lineageId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].Columns[recordid]"
+                          name="recordid"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].Columns[center number]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].ExternalColumns[center number]"
+                          lineageId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].Columns[center number]"
+                          name="center number"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].Columns[center name]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].ExternalColumns[center name]"
+                          length="3"
+                          lineageId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].Columns[center name]"
+                          name="center name"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].Columns[center address 1]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].ExternalColumns[center address 1]"
+                          length="50"
+                          lineageId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].Columns[center address 1]"
+                          name="center address 1"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].Columns[center address 2]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].ExternalColumns[center address 2]"
+                          length="50"
+                          lineageId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].Columns[center address 2]"
+                          name="center address 2"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].Columns[center city]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].ExternalColumns[center city]"
+                          length="50"
+                          lineageId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].Columns[center city]"
+                          name="center city"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].Columns[center state]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].ExternalColumns[center state]"
+                          length="10"
+                          lineageId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].Columns[center state]"
+                          name="center state"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].Columns[center zip]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].ExternalColumns[center zip]"
+                          length="10"
+                          lineageId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].Columns[center zip]"
+                          name="center zip"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].Columns[contact fname]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].ExternalColumns[contact fname]"
+                          length="50"
+                          lineageId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].Columns[contact fname]"
+                          name="contact fname"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].Columns[contact lname]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].ExternalColumns[contact lname]"
+                          length="50"
+                          lineageId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].Columns[contact lname]"
+                          name="contact lname"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].Columns[contact city]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].ExternalColumns[contact city]"
+                          length="60"
+                          lineageId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].Columns[contact city]"
+                          name="contact city"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].Columns[contact state]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].ExternalColumns[contact state]"
+                          length="20"
+                          lineageId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].Columns[contact state]"
+                          name="contact state"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].Columns[contact zip]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].ExternalColumns[contact zip]"
+                          length="15"
+                          lineageId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].Columns[contact zip]"
+                          name="contact zip"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].Columns[contact create date]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].ExternalColumns[contact create date]"
+                          lineageId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].Columns[contact create date]"
+                          name="contact create date"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].Columns[promo]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].ExternalColumns[promo]"
+                          length="50"
+                          lineageId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].Columns[promo]"
+                          name="promo"
+                          truncationRowDisposition="IgnoreFailure" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].Columns[cst_gender]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].ExternalColumns[cst_gender]"
+                          length="10"
+                          lineageId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].Columns[cst_gender]"
+                          name="cst_gender"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].Columns[type]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].ExternalColumns[type]"
+                          length="2"
+                          lineageId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].Columns[type]"
+                          name="type"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].Columns[filename]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].ExternalColumns[filename]"
+                          length="15"
+                          lineageId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].Columns[filename]"
+                          name="filename"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].Columns[email]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].ExternalColumns[email]"
+                          length="100"
+                          lineageId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].Columns[email]"
+                          name="email"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].Columns[contact address 1]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].ExternalColumns[contact address 1]"
+                          length="60"
+                          lineageId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].Columns[contact address 1]"
+                          name="contact address 1"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].Columns[contact address 2]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].ExternalColumns[contact address 2]"
+                          length="60"
+                          lineageId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].Columns[contact address 2]"
+                          name="contact address 2"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].Columns[create by]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].ExternalColumns[create by]"
+                          length="20"
+                          lineageId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].Columns[create by]"
+                          name="create by"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].Columns[promo2]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].ExternalColumns[promo2]"
+                          length="1"
+                          lineageId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].Columns[promo2]"
+                          name="promo2"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].Columns[phone]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].ExternalColumns[phone]"
+                          length="50"
+                          lineageId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].Columns[phone]"
+                          name="phone"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].ExternalColumns[recordid]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          name="recordid" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].ExternalColumns[center number]"
+                          dataType="i4"
+                          name="center number" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].ExternalColumns[center name]"
+                          codePage="1252"
+                          dataType="str"
+                          length="3"
+                          name="center name" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].ExternalColumns[center address 1]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="center address 1" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].ExternalColumns[center address 2]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="center address 2" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].ExternalColumns[center city]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="center city" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].ExternalColumns[center state]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          name="center state" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].ExternalColumns[center zip]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          name="center zip" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].ExternalColumns[contact fname]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="contact fname" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].ExternalColumns[contact lname]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="contact lname" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].ExternalColumns[contact city]"
+                          codePage="1252"
+                          dataType="str"
+                          length="60"
+                          name="contact city" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].ExternalColumns[contact state]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          name="contact state" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].ExternalColumns[contact zip]"
+                          codePage="1252"
+                          dataType="str"
+                          length="15"
+                          name="contact zip" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].ExternalColumns[contact create date]"
+                          dataType="dbTimeStamp"
+                          name="contact create date" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].ExternalColumns[promo]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="promo" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].ExternalColumns[cst_gender]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          name="cst_gender" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].ExternalColumns[type]"
+                          codePage="1252"
+                          dataType="str"
+                          length="2"
+                          name="type" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].ExternalColumns[filename]"
+                          codePage="1252"
+                          dataType="str"
+                          length="15"
+                          name="filename" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].ExternalColumns[email]"
+                          codePage="1252"
+                          dataType="str"
+                          length="100"
+                          name="email" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].ExternalColumns[contact address 1]"
+                          codePage="1252"
+                          dataType="str"
+                          length="60"
+                          name="contact address 1" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].ExternalColumns[contact address 2]"
+                          codePage="1252"
+                          dataType="str"
+                          length="60"
+                          name="contact address 2" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].ExternalColumns[create by]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          name="create by" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].ExternalColumns[promo2]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          name="promo2" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output].ExternalColumns[phone]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="phone" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Error Output].Columns[recordid]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          lineageId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Error Output].Columns[recordid]"
+                          name="recordid" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Error Output].Columns[center number]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Error Output].Columns[center number]"
+                          name="center number" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Error Output].Columns[center name]"
+                          codePage="1252"
+                          dataType="str"
+                          length="3"
+                          lineageId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Error Output].Columns[center name]"
+                          name="center name" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Error Output].Columns[center address 1]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Error Output].Columns[center address 1]"
+                          name="center address 1" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Error Output].Columns[center address 2]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Error Output].Columns[center address 2]"
+                          name="center address 2" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Error Output].Columns[center city]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Error Output].Columns[center city]"
+                          name="center city" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Error Output].Columns[center state]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          lineageId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Error Output].Columns[center state]"
+                          name="center state" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Error Output].Columns[center zip]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          lineageId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Error Output].Columns[center zip]"
+                          name="center zip" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Error Output].Columns[contact fname]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Error Output].Columns[contact fname]"
+                          name="contact fname" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Error Output].Columns[contact lname]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Error Output].Columns[contact lname]"
+                          name="contact lname" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Error Output].Columns[contact address 1]"
+                          codePage="1252"
+                          dataType="str"
+                          length="60"
+                          lineageId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Error Output].Columns[contact address 1]"
+                          name="contact address 1" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Error Output].Columns[contact address 2]"
+                          codePage="1252"
+                          dataType="str"
+                          length="60"
+                          lineageId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Error Output].Columns[contact address 2]"
+                          name="contact address 2" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Error Output].Columns[contact city]"
+                          codePage="1252"
+                          dataType="str"
+                          length="60"
+                          lineageId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Error Output].Columns[contact city]"
+                          name="contact city" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Error Output].Columns[contact state]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          lineageId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Error Output].Columns[contact state]"
+                          name="contact state" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Error Output].Columns[contact zip]"
+                          codePage="1252"
+                          dataType="str"
+                          length="15"
+                          lineageId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Error Output].Columns[contact zip]"
+                          name="contact zip" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Error Output].Columns[contact create date]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Error Output].Columns[contact create date]"
+                          name="contact create date" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Error Output].Columns[promo]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Error Output].Columns[promo]"
+                          name="promo" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Error Output].Columns[create by]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          lineageId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Error Output].Columns[create by]"
+                          name="create by" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Error Output].Columns[promo2]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          lineageId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Error Output].Columns[promo2]"
+                          name="promo2" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Error Output].Columns[cst_gender]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          lineageId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Error Output].Columns[cst_gender]"
+                          name="cst_gender" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Error Output].Columns[type]"
+                          codePage="1252"
+                          dataType="str"
+                          length="2"
+                          lineageId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Error Output].Columns[type]"
+                          name="type" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Error Output].Columns[filename]"
+                          codePage="1252"
+                          dataType="str"
+                          length="15"
+                          lineageId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Error Output].Columns[filename]"
+                          name="filename" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Error Output].Columns[email]"
+                          codePage="1252"
+                          dataType="str"
+                          length="100"
+                          lineageId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Error Output].Columns[email]"
+                          name="email" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Error Output].Columns[phone]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Error Output].Columns[phone]"
+                          name="phone" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Sequence Container\Create Attachment.Paths[OLE DB Source Output]"
+                  endId="Package\Sequence Container\Create Attachment\Attachment file.Inputs[Flat File Destination Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\Sequence Container\Create Attachment\Exec Proc.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{C96414A1-BBE9-4E28-8229-D05E3931CAEC}"
+      DTS:From="Package\Script Task"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Sequence Container" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{24460ADB-4C1C-47A0-87CF-738C086037F4}"
+      DTS:From="Package\Sequence Container"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\FTP Task" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql11">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="122,42"
+          Id="Package\FTP Task"
+          TopLeft="674,138" />
+        <NodeLayout
+          Size="131,42"
+          Id="Package\Script Task"
+          TopLeft="83,139" />
+        <NodeLayout
+          Size="167,42"
+          Id="Package\Sequence Container\Create Attachment"
+          TopLeft="13.6415094339623,17.2452830188679" />
+        <ContainerLayout
+          HeaderHeight="43.924528301886795"
+          IsExpanded="True"
+          PanelSize="196,116"
+          Size="196,160"
+          Id="Package\Sequence Container"
+          TopLeft="312,79" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="214,159.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="98,0"
+              Start="0,0"
+              End="90.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="90.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="508,159">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="166,0"
+              Start="0,0"
+              End="158.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="158.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Sequence Container\Create Attachment">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="150,42"
+          Id="Package\Sequence Container\Create Attachment\Attachment file"
+          TopLeft="235.047169811321,13.5" />
+        <NodeLayout
+          Size="125,42"
+          Id="Package\Sequence Container\Create Attachment\Exec Proc"
+          TopLeft="36.5,15.5" />
+        <EdgeLayout
+          Id="Package\Sequence Container\Create Attachment.Paths[OLE DB Source Output]"
+          TopLeft="161.5,35.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="73.547169811321,0"
+              Start="0,0"
+              End="66.047169811321,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="66.047169811321,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container\Create Attachment\Exec Proc">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

@@ -1,0 +1,1769 @@
+<SSIS:Project SSIS:ProtectionLevel="ServerStorage" xmlns:SSIS="www.microsoft.com/SqlServer/SSIS">
+  <SSIS:Properties>
+    <SSIS:Property SSIS:Name="ID">{cecb182f-5a91-486d-a805-9d35cd9a6c7e}</SSIS:Property>
+    <SSIS:Property SSIS:Name="Name">FacebookAudienceDataExport</SSIS:Property>
+    <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
+    <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+    <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
+    <SSIS:Property SSIS:Name="VersionComments">
+    </SSIS:Property>
+    <SSIS:Property SSIS:Name="CreationDate">2018-03-26T10:07:46.9940532-04:00</SSIS:Property>
+    <SSIS:Property SSIS:Name="CreatorName">HCFM\dleiba</SSIS:Property>
+    <SSIS:Property SSIS:Name="CreatorComputerName">ITWS06</SSIS:Property>
+    <SSIS:Property SSIS:Name="Description">
+    </SSIS:Property>
+    <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
+  </SSIS:Properties>
+  <SSIS:Packages>
+    <SSIS:Package SSIS:Name="FacebookAudienceDataExport.dtsx" SSIS:EntryPoint="1" />
+  </SSIS:Packages>
+  <SSIS:ConnectionManagers />
+  <SSIS:DeploymentInfo>
+    <SSIS:ProjectConnectionParameters />
+    <SSIS:PackageInfo>
+      <SSIS:PackageMetaData SSIS:Name="FacebookAudienceDataExport.dtsx">
+        <SSIS:Properties>
+          <SSIS:Property SSIS:Name="ID">{01411388-1231-4A85-B39D-F4EA8E3B5127}</SSIS:Property>
+          <SSIS:Property SSIS:Name="Name">FacebookAudienceDataExport</SSIS:Property>
+          <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+          <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+          <SSIS:Property SSIS:Name="VersionBuild">44</SSIS:Property>
+          <SSIS:Property SSIS:Name="VersionComments">
+          </SSIS:Property>
+          <SSIS:Property SSIS:Name="VersionGUID">{8CF8FF65-4C2B-4E6E-9EC1-D3D5F37C6DEA}</SSIS:Property>
+          <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
+          <SSIS:Property SSIS:Name="Description">
+          </SSIS:Property>
+          <SSIS:Property SSIS:Name="ProtectionLevel">5</SSIS:Property>
+        </SSIS:Properties>
+        <SSIS:Parameters>
+          <SSIS:Parameter SSIS:Name="CM.ActiveClientsFile.AlwaysCheckForRowDelimiters">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">true</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.ActiveClientsFile.CodePage">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">1252</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.ActiveClientsFile.ColumnNamesInFirstDataRow">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">true</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.ActiveClientsFile.DataRowsToSkip">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.ActiveClientsFile.Format">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">Delimited</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.ActiveClientsFile.HeaderRowDelimiter">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property xml:space="preserve" SSIS:Name="Value">
+</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.ActiveClientsFile.HeaderRowsToSkip">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.ActiveClientsFile.LocaleID">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">1033</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.ActiveClientsFile.RowDelimiter">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.ActiveClientsFile.TextQualifier">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">&lt;none&gt;</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.ActiveClientsFile.Unicode">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">false</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.ClientEmailFile.AlwaysCheckForRowDelimiters">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">true</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.ClientEmailFile.CodePage">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">1252</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.ClientEmailFile.ColumnNamesInFirstDataRow">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">true</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.ClientEmailFile.DataRowsToSkip">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.ClientEmailFile.Format">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">Delimited</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.ClientEmailFile.HeaderRowDelimiter">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property xml:space="preserve" SSIS:Name="Value">
+</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.ClientEmailFile.HeaderRowsToSkip">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.ClientEmailFile.LocaleID">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">1033</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.ClientEmailFile.RowDelimiter">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.ClientEmailFile.TextQualifier">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">&lt;none&gt;</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.ClientEmailFile.Unicode">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">false</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.ClientPhoneFile.AlwaysCheckForRowDelimiters">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">true</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.ClientPhoneFile.CodePage">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">1252</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.ClientPhoneFile.ColumnNamesInFirstDataRow">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">true</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.ClientPhoneFile.DataRowsToSkip">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.ClientPhoneFile.Format">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">Delimited</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.ClientPhoneFile.HeaderRowDelimiter">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property xml:space="preserve" SSIS:Name="Value">
+</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.ClientPhoneFile.HeaderRowsToSkip">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.ClientPhoneFile.LocaleID">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">1033</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.ClientPhoneFile.RowDelimiter">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.ClientPhoneFile.TextQualifier">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">&lt;none&gt;</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.ClientPhoneFile.Unicode">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">false</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.FTP Connection Manager.ChunkSize">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">1</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.FTP Connection Manager.ConnectionString">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">ftp.hcfm.com:21</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.FTP Connection Manager.Retries">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">5</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.FTP Connection Manager.ServerName">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">ftp.hcfm.com</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.FTP Connection Manager.ServerPassword">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">1</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.FTP Connection Manager.ServerPort">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">21</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.FTP Connection Manager.ServerUserName">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">ftpdts</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.FTP Connection Manager.Timeout">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">60</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.FTP Connection Manager.UsePassiveMode">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">true</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.LeadEmailFile.AlwaysCheckForRowDelimiters">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">true</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.LeadEmailFile.CodePage">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">1252</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.LeadEmailFile.ColumnNamesInFirstDataRow">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">true</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.LeadEmailFile.DataRowsToSkip">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.LeadEmailFile.Format">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">Delimited</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.LeadEmailFile.HeaderRowDelimiter">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property xml:space="preserve" SSIS:Name="Value">
+</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.LeadEmailFile.HeaderRowsToSkip">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.LeadEmailFile.LocaleID">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">1033</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.LeadEmailFile.RowDelimiter">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.LeadEmailFile.TextQualifier">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">&lt;none&gt;</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.LeadEmailFile.Unicode">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">false</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.LeadPhoneFile.AlwaysCheckForRowDelimiters">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">true</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.LeadPhoneFile.CodePage">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">1252</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.LeadPhoneFile.ColumnNamesInFirstDataRow">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">true</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.LeadPhoneFile.DataRowsToSkip">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.LeadPhoneFile.Format">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">Delimited</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.LeadPhoneFile.HeaderRowDelimiter">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property xml:space="preserve" SSIS:Name="Value">
+</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.LeadPhoneFile.HeaderRowsToSkip">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.LeadPhoneFile.LocaleID">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">1033</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.LeadPhoneFile.RowDelimiter">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.LeadPhoneFile.TextQualifier">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">&lt;none&gt;</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.LeadPhoneFile.Unicode">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">false</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.NoSaleEmailFile.AlwaysCheckForRowDelimiters">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">true</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.NoSaleEmailFile.CodePage">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">1252</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.NoSaleEmailFile.ColumnNamesInFirstDataRow">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">true</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.NoSaleEmailFile.DataRowsToSkip">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.NoSaleEmailFile.Format">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">Delimited</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.NoSaleEmailFile.HeaderRowDelimiter">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property xml:space="preserve" SSIS:Name="Value">
+</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.NoSaleEmailFile.HeaderRowsToSkip">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.NoSaleEmailFile.LocaleID">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">1033</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.NoSaleEmailFile.RowDelimiter">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.NoSaleEmailFile.TextQualifier">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">&lt;none&gt;</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.NoSaleEmailFile.Unicode">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">false</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.NoSalePhoneFile.AlwaysCheckForRowDelimiters">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">true</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.NoSalePhoneFile.CodePage">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">1252</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.NoSalePhoneFile.ColumnNamesInFirstDataRow">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">true</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.NoSalePhoneFile.DataRowsToSkip">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.NoSalePhoneFile.Format">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">Delimited</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.NoSalePhoneFile.HeaderRowDelimiter">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property xml:space="preserve" SSIS:Name="Value">
+</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.NoSalePhoneFile.HeaderRowsToSkip">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.NoSalePhoneFile.LocaleID">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">1033</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.NoSalePhoneFile.RowDelimiter">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.NoSalePhoneFile.TextQualifier">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">&lt;none&gt;</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.NoSalePhoneFile.Unicode">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">false</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.NoShowEmailFile.AlwaysCheckForRowDelimiters">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">true</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.NoShowEmailFile.CodePage">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">1252</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.NoShowEmailFile.ColumnNamesInFirstDataRow">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">true</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.NoShowEmailFile.DataRowsToSkip">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.NoShowEmailFile.Format">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">Delimited</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.NoShowEmailFile.HeaderRowDelimiter">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property xml:space="preserve" SSIS:Name="Value">
+</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.NoShowEmailFile.HeaderRowsToSkip">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.NoShowEmailFile.LocaleID">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">1033</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.NoShowEmailFile.RowDelimiter">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.NoShowEmailFile.TextQualifier">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">&lt;none&gt;</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.NoShowEmailFile.Unicode">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">false</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.NoShowPhoneFile.AlwaysCheckForRowDelimiters">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">true</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.NoShowPhoneFile.CodePage">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">1252</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.NoShowPhoneFile.ColumnNamesInFirstDataRow">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">true</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.NoShowPhoneFile.DataRowsToSkip">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.NoShowPhoneFile.Format">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">Delimited</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.NoShowPhoneFile.HeaderRowDelimiter">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property xml:space="preserve" SSIS:Name="Value">
+</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.NoShowPhoneFile.HeaderRowsToSkip">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.NoShowPhoneFile.LocaleID">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">1033</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.NoShowPhoneFile.RowDelimiter">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.NoShowPhoneFile.TextQualifier">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">&lt;none&gt;</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.NoShowPhoneFile.Unicode">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">false</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.SQL05.HC_Marketing_ADO.ConnectionString">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">Data Source=SQL05;Initial Catalog=HC_Marketing;Integrated Security=True;Application Name=SSIS-FacebookAudienceDataExport-{D2D901FD-7B18-4FCD-B7B9-79973E61D4F6}SQL05.HC_Marketing1;</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.SQL05.HC_Marketing_ADO.InitialCatalog">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">HC_Marketing</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.SQL05.HC_Marketing_ADO.Password">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">1</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.SQL05.HC_Marketing_ADO.RetainSameConnection">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">false</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.SQL05.HC_Marketing_ADO.ServerName">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">SQL05</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.SQL05.HC_Marketing_ADO.UserName">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+        </SSIS:Parameters>
+      </SSIS:PackageMetaData>
+    </SSIS:PackageInfo>
+  </SSIS:DeploymentInfo>
+</SSIS:Project>

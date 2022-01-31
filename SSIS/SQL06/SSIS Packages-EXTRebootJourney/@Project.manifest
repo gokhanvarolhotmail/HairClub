@@ -1,0 +1,2892 @@
+<SSIS:Project SSIS:ProtectionLevel="ServerStorage" xmlns:SSIS="www.microsoft.com/SqlServer/SSIS">
+  <SSIS:Properties>
+    <SSIS:Property SSIS:Name="ID">{ff827a44-8d71-417f-9a48-2748c7654e20}</SSIS:Property>
+    <SSIS:Property SSIS:Name="Name">EXTRebootJourney</SSIS:Property>
+    <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+    <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+    <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
+    <SSIS:Property SSIS:Name="VersionComments">
+    </SSIS:Property>
+    <SSIS:Property SSIS:Name="CreationDate">2018-06-28T14:12:15.501934-04:00</SSIS:Property>
+    <SSIS:Property SSIS:Name="CreatorName">HCFM\dleiba</SSIS:Property>
+    <SSIS:Property SSIS:Name="CreatorComputerName">ITWS06</SSIS:Property>
+    <SSIS:Property SSIS:Name="Description">
+    </SSIS:Property>
+    <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
+  </SSIS:Properties>
+  <SSIS:Packages>
+    <SSIS:Package SSIS:Name="EXTRebootJourney.dtsx" SSIS:EntryPoint="1" />
+  </SSIS:Packages>
+  <SSIS:ConnectionManagers />
+  <SSIS:DeploymentInfo>
+    <SSIS:ProjectConnectionParameters />
+    <SSIS:PackageInfo>
+      <SSIS:PackageMetaData SSIS:Name="EXTRebootJourney.dtsx">
+        <SSIS:Properties>
+          <SSIS:Property SSIS:Name="ID">{44EC2062-2853-4575-9FE9-19473753BE4A}</SSIS:Property>
+          <SSIS:Property SSIS:Name="Name">EXTRebootJourney</SSIS:Property>
+          <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+          <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+          <SSIS:Property SSIS:Name="VersionBuild">33</SSIS:Property>
+          <SSIS:Property SSIS:Name="VersionComments">
+          </SSIS:Property>
+          <SSIS:Property SSIS:Name="VersionGUID">{C86468C9-5944-413B-87B2-D46CB3E4FA3D}</SSIS:Property>
+          <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
+          <SSIS:Property SSIS:Name="Description">
+          </SSIS:Property>
+          <SSIS:Property SSIS:Name="ProtectionLevel">5</SSIS:Property>
+        </SSIS:Properties>
+        <SSIS:Parameters>
+          <SSIS:Parameter SSIS:Name="CM.Journey01File.AlwaysCheckForRowDelimiters">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">true</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey01File.CodePage">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">1252</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey01File.ColumnNamesInFirstDataRow">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">true</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey01File.DataRowsToSkip">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey01File.Format">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">Delimited</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey01File.HeaderRowDelimiter">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property xml:space="preserve" SSIS:Name="Value">
+</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey01File.HeaderRowsToSkip">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey01File.LocaleID">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">1033</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey01File.RowDelimiter">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey01File.TextQualifier">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">&lt;none&gt;</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey01File.Unicode">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">false</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey02File.AlwaysCheckForRowDelimiters">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">true</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey02File.CodePage">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">1252</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey02File.ColumnNamesInFirstDataRow">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">true</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey02File.DataRowsToSkip">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey02File.Format">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">Delimited</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey02File.HeaderRowDelimiter">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property xml:space="preserve" SSIS:Name="Value">
+</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey02File.HeaderRowsToSkip">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey02File.LocaleID">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">1033</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey02File.RowDelimiter">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey02File.TextQualifier">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">&lt;none&gt;</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey02File.Unicode">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">false</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey03File.AlwaysCheckForRowDelimiters">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">true</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey03File.CodePage">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">1252</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey03File.ColumnNamesInFirstDataRow">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">true</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey03File.DataRowsToSkip">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey03File.Format">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">Delimited</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey03File.HeaderRowDelimiter">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property xml:space="preserve" SSIS:Name="Value">
+</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey03File.HeaderRowsToSkip">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey03File.LocaleID">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">1033</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey03File.RowDelimiter">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey03File.TextQualifier">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">&lt;none&gt;</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey03File.Unicode">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">false</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey04File.AlwaysCheckForRowDelimiters">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">true</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey04File.CodePage">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">1252</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey04File.ColumnNamesInFirstDataRow">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">true</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey04File.DataRowsToSkip">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey04File.Format">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">Delimited</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey04File.HeaderRowDelimiter">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property xml:space="preserve" SSIS:Name="Value">
+</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey04File.HeaderRowsToSkip">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey04File.LocaleID">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">1033</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey04File.RowDelimiter">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey04File.TextQualifier">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">&lt;none&gt;</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey04File.Unicode">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">false</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey05File.AlwaysCheckForRowDelimiters">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">true</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey05File.CodePage">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">1252</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey05File.ColumnNamesInFirstDataRow">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">true</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey05File.DataRowsToSkip">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey05File.Format">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">Delimited</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey05File.HeaderRowDelimiter">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property xml:space="preserve" SSIS:Name="Value">
+</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey05File.HeaderRowsToSkip">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey05File.LocaleID">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">1033</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey05File.RowDelimiter">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey05File.TextQualifier">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">&lt;none&gt;</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey05File.Unicode">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">false</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey06File.AlwaysCheckForRowDelimiters">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">true</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey06File.CodePage">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">1252</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey06File.ColumnNamesInFirstDataRow">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">true</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey06File.DataRowsToSkip">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey06File.Format">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">Delimited</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey06File.HeaderRowDelimiter">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property xml:space="preserve" SSIS:Name="Value">
+</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey06File.HeaderRowsToSkip">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey06File.LocaleID">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">1033</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey06File.RowDelimiter">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey06File.TextQualifier">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">&lt;none&gt;</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey06File.Unicode">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">false</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey07File.AlwaysCheckForRowDelimiters">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">true</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey07File.CodePage">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">1252</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey07File.ColumnNamesInFirstDataRow">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">true</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey07File.DataRowsToSkip">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey07File.Format">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">Delimited</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey07File.HeaderRowDelimiter">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property xml:space="preserve" SSIS:Name="Value">
+</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey07File.HeaderRowsToSkip">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey07File.LocaleID">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">1033</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey07File.RowDelimiter">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey07File.TextQualifier">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">&lt;none&gt;</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey07File.Unicode">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">false</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey08File.AlwaysCheckForRowDelimiters">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">true</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey08File.CodePage">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">1252</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey08File.ColumnNamesInFirstDataRow">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">true</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey08File.DataRowsToSkip">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey08File.Format">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">Delimited</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey08File.HeaderRowDelimiter">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property xml:space="preserve" SSIS:Name="Value">
+</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey08File.HeaderRowsToSkip">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey08File.LocaleID">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">1033</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey08File.RowDelimiter">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey08File.TextQualifier">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">&lt;none&gt;</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey08File.Unicode">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">false</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey09File.AlwaysCheckForRowDelimiters">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">true</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey09File.CodePage">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">1252</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey09File.ColumnNamesInFirstDataRow">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">true</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey09File.DataRowsToSkip">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey09File.Format">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">Delimited</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey09File.HeaderRowDelimiter">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property xml:space="preserve" SSIS:Name="Value">
+</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey09File.HeaderRowsToSkip">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey09File.LocaleID">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">1033</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey09File.RowDelimiter">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey09File.TextQualifier">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">&lt;none&gt;</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey09File.Unicode">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">false</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey10File.AlwaysCheckForRowDelimiters">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">true</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey10File.CodePage">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">1252</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey10File.ColumnNamesInFirstDataRow">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">true</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey10File.DataRowsToSkip">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey10File.Format">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">Delimited</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey10File.HeaderRowDelimiter">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property xml:space="preserve" SSIS:Name="Value">
+</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey10File.HeaderRowsToSkip">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey10File.LocaleID">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">1033</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey10File.RowDelimiter">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey10File.TextQualifier">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">&lt;none&gt;</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey10File.Unicode">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">false</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey11File.AlwaysCheckForRowDelimiters">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">true</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey11File.CodePage">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">1252</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey11File.ColumnNamesInFirstDataRow">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">true</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey11File.DataRowsToSkip">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey11File.Format">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">Delimited</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey11File.HeaderRowDelimiter">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property xml:space="preserve" SSIS:Name="Value">
+</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey11File.HeaderRowsToSkip">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey11File.LocaleID">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">1033</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey11File.RowDelimiter">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey11File.TextQualifier">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">&lt;none&gt;</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey11File.Unicode">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">false</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey12File.AlwaysCheckForRowDelimiters">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">true</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey12File.CodePage">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">1252</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey12File.ColumnNamesInFirstDataRow">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">true</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey12File.DataRowsToSkip">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey12File.Format">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">Delimited</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey12File.HeaderRowDelimiter">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property xml:space="preserve" SSIS:Name="Value">
+</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey12File.HeaderRowsToSkip">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey12File.LocaleID">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">1033</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey12File.RowDelimiter">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey12File.TextQualifier">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">&lt;none&gt;</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey12File.Unicode">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">false</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey13File.AlwaysCheckForRowDelimiters">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">true</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey13File.CodePage">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">1252</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey13File.ColumnNamesInFirstDataRow">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">true</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey13File.DataRowsToSkip">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey13File.Format">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">Delimited</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey13File.HeaderRowDelimiter">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property xml:space="preserve" SSIS:Name="Value">
+</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey13File.HeaderRowsToSkip">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey13File.LocaleID">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">1033</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey13File.RowDelimiter">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey13File.TextQualifier">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">&lt;none&gt;</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey13File.Unicode">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">false</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey14File.AlwaysCheckForRowDelimiters">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">true</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey14File.CodePage">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">1252</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey14File.ColumnNamesInFirstDataRow">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">true</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey14File.DataRowsToSkip">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey14File.Format">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">Delimited</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey14File.HeaderRowDelimiter">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property xml:space="preserve" SSIS:Name="Value">
+</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey14File.HeaderRowsToSkip">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey14File.LocaleID">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">1033</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey14File.RowDelimiter">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey14File.TextQualifier">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">&lt;none&gt;</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey14File.Unicode">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">false</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey15File.AlwaysCheckForRowDelimiters">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">true</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey15File.CodePage">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">1252</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey15File.ColumnNamesInFirstDataRow">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">true</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey15File.DataRowsToSkip">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey15File.Format">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">Delimited</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey15File.HeaderRowDelimiter">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property xml:space="preserve" SSIS:Name="Value">
+</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey15File.HeaderRowsToSkip">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey15File.LocaleID">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">1033</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey15File.RowDelimiter">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey15File.TextQualifier">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">&lt;none&gt;</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Journey15File.Unicode">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">false</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.NobleFilePath.AlwaysCheckForRowDelimiters">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">true</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.NobleFilePath.CodePage">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">1252</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.NobleFilePath.ColumnNamesInFirstDataRow">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">true</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.NobleFilePath.DataRowsToSkip">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.NobleFilePath.Format">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">Delimited</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.NobleFilePath.HeaderRowDelimiter">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property xml:space="preserve" SSIS:Name="Value">
+</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.NobleFilePath.HeaderRowsToSkip">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.NobleFilePath.LocaleID">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">1033</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.NobleFilePath.RowDelimiter">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.NobleFilePath.TextQualifier">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">&lt;none&gt;</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.NobleFilePath.Unicode">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">false</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.SQL05.HC_Marketing_ADO.ConnectionString">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">Data Source=SQL05;Initial Catalog=HC_Marketing;Integrated Security=True;Application Name=SSIS-Package-{DF08CF41-7AE9-4502-921A-A8C8026818F1}SQL05.HC_Marketing 1;</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.SQL05.HC_Marketing_ADO.InitialCatalog">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">HC_Marketing</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.SQL05.HC_Marketing_ADO.Password">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">1</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.SQL05.HC_Marketing_ADO.RetainSameConnection">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">false</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.SQL05.HC_Marketing_ADO.ServerName">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">SQL05</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.SQL05.HC_Marketing_ADO.UserName">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.SQL05.HC_Marketing_OLE.ConnectionString">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">Data Source=SQL05;Initial Catalog=HC_Marketing;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.SQL05.HC_Marketing_OLE.InitialCatalog">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">HC_Marketing</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.SQL05.HC_Marketing_OLE.Password">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">1</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.SQL05.HC_Marketing_OLE.RetainSameConnection">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">false</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.SQL05.HC_Marketing_OLE.ServerName">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">SQL05</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.SQL05.HC_Marketing_OLE.UserName">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+        </SSIS:Parameters>
+      </SSIS:PackageMetaData>
+    </SSIS:PackageInfo>
+  </SSIS:DeploymentInfo>
+</SSIS:Project>

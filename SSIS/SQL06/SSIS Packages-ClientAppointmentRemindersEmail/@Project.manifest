@@ -1,0 +1,302 @@
+<SSIS:Project SSIS:ProtectionLevel="ServerStorage" xmlns:SSIS="www.microsoft.com/SqlServer/SSIS">
+  <SSIS:Properties>
+    <SSIS:Property SSIS:Name="ID">{f7b7b02b-5a86-4dbe-b5b2-68e720d4be2e}</SSIS:Property>
+    <SSIS:Property SSIS:Name="Name">ClientAppointmentRemindersEmail</SSIS:Property>
+    <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+    <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+    <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
+    <SSIS:Property SSIS:Name="VersionComments">
+    </SSIS:Property>
+    <SSIS:Property SSIS:Name="CreationDate">2017-12-07T09:26:55.8875845-05:00</SSIS:Property>
+    <SSIS:Property SSIS:Name="CreatorName">HCFM\dleiba</SSIS:Property>
+    <SSIS:Property SSIS:Name="CreatorComputerName">ITWS06</SSIS:Property>
+    <SSIS:Property SSIS:Name="Description">
+    </SSIS:Property>
+    <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
+  </SSIS:Properties>
+  <SSIS:Packages>
+    <SSIS:Package SSIS:Name="ClientAppointmentRemindersEmail.dtsx" SSIS:EntryPoint="1" />
+  </SSIS:Packages>
+  <SSIS:ConnectionManagers>
+    <SSIS:ConnectionManager SSIS:Name="SQL05.HC_Marketing.conmgr" />
+  </SSIS:ConnectionManagers>
+  <SSIS:DeploymentInfo>
+    <SSIS:ProjectConnectionParameters>
+      <SSIS:Parameter SSIS:Name="CM.SQL05.HC_Marketing.ConnectionString">
+        <SSIS:Properties>
+          <SSIS:Property SSIS:Name="ID">
+          </SSIS:Property>
+          <SSIS:Property SSIS:Name="CreationName">
+          </SSIS:Property>
+          <SSIS:Property SSIS:Name="Description">
+          </SSIS:Property>
+          <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+          <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+          <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+          <SSIS:Property SSIS:Name="Value">Data Source=SQL05;Initial Catalog=HC_Marketing;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;</SSIS:Property>
+          <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+        </SSIS:Properties>
+      </SSIS:Parameter>
+      <SSIS:Parameter SSIS:Name="CM.SQL05.HC_Marketing.InitialCatalog">
+        <SSIS:Properties>
+          <SSIS:Property SSIS:Name="ID">
+          </SSIS:Property>
+          <SSIS:Property SSIS:Name="CreationName">
+          </SSIS:Property>
+          <SSIS:Property SSIS:Name="Description">
+          </SSIS:Property>
+          <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+          <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+          <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+          <SSIS:Property SSIS:Name="Value">HC_Marketing</SSIS:Property>
+          <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+        </SSIS:Properties>
+      </SSIS:Parameter>
+      <SSIS:Parameter SSIS:Name="CM.SQL05.HC_Marketing.Password">
+        <SSIS:Properties>
+          <SSIS:Property SSIS:Name="ID">
+          </SSIS:Property>
+          <SSIS:Property SSIS:Name="CreationName">
+          </SSIS:Property>
+          <SSIS:Property SSIS:Name="Description">
+          </SSIS:Property>
+          <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+          <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+          <SSIS:Property SSIS:Name="Sensitive">1</SSIS:Property>
+          <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+        </SSIS:Properties>
+      </SSIS:Parameter>
+      <SSIS:Parameter SSIS:Name="CM.SQL05.HC_Marketing.RetainSameConnection">
+        <SSIS:Properties>
+          <SSIS:Property SSIS:Name="ID">
+          </SSIS:Property>
+          <SSIS:Property SSIS:Name="CreationName">
+          </SSIS:Property>
+          <SSIS:Property SSIS:Name="Description">
+          </SSIS:Property>
+          <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+          <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+          <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+          <SSIS:Property SSIS:Name="Value">false</SSIS:Property>
+          <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
+        </SSIS:Properties>
+      </SSIS:Parameter>
+      <SSIS:Parameter SSIS:Name="CM.SQL05.HC_Marketing.ServerName">
+        <SSIS:Properties>
+          <SSIS:Property SSIS:Name="ID">
+          </SSIS:Property>
+          <SSIS:Property SSIS:Name="CreationName">
+          </SSIS:Property>
+          <SSIS:Property SSIS:Name="Description">
+          </SSIS:Property>
+          <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+          <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+          <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+          <SSIS:Property SSIS:Name="Value">SQL05</SSIS:Property>
+          <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+        </SSIS:Properties>
+      </SSIS:Parameter>
+      <SSIS:Parameter SSIS:Name="CM.SQL05.HC_Marketing.UserName">
+        <SSIS:Properties>
+          <SSIS:Property SSIS:Name="ID">
+          </SSIS:Property>
+          <SSIS:Property SSIS:Name="CreationName">
+          </SSIS:Property>
+          <SSIS:Property SSIS:Name="Description">
+          </SSIS:Property>
+          <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+          <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+          <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+          <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+        </SSIS:Properties>
+      </SSIS:Parameter>
+    </SSIS:ProjectConnectionParameters>
+    <SSIS:PackageInfo>
+      <SSIS:PackageMetaData SSIS:Name="ClientAppointmentRemindersEmail.dtsx">
+        <SSIS:Properties>
+          <SSIS:Property SSIS:Name="ID">{95A449E0-FE22-43FD-BBA9-006549C57110}</SSIS:Property>
+          <SSIS:Property SSIS:Name="Name">ClientAppointmentRemindersEmail</SSIS:Property>
+          <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+          <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+          <SSIS:Property SSIS:Name="VersionBuild">13</SSIS:Property>
+          <SSIS:Property SSIS:Name="VersionComments">
+          </SSIS:Property>
+          <SSIS:Property SSIS:Name="VersionGUID">{EB18C31B-DD50-4F66-8D05-471C022CCA94}</SSIS:Property>
+          <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
+          <SSIS:Property SSIS:Name="Description">
+          </SSIS:Property>
+          <SSIS:Property SSIS:Name="ProtectionLevel">5</SSIS:Property>
+        </SSIS:Properties>
+        <SSIS:Parameters>
+          <SSIS:Parameter SSIS:Name="CM.EmailMessagesFile.AlwaysCheckForRowDelimiters">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">true</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.EmailMessagesFile.CodePage">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">1252</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.EmailMessagesFile.ColumnNamesInFirstDataRow">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">true</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.EmailMessagesFile.DataRowsToSkip">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.EmailMessagesFile.Format">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">Delimited</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.EmailMessagesFile.HeaderRowDelimiter">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property xml:space="preserve" SSIS:Name="Value">
+</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.EmailMessagesFile.HeaderRowsToSkip">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.EmailMessagesFile.LocaleID">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">1033</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.EmailMessagesFile.RowDelimiter">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.EmailMessagesFile.TextQualifier">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">&lt;none&gt;</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.EmailMessagesFile.Unicode">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">false</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+        </SSIS:Parameters>
+      </SSIS:PackageMetaData>
+    </SSIS:PackageInfo>
+  </SSIS:DeploymentInfo>
+</SSIS:Project>
