@@ -113,6 +113,18 @@ IF OBJECT_ID('[tempdb]..[#Schedules]') IS NULL
     ORDER BY [rs].[ScheduleID] ;
 GO
 SELECT
+    [s].[Path]
+  , [s].[SubScriptionDesc]
+  , [s].[AgentJobDesc]
+  , [s].[LastStatus]
+  , [s].[LastRunTime]
+  , [s].[JobLastRunDateTime]
+  , [s].[DeliveryExtension]
+  , [s].[Parameters]
+  , [s].[ItemID]
+FROM [#Schedules] AS [s] ;
+GO
+SELECT
     [r].[Name] AS [ReportName]
   , [r].[Path]
   , [r].[Rank]
@@ -130,3 +142,19 @@ WHERE [r].[Type] = 2
 ORDER BY ISNULL([s].[JobLastRunDateTime], [s].[LastRunTime]) DESC
        , [r].[Name]
        , [r].[Path] ;
+GO
+
+SELECT
+    [cat].[Name]
+  , [cat].[Path]
+  , [sub].[Description]
+  , [sch].[ScheduleID] AS [AgentJobID]
+  , [sch].[LastRunTime]
+  , CONCAT('EXEC msdb.dbo.sp_start_job N''', CAST([sch].[ScheduleID] AS NVARCHAR(36)), ''';') AS [StartJob]
+  , CONCAT('EXEC msdb.dbo.sp_update_job @job_name = N''', CAST([sch].[ScheduleID] AS NVARCHAR(36)), ''', @enabled = 1 ;') AS [EnableJob]
+  , CONCAT('EXEC msdb.dbo.sp_update_job @job_name = N''', CAST([sch].[ScheduleID] AS NVARCHAR(36)), ''', @enabled = 0 ;') AS [DisableJob]
+FROM [dbo].[Schedule] AS [sch]
+INNER JOIN [dbo].[ReportSchedule] AS [rsch] ON [sch].[ScheduleID] = [rsch].[ScheduleID]
+INNER JOIN [dbo].[Catalog] AS [cat] ON [rsch].[ReportID] = [cat].[ItemID]
+INNER JOIN [dbo].[Subscriptions] AS [sub] ON [rsch].[SubscriptionID] = [sub].[SubscriptionID] ;
+GO
