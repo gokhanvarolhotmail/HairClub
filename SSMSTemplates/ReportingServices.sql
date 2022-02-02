@@ -5,7 +5,7 @@ DROP TABLE IF EXISTS [#Catalog] ;
 
 SELECT
     *
-  , CAST(CHECKSUM([ct].[Content]) AS BIGINT) * LEN([ct].[Content]) AS [CS]
+  , CAST(CHECKSUM([ct].[Content]) AS BIGINT) * CAST(LEN([ct].[Content]) AS BIGINT) AS [CS]
 INTO [#Catalog]
 FROM [dbo].[Catalog] AS [ct] ;
 
@@ -111,6 +111,7 @@ IF OBJECT_ID('[tempdb]..[#Schedules]') IS NULL
                  WHERE [jh].[job_id] = [sj].[job_id]
                  ORDER BY [instance_id] DESC ) AS [jh]
     ORDER BY [rs].[ScheduleID] ;
+GO
 SELECT
     [r].[Name] AS [ReportName]
   , [r].[Path]
@@ -127,4 +128,5 @@ FROM [#reports] AS [r]
 OUTER APPLY( SELECT TOP 1 * FROM [#Schedules] AS [s] WHERE [r].[Path] = [s].[Path] ORDER BY ISNULL([s].[JobLastRunDateTime], [s].[LastRunTime]) DESC ) AS [s]
 WHERE [r].[Type] = 2
 ORDER BY ISNULL([s].[JobLastRunDateTime], [s].[LastRunTime]) DESC
-       , [r].[Name] ;
+       , [r].[Name]
+       , [r].[Path] ;
