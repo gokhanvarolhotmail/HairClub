@@ -28,7 +28,7 @@ IF OBJECT_ID('[tempdb]..[#reports]') IS NULL
       , [ct].[Hidden] --Is the object hidden on the screen or not
       , [ct].[ItemID] -- Unique Identifier
       , [ct].[ParentID] --The ItemID of the folder in which it resides
-      --, CASE WHEN [ct].[Type] IN (2, 5) THEN CAST(CAST([ct].[Content] AS VARBINARY(MAX)) AS XML)END AS [Content]
+    --, CASE WHEN [ct].[Type] IN (2, 5) THEN CAST(CAST([ct].[Content] AS VARBINARY(MAX)) AS XML)END AS [Content]
     INTO [#reports]
     FROM [dbo].[Catalog] AS [ct]
     INNER JOIN [dbo].[Users] AS [c] ON [ct].[CreatedByID] = [c].[UserID]
@@ -70,15 +70,42 @@ SELECT TOP 1000
 FROM [dbo].[ExecutionLog3]
 ORDER BY [TimeStart] DESC ;
 
+-- DROP TABLE [#Schedules]
+IF OBJECT_ID('[tempdb]..[#Schedules]') IS NULL
+    SELECT
+        [ctg].[Path]
+      , [s].[Description] AS [SubScriptionDesc]
+      , [sj].[description] AS [AgentJobDesc]
+      , [s].[LastStatus]
+      , [s].[LastRunTime]
+      , [jh].[RunDateTime] AS [JobLastRunDateTime]
+      , [s].[DeliveryExtension]
+      , [s].[Parameters]
+      , [ctg].[ItemID]
+    INTO [#Schedules]
+    FROM [dbo].[Catalog] AS [ctg]
+    INNER JOIN [dbo].[Subscriptions] AS [s] ON [s].[Report_OID] = [ctg].[ItemID]
+    INNER JOIN [dbo].[ReportSchedule] AS [rs] ON [rs].[SubscriptionID] = [s].[SubscriptionID]
+    INNER JOIN [msdb].[dbo].[sysjobs] AS [sj] ON CAST([rs].[ScheduleID] AS sysname) = [sj].[name]
+    OUTER APPLY( SELECT TOP 1
+                        *
+                      , [msdb].[dbo].[agent_datetime]([jh].[run_date], [jh].[run_time]) AS [RunDateTime]
+                 FROM [msdb].[dbo].[sysjobhistory] AS [jh]
+                 WHERE [jh].[job_id] = [sj].[job_id]
+                 ORDER BY [instance_id] DESC ) AS [jh]
+    ORDER BY [rs].[ScheduleID] ;
+
 SELECT
-    [ctg].[Path]
-  , [s].[Description] AS [SubScriptionDesc]
-  , [sj].[description] AS [AgentJobDesc]
+    [r].[Name]
+  , [r].[Path]
+  , [r].[CreationDate]
+  , [r].[ModifiedDate]
+  , ISNULL([s].[JobLastRunDateTime], [s].[LastRunTime]) AS [LastRunTime]
+  , [r].[ModifiedBy]
+  , [s].[SubScriptionDesc]
   , [s].[LastStatus]
-  , [s].[DeliveryExtension]
-  , [s].[Parameters]
-FROM [dbo].[Catalog] AS [ctg]
-INNER JOIN [dbo].[Subscriptions] AS [s] ON [s].[Report_OID] = [ctg].[ItemID]
-INNER JOIN [dbo].[ReportSchedule] AS [rs] ON [rs].[SubscriptionID] = [s].[SubscriptionID]
-INNER JOIN [msdb].[dbo].[sysjobs] AS [sj] ON CAST([rs].[ScheduleID] AS sysname) = [sj].[name]
-ORDER BY [rs].[ScheduleID] ;
+FROM [#reports] AS [r]
+OUTER APPLY( SELECT TOP 1 * FROM [#Schedules] AS [s] WHERE [r].[Path] = [s].[Path] ORDER BY ISNULL([s].[JobLastRunDateTime], [s].[LastRunTime]) DESC ) AS [s]
+WHERE [r].[Type] = 2
+ORDER BY ISNULL([s].[JobLastRunDateTime], [s].[LastRunTime]) DESC
+       , [r].[Name] ;
