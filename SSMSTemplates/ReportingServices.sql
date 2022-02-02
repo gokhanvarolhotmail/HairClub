@@ -1,10 +1,22 @@
 /* https://www.mssqltips.com/sqlservertip/6001/ssrs-reportserver-database-overview-and-queries/ */
 USE [ReportServer] ;
 GO
--- DROP TABLE [#reports]
+DROP TABLE IF EXISTS [#Catalog] ;
+
+SELECT
+    *
+  , CAST(CHECKSUM([ct].[Content]) AS BIGINT) * LEN([ct].[Content]) AS [CS]
+INTO [#Catalog]
+FROM [dbo].[Catalog] AS [ct] ;
+
+DROP TABLE IF EXISTS [#reports] ;
+
 IF OBJECT_ID('[tempdb]..[#reports]') IS NULL
     SELECT
         [ct].[Name] --Just the objectd name  
+      , RANK() OVER ( PARTITION BY [ct].[Name] ORDER BY [ct].[CS] ) AS [Rank]
+      , [x].[DistinctCnt]
+      , [x].[TotalCnt]
       , [ct].[Path] --Path including object name
       , [ct].[Type]
       , CASE [ct].[Type] --Type, an int which can be converted using this case statement.
@@ -30,10 +42,15 @@ IF OBJECT_ID('[tempdb]..[#reports]') IS NULL
       , [ct].[ParentID] --The ItemID of the folder in which it resides
     --, CASE WHEN [ct].[Type] IN (2, 5) THEN CAST(CAST([ct].[Content] AS VARBINARY(MAX)) AS XML)END AS [Content]
     INTO [#reports]
-    FROM [dbo].[Catalog] AS [ct]
+    FROM [#Catalog] AS [ct]
     INNER JOIN [dbo].[Users] AS [c] ON [ct].[CreatedByID] = [c].[UserID]
     INNER JOIN [dbo].[Users] AS [m] ON [ct].[ModifiedByID] = [m].[UserID]
-    ORDER BY [ct].[ModifiedDate] DESC ;
+    LEFT JOIN( SELECT
+                   [g].[Name]
+                 , COUNT(1) AS [DistinctCnt]
+                 , SUM([g].[Cnt]) AS [TotalCnt]
+               FROM( SELECT [Name], [CS], COUNT(1) AS [Cnt] FROM [#Catalog] GROUP BY [Name], [CS] ) AS [g]
+               GROUP BY [g].[Name] ) AS [x] ON [x].[Name] = [ct].[Name] ;
 
 SELECT TOP 100
        *
@@ -94,10 +111,12 @@ IF OBJECT_ID('[tempdb]..[#Schedules]') IS NULL
                  WHERE [jh].[job_id] = [sj].[job_id]
                  ORDER BY [instance_id] DESC ) AS [jh]
     ORDER BY [rs].[ScheduleID] ;
-
 SELECT
-    [r].[Name]
+    [r].[Name] AS [ReportName]
   , [r].[Path]
+  , [r].[Rank]
+  , [r].[DistinctCnt]
+  , [r].[TotalCnt]
   , [r].[CreationDate]
   , [r].[ModifiedDate]
   , ISNULL([s].[JobLastRunDateTime], [s].[LastRunTime]) AS [LastRunTime]
