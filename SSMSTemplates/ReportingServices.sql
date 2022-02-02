@@ -90,7 +90,8 @@ ORDER BY [TimeStart] DESC ;
 -- DROP TABLE [#Schedules]
 IF OBJECT_ID('[tempdb]..[#Schedules]') IS NULL
     SELECT
-        [ctg].[Path]
+        [ctg].[Name]
+      , [ctg].[Path]
       , [s].[Description] AS [SubScriptionDesc]
       , [sj].[description] AS [AgentJobDesc]
       , [s].[LastStatus]
@@ -116,7 +117,8 @@ IF OBJECT_ID('[tempdb]..[#Schedules]') IS NULL
     ORDER BY [rs].[ScheduleID] ;
 GO
 SELECT
-    [s].[Path]
+    [s].[Name]
+  , [s].[Path]
   , [s].[SubScriptionDesc]
   , [s].[AgentJobDesc]
   , [s].[LastStatus]
