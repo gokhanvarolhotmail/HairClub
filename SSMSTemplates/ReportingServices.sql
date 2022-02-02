@@ -52,11 +52,18 @@ IF OBJECT_ID('[tempdb]..[#reports]') IS NULL
                FROM( SELECT [Name], [CS], COUNT(1) AS [Cnt] FROM [#Catalog] GROUP BY [Name], [CS] ) AS [g]
                GROUP BY [g].[Name] ) AS [x] ON [x].[Name] = [ct].[Name] ;
 
-SELECT TOP 100
+SELECT TOP 1000
        *
 FROM [#reports]
-WHERE [Type] = 2
+WHERE [Type] = 2 AND [Name] LIKE '%cancel%'
+--AND path LIKE '/Conect/Reports/%'
 ORDER BY [ModifiedDate] DESC ;
+
+SELECT TOP 1000
+       *
+FROM [#reports]
+WHERE [Type] = 2 AND [Name] LIKE '%flash%' AND [Path] LIKE '/Conect/Reports/%'
+ORDER BY [Name] ;
 
 SELECT *
 FROM [#reports]
@@ -85,7 +92,13 @@ SELECT TOP 1000
      , [RowCount] --Row count returned by a query
      , [Parameters]
 FROM [dbo].[ExecutionLog3]
+WHERE 1 = 1
+  --AND status <> 'rsSuccess'
+  AND [UserName] = 'HCFM\Jbartlett' AND [TimeStart] >= '2022-01-01'
 ORDER BY [TimeStart] DESC ;
+
+SELECT *
+FROM( VALUES( 'Marketing Performance (Daily)', GETDATE())) AS [d]( [ReportName], [Dt] ) ;
 
 -- DROP TABLE [#Schedules]
 IF OBJECT_ID('[tempdb]..[#Schedules]') IS NULL
@@ -165,4 +178,45 @@ FROM [dbo].[Schedule] AS [sch]
 INNER JOIN [dbo].[ReportSchedule] AS [rsch] ON [sch].[ScheduleID] = [rsch].[ScheduleID]
 INNER JOIN [dbo].[Catalog] AS [cat] ON [rsch].[ReportID] = [cat].[ItemID]
 INNER JOIN [dbo].[Subscriptions] AS [sub] ON [rsch].[SubscriptionID] = [sub].[SubscriptionID] ;
+GO
+
+DECLARE @date DATETIME = DATEADD(MONTH, -1, GETDATE()) ;
+
+SELECT
+    [k].[ItemPath]
+  , [k].[UserName]
+  , [k].[RequestType]
+  , [k].[Format]
+  , [k].[TimeStart]
+  , [k].[TimeEnd]
+  , [k].[TimeDataRetrieval]
+  , [k].[TimeProcessing]
+  , [k].[TimeRendering]
+  , [k].[Source]
+  , [k].[Status] AS [LastStatus]
+  , [k].[RowCount]
+  , [k].[ExecutionCnt]
+  , [k].[SuccessCnt]
+FROM( SELECT
+          [ItemPath] --Path of the report
+        , [UserName] --Username that executed the report
+        , [RequestType] --Usually Interactive (user on the scree) or Subscription
+        , [Format] --RPL is the screen, could also indicate Excel, PDF, etc
+        , [TimeStart] --Start time of report request
+        , [TimeEnd] --Completion time of report request
+        , [TimeDataRetrieval] --Time spent running queries to obtain results
+        , [TimeProcessing] --Time spent preparing data in SSRS. Usually sorting and grouping.
+        , [TimeRendering] --Time rendering to screen
+        , [Source] --Live = query, Session = refreshed without rerunning the query, Cache = report snapshot
+        , [Status] --Self explanatory
+        , [RowCount] --Row count returned by a query
+        , ROW_NUMBER() OVER ( PARTITION BY [ItemPath] ORDER BY [TimeStart] DESC ) AS [Rn]
+        , COUNT(1) OVER ( PARTITION BY [ItemPath] ) AS [ExecutionCnt]
+        , SUM(CASE WHEN [Status] = 'rsSuccess' THEN 1 ELSE 0 END) OVER ( PARTITION BY [ItemPath] ) AS [SuccessCnt]
+      FROM [dbo].[ExecutionLog3]
+      WHERE [TimeStart] >= @date ) AS [k]
+WHERE [k].[Rn] = 1
+ORDER BY CASE WHEN [k].[Status] = 'rsSuccess' THEN 10 WHEN [k].[Status] = 'rsProcessingAborted' THEN 5 ELSE 1 END
+       , [k].[TimeStart]
+OPTION( RECOMPILE ) ;
 GO
