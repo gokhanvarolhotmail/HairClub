@@ -99,6 +99,9 @@ IF OBJECT_ID('[tempdb]..[#Schedules]') IS NULL
       , [s].[DeliveryExtension]
       , [s].[Parameters]
       , [ctg].[ItemID]
+      , CONCAT('EXEC msdb.dbo.sp_start_job N''', CAST([rs].[ScheduleID] AS NVARCHAR(36)), ''';') AS [StartJob]
+      , CONCAT('EXEC msdb.dbo.sp_update_job @job_name = N''', CAST([rs].[ScheduleID] AS NVARCHAR(36)), ''', @enabled = 1 ;') AS [EnableJob]
+      , CONCAT('EXEC msdb.dbo.sp_update_job @job_name = N''', CAST([rs].[ScheduleID] AS NVARCHAR(36)), ''', @enabled = 0 ;') AS [DisableJob]
     INTO [#Schedules]
     FROM [dbo].[Catalog] AS [ctg]
     INNER JOIN [dbo].[Subscriptions] AS [s] ON [s].[Report_OID] = [ctg].[ItemID]
@@ -122,6 +125,9 @@ SELECT
   , [s].[DeliveryExtension]
   , [s].[Parameters]
   , [s].[ItemID]
+  , [s].[StartJob]
+  , [s].[EnableJob]
+  , [s].[DisableJob]
 FROM [#Schedules] AS [s] ;
 GO
 SELECT
