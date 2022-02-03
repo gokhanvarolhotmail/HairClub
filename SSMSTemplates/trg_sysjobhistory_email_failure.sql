@@ -109,5 +109,3 @@ IF @@ROWCOUNT = 1
         EXEC [dbo].[sp_send_dbmail] @recipients = @email_address, @subject = @subject, @body = @body ;
     END ;
 GO
-
-
