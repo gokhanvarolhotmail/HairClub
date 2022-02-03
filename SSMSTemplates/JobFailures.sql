@@ -24,9 +24,9 @@ FROM( SELECT
               DATETIME2(0)
             , CONVERT(NVARCHAR(4), [j2].[run_date] / 10000) + N'-' + CONVERT(NVARCHAR(2), ( [j2].[run_date] % 10000 ) / 100) + N'-' + CONVERT(NVARCHAR(2), [j2].[run_date] % 100) + N' ' + CONVERT(NVARCHAR(2), [j2].[run_time] / 10000) + N':' + CONVERT(NVARCHAR(2), ( [j2].[run_time] % 10000 ) / 100)
               + N':' + CONVERT(NVARCHAR(2), [j2].[run_time] % 100), 120) AS [RunDateTime]
-      FROM [msdb].[dbo].[sysjobhistory] AS [j2] ) AS [j2]
-INNER JOIN [msdb].[dbo].[sysjobs] AS [j] ON [j].[job_id] = [j2].[job_id]
-INNER JOIN [msdb].[dbo].[sysjobsteps] AS [js] ON [js].[job_id] = [j2].[job_id] AND [js].[step_id] = [j2].[step_id]
+      FROM [msdb].[dbo].[sysjobhistory] AS [j2] WITH( NOLOCK )) AS [j2]
+INNER JOIN [msdb].[dbo].[sysjobs] AS [j] WITH( NOLOCK )ON [j].[job_id] = [j2].[job_id]
+INNER JOIN [msdb].[dbo].[sysjobsteps] AS [js] WITH( NOLOCK )ON [js].[job_id] = [j2].[job_id] AND [js].[step_id] = [j2].[step_id]
 WHERE [j2].[run_date] >= CAST(CONVERT(VARCHAR, DATEADD(d, -( DAY(DATEADD(MONTH, -6, GETDATE()) - 1)), DATEADD(MONTH, -6, GETDATE())), 112) AS INT)
 ORDER BY [j2].[instance_id] DESC ;
 GO
