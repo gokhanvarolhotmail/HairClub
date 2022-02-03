@@ -8,7 +8,9 @@ AS
 SELECT TOP( 9999999999 )
        @@SERVERNAME AS [Server]
      , [j2].[instance_id] AS [InstanceId]
-     , [j2].[RunDateTime]
+     , CAST([j2].[RunDateTime] AS DATETIME2(0)) AS [RunDateTime]
+     , CAST(DATEADD(d, -( DAY([j2].[RunDateTime] - 1)), [j2].[RunDateTime]) AS DATE) AS [RunMonth]
+     --, DATEADD(d, -( DAY([RunDateTime] - 1)), [RunDateTime])  AS [RunDateTimeMonth]
      , [j2].[run_duration] AS [RunDurationSec]
      , [j].[name] AS [JobName]
      , [j2].[step_id] AS [StepId]
@@ -21,7 +23,7 @@ SELECT TOP( 9999999999 )
 FROM( SELECT
           *
         , CONVERT(
-              DATETIME2(0)
+              DATETIME
             , CONVERT(NVARCHAR(4), [j2].[run_date] / 10000) + N'-' + CONVERT(NVARCHAR(2), ( [j2].[run_date] % 10000 ) / 100) + N'-' + CONVERT(NVARCHAR(2), [j2].[run_date] % 100) + N' ' + CONVERT(NVARCHAR(2), [j2].[run_time] / 10000) + N':' + CONVERT(NVARCHAR(2), ( [j2].[run_time] % 10000 ) / 100)
               + N':' + CONVERT(NVARCHAR(2), [j2].[run_time] % 100), 120) AS [RunDateTime]
       FROM [msdb].[dbo].[sysjobhistory] AS [j2] WITH( NOLOCK )) AS [j2]
