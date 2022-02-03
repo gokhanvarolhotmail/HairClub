@@ -9,7 +9,7 @@ SELECT TOP( 9999999999 )
        @@SERVERNAME AS [Server]
      , [j2].[instance_id] AS [InstanceId]
      , CAST([j2].[RunDateTime] AS DATETIME2(0)) AS [RunDateTime]
-     , CAST(DATEADD(d, -( DAY([j2].[RunDateTime] - 1)), [j2].[RunDateTime]) AS DATE) AS [RunMonth]
+     , CAST(CONVERT(VARCHAR(6), [j2].[RunDateTime], 112) AS INT) AS [RunMonth]
      , [j2].[run_duration] AS [RunDurationSec]
      , [j].[name] AS [JobName]
      , [j2].[step_id] AS [StepId]
