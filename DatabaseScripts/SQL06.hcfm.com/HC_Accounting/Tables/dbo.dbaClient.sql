@@ -1,4 +1,4 @@
-/* CreateDate: 10/03/2019 22:32:11.750 , ModifyDate: 01/06/2022 23:00:07.060 */
+/* CreateDate: 10/03/2019 22:32:11.750 , ModifyDate: 02/03/2022 23:00:06.033 */
 GO
 CREATE TABLE [dbo].[dbaClient](
 	[ClientID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
@@ -103,4 +103,10 @@ CREATE TABLE [dbo].[dbaClient](
 	[ClientID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
+GO
+CREATE NONCLUSTERED INDEX [IX_dbaClient_ClientIdentifier_CA8A4] ON [dbo].[dbaClient]
+(
+	[ClientIdentifier] ASC
+)
+INCLUDE([BIO_ContractPrice],[BIO_TotalPayments],[EXT_ContractPrice],[EXT_TotalPayments],[SUR_ContractPrice],[SUR_TotalPayments],[XTR_ContractPrice],[XTR_TotalPayments]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO

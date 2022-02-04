@@ -1,4 +1,4 @@
-/* CreateDate: 09/04/2020 09:24:40.990 , ModifyDate: 12/14/2020 10:52:05.320 */
+/* CreateDate: 09/04/2020 09:24:40.990 , ModifyDate: 01/24/2022 14:21:23.247 */
 GO
 /***********************************************************************
 PROCEDURE:				spSvc_ProcessBPFactCallData
@@ -77,7 +77,7 @@ FROM	HC_BI_MKTG_DDS.bi_mktg_dds.DimCallDataBP dcd
 			ON a.SFDC_TaskID = dcd.SFDC_TaskID
 
 WHERE	dcd.Call_Date <= @enddate AND  dcd.Call_RecordKey NOT IN (SELECT fcd.Call_RecordKey FROM HC_BI_MKTG_DDS.bi_mktg_dds.FactCallDataBP fcd)
-
+AND dcd.Call_RecordKey != (SELECT Call_RecordKey FROM  HC_BI_MKTG_DDS.bi_mktg_dds.FactCallDataBP where Call_RecordKey = 93316)
 ORDER BY dcd.Call_RecordKey
 
 END

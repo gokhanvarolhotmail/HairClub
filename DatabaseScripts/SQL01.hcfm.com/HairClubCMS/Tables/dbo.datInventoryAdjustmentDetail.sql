@@ -1,4 +1,4 @@
-/* CreateDate: 05/28/2018 22:15:34.667 , ModifyDate: 12/19/2021 08:37:48.053 */
+/* CreateDate: 05/28/2018 22:15:34.667 , ModifyDate: 01/16/2022 08:28:18.760 */
 GO
 CREATE TABLE [dbo].[datInventoryAdjustmentDetail](
 	[InventoryAdjustmentDetailID] [int] IDENTITY(1,1) NOT NULL,

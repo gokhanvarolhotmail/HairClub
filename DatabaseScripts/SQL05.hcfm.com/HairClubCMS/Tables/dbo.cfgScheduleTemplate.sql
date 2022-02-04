@@ -1,4 +1,4 @@
-/* CreateDate: 05/05/2020 17:42:44.940 , ModifyDate: 12/18/2021 19:00:59.413 */
+/* CreateDate: 05/05/2020 17:42:44.940 , ModifyDate: 01/22/2022 19:00:47.980 */
 GO
 CREATE TABLE [dbo].[cfgScheduleTemplate](
 	[ScheduleTemplateGUID] [uniqueidentifier] NOT NULL,

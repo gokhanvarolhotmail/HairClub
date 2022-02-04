@@ -1,0 +1,35 @@
+/* CreateDate: 01/31/2022 16:10:55.387 , ModifyDate: 01/31/2022 16:10:55.387 */
+GO
+CREATE TABLE [dbo].[cfgMembership_20220131](
+	[MembershipID] [int] IDENTITY(1,1) NOT NULL,
+	[MembershipSortOrder] [int] NULL,
+	[MembershipDescription] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[MembershipDescriptionShort] [nvarchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[BusinessSegmentID] [int] NULL,
+	[RevenueGroupID] [int] NULL,
+	[GenderID] [int] NULL,
+	[DurationMonths] [int] NULL,
+	[ContractPrice] [money] NULL,
+	[MonthlyFee] [money] NULL,
+	[IsTaxableFlag] [bit] NULL,
+	[IsDefaultMembershipFlag] [bit] NULL,
+	[IsActiveFlag] [bit] NULL,
+	[CreateDate] [datetime] NULL,
+	[CreateUser] [nvarchar](25) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[LastUpdate] [datetime] NULL,
+	[LastUpdateUser] [nvarchar](25) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[UpdateStamp] [timestamp] NULL,
+	[IsHairSystemOrderRushFlag] [bit] NOT NULL,
+	[HairSystemGeneralLedgerID] [int] NULL,
+	[DefaultPaymentSalesCodeID] [int] NOT NULL,
+	[NumRenewalDays] [int] NULL,
+	[NumDaysAfterCancelBeforeNew] [int] NULL,
+	[CanCheckinForConsultation] [bit] NOT NULL,
+	[MaximumHairSystemHairLengthValue] [int] NULL,
+	[ExpectedConversionDays] [int] NULL,
+	[MinimumAge] [int] NULL,
+	[MaximumAge] [int] NULL,
+	[MaximumLongHairAddOnHairLengthValue] [int] NULL,
+	[BOSSalesTypeCode] [nvarchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NULL
+) ON [PRIMARY]
+GO

@@ -1,4 +1,4 @@
-/* CreateDate: 05/05/2020 17:42:44.733 , ModifyDate: 10/26/2021 18:30:29.600 */
+/* CreateDate: 05/05/2020 17:42:44.733 , ModifyDate: 01/12/2022 19:00:29.833 */
 GO
 CREATE TABLE [dbo].[cfgSalesCodeCenter](
 	[SalesCodeCenterID] [int] NOT NULL,

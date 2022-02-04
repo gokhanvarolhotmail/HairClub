@@ -1,4 +1,4 @@
-/* CreateDate: 10/03/2019 23:03:41.867 , ModifyDate: 01/02/2022 23:32:36.907 */
+/* CreateDate: 10/03/2019 23:03:41.867 , ModifyDate: 02/01/2022 23:37:37.610 */
 GO
 CREATE TABLE [bi_cms_dds].[DimSalesOrderTender](
 	[SalesOrderTenderKey] [int] NOT NULL,
@@ -52,4 +52,10 @@ CREATE NONCLUSTERED INDEX [IDX_DimSalesOrderTender_SalesOrderTenderKey] ON [bi_c
 	[SalesOrderTenderKey] ASC
 )
 INCLUDE([SalesOrderTenderSSID],[SalesOrderKey],[SalesOrderSSID],[OrderDate],[Amount]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO
+CREATE NONCLUSTERED INDEX [IX_DimSalesOrderTender_SalesOrderKey_67561] ON [bi_cms_dds].[DimSalesOrderTender]
+(
+	[SalesOrderKey] ASC
+)
+INCLUDE([TenderTypeDescriptionShort]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [FG1]
 GO

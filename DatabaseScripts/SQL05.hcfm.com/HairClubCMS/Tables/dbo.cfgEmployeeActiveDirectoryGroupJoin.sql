@@ -1,4 +1,4 @@
-/* CreateDate: 05/05/2020 17:42:41.630 , ModifyDate: 12/29/2021 19:00:21.317 */
+/* CreateDate: 05/05/2020 17:42:41.630 , ModifyDate: 01/31/2022 19:00:31.377 */
 GO
 CREATE TABLE [dbo].[cfgEmployeeActiveDirectoryGroupJoin](
 	[EmployeeGUID] [uniqueidentifier] NOT NULL,

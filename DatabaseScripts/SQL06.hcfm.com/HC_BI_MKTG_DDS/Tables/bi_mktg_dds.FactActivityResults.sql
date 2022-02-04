@@ -1,4 +1,4 @@
-/* CreateDate: 09/03/2021 09:37:06.807 , ModifyDate: 09/03/2021 09:37:12.300 */
+/* CreateDate: 09/03/2021 09:37:06.807 , ModifyDate: 01/10/2022 12:08:22.790 */
 GO
 CREATE TABLE [bi_mktg_dds].[FactActivityResults](
 	[ActivityKey] [int] NOT NULL,
@@ -54,4 +54,10 @@ CREATE TABLE [bi_mktg_dds].[FactActivityResults](
 	[ActivityTimeKey] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
+GO
+CREATE NONCLUSTERED INDEX [FAR_ADDK] ON [bi_mktg_dds].[FactActivityResults]
+(
+	[ActivityDueDateKey] ASC
+)
+INCLUDE([ActivityKey],[ActivityDateKey],[ContactKey],[CenterKey],[SourceKey],[ActionCodeKey],[Show],[Consultation],[BeBack],[Accomodation]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO

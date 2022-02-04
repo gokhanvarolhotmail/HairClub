@@ -1,4 +1,4 @@
-/* CreateDate: 03/29/2013 12:23:13.843 , ModifyDate: 03/25/2021 09:58:52.760 */
+/* CreateDate: 03/29/2013 12:23:13.843 , ModifyDate: 01/12/2022 15:00:08.730 */
 GO
 CREATE TABLE [dbo].[dbaOrder](
 	[OrderID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
@@ -65,6 +65,22 @@ CREATE TABLE [dbo].[dbaOrder](
 	[OrderID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
+GO
+SET ARITHABORT ON
+SET CONCAT_NULL_YIELDS_NULL ON
+SET QUOTED_IDENTIFIER ON
+SET ANSI_NULLS ON
+SET ANSI_PADDING ON
+SET ANSI_WARNINGS ON
+SET NUMERIC_ROUNDABORT OFF
+GO
+CREATE NONCLUSTERED INDEX [_dta_index_dbaOrder_23] ON [dbo].[dbaOrder]
+(
+	[OrderDateOnlyCalc] ASC,
+	[TransactionCenterID] ASC,
+	[IsOrderVoided] ASC
+)
+INCLUDE([SalesOrderType],[TransactionCenterName],[ClientIdentifier],[LastName],[FirstName],[MembershipID],[BusinessSegment],[ClientMembershipIdentifier],[GL],[GLName],[Division],[DivisionDescription],[Department],[DepartmentDescription],[Code],[SalesCodeDescription],[SalesCodeId],[UnitPrice],[Quantity],[QuantityPrice],[NetPrice],[Price],[Tax1],[Tax2]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
 SET ANSI_PADDING ON
 GO

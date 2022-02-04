@@ -1,4 +1,4 @@
-/* CreateDate: 02/02/2018 12:43:08.303 , ModifyDate: 02/01/2019 16:41:51.520 */
+/* CreateDate: 02/02/2018 12:43:08.303 , ModifyDate: 02/01/2022 12:36:48.407 */
 GO
 /***********************************************************************
 PROCEDURE:				spRpt_DeferredRevenueYears
@@ -18,14 +18,21 @@ EXEC spRpt_DeferredRevenueYears
 ***********************************************************************/
 CREATE PROCEDURE [dbo].[spRpt_DeferredRevenueYears]
 AS
-BEGIN
+SET NOCOUNT ON ;
 
-SET NOCOUNT ON;
-
-SELECT 2017 AS 'ID', 2017 AS 'Description'
-UNION
-SELECT 2018 AS 'ID', 2018 AS 'Description'
-UNION
-SELECT 2019 AS 'ID', 2019 AS 'Description'
-END
+SELECT
+    2019 AS [ID]
+  , 2019 AS [Description]
+UNION ALL
+SELECT
+    2020 AS [ID]
+  , 2020 AS [Description]
+UNION ALL
+SELECT
+    2021 AS [ID]
+  , 2021 AS [Description]
+UNION ALL
+SELECT
+    2022 AS [ID]
+  , 2022 AS [Description] ;
 GO
