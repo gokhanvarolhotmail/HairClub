@@ -268,34 +268,34 @@ GROUP BY [M].[MembershipDescription]
        , [ACCUM].[MembershipID]
 ORDER BY [M].[MembershipDescription] ;
 
-CREATE TABLE [#groupedMemberships] ( [membershipId] INT, [membershipDescriptionShort] NVARCHAR(MAX), [membershipDescription] NVARCHAR(MAX), [membershipGroup] NVARCHAR(MAX)) ;
+CREATE TABLE [#groupedMemberships] ( [membershipId] INT, [membershipDescriptionShort] NVARCHAR(MAX), [membershipDescription] NVARCHAR(MAX), [membershipGroup] NVARCHAR(MAX), [MaxVal] INT ) ;
 
 --- Insert membership values
-INSERT INTO [#groupedMemberships]( [membershipId], [membershipDescriptionShort], [membershipDescription], [membershipGroup] )
-VALUES( 22, 'BASIC', 'Basic', 'Basic' )
-    , ( 30, 'DIA', 'Diamond', 'Diamond' )
-    , ( 31, 'DIASOL', 'Diamond Solutions', 'Diamond' )
-    , ( 24, 'BRZ', 'Bronze', 'Bronze' )
-    , ( 12, 'HCFK', 'Hair Club For Kids', 'HCFK' )
-    , ( 65, 'EMRLD', 'Emerald', 'Emerald' )
-    , ( 290, 'EMPLOYRET', 'Employee-Retail', 'EmployeeRetail' )
-    , ( 34, 'EXE', 'Executive', 'Executive' )
-    , ( 28, 'GLD', 'Gold', 'Gold' )
-    , ( 29, 'GLDSOL', 'Gold Solutions', 'Gold' )
-    , ( 32, 'PLA', 'Platinum', 'Platinum' )
-    , ( 33, 'PLASOL', 'Platinum Solutions', 'Platinum' )
-    , ( 36, 'PRS', 'Presidential', 'Presidential' )
-    , ( 63, 'RUBY', 'Ruby', 'Ruby' )
-    , ( 95, 'RUBY', 'Ruby Plus Transitional', 'Ruby' )
-    , ( 67, 'SAPPHIRE', 'Sapphire', 'Sapphire' )
-    , ( 26, 'SIL', 'Silver', 'Silver' )
-    , ( 10, 'TRADITION', 'Xtrands+ Initial', 'Xtrands+' )
-    , ( 5, 'GRADSOL12', 'Xtrands+ Initial 12 Solutions', 'Xtrands+' )
-    , ( 3, 'GRAD', 'Xtrands+ Initial 6', 'Xtrands+' )
-    , ( 47, 'GRDSV', 'Xtrands+ Initial 6', 'Xtrands+' )
-    , ( 285, 'GRDSV', 'Xtrands+ Initial 6 EZPAY', 'Xtrands+' )
-    , ( 4, 'GRDSV', 'Xtrands+ Initial 6 Solutions', 'Xtrands+' )
-    , ( 48, 'GRDSVSOL', 'Xtrands+ Initial 6 Solutions', 'Xtrands+' ) ;
+INSERT INTO [#groupedMemberships]( [membershipId], [membershipDescriptionShort], [membershipDescription], [membershipGroup], [MaxVal] )
+VALUES( 22, 'BASIC', 'Basic', 'Basic', 1 )
+    , ( 30, 'DIA', 'Diamond', 'Diamond', 2 )
+    , ( 31, 'DIASOL', 'Diamond Solutions', 'Diamond', 2 )
+    , ( 24, 'BRZ', 'Bronze', 'Bronze', 1 )
+    , ( 12, 'HCFK', 'Hair Club For Kids', 'HCFK', 1 )
+    , ( 65, 'EMRLD', 'Emerald', 'Emerald', 1 )
+    , ( 290, 'EMPLOYRET', 'Employee-Retail', 'EmployeeRetail', 1 )
+    , ( 34, 'EXE', 'Executive', 'Executive', 3 )
+    , ( 28, 'GLD', 'Gold', 'Gold', 2 )
+    , ( 29, 'GLDSOL', 'Gold Solutions', 'Gold', 2 )
+    , ( 32, 'PLA', 'Platinum', 'Platinum', 3 )
+    , ( 33, 'PLASOL', 'Platinum Solutions', 'Platinum', 3 )
+    , ( 36, 'PRS', 'Presidential', 'Presidential', 4 )
+    , ( 63, 'RUBY', 'Ruby', 'Ruby', 1 )
+    , ( 95, 'RUBY', 'Ruby Plus Transitional', 'Ruby', 1 )
+    , ( 67, 'SAPPHIRE', 'Sapphire', 'Sapphire', 2 )
+    , ( 26, 'SIL', 'Silver', 'Silver', 1 )
+    , ( 10, 'TRADITION', 'Xtrands+ Initial', 'Xtrands+', 1 )
+    , ( 5, 'GRADSOL12', 'Xtrands+ Initial 12 Solutions', 'Xtrands+', 1 )
+    , ( 3, 'GRAD', 'Xtrands+ Initial 6', 'Xtrands+', 1 )
+    , ( 47, 'GRDSV', 'Xtrands+ Initial 6', 'Xtrands+', 1 )
+    , ( 285, 'GRDSV', 'Xtrands+ Initial 6 EZPAY', 'Xtrands+', 1 )
+    , ( 4, 'GRDSV', 'Xtrands+ Initial 6 Solutions', 'Xtrands+', 1 )
+    , ( 48, 'GRDSVSOL', 'Xtrands+ Initial 6 Solutions', 'Xtrands+', 1 ) ;
 
 SELECT
     [q].[ClientFullNameCalc]
@@ -372,32 +372,46 @@ SELECT
   , [tmpData].[QaNeeded]
   , [tmpData].[CenterDescriptionFullCalc]
   , [gms].[membershipGroup]
-  , CASE WHEN ( [gms].[membershipGroup] LIKE '%Xtrands+%' OR [gms].[membershipGroup] LIKE '%EmployeeRetail%' ) AND [tmpData].[QuantityAtCenterAndOrdered] = 0 THEN 0
-        WHEN ( [gms].[membershipGroup] LIKE '%Xtrands+%' OR [gms].[membershipGroup] LIKE '%EmployeeRetail%' ) AND [tmpData].[QuantityAtCenterAndOrdered] = 1 THEN 0
-        WHEN ( [gms].[membershipGroup] LIKE '%Xtrands+%' OR [gms].[membershipGroup] LIKE '%EmployeeRetail%' ) AND [tmpData].[QuantityAtCenterAndOrdered] = 2 THEN 0
-        WHEN ( [gms].[membershipGroup] LIKE '%Basic%' OR [gms].[membershipGroup] LIKE '%Ruby%' OR [gms].[membershipGroup] LIKE '%HCFK%' ) AND [tmpData].[QuantityAtCenterAndOrdered] = 0 THEN 2
-        WHEN ( [gms].[membershipGroup] LIKE '%Basic%' OR [gms].[membershipGroup] LIKE '%Ruby%' OR [gms].[membershipGroup] LIKE '%HCFK%' ) AND [tmpData].[QuantityAtCenterAndOrdered] = 1 THEN 2
-        WHEN ( [gms].[membershipGroup] LIKE '%Basic%' OR [gms].[membershipGroup] LIKE '%Ruby%' OR [gms].[membershipGroup] LIKE '%HCFK%' ) AND [tmpData].[QuantityAtCenterAndOrdered] = 2 THEN 1
-        WHEN ( [gms].[membershipGroup] LIKE '%Bronze%' OR [gms].[membershipGroup] LIKE '%Emerald%' OR [gms].[membershipGroup] LIKE '%Silver%' ) AND [tmpData].[QuantityAtCenterAndOrdered] = 0 THEN 2
-        WHEN ( [gms].[membershipGroup] LIKE '%Bronze%' OR [gms].[membershipGroup] LIKE '%Emerald%' OR [gms].[membershipGroup] LIKE '%Silver%' ) AND [tmpData].[QuantityAtCenterAndOrdered] = 1 THEN 2
-        WHEN ( [gms].[membershipGroup] LIKE '%Bronze%' OR [gms].[membershipGroup] LIKE '%Emerald%' OR [gms].[membershipGroup] LIKE '%Silver%' ) AND [tmpData].[QuantityAtCenterAndOrdered] = 2 THEN 2
-        WHEN ( [gms].[membershipGroup] LIKE '%Gold%' OR [gms].[membershipGroup] LIKE '%Sapphire%' ) AND [tmpData].[QuantityAtCenterAndOrdered] = 0 THEN 3
-        WHEN ( [gms].[membershipGroup] LIKE '%Gold%' OR [gms].[membershipGroup] LIKE '%Sapphire%' ) AND [tmpData].[QuantityAtCenterAndOrdered] = 1 THEN 3
-        WHEN ( [gms].[membershipGroup] LIKE '%Gold%' OR [gms].[membershipGroup] LIKE '%Sapphire%' ) AND [tmpData].[QuantityAtCenterAndOrdered] = 2 THEN 3
-        WHEN [gms].[membershipGroup] LIKE '%Diamond%' AND [tmpData].[QuantityAtCenterAndOrdered] = 0 THEN 4
-        WHEN [gms].[membershipGroup] LIKE '%Diamond%' AND [tmpData].[QuantityAtCenterAndOrdered] = 1 THEN 4
-        WHEN [gms].[membershipGroup] LIKE '%Diamond%' AND [tmpData].[QuantityAtCenterAndOrdered] = 2 THEN 3
-        WHEN ( [gms].[membershipGroup] LIKE '%Platinum%' OR [gms].[membershipGroup] LIKE '%Executive%' ) AND [tmpData].[QuantityAtCenterAndOrdered] = 0 THEN 6
-        WHEN ( [gms].[membershipGroup] LIKE '%Platinum%' OR [gms].[membershipGroup] LIKE '%Executive%' ) AND [tmpData].[QuantityAtCenterAndOrdered] = 1 THEN 6
-        WHEN ( [gms].[membershipGroup] LIKE '%Platinum%' OR [gms].[membershipGroup] LIKE '%Executive%' ) AND [tmpData].[QuantityAtCenterAndOrdered] = 2 THEN 5
-        WHEN [gms].[membershipGroup] LIKE '%Presidential%' AND [tmpData].[QuantityAtCenterAndOrdered] = 0 THEN 12
-        WHEN [gms].[membershipGroup] LIKE '%Presidential%' AND [tmpData].[QuantityAtCenterAndOrdered] = 1 THEN 12
-        WHEN [gms].[membershipGroup] LIKE '%Presidential%' AND [tmpData].[QuantityAtCenterAndOrdered] = 2 THEN 12
-        WHEN [gms].[membershipGroup] LIKE '%Premier%' AND [tmpData].[QuantityAtCenterAndOrdered] = 0 THEN 18
-        WHEN [gms].[membershipGroup] LIKE '%Premier%' AND [tmpData].[QuantityAtCenterAndOrdered] = 1 THEN 18
-        WHEN [gms].[membershipGroup] LIKE '%Premier%' AND [tmpData].[QuantityAtCenterAndOrdered] = 2 THEN 18
-        ELSE 0 -- if not any of this conditions the field should be 0
-    END AS [SuggestedQuantityToOrder]
-FROM [#tmpHairOrderQuantitybyClient] AS [tmpData]
+  --, CASE WHEN ( [gms].[membershipGroup] LIKE '%Xtrands+%' OR [gms].[membershipGroup] LIKE '%EmployeeRetail%' ) AND [tmpData].[QuantityAtCenterAndOrdered] = 0 THEN 0
+  --      WHEN ( [gms].[membershipGroup] LIKE '%Xtrands+%' OR [gms].[membershipGroup] LIKE '%EmployeeRetail%' ) AND [tmpData].[QuantityAtCenterAndOrdered] = 1 THEN 0
+  --      WHEN ( [gms].[membershipGroup] LIKE '%Xtrands+%' OR [gms].[membershipGroup] LIKE '%EmployeeRetail%' ) AND [tmpData].[QuantityAtCenterAndOrdered] = 2 THEN 0
+  --      WHEN ( [gms].[membershipGroup] LIKE '%Basic%' OR [gms].[membershipGroup] LIKE '%Ruby%' OR [gms].[membershipGroup] LIKE '%HCFK%' ) AND [tmpData].[QuantityAtCenterAndOrdered] = 0 THEN 2
+  --      WHEN ( [gms].[membershipGroup] LIKE '%Basic%' OR [gms].[membershipGroup] LIKE '%Ruby%' OR [gms].[membershipGroup] LIKE '%HCFK%' ) AND [tmpData].[QuantityAtCenterAndOrdered] = 1 THEN 2
+  --      WHEN ( [gms].[membershipGroup] LIKE '%Basic%' OR [gms].[membershipGroup] LIKE '%Ruby%' OR [gms].[membershipGroup] LIKE '%HCFK%' ) AND [tmpData].[QuantityAtCenterAndOrdered] = 2 THEN 1
+  --      WHEN ( [gms].[membershipGroup] LIKE '%Bronze%' OR [gms].[membershipGroup] LIKE '%Emerald%' OR [gms].[membershipGroup] LIKE '%Silver%' ) AND [tmpData].[QuantityAtCenterAndOrdered] = 0 THEN 2
+  --      WHEN ( [gms].[membershipGroup] LIKE '%Bronze%' OR [gms].[membershipGroup] LIKE '%Emerald%' OR [gms].[membershipGroup] LIKE '%Silver%' ) AND [tmpData].[QuantityAtCenterAndOrdered] = 1 THEN 2
+  --      WHEN ( [gms].[membershipGroup] LIKE '%Bronze%' OR [gms].[membershipGroup] LIKE '%Emerald%' OR [gms].[membershipGroup] LIKE '%Silver%' ) AND [tmpData].[QuantityAtCenterAndOrdered] = 2 THEN 2
+  --      WHEN ( [gms].[membershipGroup] LIKE '%Gold%' OR [gms].[membershipGroup] LIKE '%Sapphire%' ) AND [tmpData].[QuantityAtCenterAndOrdered] = 0 THEN 3
+  --      WHEN ( [gms].[membershipGroup] LIKE '%Gold%' OR [gms].[membershipGroup] LIKE '%Sapphire%' ) AND [tmpData].[QuantityAtCenterAndOrdered] = 1 THEN 3
+  --      WHEN ( [gms].[membershipGroup] LIKE '%Gold%' OR [gms].[membershipGroup] LIKE '%Sapphire%' ) AND [tmpData].[QuantityAtCenterAndOrdered] = 2 THEN 3
+  --      WHEN [gms].[membershipGroup] LIKE '%Diamond%' AND [tmpData].[QuantityAtCenterAndOrdered] = 0 THEN 4
+  --      WHEN [gms].[membershipGroup] LIKE '%Diamond%' AND [tmpData].[QuantityAtCenterAndOrdered] = 1 THEN 4
+  --      WHEN [gms].[membershipGroup] LIKE '%Diamond%' AND [tmpData].[QuantityAtCenterAndOrdered] = 2 THEN 3
+  --      WHEN ( [gms].[membershipGroup] LIKE '%Platinum%' OR [gms].[membershipGroup] LIKE '%Executive%' ) AND [tmpData].[QuantityAtCenterAndOrdered] = 0 THEN 6
+  --      WHEN ( [gms].[membershipGroup] LIKE '%Platinum%' OR [gms].[membershipGroup] LIKE '%Executive%' ) AND [tmpData].[QuantityAtCenterAndOrdered] = 1 THEN 6
+  --      WHEN ( [gms].[membershipGroup] LIKE '%Platinum%' OR [gms].[membershipGroup] LIKE '%Executive%' ) AND [tmpData].[QuantityAtCenterAndOrdered] = 2 THEN 5
+  --      WHEN [gms].[membershipGroup] LIKE '%Presidential%' AND [tmpData].[QuantityAtCenterAndOrdered] = 0 THEN 12
+  --      WHEN [gms].[membershipGroup] LIKE '%Presidential%' AND [tmpData].[QuantityAtCenterAndOrdered] = 1 THEN 12
+  --      WHEN [gms].[membershipGroup] LIKE '%Presidential%' AND [tmpData].[QuantityAtCenterAndOrdered] = 2 THEN 12
+  --      WHEN [gms].[membershipGroup] LIKE '%Premier%' AND [tmpData].[QuantityAtCenterAndOrdered] = 0 THEN 18
+  --      WHEN [gms].[membershipGroup] LIKE '%Premier%' AND [tmpData].[QuantityAtCenterAndOrdered] = 1 THEN 18
+  --      WHEN [gms].[membershipGroup] LIKE '%Premier%' AND [tmpData].[QuantityAtCenterAndOrdered] = 2 THEN 18
+  --      ELSE 0 -- if not any of this conditions the field should be 0
+  --  END AS [SuggestedQuantityToOrder]
+
+  --,0 AS [SuggestedQuantityToOrder]
+  , 'Total Systems available on the membership divided by 12 months' AS [“Membership System Qty to Apply per month]
+  , 'How long it current takes to receive a new order (currently 10 months)' AS [System Order Lead Time]
+  , 'Maximum monthly quantity to order based on application interval and existing orders In Center and On Order' AS [Membership Maximum]
+  , CASE WHEN [tmpData].[SuggestedQuantityToOrder] > [gms].[MaxVal] THEN [gms].[MaxVal] WHEN [tmpData].[SuggestedQuantityToOrder] > 0 THEN [tmpData].[SuggestedQuantityToOrder] ELSE 0 END AS [SuggestedQuantityToOrder]
+  , CEILING(( [tmpData].[QaNeeded] + [tmpData].[InCenter] + [tmpData].[OnOrder] ) / 12.0) AS [MonthsInCenterAndOnOrder]
+  , [tmpData].[LastApplicationDate]
+FROM( SELECT
+          *
+        , CEILING(( ISNULL([tmpData].[InitialQuantity], 0) / 12.0 * 8 ) - ( [tmpData].[QaNeeded] + [tmpData].[InCenter] + [tmpData].[OnOrder] )) AS [SuggestedQuantityToOrder]
+      FROM [#tmpHairOrderQuantitybyClient] AS [tmpData] ) AS [tmpData]
 INNER JOIN [#groupedMemberships] AS [gms] ON [tmpData].[MembershipID] = [gms].[membershipId] ;
 GO
+
+EXEC [dbo].[rptHairOrderQuantitybyClient_GVAROL] 201, '0' ;
+
