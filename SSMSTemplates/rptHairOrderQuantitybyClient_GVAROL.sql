@@ -445,5 +445,6 @@ WHERE [c].[name] LIKE REPLACE('Last Application Date', ' ', '%')
    OR [c].[name] LIKE REPLACE('Oldest Order Placed Due Date', ' ', '%')
    OR [c].[name] LIKE REPLACE('Newest Order System Type', ' ', '%')
    OR [c].[name] LIKE REPLACE('Remaining Qty to Order', ' ', '%')
-   OR [c].[name] LIKE REPLACE('Priority Hair Needed', ' ', '%') ;
+   OR [c].[name] LIKE REPLACE('Priority Hair Needed', ' ', '%')
+   OR [c].[name] LIKE REPLACE('Last%App%Date', ' ', '%')
 GO
