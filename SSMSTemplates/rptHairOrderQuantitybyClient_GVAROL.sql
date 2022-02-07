@@ -438,13 +438,47 @@ INNER JOIN [sys].[schemas] AS [s] ON [s].[schema_id] = [t].[schema_id]
 INNER JOIN [sys].[columns] AS [c] ON [c].[object_id] = [t].[object_id]
 INNER JOIN [sys].[types] AS [y] ON [y].[user_type_id] = [c].[user_type_id]
 LEFT JOIN [sys].[databases] AS [d] ON [d].[name] = DB_NAME()
-WHERE [c].[name] LIKE REPLACE('Last Application Date', ' ', '%')
-   OR [c].[name] LIKE REPLACE('Scheduled Next App Date', ' ', '%')
-   OR [c].[name] LIKE REPLACE('Order Avail for Next App', ' ', '%')
-   OR [c].[name] LIKE REPLACE('Oldest Order Placed Date', ' ', '%')
-   OR [c].[name] LIKE REPLACE('Oldest Order Placed Due Date', ' ', '%')
-   OR [c].[name] LIKE REPLACE('Newest Order System Type', ' ', '%')
-   OR [c].[name] LIKE REPLACE('Remaining Qty to Order', ' ', '%')
-   OR [c].[name] LIKE REPLACE('Priority Hair Needed', ' ', '%')
-   OR [c].[name] LIKE REPLACE('Last%App%Date', ' ', '%')
+AND t.name LIKE '%tran%history%'
+--WHERE [c].[name] LIKE REPLACE('Last Application Date', ' ', '%')
+--   OR [c].[name] LIKE REPLACE('Scheduled Next App Date', ' ', '%')
+--   OR [c].[name] LIKE REPLACE('Order Avail for Next App', ' ', '%')
+--   OR [c].[name] LIKE REPLACE('Oldest Order Placed Date', ' ', '%')
+--   OR [c].[name] LIKE REPLACE('Oldest Order Placed Due Date', ' ', '%')
+--   OR [c].[name] LIKE REPLACE('Newest Order System Type', ' ', '%')
+--   OR [c].[name] LIKE REPLACE('Remaining Qty to Order', ' ', '%')
+--   OR [c].[name] LIKE REPLACE('Priority Hair Needed', ' ', '%')
+--   OR [c].[name] LIKE REPLACE('Last%App%Date', ' ', '%')
+--GO
+
+-- Last Application Date
+SELECT
+    MAX([c].[ClientGUID]) AS [ClientGUID]
+  , [c].[ClientIdentifier]
+  , MAX([sod].[CreateDate]) AS [CreateDate]
+FROM [dbo].[datClient] AS [c]
+INNER JOIN [dbo].[datSalesOrder] AS [so] ON [so].[ClientGUID] = [c].[ClientGUID]
+INNER JOIN [dbo].[datSalesOrderDetail] AS [sod] ON [so].[SalesOrderGUID] = [sod].[SalesOrderGUID]
+INNER JOIN [dbo].[cfgSalesCode] AS [sc] ON [sod].[SalesCodeID] = [sc].[SalesCodeID]
+WHERE [sc].[SalesCodeDepartmentID] IN (5010, 5020)
+GROUP BY [c].[ClientIdentifier]
+ORDER BY [CreateDate] DESC ;
 GO
+
+DECLARE @Date date = CONVERT(VARCHAR(30),GETDATE(),112)
+-- Scheduled Next App Date
+SELECT [k].[ClientGUID]
+     , [k].[ClientIdentifier]
+     , [k].[AppointmentDate]
+FROM( SELECT
+          [c].[ClientGUID]
+        , [c].[ClientIdentifier]
+        , [a].[AppointmentDate]
+        , ROW_NUMBER() OVER ( PARTITION BY [c].[ClientIdentifier] ORDER BY [a].[AppointmentDate] ASC ) AS [rw]
+      FROM [dbo].[datClient] AS [c]
+      INNER JOIN [dbo].[datClientMembership] AS [cm] ON [cm].[ClientGUID] = [c].[ClientGUID]
+      INNER JOIN [dbo].[cfgMembership] AS [m] ON [cm].[MembershipID] = [m].[MembershipID]
+      INNER JOIN [dbo].[datAppointment] AS [a] ON [cm].[ClientMembershipGUID] = [a].[ClientMembershipGUID]
+      INNER JOIN [dbo].[cfgCenter] AS [apptctr] ON [a].[CenterID] = [apptctr].[CenterID]
+      WHERE( [a].[IsDeletedFlag] IS NULL OR [a].[IsDeletedFlag] = 0 ) AND [a].[AppointmentDate] >=@Date  ) AS [k]
+WHERE [k].[rw] = 1
+OPTION(RECOMPILE)
