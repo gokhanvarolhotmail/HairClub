@@ -1,6 +1,6 @@
-/* CreateDate: 01/31/2022 16:48:50.403 , ModifyDate: 01/31/2022 16:48:50.403 */
+/* CreateDate: 01/31/2022 16:48:50.403 , ModifyDate: 02/07/2022 10:28:10.490 */
 GO
-CREATE TABLE [dbo].[cfgConfigurationMembership_20220131](
+CREATE TABLE [dbo].[mktemp_cfgConfigurationMembership_20220131](
 	[ConfigurationMembershipID] [int] IDENTITY(1,1) NOT NULL,
 	[ConfigurationMembershipSortOrder] [int] NULL,
 	[MembershipID] [int] NOT NULL,

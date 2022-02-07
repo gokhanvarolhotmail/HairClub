@@ -1,6 +1,6 @@
-/* CreateDate: 01/31/2022 17:10:44.680 , ModifyDate: 01/31/2022 17:10:44.680 */
+/* CreateDate: 01/31/2022 17:10:44.680 , ModifyDate: 02/07/2022 10:26:04.287 */
 GO
-CREATE TABLE [dbo].[tmpCorpPricing](
+CREATE TABLE [dbo].[mktmp_CorpPricing](
 	[Membership] [nvarchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[CountryID] [float] NULL,
 	[GenderID] [float] NULL,

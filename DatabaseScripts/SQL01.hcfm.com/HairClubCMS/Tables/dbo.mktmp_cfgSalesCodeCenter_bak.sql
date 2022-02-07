@@ -1,6 +1,6 @@
-/* CreateDate: 01/11/2022 15:51:13.943 , ModifyDate: 01/11/2022 15:51:13.943 */
+/* CreateDate: 12/30/2021 15:59:01.137 , ModifyDate: 02/07/2022 10:28:44.833 */
 GO
-CREATE TABLE [dbo].[cfgSalesCodeCenter_bak_2](
+CREATE TABLE [dbo].[mktmp_cfgSalesCodeCenter_bak](
 	[SalesCodeCenterID] [int] IDENTITY(1,1) NOT NULL,
 	[CenterID] [int] NULL,
 	[SalesCodeID] [int] NULL,

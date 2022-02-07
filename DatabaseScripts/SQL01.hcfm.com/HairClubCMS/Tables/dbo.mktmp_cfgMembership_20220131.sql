@@ -1,6 +1,6 @@
-/* CreateDate: 01/31/2022 16:10:55.387 , ModifyDate: 01/31/2022 16:10:55.387 */
+/* CreateDate: 01/31/2022 16:10:55.387 , ModifyDate: 02/07/2022 10:28:30.863 */
 GO
-CREATE TABLE [dbo].[cfgMembership_20220131](
+CREATE TABLE [dbo].[mktmp_cfgMembership_20220131](
 	[MembershipID] [int] IDENTITY(1,1) NOT NULL,
 	[MembershipSortOrder] [int] NULL,
 	[MembershipDescription] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
