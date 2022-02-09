@@ -2,7 +2,7 @@ SET ANSI_NULLS ON ;
 GO
 SET QUOTED_IDENTIFIER ON ;
 GO
-ALTER VIEW [dbo].[VWDimCampaign_GVAROL]
+ALTER VIEW [dbo].[VWDimCampaign]
 AS
 WITH [c]
 AS (
@@ -12,7 +12,9 @@ AS (
      , [d].[CampaignName]
      , [d].[CampaignDescription]
      , [d].[AgencyKey]
-     , CASE WHEN [d].[AgencyName] = 'Internal Corporate' AND [d].[CampaignMedia] = 'ORGANIC' THEN 'Paid Media'
+     , CASE
+           WHEN [d].[CampaignMedia] = 'Organic' THEN 'Non Paid Media'
+           WHEN [d].[AgencyName] = 'Internal Corporate' AND [d].[CampaignMedia] = 'ORGANIC' THEN 'Paid Media'
            WHEN [d].[AgencyName] = 'Internal Corporate' AND [d].[CampaignName] LIKE '%google local search advertising%' THEN 'Paid Media'
            WHEN [d].[AgencyName] = 'Internal Corporate' AND [d].[CampaignName] LIKE '%poker%' THEN 'Paid Media'
            WHEN [d].[CampaignName] LIKE '%gleam%' THEN 'Paid Media'
@@ -106,7 +108,7 @@ AS (
            WHEN [d].[AgencyName] NOT LIKE '%Hans Wiemann%' AND [d].[AgencyName] NOT LIKE '%pure%digital%' AND [d].[CampaignMedia] = 'SEM' THEN 'Other'
            WHEN [d].[CampaignMedia] IN ('EVENT', 'REFERRAL', 'WALK-IN', 'WordOfMouth', 'Word-Of-Mouth', 'Walk In') THEN 'Word-Of-Mouth'
            WHEN [d].[CampaignMedia] = 'ORGANIC' THEN 'Local Search'
-           WHEN [d].[CampaignMedia] = 'SEO/Organic' AND [d].[CampaignName] LIKE 'Google Local Search Advertising' THEN 'Local Search'
+           WHEN [d].[CampaignMedia] = 'SEO/Organic' AND [d].[CampaignName] LIKE '%Google Local Search Advertising%' THEN 'Local Search'
            WHEN [d].[CampaignMedia] = 'SEO/Organic' THEN 'Organic Search'
            WHEN [d].[CampaignMedia] IN ('Brochure', 'Collateral', 'Direct Mail', 'Flyer', 'Magazine', 'Newspaper', 'Print') THEN 'Print'
            WHEN [d].[CampaignMedia] IN ('PRESS RELEASE', 'Earned Social') THEN 'Earned Social'
