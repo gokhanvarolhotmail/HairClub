@@ -609,7 +609,7 @@ SELECT
   , [t].[OldestOrderPlacedDueDate]
   , [t].[NewestOrderSystemType]
   , [t].[RemainingQuantityToOrder]
-  , CAST([t].[InitialQuantity] / 12.0 AS NUMERIC(12, 4)) AS [Membership System Qty to Apply per month]
+  , CAST([t].[InitialQuantity] / 12.0 AS NUMERIC(12, 4)) AS [MembershipSystemQtyToApplyPerMonth]
   , 8 AS [System Order Lead Time]
   , [gms].[MaxVal] AS [Membership Maximum]
   , CASE WHEN [t].[SuggestedQuantityToOrder] > [gms].[MaxVal] THEN [gms].[MaxVal] WHEN [t].[SuggestedQuantityToOrder] > 0 THEN [t].[SuggestedQuantityToOrder] ELSE
@@ -622,8 +622,8 @@ FROM( SELECT
       FROM [#tmpHairOrderQuantitybyClient] AS [t] ) AS [t]
 INNER JOIN [#groupedMemberships] AS [gms] ON [t].[MembershipID] = [gms].[membershipId] ;
 GO
-EXEC [dbo].[rptHairOrderQuantitybyClient_GVAROL] 201, '0' ;
-GO
+EXEC [dbo].[rptHairOrderQuantitybyClient_GVAROL] @CenterID = 201, @MembershipList = '0' ;
+  
 RETURN ;
 
 SELECT
