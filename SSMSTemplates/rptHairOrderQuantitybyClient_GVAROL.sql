@@ -606,7 +606,7 @@ SELECT
   , [t].[OrderAvailableForNextApp]
   , [t].[PriorityHairNeeded]
   , [t].[OldestOrderPlacedDate]
-  , [t].[OldestOrderPlaced DueDate]
+  , [t].[OldestOrderPlacedDueDate]
   , [t].[NewestOrderSystemType]
   , [t].[RemainingQuantityToOrder]
   , CAST([t].[InitialQuantity] / 12.0 AS NUMERIC(12, 4)) AS [Membership System Qty to Apply per month]
