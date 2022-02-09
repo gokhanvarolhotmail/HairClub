@@ -42,6 +42,8 @@ ALTER PROCEDURE [dbo].[rptHairOrderQuantitybyClient_GVAROL]
 AS
 SET NOCOUNT ON ;
 
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED ;
+
 DECLARE @Getdate DATE = CONVERT(VARCHAR(30), GETDATE(), 112) ;
 
 --Split the string parameter that is entered for MembershipID's
@@ -488,10 +490,10 @@ SELECT
   , [q].[MembershipID]
   , [q].[CenterDescriptionFullCalc] AS [CenterID]
   , [q].[EndDate]
-  , [q].[LastApplicationDate]
+  , [lad].[LastApplicationDate]
   , [q].[InCenter]
   , [q].[OnOrder]
-  , [q].[DueDate]
+  , [ndd].[DueDate]
   , [q].[TotalAccumQuantity]
   , [q].[Promo]
   , [q].[InitialQuantity]
@@ -502,26 +504,25 @@ SELECT
   , [q].[QaNeeded] AS [QaNeeded]
   , [q].[CenterDescriptionFullCalc]
   , [q].[MembershipStartDate]
-  , [q].[ScheduledNextAppointmentDate]
-  , [q].[OrderAvailableForNextApp]
-  , [q].[PriorityHairNeeded]
-  , [q].[OldestOrderPlacedDate]
-  , [q].[OldestOrderPlaced DueDate]
-  , [q].[NewestOrderSystemType]
-  , [q].[RemainingQuantityToOrder]
+  , [sad].[AppointmentDate] AS [ScheduledNextAppointmentDate]
+  , ISNULL([c1].[CENT], 0) AS [OrderAvailableForNextApp]
+  , ISNULL(1 - [c1].[CENT], 0) AS [PriorityHairNeeded]
+  , [c1].[MinOrderCreateDate] AS [OldestOrderPlacedDate]
+  , [c1].[MinOrderCreateDateAdd8Months] AS [OldestOrderPlacedDueDate]
+  , [c2].[HairSystemDescriptionShort] AS [NewestOrderSystemType]
+  , [c3].[Cnt] AS [RemainingQuantityToOrder]
+
 --, [q].[OrderAvailForNextApp]
 INTO [#tmpHairOrderQuantitybyClient]
 FROM( SELECT
-          [hair].[ClientFullNameCalc]
+          [hair].[ClientGUID]
+        , [hair].[ClientFullNameCalc]
         , [hair].[MembershipDescription]
         , [hair].[CenterID]
         , [hair].[EndDate]
         , [hair].[MembershipID]
-        , MAX([lad].[LastApplicationDate]) AS [LastApplicationDate]
-        , MAX([sad].[AppointmentDate]) AS [ScheduledNextAppointmentDate]
         , SUM([hair].[InCenter]) AS [InCenter]
         , SUM([hair].[OnOrder]) AS [OnOrder]
-        , [ndd].[DueDate]
         , [ahs].[TotalAccumQuantity]
         , [ahs].[AccumQuantityRemainingCalc]
         , ISNULL([pro].[Promo], 0) AS [Promo]
@@ -529,106 +530,98 @@ FROM( SELECT
         , [hair].[CenterDescriptionFullCalc]
         , SUM([hair].[QaNeeded]) AS [QaNeeded]
         , MAX([hair].[MembershipStartDate]) AS [MembershipStartDate]
-        , MAX(ISNULL([c1].[CENT], 0)) AS [OrderAvailableForNextApp]
-        , MAX(ISNULL(1 - [c1].[CENT], 0)) AS [PriorityHairNeeded]
-        , MAX([c1].[MinOrderCreateDate]) AS [OldestOrderPlacedDate]
-        , MAX([c1].[MinOrderCreateDateAdd8Months]) AS [OldestOrderPlaced DueDate]
-        , MAX([c2].[HairSystemDescriptionShort]) AS [NewestOrderSystemType]
-        , MAX([c3].[Cnt]) AS [RemainingQuantityToOrder]
       --, MAX(CASE WHEN [hair].[HairSystemOrderDate] = [hair].[NextAppointmentDate] AND [hair].[InCenter] = 1 THEN 1 ELSE 0 END) AS [OrderAvailForNextApp]
       FROM [#hair] AS [hair]
       LEFT JOIN [dbo].[datClientMembershipAccum] AS [ahs] ON [hair].[CurrentBioMatrixClientMembershipGUID] = [ahs].[ClientMembershipGUID]
                                                          AND [ahs].[AccumulatorID] = 8 --Hair Systems
-      LEFT JOIN [#promo] AS [pro] ON [hair].[CurrentBioMatrixClientMembershipGUID] = [pro].[ClientMembershipGUID]
-      LEFT JOIN [#LastAppliedDate] AS [lad] ON [hair].[ClientGUID] = [lad].[ClientGUID]
-      LEFT JOIN [#ScheduledNextAppDate] AS [sad] ON [hair].[ClientGUID] = [lad].[ClientGUID]
-      LEFT JOIN [#Calc01] AS [c1] ON [c1].[ClientGUID] = [lad].[ClientGUID]
-      LEFT JOIN [#Calc02] AS [c2] ON [c2].[ClientGUID] = [lad].[ClientGUID]
-      LEFT JOIN [#Calc03] AS [c3] ON [c3].[ClientGUID] = [lad].[ClientGUID]
-      LEFT JOIN [#NextDueDate] AS [ndd] ON [hair].[ClientGUID] = [ndd].[ClientGUID]
       LEFT JOIN [#initialquantity] AS [iq] ON [hair].[MembershipID] = [iq].[MembershipID]
+      LEFT JOIN [#promo] AS [pro] ON [hair].[CurrentBioMatrixClientMembershipGUID] = [pro].[ClientMembershipGUID]
       LEFT JOIN [dbo].[cfgCenter] AS [cent] ON [cent].[CenterID] = [hair].[CenterID]
-      GROUP BY [hair].[CenterDescriptionFullCalc]
+      GROUP BY [hair].[ClientGUID]
+             , [hair].[CenterDescriptionFullCalc]
              , [hair].[ClientFullNameCalc]
              , [hair].[MembershipDescription]
              , [hair].[CenterID]
              , [hair].[EndDate]
-             , [lad].[LastApplicationDate]
-             , [ndd].[DueDate]
              , [ahs].[TotalAccumQuantity]
              , [ahs].[AccumQuantityRemainingCalc]
              , [pro].[Promo]
              , [iq].[InitialQuantity]
-             , [hair].[MembershipID] ) AS [q] ;
+             , [hair].[MembershipID] ) AS [q]
+LEFT JOIN [#LastAppliedDate] AS [lad] ON [q].[ClientGUID] = [lad].[ClientGUID]
+LEFT JOIN [#ScheduledNextAppDate] AS [sad] ON [q].[ClientGUID] = [sad].[ClientGUID]
+LEFT JOIN [#Calc01] AS [c1] ON [c1].[ClientGUID] = [q].[ClientGUID]
+LEFT JOIN [#Calc02] AS [c2] ON [c2].[ClientGUID] = [q].[ClientGUID]
+LEFT JOIN [#Calc03] AS [c3] ON [c3].[ClientGUID] = [q].[ClientGUID]
+LEFT JOIN [#NextDueDate] AS [ndd] ON [ndd].[ClientGUID] = [q].[ClientGUID] ;
 
 SELECT
-    [tmpData].[ClientFullNameCalc]
-  , [tmpData].[MembershipDescription]
-  , [tmpData].[MembershipID]
-  , [tmpData].[CenterDescriptionFullCalc] AS [CenterID]
-  , [tmpData].[EndDate]
-  , [tmpData].[LastApplicationDate]
-  , [tmpData].[InCenter]
-  , [tmpData].[OnOrder]
-  , [tmpData].[DueDate]
-  , [tmpData].[TotalAccumQuantity]
-  , [tmpData].[Promo]
-  , [tmpData].[InitialQuantity]
-  , [tmpData].[Remaining]
-  , [tmpData].[Overage]
-  , [tmpData].[QuantityAtCenterAndOrdered]
-  , [tmpData].[QaNeeded]
-  , [tmpData].[CenterDescriptionFullCalc]
+    [t].[ClientFullNameCalc]
+  , [t].[MembershipDescription]
+  , [t].[MembershipID]
+  , [t].[CenterDescriptionFullCalc] AS [CenterID]
+  , [t].[EndDate]
+  , [t].[LastApplicationDate]
+  , [t].[InCenter]
+  , [t].[OnOrder]
+  , [t].[DueDate]
+  , [t].[TotalAccumQuantity]
+  , [t].[Promo]
+  , [t].[InitialQuantity]
+  , [t].[Remaining]
+  , [t].[Overage]
+  , [t].[QuantityAtCenterAndOrdered]
+  , [t].[QaNeeded]
+  , [t].[CenterDescriptionFullCalc]
   , [gms].[membershipGroup]
-  --, CASE WHEN ( [gms].[membershipGroup] LIKE '%Xtrands+%' OR [gms].[membershipGroup] LIKE '%EmployeeRetail%' ) AND [tmpData].[QuantityAtCenterAndOrdered] = 0 THEN 0
-  --      WHEN ( [gms].[membershipGroup] LIKE '%Xtrands+%' OR [gms].[membershipGroup] LIKE '%EmployeeRetail%' ) AND [tmpData].[QuantityAtCenterAndOrdered] = 1 THEN 0
-  --      WHEN ( [gms].[membershipGroup] LIKE '%Xtrands+%' OR [gms].[membershipGroup] LIKE '%EmployeeRetail%' ) AND [tmpData].[QuantityAtCenterAndOrdered] = 2 THEN 0
-  --      WHEN ( [gms].[membershipGroup] LIKE '%Basic%' OR [gms].[membershipGroup] LIKE '%Ruby%' OR [gms].[membershipGroup] LIKE '%HCFK%' ) AND [tmpData].[QuantityAtCenterAndOrdered] = 0 THEN 2
-  --      WHEN ( [gms].[membershipGroup] LIKE '%Basic%' OR [gms].[membershipGroup] LIKE '%Ruby%' OR [gms].[membershipGroup] LIKE '%HCFK%' ) AND [tmpData].[QuantityAtCenterAndOrdered] = 1 THEN 2
-  --      WHEN ( [gms].[membershipGroup] LIKE '%Basic%' OR [gms].[membershipGroup] LIKE '%Ruby%' OR [gms].[membershipGroup] LIKE '%HCFK%' ) AND [tmpData].[QuantityAtCenterAndOrdered] = 2 THEN 1
-  --      WHEN ( [gms].[membershipGroup] LIKE '%Bronze%' OR [gms].[membershipGroup] LIKE '%Emerald%' OR [gms].[membershipGroup] LIKE '%Silver%' ) AND [tmpData].[QuantityAtCenterAndOrdered] = 0 THEN 2
-  --      WHEN ( [gms].[membershipGroup] LIKE '%Bronze%' OR [gms].[membershipGroup] LIKE '%Emerald%' OR [gms].[membershipGroup] LIKE '%Silver%' ) AND [tmpData].[QuantityAtCenterAndOrdered] = 1 THEN 2
-  --      WHEN ( [gms].[membershipGroup] LIKE '%Bronze%' OR [gms].[membershipGroup] LIKE '%Emerald%' OR [gms].[membershipGroup] LIKE '%Silver%' ) AND [tmpData].[QuantityAtCenterAndOrdered] = 2 THEN 2
-  --      WHEN ( [gms].[membershipGroup] LIKE '%Gold%' OR [gms].[membershipGroup] LIKE '%Sapphire%' ) AND [tmpData].[QuantityAtCenterAndOrdered] = 0 THEN 3
-  --      WHEN ( [gms].[membershipGroup] LIKE '%Gold%' OR [gms].[membershipGroup] LIKE '%Sapphire%' ) AND [tmpData].[QuantityAtCenterAndOrdered] = 1 THEN 3
-  --      WHEN ( [gms].[membershipGroup] LIKE '%Gold%' OR [gms].[membershipGroup] LIKE '%Sapphire%' ) AND [tmpData].[QuantityAtCenterAndOrdered] = 2 THEN 3
-  --      WHEN [gms].[membershipGroup] LIKE '%Diamond%' AND [tmpData].[QuantityAtCenterAndOrdered] = 0 THEN 4
-  --      WHEN [gms].[membershipGroup] LIKE '%Diamond%' AND [tmpData].[QuantityAtCenterAndOrdered] = 1 THEN 4
-  --      WHEN [gms].[membershipGroup] LIKE '%Diamond%' AND [tmpData].[QuantityAtCenterAndOrdered] = 2 THEN 3
-  --      WHEN ( [gms].[membershipGroup] LIKE '%Platinum%' OR [gms].[membershipGroup] LIKE '%Executive%' ) AND [tmpData].[QuantityAtCenterAndOrdered] = 0 THEN 6
-  --      WHEN ( [gms].[membershipGroup] LIKE '%Platinum%' OR [gms].[membershipGroup] LIKE '%Executive%' ) AND [tmpData].[QuantityAtCenterAndOrdered] = 1 THEN 6
-  --      WHEN ( [gms].[membershipGroup] LIKE '%Platinum%' OR [gms].[membershipGroup] LIKE '%Executive%' ) AND [tmpData].[QuantityAtCenterAndOrdered] = 2 THEN 5
-  --      WHEN [gms].[membershipGroup] LIKE '%Presidential%' AND [tmpData].[QuantityAtCenterAndOrdered] = 0 THEN 12
-  --      WHEN [gms].[membershipGroup] LIKE '%Presidential%' AND [tmpData].[QuantityAtCenterAndOrdered] = 1 THEN 12
-  --      WHEN [gms].[membershipGroup] LIKE '%Presidential%' AND [tmpData].[QuantityAtCenterAndOrdered] = 2 THEN 12
-  --      WHEN [gms].[membershipGroup] LIKE '%Premier%' AND [tmpData].[QuantityAtCenterAndOrdered] = 0 THEN 18
-  --      WHEN [gms].[membershipGroup] LIKE '%Premier%' AND [tmpData].[QuantityAtCenterAndOrdered] = 1 THEN 18
-  --      WHEN [gms].[membershipGroup] LIKE '%Premier%' AND [tmpData].[QuantityAtCenterAndOrdered] = 2 THEN 18
+  --, CASE WHEN ( [gms].[membershipGroup] LIKE '%Xtrands+%' OR [gms].[membershipGroup] LIKE '%EmployeeRetail%' ) AND t.[QuantityAtCenterAndOrdered] = 0 THEN 0
+  --      WHEN ( [gms].[membershipGroup] LIKE '%Xtrands+%' OR [gms].[membershipGroup] LIKE '%EmployeeRetail%' ) AND t.[QuantityAtCenterAndOrdered] = 1 THEN 0
+  --      WHEN ( [gms].[membershipGroup] LIKE '%Xtrands+%' OR [gms].[membershipGroup] LIKE '%EmployeeRetail%' ) AND t.[QuantityAtCenterAndOrdered] = 2 THEN 0
+  --      WHEN ( [gms].[membershipGroup] LIKE '%Basic%' OR [gms].[membershipGroup] LIKE '%Ruby%' OR [gms].[membershipGroup] LIKE '%HCFK%' ) AND t.[QuantityAtCenterAndOrdered] = 0 THEN 2
+  --      WHEN ( [gms].[membershipGroup] LIKE '%Basic%' OR [gms].[membershipGroup] LIKE '%Ruby%' OR [gms].[membershipGroup] LIKE '%HCFK%' ) AND t.[QuantityAtCenterAndOrdered] = 1 THEN 2
+  --      WHEN ( [gms].[membershipGroup] LIKE '%Basic%' OR [gms].[membershipGroup] LIKE '%Ruby%' OR [gms].[membershipGroup] LIKE '%HCFK%' ) AND t.[QuantityAtCenterAndOrdered] = 2 THEN 1
+  --      WHEN ( [gms].[membershipGroup] LIKE '%Bronze%' OR [gms].[membershipGroup] LIKE '%Emerald%' OR [gms].[membershipGroup] LIKE '%Silver%' ) AND t.[QuantityAtCenterAndOrdered] = 0 THEN 2
+  --      WHEN ( [gms].[membershipGroup] LIKE '%Bronze%' OR [gms].[membershipGroup] LIKE '%Emerald%' OR [gms].[membershipGroup] LIKE '%Silver%' ) AND t.[QuantityAtCenterAndOrdered] = 1 THEN 2
+  --      WHEN ( [gms].[membershipGroup] LIKE '%Bronze%' OR [gms].[membershipGroup] LIKE '%Emerald%' OR [gms].[membershipGroup] LIKE '%Silver%' ) AND t.[QuantityAtCenterAndOrdered] = 2 THEN 2
+  --      WHEN ( [gms].[membershipGroup] LIKE '%Gold%' OR [gms].[membershipGroup] LIKE '%Sapphire%' ) AND t.[QuantityAtCenterAndOrdered] = 0 THEN 3
+  --      WHEN ( [gms].[membershipGroup] LIKE '%Gold%' OR [gms].[membershipGroup] LIKE '%Sapphire%' ) AND t.[QuantityAtCenterAndOrdered] = 1 THEN 3
+  --      WHEN ( [gms].[membershipGroup] LIKE '%Gold%' OR [gms].[membershipGroup] LIKE '%Sapphire%' ) AND t.[QuantityAtCenterAndOrdered] = 2 THEN 3
+  --      WHEN [gms].[membershipGroup] LIKE '%Diamond%' AND t.[QuantityAtCenterAndOrdered] = 0 THEN 4
+  --      WHEN [gms].[membershipGroup] LIKE '%Diamond%' AND t.[QuantityAtCenterAndOrdered] = 1 THEN 4
+  --      WHEN [gms].[membershipGroup] LIKE '%Diamond%' AND t.[QuantityAtCenterAndOrdered] = 2 THEN 3
+  --      WHEN ( [gms].[membershipGroup] LIKE '%Platinum%' OR [gms].[membershipGroup] LIKE '%Executive%' ) AND t.[QuantityAtCenterAndOrdered] = 0 THEN 6
+  --      WHEN ( [gms].[membershipGroup] LIKE '%Platinum%' OR [gms].[membershipGroup] LIKE '%Executive%' ) AND t.[QuantityAtCenterAndOrdered] = 1 THEN 6
+  --      WHEN ( [gms].[membershipGroup] LIKE '%Platinum%' OR [gms].[membershipGroup] LIKE '%Executive%' ) AND t.[QuantityAtCenterAndOrdered] = 2 THEN 5
+  --      WHEN [gms].[membershipGroup] LIKE '%Presidential%' AND t.[QuantityAtCenterAndOrdered] = 0 THEN 12
+  --      WHEN [gms].[membershipGroup] LIKE '%Presidential%' AND t.[QuantityAtCenterAndOrdered] = 1 THEN 12
+  --      WHEN [gms].[membershipGroup] LIKE '%Presidential%' AND t.[QuantityAtCenterAndOrdered] = 2 THEN 12
+  --      WHEN [gms].[membershipGroup] LIKE '%Premier%' AND t.[QuantityAtCenterAndOrdered] = 0 THEN 18
+  --      WHEN [gms].[membershipGroup] LIKE '%Premier%' AND t.[QuantityAtCenterAndOrdered] = 1 THEN 18
+  --      WHEN [gms].[membershipGroup] LIKE '%Premier%' AND t.[QuantityAtCenterAndOrdered] = 2 THEN 18
   --      ELSE 0 -- if not any of this conditions the field should be 0
   --  END AS [SuggestedQuantityToOrder]
 
   --,0 AS [SuggestedQuantityToOrder]
-  , [tmpData].[ScheduledNextAppointmentDate]
-  , [tmpData].[OrderAvailableForNextApp]
-  , [tmpData].[PriorityHairNeeded]
-  , [tmpData].[OldestOrderPlacedDate]
-  , [tmpData].[OldestOrderPlaced DueDate]
-  , [tmpData].[NewestOrderSystemType]
-  , [tmpData].[RemainingQuantityToOrder]
-  , CAST([tmpData].[InitialQuantity] / 12.0 AS NUMERIC(12, 4)) AS [Membership System Qty to Apply per month]
+  , [t].[ScheduledNextAppointmentDate]
+  , [t].[OrderAvailableForNextApp]
+  , [t].[PriorityHairNeeded]
+  , [t].[OldestOrderPlacedDate]
+  , [t].[OldestOrderPlaced DueDate]
+  , [t].[NewestOrderSystemType]
+  , [t].[RemainingQuantityToOrder]
+  , CAST([t].[InitialQuantity] / 12.0 AS NUMERIC(12, 4)) AS [Membership System Qty to Apply per month]
   , 8 AS [System Order Lead Time]
   , [gms].[MaxVal] AS [Membership Maximum]
-  , CASE WHEN [tmpData].[SuggestedQuantityToOrder] > [gms].[MaxVal] THEN [gms].[MaxVal] WHEN [tmpData].[SuggestedQuantityToOrder] > 0 THEN
-                                                                                        [tmpData].[SuggestedQuantityToOrder] ELSE 0 END AS [SuggestedQuantityToOrder]
-  , CEILING(( [tmpData].[QaNeeded] + [tmpData].[InCenter] + [tmpData].[OnOrder] ) / 12.0) AS [MonthsInCenterAndOnOrder]
-  , [tmpData].[LastApplicationDate]
+  , CASE WHEN [t].[SuggestedQuantityToOrder] > [gms].[MaxVal] THEN [gms].[MaxVal] WHEN [t].[SuggestedQuantityToOrder] > 0 THEN [t].[SuggestedQuantityToOrder] ELSE
+                                                                                                                                                              0 END AS [SuggestedQuantityToOrder]
+  , CEILING(( [t].[QaNeeded] + [t].[InCenter] + [t].[OnOrder] ) / 12.0) AS [MonthsInCenterAndOnOrder]
+  , [t].[LastApplicationDate]
 FROM( SELECT
           *
-        , CEILING(( ISNULL([tmpData].[InitialQuantity], 0) / 12.0 * 8 ) - ( [tmpData].[QaNeeded] + [tmpData].[InCenter] + [tmpData].[OnOrder] )) AS [SuggestedQuantityToOrder]
-      FROM [#tmpHairOrderQuantitybyClient] AS [tmpData] ) AS [tmpData]
-INNER JOIN [#groupedMemberships] AS [gms] ON [tmpData].[MembershipID] = [gms].[membershipId] ;
+        , CEILING(( ISNULL([t].[InitialQuantity], 0) / 12.0 * 8 ) - ( [t].[QaNeeded] + [t].[InCenter] + [t].[OnOrder] )) AS [SuggestedQuantityToOrder]
+      FROM [#tmpHairOrderQuantitybyClient] AS [t] ) AS [t]
+INNER JOIN [#groupedMemberships] AS [gms] ON [t].[MembershipID] = [gms].[membershipId] ;
 GO
-
 EXEC [dbo].[rptHairOrderQuantitybyClient_GVAROL] 201, '0' ;
 GO
 RETURN ;
