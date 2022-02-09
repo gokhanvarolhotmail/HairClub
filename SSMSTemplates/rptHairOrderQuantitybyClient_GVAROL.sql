@@ -574,34 +574,6 @@ SELECT
   , [t].[QaNeeded]
   , [t].[CenterDescriptionFullCalc]
   , [gms].[membershipGroup]
-  --, CASE WHEN ( [gms].[membershipGroup] LIKE '%Xtrands+%' OR [gms].[membershipGroup] LIKE '%EmployeeRetail%' ) AND t.[QuantityAtCenterAndOrdered] = 0 THEN 0
-  --      WHEN ( [gms].[membershipGroup] LIKE '%Xtrands+%' OR [gms].[membershipGroup] LIKE '%EmployeeRetail%' ) AND t.[QuantityAtCenterAndOrdered] = 1 THEN 0
-  --      WHEN ( [gms].[membershipGroup] LIKE '%Xtrands+%' OR [gms].[membershipGroup] LIKE '%EmployeeRetail%' ) AND t.[QuantityAtCenterAndOrdered] = 2 THEN 0
-  --      WHEN ( [gms].[membershipGroup] LIKE '%Basic%' OR [gms].[membershipGroup] LIKE '%Ruby%' OR [gms].[membershipGroup] LIKE '%HCFK%' ) AND t.[QuantityAtCenterAndOrdered] = 0 THEN 2
-  --      WHEN ( [gms].[membershipGroup] LIKE '%Basic%' OR [gms].[membershipGroup] LIKE '%Ruby%' OR [gms].[membershipGroup] LIKE '%HCFK%' ) AND t.[QuantityAtCenterAndOrdered] = 1 THEN 2
-  --      WHEN ( [gms].[membershipGroup] LIKE '%Basic%' OR [gms].[membershipGroup] LIKE '%Ruby%' OR [gms].[membershipGroup] LIKE '%HCFK%' ) AND t.[QuantityAtCenterAndOrdered] = 2 THEN 1
-  --      WHEN ( [gms].[membershipGroup] LIKE '%Bronze%' OR [gms].[membershipGroup] LIKE '%Emerald%' OR [gms].[membershipGroup] LIKE '%Silver%' ) AND t.[QuantityAtCenterAndOrdered] = 0 THEN 2
-  --      WHEN ( [gms].[membershipGroup] LIKE '%Bronze%' OR [gms].[membershipGroup] LIKE '%Emerald%' OR [gms].[membershipGroup] LIKE '%Silver%' ) AND t.[QuantityAtCenterAndOrdered] = 1 THEN 2
-  --      WHEN ( [gms].[membershipGroup] LIKE '%Bronze%' OR [gms].[membershipGroup] LIKE '%Emerald%' OR [gms].[membershipGroup] LIKE '%Silver%' ) AND t.[QuantityAtCenterAndOrdered] = 2 THEN 2
-  --      WHEN ( [gms].[membershipGroup] LIKE '%Gold%' OR [gms].[membershipGroup] LIKE '%Sapphire%' ) AND t.[QuantityAtCenterAndOrdered] = 0 THEN 3
-  --      WHEN ( [gms].[membershipGroup] LIKE '%Gold%' OR [gms].[membershipGroup] LIKE '%Sapphire%' ) AND t.[QuantityAtCenterAndOrdered] = 1 THEN 3
-  --      WHEN ( [gms].[membershipGroup] LIKE '%Gold%' OR [gms].[membershipGroup] LIKE '%Sapphire%' ) AND t.[QuantityAtCenterAndOrdered] = 2 THEN 3
-  --      WHEN [gms].[membershipGroup] LIKE '%Diamond%' AND t.[QuantityAtCenterAndOrdered] = 0 THEN 4
-  --      WHEN [gms].[membershipGroup] LIKE '%Diamond%' AND t.[QuantityAtCenterAndOrdered] = 1 THEN 4
-  --      WHEN [gms].[membershipGroup] LIKE '%Diamond%' AND t.[QuantityAtCenterAndOrdered] = 2 THEN 3
-  --      WHEN ( [gms].[membershipGroup] LIKE '%Platinum%' OR [gms].[membershipGroup] LIKE '%Executive%' ) AND t.[QuantityAtCenterAndOrdered] = 0 THEN 6
-  --      WHEN ( [gms].[membershipGroup] LIKE '%Platinum%' OR [gms].[membershipGroup] LIKE '%Executive%' ) AND t.[QuantityAtCenterAndOrdered] = 1 THEN 6
-  --      WHEN ( [gms].[membershipGroup] LIKE '%Platinum%' OR [gms].[membershipGroup] LIKE '%Executive%' ) AND t.[QuantityAtCenterAndOrdered] = 2 THEN 5
-  --      WHEN [gms].[membershipGroup] LIKE '%Presidential%' AND t.[QuantityAtCenterAndOrdered] = 0 THEN 12
-  --      WHEN [gms].[membershipGroup] LIKE '%Presidential%' AND t.[QuantityAtCenterAndOrdered] = 1 THEN 12
-  --      WHEN [gms].[membershipGroup] LIKE '%Presidential%' AND t.[QuantityAtCenterAndOrdered] = 2 THEN 12
-  --      WHEN [gms].[membershipGroup] LIKE '%Premier%' AND t.[QuantityAtCenterAndOrdered] = 0 THEN 18
-  --      WHEN [gms].[membershipGroup] LIKE '%Premier%' AND t.[QuantityAtCenterAndOrdered] = 1 THEN 18
-  --      WHEN [gms].[membershipGroup] LIKE '%Premier%' AND t.[QuantityAtCenterAndOrdered] = 2 THEN 18
-  --      ELSE 0 -- if not any of this conditions the field should be 0
-  --  END AS [SuggestedQuantityToOrder]
-
-  --,0 AS [SuggestedQuantityToOrder]
   , [t].[ScheduledNextAppointmentDate]
   , [t].[OrderAvailableForNextApp]
   , [t].[PriorityHairNeeded]
@@ -610,7 +582,7 @@ SELECT
   , [t].[NewestOrderSystemType]
   , [t].[RemainingQuantityToOrder]
   , CAST([t].[InitialQuantity] / 12.0 AS NUMERIC(12, 4)) AS [MembershipSystemQtyToApplyPerMonth]
-  , 8 AS [System Order Lead Time]
+  , 8 AS [SystemOrderLeadTime]
   , [gms].[MaxVal] AS [Membership Maximum]
   , CASE WHEN [t].[SuggestedQuantityToOrder] > [gms].[MaxVal] THEN [gms].[MaxVal] WHEN [t].[SuggestedQuantityToOrder] > 0 THEN [t].[SuggestedQuantityToOrder] ELSE
                                                                                                                                                               0 END AS [SuggestedQuantityToOrder]
@@ -623,6 +595,7 @@ FROM( SELECT
 INNER JOIN [#groupedMemberships] AS [gms] ON [t].[MembershipID] = [gms].[membershipId] ;
 GO
 EXEC [dbo].[rptHairOrderQuantitybyClient_GVAROL] @CenterID = 201, @MembershipList = '0' ;
+  
   
 RETURN ;
 
