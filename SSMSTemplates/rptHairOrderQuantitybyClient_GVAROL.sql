@@ -512,7 +512,7 @@ LEFT JOIN [sys].[databases] AS [d] ON [d].[name] = DB_NAME() AND [t].[name] LIKE
 --   OR [c].[name] LIKE REPLACE('Newest Order System Type', ' ', '%')
 --   OR [c].[name] LIKE REPLACE('Remaining Qty to Order', ' ', '%')
 --   OR [c].[name] LIKE REPLACE('Priority Hair Needed', ' ', '%')
---   OR [c].[name] LIKE REPLACE('Last%App%Date', ' ', '%')
+
 --GO
 
 -- Last Application Date
@@ -561,6 +561,9 @@ OPTION( RECOMPILE ) ;
 -- Order Avail for Next App
 -- If Cent exists true
 
+-- Priority Hair Needed
+-- If Cent exists false
+
 -- Oldest Order Placed Date
 -- [MinOrderCreateDate]
 
@@ -600,3 +603,17 @@ FROM( SELECT
       INNER JOIN [dbo].[lkpHairSystemOrderStatus] AS [hsos] ON [hsos].[HairSystemOrderStatusID] = [hso].[HairSystemOrderStatusID]
                                                            AND [hsos].[HairSystemOrderStatusDescriptionShort] = 'ORDER' ) AS [k]
 WHERE [k].[rw] = 1 ;
+
+
+-- Remaining Qty to Order
+
+SELECT
+    [clt].[ClientGUID]
+  , [clt].[ClientIdentifier]
+  , [b].[Cnt]
+FROM [dbo].[datClient] AS [clt]
+INNER JOIN [dbo].[datClientMembership] AS [cm] ON [cm].[ClientMembershipGUID] = [clt].[CurrentBioMatrixClientMembershipGUID]
+OUTER APPLY( SELECT COUNT(1) AS [Cnt] FROM [dbo].[datHairSystemOrder] AS [hso] WHERE [hso].[ClientGUID] = [clt].[ClientGUID]
+                                                                               AND [hso].[CreateDate] >= [cm].[BeginDate] ) AS [b] 
+
+
