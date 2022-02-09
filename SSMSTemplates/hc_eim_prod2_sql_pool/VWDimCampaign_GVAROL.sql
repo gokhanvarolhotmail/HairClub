@@ -97,12 +97,12 @@ AS (
            WHEN [d].[AgencyName] IN ('KingStar', 'Kingstar Media', 'Jane Creative', 'Internal Corporate', 'Hans Wiemann')
             AND [d].[CampaignMedia] = 'Paid Social' THEN 'Paid Social'
            WHEN [d].[AgencyName] LIKE '%Hans Wiemann%'
-            AND [d].[CampaignMedia] IN ('SEM')
+            AND [d].[CampaignMedia] = 'SEM'
             AND [d].[CampaignFormat] IN ('Branded PPC', 'Non-Branded PPC', 'Digital Referral', 'Text Ad') THEN 'Paid Search'
            WHEN [d].[AgencyName] LIKE '%pure%digital%'
-            AND [d].[CampaignMedia] IN ('SEM')
+            AND [d].[CampaignMedia] = 'SEM'
             AND [d].[CampaignFormat] IN ('Branded PPC', 'Non-Branded PPC', 'Digital Referral', 'Text Ad') THEN 'Paid Search'
-           WHEN [d].[AgencyName] NOT LIKE '%Hans Wiemann%' AND [d].[AgencyName] NOT LIKE '%pure%digital%' AND [d].[CampaignMedia] IN ('SEM') THEN 'Other'
+           WHEN [d].[AgencyName] NOT LIKE '%Hans Wiemann%' AND [d].[AgencyName] NOT LIKE '%pure%digital%' AND [d].[CampaignMedia] = 'SEM' THEN 'Other'
            WHEN [d].[CampaignMedia] IN ('EVENT', 'REFERRAL', 'WALK-IN', 'WordOfMouth', 'Word-Of-Mouth', 'Walk In') THEN 'Word-Of-Mouth'
            WHEN [d].[CampaignMedia] = 'ORGANIC' THEN 'Local Search'
            WHEN [d].[CampaignMedia] = 'SEO/Organic' THEN 'Organic Search'
@@ -128,7 +128,7 @@ AS (
            WHEN [d].[AgencyName] LIKE '%Jane Creative%' THEN 'Facebook'
            WHEN [d].[AgencyName] = 'Intermedia' AND [d].[CampaignFormat] = ':30' THEN 'Hulu'
            WHEN [d].[AgencyName] = 'Intermedia' AND [d].[CampaignFormat] <> ':30' THEN 'Linear'
-           WHEN TRIM([d].[CampaignSource]) = 'Broad Reach' AND ( [d].[AgencyName] <> 'Intermedia' ) THEN 'Linear'
+           WHEN TRIM([d].[CampaignSource]) = 'Broad Reach' AND [d].[AgencyName] <> 'Intermedia' THEN 'Linear'
            WHEN [d].[AgencyName] = 'Advance360' THEN 'Multiple'
            WHEN [d].[AgencyName] = 'MediaPoint' THEN 'Multiple'
            WHEN [d].[CampaignSource] LIKE 'Adroll%' THEN 'Ad Roll'
