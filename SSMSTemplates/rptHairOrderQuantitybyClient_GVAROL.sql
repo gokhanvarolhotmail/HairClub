@@ -457,9 +457,9 @@ SELECT
   --  END AS [SuggestedQuantityToOrder]
 
   --,0 AS [SuggestedQuantityToOrder]
-  , 'Total Systems available on the membership divided by 12 months' AS [“Membership System Qty to Apply per month]
-  , 'How long it current takes to receive a new order (currently 10 months)' AS [System Order Lead Time]
-  , 'Maximum monthly quantity to order based on application interval and existing orders In Center and On Order' AS [Membership Maximum]
+  , CAST([tmpData].[InitialQuantity] / 12.0 AS NUMERIC(12,4)) AS [Membership System Qty to Apply per month]
+  , 8 AS [System Order Lead Time]
+  , [gms].[MaxVal] AS [Membership Maximum]
   , CASE WHEN [tmpData].[SuggestedQuantityToOrder] > [gms].[MaxVal] THEN [gms].[MaxVal] WHEN [tmpData].[SuggestedQuantityToOrder] > 0 THEN
                                                                                         [tmpData].[SuggestedQuantityToOrder] ELSE 0 END AS [SuggestedQuantityToOrder]
   , CEILING(( [tmpData].[QaNeeded] + [tmpData].[InCenter] + [tmpData].[OnOrder] ) / 12.0) AS [MonthsInCenterAndOnOrder]
