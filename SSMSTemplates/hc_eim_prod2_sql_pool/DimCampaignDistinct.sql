@@ -50,7 +50,8 @@ SELECT DISTINCT
      , NULL AS [IsDeleted]
 INTO [#DimCampaign]
 FROM [DimCampaign]
-WHERE [DWH_LastUpdateDate] >= '20210101' ;
+WHERE [DWH_LastUpdateDate] >= '20210101'
+AND ISNULL([AgencyKey], 0) <> -1;
 
 
 */
@@ -66,16 +67,20 @@ AS (
      , [d].[AgencyKey]
      , CASE
            WHEN [d].[CampaignMedia] = 'Organic' THEN 'Non Paid Media'
+		   WHEN [d].[AgencyName] = 'Internal Corporate' AND [d].[CampaignMedia] IN ('Radio', 'Streaming') THEN 'Paid Media' /*GVAROL 20220210*/
+		   WHEN [d].[AgencyName] = 'Gleam' OR [d].[CampaignName] LIKE '%Gleam%' THEN 'Paid Media' /*GVAROL 20220210*/
            WHEN [d].[AgencyName] = 'Internal Corporate' AND [d].[CampaignMedia] = 'ORGANIC' THEN 'Paid Media'
            WHEN [d].[AgencyName] = 'Internal Corporate' AND [d].[CampaignName] LIKE '%google local search advertising%' THEN 'Paid Media'
            WHEN [d].[AgencyName] = 'Internal Corporate' AND [d].[CampaignName] LIKE '%poker%' THEN 'Paid Media'
-           WHEN [d].[CampaignName] LIKE '%gleam%' THEN 'Paid Media'
+           WHEN [d].[CampaignName] LIKE '%Gleam%' THEN 'Paid Media'
            WHEN [d].[AgencyName] IN ('Havas', 'Cannella', 'Intermedia', 'Pure Digital', 'Barth-PureDigital', 'Kingstar', 'Kingstar Media', 'LaunchDRTV'
                                    , 'Mediapoint', 'Venator', 'Advance360', 'Advanced360', 'Jane Creative', 'Valassis', 'Outfront') THEN 'Paid Media'
            ELSE 'Non Paid Media'
        END AS [PayMediaType]
      , [d].[AgencyName]
      , CASE WHEN [d].[AgencyName] = 'Barth-Zimmerman' THEN 'Zimmerman'
+           WHEN [d].[AgencyName] = 'Internal Corporate' AND [d].[CampaignMedia] IN ('Radio', 'Streaming') THEN 'In-House' /*GVAROL 20220210*/
+           WHEN [d].[AgencyName] = 'Gleam' OR [d].[CampaignName] LIKE '%Gleam%' THEN 'In-House' /*GVAROL 20220210*/
            WHEN [d].[CampaignName] LIKE '%google local search advertising%' THEN 'In-House'
            WHEN [d].[AgencyName] IN ('Advance360', 'Advanced360') THEN 'A360'
            WHEN [d].[AgencyName] = 'Internal Corporate' THEN 'In-House' /*GVAROL 20220210*/
@@ -84,7 +89,7 @@ AS (
            WHEN [d].[AgencyName] = 'Barth-PureDigital' THEN 'Pure Digital'
            WHEN [d].[AgencyName] = 'LaunchDRTV' THEN 'Launch'
            WHEN [d].[AgencyName] = 'Kingstar' THEN 'Kingstar Media'
-           WHEN [d].[CampaignName] LIKE '%gleam%' THEN 'In-House'
+           WHEN [d].[CampaignName] LIKE '%Gleam%' THEN 'In-House'
            ELSE ISNULL([d].[AgencyName], 'Unknown')
        END AS [AgencyNameDerived]
      , [d].[CampaignStatus]
@@ -115,7 +120,7 @@ AS (
      , [d].[LanguageKey]
      , [d].[CampaignMedia]
      , CASE WHEN [d].[AgencyName] = 'Intermedia' AND [d].[CampaignFormat] = ':30' THEN 'OTT'
-           WHEN [d].[CampaignName] LIKE '%gleam%' THEN 'Gleam'
+           WHEN [d].[CampaignName] LIKE '%Gleam%' THEN 'Gleam'
            WHEN [d].[CampaignName] LIKE '%poker%' THEN 'Poker'
            WHEN [d].[AgencyName] LIKE '%King%' AND [d].[CampaignFormat] = 'Video' THEN 'Traditional Ads'
            WHEN [d].[AgencyName] LIKE '%Pure Digital%' AND [d].[CampaignFormat] = 'Video' THEN 'Retargeting'
@@ -126,7 +131,7 @@ AS (
            WHEN [d].[CampaignFormat] = 'Mailer' THEN 'Direct Mail'
            WHEN [d].[CampaignFormat] IN ('Non-branded Ppc', 'Branded Ppc', 'Text Ad') THEN 'Cpc'
            WHEN [d].[CampaignFormat] IN ('Video Ad', 'Video Paid') THEN 'Video'
-           --When CampaignFormat in ('Image','Image Ad') and (CampaignName not like '%gleam%') then 'Image'
+           --When CampaignFormat in ('Image','Image Ad') and (CampaignName not like '%Gleam%') then 'Image'
            WHEN ( [d].[CampaignFormat] = ':30' AND [d].[AgencyName] <> 'Intermedia' ) OR ( [d].[CampaignFormat] IN (':10', ':60', ':120')) THEN 'Short Form'
            WHEN [d].[CampaignFormat] IN (':180', '240', '5:00') THEN 'Mid Form'
            WHEN [d].[CampaignFormat] IN ('28:30', '28:30:00') THEN 'Long Form'
@@ -147,8 +152,8 @@ AS (
            WHEN [d].[AgencyName] LIKE '%pure%digital%'
             AND [d].[CampaignMedia] IN ('SEM', 'Display')
             AND [d].[CampaignFormat] IN ('Video Ad', 'Remarekting Display', 'Banner Ad') THEN 'Display'
-           WHEN [d].[CampaignName] LIKE '%gleam%' AND [d].[CampaignMedia] = 'Paid Social' THEN 'Paid Social'
-           WHEN [d].[CampaignName] LIKE '%gleam%' AND [d].[CampaignMedia] = 'Display' THEN 'Display'
+           WHEN [d].[CampaignName] LIKE '%Gleam%' AND [d].[CampaignMedia] = 'Paid Social' THEN 'Paid Social'
+           WHEN [d].[CampaignName] LIKE '%Gleam%' AND [d].[CampaignMedia] = 'Display' THEN 'Display'
            WHEN [d].[CampaignName] LIKE '%poker%' THEN 'Local Activation'
            WHEN [d].[AgencyName] LIKE '%launch%' AND [d].[CampaignName] NOT LIKE '%youtube%' THEN 'Paid Social'
            WHEN [d].[AgencyName] IN ('KingStar', 'Kingstar Media', 'Jane Creative', 'Internal Corporate', 'Hans Wiemann')
@@ -193,7 +198,7 @@ AS (
            WHEN [d].[AgencyName] = 'Internal Corporate' AND [d].[CampaignMedia] = 'ORGANIC' THEN 'Multiple'
            WHEN [d].[AgencyName] = 'Internal Corporate' AND [d].[CampaignName] LIKE '%poker%' THEN 'Multiple'
            WHEN [d].[AgencyName] LIKE '%Pure%Digital%' AND TRIM([d].[CampaignFormat]) IN ('Non-branded Ppc', 'Branded Ppc', 'Text Ad') THEN 'Multiple'
-           WHEN [d].[CampaignName] LIKE '%gleam%' THEN 'Multiple'
+           WHEN [d].[CampaignName] LIKE '%Gleam%' THEN 'Multiple'
            WHEN [d].[AgencyName] = 'Venator' THEN 'Multiple'
            WHEN [d].[AgencyName] = 'Valassis' THEN 'Multiple'
            WHEN [d].[CampaignSource] = 'Facebook-instagram' THEN 'Facebook'
@@ -252,7 +257,7 @@ SELECT
   , CASE WHEN [c].[AgencyNameDerived] = 'Launch' AND [c].[CampaignChannelDerived] IN ('Paid Social', 'Display', 'Email') THEN 'Paid Social & Display'
         WHEN [c].[AgencyNameDerived] = 'Pure Digital' AND [c].[CampaignChannelDerived] IN ('Paid Search', 'Display') THEN 'Paid Search & Display'
         WHEN [c].[AgencyNameDerived] = 'In-House' AND [c].[CampaignChannelDerived] IN ('Paid Search', 'Paid Social') THEN 'Multiple'
-        WHEN [c].[AgencyNameDerived] = 'In-House' AND [c].[CampaignName] LIKE '%gleam%' THEN 'Multiple'
+        WHEN [c].[AgencyNameDerived] = 'In-House' AND [c].[CampaignName] LIKE '%Gleam%' THEN 'Multiple'
         ELSE [c].[CampaignChannelDerived]
     END AS [CampaignChannelGroup]
   , [c].[ChannelKey]
@@ -316,7 +321,7 @@ SELECT     [AgencyName]
   , [CampaignMedia]
   , [CampaignName]
   , CampaignStatus
-  , [AgencyKey]
+  --, [AgencyKey]
   , [CampaignSource]
   ,[PayMediaType],
 [AgencyNameDerived],
@@ -327,10 +332,10 @@ SELECT     [AgencyName]
 [CampaignMedium],
 [CampaignChannelDerived],
 [CampaignSourceDerived] FROM #CCC
+WHERE agencyname = 'Gleam'
 ORDER BY 1,2,3,4,5,6
 GO
 
 
 
 
-SELECT CampaignStatus, COUNT(1) AS Cnt FROM #CCC GROUP BY CampaignStatus ORDER BY CampaignStatus 

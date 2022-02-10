@@ -14,19 +14,20 @@ AS (
      , [d].[AgencyKey]
      , CASE
            WHEN [d].[CampaignMedia] = 'Organic' THEN 'Non Paid Media'
-		   WHEN [d].[CampaignName] LIKE '%taboola%' THEN 'Paid Media'
+		   WHEN [d].[AgencyName] = 'Internal Corporate' AND [d].[CampaignMedia] IN ('Radio', 'Streaming') THEN 'Paid Media' /*GVAROL 20220210*/
+		   WHEN [d].[AgencyName] = 'Gleam' OR [d].[CampaignName] LIKE '%Gleam%' THEN 'Paid Media' /*GVAROL 20220210*/
            WHEN [d].[AgencyName] = 'Internal Corporate' AND [d].[CampaignMedia] = 'ORGANIC' THEN 'Paid Media'
            WHEN [d].[AgencyName] = 'Internal Corporate' AND [d].[CampaignName] LIKE '%google local search advertising%' THEN 'Paid Media'
            WHEN [d].[AgencyName] = 'Internal Corporate' AND [d].[CampaignName] LIKE '%poker%' THEN 'Paid Media'
-           WHEN [d].[CampaignName] LIKE '%gleam%' THEN 'Paid Media'
+           WHEN [d].[CampaignName] LIKE '%Gleam%' THEN 'Paid Media'
            WHEN [d].[AgencyName] IN ('Havas', 'Cannella', 'Intermedia', 'Pure Digital', 'Barth-PureDigital', 'Kingstar', 'Kingstar Media', 'LaunchDRTV'
                                    , 'Mediapoint', 'Venator', 'Advance360', 'Advanced360', 'Jane Creative', 'Valassis', 'Outfront') THEN 'Paid Media'
            ELSE 'Non Paid Media'
        END AS [PayMediaType]
      , [d].[AgencyName]
-     , CASE
-           WHEN [d].[AgencyName] = 'Barth-Zimmerman' THEN 'Zimmerman'
-           WHEN [d].[CampaignName] LIKE '%taboola%' THEN 'In-House'
+     , CASE WHEN [d].[AgencyName] = 'Barth-Zimmerman' THEN 'Zimmerman'
+           WHEN [d].[AgencyName] = 'Internal Corporate' AND [d].[CampaignMedia] IN ('Radio', 'Streaming') THEN 'In-House' /*GVAROL 20220210*/
+           WHEN [d].[AgencyName] = 'Gleam' OR [d].[CampaignName] LIKE '%Gleam%' THEN 'In-House' /*GVAROL 20220210*/
            WHEN [d].[CampaignName] LIKE '%google local search advertising%' THEN 'In-House'
            WHEN [d].[AgencyName] IN ('Advance360', 'Advanced360') THEN 'A360'
            WHEN [d].[AgencyName] = 'Internal Corporate' THEN 'In-House' /*GVAROL 20220210*/
@@ -35,10 +36,10 @@ AS (
            WHEN [d].[AgencyName] = 'Barth-PureDigital' THEN 'Pure Digital'
            WHEN [d].[AgencyName] = 'LaunchDRTV' THEN 'Launch'
            WHEN [d].[AgencyName] = 'Kingstar' THEN 'Kingstar Media'
-           WHEN [d].[CampaignName] LIKE '%gleam%' THEN 'In-House'
+           WHEN [d].[CampaignName] LIKE '%Gleam%' THEN 'In-House'
            ELSE ISNULL([d].[AgencyName], 'Unknown')
        END AS [AgencyNameDerived]
-     , [d].[CampaignStatus]
+	 , [d].[CampaignStatus]
      , [d].[StatusKey]
      , [d].[StartDate]
      , [d].[EndDate]
