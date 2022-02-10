@@ -75,6 +75,7 @@ AS (
        END AS [PayMediaType]
      , [d].[AgencyName]
      , CASE WHEN [d].[AgencyName] = 'Barth-Zimmerman' THEN 'Zimmerman'
+           WHEN [d].[CampaignName] LIKE '%google local search advertising%' THEN 'In-House'
            WHEN [d].[AgencyName] IN ('Advance360', 'Advanced360') THEN 'A360'
            WHEN [d].[AgencyName] = 'Internal Corporate' THEN 'In-House' /*GVAROL 20220210*/
            --WHEN [d].[AgencyName] = 'Internal Corporate' AND [d].[CampaignMedia] = 'ORGANIC' THEN 'In-House' /*GVAROL 20220210*/
