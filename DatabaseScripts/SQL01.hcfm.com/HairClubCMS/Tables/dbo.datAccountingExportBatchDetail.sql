@@ -1,4 +1,4 @@
-/* CreateDate: 12/31/2010 13:21:02.413 , ModifyDate: 12/27/2021 04:02:10.770 */
+/* CreateDate: 12/31/2010 13:21:02.413 , ModifyDate: 02/09/2022 04:04:07.033 */
 GO
 CREATE TABLE [dbo].[datAccountingExportBatchDetail](
 	[AccountingExportBatchDetailGUID] [uniqueidentifier] NOT NULL,

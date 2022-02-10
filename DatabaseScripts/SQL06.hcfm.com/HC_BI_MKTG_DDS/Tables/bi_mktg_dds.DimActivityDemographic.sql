@@ -1,4 +1,4 @@
-/* CreateDate: 09/03/2021 09:37:05.227 , ModifyDate: 02/06/2022 23:41:12.340 */
+/* CreateDate: 09/03/2021 09:37:05.227 , ModifyDate: 02/10/2022 00:17:07.550 */
 GO
 CREATE TABLE [bi_mktg_dds].[DimActivityDemographic](
 	[ActivityDemographicKey] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
