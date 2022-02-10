@@ -11,8 +11,8 @@ SELECT DISTINCT
      , NULL AS [CampaignKey]
      , NULL AS [CampaignId]
      , NULL AS [CampaignDescription]
-     , NULL AS [AgencyKey]
-     , NULL AS [CampaignStatus]
+     , [AgencyKey]
+     , [CampaignStatus]
      , NULL AS [StatusKey]
      , NULL AS [StartDate]
      , NULL AS [EndDate]
@@ -51,6 +51,7 @@ SELECT DISTINCT
 INTO [#DimCampaign]
 FROM [DimCampaign]
 WHERE [DWH_LastUpdateDate] >= '20210101' ;
+
 
 */
 DROP TABLE #CCC
@@ -314,7 +315,10 @@ SELECT     [AgencyName]
   , [CampaignLocation]
   , [CampaignMedia]
   , [CampaignName]
-  , [CampaignSource],[PayMediaType],
+  , CampaignStatus
+  , [AgencyKey]
+  , [CampaignSource]
+  ,[PayMediaType],
 [AgencyNameDerived],
 [CampaignChannelGroup],
 [CampaignMediumgroup],
@@ -325,3 +329,8 @@ SELECT     [AgencyName]
 [CampaignSourceDerived] FROM #CCC
 ORDER BY 1,2,3,4,5,6
 GO
+
+
+
+
+SELECT CampaignStatus, COUNT(1) AS Cnt FROM #CCC GROUP BY CampaignStatus ORDER BY CampaignStatus 

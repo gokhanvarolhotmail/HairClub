@@ -14,6 +14,7 @@ AS (
      , [d].[AgencyKey]
      , CASE
            WHEN [d].[CampaignMedia] = 'Organic' THEN 'Non Paid Media'
+		   WHEN [d].[CampaignName] LIKE '%taboola%' THEN 'Paid Media'
            WHEN [d].[AgencyName] = 'Internal Corporate' AND [d].[CampaignMedia] = 'ORGANIC' THEN 'Paid Media'
            WHEN [d].[AgencyName] = 'Internal Corporate' AND [d].[CampaignName] LIKE '%google local search advertising%' THEN 'Paid Media'
            WHEN [d].[AgencyName] = 'Internal Corporate' AND [d].[CampaignName] LIKE '%poker%' THEN 'Paid Media'
@@ -23,7 +24,9 @@ AS (
            ELSE 'Non Paid Media'
        END AS [PayMediaType]
      , [d].[AgencyName]
-     , CASE WHEN [d].[AgencyName] = 'Barth-Zimmerman' THEN 'Zimmerman'
+     , CASE
+           WHEN [d].[AgencyName] = 'Barth-Zimmerman' THEN 'Zimmerman'
+           WHEN [d].[CampaignName] LIKE '%taboola%' THEN 'In-House'
            WHEN [d].[CampaignName] LIKE '%google local search advertising%' THEN 'In-House'
            WHEN [d].[AgencyName] IN ('Advance360', 'Advanced360') THEN 'A360'
            WHEN [d].[AgencyName] = 'Internal Corporate' THEN 'In-House' /*GVAROL 20220210*/
