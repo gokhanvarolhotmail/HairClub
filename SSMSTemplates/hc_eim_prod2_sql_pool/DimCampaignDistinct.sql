@@ -76,8 +76,9 @@ AS (
      , [d].[AgencyName]
      , CASE WHEN [d].[AgencyName] = 'Barth-Zimmerman' THEN 'Zimmerman'
            WHEN [d].[AgencyName] IN ('Advance360', 'Advanced360') THEN 'A360'
-           WHEN [d].[AgencyName] = 'Internal Corporate' AND [d].[CampaignMedia] = 'ORGANIC' THEN 'In-House'
-           WHEN [d].[AgencyName] = 'Internal Corporate' AND [d].[CampaignName] LIKE '%poker%' THEN 'In-House'
+           WHEN [d].[AgencyName] = 'Internal Corporate' THEN 'In-House' /*GVAROL 20220210*/
+           --WHEN [d].[AgencyName] = 'Internal Corporate' AND [d].[CampaignMedia] = 'ORGANIC' THEN 'In-House' /*GVAROL 20220210*/
+           --WHEN [d].[AgencyName] = 'Internal Corporate' AND [d].[CampaignName] LIKE '%poker%' THEN 'In-House' /*GVAROL 20220210*/
            WHEN [d].[AgencyName] = 'Barth-PureDigital' THEN 'Pure Digital'
            WHEN [d].[AgencyName] = 'LaunchDRTV' THEN 'Launch'
            WHEN [d].[AgencyName] = 'Kingstar' THEN 'Kingstar Media'
