@@ -576,7 +576,7 @@ SELECT
   , [t].[InCenter]
   , [t].[OnOrder] AS [On Order]
   , ISNULL([t].[InCenter], 0) + ISNULL([t].[OnOrder], 0) AS [In Center + On Order]
-  , [t].[DueDate]
+  , CAST([t].[DueDate] AS DATE) AS [Due Date]
   , [t].[TotalAccumQuantity]
   , [t].[Promo]
   , [t].[InitialQuantity]
@@ -606,4 +606,3 @@ FROM( SELECT
 INNER JOIN [#groupedMemberships] AS [gms] ON [t].[MembershipID] = [gms].[membershipId] ;
 GO
 EXEC [dbo].[rptHairOrderQuantitybyClient_GVAROL] @CenterID = 201, @MembershipList = '0' ;
-
