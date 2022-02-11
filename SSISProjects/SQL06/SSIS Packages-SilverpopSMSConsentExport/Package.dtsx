@@ -1,0 +1,1261 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="4/4/2017 9:31:22 AM"
+  DTS:CreationName="SSIS.Package.3"
+  DTS:CreatorComputerName="ITWS06"
+  DTS:CreatorName="HCFM\dleiba"
+  DTS:DTSID="{74662B00-4074-4519-8570-C85B9FD2231B}"
+  DTS:ExecutableType="SSIS.Package.3"
+  DTS:LastModifiedProductVersion="11.0.6020.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:ProtectionLevel="5"
+  DTS:VersionBuild="22"
+  DTS:VersionGUID="{62F4F3D1-F1EF-462E-9354-16ACC22D7E3F}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">6</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SMSConsentFile]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{64094F22-F9FC-4B51-8B01-D18C85AA18EF}"
+      DTS:ObjectName="SMSConsentFile">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::sClientLeadSMSConsentFilePath]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x0022_"
+          DTS:CodePage="1252">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="15"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Phone1"
+              DTS:DTSID="{1DAFB679-5AE0-444C-BDA3-ECC2D22CCDFE}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="SMS Consent Status"
+              DTS:DTSID="{A49CBF9C-78CF-48C8-A9C8-5BEE1A4AE865}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="11"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="SMS Consent Date"
+              DTS:DTSID="{3AAE22CA-5336-49FB-8F3F-A3C7F9973DF8}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SQL05.HC_Marketing_ADO]"
+      DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+      DTS:DTSID="{DF08CF41-7AE9-4502-921A-A8C8026818F1}"
+      DTS:ObjectName="SQL05.HC_Marketing_ADO">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=SQL05;Initial Catalog=HC_Marketing;Integrated Security=True;Application Name=SSIS-Package-{DF08CF41-7AE9-4502-921A-A8C8026818F1}SQL05.HC_Marketing 1;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{A2D9AE1E-019C-48DB-996D-97505C1400B1}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="sClientLeadSMSConsentFilePath">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{285D2AC0-140C-459F-8E1E-EE9E5DE03A43}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="sExportFilePath">
+      <DTS:VariableValue
+        DTS:DataType="8">\\sql06\Automated Tasks\Silverpop</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{B186B191-3125-4391-A7CD-A4646974609D}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="sSFTPPassPhrase">
+      <DTS:VariableValue
+        DTS:DataType="8">Silverpop#1515</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{B5C46AF8-9C2D-483C-BB91-36FDE3B69650}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="sSFTPPath">
+      <DTS:VariableValue
+        DTS:DataType="8">/upload</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{67E1FA91-772D-4BFA-A85C-7B140DB9F376}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="sSFTPPrivateKeyFilePath">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{C77852B4-4DEF-416E-83F3-06CD287F44F0}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="sSFTPServer">
+      <DTS:VariableValue
+        DTS:DataType="8">transfer8.ibmmarketingcloud.com</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{2C206EF0-25BB-420A-B180-08CABC0832D3}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="sSFTPUser">
+      <DTS:VariableValue
+        DTS:DataType="8">dleiba@hcfm.com</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{8343C308-1F86-44BC-BBB8-12E531DE4DF7}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="sSFTPUserPass">
+      <DTS:VariableValue
+        DTS:DataType="8">5y573mPA$$</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Export Client and Lead SMS Consent Records"
+      DTS:CreationName="SSIS.Pipeline.3"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{EF29AF40-1AE6-47A6-A8D3-3D3BB1434E05}"
+      DTS:ExecutableType="SSIS.Pipeline.3"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Export Client and Lead SMS Consent Records"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Export Client and Lead SMS Consent Records\SMS Consent Data"
+              componentClassID="{874F7595-FB5F-40FF-96AF-FBFF8250E3EF}"
+              contactInfo="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server."
+              name="SMS Consent Data"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement used by the component to extract data."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">EXEC spSvc_SilverpopClientLeadSMSConsentDailyExport</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether to allow non-string external columns to be implicitly converted to strings at the output columns."
+                  name="AllowImplicitStringConversion">true</property>
+                <property
+                  dataType="System.String"
+                  description="The Source database table name."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version= 11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the mode to retrieve external column information"
+                  name="AccessMode"
+                  typeConverter="Microsoft.SqlServer.Dts.Pipeline.DataReaderSourceAdapter+EnumToStringConverter, Microsoft.SqlServer.ADONETSrc, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">2</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.SqlServer.Dts.Pipeline.DataReaderSourceAdapter, Microsoft.SqlServer.ADONETSrc, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Export Client and Lead SMS Consent Records\SMS Consent Data.Connections[IDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[SQL05.HC_Marketing_ADO]"
+                  connectionManagerRefId="Package.ConnectionManagers[SQL05.HC_Marketing_ADO]"
+                  description="Managed connection manager"
+                  name="IDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Export Client and Lead SMS Consent Records\SMS Consent Data.Outputs[ADO NET Source Output]"
+                  name="ADO NET Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Export Client and Lead SMS Consent Records\SMS Consent Data.Outputs[ADO NET Source Output].Columns[Phone1]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Export Client and Lead SMS Consent Records\SMS Consent Data.Outputs[ADO NET Source Output].ExternalColumns[Phone1]"
+                      length="15"
+                      lineageId="Package\Export Client and Lead SMS Consent Records\SMS Consent Data.Outputs[ADO NET Source Output].Columns[Phone1]"
+                      name="Phone1"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Export Client and Lead SMS Consent Records\SMS Consent Data.Outputs[ADO NET Source Output].Columns[SMS Consent Status]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Export Client and Lead SMS Consent Records\SMS Consent Data.Outputs[ADO NET Source Output].ExternalColumns[SMS Consent Status]"
+                      length="50"
+                      lineageId="Package\Export Client and Lead SMS Consent Records\SMS Consent Data.Outputs[ADO NET Source Output].Columns[SMS Consent Status]"
+                      name="SMS Consent Status"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Export Client and Lead SMS Consent Records\SMS Consent Data.Outputs[ADO NET Source Output].Columns[SMS Consent Date]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Export Client and Lead SMS Consent Records\SMS Consent Data.Outputs[ADO NET Source Output].ExternalColumns[SMS Consent Date]"
+                      length="11"
+                      lineageId="Package\Export Client and Lead SMS Consent Records\SMS Consent Data.Outputs[ADO NET Source Output].Columns[SMS Consent Date]"
+                      name="SMS Consent Date"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Export Client and Lead SMS Consent Records\SMS Consent Data.Outputs[ADO NET Source Output].ExternalColumns[Phone1]"
+                      dataType="wstr"
+                      length="15"
+                      name="Phone1" />
+                    <externalMetadataColumn
+                      refId="Package\Export Client and Lead SMS Consent Records\SMS Consent Data.Outputs[ADO NET Source Output].ExternalColumns[SMS Consent Status]"
+                      dataType="wstr"
+                      length="50"
+                      name="SMS Consent Status" />
+                    <externalMetadataColumn
+                      refId="Package\Export Client and Lead SMS Consent Records\SMS Consent Data.Outputs[ADO NET Source Output].ExternalColumns[SMS Consent Date]"
+                      dataType="wstr"
+                      length="11"
+                      name="SMS Consent Date" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Export Client and Lead SMS Consent Records\SMS Consent Data.Outputs[ADO NET Source Error Output]"
+                  isErrorOut="true"
+                  name="ADO NET Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Export Client and Lead SMS Consent Records\SMS Consent Data.Outputs[ADO NET Source Error Output].Columns[Phone1]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\Export Client and Lead SMS Consent Records\SMS Consent Data.Outputs[ADO NET Source Error Output].Columns[Phone1]"
+                      name="Phone1" />
+                    <outputColumn
+                      refId="Package\Export Client and Lead SMS Consent Records\SMS Consent Data.Outputs[ADO NET Source Error Output].Columns[SMS Consent Status]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Export Client and Lead SMS Consent Records\SMS Consent Data.Outputs[ADO NET Source Error Output].Columns[SMS Consent Status]"
+                      name="SMS Consent Status" />
+                    <outputColumn
+                      refId="Package\Export Client and Lead SMS Consent Records\SMS Consent Data.Outputs[ADO NET Source Error Output].Columns[SMS Consent Date]"
+                      dataType="wstr"
+                      length="11"
+                      lineageId="Package\Export Client and Lead SMS Consent Records\SMS Consent Data.Outputs[ADO NET Source Error Output].Columns[SMS Consent Date]"
+                      name="SMS Consent Date" />
+                    <outputColumn
+                      refId="Package\Export Client and Lead SMS Consent Records\SMS Consent Data.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Export Client and Lead SMS Consent Records\SMS Consent Data.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Export Client and Lead SMS Consent Records\SMS Consent Data.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Export Client and Lead SMS Consent Records\SMS Consent Data.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Export Client and Lead SMS Consent Records\SMS Consent File"
+              componentClassID="{8DA75FED-1B7C-407D-B2AD-2B24209CCCA4}"
+              contactInfo="Flat File Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Flat File Destination"
+              localeId="1033"
+              name="SMS Consent File">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether the data will overwrite or append to the destination file."
+                  name="Overwrite">true</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the text to write to the destination file before any data is written."
+                  expressionType="Notify"
+                  name="Header" />
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Export Client and Lead SMS Consent Records\SMS Consent File.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[SMSConsentFile]"
+                  connectionManagerRefId="Package.ConnectionManagers[SMSConsentFile]"
+                  name="FlatFileConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Export Client and Lead SMS Consent Records\SMS Consent File.Inputs[Flat File Destination Input]"
+                  hasSideEffects="true"
+                  name="Flat File Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Export Client and Lead SMS Consent Records\SMS Consent File.Inputs[Flat File Destination Input].Columns[Phone1]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="Phone1"
+                      externalMetadataColumnId="Package\Export Client and Lead SMS Consent Records\SMS Consent File.Inputs[Flat File Destination Input].ExternalColumns[Phone1]"
+                      lineageId="Package\Export Client and Lead SMS Consent Records\SMS Consent Data.Outputs[ADO NET Source Output].Columns[Phone1]" />
+                    <inputColumn
+                      refId="Package\Export Client and Lead SMS Consent Records\SMS Consent File.Inputs[Flat File Destination Input].Columns[SMS Consent Status]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="SMS Consent Status"
+                      externalMetadataColumnId="Package\Export Client and Lead SMS Consent Records\SMS Consent File.Inputs[Flat File Destination Input].ExternalColumns[SMS Consent Status]"
+                      lineageId="Package\Export Client and Lead SMS Consent Records\SMS Consent Data.Outputs[ADO NET Source Output].Columns[SMS Consent Status]" />
+                    <inputColumn
+                      refId="Package\Export Client and Lead SMS Consent Records\SMS Consent File.Inputs[Flat File Destination Input].Columns[SMS Consent Date]"
+                      cachedDataType="wstr"
+                      cachedLength="11"
+                      cachedName="SMS Consent Date"
+                      externalMetadataColumnId="Package\Export Client and Lead SMS Consent Records\SMS Consent File.Inputs[Flat File Destination Input].ExternalColumns[SMS Consent Date]"
+                      lineageId="Package\Export Client and Lead SMS Consent Records\SMS Consent Data.Outputs[ADO NET Source Output].Columns[SMS Consent Date]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Export Client and Lead SMS Consent Records\SMS Consent File.Inputs[Flat File Destination Input].ExternalColumns[Phone1]"
+                      dataType="wstr"
+                      length="15"
+                      name="Phone1" />
+                    <externalMetadataColumn
+                      refId="Package\Export Client and Lead SMS Consent Records\SMS Consent File.Inputs[Flat File Destination Input].ExternalColumns[SMS Consent Status]"
+                      dataType="wstr"
+                      length="50"
+                      name="SMS Consent Status" />
+                    <externalMetadataColumn
+                      refId="Package\Export Client and Lead SMS Consent Records\SMS Consent File.Inputs[Flat File Destination Input].ExternalColumns[SMS Consent Date]"
+                      dataType="wstr"
+                      length="11"
+                      name="SMS Consent Date" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Export Client and Lead SMS Consent Records.Paths[ADO NET Source Output]"
+              endId="Package\Export Client and Lead SMS Consent Records\SMS Consent File.Inputs[Flat File Destination Input]"
+              name="ADO NET Source Output"
+              startId="Package\Export Client and Lead SMS Consent Records\SMS Consent Data.Outputs[ADO NET Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Set Export File Paths"
+      DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ScriptTask.ScriptTask, Microsoft.SqlServer.ScriptTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:Description="Script Task"
+      DTS:DTSID="{4C6105C5-7185-42F1-B07D-4AD94CF7557C}"
+      DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ScriptTask.ScriptTask, Microsoft.SqlServer.ScriptTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Set Export File Paths"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ScriptProject
+          Name="ST_ec8dd040800742cba05ac66a166267b3"
+          VSTAMajorVersion="3"
+          VSTAMinorVersion="0"
+          Language="VisualBasic"
+          ReadWriteVariables="User::sClientLeadSMSConsentFilePath,User::sExportFilePath,User::sSFTPPrivateKeyFilePath">
+          <ProjectItem
+            Name="My Project\AssemblyInfo.vb"
+            Encoding="UTF8"><![CDATA[Imports System
+Imports System.Reflection
+Imports System.Runtime.InteropServices
+
+' General Information about an assembly is controlled through the following 
+' set of attributes. Change these attribute values to modify the information
+' associated with an assembly.
+
+' Review the values of the assembly attributes
+
+<Assembly: AssemblyTitle("ST_ec8dd040800742cba05ac66a166267b3")> 
+<Assembly: AssemblyDescription("")> 
+<Assembly: AssemblyCompany("")> 
+<Assembly: AssemblyProduct("ST_ec8dd040800742cba05ac66a166267b3")> 
+<Assembly: AssemblyCopyright("Copyright @  2017")> 
+<Assembly: AssemblyTrademark("")> 
+<Assembly: CLSCompliant(True)> 
+
+<Assembly: ComVisible(False)> 
+
+'The following GUID is for the ID of the typelib if this project is exposed to COM
+<Assembly: Guid("6dd89617-0e9d-4005-9605-e6e45450f5f2")> 
+
+' Version information for an assembly consists of the following four values:
+'
+'      Major Version
+'      Minor Version 
+'      Build Number
+'      Revision
+'
+' You can specify all the values or you can default the Build and Revision Numbers 
+' by using the '*' as shown below:
+' <Assembly: AssemblyVersion("1.0.*")>
+
+<Assembly: AssemblyVersion("1.0.0.0")> 
+<Assembly: AssemblyFileVersion("1.0.0.0")> ]]></ProjectItem>
+          <ProjectItem
+            Name="My Project\Settings.settings"
+            Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)" GeneratedClassNamespace="$safeprojectname" GeneratedClassName="MySettings">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></ProjectItem>
+          <ProjectItem
+            Name="ST_ec8dd040800742cba05ac66a166267b3.vbproj"
+            Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectTypeGuids>{30D016F9-3734-4E33-A861-5E7D899E18F3};{F184B08F-C81C-45F6-A57F-5ABD9991F28F}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{a2c77e43-9ba9-4752-8687-e51a3a2eb76f}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>My Project</AppDesignerFolder>
+    <RootNamespace>ST_ec8dd040800742cba05ac66a166267b3</RootNamespace>
+    <AssemblyName>ST_ec8dd040800742cba05ac66a166267b3</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>true</ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>
+    <TargetFrameworkProfile></TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>.\bin\Debug\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <OutputPath>.\bin\Release\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.SqlServer.ManagedDTS, Version=11.0.0.0, Culture=Neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.ScriptTask, Version=11.0.0.0, Culture=Neutral, PublicKeyToken=89845dcd8080cc91" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Data" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppDesigner Include="My Project\" />
+    <Compile Include="My Project\AssemblyInfo.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ScriptMain.vb">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <!-- Include the build rules for a VB project.-->
+  <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{30D016F9-3734-4E33-A861-5E7D899E18F3}">
+        <ProjectProperties HostName="ScriptTask" HostPackage="{B3A685AA-7EAF-4BC6-9940-57959FA5AC07}" ApplicationType="usd" Language="vb" TemplatesPath="" DebugInfoCommandLine="" DebugInfoWorkingDir="" IconImageList="" />
+        <Host Name="ScriptTask" IconIndex=""></Host>
+        <ProjectClient>
+          <HostIdentifier>SSIS_ST110</HostIdentifier>
+        </ProjectClient>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>]]></ProjectItem>
+          <ProjectItem
+            Name="My Project\Settings.Designer.vb"
+            Encoding="UTF8"><![CDATA['------------------------------------------------------------------------------
+' <autogenerated>
+'     This code was generated by a tool.
+'
+'     Changes to this file may cause incorrect behavior and will be lost if
+'     the code is regenerated.
+' </autogenerated>
+'------------------------------------------------------------------------------
+
+Option Strict Off
+Option Explicit On
+
+
+
+Partial Friend NotInheritable Class MySettings
+    Inherits System.Configuration.ApplicationSettingsBase
+
+    Private Shared m_Value As MySettings
+
+    Private Shared m_SyncObject As Object = New Object
+
+    <System.Diagnostics.DebuggerNonUserCode()> _
+    Public Shared ReadOnly Property Value() As MySettings
+        Get
+            If (MySettings.m_Value Is Nothing) Then
+                System.Threading.Monitor.Enter(MySettings.m_SyncObject)
+                If (MySettings.m_Value Is Nothing) Then
+                    Try
+                        MySettings.m_Value = New MySettings
+                    Finally
+                        System.Threading.Monitor.Exit(MySettings.m_SyncObject)
+                    End Try
+                End If
+            End If
+            Return MySettings.m_Value
+        End Get
+    End Property
+End Class]]></ProjectItem>
+          <ProjectItem
+            Name="Project"
+            Encoding="UTF16LE"><![CDATA[<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
+<c:Project xmlns:c="http://schemas.microsoft.com/codeprojectml/2010/08/main" xmlns:msb="http://schemas.microsoft.com/developer/msbuild/2003" runtimeVersion="4.0" schemaVersion="1.0">
+	<msb:PropertyGroup>
+		<msb:CodeName>ST_ec8dd040800742cba05ac66a166267b3</msb:CodeName>
+		<msb:Language>msBuild</msb:Language>
+		<msb:DisplayName>ST_ec8dd040800742cba05ac66a166267b3</msb:DisplayName>
+		<msb:ProjectId>{C385FF6C-AC12-4CCB-B86C-3A8D1E0D415C}</msb:ProjectId>
+	</msb:PropertyGroup>
+	<msb:ItemGroup>
+		<msb:Project Include="ST_ec8dd040800742cba05ac66a166267b3.vbproj"/>
+		<msb:File Include="My Project\AssemblyInfo.vb"/>
+		<msb:File Include="ScriptMain.vb"/>
+		<msb:File Include="My Project\Resources.resx"/>
+		<msb:File Include="My Project\Resources.Designer.vb"/>
+		<msb:File Include="My Project\Settings.settings"/>
+		<msb:File Include="My Project\Settings.Designer.vb"/>
+	</msb:ItemGroup>
+</c:Project>]]></ProjectItem>
+          <ProjectItem
+            Name="ScriptMain.vb"
+            Encoding="UTF8"><![CDATA[#Region "Help:  Introduction to the script task"
+'The Script Task allows you to perform virtually any operation that can be accomplished in
+'a .Net application within the context of an Integration Services control flow. 
+
+'Expand the other regions which have "Help" prefixes for examples of specific ways to use
+'Integration Services features within this script task.
+#End Region
+
+
+#Region "Imports"
+Imports System
+Imports System.Data
+Imports System.Math
+Imports Microsoft.SqlServer.Dts.Runtime
+#End Region
+
+'ScriptMain is the entry point class of the script.  Do not change the name, attributes,
+'or parent of this class.
+<Microsoft.SqlServer.Dts.Tasks.ScriptTask.SSISScriptTaskEntryPointAttribute()> _
+<System.CLSCompliantAttribute(False)> _
+Partial Public Class ScriptMain
+    Inherits Microsoft.SqlServer.Dts.Tasks.ScriptTask.VSTARTScriptObjectModelBase
+
+#Region "Help:  Using Integration Services variables and parameters in a script"
+    'To use a variable in this script, first ensure that the variable has been added to 
+    'either the list contained in the ReadOnlyVariables property or the list contained in 
+    'the ReadWriteVariables property of this script task, according to whether or not your
+    'code needs to write to the variable.  To add the variable, save this script, close this instance of
+    'Visual Studio, and update the ReadOnlyVariables and 
+    'ReadWriteVariables properties in the Script Transformation Editor window.
+    'To use a parameter in this script, follow the same steps. Parameters are always read-only.
+
+    'Example of reading from a variable:
+    ' startTime = Dts.Variables("System::StartTime").Value
+
+    'Example of writing to a variable:
+    ' Dts.Variables("User::myStringVariable").Value = "new value"
+
+    'Example of reading from a package parameter:
+    ' batchId = Dts.Variables("$Package::batchId").Value
+
+    'Example of reading from a project parameter:
+    ' batchId = Dts.Variables("$Project::batchId").Value
+
+    'Example of reading from a sensitive project parameter:
+    ' batchId = Dts.Variables("$Project::batchId").GetSensitiveValue()
+#End Region
+
+#Region "Help:  Firing Integration Services events from a script"
+    'This script task can fire events for logging purposes.
+
+    'Example of firing an error event:
+    ' Dts.Events.FireError(18, "Process Values", "Bad value", "", 0)
+
+    'Example of firing an information event:
+    ' Dts.Events.FireInformation(3, "Process Values", "Processing has started", "", 0, fireAgain)
+
+    'Example of firing a warning event:
+    ' Dts.Events.FireWarning(14, "Process Values", "No values received for input", "", 0)
+#End Region
+
+#Region "Help:  Using Integration Services connection managers in a script"
+    'Some types of connection managers can be used in this script task.  See the topic 
+    '"Working with Connection Managers Programatically" for details.
+
+    'Example of using an ADO.Net connection manager:
+    ' Dim rawConnection As Object = Dts.Connections("Sales DB").AcquireConnection(Dts.Transaction)
+    ' Dim myADONETConnection As SqlConnection = CType(rawConnection, SqlConnection)
+    ' <Use the connection in some code here, then release the connection>
+    ' Dts.Connections("Sales DB").ReleaseConnection(rawConnection)
+
+    'Example of using a File connection manager
+    ' Dim rawConnection As Object = Dts.Connections("Prices.zip").AcquireConnection(Dts.Transaction)
+    ' Dim filePath As String = CType(rawConnection, String)
+    ' <Use the connection in some code here, then release the connection>
+    ' Dts.Connections("Prices.zip").ReleaseConnection(rawConnection)
+#End Region
+
+    'This method is called when this script task executes in the control flow.
+    'Before returning from this method, set the value of Dts.TaskResult to indicate success or failure.
+    'To open Help, press F1.
+
+    Public Sub Main()
+        Dim dDate As Date = Now()
+        Dim sDateFormatted As String = Year(dDate) & Format(Month(dDate), "0#") & Format(DateAndTime.Day(dDate), "0#") & "_" & Format(dDate, "HHmmss")
+
+        Dim sClientLeadSMSConsentFilePath As String = Dts.Variables("sExportFilePath").Value.ToString & "\HairClub_SMSConsent_" & sDateFormatted & ".csv"
+        Dim sSFTPPrivateKeyFilePath As String = Dts.Variables("sExportFilePath").Value.ToString & "\sFTP\HC-Silverpop-pubkey.txt"
+
+        Dts.Variables("sClientLeadSMSConsentFilePath").Value = sClientLeadSMSConsentFilePath
+        Dts.Variables("sSFTPPrivateKeyFilePath").Value = sSFTPPrivateKeyFilePath
+
+        Dts.TaskResult = ScriptResults.Success
+    End Sub
+
+#Region "ScriptResults declaration"
+    'This enum provides a convenient shorthand within the scope of this class for setting the
+    'result of the script.
+
+    'This code was generated automatically.
+    Enum ScriptResults
+        Success = Microsoft.SqlServer.Dts.Runtime.DTSExecResult.Success
+        Failure = Microsoft.SqlServer.Dts.Runtime.DTSExecResult.Failure
+    End Enum
+
+#End Region
+
+End Class]]></ProjectItem>
+          <ProjectItem
+            Name="My Project\Resources.resx"
+            Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+</root>]]></ProjectItem>
+          <ProjectItem
+            Name="My Project\Resources.Designer.vb"
+            Encoding="UTF8"><![CDATA['------------------------------------------------------------------------------
+' <autogenerated>
+'     This code was generated by a tool.
+'
+'     Changes to this file may cause incorrect behavior and will be lost if
+'     the code is regenerated.
+' </autogenerated>
+'------------------------------------------------------------------------------
+
+Option Strict Off
+Option Explicit On
+
+
+Namespace My.Resources
+    
+    '''<summary>
+    '''   A strongly-typed resource class, for looking up localized strings, etc.
+    '''</summary>
+    'This class was auto-generated by the Strongly Typed Resource Builder
+    'class via a tool like ResGen or Visual Studio.NET.
+    'To add or remove a member, edit your .ResX file then rerun ResGen
+    'with the /str option, or rebuild your VS project.
+    Class MyResources
+        
+        Private Shared _resMgr As System.Resources.ResourceManager
+        
+        Private Shared _resCulture As System.Globalization.CultureInfo
+        
+        Friend Sub New()
+            MyBase.New
+        End Sub
+        
+        '''<summary>
+        '''   Returns the cached ResourceManager instance used by this class.
+        '''</summary>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Public Shared ReadOnly Property ResourceManager() As System.Resources.ResourceManager
+            Get
+                If (_resMgr Is Nothing) Then
+                    Dim temp As System.Resources.ResourceManager = New System.Resources.ResourceManager("My.Resources.MyResources", GetType(MyResources).Assembly)
+                    _resMgr = temp
+                End If
+                Return _resMgr
+            End Get
+        End Property
+        
+        '''<summary>
+        '''   Overrides the current thread's CurrentUICulture property for all
+        '''   resource lookups using this strongly typed resource class.
+        '''</summary>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Public Shared Property Culture() As System.Globalization.CultureInfo
+            Get
+                Return _resCulture
+            End Get
+            Set
+                _resCulture = value
+            End Set
+        End Property
+    End Class
+End Namespace]]></ProjectItem>
+          <BinaryItem
+            Name="ST_ec8dd040800742cba05ac66a166267b3.dll">TVqQAAMAAAAEAAAA//8AALgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAgAAAAA4fug4AtAnNIbgBTM0hVGhpcyBwcm9ncmFtIGNhbm5vdCBiZSBydW4gaW4gRE9TIG1v
+ZGUuDQ0KJAAAAAAAAABQRQAATAEDAKLW41gAAAAAAAAAAOAAIiALAVAAABwAAAAIAAAAAAAA3joA
+AAAgAAAAQAAAAAAAEAAgAAAAAgAABAAAAAAAAAAEAAAAAAAAAACAAAAAAgAAAAAAAAMAQIUAABAA
+ABAAAAAAEAAAEAAAAAAAABAAAAAAAAAAAAAAAIw6AABPAAAAAEAAAEgEAAAAAAAAAAAAAAAAAAAA
+AAAAAGAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAIAAACAAAAAAAAAAAAAAACCAAAEgAAAAAAAAAAAAAAC50ZXh0AAAA5BoAAAAgAAAAHAAAAAIA
+AAAAAAAAAAAAAAAAACAAAGAucnNyYwAAAEgEAAAAQAAAAAYAAAAeAAAAAAAAAAAAAAAAAABAAABA
+LnJlbG9jAAAMAAAAAGAAAAACAAAAJAAAAAAAAAAAAAAAAAAAQAAAQgAAAAAAAAAAAAAAAAAAAADA
+OgAAAAAAAEgAAAACAAUAMCMAAKQWAAABAAAAAAAAANQ5AAC4AAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAB4CKBgAAAoqrn4BAAAELR5yAQAAcNACAAACKBkAAApvGgAA
+CnMbAAAKgAEAAAR+AQAABCoafgIAAAQqHgKAAgAABCoeAigcAAAKKh4CKB0AAAoqLn4DAAAEbx4A
+AAoqLn4EAAAEbx8AAAoqLn4FAAAEbyAAAAoqLn4GAAAEbyEAAAoqpnMiAAAKgAMAAARzIwAACoAE
+AAAEcyQAAAqABQAABHMlAAAKgAYAAAQqQnMYAAAKKCYAAAqACAAABCoeAignAAAKKgAAGzABAD8A
+AAAAAAAAfgcAAAQtMn4IAAAEKCYAAAooKAAACn4HAAAELRxzDQAABoAHAAAE3hB+CAAABCgmAAAK
+KCkAAArcfgcAAAQqAAEQAAACAB0ADCkAEAAAAAAeAigqAAAKKhMwBQAIAQAAAQAAESgrAAAKChuN
+LAAAASUWBigsAAAKKC0AAAqiJRcGKC4AAAqMLgAAAXIzAABwKC8AAAqiJRgGKDAAAAqMLgAAAXIz
+AABwKC8AAAqiJRlyOQAAcKIlGgaMJQAAAXI9AABwKC8AAAqiKDEAAAoLAigyAAAKbzMAAApySwAA
+cG80AAAKbzUAAApvNgAACnJrAABwB3KXAABwKDcAAAoMAigyAAAKbzMAAApySwAAcG80AAAKbzUA
+AApvNgAACnKhAABwKDgAAAoNAigyAAAKbzMAAApy3QAAcG80AAAKCG85AAAKAigyAAAKbzMAAApy
+GQEAcG80AAAKCW85AAAKAigyAAAKFm86AAAKKjYCAygmAAAKKDsAAAoqHgIoPAAACiou0AgAAAIo
+GQAACioeAig2AAAKKgAAEzABABQAAAACAAARAowFAAAbLQgoAQAAKworAgIKBioiA/4VBQAAGyoA
+AAATMAIAKAAAAAMAABECez4AAApvPwAACgoGjAgAABstEigCAAArCgJ7PgAACgZvQAAACgYqSgIo
+GAAACgJzQQAACn0+AAAKKgBCU0pCAQABAAAAAAAMAAAAdjQuMC4zMDMxOQAAAAAFAGwAAAAMCAAA
+I34AAHgIAAA8CQAAI1N0cmluZ3MAAAAAtBEAAEwBAAAjVVMAABMAABAAAAAjR1VJRAAAABATAACU
+AwAAI0Jsb2IAAAAAAAAAAgAAAVcdogkJDwAAAPoBMwAWAAABAAAAMwAAAAoAAAAMAAAAGQAAAAQA
+AABBAAAAAgAAADcAAAADAAAABAAAAAgAAAAJAAAACAAAAAEAAAAFAAAAAQAAAAMAAAADAAAAAgAA
+AAAANwUBAAAAAAAGAHADoAcGABUEoAcGAEcC4QYPAEYIAAAGAIgC5AUGAFMD5AUGAPwD5AUGAJAD
+5AUGAKkD5AUGAM8C5AUGAMQDaAUGAHQCWgcGAPABWgcGABsD5AUGAOoCbwQGAMoIaAUGAGsGwAcG
+APYFzwUKANsBIQUKAFsCIQUKABMCewYOALMBMAcOALEG9AYGAAMD4QYOAJ8CeQcOALcCtwAOAJcG
+MAcOADgDtwAGAGYBaAUOAAEA5QQKAP4BdAUKAMMBugUGACoC4QYSANoDvAQSAJcBvAQGAJIEaAUG
+ADoBaAUGAG8FaAUGAAoBaAUGADAJ5AUGAIkIoAcGANkGXgQOAC4BtwAGAIsEaAUOAH0IeQcGACsA
+aAUOAGMItwASAA8FvAQWAFkIQwEWAAEBQwEGAMIGaAUAAAAAVQAAAAAAAQABAAAAAAACCNEHQQAB
+AAEAAAAAAKwFAQlZAAMABQAAAAAArwYBCV0AAwAGAAABEADRCAEJQQADAAcAAAEQAGsIMQCBAAcA
+DAABAAAAkQUxAI0ACQAPAAUBAAAiBwAAQQAJABEABQEAABAAAABBAAkAGAACAQAAqAgAAJkACgAa
+ABEAugYuAREAiwEyATEAMAY2ATEABwY+ATEAGwZGATEASQZOAREAMwRWAREAxAhaASEA7wjsAAYG
+pgBdAVaAmAhgAVaAawFgAVAgAAAAAAMYzAYGAAEAWCAAAAAAFghnBmQBAQCEIAAAAAAWCHMBaQEB
+AIsgAAAAABYIfwFuAQEAkyAAAAAABhjMBgYAAgCbIAAAAAAGGMwGBgACAKMgAAAAABMIogZ0AQIA
+ryAAAAAAEwicBXkBAgC7IAAAAAATCJMGfgECAMcgAAAAABMIEgeDAQIA0yAAAAAAERjSBogBAgD9
+IAAAAAARGNIGiAECAA4hAAAAAAYYzAYGAAIAGCEAAAAAFgg7BIwBAgB0IQAAAAAGGMwGBgACAHwh
+AAAAAAYAlwUGAAIAkCIAAAAAxgJ2CMQAAgCeIgAAAADGAvUAyQADAKYiAAAAAIMAYwGRAQMAsiIA
+AAAAxgKJBK0AAwC8IgAAAAARAJMAlgEDANwiAAAAAAEAfwCeAQQAUCAAAAAABhjMBgYABQDoIgAA
+AAADCNwASwAFABwjAAAAAAYYzAYGAAUAAAABAFgEAAABAAAGAAABAOwAAAABAOwACQDMBgEAEQDM
+BgYAGQDMBgoAKQDMBhAAMQDMBhAAOQDMBhAAQQDMBhAASQDMBhAAUQDMBhAAWQDMBhUAYQDMBhUA
+aQDMBhAAcQDMBhAAeQDMBhAAoQDMBhoAqQDMBiAAwQDMBgYAyQDMBgYA0QDMBgYA4QDMBiYA+QDM
+BhAACQHMBgYAEQHMBgYAgQDMBgYA6QAcAS4A6QAsCTYAiQDMBjwAsQDMBgYAuQDMBgYADADcAEsA
+FADcAEsAHADcAEsAJADcAEsADADMBgYAFADMBgYAHADMBgYAJADMBgYASQFPBGUAAQHMBgYAUQGc
+BmoAUQHbCGoAGQHMBgYAWQH5CHgAWQECBn4AaQGJBIUAWQGXBH4AeQG9CIoAWQEoCX4AYQG2CJAA
+GQGgCJYAgQFVCJwAiQFfBaIAkQE7BKkAgQCJBK0AYQG2CLEAYQG2CLkAkQFFBL8AgQHgCAEAgQB2
+CMQAgQD1AMkAmQHNANUANADvCOwAPAA7BEsAPABFBAMBPADMBgYACAAsACQBCAAwACkBKQB7APYB
+LgALAM4BLgATANcBLgAbAPYBLgAjAP8BLgArACgCLgAzACgCLgA7AP8BLgBDAC4CLgBLACgCLgBT
+AEUCLgBbACgCLgBjAEsCLgBrAHUCLgBzAIICSQB7APYBYwCDANMCYwB7AMoCaQCrAE4DgwCDANMC
+gwB7AMoCiQCrAF8DowCTACkBowCbACkBowCDANMCqQCrAHMDwACLACkBwAB7AMoCyQCrAIAD4ACL
+ACkB4wC7ACkB4wBTACgC6QCzACkBAAGLACkBAwF7AMoCAwGjAOwCIAGLACkBIwF7AMoCIwFbACgC
+QAGLACkBIAJ7AMoCIAKLACkBQAJ7AMoCQAKLACkBYAJ7AMoCYAKLACkBgAJ7AMoCgAKLACkBoAKL
+ACkBwAKLACkB4AKLACkB4AJ7AMoCAAOLACkBIAOLACkBIAN7AMoCbwDNAOAAAgABAAUAAwAGAAcA
+CQAIAAAAawamAQAAjwGrAQAAsQawAQAArgW1AQAAlwa6AQAAJAe/AQAAWATEAQAA4ADJAQIAAgAD
+AAIAAwAFAAEABAAFAAIABwAHAAIACAAJAAIACQALAAIACgANAAIADgAPAAIAGAARAEQAUABXAF4A
+0gDlAPQA+wAEgAAAAQAAAAAAAAAAAAAAAAAxAAAABAAAAAAAAAAAAAAACQGuAAAAAAAEAAAAAAAA
+AAAAAAAJAWgFAAAAAAoAAAAAAAAAAAAAABIBtwAAAAAACwAAAAAAAAAAAAAAGwGdBAAAAAALAAAA
+AAAAAAAAAAAbAV4AAAAAAAAAAAABAAAADggAAAgABQAJAAUACgAHAAAAEAASAH0AAAAQACsAfQAA
+AAAALQB9AHsA2wB7AP4AAAAAAABDb250ZXh0VmFsdWVgMQBUaHJlYWRTYWZlT2JqZWN0UHJvdmlk
+ZXJgMQBJbnQzMgBTVF9lYzhkZDA0MDgwMDc0MmNiYTA1YWM2NmExNjYyNjdiMwA8TW9kdWxlPgBN
+aWNyb3NvZnQuU3FsU2VydmVyLk1hbmFnZWREVFMAVABEaXNwb3NlX19JbnN0YW5jZV9fAENyZWF0
+ZV9fSW5zdGFuY2VfXwB2YWx1ZV9fAG1zY29ybGliAE1pY3Jvc29mdC5WaXN1YWxCYXNpYwBDcmVh
+dGVJbnN0YW5jZQBnZXRfR2V0SW5zdGFuY2UAaW5zdGFuY2UAR2V0SGFzaENvZGUAVmFyaWFibGUA
+UnVudGltZVR5cGVIYW5kbGUAR2V0VHlwZUZyb21IYW5kbGUARGF0ZUFuZFRpbWUARGF0ZVRpbWUA
+TWljcm9zb2Z0LlNxbFNlcnZlci5EdHMuUnVudGltZQBHZXRUeXBlAEZhaWx1cmUAZ2V0X0N1bHR1
+cmUAc2V0X0N1bHR1cmUAX3Jlc0N1bHR1cmUAVlNUQVJUU2NyaXB0T2JqZWN0TW9kZWxCYXNlAEFw
+cGxpY2F0aW9uQmFzZQBBcHBsaWNhdGlvblNldHRpbmdzQmFzZQBFZGl0b3JCcm93c2FibGVTdGF0
+ZQBHdWlkQXR0cmlidXRlAEhlbHBLZXl3b3JkQXR0cmlidXRlAEdlbmVyYXRlZENvZGVBdHRyaWJ1
+dGUARGVidWdnZXJOb25Vc2VyQ29kZUF0dHJpYnV0ZQBEZWJ1Z2dhYmxlQXR0cmlidXRlAEVkaXRv
+ckJyb3dzYWJsZUF0dHJpYnV0ZQBDb21WaXNpYmxlQXR0cmlidXRlAEFzc2VtYmx5VGl0bGVBdHRy
+aWJ1dGUAU3RhbmRhcmRNb2R1bGVBdHRyaWJ1dGUASGlkZU1vZHVsZU5hbWVBdHRyaWJ1dGUAQXNz
+ZW1ibHlUcmFkZW1hcmtBdHRyaWJ1dGUAVGFyZ2V0RnJhbWV3b3JrQXR0cmlidXRlAERlYnVnZ2Vy
+SGlkZGVuQXR0cmlidXRlAEFzc2VtYmx5RmlsZVZlcnNpb25BdHRyaWJ1dGUATXlHcm91cENvbGxl
+Y3Rpb25BdHRyaWJ1dGUAQXNzZW1ibHlEZXNjcmlwdGlvbkF0dHJpYnV0ZQBDb21waWxhdGlvblJl
+bGF4YXRpb25zQXR0cmlidXRlAEFzc2VtYmx5UHJvZHVjdEF0dHJpYnV0ZQBBc3NlbWJseUNvcHly
+aWdodEF0dHJpYnV0ZQBDTFNDb21wbGlhbnRBdHRyaWJ1dGUAU1NJU1NjcmlwdFRhc2tFbnRyeVBv
+aW50QXR0cmlidXRlAEFzc2VtYmx5Q29tcGFueUF0dHJpYnV0ZQBSdW50aW1lQ29tcGF0aWJpbGl0
+eUF0dHJpYnV0ZQBtX1ZhbHVlAGdldF9WYWx1ZQBzZXRfVmFsdWUAR2V0T2JqZWN0VmFsdWUAU3lz
+dGVtLlRocmVhZGluZwBTeXN0ZW0uUnVudGltZS5WZXJzaW9uaW5nAFRvU3RyaW5nAE1hdGgATW9u
+dGgATWljcm9zb2Z0LlNxbFNlcnZlci5TY3JpcHRUYXNrAE1pY3Jvc29mdC5TcWxTZXJ2ZXIuRHRz
+LlRhc2tzLlNjcmlwdFRhc2sATWljcm9zb2Z0LlZpc3VhbEJhc2ljLk15U2VydmljZXMuSW50ZXJu
+YWwAU2NyaXB0T2JqZWN0TW9kZWwAU3lzdGVtLkNvbXBvbmVudE1vZGVsAFNUX2VjOGRkMDQwODAw
+NzQyY2JhMDVhYzY2YTE2NjI2N2IzLmRsbABnZXRfSXRlbQBTeXN0ZW0ARW51bQBTeXN0ZW0uQ29t
+cG9uZW50TW9kZWwuRGVzaWduAFNjcmlwdE1haW4AZ2V0X0FwcGxpY2F0aW9uAE15QXBwbGljYXRp
+b24AU3lzdGVtLkNvbmZpZ3VyYXRpb24AU3lzdGVtLkdsb2JhbGl6YXRpb24AU3lzdGVtLlJlZmxl
+Y3Rpb24AQ3VsdHVyZUluZm8AWWVhcgBtX0FwcE9iamVjdFByb3ZpZGVyAG1fVXNlck9iamVjdFBy
+b3ZpZGVyAG1fQ29tcHV0ZXJPYmplY3RQcm92aWRlcgBtX015V2ViU2VydmljZXNPYmplY3RQcm92
+aWRlcgBnZXRfUmVzb3VyY2VNYW5hZ2VyAFN5c3RlbS5Db2RlRG9tLkNvbXBpbGVyAGdldF9Vc2Vy
+AEVudGVyAGdldF9Db21wdXRlcgBNeUNvbXB1dGVyAF9yZXNNZ3IAQWN0aXZhdG9yAC5jdG9yAC5j
+Y3RvcgBNb25pdG9yAFN5c3RlbS5EaWFnbm9zdGljcwBNaWNyb3NvZnQuVmlzdWFsQmFzaWMuRGV2
+aWNlcwBnZXRfV2ViU2VydmljZXMATXlXZWJTZXJ2aWNlcwBNaWNyb3NvZnQuVmlzdWFsQmFzaWMu
+QXBwbGljYXRpb25TZXJ2aWNlcwBTeXN0ZW0uUnVudGltZS5JbnRlcm9wU2VydmljZXMATWljcm9z
+b2Z0LlZpc3VhbEJhc2ljLkNvbXBpbGVyU2VydmljZXMAU3lzdGVtLlJ1bnRpbWUuQ29tcGlsZXJT
+ZXJ2aWNlcwBTeXN0ZW0uUmVzb3VyY2VzAFNUX2VjOGRkMDQwODAwNzQyY2JhMDVhYzY2YTE2NjI2
+N2IzLk15LlJlc291cmNlcwBNeVJlc291cmNlcwBTVF9lYzhkZDA0MDgwMDc0MmNiYTA1YWM2NmEx
+NjYyNjdiMy5SZXNvdXJjZXMucmVzb3VyY2VzAERlYnVnZ2luZ01vZGVzAGdldF9WYXJpYWJsZXMA
+U3RyaW5ncwBNeVNldHRpbmdzAEVxdWFscwBDb252ZXJzaW9ucwBSdW50aW1lSGVscGVycwBTdWNj
+ZXNzAGdldF9EdHMAU2NyaXB0UmVzdWx0cwBDb25jYXQARm9ybWF0AG1fU3luY09iamVjdABNeVBy
+b2plY3QARXhpdABzZXRfVGFza1Jlc3VsdABtX0NvbnRleHQAZ2V0X05vdwBTVF9lYzhkZDA0MDgw
+MDc0MmNiYTA1YWM2NmExNjYyNjdiMy5NeQBEYXkAZ2V0X0Fzc2VtYmx5AAAAAAAxTQB5AC4AUgBl
+AHMAbwB1AHIAYwBlAHMALgBNAHkAUgBlAHMAbwB1AHIAYwBlAHMAAAUwACMAAANfAAANSABIAG0A
+bQBzAHMAAB9zAEUAeABwAG8AcgB0AEYAaQBsAGUAUABhAHQAaAAAK1wASABhAGkAcgBDAGwAdQBi
+AF8AUwBNAFMAQwBvAG4AcwBlAG4AdABfAAAJLgBjAHMAdgAAO1wAcwBGAFQAUABcAEgAQwAtAFMA
+aQBsAHYAZQByAHAAbwBwAC0AcAB1AGIAawBlAHkALgB0AHgAdAABO3MAQwBsAGkAZQBuAHQATABl
+AGEAZABTAE0AUwBDAG8AbgBzAGUAbgB0AEYAaQBsAGUAUABhAHQAaAAAL3MAUwBGAFQAUABQAHIA
+aQB2AGEAdABlAEsAZQB5AEYAaQBsAGUAUABhAHQAaAAAAAAAhIi6I9EdbUeEwz701tTvWwAEIAEB
+CAMgAAEFIAEBEREEIAEBDgQgAQECBSABARFNBSACAQ4OByAEAQ4ODg4HAAESdRGAnQUgABKAoQcg
+AgEOEoChBhUSJAESEAQgABMABhUSJAESDAYVEiQBEm0GFRIkARIgBAABHBwEAAEBHAgHBBGAlQ4O
+DgUAABGAlQYAAQgRgJUEAAEOCAUAAg4cDgUAAQ4dDgUgABKAwQUgABKAxQYgARKAyRwDIAAcAyAA
+DgcABA4ODg4OBQACDg4OBCABARwEIAECHAMgAAgEBwEeAAIeAAUQAQAeAAQKAR4ABAcBEwAGFRIk
+ARMABwYVEnkBEwAGFRJ5ARMAAhMABAoBEwAFIAEBEwAIt3pcVhk04IkIsD9ffxHVCjoIiYRdzYCA
+zJEEAAAAAAQBAAAAAwYSRQMGEkkHBhUSJAESEAcGFRIkARIMBwYVEiQBEm0HBhUSJAESIAMGEhgC
+BhwCBggDBhEoBAAAEkUEAAASSQUAAQESSQQAABIQBAAAEgwEAAASbQQAABIgAwAAAQQAABIYBCAA
+EnUHEAEBHgAeAAcwAQEBEB4ABAgAEkUECAASSQQIABIQBAgAEgwECAASbQQIABIgBAgAEhgEKAAT
+AAgBAAgAAAAAAB4BAAEAVAIWV3JhcE5vbkV4Y2VwdGlvblRocm93cwEIAQACAAAAAAAoAQAjU1Rf
+ZWM4ZGQwNDA4MDA3NDJjYmEwNWFjNjZhMTY2MjY3YjMAAAUBAAAAABYBABFDb3B5cmlnaHQgQCAg
+MjAxNwAABQEAAQAAKQEAJDZkZDg5NjE3LTBlOWQtNDAwNS05NjA1LWU2ZTQ1NDUwZjVmMgAADAEA
+BzEuMC4wLjAAAEcBABouTkVURnJhbWV3b3JrLFZlcnNpb249djQuMAEAVA4URnJhbWV3b3JrRGlz
+cGxheU5hbWUQLk5FVCBGcmFtZXdvcmsgNAgBAAEAAAAAABgBAApNeVRlbXBsYXRlCDExLjAuMC4w
+AABhAQA0U3lzdGVtLldlYi5TZXJ2aWNlcy5Qcm90b2NvbHMuU29hcEh0dHBDbGllbnRQcm90b2Nv
+bBJDcmVhdGVfX0luc3RhbmNlX18TRGlzcG9zZV9fSW5zdGFuY2VfXwAAABABAAtNeS5Db21wdXRl
+cgAAEwEADk15LkFwcGxpY2F0aW9uAAAMAQAHTXkuVXNlcgAAEwEADk15LldlYlNlcnZpY2VzAAC0
+AAAAzsrvvgEAAACRAAAAbFN5c3RlbS5SZXNvdXJjZXMuUmVzb3VyY2VSZWFkZXIsIG1zY29ybGli
+LCBWZXJzaW9uPTQuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjc3YTVj
+NTYxOTM0ZTA4OSNTeXN0ZW0uUmVzb3VyY2VzLlJ1bnRpbWVSZXNvdXJjZVNldAIAAAAAAAAAAAAA
+AFBBRFBBRFC0AAAAtDoAAAAAAAAAAAAAzjoAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMA6AAAA
+AAAAAAAAAAAAX0NvckRsbE1haW4AbXNjb3JlZS5kbGwAAAAAAP8lACAAEAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB
+ABAAAAAYAACAAAAAAAAAAAAAAAAAAAABAAEAAAAwAACAAAAAAAAAAAAAAAAAAAABAAAAAABIAAAA
+WEAAAOwDAAAAAAAAAAAAAOwDNAAAAFYAUwBfAFYARQBSAFMASQBPAE4AXwBJAE4ARgBPAAAAAAC9
+BO/+AAABAAAAAQAAAAAAAAABAAAAAAA/AAAAAAAAAAQAAAACAAAAAAAAAAAAAAAAAAAARAAAAAEA
+VgBhAHIARgBpAGwAZQBJAG4AZgBvAAAAAAAkAAQAAABUAHIAYQBuAHMAbABhAHQAaQBvAG4AAAAA
+AAAAsARMAwAAAQBTAHQAcgBpAG4AZwBGAGkAbABlAEkAbgBmAG8AAAAoAwAAAQAwADAAMAAwADAA
+NABiADAAAAAaAAEAAQBDAG8AbQBtAGUAbgB0AHMAAAAAAAAAIgABAAEAQwBvAG0AcABhAG4AeQBO
+AGEAbQBlAAAAAAAAAAAAcAAkAAEARgBpAGwAZQBEAGUAcwBjAHIAaQBwAHQAaQBvAG4AAAAAAFMA
+VABfAGUAYwA4AGQAZAAwADQAMAA4ADAAMAA3ADQAMgBjAGIAYQAwADUAYQBjADYANgBhADEANgA2
+ADIANgA3AGIAMwAAADAACAABAEYAaQBsAGUAVgBlAHIAcwBpAG8AbgAAAAAAMQAuADAALgAwAC4A
+MAAAAHAAKAABAEkAbgB0AGUAcgBuAGEAbABOAGEAbQBlAAAAUwBUAF8AZQBjADgAZABkADAANAAw
+ADgAMAAwADcANAAyAGMAYgBhADAANQBhAGMANgA2AGEAMQA2ADYAMgA2ADcAYgAzAC4AZABsAGwA
+AABIABIAAQBMAGUAZwBhAGwAQwBvAHAAeQByAGkAZwBoAHQAAABDAG8AcAB5AHIAaQBnAGgAdAAg
+AEAAIAAgADIAMAAxADcAAAAqAAEAAQBMAGUAZwBhAGwAVAByAGEAZABlAG0AYQByAGsAcwAAAAAA
+AAAAAHgAKAABAE8AcgBpAGcAaQBuAGEAbABGAGkAbABlAG4AYQBtAGUAAABTAFQAXwBlAGMAOABk
+AGQAMAA0ADAAOAAwADAANwA0ADIAYwBiAGEAMAA1AGEAYwA2ADYAYQAxADYANgAyADYANwBiADMA
+LgBkAGwAbAAAAGgAJAABAFAAcgBvAGQAdQBjAHQATgBhAG0AZQAAAAAAUwBUAF8AZQBjADgAZABk
+ADAANAAwADgAMAAwADcANAAyAGMAYgBhADAANQBhAGMANgA2AGEAMQA2ADYAMgA2ADcAYgAzAAAA
+NAAIAAEAUAByAG8AZAB1AGMAdABWAGUAcgBzAGkAbwBuAAAAMQAuADAALgAwAC4AMAAAADgACAAB
+AEEAcwBzAGUAbQBiAGwAeQAgAFYAZQByAHMAaQBvAG4AAAAxAC4AMAAuADAALgAwAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAAAAwAAADgOgAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
+        </ScriptProject>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Upload Client and Lead File SMS Consent File"
+      DTS:CreationName="SSISSFTPTask110.SSIS.SSISSFTTask, SSISSFTPTask110, Version=2.0.0.30, Culture=neutral, PublicKeyToken=f7871de73e053501"
+      DTS:Description="SFTP Task"
+      DTS:DTSID="{30ac77cb-a428-472e-96ca-c14a3d7aaad3}"
+      DTS:ExecutableType="SSISSFTPTask110.SSIS.SSISSFTTask, SSISSFTPTask110, Version=2.0.0.30, Culture=neutral, PublicKeyToken=f7871de73e053501"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Upload Client and Lead File SMS Consent File"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SSISSFTPTask
+          SFTPServer="@[User::sSFTPServer]"
+          SFTPUser="@[User::sSFTPUser]"
+          SFTPPassword="@[User::sSFTPUserPass]"
+          SFTPPort="22"
+          EncryptionType="Password"
+          PublicKeyFile=""
+          PublicKeyFileIsConnectionFileType="True"
+          PassPhrase=""
+          LocalPath="@[User::sClientLeadSMSConsentFilePath]"
+          LocalPathIsConnectionFileType="False"
+          OverwriteLocalPath="True"
+          DeleteFileOnTransferCompleted="False"
+          RemotePath="@[User::sSFTPPath]"
+          TaskAction="Send File"
+          FilesList=""
+          SleepSeconds="0"
+          SleepOnDisconnect="False"
+          RecordsetColumnIndex="0"
+          RecordsetEnabled="False"
+          RecordsetVariable=""
+          ValueIsFullPath="False"
+          RecursiveCopy="False"
+          RecursiveCopyDepth="1" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{BBCBCAD3-E6A2-43C3-A89A-6A78A47D96DC}"
+      DTS:From="Package\Set Export File Paths"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Export Client and Lead SMS Consent Records" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{8473AFBC-F42D-4520-AF9C-EC39ECA06781}"
+      DTS:From="Package\Export Client and Lead SMS Consent Records"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Upload Client and Lead File SMS Consent File" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql11">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="291,42"
+          Id="Package\Export Client and Lead SMS Consent Records"
+          TopLeft="281.5,188.75" />
+        <NodeLayout
+          Size="291,42"
+          Id="Package\Set Export File Paths"
+          TopLeft="281.5,60.5" />
+        <NodeLayout
+          Size="291,42"
+          Id="Package\Upload Client and Lead File SMS Consent File"
+          TopLeft="281.5,317" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="427,102.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,86.25"
+              Start="0,0"
+              End="0,78.75">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,78.75" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="427,230.75">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,86.25"
+              Start="0,0"
+              End="0,78.75">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,78.75" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Export Client and Lead SMS Consent Records">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="166,42"
+          Id="Package\Export Client and Lead SMS Consent Records\SMS Consent Data"
+          TopLeft="59.5,28.5" />
+        <NodeLayout
+          Size="160,42"
+          Id="Package\Export Client and Lead SMS Consent Records\SMS Consent File"
+          TopLeft="67.5,135.5" />
+        <EdgeLayout
+          Id="Package\Export Client and Lead SMS Consent Records.Paths[ADO NET Source Output]"
+          TopLeft="145,70.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,65"
+              Start="0,0"
+              End="0,57.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,57.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Export Client and Lead SMS Consent Records\SMS Consent Data">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
