@@ -592,6 +592,15 @@ SELECT
   , ISNULL([t].[InCenter], 0) + ISNULL([t].[OnOrder], 0) AS [In Center + On Order]
   , CAST([t].[LastApplicationDate] AS DATE) AS [Last App Date]
   , [t].[EstNextApp] AS [Est Next App Date]
+  , CAST([t].[OldestOrderPlacedDueDate] AS DATE) AS [Oldest Order Due Date]
+  , CAST([t].[NewestOrderDate] AS DATE) AS [Newest Order Date]
+  , [t].[NewestOrderSystemType] AS [Order System Type]
+  , [t].[RemainingQuantityToOrder] AS [Remaining to Order]
+
+  , CASE WHEN [t].[OrderAvailableForNextAppointment] = 1 THEN 'Yes' ELSE 'No' END AS [Order Avail for Next App]
+  , CASE WHEN [t].[PriorityHairNeeded] = 1 THEN 'Yes' ELSE 'No' END AS [Priority Order Needed]
+
+
   , CAST([t].[DueDate] AS DATE) AS [Due Date]
   , [t].[TotalAccumQuantity]
   , [t].[Promo]
@@ -600,13 +609,13 @@ SELECT
   , [t].[QuantityAtCenterAndOrdered]
   , [gms].[membershipGroup]
   , [t].[ScheduledNextAppointmentDate]
-  , CASE WHEN [t].[OrderAvailableForNextAppointment] = 1 THEN 'Yes' ELSE 'No' END AS [Order Avail for Next App]
-  , CASE WHEN [t].[PriorityHairNeeded] = 1 THEN 'Yes' ELSE 'No' END AS [Priority Order Needed]
+  
+  
   , [t].[OldestOrderPlacedDate]
-  , CAST([t].[OldestOrderPlacedDueDate] AS DATE) AS [Oldest Order Due Date]
-  , [t].[NewestOrderSystemType]
-  , [t].[RemainingQuantityToOrder] AS [Remaining to Order]
-  , CAST([t].[NewestOrderDate] AS DATE) AS [Newest Order Date]
+  
+  
+  
+  
   , CAST([t].[InitialQuantity] / 12.0 AS NUMERIC(12, 4)) AS [MembershipSystemQtyToApplyPerMonth]
   , 8 AS [SystemOrderLeadTime]
   , [gms].[MaxVal] AS [Membership Maximum]
