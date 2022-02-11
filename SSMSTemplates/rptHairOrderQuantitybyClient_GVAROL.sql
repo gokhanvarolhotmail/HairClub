@@ -163,6 +163,8 @@ IF @MembershipList = '0' --ALL
         FROM [dbo].[datClient] AS [clt]
         INNER JOIN [dbo].[datClientMembership] AS [cm] ON [cm].[ClientMembershipGUID] = [clt].[CurrentBioMatrixClientMembershipGUID]
         INNER JOIN [dbo].[cfgMembership] AS [m] ON [m].[MembershipID] = [cm].[MembershipID]
+
+		
         --OUTER APPLY( SELECT [k].[NextAppointmentDate]
         --             FROM( SELECT
         --                       DATEADD(DAY, ( [b].[digit] - 1 ) * [k].[Application Cadence Days], [cm].[BeginDate]) AS [NextAppointmentDate]
@@ -386,6 +388,7 @@ VALUES( 22, 'BASIC', 'Basic', 'Basic', 1 )
     , ( 4, 'GRDSV', 'Xtrands+ Initial 6 Solutions', 'Xtrands+', 1 )
     , ( 48, 'GRDSVSOL', 'Xtrands+ Initial 6 Solutions', 'Xtrands+', 1 ) ;
 
+
 -- Last Application Date
 IF OBJECT_ID('[tempdb]..[#LastApplication]') IS NOT NULL
     DROP TABLE [#LastApplication] ;
@@ -493,7 +496,7 @@ WHERE EXISTS ( SELECT 1 FROM [#LastApplication] AS [l] WHERE [l].[ClientGUID] = 
 
 SELECT
     [q].[ClientFullNameCalc] AS [Client]
-  , [q].[MembershipDescription]
+  , [q].[MembershipDescription] AS [CurrentMembership]
   , [q].[MembershipID]
   , [q].[CenterDescriptionFullCalc] AS [Center]
   , [q].[EndDate]
@@ -566,7 +569,7 @@ SELECT
     [t].[Region]
   , [t].[Center]
   , [t].[Client]
-  , [t].[MembershipDescription]
+  , [t].[CurrentMembership]
   , [t].[MembershipID]
   , [t].[Center]
   , [t].[EndDate]
@@ -603,154 +606,3 @@ FROM( SELECT
 INNER JOIN [#groupedMemberships] AS [gms] ON [t].[MembershipID] = [gms].[membershipId] ;
 GO
 EXEC [dbo].[rptHairOrderQuantitybyClient_GVAROL] @CenterID = 201, @MembershipList = '0' ;
-
-RETURN ;
-
-SELECT
-    QUOTENAME([s].[name]) + '.' + QUOTENAME([t].[name]) AS [FQN]
-  , [s].[name] AS [SchemaName]
-  , [t].[name] AS [TableName]
-  , [c].[name] AS [ColumnName]
-  , [y].[name] AS [DataType]
-  , CAST(CASE WHEN [y].[name] = 'timestamp' THEN 'rowversion'
-             WHEN [y].[name] IN ('char', 'varchar') THEN
-                 CONCAT(
-                     [y].[name], '(', CASE WHEN [c].[max_length] = -1 THEN 'MAX' ELSE CAST([c].[max_length] AS VARCHAR)END, ')'
-                   , CASE WHEN [c].[collation_name] <> [d].[collation_name] THEN CONCAT(' COLLATE ', [c].[collation_name])ELSE '' END)
-             WHEN [y].[name] IN ('nchar', 'nvarchar') THEN
-                 CONCAT(
-                     [y].[name], '(', CASE WHEN [c].[max_length] = -1 THEN 'MAX' ELSE CAST([c].[max_length] / 2 AS VARCHAR)END, ')'
-                   , CASE WHEN [c].[collation_name] <> [d].[collation_name] THEN CONCAT(' COLLATE ', [c].[collation_name])ELSE '' END)
-             WHEN [y].[name] IN ('binary', 'varbinary') THEN
-                 CONCAT([y].[name], '(', CASE WHEN [c].[max_length] = -1 THEN 'MAX' ELSE CAST([c].[max_length] AS VARCHAR)END, ')')
-             WHEN [y].[name] IN ('bigint', 'int', 'smallint', 'tinyint') THEN [y].[name]
-             WHEN [y].[name] IN ('datetime2', 'time', 'datetimeoffset') THEN CONCAT([y].[name], '(', [c].[scale], ')')
-             WHEN [y].[name] IN ('numeric', 'decimal') THEN CONCAT([y].[name], '(', [c].[precision], ', ', [c].[scale], ')')
-             ELSE [y].[name]
-         END AS VARCHAR(256)) AS [ColumnDef]
-  , [c].[is_nullable]
-FROM [sys].[tables] AS [t]
-INNER JOIN [sys].[schemas] AS [s] ON [s].[schema_id] = [t].[schema_id]
-INNER JOIN [sys].[columns] AS [c] ON [c].[object_id] = [t].[object_id]
-INNER JOIN [sys].[types] AS [y] ON [y].[user_type_id] = [c].[user_type_id]
-LEFT JOIN [sys].[databases] AS [d] ON [d].[name] = DB_NAME() AND [t].[name] LIKE '%tran%history%' ;
-
---WHERE [c].[name] LIKE REPLACE('Last Application Date', ' ', '%')
---   OR [c].[name] LIKE REPLACE('Scheduled Next App Date', ' ', '%')
---   OR [c].[name] LIKE REPLACE('Order Avail for Next App', ' ', '%')
---   OR [c].[name] LIKE REPLACE('Oldest Order Placed Date', ' ', '%')
---   OR [c].[name] LIKE REPLACE('Oldest Order Placed Due Date', ' ', '%')
---   OR [c].[name] LIKE REPLACE('Newest Order System Type', ' ', '%')
---   OR [c].[name] LIKE REPLACE('Remaining Qty to Order', ' ', '%')
---   OR [c].[name] LIKE REPLACE('Priority Hair Needed', ' ', '%')
-
---GO
-GO
-RETURN ;
-
--- Last Application Date
-IF OBJECT_ID('[tempdb]..[#LastApplication]') IS NOT NULL
-    DROP TABLE [#LastApplication] ;
-
-SELECT
-    [c].[ClientGUID]
-  , MAX([sod].[CreateDate]) AS [CreateDate]
-INTO [#LastApplication]
-FROM [dbo].[datClient] AS [c]
-INNER JOIN [dbo].[datSalesOrder] AS [so] ON [so].[ClientGUID] = [c].[ClientGUID]
-INNER JOIN [dbo].[datSalesOrderDetail] AS [sod] ON [so].[SalesOrderGUID] = [sod].[SalesOrderGUID]
-INNER JOIN [dbo].[cfgSalesCode] AS [sc] ON [sod].[SalesCodeID] = [sc].[SalesCodeID]
-WHERE [sc].[SalesCodeDepartmentID] IN (5010, 5020)
-GROUP BY [c].[ClientGUID] ;
-
-IF OBJECT_ID('[tempdb]..[#ScheduledNextAppDate]') IS NOT NULL
-    DROP TABLE [#ScheduledNextAppDate] ;
-
-DECLARE @GetDate DATE = CONVERT(VARCHAR(30), GETDATE(), 112) ;
-
--- Scheduled Next App Date
-SELECT
-    [k].[ClientGUID]
-  , [k].[AppointmentDate]
-INTO [#ScheduledNextAppDate]
-FROM( SELECT
-          [c].[ClientGUID]
-        , [a].[AppointmentDate]
-        , ROW_NUMBER() OVER ( PARTITION BY [c].[ClientGUID] ORDER BY [a].[AppointmentDate] ASC ) AS [rw]
-      FROM [dbo].[datClient] AS [c]
-      INNER JOIN [dbo].[datClientMembership] AS [cm] ON [cm].[ClientGUID] = [c].[ClientGUID]
-      INNER JOIN [dbo].[cfgMembership] AS [m] ON [cm].[MembershipID] = [m].[MembershipID]
-      INNER JOIN [dbo].[datAppointment] AS [a] ON [cm].[ClientMembershipGUID] = [a].[ClientMembershipGUID]
-      INNER JOIN [dbo].[cfgCenter] AS [apptctr] ON [a].[CenterID] = [apptctr].[CenterID]
-      WHERE( [a].[IsDeletedFlag] IS NULL OR [a].[IsDeletedFlag] = 0 )
-        AND [a].[AppointmentDate] >= @GetDate
-        AND EXISTS ( SELECT 1 FROM [#LastApplication] AS [l] WHERE [l].[ClientGUID] = [c].[ClientGUID] )) AS [k]
-WHERE [k].[rw] = 1
-OPTION( RECOMPILE ) ;
-
--- Order Avail for Next App
--- If Cent exists true
-
--- Priority Hair Needed
--- If Cent exists false
-
--- Oldest Order Placed Date
--- [MinOrderCreateDate]
-
--- Oldest Order Placed Due Date
--- [MinOrderCreateDateAdd8Months]
-IF OBJECT_ID('[tempdb]..[#Calc01]') IS NOT NULL
-    DROP TABLE [#Calc01] ;
-
-SELECT
-    [clt].[ClientGUID]
-  , MAX(CASE WHEN [hsos].[HairSystemOrderStatusDescriptionShort] = 'CENT' THEN 1 ELSE 0 END) AS [CENT]
-  , MAX(CASE WHEN [hsos].[HairSystemOrderStatusDescriptionShort] = 'ORDER' THEN 1 ELSE 0 END) AS [ORDER]
-  , MIN(CASE WHEN [hsos].[HairSystemOrderStatusDescriptionShort] = 'ORDER' THEN [clt].[CreateDate] ELSE 0 END) AS [MinOrderCreateDate]
-  , MIN(CASE WHEN [hsos].[HairSystemOrderStatusDescriptionShort] = 'ORDER' THEN DATEADD(MONTH, 8, [clt].[CreateDate])ELSE 0 END) AS [MinOrderCreateDateAdd8Months]
-INTO [#Calc01]
-FROM [dbo].[datClient] AS [clt]
-INNER JOIN [dbo].[datHairSystemOrder] AS [hso] ON [hso].[ClientGUID] = [clt].[ClientGUID]
-INNER JOIN [dbo].[lkpHairSystemOrderStatus] AS [hsos] ON [hsos].[HairSystemOrderStatusID] = [hso].[HairSystemOrderStatusID]
-                                                     AND [hsos].[HairSystemOrderStatusDescriptionShort] IN ('CENT', 'ORDER')
-WHERE EXISTS ( SELECT 1 FROM [#LastApplication] AS [l] WHERE [l].[ClientGUID] = [clt].[ClientGUID] )
-GROUP BY [clt].[ClientGUID] ;
-
--- Newest Order System Type
--- [HairSystemDescriptionShort]
-IF OBJECT_ID('[tempdb]..[#Calc02]') IS NOT NULL
-    DROP TABLE [#Calc02] ;
-
-SELECT
-    [k].[HairSystemDescription]
-  , [k].[HairSystemDescriptionShort]
-  , [k].[ClientGUID]
-  , [k].[CreateDate]
-INTO [#Calc02]
-FROM( SELECT
-          [hs].[HairSystemDescription]
-        , [hs].[HairSystemDescriptionShort]
-        , [clt].[ClientGUID]
-        , [hso].[CreateDate]
-        , ROW_NUMBER() OVER ( PARTITION BY [clt].[ClientGUID] ORDER BY [hso].[CreateDate] DESC ) AS [rw]
-      FROM [dbo].[datClient] AS [clt]
-      INNER JOIN [dbo].[datHairSystemOrder] AS [hso] ON [hso].[ClientGUID] = [clt].[ClientGUID]
-      INNER JOIN [dbo].[cfgHairSystem] AS [hs] ON [hso].[HairSystemID] = [hs].[HairSystemID]
-      INNER JOIN [dbo].[lkpHairSystemOrderStatus] AS [hsos] ON [hsos].[HairSystemOrderStatusID] = [hso].[HairSystemOrderStatusID]
-                                                           AND [hsos].[HairSystemOrderStatusDescriptionShort] = 'ORDER'
-      WHERE EXISTS ( SELECT 1 FROM [#LastApplication] AS [l] WHERE [l].[ClientGUID] = [clt].[ClientGUID] )) AS [k]
-WHERE [k].[rw] = 1 ;
-
--- Remaining Qty to Order
-IF OBJECT_ID('[tempdb]..[#Calc03]') IS NOT NULL
-    DROP TABLE [#Calc03] ;
-
-SELECT
-    [clt].[ClientGUID]
-  , [b].[Cnt]
-INTO [#Calc03]
-FROM [dbo].[datClient] AS [clt]
-INNER JOIN [dbo].[datClientMembership] AS [cm] ON [cm].[ClientMembershipGUID] = [clt].[CurrentBioMatrixClientMembershipGUID]
-OUTER APPLY( SELECT COUNT(1) AS [Cnt] FROM [dbo].[datHairSystemOrder] AS [hso] WHERE [hso].[ClientGUID] = [clt].[ClientGUID]
-                                                                               AND [hso].[CreateDate] >= [cm].[BeginDate] ) AS [b]
-WHERE EXISTS ( SELECT 1 FROM [#LastApplication] AS [l] WHERE [l].[ClientGUID] = [clt].[ClientGUID] ) ;
