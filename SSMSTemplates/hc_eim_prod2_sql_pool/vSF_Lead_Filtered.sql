@@ -94,6 +94,6 @@ SELECT
   , [s].[GCLID__c]
   , [s].[Occupation__c]
 FROM [ODS].[SF_Lead] AS [s]
-WHERE [s].[LastModifiedDate] <= DATEADD(HOUR, 12, GETDATE()) AND [s].[LastModifiedDate] > DATEADD(DAY, -4, CAST(GETDATE() AS DATE))
+WHERE [s].[LastModifiedDate] <= DATEADD(DAY, 1, GETDATE()) AND [s].[LastModifiedDate] > DATEADD(DAY, -4, CAST(GETDATE() AS DATE))
 GO
 
