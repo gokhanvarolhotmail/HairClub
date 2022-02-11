@@ -30,6 +30,7 @@ Change History:
                     modified #hair select to run quicker, modified Due Date calculation query to no longer join back to datHairSystemOrder table.
 05/10/2017 - RH - Changed Remaining from (InitialQuantity - OnOrder + Promo) to ahs.AccumQuantityRemainingCalc to match cONEct
 09/27/2021 - AP - Include clients without hairOrders.
+02/11/2022 - GV - https://hairclub.zendesk.com/agent/tickets/7944 ( GVarol Worked with APtak to change this report )
 ===============================================================================================
 Sample Execution:
 EXEC [rptHairOrderQuantitybyClient] 100, '0'
@@ -44,7 +45,10 @@ SET NOCOUNT ON ;
 
 SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED ;
 
-DECLARE @Getdate DATE = CONVERT(VARCHAR(30), GETDATE(), 112) ;
+DECLARE
+    @Getdate    DATE     = CONVERT(VARCHAR(30), GETDATE(), 112)
+  , @BeginDate  DATETIME = DATEADD(MONTH, -18, GETUTCDATE())
+  , @GetUTCDate DATETIME = GETUTCDATE() ;
 
 --Split the string parameter that is entered for MembershipID's
 CREATE TABLE [#membership] ( [MembershipID] INT ) ;
@@ -215,7 +219,8 @@ IF @MembershipList = '0' --ALL
                         Employee - BioMatrix
                         New Client (ShowNoSale)
                     */
-          AND [cm].[BeginDate] >= DATEADD(MONTH, -18, GETUTCDATE()) ;
+          AND [cm].[BeginDate] >= @BeginDate
+        OPTION( RECOMPILE ) ;
     END ;
 ELSE
     BEGIN
@@ -290,7 +295,7 @@ ELSE
         LEFT JOIN [dbo].[lkpRegion] AS [r] ON [r].[RegionID] = [c].[RegionID]
         LEFT JOIN [dbo].[cfgHairSystem] AS [hs] ON [hs].[HairSystemID] = [hso].[HairSystemID]
         WHERE [clt].[CenterID] IN( SELECT [item] FROM [dbo].[fnSplit](@CenterIDs, ',') )
-          AND [cm].[BeginDate] >= DATEADD(MONTH, -18, GETUTCDATE())
+          AND [cm].[BeginDate] >= @BeginDate
           AND [cm].[MembershipID] IN( SELECT [MembershipID] FROM [#membership] )
           AND [m].[MembershipDescription] <> 'CANCEL'
           AND [cm].[ClientMembershipStatusID] = 1
@@ -349,8 +354,9 @@ FROM( SELECT
       FROM [#hair] AS [hair]
       INNER JOIN [dbo].[datHairSystemOrderTransaction] AS [hsot] ON [hsot].[HairSystemOrderGUID] = [hair].[HairSystemOrderGUID]
       INNER JOIN [dbo].[lkpHairSystemOrderStatus] AS [hsos] ON [hsot].[NewHairSystemOrderStatusID] = [hsos].[HairSystemOrderStatusID]
-      WHERE [hsos].[HairSystemOrderStatusDescriptionShort] = 'ORDER' AND [hair].[DueDate] >= GETUTCDATE()) AS [due]
-WHERE [due].[NextDueDate] = 1 ;
+      WHERE [hsos].[HairSystemOrderStatusDescriptionShort] = 'ORDER' AND [hair].[DueDate] >= @GetUTCDate ) AS [due]
+WHERE [due].[NextDueDate] = 1
+OPTION( RECOMPILE ) ;
 
 --Find initial quantity for the membership
 SELECT
@@ -650,3 +656,6 @@ ORDER BY [k].[Region]
        , [k].[Client] ;
 GO
 EXEC [dbo].[rptHairOrderQuantitybyClient_GVAROL] @CenterID = 201, @MembershipList = '0' ;
+
+EXEC [dbo].[rptHairOrderQuantitybyClient_GVAROL] @CenterID = 849, @MembershipList = '0' ;
+
