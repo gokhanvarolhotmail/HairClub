@@ -120,6 +120,7 @@ CREATE TABLE [#hair]
   , [Region]                               NVARCHAR(100)
   , [MembershipExpiration]                 DATE
   , [FrozenEFTEndDate]                     DATE
+  , [EstNextApp]                           DATE
 ) ;
 
 IF @MembershipList = '0' --ALL
@@ -142,7 +143,8 @@ IF @MembershipList = '0' --ALL
                            , [MembershipStartDate]
                            , [Region]
                            , [MembershipExpiration]
-                           , [FrozenEFTEndDate] )
+                           , [FrozenEFTEndDate]
+                           , [EstNextApp] )
         SELECT
             [hso].[HairSystemOrderNumber]
           , [clt].[CenterID]
@@ -163,29 +165,29 @@ IF @MembershipList = '0' --ALL
           , [r].[RegionDescription]
           , [cm].[EndDate]
           , [eft].[FrozenEFTEndDate]
+          , [nad].[EstNextApp]
         FROM [dbo].[datClient] AS [clt]
         INNER JOIN [dbo].[datClientMembership] AS [cm] ON [cm].[ClientMembershipGUID] = [clt].[CurrentBioMatrixClientMembershipGUID]
         LEFT JOIN( SELECT [ClientMembershipGUID], MAX([Freeze_End]) AS [FrozenEFTEndDate] FROM [dbo].[datClientEFT] GROUP BY [ClientMembershipGUID] ) AS [eft] ON [eft].[ClientMembershipGUID] = [cm].[ClientMembershipGUID]
         INNER JOIN [dbo].[cfgMembership] AS [m] ON [m].[MembershipID] = [cm].[MembershipID]
-
-        --OUTER APPLY( SELECT [k].[NextAppointmentDate]
-        --             FROM( SELECT
-        --                       DATEADD(DAY, ( [b].[digit] - 1 ) * [k].[Application Cadence Days], [cm].[BeginDate]) AS [NextAppointmentDate]
-        --                     , ROW_NUMBER() OVER ( PARTITION BY [m].[MembershipID], [k].[MembershipAccumulatorID] ORDER BY [b].[digit] ASC ) AS [rw]
-        --                     , [k].*
-        --                   FROM( SELECT TOP( 1 )
-        --                                [m].[DurationMonths] * 30 / [ca].[InitialQuantity] AS [Application Cadence Days]
-        --                              , [ca].[InitialQuantity]
-        --                              , [ca].[MembershipAccumulatorID]
-        --                         FROM [dbo].[cfgMembershipAccum] AS [ca]
-        --                         WHERE [ca].[MembershipID] = [m].[MembershipID]
-        --                           AND [ca].[IsActiveFlag] = 1
-        --                           AND [ca].[AccumulatorID] = 8
-        --                           AND [m].[IsActiveFlag] = 1
-        --                           AND [m].[BusinessSegmentID] = 1 ) AS [k]
-        --                   CROSS APPLY [dbo].GetNumbers(1, [k].[InitialQuantity]) AS [b]
-        --                   WHERE DATEADD(DAY, ( [b].[digit] - 1 ) * [k].[Application Cadence Days], [cm].[BeginDate]) > @Getdate) AS [k]
-        --             WHERE [k].[rw] = 1 ) AS [nad]
+        OUTER APPLY( SELECT [k].[NextAppointmentDate] AS [EstNextApp]
+                     FROM( SELECT
+                               DATEADD(DAY, ( [b].[digit] - 1 ) * [k].[Application Cadence Days], [cm].[BeginDate]) AS [NextAppointmentDate]
+                             , ROW_NUMBER() OVER ( PARTITION BY [m].[MembershipID], [k].[MembershipAccumulatorID] ORDER BY [b].[digit] ASC ) AS [rw]
+                             , [k].*
+                           FROM( SELECT TOP( 1 )
+                                        [m].[DurationMonths] * 30 / [ca].[InitialQuantity] AS [Application Cadence Days]
+                                      , [ca].[InitialQuantity]
+                                      , [ca].[MembershipAccumulatorID]
+                                 FROM [dbo].[cfgMembershipAccum] AS [ca]
+                                 WHERE [ca].[MembershipID] = [m].[MembershipID]
+                                   AND [ca].[IsActiveFlag] = 1
+                                   AND [ca].[AccumulatorID] = 8
+                                   AND [m].[IsActiveFlag] = 1
+                                   AND [m].[BusinessSegmentID] = 1 ) AS [k]
+                           CROSS APPLY [dbo].GetNumbers(1, [k].[InitialQuantity]) AS [b]
+                           WHERE DATEADD(DAY, ( [b].[digit] - 1 ) * [k].[Application Cadence Days], [cm].[BeginDate]) > @Getdate ) AS [k]
+                     WHERE [k].[rw] = 1 ) AS [nad]
         LEFT JOIN [dbo].[datHairSystemOrder] AS [hso] ON [hso].[ClientGUID] = [clt].[ClientGUID]
         LEFT JOIN [dbo].[lkpHairSystemOrderStatus] AS [hsos] ON [hsos].[HairSystemOrderStatusID] = [hso].[HairSystemOrderStatusID]
                                                             AND [hsos].[HairSystemOrderStatusDescriptionShort] IN ('CENT', 'NEW', 'ORDER', 'HQ-Recv', 'HQ-Ship'
@@ -235,7 +237,8 @@ ELSE
                            , [MembershipStartDate]
                            , [Region]
                            , [MembershipExpiration]
-                           , [FrozenEFTEndDate] )
+                           , [FrozenEFTEndDate]
+                           , [EstNextApp] )
         SELECT
             [hso].[HairSystemOrderNumber]
           , [clt].[CenterID]
@@ -256,29 +259,29 @@ ELSE
           , [r].[RegionDescription]
           , [cm].[EndDate]
           , [eft].[FrozenEFTEndDate]
+          , [nad].[EstNextApp]
         FROM [dbo].[datClient] AS [clt]
         INNER JOIN [dbo].[datClientMembership] AS [cm] ON [cm].[ClientMembershipGUID] = [clt].[CurrentBioMatrixClientMembershipGUID]
         LEFT JOIN( SELECT [ClientMembershipGUID], MAX([Freeze_End]) AS [FrozenEFTEndDate] FROM [dbo].[datClientEFT] GROUP BY [ClientMembershipGUID] ) AS [eft] ON [eft].[ClientMembershipGUID] = [cm].[ClientMembershipGUID]
         INNER JOIN [dbo].[cfgMembership] AS [m] ON [m].[MembershipID] = [cm].[MembershipID]
-
-        --OUTER APPLY( SELECT [k].[NextAppointmentDate]
-        --             FROM( SELECT
-        --                       DATEADD(DAY, ( [b].[digit] - 1 ) * [k].[Application Cadence Days], [cm].[BeginDate]) AS [NextAppointmentDate]
-        --                     , ROW_NUMBER() OVER ( PARTITION BY [m].[MembershipID], [k].[MembershipAccumulatorID] ORDER BY [b].[digit] ASC ) AS [rw]
-        --                     , [k].*
-        --                   FROM( SELECT TOP( 1 )
-        --                                [m].[DurationMonths] * 30 / [ca].[InitialQuantity] AS [Application Cadence Days]
-        --                              , [ca].[InitialQuantity]
-        --                              , [ca].[MembershipAccumulatorID]
-        --                         FROM [dbo].[cfgMembershipAccum] AS [ca]
-        --                         WHERE [ca].[MembershipID] = [m].[MembershipID]
-        --                           AND [ca].[IsActiveFlag] = 1
-        --                           AND [ca].[AccumulatorID] = 8
-        --                           AND [m].[IsActiveFlag] = 1
-        --                           AND [m].[BusinessSegmentID] = 1 ) AS [k]
-        --                   CROSS APPLY [dbo].GetNumbers(1, [k].[InitialQuantity]) AS [b]
-        --                   WHERE DATEADD(DAY, ( [b].[digit] - 1 ) * [k].[Application Cadence Days], [cm].[BeginDate]) > @Getdate) AS [k]
-        --             WHERE [k].[rw] = 1 ) AS [nad]
+        OUTER APPLY( SELECT [k].[NextAppointmentDate] AS [EstNextApp]
+                     FROM( SELECT
+                               DATEADD(DAY, ( [b].[digit] - 1 ) * [k].[Application Cadence Days], [cm].[BeginDate]) AS [NextAppointmentDate]
+                             , ROW_NUMBER() OVER ( PARTITION BY [m].[MembershipID], [k].[MembershipAccumulatorID] ORDER BY [b].[digit] ASC ) AS [rw]
+                             , [k].*
+                           FROM( SELECT TOP( 1 )
+                                        [m].[DurationMonths] * 30 / [ca].[InitialQuantity] AS [Application Cadence Days]
+                                      , [ca].[InitialQuantity]
+                                      , [ca].[MembershipAccumulatorID]
+                                 FROM [dbo].[cfgMembershipAccum] AS [ca]
+                                 WHERE [ca].[MembershipID] = [m].[MembershipID]
+                                   AND [ca].[IsActiveFlag] = 1
+                                   AND [ca].[AccumulatorID] = 8
+                                   AND [m].[IsActiveFlag] = 1
+                                   AND [m].[BusinessSegmentID] = 1 ) AS [k]
+                           CROSS APPLY [dbo].GetNumbers(1, [k].[InitialQuantity]) AS [b]
+                           WHERE DATEADD(DAY, ( [b].[digit] - 1 ) * [k].[Application Cadence Days], [cm].[BeginDate]) > @Getdate ) AS [k]
+                     WHERE [k].[rw] = 1 ) AS [nad]
         LEFT JOIN [dbo].[datHairSystemOrder] AS [hso] ON [hso].[ClientGUID] = [clt].[ClientGUID]
         LEFT JOIN [dbo].[lkpHairSystemOrderStatus] AS [hsos] ON [hsos].[HairSystemOrderStatusID] = [hso].[HairSystemOrderStatusID]
                                                             AND [hsos].[HairSystemOrderStatusDescriptionShort] IN ('CENT', 'NEW', 'ORDER', 'HQ-Recv', 'HQ-Ship'
@@ -529,6 +532,7 @@ SELECT
   , [c2].[NewestOrderDate]
   , [q].[MembershipExpiration]
   , [q].[FrozenEFTEndDate]
+  , [q].[EstNextApp]
 --, [q].[OrderAvailForNextApp]
 INTO [#tmpHairOrderQuantitybyClient]
 FROM( SELECT
@@ -549,6 +553,7 @@ FROM( SELECT
         , MAX([hair].[Region]) AS [Region]
         , MAX([hair].[MembershipExpiration]) AS [MembershipExpiration]
         , MAX([hair].[FrozenEFTEndDate]) AS [FrozenEFTEndDate]
+        , MAX([hair].[EstNextApp]) AS [EstNextApp]
       --, MAX(CASE WHEN [hair].[HairSystemOrderDate] = [hair].[NextAppointmentDate] AND [hair].[InCenter] = 1 THEN 1 ELSE 0 END) AS [OrderAvailForNextApp]
       FROM [#hair] AS [hair]
       LEFT JOIN [dbo].[datClientMembershipAccum] AS [ahs] ON [hair].[CurrentBioMatrixClientMembershipGUID] = [ahs].[ClientMembershipGUID]
@@ -581,12 +586,12 @@ SELECT
   , [t].[MembershipExpiration] AS [Membership Expiration]
   , [t].[InitialQuantity] AS [Membership Quantity]
   , [t].[FrozenEFTEndDate] AS [Frozen EFT Date]
-  , [t].[Center]
-  , CAST([t].[LastApplicationDate] AS DATE) AS [Last App Date]
-  , [t].[QaNeeded]
-  , [t].[InCenter]
+  , [t].[QaNeeded] AS [QA Needed]
+  , [t].[InCenter] AS [In Center]
   , [t].[OnOrder] AS [On Order]
   , ISNULL([t].[InCenter], 0) + ISNULL([t].[OnOrder], 0) AS [In Center + On Order]
+  , CAST([t].[LastApplicationDate] AS DATE) AS [Last App Date]
+  , [t].[EstNextApp] AS [Est Next App Date]
   , CAST([t].[DueDate] AS DATE) AS [Due Date]
   , [t].[TotalAccumQuantity]
   , [t].[Promo]
@@ -616,4 +621,3 @@ FROM( SELECT
 INNER JOIN [#groupedMemberships] AS [gms] ON [t].[MembershipID] = [gms].[membershipId] ;
 GO
 EXEC [dbo].[rptHairOrderQuantitybyClient_GVAROL] @CenterID = 201, @MembershipList = '0' ;
-
