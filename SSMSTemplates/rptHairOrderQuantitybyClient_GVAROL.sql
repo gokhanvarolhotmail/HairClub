@@ -252,7 +252,7 @@ ELSE
           , CASE WHEN [hsos].[HairSystemOrderStatusDescriptionShort] IN ('NEW', 'ORDER', 'HQ-Recv', 'HQ-Ship', 'FAC-Ship') THEN 1 ELSE 0 END AS [OnOrder]
           , CASE WHEN [hsos].[HairSystemOrderStatusDescriptionShort] IN ('QANEEDED') THEN 1 ELSE 0 END AS [QaNeeded]
           , [hsos].[HairSystemOrderStatusDescriptionShort] AS [Status]
-          , [hso].[DueDate] AS [DueDate]
+          , [hso].[DueDate]
           , [hso].[HairSystemOrderDate]
           , [hso].[HairSystemOrderGUID]
           , [cm].[BeginDate] AS [MembershipStartDate]
@@ -584,45 +584,37 @@ SELECT
   , [t].[Client]
   , [t].[CurrentMembership] AS [Current Membership]
   , [t].[MembershipExpiration] AS [Membership Expiration]
-  , [t].[InitialQuantity] AS [Membership Quantity]
-  , [t].[FrozenEFTEndDate] AS [Frozen EFT Date]
+  , [t].[InitialQuantity] AS [Membership Qty]
+  , [t].[FrozenEFTEndDate] AS [Frozen EFT End Date]
   , [t].[QaNeeded] AS [QA Needed]
   , [t].[InCenter] AS [In Center]
   , [t].[OnOrder] AS [On Order]
   , ISNULL([t].[InCenter], 0) + ISNULL([t].[OnOrder], 0) AS [In Center + On Order]
+  , CEILING(( [t].[QaNeeded] + [t].[InCenter] + [t].[OnOrder] ) / 12.0) AS [Months In Center And On Order]
   , CAST([t].[LastApplicationDate] AS DATE) AS [Last App Date]
   , [t].[EstNextApp] AS [Est Next App Date]
-  , CAST([t].[OldestOrderPlacedDueDate] AS DATE) AS [Oldest Order Due Date]
+  , [t].[ScheduledNextAppointmentDate] AS [Scheduled Next Appointment Date]
+  , [t].[OldestOrderPlacedDate] AS [Oldest Order Placed Date]
+  , CAST([t].[OldestOrderPlacedDueDate] AS DATE) AS [Oldest Order Placed Due Date]
   , CAST([t].[NewestOrderDate] AS DATE) AS [Newest Order Date]
-  , [t].[NewestOrderSystemType] AS [Order System Type]
+  , [t].[NewestOrderSystemType] AS [Newest Order System Type]
   , [t].[RemainingQuantityToOrder] AS [Remaining to Order]
-
   , CASE WHEN [t].[OrderAvailableForNextAppointment] = 1 THEN 'Yes' ELSE 'No' END AS [Order Avail for Next App]
   , CASE WHEN [t].[PriorityHairNeeded] = 1 THEN 'Yes' ELSE 'No' END AS [Priority Order Needed]
-
-
-  , CAST([t].[DueDate] AS DATE) AS [Due Date]
-  , [t].[TotalAccumQuantity]
-  , [t].[Promo]
-  , [t].[Remaining]
-  , [t].[Overage]
-  , [t].[QuantityAtCenterAndOrdered]
-  , [gms].[membershipGroup]
-  , [t].[ScheduledNextAppointmentDate]
-  
-  
-  , [t].[OldestOrderPlacedDate]
-  
-  
-  
-  
-  , CAST([t].[InitialQuantity] / 12.0 AS NUMERIC(12, 4)) AS [MembershipSystemQtyToApplyPerMonth]
-  , 8 AS [SystemOrderLeadTime]
-  , [gms].[MaxVal] AS [Membership Maximum]
   , CASE WHEN [t].[SuggestedQuantityToOrder] > [gms].[MaxVal] THEN [gms].[MaxVal] WHEN [t].[SuggestedQuantityToOrder] > 0 THEN [t].[SuggestedQuantityToOrder] ELSE
                                                                                                                                                               0 END AS [Suggested Qty to Order]
-  , CEILING(( [t].[QaNeeded] + [t].[InCenter] + [t].[OnOrder] ) / 12.0) AS [MonthsInCenterAndOnOrder]
-  , [t].[LastApplicationDate]
+
+--, CAST([t].[DueDate] AS DATE) AS [Due Date]
+--, [t].[TotalAccumQuantity] AS [Total Accum Qty]
+--, [t].[Promo]
+--, [t].[Remaining]
+--, [t].[Overage]
+--, [t].[QuantityAtCenterAndOrdered] AS [Qty At Center And Ordered]
+--, [gms].[membershipGroup] AS [Membership Group]
+
+--, CAST([t].[InitialQuantity] / 12.0 AS NUMERIC(12, 4)) AS [Membership System Qty To Apply Per Month]
+--, 8 AS [System Order Lead Time]
+--, [gms].[MaxVal] AS [Membership Maximum]
 FROM( SELECT
           *
         , CEILING(( ISNULL([t].[InitialQuantity], 0) / 12.0 * 8 ) - ( [t].[QaNeeded] + [t].[InCenter] + [t].[OnOrder] )) AS [SuggestedQuantityToOrder]
