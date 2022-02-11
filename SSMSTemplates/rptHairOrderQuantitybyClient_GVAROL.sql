@@ -492,7 +492,7 @@ OUTER APPLY( SELECT COUNT(1) AS [Cnt] FROM [dbo].[datHairSystemOrder] AS [hso] W
 WHERE EXISTS ( SELECT 1 FROM [#LastApplication] AS [l] WHERE [l].[ClientGUID] = [clt].[ClientGUID] ) ;
 
 SELECT
-    [q].[ClientFullNameCalc]
+    [q].[ClientFullNameCalc] AS [Client]
   , [q].[MembershipDescription]
   , [q].[MembershipID]
   , [q].[CenterDescriptionFullCalc] AS [Center]
@@ -564,7 +564,8 @@ LEFT JOIN [#NextDueDate] AS [ndd] ON [ndd].[ClientGUID] = [q].[ClientGUID] ;
 
 SELECT
     [t].[Region]
-  , [t].[ClientFullNameCalc]
+  , [t].[Center]
+  , [t].[Client]
   , [t].[MembershipDescription]
   , [t].[MembershipID]
   , [t].[Center]
