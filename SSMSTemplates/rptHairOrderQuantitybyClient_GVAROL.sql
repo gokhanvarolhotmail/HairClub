@@ -119,6 +119,7 @@ CREATE TABLE [#hair]
   , [HairSystemOrderGUID]                  UNIQUEIDENTIFIER
   , [MembershipStartDate]                  DATE
   , [Region]                               NVARCHAR(100)
+  , [MembershipExpiration]                 DATE
 ) ;
 
 IF @MembershipList = '0' --ALL
@@ -140,7 +141,8 @@ IF @MembershipList = '0' --ALL
                            , [HairSystemOrderDate]
                            , [HairSystemOrderGUID]
                            , [MembershipStartDate]
-                           , [Region] )
+                           , [Region]
+                           , [MembershipExpiration] )
         SELECT
             [hso].[HairSystemOrderNumber]
           , [clt].[CenterID]
@@ -160,11 +162,11 @@ IF @MembershipList = '0' --ALL
           , [hso].[HairSystemOrderGUID]
           , [cm].[BeginDate] AS [MembershipStartDate]
           , [r].[RegionDescription]
+          , [cm].[EndDate]
         FROM [dbo].[datClient] AS [clt]
         INNER JOIN [dbo].[datClientMembership] AS [cm] ON [cm].[ClientMembershipGUID] = [clt].[CurrentBioMatrixClientMembershipGUID]
         INNER JOIN [dbo].[cfgMembership] AS [m] ON [m].[MembershipID] = [cm].[MembershipID]
 
-		
         --OUTER APPLY( SELECT [k].[NextAppointmentDate]
         --             FROM( SELECT
         --                       DATEADD(DAY, ( [b].[digit] - 1 ) * [k].[Application Cadence Days], [cm].[BeginDate]) AS [NextAppointmentDate]
@@ -231,7 +233,8 @@ ELSE
                            , [HairSystemOrderDate]
                            , [HairSystemOrderGUID]
                            , [MembershipStartDate]
-                           , [Region] )
+                           , [Region]
+                           , [MembershipExpiration] )
         SELECT
             [hso].[HairSystemOrderNumber]
           , [clt].[CenterID]
@@ -251,6 +254,7 @@ ELSE
           , [hso].[HairSystemOrderGUID]
           , [cm].[BeginDate] AS [MembershipStartDate]
           , [r].[RegionDescription]
+          , [cm].[EndDate]
         FROM [dbo].[datClient] AS [clt]
         INNER JOIN [dbo].[datClientMembership] AS [cm] ON [cm].[ClientMembershipGUID] = [clt].[CurrentBioMatrixClientMembershipGUID]
         INNER JOIN [dbo].[cfgMembership] AS [m] ON [m].[MembershipID] = [cm].[MembershipID]
@@ -388,7 +392,6 @@ VALUES( 22, 'BASIC', 'Basic', 'Basic', 1 )
     , ( 4, 'GRDSV', 'Xtrands+ Initial 6 Solutions', 'Xtrands+', 1 )
     , ( 48, 'GRDSVSOL', 'Xtrands+ Initial 6 Solutions', 'Xtrands+', 1 ) ;
 
-
 -- Last Application Date
 IF OBJECT_ID('[tempdb]..[#LastApplication]') IS NOT NULL
     DROP TABLE [#LastApplication] ;
@@ -521,6 +524,7 @@ SELECT
   , [c2].[HairSystemDescriptionShort] AS [NewestOrderSystemType]
   , [c3].[Cnt] AS [RemainingQuantityToOrder]
   , [q].[Region]
+  , [q].[MembershipExpiration]
 --, [q].[OrderAvailForNextApp]
 INTO [#tmpHairOrderQuantitybyClient]
 FROM( SELECT
@@ -540,6 +544,7 @@ FROM( SELECT
         , SUM([hair].[QaNeeded]) AS [QaNeeded]
         , MAX([hair].[MembershipStartDate]) AS [MembershipStartDate]
         , MAX([hair].[Region]) AS [Region]
+        , MAX([hair].[MembershipExpiration]) AS [MembershipExpiration]
       --, MAX(CASE WHEN [hair].[HairSystemOrderDate] = [hair].[NextAppointmentDate] AND [hair].[InCenter] = 1 THEN 1 ELSE 0 END) AS [OrderAvailForNextApp]
       FROM [#hair] AS [hair]
       LEFT JOIN [dbo].[datClientMembershipAccum] AS [ahs] ON [hair].[CurrentBioMatrixClientMembershipGUID] = [ahs].[ClientMembershipGUID]
@@ -569,7 +574,8 @@ SELECT
     [t].[Region]
   , [t].[Center]
   , [t].[Client]
-  , [t].[CurrentMembership]
+  , [t].[CurrentMembership] AS [Current Membership]
+  , [t].[MembershipExpiration] AS [Membership Expiration]
   , [t].[MembershipID]
   , [t].[Center]
   , [t].[EndDate]
