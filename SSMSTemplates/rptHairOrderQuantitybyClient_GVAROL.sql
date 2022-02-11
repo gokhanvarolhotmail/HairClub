@@ -18,7 +18,7 @@ NOTES:
     WHERE BusinessSegmentID = 1 --BIO
     AND MembershipID NOT IN(1,2,11,12,14,15,16,17,18,19,49,50,57)
     
-    This report pulls memeberships that began 18 months ago: cm.BeginDate >= DATEADD(MONTH,-18,GETUTCDATE())
+    This report pulls memberships that began 18 months ago: cm.BeginDate >= DATEADD(MONTH,-18,GETUTCDATE())
 ===============================================================================================
 Change History:
 04/28/2014 - RH - Changed the CenterID and Description to the Home Center for the client.
@@ -118,6 +118,7 @@ CREATE TABLE [#hair]
   , [HairSystemOrderDate]                  DATETIME
   , [HairSystemOrderGUID]                  UNIQUEIDENTIFIER
   , [MembershipStartDate]                  DATE
+  , [Region]                               NVARCHAR(100)
 ) ;
 
 IF @MembershipList = '0' --ALL
@@ -138,7 +139,8 @@ IF @MembershipList = '0' --ALL
                            , [DueDate]
                            , [HairSystemOrderDate]
                            , [HairSystemOrderGUID]
-                           , [MembershipStartDate] )
+                           , [MembershipStartDate]
+                           , [Region] )
         SELECT
             [hso].[HairSystemOrderNumber]
           , [clt].[CenterID]
@@ -157,6 +159,7 @@ IF @MembershipList = '0' --ALL
           , [hso].[HairSystemOrderDate]
           , [hso].[HairSystemOrderGUID]
           , [cm].[BeginDate] AS [MembershipStartDate]
+          , [r].[RegionDescription]
         FROM [dbo].[datClient] AS [clt]
         INNER JOIN [dbo].[datClientMembership] AS [cm] ON [cm].[ClientMembershipGUID] = [clt].[CurrentBioMatrixClientMembershipGUID]
         INNER JOIN [dbo].[cfgMembership] AS [m] ON [m].[MembershipID] = [cm].[MembershipID]
@@ -184,6 +187,7 @@ IF @MembershipList = '0' --ALL
                                                                                                                    , 'FAC-Ship', 'QANEEDED')
         --INNER JOIN dbo.datClient clt ON clt.ClientGUID = hso.ClientGUID        
         INNER JOIN [dbo].[cfgCenter] AS [c] ON [c].[CenterID] = [clt].[CenterID]
+        LEFT JOIN [dbo].[lkpRegion] AS [r] ON [r].[RegionID] = [c].[RegionID]
         LEFT JOIN [dbo].[cfgHairSystem] AS [hs] ON [hs].[HairSystemID] = [hso].[HairSystemID]
         WHERE [clt].[CenterID] IN( SELECT [item] FROM [dbo].[fnSplit](@CenterIDs, ',') )
           AND [m].[MembershipDescription] <> 'CANCEL'
@@ -224,7 +228,8 @@ ELSE
                            , [DueDate]
                            , [HairSystemOrderDate]
                            , [HairSystemOrderGUID]
-                           , [MembershipStartDate] )
+                           , [MembershipStartDate]
+                           , [Region] )
         SELECT
             [hso].[HairSystemOrderNumber]
           , [clt].[CenterID]
@@ -243,6 +248,7 @@ ELSE
           , [hso].[HairSystemOrderDate]
           , [hso].[HairSystemOrderGUID]
           , [cm].[BeginDate] AS [MembershipStartDate]
+          , [r].[RegionDescription]
         FROM [dbo].[datClient] AS [clt]
         INNER JOIN [dbo].[datClientMembership] AS [cm] ON [cm].[ClientMembershipGUID] = [clt].[CurrentBioMatrixClientMembershipGUID]
         INNER JOIN [dbo].[cfgMembership] AS [m] ON [m].[MembershipID] = [cm].[MembershipID]
@@ -269,6 +275,7 @@ ELSE
                                                             AND [hsos].[HairSystemOrderStatusDescriptionShort] IN ('CENT', 'NEW', 'ORDER', 'HQ-Recv', 'HQ-Ship'
                                                                                                                    , 'FAC-Ship', 'QANEEDED')
         INNER JOIN [dbo].[cfgCenter] AS [c] ON [c].[CenterID] = [clt].[CenterID]
+        LEFT JOIN [dbo].[lkpRegion] AS [r] ON [r].[RegionID] = [c].[RegionID]
         LEFT JOIN [dbo].[cfgHairSystem] AS [hs] ON [hs].[HairSystemID] = [hso].[HairSystemID]
         WHERE [clt].[CenterID] IN( SELECT [item] FROM [dbo].[fnSplit](@CenterIDs, ',') )
           AND [cm].[BeginDate] >= DATEADD(MONTH, -18, GETUTCDATE())
@@ -488,7 +495,7 @@ SELECT
     [q].[ClientFullNameCalc]
   , [q].[MembershipDescription]
   , [q].[MembershipID]
-  , [q].[CenterDescriptionFullCalc] AS [CenterID]
+  , [q].[CenterDescriptionFullCalc] AS [Center]
   , [q].[EndDate]
   , [lad].[LastApplicationDate]
   , [q].[InCenter]
@@ -502,16 +509,15 @@ SELECT
   , CASE WHEN [q].[Promo] < 0 THEN 0 ELSE [q].[Promo] END AS [Overage]
   , ( [q].[QaNeeded] + [q].[InCenter] + [q].[OnOrder] ) AS [QuantityAtCenterAndOrdered]
   , [q].[QaNeeded] AS [QaNeeded]
-  , [q].[CenterDescriptionFullCalc]
   , [q].[MembershipStartDate]
   , [sad].[AppointmentDate] AS [ScheduledNextAppointmentDate]
-  , ISNULL([c1].[CENT], 0) AS [OrderAvailableForNextApp]
+  , ISNULL([c1].[CENT], 0) AS [OrderAvailableForNextAppointment]
   , ISNULL(1 - [c1].[CENT], 0) AS [PriorityHairNeeded]
   , [c1].[MinOrderCreateDate] AS [OldestOrderPlacedDate]
   , [c1].[MinOrderCreateDateAdd8Months] AS [OldestOrderPlacedDueDate]
   , [c2].[HairSystemDescriptionShort] AS [NewestOrderSystemType]
   , [c3].[Cnt] AS [RemainingQuantityToOrder]
-
+  , [q].[Region]
 --, [q].[OrderAvailForNextApp]
 INTO [#tmpHairOrderQuantitybyClient]
 FROM( SELECT
@@ -530,6 +536,7 @@ FROM( SELECT
         , [hair].[CenterDescriptionFullCalc]
         , SUM([hair].[QaNeeded]) AS [QaNeeded]
         , MAX([hair].[MembershipStartDate]) AS [MembershipStartDate]
+        , MAX([hair].[Region]) AS [Region]
       --, MAX(CASE WHEN [hair].[HairSystemOrderDate] = [hair].[NextAppointmentDate] AND [hair].[InCenter] = 1 THEN 1 ELSE 0 END) AS [OrderAvailForNextApp]
       FROM [#hair] AS [hair]
       LEFT JOIN [dbo].[datClientMembershipAccum] AS [ahs] ON [hair].[CurrentBioMatrixClientMembershipGUID] = [ahs].[ClientMembershipGUID]
@@ -556,10 +563,11 @@ LEFT JOIN [#Calc03] AS [c3] ON [c3].[ClientGUID] = [q].[ClientGUID]
 LEFT JOIN [#NextDueDate] AS [ndd] ON [ndd].[ClientGUID] = [q].[ClientGUID] ;
 
 SELECT
-    [t].[ClientFullNameCalc]
+    [t].[RegionDescription]
+  , [t].[ClientFullNameCalc]
   , [t].[MembershipDescription]
   , [t].[MembershipID]
-  , [t].[CenterDescriptionFullCalc] AS [CenterID]
+  , [t].[Center]
   , [t].[EndDate]
   , [t].[LastApplicationDate]
   , [t].[InCenter]
@@ -572,10 +580,9 @@ SELECT
   , [t].[Overage]
   , [t].[QuantityAtCenterAndOrdered]
   , [t].[QaNeeded]
-  , [t].[CenterDescriptionFullCalc]
   , [gms].[membershipGroup]
   , [t].[ScheduledNextAppointmentDate]
-  , [t].[OrderAvailableForNextApp]
+  , [t].[OrderAvailableForNextAppointment]
   , [t].[PriorityHairNeeded]
   , [t].[OldestOrderPlacedDate]
   , [t].[OldestOrderPlacedDueDate]
@@ -595,8 +602,7 @@ FROM( SELECT
 INNER JOIN [#groupedMemberships] AS [gms] ON [t].[MembershipID] = [gms].[membershipId] ;
 GO
 EXEC [dbo].[rptHairOrderQuantitybyClient_GVAROL] @CenterID = 201, @MembershipList = '0' ;
-  
-  
+
 RETURN ;
 
 SELECT

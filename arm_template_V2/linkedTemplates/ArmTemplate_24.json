@@ -1,0 +1,3883 @@
+{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "factoryName": {
+            "type": "string",
+            "metadata": "Data Factory name",
+            "defaultValue": "hc-eim-df-prod2"
+        }
+    },
+    "variables": {
+        "factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+    },
+    "resources": [
+        {
+            "name": "[concat(parameters('factoryName'), '/SQL01_DL_cfgMembershipPromotion')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_cONEct",
+                    "type": "LinkedServiceReference"
+                },
+                "folder": {
+                    "name": "Connect"
+                },
+                "annotations": [],
+                "type": "SqlServerTable",
+                "schema": [
+                    {
+                        "name": "MembershipPromotionID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "MembershipPromotionSortOrder",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "MembershipPromotionDescription",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "MembershipPromotionDescriptionShort",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "MembershipPromotionTypeID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "BeginDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "EndDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "Amount",
+                        "type": "decimal",
+                        "precision": 6,
+                        "scale": 2
+                    },
+                    {
+                        "name": "RevenueGroupID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "BusinessSegmentID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "AdditionalSystems",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "AdditionalServices",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "AdditionalSolutions",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "AdditionalProductKits",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "IsActiveFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "CreateDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "CreateUser",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "LastUpdate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "LastUpdateUser",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "UpdateStamp",
+                        "type": "timestamp"
+                    },
+                    {
+                        "name": "AdditionalHCSL",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "AdditionalStrands",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "MembershipPromotionGroupID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "MembershipPromotionAdjustmentTypeID",
+                        "type": "int",
+                        "precision": 10
+                    }
+                ],
+                "typeProperties": {
+                    "schema": "dbo",
+                    "table": "cfgMembershipPromotion"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/SQL01_DL_lkpOccupation')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_cONEct",
+                    "type": "LinkedServiceReference"
+                },
+                "folder": {
+                    "name": "Connect"
+                },
+                "annotations": [],
+                "type": "SqlServerTable",
+                "schema": [
+                    {
+                        "name": "ConfigurationCenterID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "ConfigurationCenterSortOrder",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "CenterID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "CreateDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "CreateUser",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "LastUpdate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "LastUpdateUser",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "UpdateStamp",
+                        "type": "timestamp"
+                    },
+                    {
+                        "name": "UseCreditCardProcessorFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "AccountingExportFreightBaseRate",
+                        "type": "money",
+                        "precision": 19,
+                        "scale": 4
+                    },
+                    {
+                        "name": "AccountingExportFreightPerItemRate",
+                        "type": "money",
+                        "precision": 19,
+                        "scale": 4
+                    },
+                    {
+                        "name": "AccountingExportReceiveAPDebitGLNumber",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "FeeNotificationDays",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "IsFeeProcessedCentrallyFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "LastClientEFTUpdate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "CenterBusinessTypeID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "HasFullAccess",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "EndOfDayLastRunDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "IsSalesConsultationEnabled",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsSalesOrderRoundingEnabled",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsScheduleFeatureEnabled",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsFulfillmentEnabled",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsEnhSalesConsultEnabled",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsAutoConfirmEnabled",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsNoteDeletionEnabled",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "NACHAFileProfileID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "IsNewClientEnabled",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "LanguageID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "EntityID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "IsAutomatedAgreementEnabled",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsAccountReceivableProcEnabled",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "HairOrderDelayDays",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "IsActiveForVipAccess",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "UseCreditCardProcessorForCreditCardOnFile",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "NewBusinessSizeID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "RecurringBusinessSizeID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "IsTrichoViewEnabledForMobile",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsSalesConsultationEnabledForMobile",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsLiveWithBosley",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "CanCompleteVisitNextDay",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsNonSerializedInventoryEnabled",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "NewClientMembershipID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "IncludeInNationalPricingRenewal",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsTransferToHWEnabled",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsConfirmAppointmentClientContactInformationEnabled",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsStylistCareerPathEnabled",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsHWIntegrationEnabled",
+                        "type": "bit"
+                    }
+                ],
+                "typeProperties": {
+                    "schema": "dbo",
+                    "table": "lkpOccupation"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/SQL01_DL_lkpSalesOrderType')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_cONEct",
+                    "type": "LinkedServiceReference"
+                },
+                "folder": {
+                    "name": "Connect"
+                },
+                "annotations": [],
+                "type": "SqlServerTable",
+                "schema": [
+                    {
+                        "name": "SalesOrderTypeID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "SalesOrderTypeSortOrder",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "SalesOrderTypeDescription",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "SalesOrderTypeDescriptionShort",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "IsActiveFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "CreateDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "CreateUser",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "LastUpdate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "LastUpdateUser",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "UpdateStamp",
+                        "type": "timestamp"
+                    }
+                ],
+                "typeProperties": {
+                    "schema": "dbo",
+                    "table": "lkpSalesOrderType"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/SQL01_DL_lkpState')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_cONEct",
+                    "type": "LinkedServiceReference"
+                },
+                "folder": {
+                    "name": "Connect"
+                },
+                "annotations": [],
+                "type": "SqlServerTable",
+                "schema": [
+                    {
+                        "name": "StateID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "StateSortOrder",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "StateDescription",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "StateDescriptionShort",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "CountryID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "IsActiveFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "CreateDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "CreateUser",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "LastUpdate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "LastUpdateUser",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "UpdateStamp",
+                        "type": "timestamp"
+                    }
+                ],
+                "typeProperties": {
+                    "schema": "dbo",
+                    "table": "lkpState"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/SQL01_DL_lkpEthnicity')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_cONEct",
+                    "type": "LinkedServiceReference"
+                },
+                "folder": {
+                    "name": "Connect"
+                },
+                "annotations": [],
+                "type": "SqlServerTable",
+                "schema": [
+                    {
+                        "name": "AccumulatorID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "AccumulatorSortOrder",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "AccumulatorDescription",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "AccumulatorDescriptionShort",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "AccumulatorDataTypeID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "SalesOrderProcessFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "SchedulerProcessFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "SchedulerActionTypeID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "SchedulerAdjustmentTypeID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "AdjustARBalanceFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "AdjustContractPriceFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "AdjustContractPaidFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsVisibleFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsActiveFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "CreateDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "CreateUser",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "LastUpdate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "LastUpdateUser",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "UpdateStamp",
+                        "type": "timestamp"
+                    },
+                    {
+                        "name": "IsVisibleToClient",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "ClientDescription",
+                        "type": "nvarchar"
+                    }
+                ],
+                "typeProperties": {
+                    "schema": "dbo",
+                    "table": "lkpEthnicity"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/SQL01_DL_datAppointmentEmployee')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_cONEct",
+                    "type": "LinkedServiceReference"
+                },
+                "folder": {
+                    "name": "Connect"
+                },
+                "annotations": [],
+                "type": "SqlServerTable",
+                "schema": [
+                    {
+                        "name": "AppointmentEmployeeGUID",
+                        "type": "uniqueidentifier"
+                    },
+                    {
+                        "name": "AppointmentGUID",
+                        "type": "uniqueidentifier"
+                    },
+                    {
+                        "name": "EmployeeGUID",
+                        "type": "uniqueidentifier"
+                    },
+                    {
+                        "name": "CreateDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "CreateUser",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "LastUpdate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "LastUpdateUser",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "UpdateStamp",
+                        "type": "timestamp"
+                    }
+                ],
+                "typeProperties": {
+                    "schema": "dbo",
+                    "table": "datAppointmentEmployee"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/SQL01_DL_lkpSalesCodeDivision')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_cONEct",
+                    "type": "LinkedServiceReference"
+                },
+                "folder": {
+                    "name": "Connect"
+                },
+                "annotations": [],
+                "type": "SqlServerTable",
+                "schema": [
+                    {
+                        "name": "SalesCodeDepartmentID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "SalesCodeDepartmentSortOrder",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "SalesCodeDepartmentDescription",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "SalesCodeDepartmentDescriptionShort",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "SalesCodeDivisionID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "IsActiveFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "CreateDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "CreateUser",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "LastUpdate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "LastUpdateUser",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "UpdateStamp",
+                        "type": "timestamp"
+                    }
+                ],
+                "typeProperties": {
+                    "schema": "dbo",
+                    "table": "lkpSalesCodeDivision"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/SQL01_DL_lkpSalesCodeType')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_cONEct",
+                    "type": "LinkedServiceReference"
+                },
+                "folder": {
+                    "name": "Connect"
+                },
+                "annotations": [],
+                "type": "SqlServerTable",
+                "schema": [
+                    {
+                        "name": "SalesOrderTypeID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "SalesOrderTypeSortOrder",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "SalesOrderTypeDescription",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "SalesOrderTypeDescriptionShort",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "IsActiveFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "CreateDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "CreateUser",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "LastUpdate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "LastUpdateUser",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "UpdateStamp",
+                        "type": "timestamp"
+                    }
+                ],
+                "typeProperties": {
+                    "schema": "dbo",
+                    "table": "lkpSalesCodeType"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/CBP_dataset')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_cONEctSQL05",
+                    "type": "LinkedServiceReference"
+                },
+                "folder": {
+                    "name": "Connect"
+                },
+                "annotations": [],
+                "type": "SqlServerTable",
+                "schema": [],
+                "typeProperties": {}
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/Targets')]",
+            "type": "Microsoft.DataFactory/factories/pipelines",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "activities": [
+                    {
+                        "name": "XLSXtoParquet",
+                        "type": "Copy",
+                        "dependsOn": [],
+                        "policy": {
+                            "timeout": "7.00:00:00",
+                            "retry": 0,
+                            "retryIntervalInSeconds": 30,
+                            "secureOutput": false,
+                            "secureInput": false
+                        },
+                        "userProperties": [],
+                        "typeProperties": {
+                            "source": {
+                                "type": "ExcelSource",
+                                "storeSettings": {
+                                    "type": "AzureBlobFSReadSettings",
+                                    "recursive": true,
+                                    "enablePartitionDiscovery": false
+                                }
+                            },
+                            "sink": {
+                                "type": "ParquetSink",
+                                "storeSettings": {
+                                    "type": "AzureBlobFSWriteSettings"
+                                },
+                                "formatSettings": {
+                                    "type": "ParquetWriteSettings"
+                                }
+                            },
+                            "enableStaging": false,
+                            "translator": {
+                                "type": "TabularTranslator",
+                                "mappings": [
+                                    {
+                                        "source": {
+                                            "name": "Date ",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Date ",
+                                            "type": "String",
+                                            "physicalType": "UTF8"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Month",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Month",
+                                            "type": "String",
+                                            "physicalType": "UTF8"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Budget Type",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        },
+                                        "sink": {
+                                            "name": "BudgetType",
+                                            "physicalType": "UTF8"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Agency",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Agency",
+                                            "type": "String",
+                                            "physicalType": "UTF8"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Channel",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Channel",
+                                            "type": "String",
+                                            "physicalType": "UTF8"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Medium",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Medium",
+                                            "type": "String",
+                                            "physicalType": "UTF8"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Source",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Source",
+                                            "type": "String",
+                                            "physicalType": "UTF8"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Budget",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Budget",
+                                            "type": "String",
+                                            "physicalType": "UTF8"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Location",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Location",
+                                            "type": "String",
+                                            "physicalType": "UTF8"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Budget_Amount",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Budget_Amount",
+                                            "type": "String",
+                                            "physicalType": "UTF8"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Tareget_Leads",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Tareget_Leads",
+                                            "type": "String",
+                                            "physicalType": "UTF8"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "CurrencyConversion",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        },
+                                        "sink": {
+                                            "name": "CurrencyConversion",
+                                            "type": "String",
+                                            "physicalType": "UTF8"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Fee Rate",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        },
+                                        "sink": {
+                                            "name": "FeeRate",
+                                            "physicalType": "UTF8"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Data Stream ID",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "DataStreamID"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Data Stream Name",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "DataStreamName"
+                                        }
+                                    }
+                                ],
+                                "typeConversion": true,
+                                "typeConversionSettings": {
+                                    "allowDataTruncation": true,
+                                    "treatBooleanAsNumber": false
+                                }
+                            }
+                        },
+                        "inputs": [
+                            {
+                                "referenceName": "MA_DL_Targets",
+                                "type": "DatasetReference",
+                                "parameters": {
+                                    "FileName": {
+                                        "value": "@pipeline().parameters.FileName",
+                                        "type": "Expression"
+                                    },
+                                    "LA_ID": {
+                                        "value": "@pipeline().parameters.LA_ID",
+                                        "type": "Expression"
+                                    },
+                                    "AgencyID": {
+                                        "value": "@pipeline().parameters.AgencyID",
+                                        "type": "Expression"
+                                    },
+                                    "Container": "hc-eim-file-system-bi"
+                                }
+                            }
+                        ],
+                        "outputs": [
+                            {
+                                "referenceName": "DL_MA_Targets",
+                                "type": "DatasetReference",
+                                "parameters": {
+                                    "FileName": {
+                                        "value": "@replace(pipeline().parameters.FileName, '.xlsx', '.parquet')",
+                                        "type": "Expression"
+                                    },
+                                    "LA_ID": {
+                                        "value": "@pipeline().parameters.LA_ID",
+                                        "type": "Expression"
+                                    },
+                                    "AgencyID": {
+                                        "value": "@pipeline().parameters.AgencyID",
+                                        "type": "Expression"
+                                    },
+                                    "Container": "hc-eim-file-system-bi"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "name": "FactMarketingBudget",
+                        "type": "ExecuteDataFlow",
+                        "dependsOn": [
+                            {
+                                "activity": "ODS_Targets",
+                                "dependencyConditions": [
+                                    "Succeeded"
+                                ]
+                            }
+                        ],
+                        "policy": {
+                            "timeout": "1.00:00:00",
+                            "retry": 0,
+                            "retryIntervalInSeconds": 30,
+                            "secureOutput": false,
+                            "secureInput": false
+                        },
+                        "userProperties": [],
+                        "typeProperties": {
+                            "dataflow": {
+                                "referenceName": "FactMarketingBudget",
+                                "type": "DataFlowReference",
+                                "parameters": {
+                                    "Month": {
+                                        "value": "'@{pipeline().parameters.Month}'",
+                                        "type": "Expression"
+                                    }
+                                },
+                                "datasetParameters": {
+                                    "OdsTargets": {},
+                                    "InsertFactMarketingBudget": {}
+                                }
+                            },
+                            "staging": {
+                                "linkedService": {
+                                    "referenceName": "HC_DataLake",
+                                    "type": "LinkedServiceReference"
+                                },
+                                "folderPath": "hc-eim-file-system-bi-staging"
+                            },
+                            "compute": {
+                                "coreCount": 8,
+                                "computeType": "General"
+                            },
+                            "traceLevel": "Fine"
+                        }
+                    },
+                    {
+                        "name": "ODS_Targets",
+                        "type": "ExecuteDataFlow",
+                        "dependsOn": [
+                            {
+                                "activity": "XLSXtoParquet",
+                                "dependencyConditions": [
+                                    "Succeeded"
+                                ]
+                            }
+                        ],
+                        "policy": {
+                            "timeout": "1.00:00:00",
+                            "retry": 0,
+                            "retryIntervalInSeconds": 30,
+                            "secureOutput": false,
+                            "secureInput": false
+                        },
+                        "userProperties": [],
+                        "typeProperties": {
+                            "dataflow": {
+                                "referenceName": "ODS_Targets",
+                                "type": "DataFlowReference",
+                                "parameters": {},
+                                "datasetParameters": {
+                                    "ParquetTargets": {
+                                        "FileName": {
+                                            "value": "@replace(pipeline().parameters.FileName, '.xlsx', '.parquet')",
+                                            "type": "Expression"
+                                        },
+                                        "LA_ID": {
+                                            "value": "@pipeline().parameters.LA_ID",
+                                            "type": "Expression"
+                                        },
+                                        "AgencyID": {
+                                            "value": "@pipeline().parameters.AgencyID",
+                                            "type": "Expression"
+                                        },
+                                        "Container": "hc-eim-file-system-bi"
+                                    },
+                                    "ODSTargets": {}
+                                }
+                            },
+                            "staging": {
+                                "linkedService": {
+                                    "referenceName": "HC_DataLake",
+                                    "type": "LinkedServiceReference"
+                                },
+                                "folderPath": "hc-eim-file-system-bi-staging"
+                            },
+                            "compute": {
+                                "coreCount": 8,
+                                "computeType": "General"
+                            },
+                            "traceLevel": "Fine"
+                        }
+                    }
+                ],
+                "policy": {
+                    "elapsedTimeMetric": {},
+                    "cancelAfter": {}
+                },
+                "parameters": {
+                    "FileName": {
+                        "type": "string"
+                    },
+                    "LA_ID": {
+                        "type": "string",
+                        "defaultValue": "Targets"
+                    },
+                    "AgencyID": {
+                        "type": "string",
+                        "defaultValue": "ManualUpload"
+                    },
+                    "Month": {
+                        "type": "string"
+                    }
+                },
+                "folder": {
+                    "name": "MarketingAgencies"
+                },
+                "annotations": [],
+                "lastPublishTime": "2021-10-15T16:38:03Z"
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/ODSPromoCode')]",
+            "type": "Microsoft.DataFactory/factories/pipelines",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "activities": [
+                    {
+                        "name": "SetCreatePromoCodeFileName",
+                        "type": "SetVariable",
+                        "dependsOn": [],
+                        "userProperties": [],
+                        "typeProperties": {
+                            "variableName": "CreatedPromoCodeFileName",
+                            "value": {
+                                "value": "@Replace(concat('Created_PromoCode_', pipeline().RunId, '_',utcnow('yyyy-MM-ddTHH:mm:ss'), '.parquet'), ':','-')",
+                                "type": "Expression"
+                            }
+                        }
+                    },
+                    {
+                        "name": "SetUpdatedPromoCodeFileName",
+                        "type": "SetVariable",
+                        "dependsOn": [],
+                        "userProperties": [],
+                        "typeProperties": {
+                            "variableName": "UpdatedPromoCodeFileName",
+                            "value": {
+                                "value": "@Replace(concat('Updated_PromoCode_', pipeline().RunId, '_',utcnow('yyyy-MM-ddTHH:mm:ss'), '.parquet'), ':','-')",
+                                "type": "Expression"
+                            }
+                        }
+                    },
+                    {
+                        "name": "SF_DL_CreatedPromoCode",
+                        "type": "Copy",
+                        "dependsOn": [
+                            {
+                                "activity": "SetCreatePromoCodeFileName",
+                                "dependencyConditions": [
+                                    "Succeeded"
+                                ]
+                            }
+                        ],
+                        "policy": {
+                            "timeout": "7.00:00:00",
+                            "retry": 0,
+                            "retryIntervalInSeconds": 30,
+                            "secureOutput": false,
+                            "secureInput": false
+                        },
+                        "userProperties": [],
+                        "typeProperties": {
+                            "source": {
+                                "type": "SalesforceServiceCloudSource",
+                                "query": {
+                                    "value": "SELECT * FROM PromoCode__c\nWHERE CreatedDate >='@{pipeline().parameters.LastCreatedPromoCodeDate}'",
+                                    "type": "Expression"
+                                },
+                                "readBehavior": "queryAll"
+                            },
+                            "sink": {
+                                "type": "ParquetSink",
+                                "storeSettings": {
+                                    "type": "AzureBlobFSWriteSettings"
+                                },
+                                "formatSettings": {
+                                    "type": "ParquetWriteSettings"
+                                }
+                            },
+                            "enableStaging": false
+                        },
+                        "inputs": [
+                            {
+                                "referenceName": "SF_DL_PromoCode",
+                                "type": "DatasetReference",
+                                "parameters": {}
+                            }
+                        ],
+                        "outputs": [
+                            {
+                                "referenceName": "DL_SF_PromoCode",
+                                "type": "DatasetReference",
+                                "parameters": {
+                                    "Object_File_Name": {
+                                        "value": "@variables('CreatedPromoCodeFileName')",
+                                        "type": "Expression"
+                                    },
+                                    "Container": "hc-eim-file-system-bi"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "name": "SF_DL_UpdatedPromoCode",
+                        "type": "Copy",
+                        "dependsOn": [
+                            {
+                                "activity": "SetUpdatedPromoCodeFileName",
+                                "dependencyConditions": [
+                                    "Succeeded"
+                                ]
+                            }
+                        ],
+                        "policy": {
+                            "timeout": "7.00:00:00",
+                            "retry": 0,
+                            "retryIntervalInSeconds": 30,
+                            "secureOutput": false,
+                            "secureInput": false
+                        },
+                        "userProperties": [],
+                        "typeProperties": {
+                            "source": {
+                                "type": "SalesforceServiceCloudSource",
+                                "query": {
+                                    "value": "SELECT * FROM PromoCode__c\nWHERE LastModifiedDate >='@{pipeline().parameters.LastUpdatedPromoCodeDate}'",
+                                    "type": "Expression"
+                                },
+                                "readBehavior": "queryAll"
+                            },
+                            "sink": {
+                                "type": "ParquetSink",
+                                "storeSettings": {
+                                    "type": "AzureBlobFSWriteSettings"
+                                },
+                                "formatSettings": {
+                                    "type": "ParquetWriteSettings"
+                                }
+                            },
+                            "enableStaging": false
+                        },
+                        "inputs": [
+                            {
+                                "referenceName": "SF_DL_PromoCode",
+                                "type": "DatasetReference",
+                                "parameters": {}
+                            }
+                        ],
+                        "outputs": [
+                            {
+                                "referenceName": "DL_SF_PromoCode",
+                                "type": "DatasetReference",
+                                "parameters": {
+                                    "Object_File_Name": {
+                                        "value": "@variables('UpdatedPromoCodeFileName')",
+                                        "type": "Expression"
+                                    },
+                                    "Container": "hc-eim-file-system-bi"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "name": "InsertCreatedPromoCode",
+                        "type": "ExecuteDataFlow",
+                        "dependsOn": [
+                            {
+                                "activity": "SF_DL_CreatedPromoCode",
+                                "dependencyConditions": [
+                                    "Succeeded"
+                                ]
+                            },
+                            {
+                                "activity": "SF_DL_UpdatedPromoCode",
+                                "dependencyConditions": [
+                                    "Succeeded"
+                                ]
+                            }
+                        ],
+                        "policy": {
+                            "timeout": "7.00:00:00",
+                            "retry": 0,
+                            "retryIntervalInSeconds": 30,
+                            "secureOutput": false,
+                            "secureInput": false
+                        },
+                        "userProperties": [],
+                        "typeProperties": {
+                            "dataflow": {
+                                "referenceName": "ODSPromoCode",
+                                "type": "DataFlowReference",
+                                "parameters": {},
+                                "datasetParameters": {
+                                    "PromoCodeParquet": {
+                                        "Object_File_Name": {
+                                            "value": "@variables('CreatedPromoCodeFileName')",
+                                            "type": "Expression"
+                                        },
+                                        "Container": "hc-eim-file-system-bi"
+                                    },
+                                    "UpsertOdsPromoCode": {}
+                                }
+                            },
+                            "staging": {
+                                "linkedService": {
+                                    "referenceName": "HC_DataLake",
+                                    "type": "LinkedServiceReference"
+                                },
+                                "folderPath": "hc-eim-file-system-bi-staging"
+                            },
+                            "compute": {
+                                "coreCount": 8,
+                                "computeType": "General"
+                            },
+                            "traceLevel": "Fine"
+                        }
+                    },
+                    {
+                        "name": "UpdatePromoCode",
+                        "type": "ExecuteDataFlow",
+                        "dependsOn": [
+                            {
+                                "activity": "InsertCreatedPromoCode",
+                                "dependencyConditions": [
+                                    "Succeeded"
+                                ]
+                            }
+                        ],
+                        "policy": {
+                            "timeout": "7.00:00:00",
+                            "retry": 0,
+                            "retryIntervalInSeconds": 30,
+                            "secureOutput": false,
+                            "secureInput": false
+                        },
+                        "userProperties": [],
+                        "typeProperties": {
+                            "dataflow": {
+                                "referenceName": "ODSPromoCode",
+                                "type": "DataFlowReference",
+                                "parameters": {},
+                                "datasetParameters": {
+                                    "PromoCodeParquet": {
+                                        "Object_File_Name": {
+                                            "value": "@variables('UpdatedPromoCodeFileName')",
+                                            "type": "Expression"
+                                        },
+                                        "Container": "hc-eim-file-system-bi"
+                                    },
+                                    "UpsertOdsPromoCode": {}
+                                }
+                            },
+                            "staging": {
+                                "linkedService": {
+                                    "referenceName": "HC_DataLake",
+                                    "type": "LinkedServiceReference"
+                                },
+                                "folderPath": "hc-eim-file-system-bi-staging"
+                            },
+                            "compute": {
+                                "coreCount": 8,
+                                "computeType": "General"
+                            },
+                            "traceLevel": "Fine"
+                        }
+                    }
+                ],
+                "policy": {
+                    "elapsedTimeMetric": {},
+                    "cancelAfter": {}
+                },
+                "parameters": {
+                    "LastCreatedPromoCodeDate": {
+                        "type": "string"
+                    },
+                    "LastUpdatedPromoCodeDate": {
+                        "type": "string"
+                    },
+                    "LARunId": {
+                        "type": "string"
+                    }
+                },
+                "variables": {
+                    "CreatedPromoCodeFileName": {
+                        "type": "String"
+                    },
+                    "UpdatedPromoCodeFileName": {
+                        "type": "String"
+                    }
+                },
+                "folder": {
+                    "name": "Salesforce/ODS"
+                },
+                "annotations": [],
+                "lastPublishTime": "2021-08-12T22:37:29Z"
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/ODSWorkType')]",
+            "type": "Microsoft.DataFactory/factories/pipelines",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "activities": [
+                    {
+                        "name": "SetCreateWorkTypeFileName",
+                        "type": "SetVariable",
+                        "dependsOn": [],
+                        "userProperties": [],
+                        "typeProperties": {
+                            "variableName": "CreatedWorkTypeFileName",
+                            "value": {
+                                "value": "@Replace(concat('Created_WorkType_', pipeline().RunId, '_',utcnow('yyyy-MM-ddTHH:mm:ss'), '.parquet'), ':','-')",
+                                "type": "Expression"
+                            }
+                        }
+                    },
+                    {
+                        "name": "SetUpdatedWorkTypeFileName",
+                        "type": "SetVariable",
+                        "dependsOn": [],
+                        "userProperties": [],
+                        "typeProperties": {
+                            "variableName": "UpdatedWorkTypeFileName",
+                            "value": {
+                                "value": "@Replace(concat('Updated_WorkType_', pipeline().RunId, '_',utcnow('yyyy-MM-ddTHH:mm:ss'), '.parquet'), ':','-')",
+                                "type": "Expression"
+                            }
+                        }
+                    },
+                    {
+                        "name": "SF_DL_CreatedWorkType",
+                        "type": "Copy",
+                        "dependsOn": [
+                            {
+                                "activity": "SetCreateWorkTypeFileName",
+                                "dependencyConditions": [
+                                    "Succeeded"
+                                ]
+                            }
+                        ],
+                        "policy": {
+                            "timeout": "7.00:00:00",
+                            "retry": 0,
+                            "retryIntervalInSeconds": 30,
+                            "secureOutput": false,
+                            "secureInput": false
+                        },
+                        "userProperties": [],
+                        "typeProperties": {
+                            "source": {
+                                "type": "SalesforceServiceCloudSource",
+                                "query": {
+                                    "value": "SELECT * FROM WorkType\nWHERE CreatedDate >='@{pipeline().parameters.LastCreatedWorkTypeDate}'",
+                                    "type": "Expression"
+                                },
+                                "readBehavior": "queryAll"
+                            },
+                            "sink": {
+                                "type": "ParquetSink",
+                                "storeSettings": {
+                                    "type": "AzureBlobFSWriteSettings"
+                                },
+                                "formatSettings": {
+                                    "type": "ParquetWriteSettings"
+                                }
+                            },
+                            "enableStaging": false
+                        },
+                        "inputs": [
+                            {
+                                "referenceName": "SF_DL_WorkType",
+                                "type": "DatasetReference",
+                                "parameters": {}
+                            }
+                        ],
+                        "outputs": [
+                            {
+                                "referenceName": "DL_SF_WorkType",
+                                "type": "DatasetReference",
+                                "parameters": {
+                                    "Object_File_Name": {
+                                        "value": "@variables('CreatedWorkTypeFileName')",
+                                        "type": "Expression"
+                                    },
+                                    "Container": "hc-eim-file-system-bi"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "name": "SF_DL_UpdatedWorkType",
+                        "type": "Copy",
+                        "dependsOn": [
+                            {
+                                "activity": "SetUpdatedWorkTypeFileName",
+                                "dependencyConditions": [
+                                    "Succeeded"
+                                ]
+                            }
+                        ],
+                        "policy": {
+                            "timeout": "7.00:00:00",
+                            "retry": 0,
+                            "retryIntervalInSeconds": 30,
+                            "secureOutput": false,
+                            "secureInput": false
+                        },
+                        "userProperties": [],
+                        "typeProperties": {
+                            "source": {
+                                "type": "SalesforceServiceCloudSource",
+                                "query": {
+                                    "value": "SELECT * FROM WorkType\nWHERE LastModifiedDate >='@{pipeline().parameters.LastUpdatedWorkTypeDate}'",
+                                    "type": "Expression"
+                                },
+                                "readBehavior": "queryAll"
+                            },
+                            "sink": {
+                                "type": "ParquetSink",
+                                "storeSettings": {
+                                    "type": "AzureBlobFSWriteSettings"
+                                },
+                                "formatSettings": {
+                                    "type": "ParquetWriteSettings"
+                                }
+                            },
+                            "enableStaging": false
+                        },
+                        "inputs": [
+                            {
+                                "referenceName": "SF_DL_WorkType",
+                                "type": "DatasetReference",
+                                "parameters": {}
+                            }
+                        ],
+                        "outputs": [
+                            {
+                                "referenceName": "DL_SF_WorkType",
+                                "type": "DatasetReference",
+                                "parameters": {
+                                    "Object_File_Name": {
+                                        "value": "@variables('UpdatedWorkTypeFileName')",
+                                        "type": "Expression"
+                                    },
+                                    "Container": "hc-eim-file-system-bi"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "name": "InsertCreatedWorkType",
+                        "type": "ExecuteDataFlow",
+                        "dependsOn": [
+                            {
+                                "activity": "SF_DL_CreatedWorkType",
+                                "dependencyConditions": [
+                                    "Succeeded"
+                                ]
+                            },
+                            {
+                                "activity": "SF_DL_UpdatedWorkType",
+                                "dependencyConditions": [
+                                    "Succeeded"
+                                ]
+                            }
+                        ],
+                        "policy": {
+                            "timeout": "7.00:00:00",
+                            "retry": 0,
+                            "retryIntervalInSeconds": 30,
+                            "secureOutput": false,
+                            "secureInput": false
+                        },
+                        "userProperties": [],
+                        "typeProperties": {
+                            "dataflow": {
+                                "referenceName": "ODSWorkType",
+                                "type": "DataFlowReference",
+                                "parameters": {},
+                                "datasetParameters": {
+                                    "WorkTypeParquet": {
+                                        "Object_File_Name": {
+                                            "value": "@variables('CreatedWorkTypeFileName')",
+                                            "type": "Expression"
+                                        },
+                                        "Container": "hc-eim-file-system-bi"
+                                    },
+                                    "UpsertOdsWorkType": {}
+                                }
+                            },
+                            "staging": {
+                                "linkedService": {
+                                    "referenceName": "HC_DataLake",
+                                    "type": "LinkedServiceReference"
+                                },
+                                "folderPath": "hc-eim-file-system-bi-staging"
+                            },
+                            "compute": {
+                                "coreCount": 8,
+                                "computeType": "General"
+                            },
+                            "traceLevel": "Fine"
+                        }
+                    },
+                    {
+                        "name": "UpdateWorkType",
+                        "type": "ExecuteDataFlow",
+                        "dependsOn": [
+                            {
+                                "activity": "InsertCreatedWorkType",
+                                "dependencyConditions": [
+                                    "Succeeded"
+                                ]
+                            }
+                        ],
+                        "policy": {
+                            "timeout": "7.00:00:00",
+                            "retry": 0,
+                            "retryIntervalInSeconds": 30,
+                            "secureOutput": false,
+                            "secureInput": false
+                        },
+                        "userProperties": [],
+                        "typeProperties": {
+                            "dataflow": {
+                                "referenceName": "ODSWorkType",
+                                "type": "DataFlowReference",
+                                "parameters": {},
+                                "datasetParameters": {
+                                    "WorkTypeParquet": {
+                                        "Object_File_Name": {
+                                            "value": "@variables('UpdatedWorkTypeFileName')",
+                                            "type": "Expression"
+                                        },
+                                        "Container": "hc-eim-file-system-bi"
+                                    },
+                                    "UpsertOdsWorkType": {}
+                                }
+                            },
+                            "staging": {
+                                "linkedService": {
+                                    "referenceName": "HC_DataLake",
+                                    "type": "LinkedServiceReference"
+                                },
+                                "folderPath": "hc-eim-file-system-bi-staging"
+                            },
+                            "compute": {
+                                "coreCount": 8,
+                                "computeType": "General"
+                            },
+                            "traceLevel": "Fine"
+                        }
+                    }
+                ],
+                "policy": {
+                    "elapsedTimeMetric": {},
+                    "cancelAfter": {}
+                },
+                "parameters": {
+                    "LastCreatedWorkTypeDate": {
+                        "type": "string"
+                    },
+                    "LastUpdatedWorkTypeDate": {
+                        "type": "string"
+                    },
+                    "LARunId": {
+                        "type": "string"
+                    }
+                },
+                "variables": {
+                    "CreatedWorkTypeFileName": {
+                        "type": "String"
+                    },
+                    "UpdatedWorkTypeFileName": {
+                        "type": "String"
+                    }
+                },
+                "folder": {
+                    "name": "Salesforce/ODS"
+                },
+                "annotations": [],
+                "lastPublishTime": "2021-08-12T22:37:29Z"
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/OTT_Intermedia')]",
+            "type": "Microsoft.DataFactory/factories/pipelines",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "activities": [
+                    {
+                        "name": "XLSXtoParquet",
+                        "type": "Copy",
+                        "dependsOn": [],
+                        "policy": {
+                            "timeout": "7.00:00:00",
+                            "retry": 0,
+                            "retryIntervalInSeconds": 30,
+                            "secureOutput": false,
+                            "secureInput": false
+                        },
+                        "userProperties": [],
+                        "typeProperties": {
+                            "source": {
+                                "type": "ExcelSource",
+                                "storeSettings": {
+                                    "type": "AzureBlobFSReadSettings",
+                                    "recursive": true,
+                                    "enablePartitionDiscovery": false
+                                }
+                            },
+                            "sink": {
+                                "type": "ParquetSink",
+                                "storeSettings": {
+                                    "type": "AzureBlobFSWriteSettings"
+                                },
+                                "formatSettings": {
+                                    "type": "ParquetWriteSettings"
+                                }
+                            },
+                            "enableStaging": false,
+                            "translator": {
+                                "type": "TabularTranslator",
+                                "mappings": [
+                                    {
+                                        "source": {
+                                            "name": "Date",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Date",
+                                            "type": "String",
+                                            "physicalType": "UTF8"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Advertiser",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Advertiser",
+                                            "type": "String",
+                                            "physicalType": "UTF8"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Advertiser Currency Code",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        },
+                                        "sink": {
+                                            "name": "AdvertiserCurrencyCode",
+                                            "physicalType": "UTF8"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Campaign",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Campaign",
+                                            "type": "String",
+                                            "physicalType": "UTF8"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Ad Group",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        },
+                                        "sink": {
+                                            "name": "AdGroup",
+                                            "physicalType": "UTF8"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Creative",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Creative",
+                                            "type": "String",
+                                            "physicalType": "UTF8"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Impressions",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Impressions",
+                                            "type": "String",
+                                            "physicalType": "UTF8"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "CN Spend ",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        },
+                                        "sink": {
+                                            "name": "CNSpend ",
+                                            "physicalType": "UTF8"
+                                        }
+                                    }
+                                ],
+                                "typeConversion": true,
+                                "typeConversionSettings": {
+                                    "allowDataTruncation": true,
+                                    "treatBooleanAsNumber": false
+                                }
+                            }
+                        },
+                        "inputs": [
+                            {
+                                "referenceName": "MA_DL_OTT_Intermedia",
+                                "type": "DatasetReference",
+                                "parameters": {
+                                    "FileName": {
+                                        "value": "@pipeline().parameters.FileName",
+                                        "type": "Expression"
+                                    },
+                                    "LA_ID": {
+                                        "value": "@pipeline().parameters.LA_ID",
+                                        "type": "Expression"
+                                    },
+                                    "AgencyID": {
+                                        "value": "@pipeline().parameters.AgencyID",
+                                        "type": "Expression"
+                                    },
+                                    "SheetName": {
+                                        "value": "@pipeline().parameters.SheetName",
+                                        "type": "Expression"
+                                    }
+                                }
+                            }
+                        ],
+                        "outputs": [
+                            {
+                                "referenceName": "DL_MA_Intermedia_OTT",
+                                "type": "DatasetReference",
+                                "parameters": {
+                                    "FileName": {
+                                        "value": "@replace(pipeline().parameters.FileName, '.xlsx', '.parquet')",
+                                        "type": "Expression"
+                                    },
+                                    "LA_ID": {
+                                        "value": "@pipeline().parameters.LA_ID",
+                                        "type": "Expression"
+                                    },
+                                    "AgencyID": {
+                                        "value": "@pipeline().parameters.AgencyID",
+                                        "type": "Expression"
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ODS_MA_OTT_Intermedia",
+                        "type": "ExecuteDataFlow",
+                        "dependsOn": [
+                            {
+                                "activity": "XLSXtoParquet",
+                                "dependencyConditions": [
+                                    "Succeeded"
+                                ]
+                            }
+                        ],
+                        "policy": {
+                            "timeout": "7.00:00:00",
+                            "retry": 0,
+                            "retryIntervalInSeconds": 30,
+                            "secureOutput": false,
+                            "secureInput": false
+                        },
+                        "userProperties": [],
+                        "typeProperties": {
+                            "dataflow": {
+                                "referenceName": "ODS_MA_OTT_Intermedia",
+                                "type": "DataFlowReference",
+                                "parameters": {
+                                    "FilePath": {
+                                        "value": "'@{concat('MarketingAgencies/',pipeline().parameters.AgencyID, '/', pipeline().parameters.LA_ID, '/', pipeline().parameters.FileName)}'",
+                                        "type": "Expression"
+                                    }
+                                },
+                                "datasetParameters": {
+                                    "ODSOTT": {
+                                        "FileName": {
+                                            "value": "@replace(pipeline().parameters.FileName, '.xlsx', '.parquet')",
+                                            "type": "Expression"
+                                        },
+                                        "LA_ID": {
+                                            "value": "@pipeline().parameters.LA_ID",
+                                            "type": "Expression"
+                                        },
+                                        "AgencyID": {
+                                            "value": "@pipeline().parameters.AgencyID",
+                                            "type": "Expression"
+                                        },
+                                        "Container": "hc-eim-file-system-bi-dev-staging"
+                                    },
+                                    "sinkODS": {}
+                                }
+                            },
+                            "staging": {
+                                "linkedService": {
+                                    "referenceName": "HC_DataLake",
+                                    "type": "LinkedServiceReference"
+                                },
+                                "folderPath": "hc-eim-file-system-bi-staging"
+                            },
+                            "compute": {
+                                "coreCount": 8,
+                                "computeType": "General"
+                            },
+                            "traceLevel": "Fine"
+                        }
+                    }
+                ],
+                "policy": {
+                    "elapsedTimeMetric": {},
+                    "cancelAfter": {}
+                },
+                "parameters": {
+                    "FileName": {
+                        "type": "string"
+                    },
+                    "AgencyID": {
+                        "type": "string"
+                    },
+                    "LA_ID": {
+                        "type": "string"
+                    },
+                    "SheetName": {
+                        "type": "string"
+                    }
+                },
+                "folder": {
+                    "name": "MarketingAgencies"
+                },
+                "annotations": [],
+                "lastPublishTime": "2021-10-15T16:38:01Z"
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/ODSCampaign')]",
+            "type": "Microsoft.DataFactory/factories/pipelines",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "activities": [
+                    {
+                        "name": "SetCreateCampaignFileName",
+                        "type": "SetVariable",
+                        "dependsOn": [],
+                        "userProperties": [],
+                        "typeProperties": {
+                            "variableName": "CreatedCampaignFileName",
+                            "value": {
+                                "value": "@Replace(concat('Created_Campaign_', pipeline().RunId, '_',utcnow('yyyy-MM-ddTHH:mm:ss'), '.parquet'), ':','-')",
+                                "type": "Expression"
+                            }
+                        }
+                    },
+                    {
+                        "name": "SetUpdatedCampaignFileName",
+                        "type": "SetVariable",
+                        "dependsOn": [],
+                        "userProperties": [],
+                        "typeProperties": {
+                            "variableName": "UpdatedCampaignFileName",
+                            "value": {
+                                "value": "@Replace(concat('Updated_Campaign_', pipeline().RunId, '_',utcnow('yyyy-MM-ddTHH:mm:ss'), '.parquet'), ':','-')",
+                                "type": "Expression"
+                            }
+                        }
+                    },
+                    {
+                        "name": "SF_DL_CreatedCampaign",
+                        "type": "Copy",
+                        "dependsOn": [
+                            {
+                                "activity": "SetCreateCampaignFileName",
+                                "dependencyConditions": [
+                                    "Succeeded"
+                                ]
+                            }
+                        ],
+                        "policy": {
+                            "timeout": "7.00:00:00",
+                            "retry": 0,
+                            "retryIntervalInSeconds": 30,
+                            "secureOutput": false,
+                            "secureInput": false
+                        },
+                        "userProperties": [],
+                        "typeProperties": {
+                            "source": {
+                                "type": "SalesforceServiceCloudSource",
+                                "query": {
+                                    "value": "SELECT * FROM Campaign\nWHERE CreatedDate >='@{pipeline().parameters.LastCreatedCampaignDate}'",
+                                    "type": "Expression"
+                                },
+                                "readBehavior": "queryAll"
+                            },
+                            "sink": {
+                                "type": "ParquetSink",
+                                "storeSettings": {
+                                    "type": "AzureBlobFSWriteSettings"
+                                },
+                                "formatSettings": {
+                                    "type": "ParquetWriteSettings"
+                                }
+                            },
+                            "enableStaging": false
+                        },
+                        "inputs": [
+                            {
+                                "referenceName": "SF_DL_Campaign",
+                                "type": "DatasetReference",
+                                "parameters": {}
+                            }
+                        ],
+                        "outputs": [
+                            {
+                                "referenceName": "DL_SF_Campaign",
+                                "type": "DatasetReference",
+                                "parameters": {
+                                    "Object_File_Name": {
+                                        "value": "@variables('CreatedCampaignFileName')",
+                                        "type": "Expression"
+                                    },
+                                    "Container": "hc-eim-file-system-bi"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "name": "SF_DL_UpdatedCampaign",
+                        "type": "Copy",
+                        "dependsOn": [
+                            {
+                                "activity": "SetUpdatedCampaignFileName",
+                                "dependencyConditions": [
+                                    "Succeeded"
+                                ]
+                            }
+                        ],
+                        "policy": {
+                            "timeout": "7.00:00:00",
+                            "retry": 0,
+                            "retryIntervalInSeconds": 30,
+                            "secureOutput": false,
+                            "secureInput": false
+                        },
+                        "userProperties": [],
+                        "typeProperties": {
+                            "source": {
+                                "type": "SalesforceServiceCloudSource",
+                                "query": {
+                                    "value": "SELECT * FROM Campaign\nWHERE LastModifiedDate >='@{pipeline().parameters.LastUpdatedCampaignDate}'",
+                                    "type": "Expression"
+                                },
+                                "readBehavior": "queryAll"
+                            },
+                            "sink": {
+                                "type": "ParquetSink",
+                                "storeSettings": {
+                                    "type": "AzureBlobFSWriteSettings"
+                                },
+                                "formatSettings": {
+                                    "type": "ParquetWriteSettings"
+                                }
+                            },
+                            "enableStaging": false
+                        },
+                        "inputs": [
+                            {
+                                "referenceName": "SF_DL_Campaign",
+                                "type": "DatasetReference",
+                                "parameters": {}
+                            }
+                        ],
+                        "outputs": [
+                            {
+                                "referenceName": "DL_SF_Campaign",
+                                "type": "DatasetReference",
+                                "parameters": {
+                                    "Object_File_Name": {
+                                        "value": "@variables('UpdatedCampaignFileName')",
+                                        "type": "Expression"
+                                    },
+                                    "Container": "hc-eim-file-system-bi"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "name": "InsertCreatedCampaign",
+                        "type": "ExecuteDataFlow",
+                        "dependsOn": [
+                            {
+                                "activity": "SF_DL_CreatedCampaign",
+                                "dependencyConditions": [
+                                    "Succeeded"
+                                ]
+                            },
+                            {
+                                "activity": "SF_DL_UpdatedCampaign",
+                                "dependencyConditions": [
+                                    "Succeeded"
+                                ]
+                            }
+                        ],
+                        "policy": {
+                            "timeout": "7.00:00:00",
+                            "retry": 0,
+                            "retryIntervalInSeconds": 30,
+                            "secureOutput": false,
+                            "secureInput": false
+                        },
+                        "userProperties": [],
+                        "typeProperties": {
+                            "dataflow": {
+                                "referenceName": "ODSCampaign",
+                                "type": "DataFlowReference",
+                                "parameters": {},
+                                "datasetParameters": {
+                                    "CampaignParquet": {
+                                        "Object_File_Name": {
+                                            "value": "@variables('CreatedCampaignFileName')",
+                                            "type": "Expression"
+                                        },
+                                        "Container": "hc-eim-file-system-bi"
+                                    },
+                                    "UpsertOdsCampaign": {}
+                                }
+                            },
+                            "staging": {
+                                "linkedService": {
+                                    "referenceName": "HC_DataLake",
+                                    "type": "LinkedServiceReference"
+                                },
+                                "folderPath": "hc-eim-file-system-bi-staging"
+                            },
+                            "compute": {
+                                "coreCount": 8,
+                                "computeType": "General"
+                            },
+                            "traceLevel": "Fine"
+                        }
+                    },
+                    {
+                        "name": "UpdateCampaign",
+                        "type": "ExecuteDataFlow",
+                        "dependsOn": [
+                            {
+                                "activity": "InsertCreatedCampaign",
+                                "dependencyConditions": [
+                                    "Succeeded"
+                                ]
+                            }
+                        ],
+                        "policy": {
+                            "timeout": "7.00:00:00",
+                            "retry": 0,
+                            "retryIntervalInSeconds": 30,
+                            "secureOutput": false,
+                            "secureInput": false
+                        },
+                        "userProperties": [],
+                        "typeProperties": {
+                            "dataflow": {
+                                "referenceName": "ODSCampaign",
+                                "type": "DataFlowReference",
+                                "parameters": {},
+                                "datasetParameters": {
+                                    "CampaignParquet": {
+                                        "Object_File_Name": {
+                                            "value": "@variables('UpdatedCampaignFileName')",
+                                            "type": "Expression"
+                                        },
+                                        "Container": "hc-eim-file-system-bi"
+                                    },
+                                    "UpsertOdsCampaign": {}
+                                }
+                            },
+                            "staging": {
+                                "linkedService": {
+                                    "referenceName": "HC_DataLake",
+                                    "type": "LinkedServiceReference"
+                                },
+                                "folderPath": "hc-eim-file-system-bi-staging"
+                            },
+                            "compute": {
+                                "coreCount": 8,
+                                "computeType": "General"
+                            },
+                            "traceLevel": "Fine"
+                        }
+                    }
+                ],
+                "policy": {
+                    "elapsedTimeMetric": {},
+                    "cancelAfter": {}
+                },
+                "parameters": {
+                    "LastCreatedCampaignDate": {
+                        "type": "string"
+                    },
+                    "LastUpdatedCampaignDate": {
+                        "type": "string"
+                    },
+                    "LARunId": {
+                        "type": "string"
+                    }
+                },
+                "variables": {
+                    "CreatedCampaignFileName": {
+                        "type": "String"
+                    },
+                    "UpdatedCampaignFileName": {
+                        "type": "String"
+                    }
+                },
+                "folder": {
+                    "name": "Salesforce/ODS"
+                },
+                "annotations": [],
+                "lastPublishTime": "2021-08-12T22:37:31Z"
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/ODSOrder')]",
+            "type": "Microsoft.DataFactory/factories/pipelines",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "activities": [
+                    {
+                        "name": "SetCreateOrderFileName",
+                        "type": "SetVariable",
+                        "dependsOn": [],
+                        "userProperties": [],
+                        "typeProperties": {
+                            "variableName": "CreatedOrderFileName",
+                            "value": {
+                                "value": "@Replace(concat('Created_Order_', pipeline().RunId, '_',utcnow('yyyy-MM-ddTHH:mm:ss'), '.parquet'), ':','-')",
+                                "type": "Expression"
+                            }
+                        }
+                    },
+                    {
+                        "name": "SetUpdatedOrderFileName",
+                        "type": "SetVariable",
+                        "dependsOn": [],
+                        "userProperties": [],
+                        "typeProperties": {
+                            "variableName": "UpdatedOrderFileName",
+                            "value": {
+                                "value": "@Replace(concat('Updated_Order_', pipeline().RunId, '_',utcnow('yyyy-MM-ddTHH:mm:ss'), '.parquet'), ':','-')",
+                                "type": "Expression"
+                            }
+                        }
+                    },
+                    {
+                        "name": "SF_DL_CreatedOrder",
+                        "type": "Copy",
+                        "dependsOn": [
+                            {
+                                "activity": "SetCreateOrderFileName",
+                                "dependencyConditions": [
+                                    "Succeeded"
+                                ]
+                            }
+                        ],
+                        "policy": {
+                            "timeout": "7.00:00:00",
+                            "retry": 0,
+                            "retryIntervalInSeconds": 30,
+                            "secureOutput": false,
+                            "secureInput": false
+                        },
+                        "userProperties": [],
+                        "typeProperties": {
+                            "source": {
+                                "type": "SalesforceServiceCloudSource",
+                                "query": {
+                                    "value": "SELECT * FROM Order\nWHERE CreatedDate >='@{pipeline().parameters.LastCreatedOrderDate}'",
+                                    "type": "Expression"
+                                },
+                                "readBehavior": "queryAll"
+                            },
+                            "sink": {
+                                "type": "ParquetSink",
+                                "storeSettings": {
+                                    "type": "AzureBlobFSWriteSettings"
+                                },
+                                "formatSettings": {
+                                    "type": "ParquetWriteSettings"
+                                }
+                            },
+                            "enableStaging": false
+                        },
+                        "inputs": [
+                            {
+                                "referenceName": "SF_DL_Order",
+                                "type": "DatasetReference",
+                                "parameters": {}
+                            }
+                        ],
+                        "outputs": [
+                            {
+                                "referenceName": "DL_SF_Order",
+                                "type": "DatasetReference",
+                                "parameters": {
+                                    "Object_File_Name": {
+                                        "value": "@variables('CreatedOrderFileName')",
+                                        "type": "Expression"
+                                    },
+                                    "Container": "hc-eim-file-system-bi"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "name": "SF_DL_UpdatedOrder",
+                        "type": "Copy",
+                        "dependsOn": [
+                            {
+                                "activity": "SetUpdatedOrderFileName",
+                                "dependencyConditions": [
+                                    "Succeeded"
+                                ]
+                            }
+                        ],
+                        "policy": {
+                            "timeout": "7.00:00:00",
+                            "retry": 0,
+                            "retryIntervalInSeconds": 30,
+                            "secureOutput": false,
+                            "secureInput": false
+                        },
+                        "userProperties": [],
+                        "typeProperties": {
+                            "source": {
+                                "type": "SalesforceServiceCloudSource",
+                                "query": {
+                                    "value": "SELECT * FROM Order\nWHERE LastModifiedDate >='@{pipeline().parameters.LastUpdatedOrderDate}'",
+                                    "type": "Expression"
+                                },
+                                "readBehavior": "queryAll"
+                            },
+                            "sink": {
+                                "type": "ParquetSink",
+                                "storeSettings": {
+                                    "type": "AzureBlobFSWriteSettings"
+                                },
+                                "formatSettings": {
+                                    "type": "ParquetWriteSettings"
+                                }
+                            },
+                            "enableStaging": false
+                        },
+                        "inputs": [
+                            {
+                                "referenceName": "SF_DL_Order",
+                                "type": "DatasetReference",
+                                "parameters": {}
+                            }
+                        ],
+                        "outputs": [
+                            {
+                                "referenceName": "DL_SF_Order",
+                                "type": "DatasetReference",
+                                "parameters": {
+                                    "Object_File_Name": {
+                                        "value": "@variables('UpdatedOrderFileName')",
+                                        "type": "Expression"
+                                    },
+                                    "Container": "hc-eim-file-system-bi"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "name": "InsertCreatedOrder",
+                        "type": "ExecuteDataFlow",
+                        "dependsOn": [
+                            {
+                                "activity": "SF_DL_CreatedOrder",
+                                "dependencyConditions": [
+                                    "Succeeded"
+                                ]
+                            },
+                            {
+                                "activity": "SF_DL_UpdatedOrder",
+                                "dependencyConditions": [
+                                    "Succeeded"
+                                ]
+                            }
+                        ],
+                        "policy": {
+                            "timeout": "7.00:00:00",
+                            "retry": 0,
+                            "retryIntervalInSeconds": 30,
+                            "secureOutput": false,
+                            "secureInput": false
+                        },
+                        "userProperties": [],
+                        "typeProperties": {
+                            "dataflow": {
+                                "referenceName": "ODSOrder",
+                                "type": "DataFlowReference",
+                                "parameters": {},
+                                "datasetParameters": {
+                                    "OrderParquet": {
+                                        "Object_File_Name": {
+                                            "value": "@variables('CreatedOrderFileName')",
+                                            "type": "Expression"
+                                        },
+                                        "Container": "hc-eim-file-system-bi"
+                                    },
+                                    "UpsertOdsOrder": {}
+                                }
+                            },
+                            "staging": {
+                                "linkedService": {
+                                    "referenceName": "HC_DataLake",
+                                    "type": "LinkedServiceReference"
+                                },
+                                "folderPath": "hc-eim-file-system-bi-staging"
+                            },
+                            "compute": {
+                                "coreCount": 8,
+                                "computeType": "General"
+                            },
+                            "traceLevel": "Fine"
+                        }
+                    },
+                    {
+                        "name": "UpdateOrder",
+                        "type": "ExecuteDataFlow",
+                        "dependsOn": [
+                            {
+                                "activity": "InsertCreatedOrder",
+                                "dependencyConditions": [
+                                    "Succeeded"
+                                ]
+                            }
+                        ],
+                        "policy": {
+                            "timeout": "7.00:00:00",
+                            "retry": 0,
+                            "retryIntervalInSeconds": 30,
+                            "secureOutput": false,
+                            "secureInput": false
+                        },
+                        "userProperties": [],
+                        "typeProperties": {
+                            "dataflow": {
+                                "referenceName": "ODSOrder",
+                                "type": "DataFlowReference",
+                                "parameters": {},
+                                "datasetParameters": {
+                                    "OrderParquet": {
+                                        "Object_File_Name": {
+                                            "value": "@variables('UpdatedOrderFileName')",
+                                            "type": "Expression"
+                                        },
+                                        "Container": "hc-eim-file-system-bi"
+                                    },
+                                    "UpsertOdsOrder": {}
+                                }
+                            },
+                            "staging": {
+                                "linkedService": {
+                                    "referenceName": "HC_DataLake",
+                                    "type": "LinkedServiceReference"
+                                },
+                                "folderPath": "hc-eim-file-system-bi-staging"
+                            },
+                            "compute": {
+                                "coreCount": 8,
+                                "computeType": "General"
+                            },
+                            "traceLevel": "Fine"
+                        }
+                    }
+                ],
+                "policy": {
+                    "elapsedTimeMetric": {},
+                    "cancelAfter": {}
+                },
+                "parameters": {
+                    "LastCreatedOrderDate": {
+                        "type": "string"
+                    },
+                    "LastUpdatedOrderDate": {
+                        "type": "string"
+                    },
+                    "LARunId": {
+                        "type": "string"
+                    }
+                },
+                "variables": {
+                    "CreatedOrderFileName": {
+                        "type": "String"
+                    },
+                    "UpdatedOrderFileName": {
+                        "type": "String"
+                    }
+                },
+                "folder": {
+                    "name": "Salesforce/ODS"
+                },
+                "annotations": [],
+                "lastPublishTime": "2021-08-12T22:37:30Z"
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/ODSOpportunity')]",
+            "type": "Microsoft.DataFactory/factories/pipelines",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "activities": [
+                    {
+                        "name": "SetCreateOpportunityFileName",
+                        "type": "SetVariable",
+                        "dependsOn": [],
+                        "userProperties": [],
+                        "typeProperties": {
+                            "variableName": "CreatedOpportunityFileName",
+                            "value": {
+                                "value": "@Replace(concat('Created_Opportunity_', pipeline().RunId, '_',utcnow('yyyy-MM-ddTHH:mm:ss'), '.parquet'), ':','-')",
+                                "type": "Expression"
+                            }
+                        }
+                    },
+                    {
+                        "name": "SetUpdatedOpportunityFileName",
+                        "type": "SetVariable",
+                        "dependsOn": [],
+                        "userProperties": [],
+                        "typeProperties": {
+                            "variableName": "UpdatedOpportunityFileName",
+                            "value": {
+                                "value": "@Replace(concat('Updated_Opportunity_', pipeline().RunId, '_',utcnow('yyyy-MM-ddTHH:mm:ss'), '.parquet'), ':','-')",
+                                "type": "Expression"
+                            }
+                        }
+                    },
+                    {
+                        "name": "SF_DL_CreatedOpportunity",
+                        "type": "Copy",
+                        "dependsOn": [
+                            {
+                                "activity": "SetCreateOpportunityFileName",
+                                "dependencyConditions": [
+                                    "Succeeded"
+                                ]
+                            }
+                        ],
+                        "policy": {
+                            "timeout": "7.00:00:00",
+                            "retry": 0,
+                            "retryIntervalInSeconds": 30,
+                            "secureOutput": false,
+                            "secureInput": false
+                        },
+                        "userProperties": [],
+                        "typeProperties": {
+                            "source": {
+                                "type": "SalesforceServiceCloudSource",
+                                "query": {
+                                    "value": "SELECT * FROM Opportunity\nWHERE CreatedDate >='@{pipeline().parameters.LastCreatedOpportunityDate}'",
+                                    "type": "Expression"
+                                },
+                                "readBehavior": "queryAll"
+                            },
+                            "sink": {
+                                "type": "ParquetSink",
+                                "storeSettings": {
+                                    "type": "AzureBlobFSWriteSettings"
+                                },
+                                "formatSettings": {
+                                    "type": "ParquetWriteSettings"
+                                }
+                            },
+                            "enableStaging": false
+                        },
+                        "inputs": [
+                            {
+                                "referenceName": "SF_DL_Opportunity",
+                                "type": "DatasetReference",
+                                "parameters": {}
+                            }
+                        ],
+                        "outputs": [
+                            {
+                                "referenceName": "DL_SF_Opportunity",
+                                "type": "DatasetReference",
+                                "parameters": {
+                                    "Object_File_Name": {
+                                        "value": "@variables('CreatedOpportunityFileName')",
+                                        "type": "Expression"
+                                    },
+                                    "Container": "hc-eim-file-system-bi"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "name": "SF_DL_UpdatedOpportunity",
+                        "type": "Copy",
+                        "dependsOn": [
+                            {
+                                "activity": "SetUpdatedOpportunityFileName",
+                                "dependencyConditions": [
+                                    "Succeeded"
+                                ]
+                            }
+                        ],
+                        "policy": {
+                            "timeout": "7.00:00:00",
+                            "retry": 0,
+                            "retryIntervalInSeconds": 30,
+                            "secureOutput": false,
+                            "secureInput": false
+                        },
+                        "userProperties": [],
+                        "typeProperties": {
+                            "source": {
+                                "type": "SalesforceServiceCloudSource",
+                                "query": {
+                                    "value": "SELECT * FROM Opportunity\nWHERE LastModifiedDate >='@{pipeline().parameters.LastUpdatedOpportunityDate}'",
+                                    "type": "Expression"
+                                },
+                                "readBehavior": "queryAll"
+                            },
+                            "sink": {
+                                "type": "ParquetSink",
+                                "storeSettings": {
+                                    "type": "AzureBlobFSWriteSettings"
+                                },
+                                "formatSettings": {
+                                    "type": "ParquetWriteSettings"
+                                }
+                            },
+                            "enableStaging": false
+                        },
+                        "inputs": [
+                            {
+                                "referenceName": "SF_DL_Opportunity",
+                                "type": "DatasetReference",
+                                "parameters": {}
+                            }
+                        ],
+                        "outputs": [
+                            {
+                                "referenceName": "DL_SF_Opportunity",
+                                "type": "DatasetReference",
+                                "parameters": {
+                                    "Object_File_Name": {
+                                        "value": "@variables('UpdatedOpportunityFileName')",
+                                        "type": "Expression"
+                                    },
+                                    "Container": "hc-eim-file-system-bi"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "name": "InsertCreatedOpportunity",
+                        "type": "ExecuteDataFlow",
+                        "dependsOn": [
+                            {
+                                "activity": "SF_DL_CreatedOpportunity",
+                                "dependencyConditions": [
+                                    "Succeeded"
+                                ]
+                            },
+                            {
+                                "activity": "SF_DL_UpdatedOpportunity",
+                                "dependencyConditions": [
+                                    "Succeeded"
+                                ]
+                            }
+                        ],
+                        "policy": {
+                            "timeout": "7.00:00:00",
+                            "retry": 0,
+                            "retryIntervalInSeconds": 30,
+                            "secureOutput": false,
+                            "secureInput": false
+                        },
+                        "userProperties": [],
+                        "typeProperties": {
+                            "dataflow": {
+                                "referenceName": "ODSOpportunity",
+                                "type": "DataFlowReference",
+                                "parameters": {},
+                                "datasetParameters": {
+                                    "OpportunityParquet": {
+                                        "Object_File_Name": {
+                                            "value": "@variables('CreatedOpportunityFileName')",
+                                            "type": "Expression"
+                                        },
+                                        "Container": "hc-eim-file-system-bi"
+                                    },
+                                    "UpsertOdsOpportunity": {}
+                                }
+                            },
+                            "staging": {
+                                "linkedService": {
+                                    "referenceName": "HC_DataLake",
+                                    "type": "LinkedServiceReference"
+                                },
+                                "folderPath": "hc-eim-file-system-bi-staging"
+                            },
+                            "compute": {
+                                "coreCount": 8,
+                                "computeType": "General"
+                            },
+                            "traceLevel": "Fine"
+                        }
+                    },
+                    {
+                        "name": "UpdateOpportunity",
+                        "type": "ExecuteDataFlow",
+                        "dependsOn": [
+                            {
+                                "activity": "InsertCreatedOpportunity",
+                                "dependencyConditions": [
+                                    "Succeeded"
+                                ]
+                            }
+                        ],
+                        "policy": {
+                            "timeout": "7.00:00:00",
+                            "retry": 0,
+                            "retryIntervalInSeconds": 30,
+                            "secureOutput": false,
+                            "secureInput": false
+                        },
+                        "userProperties": [],
+                        "typeProperties": {
+                            "dataflow": {
+                                "referenceName": "ODSOpportunity",
+                                "type": "DataFlowReference",
+                                "parameters": {},
+                                "datasetParameters": {
+                                    "OpportunityParquet": {
+                                        "Object_File_Name": {
+                                            "value": "@variables('UpdatedOpportunityFileName')",
+                                            "type": "Expression"
+                                        },
+                                        "Container": "hc-eim-file-system-bi"
+                                    },
+                                    "UpsertOdsOpportunity": {}
+                                }
+                            },
+                            "staging": {
+                                "linkedService": {
+                                    "referenceName": "HC_DataLake",
+                                    "type": "LinkedServiceReference"
+                                },
+                                "folderPath": "hc-eim-file-system-bi-staging"
+                            },
+                            "compute": {
+                                "coreCount": 8,
+                                "computeType": "General"
+                            },
+                            "traceLevel": "Fine"
+                        }
+                    }
+                ],
+                "policy": {
+                    "elapsedTimeMetric": {},
+                    "cancelAfter": {}
+                },
+                "parameters": {
+                    "LastCreatedOpportunityDate": {
+                        "type": "string"
+                    },
+                    "LastUpdatedOpportunityDate": {
+                        "type": "string"
+                    },
+                    "LARunId": {
+                        "type": "string"
+                    }
+                },
+                "variables": {
+                    "CreatedOpportunityFileName": {
+                        "type": "String"
+                    },
+                    "UpdatedOpportunityFileName": {
+                        "type": "String"
+                    }
+                },
+                "folder": {
+                    "name": "Salesforce/ODS"
+                },
+                "annotations": [],
+                "lastPublishTime": "2021-08-12T22:37:31Z"
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/ODS_CNCT_PaymentSalesCode')]",
+            "type": "Microsoft.DataFactory/factories/pipelines",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "activities": [
+                    {
+                        "name": "CNCTPaymentSalesCode",
+                        "type": "ExecuteDataFlow",
+                        "dependsOn": [],
+                        "policy": {
+                            "timeout": "7.00:00:00",
+                            "retry": 0,
+                            "retryIntervalInSeconds": 30,
+                            "secureOutput": false,
+                            "secureInput": false
+                        },
+                        "userProperties": [],
+                        "typeProperties": {
+                            "dataflow": {
+                                "referenceName": "CNCT_PaymentSalesCode",
+                                "type": "DataFlowReference",
+                                "parameters": {},
+                                "datasetParameters": {
+                                    "source1": {
+                                        "Object_File_Name": "History.parquet",
+                                        "Container": "hc-eim-file-system-bi"
+                                    },
+                                    "sink1": {}
+                                }
+                            },
+                            "staging": {
+                                "linkedService": {
+                                    "referenceName": "HC_DataLake",
+                                    "type": "LinkedServiceReference"
+                                },
+                                "folderPath": "hc-eim-file-system-bi-staging"
+                            },
+                            "compute": {
+                                "coreCount": 8,
+                                "computeType": "General"
+                            },
+                            "traceLevel": "Fine"
+                        }
+                    }
+                ],
+                "policy": {
+                    "elapsedTimeMetric": {},
+                    "cancelAfter": {}
+                },
+                "folder": {
+                    "name": "Connect/ODS"
+                },
+                "annotations": [],
+                "lastPublishTime": "2021-10-15T16:37:54Z"
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/ODSAccount')]",
+            "type": "Microsoft.DataFactory/factories/pipelines",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "activities": [
+                    {
+                        "name": "SetCreateAccountFileName",
+                        "type": "SetVariable",
+                        "dependsOn": [],
+                        "userProperties": [],
+                        "typeProperties": {
+                            "variableName": "CreatedAccountFileName",
+                            "value": {
+                                "value": "@Replace(concat('Created_Account_', pipeline().RunId, '_',utcnow('yyyy-MM-ddTHH:mm:ss'), '.parquet'), ':','-')",
+                                "type": "Expression"
+                            }
+                        }
+                    },
+                    {
+                        "name": "SetUpdatedAccountFileName",
+                        "type": "SetVariable",
+                        "dependsOn": [],
+                        "userProperties": [],
+                        "typeProperties": {
+                            "variableName": "UpdatedAccountFileName",
+                            "value": {
+                                "value": "@Replace(concat('Updated_Account_', pipeline().RunId, '_',utcnow('yyyy-MM-ddTHH:mm:ss'), '.parquet'), ':','-')",
+                                "type": "Expression"
+                            }
+                        }
+                    },
+                    {
+                        "name": "SF_DL_CreatedAccount",
+                        "type": "Copy",
+                        "dependsOn": [
+                            {
+                                "activity": "SetCreateAccountFileName",
+                                "dependencyConditions": [
+                                    "Succeeded"
+                                ]
+                            }
+                        ],
+                        "policy": {
+                            "timeout": "7.00:00:00",
+                            "retry": 0,
+                            "retryIntervalInSeconds": 30,
+                            "secureOutput": false,
+                            "secureInput": false
+                        },
+                        "userProperties": [],
+                        "typeProperties": {
+                            "source": {
+                                "type": "SalesforceServiceCloudSource",
+                                "query": {
+                                    "value": "SELECT * FROM Account\nWHERE CreatedDate >='@{pipeline().parameters.LastCreatedAccountDate}'",
+                                    "type": "Expression"
+                                },
+                                "readBehavior": "queryAll"
+                            },
+                            "sink": {
+                                "type": "ParquetSink",
+                                "storeSettings": {
+                                    "type": "AzureBlobFSWriteSettings"
+                                },
+                                "formatSettings": {
+                                    "type": "ParquetWriteSettings"
+                                }
+                            },
+                            "enableStaging": false
+                        },
+                        "inputs": [
+                            {
+                                "referenceName": "SF_DL_Account",
+                                "type": "DatasetReference",
+                                "parameters": {}
+                            }
+                        ],
+                        "outputs": [
+                            {
+                                "referenceName": "DL_SF_Account",
+                                "type": "DatasetReference",
+                                "parameters": {
+                                    "Object_File_Name": {
+                                        "value": "@variables('CreatedAccountFileName')",
+                                        "type": "Expression"
+                                    },
+                                    "Container": "hc-eim-file-system-bi"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "name": "SF_DL_UpdatedAccount",
+                        "type": "Copy",
+                        "dependsOn": [
+                            {
+                                "activity": "SetUpdatedAccountFileName",
+                                "dependencyConditions": [
+                                    "Succeeded"
+                                ]
+                            }
+                        ],
+                        "policy": {
+                            "timeout": "7.00:00:00",
+                            "retry": 0,
+                            "retryIntervalInSeconds": 30,
+                            "secureOutput": false,
+                            "secureInput": false
+                        },
+                        "userProperties": [],
+                        "typeProperties": {
+                            "source": {
+                                "type": "SalesforceServiceCloudSource",
+                                "query": {
+                                    "value": "SELECT * FROM Account\nWHERE LastModifiedDate >='@{pipeline().parameters.LastUpdatedAccountDate}'",
+                                    "type": "Expression"
+                                },
+                                "readBehavior": "queryAll"
+                            },
+                            "sink": {
+                                "type": "ParquetSink",
+                                "storeSettings": {
+                                    "type": "AzureBlobFSWriteSettings"
+                                },
+                                "formatSettings": {
+                                    "type": "ParquetWriteSettings"
+                                }
+                            },
+                            "enableStaging": false
+                        },
+                        "inputs": [
+                            {
+                                "referenceName": "SF_DL_Account",
+                                "type": "DatasetReference",
+                                "parameters": {}
+                            }
+                        ],
+                        "outputs": [
+                            {
+                                "referenceName": "DL_SF_Account",
+                                "type": "DatasetReference",
+                                "parameters": {
+                                    "Object_File_Name": {
+                                        "value": "@variables('UpdatedAccountFileName')",
+                                        "type": "Expression"
+                                    },
+                                    "Container": "hc-eim-file-system-bi"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "name": "InsertCreatedAccount",
+                        "type": "ExecuteDataFlow",
+                        "dependsOn": [
+                            {
+                                "activity": "SF_DL_CreatedAccount",
+                                "dependencyConditions": [
+                                    "Succeeded"
+                                ]
+                            },
+                            {
+                                "activity": "SF_DL_UpdatedAccount",
+                                "dependencyConditions": [
+                                    "Succeeded"
+                                ]
+                            }
+                        ],
+                        "policy": {
+                            "timeout": "7.00:00:00",
+                            "retry": 0,
+                            "retryIntervalInSeconds": 30,
+                            "secureOutput": false,
+                            "secureInput": false
+                        },
+                        "userProperties": [],
+                        "typeProperties": {
+                            "dataflow": {
+                                "referenceName": "ODSAccount",
+                                "type": "DataFlowReference",
+                                "parameters": {},
+                                "datasetParameters": {
+                                    "AccountParquet": {
+                                        "Object_File_Name": {
+                                            "value": "@variables('CreatedAccountFileName')",
+                                            "type": "Expression"
+                                        },
+                                        "Container": "hc-eim-file-system-bi"
+                                    },
+                                    "UpsertOdsAccount": {}
+                                }
+                            },
+                            "staging": {
+                                "linkedService": {
+                                    "referenceName": "HC_DataLake",
+                                    "type": "LinkedServiceReference"
+                                },
+                                "folderPath": "hc-eim-file-system-bi-staging"
+                            },
+                            "compute": {
+                                "coreCount": 8,
+                                "computeType": "General"
+                            },
+                            "traceLevel": "Fine"
+                        }
+                    },
+                    {
+                        "name": "UpdateAccount",
+                        "type": "ExecuteDataFlow",
+                        "dependsOn": [
+                            {
+                                "activity": "InsertCreatedAccount",
+                                "dependencyConditions": [
+                                    "Succeeded"
+                                ]
+                            }
+                        ],
+                        "policy": {
+                            "timeout": "7.00:00:00",
+                            "retry": 0,
+                            "retryIntervalInSeconds": 30,
+                            "secureOutput": false,
+                            "secureInput": false
+                        },
+                        "userProperties": [],
+                        "typeProperties": {
+                            "dataflow": {
+                                "referenceName": "ODSAccount",
+                                "type": "DataFlowReference",
+                                "parameters": {},
+                                "datasetParameters": {
+                                    "AccountParquet": {
+                                        "Object_File_Name": {
+                                            "value": "@variables('UpdatedAccountFileName')",
+                                            "type": "Expression"
+                                        },
+                                        "Container": "hc-eim-file-system-bi"
+                                    },
+                                    "UpsertOdsAccount": {}
+                                }
+                            },
+                            "staging": {
+                                "linkedService": {
+                                    "referenceName": "HC_DataLake",
+                                    "type": "LinkedServiceReference"
+                                },
+                                "folderPath": "hc-eim-file-system-bi-staging"
+                            },
+                            "compute": {
+                                "coreCount": 8,
+                                "computeType": "General"
+                            },
+                            "traceLevel": "Fine"
+                        }
+                    }
+                ],
+                "policy": {
+                    "elapsedTimeMetric": {},
+                    "cancelAfter": {}
+                },
+                "parameters": {
+                    "LastCreatedAccountDate": {
+                        "type": "string"
+                    },
+                    "LastUpdatedAccountDate": {
+                        "type": "string"
+                    },
+                    "LARunId": {
+                        "type": "string"
+                    }
+                },
+                "variables": {
+                    "CreatedAccountFileName": {
+                        "type": "String"
+                    },
+                    "UpdatedAccountFileName": {
+                        "type": "String"
+                    }
+                },
+                "folder": {
+                    "name": "Salesforce/ODS"
+                },
+                "annotations": [],
+                "lastPublishTime": "2021-08-12T22:37:30Z"
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/ODS_CNCT_SalesType')]",
+            "type": "Microsoft.DataFactory/factories/pipelines",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "activities": [
+                    {
+                        "name": "SalesType_Created",
+                        "type": "ExecuteDataFlow",
+                        "dependsOn": [
+                            {
+                                "activity": "SF_DL_Created_SalesCodeType",
+                                "dependencyConditions": [
+                                    "Succeeded"
+                                ]
+                            },
+                            {
+                                "activity": "SF_DL_Updated_SalesCodeType",
+                                "dependencyConditions": [
+                                    "Succeeded"
+                                ]
+                            }
+                        ],
+                        "policy": {
+                            "timeout": "7.00:00:00",
+                            "retry": 0,
+                            "retryIntervalInSeconds": 30,
+                            "secureOutput": false,
+                            "secureInput": false
+                        },
+                        "userProperties": [],
+                        "typeProperties": {
+                            "dataflow": {
+                                "referenceName": "CNCT_SalesType",
+                                "type": "DataFlowReference",
+                                "parameters": {},
+                                "datasetParameters": {
+                                    "CNTSalesType": {
+                                        "Object_File_Name": {
+                                            "value": "@variables('CreatedSalesCodeTypeFileName')",
+                                            "type": "Expression"
+                                        },
+                                        "Container": "hc-eim-file-system-bi"
+                                    },
+                                    "ODSSalesType": {}
+                                }
+                            },
+                            "staging": {
+                                "linkedService": {
+                                    "referenceName": "HC_DataLake",
+                                    "type": "LinkedServiceReference"
+                                },
+                                "folderPath": "hc-eim-file-system-bi-staging"
+                            },
+                            "compute": {
+                                "coreCount": 8,
+                                "computeType": "General"
+                            },
+                            "traceLevel": "Fine"
+                        }
+                    },
+                    {
+                        "name": "SetCreateSalesCodeTypeFileName",
+                        "type": "SetVariable",
+                        "dependsOn": [],
+                        "userProperties": [],
+                        "typeProperties": {
+                            "variableName": "CreatedSalesCodeTypeFileName",
+                            "value": {
+                                "value": "@Replace(concat('Create_SalesCodeType_', pipeline().RunId, '_',utcnow('yyyy-MM-ddTHH:mm:ss'), '.parquet'), ':','-')",
+                                "type": "Expression"
+                            }
+                        }
+                    },
+                    {
+                        "name": "SetUpdatedSalesCodeTypeFileName",
+                        "type": "SetVariable",
+                        "dependsOn": [],
+                        "userProperties": [],
+                        "typeProperties": {
+                            "variableName": "UpdatedSalesCodeTypeFileName",
+                            "value": {
+                                "value": "@Replace(concat('Updated_SalesCodeType_', pipeline().RunId, '_',utcnow('yyyy-MM-ddTHH:mm:ss'), '.parquet'), ':','-')",
+                                "type": "Expression"
+                            }
+                        }
+                    },
+                    {
+                        "name": "SF_DL_Created_SalesCodeType",
+                        "type": "Copy",
+                        "dependsOn": [
+                            {
+                                "activity": "SetCreateSalesCodeTypeFileName",
+                                "dependencyConditions": [
+                                    "Succeeded"
+                                ]
+                            }
+                        ],
+                        "policy": {
+                            "timeout": "7.00:00:00",
+                            "retry": 0,
+                            "retryIntervalInSeconds": 30,
+                            "secureOutput": false,
+                            "secureInput": false
+                        },
+                        "userProperties": [],
+                        "typeProperties": {
+                            "source": {
+                                "type": "SqlServerSource",
+                                "sqlReaderQuery": {
+                                    "value": "SELECT * FROM lkpSalesCodeType\nWHERE CreateDate >='@{pipeline().parameters.LastCreateDate}'",
+                                    "type": "Expression"
+                                },
+                                "queryTimeout": "02:00:00",
+                                "partitionOption": "None"
+                            },
+                            "sink": {
+                                "type": "ParquetSink",
+                                "storeSettings": {
+                                    "type": "AzureBlobFSWriteSettings"
+                                },
+                                "formatSettings": {
+                                    "type": "ParquetWriteSettings"
+                                }
+                            },
+                            "enableStaging": false,
+                            "translator": {
+                                "type": "TabularTranslator",
+                                "typeConversion": true,
+                                "typeConversionSettings": {
+                                    "allowDataTruncation": true,
+                                    "treatBooleanAsNumber": false
+                                }
+                            }
+                        },
+                        "inputs": [
+                            {
+                                "referenceName": "SQL01_DL_SalesType",
+                                "type": "DatasetReference",
+                                "parameters": {}
+                            }
+                        ],
+                        "outputs": [
+                            {
+                                "referenceName": "DL_CNCT_SalesType",
+                                "type": "DatasetReference",
+                                "parameters": {
+                                    "Object_File_Name": {
+                                        "value": "@variables('CreatedSalesCodeTypeFileName')",
+                                        "type": "Expression"
+                                    },
+                                    "Container": "hc-eim-file-system-bi"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "name": "SF_DL_Updated_SalesCodeType",
+                        "type": "Copy",
+                        "dependsOn": [
+                            {
+                                "activity": "SetUpdatedSalesCodeTypeFileName",
+                                "dependencyConditions": [
+                                    "Succeeded"
+                                ]
+                            }
+                        ],
+                        "policy": {
+                            "timeout": "7.00:00:00",
+                            "retry": 0,
+                            "retryIntervalInSeconds": 30,
+                            "secureOutput": false,
+                            "secureInput": false
+                        },
+                        "userProperties": [],
+                        "typeProperties": {
+                            "source": {
+                                "type": "SqlServerSource",
+                                "sqlReaderQuery": {
+                                    "value": "SELECT * FROM lkpSalesCodeType\nWHERE LastUpdate >='@{pipeline().parameters.LastUpdateDate}'",
+                                    "type": "Expression"
+                                },
+                                "queryTimeout": "02:00:00",
+                                "partitionOption": "None"
+                            },
+                            "sink": {
+                                "type": "ParquetSink",
+                                "storeSettings": {
+                                    "type": "AzureBlobFSWriteSettings"
+                                },
+                                "formatSettings": {
+                                    "type": "ParquetWriteSettings"
+                                }
+                            },
+                            "enableStaging": false,
+                            "translator": {
+                                "type": "TabularTranslator",
+                                "typeConversion": true,
+                                "typeConversionSettings": {
+                                    "allowDataTruncation": true,
+                                    "treatBooleanAsNumber": false
+                                }
+                            }
+                        },
+                        "inputs": [
+                            {
+                                "referenceName": "SQL01_DL_SalesType",
+                                "type": "DatasetReference",
+                                "parameters": {}
+                            }
+                        ],
+                        "outputs": [
+                            {
+                                "referenceName": "DL_CNCT_SalesType",
+                                "type": "DatasetReference",
+                                "parameters": {
+                                    "Object_File_Name": {
+                                        "value": "@variables('UpdatedSalesCodeTypeFileName')",
+                                        "type": "Expression"
+                                    },
+                                    "Container": "hc-eim-file-system-bi"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "name": "SalesType_Updated",
+                        "type": "ExecuteDataFlow",
+                        "dependsOn": [
+                            {
+                                "activity": "SalesType_Created",
+                                "dependencyConditions": [
+                                    "Succeeded"
+                                ]
+                            }
+                        ],
+                        "policy": {
+                            "timeout": "1.00:00:00",
+                            "retry": 0,
+                            "retryIntervalInSeconds": 30,
+                            "secureOutput": false,
+                            "secureInput": false
+                        },
+                        "userProperties": [],
+                        "typeProperties": {
+                            "dataflow": {
+                                "referenceName": "CNCT_SalesType",
+                                "type": "DataFlowReference",
+                                "parameters": {},
+                                "datasetParameters": {
+                                    "CNTSalesType": {
+                                        "Object_File_Name": {
+                                            "value": "@variables('UpdatedSalesCodeTypeFileName')",
+                                            "type": "Expression"
+                                        },
+                                        "Container": "hc-eim-file-system-bi"
+                                    },
+                                    "ODSSalesType": {}
+                                }
+                            },
+                            "staging": {
+                                "linkedService": {
+                                    "referenceName": "HC_DataLake",
+                                    "type": "LinkedServiceReference"
+                                },
+                                "folderPath": "hc-eim-file-system-bi-staging"
+                            },
+                            "compute": {
+                                "coreCount": 8,
+                                "computeType": "General"
+                            },
+                            "traceLevel": "Fine"
+                        }
+                    }
+                ],
+                "policy": {
+                    "elapsedTimeMetric": {},
+                    "cancelAfter": {}
+                },
+                "parameters": {
+                    "LastCreateDate": {
+                        "type": "string"
+                    },
+                    "LastUpdateDate": {
+                        "type": "string"
+                    },
+                    "LARunId": {
+                        "type": "string"
+                    }
+                },
+                "variables": {
+                    "CreatedSalesCodeTypeFileName": {
+                        "type": "String"
+                    },
+                    " SimpleQuote": {
+                        "type": "String",
+                        "defaultValue": "'"
+                    },
+                    "UpdatedSalesCodeTypeFileName": {
+                        "type": "String"
+                    }
+                },
+                "folder": {
+                    "name": "Connect/ODS"
+                },
+                "annotations": [],
+                "lastPublishTime": "2021-10-15T16:38:00Z"
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/DatoramaReport')]",
+            "type": "Microsoft.DataFactory/factories/pipelines",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "activities": [
+                    {
+                        "name": "ExcelToParquet",
+                        "type": "Copy",
+                        "dependsOn": [],
+                        "policy": {
+                            "timeout": "7.00:00:00",
+                            "retry": 0,
+                            "retryIntervalInSeconds": 30,
+                            "secureOutput": false,
+                            "secureInput": false
+                        },
+                        "userProperties": [],
+                        "typeProperties": {
+                            "source": {
+                                "type": "ExcelSource",
+                                "storeSettings": {
+                                    "type": "AzureBlobFSReadSettings",
+                                    "recursive": true,
+                                    "enablePartitionDiscovery": false
+                                }
+                            },
+                            "sink": {
+                                "type": "ParquetSink",
+                                "storeSettings": {
+                                    "type": "AzureBlobFSWriteSettings"
+                                },
+                                "formatSettings": {
+                                    "type": "ParquetWriteSettings"
+                                }
+                            },
+                            "enableStaging": false,
+                            "translator": {
+                                "type": "TabularTranslator",
+                                "typeConversion": true,
+                                "typeConversionSettings": {
+                                    "allowDataTruncation": true,
+                                    "treatBooleanAsNumber": false
+                                }
+                            }
+                        },
+                        "inputs": [
+                            {
+                                "referenceName": "Datorama_DL_SocialMedia",
+                                "type": "DatasetReference",
+                                "parameters": {
+                                    "SheetName": {
+                                        "value": "@pipeline().parameters.SheetName",
+                                        "type": "Expression"
+                                    },
+                                    "FileName": {
+                                        "value": "@pipeline().parameters.FileName",
+                                        "type": "Expression"
+                                    },
+                                    "LA_ID": {
+                                        "value": "@pipeline().parameters.LA_ID",
+                                        "type": "Expression"
+                                    },
+                                    "AgencyID": {
+                                        "value": "@pipeline().parameters.AgencyID",
+                                        "type": "Expression"
+                                    },
+                                    "Container": "hc-eim-file-system-bi"
+                                }
+                            }
+                        ],
+                        "outputs": [
+                            {
+                                "referenceName": "DL_Datorama_SocialMedia",
+                                "type": "DatasetReference",
+                                "parameters": {
+                                    "FileName": {
+                                        "value": "@replace(pipeline().parameters.FileName, '.xlsx', '.parquet')",
+                                        "type": "Expression"
+                                    },
+                                    "LA_ID": {
+                                        "value": "@pipeline().parameters.LA_ID",
+                                        "type": "Expression"
+                                    },
+                                    "AgencyID": {
+                                        "value": "@pipeline().parameters.AgencyID",
+                                        "type": "Expression"
+                                    },
+                                    "Container": "hc-eim-file-system-bi"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ODS_Datorama_SocialMedia",
+                        "type": "ExecuteDataFlow",
+                        "dependsOn": [
+                            {
+                                "activity": "ExcelToParquet",
+                                "dependencyConditions": [
+                                    "Succeeded"
+                                ]
+                            }
+                        ],
+                        "policy": {
+                            "timeout": "7.00:00:00",
+                            "retry": 0,
+                            "retryIntervalInSeconds": 30,
+                            "secureOutput": false,
+                            "secureInput": false
+                        },
+                        "userProperties": [],
+                        "typeProperties": {
+                            "dataflow": {
+                                "referenceName": "ODS_Datorama_SocialMedia",
+                                "type": "DataFlowReference",
+                                "parameters": {
+                                    "FilePath": {
+                                        "value": "'@{concat('SocialMedia/Datorama/',pipeline().parameters.AgencyID,'/' ,pipeline().parameters.LA_ID, '/',pipeline().parameters.FileName)}'",
+                                        "type": "Expression"
+                                    }
+                                },
+                                "datasetParameters": {
+                                    "DLSocialMedia": {
+                                        "FileName": {
+                                            "value": "@replace(pipeline().parameters.FileName, '.xlsx', '.parquet')",
+                                            "type": "Expression"
+                                        },
+                                        "LA_ID": {
+                                            "value": "@pipeline().parameters.LA_ID",
+                                            "type": "Expression"
+                                        },
+                                        "AgencyID": {
+                                            "value": "@pipeline().parameters.AgencyID",
+                                            "type": "Expression"
+                                        },
+                                        "Container": "hc-eim-file-system-bi"
+                                    },
+                                    "ODSSocialMEdia": {}
+                                }
+                            },
+                            "staging": {
+                                "linkedService": {
+                                    "referenceName": "HC_DataLake",
+                                    "type": "LinkedServiceReference"
+                                },
+                                "folderPath": "hc-eim-file-system-bi-staging"
+                            },
+                            "compute": {
+                                "coreCount": 8,
+                                "computeType": "General"
+                            },
+                            "traceLevel": "Fine"
+                        }
+                    },
+                    {
+                        "name": "FactMarketingActivity_Datorama",
+                        "type": "ExecuteDataFlow",
+                        "dependsOn": [
+                            {
+                                "activity": "ODS_Datorama_SocialMedia",
+                                "dependencyConditions": [
+                                    "Succeeded"
+                                ]
+                            }
+                        ],
+                        "policy": {
+                            "timeout": "7.00:00:00",
+                            "retry": 0,
+                            "retryIntervalInSeconds": 30,
+                            "secureOutput": false,
+                            "secureInput": false
+                        },
+                        "userProperties": [],
+                        "typeProperties": {
+                            "dataflow": {
+                                "referenceName": "FactMarketingActivity_Datorama",
+                                "type": "DataFlowReference",
+                                "parameters": {
+                                    "DaysToLoad": "-1",
+                                    "FilePath": {
+                                        "value": "'@{pipeline().parameters.FileName}'",
+                                        "type": "Expression"
+                                    }
+                                },
+                                "datasetParameters": {
+                                    "ODSSocialMedia": {},
+                                    "DimAgency": {},
+                                    "DimSource": {},
+                                    "DimBudget": {},
+                                    "DimLocation": {},
+                                    "DimCompany": {},
+                                    "DimDate": {},
+                                    "DimChannel": {},
+                                    "DimMedium": {},
+                                    "DimMarketingFeed": {},
+                                    "FactMarketingBudget": {},
+                                    "InsertFactMarketingActivity": {}
+                                }
+                            },
+                            "staging": {
+                                "linkedService": {
+                                    "referenceName": "HC_DataLake",
+                                    "type": "LinkedServiceReference"
+                                },
+                                "folderPath": "hc-eim-file-system-bi-staging"
+                            },
+                            "compute": {
+                                "coreCount": 8,
+                                "computeType": "General"
+                            },
+                            "traceLevel": "Fine"
+                        }
+                    }
+                ],
+                "policy": {
+                    "elapsedTimeMetric": {},
+                    "cancelAfter": {}
+                },
+                "parameters": {
+                    "FileName": {
+                        "type": "string"
+                    },
+                    "AgencyID": {
+                        "type": "string"
+                    },
+                    "LA_ID": {
+                        "type": "string"
+                    },
+                    "SheetName": {
+                        "type": "string"
+                    }
+                },
+                "folder": {
+                    "name": "SocialMedia"
+                },
+                "annotations": [],
+                "lastPublishTime": "2021-10-15T16:38:00Z"
+            },
+            "dependsOn": []
+        }
+    ]
+}
