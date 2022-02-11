@@ -109,7 +109,6 @@ CREATE TABLE [#hair]
   , [CurrentBioMatrixClientMembershipGUID] UNIQUEIDENTIFIER
   , [MembershipID]                         INT
   , [MembershipDescription]                NVARCHAR(50)
-  , [EndDate]                              DATETIME
   , [InCenter]                             INT
   , [OnOrder]                              INT
   , [QaNeeded]                             INT
@@ -132,7 +131,6 @@ IF @MembershipList = '0' --ALL
                            , [CurrentBioMatrixClientMembershipGUID]
                            , [MembershipID]
                            , [MembershipDescription]
-                           , [EndDate]
                            , [InCenter]
                            , [OnOrder]
                            , [QaNeeded]
@@ -152,7 +150,6 @@ IF @MembershipList = '0' --ALL
           , [clt].[CurrentBioMatrixClientMembershipGUID]
           , [m].[MembershipID]
           , [m].[MembershipDescription]
-          , [cm].[EndDate]
           , CASE WHEN [hsos].[HairSystemOrderStatusDescriptionShort] IN ('CENT') THEN 1 ELSE 0 END AS [InCenter]
           , CASE WHEN [hsos].[HairSystemOrderStatusDescriptionShort] IN ('NEW', 'ORDER', 'HQ-Recv', 'HQ-Ship', 'FAC-Ship') THEN 1 ELSE 0 END AS [OnOrder]
           , CASE WHEN [hsos].[HairSystemOrderStatusDescriptionShort] IN ('QANEEDED') THEN 1 ELSE 0 END AS [QaNeeded]
@@ -224,7 +221,6 @@ ELSE
                            , [CurrentBioMatrixClientMembershipGUID]
                            , [MembershipID]
                            , [MembershipDescription]
-                           , [EndDate]
                            , [InCenter]
                            , [OnOrder]
                            , [QaNeeded]
@@ -244,7 +240,6 @@ ELSE
           , [clt].[CurrentBioMatrixClientMembershipGUID]
           , [m].[MembershipID]
           , [m].[MembershipDescription]
-          , [cm].[EndDate]
           , CASE WHEN [hsos].[HairSystemOrderStatusDescriptionShort] IN ('CENT') THEN 1 ELSE 0 END AS [InCenter]
           , CASE WHEN [hsos].[HairSystemOrderStatusDescriptionShort] IN ('NEW', 'ORDER', 'HQ-Recv', 'HQ-Ship', 'FAC-Ship') THEN 1 ELSE 0 END AS [OnOrder]
           , CASE WHEN [hsos].[HairSystemOrderStatusDescriptionShort] IN ('QANEEDED') THEN 1 ELSE 0 END AS [QaNeeded]
@@ -502,7 +497,6 @@ SELECT
   , [q].[MembershipDescription] AS [CurrentMembership]
   , [q].[MembershipID]
   , [q].[CenterDescriptionFullCalc] AS [Center]
-  , [q].[EndDate]
   , [lad].[LastApplicationDate]
   , [q].[InCenter]
   , [q].[OnOrder]
@@ -533,7 +527,6 @@ FROM( SELECT
         , [hair].[ClientFullNameCalc]
         , [hair].[MembershipDescription]
         , [hair].[CenterID]
-        , [hair].[EndDate]
         , [hair].[MembershipID]
         , SUM([hair].[InCenter]) AS [InCenter]
         , SUM([hair].[OnOrder]) AS [OnOrder]
@@ -579,8 +572,7 @@ SELECT
   , [t].[MembershipExpiration] AS [Membership Expiration]
   , [t].[MembershipID]
   , [t].[Center]
-  , [t].[EndDate]
-  , [t].[LastApplicationDate]
+  , CAST([t].[LastApplicationDate] AS DATE) AS [Last App Date]
   , [t].[InCenter]
   , [t].[OnOrder]
   , [t].[DueDate]
@@ -596,10 +588,10 @@ SELECT
   , CASE WHEN [t].[OrderAvailableForNextAppointment] = 1 THEN 'Yes' ELSE 'No' END AS [Order Avail for Next App]
   , CASE WHEN [t].[PriorityHairNeeded] = 1 THEN 'Yes' ELSE 'No' END AS [Priority Order Needed]
   , [t].[OldestOrderPlacedDate]
-  , [t].[OldestOrderPlacedDueDate]
+  , CAST([t].[OldestOrderPlacedDueDate] AS DATE) AS [Oldest Order Due Date]
   , [t].[NewestOrderSystemType]
   , [t].[RemainingQuantityToOrder]
-  , [t].[NewestOrderDate] AS [Newest Order Date]
+  , CAST([t].[NewestOrderDate] AS DATE) AS [Newest Order Date]
   , CAST([t].[InitialQuantity] / 12.0 AS NUMERIC(12, 4)) AS [MembershipSystemQtyToApplyPerMonth]
   , 8 AS [SystemOrderLeadTime]
   , [gms].[MaxVal] AS [Membership Maximum]
@@ -614,3 +606,4 @@ FROM( SELECT
 INNER JOIN [#groupedMemberships] AS [gms] ON [t].[MembershipID] = [gms].[membershipId] ;
 GO
 EXEC [dbo].[rptHairOrderQuantitybyClient_GVAROL] @CenterID = 201, @MembershipList = '0' ;
+
