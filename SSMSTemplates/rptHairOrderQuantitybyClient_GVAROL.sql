@@ -2,7 +2,7 @@
 GO
 /*
 ===============================================================================================
- Procedure Name:            rptHairOrderQuantitybyClient
+ Procedure Name:            rptHairOrderQuantitybyClient_V2
  Procedure Description:     
  Created By:                Rachelen Hut
  Implemented By:            Rachelen Hut
@@ -37,7 +37,7 @@ EXEC [rptHairOrderQuantitybyClient] 100, '0'
 EXEC [rptHairOrderQuantitybyClient] 241, '26,27,28,29,30,31,45,46,47,48'
 ===============================================================================================
 */
-ALTER PROCEDURE [dbo].[rptHairOrderQuantitybyClient_GVAROL]
+ALTER PROCEDURE [dbo].[rptHairOrderQuantitybyClient_V2]
     @CenterID       INT
   , @MembershipList NVARCHAR(MAX)
 AS
@@ -655,7 +655,13 @@ ORDER BY [k].[Region]
        , [k].[Suggested Qty to Order] DESC
        , [k].[Client] ;
 GO
-EXEC [dbo].[rptHairOrderQuantitybyClient_GVAROL] @CenterID = 201, @MembershipList = '0' ;
+RETURN
+EXEC [dbo].[rptHairOrderQuantitybyClient_V2] @CenterID = 201, @MembershipList = '0' ;
 
-EXEC [dbo].[rptHairOrderQuantitybyClient_GVAROL] @CenterID = 849, @MembershipList = '0' ;
-
+-- EXEC [dbo].[rptHairOrderQuantitybyClient_GVAROL] @CenterID = 849, @MembershipList = '0' ;
+/*
+ALTER PROCEDURE [dbo].[rptHairOrderQuantitybyClient_V2] 
+AS
+SELECT * FROM tempdb.dbo.gokhan
+*/
+EXEC [dbo].[rptHairOrderQuantitybyClient_V2]  NULL ,NULL
