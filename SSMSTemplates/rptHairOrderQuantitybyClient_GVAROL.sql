@@ -551,7 +551,6 @@ FROM( SELECT
              , [hair].[ClientFullNameCalc]
              , [hair].[MembershipDescription]
              , [hair].[CenterID]
-             , [hair].[EndDate]
              , [ahs].[TotalAccumQuantity]
              , [ahs].[AccumQuantityRemainingCalc]
              , [pro].[Promo]
