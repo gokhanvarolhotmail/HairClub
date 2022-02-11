@@ -594,7 +594,7 @@ SELECT
   , CAST([t].[LastApplicationDate] AS DATE) AS [Last App Date]
   , [t].[EstNextApp] AS [Est Next App Date]
   , [t].[ScheduledNextAppointmentDate] AS [Scheduled Next Appointment Date]
-  , [t].[OldestOrderPlacedDate] AS [Oldest Order Placed Date]
+  , CAST([t].[OldestOrderPlacedDate] AS DATE) AS [Oldest Order Placed Date]
   , CAST([t].[OldestOrderPlacedDueDate] AS DATE) AS [Oldest Order Placed Due Date]
   , CAST([t].[NewestOrderDate] AS DATE) AS [Newest Order Date]
   , [t].[NewestOrderSystemType] AS [Newest Order System Type]
