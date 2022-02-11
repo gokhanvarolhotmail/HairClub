@@ -563,7 +563,7 @@ LEFT JOIN [#Calc03] AS [c3] ON [c3].[ClientGUID] = [q].[ClientGUID]
 LEFT JOIN [#NextDueDate] AS [ndd] ON [ndd].[ClientGUID] = [q].[ClientGUID] ;
 
 SELECT
-    [t].[RegionDescription]
+    [t].[Region]
   , [t].[ClientFullNameCalc]
   , [t].[MembershipDescription]
   , [t].[MembershipID]
