@@ -119,6 +119,7 @@ CREATE TABLE [#hair]
   , [MembershipStartDate]                  DATE
   , [Region]                               NVARCHAR(100)
   , [MembershipExpiration]                 DATE
+  , [FrozenEFTEndDate]                     DATE
 ) ;
 
 IF @MembershipList = '0' --ALL
@@ -140,7 +141,8 @@ IF @MembershipList = '0' --ALL
                            , [HairSystemOrderGUID]
                            , [MembershipStartDate]
                            , [Region]
-                           , [MembershipExpiration] )
+                           , [MembershipExpiration]
+                           , [FrozenEFTEndDate] )
         SELECT
             [hso].[HairSystemOrderNumber]
           , [clt].[CenterID]
@@ -160,8 +162,10 @@ IF @MembershipList = '0' --ALL
           , [cm].[BeginDate] AS [MembershipStartDate]
           , [r].[RegionDescription]
           , [cm].[EndDate]
+          , [eft].[FrozenEFTEndDate]
         FROM [dbo].[datClient] AS [clt]
         INNER JOIN [dbo].[datClientMembership] AS [cm] ON [cm].[ClientMembershipGUID] = [clt].[CurrentBioMatrixClientMembershipGUID]
+        LEFT JOIN( SELECT [ClientMembershipGUID], MAX([Freeze_End]) AS [FrozenEFTEndDate] FROM [dbo].[datClientEFT] GROUP BY [ClientMembershipGUID] ) AS [eft] ON [eft].[ClientMembershipGUID] = [cm].[ClientMembershipGUID]
         INNER JOIN [dbo].[cfgMembership] AS [m] ON [m].[MembershipID] = [cm].[MembershipID]
 
         --OUTER APPLY( SELECT [k].[NextAppointmentDate]
@@ -230,7 +234,8 @@ ELSE
                            , [HairSystemOrderGUID]
                            , [MembershipStartDate]
                            , [Region]
-                           , [MembershipExpiration] )
+                           , [MembershipExpiration]
+                           , [FrozenEFTEndDate] )
         SELECT
             [hso].[HairSystemOrderNumber]
           , [clt].[CenterID]
@@ -250,9 +255,12 @@ ELSE
           , [cm].[BeginDate] AS [MembershipStartDate]
           , [r].[RegionDescription]
           , [cm].[EndDate]
+          , [eft].[FrozenEFTEndDate]
         FROM [dbo].[datClient] AS [clt]
         INNER JOIN [dbo].[datClientMembership] AS [cm] ON [cm].[ClientMembershipGUID] = [clt].[CurrentBioMatrixClientMembershipGUID]
+        LEFT JOIN( SELECT [ClientMembershipGUID], MAX([Freeze_End]) AS [FrozenEFTEndDate] FROM [dbo].[datClientEFT] GROUP BY [ClientMembershipGUID] ) AS [eft] ON [eft].[ClientMembershipGUID] = [cm].[ClientMembershipGUID]
         INNER JOIN [dbo].[cfgMembership] AS [m] ON [m].[MembershipID] = [cm].[MembershipID]
+
         --OUTER APPLY( SELECT [k].[NextAppointmentDate]
         --             FROM( SELECT
         --                       DATEADD(DAY, ( [b].[digit] - 1 ) * [k].[Application Cadence Days], [cm].[BeginDate]) AS [NextAppointmentDate]
@@ -520,6 +528,7 @@ SELECT
   , [q].[Region]
   , [c2].[NewestOrderDate]
   , [q].[MembershipExpiration]
+  , [q].[FrozenEFTEndDate]
 --, [q].[OrderAvailForNextApp]
 INTO [#tmpHairOrderQuantitybyClient]
 FROM( SELECT
@@ -539,6 +548,7 @@ FROM( SELECT
         , MAX([hair].[MembershipStartDate]) AS [MembershipStartDate]
         , MAX([hair].[Region]) AS [Region]
         , MAX([hair].[MembershipExpiration]) AS [MembershipExpiration]
+        , MAX([hair].[FrozenEFTEndDate]) AS [FrozenEFTEndDate]
       --, MAX(CASE WHEN [hair].[HairSystemOrderDate] = [hair].[NextAppointmentDate] AND [hair].[InCenter] = 1 THEN 1 ELSE 0 END) AS [OrderAvailForNextApp]
       FROM [#hair] AS [hair]
       LEFT JOIN [dbo].[datClientMembershipAccum] AS [ahs] ON [hair].[CurrentBioMatrixClientMembershipGUID] = [ahs].[ClientMembershipGUID]
@@ -569,7 +579,8 @@ SELECT
   , [t].[Client]
   , [t].[CurrentMembership] AS [Current Membership]
   , [t].[MembershipExpiration] AS [Membership Expiration]
-  , [t].[MembershipID]
+  , [t].[InitialQuantity] AS [Membership Quantity]
+  , [t].[FrozenEFTEndDate] AS [Frozen EFT Date]
   , [t].[Center]
   , CAST([t].[LastApplicationDate] AS DATE) AS [Last App Date]
   , [t].[QaNeeded]
@@ -579,7 +590,6 @@ SELECT
   , CAST([t].[DueDate] AS DATE) AS [Due Date]
   , [t].[TotalAccumQuantity]
   , [t].[Promo]
-  , [t].[InitialQuantity]
   , [t].[Remaining]
   , [t].[Overage]
   , [t].[QuantityAtCenterAndOrdered]
@@ -606,3 +616,4 @@ FROM( SELECT
 INNER JOIN [#groupedMemberships] AS [gms] ON [t].[MembershipID] = [gms].[membershipId] ;
 GO
 EXEC [dbo].[rptHairOrderQuantitybyClient_GVAROL] @CenterID = 201, @MembershipList = '0' ;
+
