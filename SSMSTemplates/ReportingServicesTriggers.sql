@@ -33,11 +33,16 @@ CREATE TABLE [Log].[dbo_Catalog]
   , [ContentSize]    [BIGINT]           NULL
 ) ;
 GO
-CREATE TRIGGER [dbo].[TRG_Catalog_DEL_Log]
+ALTER TRIGGER [dbo].[TRG_Catalog_DEL_Log]
 ON [dbo].[Catalog]
 INSTEAD OF DELETE
 AS
 SET NOCOUNT ON ;
+
+IF OBJECT_ID('[tempdb]..[#TRG_Catalog_DEL_Log]') IS NOT NULL
+    RETURN ;
+
+CREATE TABLE [#TRG_Catalog_DEL_Log] ( [Id] INT ) ;
 
 INSERT [Log].[dbo_Catalog]( [LogUser]
                           , [LogDate]
@@ -99,13 +104,21 @@ SELECT
   , [d].[ComponentID]
   , [d].[ContentSize]
 FROM [Deleted] AS [d] ;
-GO
 
-CREATE TRIGGER [dbo].[TRG_Catalog_UPD_Log]
+DELETE [c]
+FROM [dbo].[Catalog] AS [c]
+INNER JOIN [Deleted] AS [d] ON [d].[ItemID] = [d].[ItemID] ;
+GO
+ALTER TRIGGER [dbo].[TRG_Catalog_UPD_Log]
 ON [dbo].[Catalog]
 INSTEAD OF UPDATE
 AS
 SET NOCOUNT ON ;
+
+IF OBJECT_ID('[tempdb]..[#TRG_Catalog_UPD_Log]') IS NOT NULL
+    RETURN ;
+
+CREATE TABLE [#TRG_Catalog_UPD_Log] ( [Id] INT ) ;
 
 INSERT [Log].[dbo_Catalog]( [LogUser]
                           , [LogDate]

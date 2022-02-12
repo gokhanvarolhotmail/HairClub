@@ -663,5 +663,7 @@ EXEC [dbo].[rptHairOrderQuantitybyClient_V2] @CenterID = 201, @MembershipList = 
 ALTER PROCEDURE [dbo].[rptHairOrderQuantitybyClient_V2] 
 AS
 SELECT * FROM tempdb.dbo.gokhan
+GO
+DROP TABLE tempdb.dbo.gokhan
 */
 EXEC [dbo].[rptHairOrderQuantitybyClient_V2]  NULL ,NULL
