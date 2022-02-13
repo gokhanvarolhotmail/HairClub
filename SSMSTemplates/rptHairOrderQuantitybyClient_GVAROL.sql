@@ -614,13 +614,13 @@ FROM( SELECT
         , [t].[Client]
         , [t].[CurrentMembership] AS [Current Membership]
         , [t].[MembershipExpiration] AS [Membership Expiration]
-        , [t].[InitialQuantity] AS [Membership Qty]
+        , ISNULL([t].[InitialQuantity], 0) AS [Membership Qty]
         , [t].[FrozenEFTEndDate] AS [Frozen EFT End Date]
-        , [t].[QaNeeded] AS [QA Needed]
-        , [t].[InCenter] AS [In Center]
-        , [t].[OnOrder] AS [On Order]
+        , ISNULL([t].[QaNeeded], 0) AS [QA Needed]
+        , ISNULL([t].[InCenter], 0) AS [In Center]
+        , ISNULL([t].[OnOrder], 0) AS [On Order]
         , ISNULL([t].[InCenter], 0) + ISNULL([t].[OnOrder], 0) AS [In Center + On Order]
-        , CEILING(( [t].[QaNeeded] + [t].[InCenter] + [t].[OnOrder] ) / 12.0) AS [Months In Center And On Order]
+        , CEILING(( ISNULL([t].[QaNeeded], 0) + ISNULL([t].[InCenter], 0) + ISNULL([t].[OnOrder], 0)) / 12.0) AS [Months In Center And On Order]
         , CAST([t].[LastApplicationDate] AS DATE) AS [Last App Date]
         , [t].[EstNextApp] AS [Est Next App Date]
         , [t].[ScheduledNextAppointmentDate] AS [Scheduled Next Appointment Date]
@@ -628,7 +628,7 @@ FROM( SELECT
         , CAST([t].[OldestOrderPlacedDueDate] AS DATE) AS [Oldest Order Placed Due Date]
         , CAST([t].[NewestOrderDate] AS DATE) AS [Newest Order Date]
         , [t].[NewestOrderSystemType] AS [Newest Order System Type]
-        , [t].[RemainingQuantityToOrder] AS [Remaining to Order]
+        , ISNULL([t].[RemainingQuantityToOrder], 0) AS [Remaining to Order]
         , CASE WHEN [t].[OrderAvailableForNextAppointment] = 1 THEN 'Yes' ELSE 'No' END AS [Order Avail for Next App]
         , CASE WHEN [t].[PriorityHairNeeded] = 1 THEN 'Yes' ELSE 'No' END AS [Priority Order Needed]
         , CASE WHEN [t].[SuggestedQuantityToOrder] > [gms].[MaxVal] THEN [gms].[MaxVal] WHEN [t].[SuggestedQuantityToOrder] > 0 THEN
@@ -655,7 +655,8 @@ ORDER BY [k].[Region]
        , [k].[Suggested Qty to Order] DESC
        , [k].[Client] ;
 GO
-RETURN
+RETURN ;
+
 EXEC [dbo].[rptHairOrderQuantitybyClient_V2] @CenterID = 201, @MembershipList = '0' ;
 
 -- EXEC [dbo].[rptHairOrderQuantitybyClient_GVAROL] @CenterID = 849, @MembershipList = '0' ;
@@ -666,4 +667,4 @@ SELECT * FROM tempdb.dbo.gokhan
 GO
 DROP TABLE tempdb.dbo.gokhan
 */
-EXEC [dbo].[rptHairOrderQuantitybyClient_V2]  NULL ,NULL
+EXEC [dbo].[rptHairOrderQuantitybyClient_V2] NULL, NULL ;

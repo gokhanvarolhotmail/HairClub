@@ -39,10 +39,10 @@ INSTEAD OF DELETE
 AS
 SET NOCOUNT ON ;
 
-IF OBJECT_ID('[tempdb]..[#TRG_Catalog_DEL_Log]') IS NOT NULL
+IF OBJECT_ID('[tempdb]..[##TRG_Catalog_DEL_Log]') IS NOT NULL
     RETURN ;
 
-CREATE TABLE [#TRG_Catalog_DEL_Log] ( [Id] INT ) ;
+CREATE TABLE [##TRG_Catalog_DEL_Log] ( [Id] INT ) ;
 
 INSERT [Log].[dbo_Catalog]( [LogUser]
                           , [LogDate]
@@ -115,10 +115,10 @@ INSTEAD OF UPDATE
 AS
 SET NOCOUNT ON ;
 
-IF OBJECT_ID('[tempdb]..[#TRG_Catalog_UPD_Log]') IS NOT NULL
+IF OBJECT_ID('[tempdb]..[##TRG_Catalog_UPD_Log]') IS NOT NULL
     RETURN ;
 
-CREATE TABLE [#TRG_Catalog_UPD_Log] ( [Id] INT ) ;
+CREATE TABLE [##TRG_Catalog_UPD_Log] ( [Id] INT ) ;
 
 INSERT [Log].[dbo_Catalog]( [LogUser]
                           , [LogDate]
@@ -210,4 +210,17 @@ SET
   , [c].[ContentSize] = [i].[ContentSize]
 FROM [dbo].[Catalog] AS [c]
 INNER JOIN [Inserted] AS [i] ON [i].[ItemID] = [c].[ItemID] ;
+GO
+ENABLE TRIGGER [dbo].[TRG_Catalog_DEL_Log] ON [dbo].[Catalog]
+GO
+ENABLE TRIGGER [dbo].[TRG_Catalog_UPD_Log] ON [dbo].[Catalog]
+GO
+
+DISABLE TRIGGER [dbo].[TRG_Catalog_DEL_Log] ON [dbo].[Catalog]
+GO
+DISABLE TRIGGER [dbo].[TRG_Catalog_UPD_Log] ON [dbo].[Catalog]
+GO
+
+
+DROP TRIGGER [dbo].[TRG_Catalog_DEL_Log] 
 GO
