@@ -1,0 +1,412 @@
+{
+    "definition": {
+        "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+        "actions": {
+            "CBP_Corporate": {
+                "inputs": {
+                    "host": {
+                        "connection": {
+                            "name": "@parameters('$connections')['azuredatafactory']['connectionId']"
+                        }
+                    },
+                    "method": "post",
+                    "path": "/subscriptions/@{encodeURIComponent('7e152566-0ba7-49c2-acac-ebbb5becd265')}/resourcegroups/@{encodeURIComponent('HCEIMProdRSG')}/providers/Microsoft.DataFactory/factories/@{encodeURIComponent('hc-eim-df-prod2')}/pipelines/@{encodeURIComponent('CBP_Corporate')}/CreateRun",
+                    "queries": {
+                        "x-ms-api-version": "2017-09-01-preview"
+                    }
+                },
+                "runAfter": {
+                    "RunIds": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "ApiConnection"
+            },
+            "CBP_Franchise": {
+                "inputs": {
+                    "host": {
+                        "connection": {
+                            "name": "@parameters('$connections')['azuredatafactory']['connectionId']"
+                        }
+                    },
+                    "method": "post",
+                    "path": "/subscriptions/@{encodeURIComponent('7e152566-0ba7-49c2-acac-ebbb5becd265')}/resourcegroups/@{encodeURIComponent('HCEIMProdRSG')}/providers/Microsoft.DataFactory/factories/@{encodeURIComponent('hc-eim-df-prod2')}/pipelines/@{encodeURIComponent('CBP_Franchise')}/CreateRun",
+                    "queries": {
+                        "x-ms-api-version": "2017-09-01-preview"
+                    }
+                },
+                "runAfter": {
+                    "RunId1": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "ApiConnection"
+            },
+            "Create_CBP_Corporate": {
+                "inputs": {
+                    "body": "@body('Get_Corporate_CBP')",
+                    "host": {
+                        "connection": {
+                            "name": "@parameters('$connections')['onedriveforbusiness']['connectionId']"
+                        }
+                    },
+                    "method": "post",
+                    "path": "/datasets/default/files",
+                    "queries": {
+                        "folderPath": "/CBP/Corporate",
+                        "name": "@{concat('CBPReport_Post_Migration_Corporate_',replace(adddays(utcnow(), -1, 'yyyy-MM-dd'), '-', ''),'.csv')}"
+                    }
+                },
+                "runAfter": {
+                    "Get_Corporate_CBP": [
+                        "Succeeded"
+                    ]
+                },
+                "runtimeConfiguration": {
+                    "contentTransfer": {
+                        "transferMode": "Chunked"
+                    }
+                },
+                "type": "ApiConnection"
+            },
+            "Create_CBP_Franchise": {
+                "inputs": {
+                    "body": "@body('Get_Franchise_CBP')",
+                    "host": {
+                        "connection": {
+                            "name": "@parameters('$connections')['onedriveforbusiness']['connectionId']"
+                        }
+                    },
+                    "method": "post",
+                    "path": "/datasets/default/files",
+                    "queries": {
+                        "folderPath": "/CBP/Franchise",
+                        "name": "@{concat('CBPReport_Post_Migration_Franchise_',replace(adddays(utcnow(), -1, 'yyyy-MM-dd'), '-', ''),'.csv')}"
+                    }
+                },
+                "runAfter": {
+                    "Get_Franchise_CBP": [
+                        "Succeeded"
+                    ]
+                },
+                "runtimeConfiguration": {
+                    "contentTransfer": {
+                        "transferMode": "Chunked"
+                    }
+                },
+                "type": "ApiConnection"
+            },
+            "Create_share_link_Corporate": {
+                "inputs": {
+                    "host": {
+                        "connection": {
+                            "name": "@parameters('$connections')['onedriveforbusiness']['connectionId']"
+                        }
+                    },
+                    "method": "post",
+                    "path": "/datasets/default/files/@{encodeURIComponent(encodeURIComponent(body('Create_CBP_Corporate')?['Id']))}/shareV2",
+                    "queries": {
+                        "scope": "Organization",
+                        "type": "Edit"
+                    }
+                },
+                "metadata": {
+                    "b!E_tbJa3ymkitm_8Mg12Id0OCMTp6M9lEhIlzyDo3RS4au0bFRhvDQJsRL0S0L0XW.01Q7JXEHPKTQ77UIVXDZBJQGSJHSFXEYHB": "/CBP/Corporate/CBPReport_Post_Migration_Corporate_20211014.csv"
+                },
+                "runAfter": {
+                    "Delay_2": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "ApiConnection"
+            },
+            "Create_share_link_Franchise": {
+                "inputs": {
+                    "host": {
+                        "connection": {
+                            "name": "@parameters('$connections')['onedriveforbusiness']['connectionId']"
+                        }
+                    },
+                    "method": "post",
+                    "path": "/datasets/default/files/@{encodeURIComponent(encodeURIComponent(body('Create_CBP_Franchise')?['Id']))}/shareV2",
+                    "queries": {
+                        "scope": "Organization",
+                        "type": "Edit"
+                    }
+                },
+                "runAfter": {
+                    "Create_share_link_Corporate": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "ApiConnection"
+            },
+            "Delay": {
+                "inputs": {
+                    "interval": {
+                        "count": 15,
+                        "unit": "Minute"
+                    }
+                },
+                "runAfter": {
+                    "RunId2": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "Wait"
+            },
+            "Delay_2": {
+                "inputs": {
+                    "interval": {
+                        "count": 1,
+                        "unit": "Minute"
+                    }
+                },
+                "runAfter": {
+                    "Create_CBP_Franchise": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "Wait"
+            },
+            "For_each_RunIds": {
+                "actions": {
+                    "Until": {
+                        "actions": {
+                            "Get_a_pipeline_run": {
+                                "inputs": {
+                                    "host": {
+                                        "connection": {
+                                            "name": "@parameters('$connections')['azuredatafactory']['connectionId']"
+                                        }
+                                    },
+                                    "method": "get",
+                                    "path": "/subscriptions/@{encodeURIComponent('7e152566-0ba7-49c2-acac-ebbb5becd265')}/resourcegroups/@{encodeURIComponent('HCEIMProdRSG')}/providers/Microsoft.DataFactory/factories/@{encodeURIComponent('hc-eim-df-prod2')}/pipelineRuns/@{encodeURIComponent(items('For_each_RunIds'))}",
+                                    "queries": {
+                                        "x-ms-api-version": "2017-09-01-preview"
+                                    }
+                                },
+                                "runAfter": {},
+                                "type": "ApiConnection"
+                            },
+                            "Set_variable": {
+                                "inputs": {
+                                    "name": "status",
+                                    "value": "@body('Get_a_pipeline_run')?['runId']"
+                                },
+                                "runAfter": {
+                                    "Get_a_pipeline_run": [
+                                        "Succeeded"
+                                    ]
+                                },
+                                "type": "SetVariable"
+                            }
+                        },
+                        "expression": "@equals(variables('status'), 'Succeeded')",
+                        "limit": {
+                            "count": 60,
+                            "timeout": "PT1H"
+                        },
+                        "runAfter": {},
+                        "type": "Until"
+                    }
+                },
+                "foreach": "@variables('RunIds')",
+                "runAfter": {
+                    "Delay": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "Foreach"
+            },
+            "Get_Corporate_CBP": {
+                "inputs": {
+                    "host": {
+                        "connection": {
+                            "name": "@parameters('$connections')['azureblob']['connectionId']"
+                        }
+                    },
+                    "method": "get",
+                    "path": "/v2/datasets/@{encodeURIComponent(encodeURIComponent('AccountNameFromSettings'))}/GetFileContentByPath",
+                    "queries": {
+                        "inferContentType": true,
+                        "path": "@{concat('/hc-eim-file-system-bi/CBP/',concat('CBPReport_Post_Migration_Corporate_',replace(adddays(utcnow(), -1, 'yyyy-MM-dd'), '-', ''),'.csv'))}",
+                        "queryParametersSingleEncoded": true
+                    }
+                },
+                "runAfter": {
+                    "For_each_RunIds": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "ApiConnection"
+            },
+            "Get_Franchise_CBP": {
+                "inputs": {
+                    "host": {
+                        "connection": {
+                            "name": "@parameters('$connections')['azureblob']['connectionId']"
+                        }
+                    },
+                    "method": "get",
+                    "path": "/v2/datasets/@{encodeURIComponent(encodeURIComponent('AccountNameFromSettings'))}/GetFileContentByPath",
+                    "queries": {
+                        "inferContentType": true,
+                        "path": "@{concat('/hc-eim-file-system-bi/CBP/',concat('CBPReport_Post_Migration_Franchise_',replace(adddays(utcnow(), -1, 'yyyy-MM-dd'), '-', ''),'.csv'))}",
+                        "queryParametersSingleEncoded": true
+                    }
+                },
+                "runAfter": {
+                    "Create_CBP_Corporate": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "ApiConnection"
+            },
+            "RunId1": {
+                "inputs": {
+                    "name": "RunIds",
+                    "value": "@body('CBP_Corporate')?['runId']"
+                },
+                "runAfter": {
+                    "CBP_Corporate": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "AppendToArrayVariable"
+            },
+            "RunId2": {
+                "inputs": {
+                    "name": "RunIds",
+                    "value": "@body('CBP_Franchise')?['runId']"
+                },
+                "runAfter": {
+                    "CBP_Franchise": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "AppendToArrayVariable"
+            },
+            "RunIds": {
+                "inputs": {
+                    "variables": [
+                        {
+                            "name": "RunIds",
+                            "type": "array"
+                        }
+                    ]
+                },
+                "runAfter": {
+                    "Status": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "InitializeVariable"
+            },
+            "Send_an_email_(V2)": {
+                "inputs": {
+                    "body": {
+                        "Body": "<p>Hi,<br>\n<br>\nThis are the links that indicates the files related to Closing by performer for corporate and franchise are in the one Drive <br>\n<br>\nFor Corporate centers:<br>\n<br>\n@{body('Create_share_link_Corporate')?['WebUrl']}<br>\n<br>\nFor Franchise Centers:<br>\n<br>\n@{body('Create_share_link_Franchise')?['WebUrl']}</p>",
+                        "Subject": "Closing By Performer",
+                        "To": "eorrego@hairclub.com;asalazar@hairclub.com;lrojas@hairclub.com;tim.williams@teaminternational.com;diego.Rodriguez@teaminternational.com;CCzencz@hairclub.com;BSaenz@hairclub.com;brensing@hairclub.com;relder@hairclub.com"
+                    },
+                    "host": {
+                        "connection": {
+                            "name": "@parameters('$connections')['office365']['connectionId']"
+                        }
+                    },
+                    "method": "post",
+                    "path": "/v2/Mail"
+                },
+                "runAfter": {
+                    "Create_share_link_Franchise": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "ApiConnection"
+            },
+            "Status": {
+                "inputs": {
+                    "variables": [
+                        {
+                            "name": "status",
+                            "type": "string",
+                            "value": "InProgress"
+                        }
+                    ]
+                },
+                "runAfter": {},
+                "type": "InitializeVariable"
+            }
+        },
+        "contentVersion": "1.0.0.0",
+        "outputs": {},
+        "parameters": {
+            "$connections": {
+                "defaultValue": {},
+                "type": "Object"
+            }
+        },
+        "triggers": {
+            "Recurrence": {
+                "evaluatedRecurrence": {
+                    "frequency": "Week",
+                    "interval": 1,
+                    "schedule": {
+                        "hours": [
+                            "13"
+                        ],
+                        "minutes": [
+                            0
+                        ],
+                        "weekDays": [
+                            "Sunday"
+                        ]
+                    }
+                },
+                "recurrence": {
+                    "frequency": "Week",
+                    "interval": 1,
+                    "schedule": {
+                        "hours": [
+                            "13"
+                        ],
+                        "minutes": [
+                            0
+                        ],
+                        "weekDays": [
+                            "Sunday"
+                        ]
+                    }
+                },
+                "type": "Recurrence"
+            }
+        }
+    },
+    "parameters": {
+        "$connections": {
+            "value": {
+                "azureblob": {
+                    "connectionId": "/subscriptions/7e152566-0ba7-49c2-acac-ebbb5becd265/resourceGroups/HCEIMProdRSG/providers/Microsoft.Web/connections/azureblob",
+                    "connectionName": "azureblob",
+                    "id": "/subscriptions/7e152566-0ba7-49c2-acac-ebbb5becd265/providers/Microsoft.Web/locations/eastus2/managedApis/azureblob"
+                },
+                "azuredatafactory": {
+                    "connectionId": "/subscriptions/7e152566-0ba7-49c2-acac-ebbb5becd265/resourceGroups/HCEIMProdRSG/providers/Microsoft.Web/connections/azuredatafactory",
+                    "connectionName": "azuredatafactory",
+                    "id": "/subscriptions/7e152566-0ba7-49c2-acac-ebbb5becd265/providers/Microsoft.Web/locations/eastus2/managedApis/azuredatafactory"
+                },
+                "office365": {
+                    "connectionId": "/subscriptions/7e152566-0ba7-49c2-acac-ebbb5becd265/resourceGroups/HCEIMProdRSG/providers/Microsoft.Web/connections/office365",
+                    "connectionName": "office365",
+                    "id": "/subscriptions/7e152566-0ba7-49c2-acac-ebbb5becd265/providers/Microsoft.Web/locations/eastus2/managedApis/office365"
+                },
+                "onedriveforbusiness": {
+                    "connectionId": "/subscriptions/7e152566-0ba7-49c2-acac-ebbb5becd265/resourceGroups/HCEIMProdRSG/providers/Microsoft.Web/connections/onedriveforbusiness",
+                    "connectionName": "onedriveforbusiness",
+                    "id": "/subscriptions/7e152566-0ba7-49c2-acac-ebbb5becd265/providers/Microsoft.Web/locations/eastus2/managedApis/onedriveforbusiness"
+                }
+            }
+        }
+    }
+}

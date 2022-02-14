@@ -1,0 +1,216 @@
+{
+    "definition": {
+        "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+        "actions": {
+            "AgencyID": {
+                "inputs": {
+                    "variables": [
+                        {
+                            "name": "AgencyID",
+                            "type": "integer"
+                        }
+                    ]
+                },
+                "runAfter": {},
+                "type": "InitializeVariable"
+            },
+            "Condition": {
+                "actions": {
+                    "For_each": {
+                        "actions": {
+                            "Condition_2": {
+                                "actions": {
+                                    "Create_a_pipeline_run": {
+                                        "inputs": {
+                                            "body": {
+                                                "AgencyID": "@{variables('AgencyID')}",
+                                                "FileName": "@{items('For_each')?['name']}",
+                                                "LA_ID": "@{workflow().run.name}",
+                                                "SheetName": "SpendData"
+                                            },
+                                            "host": {
+                                                "connection": {
+                                                    "name": "@parameters('$connections')['azuredatafactory']['connectionId']"
+                                                }
+                                            },
+                                            "method": "post",
+                                            "path": "/subscriptions/@{encodeURIComponent('7e152566-0ba7-49c2-acac-ebbb5becd265')}/resourcegroups/@{encodeURIComponent('HCEIMProdRSG')}/providers/Microsoft.DataFactory/factories/@{encodeURIComponent('hc-eim-df-prod2')}/pipelines/@{encodeURIComponent('DatoramaReport')}/CreateRun",
+                                            "queries": {
+                                                "x-ms-api-version": "2017-09-01-preview"
+                                            }
+                                        },
+                                        "runAfter": {
+                                            "Create_blob": [
+                                                "Succeeded"
+                                            ]
+                                        },
+                                        "type": "ApiConnection"
+                                    },
+                                    "Create_blob": {
+                                        "inputs": {
+                                            "body": "@base64ToBinary(items('For_each')?['contentBytes'])",
+                                            "host": {
+                                                "connection": {
+                                                    "name": "@parameters('$connections')['azureblob']['connectionId']"
+                                                }
+                                            },
+                                            "method": "post",
+                                            "path": "/datasets/default/files",
+                                            "queries": {
+                                                "folderPath": "@{Concat(string('/hc-eim-file-system-bi/SocialMedia/Datorama/'), variables('AgencyID'),'/',workflow().run.name)}",
+                                                "name": "@items('For_each')?['name']",
+                                                "queryParametersSingleEncoded": true
+                                            }
+                                        },
+                                        "runAfter": {},
+                                        "runtimeConfiguration": {
+                                            "contentTransfer": {
+                                                "transferMode": "Chunked"
+                                            }
+                                        },
+                                        "type": "ApiConnection"
+                                    }
+                                },
+                                "expression": {
+                                    "or": [
+                                        {
+                                            "equals": [
+                                                "@endsWith(items('For_each')?['name'], '.xlsx')",
+                                                "@true"
+                                            ]
+                                        },
+                                        {
+                                            "equals": [
+                                                "@endsWith(items('For_each')?['name'], '.xls')",
+                                                "@true"
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "runAfter": {},
+                                "type": "If"
+                            }
+                        },
+                        "foreach": "@triggerBody()?['attachments']",
+                        "runAfter": {
+                            "Set_variable": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "Foreach"
+                    },
+                    "Set_variable": {
+                        "inputs": {
+                            "name": "AgencyID",
+                            "value": 1
+                        },
+                        "runAfter": {},
+                        "type": "SetVariable"
+                    }
+                },
+                "expression": {
+                    "and": [
+                        {
+                            "equals": [
+                                "@empty(body('Get_Agency_Id')?['resultsets'])",
+                                "@true"
+                            ]
+                        },
+                        {
+                            "equals": [
+                                "@split(triggerBody()?['from'], '@')[1]",
+                                "@string('datorama.com')"
+                            ]
+                        }
+                    ]
+                },
+                "runAfter": {
+                    "Get_Agency_Id": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "If"
+            },
+            "Get_Agency_Id": {
+                "inputs": {
+                    "body": {
+                        "query": "Select top 1 AgencyKey, AgencyName from dbo.DimAgency\nwhere AgencyDomain = '@{split(triggerBody()?['from'], '@')[1]}'\n"
+                    },
+                    "host": {
+                        "connection": {
+                            "name": "@parameters('$connections')['sqldw_1']['connectionId']"
+                        }
+                    },
+                    "method": "post",
+                    "path": "/datasets/default/query/sql"
+                },
+                "runAfter": {
+                    "AgencyID": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "ApiConnection"
+            }
+        },
+        "contentVersion": "1.0.0.0",
+        "outputs": {},
+        "parameters": {
+            "$connections": {
+                "defaultValue": {},
+                "type": "Object"
+            }
+        },
+        "triggers": {
+            "When_a_new_email_arrives_(V3)": {
+                "inputs": {
+                    "host": {
+                        "connection": {
+                            "name": "@parameters('$connections')['office365']['connectionId']"
+                        }
+                    },
+                    "method": "get",
+                    "path": "/v2/SharedMailbox/Mail/OnNewEmail",
+                    "queries": {
+                        "folderId": "Inbox",
+                        "hasAttachments": true,
+                        "importance": "Any",
+                        "includeAttachments": true,
+                        "mailboxAddress": "agencydatafeed@hairclub.com"
+                    }
+                },
+                "recurrence": {
+                    "frequency": "Minute",
+                    "interval": 1
+                },
+                "splitOn": "@triggerBody()?['value']",
+                "type": "ApiConnection"
+            }
+        }
+    },
+    "parameters": {
+        "$connections": {
+            "value": {
+                "azureblob": {
+                    "connectionId": "/subscriptions/7e152566-0ba7-49c2-acac-ebbb5becd265/resourceGroups/HCEIMProdRSG/providers/Microsoft.Web/connections/azureblob",
+                    "connectionName": "azureblob",
+                    "id": "/subscriptions/7e152566-0ba7-49c2-acac-ebbb5becd265/providers/Microsoft.Web/locations/eastus2/managedApis/azureblob"
+                },
+                "azuredatafactory": {
+                    "connectionId": "/subscriptions/7e152566-0ba7-49c2-acac-ebbb5becd265/resourceGroups/HCEIMProdRSG/providers/Microsoft.Web/connections/azuredatafactory",
+                    "connectionName": "azuredatafactory",
+                    "id": "/subscriptions/7e152566-0ba7-49c2-acac-ebbb5becd265/providers/Microsoft.Web/locations/eastus2/managedApis/azuredatafactory"
+                },
+                "office365": {
+                    "connectionId": "/subscriptions/7e152566-0ba7-49c2-acac-ebbb5becd265/resourceGroups/HCEIMProdRSG/providers/Microsoft.Web/connections/office365",
+                    "connectionName": "office365",
+                    "id": "/subscriptions/7e152566-0ba7-49c2-acac-ebbb5becd265/providers/Microsoft.Web/locations/eastus2/managedApis/office365"
+                },
+                "sqldw_1": {
+                    "connectionId": "/subscriptions/7e152566-0ba7-49c2-acac-ebbb5becd265/resourceGroups/HCEIMProdRSG/providers/Microsoft.Web/connections/sqldw",
+                    "connectionName": "sqldw",
+                    "id": "/subscriptions/7e152566-0ba7-49c2-acac-ebbb5becd265/providers/Microsoft.Web/locations/eastus2/managedApis/sqldw"
+                }
+            }
+        }
+    }
+}

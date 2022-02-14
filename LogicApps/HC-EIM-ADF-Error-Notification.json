@@ -1,0 +1,79 @@
+{
+    "definition": {
+        "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+        "actions": {
+            "Response": {
+                "inputs": {
+                    "statusCode": 500
+                },
+                "kind": "Http",
+                "runAfter": {
+                    "Send_an_email_(V2)": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "Response"
+            },
+            "Send_an_email_(V2)": {
+                "inputs": {
+                    "body": {
+                        "Body": "<p><span style=\"font-size: 16px\">Hello,<br>\n<br>\n<br>\nThe pipeline: </span><span style=\"font-size: 16px\">@{triggerBody()?['PipelineName']}</span><span style=\"font-size: 16px\"><br>\nwith RunID: </span><span style=\"font-size: 16px\">@{triggerBody()?['PipielineRunId']}</span><span style=\"font-size: 16px\"><br>\nhas failed at: </span><span style=\"font-size: 16px\">@{triggerBody()?['FailedDateTime']}</span><span style=\"font-size: 16px\"><br>\n<br>\nPlease check.<br>\n<br>\nThanks.</span></p>",
+                        "Subject": "ADF Pipeline: @{triggerBody()?['PipelineName']} has failed",
+                        "To": "gvarol@hairclub.com;MKunchum@hairclub.com"
+                    },
+                    "host": {
+                        "connection": {
+                            "name": "@parameters('$connections')['office365']['connectionId']"
+                        }
+                    },
+                    "method": "post",
+                    "path": "/v2/Mail"
+                },
+                "runAfter": {},
+                "type": "ApiConnection"
+            }
+        },
+        "contentVersion": "1.0.0.0",
+        "outputs": {},
+        "parameters": {
+            "$connections": {
+                "defaultValue": {},
+                "type": "Object"
+            }
+        },
+        "triggers": {
+            "manual": {
+                "inputs": {
+                    "method": "POST",
+                    "schema": {
+                        "properties": {
+                            "FailedDateTime": {
+                                "type": "string"
+                            },
+                            "PipelineName": {
+                                "type": "string"
+                            },
+                            "PipielineRunId": {
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    }
+                },
+                "kind": "Http",
+                "type": "Request"
+            }
+        }
+    },
+    "parameters": {
+        "$connections": {
+            "value": {
+                "office365": {
+                    "connectionId": "/subscriptions/7e152566-0ba7-49c2-acac-ebbb5becd265/resourceGroups/HCEIMProductionRSG/providers/Microsoft.Web/connections/office365-1",
+                    "connectionName": "office365-1",
+                    "id": "/subscriptions/7e152566-0ba7-49c2-acac-ebbb5becd265/providers/Microsoft.Web/locations/eastus2/managedApis/office365"
+                }
+            }
+        }
+    }
+}

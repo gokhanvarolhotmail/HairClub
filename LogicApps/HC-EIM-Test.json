@@ -1,0 +1,224 @@
+{
+    "definition": {
+        "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+        "actions": {
+            "Add_rows_to_a_dataset": {
+                "inputs": {
+                    "body": {
+                        "Comment": "@{body('SendAdaptiveCard')['Data']['StatusComment']}",
+                        "centerKey": "@{rand(1, 100)}",
+                        "timestamp": "@{utcNow()}"
+                    },
+                    "host": {
+                        "connection": {
+                            "name": "@parameters('$connections')['powerbi']['connectionId']"
+                        }
+                    },
+                    "method": "post",
+                    "path": "/v1.0/myorg/groups/@{encodeURIComponent('d14a2b31-529a-4e9b-99fe-cd3548950cfe')}/datasets/@{encodeURIComponent('5701569b-f23a-44d7-9055-6f7acb613f36')}/tables/@{encodeURIComponent('RealTimeData')}/rows",
+                    "queries": {
+                        "pbi_source": "powerAutomate"
+                    }
+                },
+                "runAfter": {
+                    "SendAdaptiveCard": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "ApiConnection"
+            },
+            "Append_to_string_variable_2": {
+                "inputs": {
+                    "name": "Rows",
+                    "value": "???"
+                },
+                "runAfter": {
+                    "For_each": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "AppendToStringVariable"
+            },
+            "CardTemplate": {
+                "inputs": {
+                    "variables": [
+                        {
+                            "name": "CardTemplate",
+                            "type": "string",
+                            "value": "{\n                    \"type\": \"ColumnSet\",\n                    \"columns\": [\n                        {\n                            \"type\": \"Column\",\n                            \"width\": \"stretch\",\n                            \"items\": [\n                                {\n                                    \"type\": \"TextBlock\",\n                                    \"text\": \"Appointment\",\n                                    \"wrap\": true,\n                                    \"size\": \"Large\",\n                                    \"horizontalAlignment\": \"Center\"\n                                }\n                            ]\n                        },\n                        {\n                            \"type\": \"Column\",\n                            \"width\": \"stretch\",\n                            \"items\": [\n                                {\n                                    \"type\": \"TextBlock\",\n                                    \"text\": \"sdfa\",\n                                    \"wrap\": true,\n                                    \"color\": \"Attention\",\n                                    \"size\": \"Large\",\n                                    \"weight\": \"Bolder\"\n                                }\n                            ]\n                        }\n                    ]\n                }"
+                        }
+                    ]
+                },
+                "runAfter": {
+                    "Rows": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "InitializeVariable"
+            },
+            "Compose": {
+                "inputs": "@replace(variables('Rows'), ',???', '')",
+                "runAfter": {
+                    "Compose_3": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "Compose"
+            },
+            "Compose_3": {
+                "inputs": "@variables('Rows')",
+                "runAfter": {
+                    "Append_to_string_variable_2": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "Compose"
+            },
+            "For_each": {
+                "actions": {
+                    "Append_to_string_variable": {
+                        "inputs": {
+                            "name": "Rows",
+                            "value": "{\n                    \"type\": \"ColumnSet\",\n                    \"columns\": [\n                        {\n                            \"type\": \"Column\",\n                            \"width\": \"stretch\",\n                            \"items\": [\n                                {\n                                    \"type\": \"TextBlock\",\n                                    \"text\": \"@{items('For_each')?['Metric']}\",\n                                    \"wrap\": true,\n                                    \"size\": \"Large\",\n                                    \"horizontalAlignment\": \"Center\"\n                                }\n                            ]\n                        },\n                        {\n                            \"type\": \"Column\",\n                            \"width\": \"stretch\",\n                            \"items\": [\n                                {\n                                    \"type\": \"TextBlock\",\n                                    \"text\": \"@{items('For_each')?['Target']}\",\n                                    \"wrap\": true,\n                                    \"horizontalAlignment\": \"Center\",\n                                    \"size\": \"Large\",\n                                    \"color\": \"Accent\"\n                                }\n                            ],\n                            \"verticalContentAlignment\": \"Center\"\n                        },\n                        {\n                            \"type\": \"Column\",\n                            \"width\": \"stretch\",\n                            \"items\": [\n                                {\n                                    \"type\": \"TextBlock\",\n                                    \"text\": \"@{items('For_each')?['Variance']}\",\n                                    \"wrap\": true,\n                                    \"color\": \"Attention\",\n                                    \"size\": \"Large\",\n                                    \"weight\": \"Bolder\",\n                                    \"horizontalAlignment\": \"Center\"\n                                }\n                            ],\n\"verticalContentAlignment\": \"Center\"\n                        }\n                    ]\n                },"
+                        },
+                        "runAfter": {},
+                        "type": "AppendToStringVariable"
+                    }
+                },
+                "foreach": "@body('List_rows_present_in_a_table')?['value']",
+                "runAfter": {
+                    "CardTemplate": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "Foreach"
+            },
+            "Initialize_variable": {
+                "inputs": {
+                    "variables": [
+                        {
+                            "name": "Users",
+                            "type": "array"
+                        }
+                    ]
+                },
+                "runAfter": {},
+                "type": "InitializeVariable"
+            },
+            "List_rows_present_in_a_table": {
+                "inputs": {
+                    "host": {
+                        "connection": {
+                            "name": "@parameters('$connections')['excelonlinebusiness']['connectionId']"
+                        }
+                    },
+                    "method": "get",
+                    "path": "/drives/@{encodeURIComponent('b!Ty1Tjvy8EkSE7oxMFvDGW8hHTyUIvstCpid6muO-cXAO2J9L7of2TKOhC2oO5t2s')}/files/@{encodeURIComponent('01DJDS7VCJTOKFOH7J3ZCYHVAVQ3LKVKCH')}/tables/@{encodeURIComponent('{5A87871C-33D7-4452-9A15-9AD3CDB60B8C}')}/items",
+                    "queries": {
+                        "$top": 7,
+                        "source": "me"
+                    }
+                },
+                "metadata": {
+                    "01DJDS7VCJTOKFOH7J3ZCYHVAVQ3LKVKCH": "/DailyFlashV1.xlsx"
+                },
+                "runAfter": {
+                    "Initialize_variable": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "ApiConnection"
+            },
+            "Rows": {
+                "inputs": {
+                    "variables": [
+                        {
+                            "name": "Rows",
+                            "type": "string"
+                        }
+                    ]
+                },
+                "runAfter": {
+                    "List_rows_present_in_a_table": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "InitializeVariable"
+            },
+            "SendAdaptiveCard": {
+                "inputs": {
+                    "body": {
+                        "body": {
+                            "messageBody": "{\n    \"type\": \"AdaptiveCard\",\n    \"body\": [\n        {\n            \"type\": \"TextBlock\",\n            \"size\": \"Medium\",\n            \"weight\": \"Bolder\",\n            \"text\": \"Flash daily Report\"\n        },\n        {\n            \"type\": \"TextBlock\",\n            \"text\": \"Hello Andres Salazar, for today, corporate centers are missing the MTD goals in the following metrics\",\n            \"height\": \"stretch\",\n            \"wrap\": true\n        },\n        {\n            \"type\": \"Container\",\n            \"spacing\": \"ExtraLarge\",\n            \"id\": \"ColumnsTitles\",\n            \"items\": [\n                {\n                    \"type\": \"ColumnSet\",\n                    \"columns\": [\n                        {\n                            \"type\": \"Column\",\n                            \"width\": \"stretch\",\n                            \"spacing\": \"Small\",\n                            \"items\": [\n                                {\n                                    \"type\": \"TextBlock\",\n                                    \"text\": \"KPI\",\n                                    \"wrap\": true,\n                                    \"horizontalAlignment\": \"Center\",\n                                    \"size\": \"ExtraLarge\",\n                                    \"weight\": \"Bolder\"\n                                }\n                            ]\n                        },\n                        {\n                            \"type\": \"Column\",\n                            \"width\": \"stretch\",\n                            \"spacing\": \"Small\",\n                            \"items\": [\n                                {\n                                    \"type\": \"TextBlock\",\n                                    \"text\": \"Target\",\n                                    \"wrap\": true,\n                                    \"horizontalAlignment\": \"Center\",\n                                    \"size\": \"ExtraLarge\",\n                                    \"weight\": \"Bolder\"\n                                }\n                            ]\n                        },\n                        {\n                            \"type\": \"Column\",\n                            \"width\": \"stretch\",\n                            \"spacing\": \"Small\",\n                            \"items\": [\n                                {\n                                    \"type\": \"TextBlock\",\n                                    \"text\": \"Variance\",\n                                    \"wrap\": true,\n                                    \"horizontalAlignment\": \"Center\",\n                                    \"weight\": \"Bolder\",\n                                    \"size\": \"ExtraLarge\"\n                                }\n                            ]\n                        }\n                    ]\n                }\n            ]\n        },\n        {\n            \"type\": \"Container\",\n            \"id\": \"Rows\",\n            \"separator\": true,\n            \"items\": [\n                @{replace(variables('Rows'), ',???', '')}\n            ]\n        },\n        {\n            \"type\": \"Container\",\n            \"items\": [\n                {\n                    \"type\": \"TextBlock\",\n                    \"text\": \"Go to report.\",\n                    \"wrap\": true,\n                    \"size\": \"Medium\",\n                    \"color\": \"Accent\"\n                }\n            ],\n            \"selectAction\": {\n                \"type\": \"Action.OpenUrl\",\n                \"url\": \"https://hcreports.hcfm.com/Reports/report/Conect/Reports/DailyFlash\",\n                \"title\": \"Daily flash report\"\n            },\n            \"spacing\": \"ExtraLarge\"\n        },\n        {\n            \"type\": \"Input.Text\",\n            \"placeholder\": \"Please help to understand this variances and let us know what we will do to reach the goals.\",\n            \"id\": \"StatusComment\",\n            \"isMultiline\": true,\n            \"spacing\": \"ExtraLarge\",\n            \"separator\": true,\n            \"height\": \"stretch\"\n        },\n        {\n            \"type\": \"ActionSet\",\n            \"actions\": [\n                {\n                    \"type\": \"Action.Submit\",\n                    \"title\": \"Submit\",\n                    \"style\": \"positive\"\n                }\n            ]\n        }\n    ],\n    \"$schema\": \"http://adaptivecards.io/schemas/adaptive-card.json\",\n    \"version\": \"1.2\"\n}",
+                            "recipient": {
+                                "isAlert": true,
+                                "to": "asalazar@Hairclub.com"
+                            },
+                            "shouldUpdateCard": true,
+                            "updateMessage": "Thanks for your response"
+                        },
+                        "notificationUrl": "@{listCallbackUrl()}"
+                    },
+                    "host": {
+                        "connection": {
+                            "name": "@parameters('$connections')['teams_2']['connectionId']"
+                        }
+                    },
+                    "path": "/flowbot/actions/flowcontinuation/recipienttypes/user/$subscriptions"
+                },
+                "runAfter": {
+                    "Compose": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "ApiConnectionWebhook"
+            }
+        },
+        "contentVersion": "1.0.0.0",
+        "outputs": {},
+        "parameters": {
+            "$connections": {
+                "defaultValue": {},
+                "type": "Object"
+            }
+        },
+        "triggers": {
+            "manual": {
+                "inputs": {
+                    "method": "POST",
+                    "schema": {
+                        "properties": {
+                            "FilePath": {
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    }
+                },
+                "kind": "Http",
+                "type": "Request"
+            }
+        }
+    },
+    "parameters": {
+        "$connections": {
+            "value": {
+                "excelonlinebusiness": {
+                    "connectionId": "/subscriptions/7e152566-0ba7-49c2-acac-ebbb5becd265/resourceGroups/HCEIMProductionRSG/providers/Microsoft.Web/connections/excelonlinebusiness",
+                    "connectionName": "excelonlinebusiness",
+                    "id": "/subscriptions/7e152566-0ba7-49c2-acac-ebbb5becd265/providers/Microsoft.Web/locations/eastus2/managedApis/excelonlinebusiness"
+                },
+                "powerbi": {
+                    "connectionId": "/subscriptions/7e152566-0ba7-49c2-acac-ebbb5becd265/resourceGroups/HCEIMProductionRSG/providers/Microsoft.Web/connections/powerbi",
+                    "connectionName": "powerbi",
+                    "id": "/subscriptions/7e152566-0ba7-49c2-acac-ebbb5becd265/providers/Microsoft.Web/locations/eastus2/managedApis/powerbi"
+                },
+                "teams_2": {
+                    "connectionId": "/subscriptions/7e152566-0ba7-49c2-acac-ebbb5becd265/resourceGroups/HCEIMProductionRSG/providers/Microsoft.Web/connections/teams-2",
+                    "connectionName": "teams-2",
+                    "id": "/subscriptions/7e152566-0ba7-49c2-acac-ebbb5becd265/providers/Microsoft.Web/locations/eastus2/managedApis/teams"
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,356 @@
+{
+    "definition": {
+        "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+        "actions": {
+            "Agencies": {
+                "inputs": {
+                    "variables": [
+                        {
+                            "name": "Agencies",
+                            "type": "array",
+                            "value": [
+                                {
+                                    "DLName": "'Google'",
+                                    "FTPName": "Google"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "runAfter": {},
+                "type": "InitializeVariable"
+            },
+            "Delay": {
+                "inputs": {
+                    "interval": {
+                        "count": 1,
+                        "unit": "Minute"
+                    }
+                },
+                "runAfter": {
+                    "For_each_Agencies": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "Wait"
+            },
+            "For_each_Agencies": {
+                "actions": {
+                    "Append_to_array_variable": {
+                        "inputs": {
+                            "name": "RunIds",
+                            "value": "@body('Create_a_pipeline_run')?['runId']"
+                        },
+                        "runAfter": {
+                            "Create_a_pipeline_run": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "AppendToArrayVariable"
+                    },
+                    "Create_a_pipeline_run": {
+                        "inputs": {
+                            "body": {
+                                "AgencyName": "@{items('For_each_Agencies')['DLName']}"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['azuredatafactory']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/subscriptions/@{encodeURIComponent('7e152566-0ba7-49c2-acac-ebbb5becd265')}/resourcegroups/@{encodeURIComponent('HCEIMProdRSG')}/providers/Microsoft.DataFactory/factories/@{encodeURIComponent('hc-eim-df-prod2')}/pipelines/@{encodeURIComponent('SFTPGoogleExtract')}/CreateRun",
+                            "queries": {
+                                "x-ms-api-version": "2017-09-01-preview"
+                            }
+                        },
+                        "runAfter": {},
+                        "type": "ApiConnection"
+                    }
+                },
+                "foreach": "@variables('Agencies')",
+                "runAfter": {
+                    "Initialize_variable": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "Foreach"
+            },
+            "For_each_FTP": {
+                "actions": {
+                    "Append_to_string_variable": {
+                        "inputs": {
+                            "name": "csv",
+                            "value": "@body('Get_blob_content_using_path')"
+                        },
+                        "runAfter": {
+                            "Get_blob_content_using_path": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "AppendToStringVariable"
+                    },
+                    "Create_blob": {
+                        "inputs": {
+                            "body": "@variables('csv')",
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['azureblob']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/datasets/default/files",
+                            "queries": {
+                                "folderPath": "@{concat('/hc-eim-file-system-bi/Reporting/Google/')}",
+                                "name": "google_ads.csv",
+                                "queryParametersSingleEncoded": true
+                            }
+                        },
+                        "runAfter": {
+                            "Append_to_string_variable": [
+                                "Succeeded"
+                            ]
+                        },
+                        "runtimeConfiguration": {
+                            "contentTransfer": {
+                                "transferMode": "Chunked"
+                            }
+                        },
+                        "type": "ApiConnection"
+                    },
+                    "Create_file": {
+                        "inputs": {
+                            "body": "@body('Get_blob_content_using_path_3')",
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['ftp']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/datasets/default/files",
+                            "queries": {
+                                "folderPath": "@{concat('/Marketing/Data/',items('For_each_FTP')['FTPName'],'/','OutofHairClub')}",
+                                "name": "google_ads.csv",
+                                "queryParametersSingleEncoded": true
+                            }
+                        },
+                        "runAfter": {
+                            "Get_blob_content_using_path_3": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    },
+                    "Delay_2": {
+                        "inputs": {
+                            "interval": {
+                                "count": 30,
+                                "unit": "Second"
+                            }
+                        },
+                        "runAfter": {
+                            "Create_blob": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "Wait"
+                    },
+                    "Get_blob_content_using_path": {
+                        "inputs": {
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['azureblob']['connectionId']"
+                                }
+                            },
+                            "method": "get",
+                            "path": "/datasets/default/GetFileContentByPath",
+                            "queries": {
+                                "inferContentType": true,
+                                "path": "@{concat('/hc-eim-file-system-bi/Reporting/Google/','google_ads.csv')}",
+                                "queryParametersSingleEncoded": true
+                            }
+                        },
+                        "runAfter": {},
+                        "type": "ApiConnection"
+                    },
+                    "Get_blob_content_using_path_3": {
+                        "inputs": {
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['azureblob']['connectionId']"
+                                }
+                            },
+                            "method": "get",
+                            "path": "/datasets/default/GetFileContentByPath",
+                            "queries": {
+                                "inferContentType": true,
+                                "path": "@{concat('/hc-eim-file-system-bi/Reporting/Google/','google_ads.csv')}",
+                                "queryParametersSingleEncoded": true
+                            }
+                        },
+                        "runAfter": {
+                            "Delay_2": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    }
+                },
+                "foreach": "@variables('Agencies')",
+                "runAfter": {
+                    "For_each_RunIds": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "Foreach"
+            },
+            "For_each_RunIds": {
+                "actions": {
+                    "Until": {
+                        "actions": {
+                            "Get_a_pipeline_run": {
+                                "inputs": {
+                                    "host": {
+                                        "connection": {
+                                            "name": "@parameters('$connections')['azuredatafactory']['connectionId']"
+                                        }
+                                    },
+                                    "method": "get",
+                                    "path": "/subscriptions/@{encodeURIComponent('7e152566-0ba7-49c2-acac-ebbb5becd265')}/resourcegroups/@{encodeURIComponent('HCEIMProdRSG')}/providers/Microsoft.DataFactory/factories/@{encodeURIComponent('hc-eim-df-prod2')}/pipelineRuns/@{encodeURIComponent(items('For_each_RunIds'))}",
+                                    "queries": {
+                                        "x-ms-api-version": "2017-09-01-preview"
+                                    }
+                                },
+                                "runAfter": {},
+                                "type": "ApiConnection"
+                            },
+                            "Set_variable": {
+                                "inputs": {
+                                    "name": "status",
+                                    "value": "@body('Get_a_pipeline_run')?['runId']"
+                                },
+                                "runAfter": {
+                                    "Get_a_pipeline_run": [
+                                        "Succeeded"
+                                    ]
+                                },
+                                "type": "SetVariable"
+                            }
+                        },
+                        "expression": "@equals(variables('status'), 'Succeeded')",
+                        "limit": {
+                            "count": 60,
+                            "timeout": "PT1H"
+                        },
+                        "runAfter": {},
+                        "type": "Until"
+                    }
+                },
+                "foreach": "@variables('RunIds')",
+                "runAfter": {
+                    "Delay": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "Foreach"
+            },
+            "Initialize_variable": {
+                "inputs": {
+                    "variables": [
+                        {
+                            "name": "csv",
+                            "type": "string",
+                            "value": "### INSTRUCTIONS ###\n# IMPORTANT: Remember to set the TimeZone value in the \"parameters\" row and/or in your Conversion Time column\n# For instructions on how to set your timezones, visit http://goo.gl/T1C5Ov\n\n### TEMPLATE ###\nParameters:TimeZone=America/New_York\nGoogle Click ID,Conversion Name,Conversion Time,Conversion Value,Conversion Currency\n"
+                        }
+                    ]
+                },
+                "runAfter": {
+                    "RunIds": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "InitializeVariable"
+            },
+            "RunIds": {
+                "inputs": {
+                    "variables": [
+                        {
+                            "name": "RunIds",
+                            "type": "array"
+                        }
+                    ]
+                },
+                "runAfter": {
+                    "Status": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "InitializeVariable"
+            },
+            "Status": {
+                "inputs": {
+                    "variables": [
+                        {
+                            "name": "status",
+                            "type": "string",
+                            "value": "InProgress"
+                        }
+                    ]
+                },
+                "runAfter": {
+                    "Agencies": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "InitializeVariable"
+            }
+        },
+        "contentVersion": "1.0.0.0",
+        "outputs": {},
+        "parameters": {
+            "$connections": {
+                "defaultValue": {},
+                "type": "Object"
+            }
+        },
+        "triggers": {
+            "Recurrence": {
+                "recurrence": {
+                    "frequency": "Day",
+                    "interval": 1,
+                    "schedule": {
+                        "hours": [
+                            "1"
+                        ],
+                        "minutes": [
+                            0
+                        ]
+                    },
+                    "timeZone": "Eastern Standard Time"
+                },
+                "type": "Recurrence"
+            }
+        }
+    },
+    "parameters": {
+        "$connections": {
+            "value": {
+                "azureblob": {
+                    "connectionId": "/subscriptions/7e152566-0ba7-49c2-acac-ebbb5becd265/resourceGroups/HCEIMProdRSG/providers/Microsoft.Web/connections/azureblob",
+                    "connectionName": "azureblob",
+                    "id": "/subscriptions/7e152566-0ba7-49c2-acac-ebbb5becd265/providers/Microsoft.Web/locations/eastus2/managedApis/azureblob"
+                },
+                "azuredatafactory": {
+                    "connectionId": "/subscriptions/7e152566-0ba7-49c2-acac-ebbb5becd265/resourceGroups/HCEIMProdRSG/providers/Microsoft.Web/connections/azuredatafactory",
+                    "connectionName": "azuredatafactory",
+                    "id": "/subscriptions/7e152566-0ba7-49c2-acac-ebbb5becd265/providers/Microsoft.Web/locations/eastus2/managedApis/azuredatafactory"
+                },
+                "ftp": {
+                    "connectionId": "/subscriptions/7e152566-0ba7-49c2-acac-ebbb5becd265/resourceGroups/HCEIMProdRSG/providers/Microsoft.Web/connections/ftp",
+                    "connectionName": "ftp",
+                    "id": "/subscriptions/7e152566-0ba7-49c2-acac-ebbb5becd265/providers/Microsoft.Web/locations/eastus2/managedApis/ftp"
+                }
+            }
+        }
+    }
+}

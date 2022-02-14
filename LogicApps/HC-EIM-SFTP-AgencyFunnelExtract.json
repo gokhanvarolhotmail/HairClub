@@ -1,0 +1,323 @@
+{
+    "definition": {
+        "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+        "actions": {
+            "Agencies": {
+                "inputs": {
+                    "variables": [
+                        {
+                            "name": "Agencies",
+                            "type": "array",
+                            "value": [
+                                {
+                                    "DLName": "'Cannella'",
+                                    "FTPName": "Cannella"
+                                },
+                                {
+                                    "DLName": "'Kingstar'",
+                                    "FTPName": "Kingstar"
+                                },
+                                {
+                                    "DLName": "'Zimmerman'",
+                                    "FTPName": "Zimmerman"
+                                },
+                                {
+                                    "DLName": "'InterMedia'",
+                                    "FTPName": "Intermedia"
+                                },
+                                {
+                                    "DLName": "'LaunchDRTV'",
+                                    "FTPName": "Launch"
+                                },
+                                {
+                                    "DLName": "'Pure Digital','Barth-PureDigital'",
+                                    "FTPName": "PureDigital"
+                                },
+                                {
+                                    "DLName": "'Advanced360'",
+                                    "FTPName": "Advanced360"
+                                },
+                                {
+                                    "DLName": "'Venator'",
+                                    "FTPName": "Venator"
+                                },
+                                {
+                                    "DLName": "'Valassis'",
+                                    "FTPName": "Valassis"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "runAfter": {},
+                "type": "InitializeVariable"
+            },
+            "Delay": {
+                "inputs": {
+                    "interval": {
+                        "count": 5,
+                        "unit": "Minute"
+                    }
+                },
+                "runAfter": {
+                    "For_each_Agencies": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "Wait"
+            },
+            "For_each_Agencies": {
+                "actions": {
+                    "Append_to_array_variable": {
+                        "inputs": {
+                            "name": "RunIds",
+                            "value": "@body('Create_a_pipeline_run')?['runId']"
+                        },
+                        "runAfter": {
+                            "Create_a_pipeline_run": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "AppendToArrayVariable"
+                    },
+                    "Create_a_pipeline_run": {
+                        "inputs": {
+                            "body": {
+                                "AgencyName": "@{items('For_each_Agencies')['DLName']}"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['azuredatafactory']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/subscriptions/@{encodeURIComponent('7e152566-0ba7-49c2-acac-ebbb5becd265')}/resourcegroups/@{encodeURIComponent('HCEIMProductionRSG')}/providers/Microsoft.DataFactory/factories/@{encodeURIComponent('HCProdDF')}/pipelines/@{encodeURIComponent('SFTPFunnelExtract')}/CreateRun",
+                            "queries": {
+                                "x-ms-api-version": "2017-09-01-preview"
+                            }
+                        },
+                        "runAfter": {},
+                        "type": "ApiConnection"
+                    }
+                },
+                "foreach": "@variables('Agencies')",
+                "runAfter": {
+                    "RunIds": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "Foreach"
+            },
+            "For_each_FTP": {
+                "actions": {
+                    "Create_file": {
+                        "inputs": {
+                            "body": "@body('Get_blob_content_using_path')",
+                            "headers": {
+                                "ReadFileMetadataFromServer": true
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['ftp']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/datasets/default/files",
+                            "queries": {
+                                "folderPath": "@{concat('/Marketing/Data/',items('For_each_FTP')['FTPName'],'/','OutofHairClub')}",
+                                "name": "@{concat('hairclub_funnel_',replace(adddays(utcnow(), -1, 'yyyy-MM-dd'), '-', ''),'.tab')}",
+                                "queryParametersSingleEncoded": true
+                            }
+                        },
+                        "runAfter": {
+                            "Get_blob_content_using_path": [
+                                "Succeeded"
+                            ]
+                        },
+                        "runtimeConfiguration": {
+                            "contentTransfer": {
+                                "transferMode": "Chunked"
+                            }
+                        },
+                        "type": "ApiConnection"
+                    },
+                    "Delete_file": {
+                        "inputs": {
+                            "headers": {
+                                "SkipDeleteIfFileNotFoundOnServer": false
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['ftp']['connectionId']"
+                                }
+                            },
+                            "method": "delete",
+                            "path": "/datasets/default/files/@{encodeURIComponent(encodeURIComponent(concat('/Marketing/Data/',items('For_each_FTP')['FTPName'],'/','OutofHairClub','/',concat('hairclub_funnel_',replace(adddays(utcnow(), -8, 'yyyy-MM-dd'), '-', ''),'.tab'))))}"
+                        },
+                        "runAfter": {
+                            "Create_file": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    },
+                    "Get_blob_content_using_path": {
+                        "inputs": {
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['azureblob']['connectionId']"
+                                }
+                            },
+                            "method": "get",
+                            "path": "/datasets/default/GetFileContentByPath",
+                            "queries": {
+                                "inferContentType": true,
+                                "path": "@{concat('/hc-eim-filesystem-prod/Reporting/Funnel/',items('For_each_FTP')['DLName'],'/',replace(split(utcnow(), 'T')[0], '-', '/'),'/',concat('hairclub_funnel_',replace(adddays(utcnow(), -1, 'yyyy-MM-dd'), '-', ''),'.tab'))}",
+                                "queryParametersSingleEncoded": true
+                            }
+                        },
+                        "runAfter": {},
+                        "type": "ApiConnection"
+                    }
+                },
+                "foreach": "@variables('Agencies')",
+                "runAfter": {
+                    "For_each_RunIds": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "Foreach"
+            },
+            "For_each_RunIds": {
+                "actions": {
+                    "Until": {
+                        "actions": {
+                            "Get_a_pipeline_run": {
+                                "inputs": {
+                                    "host": {
+                                        "connection": {
+                                            "name": "@parameters('$connections')['azuredatafactory']['connectionId']"
+                                        }
+                                    },
+                                    "method": "get",
+                                    "path": "/subscriptions/@{encodeURIComponent('7e152566-0ba7-49c2-acac-ebbb5becd265')}/resourcegroups/@{encodeURIComponent('HCEIMProductionRSG')}/providers/Microsoft.DataFactory/factories/@{encodeURIComponent('HCProdDF')}/pipelineRuns/@{encodeURIComponent(items('For_each_RunIds'))}",
+                                    "queries": {
+                                        "x-ms-api-version": "2017-09-01-preview"
+                                    }
+                                },
+                                "runAfter": {},
+                                "type": "ApiConnection"
+                            },
+                            "Set_variable": {
+                                "inputs": {
+                                    "name": "status",
+                                    "value": "@body('Get_a_pipeline_run')?['runId']"
+                                },
+                                "runAfter": {
+                                    "Get_a_pipeline_run": [
+                                        "Succeeded"
+                                    ]
+                                },
+                                "type": "SetVariable"
+                            }
+                        },
+                        "expression": "@equals(variables('status'), 'Succeeded')",
+                        "limit": {
+                            "count": 60,
+                            "timeout": "PT1H"
+                        },
+                        "runAfter": {},
+                        "type": "Until"
+                    }
+                },
+                "foreach": "@variables('RunIds')",
+                "runAfter": {
+                    "Delay": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "Foreach"
+            },
+            "RunIds": {
+                "inputs": {
+                    "variables": [
+                        {
+                            "name": "RunIds",
+                            "type": "array"
+                        }
+                    ]
+                },
+                "runAfter": {
+                    "Status": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "InitializeVariable"
+            },
+            "Status": {
+                "inputs": {
+                    "variables": [
+                        {
+                            "name": "status",
+                            "type": "string",
+                            "value": "InProgress"
+                        }
+                    ]
+                },
+                "runAfter": {
+                    "Agencies": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "InitializeVariable"
+            }
+        },
+        "contentVersion": "1.0.0.0",
+        "outputs": {},
+        "parameters": {
+            "$connections": {
+                "defaultValue": {},
+                "type": "Object"
+            }
+        },
+        "triggers": {
+            "Recurrence": {
+                "recurrence": {
+                    "frequency": "Day",
+                    "interval": 1,
+                    "schedule": {
+                        "hours": [
+                            "6"
+                        ],
+                        "minutes": [
+                            0
+                        ]
+                    },
+                    "timeZone": "Eastern Standard Time"
+                },
+                "type": "Recurrence"
+            }
+        }
+    },
+    "parameters": {
+        "$connections": {
+            "value": {
+                "azureblob": {
+                    "connectionId": "/subscriptions/7e152566-0ba7-49c2-acac-ebbb5becd265/resourceGroups/HCEIMProductionRSG/providers/Microsoft.Web/connections/azureblob",
+                    "connectionName": "azureblob",
+                    "id": "/subscriptions/7e152566-0ba7-49c2-acac-ebbb5becd265/providers/Microsoft.Web/locations/eastus2/managedApis/azureblob"
+                },
+                "azuredatafactory": {
+                    "connectionId": "/subscriptions/7e152566-0ba7-49c2-acac-ebbb5becd265/resourceGroups/HCEIMProductionRSG/providers/Microsoft.Web/connections/azuredatafactory",
+                    "connectionName": "azuredatafactory",
+                    "id": "/subscriptions/7e152566-0ba7-49c2-acac-ebbb5becd265/providers/Microsoft.Web/locations/eastus2/managedApis/azuredatafactory"
+                },
+                "ftp": {
+                    "connectionId": "/subscriptions/7e152566-0ba7-49c2-acac-ebbb5becd265/resourceGroups/HCEIMProductionRSG/providers/Microsoft.Web/connections/ftp",
+                    "connectionName": "ftp",
+                    "id": "/subscriptions/7e152566-0ba7-49c2-acac-ebbb5becd265/providers/Microsoft.Web/locations/eastus2/managedApis/ftp"
+                }
+            }
+        }
+    }
+}

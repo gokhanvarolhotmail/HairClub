@@ -1,0 +1,101 @@
+{
+    "definition": {
+        "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+        "actions": {
+            "Create_a_pipeline_run": {
+                "inputs": {
+                    "body": {
+                        "LastCreatedTaskDate": "@{replace(body('Get_Last_CreationDate_From_FactTask_Table')?['resultsets']?['Table1'][0]['CreationDate'], 'T', ' ')}",
+                        "LastUpdatedTaskDate": "@{replace(body('Get_Last_ModifiedDate_From_FactTask_Table')?['resultsets']?['Table1'][0]['ModifiedDate'], 'T', ' ')}"
+                    },
+                    "host": {
+                        "connection": {
+                            "name": "@parameters('$connections')['azuredatafactory']['connectionId']"
+                        }
+                    },
+                    "method": "post",
+                    "path": "/subscriptions/@{encodeURIComponent('7e152566-0ba7-49c2-acac-ebbb5becd265')}/resourcegroups/@{encodeURIComponent('HCEIMProductionRSG')}/providers/Microsoft.DataFactory/factories/@{encodeURIComponent('HCProdDF')}/pipelines/@{encodeURIComponent('FactTaskProd')}/CreateRun",
+                    "queries": {
+                        "x-ms-api-version": "2017-09-01-preview"
+                    }
+                },
+                "runAfter": {
+                    "Get_Last_ModifiedDate_From_FactTask_Table": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "ApiConnection"
+            },
+            "Get_Last_CreationDate_From_FactTask_Table": {
+                "inputs": {
+                    "body": {
+                        "query": "SELECT MAX (CreatedDate) as CreationDate FROM dbo.FactTask"
+                    },
+                    "host": {
+                        "connection": {
+                            "name": "@parameters('$connections')['sqldw']['connectionId']"
+                        }
+                    },
+                    "method": "post",
+                    "path": "/datasets/default/query/sql"
+                },
+                "runAfter": {},
+                "type": "ApiConnection"
+            },
+            "Get_Last_ModifiedDate_From_FactTask_Table": {
+                "inputs": {
+                    "body": {
+                        "query": "SELECT MAX (LastModifiedDate) as ModifiedDate FROM dbo.FactTask"
+                    },
+                    "host": {
+                        "connection": {
+                            "name": "@parameters('$connections')['sqldw']['connectionId']"
+                        }
+                    },
+                    "method": "post",
+                    "path": "/datasets/default/query/sql"
+                },
+                "runAfter": {
+                    "Get_Last_CreationDate_From_FactTask_Table": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "ApiConnection"
+            }
+        },
+        "contentVersion": "1.0.0.0",
+        "outputs": {},
+        "parameters": {
+            "$connections": {
+                "defaultValue": {},
+                "type": "Object"
+            }
+        },
+        "triggers": {
+            "Recurrence": {
+                "recurrence": {
+                    "frequency": "Hour",
+                    "interval": 1,
+                    "timeZone": "UTC"
+                },
+                "type": "Recurrence"
+            }
+        }
+    },
+    "parameters": {
+        "$connections": {
+            "value": {
+                "azuredatafactory": {
+                    "connectionId": "/subscriptions/7e152566-0ba7-49c2-acac-ebbb5becd265/resourceGroups/HCEIMProductionRSG/providers/Microsoft.Web/connections/azuredatafactory",
+                    "connectionName": "azuredatafactory",
+                    "id": "/subscriptions/7e152566-0ba7-49c2-acac-ebbb5becd265/providers/Microsoft.Web/locations/eastus2/managedApis/azuredatafactory"
+                },
+                "sqldw": {
+                    "connectionId": "/subscriptions/7e152566-0ba7-49c2-acac-ebbb5becd265/resourceGroups/HCEIMProductionRSG/providers/Microsoft.Web/connections/sqldw",
+                    "connectionName": "sqldw",
+                    "id": "/subscriptions/7e152566-0ba7-49c2-acac-ebbb5becd265/providers/Microsoft.Web/locations/eastus2/managedApis/sqldw"
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,1101 @@
+{
+    "definition": {
+        "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+        "actions": {
+            "ODS_Account": {
+                "actions": {
+                    "Execute_ODS_Account_Pipeline": {
+                        "inputs": {
+                            "body": {
+                                "LARunId": "@{workflow().run.name}",
+                                "LastCreatedAccountDate": "@{replace(body('Get_Last_CreationDate_ODS_SF_Account')?['resultsets']?['Table1'][0]['CreatedDate'], 'T', ' ')}",
+                                "LastUpdatedAccountDate": "@{replace(body('Get_Last_ModifiedDate_ODS_SF_Account')?['resultsets']?['Table1'][0]['ModifiedDate'], 'T', ' ')}"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['azuredatafactory']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/subscriptions/@{encodeURIComponent('7e152566-0ba7-49c2-acac-ebbb5becd265')}/resourcegroups/@{encodeURIComponent('HCEIMProdRSG')}/providers/Microsoft.DataFactory/factories/@{encodeURIComponent('hc-eim-df-prod2')}/pipelines/@{encodeURIComponent('ODSAccount')}/CreateRun",
+                            "queries": {
+                                "x-ms-api-version": "2017-09-01-preview"
+                            }
+                        },
+                        "runAfter": {
+                            "Get_Last_CreationDate_ODS_SF_Account": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    },
+                    "Get_Last_CreationDate_ODS_SF_Account": {
+                        "inputs": {
+                            "body": {
+                                "query": "SELECT MAX (CreatedDate) as CreatedDate FROM ODS.SF_Account"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['sqldw_1']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/datasets/default/query/sql"
+                        },
+                        "runAfter": {
+                            "Get_Last_ModifiedDate_ODS_SF_Account": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    },
+                    "Get_Last_ModifiedDate_ODS_SF_Account": {
+                        "inputs": {
+                            "body": {
+                                "query": "SELECT MAX (LastModifiedDate) as ModifiedDate FROM ODS.SF_Account"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['sqldw_1']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/datasets/default/query/sql"
+                        },
+                        "runAfter": {},
+                        "type": "ApiConnection"
+                    }
+                },
+                "runAfter": {
+                    "ODS_CampaignMember": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "Scope"
+            },
+            "ODS_AccountHistory": {
+                "actions": {
+                    "Execute_ODS_Task_AccountHistory": {
+                        "inputs": {
+                            "body": {
+                                "LARunId": "@{workflow().run.name}",
+                                "LastCreatedAccountHistoryDate": "@{replace(body('Get_Last_CreatedDate_ODS_SF_AccountHistory')?['resultsets']?['Table1'][0]['CreatedDate'], 'T', ' ')}"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['azuredatafactory']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/subscriptions/@{encodeURIComponent('7e152566-0ba7-49c2-acac-ebbb5becd265')}/resourcegroups/@{encodeURIComponent('HCEIMProdRSG')}/providers/Microsoft.DataFactory/factories/@{encodeURIComponent('hc-eim-df-prod2')}/pipelines/@{encodeURIComponent('ODSAccountHistory')}/CreateRun",
+                            "queries": {
+                                "x-ms-api-version": "2017-09-01-preview"
+                            }
+                        },
+                        "runAfter": {
+                            "Get_Last_CreatedDate_ODS_SF_AccountHistory": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    },
+                    "Get_Last_CreatedDate_ODS_SF_AccountHistory": {
+                        "inputs": {
+                            "body": {
+                                "query": "SELECT MAX (CreatedDate) as CreatedDate FROM ODS.SF_AccountHistory"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['sqldw']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/datasets/default/query/sql"
+                        },
+                        "runAfter": {},
+                        "type": "ApiConnection"
+                    }
+                },
+                "runAfter": {
+                    "ODS_SF_Task": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "Scope"
+            },
+            "ODS_AssignedResource": {
+                "actions": {
+                    "Create_a_pipeline_run_4": {
+                        "inputs": {
+                            "body": {
+                                "LARunId": "@{workflow().run.name}",
+                                "LastCreatedAssignedResourceDate": "@{replace(body('Get_Last_CreatedDate_ODS_SF_Promocode')?['resultsets']?['Table1'][0]['CreatedDate'], 'T', ' ')}",
+                                "LastUpdatedAssignedResourceDate": "@{replace(body('Get_Last_ModifiedDate_ODS_SF_Promocode')?['resultsets']?['Table1'][0]['ModifiedDate'], 'T', ' ')}"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['azuredatafactory']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/subscriptions/@{encodeURIComponent('7e152566-0ba7-49c2-acac-ebbb5becd265')}/resourcegroups/@{encodeURIComponent('HCEIMProdRSG')}/providers/Microsoft.DataFactory/factories/@{encodeURIComponent('hc-eim-df-prod2')}/pipelines/@{encodeURIComponent('ODSAssignedResource')}/CreateRun",
+                            "queries": {
+                                "x-ms-api-version": "2017-09-01-preview"
+                            }
+                        },
+                        "runAfter": {
+                            "Get_Last_CreatedDate_ODS_SF_AssignedResource": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    },
+                    "Get_Last_CreatedDate_ODS_SF_AssignedResource": {
+                        "inputs": {
+                            "body": {
+                                "query": "SELECT MAX (CreatedDate) as CreatedDate FROM ODS.AssignedResource"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['sqldw']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/datasets/default/query/sql"
+                        },
+                        "runAfter": {
+                            "Get_Last_ModifiedDate_ODS_SF_AssignedResource": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    },
+                    "Get_Last_ModifiedDate_ODS_SF_AssignedResource": {
+                        "inputs": {
+                            "body": {
+                                "query": "SELECT MAX (LastModifiedDate) as ModifiedDate FROM ODS.AssignedResource"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['sqldw']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/datasets/default/query/sql"
+                        },
+                        "runAfter": {},
+                        "type": "ApiConnection"
+                    }
+                },
+                "runAfter": {
+                    "ODS_ServiceResource": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "Scope"
+            },
+            "ODS_Campaign": {
+                "actions": {
+                    "Execute_ODS_Campaign_Pipeline": {
+                        "inputs": {
+                            "body": {
+                                "LARunId": "@{workflow().run.name}",
+                                "LastCreatedCampaignDate": "@{replace(body('Get_Last_CreationDate_ODS_SF_Campaign')?['resultsets']?['Table1'][0]['CreatedDate'], 'T', ' ')}",
+                                "LastUpdatedCampaignDate": "@{replace(body('Get_Last_ModifiedDate_ODS_SF_Campaign')?['resultsets']?['Table1'][0]['ModifiedDate'], 'T', ' ')}"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['azuredatafactory']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/subscriptions/@{encodeURIComponent('7e152566-0ba7-49c2-acac-ebbb5becd265')}/resourcegroups/@{encodeURIComponent('HCEIMProdRSG')}/providers/Microsoft.DataFactory/factories/@{encodeURIComponent('hc-eim-df-prod2')}/pipelines/@{encodeURIComponent('ODSCampaign')}/CreateRun",
+                            "queries": {
+                                "x-ms-api-version": "2017-09-01-preview"
+                            }
+                        },
+                        "runAfter": {
+                            "Get_Last_CreationDate_ODS_SF_Campaign": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    },
+                    "Get_Last_CreationDate_ODS_SF_Campaign": {
+                        "inputs": {
+                            "body": {
+                                "query": "SELECT MAX (CreatedDate) as CreatedDate FROM ODS.SF_Campaign"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['sqldw_1']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/datasets/default/query/sql"
+                        },
+                        "runAfter": {
+                            "Get_Last_ModifiedDate_ODS_SF_Campaign": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    },
+                    "Get_Last_ModifiedDate_ODS_SF_Campaign": {
+                        "inputs": {
+                            "body": {
+                                "query": "SELECT MAX (LastModifiedDate) as ModifiedDate FROM ODS.SF_Campaign"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['sqldw_1']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/datasets/default/query/sql"
+                        },
+                        "runAfter": {},
+                        "type": "ApiConnection"
+                    }
+                },
+                "runAfter": {
+                    "ODS_Lead": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "Scope"
+            },
+            "ODS_CampaignMember": {
+                "actions": {
+                    "Execute_ODS_CampaignMember_Pipeline": {
+                        "inputs": {
+                            "body": {
+                                "LARunId": "@{workflow().run.name}",
+                                "LastCreatedCampaignMemberDate": "@{replace(body('Get_Last_CreationDate_ODS_SF_CampaignMember')?['resultsets']?['Table1'][0]['CreatedDate'], 'T', ' ')}",
+                                "LastUpdatedCampaignMemberDate": "@{replace(body('Get_Last_ModifiedDate_ODS_SF_CampaignMember')?['resultsets']?['Table1'][0]['ModifiedDate'], 'T', ' ')}"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['azuredatafactory']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/subscriptions/@{encodeURIComponent('7e152566-0ba7-49c2-acac-ebbb5becd265')}/resourcegroups/@{encodeURIComponent('HCEIMProdRSG')}/providers/Microsoft.DataFactory/factories/@{encodeURIComponent('hc-eim-df-prod2')}/pipelines/@{encodeURIComponent('ODSCampaignMember')}/CreateRun",
+                            "queries": {
+                                "x-ms-api-version": "2017-09-01-preview"
+                            }
+                        },
+                        "runAfter": {
+                            "Get_Last_CreationDate_ODS_SF_CampaignMember": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    },
+                    "Get_Last_CreationDate_ODS_SF_CampaignMember": {
+                        "inputs": {
+                            "body": {
+                                "query": "SELECT MAX (CreatedDate) as CreatedDate FROM ODS.SF_CampaignMember"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['sqldw_1']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/datasets/default/query/sql"
+                        },
+                        "runAfter": {
+                            "Get_Last_ModifiedDate_ODS_SF_CampaignMember": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    },
+                    "Get_Last_ModifiedDate_ODS_SF_CampaignMember": {
+                        "inputs": {
+                            "body": {
+                                "query": "SELECT MAX (LastModifiedDate) as ModifiedDate FROM ODS.SF_CampaignMember"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['sqldw_1']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/datasets/default/query/sql"
+                        },
+                        "runAfter": {},
+                        "type": "ApiConnection"
+                    }
+                },
+                "runAfter": {
+                    "ODS_Opportunity": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "Scope"
+            },
+            "ODS_Event": {
+                "actions": {
+                    "Create_a_pipeline_run": {
+                        "inputs": {
+                            "body": {
+                                "LARunId": "@{workflow().run.name}",
+                                "LastCreatedEventDate": "@{replace(body('Get_Last_CreatedDate_ODS_SF_Promocode')?['resultsets']?['Table1'][0]['CreatedDate'], 'T', ' ')}",
+                                "LastUpdatedEventDate": "@{replace(body('Get_Last_ModifiedDate_ODS_SF_Promocode')?['resultsets']?['Table1'][0]['ModifiedDate'], 'T', ' ')}"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['azuredatafactory']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/subscriptions/@{encodeURIComponent('7e152566-0ba7-49c2-acac-ebbb5becd265')}/resourcegroups/@{encodeURIComponent('HCEIMProdRSG')}/providers/Microsoft.DataFactory/factories/@{encodeURIComponent('hc-eim-df-prod2')}/pipelines/@{encodeURIComponent('ODSEvent')}/CreateRun",
+                            "queries": {
+                                "x-ms-api-version": "2017-09-01-preview"
+                            }
+                        },
+                        "runAfter": {
+                            "Get_Last_CreatedDate_ODS_SF_Event": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    },
+                    "Get_Last_CreatedDate_ODS_SF_Event": {
+                        "inputs": {
+                            "body": {
+                                "query": "SELECT MAX (CreatedDate) as CreatedDate FROM ODS.SF_Event"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['sqldw']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/datasets/default/query/sql"
+                        },
+                        "runAfter": {
+                            "Get_Last_ModifiedDate_ODS_SF_Event": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    },
+                    "Get_Last_ModifiedDate_ODS_SF_Event": {
+                        "inputs": {
+                            "body": {
+                                "query": "SELECT MAX (LastModifiedDate) as ModifiedDate FROM ODS.SF_Event"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['sqldw']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/datasets/default/query/sql"
+                        },
+                        "runAfter": {},
+                        "type": "ApiConnection"
+                    }
+                },
+                "runAfter": {
+                    "ODS_Promocode": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "Scope"
+            },
+            "ODS_Lead": {
+                "actions": {
+                    "Execute_ODS_Lead_Pipeline": {
+                        "inputs": {
+                            "body": {
+                                "LARunId": "@{workflow().run.name}",
+                                "LastCreatedLeadDate": "@{replace(body('Get_Last_CreationDate_ODS_SF_Lead')?['resultsets']?['Table1'][0]['CreatedDate'], 'T', ' ')}",
+                                "LastUpdatedLeadDate": "@{replace(body('Get_Last_ModifiedDate_ODS_SF_Lead')?['resultsets']?['Table1'][0]['ModifiedDate'], 'T', ' ')}"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['azuredatafactory']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/subscriptions/@{encodeURIComponent('7e152566-0ba7-49c2-acac-ebbb5becd265')}/resourcegroups/@{encodeURIComponent('HCEIMProdRSG')}/providers/Microsoft.DataFactory/factories/@{encodeURIComponent('hc-eim-df-prod2')}/pipelines/@{encodeURIComponent('ODSLead')}/CreateRun",
+                            "queries": {
+                                "x-ms-api-version": "2017-09-01-preview"
+                            }
+                        },
+                        "runAfter": {
+                            "Get_Last_ModifiedDate_ODS_SF_Lead": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    },
+                    "Get_Last_CreationDate_ODS_SF_Lead": {
+                        "inputs": {
+                            "body": {
+                                "query": "SELECT MAX (CreatedDate) as CreatedDate FROM ODS.SF_Lead"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['sqldw']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/datasets/default/query/sql"
+                        },
+                        "runAfter": {},
+                        "type": "ApiConnection"
+                    },
+                    "Get_Last_ModifiedDate_ODS_SF_Lead": {
+                        "inputs": {
+                            "body": {
+                                "query": "SELECT MAX (LastModifiedDate) as ModifiedDate FROM ODS.SF_Lead"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['sqldw']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/datasets/default/query/sql"
+                        },
+                        "runAfter": {
+                            "Get_Last_CreationDate_ODS_SF_Lead": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    }
+                },
+                "runAfter": {},
+                "type": "Scope"
+            },
+            "ODS_LeadHistory": {
+                "actions": {
+                    "Execute_ODS_LeadHistory": {
+                        "inputs": {
+                            "body": {
+                                "LARunId": "@{workflow().run.name}",
+                                "LastCreatedLeadHistoryDate": "@{replace(body('Get_Last_CreatedDate_ODS_SF_LeadHistory')?['resultsets']?['Table1'][0]['CreatedDate'], 'T', ' ')}"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['azuredatafactory']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/subscriptions/@{encodeURIComponent('7e152566-0ba7-49c2-acac-ebbb5becd265')}/resourcegroups/@{encodeURIComponent('HCEIMProdRSG')}/providers/Microsoft.DataFactory/factories/@{encodeURIComponent('hc-eim-df-prod2')}/pipelines/@{encodeURIComponent('ODSLeadHistory')}/CreateRun",
+                            "queries": {
+                                "x-ms-api-version": "2017-09-01-preview"
+                            }
+                        },
+                        "runAfter": {
+                            "Get_Last_CreatedDate_ODS_SF_LeadHistory": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    },
+                    "Get_Last_CreatedDate_ODS_SF_LeadHistory": {
+                        "inputs": {
+                            "body": {
+                                "query": "SELECT MAX (CreatedDate) as CreatedDate FROM ODS.SF_LeadHistory"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['sqldw']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/datasets/default/query/sql"
+                        },
+                        "runAfter": {},
+                        "type": "ApiConnection"
+                    }
+                },
+                "runAfter": {
+                    "ODS_AccountHistory": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "Scope"
+            },
+            "ODS_Opportunity": {
+                "actions": {
+                    "Execute_ODS_Opportunity_Pipeline": {
+                        "inputs": {
+                            "body": {
+                                "LARunId": "@{workflow().run.name}",
+                                "LastCreatedOpportunityDate": "@{replace(body('Get_Last_CreationDate_ODS_SF_Opportunity')?['resultsets']?['Table1'][0]['CreatedDate'], 'T', ' ')}",
+                                "LastUpdatedOpportunityDate": "@{replace(body('Get_Last_ModifiedDate_ODS_SF_Opportunity')?['resultsets']?['Table1'][0]['ModifiedDate'], 'T', ' ')}"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['azuredatafactory']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/subscriptions/@{encodeURIComponent('7e152566-0ba7-49c2-acac-ebbb5becd265')}/resourcegroups/@{encodeURIComponent('HCEIMProdRSG')}/providers/Microsoft.DataFactory/factories/@{encodeURIComponent('hc-eim-df-prod2')}/pipelines/@{encodeURIComponent('ODSOpportunity')}/CreateRun",
+                            "queries": {
+                                "x-ms-api-version": "2017-09-01-preview"
+                            }
+                        },
+                        "runAfter": {
+                            "Get_Last_CreationDate_ODS_SF_Opportunity": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    },
+                    "Get_Last_CreationDate_ODS_SF_Opportunity": {
+                        "inputs": {
+                            "body": {
+                                "query": "SELECT MAX (CreatedDate) as CreatedDate FROM ODS.SF_Opportunity"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['sqldw_1']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/datasets/default/query/sql"
+                        },
+                        "runAfter": {
+                            "Get_Last_ModifiedDate_ODS_SF_Opportunity": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    },
+                    "Get_Last_ModifiedDate_ODS_SF_Opportunity": {
+                        "inputs": {
+                            "body": {
+                                "query": "SELECT MAX (LastModifiedDate) as ModifiedDate FROM ODS.SF_Opportunity"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['sqldw_1']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/datasets/default/query/sql"
+                        },
+                        "runAfter": {},
+                        "type": "ApiConnection"
+                    }
+                },
+                "runAfter": {
+                    "ODS_ServiceAppointment": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "Scope"
+            },
+            "ODS_OpportunityHistory": {
+                "actions": {
+                    "Execute_ODS_OpportunityHistory": {
+                        "inputs": {
+                            "body": {
+                                "LARunId": "@{workflow().run.name}",
+                                "LastCreatedOpportunityHistoryDate": "@{replace(body('Get_Last_CreatedDate_ODS_SF_OpportunityHistory')?['resultsets']?['Table1'][0]['CreatedDate'], 'T', ' ')}"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['azuredatafactory']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/subscriptions/@{encodeURIComponent('7e152566-0ba7-49c2-acac-ebbb5becd265')}/resourcegroups/@{encodeURIComponent('HCEIMProdRSG')}/providers/Microsoft.DataFactory/factories/@{encodeURIComponent('hc-eim-df-prod2')}/pipelines/@{encodeURIComponent('ODSOpportunityHistory')}/CreateRun",
+                            "queries": {
+                                "x-ms-api-version": "2017-09-01-preview"
+                            }
+                        },
+                        "runAfter": {
+                            "Get_Last_CreatedDate_ODS_SF_OpportunityHistory": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    },
+                    "Get_Last_CreatedDate_ODS_SF_OpportunityHistory": {
+                        "inputs": {
+                            "body": {
+                                "query": "SELECT MAX (CreatedDate) as CreatedDate FROM ODS.SF_OpportunityHistory"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['sqldw']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/datasets/default/query/sql"
+                        },
+                        "runAfter": {},
+                        "type": "ApiConnection"
+                    }
+                },
+                "runAfter": {
+                    "ODS_LeadHistory": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "Scope"
+            },
+            "ODS_Promocode": {
+                "actions": {
+                    "Create_a_pipeline_run_2": {
+                        "inputs": {
+                            "body": {
+                                "LARunId": "@{workflow().run.name}",
+                                "LastCreatedPromoCodeDate": "@{replace(body('Get_Last_CreatedDate_ODS_SF_Promocode')?['resultsets']?['Table1'][0]['CreatedDate'], 'T', ' ')}",
+                                "LastUpdatedPromoCodeDate": "@{replace(body('Get_Last_ModifiedDate_ODS_SF_Promocode')?['resultsets']?['Table1'][0]['ModifiedDate'], 'T', ' ')}"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['azuredatafactory']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/subscriptions/@{encodeURIComponent('7e152566-0ba7-49c2-acac-ebbb5becd265')}/resourcegroups/@{encodeURIComponent('HCEIMProdRSG')}/providers/Microsoft.DataFactory/factories/@{encodeURIComponent('hc-eim-df-prod2')}/pipelines/@{encodeURIComponent('ODSPromoCode')}/CreateRun",
+                            "queries": {
+                                "x-ms-api-version": "2017-09-01-preview"
+                            }
+                        },
+                        "runAfter": {
+                            "Get_Last_CreatedDate_ODS_SF_Promocode": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    },
+                    "Get_Last_CreatedDate_ODS_SF_Promocode": {
+                        "inputs": {
+                            "body": {
+                                "query": "SELECT MAX (CreatedDate) as CreatedDate FROM ODS.SF_Promocode"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['sqldw_1']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/datasets/default/query/sql"
+                        },
+                        "runAfter": {
+                            "Get_Last_ModifiedDate_ODS_SF_Promocode": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    },
+                    "Get_Last_ModifiedDate_ODS_SF_Promocode": {
+                        "inputs": {
+                            "body": {
+                                "query": "SELECT MAX (LastModifiedDate) as ModifiedDate FROM ODS.SF_Promocode"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['sqldw_1']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/datasets/default/query/sql"
+                        },
+                        "runAfter": {},
+                        "type": "ApiConnection"
+                    }
+                },
+                "runAfter": {
+                    "ODS_Account": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "Scope"
+            },
+            "ODS_SF_Task": {
+                "actions": {
+                    "Excecute_ODS_Task_Pipeline": {
+                        "inputs": {
+                            "body": {
+                                "LARunId": "@{workflow().run.name}",
+                                "LastCreatedTaskDate": "@{replace(body('Get_Last_CreatedDate_ODS_SF_Task')?['resultsets']?['Table1'][0]['CreatedDate'], 'T', ' ')}",
+                                "LastUpdatedTaskDate": "@{replace(body('Get_Last_ModifiedDate_ODS_SF_Task')?['resultsets']?['Table1'][0]['ModifiedDate'], 'T', ' ')}"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['azuredatafactory']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/subscriptions/@{encodeURIComponent('7e152566-0ba7-49c2-acac-ebbb5becd265')}/resourcegroups/@{encodeURIComponent('HCEIMProdRSG')}/providers/Microsoft.DataFactory/factories/@{encodeURIComponent('hc-eim-df-prod2')}/pipelines/@{encodeURIComponent('ODSTask')}/CreateRun",
+                            "queries": {
+                                "x-ms-api-version": "2017-09-01-preview"
+                            }
+                        },
+                        "runAfter": {
+                            "Get_Last_CreatedDate_ODS_SF_Task": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    },
+                    "Get_Last_CreatedDate_ODS_SF_Task": {
+                        "inputs": {
+                            "body": {
+                                "query": "SELECT MAX (CreatedDate) as CreatedDate FROM ODS.SF_Task"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['sqldw']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/datasets/default/query/sql"
+                        },
+                        "runAfter": {
+                            "Get_Last_ModifiedDate_ODS_SF_Task": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    },
+                    "Get_Last_ModifiedDate_ODS_SF_Task": {
+                        "inputs": {
+                            "body": {
+                                "query": "SELECT MAX (LastModifiedDate) as ModifiedDate FROM ODS.SF_Task"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['sqldw']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/datasets/default/query/sql"
+                        },
+                        "runAfter": {},
+                        "type": "ApiConnection"
+                    }
+                },
+                "runAfter": {
+                    "ODS_TollFree": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "Scope"
+            },
+            "ODS_ServiceAppointment": {
+                "actions": {
+                    "Execute_ODS_ServiceAppointment_Pipeline": {
+                        "inputs": {
+                            "body": {
+                                "LARunId": "@{workflow().run.name}",
+                                "LastCreatedServiceAppointmentDate": "@{replace(body('Get_Last_CreationDate_ODS_SF_ServiceAppointment')?['resultsets']?['Table1'][0]['CreatedDate'], 'T', ' ')}",
+                                "LastUpdatedServiceAppointmentDate": "@{replace(body('Get_Last_ModifiedDate_ODS_SF_ServiceAppointment')?['resultsets']?['Table1'][0]['ModifiedDate'], 'T', ' ')}"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['azuredatafactory']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/subscriptions/@{encodeURIComponent('7e152566-0ba7-49c2-acac-ebbb5becd265')}/resourcegroups/@{encodeURIComponent('HCEIMProdRSG')}/providers/Microsoft.DataFactory/factories/@{encodeURIComponent('hc-eim-df-prod2')}/pipelines/@{encodeURIComponent('ODSServiceAppointment')}/CreateRun",
+                            "queries": {
+                                "x-ms-api-version": "2017-09-01-preview"
+                            }
+                        },
+                        "runAfter": {
+                            "Get_Last_CreationDate_ODS_SF_ServiceAppointment": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    },
+                    "Get_Last_CreationDate_ODS_SF_ServiceAppointment": {
+                        "inputs": {
+                            "body": {
+                                "query": "SELECT MAX (CreatedDate) as CreatedDate FROM ODS.SF_ServiceAppointment"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['sqldw_1']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/datasets/default/query/sql"
+                        },
+                        "runAfter": {
+                            "Get_Last_ModifiedDate_ODS_SF_ServiceAppointment": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    },
+                    "Get_Last_ModifiedDate_ODS_SF_ServiceAppointment": {
+                        "inputs": {
+                            "body": {
+                                "query": "SELECT MAX (LastModifiedDate) as ModifiedDate FROM ODS.SF_ServiceAppointment"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['sqldw_1']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/datasets/default/query/sql"
+                        },
+                        "runAfter": {},
+                        "type": "ApiConnection"
+                    }
+                },
+                "runAfter": {
+                    "ODS_Campaign": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "Scope"
+            },
+            "ODS_ServiceAppointmentHistory": {
+                "actions": {
+                    "Excecute_ODS_SF_ServiceAppoinmentHistory": {
+                        "inputs": {
+                            "body": {
+                                "LARunId": "@{workflow().run.name}",
+                                "LastCreatedServAppHistoryDate": "@{replace(body('Get_Last_CreatedDate_ODS_SF_ServiceAppointmentHistory')?['resultsets']?['Table1'][0]['CreatedDate'], 'T', ' ')}"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['azuredatafactory']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/subscriptions/@{encodeURIComponent('7e152566-0ba7-49c2-acac-ebbb5becd265')}/resourcegroups/@{encodeURIComponent('HCEIMProdRSG')}/providers/Microsoft.DataFactory/factories/@{encodeURIComponent('hc-eim-df-prod2')}/pipelines/@{encodeURIComponent('ODSServiceAppointmentHistory')}/CreateRun",
+                            "queries": {
+                                "x-ms-api-version": "2017-09-01-preview"
+                            }
+                        },
+                        "runAfter": {
+                            "Get_Last_CreatedDate_ODS_SF_ServiceAppointmentHistory": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    },
+                    "Get_Last_CreatedDate_ODS_SF_ServiceAppointmentHistory": {
+                        "inputs": {
+                            "body": {
+                                "query": "SELECT MAX (CreatedDate) as CreatedDate FROM ODS.SF_ServiceAppointmentHistory"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['sqldw']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/datasets/default/query/sql"
+                        },
+                        "runAfter": {},
+                        "type": "ApiConnection"
+                    }
+                },
+                "runAfter": {
+                    "ODS_OpportunityHistory": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "Scope"
+            },
+            "ODS_ServiceResource": {
+                "actions": {
+                    "Create_a_pipeline_run_3": {
+                        "inputs": {
+                            "body": {
+                                "LARunId": "@{workflow().run.name}",
+                                "LastCreatedServiceResourceDate": "@{replace(body('Get_Last_CreatedDate_ODS_SF_Promocode')?['resultsets']?['Table1'][0]['CreatedDate'], 'T', ' ')}",
+                                "LastUpdatedServiceResourceDate": "@{replace(body('Get_Last_ModifiedDate_ODS_SF_Promocode')?['resultsets']?['Table1'][0]['ModifiedDate'], 'T', ' ')}"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['azuredatafactory']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/subscriptions/@{encodeURIComponent('7e152566-0ba7-49c2-acac-ebbb5becd265')}/resourcegroups/@{encodeURIComponent('HCEIMProdRSG')}/providers/Microsoft.DataFactory/factories/@{encodeURIComponent('hc-eim-df-prod2')}/pipelines/@{encodeURIComponent('ODSServiceResource')}/CreateRun",
+                            "queries": {
+                                "x-ms-api-version": "2017-09-01-preview"
+                            }
+                        },
+                        "runAfter": {
+                            "Get_Las_CreatedDate_ODS_SF_ServiceResource": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    },
+                    "Get_Las_CreatedDate_ODS_SF_ServiceResource": {
+                        "inputs": {
+                            "body": {
+                                "query": "SELECT MAX (CreatedDate) as CreatedDate FROM ODS.ServiceResource"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['sqldw']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/datasets/default/query/sql"
+                        },
+                        "runAfter": {
+                            "Get_LastModifiedDate_ODS_SF_ServiceResource": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    },
+                    "Get_LastModifiedDate_ODS_SF_ServiceResource": {
+                        "inputs": {
+                            "body": {
+                                "query": "SELECT MAX (LastModifiedDate) as ModifiedDate FROM ODS.ServiceResource"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['sqldw']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/datasets/default/query/sql"
+                        },
+                        "runAfter": {},
+                        "type": "ApiConnection"
+                    }
+                },
+                "runAfter": {
+                    "ODS_Event": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "Scope"
+            },
+            "ODS_TollFree": {
+                "actions": {
+                    "Get_Last_CreatedDate_ODS_SF_TollFree": {
+                        "inputs": {
+                            "body": {
+                                "query": "SELECT MAX (CreatedDate) as CreatedDate FROM ODS.SF_TollFree"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['sqldw']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/datasets/default/query/sql"
+                        },
+                        "runAfter": {
+                            "Get_Last_ModifiedDate_ODS_SF_TollFree": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    },
+                    "Get_Last_ModifiedDate_ODS_SF_TollFree": {
+                        "inputs": {
+                            "body": {
+                                "query": "SELECT MAX (LastModifiedDate) as ModifiedDate FROM ODS.SF_TollFree"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['sqldw']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/datasets/default/query/sql"
+                        },
+                        "runAfter": {},
+                        "type": "ApiConnection"
+                    },
+                    "ODS_pipeline": {
+                        "inputs": {
+                            "body": {
+                                "LARunId": "@{workflow().run.name}",
+                                "LastCreatedTollFreeDate": "@{replace(body('Get_Last_CreatedDate_ODS_SF_TollFree')?['resultsets']?['Table1'][0]['CreatedDate'], 'T', ' ')}",
+                                "LastUpdatedTollFreeDate": "@{replace(body('Get_Last_ModifiedDate_ODS_SF_TollFree')?['resultsets']?['Table1'][0]['ModifiedDate'], 'T', ' ')}"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['azuredatafactory']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/subscriptions/@{encodeURIComponent('7e152566-0ba7-49c2-acac-ebbb5becd265')}/resourcegroups/@{encodeURIComponent('HCEIMProdRSG')}/providers/Microsoft.DataFactory/factories/@{encodeURIComponent('hc-eim-df-prod2')}/pipelines/@{encodeURIComponent('ODSTollFree')}/CreateRun",
+                            "queries": {
+                                "x-ms-api-version": "2017-09-01-preview"
+                            }
+                        },
+                        "runAfter": {
+                            "Get_Last_CreatedDate_ODS_SF_TollFree": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    }
+                },
+                "runAfter": {
+                    "ODS_AssignedResource": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "Scope"
+            }
+        },
+        "contentVersion": "1.0.0.0",
+        "outputs": {},
+        "parameters": {
+            "$connections": {
+                "defaultValue": {},
+                "type": "Object"
+            }
+        },
+        "triggers": {
+            "Recurrence": {
+                "evaluatedRecurrence": {
+                    "frequency": "Day",
+                    "interval": 1,
+                    "startTime": "2022-02-05T09:00:00Z",
+                    "timeZone": "Eastern Standard Time"
+                },
+                "recurrence": {
+                    "frequency": "Day",
+                    "interval": 1,
+                    "startTime": "2022-02-05T09:00:00Z",
+                    "timeZone": "Eastern Standard Time"
+                },
+                "type": "Recurrence"
+            }
+        }
+    },
+    "parameters": {
+        "$connections": {
+            "value": {
+                "azuredatafactory": {
+                    "connectionId": "/subscriptions/7e152566-0ba7-49c2-acac-ebbb5becd265/resourceGroups/HCEIMProdRSG/providers/Microsoft.Web/connections/azuredatafactory",
+                    "connectionName": "azuredatafactory",
+                    "id": "/subscriptions/7e152566-0ba7-49c2-acac-ebbb5becd265/providers/Microsoft.Web/locations/eastus2/managedApis/azuredatafactory"
+                },
+                "sqldw": {
+                    "connectionId": "/subscriptions/7e152566-0ba7-49c2-acac-ebbb5becd265/resourceGroups/HCEIMProdRSG/providers/Microsoft.Web/connections/sqldw",
+                    "connectionName": "sqldw",
+                    "id": "/subscriptions/7e152566-0ba7-49c2-acac-ebbb5becd265/providers/Microsoft.Web/locations/eastus2/managedApis/sqldw"
+                },
+                "sqldw_1": {
+                    "connectionId": "/subscriptions/7e152566-0ba7-49c2-acac-ebbb5becd265/resourceGroups/HCEIMProdRSG/providers/Microsoft.Web/connections/sqldw",
+                    "connectionName": "sqldw",
+                    "id": "/subscriptions/7e152566-0ba7-49c2-acac-ebbb5becd265/providers/Microsoft.Web/locations/eastus2/managedApis/sqldw"
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,93 @@
+{
+    "definition": {
+        "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+        "actions": {
+            "Execute_a_SQL_query": {
+                "inputs": {
+                    "body": {
+                        "query": "SELECT LeadID, FunnelStep, COUNT(*)\nFROM [dbo].[DimLead]\nGROUP BY LeadID, FunnelStep\nHAVING COUNT (*) > 1"
+                    },
+                    "host": {
+                        "connection": {
+                            "name": "@parameters('$connections')['sqldw']['connectionId']"
+                        }
+                    },
+                    "method": "post",
+                    "path": "/datasets/default/query/sql"
+                },
+                "runAfter": {},
+                "type": "ApiConnection"
+            },
+            "Initialize_variable": {
+                "inputs": {
+                    "variables": [
+                        {
+                            "name": "Query1",
+                            "type": "string",
+                            "value": "@{body('Execute_a_SQL_query')?['resultsets']}"
+                        }
+                    ]
+                },
+                "runAfter": {
+                    "Execute_a_SQL_query": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "InitializeVariable"
+            },
+            "Send_an_email_(V2)": {
+                "inputs": {
+                    "body": {
+                        "Body": "<p>@{variables('Query1')}</p>",
+                        "Subject": "test",
+                        "To": "emmanuel.orrego@teaminternational.com"
+                    },
+                    "host": {
+                        "connection": {
+                            "name": "@parameters('$connections')['office365']['connectionId']"
+                        }
+                    },
+                    "method": "post",
+                    "path": "/v2/Mail"
+                },
+                "runAfter": {
+                    "Initialize_variable": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "ApiConnection"
+            }
+        },
+        "contentVersion": "1.0.0.0",
+        "outputs": {},
+        "parameters": {
+            "$connections": {
+                "defaultValue": {},
+                "type": "Object"
+            }
+        },
+        "triggers": {
+            "manual": {
+                "inputs": {},
+                "kind": "Http",
+                "type": "Request"
+            }
+        }
+    },
+    "parameters": {
+        "$connections": {
+            "value": {
+                "office365": {
+                    "connectionId": "/subscriptions/7e152566-0ba7-49c2-acac-ebbb5becd265/resourceGroups/HCEIMProductionRSG/providers/Microsoft.Web/connections/office365-2",
+                    "connectionName": "office365-2",
+                    "id": "/subscriptions/7e152566-0ba7-49c2-acac-ebbb5becd265/providers/Microsoft.Web/locations/eastus2/managedApis/office365"
+                },
+                "sqldw": {
+                    "connectionId": "/subscriptions/7e152566-0ba7-49c2-acac-ebbb5becd265/resourceGroups/HCEIMProductionRSG/providers/Microsoft.Web/connections/sqldw",
+                    "connectionName": "sqldw",
+                    "id": "/subscriptions/7e152566-0ba7-49c2-acac-ebbb5becd265/providers/Microsoft.Web/locations/eastus2/managedApis/sqldw"
+                }
+            }
+        }
+    }
+}

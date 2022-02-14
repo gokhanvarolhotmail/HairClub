@@ -1,0 +1,284 @@
+{
+    "definition": {
+        "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+        "actions": {
+            "Associate_note_to_lead": {
+                "inputs": {
+                    "body": {
+                        "ContentDocumentId": "@body('Create_note')?['Id']",
+                        "LinkedEntityId": "@body('Create_or_update_lead')?['Id']"
+                    },
+                    "host": {
+                        "connection": {
+                            "name": "@parameters('$connections')['salesforce']['connectionId']"
+                        }
+                    },
+                    "method": "post",
+                    "path": "/v2/datasets/default/tables/@{encodeURIComponent(encodeURIComponent('ContentDocumentLink'))}/items"
+                },
+                "runAfter": {
+                    "Create_note": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "ApiConnection"
+            },
+            "Complete_the_message_in_a_topic_subscription": {
+                "inputs": {
+                    "host": {
+                        "connection": {
+                            "name": "@parameters('$connections')['servicebus']['connectionId']"
+                        }
+                    },
+                    "method": "delete",
+                    "path": "/@{encodeURIComponent(encodeURIComponent('leadcreationtopic'))}/subscriptions/@{encodeURIComponent('leadtosalesforce')}/messages/complete",
+                    "queries": {
+                        "lockToken": "@triggerBody()?['LockToken']",
+                        "sessionId": "",
+                        "subscriptionType": "Main"
+                    }
+                },
+                "runAfter": {
+                    "Associate_note_to_lead": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "ApiConnection"
+            },
+            "Create_note": {
+                "inputs": {
+                    "body": {
+                        "Content": "@{base64(concat('Lead response: ',body('Parse_JSON')?['entries']?['value']))}",
+                        "Title": "Note"
+                    },
+                    "host": {
+                        "connection": {
+                            "name": "@parameters('$connections')['salesforce']['connectionId']"
+                        }
+                    },
+                    "method": "post",
+                    "path": "/v2/datasets/default/tables/@{encodeURIComponent(encodeURIComponent('ContentNote'))}/items"
+                },
+                "runAfter": {
+                    "Create_or_update_lead": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "ApiConnection"
+            },
+            "Create_or_update_lead": {
+                "inputs": {
+                    "body": {
+                        "Email": "@body('Parse_JSON')?['email']",
+                        "FirstName": "@body('Parse_JSON')?['first_name']",
+                        "LastName": "@body('Parse_JSON')?['last_name']",
+                        "LeadSource": "Web Form",
+                        "Phone": "@body('Parse_JSON')?['phone']",
+                        "PostalCode": "@body('Parse_JSON')?['zipcode']"
+                    },
+                    "host": {
+                        "connection": {
+                            "name": "@parameters('$connections')['salesforce']['connectionId']"
+                        }
+                    },
+                    "method": "patch",
+                    "path": "/datasets/default/tables/@{encodeURIComponent(encodeURIComponent('Lead'))}/externalIdFields/@{encodeURIComponent(encodeURIComponent('External_Id__c'))}/@{encodeURIComponent(encodeURIComponent(body('Parse_JSON')?['email']))}"
+                },
+                "runAfter": {
+                    "Parse_JSON": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "ApiConnection"
+            },
+            "Get_campaign_Id": {
+                "inputs": {
+                    "body": {
+                        "query": "SELECT Id FROM Campaign where Gleam_Id__c ='@{body('Parse_JSON')?['campaignId']}'"
+                    },
+                    "host": {
+                        "connection": {
+                            "name": "@parameters('$connections')['salesforce']['connectionId']"
+                        }
+                    },
+                    "method": "post",
+                    "path": "/soql/executesoqlquery"
+                },
+                "runAfter": {
+                    "Create_or_update_lead": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "ApiConnection"
+            },
+            "Parse_JSON": {
+                "inputs": {
+                    "content": "@base64ToString(triggerBody()?['ContentData'])",
+                    "schema": {
+                        "properties": {
+                            "campaignId": {
+                                "type": "string"
+                            },
+                            "email": {
+                                "type": "string"
+                            },
+                            "entries": {
+                                "properties": {
+                                    "action": {
+                                        "type": "string"
+                                    },
+                                    "value": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "first_name": {
+                                "type": "string"
+                            },
+                            "last_name": {
+                                "type": "string"
+                            },
+                            "phone": {
+                                "type": "string"
+                            },
+                            "zipcode": {
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    }
+                },
+                "runAfter": {},
+                "type": "ParseJson"
+            },
+            "Validate_if_the_campaign_exists": {
+                "actions": {
+                    "Get_campaign_member": {
+                        "inputs": {
+                            "body": {
+                                "query": "SELECT Id FROM CampaignMember where LeadId ='@{body('Create_or_update_lead')?['Id']}' and CampaignId = '@{body('Get_campaign_id')?['records']?[0].Id}'"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['salesforce']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/soql/executesoqlquery"
+                        },
+                        "runAfter": {},
+                        "type": "ApiConnection"
+                    },
+                    "Validate_if_lead_has_the_campaign": {
+                        "actions": {},
+                        "else": {
+                            "actions": {
+                                "Associate_campaign": {
+                                    "inputs": {
+                                        "body": {
+                                            "CampaignId": "@{body('Get_campaign_id')?['records']?[0].Id}",
+                                            "LeadId": "@body('Create_or_update_lead')?['Id']",
+                                            "Status": "Responded"
+                                        },
+                                        "host": {
+                                            "connection": {
+                                                "name": "@parameters('$connections')['salesforce']['connectionId']"
+                                            }
+                                        },
+                                        "method": "post",
+                                        "path": "/v2/datasets/default/tables/@{encodeURIComponent(encodeURIComponent('CampaignMember'))}/items"
+                                    },
+                                    "runAfter": {},
+                                    "type": "ApiConnection"
+                                }
+                            }
+                        },
+                        "expression": {
+                            "and": [
+                                {
+                                    "equals": [
+                                        "@body('Get_campaign_member')?['totalSize']",
+                                        "@1"
+                                    ]
+                                }
+                            ]
+                        },
+                        "runAfter": {
+                            "Get_campaign_member": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "If"
+                    }
+                },
+                "expression": {
+                    "and": [
+                        {
+                            "equals": [
+                                "@body('Get_campaign_Id')?['totalSize']",
+                                "@1"
+                            ]
+                        }
+                    ]
+                },
+                "runAfter": {
+                    "Get_campaign_Id": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "If"
+            }
+        },
+        "contentVersion": "1.0.0.0",
+        "outputs": {},
+        "parameters": {
+            "$connections": {
+                "defaultValue": {},
+                "type": "Object"
+            }
+        },
+        "triggers": {
+            "When_a_message_is_received_in_a_topic_subscription_(peek-lock)": {
+                "evaluatedRecurrence": {
+                    "frequency": "Minute",
+                    "interval": 1
+                },
+                "inputs": {
+                    "host": {
+                        "connection": {
+                            "name": "@parameters('$connections')['servicebus']['connectionId']"
+                        }
+                    },
+                    "method": "get",
+                    "path": "/@{encodeURIComponent(encodeURIComponent('leadcreationtopic'))}/subscriptions/@{encodeURIComponent('leadtosalesforce')}/messages/head/peek",
+                    "queries": {
+                        "sessionId": "None",
+                        "subscriptionType": "Main"
+                    }
+                },
+                "recurrence": {
+                    "frequency": "Minute",
+                    "interval": 1
+                },
+                "type": "ApiConnection"
+            }
+        }
+    },
+    "parameters": {
+        "$connections": {
+            "value": {
+                "salesforce": {
+                    "connectionId": "/subscriptions/7e152566-0ba7-49c2-acac-ebbb5becd265/resourceGroups/HCIntegrationRG-Test/providers/Microsoft.Web/connections/salesforce",
+                    "connectionName": "salesforce",
+                    "id": "/subscriptions/7e152566-0ba7-49c2-acac-ebbb5becd265/providers/Microsoft.Web/locations/eastus2/managedApis/salesforce"
+                },
+                "servicebus": {
+                    "connectionId": "/subscriptions/7e152566-0ba7-49c2-acac-ebbb5becd265/resourceGroups/HCIntegrationRG-Test/providers/Microsoft.Web/connections/servicebus",
+                    "connectionName": "servicebus",
+                    "id": "/subscriptions/7e152566-0ba7-49c2-acac-ebbb5becd265/providers/Microsoft.Web/locations/eastus2/managedApis/servicebus"
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,136 @@
+{
+    "definition": {
+        "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+        "actions": {
+            "Get_blob_content_using_path": {
+                "inputs": {
+                    "host": {
+                        "connection": {
+                            "name": "@parameters('$connections')['azureblob']['connectionId']"
+                        }
+                    },
+                    "method": "get",
+                    "path": "/datasets/default/GetFileContentByPath",
+                    "queries": {
+                        "inferContentType": true,
+                        "path": "/hc-eim-filesystem-prod/Test_files/Marketing_Agencies/MediaSpend_ASalazar-B60609R602062J95613500-20210101-20211231.xlsx",
+                        "queryParametersSingleEncoded": true
+                    }
+                },
+                "runAfter": {},
+                "type": "ApiConnection"
+            },
+            "Get_blob_content_using_path_2": {
+                "inputs": {
+                    "host": {
+                        "connection": {
+                            "name": "@parameters('$connections')['azureblob']['connectionId']"
+                        }
+                    },
+                    "method": "get",
+                    "path": "/datasets/default/GetFileContentByPath",
+                    "queries": {
+                        "inferContentType": true,
+                        "path": "/hc-eim-filesystem-prod/Test_files/Marketing_Agencies/210212_HRCB_TelevisionReporting.xlsx",
+                        "queryParametersSingleEncoded": true
+                    }
+                },
+                "runAfter": {
+                    "Send_an_email_(V2)": [
+                        "Failed"
+                    ]
+                },
+                "type": "ApiConnection"
+            },
+            "Send_an_email_(V2)": {
+                "inputs": {
+                    "body": {
+                        "Attachments": [
+                            {
+                                "ContentBytes": "@{base64(body('Get_blob_content_using_path'))}",
+                                "Name": "MediaSpend_ASalazar-B60609R602062J95613500-20210101-20211231.xlsx"
+                            }
+                        ],
+                        "Body": "<p>Hi,<br>\n<br>\nThis is a test Email.</p>",
+                        "Subject": "DailyReport",
+                        "To": "Jreyes@hairclub.com; AgencyDataFeed@hairclub.com"
+                    },
+                    "host": {
+                        "connection": {
+                            "name": "@parameters('$connections')['office365_1']['connectionId']"
+                        }
+                    },
+                    "method": "post",
+                    "path": "/v2/Mail"
+                },
+                "runAfter": {
+                    "Get_blob_content_using_path": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "ApiConnection"
+            },
+            "Send_an_email_(V2)_2": {
+                "inputs": {
+                    "body": {
+                        "Attachments": [
+                            {
+                                "ContentBytes": "@{base64(body('Get_blob_content_using_path_2'))}",
+                                "Name": "210212_HRCB_TelevisionReporting.xlsx"
+                            }
+                        ],
+                        "Body": "<p>Hi,<br>\n<br>\nThis is a test Email..<br>\n<br>\n210212_HRCB_TelevisionReporting.xlsx</p>",
+                        "Subject": "DailyReport - 210212_HRCB_TelevisionReporting.xlsx",
+                        "To": "jreyes@hairclub.com; AgencyDataFeed@hairclub.com"
+                    },
+                    "host": {
+                        "connection": {
+                            "name": "@parameters('$connections')['office365_1']['connectionId']"
+                        }
+                    },
+                    "method": "post",
+                    "path": "/v2/Mail"
+                },
+                "runAfter": {
+                    "Get_blob_content_using_path_2": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "ApiConnection"
+            }
+        },
+        "contentVersion": "1.0.0.0",
+        "outputs": {},
+        "parameters": {
+            "$connections": {
+                "defaultValue": {},
+                "type": "Object"
+            }
+        },
+        "triggers": {
+            "manual": {
+                "inputs": {
+                    "method": "GET"
+                },
+                "kind": "Http",
+                "type": "Request"
+            }
+        }
+    },
+    "parameters": {
+        "$connections": {
+            "value": {
+                "azureblob": {
+                    "connectionId": "/subscriptions/7e152566-0ba7-49c2-acac-ebbb5becd265/resourceGroups/HCEIMProductionRSG/providers/Microsoft.Web/connections/azureblob",
+                    "connectionName": "azureblob",
+                    "id": "/subscriptions/7e152566-0ba7-49c2-acac-ebbb5becd265/providers/Microsoft.Web/locations/eastus2/managedApis/azureblob"
+                },
+                "office365_1": {
+                    "connectionId": "/subscriptions/7e152566-0ba7-49c2-acac-ebbb5becd265/resourceGroups/HCEIMProductionRSG/providers/Microsoft.Web/connections/office365-2",
+                    "connectionName": "office365-2",
+                    "id": "/subscriptions/7e152566-0ba7-49c2-acac-ebbb5becd265/providers/Microsoft.Web/locations/eastus2/managedApis/office365"
+                }
+            }
+        }
+    }
+}

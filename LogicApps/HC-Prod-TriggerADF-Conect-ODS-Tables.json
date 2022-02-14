@@ -1,0 +1,2579 @@
+{
+    "definition": {
+        "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+        "actions": {
+            "Execute_ODS_CNCT_datAppointmentDetail": {
+                "actions": {
+                    "CNCT_datAppointmentDetail_LastCreatedDate": {
+                        "inputs": {
+                            "body": {
+                                "query": "SELECT MAX (CreateDate) as CreateDate FROM ODS.CNCT_datAppointmentDetail"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['sqldw']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/datasets/default/query/sql"
+                        },
+                        "runAfter": {},
+                        "type": "ApiConnection"
+                    },
+                    "CNCT_datAppointmentDetail_LastUpdateDate": {
+                        "inputs": {
+                            "body": {
+                                "query": "SELECT MAX (LastUpdate) as LastUpdate FROM ODS.CNCT_datAppointmentDetail"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['sqldw']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/datasets/default/query/sql"
+                        },
+                        "runAfter": {
+                            "CNCT_datAppointmentDetail_LastCreatedDate": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    },
+                    "Execute_ODS_CNCT_datAppointmentDetail2": {
+                        "inputs": {
+                            "body": {
+                                "LARunId": "@{workflow().run.name}",
+                                "LastCreateDate": "@{replace(body('CNCT_datAppointmentDetail_LastCreatedDate')?['resultsets']?['Table1'][0]['CreateDate'], 'T', ' ')}",
+                                "LastUpdateDate": "@{replace(body('CNCT_datAppointmentDetail_LastUpdateDate')?['resultsets']?['Table1'][0]['LastUpdate'], 'T', ' ')}"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['azuredatafactory']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/subscriptions/@{encodeURIComponent('7e152566-0ba7-49c2-acac-ebbb5becd265')}/resourcegroups/@{encodeURIComponent('HCEIMProdRSG')}/providers/Microsoft.DataFactory/factories/@{encodeURIComponent('hc-eim-df-prod2')}/pipelines/@{encodeURIComponent('ODS_CNCT_datAppointmentDetail')}/CreateRun",
+                            "queries": {
+                                "x-ms-api-version": "2017-09-01-preview"
+                            }
+                        },
+                        "runAfter": {
+                            "CNCT_datAppointmentDetail_LastUpdateDate": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    }
+                },
+                "runAfter": {
+                    "ODS_CNCT_datAppointment": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "Scope"
+            },
+            "ODS_CNCT_ConnectLogs": {
+                "actions": {
+                    "CNCT_ConnectLogs_Date": {
+                        "inputs": {
+                            "body": {
+                                "query": "SELECT MAX (Date) as CreateDate FROM [ODS].[CNCT_ConnectLogs]"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['sqldw']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/datasets/default/query/sql"
+                        },
+                        "runAfter": {},
+                        "type": "ApiConnection"
+                    },
+                    "Execute_ODS_CNCT_ConnectLogs": {
+                        "inputs": {
+                            "body": {
+                                "LARunId": "@{workflow().run.name}",
+                                "LastCreatedDate": "@{replace(body('CNCT_ConnectLogs_Date')?['resultsets']?['Table1'][0]['CreateDate'], 'T', ' ')}"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['azuredatafactory']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/subscriptions/@{encodeURIComponent('7e152566-0ba7-49c2-acac-ebbb5becd265')}/resourcegroups/@{encodeURIComponent('HCEIMProdRSG')}/providers/Microsoft.DataFactory/factories/@{encodeURIComponent('hc-eim-df-prod2')}/pipelines/@{encodeURIComponent('ODS_CNCT_ConectLog')}/CreateRun",
+                            "queries": {
+                                "x-ms-api-version": "2017-09-01-preview"
+                            }
+                        },
+                        "runAfter": {
+                            "CNCT_ConnectLogs_Date": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    }
+                },
+                "runAfter": {
+                    "ODS_CNCT_datClient": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "Scope"
+            },
+            "ODS_CNCT_Gender": {
+                "actions": {
+                    "CNCT_Gender_LastCreatedDate": {
+                        "inputs": {
+                            "body": {
+                                "query": "SELECT MAX (CreateDate) as CreateDate FROM ODS.[CNCT_Gender]"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['sqldw']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/datasets/default/query/sql"
+                        },
+                        "runAfter": {},
+                        "type": "ApiConnection"
+                    },
+                    "CNCT_Gender_LastUpdateDate": {
+                        "inputs": {
+                            "body": {
+                                "query": "SELECT MAX (LastUpdate) as LastUpdate FROM ODS.[CNCT_Gender]"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['sqldw']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/datasets/default/query/sql"
+                        },
+                        "runAfter": {
+                            "CNCT_Gender_LastCreatedDate": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    },
+                    "Execute_ODS_CNCT_Gender": {
+                        "inputs": {
+                            "body": {
+                                "LARunId": "@{workflow().run.name}",
+                                "LastCreateDate": "@{replace(body('CNCT_Gender_LastCreatedDate')?['resultsets']?['Table1'][0]['CreateDate'], 'T', ' ')}",
+                                "LastUpdateDate": "@{replace(body('CNCT_Gender_LastUpdateDate')?['resultsets']?['Table1'][0]['LastUpdate'], 'T', ' ')}"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['azuredatafactory']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/subscriptions/@{encodeURIComponent('7e152566-0ba7-49c2-acac-ebbb5becd265')}/resourcegroups/@{encodeURIComponent('HCEIMProdRSG')}/providers/Microsoft.DataFactory/factories/@{encodeURIComponent('hc-eim-df-prod2')}/pipelines/@{encodeURIComponent('ODS_CNCT_Gender')}/CreateRun",
+                            "queries": {
+                                "x-ms-api-version": "2017-09-01-preview"
+                            }
+                        },
+                        "runAfter": {
+                            "CNCT_Gender_LastUpdateDate": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    }
+                },
+                "runAfter": {
+                    "ODS_CNCT_lkpRevenueGroup": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "Scope"
+            },
+            "ODS_CNCT_cfgAccumulator": {
+                "actions": {
+                    "CNCT_cfgAccumulator_LastCreatedDate": {
+                        "inputs": {
+                            "body": {
+                                "query": "SELECT MAX (CreateDate) as CreateDate FROM ODS.CNCT_cfgAccumulator"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['sqldw']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/datasets/default/query/sql"
+                        },
+                        "runAfter": {},
+                        "type": "ApiConnection"
+                    },
+                    "CNCT_cfgAccumulator_LastUpdateDate": {
+                        "inputs": {
+                            "body": {
+                                "query": "SELECT MAX (LastUpdate) as LastUpdate FROM ODS.CNCT_cfgAccumulator"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['sqldw']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/datasets/default/query/sql"
+                        },
+                        "runAfter": {
+                            "CNCT_cfgAccumulator_LastCreatedDate": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    },
+                    "Execute_ODS_CNCT_cfgAccumulator": {
+                        "inputs": {
+                            "body": {
+                                "LARunId": "@{workflow().run.name}",
+                                "LastCreateDate": "@{replace(body('CNCT_cfgAccumulator_LastCreatedDate')?['resultsets']?['Table1'][0]['CreateDate'], 'T', ' ')}",
+                                "LastUpdateDate": "@{replace(body('CNCT_cfgAccumulator_LastUpdateDate')?['resultsets']?['Table1'][0]['LastUpdate'], 'T', ' ')}"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['azuredatafactory']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/subscriptions/@{encodeURIComponent('7e152566-0ba7-49c2-acac-ebbb5becd265')}/resourcegroups/@{encodeURIComponent('HCEIMProdRSG')}/providers/Microsoft.DataFactory/factories/@{encodeURIComponent('hc-eim-df-prod2')}/pipelines/@{encodeURIComponent('ODS_CNCT_cfgAccumulator')}/CreateRun",
+                            "queries": {
+                                "x-ms-api-version": "2017-09-01-preview"
+                            }
+                        },
+                        "runAfter": {
+                            "CNCT_cfgAccumulator_LastUpdateDate": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    }
+                },
+                "runAfter": {
+                    "ODS_CNCT_cfgConfigurationCenter": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "Scope"
+            },
+            "ODS_CNCT_cfgCenter": {
+                "actions": {
+                    "CNCT_cfgCenter_LastCreatedDate": {
+                        "inputs": {
+                            "body": {
+                                "query": "SELECT MAX (CreateDate) as CreateDate FROM ODS.CNCT_Center"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['sqldw']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/datasets/default/query/sql"
+                        },
+                        "runAfter": {},
+                        "type": "ApiConnection"
+                    },
+                    "CNCT_cfgCenter_LastUpdateDate": {
+                        "inputs": {
+                            "body": {
+                                "query": "SELECT MAX (LastUpdate) as LastUpdate FROM ODS.CNCT_Center"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['sqldw']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/datasets/default/query/sql"
+                        },
+                        "runAfter": {
+                            "CNCT_cfgCenter_LastCreatedDate": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    },
+                    "Execute_ODS_CNCT_cfgCenter": {
+                        "inputs": {
+                            "body": {
+                                "LARunId": "@{workflow().run.name}",
+                                "LastCreateDate": "@{replace(body('CNCT_cfgCenter_LastCreatedDate')?['resultsets']?['Table1'][0]['CreateDate'], 'T', ' ')}",
+                                "LastUpdateDate": "@{replace(body('CNCT_cfgCenter_LastUpdateDate')?['resultsets']?['Table1'][0]['LastUpdate'], 'T', ' ')}"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['azuredatafactory']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/subscriptions/@{encodeURIComponent('7e152566-0ba7-49c2-acac-ebbb5becd265')}/resourcegroups/@{encodeURIComponent('HCEIMProdRSG')}/providers/Microsoft.DataFactory/factories/@{encodeURIComponent('hc-eim-df-prod2')}/pipelines/@{encodeURIComponent('ODS_CNCT_Center')}/CreateRun",
+                            "queries": {
+                                "x-ms-api-version": "2017-09-01-preview"
+                            }
+                        },
+                        "runAfter": {
+                            "CNCT_cfgCenter_LastUpdateDate": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    }
+                },
+                "runAfter": {
+                    "ODS_CNCT_lkpTimeZone": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "Scope"
+            },
+            "ODS_CNCT_cfgCenterManagementArea": {
+                "actions": {
+                    "CNCT_cfgCenterManagementArea_LastCreatedDate": {
+                        "inputs": {
+                            "body": {
+                                "query": "SELECT MAX (CreateDate) as CreateDate FROM ODS.CNCT_cfgCenterManagementArea"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['sqldw']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/datasets/default/query/sql"
+                        },
+                        "runAfter": {},
+                        "type": "ApiConnection"
+                    },
+                    "CNCT_cfgCenterManagementArea_LastUpdateDate": {
+                        "inputs": {
+                            "body": {
+                                "query": "SELECT MAX (LastUpdate) as LastUpdate FROM ODS.CNCT_cfgCenterManagementArea"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['sqldw']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/datasets/default/query/sql"
+                        },
+                        "runAfter": {
+                            "CNCT_cfgCenterManagementArea_LastCreatedDate": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    },
+                    "Execute_ODS_CNCT_cfgCenterManagementArea": {
+                        "inputs": {
+                            "body": {
+                                "LARunId": "@{workflow().run.name}",
+                                "LastCreateDate": "@{replace(body('CNCT_cfgCenterManagementArea_LastCreatedDate')?['resultsets']?['Table1'][0]['CreateDate'], 'T', ' ')}",
+                                "LastUpdateDate": "@{replace(body('CNCT_cfgCenterManagementArea_LastUpdateDate')?['resultsets']?['Table1'][0]['LastUpdate'], 'T', ' ')}"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['azuredatafactory']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/subscriptions/@{encodeURIComponent('7e152566-0ba7-49c2-acac-ebbb5becd265')}/resourcegroups/@{encodeURIComponent('HCEIMProdRSG')}/providers/Microsoft.DataFactory/factories/@{encodeURIComponent('hc-eim-df-prod2')}/pipelines/@{encodeURIComponent('ODS_CNCT_cfgCenterManagementArea')}/CreateRun",
+                            "queries": {
+                                "x-ms-api-version": "2017-09-01-preview"
+                            }
+                        },
+                        "runAfter": {
+                            "CNCT_cfgCenterManagementArea_LastUpdateDate": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    }
+                },
+                "runAfter": {
+                    "ODS_CNCT_cfgCenter": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "Scope"
+            },
+            "ODS_CNCT_cfgConfigurationCenter": {
+                "actions": {
+                    "CNCT_cfgConfigurationCenter_LastCreatedDate": {
+                        "inputs": {
+                            "body": {
+                                "query": "SELECT MAX (CreateDate) as CreateDate FROM ODS.CNCT_cfgConfigurationCenter"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['sqldw']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/datasets/default/query/sql"
+                        },
+                        "runAfter": {},
+                        "type": "ApiConnection"
+                    },
+                    "CNCT_cfgConfigurationCenter_LastUpdateDate": {
+                        "inputs": {
+                            "body": {
+                                "query": "SELECT MAX (LastUpdate) as LastUpdate FROM ODS.CNCT_cfgConfigurationCenter"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['sqldw']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/datasets/default/query/sql"
+                        },
+                        "runAfter": {
+                            "CNCT_cfgConfigurationCenter_LastCreatedDate": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    },
+                    "Execute_ODS_CNCT_cfgConfigurationCenter": {
+                        "inputs": {
+                            "body": {
+                                "LARunId": "@{workflow().run.name}",
+                                "LastCreateDate": "@{replace(body('CNCT_cfgConfigurationCenter_LastCreatedDate')?['resultsets']?['Table1'][0]['CreateDate'], 'T', ' ')}",
+                                "LastUpdateDate": "@{replace(body('CNCT_cfgConfigurationCenter_LastUpdateDate')?['resultsets']?['Table1'][0]['LastUpdate'], 'T', ' ')}"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['azuredatafactory']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/subscriptions/@{encodeURIComponent('7e152566-0ba7-49c2-acac-ebbb5becd265')}/resourcegroups/@{encodeURIComponent('HCEIMProdRSG')}/providers/Microsoft.DataFactory/factories/@{encodeURIComponent('hc-eim-df-prod2')}/pipelines/@{encodeURIComponent('ODS_CNCT_cfgConfigurationCenter')}/CreateRun",
+                            "queries": {
+                                "x-ms-api-version": "2017-09-01-preview"
+                            }
+                        },
+                        "runAfter": {
+                            "CNCT_cfgConfigurationCenter_LastUpdateDate": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    }
+                },
+                "runAfter": {
+                    "ODS_CNCT_lkpSalesCodeDepartment": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "Scope"
+            },
+            "ODS_CNCT_cfgMembership": {
+                "actions": {
+                    "cfgMembership_LastCreatedDate": {
+                        "inputs": {
+                            "body": {
+                                "query": "SELECT MAX (CreateDate) as CreateDate FROM ODS.[CNCT_cfgMembership]"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['sqldw']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/datasets/default/query/sql"
+                        },
+                        "runAfter": {},
+                        "type": "ApiConnection"
+                    },
+                    "cfgMembership_LastUpdateDate": {
+                        "inputs": {
+                            "body": {
+                                "query": "SELECT MAX (LastUpdate) as LastUpdate FROM ODS.[CNCT_cfgMembership]"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['sqldw']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/datasets/default/query/sql"
+                        },
+                        "runAfter": {
+                            "cfgMembership_LastCreatedDate": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    },
+                    "execute_ODS_CNCT_cfgMembership": {
+                        "inputs": {
+                            "body": {
+                                "LARunId": "@{workflow().run.name}",
+                                "LastCreateDate": "@{replace(body('cfgMembership_LastCreatedDate')?['resultsets']?['Table1'][0]['CreateDate'], 'T', ' ')}",
+                                "LastUpdateDate": "@{replace(body('cfgMembership_LastUpdateDate')?['resultsets']?['Table1'][0]['LastUpdate'], 'T', ' ')}"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['azuredatafactory']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/subscriptions/@{encodeURIComponent('7e152566-0ba7-49c2-acac-ebbb5becd265')}/resourcegroups/@{encodeURIComponent('HCEIMProdRSG')}/providers/Microsoft.DataFactory/factories/@{encodeURIComponent('hc-eim-df-prod2')}/pipelines/@{encodeURIComponent('ODS_CNCT_cfgMembership')}/CreateRun",
+                            "queries": {
+                                "x-ms-api-version": "2017-09-01-preview"
+                            }
+                        },
+                        "runAfter": {
+                            "cfgMembership_LastUpdateDate": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    }
+                },
+                "runAfter": {
+                    "ODS_CNCT_datClientMembership": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "Scope"
+            },
+            "ODS_CNCT_cfgMembershipPromotion": {
+                "actions": {
+                    "CNCT_cfgMembershipPromotion_LastCreatedDate": {
+                        "inputs": {
+                            "body": {
+                                "query": "SELECT MAX (CreateDate) as CreateDate FROM ODS.CNCT_cfgMembershipPromotion"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['sqldw']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/datasets/default/query/sql"
+                        },
+                        "runAfter": {},
+                        "type": "ApiConnection"
+                    },
+                    "CNCT_cfgMembershipPromotion_LastUpdateDate": {
+                        "inputs": {
+                            "body": {
+                                "query": "SELECT MAX (LastUpdate) as LastUpdate FROM ODS.CNCT_cfgMembershipPromotion"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['sqldw']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/datasets/default/query/sql"
+                        },
+                        "runAfter": {
+                            "CNCT_cfgMembershipPromotion_LastCreatedDate": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    },
+                    "Execute_ODS_CNCT_cfgMembershipPromotion": {
+                        "inputs": {
+                            "body": {
+                                "LARunId": "@{workflow().run.name}",
+                                "LastCreateDate": "@{replace(body('CNCT_cfgMembershipPromotion_LastCreatedDate')?['resultsets']?['Table1'][0]['CreateDate'], 'T', ' ')}",
+                                "LastUpdateDate": "@{replace(body('CNCT_cfgMembershipPromotion_LastUpdateDate')?['resultsets']?['Table1'][0]['LastUpdate'], 'T', ' ')}"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['azuredatafactory']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/subscriptions/@{encodeURIComponent('7e152566-0ba7-49c2-acac-ebbb5becd265')}/resourcegroups/@{encodeURIComponent('HCEIMProdRSG')}/providers/Microsoft.DataFactory/factories/@{encodeURIComponent('hc-eim-df-prod2')}/pipelines/@{encodeURIComponent('ODS_CNCT_cfgMembershipPromotion')}/CreateRun",
+                            "queries": {
+                                "x-ms-api-version": "2017-09-01-preview"
+                            }
+                        },
+                        "runAfter": {
+                            "CNCT_cfgMembershipPromotion_LastUpdateDate": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    }
+                },
+                "runAfter": {
+                    "ODS_CNCT_datEmployee": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "Scope"
+            },
+            "ODS_CNCT_cfgSalesCode": {
+                "actions": {
+                    "CNCT_cfgSalesCode_LastCreatedDate": {
+                        "inputs": {
+                            "body": {
+                                "query": "SELECT MAX (CreateDate) as CreateDate FROM ODS.[CNCT_cfgSalesCode]"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['sqldw']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/datasets/default/query/sql"
+                        },
+                        "runAfter": {},
+                        "type": "ApiConnection"
+                    },
+                    "CNCT_cfgSalesCode_LastUpdateDate": {
+                        "inputs": {
+                            "body": {
+                                "query": "SELECT MAX (LastUpdate) as LastUpdate FROM ODS.[CNCT_cfgSalesCode]"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['sqldw']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/datasets/default/query/sql"
+                        },
+                        "runAfter": {
+                            "CNCT_cfgSalesCode_LastCreatedDate": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    },
+                    "Execute_ODS_CNCT_cfgSalesCode": {
+                        "inputs": {
+                            "body": {
+                                "LARunId": "@{workflow().run.name}",
+                                "LastCreateDate": "@{replace(body('CNCT_cfgSalesCode_LastCreatedDate')?['resultsets']?['Table1'][0]['CreateDate'], 'T', ' ')}",
+                                "LastUpdateDate": "@{replace(body('CNCT_cfgSalesCode_LastUpdateDate')?['resultsets']?['Table1'][0]['LastUpdate'], 'T', ' ')}"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['azuredatafactory']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/subscriptions/@{encodeURIComponent('7e152566-0ba7-49c2-acac-ebbb5becd265')}/resourcegroups/@{encodeURIComponent('HCEIMProdRSG')}/providers/Microsoft.DataFactory/factories/@{encodeURIComponent('hc-eim-df-prod2')}/pipelines/@{encodeURIComponent('ODS_CNCT_cfgSalesCode')}/CreateRun",
+                            "queries": {
+                                "x-ms-api-version": "2017-09-01-preview"
+                            }
+                        },
+                        "runAfter": {
+                            "CNCT_cfgSalesCode_LastUpdateDate": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    }
+                },
+                "runAfter": {
+                    "ODS_CNCT_ConnectLogs": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "Scope"
+            },
+            "ODS_CNCT_cfgVendor": {
+                "actions": {
+                    "CNCT_cfgVendor_LastCreatedDate": {
+                        "inputs": {
+                            "body": {
+                                "query": "SELECT MAX (CreateDate) as CreateDate FROM ODS.[CNCT_cfgVendor]"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['sqldw']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/datasets/default/query/sql"
+                        },
+                        "runAfter": {},
+                        "type": "ApiConnection"
+                    },
+                    "CNCT_cfgVendor_LastUpdateDate": {
+                        "inputs": {
+                            "body": {
+                                "query": "SELECT MAX (LastUpdate) as LastUpdate FROM ODS.[CNCT_cfgVendor]"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['sqldw']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/datasets/default/query/sql"
+                        },
+                        "runAfter": {
+                            "CNCT_cfgVendor_LastCreatedDate": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    },
+                    "Execute_ODS_CNCT_cfgVendor": {
+                        "inputs": {
+                            "body": {
+                                "LARunId": "@{workflow().run.name}",
+                                "LastCreateDate": "@{replace(body('CNCT_cfgVendor_LastCreatedDate')?['resultsets']?['Table1'][0]['CreateDate'], 'T', ' ')}",
+                                "LastUpdateDate": "@{replace(body('CNCT_cfgVendor_LastUpdateDate')?['resultsets']?['Table1'][0]['LastUpdate'], 'T', ' ')}"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['azuredatafactory']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/subscriptions/@{encodeURIComponent('7e152566-0ba7-49c2-acac-ebbb5becd265')}/resourcegroups/@{encodeURIComponent('HCEIMProdRSG')}/providers/Microsoft.DataFactory/factories/@{encodeURIComponent('hc-eim-df-prod2')}/pipelines/@{encodeURIComponent('ODS_CNCT_cfgVendor')}/CreateRun",
+                            "queries": {
+                                "x-ms-api-version": "2017-09-01-preview"
+                            }
+                        },
+                        "runAfter": {
+                            "CNCT_cfgVendor_LastUpdateDate": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    }
+                },
+                "runAfter": {
+                    "ODS_CNCT_lkpSalesCodeType": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "Scope"
+            },
+            "ODS_CNCT_datAccumulatorAdjustment": {
+                "actions": {
+                    "CNCT_datAccumulatorAdjustment_LastCreatedDate": {
+                        "inputs": {
+                            "body": {
+                                "query": "SELECT MAX (CreateDate) as CreateDate FROM ODS.CNCT_datAccumulatorAdjustment"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['sqldw']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/datasets/default/query/sql"
+                        },
+                        "runAfter": {},
+                        "type": "ApiConnection"
+                    },
+                    "CNCT_datAccumulatorAdjustment_LastUpdateDate": {
+                        "inputs": {
+                            "body": {
+                                "query": "SELECT MAX (LastUpdate) as LastUpdate FROM ODS.CNCT_datAccumulatorAdjustment"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['sqldw']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/datasets/default/query/sql"
+                        },
+                        "runAfter": {
+                            "CNCT_datAccumulatorAdjustment_LastCreatedDate": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    },
+                    "Execute_ODS_CNCT_datAccumulatorAdjustment": {
+                        "inputs": {
+                            "body": {
+                                "LARunId": "@{workflow().run.name}",
+                                "LastCreateDate": "@{replace(body('CNCT_datAccumulatorAdjustment_LastCreatedDate')?['resultsets']?['Table1'][0]['CreateDate'], 'T', ' ')}",
+                                "LastUpdateDate": "@{replace(body('CNCT_datAccumulatorAdjustment_LastUpdateDate')?['resultsets']?['Table1'][0]['LastUpdate'], 'T', ' ')}"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['azuredatafactory']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/subscriptions/@{encodeURIComponent('7e152566-0ba7-49c2-acac-ebbb5becd265')}/resourcegroups/@{encodeURIComponent('HCEIMProdRSG')}/providers/Microsoft.DataFactory/factories/@{encodeURIComponent('hc-eim-df-prod2')}/pipelines/@{encodeURIComponent('ODS_CNCT_datAccumulatorAdjustment')}/CreateRun",
+                            "queries": {
+                                "x-ms-api-version": "2017-09-01-preview"
+                            }
+                        },
+                        "runAfter": {
+                            "CNCT_datAccumulatorAdjustment_LastUpdateDate": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    }
+                },
+                "runAfter": {
+                    "ODS_CNCT_lkpGeneralLedger": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "Scope"
+            },
+            "ODS_CNCT_datAppointment": {
+                "actions": {
+                    "CNCT_datAppointment_LastCreatedDate": {
+                        "inputs": {
+                            "body": {
+                                "query": "SELECT MAX (CreateDate) as CreateDate FROM ODS.CNCT_datAppointment"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['sqldw']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/datasets/default/query/sql"
+                        },
+                        "runAfter": {},
+                        "type": "ApiConnection"
+                    },
+                    "CNCT_datAppointment_LastUpdateDate": {
+                        "inputs": {
+                            "body": {
+                                "query": "SELECT MAX (LastUpdate) as LastUpdate FROM ODS.CNCT_datAppointment"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['sqldw']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/datasets/default/query/sql"
+                        },
+                        "runAfter": {
+                            "CNCT_datAppointment_LastCreatedDate": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    },
+                    "Execute_ODS_CNCT_datAppointment": {
+                        "inputs": {
+                            "body": {
+                                "LARunId": "@{workflow().run.name}",
+                                "LastCreateDate": "@{replace(body('CNCT_datAppointment_LastCreatedDate')?['resultsets']?['Table1'][0]['CreateDate'], 'T', ' ')}",
+                                "LastUpdateDate": "@{replace(body('CNCT_datAppointment_LastUpdateDate')?['resultsets']?['Table1'][0]['LastUpdate'], 'T', ' ')}"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['azuredatafactory']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/subscriptions/@{encodeURIComponent('7e152566-0ba7-49c2-acac-ebbb5becd265')}/resourcegroups/@{encodeURIComponent('HCEIMProdRSG')}/providers/Microsoft.DataFactory/factories/@{encodeURIComponent('hc-eim-df-prod2')}/pipelines/@{encodeURIComponent('ODS_CNCT_datAppointment')}/CreateRun",
+                            "queries": {
+                                "x-ms-api-version": "2017-09-01-preview"
+                            }
+                        },
+                        "runAfter": {
+                            "CNCT_datAppointment_LastUpdateDate": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    }
+                },
+                "runAfter": {
+                    "ODS_CNCT_datAccumulatorAdjustment": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "Scope"
+            },
+            "ODS_CNCT_datClient": {
+                "actions": {
+                    "CNCT_datClient_LastCreatedDate": {
+                        "inputs": {
+                            "body": {
+                                "query": "SELECT MAX (CreateDate) as CreateDate FROM ODS.[CNCT_datClient]"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['sqldw']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/datasets/default/query/sql"
+                        },
+                        "runAfter": {},
+                        "type": "ApiConnection"
+                    },
+                    "CNCT_datClient_LastUpdateDate": {
+                        "inputs": {
+                            "body": {
+                                "query": "SELECT MAX (LastUpdate) as LastUpdate FROM ODS.CNCT_datClient"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['sqldw']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/datasets/default/query/sql"
+                        },
+                        "runAfter": {
+                            "CNCT_datClient_LastCreatedDate": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    },
+                    "Execute_ODS_CNCT_datClient": {
+                        "inputs": {
+                            "body": {
+                                "LARunId": "@{workflow().run.name}",
+                                "LastCreateDate": "@{replace(body('CNCT_datClient_LastCreatedDate')?['resultsets']?['Table1'][0]['CreateDate'], 'T', ' ')}",
+                                "LastUpdateDate": "@{replace(body('CNCT_datClient_LastUpdateDate')?['resultsets']?['Table1'][0]['LastUpdate'], 'T', ' ')}"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['azuredatafactory']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/subscriptions/@{encodeURIComponent('7e152566-0ba7-49c2-acac-ebbb5becd265')}/resourcegroups/@{encodeURIComponent('HCEIMProdRSG')}/providers/Microsoft.DataFactory/factories/@{encodeURIComponent('hc-eim-df-prod2')}/pipelines/@{encodeURIComponent('ODS_CNCT_datClient')}/CreateRun",
+                            "queries": {
+                                "x-ms-api-version": "2017-09-01-preview"
+                            }
+                        },
+                        "runAfter": {
+                            "CNCT_datClient_LastUpdateDate": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    }
+                },
+                "runAfter": {
+                    "ODS_CNCT_cfgMembership": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "Scope"
+            },
+            "ODS_CNCT_datClientMembership": {
+                "actions": {
+                    "ClientMembership_LastCreatedDate": {
+                        "inputs": {
+                            "body": {
+                                "query": "SELECT MAX (CreateDate) as CreateDate FROM ODS.[CNCT_datClientMembership]"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['sqldw']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/datasets/default/query/sql"
+                        },
+                        "runAfter": {},
+                        "type": "ApiConnection"
+                    },
+                    "ClientMembership_LastUpdateDate": {
+                        "inputs": {
+                            "body": {
+                                "query": "SELECT MAX (LastUpdate) as LastUpdate FROM ODS.[CNCT_datClientMembership]"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['sqldw']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/datasets/default/query/sql"
+                        },
+                        "runAfter": {
+                            "ClientMembership_LastCreatedDate": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    },
+                    "Execute_ODS_CNCT_DatClientMembership": {
+                        "inputs": {
+                            "body": {
+                                "LARunId": "@{workflow().run.name}",
+                                "LastCreateDate": "@{replace(body('ClientMembership_LastCreatedDate')?['resultsets']?['Table1'][0]['CreateDate'], 'T', ' ')}",
+                                "LastUpdateDate": "@{replace(body('ClientMembership_LastUpdateDate')?['resultsets']?['Table1'][0]['LastUpdate'], 'T', ' ')}"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['azuredatafactory']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/subscriptions/@{encodeURIComponent('7e152566-0ba7-49c2-acac-ebbb5becd265')}/resourcegroups/@{encodeURIComponent('HCEIMProdRSG')}/providers/Microsoft.DataFactory/factories/@{encodeURIComponent('hc-eim-df-prod2')}/pipelines/@{encodeURIComponent('ODS_CNCT_DatClientMembership')}/CreateRun",
+                            "queries": {
+                                "x-ms-api-version": "2017-09-01-preview"
+                            }
+                        },
+                        "runAfter": {
+                            "ClientMembership_LastUpdateDate": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    }
+                },
+                "runAfter": {},
+                "type": "Scope"
+            },
+            "ODS_CNCT_datEmployee": {
+                "actions": {
+                    "CNCT_datEmployee_LastCreatedDate": {
+                        "inputs": {
+                            "body": {
+                                "query": "SELECT MAX (CreateDate) as CreateDate FROM ODS.CNCT_datEmployee"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['sqldw']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/datasets/default/query/sql"
+                        },
+                        "runAfter": {},
+                        "type": "ApiConnection"
+                    },
+                    "CNCT_datEmployee_LastUpdateDate": {
+                        "inputs": {
+                            "body": {
+                                "query": "SELECT MAX (LastUpdate) as LastUpdate FROM ODS.CNCT_datEmployee"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['sqldw']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/datasets/default/query/sql"
+                        },
+                        "runAfter": {
+                            "CNCT_datEmployee_LastCreatedDate": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    },
+                    "Execute_ODS_CNCT_datEmployee": {
+                        "inputs": {
+                            "body": {
+                                "LARunId": "@{workflow().run.name}",
+                                "LastCreateDate": "@{replace(body('CNCT_datEmployee_LastCreatedDate')?['resultsets']?['Table1'][0]['CreateDate'], 'T', ' ')}",
+                                "LastUpdateDate": "@{replace(body('CNCT_datEmployee_LastUpdateDate')?['resultsets']?['Table1'][0]['LastUpdate'], 'T', ' ')}"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['azuredatafactory']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/subscriptions/@{encodeURIComponent('7e152566-0ba7-49c2-acac-ebbb5becd265')}/resourcegroups/@{encodeURIComponent('HCEIMProdRSG')}/providers/Microsoft.DataFactory/factories/@{encodeURIComponent('hc-eim-df-prod2')}/pipelines/@{encodeURIComponent('ODS_CNCT_datEmployee')}/CreateRun",
+                            "queries": {
+                                "x-ms-api-version": "2017-09-01-preview"
+                            }
+                        },
+                        "runAfter": {
+                            "CNCT_datEmployee_LastUpdateDate": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    }
+                },
+                "runAfter": {
+                    "ODS_CNCT_datSalesOrder": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "Scope"
+            },
+            "ODS_CNCT_datSalesOrder": {
+                "actions": {
+                    "CNCT_datSalesOrder_LastCreatedDate": {
+                        "inputs": {
+                            "body": {
+                                "query": "SELECT MAX (CreateDate) as CreateDate FROM ODS.CNCT_datSalesOrder"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['sqldw']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/datasets/default/query/sql"
+                        },
+                        "runAfter": {},
+                        "type": "ApiConnection"
+                    },
+                    "CNCT_datSalesOrder_LastUpdateDate": {
+                        "inputs": {
+                            "body": {
+                                "query": "SELECT MAX (LastUpdate) as LastUpdate FROM ODS.CNCT_datSalesOrder"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['sqldw']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/datasets/default/query/sql"
+                        },
+                        "runAfter": {
+                            "CNCT_datSalesOrder_LastCreatedDate": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    },
+                    "Execute_ODS_CNCT_datSalesOrder": {
+                        "inputs": {
+                            "body": {
+                                "LARunId": "@{workflow().run.name}",
+                                "LastCreateDate": "@{replace(body('CNCT_datSalesOrder_LastCreatedDate')?['resultsets']?['Table1'][0]['CreateDate'], 'T', ' ')}",
+                                "LastUpdateDate": "@{replace(body('CNCT_datSalesOrder_LastUpdateDate')?['resultsets']?['Table1'][0]['LastUpdate'], 'T', ' ')}"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['azuredatafactory']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/subscriptions/@{encodeURIComponent('7e152566-0ba7-49c2-acac-ebbb5becd265')}/resourcegroups/@{encodeURIComponent('HCEIMProdRSG')}/providers/Microsoft.DataFactory/factories/@{encodeURIComponent('hc-eim-df-prod2')}/pipelines/@{encodeURIComponent('ODS_CNCT_datSalesOrder')}/CreateRun",
+                            "queries": {
+                                "x-ms-api-version": "2017-09-01-preview"
+                            }
+                        },
+                        "runAfter": {
+                            "CNCT_datSalesOrder_LastUpdateDate": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    }
+                },
+                "runAfter": {
+                    "ODS_CNCT_datSalesOrderDetail": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "Scope"
+            },
+            "ODS_CNCT_datSalesOrderDetail": {
+                "actions": {
+                    "CNCT_datSalesOrderDetail_LastCreatedDate": {
+                        "inputs": {
+                            "body": {
+                                "query": "SELECT MAX (CreateDate) as CreateDate FROM ODS.CNCT_datSalesOrderDetail"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['sqldw']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/datasets/default/query/sql"
+                        },
+                        "runAfter": {},
+                        "type": "ApiConnection"
+                    },
+                    "CNCT_datSalesOrderDetail_LastUpdateDate": {
+                        "inputs": {
+                            "body": {
+                                "query": "SELECT MAX (LastUpdate) as LastUpdate FROM ODS.CNCT_datSalesOrderDetail"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['sqldw']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/datasets/default/query/sql"
+                        },
+                        "runAfter": {
+                            "CNCT_datSalesOrderDetail_LastCreatedDate": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    },
+                    "Execute_ODS_CNCT_datSalesOrderDetail": {
+                        "inputs": {
+                            "body": {
+                                "LARunId": "@{workflow().run.name}",
+                                "LastCreateDate": "@{replace(body('CNCT_datSalesOrderDetail_LastCreatedDate')?['resultsets']?['Table1'][0]['CreateDate'], 'T', ' ')}",
+                                "LastUpdateDate": "@{replace(body('CNCT_datSalesOrderDetail_LastUpdateDate')?['resultsets']?['Table1'][0]['LastUpdate'], 'T', ' ')}"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['azuredatafactory']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/subscriptions/@{encodeURIComponent('7e152566-0ba7-49c2-acac-ebbb5becd265')}/resourcegroups/@{encodeURIComponent('HCEIMProdRSG')}/providers/Microsoft.DataFactory/factories/@{encodeURIComponent('hc-eim-df-prod2')}/pipelines/@{encodeURIComponent('ODS_CNCT_datSalesOrderDetail')}/CreateRun",
+                            "queries": {
+                                "x-ms-api-version": "2017-09-01-preview"
+                            }
+                        },
+                        "runAfter": {
+                            "CNCT_datSalesOrderDetail_LastUpdateDate": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    }
+                },
+                "runAfter": {
+                    "ODS_CNCT_lkpBusinessSegment": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "Scope"
+            },
+            "ODS_CNCT_lkpAccumulatorActionType": {
+                "actions": {
+                    "CNCT_lkpAccumulatorActionType_LastCreatedDate": {
+                        "inputs": {
+                            "body": {
+                                "query": "SELECT MAX (CreateDate) as CreateDate FROM ODS.CNCT_lkpAccumulatorActionType"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['sqldw']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/datasets/default/query/sql"
+                        },
+                        "runAfter": {},
+                        "type": "ApiConnection"
+                    },
+                    "CNCT_lkpAccumulatorActionType_LastUpdateDate": {
+                        "inputs": {
+                            "body": {
+                                "query": "SELECT MAX (LastUpdate) as LastUpdate FROM ODS.CNCT_lkpAccumulatorActionType"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['sqldw']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/datasets/default/query/sql"
+                        },
+                        "runAfter": {
+                            "CNCT_lkpAccumulatorActionType_LastCreatedDate": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    },
+                    "Execute_ODS_CNCT_lkpAccumulatorActionType": {
+                        "inputs": {
+                            "body": {
+                                "LARunId": "@{workflow().run.name}",
+                                "LastCreateDate": "@{replace(body('CNCT_lkpAccumulatorActionType_LastCreatedDate')?['resultsets']?['Table1'][0]['CreateDate'], 'T', ' ')}",
+                                "LastUpdateDate": "@{replace(body('CNCT_lkpAccumulatorActionType_LastUpdateDate')?['resultsets']?['Table1'][0]['LastUpdate'], 'T', ' ')}"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['azuredatafactory']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/subscriptions/@{encodeURIComponent('7e152566-0ba7-49c2-acac-ebbb5becd265')}/resourcegroups/@{encodeURIComponent('HCEIMProdRSG')}/providers/Microsoft.DataFactory/factories/@{encodeURIComponent('hc-eim-df-prod2')}/pipelines/@{encodeURIComponent('ODS_CNCT_lkpAccumulatorActionType')}/CreateRun",
+                            "queries": {
+                                "x-ms-api-version": "2017-09-01-preview"
+                            }
+                        },
+                        "runAfter": {
+                            "CNCT_lkpAccumulatorActionType_LastUpdateDate": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    }
+                },
+                "runAfter": {
+                    "ODS_CNCT_lkpAccumulatorDataType": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "Scope"
+            },
+            "ODS_CNCT_lkpAccumulatorAdjustmentType": {
+                "actions": {
+                    "CNCT_lkpAccumulatorAdjustmentType_LastCreatedDate": {
+                        "inputs": {
+                            "body": {
+                                "query": "SELECT MAX (CreateDate) as CreateDate FROM ODS.CNCT_lkpAccumulatorAdjustmentType"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['sqldw']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/datasets/default/query/sql"
+                        },
+                        "runAfter": {},
+                        "type": "ApiConnection"
+                    },
+                    "CNCT_lkpAccumulatorAdjustmentType_LastUpdateDate": {
+                        "inputs": {
+                            "body": {
+                                "query": "SELECT MAX (LastUpdate) as LastUpdate FROM ODS.CNCT_lkpAccumulatorAdjustmentType"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['sqldw']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/datasets/default/query/sql"
+                        },
+                        "runAfter": {
+                            "CNCT_lkpAccumulatorAdjustmentType_LastCreatedDate": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    },
+                    "Execute_ODS_CNCT_lkpAccumulatorAdjustmentType": {
+                        "inputs": {
+                            "body": {
+                                "LARunId": "@{workflow().run.name}",
+                                "LastCreateDate": "@{replace(body('CNCT_lkpAccumulatorAdjustmentType_LastCreatedDate')?['resultsets']?['Table1'][0]['CreateDate'], 'T', ' ')}",
+                                "LastUpdateDate": "@{replace(body('CNCT_lkpAccumulatorAdjustmentType_LastUpdateDate')?['resultsets']?['Table1'][0]['LastUpdate'], 'T', ' ')}"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['azuredatafactory']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/subscriptions/@{encodeURIComponent('7e152566-0ba7-49c2-acac-ebbb5becd265')}/resourcegroups/@{encodeURIComponent('HCEIMProdRSG')}/providers/Microsoft.DataFactory/factories/@{encodeURIComponent('hc-eim-df-prod2')}/pipelines/@{encodeURIComponent('ODS_CNCT_lkpAccumulatorAdjustmentType')}/CreateRun",
+                            "queries": {
+                                "x-ms-api-version": "2017-09-01-preview"
+                            }
+                        },
+                        "runAfter": {
+                            "CNCT_lkpAccumulatorAdjustmentType_LastUpdateDate": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    }
+                },
+                "runAfter": {
+                    "ODS_CNCT_lkpAccumulatorActionType": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "Scope"
+            },
+            "ODS_CNCT_lkpAccumulatorDataType": {
+                "actions": {
+                    "CNCT_lkpAccumulatorDataType_LastCreatedDate": {
+                        "inputs": {
+                            "body": {
+                                "query": "SELECT MAX (CreateDate) as CreateDate FROM ODS.CNCT_lkpAccumulatorDataType"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['sqldw']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/datasets/default/query/sql"
+                        },
+                        "runAfter": {},
+                        "type": "ApiConnection"
+                    },
+                    "CNCT_lkpAccumulatorDataType_LastUpdateDate": {
+                        "inputs": {
+                            "body": {
+                                "query": "SELECT MAX (LastUpdate) as LastUpdate FROM ODS.CNCT_lkpAccumulatorDataType"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['sqldw']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/datasets/default/query/sql"
+                        },
+                        "runAfter": {
+                            "CNCT_lkpAccumulatorDataType_LastCreatedDate": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    },
+                    "Execute_ODS_CNCT_lkpAccumulatorDataType": {
+                        "inputs": {
+                            "body": {
+                                "LARunId": "@{workflow().run.name}",
+                                "LastCreateDate": "@{replace(body('CNCT_lkpAccumulatorDataType_LastCreatedDate')?['resultsets']?['Table1'][0]['CreateDate'], 'T', ' ')}",
+                                "LastUpdateDate": "@{replace(body('CNCT_lkpAccumulatorDataType_LastUpdateDate')?['resultsets']?['Table1'][0]['LastUpdate'], 'T', ' ')}"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['azuredatafactory']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/subscriptions/@{encodeURIComponent('7e152566-0ba7-49c2-acac-ebbb5becd265')}/resourcegroups/@{encodeURIComponent('HCEIMProdRSG')}/providers/Microsoft.DataFactory/factories/@{encodeURIComponent('hc-eim-df-prod2')}/pipelines/@{encodeURIComponent('ODS_CNCT_lkpAccumulatorDataType')}/CreateRun",
+                            "queries": {
+                                "x-ms-api-version": "2017-09-01-preview"
+                            }
+                        },
+                        "runAfter": {
+                            "CNCT_lkpAccumulatorDataType_LastUpdateDate": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    }
+                },
+                "runAfter": {
+                    "ODS_CNCT_cfgAccumulator": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "Scope"
+            },
+            "ODS_CNCT_lkpBusinessSegment": {
+                "actions": {
+                    "CNCT_lkpBusinessSegment_LastCreatedDate": {
+                        "inputs": {
+                            "body": {
+                                "query": "SELECT MAX (CreateDate) as CreateDate FROM ODS.[CNCT_lkpBusinessSegment]"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['sqldw']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/datasets/default/query/sql"
+                        },
+                        "runAfter": {},
+                        "type": "ApiConnection"
+                    },
+                    "CNCT_lkpBusinessSegment_LastUpdateDate": {
+                        "inputs": {
+                            "body": {
+                                "query": "SELECT MAX (LastUpdate) as LastUpdate FROM ODS.[CNCT_lkpBusinessSegment]"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['sqldw']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/datasets/default/query/sql"
+                        },
+                        "runAfter": {
+                            "CNCT_lkpBusinessSegment_LastCreatedDate": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    },
+                    "Execute_ODS_CNCT_lkpBusinessSegment": {
+                        "inputs": {
+                            "body": {
+                                "LARunId": "@{workflow().run.name}",
+                                "LastCreateDate": "@{replace(body('CNCT_lkpBusinessSegment_LastCreatedDate')?['resultsets']?['Table1'][0]['CreateDate'], 'T', ' ')}",
+                                "LastUpdateDate": "@{replace(body('CNCT_lkpBusinessSegment_LastUpdateDate')?['resultsets']?['Table1'][0]['LastUpdate'], 'T', ' ')}"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['azuredatafactory']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/subscriptions/@{encodeURIComponent('7e152566-0ba7-49c2-acac-ebbb5becd265')}/resourcegroups/@{encodeURIComponent('HCEIMProdRSG')}/providers/Microsoft.DataFactory/factories/@{encodeURIComponent('hc-eim-df-prod2')}/pipelines/@{encodeURIComponent('ODS_CNCT_lkpBusinessSegment')}/CreateRun",
+                            "queries": {
+                                "x-ms-api-version": "2017-09-01-preview"
+                            }
+                        },
+                        "runAfter": {
+                            "CNCT_lkpBusinessSegment_LastUpdateDate": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    }
+                },
+                "runAfter": {
+                    "ODS_CNCT_Gender": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "Scope"
+            },
+            "ODS_CNCT_lkpClientMembershipStatus": {
+                "actions": {
+                    "CNCT_lkpClientMembershipStatus_LastCreatedDate": {
+                        "inputs": {
+                            "body": {
+                                "query": "SELECT MAX (CreateDate) as CreateDate FROM ODS.CNCT_lkpClientMembershipStatus"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['sqldw']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/datasets/default/query/sql"
+                        },
+                        "runAfter": {},
+                        "type": "ApiConnection"
+                    },
+                    "CNCT_lkpClientMembershipStatus_LastUpdateDate": {
+                        "inputs": {
+                            "body": {
+                                "query": "SELECT MAX (LastUpdate) as LastUpdate FROM ODS.CNCT_lkpClientMembershipStatus"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['sqldw']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/datasets/default/query/sql"
+                        },
+                        "runAfter": {
+                            "CNCT_lkpClientMembershipStatus_LastCreatedDate": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    },
+                    "Execute_ODS_CNCT_lkpClientMembershipStatus": {
+                        "inputs": {
+                            "body": {
+                                "LARunId": "@{workflow().run.name}",
+                                "LastCreateDate": "@{replace(body('CNCT_lkpClientMembershipStatus_LastCreatedDate')?['resultsets']?['Table1'][0]['CreateDate'], 'T', ' ')}",
+                                "LastUpdateDate": "@{replace(body('CNCT_lkpClientMembershipStatus_LastUpdateDate')?['resultsets']?['Table1'][0]['LastUpdate'], 'T', ' ')}"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['azuredatafactory']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/subscriptions/@{encodeURIComponent('7e152566-0ba7-49c2-acac-ebbb5becd265')}/resourcegroups/@{encodeURIComponent('HCEIMProdRSG')}/providers/Microsoft.DataFactory/factories/@{encodeURIComponent('hc-eim-df-prod2')}/pipelines/@{encodeURIComponent('ODS_CNCT_lkpClientMembershipStatus')}/CreateRun",
+                            "queries": {
+                                "x-ms-api-version": "2017-09-01-preview"
+                            }
+                        },
+                        "runAfter": {
+                            "CNCT_lkpClientMembershipStatus_LastUpdateDate": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    }
+                },
+                "runAfter": {
+                    "ODS_CNCT_lkpAccumulatorAdjustmentType": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "Scope"
+            },
+            "ODS_CNCT_lkpCountry": {
+                "actions": {
+                    "CNCT_lkpCountry_LastCreatedDate": {
+                        "inputs": {
+                            "body": {
+                                "query": "SELECT MAX (CreateDate) as CreateDate FROM ODS.CNCT_lkpCountry"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['sqldw']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/datasets/default/query/sql"
+                        },
+                        "runAfter": {},
+                        "type": "ApiConnection"
+                    },
+                    "CNCT_lkpCountry_LastUpdateDate": {
+                        "inputs": {
+                            "body": {
+                                "query": "SELECT MAX (LastUpdate) as LastUpdate FROM ODS.CNCT_lkpCountry"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['sqldw']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/datasets/default/query/sql"
+                        },
+                        "runAfter": {
+                            "CNCT_lkpCountry_LastCreatedDate": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    },
+                    "Execute_ODS_CNCT_lkpCountry": {
+                        "inputs": {
+                            "body": {
+                                "LARunId": "@{workflow().run.name}",
+                                "LastCreateDate": "@{replace(body('CNCT_lkpCountry_LastCreatedDate')?['resultsets']?['Table1'][0]['CreateDate'], 'T', ' ')}",
+                                "LastUpdateDate": "@{replace(body('CNCT_lkpCountry_LastUpdateDate')?['resultsets']?['Table1'][0]['LastUpdate'], 'T', ' ')}"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['azuredatafactory']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/subscriptions/@{encodeURIComponent('7e152566-0ba7-49c2-acac-ebbb5becd265')}/resourcegroups/@{encodeURIComponent('HCEIMProdRSG')}/providers/Microsoft.DataFactory/factories/@{encodeURIComponent('hc-eim-df-prod2')}/pipelines/@{encodeURIComponent('ODS_CNCT_lkpCountry')}/CreateRun",
+                            "queries": {
+                                "x-ms-api-version": "2017-09-01-preview"
+                            }
+                        },
+                        "runAfter": {
+                            "CNCT_lkpCountry_LastUpdateDate": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    }
+                },
+                "runAfter": {
+                    "ODS_CNCT_cfgCenterManagementArea": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "Scope"
+            },
+            "ODS_CNCT_lkpEthnicity": {
+                "actions": {
+                    "CNCT_lkpEthnicity_LastCreatedDate": {
+                        "inputs": {
+                            "body": {
+                                "query": "SELECT MAX (CreateDate) as CreateDate FROM ODS.CNCT_lkpEthnicity"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['sqldw']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/datasets/default/query/sql"
+                        },
+                        "runAfter": {},
+                        "type": "ApiConnection"
+                    },
+                    "CNCT_lkpEthnicity_LastUpdateDate": {
+                        "inputs": {
+                            "body": {
+                                "query": "SELECT MAX (LastUpdate) as LastUpdate FROM ODS.CNCT_lkpEthnicity"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['sqldw']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/datasets/default/query/sql"
+                        },
+                        "runAfter": {
+                            "CNCT_lkpEthnicity_LastCreatedDate": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    },
+                    "Execute_ODS_CNCT_lkpEthnicity": {
+                        "inputs": {
+                            "body": {
+                                "LARunId": "@{workflow().run.name}",
+                                "LastCreateDate": "@{replace(body('CNCT_lkpEthnicity_LastCreatedDate')?['resultsets']?['Table1'][0]['CreateDate'], 'T', ' ')}",
+                                "LastUpdateDate": "@{replace(body('CNCT_lkpEthnicity_LastUpdateDate')?['resultsets']?['Table1'][0]['LastUpdate'], 'T', ' ')}"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['azuredatafactory']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/subscriptions/@{encodeURIComponent('7e152566-0ba7-49c2-acac-ebbb5becd265')}/resourcegroups/@{encodeURIComponent('HCEIMProdRSG')}/providers/Microsoft.DataFactory/factories/@{encodeURIComponent('hc-eim-df-prod2')}/pipelines/@{encodeURIComponent('ODS_CNCT_lkpEthnicity')}/CreateRun",
+                            "queries": {
+                                "x-ms-api-version": "2017-09-01-preview"
+                            }
+                        },
+                        "runAfter": {
+                            "CNCT_lkpEthnicity_LastUpdateDate": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    }
+                },
+                "runAfter": {
+                    "ODS_CNCT_lkpOccupation": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "Scope"
+            },
+            "ODS_CNCT_lkpGeneralLedger": {
+                "actions": {
+                    "CNCT_lkpGeneralLedger_LastCreatedDate": {
+                        "inputs": {
+                            "body": {
+                                "query": "SELECT MAX (CreateDate) as CreateDate FROM ODS.CNCT_lkpGeneralLedger"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['sqldw']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/datasets/default/query/sql"
+                        },
+                        "runAfter": {},
+                        "type": "ApiConnection"
+                    },
+                    "CNCT_lkpGeneralLedger_LastUpdateDate": {
+                        "inputs": {
+                            "body": {
+                                "query": "SELECT MAX (LastUpdate) as LastUpdate FROM ODS.CNCT_lkpGeneralLedger"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['sqldw']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/datasets/default/query/sql"
+                        },
+                        "runAfter": {
+                            "CNCT_lkpGeneralLedger_LastCreatedDate": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    },
+                    "Execute_ODS_CNCT_lkpGeneralLedger": {
+                        "inputs": {
+                            "body": {
+                                "LARunId": "@{workflow().run.name}",
+                                "LastCreateDate": "@{replace(body('CNCT_lkpGeneralLedger_LastCreatedDate')?['resultsets']?['Table1'][0]['CreateDate'], 'T', ' ')}",
+                                "LastUpdateDate": "@{replace(body('CNCT_lkpGeneralLedger_LastUpdateDate')?['resultsets']?['Table1'][0]['LastUpdate'], 'T', ' ')}"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['azuredatafactory']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/subscriptions/@{encodeURIComponent('7e152566-0ba7-49c2-acac-ebbb5becd265')}/resourcegroups/@{encodeURIComponent('HCEIMProdRSG')}/providers/Microsoft.DataFactory/factories/@{encodeURIComponent('hc-eim-df-prod2')}/pipelines/@{encodeURIComponent('ODS_CNCT_lkpGeneralLedger')}/CreateRun",
+                            "queries": {
+                                "x-ms-api-version": "2017-09-01-preview"
+                            }
+                        },
+                        "runAfter": {
+                            "CNCT_lkpGeneralLedger_LastUpdateDate": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    }
+                },
+                "runAfter": {
+                    "ODS_CNCT_lkpEthnicity": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "Scope"
+            },
+            "ODS_CNCT_lkpMaritalStatus": {
+                "actions": {
+                    "CNCT_lkpMaritalStatus_LastCreatedDate": {
+                        "inputs": {
+                            "body": {
+                                "query": "SELECT MAX (CreateDate) as CreateDate FROM ODS.CNCT_lkpMaritalStatus"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['sqldw']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/datasets/default/query/sql"
+                        },
+                        "runAfter": {},
+                        "type": "ApiConnection"
+                    },
+                    "CNCT_lkpMaritalStatus_LastUpdateDate": {
+                        "inputs": {
+                            "body": {
+                                "query": "SELECT MAX (LastUpdate) as LastUpdate FROM ODS.CNCT_lkpMaritalStatus"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['sqldw']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/datasets/default/query/sql"
+                        },
+                        "runAfter": {
+                            "CNCT_lkpMaritalStatus_LastCreatedDate": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    },
+                    "Execute_ODS_CNCT_lkpMaritalStatus": {
+                        "inputs": {
+                            "body": {
+                                "LARunId": "@{workflow().run.name}",
+                                "LastCreateDate": "@{replace(body('CNCT_lkpMaritalStatus_LastCreatedDate')?['resultsets']?['Table1'][0]['CreateDate'], 'T', ' ')}",
+                                "LastUpdateDate": "@{replace(body('CNCT_lkpMaritalStatus_LastUpdateDate')?['resultsets']?['Table1'][0]['LastUpdate'], 'T', ' ')}"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['azuredatafactory']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/subscriptions/@{encodeURIComponent('7e152566-0ba7-49c2-acac-ebbb5becd265')}/resourcegroups/@{encodeURIComponent('HCEIMProdRSG')}/providers/Microsoft.DataFactory/factories/@{encodeURIComponent('hc-eim-df-prod2')}/pipelines/@{encodeURIComponent('ODS_CNCT_lkpMaritalStatus')}/CreateRun",
+                            "queries": {
+                                "x-ms-api-version": "2017-09-01-preview"
+                            }
+                        },
+                        "runAfter": {
+                            "CNCT_lkpMaritalStatus_LastUpdateDate": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    }
+                },
+                "runAfter": {
+                    "ODS_CNCT_lkpSalutation": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "Scope"
+            },
+            "ODS_CNCT_lkpOccupation": {
+                "actions": {
+                    "CNCT_lkpOccupation_LastCreatedDate": {
+                        "inputs": {
+                            "body": {
+                                "query": "SELECT MAX (CreateDate) as CreateDate FROM ODS.CNCT_lkpOccupation"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['sqldw']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/datasets/default/query/sql"
+                        },
+                        "runAfter": {},
+                        "type": "ApiConnection"
+                    },
+                    "CNCT_lkpOccupation_LastUpdateDate": {
+                        "inputs": {
+                            "body": {
+                                "query": "SELECT MAX (LastUpdate) as LastUpdate FROM ODS.CNCT_lkpOccupation"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['sqldw']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/datasets/default/query/sql"
+                        },
+                        "runAfter": {
+                            "CNCT_lkpOccupation_LastCreatedDate": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    },
+                    "Execute_ODS_CNCT_lkpOccupation": {
+                        "inputs": {
+                            "body": {
+                                "LARunId": "@{workflow().run.name}",
+                                "LastCreateDate": "@{replace(body('CNCT_lkpOccupation_LastCreatedDate')?['resultsets']?['Table1'][0]['CreateDate'], 'T', ' ')}",
+                                "LastUpdateDate": "@{replace(body('CNCT_lkpOccupation_LastUpdateDate')?['resultsets']?['Table1'][0]['LastUpdate'], 'T', ' ')}"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['azuredatafactory']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/subscriptions/@{encodeURIComponent('7e152566-0ba7-49c2-acac-ebbb5becd265')}/resourcegroups/@{encodeURIComponent('HCEIMProdRSG')}/providers/Microsoft.DataFactory/factories/@{encodeURIComponent('hc-eim-df-prod2')}/pipelines/@{encodeURIComponent('ODS_CNCT_lkpOccupation')}/CreateRun",
+                            "queries": {
+                                "x-ms-api-version": "2017-09-01-preview"
+                            }
+                        },
+                        "runAfter": {
+                            "CNCT_lkpOccupation_LastUpdateDate": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    }
+                },
+                "runAfter": {
+                    "ODS_CNCT_lkpMaritalStatus": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "Scope"
+            },
+            "ODS_CNCT_lkpPhoneType": {
+                "actions": {
+                    "CNCT_lkpPhoneType_LastCreatedDate": {
+                        "inputs": {
+                            "body": {
+                                "query": "SELECT MAX (CreateDate) as CreateDate FROM ODS.CNCT_lkpPhoneType"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['sqldw']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/datasets/default/query/sql"
+                        },
+                        "runAfter": {},
+                        "type": "ApiConnection"
+                    },
+                    "CNCT_lkpPhoneType_LastUpdateDate": {
+                        "inputs": {
+                            "body": {
+                                "query": "SELECT MAX (LastUpdate) as LastUpdate FROM ODS.CNCT_lkpPhoneType"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['sqldw']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/datasets/default/query/sql"
+                        },
+                        "runAfter": {
+                            "CNCT_lkpPhoneType_LastCreatedDate": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    },
+                    "Execute_ODS_CNCT_lkpPhoneType": {
+                        "inputs": {
+                            "body": {
+                                "LARunId": "@{workflow().run.name}",
+                                "LastCreateDate": "@{replace(body('CNCT_lkpPhoneType_LastCreatedDate')?['resultsets']?['Table1'][0]['CreateDate'], 'T', ' ')}",
+                                "LastUpdateDate": "@{replace(body('CNCT_lkpPhoneType_LastUpdateDate')?['resultsets']?['Table1'][0]['LastUpdate'], 'T', ' ')}"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['azuredatafactory']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/subscriptions/@{encodeURIComponent('7e152566-0ba7-49c2-acac-ebbb5becd265')}/resourcegroups/@{encodeURIComponent('HCEIMProdRSG')}/providers/Microsoft.DataFactory/factories/@{encodeURIComponent('hc-eim-df-prod2')}/pipelines/@{encodeURIComponent('ODS_CNCT_lkpPhoneType')}/CreateRun",
+                            "queries": {
+                                "x-ms-api-version": "2017-09-01-preview"
+                            }
+                        },
+                        "runAfter": {
+                            "CNCT_lkpPhoneType_LastUpdateDate": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    }
+                },
+                "runAfter": {
+                    "ODS_CNCT_lkpState": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "Scope"
+            },
+            "ODS_CNCT_lkpRevenueGroup": {
+                "actions": {
+                    "CNCT_lkpRevenueGroup_LastCreatedDate": {
+                        "inputs": {
+                            "body": {
+                                "query": "SELECT MAX (CreateDate) as CreateDate FROM ODS.[CNCT_RevenueGroup]"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['sqldw']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/datasets/default/query/sql"
+                        },
+                        "runAfter": {},
+                        "type": "ApiConnection"
+                    },
+                    "CNCT_lkpRevenueGroup_LastUpdateDate": {
+                        "inputs": {
+                            "body": {
+                                "query": "SELECT MAX (LastUpdate) as LastUpdate FROM ODS.[CNCT_RevenueGroup] "
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['sqldw']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/datasets/default/query/sql"
+                        },
+                        "runAfter": {
+                            "CNCT_lkpRevenueGroup_LastCreatedDate": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    },
+                    "Execute_ODS_CNCT_lkpRevenueGroup": {
+                        "inputs": {
+                            "body": {
+                                "LARunId": "@{workflow().run.name}",
+                                "LastCreateDate": "@{replace(body('CNCT_lkpRevenueGroup_LastCreatedDate')?['resultsets']?['Table1'][0]['CreateDate'], 'T', ' ')}",
+                                "LastUpdateDate": "@{replace(body('CNCT_lkpRevenueGroup_LastUpdateDate')?['resultsets']?['Table1'][0]['LastUpdate'], 'T', ' ')}"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['azuredatafactory']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/subscriptions/@{encodeURIComponent('7e152566-0ba7-49c2-acac-ebbb5becd265')}/resourcegroups/@{encodeURIComponent('HCEIMProdRSG')}/providers/Microsoft.DataFactory/factories/@{encodeURIComponent('hc-eim-df-prod2')}/pipelines/@{encodeURIComponent('ODS_CNCT_RevenueGroup')}/CreateRun",
+                            "queries": {
+                                "x-ms-api-version": "2017-09-01-preview"
+                            }
+                        },
+                        "runAfter": {
+                            "CNCT_lkpRevenueGroup_LastUpdateDate": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    }
+                },
+                "runAfter": {
+                    "ODS_CNCT_cfgVendor": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "Scope"
+            },
+            "ODS_CNCT_lkpSalesCodeDepartment": {
+                "actions": {
+                    "CNCT_lkpSalesCodeDepartment_LastCreatedDate": {
+                        "inputs": {
+                            "body": {
+                                "query": "SELECT MAX (CreateDate) as CreateDate FROM ODS.CNCT_lkpSalesCodeDepartment"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['sqldw']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/datasets/default/query/sql"
+                        },
+                        "runAfter": {},
+                        "type": "ApiConnection"
+                    },
+                    "CNCT_lkpSalesCodeDepartment_LastUpdateDate": {
+                        "inputs": {
+                            "body": {
+                                "query": "SELECT MAX (LastUpdate) as LastUpdate FROM ODS.CNCT_lkpSalesCodeDepartment"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['sqldw']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/datasets/default/query/sql"
+                        },
+                        "runAfter": {
+                            "CNCT_lkpSalesCodeDepartment_LastCreatedDate": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    },
+                    "Execute_ODS_CNCT_lkpSalesCodeDepartment": {
+                        "inputs": {
+                            "body": {
+                                "LARunId": "@{workflow().run.name}",
+                                "LastCreateDate": "@{replace(body('CNCT_lkpSalesCodeDepartment_LastCreatedDate')?['resultsets']?['Table1'][0]['CreateDate'], 'T', ' ')}",
+                                "LastUpdateDate": "@{replace(body('CNCT_lkpSalesCodeDepartment_LastUpdateDate')?['resultsets']?['Table1'][0]['LastUpdate'], 'T', ' ')}"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['azuredatafactory']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/subscriptions/@{encodeURIComponent('7e152566-0ba7-49c2-acac-ebbb5becd265')}/resourcegroups/@{encodeURIComponent('HCEIMProdRSG')}/providers/Microsoft.DataFactory/factories/@{encodeURIComponent('hc-eim-df-prod2')}/pipelines/@{encodeURIComponent('ODS_CNCT_lkpSalesCodeDepartment')}/CreateRun",
+                            "queries": {
+                                "x-ms-api-version": "2017-09-01-preview"
+                            }
+                        },
+                        "runAfter": {
+                            "CNCT_lkpSalesCodeDepartment_LastUpdateDate": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    }
+                },
+                "runAfter": {
+                    "ODS_CNCT_cfgMembershipPromotion": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "Scope"
+            },
+            "ODS_CNCT_lkpSalesCodeType": {
+                "actions": {
+                    "CNCT_lkpSalesCodeType_LastCreatedDate": {
+                        "inputs": {
+                            "body": {
+                                "query": "SELECT MAX (CreateDate) as CreateDate FROM ODS.[CNCT_SalesType]"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['sqldw']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/datasets/default/query/sql"
+                        },
+                        "runAfter": {},
+                        "type": "ApiConnection"
+                    },
+                    "CNCT_lkpSalesCodeType_LastUpdateDate": {
+                        "inputs": {
+                            "body": {
+                                "query": "SELECT MAX (LastUpdate) as LastUpdate FROM ODS.[CNCT_SalesType]"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['sqldw']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/datasets/default/query/sql"
+                        },
+                        "runAfter": {
+                            "CNCT_lkpSalesCodeType_LastCreatedDate": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    },
+                    "Execute_ODS_CNCT_lkpSalesCodeType": {
+                        "inputs": {
+                            "body": {
+                                "LARunId": "@{workflow().run.name}",
+                                "LastCreateDate": "@{replace(body('CNCT_lkpSalesCodeType_LastCreatedDate')?['resultsets']?['Table1'][0]['CreateDate'], 'T', ' ')}",
+                                "LastUpdateDate": "@{replace(body('CNCT_datClient_LastUpdateDate')?['resultsets']?['Table1'][0]['LastUpdate'], 'T', ' ')}"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['azuredatafactory']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/subscriptions/@{encodeURIComponent('7e152566-0ba7-49c2-acac-ebbb5becd265')}/resourcegroups/@{encodeURIComponent('HCEIMProdRSG')}/providers/Microsoft.DataFactory/factories/@{encodeURIComponent('hc-eim-df-prod2')}/pipelines/@{encodeURIComponent('ODS_CNCT_SalesType')}/CreateRun",
+                            "queries": {
+                                "x-ms-api-version": "2017-09-01-preview"
+                            }
+                        },
+                        "runAfter": {
+                            "CNCT_lkpSalesCodeType_LastUpdateDate": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    }
+                },
+                "runAfter": {
+                    "ODS_CNCT_cfgSalesCode": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "Scope"
+            },
+            "ODS_CNCT_lkpSalesOrderType": {
+                "actions": {
+                    "CNCT_lkpSalesOrderType_LastCreatedDate": {
+                        "inputs": {
+                            "body": {
+                                "query": "SELECT MAX (CreateDate) as CreateDate FROM ODS.CNCT_lkpSalesOrderType"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['sqldw']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/datasets/default/query/sql"
+                        },
+                        "runAfter": {},
+                        "type": "ApiConnection"
+                    },
+                    "CNCT_lkpSalesOrderType_LastUpdateDate": {
+                        "inputs": {
+                            "body": {
+                                "query": "SELECT MAX (LastUpdate) as LastUpdate FROM ODS.CNCT_lkpSalesOrderType"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['sqldw']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/datasets/default/query/sql"
+                        },
+                        "runAfter": {
+                            "CNCT_lkpSalesOrderType_LastCreatedDate": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    },
+                    "Create_a_pipeline_run": {
+                        "inputs": {
+                            "body": {
+                                "LARunId": "@{workflow().run.name}",
+                                "LastCreateDate": "@{replace(body('CNCT_lkpSalesOrderType_LastCreatedDate')?['resultsets']?['Table1'][0]['CreateDate'], 'T', ' ')}",
+                                "LastUpdateDate": "@{replace(body('CNCT_lkpSalesOrderType_LastUpdateDate')?['resultsets']?['Table1'][0]['LastUpdate'], 'T', ' ')}"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['azuredatafactory']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/subscriptions/@{encodeURIComponent('7e152566-0ba7-49c2-acac-ebbb5becd265')}/resourcegroups/@{encodeURIComponent('HCEIMProdRSG')}/providers/Microsoft.DataFactory/factories/@{encodeURIComponent('hc-eim-df-prod2')}/pipelines/@{encodeURIComponent('ODS_CNCT_lkpSalesOrderType')}/CreateRun",
+                            "queries": {
+                                "x-ms-api-version": "2017-09-01-preview"
+                            }
+                        },
+                        "runAfter": {
+                            "CNCT_lkpSalesOrderType_LastUpdateDate": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    }
+                },
+                "runAfter": {
+                    "ODS_CNCT_lkpPhoneType": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "Scope"
+            },
+            "ODS_CNCT_lkpSalutation": {
+                "actions": {
+                    "CNCT_lkpSalutation_LastCreatedDate": {
+                        "inputs": {
+                            "body": {
+                                "query": "SELECT MAX (CreateDate) as CreateDate FROM ODS.CNCT_lkpSalutation"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['sqldw']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/datasets/default/query/sql"
+                        },
+                        "runAfter": {},
+                        "type": "ApiConnection"
+                    },
+                    "CNCT_lkpSalutation_LastUpdateDate": {
+                        "inputs": {
+                            "body": {
+                                "query": "SELECT MAX (LastUpdate) as LastUpdate FROM ODS.CNCT_lkpSalutation"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['sqldw']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/datasets/default/query/sql"
+                        },
+                        "runAfter": {
+                            "CNCT_lkpSalutation_LastCreatedDate": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    },
+                    "Execute_ODS_CNCT_lkpSalutation": {
+                        "inputs": {
+                            "body": {
+                                "LARunId": "@{workflow().run.name}",
+                                "LastCreateDate": "@{replace(body('CNCT_lkpSalutation_LastCreatedDate')?['resultsets']?['Table1'][0]['CreateDate'], 'T', ' ')}",
+                                "LastUpdateDate": "@{replace(body('CNCT_lkpSalutation_LastUpdateDate')?['resultsets']?['Table1'][0]['LastUpdate'], 'T', ' ')}"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['azuredatafactory']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/subscriptions/@{encodeURIComponent('7e152566-0ba7-49c2-acac-ebbb5becd265')}/resourcegroups/@{encodeURIComponent('HCEIMProdRSG')}/providers/Microsoft.DataFactory/factories/@{encodeURIComponent('hc-eim-df-prod2')}/pipelines/@{encodeURIComponent('ODS_CNCT_lkpSalutation')}/CreateRun",
+                            "queries": {
+                                "x-ms-api-version": "2017-09-01-preview"
+                            }
+                        },
+                        "runAfter": {
+                            "CNCT_lkpSalutation_LastUpdateDate": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    }
+                },
+                "runAfter": {
+                    "ODS_CNCT_lkpSalesOrderType": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "Scope"
+            },
+            "ODS_CNCT_lkpState": {
+                "actions": {
+                    "CNCT_lkpState_LastCreatedDate": {
+                        "inputs": {
+                            "body": {
+                                "query": "SELECT MAX (CreateDate) as CreateDate FROM ODS.CNCT_lkpState"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['sqldw']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/datasets/default/query/sql"
+                        },
+                        "runAfter": {},
+                        "type": "ApiConnection"
+                    },
+                    "CNCT_lkpState_LastUpdateDate": {
+                        "inputs": {
+                            "body": {
+                                "query": "SELECT MAX (LastUpdate) as LastUpdate FROM ODS.CNCT_lkpState"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['sqldw']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/datasets/default/query/sql"
+                        },
+                        "runAfter": {
+                            "CNCT_lkpState_LastCreatedDate": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    },
+                    "Execute_ODS_CNCT_lkpState": {
+                        "inputs": {
+                            "body": {
+                                "LARunId": "@{workflow().run.name}",
+                                "LastCreateDate": "@{replace(body('CNCT_lkpState_LastCreatedDate')?['resultsets']?['Table1'][0]['CreateDate'], 'T', ' ')}",
+                                "LastUpdateDate": "@{replace(body('CNCT_lkpState_LastUpdateDate')?['resultsets']?['Table1'][0]['LastUpdate'], 'T', ' ')}"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['azuredatafactory']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/subscriptions/@{encodeURIComponent('7e152566-0ba7-49c2-acac-ebbb5becd265')}/resourcegroups/@{encodeURIComponent('HCEIMProdRSG')}/providers/Microsoft.DataFactory/factories/@{encodeURIComponent('hc-eim-df-prod2')}/pipelines/@{encodeURIComponent('ODS_CNCT_lkpState')}/CreateRun",
+                            "queries": {
+                                "x-ms-api-version": "2017-09-01-preview"
+                            }
+                        },
+                        "runAfter": {
+                            "CNCT_lkpState_LastUpdateDate": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    }
+                },
+                "runAfter": {
+                    "ODS_CNCT_lkpCountry": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "Scope"
+            },
+            "ODS_CNCT_lkpTimeZone": {
+                "actions": {
+                    "CNCT_lkpTimeZone_LastCreatedDate": {
+                        "inputs": {
+                            "body": {
+                                "query": "SELECT MAX (CreateDate) as CreateDate FROM ODS.CNCT_lkpTimeZone"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['sqldw']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/datasets/default/query/sql"
+                        },
+                        "runAfter": {},
+                        "type": "ApiConnection"
+                    },
+                    "CNCT_lkpTimeZone_LastUpdateDate": {
+                        "inputs": {
+                            "body": {
+                                "query": "SELECT MAX (LastUpdate) as LastUpdate FROM ODS.CNCT_lkpTimeZone"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['sqldw']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/datasets/default/query/sql"
+                        },
+                        "runAfter": {
+                            "CNCT_lkpTimeZone_LastCreatedDate": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    },
+                    "Execute_ODS_CNCT_lkpTimeZone": {
+                        "inputs": {
+                            "body": {
+                                "LARunId": "@{workflow().run.name}",
+                                "LastCreateDate": "@{replace(body('CNCT_lkpTimeZone_LastCreatedDate')?['resultsets']?['Table1'][0]['CreateDate'], 'T', ' ')}",
+                                "LastUpdateDate": "@{replace(body('CNCT_lkpTimeZone_LastUpdateDate')?['resultsets']?['Table1'][0]['LastUpdate'], 'T', ' ')}"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['azuredatafactory']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/subscriptions/@{encodeURIComponent('7e152566-0ba7-49c2-acac-ebbb5becd265')}/resourcegroups/@{encodeURIComponent('HCEIMProdRSG')}/providers/Microsoft.DataFactory/factories/@{encodeURIComponent('hc-eim-df-prod2')}/pipelines/@{encodeURIComponent('ODS_CNCT_lkpTimeZone')}/CreateRun",
+                            "queries": {
+                                "x-ms-api-version": "2017-09-01-preview"
+                            }
+                        },
+                        "runAfter": {
+                            "CNCT_lkpTimeZone_LastUpdateDate": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    }
+                },
+                "runAfter": {
+                    "ODS_CNCT_lkpClientMembershipStatus": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "Scope"
+            }
+        },
+        "contentVersion": "1.0.0.0",
+        "outputs": {},
+        "parameters": {
+            "$connections": {
+                "defaultValue": {},
+                "type": "Object"
+            }
+        },
+        "triggers": {
+            "Recurrence": {
+                "evaluatedRecurrence": {
+                    "frequency": "Day",
+                    "interval": 1,
+                    "startTime": "2022-02-05T08:30:00Z",
+                    "timeZone": "Eastern Standard Time"
+                },
+                "recurrence": {
+                    "frequency": "Day",
+                    "interval": 1,
+                    "startTime": "2022-02-05T08:30:00Z",
+                    "timeZone": "Eastern Standard Time"
+                },
+                "type": "Recurrence"
+            }
+        }
+    },
+    "parameters": {
+        "$connections": {
+            "value": {
+                "azuredatafactory": {
+                    "connectionId": "/subscriptions/7e152566-0ba7-49c2-acac-ebbb5becd265/resourceGroups/HCEIMProdRSG/providers/Microsoft.Web/connections/azuredatafactory",
+                    "connectionName": "azuredatafactory",
+                    "id": "/subscriptions/7e152566-0ba7-49c2-acac-ebbb5becd265/providers/Microsoft.Web/locations/eastus2/managedApis/azuredatafactory"
+                },
+                "sqldw": {
+                    "connectionId": "/subscriptions/7e152566-0ba7-49c2-acac-ebbb5becd265/resourceGroups/HCEIMProdRSG/providers/Microsoft.Web/connections/sqldw",
+                    "connectionName": "sqldw",
+                    "id": "/subscriptions/7e152566-0ba7-49c2-acac-ebbb5becd265/providers/Microsoft.Web/locations/eastus2/managedApis/sqldw"
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,133 @@
+{
+    "definition": {
+        "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+        "actions": {
+            "Condition": {
+                "actions": {
+                    "Parse_JSON": {
+                        "inputs": {
+                            "content": "@body('Execute_stored_procedure')",
+                            "schema": {
+                                "items": {
+                                    "type": "string"
+                                },
+                                "type": "array"
+                            }
+                        },
+                        "runAfter": {},
+                        "type": "ParseJson"
+                    },
+                    "Send_email": {
+                        "inputs": {
+                            "body": {
+                                "Body": "Following sync functions have not run in last @{variables('offsetMinutes')} minutes.\n\n@{body('Parse_JSON')}\n",
+                                "Importance": "High",
+                                "IsHtml": true,
+                                "Subject": "Hair Fit Sync Problems",
+                                "To": "mtovbin@skylinetechnologies.com; slemery@skylinetechnologies.com; aptak@hairclub.com; kmurdoch@hairclub.com"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['gmail_1']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/Mail"
+                        },
+                        "runAfter": {
+                            "Parse_JSON": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "ApiConnection"
+                    }
+                },
+                "expression": {
+                    "and": [
+                        {
+                            "not": {
+                                "equals": [
+                                    "@body('Execute_stored_procedure')",
+                                    null
+                                ]
+                            }
+                        }
+                    ]
+                },
+                "runAfter": {
+                    "Execute_stored_procedure": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "If"
+            },
+            "Execute_stored_procedure": {
+                "inputs": {
+                    "body": "[@{variables('offsetMinutes')}]",
+                    "headers": {
+                        "x-ms-documentdb-raw-partitionkey": "\"sync\""
+                    },
+                    "host": {
+                        "connection": {
+                            "name": "@parameters('$connections')['documentdb_1']['connectionId']"
+                        }
+                    },
+                    "method": "post",
+                    "path": "/dbs/@{encodeURIComponent('hairclubdb')}/colls/@{encodeURIComponent('clientsuitecollection')}/sprocs/@{encodeURIComponent('SyncAuditStoredProcedure')}"
+                },
+                "runAfter": {
+                    "Initialize_variable": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "ApiConnection"
+            },
+            "Initialize_variable": {
+                "inputs": {
+                    "variables": [
+                        {
+                            "name": "offsetMinutes",
+                            "type": "Integer",
+                            "value": -60
+                        }
+                    ]
+                },
+                "runAfter": {},
+                "type": "InitializeVariable"
+            }
+        },
+        "contentVersion": "1.0.0.0",
+        "outputs": {},
+        "parameters": {
+            "$connections": {
+                "defaultValue": {},
+                "type": "Object"
+            }
+        },
+        "triggers": {
+            "Recurrence": {
+                "recurrence": {
+                    "frequency": "Minute",
+                    "interval": 15
+                },
+                "type": "Recurrence"
+            }
+        }
+    },
+    "parameters": {
+        "$connections": {
+            "value": {
+                "documentdb_1": {
+                    "connectionId": "/subscriptions/7e152566-0ba7-49c2-acac-ebbb5becd265/resourceGroups/HCClientMobileAppRG-Prod/providers/Microsoft.Web/connections/documentdb",
+                    "connectionName": "documentdb",
+                    "id": "/subscriptions/7e152566-0ba7-49c2-acac-ebbb5becd265/providers/Microsoft.Web/locations/eastus2/managedApis/documentdb"
+                },
+                "gmail_1": {
+                    "connectionId": "/subscriptions/7e152566-0ba7-49c2-acac-ebbb5becd265/resourceGroups/HCClientMobileAppRG-Prod/providers/Microsoft.Web/connections/gmail-1",
+                    "connectionName": "gmail-1",
+                    "id": "/subscriptions/7e152566-0ba7-49c2-acac-ebbb5becd265/providers/Microsoft.Web/locations/eastus2/managedApis/gmail"
+                }
+            }
+        }
+    }
+}

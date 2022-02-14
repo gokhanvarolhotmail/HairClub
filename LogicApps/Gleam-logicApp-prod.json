@@ -1,0 +1,337 @@
+{
+    "definition": {
+        "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+        "actions": {
+            "Condition:_Contact_me": {
+                "actions": {
+                    "Send_message_Contact_me": {
+                        "inputs": {
+                            "body": {
+                                "ContentData": "@{base64(outputs('Transform_JsonGeneral_to_JsonCustom'))}",
+                                "SessionId": "@triggerBody()?['campaign']?['key']"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['servicebus_1']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/@{encodeURIComponent(encodeURIComponent('leadcreationtopic'))}/messages",
+                            "queries": {
+                                "systemProperties": "Run Details"
+                            }
+                        },
+                        "runAfter": {},
+                        "type": "ApiConnection"
+                    }
+                },
+                "expression": {
+                    "and": [
+                        {
+                            "equals": [
+                                "@triggerBody()?['entry']?['action']",
+                                "@string('Contact me: Call me to schedule a consultation with HairClub to discuss hair loss solutions.')"
+                            ]
+                        }
+                    ]
+                },
+                "runAfter": {
+                    "Transform_JsonGeneral_to_JsonCustom": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "If"
+            },
+            "Condition:_Hair_loss,_Yes,_a_little": {
+                "actions": {
+                    "Send_message:_Yes_a_little": {
+                        "inputs": {
+                            "body": {
+                                "ContentData": "@{base64(outputs('Transform_JsonGeneral_to_JsonCustom'))}",
+                                "SessionId": "@triggerBody()?['campaign']?['key']"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['servicebus_1']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/@{encodeURIComponent(encodeURIComponent('leadcreationtopic'))}/messages",
+                            "queries": {
+                                "systemProperties": "Run Details"
+                            }
+                        },
+                        "runAfter": {},
+                        "type": "ApiConnection"
+                    }
+                },
+                "expression": {
+                    "and": [
+                        {
+                            "equals": [
+                                "@triggerBody()?['entry']?['action']",
+                                "@string('Are you experiencing hair loss?')"
+                            ]
+                        },
+                        {
+                            "equals": [
+                                "@triggerBody()?['entry']?['value']",
+                                "@string('Yes, a little')"
+                            ]
+                        }
+                    ]
+                },
+                "runAfter": {
+                    "Transform_JsonGeneral_to_JsonCustom": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "If"
+            },
+            "Condition:_Hair_loss,_Yes,_quite_a_bit": {
+                "actions": {
+                    "Send_message:_quite_a_bit": {
+                        "inputs": {
+                            "body": {
+                                "ContentData": "@{base64(outputs('Transform_JsonGeneral_to_JsonCustom'))}",
+                                "SessionId": "@triggerBody()?['campaign']?['key']"
+                            },
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['servicebus_1']['connectionId']"
+                                }
+                            },
+                            "method": "post",
+                            "path": "/@{encodeURIComponent(encodeURIComponent('leadcreationtopic'))}/messages",
+                            "queries": {
+                                "systemProperties": "Run Details"
+                            }
+                        },
+                        "runAfter": {},
+                        "type": "ApiConnection"
+                    }
+                },
+                "expression": {
+                    "and": [
+                        {
+                            "equals": [
+                                "@triggerBody()?['entry']?['action']",
+                                "@string('Are you experiencing hair loss?')"
+                            ]
+                        },
+                        {
+                            "equals": [
+                                "@triggerBody()?['entry']?['value']",
+                                "@string('Yes, quite a bit')"
+                            ]
+                        }
+                    ]
+                },
+                "runAfter": {
+                    "Transform_JsonGeneral_to_JsonCustom": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "If"
+            },
+            "Transform_JsonGeneral_to_JsonCustom": {
+                "inputs": {
+                    "campaignId": "@triggerBody()?['campaign']?['key']",
+                    "email": "@triggerBody()?['user']?['email']",
+                    "entries": {
+                        "action": "@triggerBody()?['entry']?['action']",
+                        "value": "@triggerBody()?['entry']?['value']"
+                    },
+                    "first_name": "@triggerBody()?['user']?['first_name']",
+                    "last_name": "@triggerBody()?['user']?['last_name']",
+                    "phone": "@triggerBody()?['user']?['details']?['Phone']",
+                    "zipcode": "@triggerBody()?['user']?['details']?['Zip']"
+                },
+                "runAfter": {},
+                "type": "Compose"
+            }
+        },
+        "contentVersion": "1.0.0.0",
+        "outputs": {},
+        "parameters": {
+            "$connections": {
+                "defaultValue": {},
+                "type": "Object"
+            }
+        },
+        "triggers": {
+            "manual": {
+                "inputs": {
+                    "schema": {
+                        "properties": {
+                            "campaign": {
+                                "properties": {
+                                    "key": {
+                                        "type": "string"
+                                    },
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "type": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "coupon": {
+                                "properties": {
+                                    "code": {
+                                        "type": "string"
+                                    },
+                                    "type": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "entry": {
+                                "properties": {
+                                    "action": {
+                                        "type": "string"
+                                    },
+                                    "created_at": {
+                                        "type": "string"
+                                    },
+                                    "entry_method_id": {
+                                        "type": "integer"
+                                    },
+                                    "landing_url": {
+                                        "type": "string"
+                                    },
+                                    "referring_url": {
+                                        "type": "string"
+                                    },
+                                    "type": {
+                                        "type": "string"
+                                    },
+                                    "upload": {
+                                        "properties": {
+                                            "content_type": {
+                                                "type": "string"
+                                            },
+                                            "original_url": {
+                                                "type": "string"
+                                            },
+                                            "post_text": {
+                                                "type": "string"
+                                            },
+                                            "post_url": {
+                                                "type": "string"
+                                            },
+                                            "thumb_url": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "value": {
+                                        "type": "string"
+                                    },
+                                    "worth": {
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "reward": {
+                                "properties": {
+                                    "code": {
+                                        "type": "string"
+                                    },
+                                    "type": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "social_links": {
+                                "items": {
+                                    "properties": {
+                                        "provider": {
+                                            "type": "string"
+                                        },
+                                        "reference": {
+                                            "type": "string"
+                                        },
+                                        "uid": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": [
+                                        "provider",
+                                        "uid",
+                                        "reference"
+                                    ],
+                                    "type": "object"
+                                },
+                                "type": "array"
+                            },
+                            "user": {
+                                "properties": {
+                                    "actions_completed": {
+                                        "type": "integer"
+                                    },
+                                    "city": {
+                                        "type": "string"
+                                    },
+                                    "country": {
+                                        "type": "string"
+                                    },
+                                    "country_code": {
+                                        "type": "string"
+                                    },
+                                    "details": {
+                                        "properties": {
+                                            "Phone": {
+                                                "type": "string"
+                                            },
+                                            "Zip": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "first_name": {
+                                        "type": "string"
+                                    },
+                                    "last_name": {
+                                        "type": "string"
+                                    },
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "region": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        },
+                        "type": "object"
+                    }
+                },
+                "kind": "Http",
+                "type": "Request"
+            }
+        }
+    },
+    "parameters": {
+        "$connections": {
+            "value": {
+                "servicebus_1": {
+                    "connectionId": "/subscriptions/7e152566-0ba7-49c2-acac-ebbb5becd265/resourceGroups/HCIntegrationRG-Prod/providers/Microsoft.Web/connections/servicebus-1",
+                    "connectionName": "servicebus-1",
+                    "id": "/subscriptions/7e152566-0ba7-49c2-acac-ebbb5becd265/providers/Microsoft.Web/locations/eastus2/managedApis/servicebus"
+                }
+            }
+        }
+    }
+}

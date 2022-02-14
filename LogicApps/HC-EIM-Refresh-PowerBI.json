@@ -1,0 +1,72 @@
+{
+    "definition": {
+        "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+        "actions": {
+            "Refresh_EIMReporting": {
+                "inputs": {
+                    "host": {
+                        "connection": {
+                            "name": "@parameters('$connections')['powerbi_1']['connectionId']"
+                        }
+                    },
+                    "method": "post",
+                    "path": "/v1.0/myorg/groups/@{encodeURIComponent('6f41cb8d-7e4e-40de-91ae-ac8c3a0a0818')}/datasets/@{encodeURIComponent('f4a48ac7-c41f-4cf7-9aff-fe1d1a0506ec')}/refreshes",
+                    "queries": {
+                        "pbi_source": "powerAutomate"
+                    }
+                },
+                "runAfter": {
+                    "Refresh_EIM_Development": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "ApiConnection"
+            },
+            "Refresh_EIM_Development": {
+                "inputs": {
+                    "host": {
+                        "connection": {
+                            "name": "@parameters('$connections')['powerbi_1']['connectionId']"
+                        }
+                    },
+                    "method": "post",
+                    "path": "/v1.0/myorg/groups/@{encodeURIComponent('d14a2b31-529a-4e9b-99fe-cd3548950cfe')}/datasets/@{encodeURIComponent('c76ca2e0-a49b-4dd2-a994-4885e7302a58')}/refreshes",
+                    "queries": {
+                        "pbi_source": "powerAutomate"
+                    }
+                },
+                "runAfter": {},
+                "type": "ApiConnection"
+            }
+        },
+        "contentVersion": "1.0.0.0",
+        "outputs": {},
+        "parameters": {
+            "$connections": {
+                "defaultValue": {},
+                "type": "Object"
+            }
+        },
+        "triggers": {
+            "manual": {
+                "inputs": {
+                    "method": "GET",
+                    "schema": {}
+                },
+                "kind": "Http",
+                "type": "Request"
+            }
+        }
+    },
+    "parameters": {
+        "$connections": {
+            "value": {
+                "powerbi_1": {
+                    "connectionId": "/subscriptions/7e152566-0ba7-49c2-acac-ebbb5becd265/resourceGroups/HCEIMProductionRSG/providers/Microsoft.Web/connections/powerbi-1",
+                    "connectionName": "powerbi-1",
+                    "id": "/subscriptions/7e152566-0ba7-49c2-acac-ebbb5becd265/providers/Microsoft.Web/locations/eastus2/managedApis/powerbi"
+                }
+            }
+        }
+    }
+}
