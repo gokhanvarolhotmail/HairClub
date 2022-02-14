@@ -1,6 +1,6 @@
-/* CreateDate: 02/10/2022 09:42:00.403 , ModifyDate: 02/14/2022 08:21:49.250 */
+/* CreateDate: 02/14/2022 08:32:55.827 , ModifyDate: 02/14/2022 08:32:55.827 */
 GO
-CREATE PROCEDURE [dbo].[sprpt_CTE_TM_Summary]
+CREATE PROCEDURE [dbo].[sprpt_TM_Summary_CTE]
     ( @ReportType INT,
       @BegDt datetime,
       @EndDt datetime,

@@ -1,8 +1,8 @@
-/* CreateDate: 02/03/2022 09:28:21.970 , ModifyDate: 02/11/2022 15:28:18.527 */
+/* CreateDate: 02/11/2022 15:30:57.193 , ModifyDate: 02/13/2022 14:13:57.883 */
 GO
 /*
 ===============================================================================================
- Procedure Name:            rptHairOrderQuantitybyClient
+ Procedure Name:            rptHairOrderQuantitybyClient_V2
  Procedure Description:
  Created By:                Rachelen Hut
  Implemented By:            Rachelen Hut
@@ -37,7 +37,7 @@ EXEC [rptHairOrderQuantitybyClient] 100, '0'
 EXEC [rptHairOrderQuantitybyClient] 241, '26,27,28,29,30,31,45,46,47,48'
 ===============================================================================================
 */
-CREATE PROCEDURE [dbo].[rptHairOrderQuantitybyClient_GVAROL]
+CREATE PROCEDURE [dbo].[rptHairOrderQuantitybyClient_V2]
     @CenterID       INT
   , @MembershipList NVARCHAR(MAX)
 AS
@@ -614,13 +614,13 @@ FROM( SELECT
         , [t].[Client]
         , [t].[CurrentMembership] AS [Current Membership]
         , [t].[MembershipExpiration] AS [Membership Expiration]
-        , [t].[InitialQuantity] AS [Membership Qty]
+        , ISNULL([t].[InitialQuantity], 0) AS [Membership Qty]
         , [t].[FrozenEFTEndDate] AS [Frozen EFT End Date]
-        , [t].[QaNeeded] AS [QA Needed]
-        , [t].[InCenter] AS [In Center]
-        , [t].[OnOrder] AS [On Order]
+        , ISNULL([t].[QaNeeded], 0) AS [QA Needed]
+        , ISNULL([t].[InCenter], 0) AS [In Center]
+        , ISNULL([t].[OnOrder], 0) AS [On Order]
         , ISNULL([t].[InCenter], 0) + ISNULL([t].[OnOrder], 0) AS [In Center + On Order]
-        , CEILING(( [t].[QaNeeded] + [t].[InCenter] + [t].[OnOrder] ) / 12.0) AS [Months In Center And On Order]
+        , CEILING(( ISNULL([t].[QaNeeded], 0) + ISNULL([t].[InCenter], 0) + ISNULL([t].[OnOrder], 0)) / 12.0) AS [Months In Center And On Order]
         , CAST([t].[LastApplicationDate] AS DATE) AS [Last App Date]
         , [t].[EstNextApp] AS [Est Next App Date]
         , [t].[ScheduledNextAppointmentDate] AS [Scheduled Next Appointment Date]
@@ -628,7 +628,7 @@ FROM( SELECT
         , CAST([t].[OldestOrderPlacedDueDate] AS DATE) AS [Oldest Order Placed Due Date]
         , CAST([t].[NewestOrderDate] AS DATE) AS [Newest Order Date]
         , [t].[NewestOrderSystemType] AS [Newest Order System Type]
-        , [t].[RemainingQuantityToOrder] AS [Remaining to Order]
+        , ISNULL([t].[RemainingQuantityToOrder], 0) AS [Remaining to Order]
         , CASE WHEN [t].[OrderAvailableForNextAppointment] = 1 THEN 'Yes' ELSE 'No' END AS [Order Avail for Next App]
         , CASE WHEN [t].[PriorityHairNeeded] = 1 THEN 'Yes' ELSE 'No' END AS [Priority Order Needed]
         , CASE WHEN [t].[SuggestedQuantityToOrder] > [gms].[MaxVal] THEN [gms].[MaxVal] WHEN [t].[SuggestedQuantityToOrder] > 0 THEN
