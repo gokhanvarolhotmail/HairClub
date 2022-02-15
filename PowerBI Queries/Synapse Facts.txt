@@ -1,0 +1,93 @@
+// param_synapse_server
+"hc-eim-server-sql-prod2.sql.azuresynapse.net" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+
+// param_synapse_database
+"hc_eim_prod2_sql_pool" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+
+// FactFunnel
+let
+    Source = Sql.Database(param_synapse_server, param_synapse_database),
+    dbo_FactFunnel = Source{[Schema="dbo",Item="FactFunnel"]}[Data],
+    #"Added Conditional Column" = Table.AddColumn(dbo_FactFunnel, "FunnelStepOrder", each if [FunnelStep] = "Lead" then 1 else if [FunnelStep] = "Appointment" then 2 else if [FunnelStep] = "Show" then 3 else if [FunnelStep] = "NB" then 4 else if [FunnelStep] = "PCP" then 5 else null),
+    #"Changed Type" = Table.TransformColumnTypes(#"Added Conditional Column",{{"FunnelStepOrder", Int64.Type}}),
+    #"Added Custom" = Table.AddColumn(#"Changed Type", "LeadIdStepKey", each [LeadId] & "|" & Number.ToText([FunnelStepOrder])),
+    #"Added Custom1" = Table.AddColumn(#"Added Custom", "LeadIdStepNextKey", each [LeadId] & "|" & Number.ToText([FunnelStepOrder]+1)),
+    #"Added Custom2" = Table.AddColumn(#"Added Custom1", "LeadIdStep1Key", each [LeadId] & "|1"),
+    #"Added Custom3" = Table.AddColumn(#"Added Custom2", "LeadCreatedDateKey", each Number.FromText(Date.ToText(DateTime.Date([LeadCreatedDate]), "YYYYMMDD"))),
+    #"Removed Other Columns" = Table.SelectColumns(#"Added Custom3",{"FactDatekey", "FactDate", "LeadCreatedDate", "Leadkey", "LeadId", "FunnelStep", "CenterKey", "IsvalidLead", "FunnelStepOrder", "LeadIdStepKey", "LeadIdStepNextKey", "LeadIdStep1Key", "LeadCreatedDateKey"}),
+    #"Filtered Rows" = Table.SelectRows(#"Removed Other Columns", each [FactDate] >= #datetime(2019, 1, 1, 0, 0, 0))
+in
+    #"Filtered Rows"
+
+// calculations
+let
+    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}})
+in
+    #"Changed Type"
+
+// VWLead
+let
+    Source = Sql.Database(param_synapse_server, param_synapse_database),
+    dbo_VWLead = Source{[Schema="dbo",Item="VWLead"]}[Data],
+    #"Removed Other Columns" = Table.SelectColumns(dbo_VWLead,{"LeadKey", "LeadCreatedDateEST", "LeadId", "Centerkey", "IsActiveFlag", "OriginalCampaignKey", "LeadCountry", "CenterCountry", "DMADescription", "Geographykey", "Isactive", "Isvalid", "IsConsultFormComplete", "IsDeleted", "AgencyName", "SourceName", "MarketingSource", "TimeOfDayESTKey"}),
+    #"Filtered Rows" = Table.SelectRows(#"Removed Other Columns", each ([IsDeleted] = false) and [LeadCreatedDateEST] > #datetime(2019, 12, 31, 0, 0, 0)),
+    createdDateESTKey = Table.AddColumn(#"Filtered Rows", "createdDateESTKey", each Number.FromText(Date.ToText(DateTime.Date([LeadCreatedDateEST]), "YYYYMMDD"))),
+    #"Changed Type" = Table.TransformColumnTypes(createdDateESTKey,{{"createdDateESTKey", Int64.Type}}),
+    #"Replaced Value" = Table.ReplaceValue(#"Changed Type",null,"Unknown",Replacer.ReplaceValue,{"CenterCountry"})
+in
+    #"Replaced Value"
+
+// VWMarketingActivity
+let
+    Source = Sql.Database(param_synapse_server, param_synapse_database),
+    dbo_VWMarketingActivity = Source{[Schema="dbo",Item="VWMarketingActivity"]}[Data],
+    #"Added Custom" = Table.AddColumn(dbo_VWMarketingActivity, "FactDateESTKey", each Number.FromText(Date.ToText(DateTime.Date([MarketingActivityDateEST]), "YYYYMMDD"))),
+    #"Changed Type" = Table.TransformColumnTypes(#"Added Custom",{{"FactDateESTKey", Int64.Type}}),
+    #"Removed Other Columns" = Table.SelectColumns(#"Changed Type",{"FactDateKey", "MarketingActivityDateUTC", "MarketingActivityDateEST", "MarketingActivityDate", "MarketingActivityTime", "AgencyName", "BudgetAmount", "GrossSpend", "Discount", "Fees", "NetSpend", "Url", "Impressions18-65", "DMAkey", "DMA", "AgencyKey", "Agency", "AudienceKey", "Audience", "ChannelKey", "Channel", "FormatKey", "Format", "SourceKey", "source", "MediumKey", "Medium", "PurposeKey", "Purpose", "MethodKey", "Method", "BudgetName", "CampaignKey", "Campaign", "CompanyKey", "Company", "LocationKey", "Location", "Language", "NumberOfLeads", "NumberOfLeadsTarget", "NumertOfOpportunities", "NumberOfOpportunitiesTarget", "NumberOfSales", "NumberOfSalesTarget", "FactDateESTKey"}),
+    #"Filtered Rows" = Table.SelectRows(#"Removed Other Columns", each [MarketingActivityDateEST] >= #datetime(2020, 1, 1, 0, 0, 0)),
+    #"Filtered Rows1" = Table.SelectRows(#"Filtered Rows", each [Company] <> "Hans Wiemann"),
+    #"Added Custom1" = Table.AddColumn(#"Filtered Rows1", "NetSpend2", each if [AgencyName]= "MediaPoint" then 200*[Leads]
+else if [AgencyName] = "Venator" then 125*[Leads]
+else [NetSpend]),
+    #"Changed Type1" = Table.TransformColumnTypes(#"Added Custom1",{{"NetSpend2", type number}})
+in
+    #"Changed Type1"
+
+// VWFactCallDetail
+let
+Source = PowerBI.Dataflows(null),
+#"3430a899-cbf5-4906-9a5a-e4abd9e5d1ec" = Source{[workspaceId="3430a899-cbf5-4906-9a5a-e4abd9e5d1ec"]}[Data],
+#"0390715b-736c-4107-8a9f-9a48910cbed8" = #"3430a899-cbf5-4906-9a5a-e4abd9e5d1ec"{[dataflowId="0390715b-736c-4107-8a9f-9a48910cbed8"]}[Data],
+VWFactCallDetail1 = #"0390715b-736c-4107-8a9f-9a48910cbed8"{[entity="VWFactCallDetail"]}[Data]
+in
+VWFactCallDetail1
+
+// Metrics
+let
+    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}}),
+    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Column1"})
+in
+    #"Removed Columns"
+
+// VWFactAppointment
+let
+    Source = Sql.Database(param_synapse_server, param_synapse_database),
+    dbo_VWFactAppointment = Source{[Schema="dbo",Item="VWFactAppointment"]}[Data],
+    #"Filtered Rows" = Table.SelectRows(dbo_VWFactAppointment, each [AppointmentDateKey] >= 20200101),
+    #"Filtered Rows1" = Table.SelectRows(#"Filtered Rows", each true),
+    #"Changed Type" = Table.TransformColumnTypes(#"Filtered Rows1",{{"FactDate", type date}})
+in
+    #"Changed Type"
+
+// VWFactOpportunity
+let
+    Source = Sql.Database(param_synapse_server, param_synapse_database),
+    dbo_VWFactOpportunity = Source{[Schema="dbo",Item="VWFactOpportunity"]}[Data],
+    #"Filtered Rows" = Table.SelectRows(dbo_VWFactOpportunity, each 
+ ([isdeleted] = false)),
+    #"Filtered Rows1" = Table.SelectRows(#"Filtered Rows", each [FactDateKey] >= 20200101),
+    #"Replaced Value" = Table.ReplaceValue(#"Filtered Rows1",null,-1,Replacer.ReplaceValue,{"Centerkey"})
+in
+    #"Replaced Value"

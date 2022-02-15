@@ -1,0 +1,23 @@
+// param_synapse_server
+"hc-eim-server-sql-prod2.sql.azuresynapse.net" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+
+// param_synapse_database
+"hc_eim_prod2_sql_pool" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+
+// _LeadToSelector
+let
+    Source = Sql.Database(param_synapse_server, param_synapse_database),
+    dbo_VWLead = Source{[Schema="dbo",Item="VWLead"]}[Data],
+    #"Filtered Rows" = Table.SelectRows(dbo_VWLead, each ([Isvalid] = true) and ([IsDeleted] = false)and [LeadCreatedDateEST] > #datetime(2019, 12, 31, 0, 0, 0)),
+    #"Removed Other Columns" = Table.SelectColumns(#"Filtered Rows",{"LeadKey"}),
+    #"Added Custom" = Table.AddColumn(#"Removed Other Columns", "Custom", each _SelectorExecutiveDashboard),
+    #"Expanded Custom" = Table.ExpandTableColumn(#"Added Custom", "Custom", {"Dimensions"}, {"Dimensions"})
+in
+    #"Expanded Custom"
+
+// _SelectorExecutiveDashboard
+let
+    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45Wcs5IzMtLzVHSUTJUitWJVnLxdVQISk3PzM8DChmBhfyLMtMzQVxjpdhYAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Dimensions = _t, id = _t]),
+    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Dimensions", type text}, {"id", type number}})
+in
+    #"Changed Type"

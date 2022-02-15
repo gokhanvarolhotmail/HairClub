@@ -1,0 +1,159 @@
+// DimPeriod
+let
+
+//DateList from current and previous month
+  StartDate = Date.StartOfYear( Date.AddMonths( DateTime.Date(DateTime.LocalNow()),0)),
+  CountDays = Duration.TotalDays( DateTime.Date(DateTime.LocalNow()) - StartDate + #duration(1,0,0,0)),
+  DateList = List.Dates( StartDate, CountDays, #duration(1,0,0,0)),
+
+//today date
+  MaxValue = List.Max(DateList),
+    // current month calc
+    curMonthNum = Date.Month(MaxValue),
+    MTD = Table.SelectRows(
+  Table.AddColumn( Table.FromList(DateList, Splitter.SplitByNothing(), {"dateKey"}, null, ExtraValues.Error) , "month", each Date.Month([dateKey])),
+   each ([month] = curMonthNum)),
+    MTDTable = Table.ExpandListColumn( #table({"id","date","period"},{{5,MTD[dateKey],"MTD"}}), "date"),
+    CurrYear = Date.Year(MaxValue),
+
+// previous month calc
+  YTD = Table.SelectRows(
+  Table.AddColumn( Table.FromList(DateList, Splitter.SplitByNothing(), {"dateKey"}, null, ExtraValues.Error) , "year", each Date.Year([dateKey])),
+   each ([year] = CurrYear )),
+    YTDTable = Table.ExpandListColumn( #table({"id","date","period"},{{6,YTD[dateKey],"YTD"}}), "date"),
+    
+    
+    // append tables
+  FinalTable = Table.Combine({MTDTable,YTDTable}),
+    #"Changed Type" = Table.TransformColumnTypes(FinalTable,{{"id", Int64.Type}, {"date", type date}, {"period", type text}}),
+    #"Added Conditional Column" = Table.AddColumn(#"Changed Type", "Target", each if [id] = 1 then 9 else if [id] = 2 then 9 else if [id] = 3 then 45 else if [id] = 4 then 45 else if [id] = 5 then 180 else if [id] = 6 then 180 else null, type number),
+    #"Added Custom" = Table.AddColumn(#"Added Conditional Column", "Target2", each if Date.DayOfWeek([date]) = 0 or Date.DayOfWeek([date]) = 6 then 0 else 9, type number),
+    #"Changed Type1" = Table.TransformColumnTypes(#"Added Custom",{{"date", type date}})
+in
+    #"Changed Type1"
+
+// DimCurrentPeriod
+let
+
+//DateList from current and previous month
+  StartDate = Date.StartOfMonth( Date.AddMonths( DateTime.Date(DateTime.LocalNow()),-1)),
+  CountDays = Duration.TotalDays( DateTime.Date(Date.AddDays(DateTime.LocalNow(),-1)) - StartDate + #duration(1,0,0,0)),
+  DateList = List.Dates( StartDate, CountDays, #duration(1,0,0,0)),
+
+//today date
+  MaxValue = List.Max(DateList),
+    Last24Table = #table({"id","date","period"}, {{1,MaxValue,"Today"}}),
+
+// yesterday date
+  Yesterday = Date.AddDays(MaxValue,-1),
+  YesterdayTable = #table({"id","date","period"}, {{2,Yesterday,"Yesterday"}}),
+
+// current week calc
+  curWeekNum = Date.WeekOfYear(MaxValue),
+  curWeek = Table.SelectRows(
+  Table.AddColumn( Table.FromList(DateList, Splitter.SplitByNothing(), {"dateKey"}, null, ExtraValues.Error) , "week", each Date.WeekOfYear([dateKey], Day.Monday)),
+   each ([week] = curWeekNum)),
+    curWeekTable = Table.ExpandListColumn( #table({"id","date","period"},{{3,curWeek[dateKey],"Current Week"}}), "date"),
+
+//previuos week calc
+  prevWeek = Table.SelectRows(
+  Table.AddColumn( Table.FromList(DateList, Splitter.SplitByNothing(), {"dateKey"}, null, ExtraValues.Error) , "week", each Date.WeekOfYear([dateKey], Day.Monday)),
+   each ([week] = (curWeekNum -1))),
+   prevWeekTable = Table.ExpandListColumn( #table({"id","date","period"},{{4,prevWeek[dateKey],"Previous Week"}}), "date"),
+    // current month calc
+    curMonthNum = Date.Month(MaxValue),
+    curMonth = Table.SelectRows(
+  Table.AddColumn( Table.FromList(DateList, Splitter.SplitByNothing(), {"dateKey"}, null, ExtraValues.Error) , "month", each Date.Month([dateKey])),
+   each ([month] = curMonthNum)),
+    curMonthTable = Table.ExpandListColumn( #table({"id","date","period"},{{5,curMonth[dateKey],"CurrentMonth"}}), "date"),
+
+// previous month calc
+  prevMonth = Table.SelectRows(
+  Table.AddColumn( Table.FromList(DateList, Splitter.SplitByNothing(), {"dateKey"}, null, ExtraValues.Error) , "month", each Date.Month([dateKey])),
+   each ([month] < curMonthNum)),
+    prevMonthTable = Table.ExpandListColumn( #table({"id","date","period"},{{6,prevMonth[dateKey],"Previous Month"}}), "date"),
+    
+    
+    ThreeWeeksAGo = Table.SelectRows(
+  Table.AddColumn( Table.FromList(DateList, Splitter.SplitByNothing(), {"dateKey"}, null, ExtraValues.Error) , "week", each Date.WeekOfYear([dateKey], Day.Monday)),
+   each ([week] = (curWeekNum -2))),
+    ThreeWeeksAGoTable = Table.ExpandListColumn( #table({"id","date","period"},{{7,ThreeWeeksAGo[dateKey],"3 weeks ago"}}), "date"),
+    FourWeeksAGo = Table.SelectRows(
+  Table.AddColumn( Table.FromList(DateList, Splitter.SplitByNothing(), {"dateKey"}, null, ExtraValues.Error) , "week", each Date.WeekOfYear([dateKey], Day.Monday)),
+   each ([week] = (curWeekNum -3))),
+    FourWeeksAGoTable = Table.ExpandListColumn( #table({"id","date","period"},{{8,FourWeeksAGo[dateKey],"4 weeks ago"}}), "date"),
+    // append tables
+  FinalTable = Table.Combine({Last24Table,YesterdayTable,curWeekTable,curMonthTable,prevMonthTable,prevWeekTable,ThreeWeeksAGoTable,FourWeeksAGoTable}),
+    #"Changed Type" = Table.TransformColumnTypes(FinalTable,{{"id", Int64.Type}, {"date", type date}, {"period", type text}}),
+    #"Added Conditional Column" = Table.AddColumn(#"Changed Type", "Target", each if [id] = 1 then 9 else if [id] = 2 then 9 else if [id] = 3 then 45 else if [id] = 4 then 45 else if [id] = 5 then 180 else if [id] = 6 then 180 else null, type number),
+    #"Added Custom" = Table.AddColumn(#"Added Conditional Column", "Target2", each if Date.DayOfWeek([date]) = 0 or Date.DayOfWeek([date]) = 6 then 0 else 9, type number)
+in 
+  #"Added Custom"
+
+// DummyTable
+let
+    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45WclSKjQUA", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [DummyDimension = _t]),
+    #"Changed Type" = Table.TransformColumnTypes(Source,{{"DummyDimension", type text}})
+in
+    #"Changed Type"
+
+// Eastern Time Function
+let
+    Source = () => 
+
+let
+   StandardLocal = -5, 
+   UTC_Time = DateTimeZone.FixedUtcNow(),
+   CurrentYear = Date.Year( DateTimeZone.SwitchZone( UTC_Time,StandardLocal)),
+   DST_Start = Date.StartOfWeek(#datetimezone( CurrentYear,3,14,0,0,0,StandardLocal,0),Day.Sunday) + #duration(0,2,0,0),
+   DST_End = Date.StartOfWeek( #datetimezone( CurrentYear, 11,7,0,0,0, StandardLocal+1,0),Day.Sunday) + #duration(0,2,0,0), 
+   AdjustDST = if UTC_Time >= DST_Start and UTC_Time < DST_End then StandardLocal + 1 else StandardLocal, 
+   Source = #table(type table [LastRefresh=datetimezone], {{UTC_Time}}),
+   #"Add Local Column" = Table.AddColumn(Source, "Refreshed", each DateTimeZone.SwitchZone(DateTimeZone.FixedUtcNow(),AdjustDST), DateTime.Type),
+   Refreshed = #"Add Local Column"{0}[Refreshed]
+in
+   Refreshed
+
+in
+    Source
+
+// Last Update
+let
+    Source = #"Eastern Time Function"()
+in
+    Source
+
+// _SelectorPeriod
+let
+    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45WMlTSUfINcVGK1YlWMgKyI6FsYyDbx9DIVyk2FgA=", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [id = _t, label = _t]),
+    #"Changed Type" = Table.TransformColumnTypes(Source,{{"id", Int64.Type}, {"label", type text}})
+in
+    #"Changed Type"
+
+// _SelectorCostPerLead
+let
+    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45WMlTSUXLOSMzLS81RitWJVjIC8h3TU/OSK5ViYwE=", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [id = _t, label = _t]),
+    #"Changed Type" = Table.TransformColumnTypes(Source,{{"id", Int64.Type}, {"label", type text}})
+in
+    #"Changed Type"
+
+// _SelectorExecutiveDashboard
+let
+    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45Wcs5IzMtLzVHSUTJUitWJVnLxdVQISk3PzM8DChmBhfyLMtMzQVxjpdhYAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Dimensions = _t, id = _t]),
+    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Dimensions", type text}, {"id", type number}})
+in
+    #"Changed Type"
+
+// _SelectorPacing
+let
+    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45WMlTSUfJNTclMVAguSM1LUYrViVYyAor5pCamFIN5xkCec4APmG0CYSuEJBalp5aAhUyhQmGJRZmJecmpSrGxAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [id = _t, label = _t]),
+    #"Changed Type" = Table.TransformColumnTypes(Source,{{"id", Int64.Type}, {"label", type text}})
+in
+    #"Changed Type"
+
+// _SelectorCPL
+let
+    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45WMlTSUXIO8FGK1YlWMgKywxKLMhPzklOVYmMB", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [id = _t, label = _t]),
+    #"Changed Type" = Table.TransformColumnTypes(Source,{{"id", Int64.Type}, {"label", type text}})
+in
+    #"Changed Type"

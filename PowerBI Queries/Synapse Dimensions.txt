@@ -1,0 +1,107 @@
+// param_synapse_server
+"hc-eim-server-sql-prod2.sql.azuresynapse.net" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+
+// param_synapse_database
+"hc_eim_prod2_sql_pool" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+
+// DimSource
+let
+    Source = Sql.Database(param_synapse_server, param_synapse_database),
+    dbo_DimSource = Source{[Schema="dbo",Item="DimSource"]}[Data],
+    #"Removed Other Columns" = Table.SelectColumns(dbo_DimSource,{"SourceKey", "SourceName"})
+in
+    #"Removed Other Columns"
+
+// DimGeography
+let
+    Source = Sql.Database(param_synapse_server, param_synapse_database),
+    dbo_DimGeography = Source{[Schema="dbo",Item="DimGeography"]}[Data],
+    #"Replaced Value" = Table.ReplaceValue(dbo_DimGeography,"","Other",Replacer.ReplaceValue,{"Country"})
+in
+    #"Replaced Value"
+
+// DimLeadGeography
+let
+    Source = Sql.Database(param_synapse_server, param_synapse_database),
+    dbo_DimGeography = Source{[Schema="dbo",Item="DimGeography"]}[Data]
+in
+    dbo_DimGeography
+
+// DimCenter
+let
+    Source = Sql.Database(param_synapse_server, param_synapse_database),
+    dbo_DimCenter = Source{[Schema="dbo",Item="DimCenter"]}[Data],
+    #"Merged Queries" = Table.NestedJoin(dbo_DimCenter, {"CenterID"}, #"bi_ent_dds vwDimCenter", {"CenterSSID"}, "bi_ent_dds vwDimCenter", JoinKind.LeftOuter),
+    #"Expanded bi_ent_dds vwDimCenter" = Table.ExpandTableColumn(#"Merged Queries", "bi_ent_dds vwDimCenter", {"RegionAM", "DMARegion"}, {"RegionAM", "DMARegion"})
+in
+    #"Expanded bi_ent_dds vwDimCenter"
+
+// bi_ent_dds vwDimCenter
+let
+    Source = PowerBI.Dataflows(null),
+    #"3430a899-cbf5-4906-9a5a-e4abd9e5d1ec" = Source{[workspaceId="3430a899-cbf5-4906-9a5a-e4abd9e5d1ec"]}[Data],
+    #"5a63c6a0-6c60-483f-bac3-621909acfa22" = #"3430a899-cbf5-4906-9a5a-e4abd9e5d1ec"{[dataflowId="5a63c6a0-6c60-483f-bac3-621909acfa22"]}[Data],
+    #"bi_ent_dds vwDimCenter1" = #"5a63c6a0-6c60-483f-bac3-621909acfa22"{[entity="bi_ent_dds vwDimCenter"]}[Data],
+    #"Removed Other Columns" = Table.SelectColumns(#"bi_ent_dds vwDimCenter1",{"CenterSSID", "CenterNumber", "RegionRSMMembershipAdvisorSSID", "RegionMA", "RegionRSMNBConsultantSSID", "RegionNB1", "RegionRTMTechnicalManagerSSID", "RegionTM", "RegionROMOperationsManagerSSID", "RegionAM", "DMARegion"})
+in
+    #"Removed Other Columns"
+
+// DimDate
+let
+    Source = PowerBI.Dataflows(null),
+    #"3430a899-cbf5-4906-9a5a-e4abd9e5d1ec" = Source{[workspaceId="3430a899-cbf5-4906-9a5a-e4abd9e5d1ec"]}[Data],
+    #"0390715b-736c-4107-8a9f-9a48910cbed8" = #"3430a899-cbf5-4906-9a5a-e4abd9e5d1ec"{[dataflowId="0390715b-736c-4107-8a9f-9a48910cbed8"]}[Data],
+    DimDate1 = #"0390715b-736c-4107-8a9f-9a48910cbed8"{[entity="DimDate"]}[Data]
+in
+    DimDate1
+
+// DimLead
+let
+    Source = Sql.Database(param_synapse_server, param_synapse_database),
+    dbo_DimLead = Source{[Schema="dbo",Item="VWLead"]}[Data],
+   // #"Filtered Rows" = Table.SelectRows(dbo_DimLead, each ([IsDeleted] = false) and ([Isvalid] = true)),
+    #"Filtered Rows1" = Table.SelectRows(dbo_DimLead, each [LeadCreatedDateEST] >= #datetime(2019, 1, 1, 0, 0, 0)),
+    #"Added Custom" = Table.AddColumn(#"Filtered Rows1", "CreatedDateESTKey", each Number.FromText(Date.ToText(DateTime.Date([LeadCreatedDateEST]), "YYYYMMDD")))
+in
+    #"Added Custom"
+
+// DimTimeOfDay
+let
+    Source = Sql.Database(param_synapse_server, param_synapse_database),
+    dbo_DimTimeOfDay = Source{[Schema="dbo",Item="DimTimeOfDay"]}[Data]
+in
+    dbo_DimTimeOfDay
+
+// DimCampaign
+let
+    Source = PowerBI.Dataflows(null),
+    #"3430a899-cbf5-4906-9a5a-e4abd9e5d1ec" = Source{[workspaceId="3430a899-cbf5-4906-9a5a-e4abd9e5d1ec"]}[Data],
+    #"0390715b-736c-4107-8a9f-9a48910cbed8" = #"3430a899-cbf5-4906-9a5a-e4abd9e5d1ec"{[dataflowId="0390715b-736c-4107-8a9f-9a48910cbed8"]}[Data],
+    DimCampaign1 = #"0390715b-736c-4107-8a9f-9a48910cbed8"{[entity="DimCampaign"]}[Data]
+in
+    DimCampaign1
+
+// vwFactLead
+let
+    Source = PowerBI.Dataflows(null),
+    #"3430a899-cbf5-4906-9a5a-e4abd9e5d1ec" = Source{[workspaceId="3430a899-cbf5-4906-9a5a-e4abd9e5d1ec"]}[Data],
+    #"5a63c6a0-6c60-483f-bac3-621909acfa22" = #"3430a899-cbf5-4906-9a5a-e4abd9e5d1ec"{[dataflowId="5a63c6a0-6c60-483f-bac3-621909acfa22"]}[Data],
+    vwFactLead1 = #"5a63c6a0-6c60-483f-bac3-621909acfa22"{[entity="vwFactLead"]}[Data]
+in
+    vwFactLead1
+
+// DimLead_Revenue
+let
+    Source = Table.NestedJoin(DimLead, {"LeadId"}, vwFactLead, {"SFDC_LeadId"}, "Revenue.1", JoinKind.LeftOuter),
+    #"Removed Other Columns" = Table.SelectColumns(Source,{"LeadId", "LeadExternalId", "Revenue.1"}),
+    #"Expanded Revenue.1" = Table.ExpandTableColumn(#"Removed Other Columns", "Revenue.1", {"SFDC_LeadId"}, {"SFDC_LeadId"}),
+    #"Added Conditional Column" = Table.AddColumn(#"Expanded Revenue.1", "LeadIdRevenue", each if [SFDC_LeadId] = null then [LeadExternalId] else [LeadId])
+in
+    #"Added Conditional Column"
+
+// DimPersonAccount
+let
+    Source = Sql.Database(param_synapse_server, param_synapse_database),
+    dbo_VWPersonAccount = Source{[Schema="dbo",Item="VWPersonAccount"]}[Data]
+in
+    dbo_VWPersonAccount

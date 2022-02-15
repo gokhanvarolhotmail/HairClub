@@ -1,0 +1,45 @@
+// vwFactAccounting
+let
+    Source = PowerBI.Dataflows(null),
+    #"3430a899-cbf5-4906-9a5a-e4abd9e5d1ec" = Source{[workspaceId="3430a899-cbf5-4906-9a5a-e4abd9e5d1ec"]}[Data],
+    #"5a63c6a0-6c60-483f-bac3-621909acfa22" = #"3430a899-cbf5-4906-9a5a-e4abd9e5d1ec"{[dataflowId="5a63c6a0-6c60-483f-bac3-621909acfa22"]}[Data],
+    #"bi_ent_dds vwFactAccounting1" = #"5a63c6a0-6c60-483f-bac3-621909acfa22"{[entity="bi_ent_dds vwFactAccounting"]}[Data]
+in
+    #"bi_ent_dds vwFactAccounting1"
+
+// DimGLAccount
+let
+    Source = PowerBI.Dataflows(null),
+    #"3430a899-cbf5-4906-9a5a-e4abd9e5d1ec" = Source{[workspaceId="3430a899-cbf5-4906-9a5a-e4abd9e5d1ec"]}[Data],
+    #"5a63c6a0-6c60-483f-bac3-621909acfa22" = #"3430a899-cbf5-4906-9a5a-e4abd9e5d1ec"{[dataflowId="5a63c6a0-6c60-483f-bac3-621909acfa22"]}[Data],
+    #"bi_ent_dds vwDimAccount1" = #"5a63c6a0-6c60-483f-bac3-621909acfa22"{[entity="bi_ent_dds vwDimAccount"]}[Data]
+in
+    #"bi_ent_dds vwDimAccount1"
+
+// vwFactLead
+let
+    Source = PowerBI.Dataflows(null),
+    #"3430a899-cbf5-4906-9a5a-e4abd9e5d1ec" = Source{[workspaceId="3430a899-cbf5-4906-9a5a-e4abd9e5d1ec"]}[Data],
+    #"5a63c6a0-6c60-483f-bac3-621909acfa22" = #"3430a899-cbf5-4906-9a5a-e4abd9e5d1ec"{[dataflowId="5a63c6a0-6c60-483f-bac3-621909acfa22"]}[Data],
+    vwFactLead1 = #"5a63c6a0-6c60-483f-bac3-621909acfa22"{[entity="vwFactLead"]}[Data]
+in
+    vwFactLead1
+
+// vwFactSalesConnect
+let
+    Source = PowerBI.Dataflows(null),
+    #"3430a899-cbf5-4906-9a5a-e4abd9e5d1ec" = Source{[workspaceId="3430a899-cbf5-4906-9a5a-e4abd9e5d1ec"]}[Data],
+    #"5a63c6a0-6c60-483f-bac3-621909acfa22" = #"3430a899-cbf5-4906-9a5a-e4abd9e5d1ec"{[dataflowId="5a63c6a0-6c60-483f-bac3-621909acfa22"]}[Data],
+    vwFactSalesConnect1 = #"5a63c6a0-6c60-483f-bac3-621909acfa22"{[entity="vwFactSalesConnect"]}[Data]
+in
+    vwFactSalesConnect1
+
+// bi_ent_dds vwDimCenter
+let
+    Source = PowerBI.Dataflows(null),
+    #"3430a899-cbf5-4906-9a5a-e4abd9e5d1ec" = Source{[workspaceId="3430a899-cbf5-4906-9a5a-e4abd9e5d1ec"]}[Data],
+    #"5a63c6a0-6c60-483f-bac3-621909acfa22" = #"3430a899-cbf5-4906-9a5a-e4abd9e5d1ec"{[dataflowId="5a63c6a0-6c60-483f-bac3-621909acfa22"]}[Data],
+    #"bi_ent_dds vwDimCenter1" = #"5a63c6a0-6c60-483f-bac3-621909acfa22"{[entity="bi_ent_dds vwDimCenter"]}[Data],
+    #"Removed Other Columns" = Table.SelectColumns(#"bi_ent_dds vwDimCenter1",{"CenterSSID", "CenterNumber", "RegionRSMMembershipAdvisorSSID", "RegionMA", "RegionRSMNBConsultantSSID", "RegionNB1", "RegionRTMTechnicalManagerSSID", "RegionTM", "RegionROMOperationsManagerSSID", "RegionAM", "DMARegion"})
+in
+    #"Removed Other Columns"

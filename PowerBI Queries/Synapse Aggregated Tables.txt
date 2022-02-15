@@ -1,0 +1,107 @@
+// param_synapse_server
+"hc-eim-server-sql-prod2.sql.azuresynapse.net" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+
+// param_synapse_database
+"hc_eim_prod2_sql_pool" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+
+// Aggr_VWMarketingActivity
+let
+    Source = Sql.Database(param_synapse_server, param_synapse_database),
+    dbo_VWMarketingActivity = Source{[Schema="dbo",Item="VWMarketingActivity"]}[Data],
+    #"Filtered Rows" = Table.SelectRows(dbo_VWMarketingActivity, each ([Company] <> "Hans Wiemann")),
+    #"Grouped Rows" = Table.Group(#"Filtered Rows", {"AgencyName", "BudgetName", "MarketingActivityDateEST", "source", "Channel", "Medium", "Language", "Location", "ChannelGroup", "CampaignKey"}, {{"NetSpend", each List.Sum([NetSpend]), type nullable number}, {"Fees", each List.Sum([Fees]), type nullable number}, {"Discount", each List.Sum([Discount]), type nullable number}, {"GrossSpend", each List.Sum([GrossSpend]), type nullable number}, {"TargetOfLeads", each List.Sum([NumberOfLeadsTarget]), type nullable number}}),
+    #"Added Custom" = Table.AddColumn(#"Grouped Rows", "FactDateESTKey", each Number.FromText(Date.ToText(DateTime.Date([MarketingActivityDateEST]), "YYYYMMDD"))),
+    #"Changed Type" = Table.TransformColumnTypes(#"Added Custom",{{"FactDateESTKey", Int64.Type}}),
+    #"Renamed Columns" = Table.RenameColumns(#"Changed Type",{{"source", "Source"}, {"Medium", "Medium"}}),
+    #"Added Conditional Column" = Table.AddColumn(#"Renamed Columns", "Franchise_Corporate", each if [BudgetName] = "Barth" or [BudgetName]="Strepman" then "Franchise" else "Corporate"),
+    PayMediaType = Table.AddColumn(#"Added Conditional Column", "PayMediaType", each "Paid Media"),
+    #"Added Custom1" = Table.AddColumn(PayMediaType, "MediumGroup", each [Medium]),
+    #"Changed Type1" = Table.TransformColumnTypes(#"Added Custom1",{{"PayMediaType", type text}})
+in
+    #"Changed Type1"
+
+// Aggr_VWLead
+let
+    Source = Sql.Database(param_synapse_server, param_synapse_database),
+    dbo_VWLead = Source{[Schema="dbo",Item="VWLead"]}[Data],
+    #"Filtered Rows" = Table.SelectRows(dbo_VWLead, each ([Isvalid] = true) and ([IsDeleted] = false) and [LeadCreatedDateEST] > #datetime(2018, 12, 31, 0, 0, 0)),
+    #"Merged Queries" = Table.NestedJoin(#"Filtered Rows", {"OriginalCampaignKey"}, DimCampaign, {"CampaignKey"}, "DimCampaign", JoinKind.Inner),
+    #"Expanded DimCampaign" = Table.ExpandTableColumn(#"Merged Queries", "DimCampaign", {"PayMediaType", "AgencyNameDerived", "CampaignChannelGroup", "CampaignLocation", "CampaignBudget", "CampaignMedium", "CampaignMediumgroup", "CampaignChannelDerived", "CampaignSource", "CampaignSourceDerived"}, {"PayMediaType", "AgencyNameDerived", "CampaignChannelGroup", "CampaignLocation", "CampaignBudget", "CampaignMedium", "CampaignMediumgroup", "CampaignChannelDerived", "CampaignSource", "CampaignSourceDerived"}),
+    #"Added Conditional Column" = Table.AddColumn(#"Expanded DimCampaign", "Franchise_Corporate", each if [CampaignBudget] = "Barth" or [CampaignBudget]="Strepman" then "Franchise" else "Corporate"),
+    #"Grouped Rows" = Table.Group(#"Added Conditional Column", {"AgencyNameDerived", "CampaignChannelDerived", "CampaignMedium", "OriginalcampaignLocation", "CampaignSourceDerived", "LeadCreatedDateEST", "Franchise_Corporate", "PayMediaType", "CampaignChannelGroup", "CampaignMediumgroup", "Centerkey"}, {{"Leads", each Table.RowCount(_), Int64.Type}}),
+    createdDateESTKey = Table.AddColumn(#"Grouped Rows", "createdDateESTKey", each Number.FromText(Date.ToText(DateTime.Date([LeadCreatedDateEST]), "YYYYMMDD"))),
+    #"Renamed Columns" = Table.RenameColumns(createdDateESTKey,{{"CampaignSourceDerived", "Source"}, {"OriginalcampaignLocation", "Location"}, {"CampaignMedium", "Medium"}, {"CampaignChannelDerived", "Channel"}, {"AgencyNameDerived", "AgencyName"}, {"createdDateESTKey", "FactDateESTKey"}, {"CampaignChannelGroup", "ChannelGroup"}, {"CampaignMediumgroup", "MediumGroup"}})
+in
+    #"Renamed Columns"
+
+// DimCampaign
+let
+    Source = PowerBI.Dataflows(null),
+    #"3430a899-cbf5-4906-9a5a-e4abd9e5d1ec" = Source{[workspaceId="3430a899-cbf5-4906-9a5a-e4abd9e5d1ec"]}[Data],
+    #"0390715b-736c-4107-8a9f-9a48910cbed8" = #"3430a899-cbf5-4906-9a5a-e4abd9e5d1ec"{[dataflowId="0390715b-736c-4107-8a9f-9a48910cbed8"]}[Data],
+    DimCampaign1 = #"0390715b-736c-4107-8a9f-9a48910cbed8"{[entity="DimCampaign"]}[Data]
+in
+    DimCampaign1
+
+// Aggr_FactTarget
+let
+    Source = Sql.Database(param_synapse_server, param_synapse_database),
+    dbo_FactTarget = Source{[Schema="dbo",Item="VWFactMarketingBudget"]}[Data],
+    #"Changed Type" = Table.TransformColumnTypes(dbo_FactTarget,{{"FactDate", type date}}),
+    #"Calculated Start of Month" = Table.TransformColumns(#"Changed Type",{{"FactDate", Date.StartOfMonth, type date}}),
+    #"Added Custom" = Table.AddColumn(#"Calculated Start of Month", "FactDateESTKey", each Number.FromText(Date.ToText(DateTime.Date([FactDate]), "YYYYMMDD"))),
+    #"Renamed Columns" = Table.RenameColumns(#"Added Custom",{{"Agency", "AgencyName"}, {"PaidMedia", "PayMediaType"}}),
+    #"Replaced Value" = Table.ReplaceValue(#"Renamed Columns","PaidMedia","Paid Media",Replacer.ReplaceText,{"PayMediaType"}),
+    #"Added Custom1" = Table.AddColumn(#"Replaced Value", "Franchise_Corporate", each if [Budget] = "Barth" or [Budget]="Strepman" then "Franchise"  
+
+else if [Channel] = "Direct to Site" or [Channel] = "Other" then ""
+
+else "Corporate"),
+    #"Added Custom3" = Table.AddColumn(#"Added Custom1", "MediumGroup", each [Medium]),
+    #"Changed Type1" = Table.TransformColumnTypes(#"Added Custom3",{{"TaregetLeads", Int64.Type}, {"BudgetAmount", type number}})
+in
+    #"Changed Type1"
+
+// Aggr_Marketing
+let
+    Source = Table.Combine({Aggr_VWMarketingActivity, Aggr_VWLead, Aggr_FactTarget}),
+    #"Replaced Value" = Table.ReplaceValue(Source,null,"Unknown",Replacer.ReplaceValue,{"AgencyName"}),
+    #"Added Custom" = Table.AddColumn(#"Replaced Value", "NetSpend2", each if [AgencyName]= "MediaPoint" then 200*[Leads]
+else if [AgencyName] = "Venator" then 125*[Leads]
+else [NetSpend]),
+    #"Removed Columns" = Table.RemoveColumns(#"Added Custom",{"NetSpend"}),
+    #"Renamed Columns" = Table.RenameColumns(#"Removed Columns",{{"NetSpend2", "NetSpend"}}),
+    #"Changed Type" = Table.TransformColumnTypes(#"Renamed Columns",{{"NetSpend", type number}}),
+    #"Replaced Value1" = Table.ReplaceValue(#"Changed Type","Radio","Audio",Replacer.ReplaceText,{"Channel"}),
+    #"Added Custom1" = Table.AddColumn(#"Replaced Value1", "PayMediaType_Intiatives", each if [PayMediaType] = "Paid Media" and [Franchise_Corporate] <> ""
+then [Franchise_Corporate] & " Paid Media"
+else if [PayMediaType] = "Non Paid Media" 
+then "Other / Non Paid"
+else ""),
+    #"Added Custom3" = Table.AddColumn(#"Added Custom1", "AgencyName_Initiatives", each if [PayMediaType] = "Paid Media" then [AgencyName]
+else if [PayMediaType] = "Non Paid Media" then
+
+if [Channel] = "Direct" then [Channel]
+else [AgencyName]
+else ""),
+    #"Added Custom2" = Table.AddColumn(#"Added Custom3", "Medium Group Initiatives", each if [PayMediaType] = "Paid Media" then [MediumGroup] else ""),
+    #"Added Custom4" = Table.AddColumn(#"Added Custom2", "Channel_Performance", each if [PayMediaType] = "Paid Media" then [Channel]
+else if [PayMediaType] = "Non Paid Media" then ""
+else [Channel]),
+ #"Added Custom5" = Table.AddColumn(#"Added Custom4", "Franchise_Corporate_Performance", each if [PayMediaType] = "Paid Media" then [Franchise_Corporate]
+else if [PayMediaType] = "Non Paid Media" then ""
+else [Channel])
+in
+    #"Added Custom5"
+
+// Aggr_Funnel
+let
+    Source = Sql.Database(param_synapse_server, param_synapse_database),
+    dbo_FactFunnelPivot = Source{[Schema="dbo",Item="FactFunnelPivot"]}[Data],
+    #"Added Custom" = Table.AddColumn(dbo_FactFunnelPivot, "LeadDateKey", each Number.FromText(Date.ToText(DateTime.Date([LeadDate]), "YYYYMMDD"))),
+    #"Removed Other Columns" = Table.SelectColumns(#"Added Custom",{"leadid", "LeadDate", "LeadToAppoinment", "AppointmentToShow", "ShowToNB", "NBToPCP", "LeadDateKey"}),
+    #"Added Custom1" = Table.AddColumn(#"Removed Other Columns", "Days to Complete", each [LeadToAppoinment]+[AppointmentToShow]+[ShowToNB]+[NBToPCP]),
+    #"Filtered Rows" = Table.SelectRows(#"Added Custom1", each [LeadDate] >= #datetime(2019, 1, 1, 0, 0, 0)),
+    #"Changed Type" = Table.TransformColumnTypes(#"Filtered Rows",{{"Days to Complete", type number}})
+in
+    #"Changed Type"

@@ -1,0 +1,6 @@
+// _SelectorLASS
+let
+    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45WMlTSUfJJTUwpVorViVYyAvIcCwryM/NKclPzSiCCxkBB5/y84tKcksSSTCADLGoCFA1OzEkF8mIB", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [id = _t, label = _t]),
+    #"Changed Type" = Table.TransformColumnTypes(Source,{{"id", Int64.Type}, {"label", type text}})
+in
+    #"Changed Type"
