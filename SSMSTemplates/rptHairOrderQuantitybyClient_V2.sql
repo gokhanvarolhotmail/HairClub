@@ -647,7 +647,7 @@ FROM( SELECT
       --, [gms].[MaxVal] AS [Membership Maximum]
       FROM( SELECT
                 *
-              , CEILING(( ISNULL([t].[InitialQuantity], 0) / 12.0 * 8 ) - ( [t].[QaNeeded] + [t].[InCenter] + [t].[OnOrder] )) AS [SuggestedQuantityToOrder]
+              , CEILING(( ISNULL([t].[InitialQuantity], 0) / 12.0 * 8 ) - ( ISNULL([t].[QaNeeded], 0) + ISNULL([t].[InCenter], 0) + ISNULL([t].[OnOrder], 0) )) AS [SuggestedQuantityToOrder]
             FROM [#tmpHairOrderQuantitybyClient] AS [t] ) AS [t]
       INNER JOIN [#groupedMemberships] AS [gms] ON [t].[MembershipID] = [gms].[membershipId] ) AS [k]
 ORDER BY [k].[Region]
@@ -658,6 +658,7 @@ GO
 RETURN ;
 
 EXEC [dbo].[rptHairOrderQuantitybyClient_V2] @CenterID = 201, @MembershipList = '0' ;
+-- EXEC [dbo].[rptHairOrderQuantitybyClient_V2] @CenterID = 804, @MembershipList = '0' ;
 
 -- EXEC [dbo].[rptHairOrderQuantitybyClient_GVAROL] @CenterID = 849, @MembershipList = '0' ;
 /*
