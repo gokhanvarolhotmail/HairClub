@@ -33,9 +33,11 @@ SELECT
   , [m].[MembershipID]
   , [m].[MembershipDescription]
   , [m].[MembershipDescriptionShort]
+  , [m].[IsActiveFlag] AS [MembershipIsActiveFlag]
   , [cm].[ClientMembershipStatusID]
   , [ms].[ClientMembershipStatusDescription]
   , [ms].[ClientMembershipStatusDescriptionShort]
+  , [cm].[IsActiveFlag] AS [ClientMembershipIsActive]
   , [c].[ClientFullNameAltCalc]
   , [c].[ClientFullNameCalc]
   , [c].[ClientFullNameAlt2Calc]
@@ -52,10 +54,11 @@ SELECT
   , [c2].[CenterDescriptionFullAlt1Calc] AS [OriginalCenterDescriptionFullAlt1Calc]
   , [c2].[CenterDescriptionFullCalc] AS [OriginalCenterDescriptionFullCalc]
 FROM [dbo].[datClient] AS [c]
-INNER JOIN [dbo].[datClientMembership] AS [cm] ON [cm].[ClientGUID] = [c].[ClientGUID] AND [cm].[IsActiveFlag] = 1
-INNER JOIN [dbo].[cfgMembership] AS [m] ON [cm].[MembershipID] = [m].[MembershipID] AND [m].[IsActiveFlag] = 1
+LEFT JOIN [dbo].[datClientMembership] AS [cm] ON [cm].[ClientGUID] = [c].[ClientGUID]
+LEFT JOIN [dbo].[cfgMembership] AS [m] ON [cm].[MembershipID] = [m].[MembershipID]
 LEFT JOIN [dbo].[cfgCenter] AS [c1] ON [c1].[CenterID] = [c].[CenterID]
 LEFT JOIN [dbo].[cfgCenter] AS [c2] ON [c2].[CenterID] = [c].[ClientOriginalCenterID]
 LEFT JOIN [#ScheduledNextAppDate] AS [sa] ON [sa].[ClientGUID] = [c].[ClientGUID]
 LEFT JOIN [dbo].[lkpClientMembershipStatus] AS [ms] ON [ms].[ClientMembershipStatusID] = [cm].[ClientMembershipStatusID]
+WHERE [cm].[ClientMembershipStatusID] = 1
 ORDER BY [c].[ClientIdentifier] ;
