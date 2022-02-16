@@ -1,3 +1,6 @@
+USE [HC_BI_Reporting]
+GO
+-- https://hairclub.zendesk.com/agent/tickets/15293
 -- Missing Inperson or virtual net sales are missing
 GO
 /***********************************************************************
