@@ -138,9 +138,9 @@ IF @sType = 'C' AND @Filter = 2 --By Area Managers
           , [dc].[CenterDescription]
           , [dc].[CenterDescriptionNumber]
         FROM [HC_BI_ENT_DDS].[bi_ent_dds].[DimCenter] AS [dc]
-        INNER JOIN [HC_BI_ENT_DDS].[bi_ent_dds].[DimCenterType] AS [CT] ON [CT].[CenterTypeKey] = [dc].[CenterTypeKey]
+        INNER JOIN [HC_BI_ENT_DDS].[bi_ent_dds].[DimCenterType] AS [ct] ON [ct].[CenterTypeKey] = [dc].[CenterTypeKey]
         INNER JOIN [HC_BI_ENT_DDS].[bi_ent_dds].[DimCenterManagementArea] AS [cma] ON [dc].[CenterManagementAreaSSID] = [cma].[CenterManagementAreaSSID]
-        WHERE [dc].[Active] = 'Y' AND [cma].[Active] = 'Y' AND [CT].[CenterTypeDescriptionShort] IN ('C', 'HW') ;
+        WHERE [dc].[Active] = 'Y' AND [cma].[Active] = 'Y' AND [ct].[CenterTypeDescriptionShort] IN ('C', 'HW') ;
     END ;
 
 IF @sType = 'C' AND @Filter = 3 -- By Centers
@@ -155,8 +155,8 @@ IF @sType = 'C' AND @Filter = 3 -- By Centers
           , [dc].[CenterDescription]
           , [dc].[CenterDescriptionNumber]
         FROM [HC_BI_ENT_DDS].[bi_ent_dds].[DimCenter] AS [dc]
-        INNER JOIN [HC_BI_ENT_DDS].[bi_ent_dds].[DimCenterType] AS [CT] ON [CT].[CenterTypeKey] = [dc].[CenterTypeKey]
-        WHERE [dc].[Active] = 'Y' AND [CT].[CenterTypeDescriptionShort] IN ('C', 'HW') ;
+        INNER JOIN [HC_BI_ENT_DDS].[bi_ent_dds].[DimCenterType] AS [ct] ON [ct].[CenterTypeKey] = [dc].[CenterTypeKey]
+        WHERE [dc].[Active] = 'Y' AND [ct].[CenterTypeDescriptionShort] IN ('C', 'HW') ;
     END ;
 
 IF @sType = 'F' --Always By Regions for Franchises
@@ -171,9 +171,9 @@ IF @sType = 'F' --Always By Regions for Franchises
           , [dc].[CenterDescription]
           , [dc].[CenterDescriptionNumber]
         FROM [HC_BI_ENT_DDS].[bi_ent_dds].[DimCenter] AS [dc]
-        INNER JOIN [HC_BI_ENT_DDS].[bi_ent_dds].[DimCenterType] AS [CT] ON [CT].[CenterTypeKey] = [dc].[CenterTypeKey]
+        INNER JOIN [HC_BI_ENT_DDS].[bi_ent_dds].[DimCenterType] AS [ct] ON [ct].[CenterTypeKey] = [dc].[CenterTypeKey]
         INNER JOIN [HC_BI_ENT_DDS].[bi_ent_dds].[DimRegion] AS [dr] ON [dc].[RegionSSID] = [dr].[RegionSSID]
-        WHERE [CT].[CenterTypeDescriptionShort] IN ('F', 'JV') AND [dc].[Active] = 'Y' ;
+        WHERE [ct].[CenterTypeDescriptionShort] IN ('F', 'JV') AND [dc].[Active] = 'Y' ;
     END ;
 
 /********************************** Get Task data *************************************/
@@ -363,25 +363,25 @@ SELECT DISTINCT
 FROM( SELECT
           [c].[CenterNumber]
         , [c].[CenterDescription]
-        , [CLT].[ClientIdentifier]
-        , [CLT].[ClientKey]
-        , [CLT].[ClientLastName]
-        , [CLT].[ClientFirstName]
+        , [clt].[ClientIdentifier]
+        , [clt].[ClientKey]
+        , [clt].[ClientLastName]
+        , [clt].[ClientFirstName]
         , [M].[MembershipDescription]
         , [currentclient].[ClientMembershipKey]
-        , [CLT].[ClientARBalance] AS [NB_ARBalance]
-      FROM [HC_BI_CMS_DDS].[bi_cms_dds].[DimClient] AS [CLT]
-      INNER JOIN [HC_BI_ENT_DDS].[bi_ent_dds].[DimCenter] AS [c] ON [CLT].[CenterSSID] = [c].[CenterSSID]
-      INNER JOIN [#Centers] AS [CTR] ON [CTR].[CenterNumber] = [c].[CenterNumber]
+        , [clt].[ClientARBalance] AS [NB_ARBalance]
+      FROM [HC_BI_CMS_DDS].[bi_cms_dds].[DimClient] AS [clt]
+      INNER JOIN [HC_BI_ENT_DDS].[bi_ent_dds].[DimCenter] AS [c] ON [clt].[CenterSSID] = [c].[CenterSSID]
+      INNER JOIN [#Centers] AS [ctr] ON [ctr].[CenterNumber] = [c].[CenterNumber]
       OUTER APPLY( SELECT
                        [ClientIdentifier]
                      , [CenterSSID]
                      , [Membership]
                      , [ClientMembershipKey]
                      , [RevenueGroupSSID]
-                   FROM [dbo].fnGetCurrentMembershipDetailsByClientKey([CLT].[ClientKey]) ) AS [currentclient]
+                   FROM [dbo].fnGetCurrentMembershipDetailsByClientKey([clt].[ClientKey]) ) AS [currentclient]
       INNER JOIN [HC_BI_CMS_DDS].[bi_cms_dds].[DimMembership] AS [M] ON [currentclient].[ClientMembershipKey] = [M].[MembershipKey]
-      WHERE [CLT].[ClientARBalance] > 0 AND [M].[RevenueGroupDescription] = 'New Business' ) AS [s]
+      WHERE [clt].[ClientARBalance] > 0 AND [M].[RevenueGroupDescription] = 'New Business' ) AS [s]
 GROUP BY [s].[CenterNumber] ;
 
 /********************************** Get sales data *************************************************/
@@ -407,7 +407,7 @@ SELECT DISTINCT
      , SUM(ISNULL([FST].[S_SurAmt], 0)) + SUM(ISNULL([FST].[S_PRPAmt], 0)) AS [SurgerySales]
      , SUM(ISNULL([FST].[S_PostExtCnt], 0)) AS [PostEXTCount]
      , SUM(ISNULL([FST].[S_PostExtAmt], 0)) AS [PostEXTSales]
-     , SUM(ISNULL([CLT].[ClientARBalance], 0)) AS [ClientARBalance]
+     , SUM(ISNULL([clt].[ClientARBalance], 0)) AS [ClientARBalance]
      , SUM(ISNULL([FST].[NB_MDPCnt], 0)) AS [NB_MDPCnt]
      , SUM(ISNULL([FST].[NB_MDPAmt], 0)) AS [NB_MDPAmt]
      , SUM(ISNULL([FST].[NB_LaserCnt], 0)) AS [LaserCnt]
@@ -424,7 +424,7 @@ INNER JOIN [HC_BI_CMS_DDS].[bi_cms_dds].[DimMembership] AS [m] ON [CM].[Membersh
 INNER JOIN [HC_BI_ENT_DDS].[bi_ent_dds].[DimCenter] AS [c] --Keep HomeCenter-based
     ON [CM].[CenterKey] = [c].[CenterKey]
 INNER JOIN [#Centers] ON [c].[CenterNumber] = [#Centers].[CenterNumber]
-INNER JOIN [HC_BI_CMS_DDS].[bi_cms_dds].[DimClient] AS [CLT] ON [FST].[ClientKey] = [CLT].[ClientKey]
+INNER JOIN [HC_BI_CMS_DDS].[bi_cms_dds].[DimClient] AS [clt] ON [FST].[ClientKey] = [clt].[ClientKey]
 WHERE [DD].[FullDate] BETWEEN @begdt AND @enddt AND [SC].[SalesCodeKey] NOT IN (665, 654, 393, 668) AND [SO].[IsVoidedFlag] = 0
 GROUP BY [c].[CenterNumber]
 OPTION( RECOMPILE ) ;
@@ -436,17 +436,17 @@ OPTION( RECOMPILE ) ;
 --10233 - NB - Net Sales (Incl PEXT) $
 INSERT INTO [#Budget]
 SELECT DISTINCT
-       [CTR].[CenterNumber]
-     , [FA].[PartitionDate]
-     , [FA].[AccountID]
-     , CASE WHEN [FA].[AccountID] = 10231 THEN SUM(ISNULL([FA].[Budget], 0))ELSE 0 END AS [NBNetCnt_InclPEXT_Budget]
-     , CASE WHEN [FA].[AccountID] = 10233 THEN SUM(ISNULL([FA].[Budget], 0))ELSE 0 END AS [NBNetAMT_InclPEXT_Budget]
-FROM [HC_Accounting].[dbo].[FactAccounting] AS [FA]
-INNER JOIN [#Centers] AS [CTR] ON [FA].[CenterID] = [CTR].[CenterNumber]
-WHERE [FA].[PartitionDate] = @PartitionDate AND [FA].[AccountID] IN (10231, 10233)
-GROUP BY [CTR].[CenterNumber]
-       , [FA].[PartitionDate]
-       , [FA].[AccountID]
+       [ctr].[CenterNumber]
+     , [fa].[PartitionDate]
+     , [fa].[AccountID]
+     , CASE WHEN [fa].[AccountID] = 10231 THEN SUM(ISNULL([fa].[Budget], 0))ELSE 0 END AS [NBNetCnt_InclPEXT_Budget]
+     , CASE WHEN [fa].[AccountID] = 10233 THEN SUM(ISNULL([fa].[Budget], 0))ELSE 0 END AS [NBNetAMT_InclPEXT_Budget]
+FROM [HC_Accounting].[dbo].[FactAccounting] AS [fa]
+INNER JOIN [#Centers] AS [ctr] ON [fa].[CenterID] = [ctr].[CenterNumber]
+WHERE [fa].[PartitionDate] = @PartitionDate AND [fa].[AccountID] IN (10231, 10233)
+GROUP BY [ctr].[CenterNumber]
+       , [fa].[PartitionDate]
+       , [fa].[AccountID]
 OPTION( RECOMPILE ) ;
 
 INSERT INTO [#SUM_Budget]
@@ -461,9 +461,9 @@ GROUP BY [b].[CenterNumber]
 
 /********************************** Display By Main Group/Center *************************************/
 SELECT
-    CASE WHEN [CT].[CenterTypeDescriptionShort] = 'C' THEN 'Corporate' WHEN [CT].[CenterTypeDescriptionShort] = 'HW' THEN 'Total Hair Solutions' ELSE
+    CASE WHEN [ct].[CenterTypeDescriptionShort] = 'C' THEN 'Corporate' WHEN [ct].[CenterTypeDescriptionShort] = 'HW' THEN 'Total Hair Solutions' ELSE
                                                                                                                                                  'Franchise' END AS [TYPE]
-  , CASE WHEN [CT].[CenterTypeDescriptionShort] = 'C' THEN 1 WHEN [CT].[CenterTypeDescriptionShort] = 'HW' THEN 3 ELSE 2 END AS [TypeID]
+  , CASE WHEN [ct].[CenterTypeDescriptionShort] = 'C' THEN 1 WHEN [ct].[CenterTypeDescriptionShort] = 'HW' THEN 3 ELSE 2 END AS [TypeID]
   , [c].[MainGroupID]
   , [c].[MainGroup]
   , [c].[MainGroupSortOrder]
@@ -518,16 +518,16 @@ SELECT
   , ISNULL([s].[NB_MDPAmt], 0) AS [NB_MDPAmt]
   , ISNULL([s].[LaserCnt], 0) AS [LaserCnt]
   , ISNULL([s].[LaserAmt], 0) AS [LaserAmt]
-  , ISNULL([BUD].[NBNetCnt_InclPEXT_Budget], 0) AS [NBNetCnt_InclPEXT_Budget]
-  , ISNULL([BUD].[NBNetAMT_InclPEXT_Budget], '0.00') AS [NBNetAMT_InclPEXT_Budget]
+  , ISNULL([bud].[NBNetCnt_InclPEXT_Budget], 0) AS [NBNetCnt_InclPEXT_Budget]
+  , ISNULL([bud].[NBNetAMT_InclPEXT_Budget], '0.00') AS [NBNetAMT_InclPEXT_Budget]
   , ISNULL([s].[S_PRPCnt], 0) AS [S_PRPCnt]
   , ISNULL([s].[S_PRPAmt], 0) AS [S_PRPAmt]
 FROM [#Centers] AS [c]
-INNER JOIN [HC_BI_ENT_DDS].[bi_ent_dds].[DimCenter] AS [CTR] ON [c].[CenterSSID] = [CTR].[CenterSSID]
-INNER JOIN [HC_BI_ENT_DDS].[bi_ent_dds].[DimCenterType] AS [CT] ON [CTR].[CenterTypeKey] = [CT].[CenterTypeKey]
+INNER JOIN [HC_BI_ENT_DDS].[bi_ent_dds].[DimCenter] AS [ctr] ON [c].[CenterSSID] = [ctr].[CenterSSID]
+INNER JOIN [HC_BI_ENT_DDS].[bi_ent_dds].[DimCenterType] AS [ct] ON [ctr].[CenterTypeKey] = [ct].[CenterTypeKey]
 LEFT OUTER JOIN [#Sales] AS [s] ON [s].[CenterNumber] = [c].[CenterNumber]
 LEFT OUTER JOIN [#NB_ARBalance] AS [NB] ON [NB].[CenterNumber] = [c].[CenterNumber]
-LEFT OUTER JOIN [#SUM_Budget] AS [BUD] ON [c].[CenterNumber] = [BUD].[CenterNumber]
+LEFT OUTER JOIN [#SUM_Budget] AS [bud] ON [c].[CenterNumber] = [bud].[CenterNumber]
 OUTER APPLY( SELECT
                  SUM(ISNULL([cons].[Consultations], 0)) AS [Consultations]
                , SUM(ISNULL([cons].[InPersonConsultations], 0)) AS [InPersonConsultations]
