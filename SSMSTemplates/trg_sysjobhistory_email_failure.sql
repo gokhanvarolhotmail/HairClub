@@ -105,7 +105,7 @@ OPTION( RECOMPILE, MAXDOP 1 ) ;
 IF @@ROWCOUNT = 1
     BEGIN
         -- SET @email_address = CASE WHEN @email_address LIKE '%@%' THEN @email_address ELSE 'gvarol@hairclub.com;MKunchum@hairclub.com;SAklog@hairclub.com;TJaved@hairclub.com' END ;
-		SET @email_address = '_alerts.sql@hairclub.com' 
+		SET @email_address = 'TJaved@hairclub.com;MKunchum@hairclub.com;GVarol@hairclub.com' 
         EXEC [dbo].[sp_send_dbmail] @recipients = @email_address, @subject = @subject, @body = @body ;
     END ;
 GO
