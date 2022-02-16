@@ -23,7 +23,7 @@ FROM( SELECT
       INNER JOIN [dbo].[datAppointmentDetail] AS [ad] ON [ad].[AppointmentGUID] = [a].[AppointmentGUID]
       INNER JOIN [dbo].[cfgSalesCode] AS [sc] ON [sc].[SalesCodeID] = [ad].[SalesCodeID]
       INNER JOIN [dbo].[cfgCenter] AS [apptctr] ON [a].[CenterID] = [apptctr].[CenterID]
-      WHERE( [a].[IsDeletedFlag] IS NULL OR [a].[IsDeletedFlag] = 0 ) AND [a].[AppointmentDate] >= @Getdate AND [sc].[SalesCodeDepartmentID] IN (5010, 5020)) AS [k]
+      WHERE( [a].[IsDeletedFlag] IS NULL OR [a].[IsDeletedFlag] = 0 ) AND [a].[AppointmentDate] >= @Getdate /*AND [sc].[SalesCodeDepartmentID] IN (5010, 5020)*/ ) AS [k]
 WHERE [k].[rw] = 1
 OPTION( RECOMPILE ) ;
 
@@ -31,6 +31,11 @@ SELECT
     [c].[ClientGUID]
   , [c].[ClientIdentifier]
   , [m].[MembershipID]
+  , [m].[MembershipDescription]
+  , [m].[MembershipDescriptionShort]
+  , [cm].[ClientMembershipStatusID]
+  , [ms].[ClientMembershipStatusDescription]
+  , [ms].[ClientMembershipStatusDescriptionShort]
   , [c].[ClientFullNameAltCalc]
   , [c].[ClientFullNameCalc]
   , [c].[ClientFullNameAlt2Calc]
@@ -52,4 +57,5 @@ INNER JOIN [dbo].[cfgMembership] AS [m] ON [cm].[MembershipID] = [m].[Membership
 LEFT JOIN [dbo].[cfgCenter] AS [c1] ON [c1].[CenterID] = [c].[CenterID]
 LEFT JOIN [dbo].[cfgCenter] AS [c2] ON [c2].[CenterID] = [c].[ClientOriginalCenterID]
 LEFT JOIN [#ScheduledNextAppDate] AS [sa] ON [sa].[ClientGUID] = [c].[ClientGUID]
+LEFT JOIN [dbo].[lkpClientMembershipStatus] AS [ms] ON [ms].[ClientMembershipStatusID] = [cm].[ClientMembershipStatusID]
 ORDER BY [c].[ClientIdentifier] ;
