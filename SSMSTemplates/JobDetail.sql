@@ -111,8 +111,7 @@ FROM( SELECT
                                                                                                                                  , [js].[command]) > 0 THEN
                                                                                                                              'MaintenancePlan' END AS [LocationType]
                           , NULLIF(ISNULL(NULLIF(CHARINDEX('"\SSISDB\', [js].[command]), 0), CHARINDEX('"Maintenance Plans\', [js].[command])), 0) AS [SSISDBIndex]
-                        FROM [msdb].[dbo].[sysjobsteps] AS [js] ) AS [js] ) AS [js] ON [js].[job_id] = [j].[job_id]
-      WHERE [j].[enabled] = 1 ) AS [k]
+                        FROM [msdb].[dbo].[sysjobsteps] AS [js] ) AS [js] ) AS [js] ON [js].[job_id] = [j].[job_id] ) AS [k]
 LEFT JOIN [#Environments] AS [e] ON [e].[reference_id] = [k].[AgentEnvironmentRef] ;
 
 SELECT
@@ -145,6 +144,7 @@ SELECT
   , [j].[lastRunDateTime]
   , [j].[job_id]
 FROM [#JobDetail] AS [j]
-WHERE 1 = 1 AND [j].[subsystem] = 'SSIS'
+WHERE 1 = 1 AND [j].[subsystem] = 'SSIS' AND [j].[command] LIKE '%bosley%'
 ORDER BY [j].[JobName]
        , [j].[step_id] ;
+
