@@ -1,3 +1,5 @@
+USE [HairClubCMS] ;
+GO
 /* https://hairclub.zendesk.com/agent/tickets/7944 */
 GO
 /*
@@ -176,21 +178,17 @@ IF @MembershipList = '0' --ALL
         INNER JOIN [dbo].[cfgMembership] AS [m] ON [m].[MembershipID] = [cm].[MembershipID]
         OUTER APPLY( SELECT [k].[NextAppointmentDate] AS [EstNextApp]
                      FROM( SELECT
-                               DATEADD(DAY, ( [b].[digit] - 1 ) * [k].[Application Cadence Days], [cm].[BeginDate]) AS [NextAppointmentDate]
-                             , ROW_NUMBER() OVER ( PARTITION BY [m].[MembershipID], [k].[MembershipAccumulatorID] ORDER BY [b].[digit] ASC ) AS [rw]
+                               DATEADD(DAY, ( [b].[digit] ) * [k].[Application Cadence Days], [cm].[BeginDate]) AS [NextAppointmentDate]
+                             , ROW_NUMBER() OVER ( PARTITION BY [m].[MembershipID], [k].[MembershipAccumulatorID] ORDER BY [b].[digit] DESC ) AS [rw]
                              , [k].*
                            FROM( SELECT TOP( 1 )
                                         [m].[DurationMonths] * 30 / [ca].[InitialQuantity] AS [Application Cadence Days]
                                       , [ca].[InitialQuantity]
                                       , [ca].[MembershipAccumulatorID]
                                  FROM [dbo].[cfgMembershipAccum] AS [ca]
-                                 WHERE [ca].[MembershipID] = [m].[MembershipID]
-                                   AND [ca].[IsActiveFlag] = 1
-                                   AND [ca].[AccumulatorID] = 8
-                                   AND [m].[IsActiveFlag] = 1
-                                   AND [m].[BusinessSegmentID] = 1 ) AS [k]
+                                 WHERE [ca].[MembershipID] = [m].[MembershipID] AND [ca].[AccumulatorID] = 8 AND [m].[BusinessSegmentID] = 1 ) AS [k]
                            CROSS APPLY [dbo].GetNumbers(1, [k].[InitialQuantity]) AS [b]
-                           WHERE DATEADD(DAY, ( [b].[digit] - 1 ) * [k].[Application Cadence Days], [cm].[BeginDate]) > @Getdate ) AS [k]
+                           WHERE DATEADD(DAY, ( [b].[digit] ) * [k].[Application Cadence Days], [cm].[BeginDate]) > @Getdate ) AS [k]
                      WHERE [k].[rw] = 1 ) AS [nad]
         LEFT JOIN [dbo].[datHairSystemOrder] AS [hso] ON [hso].[ClientGUID] = [clt].[ClientGUID]
         LEFT JOIN [dbo].[lkpHairSystemOrderStatus] AS [hsos] ON [hsos].[HairSystemOrderStatusID] = [hso].[HairSystemOrderStatusID]
@@ -271,21 +269,17 @@ ELSE
         INNER JOIN [dbo].[cfgMembership] AS [m] ON [m].[MembershipID] = [cm].[MembershipID]
         OUTER APPLY( SELECT [k].[NextAppointmentDate] AS [EstNextApp]
                      FROM( SELECT
-                               DATEADD(DAY, ( [b].[digit] - 1 ) * [k].[Application Cadence Days], [cm].[BeginDate]) AS [NextAppointmentDate]
-                             , ROW_NUMBER() OVER ( PARTITION BY [m].[MembershipID], [k].[MembershipAccumulatorID] ORDER BY [b].[digit] ASC ) AS [rw]
+                               DATEADD(DAY, ( [b].[digit] ) * [k].[Application Cadence Days], [cm].[BeginDate]) AS [NextAppointmentDate]
+                             , ROW_NUMBER() OVER ( PARTITION BY [m].[MembershipID], [k].[MembershipAccumulatorID] ORDER BY [b].[digit] DESC ) AS [rw]
                              , [k].*
                            FROM( SELECT TOP( 1 )
                                         [m].[DurationMonths] * 30 / [ca].[InitialQuantity] AS [Application Cadence Days]
                                       , [ca].[InitialQuantity]
                                       , [ca].[MembershipAccumulatorID]
                                  FROM [dbo].[cfgMembershipAccum] AS [ca]
-                                 WHERE [ca].[MembershipID] = [m].[MembershipID]
-                                   AND [ca].[IsActiveFlag] = 1
-                                   AND [ca].[AccumulatorID] = 8
-                                   AND [m].[IsActiveFlag] = 1
-                                   AND [m].[BusinessSegmentID] = 1 ) AS [k]
+                                 WHERE [ca].[MembershipID] = [m].[MembershipID] AND [ca].[AccumulatorID] = 8 AND [m].[BusinessSegmentID] = 1 ) AS [k]
                            CROSS APPLY [dbo].GetNumbers(1, [k].[InitialQuantity]) AS [b]
-                           WHERE DATEADD(DAY, ( [b].[digit] - 1 ) * [k].[Application Cadence Days], [cm].[BeginDate]) > @Getdate ) AS [k]
+                           WHERE DATEADD(DAY, ( [b].[digit] ) * [k].[Application Cadence Days], [cm].[BeginDate]) > @Getdate ) AS [k]
                      WHERE [k].[rw] = 1 ) AS [nad]
         LEFT JOIN [dbo].[datHairSystemOrder] AS [hso] ON [hso].[ClientGUID] = [clt].[ClientGUID]
         LEFT JOIN [dbo].[lkpHairSystemOrderStatus] AS [hsos] ON [hsos].[HairSystemOrderStatusID] = [hso].[HairSystemOrderStatusID]
