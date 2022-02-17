@@ -21,7 +21,11 @@ IF OBJECT_ID('[tempdb]..[#JobDetail]') IS NOT NULL
     DROP TABLE [#JobDetail] ;
 
 SELECT
-    [k].[ServerName]
+    [k].[LocationType]
+  , [k].[SSISPath]
+  , [k].[SSISDBIndex]
+  , [k].[DtsxIndex]
+  , [k].[ServerName]
   , [k].[job_id]
   , [k].[JobName]
   , [k].[StepName]
@@ -52,7 +56,20 @@ SELECT
   , [k].[lastRunDateTime]
 INTO [#JobDetail]
 FROM( SELECT
-          @@SERVERNAME AS [ServerName]
+          [js].[LocationType]
+        , CASE WHEN [js].[LocationType] = 'SSISDB' THEN
+                   SUBSTRING(
+                       [js].[command], [js].[SSISDBIndex] + LEN('"\SSISDB\')
+                       , LEN([js].[command]) - -( [js].[SSISDBIndex] + LEN('"\SSISDB\')) - [js].[DtsxIndex] - 1)
+              WHEN [js].[LocationType] = 'MaintenancePlan' THEN
+                  SUBSTRING(
+                      [js].[command], [js].[SSISDBIndex] + LEN('"Maintenance Plans\')
+                      , LEN([js].[command]) - -( [js].[SSISDBIndex] + LEN('"Maintenance Plans\')) - [js].[DtsxIndex] - 1)
+          END AS [SSISPath]
+        --,NULL AS [SSISPath]
+        , [js].[SSISDBIndex]
+        , [js].[DtsxIndex]
+        , @@SERVERNAME AS [ServerName]
         , [j].[job_id]
         , [j].[name] AS [JobName]
         , [js].[step_name] AS [StepName]
@@ -79,12 +96,23 @@ FROM( SELECT
         , ( SELECT [OutVal] FROM [dbo].[agent_datetime_Inline](
                                  NULLIF([js].[last_run_date], 0), CASE WHEN [js].[last_run_date] = 0 THEN NULL ELSE [js].[last_run_time] END) ) AS [lastRunDateTime]
       FROM [msdb].[dbo].[sysjobs] AS [j]
-      INNER JOIN [msdb].[dbo].[sysjobsteps] AS [js] ON [js].[job_id] = [j].[job_id]
+      INNER JOIN( SELECT
+                      *
+                    , NULLIF(ISNULL(NULLIF(CHARINDEX('"\SSISDB\', [js].[command]), 0), CHARINDEX('"Maintenance Plans\', [js].[command])), 0) AS [SSISDBIndex]
+                    , CASE WHEN [js].[DtsxIndex] > 0 AND CHARINDEX('"\SSISDB\', [js].[command]) > 0 THEN 'SSISDB' WHEN [js].[DtsxIndex] > 0
+                                                                                                                  AND CHARINDEX(
+                                                                                                                      '"Maintenance Plans\' , [js].[command]) > 0 THEN
+                                                                                                                  'MaintenancePlan' END AS [LocationType]
+                  FROM( SELECT *, CASE WHEN [js].[subsystem] = 'SSIS' THEN NULLIF(CHARINDEX('.dtsx', [js].[command]) + 5, 0)END AS [DtsxIndex] FROM [msdb].[dbo].[sysjobsteps] AS [js] ) AS [js] ) AS [js] ON [js].[job_id] = [j].[job_id]
       WHERE [j].[enabled] = 1 ) AS [k]
 LEFT JOIN [#Environments] AS [e] ON [e].[reference_id] = [k].[AgentEnvironmentRef] ;
 
 SELECT
-    [j].[ServerName]
+    [j].[LocationType]
+  , [j].[SSISPath]
+  , [j].[SSISDBIndex]
+  , [j].[DtsxIndex]
+  , [j].[ServerName]
   , [j].[job_id]
   , [j].[JobName]
   , [j].[StepName]
@@ -111,7 +139,6 @@ SELECT
   , [j].[last_run_duration]
   , [j].[lastRunDateTime]
 FROM [#JobDetail] AS [j]
-WHERE 1 = 1
+WHERE 1 = 1 AND [j].[subsystem] = 'SSIS'
 ORDER BY [j].[JobName]
        , [j].[step_id] ;
-
