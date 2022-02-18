@@ -446,10 +446,10 @@ OPTION( RECOMPILE ) ;
 -- If Cent exists false
 
 -- Oldest Order Placed Date
--- [MinOrderCreateDate]
+-- [OldestOrderPlacedDate]
 
 -- Oldest Order Placed Due Date
--- [MinOrderCreateDateAdd8Months]
+-- [OldestOrderPlacedDueDate]
 IF OBJECT_ID('[tempdb]..[#Calc01]') IS NOT NULL
     DROP TABLE [#Calc01] ;
 
@@ -457,8 +457,8 @@ SELECT
     [clt].[ClientGUID]
   , MAX(CASE WHEN [hsos].[HairSystemOrderStatusDescriptionShort] = 'CENT' THEN 1 ELSE 0 END) AS [CENT]
   , MAX(CASE WHEN [hsos].[HairSystemOrderStatusDescriptionShort] = 'ORDER' THEN 1 ELSE 0 END) AS [ORDER]
-  , MIN(CASE WHEN [hsos].[HairSystemOrderStatusDescriptionShort] = 'ORDER' THEN [clt].[CreateDate] ELSE 0 END) AS [MinOrderCreateDate]
-  , MIN(CASE WHEN [hsos].[HairSystemOrderStatusDescriptionShort] = 'ORDER' THEN DATEADD(MONTH, 8, [clt].[CreateDate])ELSE 0 END) AS [MinOrderCreateDateAdd8Months]
+  , MIN(CASE WHEN [hsos].[HairSystemOrderStatusDescriptionShort] = 'ORDER' THEN [clt].[CreateDate] ELSE 0 END) AS [OldestOrderPlacedDate]
+  , MIN(CASE WHEN [hsos].[HairSystemOrderStatusDescriptionShort] = 'ORDER' THEN DATEADD(MONTH, 8, [clt].[CreateDate])ELSE 0 END) AS [OldestOrderPlacedDueDate]
 INTO [#Calc01]
 FROM [dbo].[datClient] AS [clt]
 INNER JOIN [dbo].[datHairSystemOrder] AS [hso] ON [hso].[ClientGUID] = [clt].[ClientGUID]
@@ -468,19 +468,19 @@ WHERE EXISTS ( SELECT 1 FROM [#LastApplication] AS [l] WHERE [l].[ClientGUID] = 
 GROUP BY [clt].[ClientGUID] ;
 
 -- Newest Order System Type
--- [HairSystemDescriptionShort]
+-- [NewestOrderSystemType]
 IF OBJECT_ID('[tempdb]..[#Calc02]') IS NOT NULL
     DROP TABLE [#Calc02] ;
 
 SELECT
     [k].[HairSystemDescription]
-  , [k].[HairSystemDescriptionShort]
+  , [k].[NewestOrderSystemType]
   , [k].[ClientGUID]
   , [k].[CreateDate] AS [NewestOrderDate]
 INTO [#Calc02]
 FROM( SELECT
           [hs].[HairSystemDescription]
-        , [hs].[HairSystemDescriptionShort]
+        , [hs].[NewestOrderSystemType]
         , [clt].[ClientGUID]
         , [hso].[CreateDate]
         , ROW_NUMBER() OVER ( PARTITION BY [clt].[ClientGUID] ORDER BY [hso].[CreateDate] DESC ) AS [rw]
@@ -519,7 +519,7 @@ SELECT
   , [q].[Promo]
   , [q].[InitialQuantity]
   --,    Remaining = (InitialQuantity - OnOrder + Promo)
-  , [q].[AccumQuantityRemainingCalc] AS [Remaining]
+  , [q].[Remaining]
   , CASE WHEN [q].[Promo] < 0 THEN 0 ELSE [q].[Promo] END AS [Overage]
   , ( [q].[QaNeeded] + [q].[InCenter] + [q].[OnOrder] ) AS [QuantityAtCenterAndOrdered]
   , [q].[QaNeeded] AS [QaNeeded]
@@ -527,9 +527,9 @@ SELECT
   , [sad].[AppointmentDate] AS [ScheduledNextAppDate]
   , ISNULL([c1].[CENT], 0) AS [OrderAvailableForNextAppointment]
   --  , ISNULL(1 - [c1].[CENT], 0) AS [PriorityHairNeeded]
-  , [c1].[MinOrderCreateDate] AS [OldestOrderPlacedDate]
-  , [c1].[MinOrderCreateDateAdd8Months] AS [OldestOrderPlacedDueDate]
-  , [c2].[HairSystemDescriptionShort] AS [NewestOrderSystemType]
+  , [c1].[OldestOrderPlacedDate]
+  , [c1].[OldestOrderPlacedDueDate]
+  , [c2].[NewestOrderSystemType]
   , [c3].[Cnt] AS [RemainingQuantityToOrder]
   , [q].[Region]
   , [c2].[NewestOrderDate]
@@ -547,7 +547,7 @@ FROM( SELECT
         , SUM([hair].[InCenter]) AS [InCenter]
         , SUM([hair].[OnOrder]) AS [OnOrder]
         , [ahs].[TotalAccumQuantity]
-        , [ahs].[AccumQuantityRemainingCalc]
+        , [ahs].[Remaining]
         , ISNULL([pro].[Promo], 0) AS [Promo]
         , [iq].[InitialQuantity]
         , [hair].[CenterDescriptionFullCalc]
@@ -570,7 +570,7 @@ FROM( SELECT
              , [hair].[MembershipDescription]
              , [hair].[CenterID]
              , [ahs].[TotalAccumQuantity]
-             , [ahs].[AccumQuantityRemainingCalc]
+             , [ahs].[Remaining]
              , [pro].[Promo]
              , [iq].[InitialQuantity]
              , [hair].[MembershipID] ) AS [q]
@@ -715,6 +715,7 @@ SELECT
   , [Priority Order Needed]
   , [Suggested Qty to Order]
 FROM [##rptHairOrderQuantitybyClient_V2]
+WHERE 1 = 1
 ORDER BY [Region]
        , [Center]
        , [Suggested Qty to Order]
