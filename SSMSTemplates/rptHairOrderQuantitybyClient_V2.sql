@@ -618,7 +618,7 @@ FROM( SELECT
         , ISNULL([t].[InCenter], 0) AS [In Center]
         , ISNULL([t].[OnOrder], 0) AS [On Order]
         , [t].[In Center + On Order]
-        , CAST(CEILING(12.0 / [t].[InitialQuantity] * [t].[In Center + On Order]) AS INT) AS [Months In Center And On Order]
+        , CAST(FLOOR(12.0 / [t].[InitialQuantity] * [t].[In Center + On Order]) AS INT) AS [Months In Center And On Order]
         , CAST([t].[LastApplicationDate] AS DATE) AS [Last App Date]
         , [t].[EstNextApp] AS [Est Next App Date]
         , [t].[ScheduledNextAppDate] AS [Scheduled Next App Date]
