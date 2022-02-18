@@ -44,13 +44,16 @@ SELECT
   --, [j].[version_number]
   , [jh].[sql_message_id]
   , [jh].[sql_severity]
-  
   , [jh].[message]
+  , [js].[step_name]
+  , [js].[subsystem]
+  , [js].[command]
   , [j].[date_created]
   , [j].[date_modified]
 FROM [msdb].[dbo].[sysjobs] AS [j]
 INNER JOIN [msdb].[dbo].[sysoperators] AS [o] ON [j].[notify_email_operator_id] = [o].[id]
 INNER JOIN [msdb].[dbo].[sysjobhistory] AS [jh] ON [jh].[job_id] = [j].[job_id]
+INNER JOIN [msdb].[dbo].[sysjobsteps] AS [js] ON [js].[job_id] = [j].[job_id] AND [jh].[step_id] = [js].[step_id]
 WHERE [o].[email_address] = '_alerts.sql@hcfm.com' AND [j].[enabled] = 1 AND [j].[notify_level_email] = 2 /*  When the job fails */
   AND [jh].[run_status] NOT IN (1, 3, 4)/* Succeeded, Canceled, In Progress */
   AND [jh].[run_date] >= @RunDate
