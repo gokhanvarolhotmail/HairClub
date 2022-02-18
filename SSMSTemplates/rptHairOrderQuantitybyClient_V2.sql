@@ -480,7 +480,7 @@ SELECT
 INTO [#Calc02]
 FROM( SELECT
           [hs].[HairSystemDescription]
-        , [hs].[NewestOrderSystemType]
+        , [hs].[HairSystemDescriptionShort] AS [NewestOrderSystemType]
         , [clt].[ClientGUID]
         , [hso].[CreateDate]
         , ROW_NUMBER() OVER ( PARTITION BY [clt].[ClientGUID] ORDER BY [hso].[CreateDate] DESC ) AS [rw]
