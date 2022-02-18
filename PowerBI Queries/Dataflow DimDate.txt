@@ -1,0 +1,469 @@
+// VWLead
+let
+  Source = Sql.Database(param_synapse_server, param_synapse_database, [Query = "select *#(lf)from vwLead#(lf)where LeadCreatedDateEST >= '2020-01-01'"]),
+  #"Filter Invalid and Deleted" = Table.SelectRows(Source, each [Isvalid] = true and [IsDeleted] = false),
+  #"Removed Other Columns" = Table.SelectColumns(#"Filter Invalid and Deleted", {"LeadKey", "LeadCreatedDateEST", "LeadId", "Centerkey", "IsActiveFlag", "OriginalCampaignKey", "LeadCountry", "CenterCountry", "DMADescription", "Geographykey", "Isactive", "Isvalid", "IsConsultFormComplete", "IsDeleted", "AgencyName", "SourceName", "MarketingSource", "TimeOfDayESTKey"}),
+  createdDateESTKey = Table.AddColumn(#"Removed Other Columns", "createdDateESTKey", each Number.FromText(Date.ToText(DateTime.Date([LeadCreatedDateEST]), "YYYYMMDD"))),
+  #"Changed Type" = Table.TransformColumnTypes(createdDateESTKey, {{"createdDateESTKey", Int64.Type}}),
+  #"Replaced Value" = Table.ReplaceValue(#"Changed Type", null, "Unknown", Replacer.ReplaceValue, {"CenterCountry"})
+in
+  #"Replaced Value"
+
+// VWLead_Live
+let
+  Source = Sql.Database(param_synapse_server, param_synapse_database, [Query = "select *#(lf)from vwLead_Live#(lf)where LeadCreatedDateEST >= '2020-01-01'"]),
+  #"Filter Invalid and Deleted" = Table.SelectRows(Source, each [Isvalid] = true and [IsDeleted] = false),
+  #"Removed Other Columns" = Table.SelectColumns(#"Filter Invalid and Deleted", {"LeadKey", "LeadCreatedDateEST", "LeadId", "Centerkey", "IsActiveFlag", "OriginalCampaignKey", "LeadCountry", "CenterCountry", "DMADescription", "Geographykey", "Isactive", "Isvalid", "IsConsultFormComplete", "IsDeleted", "AgencyName", "SourceName", "MarketingSource", "TimeOfDayESTKey"}),
+  createdDateESTKey = Table.AddColumn(#"Removed Other Columns", "createdDateESTKey", each Number.FromText(Date.ToText(DateTime.Date([LeadCreatedDateEST]), "YYYYMMDD"))),
+  #"Changed Type" = Table.TransformColumnTypes(createdDateESTKey, {{"createdDateESTKey", Int64.Type}}),
+  #"Replaced Value" = Table.ReplaceValue(#"Changed Type", null, "Unknown", Replacer.ReplaceValue, {"CenterCountry"})
+in
+  #"Replaced Value"
+
+// VWFactAppointment_Live
+let
+  Source = Sql.Database(param_synapse_server, param_synapse_database, [Query = "select *#(lf)from vwFactAppointment_Live#(lf)where AppointmentDate >= '2020-01-01'"]),
+  #"Added Conditional Column" = Table.AddColumn(Source, "Type_Apt", each if [AppointmentType] = "Center" then "In Person" else if [AppointmentType] = "company" then "In Person" else if [AppointmentType] = "video" then "Virtual" else if [AppointmentType] = "virtual" then "Virtual" else if [AppointmentType] = "Center Consultation" then "In Person" else if [AppointmentType] = "Virtual Consultation" then "Virtual" else if [AppointmentType] = "Center;Virtual" then "Virtual" else if [AppointmentType] = null then "In Person" else "Other"),
+  #"Transform columns" = Table.TransformColumnTypes(#"Added Conditional Column", {{"Type_Apt", type text}})
+in
+  #"Transform columns"
+
+// VWFactAppointment
+let
+  Source = Sql.Database(param_synapse_server, param_synapse_database, [Query = "select *#(lf)from vwFactAppointment#(lf)where AppointmentDate >= '2020-01-01'"]),
+  #"Added Conditional Column" = Table.AddColumn(Source, "Type_Apt", each if [AppointmentType] = "Center" then "In Person" else if [AppointmentType] = "company" then "In Person" else if [AppointmentType] = "video" then "Virtual" else if [AppointmentType] = "virtual" then "Virtual" else if [AppointmentType] = "Center Consultation" then "In Person" else if [AppointmentType] = "Virtual Consultation" then "Virtual" else if [AppointmentType] = "Center;Virtual" then "Virtual" else if [AppointmentType] = null then "In Person" else "Other"),
+  #"Transform columns" = Table.TransformColumnTypes(#"Added Conditional Column", {{"Type_Apt", type text}})
+in
+  #"Transform columns"
+
+// VWFactOpportunity
+let
+  Source = Sql.Database(param_synapse_server, param_synapse_database, [Query = "select *#(lf)from VWFactOpportunity#(lf)where FactDate >= '2020-01-01'"]),
+  #"Filter Deleted" = Table.SelectRows(Source, each [isdeleted] = false)
+in
+  #"Filter Deleted"
+
+// VWFactCallDetail
+let
+  Source = Sql.Database(param_synapse_server, param_synapse_database, [Query = "select *#(lf)from vwFactCallDetail#(lf)where CallDateEST >= '2020-01-01'"]),
+  #"Remove columns" = Table.RemoveColumns(Source, Table.ColumnsOfType(Source, {type table, type record, type list, type nullable binary, type binary, type function})),
+  #"Replaced value" = Table.ReplaceValue(#"Remove columns", null, -1, Replacer.ReplaceValue, {"CenterID"}),
+  #"Replaced value 1" = Table.ReplaceValue(#"Replaced value", null, "Unknown", Replacer.ReplaceValue, {"OriginalCampaignId"})
+in
+  #"Replaced value 1"
+
+// VWMarketingActivity
+let
+  Source = Sql.Database(param_synapse_server, param_synapse_database, [Query = "select *#(lf)from vwMarketingActivity#(lf)where MarketingActivityDateEST >= '2020-01-01'"]),
+  #"Added Custom" = Table.AddColumn(Source, "FactDateESTKey", each Number.FromText(Date.ToText(DateTime.Date([MarketingActivityDateEST]), "YYYYMMDD"))),
+  #"Changed Type" = Table.TransformColumnTypes(#"Added Custom", {{"FactDateESTKey", Int64.Type}}),
+  #"Removed Other Columns" = Table.SelectColumns(#"Changed Type", {"FactDateKey", "MarketingActivityDateUTC", "MarketingActivityDateEST", "MarketingActivityDate", "MarketingActivityTime", "AgencyName", "BudgetAmount", "GrossSpend", "Discount", "Fees", "NetSpend", "Url", "Impressions18-65", "DMAkey", "DMA", "AgencyKey", "Agency", "AudienceKey", "Audience", "ChannelKey", "Channel", "FormatKey", "Format", "SourceKey", "source", "MediumKey", "Medium", "PurposeKey", "Purpose", "MethodKey", "Method", "BudgetName", "CampaignKey", "Campaign", "CompanyKey", "Company", "LocationKey", "Location", "Language", "NumberOfLeads", "NumberOfLeadsTarget", "NumertOfOpportunities", "NumberOfOpportunitiesTarget", "NumberOfSales", "NumberOfSalesTarget", "FactDateESTKey"}),
+  #"Filtered Rows" = Table.SelectRows(#"Removed Other Columns", each [MarketingActivityDateEST] >= #datetime(2020, 1, 1, 0, 0, 0)),
+  #"Filtered Rows1" = Table.SelectRows(#"Filtered Rows", each [Company] <> "Hans Wiemann"),
+  #"Added Custom1" = Table.AddColumn(#"Filtered Rows1", "NetSpend2", each if [AgencyName]= "MediaPoint" then 200*[Leads]
+else if [AgencyName] = "Venator" then 125*[Leads]
+else [NetSpend]),
+  #"Changed Type1" = Table.TransformColumnTypes(#"Added Custom1", {{"NetSpend2", type number}})
+in
+  #"Changed Type1"
+
+// param_synapse_server
+let
+  Query = "hc-eim-server-sql-prod2.sql.azuresynapse.net" meta [IsParameterQuery = true, IsParameterQueryRequired = true, Type = type text]
+in
+  Query
+
+// param_synapse_database
+let
+  Query = "hc_eim_prod2_sql_pool" meta [IsParameterQuery = true, IsParameterQueryRequired = true, Type = type text]
+in
+  Query
+
+// param_yesterday
+let
+  Source = Date.AddDays(DateTime.Date(DateTime.LocalNow()), -1)
+in
+  Source
+
+// param_startofyear
+let
+  Source = #date(Date.Year(DateTime.LocalNow()),1,1)
+in
+  Source
+
+// param_initialdate
+let
+  Source = Date.ToText(Date.StartOfYear(Date.AddYears(DateTime.Date(DateTime.LocalNow()), -1)), "yyyy-MM-dd")
+in
+  Source
+
+// param_enddate
+let
+  Source = Date.ToText(Date.EndOfYear(Date.AddYears(DateTime.Date(DateTime.LocalNow()), 0)), "yyyy-MM-dd")
+in
+  Source
+
+// DimDate
+let
+  Source = Sql.Database(param_synapse_server, param_synapse_database, [Query = "select *#(lf)from DimDate#(lf)where FullDate >= '2020-01-01' and FullDate <= CAST(GETDATE() AS date) ORDER BY FULLDATE DESC#(lf)"]),
+  #"Added Custom" = Table.AddColumn(Source, "Year L2", each if
+[YearNumber] > Date.Year(Date.StartOfYear(Date.AddYears(DateTime.LocalNow(), -2)))
+then [YearNumber]
+else null),
+  #"Duplicated Column" = Table.DuplicateColumn(#"Added Custom", "FullDate", "FullDate - Copy"),
+  #"Renamed Columns" = Table.RenameColumns(#"Duplicated Column", {{"FullDate - Copy", "Date"}}),
+  #"Changed Type" = Table.TransformColumnTypes(#"Renamed Columns", {{"Date", type date}, {"FullDate", type date}}),
+  #"Added Custom1" = Table.AddColumn(#"Changed Type", "MarketingCurrentPeriod", each if [FullDate] <= DateTime.Date(Date.AddDays(DateTime.LocalNow(),-1)) and [FullDate] >= DateTime.Date(Date.StartOfMonth(Date.AddDays(DateTime.LocalNow(),-1)))
+
+then "CurrentPeriod" else ""),
+  #"Transform columns" = Table.TransformColumnTypes(#"Added Custom1", {{"Year L2", type text}, {"MarketingCurrentPeriod", type text}}),
+  #"Replace errors" = Table.ReplaceErrorValues(#"Transform columns", {{"Year L2", null}, {"MarketingCurrentPeriod", null}}),
+  #"Inserted start of week" = Table.TransformColumnTypes(Table.AddColumn(#"Replace errors", "Calendar Week Beginning", each Date.StartOfWeek([FullDate])), {{"Calendar Week Beginning", type date}}),
+  #"Inserted end of week" = Table.TransformColumnTypes(Table.AddColumn(#"Inserted start of week", "Calendar Week Ending", each Date.EndOfWeek([FullDate])), {{"Calendar Week Ending", type date}}),
+  #"Inserted start of week 1" = Table.TransformColumnTypes(Table.AddColumn(#"Inserted end of week", "Business Week Beginning", each Date.StartOfWeek([FullDate], Day.Monday)), {{"Business Week Beginning", type date}}),
+  #"Inserted end of week 1" = Table.TransformColumnTypes(Table.AddColumn(#"Inserted start of week 1", "Business Week Ending", each Date.EndOfWeek([FullDate], Day.Monday)), {{"Business Week Ending", type date}})
+in
+  #"Inserted end of week 1"
+
+// DimSource
+let
+  Source = Sql.Database(param_synapse_server, param_synapse_database),
+  Navigation = Source{[Schema = "dbo", Item = "DimSource"]}[Data],
+  #"Removed Other Columns" = Table.SelectColumns(Navigation, {"SourceKey", "SourceName"})
+in
+  #"Removed Other Columns"
+
+// DimGeography
+let
+  Source = Sql.Database(param_synapse_server, param_synapse_database),
+  Navigation = Source{[Schema = "dbo", Item = "DimGeography"]}[Data],
+  #"Replaced value" = Table.ReplaceValue(Navigation, null, "Other", Replacer.ReplaceValue, {"DMASubregion"})
+in
+  #"Replaced value"
+
+// DimCampaign
+let
+  Source = Sql.Database(param_synapse_server, param_synapse_database),
+  Navigation = Source{[Schema = "dbo", Item = "VWDimCampaign"]}[Data],
+  #"Added custom" = Table.AddColumn(Navigation, "ActiveTollFreeNameKey", each if [IsActive] = true then [TollFreeName] else null),
+  #"Transform columns" = Table.TransformColumnTypes(#"Added custom", {{"ActiveTollFreeNameKey", type text}}),
+  #"Replace errors" = Table.ReplaceErrorValues(#"Transform columns", {{"ActiveTollFreeNameKey", null}})
+in
+  #"Replace errors"
+
+// DimCenter
+let
+  Source = Sql.Database(param_synapse_server, param_synapse_database),
+  #"Navigation 1" = Source{[Schema = "dbo", Item = "DimCenter"]}[Data]
+in
+  #"Navigation 1"
+
+// DimPersonAccount
+let
+  Source = Sql.Database(param_synapse_server, param_synapse_database),
+  Navigation = Source{[Schema = "dbo", Item = "VWPersonAccount"]}[Data]
+in
+  Navigation
+
+// DimLead
+let
+  Source = Sql.Database(param_synapse_server, param_synapse_database),
+  dbo_DimLead = Source{[Schema = "dbo", Item = "VWLead"]}[Data],
+  #"Filtered Rows1" = Table.SelectRows(dbo_DimLead, each [LeadCreatedDateEST] >= #datetime(2019, 1, 1, 0, 0, 0)),
+  #"Added Custom" = Table.AddColumn(#"Filtered Rows1", "CreatedDateESTKey", each Number.FromText(Date.ToText(DateTime.Date([LeadCreatedDateEST]), "YYYYMMDD"))),
+  #"Transform columns" = Table.TransformColumnTypes(#"Added Custom", {{"CreatedDateESTKey", type text}}),
+  #"Replace errors" = Table.ReplaceErrorValues(#"Transform columns", {{"CreatedDateESTKey", null}})
+in
+  #"Replace errors"
+
+// DimTimeOfDay
+let
+  Source = Sql.Database(param_synapse_server, param_synapse_database),
+  #"Navigation 1" = Source{[Schema = "dbo", Item = "DimTimeOfDay"]}[Data]
+in
+  #"Navigation 1"
+
+// DimLeadGeography
+let
+  Source = Sql.Database(param_synapse_server, param_synapse_database),
+  Navigation = Source{[Schema = "dbo", Item = "DimGeography"]}[Data]
+in
+  Navigation
+
+// DimLead_Live
+let
+  Source = Sql.Database(param_synapse_server, param_synapse_database),
+  dbo_DimLead = Source{[Schema = "dbo", Item = "VWLead_Live"]}[Data],
+  #"Filtered Rows1" = Table.SelectRows(dbo_DimLead, each [LeadCreatedDateEST] >= #datetime(2019, 1, 1, 0, 0, 0)),
+  #"Added Custom" = Table.AddColumn(#"Filtered Rows1", "CreatedDateESTKey", each Number.FromText(Date.ToText(DateTime.Date([LeadCreatedDateEST]), "YYYYMMDD"))),
+  #"Transform columns" = Table.TransformColumnTypes(#"Added Custom", {{"CreatedDateESTKey", type text}}),
+  #"Replace errors" = Table.ReplaceErrorValues(#"Transform columns", {{"CreatedDateESTKey", null}})
+in
+  #"Replace errors"
+
+// FactFunnelPivot
+let
+  Source = Sql.Database(param_synapse_server, param_synapse_database),
+  #"Navigation 1" = Source{[Schema = "dbo", Item = "FactFunnelPivot"]}[Data]
+in
+  #"Navigation 1"
+
+// Eastern Time Function
+let
+  Source = () => 
+
+let
+   StandardLocal = -5, 
+   UTC_Time = DateTimeZone.FixedUtcNow(),
+   CurrentYear = Date.Year( DateTimeZone.SwitchZone( UTC_Time,StandardLocal)),
+   DST_Start = Date.StartOfWeek(#datetimezone( CurrentYear,3,14,0,0,0,StandardLocal,0),Day.Sunday) + #duration(0,2,0,0),
+   DST_End = Date.StartOfWeek( #datetimezone( CurrentYear, 11,7,0,0,0, StandardLocal+1,0),Day.Sunday) + #duration(0,2,0,0), 
+   AdjustDST = if UTC_Time >= DST_Start and UTC_Time < DST_End then StandardLocal + 1 else StandardLocal, 
+   Source = #table(type table [LastRefresh=datetimezone], {{UTC_Time}}),
+   #"Add Local Column" = Table.AddColumn(Source, "Refreshed", each DateTimeZone.SwitchZone(DateTimeZone.FixedUtcNow(),AdjustDST), DateTime.Type),
+   Refreshed = #"Add Local Column"{0}[Refreshed]
+in
+   Refreshed
+in
+  Source
+
+// Last Update
+let
+  Source = #"Eastern Time Function"(),
+  #"Convert to table" = Table.FromValue(Source)
+in
+  #"Convert to table"// VWLead
+let
+  Source = Sql.Database(param_synapse_server, param_synapse_database, [Query = "select *#(lf)from vwLead#(lf)where LeadCreatedDateEST >= '2020-01-01'"]),
+  #"Filter Invalid and Deleted" = Table.SelectRows(Source, each [Isvalid] = true and [IsDeleted] = false),
+  #"Removed Other Columns" = Table.SelectColumns(#"Filter Invalid and Deleted", {"LeadKey", "LeadCreatedDateEST", "LeadId", "Centerkey", "IsActiveFlag", "OriginalCampaignKey", "LeadCountry", "CenterCountry", "DMADescription", "Geographykey", "Isactive", "Isvalid", "IsConsultFormComplete", "IsDeleted", "AgencyName", "SourceName", "MarketingSource", "TimeOfDayESTKey"}),
+  createdDateESTKey = Table.AddColumn(#"Removed Other Columns", "createdDateESTKey", each Number.FromText(Date.ToText(DateTime.Date([LeadCreatedDateEST]), "YYYYMMDD"))),
+  #"Changed Type" = Table.TransformColumnTypes(createdDateESTKey, {{"createdDateESTKey", Int64.Type}}),
+  #"Replaced Value" = Table.ReplaceValue(#"Changed Type", null, "Unknown", Replacer.ReplaceValue, {"CenterCountry"})
+in
+  #"Replaced Value"
+
+// VWLead_Live
+let
+  Source = Sql.Database(param_synapse_server, param_synapse_database, [Query = "select *#(lf)from vwLead_Live#(lf)where LeadCreatedDateEST >= '2020-01-01'"]),
+  #"Filter Invalid and Deleted" = Table.SelectRows(Source, each [Isvalid] = true and [IsDeleted] = false),
+  #"Removed Other Columns" = Table.SelectColumns(#"Filter Invalid and Deleted", {"LeadKey", "LeadCreatedDateEST", "LeadId", "Centerkey", "IsActiveFlag", "OriginalCampaignKey", "LeadCountry", "CenterCountry", "DMADescription", "Geographykey", "Isactive", "Isvalid", "IsConsultFormComplete", "IsDeleted", "AgencyName", "SourceName", "MarketingSource", "TimeOfDayESTKey"}),
+  createdDateESTKey = Table.AddColumn(#"Removed Other Columns", "createdDateESTKey", each Number.FromText(Date.ToText(DateTime.Date([LeadCreatedDateEST]), "YYYYMMDD"))),
+  #"Changed Type" = Table.TransformColumnTypes(createdDateESTKey, {{"createdDateESTKey", Int64.Type}}),
+  #"Replaced Value" = Table.ReplaceValue(#"Changed Type", null, "Unknown", Replacer.ReplaceValue, {"CenterCountry"})
+in
+  #"Replaced Value"
+
+// VWFactAppointment_Live
+let
+  Source = Sql.Database(param_synapse_server, param_synapse_database, [Query = "select *#(lf)from vwFactAppointment_Live#(lf)where AppointmentDate >= '2020-01-01'"]),
+  #"Added Conditional Column" = Table.AddColumn(Source, "Type_Apt", each if [AppointmentType] = "Center" then "In Person" else if [AppointmentType] = "company" then "In Person" else if [AppointmentType] = "video" then "Virtual" else if [AppointmentType] = "virtual" then "Virtual" else if [AppointmentType] = "Center Consultation" then "In Person" else if [AppointmentType] = "Virtual Consultation" then "Virtual" else if [AppointmentType] = "Center;Virtual" then "Virtual" else if [AppointmentType] = null then "In Person" else "Other"),
+  #"Transform columns" = Table.TransformColumnTypes(#"Added Conditional Column", {{"Type_Apt", type text}})
+in
+  #"Transform columns"
+
+// VWFactAppointment
+let
+  Source = Sql.Database(param_synapse_server, param_synapse_database, [Query = "select *#(lf)from vwFactAppointment#(lf)where AppointmentDate >= '2020-01-01'"]),
+  #"Added Conditional Column" = Table.AddColumn(Source, "Type_Apt", each if [AppointmentType] = "Center" then "In Person" else if [AppointmentType] = "company" then "In Person" else if [AppointmentType] = "video" then "Virtual" else if [AppointmentType] = "virtual" then "Virtual" else if [AppointmentType] = "Center Consultation" then "In Person" else if [AppointmentType] = "Virtual Consultation" then "Virtual" else if [AppointmentType] = "Center;Virtual" then "Virtual" else if [AppointmentType] = null then "In Person" else "Other"),
+  #"Transform columns" = Table.TransformColumnTypes(#"Added Conditional Column", {{"Type_Apt", type text}})
+in
+  #"Transform columns"
+
+// VWFactOpportunity
+let
+  Source = Sql.Database(param_synapse_server, param_synapse_database, [Query = "select *#(lf)from VWFactOpportunity#(lf)where FactDate >= '2020-01-01'"]),
+  #"Filter Deleted" = Table.SelectRows(Source, each [isdeleted] = false)
+in
+  #"Filter Deleted"
+
+// VWFactCallDetail
+let
+  Source = Sql.Database(param_synapse_server, param_synapse_database, [Query = "select *#(lf)from vwFactCallDetail#(lf)where CallDateEST >= '2020-01-01'"]),
+  #"Remove columns" = Table.RemoveColumns(Source, Table.ColumnsOfType(Source, {type table, type record, type list, type nullable binary, type binary, type function})),
+  #"Replaced value" = Table.ReplaceValue(#"Remove columns", null, -1, Replacer.ReplaceValue, {"CenterID"}),
+  #"Replaced value 1" = Table.ReplaceValue(#"Replaced value", null, "Unknown", Replacer.ReplaceValue, {"OriginalCampaignId"})
+in
+  #"Replaced value 1"
+
+// VWMarketingActivity
+let
+  Source = Sql.Database(param_synapse_server, param_synapse_database, [Query = "select *#(lf)from vwMarketingActivity#(lf)where MarketingActivityDateEST >= '2020-01-01'"]),
+  #"Added Custom" = Table.AddColumn(Source, "FactDateESTKey", each Number.FromText(Date.ToText(DateTime.Date([MarketingActivityDateEST]), "YYYYMMDD"))),
+  #"Changed Type" = Table.TransformColumnTypes(#"Added Custom", {{"FactDateESTKey", Int64.Type}}),
+  #"Removed Other Columns" = Table.SelectColumns(#"Changed Type", {"FactDateKey", "MarketingActivityDateUTC", "MarketingActivityDateEST", "MarketingActivityDate", "MarketingActivityTime", "AgencyName", "BudgetAmount", "GrossSpend", "Discount", "Fees", "NetSpend", "Url", "Impressions18-65", "DMAkey", "DMA", "AgencyKey", "Agency", "AudienceKey", "Audience", "ChannelKey", "Channel", "FormatKey", "Format", "SourceKey", "source", "MediumKey", "Medium", "PurposeKey", "Purpose", "MethodKey", "Method", "BudgetName", "CampaignKey", "Campaign", "CompanyKey", "Company", "LocationKey", "Location", "Language", "NumberOfLeads", "NumberOfLeadsTarget", "NumertOfOpportunities", "NumberOfOpportunitiesTarget", "NumberOfSales", "NumberOfSalesTarget", "FactDateESTKey"}),
+  #"Filtered Rows" = Table.SelectRows(#"Removed Other Columns", each [MarketingActivityDateEST] >= #datetime(2020, 1, 1, 0, 0, 0)),
+  #"Filtered Rows1" = Table.SelectRows(#"Filtered Rows", each [Company] <> "Hans Wiemann"),
+  #"Added Custom1" = Table.AddColumn(#"Filtered Rows1", "NetSpend2", each if [AgencyName]= "MediaPoint" then 200*[Leads]
+else if [AgencyName] = "Venator" then 125*[Leads]
+else [NetSpend]),
+  #"Changed Type1" = Table.TransformColumnTypes(#"Added Custom1", {{"NetSpend2", type number}})
+in
+  #"Changed Type1"
+
+// param_synapse_server
+let
+  Query = "hc-eim-server-sql-prod2.sql.azuresynapse.net" meta [IsParameterQuery = true, IsParameterQueryRequired = true, Type = type text]
+in
+  Query
+
+// param_synapse_database
+let
+  Query = "hc_eim_prod2_sql_pool" meta [IsParameterQuery = true, IsParameterQueryRequired = true, Type = type text]
+in
+  Query
+
+// param_yesterday
+let
+  Source = Date.AddDays(DateTime.Date(DateTime.LocalNow()), -1)
+in
+  Source
+
+// param_startofyear
+let
+  Source = #date(Date.Year(DateTime.LocalNow()),1,1)
+in
+  Source
+
+// param_initialdate
+let
+  Source = Date.ToText(Date.StartOfYear(Date.AddYears(DateTime.Date(DateTime.LocalNow()), -1)), "yyyy-MM-dd")
+in
+  Source
+
+// param_enddate
+let
+  Source = Date.ToText(Date.EndOfYear(Date.AddYears(DateTime.Date(DateTime.LocalNow()), 0)), "yyyy-MM-dd")
+in
+  Source
+
+// DimDate
+let
+  Source = Sql.Database(param_synapse_server, param_synapse_database, [Query = "select *#(lf)from DimDate#(lf)where FullDate >= '2020-01-01' and FullDate <= CAST(GETDATE() AS date) ORDER BY FULLDATE DESC#(lf)"]),
+  #"Added Custom" = Table.AddColumn(Source, "Year L2", each if
+[YearNumber] > Date.Year(Date.StartOfYear(Date.AddYears(DateTime.LocalNow(), -2)))
+then [YearNumber]
+else null),
+  #"Duplicated Column" = Table.DuplicateColumn(#"Added Custom", "FullDate", "FullDate - Copy"),
+  #"Renamed Columns" = Table.RenameColumns(#"Duplicated Column", {{"FullDate - Copy", "Date"}}),
+  #"Changed Type" = Table.TransformColumnTypes(#"Renamed Columns", {{"Date", type date}, {"FullDate", type date}}),
+  #"Added Custom1" = Table.AddColumn(#"Changed Type", "MarketingCurrentPeriod", each if [FullDate] <= DateTime.Date(Date.AddDays(DateTime.LocalNow(),-1)) and [FullDate] >= DateTime.Date(Date.StartOfMonth(Date.AddDays(DateTime.LocalNow(),-1)))
+
+then "CurrentPeriod" else ""),
+  #"Transform columns" = Table.TransformColumnTypes(#"Added Custom1", {{"Year L2", type text}, {"MarketingCurrentPeriod", type text}}),
+  #"Replace errors" = Table.ReplaceErrorValues(#"Transform columns", {{"Year L2", null}, {"MarketingCurrentPeriod", null}}),
+  #"Inserted start of week" = Table.TransformColumnTypes(Table.AddColumn(#"Replace errors", "Calendar Week Beginning", each Date.StartOfWeek([FullDate])), {{"Calendar Week Beginning", type date}}),
+  #"Inserted end of week" = Table.TransformColumnTypes(Table.AddColumn(#"Inserted start of week", "Calendar Week Ending", each Date.EndOfWeek([FullDate])), {{"Calendar Week Ending", type date}}),
+  #"Inserted start of week 1" = Table.TransformColumnTypes(Table.AddColumn(#"Inserted end of week", "Business Week Beginning", each Date.StartOfWeek([FullDate], Day.Monday)), {{"Business Week Beginning", type date}}),
+  #"Inserted end of week 1" = Table.TransformColumnTypes(Table.AddColumn(#"Inserted start of week 1", "Business Week Ending", each Date.EndOfWeek([FullDate], Day.Monday)), {{"Business Week Ending", type date}})
+in
+  #"Inserted end of week 1"
+
+// DimSource
+let
+  Source = Sql.Database(param_synapse_server, param_synapse_database),
+  Navigation = Source{[Schema = "dbo", Item = "DimSource"]}[Data],
+  #"Removed Other Columns" = Table.SelectColumns(Navigation, {"SourceKey", "SourceName"})
+in
+  #"Removed Other Columns"
+
+// DimGeography
+let
+  Source = Sql.Database(param_synapse_server, param_synapse_database),
+  Navigation = Source{[Schema = "dbo", Item = "DimGeography"]}[Data],
+  #"Replaced value" = Table.ReplaceValue(Navigation, null, "Other", Replacer.ReplaceValue, {"DMASubregion"})
+in
+  #"Replaced value"
+
+// DimCampaign
+let
+  Source = Sql.Database(param_synapse_server, param_synapse_database),
+  Navigation = Source{[Schema = "dbo", Item = "VWDimCampaign"]}[Data],
+  #"Added custom" = Table.AddColumn(Navigation, "ActiveTollFreeNameKey", each if [IsActive] = true then [TollFreeName] else null),
+  #"Transform columns" = Table.TransformColumnTypes(#"Added custom", {{"ActiveTollFreeNameKey", type text}}),
+  #"Replace errors" = Table.ReplaceErrorValues(#"Transform columns", {{"ActiveTollFreeNameKey", null}})
+in
+  #"Replace errors"
+
+// DimCenter
+let
+  Source = Sql.Database(param_synapse_server, param_synapse_database),
+  #"Navigation 1" = Source{[Schema = "dbo", Item = "DimCenter"]}[Data]
+in
+  #"Navigation 1"
+
+// DimPersonAccount
+let
+  Source = Sql.Database(param_synapse_server, param_synapse_database),
+  Navigation = Source{[Schema = "dbo", Item = "VWPersonAccount"]}[Data]
+in
+  Navigation
+
+// DimLead
+let
+  Source = Sql.Database(param_synapse_server, param_synapse_database),
+  dbo_DimLead = Source{[Schema = "dbo", Item = "VWLead"]}[Data],
+  #"Filtered Rows1" = Table.SelectRows(dbo_DimLead, each [LeadCreatedDateEST] >= #datetime(2019, 1, 1, 0, 0, 0)),
+  #"Added Custom" = Table.AddColumn(#"Filtered Rows1", "CreatedDateESTKey", each Number.FromText(Date.ToText(DateTime.Date([LeadCreatedDateEST]), "YYYYMMDD"))),
+  #"Transform columns" = Table.TransformColumnTypes(#"Added Custom", {{"CreatedDateESTKey", type text}}),
+  #"Replace errors" = Table.ReplaceErrorValues(#"Transform columns", {{"CreatedDateESTKey", null}})
+in
+  #"Replace errors"
+
+// DimTimeOfDay
+let
+  Source = Sql.Database(param_synapse_server, param_synapse_database),
+  #"Navigation 1" = Source{[Schema = "dbo", Item = "DimTimeOfDay"]}[Data]
+in
+  #"Navigation 1"
+
+// DimLeadGeography
+let
+  Source = Sql.Database(param_synapse_server, param_synapse_database),
+  Navigation = Source{[Schema = "dbo", Item = "DimGeography"]}[Data]
+in
+  Navigation
+
+// DimLead_Live
+let
+  Source = Sql.Database(param_synapse_server, param_synapse_database),
+  dbo_DimLead = Source{[Schema = "dbo", Item = "VWLead_Live"]}[Data],
+  #"Filtered Rows1" = Table.SelectRows(dbo_DimLead, each [LeadCreatedDateEST] >= #datetime(2019, 1, 1, 0, 0, 0)),
+  #"Added Custom" = Table.AddColumn(#"Filtered Rows1", "CreatedDateESTKey", each Number.FromText(Date.ToText(DateTime.Date([LeadCreatedDateEST]), "YYYYMMDD"))),
+  #"Transform columns" = Table.TransformColumnTypes(#"Added Custom", {{"CreatedDateESTKey", type text}}),
+  #"Replace errors" = Table.ReplaceErrorValues(#"Transform columns", {{"CreatedDateESTKey", null}})
+in
+  #"Replace errors"
+
+// FactFunnelPivot
+let
+  Source = Sql.Database(param_synapse_server, param_synapse_database),
+  #"Navigation 1" = Source{[Schema = "dbo", Item = "FactFunnelPivot"]}[Data]
+in
+  #"Navigation 1"
+
+// Eastern Time Function
+let
+  Source = () => 
+
+let
+   StandardLocal = -5, 
+   UTC_Time = DateTimeZone.FixedUtcNow(),
+   CurrentYear = Date.Year( DateTimeZone.SwitchZone( UTC_Time,StandardLocal)),
+   DST_Start = Date.StartOfWeek(#datetimezone( CurrentYear,3,14,0,0,0,StandardLocal,0),Day.Sunday) + #duration(0,2,0,0),
+   DST_End = Date.StartOfWeek( #datetimezone( CurrentYear, 11,7,0,0,0, StandardLocal+1,0),Day.Sunday) + #duration(0,2,0,0), 
+   AdjustDST = if UTC_Time >= DST_Start and UTC_Time < DST_End then StandardLocal + 1 else StandardLocal, 
+   Source = #table(type table [LastRefresh=datetimezone], {{UTC_Time}}),
+   #"Add Local Column" = Table.AddColumn(Source, "Refreshed", each DateTimeZone.SwitchZone(DateTimeZone.FixedUtcNow(),AdjustDST), DateTime.Type),
+   Refreshed = #"Add Local Column"{0}[Refreshed]
+in
+   Refreshed
+in
+  Source
+
+// Last Update
+let
+  Source = #"Eastern Time Function"(),
+  #"Convert to table" = Table.FromValue(Source)
+in
+  #"Convert to table"

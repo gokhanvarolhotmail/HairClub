@@ -1,0 +1,493 @@
+// param_synapse_server
+"hc-eim-server-sql-prod2.sql.azuresynapse.net" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+
+// param_synapse_database
+"hc_eim_prod2_sql_pool" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+
+// FactFunnel
+let
+    Source = Sql.Database(param_synapse_server, param_synapse_database),
+    dbo_FactFunnel = Source{[Schema="dbo",Item="FactFunnel"]}[Data],
+    #"Added Conditional Column" = Table.AddColumn(dbo_FactFunnel, "FunnelStepOrder", each if [FunnelStep] = "Lead" then 1 else if [FunnelStep] = "Appointment" then 2 else if [FunnelStep] = "Show" then 3 else if [FunnelStep] = "NB" then 4 else if [FunnelStep] = "PCP" then 5 else null),
+    #"Changed Type" = Table.TransformColumnTypes(#"Added Conditional Column",{{"FunnelStepOrder", Int64.Type}}),
+    #"Added Custom" = Table.AddColumn(#"Changed Type", "LeadIdStepKey", each [LeadId] & "|" & Number.ToText([FunnelStepOrder])),
+    #"Added Custom1" = Table.AddColumn(#"Added Custom", "LeadIdStepNextKey", each [LeadId] & "|" & Number.ToText([FunnelStepOrder]+1)),
+    #"Added Custom2" = Table.AddColumn(#"Added Custom1", "LeadIdStep1Key", each [LeadId] & "|1"),
+    #"Added Custom3" = Table.AddColumn(#"Added Custom2", "LeadCreatedDateKey", each Number.FromText(Date.ToText(DateTime.Date([LeadCreatedDate]), "YYYYMMDD"))),
+    #"Removed Other Columns" = Table.SelectColumns(#"Added Custom3",{"FactDatekey", "FactDate", "LeadCreatedDate", "Leadkey", "LeadId", "FunnelStep", "CenterKey", "IsvalidLead", "FunnelStepOrder", "LeadIdStepKey", "LeadIdStepNextKey", "LeadIdStep1Key", "LeadCreatedDateKey"}),
+    #"Filtered Rows" = Table.SelectRows(#"Removed Other Columns", each [FactDate] >= #datetime(2019, 1, 1, 0, 0, 0))
+in
+    #"Filtered Rows"
+
+// calculations
+let
+    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}})
+in
+    #"Changed Type"
+
+// _LeadToSelector
+let
+    Source = Sql.Database(param_synapse_server, param_synapse_database),
+    dbo_VWLead = Source{[Schema="dbo",Item="VWLead"]}[Data],
+    #"Filtered Rows" = Table.SelectRows(dbo_VWLead, each ([Isvalid] = true) and ([IsDeleted] = false)and [LeadCreatedDateEST] > #datetime(2019, 12, 31, 0, 0, 0)),
+    #"Removed Other Columns" = Table.SelectColumns(#"Filtered Rows",{"LeadKey"}),
+    #"Added Custom" = Table.AddColumn(#"Removed Other Columns", "Custom", each _SelectorExecutiveDashboard),
+    #"Expanded Custom" = Table.ExpandTableColumn(#"Added Custom", "Custom", {"Dimensions"}, {"Dimensions"})
+in
+    #"Expanded Custom"
+
+// _SelectorExecutiveDashboard
+let
+    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45Wcs5IzMtLzVHSUTJUitWJVnLxdVQISk3PzM8DChmBhfyLMtMzQVxjpdhYAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Dimensions = _t, id = _t]),
+    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Dimensions", type text}, {"id", type number}})
+in
+    #"Changed Type"
+
+// DimPeriod
+let
+
+//DateList from current and previous month
+  StartDate = Date.StartOfYear( Date.AddMonths( DateTime.Date(DateTime.LocalNow()),0)),
+  CountDays = Duration.TotalDays( DateTime.Date(DateTime.LocalNow()) - StartDate + #duration(1,0,0,0)),
+  DateList = List.Dates( StartDate, CountDays, #duration(1,0,0,0)),
+
+//today date
+  MaxValue = List.Max(DateList),
+    // current month calc
+    curMonthNum = Date.Month(MaxValue),
+    MTD = Table.SelectRows(
+  Table.AddColumn( Table.FromList(DateList, Splitter.SplitByNothing(), {"dateKey"}, null, ExtraValues.Error) , "month", each Date.Month([dateKey])),
+   each ([month] = curMonthNum)),
+    MTDTable = Table.ExpandListColumn( #table({"id","date","period"},{{5,MTD[dateKey],"MTD"}}), "date"),
+    CurrYear = Date.Year(MaxValue),
+
+// previous month calc
+  YTD = Table.SelectRows(
+  Table.AddColumn( Table.FromList(DateList, Splitter.SplitByNothing(), {"dateKey"}, null, ExtraValues.Error) , "year", each Date.Year([dateKey])),
+   each ([year] = CurrYear )),
+    YTDTable = Table.ExpandListColumn( #table({"id","date","period"},{{6,YTD[dateKey],"YTD"}}), "date"),
+    
+    
+    // append tables
+  FinalTable = Table.Combine({MTDTable,YTDTable}),
+    #"Changed Type" = Table.TransformColumnTypes(FinalTable,{{"id", Int64.Type}, {"date", type date}, {"period", type text}}),
+    #"Added Conditional Column" = Table.AddColumn(#"Changed Type", "Target", each if [id] = 1 then 9 else if [id] = 2 then 9 else if [id] = 3 then 45 else if [id] = 4 then 45 else if [id] = 5 then 180 else if [id] = 6 then 180 else null, type number),
+    #"Added Custom" = Table.AddColumn(#"Added Conditional Column", "Target2", each if Date.DayOfWeek([date]) = 0 or Date.DayOfWeek([date]) = 6 then 0 else 9, type number),
+    #"Changed Type1" = Table.TransformColumnTypes(#"Added Custom",{{"date", type date}})
+in
+    #"Changed Type1"
+
+// DimCurrentPeriod
+let
+
+//DateList from current and previous month
+  StartDate = Date.StartOfMonth( Date.AddMonths( DateTime.Date(DateTime.LocalNow()),-1)),
+  CountDays = Duration.TotalDays( DateTime.Date(Date.AddDays(DateTime.LocalNow(),-1)) - StartDate + #duration(1,0,0,0)),
+  DateList = List.Dates( StartDate, CountDays, #duration(1,0,0,0)),
+
+//today date
+  MaxValue = List.Max(DateList),
+    Last24Table = #table({"id","date","period"}, {{1,MaxValue,"Today"}}),
+
+// yesterday date
+  Yesterday = Date.AddDays(MaxValue,-1),
+  YesterdayTable = #table({"id","date","period"}, {{2,Yesterday,"Yesterday"}}),
+
+// current week calc
+  curWeekNum = Date.WeekOfYear(MaxValue),
+  curWeek = Table.SelectRows(
+  Table.AddColumn( Table.FromList(DateList, Splitter.SplitByNothing(), {"dateKey"}, null, ExtraValues.Error) , "week", each Date.WeekOfYear([dateKey], Day.Monday)),
+   each ([week] = curWeekNum)),
+    curWeekTable = Table.ExpandListColumn( #table({"id","date","period"},{{3,curWeek[dateKey],"Current Week"}}), "date"),
+
+//previuos week calc
+  prevWeek = Table.SelectRows(
+  Table.AddColumn( Table.FromList(DateList, Splitter.SplitByNothing(), {"dateKey"}, null, ExtraValues.Error) , "week", each Date.WeekOfYear([dateKey], Day.Monday)),
+   each ([week] = (curWeekNum -1))),
+   prevWeekTable = Table.ExpandListColumn( #table({"id","date","period"},{{4,prevWeek[dateKey],"Previous Week"}}), "date"),
+    // current month calc
+    curMonthNum = Date.Month(MaxValue),
+    curMonth = Table.SelectRows(
+  Table.AddColumn( Table.FromList(DateList, Splitter.SplitByNothing(), {"dateKey"}, null, ExtraValues.Error) , "month", each Date.Month([dateKey])),
+   each ([month] = curMonthNum)),
+    curMonthTable = Table.ExpandListColumn( #table({"id","date","period"},{{5,curMonth[dateKey],"CurrentMonth"}}), "date"),
+
+// previous month calc
+  prevMonth = Table.SelectRows(
+  Table.AddColumn( Table.FromList(DateList, Splitter.SplitByNothing(), {"dateKey"}, null, ExtraValues.Error) , "month", each Date.Month([dateKey])),
+   each ([month] < curMonthNum)),
+    prevMonthTable = Table.ExpandListColumn( #table({"id","date","period"},{{6,prevMonth[dateKey],"Previous Month"}}), "date"),
+    
+    
+    ThreeWeeksAGo = Table.SelectRows(
+  Table.AddColumn( Table.FromList(DateList, Splitter.SplitByNothing(), {"dateKey"}, null, ExtraValues.Error) , "week", each Date.WeekOfYear([dateKey], Day.Monday)),
+   each ([week] = (curWeekNum -2))),
+    ThreeWeeksAGoTable = Table.ExpandListColumn( #table({"id","date","period"},{{7,ThreeWeeksAGo[dateKey],"3 weeks ago"}}), "date"),
+    FourWeeksAGo = Table.SelectRows(
+  Table.AddColumn( Table.FromList(DateList, Splitter.SplitByNothing(), {"dateKey"}, null, ExtraValues.Error) , "week", each Date.WeekOfYear([dateKey], Day.Monday)),
+   each ([week] = (curWeekNum -3))),
+    FourWeeksAGoTable = Table.ExpandListColumn( #table({"id","date","period"},{{8,FourWeeksAGo[dateKey],"4 weeks ago"}}), "date"),
+    // append tables
+  FinalTable = Table.Combine({Last24Table,YesterdayTable,curWeekTable,curMonthTable,prevMonthTable,prevWeekTable,ThreeWeeksAGoTable,FourWeeksAGoTable}),
+    #"Changed Type" = Table.TransformColumnTypes(FinalTable,{{"id", Int64.Type}, {"date", type date}, {"period", type text}}),
+    #"Added Conditional Column" = Table.AddColumn(#"Changed Type", "Target", each if [id] = 1 then 9 else if [id] = 2 then 9 else if [id] = 3 then 45 else if [id] = 4 then 45 else if [id] = 5 then 180 else if [id] = 6 then 180 else null, type number),
+    #"Added Custom" = Table.AddColumn(#"Added Conditional Column", "Target2", each if Date.DayOfWeek([date]) = 0 or Date.DayOfWeek([date]) = 6 then 0 else 9, type number)
+in 
+  #"Added Custom"
+
+// DummyTable
+let
+    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45WclSKjQUA", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [DummyDimension = _t]),
+    #"Changed Type" = Table.TransformColumnTypes(Source,{{"DummyDimension", type text}})
+in
+    #"Changed Type"
+
+// Eastern Time Function
+let
+    Source = () => 
+
+let
+   StandardLocal = -5, 
+   UTC_Time = DateTimeZone.FixedUtcNow(),
+   CurrentYear = Date.Year( DateTimeZone.SwitchZone( UTC_Time,StandardLocal)),
+   DST_Start = Date.StartOfWeek(#datetimezone( CurrentYear,3,14,0,0,0,StandardLocal,0),Day.Sunday) + #duration(0,2,0,0),
+   DST_End = Date.StartOfWeek( #datetimezone( CurrentYear, 11,7,0,0,0, StandardLocal+1,0),Day.Sunday) + #duration(0,2,0,0), 
+   AdjustDST = if UTC_Time >= DST_Start and UTC_Time < DST_End then StandardLocal + 1 else StandardLocal, 
+   Source = #table(type table [LastRefresh=datetimezone], {{UTC_Time}}),
+   #"Add Local Column" = Table.AddColumn(Source, "Refreshed", each DateTimeZone.SwitchZone(DateTimeZone.FixedUtcNow(),AdjustDST), DateTime.Type),
+   Refreshed = #"Add Local Column"{0}[Refreshed]
+in
+   Refreshed
+
+in
+    Source
+
+// Last Update
+let
+    Source = #"Eastern Time Function"()
+in
+    Source
+
+// _SelectorPeriod
+let
+    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45WMlTSUfINcVGK1YlWMgKyI6FsYyDbx9DIVyk2FgA=", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [id = _t, label = _t]),
+    #"Changed Type" = Table.TransformColumnTypes(Source,{{"id", Int64.Type}, {"label", type text}})
+in
+    #"Changed Type"
+
+// _SelectorCostPerLead
+let
+    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45WMlTSUXLOSMzLS81RitWJVjIC8h3TU/OSK5ViYwE=", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [id = _t, label = _t]),
+    #"Changed Type" = Table.TransformColumnTypes(Source,{{"id", Int64.Type}, {"label", type text}})
+in
+    #"Changed Type"
+
+// VWLead
+let
+    Source = Sql.Database(param_synapse_server, param_synapse_database),
+    dbo_VWLead = Source{[Schema="dbo",Item="VWLead"]}[Data],
+    #"Removed Other Columns" = Table.SelectColumns(dbo_VWLead,{"LeadKey", "LeadCreatedDateEST", "LeadId", "Centerkey", "IsActiveFlag", "OriginalCampaignKey", "LeadCountry", "CenterCountry", "DMADescription", "Geographykey", "Isactive", "Isvalid", "IsConsultFormComplete", "IsDeleted", "AgencyName", "SourceName", "MarketingSource", "TimeOfDayESTKey"}),
+    #"Filtered Rows" = Table.SelectRows(#"Removed Other Columns", each ([IsDeleted] = false) and [LeadCreatedDateEST] > #datetime(2019, 12, 31, 0, 0, 0)),
+    createdDateESTKey = Table.AddColumn(#"Filtered Rows", "createdDateESTKey", each Number.FromText(Date.ToText(DateTime.Date([LeadCreatedDateEST]), "YYYYMMDD"))),
+    #"Changed Type" = Table.TransformColumnTypes(createdDateESTKey,{{"createdDateESTKey", Int64.Type}}),
+    #"Replaced Value" = Table.ReplaceValue(#"Changed Type",null,"Unknown",Replacer.ReplaceValue,{"CenterCountry"})
+in
+    #"Replaced Value"
+
+// VWMarketingActivity
+let
+    Source = Sql.Database(param_synapse_server, param_synapse_database),
+    dbo_VWMarketingActivity = Source{[Schema="dbo",Item="VWMarketingActivity"]}[Data],
+    #"Added Custom" = Table.AddColumn(dbo_VWMarketingActivity, "FactDateESTKey", each Number.FromText(Date.ToText(DateTime.Date([MarketingActivityDateEST]), "YYYYMMDD"))),
+    #"Changed Type" = Table.TransformColumnTypes(#"Added Custom",{{"FactDateESTKey", Int64.Type}}),
+    #"Removed Other Columns" = Table.SelectColumns(#"Changed Type",{"FactDateKey", "MarketingActivityDateUTC", "MarketingActivityDateEST", "MarketingActivityDate", "MarketingActivityTime", "AgencyName", "BudgetAmount", "GrossSpend", "Discount", "Fees", "NetSpend", "Url", "Impressions18-65", "DMAkey", "DMA", "AgencyKey", "Agency", "AudienceKey", "Audience", "ChannelKey", "Channel", "FormatKey", "Format", "SourceKey", "source", "MediumKey", "Medium", "PurposeKey", "Purpose", "MethodKey", "Method", "BudgetName", "CampaignKey", "Campaign", "CompanyKey", "Company", "LocationKey", "Location", "Language", "NumberOfLeads", "NumberOfLeadsTarget", "NumertOfOpportunities", "NumberOfOpportunitiesTarget", "NumberOfSales", "NumberOfSalesTarget", "FactDateESTKey"}),
+    #"Filtered Rows" = Table.SelectRows(#"Removed Other Columns", each [MarketingActivityDateEST] >= #datetime(2020, 1, 1, 0, 0, 0)),
+    #"Filtered Rows1" = Table.SelectRows(#"Filtered Rows", each [Company] <> "Hans Wiemann"),
+    #"Added Custom1" = Table.AddColumn(#"Filtered Rows1", "NetSpend2", each if [AgencyName]= "MediaPoint" then 200*[Leads]
+else if [AgencyName] = "Venator" then 125*[Leads]
+else [NetSpend]),
+    #"Changed Type1" = Table.TransformColumnTypes(#"Added Custom1",{{"NetSpend2", type number}})
+in
+    #"Changed Type1"
+
+// VWFactCallDetail
+let
+Source = PowerBI.Dataflows(null),
+#"3430a899-cbf5-4906-9a5a-e4abd9e5d1ec" = Source{[workspaceId="3430a899-cbf5-4906-9a5a-e4abd9e5d1ec"]}[Data],
+#"0390715b-736c-4107-8a9f-9a48910cbed8" = #"3430a899-cbf5-4906-9a5a-e4abd9e5d1ec"{[dataflowId="0390715b-736c-4107-8a9f-9a48910cbed8"]}[Data],
+VWFactCallDetail1 = #"0390715b-736c-4107-8a9f-9a48910cbed8"{[entity="VWFactCallDetail"]}[Data]
+in
+VWFactCallDetail1
+
+// Metrics
+let
+    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}}),
+    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Column1"})
+in
+    #"Removed Columns"
+
+// DimSource
+let
+    Source = Sql.Database(param_synapse_server, param_synapse_database),
+    dbo_DimSource = Source{[Schema="dbo",Item="DimSource"]}[Data],
+    #"Removed Other Columns" = Table.SelectColumns(dbo_DimSource,{"SourceKey", "SourceName"})
+in
+    #"Removed Other Columns"
+
+// DimGeography
+let
+    Source = Sql.Database(param_synapse_server, param_synapse_database),
+    dbo_DimGeography = Source{[Schema="dbo",Item="DimGeography"]}[Data],
+    #"Replaced Value" = Table.ReplaceValue(dbo_DimGeography,"","Other",Replacer.ReplaceValue,{"Country"})
+in
+    #"Replaced Value"
+
+// DimLeadGeography
+let
+    Source = Sql.Database(param_synapse_server, param_synapse_database),
+    dbo_DimGeography = Source{[Schema="dbo",Item="DimGeography"]}[Data]
+in
+    dbo_DimGeography
+
+// DimCenter
+let
+    Source = Sql.Database(param_synapse_server, param_synapse_database),
+    dbo_DimCenter = Source{[Schema="dbo",Item="DimCenter"]}[Data],
+    #"Merged Queries" = Table.NestedJoin(dbo_DimCenter, {"CenterID"}, #"bi_ent_dds vwDimCenter", {"CenterSSID"}, "bi_ent_dds vwDimCenter", JoinKind.LeftOuter),
+    #"Expanded bi_ent_dds vwDimCenter" = Table.ExpandTableColumn(#"Merged Queries", "bi_ent_dds vwDimCenter", {"RegionAM", "DMARegion"}, {"RegionAM", "DMARegion"})
+in
+    #"Expanded bi_ent_dds vwDimCenter"
+
+// bi_ent_dds vwDimCenter
+let
+    Source = PowerBI.Dataflows(null),
+    #"3430a899-cbf5-4906-9a5a-e4abd9e5d1ec" = Source{[workspaceId="3430a899-cbf5-4906-9a5a-e4abd9e5d1ec"]}[Data],
+    #"5a63c6a0-6c60-483f-bac3-621909acfa22" = #"3430a899-cbf5-4906-9a5a-e4abd9e5d1ec"{[dataflowId="5a63c6a0-6c60-483f-bac3-621909acfa22"]}[Data],
+    #"bi_ent_dds vwDimCenter1" = #"5a63c6a0-6c60-483f-bac3-621909acfa22"{[entity="bi_ent_dds vwDimCenter"]}[Data],
+    #"Removed Other Columns" = Table.SelectColumns(#"bi_ent_dds vwDimCenter1",{"CenterSSID", "CenterNumber", "RegionRSMMembershipAdvisorSSID", "RegionMA", "RegionRSMNBConsultantSSID", "RegionNB1", "RegionRTMTechnicalManagerSSID", "RegionTM", "RegionROMOperationsManagerSSID", "RegionAM", "DMARegion"})
+in
+    #"Removed Other Columns"
+
+// DimDate
+let
+    Source = PowerBI.Dataflows(null),
+    #"3430a899-cbf5-4906-9a5a-e4abd9e5d1ec" = Source{[workspaceId="3430a899-cbf5-4906-9a5a-e4abd9e5d1ec"]}[Data],
+    #"0390715b-736c-4107-8a9f-9a48910cbed8" = #"3430a899-cbf5-4906-9a5a-e4abd9e5d1ec"{[dataflowId="0390715b-736c-4107-8a9f-9a48910cbed8"]}[Data],
+    DimDate1 = #"0390715b-736c-4107-8a9f-9a48910cbed8"{[entity="DimDate"]}[Data]
+in
+    DimDate1
+
+// DimLead
+let
+    Source = Sql.Database(param_synapse_server, param_synapse_database),
+    dbo_DimLead = Source{[Schema="dbo",Item="VWLead"]}[Data],
+   // #"Filtered Rows" = Table.SelectRows(dbo_DimLead, each ([IsDeleted] = false) and ([Isvalid] = true)),
+    #"Filtered Rows1" = Table.SelectRows(dbo_DimLead, each [LeadCreatedDateEST] >= #datetime(2019, 1, 1, 0, 0, 0)),
+    #"Added Custom" = Table.AddColumn(#"Filtered Rows1", "CreatedDateESTKey", each Number.FromText(Date.ToText(DateTime.Date([LeadCreatedDateEST]), "YYYYMMDD")))
+in
+    #"Added Custom"
+
+// DimTimeOfDay
+let
+    Source = Sql.Database(param_synapse_server, param_synapse_database),
+    dbo_DimTimeOfDay = Source{[Schema="dbo",Item="DimTimeOfDay"]}[Data]
+in
+    dbo_DimTimeOfDay
+
+// Aggr_VWMarketingActivity
+let
+    Source = Sql.Database(param_synapse_server, param_synapse_database),
+    dbo_VWMarketingActivity = Source{[Schema="dbo",Item="VWMarketingActivity"]}[Data],
+    #"Filtered Rows" = Table.SelectRows(dbo_VWMarketingActivity, each ([Company] <> "Hans Wiemann")),
+    #"Grouped Rows" = Table.Group(#"Filtered Rows", {"AgencyName", "BudgetName", "MarketingActivityDateEST", "source", "Channel", "Medium", "Language", "Location", "ChannelGroup", "CampaignKey"}, {{"NetSpend", each List.Sum([NetSpend]), type nullable number}, {"Fees", each List.Sum([Fees]), type nullable number}, {"Discount", each List.Sum([Discount]), type nullable number}, {"GrossSpend", each List.Sum([GrossSpend]), type nullable number}, {"TargetOfLeads", each List.Sum([NumberOfLeadsTarget]), type nullable number}}),
+    #"Added Custom" = Table.AddColumn(#"Grouped Rows", "FactDateESTKey", each Number.FromText(Date.ToText(DateTime.Date([MarketingActivityDateEST]), "YYYYMMDD"))),
+    #"Changed Type" = Table.TransformColumnTypes(#"Added Custom",{{"FactDateESTKey", Int64.Type}}),
+    #"Renamed Columns" = Table.RenameColumns(#"Changed Type",{{"source", "Source"}, {"Medium", "Medium"}}),
+    #"Added Conditional Column" = Table.AddColumn(#"Renamed Columns", "Franchise_Corporate", each if [BudgetName] = "Barth" or [BudgetName]="Strepman" then "Franchise" else "Corporate"),
+    PayMediaType = Table.AddColumn(#"Added Conditional Column", "PayMediaType", each "Paid Media"),
+    #"Added Custom1" = Table.AddColumn(PayMediaType, "MediumGroup", each [Medium]),
+    #"Changed Type1" = Table.TransformColumnTypes(#"Added Custom1",{{"PayMediaType", type text}})
+in
+    #"Changed Type1"
+
+// Aggr_VWLead
+let
+    Source = Sql.Database(param_synapse_server, param_synapse_database),
+    dbo_VWLead = Source{[Schema="dbo",Item="VWLead"]}[Data],
+    #"Filtered Rows" = Table.SelectRows(dbo_VWLead, each ([Isvalid] = true) and ([IsDeleted] = false) and [LeadCreatedDateEST] > #datetime(2018, 12, 31, 0, 0, 0)),
+    #"Merged Queries" = Table.NestedJoin(#"Filtered Rows", {"OriginalCampaignKey"}, DimCampaign, {"CampaignKey"}, "DimCampaign", JoinKind.Inner),
+    #"Expanded DimCampaign" = Table.ExpandTableColumn(#"Merged Queries", "DimCampaign", {"PayMediaType", "AgencyNameDerived", "CampaignChannelGroup", "CampaignLocation", "CampaignBudget", "CampaignMedium", "CampaignMediumgroup", "CampaignChannelDerived", "CampaignSource", "CampaignSourceDerived"}, {"PayMediaType", "AgencyNameDerived", "CampaignChannelGroup", "CampaignLocation", "CampaignBudget", "CampaignMedium", "CampaignMediumgroup", "CampaignChannelDerived", "CampaignSource", "CampaignSourceDerived"}),
+    #"Added Conditional Column" = Table.AddColumn(#"Expanded DimCampaign", "Franchise_Corporate", each if [CampaignBudget] = "Barth" or [CampaignBudget]="Strepman" then "Franchise" else "Corporate"),
+    #"Grouped Rows" = Table.Group(#"Added Conditional Column", {"AgencyNameDerived", "CampaignChannelDerived", "CampaignMedium", "OriginalcampaignLocation", "CampaignSourceDerived", "LeadCreatedDateEST", "Franchise_Corporate", "PayMediaType", "CampaignChannelGroup", "CampaignMediumgroup", "Centerkey"}, {{"Leads", each Table.RowCount(_), Int64.Type}}),
+    createdDateESTKey = Table.AddColumn(#"Grouped Rows", "createdDateESTKey", each Number.FromText(Date.ToText(DateTime.Date([LeadCreatedDateEST]), "YYYYMMDD"))),
+    #"Renamed Columns" = Table.RenameColumns(createdDateESTKey,{{"CampaignSourceDerived", "Source"}, {"OriginalcampaignLocation", "Location"}, {"CampaignMedium", "Medium"}, {"CampaignChannelDerived", "Channel"}, {"AgencyNameDerived", "AgencyName"}, {"createdDateESTKey", "FactDateESTKey"}, {"CampaignChannelGroup", "ChannelGroup"}, {"CampaignMediumgroup", "MediumGroup"}})
+in
+    #"Renamed Columns"
+
+// DimCampaign
+let
+    Source = PowerBI.Dataflows(null),
+    #"3430a899-cbf5-4906-9a5a-e4abd9e5d1ec" = Source{[workspaceId="3430a899-cbf5-4906-9a5a-e4abd9e5d1ec"]}[Data],
+    #"0390715b-736c-4107-8a9f-9a48910cbed8" = #"3430a899-cbf5-4906-9a5a-e4abd9e5d1ec"{[dataflowId="0390715b-736c-4107-8a9f-9a48910cbed8"]}[Data],
+    DimCampaign1 = #"0390715b-736c-4107-8a9f-9a48910cbed8"{[entity="DimCampaign"]}[Data]
+in
+    DimCampaign1
+
+// Aggr_FactTarget
+let
+    Source = Sql.Database(param_synapse_server, param_synapse_database),
+    dbo_FactTarget = Source{[Schema="dbo",Item="VWFactMarketingBudget"]}[Data],
+    #"Changed Type" = Table.TransformColumnTypes(dbo_FactTarget,{{"FactDate", type date}}),
+    #"Calculated Start of Month" = Table.TransformColumns(#"Changed Type",{{"FactDate", Date.StartOfMonth, type date}}),
+    #"Added Custom" = Table.AddColumn(#"Calculated Start of Month", "FactDateESTKey", each Number.FromText(Date.ToText(DateTime.Date([FactDate]), "YYYYMMDD"))),
+    #"Renamed Columns" = Table.RenameColumns(#"Added Custom",{{"Agency", "AgencyName"}, {"PaidMedia", "PayMediaType"}}),
+    #"Replaced Value" = Table.ReplaceValue(#"Renamed Columns","PaidMedia","Paid Media",Replacer.ReplaceText,{"PayMediaType"}),
+    #"Added Custom1" = Table.AddColumn(#"Replaced Value", "Franchise_Corporate", each if [Budget] = "Barth" or [Budget]="Strepman" then "Franchise"  
+
+else if [Channel] = "Direct to Site" or [Channel] = "Other" then ""
+
+else "Corporate"),
+    #"Added Custom3" = Table.AddColumn(#"Added Custom1", "MediumGroup", each [Medium]),
+    #"Changed Type1" = Table.TransformColumnTypes(#"Added Custom3",{{"TaregetLeads", Int64.Type}, {"BudgetAmount", type number}})
+in
+    #"Changed Type1"
+
+// Aggr_Marketing
+let
+    Source = Table.Combine({Aggr_VWMarketingActivity, Aggr_VWLead, Aggr_FactTarget}),
+    #"Replaced Value" = Table.ReplaceValue(Source,null,"Unknown",Replacer.ReplaceValue,{"AgencyName"}),
+    #"Added Custom" = Table.AddColumn(#"Replaced Value", "NetSpend2", each if [AgencyName]= "MediaPoint" then 200*[Leads]
+else if [AgencyName] = "Venator" then 125*[Leads]
+else [NetSpend]),
+    #"Removed Columns" = Table.RemoveColumns(#"Added Custom",{"NetSpend"}),
+    #"Renamed Columns" = Table.RenameColumns(#"Removed Columns",{{"NetSpend2", "NetSpend"}}),
+    #"Changed Type" = Table.TransformColumnTypes(#"Renamed Columns",{{"NetSpend", type number}}),
+    #"Replaced Value1" = Table.ReplaceValue(#"Changed Type","Radio","Audio",Replacer.ReplaceText,{"Channel"}),
+    #"Added Custom1" = Table.AddColumn(#"Replaced Value1", "PayMediaType_Intiatives", each if [PayMediaType] = "Paid Media" and [Franchise_Corporate] <> ""
+then [Franchise_Corporate] & " Paid Media"
+else if [PayMediaType] = "Non Paid Media" 
+then "Other / Non Paid"
+else ""),
+    #"Added Custom3" = Table.AddColumn(#"Added Custom1", "AgencyName_Initiatives", each if [PayMediaType] = "Paid Media" then [AgencyName]
+else if [PayMediaType] = "Non Paid Media" then
+
+if [Channel] = "Direct" then [Channel]
+else [AgencyName]
+else ""),
+    #"Added Custom2" = Table.AddColumn(#"Added Custom3", "Medium Group Initiatives", each if [PayMediaType] = "Paid Media" then [MediumGroup] else ""),
+    #"Added Custom4" = Table.AddColumn(#"Added Custom2", "Channel_Performance", each if [PayMediaType] = "Paid Media" then [Channel]
+else if [PayMediaType] = "Non Paid Media" then ""
+else [Channel]),
+ #"Added Custom5" = Table.AddColumn(#"Added Custom4", "Franchise_Corporate_Performance", each if [PayMediaType] = "Paid Media" then [Franchise_Corporate]
+else if [PayMediaType] = "Non Paid Media" then ""
+else [Channel])
+in
+    #"Added Custom5"
+
+// Aggr_Funnel
+let
+    Source = Sql.Database(param_synapse_server, param_synapse_database),
+    dbo_FactFunnelPivot = Source{[Schema="dbo",Item="FactFunnelPivot"]}[Data],
+    #"Added Custom" = Table.AddColumn(dbo_FactFunnelPivot, "LeadDateKey", each Number.FromText(Date.ToText(DateTime.Date([LeadDate]), "YYYYMMDD"))),
+    #"Removed Other Columns" = Table.SelectColumns(#"Added Custom",{"leadid", "LeadDate", "LeadToAppoinment", "AppointmentToShow", "ShowToNB", "NBToPCP", "LeadDateKey"}),
+    #"Added Custom1" = Table.AddColumn(#"Removed Other Columns", "Days to Complete", each [LeadToAppoinment]+[AppointmentToShow]+[ShowToNB]+[NBToPCP]),
+    #"Filtered Rows" = Table.SelectRows(#"Added Custom1", each [LeadDate] >= #datetime(2019, 1, 1, 0, 0, 0)),
+    #"Changed Type" = Table.TransformColumnTypes(#"Filtered Rows",{{"Days to Complete", type number}})
+in
+    #"Changed Type"
+
+// _SelectorPacing
+let
+    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45WMlTSUfJNTclMVAguSM1LUYrViVYyAor5pCamFIN5xkCec4APmG0CYSuEJBalp5aAhUyhQmGJRZmJecmpSrGxAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [id = _t, label = _t]),
+    #"Changed Type" = Table.TransformColumnTypes(Source,{{"id", Int64.Type}, {"label", type text}})
+in
+    #"Changed Type"
+
+// _SelectorCPL
+let
+    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45WMlTSUXIO8FGK1YlWMgKywxKLMhPzklOVYmMB", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [id = _t, label = _t]),
+    #"Changed Type" = Table.TransformColumnTypes(Source,{{"id", Int64.Type}, {"label", type text}})
+in
+    #"Changed Type"
+
+// VWFactAppointment
+let
+    Source = Sql.Database(param_synapse_server, param_synapse_database),
+    dbo_VWFactAppointment = Source{[Schema="dbo",Item="VWFactAppointment"]}[Data],
+    #"Filtered Rows" = Table.SelectRows(dbo_VWFactAppointment, each [AppointmentDateKey] >= 20200101),
+    #"Filtered Rows1" = Table.SelectRows(#"Filtered Rows", each true),
+    #"Changed Type" = Table.TransformColumnTypes(#"Filtered Rows1",{{"FactDate", type date}})
+in
+    #"Changed Type"
+
+// VWFactOpportunity
+let
+    Source = Sql.Database(param_synapse_server, param_synapse_database),
+    dbo_VWFactOpportunity = Source{[Schema="dbo",Item="VWFactOpportunity"]}[Data],
+    #"Filtered Rows" = Table.SelectRows(dbo_VWFactOpportunity, each 
+ ([isdeleted] = false)),
+    #"Filtered Rows1" = Table.SelectRows(#"Filtered Rows", each [FactDateKey] >= 20200101),
+    #"Replaced Value" = Table.ReplaceValue(#"Filtered Rows1",null,-1,Replacer.ReplaceValue,{"Centerkey"})
+in
+    #"Replaced Value"
+
+// _SelectorLASS
+let
+    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45WMlTSUfJJTUwpVorViVYyAvIcCwryM/NKclPzSiCCxkBB5/y84tKcksSSTCADLGoCFA1OzEkF8mIB", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [id = _t, label = _t]),
+    #"Changed Type" = Table.TransformColumnTypes(Source,{{"id", Int64.Type}, {"label", type text}})
+in
+    #"Changed Type"
+
+// vwFactAccounting
+let
+    Source = PowerBI.Dataflows(null),
+    #"3430a899-cbf5-4906-9a5a-e4abd9e5d1ec" = Source{[workspaceId="3430a899-cbf5-4906-9a5a-e4abd9e5d1ec"]}[Data],
+    #"5a63c6a0-6c60-483f-bac3-621909acfa22" = #"3430a899-cbf5-4906-9a5a-e4abd9e5d1ec"{[dataflowId="5a63c6a0-6c60-483f-bac3-621909acfa22"]}[Data],
+    #"bi_ent_dds vwFactAccounting1" = #"5a63c6a0-6c60-483f-bac3-621909acfa22"{[entity="bi_ent_dds vwFactAccounting"]}[Data]
+in
+    #"bi_ent_dds vwFactAccounting1"
+
+// DimGLAccount
+let
+    Source = PowerBI.Dataflows(null),
+    #"3430a899-cbf5-4906-9a5a-e4abd9e5d1ec" = Source{[workspaceId="3430a899-cbf5-4906-9a5a-e4abd9e5d1ec"]}[Data],
+    #"5a63c6a0-6c60-483f-bac3-621909acfa22" = #"3430a899-cbf5-4906-9a5a-e4abd9e5d1ec"{[dataflowId="5a63c6a0-6c60-483f-bac3-621909acfa22"]}[Data],
+    #"bi_ent_dds vwDimAccount1" = #"5a63c6a0-6c60-483f-bac3-621909acfa22"{[entity="bi_ent_dds vwDimAccount"]}[Data]
+in
+    #"bi_ent_dds vwDimAccount1"
+
+// vwFactLead
+let
+    Source = PowerBI.Dataflows(null),
+    #"3430a899-cbf5-4906-9a5a-e4abd9e5d1ec" = Source{[workspaceId="3430a899-cbf5-4906-9a5a-e4abd9e5d1ec"]}[Data],
+    #"5a63c6a0-6c60-483f-bac3-621909acfa22" = #"3430a899-cbf5-4906-9a5a-e4abd9e5d1ec"{[dataflowId="5a63c6a0-6c60-483f-bac3-621909acfa22"]}[Data],
+    vwFactLead1 = #"5a63c6a0-6c60-483f-bac3-621909acfa22"{[entity="vwFactLead"]}[Data]
+in
+    vwFactLead1
+
+// vwFactSalesConnect
+let
+    Source = PowerBI.Dataflows(null),
+    #"3430a899-cbf5-4906-9a5a-e4abd9e5d1ec" = Source{[workspaceId="3430a899-cbf5-4906-9a5a-e4abd9e5d1ec"]}[Data],
+    #"5a63c6a0-6c60-483f-bac3-621909acfa22" = #"3430a899-cbf5-4906-9a5a-e4abd9e5d1ec"{[dataflowId="5a63c6a0-6c60-483f-bac3-621909acfa22"]}[Data],
+    vwFactSalesConnect1 = #"5a63c6a0-6c60-483f-bac3-621909acfa22"{[entity="vwFactSalesConnect"]}[Data]
+in
+    vwFactSalesConnect1
+
+// DimLead_Revenue
+let
+    Source = Table.NestedJoin(DimLead, {"LeadId"}, vwFactLead, {"SFDC_LeadId"}, "Revenue.1", JoinKind.LeftOuter),
+    #"Removed Other Columns" = Table.SelectColumns(Source,{"LeadId", "LeadExternalId", "Revenue.1"}),
+    #"Expanded Revenue.1" = Table.ExpandTableColumn(#"Removed Other Columns", "Revenue.1", {"SFDC_LeadId"}, {"SFDC_LeadId"}),
+    #"Added Conditional Column" = Table.AddColumn(#"Expanded Revenue.1", "LeadIdRevenue", each if [SFDC_LeadId] = null then [LeadExternalId] else [LeadId])
+in
+    #"Added Conditional Column"
+
+// DimPersonAccount
+let
+    Source = Sql.Database(param_synapse_server, param_synapse_database),
+    dbo_VWPersonAccount = Source{[Schema="dbo",Item="VWPersonAccount"]}[Data]
+in
+    dbo_VWPersonAccount
