@@ -465,7 +465,7 @@ FROM [dbo].[datClient] AS [clt]
 INNER JOIN [dbo].[datHairSystemOrder] AS [hso] ON [hso].[ClientGUID] = [clt].[ClientGUID]
 INNER JOIN [dbo].[lkpHairSystemOrderStatus] AS [hsos] ON [hsos].[HairSystemOrderStatusID] = [hso].[HairSystemOrderStatusID]
                                                      AND [hsos].[HairSystemOrderStatusDescriptionShort] IN ('CENT', 'ORDER')
-WHERE EXISTS ( SELECT 1 FROM [#LastApplication] AS [l] WHERE [l].[ClientGUID] = [clt].[ClientGUID] )
+WHERE EXISTS ( SELECT 1 FROM [#hair] AS [l] WHERE [l].[ClientGUID] = [clt].[ClientGUID] )
 GROUP BY [clt].[ClientGUID] ;
 
 -- Newest Order System Type
@@ -488,7 +488,7 @@ FROM( SELECT
       FROM [dbo].[datClient] AS [clt]
       INNER JOIN [dbo].[datHairSystemOrder] AS [hso] ON [hso].[ClientGUID] = [clt].[ClientGUID]
       INNER JOIN [dbo].[cfgHairSystem] AS [hs] ON [hso].[HairSystemID] = [hs].[HairSystemID]
-      WHERE EXISTS ( SELECT 1 FROM [#LastApplication] AS [l] WHERE [l].[ClientGUID] = [clt].[ClientGUID] )) AS [k]
+      WHERE EXISTS ( SELECT 1 FROM [#hair] AS [l] WHERE [l].[ClientGUID] = [clt].[ClientGUID] )) AS [k]
 WHERE [k].[rw] = 1 ;
 
 -- Remaining Qty to Order
@@ -503,7 +503,7 @@ FROM [dbo].[datClient] AS [clt]
 INNER JOIN [dbo].[datClientMembership] AS [cm] ON [cm].[ClientMembershipGUID] = [clt].[CurrentBioMatrixClientMembershipGUID]
 OUTER APPLY( SELECT COUNT(1) AS [Cnt] FROM [dbo].[datHairSystemOrder] AS [hso] WHERE [hso].[ClientGUID] = [clt].[ClientGUID]
                                                                                AND [hso].[CreateDate] >= [cm].[BeginDate] ) AS [b]
-WHERE EXISTS ( SELECT 1 FROM [#LastApplication] AS [l] WHERE [l].[ClientGUID] = [clt].[ClientGUID] ) ;
+WHERE EXISTS ( SELECT 1 FROM [#hair] AS [l] WHERE [l].[ClientGUID] = [clt].[ClientGUID] ) ;
 
 SELECT
     [q].[ClientFullNameCalc] AS [Client]
