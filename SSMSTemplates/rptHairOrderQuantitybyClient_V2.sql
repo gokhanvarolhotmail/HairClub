@@ -203,6 +203,7 @@ IF @MembershipList = '0' --ALL
           AND [cm].[ClientMembershipStatusID] = 1
           AND [m].[BusinessSegmentID] = 1 --BIO
           AND [m].[MembershipID] NOT IN (1, 2, 11, 12, 14, 15, 16, 17, 18, 19, 49, 50, 57) --ALL except these 
+          AND [m].[MembershipDescription] <> 'Employee - Retail'
           /*Elite (New)
                         Elite (New) Solutions
                         Cancel
@@ -293,6 +294,7 @@ ELSE
           AND [cm].[MembershipID] IN( SELECT [MembershipID] FROM [#membership] )
           AND [m].[MembershipDescription] <> 'CANCEL'
           AND [cm].[ClientMembershipStatusID] = 1
+          AND [m].[MembershipDescription] <> 'Employee - Retail'
         OPTION( RECOMPILE ) ;
     END ;
 
