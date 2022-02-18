@@ -617,7 +617,7 @@ FROM( SELECT
         , ISNULL([t].[InCenter], 0) AS [In Center]
         , ISNULL([t].[OnOrder], 0) AS [On Order]
         , ISNULL([t].[InCenter], 0) + ISNULL([t].[OnOrder], 0) AS [In Center + On Order]
-        , CEILING([t].[Calc02] / 12.0) AS [Months In Center And On Order]
+        , CAST(CEILING([t].[Calc02] / 12.0) AS INT) AS [Months In Center And On Order]
         , CAST([t].[LastApplicationDate] AS DATE) AS [Last App Date]
         , [t].[EstNextApp] AS [Est Next App Date]
         , [t].[ScheduledNextAppDate] AS [Scheduled Next App Date]
@@ -673,7 +673,7 @@ CREATE TABLE [##rptHairOrderQuantitybyClient_V2]
   , [In Center]                     INT            NOT NULL
   , [On Order]                      INT            NOT NULL
   , [In Center + On Order]          INT            NULL
-  , [Months In Center And On Order] NUMERIC(17, 0) NULL
+  , [Months In Center And On Order] INT            NULL
   , [Last App Date]                 DATE           NULL
   , [Est Next App Date]             DATE           NULL
   , [Scheduled Next App Date]       DATE           NULL
