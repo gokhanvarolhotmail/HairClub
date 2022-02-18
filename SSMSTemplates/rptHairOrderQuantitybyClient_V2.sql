@@ -49,6 +49,7 @@ SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED ;
 
 DECLARE
     @Getdate    DATE     = CONVERT(VARCHAR(30), GETDATE(), 112)
+  , @Tomorrow   DATE     = CONVERT(VARCHAR(30), DATEADD(DAY, 1, GETDATE()), 112)
   , @BeginDate  DATETIME = DATEADD(MONTH, -18, GETUTCDATE())
   , @GetUTCDate DATETIME = GETUTCDATE() ;
 
@@ -204,6 +205,7 @@ IF @MembershipList = '0' --ALL
           AND [m].[BusinessSegmentID] = 1 --BIO
           AND [m].[MembershipID] NOT IN (1, 2, 11, 12, 14, 15, 16, 17, 18, 19, 49, 50, 57) --ALL except these 
           AND [m].[MembershipDescription] <> 'Employee - Retail'
+          AND ISNULL([cm].[EndDate], @Tomorrow) >= @Getdate
           /*Elite (New)
                         Elite (New) Solutions
                         Cancel
@@ -295,6 +297,7 @@ ELSE
           AND [m].[MembershipDescription] <> 'CANCEL'
           AND [cm].[ClientMembershipStatusID] = 1
           AND [m].[MembershipDescription] <> 'Employee - Retail'
+          AND ISNULL([cm].[EndDate], @Tomorrow) >= @Getdate
         OPTION( RECOMPILE ) ;
     END ;
 
@@ -734,3 +737,4 @@ GO
 DROP TABLE tempdb.dbo.gokhan
 */
 EXEC [dbo].[rptHairOrderQuantitybyClient_V2] NULL, NULL ;
+
