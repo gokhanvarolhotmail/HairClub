@@ -630,8 +630,8 @@ FROM( SELECT
         , CASE WHEN [t].[Calc01] > ( ISNULL([t].[QaNeeded], 0) + ISNULL([t].[InCenter], 0) + ISNULL([t].[OnOrder], 0)) THEN
                CONCAT('Yes; ', [t].[Calc01] - [t].[Calc02])ELSE 'No' END AS [Priority Order Needed]
         --, CASE WHEN [t].[PriorityHairNeeded] = 1 THEN 'Yes' ELSE 'No' END AS [Priority Order Needed]
-        , CASE WHEN [t].[SuggestedQuantityToOrder] > [gms].[MaxVal] THEN [gms].[MaxVal] WHEN [t].[SuggestedQuantityToOrder] > 0 THEN
-                                                                                        [t].[SuggestedQuantityToOrder] ELSE 0 END AS [Suggested Qty to Order]
+        , CAST(CASE WHEN [t].[SuggestedQuantityToOrder] > [gms].[MaxVal] THEN [gms].[MaxVal] WHEN [t].[SuggestedQuantityToOrder] > 0 THEN
+                                                                                             [t].[SuggestedQuantityToOrder] ELSE 0 END AS INT) AS [Suggested Qty to Order]
 
       --, CAST([t].[DueDate] AS DATE) AS [Due Date]
       --, [t].[TotalAccumQuantity] AS [Total Accum Qty]
@@ -662,29 +662,29 @@ IF OBJECT_ID('[tempdb]..[##rptHairOrderQuantitybyClient_V2]') IS NOT NULL
 
 CREATE TABLE [##rptHairOrderQuantitybyClient_V2]
 (
-    [Region]                        NVARCHAR(100)  NULL
-  , [Center]                        NVARCHAR(103)  NULL
-  , [Client]                        NVARCHAR(127)  NULL
-  , [Current Membership]            NVARCHAR(50)   NULL
-  , [Membership Expiration]         DATE           NULL
-  , [Membership Qty]                INT            NOT NULL
-  , [Frozen EFT End Date]           DATE           NULL
-  , [QA Needed]                     INT            NOT NULL
-  , [In Center]                     INT            NOT NULL
-  , [On Order]                      INT            NOT NULL
-  , [In Center + On Order]          INT            NULL
-  , [Months In Center And On Order] INT            NULL
-  , [Last App Date]                 DATE           NULL
-  , [Est Next App Date]             DATE           NULL
-  , [Scheduled Next App Date]       DATE           NULL
-  , [Oldest Order Placed Date]      DATE           NULL
-  , [Oldest Order Placed Due Date]  DATE           NULL
-  , [Newest Order Date]             DATE           NULL
-  , [Newest Order System Type]      NVARCHAR(10)   NULL
-  , [Remaining to Order]            INT            NOT NULL
-  , [Order Avail for Next App]      VARCHAR(3)     NOT NULL
-  , [Priority Order Needed]         VARCHAR(46)    NOT NULL
-  , [Suggested Qty to Order]        NUMERIC(20, 0) NULL
+    [Region]                        NVARCHAR(100) NULL
+  , [Center]                        NVARCHAR(103) NULL
+  , [Client]                        NVARCHAR(127) NULL
+  , [Current Membership]            NVARCHAR(50)  NULL
+  , [Membership Expiration]         DATE          NULL
+  , [Membership Qty]                INT           NOT NULL
+  , [Frozen EFT End Date]           DATE          NULL
+  , [QA Needed]                     INT           NOT NULL
+  , [In Center]                     INT           NOT NULL
+  , [On Order]                      INT           NOT NULL
+  , [In Center + On Order]          INT           NULL
+  , [Months In Center And On Order] INT           NULL
+  , [Last App Date]                 DATE          NULL
+  , [Est Next App Date]             DATE          NULL
+  , [Scheduled Next App Date]       DATE          NULL
+  , [Oldest Order Placed Date]      DATE          NULL
+  , [Oldest Order Placed Due Date]  DATE          NULL
+  , [Newest Order Date]             DATE          NULL
+  , [Newest Order System Type]      NVARCHAR(10)  NULL
+  , [Remaining to Order]            INT           NOT NULL
+  , [Order Avail for Next App]      VARCHAR(3)    NOT NULL
+  , [Priority Order Needed]         VARCHAR(46)   NOT NULL
+  , [Suggested Qty to Order]        INT           NULL
 ) ;
 
 INSERT [##rptHairOrderQuantitybyClient_V2]
@@ -731,4 +731,3 @@ GO
 DROP TABLE tempdb.dbo.gokhan
 */
 EXEC [dbo].[rptHairOrderQuantitybyClient_V2] NULL, NULL ;
-
