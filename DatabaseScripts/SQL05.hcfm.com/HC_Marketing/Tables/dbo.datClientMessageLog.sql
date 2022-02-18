@@ -1,4 +1,4 @@
-/* CreateDate: 12/06/2017 16:41:52.817 , ModifyDate: 02/11/2022 20:56:58.767 */
+/* CreateDate: 12/06/2017 16:41:52.817 , ModifyDate: 02/17/2022 21:01:24.520 */
 GO
 CREATE TABLE [dbo].[datClientMessageLog](
 	[ClientMessageLogID] [int] IDENTITY(1,1) NOT NULL,

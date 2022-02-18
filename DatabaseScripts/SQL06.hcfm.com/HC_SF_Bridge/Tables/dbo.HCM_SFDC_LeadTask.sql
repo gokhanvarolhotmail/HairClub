@@ -1,0 +1,38 @@
+/* CreateDate: 02/17/2022 13:46:33.547 , ModifyDate: 02/17/2022 13:46:33.547 */
+GO
+CREATE TABLE [dbo].[HCM_SFDC_LeadTask](
+	[cst_sfdc_task_id] [nvarchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+	[contact_activity_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+	[contact_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[cst_sfdc_lead_id] [nvarchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+	[cst_sfdc_client_id] [nvarchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[create_date] [datetime] NULL,
+	[updated_date] [datetime] NULL,
+	[BatchID] [int] NULL,
+	[CenterID] [int] NULL,
+	[ActivityID] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[ContactID] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[Subject] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[Status] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[AppointmentDate] [date] NULL,
+	[ActivityDate] [date] NULL,
+	[StartTime] [time](7) NULL,
+	[ActionCode] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[ResultCode] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[ActivityType] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[CompletionDate] [date] NULL,
+	[EndTime] [time](7) NULL,
+	[OwnerId] [nvarchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[SourceCode] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[ActivityCreateDate] [datetime] NULL,
+	[CreatedById] [nvarchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[ActivityLastUpdate] [datetime] NULL,
+	[LastModifiedById] [nvarchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[IsReprocessFlag] [bit] NULL,
+	[IsProcessedFlag] [bit] NULL,
+	[CreateDate] [datetime] NULL,
+	[CreateUser] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[LastUpdate] [datetime] NULL,
+	[LastUpdateUser] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL
+) ON [PRIMARY]
+GO
