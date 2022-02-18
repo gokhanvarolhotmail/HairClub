@@ -657,7 +657,68 @@ ORDER BY [k].[Region]
 GO
 RETURN ;
 
+IF OBJECT_ID('[tempdb]..[##rptHairOrderQuantitybyClient_V2]') IS NOT NULL
+    DROP TABLE [##rptHairOrderQuantitybyClient_V2] ;
+
+CREATE TABLE [##rptHairOrderQuantitybyClient_V2]
+(
+    [Region]                        NVARCHAR(100)  NULL
+  , [Center]                        NVARCHAR(103)  NULL
+  , [Client]                        NVARCHAR(127)  NULL
+  , [Current Membership]            NVARCHAR(50)   NULL
+  , [Membership Expiration]         DATE           NULL
+  , [Membership Qty]                INT            NOT NULL
+  , [Frozen EFT End Date]           DATE           NULL
+  , [QA Needed]                     INT            NOT NULL
+  , [In Center]                     INT            NOT NULL
+  , [On Order]                      INT            NOT NULL
+  , [In Center + On Order]          INT            NULL
+  , [Months In Center And On Order] NUMERIC(17, 0) NULL
+  , [Last App Date]                 DATE           NULL
+  , [Est Next App Date]             DATE           NULL
+  , [Scheduled Next App Date]       DATE           NULL
+  , [Oldest Order Placed Date]      DATE           NULL
+  , [Oldest Order Placed Due Date]  DATE           NULL
+  , [Newest Order Date]             DATE           NULL
+  , [Newest Order System Type]      NVARCHAR(10)   NULL
+  , [Remaining to Order]            INT            NOT NULL
+  , [Order Avail for Next App]      VARCHAR(3)     NOT NULL
+  , [Priority Order Needed]         VARCHAR(46)    NOT NULL
+  , [Suggested Qty to Order]        NUMERIC(20, 0) NULL
+) ;
+
+INSERT [##rptHairOrderQuantitybyClient_V2]
 EXEC [dbo].[rptHairOrderQuantitybyClient_V2] @CenterID = 201, @MembershipList = '0' ;
+
+SELECT
+    [Region]
+  , [Center]
+  , [Client]
+  , [Current Membership]
+  , [Membership Expiration]
+  , [Membership Qty]
+  , [Frozen EFT End Date]
+  , [QA Needed]
+  , [In Center]
+  , [On Order]
+  , [In Center + On Order]
+  , [Months In Center And On Order]
+  , [Last App Date]
+  , [Est Next App Date]
+  , [Scheduled Next App Date]
+  , [Oldest Order Placed Date]
+  , [Oldest Order Placed Due Date]
+  , [Newest Order Date]
+  , [Newest Order System Type]
+  , [Remaining to Order]
+  , [Order Avail for Next App]
+  , [Priority Order Needed]
+  , [Suggested Qty to Order]
+FROM [##rptHairOrderQuantitybyClient_V2]
+ORDER BY [Region]
+       , [Center]
+       , [Suggested Qty to Order]
+       , [Client] ;
 
 -- EXEC [dbo].[rptHairOrderQuantitybyClient_V2] @CenterID = 804, @MembershipList = '0' ;
 
@@ -670,3 +731,4 @@ GO
 DROP TABLE tempdb.dbo.gokhan
 */
 EXEC [dbo].[rptHairOrderQuantitybyClient_V2] NULL, NULL ;
+
