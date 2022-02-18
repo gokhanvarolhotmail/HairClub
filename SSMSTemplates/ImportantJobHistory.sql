@@ -18,6 +18,8 @@ DECLARE @RunDate INT = CAST(CONVERT(VARCHAR(30), DATEADD(DAY, -7, GETDATE()), 11
 SELECT
     @@SERVERNAME AS [ServerName]
   , ( SELECT [OutVal] FROM [dbo].[agent_datetime_Inline]([jh].[run_date], [jh].[run_time]) ) AS [RunDateTime]
+  , ( SELECT [OutVal] FROM [dbo].[agent_datetime_Inline](
+                           NULLIF([js].[last_run_date], 0), CASE WHEN [js].[last_run_date] = 0 THEN NULL ELSE [js].[last_run_time] END) ) AS [lastRunDateTime]
   , [j].[job_id]
   , [j].[name] AS [JobName]
   , [jh].[run_status]
