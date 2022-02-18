@@ -1,7 +1,3 @@
-USE [HairClubCMS] ;
-GO
-/* https://hairclub.zendesk.com/agent/tickets/7944 */
-GO
 /*
 ===============================================================================================
  Procedure Name:            rptHairOrderQuantitybyClient_V2
@@ -621,8 +617,8 @@ FROM( SELECT
         , ISNULL([t].[QaNeeded], 0) AS [QA Needed]
         , ISNULL([t].[InCenter], 0) AS [In Center]
         , ISNULL([t].[OnOrder], 0) AS [On Order]
-        , ISNULL([t].[InCenter], 0) + ISNULL([t].[OnOrder], 0) AS [In Center + On Order]
-        , CAST(CEILING([t].[Calc02] / 12.0) AS INT) AS [Months In Center And On Order]
+        , [t].[In Center + On Order]
+        , CAST(CEILING(12.0 / [t].[InitialQuantity] * [t].[In Center + On Order]) AS INT) AS [Months In Center And On Order]
         , CAST([t].[LastApplicationDate] AS DATE) AS [Last App Date]
         , [t].[EstNextApp] AS [Est Next App Date]
         , [t].[ScheduledNextAppDate] AS [Scheduled Next App Date]
@@ -651,6 +647,7 @@ FROM( SELECT
       --, [gms].[MaxVal] AS [Membership Maximum]
       FROM( SELECT
                 *
+              , ISNULL([t].[InCenter], 0) + ISNULL([t].[OnOrder], 0) AS [In Center + On Order]
               , ISNULL([t].[QaNeeded], 0) + ISNULL([t].[InCenter], 0) + ISNULL([t].[OnOrder], 0) AS [Calc02]
               , [t].[Calc01] - ( ISNULL([t].[QaNeeded], 0) + ISNULL([t].[InCenter], 0) + ISNULL([t].[OnOrder], 0)) AS [SuggestedQuantityToOrder]
             FROM( SELECT *, CEILING(( ISNULL([t].[InitialQuantity], 0) / 12.0 * 8 )) AS [Calc01] FROM [#tmpHairOrderQuantitybyClient] AS [t] ) AS [t] ) AS [t]
@@ -693,7 +690,8 @@ CREATE TABLE [##rptHairOrderQuantitybyClient_V2]
 ) ;
 
 INSERT [##rptHairOrderQuantitybyClient_V2]
-EXEC [dbo].[rptHairOrderQuantitybyClient_V2] @CenterID = 201, @MembershipList = '0' ;
+--EXEC [dbo].[rptHairOrderQuantitybyClient_V2] @CenterID = 201, @MembershipList = '0' ;
+EXEC [dbo].[rptHairOrderQuantitybyClient_V2] @CenterID = 256, @MembershipList = '0' ;
 
 SELECT
     [Region]
@@ -737,4 +735,3 @@ GO
 DROP TABLE tempdb.dbo.gokhan
 */
 EXEC [dbo].[rptHairOrderQuantitybyClient_V2] NULL, NULL ;
-
