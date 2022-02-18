@@ -1,4 +1,4 @@
-/* CreateDate: 06/11/2014 08:04:32.537 , ModifyDate: 10/28/2015 10:43:03.967 */
+/* CreateDate: 06/11/2014 08:04:32.537 , ModifyDate: 02/04/2022 21:51:39.437 */
 GO
 CREATE TABLE [dbo].[datWaitingListDetail](
 	[WaitingListDetailID] [int] IDENTITY(1,1) NOT NULL,

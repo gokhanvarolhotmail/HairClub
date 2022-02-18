@@ -1,4 +1,4 @@
-/* CreateDate: 02/26/2017 22:35:10.480 , ModifyDate: 01/04/2022 10:56:36.963 */
+/* CreateDate: 02/26/2017 22:35:10.480 , ModifyDate: 01/31/2022 08:32:31.927 */
 GO
 CREATE TABLE [dbo].[datTechnicalProfileColor](
 	[TechnicalProfileColorID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,

@@ -1,4 +1,4 @@
-/* CreateDate: 12/31/2010 13:21:01.673 , ModifyDate: 01/04/2022 10:56:36.743 */
+/* CreateDate: 12/31/2010 13:21:01.673 , ModifyDate: 01/31/2022 08:32:31.717 */
 GO
 CREATE TABLE [dbo].[lkpHairSystemFactoryNote](
 	[HairSystemFactoryNoteID] [int] NOT NULL,

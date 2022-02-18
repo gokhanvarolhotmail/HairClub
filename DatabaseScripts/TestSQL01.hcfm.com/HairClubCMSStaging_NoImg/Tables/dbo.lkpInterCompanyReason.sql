@@ -1,4 +1,4 @@
-/* CreateDate: 10/23/2008 11:15:33.473 , ModifyDate: 01/04/2022 10:56:36.760 */
+/* CreateDate: 10/23/2008 11:15:33.473 , ModifyDate: 01/31/2022 08:32:31.733 */
 GO
 CREATE TABLE [dbo].[lkpInterCompanyReason](
 	[InterCompanyReasonID] [int] NOT NULL,

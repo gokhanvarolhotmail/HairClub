@@ -1,4 +1,4 @@
-/* CreateDate: 05/23/2011 19:37:45.530 , ModifyDate: 05/26/2020 10:49:49.383 */
+/* CreateDate: 05/23/2011 19:37:45.530 , ModifyDate: 02/02/2022 10:07:24.223 */
 GO
 CREATE TABLE [dbo].[cfgCenterFinanceCompanyJoin](
 	[CenterFinanceCompanyJoinID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,

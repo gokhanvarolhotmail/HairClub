@@ -1,4 +1,4 @@
-/* CreateDate: 08/27/2008 11:59:23.963 , ModifyDate: 01/04/2022 10:56:36.893 */
+/* CreateDate: 08/27/2008 11:59:23.963 , ModifyDate: 01/31/2022 08:32:31.860 */
 GO
 CREATE TABLE [dbo].[lkpEFTStatus](
 	[EFTStatusID] [int] NOT NULL,

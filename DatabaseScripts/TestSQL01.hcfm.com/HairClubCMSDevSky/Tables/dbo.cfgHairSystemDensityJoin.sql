@@ -1,4 +1,4 @@
-/* CreateDate: 10/04/2010 12:08:45.917 , ModifyDate: 12/29/2021 15:38:46.073 */
+/* CreateDate: 10/04/2010 12:08:45.917 , ModifyDate: 02/02/2022 08:17:14.050 */
 GO
 CREATE TABLE [dbo].[cfgHairSystemDensityJoin](
 	[HairSystemDensityJoinID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,

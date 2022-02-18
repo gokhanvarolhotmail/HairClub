@@ -1,4 +1,4 @@
-/* CreateDate: 08/27/2008 12:22:28.743 , ModifyDate: 01/04/2022 10:56:36.733 */
+/* CreateDate: 08/27/2008 12:22:28.743 , ModifyDate: 01/31/2022 08:32:31.707 */
 GO
 CREATE TABLE [dbo].[lkpState](
 	[StateID] [int] NOT NULL,

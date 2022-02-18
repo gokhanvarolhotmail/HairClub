@@ -1,4 +1,4 @@
-/* CreateDate: 06/07/2013 11:33:36.377 , ModifyDate: 04/02/2015 17:10:35.767 */
+/* CreateDate: 02/08/2022 11:21:39.330 , ModifyDate: 02/08/2022 11:21:39.330 */
 GO
 /*
 ==============================================================================
@@ -17,7 +17,7 @@ DESCRIPTION:	Deferred revenue Flash comparison
 NOTES:
 ==============================================================================
 SAMPLE EXECUTION:
-EXEC [spRpt_DeferredRevenueFlashComparison] 3, 2015,  6
+EXEC [spRpt_DeferredRevenueFlashComparison] 10, 2018,  1
 ==============================================================================
 */
 CREATE PROCEDURE [dbo].[spRpt_DeferredRevenueFlashComparison] (
@@ -55,7 +55,7 @@ BEGIN
 	,	CenterSSID
 	,	CenterDescriptionNumber
 	FROM HC_BI_ENT_DDS.bi_ent_dds.DimCenter
-	WHERE CenterSSID LIKE '2%'
+	WHERE CenterNumber LIKE '2%'
 		AND Active='Y'
 
 
@@ -74,9 +74,9 @@ BEGIN
 		INNER JOIN DimDeferredRevenueType DRT
 			ON DRH.DeferredRevenueTypeID = DRT.TypeID
 		INNER JOIN HC_BI_CMS_DDS.bi_cms_dds.DimClientMembership CM
-			ON DRD.ClientMembershipKey = CM.ClientMembershipKey
+			ON DRH.ClientMembershipKey = CM.ClientMembershipKey
 		INNER JOIN HC_BI_CMS_DDS.bi_cms_dds.DimClient CLT
-			ON CM.ClientKey = CLT.ClientKey
+			ON CLT.ClientKey = DRH.ClientKey
 		INNER JOIN HC_BI_CMS_DDS.bi_cms_dds.DimMembership MBR
 			ON DRD.MembershipKey = MBR.MembershipKey
 	WHERE MONTH(DRD.Period) = MONTH(@PriorMonthStart)
@@ -150,8 +150,9 @@ BEGIN
 		INNER JOIN HC_BI_CMS_DDS.bi_cms_dds.DimClient CLT
 			ON FST.ClientKey = CLT.ClientKey
 	WHERE DD.FullDate BETWEEN @CurrentMonthStart AND @CurrentMonthEnd
-		AND C.ReportingCenterSSID LIKE '2%'
-		AND SC.SalesCodeSSID NOT IN (673, 674, 780)
+		AND C.CenterNumber LIKE '2%'
+		AND sc.SalesCodeDescription NOT LIKE '%Laser%'
+		AND sc.SalesCodeDescription NOT LIKE '%Capillus%'
 	GROUP BY c.ReportingCenterSSID
 	,	FST.ClientKey
 	HAVING 0 <>

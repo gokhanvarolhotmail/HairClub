@@ -1,4 +1,4 @@
-/* CreateDate: 11/11/2021 21:52:26.703 , ModifyDate: 11/11/2021 21:52:26.703 */
+/* CreateDate: 11/11/2021 21:52:26.703 , ModifyDate: 02/02/2022 10:05:08.343 */
 GO
 CREATE TABLE [dbo].[datSettlementTransactionLog](
 	[SettlementTransactionLogId] [int] IDENTITY(1,1) NOT NULL,

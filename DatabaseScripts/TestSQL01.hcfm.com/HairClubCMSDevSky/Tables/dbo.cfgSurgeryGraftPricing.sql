@@ -1,4 +1,4 @@
-/* CreateDate: 09/28/2009 00:02:00.170 , ModifyDate: 12/29/2021 15:38:46.340 */
+/* CreateDate: 09/28/2009 00:02:00.170 , ModifyDate: 02/02/2022 08:24:36.177 */
 GO
 CREATE TABLE [dbo].[cfgSurgeryGraftPricing](
 	[SurgeryGraftPricingID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,

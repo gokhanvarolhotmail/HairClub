@@ -1,4 +1,4 @@
-/* CreateDate: 05/13/2009 06:37:43.917 , ModifyDate: 12/29/2021 15:38:46.157 */
+/* CreateDate: 05/13/2009 06:37:43.917 , ModifyDate: 02/02/2022 10:06:24.037 */
 GO
 CREATE TABLE [dbo].[mtnActiveDirectoryImport](
 	[ActiveDirectoryID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,

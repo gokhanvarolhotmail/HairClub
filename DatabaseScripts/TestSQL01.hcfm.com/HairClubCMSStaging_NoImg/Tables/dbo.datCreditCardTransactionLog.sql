@@ -1,4 +1,4 @@
-/* CreateDate: 10/04/2010 12:08:45.070 , ModifyDate: 01/04/2022 10:56:36.793 */
+/* CreateDate: 10/04/2010 12:08:45.070 , ModifyDate: 01/31/2022 08:32:31.763 */
 GO
 CREATE TABLE [dbo].[datCreditCardTransactionLog](
 	[CreditCardTransactionLogGUID] [uniqueidentifier] NOT NULL,

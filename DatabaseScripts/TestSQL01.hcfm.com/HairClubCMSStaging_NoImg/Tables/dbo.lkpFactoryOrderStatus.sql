@@ -1,4 +1,4 @@
-/* CreateDate: 08/27/2008 12:00:38.273 , ModifyDate: 01/04/2022 10:56:36.903 */
+/* CreateDate: 08/27/2008 12:00:38.273 , ModifyDate: 01/31/2022 08:32:31.870 */
 GO
 CREATE TABLE [dbo].[lkpFactoryOrderStatus](
 	[FactoryOrderStatusID] [int] NOT NULL,

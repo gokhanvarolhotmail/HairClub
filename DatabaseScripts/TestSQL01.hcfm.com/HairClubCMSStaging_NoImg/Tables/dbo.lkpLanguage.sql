@@ -1,4 +1,4 @@
-/* CreateDate: 02/08/2016 07:26:53.267 , ModifyDate: 01/04/2022 10:56:36.753 */
+/* CreateDate: 02/08/2016 07:26:53.267 , ModifyDate: 01/31/2022 08:32:31.727 */
 GO
 CREATE TABLE [dbo].[lkpLanguage](
 	[LanguageID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,

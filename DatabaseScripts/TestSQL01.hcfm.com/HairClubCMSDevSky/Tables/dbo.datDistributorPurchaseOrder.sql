@@ -1,4 +1,4 @@
-/* CreateDate: 11/29/2018 22:41:55.127 , ModifyDate: 11/29/2018 22:41:55.403 */
+/* CreateDate: 11/29/2018 22:41:55.127 , ModifyDate: 02/02/2022 09:12:01.387 */
 GO
 CREATE TABLE [dbo].[datDistributorPurchaseOrder](
 	[DistributorPurchaseOrderID] [int] IDENTITY(1,1) NOT NULL,

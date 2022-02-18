@@ -1,4 +1,4 @@
-/* CreateDate: 12/07/2012 15:23:07.817 , ModifyDate: 03/02/2015 14:34:16.670 */
+/* CreateDate: 02/08/2022 11:21:42.887 , ModifyDate: 02/08/2022 11:21:42.887 */
 GO
 /***********************************************************************
 PROCEDURE:				spSVC_PCP_Step2_CreateDetails
@@ -70,8 +70,9 @@ INSERT  INTO DetailsToProcess (
                     ON FST.SalesCodeKey = SC.SalesCodeKey
         WHERE   DRH.DeferredRevenueTypeID = @DeferredRevenueTypeID
                 AND DD.FullDate BETWEEN @StartDate AND @EndDate
-                AND ( FST.PCP_PCPAmt <> 0
-                      OR SC.SalesCodeSSID IN ( 351 ) )
+                AND ( FST.PCP_PCPAmt <> 0 OR SC.SalesCodeSSID IN ( 351 ) )
+				AND sc.SalesCodeDescription NOT LIKE '%Laser%'
+				AND sc.SalesCodeDescription NOT LIKE '%Capillus%'
 
 
 DECLARE @CurrentCount INT

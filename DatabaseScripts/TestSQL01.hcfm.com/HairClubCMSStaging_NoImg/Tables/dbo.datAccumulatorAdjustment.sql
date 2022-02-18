@@ -1,4 +1,4 @@
-/* CreateDate: 02/04/2009 07:47:04.280 , ModifyDate: 01/04/2022 10:56:36.810 */
+/* CreateDate: 02/04/2009 07:47:04.280 , ModifyDate: 01/31/2022 08:32:31.780 */
 GO
 CREATE TABLE [dbo].[datAccumulatorAdjustment](
 	[AccumulatorAdjustmentGUID] [uniqueidentifier] NOT NULL,

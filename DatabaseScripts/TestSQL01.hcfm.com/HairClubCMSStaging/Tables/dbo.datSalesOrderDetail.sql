@@ -1,4 +1,4 @@
-/* CreateDate: 03/06/2009 13:55:53.830 , ModifyDate: 05/01/2021 20:37:12.110 */
+/* CreateDate: 03/06/2009 13:55:53.830 , ModifyDate: 01/12/2022 12:21:38.877 */
 GO
 CREATE TABLE [dbo].[datSalesOrderDetail](
 	[SalesOrderDetailGUID] [uniqueidentifier] NOT NULL,
@@ -57,6 +57,12 @@ CREATE TABLE [dbo].[datSalesOrderDetail](
 	[SalesOrderDetailGUID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
+GO
+CREATE NONCLUSTERED INDEX [HairClubCMSDevSky_SQLOPS_datSalesOrderDetail_6160_6159] ON [dbo].[datSalesOrderDetail]
+(
+	[SalesCodeID] ASC
+)
+INCLUDE([TransactionNumber_Temp],[SalesOrderGUID],[Quantity],[Price],[Discount],[Tax1],[Tax2],[TaxRate1],[TaxRate2],[IsRefundedFlag],[RefundedSalesOrderDetailGUID],[RefundedTotalQuantity],[RefundedTotalPrice],[Employee1GUID],[Employee2GUID],[Employee3GUID],[Employee4GUID],[PreviousClientMembershipGUID],[NewCenterID],[ExtendedPriceCalc],[TotalTaxCalc],[PriceTaxCalc],[CreateDate],[CreateUser],[LastUpdate],[LastUpdateUser],[UpdateStamp],[Center_Temp],[performer_temp],[performer2_temp],[Member1Price_temp],[CancelReasonID],[EntrySortOrder],[HairSystemOrderGUID],[DiscountTypeID],[BenefitTrackingEnabledFlag],[MembershipPromotionID],[MembershipOrderReasonID],[MembershipNotes],[GenericSalesCodeDescription],[SalesCodeSerialNumber],[WriteOffSalesOrderDetailGUID],[NSFBouncedDate],[IsWrittenOffFlag],[InterCompanyPrice],[TaxType1ID],[TaxType2ID],[ClientMembershipAddOnID],[NCCMembershipPromotionID]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
 CREATE NONCLUSTERED INDEX [IX_datSalesOrderDetail_SalesCodeID_SalesOrderGUID_SalesOrderDetailGUID] ON [dbo].[datSalesOrderDetail]
 (

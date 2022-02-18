@@ -1,4 +1,4 @@
-/* CreateDate: 05/28/2013 14:10:34.267 , ModifyDate: 05/26/2020 10:49:23.360 */
+/* CreateDate: 05/28/2013 14:10:34.267 , ModifyDate: 02/03/2022 20:55:36.857 */
 GO
 CREATE TABLE [dbo].[datIncomingRequestLog](
 	[IncomingRequestID] [int] IDENTITY(301,1) NOT FOR REPLICATION NOT NULL,

@@ -1,4 +1,4 @@
-/* CreateDate: 07/30/2012 09:01:56.287 , ModifyDate: 12/29/2021 15:38:46.477 */
+/* CreateDate: 07/30/2012 09:01:56.287 , ModifyDate: 02/02/2022 08:16:21.133 */
 GO
 CREATE TABLE [dbo].[cfgActiveDirectoryGroup](
 	[ActiveDirectoryGroupID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,

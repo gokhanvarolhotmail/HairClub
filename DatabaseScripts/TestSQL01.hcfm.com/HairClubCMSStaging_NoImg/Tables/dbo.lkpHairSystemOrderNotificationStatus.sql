@@ -1,4 +1,4 @@
-/* CreateDate: 10/04/2010 12:08:46.197 , ModifyDate: 01/04/2022 10:56:36.847 */
+/* CreateDate: 10/04/2010 12:08:46.197 , ModifyDate: 01/31/2022 08:32:31.817 */
 GO
 CREATE TABLE [dbo].[lkpHairSystemOrderNotificationStatus](
 	[HairSystemOrderNotificationStatusID] [int] NOT NULL,

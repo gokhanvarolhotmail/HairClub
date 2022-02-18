@@ -1,4 +1,4 @@
-/* CreateDate: 10/30/2008 10:42:15.573 , ModifyDate: 01/04/2022 10:56:36.720 */
+/* CreateDate: 10/30/2008 10:42:15.573 , ModifyDate: 01/31/2022 08:32:31.693 */
 GO
 CREATE TABLE [dbo].[lkpAppointmentType](
 	[AppointmentTypeID] [int] NOT NULL,

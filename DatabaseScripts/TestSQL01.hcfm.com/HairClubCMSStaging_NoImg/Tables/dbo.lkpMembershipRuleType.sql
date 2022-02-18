@@ -1,4 +1,4 @@
-/* CreateDate: 11/03/2008 08:37:19.513 , ModifyDate: 01/04/2022 10:56:36.760 */
+/* CreateDate: 11/03/2008 08:37:19.513 , ModifyDate: 01/31/2022 08:32:31.733 */
 GO
 CREATE TABLE [dbo].[lkpMembershipRuleType](
 	[MembershipRuleTypeID] [int] NOT NULL,

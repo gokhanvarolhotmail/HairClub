@@ -1,4 +1,4 @@
-/* CreateDate: 03/30/2011 09:42:32.283 , ModifyDate: 01/24/2012 10:28:28.097 */
+/* CreateDate: 03/30/2011 09:42:32.283 , ModifyDate: 02/02/2022 08:15:42.940 */
 GO
 CREATE TABLE [dbo].[HairSystemInventoryDetails](
 	[InventoryDetailsID] [uniqueidentifier] NULL,

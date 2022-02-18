@@ -1,4 +1,4 @@
-/* CreateDate: 12/07/2012 09:17:40.190 , ModifyDate: 08/01/2014 15:45:36.223 */
+/* CreateDate: 02/08/2022 11:21:41.167 , ModifyDate: 02/08/2022 11:21:41.167 */
 GO
 /*
 ==============================================================================
@@ -77,7 +77,7 @@ BEGIN
 	WHERE DD.FullDate BETWEEN @StartDate AND @EndDate
 		AND (FST.NB_GradCnt > 0
 			OR FST.SalesCodeKey IN (668))
-		AND CASE WHEN CONVERT(INT, RIGHT(CM1.ClientMembershipIdentifier, 2)) > CONVERT(INT, RIGHT(CM2.ClientMembershipIdentifier, 2)) THEN M1.MembershipKey ELSE M2.MembershipKey END IN (56, 57, 58, 98, 99, 100, 101)
+		AND CASE WHEN CONVERT(INT, RIGHT(CM1.ClientMembershipIdentifier, 2)) > CONVERT(INT, RIGHT(CM2.ClientMembershipIdentifier, 2)) THEN M1.MembershipKey ELSE M2.MembershipKey END IN (56, 57, 58, 98, 99, 100, 101, 223)
 	ORDER BY FST.ClientKey
 	,	CASE WHEN CONVERT(INT, RIGHT(CM1.ClientMembershipIdentifier, 2)) > CONVERT(INT, RIGHT(CM2.ClientMembershipIdentifier, 2)) THEN FST.ClientMembershipKey ELSE SO.ClientMembershipKey END
 

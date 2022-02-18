@@ -1,4 +1,4 @@
-/* CreateDate: 12/11/2017 07:01:32.340 , ModifyDate: 12/11/2017 07:01:32.483 */
+/* CreateDate: 12/11/2017 07:01:32.340 , ModifyDate: 02/04/2022 21:20:39.197 */
 GO
 CREATE TABLE [dbo].[cfgScheduleHolidayTemplate](
 	[ScheduleHolidayTemplateID] [int] IDENTITY(1,1) NOT NULL,

@@ -1,4 +1,4 @@
-/* CreateDate: 09/23/2019 12:30:41.860 , ModifyDate: 01/04/2022 10:56:36.863 */
+/* CreateDate: 09/23/2019 12:30:41.860 , ModifyDate: 02/04/2022 21:50:33.723 */
 GO
 CREATE TABLE [dbo].[datSerializedInventoryAuditBatch](
 	[SerializedInventoryAuditBatchID] [int] IDENTITY(1,1) NOT NULL,

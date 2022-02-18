@@ -1,4 +1,4 @@
-/* CreateDate: 04/20/2020 15:23:04.000 , ModifyDate: 04/20/2020 15:23:04.437 */
+/* CreateDate: 04/20/2020 15:23:04.000 , ModifyDate: 02/04/2022 21:16:21.480 */
 GO
 CREATE TABLE [dbo].[logBosleySalesforce](
 	[ID] [int] IDENTITY(1,1) NOT NULL,

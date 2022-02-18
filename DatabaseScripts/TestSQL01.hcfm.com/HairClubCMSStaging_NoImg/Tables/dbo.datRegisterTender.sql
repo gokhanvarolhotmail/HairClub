@@ -1,4 +1,4 @@
-/* CreateDate: 02/18/2013 06:59:50.583 , ModifyDate: 01/04/2022 10:56:36.817 */
+/* CreateDate: 02/18/2013 06:59:50.583 , ModifyDate: 01/31/2022 08:32:31.787 */
 GO
 CREATE TABLE [dbo].[datRegisterTender](
 	[RegisterTenderGUID] [uniqueidentifier] NOT NULL,

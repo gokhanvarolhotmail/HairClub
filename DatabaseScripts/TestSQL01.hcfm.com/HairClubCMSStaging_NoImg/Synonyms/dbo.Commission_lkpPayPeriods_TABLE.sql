@@ -1,4 +1,4 @@
-/* CreateDate: 01/04/2022 10:56:54.673 , ModifyDate: 01/04/2022 10:56:54.673 */
+/* CreateDate: 01/31/2022 08:33:13.157 , ModifyDate: 01/31/2022 08:33:13.157 */
 GO
 CREATE SYNONYM [dbo].[Commission_lkpPayPeriods_TABLE] FOR [HC_Commission].[dbo].[lkpPayPeriods]
 GO

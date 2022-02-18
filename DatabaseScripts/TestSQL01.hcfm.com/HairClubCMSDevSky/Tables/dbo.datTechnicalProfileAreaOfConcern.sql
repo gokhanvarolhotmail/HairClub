@@ -1,4 +1,4 @@
-/* CreateDate: 02/27/2017 11:32:21.907 , ModifyDate: 01/22/2018 05:54:33.817 */
+/* CreateDate: 02/27/2017 11:32:21.907 , ModifyDate: 02/02/2022 10:05:20.893 */
 GO
 CREATE TABLE [dbo].[datTechnicalProfileAreaOfConcern](
 	[TechnicalProfileAreaOfConcernID] [int] IDENTITY(1,1) NOT NULL,

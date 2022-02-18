@@ -1,4 +1,4 @@
-/* CreateDate: 12/07/2012 14:41:57.647 , ModifyDate: 04/02/2015 14:20:17.233 */
+/* CreateDate: 02/08/2022 11:21:40.660 , ModifyDate: 02/08/2022 11:21:40.660 */
 GO
 /*
 ==============================================================================
@@ -70,10 +70,9 @@ BEGIN
 			ON FST.SalesCodeKey = SC.SalesCodeKey
 	WHERE DRH.DeferredRevenueTypeID = @DeferredRevenueTypeID
 		AND DD.FullDate BETWEEN @StartDate AND @EndDate
-		AND (FST.NB_ExtCnt <> 0
-			OR FST.NB_ExtAmt <> 0
-			OR FST.SalesCodeKey IN (632, 475))
-		AND FST.SalesCodeKey NOT IN (637, 638, 1731)
+		AND ( FST.NB_ExtCnt <> 0 OR FST.NB_ExtAmt <> 0 OR FST.SalesCodeKey IN (632, 475) )
+		AND sc.SalesCodeDescription NOT LIKE '%Laser%'
+		AND sc.SalesCodeDescription NOT LIKE '%Capillus%'
 
 
 	DECLARE @CurrentCount INT

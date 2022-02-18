@@ -1,4 +1,4 @@
-/* CreateDate: 02/18/2013 06:40:48.897 , ModifyDate: 01/04/2022 10:56:36.837 */
+/* CreateDate: 02/18/2013 06:40:48.897 , ModifyDate: 01/31/2022 08:32:31.803 */
 GO
 CREATE TABLE [dbo].[datTelemedicineCollaborationComment](
 	[TelemedicineCollaborationCommentGUID] [uniqueidentifier] NOT NULL,

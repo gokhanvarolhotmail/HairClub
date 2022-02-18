@@ -1,4 +1,4 @@
-/* CreateDate: 10/04/2010 12:08:45.620 , ModifyDate: 01/04/2022 10:56:36.897 */
+/* CreateDate: 10/04/2010 12:08:45.620 , ModifyDate: 01/31/2022 08:32:31.863 */
 GO
 CREATE TABLE [dbo].[datInventoryShipment](
 	[InventoryShipmentGUID] [uniqueidentifier] NOT NULL,

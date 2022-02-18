@@ -1,4 +1,4 @@
-/* CreateDate: 04/14/2009 07:33:54.947 , ModifyDate: 01/04/2022 10:56:36.850 */
+/* CreateDate: 04/14/2009 07:33:54.947 , ModifyDate: 01/31/2022 08:32:31.817 */
 GO
 CREATE TABLE [dbo].[lkpEmployeePosition](
 	[EmployeePositionID] [int] NOT NULL,

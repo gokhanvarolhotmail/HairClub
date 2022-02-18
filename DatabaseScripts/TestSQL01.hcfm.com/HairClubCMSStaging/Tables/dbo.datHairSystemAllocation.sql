@@ -1,4 +1,4 @@
-/* CreateDate: 10/04/2010 12:08:45.447 , ModifyDate: 05/26/2020 10:49:35.090 */
+/* CreateDate: 10/04/2010 12:08:45.447 , ModifyDate: 02/02/2022 21:44:47.320 */
 GO
 CREATE TABLE [dbo].[datHairSystemAllocation](
 	[HairSystemAllocationGUID] [uniqueidentifier] NOT NULL,

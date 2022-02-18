@@ -1,4 +1,4 @@
-/* CreateDate: 04/24/2017 08:10:29.280 , ModifyDate: 12/29/2021 15:38:46.457 */
+/* CreateDate: 04/24/2017 08:10:29.280 , ModifyDate: 02/02/2022 09:08:57.043 */
 GO
 CREATE TABLE [dbo].[datClientMembershipAddOn](
 	[ClientMembershipAddOnID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,

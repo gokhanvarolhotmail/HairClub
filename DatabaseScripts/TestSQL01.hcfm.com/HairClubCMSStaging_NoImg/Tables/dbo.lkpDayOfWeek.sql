@@ -1,4 +1,4 @@
-/* CreateDate: 03/18/2014 08:05:08.863 , ModifyDate: 01/04/2022 10:56:36.853 */
+/* CreateDate: 03/18/2014 08:05:08.863 , ModifyDate: 01/31/2022 08:32:31.820 */
 GO
 CREATE TABLE [dbo].[lkpDayOfWeek](
 	[DayOfWeekID] [int] NOT NULL,

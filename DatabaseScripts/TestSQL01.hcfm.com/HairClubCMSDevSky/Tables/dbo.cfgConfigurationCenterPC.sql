@@ -1,4 +1,4 @@
-/* CreateDate: 09/10/2014 07:53:57.443 , ModifyDate: 12/29/2021 15:38:46.243 */
+/* CreateDate: 09/10/2014 07:53:57.443 , ModifyDate: 02/02/2022 08:16:49.887 */
 GO
 CREATE TABLE [dbo].[cfgConfigurationCenterPC](
 	[ConfigurationCenterPCID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,

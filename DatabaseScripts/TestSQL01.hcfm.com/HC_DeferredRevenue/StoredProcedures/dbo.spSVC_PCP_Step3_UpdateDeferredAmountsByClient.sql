@@ -1,4 +1,4 @@
-/* CreateDate: 12/17/2012 11:05:17.607 , ModifyDate: 03/02/2015 14:34:14.773 */
+/* CreateDate: 02/08/2022 11:21:43.060 , ModifyDate: 02/08/2022 11:21:43.060 */
 GO
 /***********************************************************************
 PROCEDURE:				spSVC_PCP_Step3_UpdateDeferredAmountsByClient
@@ -57,6 +57,8 @@ INSERT  INTO PaymentsToProcess (
         WHERE   DRH.DeferredRevenueTypeID = @DeferredRevenueTypeID
                 AND DRT.SalesOrderDate BETWEEN @StartDate AND @EndDate
                 AND SC.SalesCodeDepartmentSSID IN ( 2020 )
+				AND sc.SalesCodeDescription NOT LIKE '%Laser%'
+				AND sc.SalesCodeDescription NOT LIKE '%Capillus%'
         GROUP BY DRT.DeferredRevenueHeaderKey
         ,       DRT.ClientMembershipKey
 
@@ -159,7 +161,7 @@ FROM    FactDeferredRevenueHeader DRH
                       WHERE     FDRH.ClientKey = DRH.ClientKey
                                 AND FDRH.ClientMembershipIdentifier <> C.ClientMembershipIdentifier
 								AND FDRH.Deferred <> 0
-								AND DM.RevenueGroupSSID = 2
+								AND ( DM.RevenueGroupSSID = 2 AND DM.MembershipKey <> 68 )
                       ORDER BY  FDRH.DeferredRevenueHeaderKey DESC
                     ) PMR
 GROUP BY DRH.ClientKey

@@ -1,4 +1,4 @@
-/* CreateDate: 08/27/2008 12:16:40.230 , ModifyDate: 01/04/2022 10:56:36.957 */
+/* CreateDate: 08/27/2008 12:16:40.230 , ModifyDate: 01/31/2022 08:32:31.923 */
 GO
 CREATE TABLE [dbo].[lkpRemovalProcess](
 	[RemovalProcessID] [int] NOT NULL,

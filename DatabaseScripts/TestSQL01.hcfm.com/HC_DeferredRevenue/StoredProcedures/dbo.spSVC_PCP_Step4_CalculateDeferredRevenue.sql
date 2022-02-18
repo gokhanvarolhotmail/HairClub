@@ -1,4 +1,4 @@
-/* CreateDate: 12/17/2012 11:06:08.290 , ModifyDate: 03/02/2015 14:34:12.583 */
+/* CreateDate: 02/08/2022 11:21:43.230 , ModifyDate: 02/08/2022 11:21:43.230 */
 GO
 /***********************************************************************
 PROCEDURE:				spSVC_PCP_Step4_CalculateDeferredRevenue
@@ -52,9 +52,11 @@ INSERT  INTO ClientsToProcess (
         ,       DRH.MembershipDescription
         ,       DRH.Deferred
         ,       DRH.MonthsRemaining
-        ,       DRC.MembershipRate
+        ,       CASE WHEN ISNULL(cm.NationalMonthlyFee, 0) = 0 THEN DRC.MembershipRate ELSE cm.NationalMonthlyFee END
         ,       DRH.CenterSSID
         FROM    FactDeferredRevenueHeader DRH
+				INNER JOIN HC_BI_CMS_DDS.bi_cms_dds.DimClientMembership cm
+					ON cm.ClientMembershipKey = DRH.ClientMembershipKey
                 INNER JOIN DimMembershipRatesByCenter DRC
                     ON DRH.CenterSSID = DRC.CenterSSID
                        AND DRH.MembershipKey = DRC.MembershipKey
@@ -102,11 +104,13 @@ WHILE @CurrentCount <= @TotalCount
             SET     DRH.MembershipRateKey = MC.MembershipRateKey
             ,       DRH.UpdateDate = GETDATE()
             ,       DRH.UpdateUser = 'spSVC_PCP_Step4_CalculateDeferredRevenue'
-            ,       @CurrentMembershipRateKey = MC.MembershipRateKey
-            ,       @CurrentMembershipRate = MC.MembershipRate
+            ,       @CurrentMembershipRateKey = CASE WHEN ISNULL(cm.NationalMonthlyFee, 0) = 0 THEN MC.MembershipRateKey ELSE -1 END
+            ,       @CurrentMembershipRate = CASE WHEN ISNULL(cm.NationalMonthlyFee, 0) = 0 THEN MC.MembershipRate ELSE cm.NationalMonthlyFee END
             FROM    FactDeferredRevenueHeader DRH
                     INNER JOIN HC_BI_ENT_DDS.bi_ent_dds.DimCenter CTR
                         ON DRH.CenterSSID = CTR.CenterSSID
+					INNER JOIN HC_BI_CMS_DDS.bi_cms_dds.DimClientMembership cm
+						ON cm.ClientMembershipKey = DRH.ClientMembershipKey
                     INNER JOIN DimMembershipRatesByCenter MC
                         ON CTR.CenterKey = MC.CenterKey
                            AND DRH.MembershipKey = MC.MembershipKey

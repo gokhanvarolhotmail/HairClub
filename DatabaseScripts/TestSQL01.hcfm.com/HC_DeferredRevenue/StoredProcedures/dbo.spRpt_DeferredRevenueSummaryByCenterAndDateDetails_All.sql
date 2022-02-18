@@ -1,4 +1,4 @@
-/* CreateDate: 08/05/2013 15:36:53.037 , ModifyDate: 08/01/2014 15:44:28.667 */
+/* CreateDate: 02/08/2022 11:21:39.997 , ModifyDate: 02/08/2022 11:21:39.997 */
 GO
 /*
 ==============================================================================
@@ -58,7 +58,7 @@ BEGIN
 		LEFT OUTER JOIN DimMembershipRatesByCenter MRC
 			ON DRH.MembershipRateKey = MRC.MembershipRateKey
 	WHERE DRD.Period BETWEEN @MonthStart AND @MonthEnd
-		AND CTR.CenterSSID LIKE '2%'
+		AND CTR.CenterNumber LIKE '2%'
 	ORDER BY CTR.CenterDescriptionNumber
 	,	DRT.TypeDescription
 	,	CLT.CLientFullName

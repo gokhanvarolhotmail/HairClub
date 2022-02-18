@@ -1,4 +1,4 @@
-/* CreateDate: 12/07/2012 14:31:32.920 , ModifyDate: 08/01/2014 15:45:43.853 */
+/* CreateDate: 02/08/2022 11:21:41.340 , ModifyDate: 02/08/2022 11:21:41.340 */
 GO
 /*
 ==============================================================================
@@ -73,6 +73,8 @@ BEGIN
 			OR FST.NB_GradAmt <> 0
 			OR FST.NB_AppsCnt > 0
 			OR FST.SalesCodeKey IN (600, 632, 475))
+		AND sc.SalesCodeDescription NOT LIKE '%Laser%'
+		AND sc.SalesCodeDescription NOT LIKE '%Capillus%'
 
 
 	DECLARE @CurrentCount INT

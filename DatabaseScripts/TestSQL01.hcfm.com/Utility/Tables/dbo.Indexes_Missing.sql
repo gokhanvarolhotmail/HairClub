@@ -1,0 +1,12 @@
+/* CreateDate: 01/12/2022 11:34:07.543 , ModifyDate: 01/12/2022 11:34:07.543 */
+GO
+CREATE TABLE [dbo].[Indexes_Missing](
+	[DATABASE] [nvarchar](128) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[OBJECT NAME] [nvarchar](128) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[SCHEMA NAME] [nvarchar](128) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[CREATE INDEX COMMAND] [nvarchar](4000) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[ESTIMATED CURRENT COST] [varchar](31) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[CAN BE IMPROVED] [varchar](31) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[LAST USER SEEK] [datetime] NULL
+) ON [PRIMARY]
+GO

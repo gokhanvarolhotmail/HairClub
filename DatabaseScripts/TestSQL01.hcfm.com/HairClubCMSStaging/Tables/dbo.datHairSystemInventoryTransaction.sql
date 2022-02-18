@@ -1,4 +1,4 @@
-/* CreateDate: 05/31/2016 07:49:05.190 , ModifyDate: 06/24/2021 08:14:17.923 */
+/* CreateDate: 05/31/2016 07:49:05.190 , ModifyDate: 01/19/2022 11:07:34.750 */
 GO
 CREATE TABLE [dbo].[datHairSystemInventoryTransaction](
 	[HairSystemInventoryTransactionID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
@@ -29,12 +29,30 @@ CREATE TABLE [dbo].[datHairSystemInventoryTransaction](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
+CREATE NONCLUSTERED INDEX [HairClubCMSDevSky_SQLOPS_datHairSystemInventoryTransaction_325_324] ON [dbo].[datHairSystemInventoryTransaction]
+(
+	[HairSystemInventoryBatchID] ASC
+)
+INCLUDE([HairSystemOrderNumber],[CreateDate]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO
 SET ANSI_PADDING ON
 GO
 CREATE NONCLUSTERED INDEX [IX_datHairSystemInventoryTransaction_HairSystemOrderNumber] ON [dbo].[datHairSystemInventoryTransaction]
 (
 	[HairSystemOrderNumber] DESC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO
+CREATE NONCLUSTERED INDEX [SQLOPS_datHairSystemInventoryTransaction_11217_11216] ON [dbo].[datHairSystemInventoryTransaction]
+(
+	[HairSystemInventoryBatchID] ASC,
+	[ScannedCenterID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO
+CREATE NONCLUSTERED INDEX [SQLOPS_datHairSystemInventoryTransaction_11219_11218] ON [dbo].[datHairSystemInventoryTransaction]
+(
+	[ScannedCenterID] ASC
+)
+INCLUDE([HairSystemInventoryBatchID]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
 ALTER TABLE [dbo].[datHairSystemInventoryTransaction] ADD  DEFAULT ((0)) FOR [IsScannedEntry]
 GO

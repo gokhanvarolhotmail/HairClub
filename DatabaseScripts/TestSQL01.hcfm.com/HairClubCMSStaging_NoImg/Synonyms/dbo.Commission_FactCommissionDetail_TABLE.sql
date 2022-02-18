@@ -1,4 +1,4 @@
-/* CreateDate: 01/04/2022 10:56:54.670 , ModifyDate: 01/04/2022 10:56:54.670 */
+/* CreateDate: 01/31/2022 08:33:13.157 , ModifyDate: 01/31/2022 08:33:13.157 */
 GO
 CREATE SYNONYM [dbo].[Commission_FactCommissionDetail_TABLE] FOR [HC_Commission].[dbo].[FactCommissionDetail]
 GO

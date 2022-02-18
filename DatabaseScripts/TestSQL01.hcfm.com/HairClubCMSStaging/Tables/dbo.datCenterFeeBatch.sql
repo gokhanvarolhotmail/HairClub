@@ -1,4 +1,4 @@
-/* CreateDate: 05/14/2012 17:29:16.290 , ModifyDate: 05/26/2020 10:49:45.267 */
+/* CreateDate: 05/14/2012 17:29:16.290 , ModifyDate: 02/02/2022 21:26:30.690 */
 GO
 CREATE TABLE [dbo].[datCenterFeeBatch](
 	[CenterFeeBatchGUID] [uniqueidentifier] NOT NULL,

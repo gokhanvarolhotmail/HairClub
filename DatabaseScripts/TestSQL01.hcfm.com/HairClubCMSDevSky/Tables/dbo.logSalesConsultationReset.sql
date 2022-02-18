@@ -1,4 +1,4 @@
-/* CreateDate: 02/12/2018 17:14:29.283 , ModifyDate: 07/30/2018 05:35:55.163 */
+/* CreateDate: 02/12/2018 17:14:29.283 , ModifyDate: 02/02/2022 10:06:20.540 */
 GO
 CREATE TABLE [dbo].[logSalesConsultationReset](
 	[SalesConsultationResetID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,

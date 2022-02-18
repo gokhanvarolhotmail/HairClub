@@ -1,4 +1,4 @@
-/* CreateDate: 02/24/2015 07:35:34.507 , ModifyDate: 01/04/2022 10:56:36.733 */
+/* CreateDate: 02/24/2015 07:35:34.507 , ModifyDate: 01/31/2022 08:32:31.707 */
 GO
 CREATE TABLE [dbo].[lkpCommissionPlan](
 	[CommissionPlanID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,

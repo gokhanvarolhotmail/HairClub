@@ -1,4 +1,4 @@
-/* CreateDate: 02/18/2013 06:49:02.557 , ModifyDate: 01/04/2022 10:56:36.763 */
+/* CreateDate: 02/18/2013 06:49:02.557 , ModifyDate: 01/31/2022 08:32:31.737 */
 GO
 CREATE TABLE [dbo].[lkpMembershipOrderReasonType](
 	[MembershipOrderReasonTypeID] [int] NOT NULL,

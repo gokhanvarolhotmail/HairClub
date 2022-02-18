@@ -1,4 +1,4 @@
-/* CreateDate: 02/10/2009 08:50:38.477 , ModifyDate: 12/29/2021 15:38:46.493 */
+/* CreateDate: 02/10/2009 08:50:38.477 , ModifyDate: 02/02/2022 08:16:45.537 */
 GO
 CREATE TABLE [dbo].[cfgCenterTaxRate](
 	[CenterTaxRateID] [int] NOT NULL,

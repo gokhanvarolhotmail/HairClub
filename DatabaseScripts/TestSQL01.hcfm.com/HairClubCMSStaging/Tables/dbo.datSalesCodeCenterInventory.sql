@@ -1,4 +1,4 @@
-/* CreateDate: 05/28/2018 22:15:34.517 , ModifyDate: 05/26/2020 10:49:06.897 */
+/* CreateDate: 05/28/2018 22:15:34.517 , ModifyDate: 02/03/2022 21:09:35.677 */
 GO
 CREATE TABLE [dbo].[datSalesCodeCenterInventory](
 	[SalesCodeCenterInventoryID] [int] IDENTITY(1,1) NOT NULL,

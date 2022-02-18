@@ -1,4 +1,4 @@
-/* CreateDate: 01/21/2014 23:48:16.687 , ModifyDate: 01/04/2022 10:56:36.877 */
+/* CreateDate: 01/21/2014 23:48:16.687 , ModifyDate: 01/31/2022 08:32:31.843 */
 GO
 CREATE TABLE [dbo].[lkpDocumentType](
 	[DocumentTypeID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,

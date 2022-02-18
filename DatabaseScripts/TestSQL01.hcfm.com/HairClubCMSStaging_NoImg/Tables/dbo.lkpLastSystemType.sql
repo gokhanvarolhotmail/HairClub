@@ -1,4 +1,4 @@
-/* CreateDate: 02/18/2013 06:40:48.907 , ModifyDate: 01/04/2022 10:56:36.843 */
+/* CreateDate: 02/18/2013 06:40:48.907 , ModifyDate: 01/31/2022 08:32:31.810 */
 GO
 CREATE TABLE [dbo].[lkpLastSystemType](
 	[LastSystemTypeID] [int] NOT NULL,

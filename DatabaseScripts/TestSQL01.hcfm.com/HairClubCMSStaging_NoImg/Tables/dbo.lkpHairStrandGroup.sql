@@ -1,4 +1,4 @@
-/* CreateDate: 02/26/2017 22:35:10.240 , ModifyDate: 01/04/2022 10:56:36.930 */
+/* CreateDate: 02/26/2017 22:35:10.240 , ModifyDate: 01/31/2022 08:32:31.897 */
 GO
 CREATE TABLE [dbo].[lkpHairStrandGroup](
 	[HairStrandGroupID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,

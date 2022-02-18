@@ -1,4 +1,4 @@
-/* CreateDate: 04/24/2013 14:01:19.343 , ModifyDate: 08/01/2014 15:46:46.657 */
+/* CreateDate: 02/08/2022 11:21:42.357 , ModifyDate: 02/08/2022 11:21:42.357 */
 GO
 /*
 ==============================================================================
@@ -55,6 +55,8 @@ BEGIN
 	WHERE DRH.DeferredRevenueTypeID = @DeferredRevenueTypeID
 		AND DRT.SalesOrderDate BETWEEN @StartDate AND @EndDate
 		AND SC.SalesCodeDepartmentSSID IN (2020)
+		AND sc.SalesCodeDescription NOT LIKE '%Laser%'
+		AND sc.SalesCodeDescription NOT LIKE '%Capillus%'
 	GROUP BY DRT.DeferredRevenueHeaderKey
 	,	DRT.ClientMembershipKey
 

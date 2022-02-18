@@ -1,4 +1,4 @@
-/* CreateDate: 07/08/2013 17:03:10.750 , ModifyDate: 08/01/2014 15:44:04.763 */
+/* CreateDate: 02/08/2022 11:21:39.497 , ModifyDate: 02/08/2022 11:21:39.497 */
 GO
 /*
 ==============================================================================
@@ -45,7 +45,7 @@ BEGIN
 		INNER JOIN HC_BI_ENT_DDS.bi_ent_dds.DimCenter CTR
 			ON PCPD.CenterKey = CTR.CenterKey
 	WHERE DD.FullDate = @Date
-		AND CTR.CenterSSID LIKE '2%'
+		AND CTR.CenterNumber LIKE '2%'
 		AND PCPD.PCP - PCPD.EXT = 1
 	ORDER BY CTR.CenterSSID
 	,	PCPD.ClientKey
@@ -67,7 +67,7 @@ BEGIN
 			--AND F.MembershipKey = D.MembershipKey
 	WHERE H.DeferredRevenueTypeID = 4
 		AND D.Period = DATEADD(MONTH, -1, @Date)
-		AND H.CenterSSID LIKE '2%'
+		AND H.CenterSSID LIKE '[12]%'
 	ORDER BY D.CenterSSID
 	,	H.ClientKey
 

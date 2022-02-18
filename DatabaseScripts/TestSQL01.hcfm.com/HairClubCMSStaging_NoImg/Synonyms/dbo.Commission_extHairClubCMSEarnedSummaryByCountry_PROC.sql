@@ -1,4 +1,4 @@
-/* CreateDate: 01/04/2022 10:56:54.687 , ModifyDate: 01/04/2022 10:56:54.687 */
+/* CreateDate: 01/31/2022 08:33:13.217 , ModifyDate: 01/31/2022 08:33:13.217 */
 GO
 CREATE SYNONYM [dbo].[Commission_extHairClubCMSEarnedSummaryByCountry_PROC] FOR [HC_Commission].[dbo].[extHairClubCMSEarnedSummaryByCountry]
 GO

@@ -1,4 +1,4 @@
-/* CreateDate: 05/14/2012 17:30:06.707 , ModifyDate: 01/04/2022 10:56:36.840 */
+/* CreateDate: 05/14/2012 17:30:06.707 , ModifyDate: 01/31/2022 08:32:31.810 */
 GO
 CREATE TABLE [dbo].[lkpClientProcess](
 	[ClientProcessID] [int] NOT NULL,

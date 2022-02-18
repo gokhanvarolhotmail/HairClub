@@ -1,4 +1,4 @@
-/* CreateDate: 02/18/2013 06:59:17.683 , ModifyDate: 01/04/2022 10:56:36.790 */
+/* CreateDate: 02/18/2013 06:59:17.683 , ModifyDate: 02/04/2022 21:18:59.620 */
 GO
 CREATE TABLE [dbo].[cfgRegister](
 	[RegisterID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,

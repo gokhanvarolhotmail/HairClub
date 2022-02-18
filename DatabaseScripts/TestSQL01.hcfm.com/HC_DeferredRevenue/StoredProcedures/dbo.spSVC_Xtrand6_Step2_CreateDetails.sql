@@ -1,4 +1,4 @@
-/* CreateDate: 03/31/2015 09:42:31.400 , ModifyDate: 04/14/2015 16:25:49.757 */
+/* CreateDate: 02/08/2022 11:21:44.607 , ModifyDate: 02/08/2022 11:21:44.607 */
 GO
 /*
 ==============================================================================
@@ -69,10 +69,9 @@ BEGIN
 			ON FST.SalesCodeKey = SC.SalesCodeKey
 	WHERE DRH.DeferredRevenueTypeID = @DeferredRevenueTypeID
 		AND DD.FullDate BETWEEN @StartDate AND @EndDate
-		AND (FST.NB_XTRCnt <> 0
-			OR FST.NB_XTRAmt <> 0
-			OR FST.SalesCodeKey IN (1724, 632, 475)) -- Xtrand Service Code
-		AND FST.SalesCodeKey NOT IN (637, 638, 1731) -- Exclude Laser Comb & Laser Helmet Payments
+		AND ( FST.NB_XTRCnt <> 0 OR FST.NB_XTRAmt <> 0 OR FST.SalesCodeKey IN (1724, 632, 475)) -- Xtrand Service Code
+		AND sc.SalesCodeDescription NOT LIKE '%Laser%'
+		AND sc.SalesCodeDescription NOT LIKE '%Capillus%'
 
 
 	DECLARE @CurrentCount INT

@@ -1,4 +1,4 @@
-/* CreateDate: 02/10/2009 13:32:54.470 , ModifyDate: 12/29/2021 15:38:46.163 */
+/* CreateDate: 02/10/2009 13:32:54.470 , ModifyDate: 02/02/2022 08:18:16.740 */
 GO
 CREATE TABLE [dbo].[cfgSalesCode](
 	[SalesCodeID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,

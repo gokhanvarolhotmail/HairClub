@@ -1,4 +1,4 @@
-/* CreateDate: 12/21/2015 07:09:15.250 , ModifyDate: 12/29/2021 15:38:46.493 */
+/* CreateDate: 12/21/2015 07:09:15.250 , ModifyDate: 02/02/2022 09:00:08.753 */
 GO
 CREATE TABLE [dbo].[datClientCreditCard](
 	[ClientCreditCardID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,

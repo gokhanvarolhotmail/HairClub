@@ -1,4 +1,4 @@
-/* CreateDate: 10/30/2008 09:06:22.060 , ModifyDate: 01/04/2022 10:56:36.870 */
+/* CreateDate: 10/30/2008 09:06:22.060 , ModifyDate: 01/31/2022 08:32:31.837 */
 GO
 CREATE TABLE [dbo].[cfgCurrencyExchangeRate](
 	[CurrencyExchangeRateID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,

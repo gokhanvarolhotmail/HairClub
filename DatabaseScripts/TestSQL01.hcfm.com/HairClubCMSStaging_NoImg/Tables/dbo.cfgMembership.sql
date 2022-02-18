@@ -1,4 +1,4 @@
-/* CreateDate: 01/19/2009 15:39:33.117 , ModifyDate: 01/04/2022 10:56:36.820 */
+/* CreateDate: 01/19/2009 15:39:33.117 , ModifyDate: 02/04/2022 21:18:48.197 */
 GO
 CREATE TABLE [dbo].[cfgMembership](
 	[MembershipID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,

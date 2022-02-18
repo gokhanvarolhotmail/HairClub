@@ -1,4 +1,4 @@
-/* CreateDate: 10/16/2008 14:09:42.197 , ModifyDate: 02/10/2021 08:21:01.267 */
+/* CreateDate: 10/16/2008 14:09:42.197 , ModifyDate: 01/19/2022 10:52:46.483 */
 GO
 CREATE TABLE [dbo].[datSchedule](
 	[ScheduleGUID] [uniqueidentifier] NOT NULL,
@@ -66,6 +66,15 @@ CREATE NONCLUSTERED INDEX [RP_datSchedule_CenterID_EmployeeGUID_ScheduleDate] ON
 	[EmployeeGUID] ASC,
 	[ScheduleDate] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO
+CREATE NONCLUSTERED INDEX [SQLOPS_datSchedule_10700_10699] ON [dbo].[datSchedule]
+(
+	[ScheduleTypeID] ASC,
+	[ScheduleCalendarTypeID] ASC,
+	[ScheduleDate] ASC,
+	[LastUpdate] ASC
+)
+INCLUDE([CenterID]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
 ALTER TABLE [dbo].[datSchedule]  WITH CHECK ADD  CONSTRAINT [FK_datSchedule_cfgCenter] FOREIGN KEY([CenterID])
 REFERENCES [dbo].[cfgCenter] ([CenterID])

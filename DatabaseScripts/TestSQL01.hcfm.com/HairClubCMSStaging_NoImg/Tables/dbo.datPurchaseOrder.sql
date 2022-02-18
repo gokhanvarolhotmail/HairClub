@@ -1,4 +1,4 @@
-/* CreateDate: 10/04/2010 12:08:45.470 , ModifyDate: 01/04/2022 10:56:36.863 */
+/* CreateDate: 10/04/2010 12:08:45.470 , ModifyDate: 02/04/2022 21:40:58.043 */
 GO
 CREATE TABLE [dbo].[datPurchaseOrder](
 	[PurchaseOrderGUID] [uniqueidentifier] NOT NULL,

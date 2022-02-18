@@ -1,4 +1,4 @@
-/* CreateDate: 05/23/2016 16:21:51.960 , ModifyDate: 12/16/2019 08:36:41.580 */
+/* CreateDate: 05/23/2016 16:21:51.960 , ModifyDate: 02/02/2022 21:42:08.553 */
 GO
 CREATE TABLE [dbo].[datClientReferral](
 	[ClientReferralID] [int] IDENTITY(1,1) NOT NULL,

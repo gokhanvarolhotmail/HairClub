@@ -1,0 +1,21 @@
+/* CreateDate: 10/25/2017 11:02:58.397 , ModifyDate: 10/30/2017 19:32:48.517 */
+GO
+CREATE TABLE [dbo].[HCM_SFDC_LeadPhone](
+	[cst_sfdc_phone_id] [nvarchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+	[contact_phone_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+	[contact_id] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+	[create_date] [datetime] NULL,
+	[updated_date] [datetime] NULL,
+ CONSTRAINT [PK__HCM_SFDC_cst_sfdc_phone_id] PRIMARY KEY CLUSTERED
+(
+	[cst_sfdc_phone_id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING ON
+GO
+CREATE NONCLUSTERED INDEX [IDX_HCM_SFDC_contact_id] ON [dbo].[HCM_SFDC_LeadPhone]
+(
+	[contact_id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO
