@@ -1,6 +1,18 @@
 USE [msdb] ;
 GO
-
+/*
+USE [msdb] ;
+GO
+CREATE FUNCTION [dbo].[agent_datetime_Inline]( @date INT, @time INT )
+RETURNS TABLE
+AS
+RETURN SELECT
+           CONVERT(
+               DATETIME2(0)
+             , CONVERT(NVARCHAR(4), @date / 10000) + N'-' + CONVERT(NVARCHAR(2), ( @date % 10000 ) / 100) + N'-' + CONVERT(NVARCHAR(2), @date % 100) + N' '
+               + CONVERT(NVARCHAR(2), @time / 10000) + N':' + CONVERT(NVARCHAR(2), ( @time % 10000 ) / 100) + N':' + CONVERT(NVARCHAR(2), @time % 100), 120) AS [OutVal] ;
+*/
+GO
 IF OBJECT_ID('[tempdb]..[#Environments]') IS NOT NULL
     DROP TABLE [#Environments] ;
 
