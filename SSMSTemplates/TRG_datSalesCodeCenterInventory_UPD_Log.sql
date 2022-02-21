@@ -31,8 +31,6 @@ FOR UPDATE
 AS
 SET NOCOUNT ON ;
 
-DECLARE @LogId INT = ISNULL(( SELECT TOP 1 [LogId] + 1 FROM [Audit].[dbo_datSalesCodeCenterInventory] ORDER BY [LogId] DESC ), 1) ;
-
 INSERT [Audit].[dbo_datSalesCodeCenterInventory]( [LogId]
                                                 , [LogUser]
                                                 , [LogAppName]
@@ -49,7 +47,7 @@ INSERT [Audit].[dbo_datSalesCodeCenterInventory]( [LogId]
                                                 , [LastUpdateUser]
                                                 , [UpdateStamp] )
 SELECT
-    @LogId AS [LogId]
+    ISNULL(( SELECT TOP 1 [LogId] + 1 FROM [Audit].[dbo_datSalesCodeCenterInventory] ORDER BY [LogId] DESC ), 1) AS [LogId]
   , SUSER_SNAME() AS [LogUser]
   , APP_NAME() AS [LogAppName]
   , GETDATE() AS [LogDate]
@@ -112,4 +110,3 @@ FROM [Audit].[dbo_datSalesCodeCenterInventory] ;
 ROLLBACK ;
 */
 GO
-
