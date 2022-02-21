@@ -1,12 +1,13 @@
 CREATE SCHEMA [Audit] ;
 GO
---DROP TRIGGER [dbo].[TRG_datSalesCodeCenterInventory_UPD_Log]
+-- DROP TRIGGER [dbo].[TRG_datSalesCodeCenterInventory_UPD_Log]
 -- DROP TABLE [Audit].[dbo_datSalesCodeCenterInventory]
 
 CREATE TABLE [Audit].[dbo_datSalesCodeCenterInventory]
 (
     [LogId]                      INT            NOT NULL
   , [LogUser]                    VARCHAR(256)   NOT NULL
+  , [LogAppName]                 VARCHAR(256)   NOT NULL
   , [LogDate]                    DATETIME2(7)   NOT NULL
   , [Action]                     CHAR(1)        NOT NULL
   , [SalesCodeCenterInventoryID] [INT]          NOT NULL
@@ -18,7 +19,7 @@ CREATE TABLE [Audit].[dbo_datSalesCodeCenterInventory]
   , [CreateUser]                 [NVARCHAR](25) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL
   , [LastUpdate]                 [DATETIME]     NOT NULL
   , [LastUpdateUser]             [NVARCHAR](25) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL
-  , [UpdateStamp]                BINARY(8)    NOT NULL
+  , [UpdateStamp]                BINARY(8)      NOT NULL
 ) ;
 GO
 CREATE UNIQUE CLUSTERED INDEX [dbo_datSalesCodeCenterInventory_PKC] ON [Audit].[dbo_datSalesCodeCenterInventory]
@@ -34,6 +35,7 @@ DECLARE @LogId INT = ISNULL(( SELECT TOP 1 [LogId] + 1 FROM [Audit].[dbo_datSale
 
 INSERT [Audit].[dbo_datSalesCodeCenterInventory]( [LogId]
                                                 , [LogUser]
+                                                , [LogAppName]
                                                 , [LogDate]
                                                 , [Action]
                                                 , [SalesCodeCenterInventoryID]
@@ -49,6 +51,7 @@ INSERT [Audit].[dbo_datSalesCodeCenterInventory]( [LogId]
 SELECT
     @LogId AS [LogId]
   , SUSER_SNAME() AS [LogUser]
+  , APP_NAME() AS [LogAppName]
   , GETDATE() AS [LogDate]
   , [k].[Action]
   , [k].[SalesCodeCenterInventoryID]
