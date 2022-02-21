@@ -99,3 +99,17 @@ GO
 
 --DROP TRIGGER [dbo].[TRG_datSalesCodeCenterInventory_UPD_Log]
 GO
+/*
+BEGIN TRANSACTION ;
+
+UPDATE [k]
+SET [k].[QuantityOnHand] = [QuantityOnHand] + 2
+FROM( SELECT TOP 10 * FROM [dbo].[datSalesCodeCenterInventory] AS [k] ) AS [k] ;
+
+SELECT *
+FROM [Audit].[dbo_datSalesCodeCenterInventory] ;
+
+ROLLBACK ;
+*/
+GO
+
