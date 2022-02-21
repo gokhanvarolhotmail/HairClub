@@ -36,8 +36,11 @@ EXEC [rptHairOrderQuantitybyClient] 241, '26,27,28,29,30,31,45,46,47,48'
 ===============================================================================================
 */
 ALTER PROCEDURE [dbo].[rptHairOrderQuantitybyClient_V2]
-    @CenterID       INT
-  , @MembershipList NVARCHAR(MAX)
+    @CenterID            INT
+  , @MembershipList      NVARCHAR(MAX)
+  , @NoHairInCenter      NVARCHAR(30) = '<ALL>'
+  , @NoHairOnOrder       NVARCHAR(30) = '<ALL>'
+  , @PriorityOrderNeeded NVARCHAR(30) = '<ALL>'
 AS
 SET NOCOUNT ON ;
 
@@ -626,8 +629,7 @@ FROM( SELECT
         , [t].[NewestOrderSystemType] AS [Newest Order System Type]
         , ISNULL([t].[RemainingQuantityToOrder], 0) AS [Remaining to Order]
         , CASE WHEN [t].[OrderAvailableForNextAppointment] = 1 THEN 'Yes' ELSE 'No' END AS [Order Avail for Next App]
-        , CASE WHEN [t].[Calc01] > ( ISNULL([t].[QaNeeded], 0) + ISNULL([t].[InCenter], 0) + ISNULL([t].[OnOrder], 0)) THEN
-               CONCAT('Yes; ', [t].[Calc01] - [t].[Calc02])ELSE 'No' END AS [Priority Order Needed]
+        , CASE WHEN [t].[Calc01] > [t].[Calc02] THEN CONCAT('Yes; ', [t].[Calc01] - [t].[Calc02])ELSE 'No' END AS [Priority Order Needed]
         --, CASE WHEN [t].[PriorityHairNeeded] = 1 THEN 'Yes' ELSE 'No' END AS [Priority Order Needed]
         , CAST(CASE WHEN [t].[SuggestedQuantityToOrder] > [gms].[MaxVal] THEN [gms].[MaxVal] WHEN [t].[SuggestedQuantityToOrder] > 0 THEN
                                                                                              [t].[SuggestedQuantityToOrder] ELSE 0 END AS INT) AS [Suggested Qty to Order]
@@ -649,11 +651,15 @@ FROM( SELECT
               , ISNULL([t].[QaNeeded], 0) + ISNULL([t].[InCenter], 0) + ISNULL([t].[OnOrder], 0) AS [Calc02]
               , [t].[Calc01] - ( ISNULL([t].[QaNeeded], 0) + ISNULL([t].[InCenter], 0) + ISNULL([t].[OnOrder], 0)) AS [SuggestedQuantityToOrder]
             FROM( SELECT *, CEILING(( ISNULL([t].[InitialQuantity], 0) / 12.0 * 8 )) AS [Calc01] FROM [#tmpHairOrderQuantitybyClient] AS [t] ) AS [t] ) AS [t]
-      INNER JOIN [#groupedMemberships] AS [gms] ON [t].[MembershipID] = [gms].[membershipId] ) AS [k]
+      INNER JOIN [#groupedMemberships] AS [gms] ON [t].[MembershipID] = [gms].[membershipId]
+      WHERE( ISNULL(@PriorityOrderNeeded, '') <> '<ALL>' AND [t].[Calc01] > [t].[Calc02] OR ISNULL(@PriorityOrderNeeded, '<ALL>') = '<ALL>' )
+        AND ( ISNULL(@NoHairOnOrder, '') <> '<ALL>' AND ISNULL([t].[OnOrder], 0) <= 0 OR ISNULL(@NoHairOnOrder, '<ALL>') = '<ALL>' )
+        AND ( ISNULL(@NoHairInCenter, '') <> '<ALL>' AND ISNULL([t].[InCenter], 0) <= 0 OR ISNULL(@NoHairInCenter, '<ALL>') = '<ALL>' )) AS [k]
 ORDER BY [k].[Region]
        , [k].[Center]
        , [k].[Suggested Qty to Order] DESC
-       , [k].[Client] ;
+       , [k].[Client]
+OPTION( RECOMPILE ) ;
 GO
 RETURN ;
 
@@ -688,9 +694,9 @@ CREATE TABLE [##rptHairOrderQuantitybyClient_V2]
 ) ;
 
 INSERT [##rptHairOrderQuantitybyClient_V2]
---EXEC [dbo].[rptHairOrderQuantitybyClient_V2] @CenterID = 201, @MembershipList = '0' ;
-EXEC [dbo].[rptHairOrderQuantitybyClient_V2] @CenterID = 256, @MembershipList = '0' ;
+EXEC [dbo].[rptHairOrderQuantitybyClient_V2] @CenterID = 201, @MembershipList = '0' ;
 
+--EXEC [dbo].[rptHairOrderQuantitybyClient_V2] @CenterID = 256, @MembershipList = '0' ;
 SELECT
     [Region]
   , [Center]
