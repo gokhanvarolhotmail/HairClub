@@ -77,7 +77,8 @@ IF OBJECT_ID('[tempdb]..[#SerializedInventoryAudit]') IS NOT NULL
     DROP TABLE [#SerializedInventoryAudit] ;
 
 SELECT
-    CONVERT(VARCHAR(11), [s].[SnapshotDate], 101) AS [Snapshot Date]
+    [scci].[SalesCodeCenterInventoryID]
+  , CONVERT(VARCHAR(11), [s].[SnapshotDate], 101) AS [Snapshot Date]
   , [c].[CenterNumber] AS [CenterID]
   , [c].[CenterDescriptionFullCalc] AS [Center Name]
   , ISNULL([cma].[CenterManagementAreaDescription], 'Corporate') AS [Area]
@@ -169,7 +170,8 @@ IF OBJECT_ID('[tempdb]..[#NonSerializedInventoryAudit]') IS NOT NULL
     DROP TABLE [#NonSerializedInventoryAudit] ;
 
 SELECT
-    CONVERT(VARCHAR(11), [s].[SnapshotDate], 101) AS [Snapshot Date]
+    [scci].[SalesCodeCenterInventoryID]
+  , CONVERT(VARCHAR(11), [s].[SnapshotDate], 101) AS [Snapshot Date]
   , [c].[CenterNumber] AS [CenterID]
   , [c].[CenterDescription] AS [Center Name]
   , [cma].[CenterManagementAreaDescription] AS [Area]
