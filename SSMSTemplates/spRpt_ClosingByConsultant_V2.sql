@@ -43,7 +43,8 @@ CREATE TABLE [#Centers]
 
 CREATE TABLE [#Consultations]
 (
-    [MainGroup]             VARCHAR(50)
+    [ClientGUID]            UNIQUEIDENTIFIER
+  , [MainGroup]             VARCHAR(50)
   , [CenterNumber]          INT
   , [ActivityKey]           INT
   , [ActionCodeSSID]        NVARCHAR(10)
@@ -59,13 +60,14 @@ CREATE TABLE [#Consultations]
 
 CREATE TABLE [#Task]
 (
-    [FullDate]            DATETIME
+    [ClientGUID]          UNIQUEIDENTIFIER
+  , [FullDate]            DATETIME
   , [Id]                  NVARCHAR(18)
   , [CenterNumber]        INT
   , [Action__c]           NVARCHAR(50)
   , [Result__c]           NVARCHAR(50)
   , [SourceCode]          NVARCHAR(50)
-  , [Accomodation]        NVARCHAR(50)
+  , [Accommodation]       NVARCHAR(50)
   , [ExcludeFromConsults] INT
   , [ExcludeFromBeBacks]  INT
   , [BeBacksToExclude]    INT
@@ -139,7 +141,8 @@ IF @CenterType = 1 --Corporate
         FROM [HC_BI_ENT_DDS].[bi_ent_dds].[DimCenter] AS [DC]
         INNER JOIN [HC_BI_ENT_DDS].[bi_ent_dds].[DimCenterType] AS [DCT] ON [DC].[CenterTypeKey] = [DCT].[CenterTypeKey]
         INNER JOIN [HC_BI_ENT_DDS].[bi_ent_dds].[DimCenterManagementArea] AS [CMA] ON [CMA].[CenterManagementAreaSSID] = [DC].[CenterManagementAreaSSID]
-        WHERE [DCT].[CenterTypeDescriptionShort] = 'C' AND [DC].[Active] = 'Y' ;
+        WHERE [DCT].[CenterTypeDescriptionShort] = 'C' AND [DC].[Active] = 'Y'
+        OPTION( RECOMPILE ) ;
     END ;
 ELSE IF @CenterType = 2 --Franchise
     BEGIN
@@ -157,7 +160,8 @@ ELSE IF @CenterType = 2 --Franchise
         FROM [HC_BI_ENT_DDS].[bi_ent_dds].[DimCenter] AS [DC]
         INNER JOIN [HC_BI_ENT_DDS].[bi_ent_dds].[DimCenterType] AS [DCT] ON [DC].[CenterTypeKey] = [DCT].[CenterTypeKey]
         INNER JOIN [HC_BI_ENT_DDS].[bi_ent_dds].[DimRegion] AS [DR] ON [DC].[RegionKey] = [DR].[RegionKey]
-        WHERE [DCT].[CenterTypeDescriptionShort] IN ('F', 'JV') AND [DC].[Active] = 'Y' ;
+        WHERE [DCT].[CenterTypeDescriptionShort] IN ('F', 'JV') AND [DC].[Active] = 'Y'
+        OPTION( RECOMPILE ) ;
     END ;
 ELSE
     BEGIN
@@ -177,7 +181,8 @@ ELSE
         INNER JOIN [HC_BI_ENT_DDS].[bi_ent_dds].[DimCenterType] AS [DCT] ON [DC].[CenterTypeKey] = [DCT].[CenterTypeKey]
         LEFT JOIN [HC_BI_ENT_DDS].[bi_ent_dds].[DimRegion] AS [DR] ON [DC].[RegionKey] = [DR].[RegionKey]
         LEFT JOIN [HC_BI_ENT_DDS].[bi_ent_dds].[DimCenterManagementArea] AS [CMA] ON [CMA].[CenterManagementAreaSSID] = [DC].[CenterManagementAreaSSID]
-        WHERE [DC].[CenterSSID] = @CenterType AND [DC].[Active] = 'Y' ;
+        WHERE [DC].[CenterSSID] = @CenterType AND [DC].[Active] = 'Y'
+        OPTION( RECOMPILE ) ;
     END ;
 
 /************************* After the Center table is populated, then reset the parameters, so the detail drill-downs will work properly ********************/
@@ -191,25 +196,27 @@ ELSE
     END ;
 
 /********************************** Get Task data *************************************/
-INSERT INTO [#Task]( [FullDate]
+INSERT INTO [#Task]( [ClientGUID]
+                   , [FullDate]
                    , [Id]
                    , [CenterNumber]
                    , [Action__c]
                    , [Result__c]
                    , [SourceCode]
-                   , [Accomodation]
+                   , [Accommodation]
                    , [ExcludeFromConsults]
                    , [ExcludeFromBeBacks]
                    , [BeBacksToExclude]
                    , [Performer] )
 SELECT
-    CAST([t].[ActivityDate] AS DATE) AS [FullDate]
+    [appt].[ClientGUID]
+  , CAST([t].[ActivityDate] AS DATE) AS [FullDate]
   , [t].[Id]
-  , ISNULL(ISNULL([t].[CenterNumber__c], [t].[CenterID__c]), 100) AS [CenterNumber]
+  , COALESCE([t].[CenterNumber__c], [t].[CenterID__c], 100) AS [CenterNumber]
   , [t].[Action__c]
   , [t].[Result__c]
   , [t].[SourceCode__c]
-  , [t].[Accommodation__c] AS [Accomodation]
+  , [t].[Accommodation__c] AS [Accommodation]
   , CASE WHEN (( [t].[Action__c] = 'Be Back'
                OR [t].[SourceCode__c] IN ('REFERAFRND', 'STYLEREFER', 'REGISSTYRFR', 'NBREFCARD', 'BOSDMREF', 'BOSREF', 'BOSBIOEMREF', 'BOSNCREF'
                                         , '4Q2016LWEXLD', 'REFEROTHER', 'IPREFCLRERECA12476', 'IPREFCLRERECA12476DC', 'IPREFCLRERECA12476DF'
@@ -223,19 +230,21 @@ SELECT
   , CASE WHEN ( [t].[Action__c] = 'Be Back' AND [t].[ActivityDate] < '12/1/2020' ) THEN 1 ELSE 0 END AS [BeBacksToExclude]
   , ISNULL(REPLACE([t].[Performer__c], ',', ''), REPLACE([de].[EmployeeFullNameCalc], ',', '')) AS [Performer]
 FROM [HC_BI_SFDC].[dbo].[Task] AS [t] -----??? sf new definition
-LEFT OUTER JOIN [SQL05].[HairClubCMS].[dbo].[datappointment] AS [appt] WITH( NOLOCK )ON [appt].[SalesForceTaskId] = [t].[Id]
+LEFT OUTER JOIN [SQL05].[HairClubCMS].[dbo].[datAppointment] AS [appt] WITH( NOLOCK )ON [appt].[SalesforceTaskID] = [t].[Id]
                                                                                     AND CAST([t].[ActivityDate] AS DATE) = [appt].[AppointmentDate]
-                                                                                    AND [appt].[CLientGUID] IS NOT NULL
+                                                                                    AND [appt].[ClientGUID] IS NOT NULL
 LEFT OUTER JOIN [SQL05].[HairClubCMS].[dbo].[datAppointmentEmployee] AS [datapptemp] ON [appt].[AppointmentGUID] = [datapptemp].[AppointmentGUID]
-LEFT OUTER JOIN [SQL05].[HairClubCMS].[dbo].[datEmployee] AS [de] ON [de].[employeeguid] = [datapptemp].[employeeguid]
+LEFT OUTER JOIN [SQL05].[HairClubCMS].[dbo].[datEmployee] AS [de] ON [de].[EmployeeGUID] = [datapptemp].[EmployeeGUID]
 WHERE LTRIM(RTRIM([t].[Action__c])) IN ('Appointment', 'Be Back', 'In House', 'Recovery')
   AND CAST([t].[ActivityDate] AS DATE) BETWEEN @StartDate AND @EndDate
-  AND ISNULL([t].[IsDeleted], 0) = 0 ;
+  AND ISNULL([t].[IsDeleted], 0) = 0
+OPTION( RECOMPILE ) ;
 
 /********************************** Get consultations *************************************/
 INSERT INTO [#Consultations]
 SELECT
-    [CTR].[MainGroup]
+    [t].[ClientGUID]
+  , [CTR].[MainGroup]
   , [t].[CenterNumber]
   , -1
   , -1
@@ -243,14 +252,14 @@ SELECT
   , [t].[FullDate]
   , [t].[Performer]
   , 1 AS [Consultations]
-  , CASE WHEN ( ISNULL([t].[Accomodation], 'In Person Consult') = 'In Person Consult' OR [t].[Accomodation] LIKE 'center%' OR [t].[Accomodation] = 'Company' )
+  , CASE WHEN ( ISNULL([t].[Accommodation], 'In Person Consult') = 'In Person Consult' OR [t].[Accommodation] LIKE 'center%' OR [t].[Accommodation] = 'Company' )
           AND [t].[Result__c] IN ('Completed', 'Show Sale')
           AND [t].[Action__c] IN ('Appointment', 'In House', 'Recovery')
           AND ISNULL([t].[ExcludeFromConsults], 0) = 0 THEN 1
         --      AND ISNULL(t.Result__c, '') IN ('Show No Sale', 'Show Sale') AND
         ELSE 0
     END AS [InPersonConsultations]
-  , CASE WHEN ( [t].[Accomodation] LIKE 'virtual%' OR [t].[Accomodation] LIKE 'Video%' )
+  , CASE WHEN ( [t].[Accommodation] LIKE 'virtual%' OR [t].[Accommodation] LIKE 'Video%' )
           AND [t].[Result__c] IN ('Completed', 'Show Sale')
           AND [t].[Action__c] IN ('Appointment', 'In House', 'Recovery')
           AND ISNULL([t].[ExcludeFromConsults], 0) = 0 THEN 1
@@ -258,7 +267,7 @@ SELECT
         ELSE 0
     END AS [VirtualConsultations]
   , [t].[ExcludeFromConsults]
-  , [t].[Accomodation]
+  , [t].[Accommodation]
 FROM [#Task] AS [t]
 INNER JOIN [#Centers] AS [CTR] ON [t].[CenterNumber] = [CTR].[CenterNumber]
 WHERE [t].[Result__c] IN ('Completed', 'Show Sale', 'Show no sale', 'Reschedule')
@@ -281,7 +290,7 @@ SELECT
     END AS [BeBacks]
   , [t].[ExcludeFromConsults]
   , [t].[ExcludeFromBeBacks]
-  , [t].[Accomodation]
+  , [t].[Accommodation]
 FROM [#Task] AS [t]
 INNER JOIN [#Centers] AS [CTR] ON [t].[CenterNumber] = [CTR].[CenterNumber] ;
 
@@ -295,7 +304,7 @@ SELECT
   , [t].[FullDate]
   , [t].[Performer]
   , 1 AS [Referrals]
-  , [t].[Accomodation]
+  , [t].[Accommodation]
 FROM [#Task] AS [t]
 INNER JOIN [#Centers] AS [CTR] ON [t].[CenterNumber] = [CTR].[CenterNumber]
 WHERE [t].[SourceCode] IN ('CORP REFER', 'REFERAFRND', 'STYLEREFER', 'REGISSTYRFR', 'BOSDMREF', 'BOSREF', 'BOSNCREF', 'REFEROTHER', 'IPREFCLRERECA12476'
@@ -366,6 +375,7 @@ SELECT
   , SUM(ISNULL([FST].[NB_XTRCnt], 0)) AS [Xtrands]
   , SUM(ISNULL([FST].[S_SurCnt], 0)) + SUM(ISNULL([FST].[S_PRPCnt], 0)) AS [Surgery]
   , SUM(ISNULL([FST].[NB_MDPCnt], 0)) AS [NB_MDPCnt]
+  , MAX([cs].[Accommodation]) AS [Accommodation]
 INTO [#NetSales]
 FROM [HC_BI_CMS_DDS].[bi_cms_dds].[FactSalesTransaction] AS [FST]
 INNER JOIN [HC_BI_ENT_DDS].[bief_dds].[DimDate] AS [DD] ON [FST].[OrderDateKey] = [DD].[DateKey]
@@ -377,11 +387,12 @@ INNER JOIN [HC_BI_CMS_DDS].[bi_cms_dds].[DimMembership] AS [m] ON [CM].[Membersh
 INNER JOIN [HC_BI_ENT_DDS].[bi_ent_dds].[DimCenter] AS [ctr] ON [ctr].[CenterKey] = [CM].[CenterKey]
 INNER JOIN [#Centers] AS [c] ON [c].[CenterNumber] = [ctr].[CenterNumber]
 INNER JOIN [HC_BI_CMS_DDS].[bi_cms_dds].[DimClient] AS [CLT] ON [FST].[ClientKey] = [CLT].[ClientKey]
-WHERE [DD].[FullDate] BETWEEN @StartDate AND @EndDate AND [SC].[SalesCodeKey] NOT IN (665, 654, 393, 668) AND [SO].[IsVoidedFlag] = 0
+LEFT JOIN( SELECT [t].[ClientGUID], MAX([t].[Accommodation]) AS [Accommodation] FROM [#Consultations] AS [t] GROUP BY [t].[ClientGUID] ) AS [cs] ON [cs].[ClientGUID] = [CLT].[ClientSSID]
 GROUP BY [c].[MainGroup]
        , [ctr].[CenterNumber]
        , [SOD].[Employee1FullName]
-       , [DD].[FullDate] ;
+       , [DD].[FullDate]
+OPTION( RECOMPILE ) ;
 
 /********************************** Combine Results *************************************/
 INSERT INTO [#CombinedData]( [Table]
@@ -565,11 +576,7 @@ SELECT
 INTO [#Results]
 FROM [#NetSalesEmployee] AS [R]
 INNER JOIN [#Centers] AS [C] ON [C].[CenterNumber] = [R].[CenterNumber]
-WHERE( [R].[Consultations] <> 0
-     OR ISNULL([R].[BeBacks], 0) <> 0
-     OR ISNULL([R].[Referrals], 0) <> 0
-     OR ISNULL([R].[NetNB1Count], 0) <> 0
-     OR ISNULL([R].[NetNB1Sales], 0) <> 0 ) ;
+WHERE( [R].[Consultations] <> 0 OR [R].[BeBacks] <> 0 OR [R].[Referrals] <> 0 OR [R].[NetNB1Count] <> 0 OR [R].[NetNB1Sales] <> 0 ) ;
 
 /*****************UPDATE records with EmployeeKey for Performer and EmployeeKey *****************************/
 UPDATE
@@ -584,27 +591,31 @@ LEFT JOIN [HC_BI_CMS_DDS].[bi_cms_dds].[DimEmployee] AS [E] ON REPLACE(REPLACE(L
 WHERE [Performer] IS NULL ;
 
 UPDATE
-    [#Results]
+    [r]
 SET
-    [EmployeeKey] = ISNULL([E].[EmployeeKey], -1)
-FROM [#Results]
-LEFT JOIN [HC_BI_CMS_DDS].[bi_cms_dds].[DimEmployee] AS [E] ON REPLACE(REPLACE(LTRIM([PerformerName]), ' ', ''), ',', '') = REPLACE(
-                                                                                                                                REPLACE(
-                                                                                                                                LTRIM([E].[EmployeeFullName])
-                                                                                                                                , ' ', ''), ',', '')
-WHERE [#Results].[EmployeeKey] IS NULL ;
+    [r].[EmployeeKey] = ISNULL([E].[EmployeeKey], -1)
+FROM [#Results] AS [r]
+LEFT JOIN [HC_BI_CMS_DDS].[bi_cms_dds].[DimEmployee] AS [E] ON REPLACE(REPLACE(LTRIM([r].[PerformerName]), ' ', ''), ',', '') = REPLACE(
+                                                                                                                                    REPLACE(
+                                                                                                                                    LTRIM(
+                                                                                                                                    [E].[EmployeeFullName])
+                                                                                                                                    , ' ', ''), ',', '')
+WHERE [r].[EmployeeKey] IS NULL ;
 
-UPDATE [#Results]
-SET [Performer] = ( -1 )
-WHERE [PerformerName] = 'Unknown, Unknown' AND [Performer] = NULL ;
+UPDATE [r]
+SET [r].[Performer] = -1
+FROM [#Results] AS [r]
+WHERE [r].[PerformerName] = 'Unknown, Unknown' AND [r].[Performer] = NULL ;
 
-UPDATE [#Results]
-SET [EmployeeKey] = ( -1 )
-WHERE [PerformerName] = 'Unknown, Unknown' AND [EmployeeKey] = NULL ;
+UPDATE [r]
+SET [r].[EmployeeKey] = -1
+FROM [#Results] AS [r]
+WHERE [r].[PerformerName] = 'Unknown, Unknown' AND [r].[EmployeeKey] = NULL ;
 
-UPDATE [#Results]
-SET [PerformerName] = 'Unknown, Unknown'
-WHERE( [PerformerName] IS NULL OR [PerformerName] = '' ) ;
+UPDATE [r]
+SET [r].[PerformerName] = 'Unknown, Unknown'
+FROM [#Results] AS [r]
+WHERE( [r].[PerformerName] IS NULL OR [r].[PerformerName] = '' ) ;
 
 /***************** Combine 'Unknown, Unknown' records into one per center ***************************************/
 SELECT
