@@ -110,6 +110,8 @@ FROM [Audit].[dbo_datSalesCodeCenterInventory] ;
 ROLLBACK ;
 */
 GO
+CREATE VIEW [Audit].[vdbo_datSalesCodeCenterInventory]
+AS
 SELECT
     ISNULL([a].[LogId], [b].[LogId]) AS [LogId]
   , ISNULL([a].[LogUser], [b].[LogUser]) AS [LogUser]
@@ -120,6 +122,7 @@ SELECT
   , [a].[SalesCodeCenterID]
   , [a].[QuantityOnHand] AS [BeforeQuantityOnHand]
   , [b].[QuantityOnHand] AS [AfterQuantityOnHand]
+  , ISNULL([b].[QuantityOnHand], 0) - ISNULL([a].[QuantityOnHand], 0) AS [DiffQuantityOnHand]
   , [a].[QuantityPar] AS [BeforeQuantityPar]
   , [b].[QuantityPar] AS [AfterQuantityPar]
   , [a].[IsActive] AS [BeforeIsActive]
@@ -134,8 +137,34 @@ SELECT
   , [b].[LastUpdateUser] AS [AfterLastUpdateUser]
   , [a].[UpdateStamp] AS [BeforeUpdateStamp]
   , [b].[UpdateStamp] AS [AfterUpdateStamp]
-FROM( SELECT * FROM [Audit].[dbo_datSalesCodeCenterInventory] AS [a] WHERE [a].[Action] = 'D' ) AS [a]
-FULL OUTER JOIN( SELECT * FROM [Audit].[dbo_datSalesCodeCenterInventory] AS [b] WHERE [b].[Action] = 'I' ) AS [b] ON [a].[LogId] = [b].[LogId]
-                                                                                                                 AND [a].[SalesCodeCenterInventoryID] = [b].[SalesCodeCenterInventoryID]
-WHERE ISNULL([b].[QuantityOnHand], 0) - ISNULL([a].[QuantityOnHand], 0) > 1 ;
+FROM( SELECT * FROM [Audit].[dbo_datSalesCodeCenterInventory] AS [a] WITH( NOLOCK )WHERE [a].[Action] = 'D' ) AS [a]
+FULL OUTER JOIN( SELECT * FROM [Audit].[dbo_datSalesCodeCenterInventory] AS [b] WITH( NOLOCK )WHERE [b].[Action] = 'I' ) AS [b] ON [a].[LogId] = [b].[LogId]
+                                                                                                                               AND [a].[SalesCodeCenterInventoryID] = [b].[SalesCodeCenterInventoryID] ;
 GO
+SELECT
+    [v].[LogId]
+  , [v].[LogUser]
+  , [v].[LogAppName]
+  , [v].[LogDate]
+  , [v].[SalesCodeCenterInventoryID]
+  , [v].[Action]
+  , [v].[SalesCodeCenterID]
+  , [v].[BeforeQuantityOnHand]
+  , [v].[AfterQuantityOnHand]
+  , [v].[DiffQuantityOnHand]
+  , [v].[BeforeQuantityPar]
+  , [v].[AfterQuantityPar]
+  , [v].[BeforeIsActive]
+  , [v].[AfterIsActive]
+  , [v].[BeforeCreateDate]
+  , [v].[AfterCreateDate]
+  , [v].[BeforeCreateUser]
+  , [v].[AfterCreateUser]
+  , [v].[BeforeLastUpdate]
+  , [v].[AfterLastUpdate]
+  , [v].[BeforeLastUpdateUser]
+  , [v].[AfterLastUpdateUser]
+  , [v].[BeforeUpdateStamp]
+  , [v].[AfterUpdateStamp]
+FROM [Audit].[vdbo_datSalesCodeCenterInventory] AS [v]
+WHERE [v].[DiffQuantityOnHand] > 1 ;
