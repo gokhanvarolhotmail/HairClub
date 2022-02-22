@@ -20,7 +20,10 @@ SAMPLE EXECUTION:
 
 EXEC spRpt_ClosingByConsultant 1, '06/01/2021', '07/27/2021'
 ***********************************************************************/
-CREATE PROCEDURE [dbo].[spRpt_ClosingByConsultant_V2]( @CenterType INT, @StartDate DATETIME, @EndDate DATETIME )
+ALTER PROCEDURE [dbo].[spRpt_ClosingByConsultant_V2]
+    @CenterType INT
+  , @StartDate  DATETIME
+  , @EndDate    DATETIME
 AS
 SET FMTONLY OFF ;
 
@@ -99,30 +102,27 @@ CREATE TABLE [#Referrals]
 
 CREATE TABLE [#CombinedData]
 (
-    [MainGroup]        VARCHAR(50)
-  , [CenterNumber]     INT
-  , [FullDate]         DATETIME
-  , [EmployeeFullName] NVARCHAR(250)
-  , [Consultations]    INT
-  , [BeBacks]          INT
-  , [BeBacksToExclude] INT
-  , [Referrals]        INT
-  , [NetNB1Count]      INT
-  , [NetNB1Sales]      MONEY
-  , [XTRPlus]          INT
-  , [EXT]              INT
-  , [Xtrands]          INT
-  , [Surgery]          INT
-  , [NB_MDPCnt]        INT
-  , [Accommodation]    VARCHAR(50)
+    [Table]                 VARCHAR(128)
+  , [MainGroup]             VARCHAR(50)
+  , [CenterNumber]          INT
+  , [FullDate]              DATETIME
+  , [EmployeeFullName]      NVARCHAR(250)
+  , [Consultations]         INT
+  , [BeBacks]               INT
+  , [BeBacksToExclude]      INT
+  , [Referrals]             INT
+  , [NetNB1Count]           INT
+  , [NetNB1Sales]           MONEY
+  , [XTRPlus]               INT
+  , [EXT]                   INT
+  , [Xtrands]               INT
+  , [Surgery]               INT
+  , [NB_MDPCnt]             INT
+  , [Accommodation]         VARCHAR(50)
+  , [VirtualConsultations]  INT
+  , [InPersonConsultations] INT
 ) ;
 
-/********************************** Create temp table indexes *************************************/
-CREATE NONCLUSTERED INDEX [IDX_Center_CenterNumber] ON [#Centers]( [CenterNumber] ) ;
-
-CREATE NONCLUSTERED INDEX [IDX_CombinedData_CenterNumber] ON [#CombinedData]( [CenterNumber] ) ;
-
-/********************************** Get list of centers *************************************/
 IF @CenterType = 1 --Corporate
     BEGIN
         INSERT INTO [#Centers]
@@ -191,15 +191,25 @@ ELSE
     END ;
 
 /********************************** Get Task data *************************************/
-INSERT INTO [#Task]
+INSERT INTO [#Task]( [FullDate]
+                   , [Id]
+                   , [CenterNumber]
+                   , [Action__c]
+                   , [Result__c]
+                   , [SourceCode]
+                   , [Accomodation]
+                   , [ExcludeFromConsults]
+                   , [ExcludeFromBeBacks]
+                   , [BeBacksToExclude]
+                   , [Performer] )
 SELECT
     CAST([t].[ActivityDate] AS DATE) AS [FullDate]
   , [t].[Id]
-  , ISNULL(ISNULL([t].[CenterNumber__c], [t].[CenterID__c]), 100)
+  , ISNULL(ISNULL([t].[CenterNumber__c], [t].[CenterID__c]), 100) AS [CenterNumber]
   , [t].[Action__c]
   , [t].[Result__c]
   , [t].[SourceCode__c]
-  , [t].[Accommodation__c]
+  , [t].[Accommodation__c] AS [Accomodation]
   , CASE WHEN (( [t].[Action__c] = 'Be Back'
                OR [t].[SourceCode__c] IN ('REFERAFRND', 'STYLEREFER', 'REGISSTYRFR', 'NBREFCARD', 'BOSDMREF', 'BOSREF', 'BOSBIOEMREF', 'BOSNCREF'
                                         , '4Q2016LWEXLD', 'REFEROTHER', 'IPREFCLRERECA12476', 'IPREFCLRERECA12476DC', 'IPREFCLRERECA12476DF'
@@ -212,8 +222,8 @@ SELECT
          AND [t].[ActivityDate] < '12/1/2020' THEN 1 ELSE 0 END AS [ExcludeFromBeBacks]
   , CASE WHEN ( [t].[Action__c] = 'Be Back' AND [t].[ActivityDate] < '12/1/2020' ) THEN 1 ELSE 0 END AS [BeBacksToExclude]
   , ISNULL(REPLACE([t].[Performer__c], ',', ''), REPLACE([de].[EmployeeFullNameCalc], ',', '')) AS [Performer]
-FROM [HC_BI_SFDC].[dbo].[Task] AS [t] -----??? sf new dfinition
-LEFT OUTER JOIN [SQL05].[HairClubCMS].[dbo].[datappointment] AS [appt] WITH( NOLOCK )ON [appt].[salesforcetaskid] = [t].[Id]
+FROM [HC_BI_SFDC].[dbo].[Task] AS [t] -----??? sf new definition
+LEFT OUTER JOIN [SQL05].[HairClubCMS].[dbo].[datappointment] AS [appt] WITH( NOLOCK )ON [appt].[SalesForceTaskId] = [t].[Id]
                                                                                     AND CAST([t].[ActivityDate] AS DATE) = [appt].[AppointmentDate]
                                                                                     AND [appt].[CLientGUID] IS NOT NULL
 LEFT OUTER JOIN [SQL05].[HairClubCMS].[dbo].[datAppointmentEmployee] AS [datapptemp] ON [appt].[AppointmentGUID] = [datapptemp].[AppointmentGUID]
@@ -221,20 +231,6 @@ LEFT OUTER JOIN [SQL05].[HairClubCMS].[dbo].[datEmployee] AS [de] ON [de].[emplo
 WHERE LTRIM(RTRIM([t].[Action__c])) IN ('Appointment', 'Be Back', 'In House', 'Recovery')
   AND CAST([t].[ActivityDate] AS DATE) BETWEEN @StartDate AND @EndDate
   AND ISNULL([t].[IsDeleted], 0) = 0 ;
-
-CREATE NONCLUSTERED INDEX [IDX_Task_FullDate] ON [#Task]( [FullDate] ) ;
-
-CREATE NONCLUSTERED INDEX [IDX_Task_Id] ON [#Task]( [Id] ) ;
-
-CREATE NONCLUSTERED INDEX [IDX_Task_CenterNumber] ON [#Task]( [CenterNumber] ) ;
-
-CREATE NONCLUSTERED INDEX [IDX_Task_Action__c] ON [#Task]( [Action__c] ) ;
-
-CREATE NONCLUSTERED INDEX [IDX_Task_Result__c] ON [#Task]( [Result__c] ) ;
-
-CREATE NONCLUSTERED INDEX [IDX_Task_SourceCode] ON [#Task]( [SourceCode] ) ;
-
-UPDATE STATISTICS [#Task] ;
 
 /********************************** Get consultations *************************************/
 INSERT INTO [#Consultations]
@@ -248,28 +244,26 @@ SELECT
   , [t].[Performer]
   , 1 AS [Consultations]
   , CASE WHEN ( ISNULL([t].[Accomodation], 'In Person Consult') = 'In Person Consult' OR [t].[Accomodation] LIKE 'center%' OR [t].[Accomodation] = 'Company' )
-          AND ISNULL([t].[Result__c], '') IN ('Completed', 'Show Sale')
-          AND ISNULL([t].[Action__c], '') IN ('Appointment', 'In House', 'Recovery')
-          AND
-  --ISNULL(t.Result__c, '') IN ('Show No Sale', 'Show Sale') AND
-  ISNULL([t].[ExcludeFromConsults], 0) = 0 THEN 1
+          AND [t].[Result__c] IN ('Completed', 'Show Sale')
+          AND [t].[Action__c] IN ('Appointment', 'In House', 'Recovery')
+          AND ISNULL([t].[ExcludeFromConsults], 0) = 0 THEN 1
+        --      AND ISNULL(t.Result__c, '') IN ('Show No Sale', 'Show Sale') AND
         ELSE 0
     END AS [InPersonConsultations]
-  , CASE WHEN ( ISNULL([t].[Accomodation], 'In Person Consult') LIKE 'virtual%' OR ISNULL([t].[Accomodation], 'In Person Consult') LIKE 'Video%' )
-          AND ISNULL([t].[Result__c], '') IN ('Completed', 'Show Sale')
-          AND ISNULL([t].[Action__c], '') IN ('Appointment', 'In House', 'Recovery')
-          AND
-  -- ISNULL(t.Result__c, '') IN ('Show No Sale', 'Show Sale') AND
-  ISNULL([t].[ExcludeFromConsults], 0) = 0 THEN 1
+  , CASE WHEN ( [t].[Accomodation] LIKE 'virtual%' OR [t].[Accomodation] LIKE 'Video%' )
+          AND [t].[Result__c] IN ('Completed', 'Show Sale')
+          AND [t].[Action__c] IN ('Appointment', 'In House', 'Recovery')
+          AND ISNULL([t].[ExcludeFromConsults], 0) = 0 THEN 1
+        --      AND ISNULL(t.Result__c, '') IN ('Show No Sale', 'Show Sale') AND
         ELSE 0
     END AS [VirtualConsultations]
   , [t].[ExcludeFromConsults]
   , [t].[Accomodation]
 FROM [#Task] AS [t]
 INNER JOIN [#Centers] AS [CTR] ON [t].[CenterNumber] = [CTR].[CenterNumber]
-WHERE ISNULL([t].[Result__c], '') IN ('Completed', 'Show Sale', 'Show no sale', 'Reschedule')
+WHERE [t].[Result__c] IN ('Completed', 'Show Sale', 'Show no sale', 'Reschedule')
   AND ISNULL([t].[ExcludeFromConsults], 0) = 0
-  AND ISNULL([t].[Action__c], '') IN ('Appointment', 'In House', 'Recovery', 'Be Back') ;
+  AND [t].[Action__c] IN ('Appointment', 'In House', 'Recovery', 'Be Back') ;
 
 INSERT INTO [#BeBacks]
 SELECT
@@ -316,6 +310,8 @@ SELECT
   , SUM([Consultations]) AS [Consultations]
   , SUM(CASE WHEN ISNULL([ExcludeFromConsults], 0) = 1 THEN 1 ELSE 0 END) AS [BeBacksToExclude] --to validate
   , [Accommodation]
+  , MAX([VirtualConsultations]) AS [VirtualConsultations]
+  , MAX([InPersonConsultations]) AS [InPersonConsultations]
 INTO [#NetConsultations]
 FROM [#Consultations]
 GROUP BY [MainGroup]
@@ -388,9 +384,28 @@ GROUP BY [c].[MainGroup]
        , [DD].[FullDate] ;
 
 /********************************** Combine Results *************************************/
-INSERT INTO [#CombinedData]
+INSERT INTO [#CombinedData]( [Table]
+                           , [MainGroup]
+                           , [CenterNumber]
+                           , [FullDate]
+                           , [EmployeeFullName]
+                           , [Consultations]
+                           , [BeBacks]
+                           , [BeBacksToExclude]
+                           , [Referrals]
+                           , [NetNB1Count]
+                           , [NetNB1Sales]
+                           , [XTRPlus]
+                           , [EXT]
+                           , [Xtrands]
+                           , [Surgery]
+                           , [NB_MDPCnt]
+                           , [Accommodation]
+                           , [VirtualConsultations]
+                           , [InPersonConsultations] )
 SELECT
-    [NC].[MainGroup]
+    'NetConsultations' AS [Table]
+  , [NC].[MainGroup]
   , [NC].[CenterNumber]
   , [NC].[FullDate]
   , [NC].[Performer] AS [EmployeeFullName]
@@ -406,10 +421,13 @@ SELECT
   , 0 AS [Surgery]
   , 0 AS [NB_MDPCnt]
   , [NC].[Accommodation]
+  , ISNULL([NC].[VirtualConsultations], 0) AS [VirtualConsultations]
+  , ISNULL([NC].[InPersonConsultations], 0) AS [InPersonConsultations]
 FROM [#NetConsultations] AS [NC]
-UNION
+UNION ALL
 SELECT
-    [NB].[MainGroup]
+    'NetBeBacks' AS [Table]
+  , [NB].[MainGroup]
   , [NB].[CenterNumber]
   , [NB].[FullDate]
   , [NB].[Performer] AS [EmployeeFullName]
@@ -425,10 +443,13 @@ SELECT
   , 0 AS [Surgery]
   , 0 AS [NB_MDPCnt]
   , [NB].[Accommodation]
+  , 0 AS [VirtualConsultations]
+  , 0 AS [InPersonConsultations]
 FROM [#NetBeBacks] AS [NB]
-UNION
+UNION ALL
 SELECT
-    [NS].[MainGroup]
+    'NetSales' AS [Table]
+  , [NS].[MainGroup]
   , [NS].[CenterNumber]
   , [NS].[FullDate]
   , [NS].[EmployeeFullName]
@@ -444,10 +465,13 @@ SELECT
   , [NS].[Surgery]
   , [NS].[NB_MDPCnt]
   , '' AS [Accommodation]
+  , 0 AS [VirtualConsultations]
+  , 0 AS [InPersonConsultations]
 FROM [#NetSales] AS [NS]
-UNION
+UNION ALL
 SELECT
-    [REF].[MainGroup]
+    'NetReferrals' AS [Table]
+  , [REF].[MainGroup]
   , [REF].[CenterNumber]
   , [REF].[FullDate]
   , [REF].[Performer] AS [EmployeeFullName]
@@ -463,10 +487,16 @@ SELECT
   , 0 AS [Surgery]
   , 0 AS [NB_MDPCnt]
   , [REF].[Accommodation]
+  , 0 AS [VirtualConsultations]
+  , 0 AS [InPersonConsultations]
 FROM [#NetReferrals] AS [REF] ;
 
 SELECT
-    [CD].[MainGroup]
+    SUBSTRING(
+        CONCAT(
+            MAX(CASE WHEN [CD].[Table] = 'NetConsultations' THEN ',NetConsultations' END), MAX(CASE WHEN [CD].[Table] = 'NetBeBacks' THEN ',NetBeBacks' END)
+          , MAX(CASE WHEN [CD].[Table] = 'NetSales' THEN ',NetSales' END), MAX(CASE WHEN [CD].[Table] = 'NetReferrals' THEN ',NetReferrals' END)), 2, 500) AS [Tables]
+  , [CD].[MainGroup]
   , [CD].[CenterNumber]
   , [CD].[FullDate]
   , CASE WHEN [CD].[EmployeeFullName] = ',' THEN 'Unknown, Unknown' WHEN [CD].[EmployeeFullName] IS NULL THEN 'Unknown, Unknown' ELSE
@@ -485,6 +515,8 @@ SELECT
   , SUM([CD].[Surgery]) AS [Surgery]
   , SUM([CD].[NB_MDPCnt]) AS [NB_MDPCnt]
   , [CD].[Accommodation]
+  , SUM([CD].[VirtualConsultations]) AS [VirtualConsultations]
+  , SUM([CD].[InPersonConsultations]) AS [InPersonConsultations]
 INTO [#NetSalesEmployee]
 FROM [#CombinedData] AS [CD]
 GROUP BY [CD].[MainGroup]
@@ -498,7 +530,8 @@ GROUP BY [CD].[MainGroup]
 
 /********************************** Display Results *************************************/
 SELECT
-    [R].[FullDate]
+    [R].[Tables]
+  , [R].[FullDate]
   , [C].[MainGroupID] AS [RegionID]
   , [C].[MainGroup] AS [Region]
   , [C].[MainGroupSortOrder] AS [RegionSortOrder]
@@ -506,15 +539,15 @@ SELECT
   , [C].[CenterSSID]
   , [C].[CenterDescription]
   , [C].[CenterDescriptionNumber] AS [Center]
-  , NULL AS [performer]
+  , NULL AS [Performer]
   , NULL AS [EmployeeKey]
   , CASE WHEN [R].[EmployeeFullName] = ',' THEN 'Unknown, Unknown' ELSE ISNULL(REPLACE([R].[EmployeeFullName], ',', ''), 'Unknown, Unknown')END AS [PerformerName]
   , [R].[Consultations] AS [Consultations]
   , [R].[BeBacks] AS [BeBacks]
   , [R].[BeBacksToExclude]
   , [R].[Referrals] AS [Referrals]
-  , ISNULL([R].[NetNB1Count], 0) AS [netSale]
-  , ISNULL([R].[NetNB1Sales], 0) AS [netRevenue]
+  , ISNULL([R].[NetNB1Count], 0) AS [NetSale]
+  , ISNULL([R].[NetNB1Sales], 0) AS [NetRevenue]
   , ISNULL([R].[XTRPlus], 0) AS [XTRPlus]
   , ISNULL([R].[EXT], 0) AS [EXT]
   , ISNULL([R].[Xtrands], 0) AS [Xtrands]
@@ -527,6 +560,8 @@ SELECT
   , ISNULL([dbo].[DIVIDE_DECIMAL]([R].[Surgery], [R].[NetNB1Count]), 0) AS [SurgeryPercent]
   , ISNULL([dbo].[DIVIDE_DECIMAL]([R].[NB_MDPCnt], [R].[NetNB1Count]), 0) AS [MDPPercent]
   , [R].[Accommodation]
+  , ISNULL([R].[VirtualConsultations], 0) AS [VirtualConsultations]
+  , ISNULL([R].[InPersonConsultations], 0) AS [InPersonConsultations]
 INTO [#Results]
 FROM [#NetSalesEmployee] AS [R]
 INNER JOIN [#Centers] AS [C] ON [C].[CenterNumber] = [R].[CenterNumber]
@@ -536,17 +571,17 @@ WHERE( [R].[Consultations] <> 0
      OR ISNULL([R].[NetNB1Count], 0) <> 0
      OR ISNULL([R].[NetNB1Sales], 0) <> 0 ) ;
 
-/*****************UPDATE records with EmployeeKey for performer and EmployeeKey *****************************/
+/*****************UPDATE records with EmployeeKey for Performer and EmployeeKey *****************************/
 UPDATE
     [#Results]
 SET
-    [performer] = ISNULL([E].[EmployeeKey], -1)
+    [Performer] = ISNULL([E].[EmployeeKey], -1)
 FROM [#Results]
 LEFT JOIN [HC_BI_CMS_DDS].[bi_cms_dds].[DimEmployee] AS [E] ON REPLACE(REPLACE(LTRIM([PerformerName]), ' ', ''), ',', '') = REPLACE(
                                                                                                                                 REPLACE(
                                                                                                                                 LTRIM([E].[EmployeeFullName])
                                                                                                                                 , ' ', ''), ',', '')
-WHERE [performer] IS NULL ;
+WHERE [Performer] IS NULL ;
 
 UPDATE
     [#Results]
@@ -560,8 +595,8 @@ LEFT JOIN [HC_BI_CMS_DDS].[bi_cms_dds].[DimEmployee] AS [E] ON REPLACE(REPLACE(L
 WHERE [#Results].[EmployeeKey] IS NULL ;
 
 UPDATE [#Results]
-SET [performer] = ( -1 )
-WHERE [PerformerName] = 'Unknown, Unknown' AND [performer] = NULL ;
+SET [Performer] = ( -1 )
+WHERE [PerformerName] = 'Unknown, Unknown' AND [Performer] = NULL ;
 
 UPDATE [#Results]
 SET [EmployeeKey] = ( -1 )
@@ -573,7 +608,8 @@ WHERE( [PerformerName] IS NULL OR [PerformerName] = '' ) ;
 
 /***************** Combine 'Unknown, Unknown' records into one per center ***************************************/
 SELECT
-    [FullDate]
+    MAX([Tables]) AS [Tables]
+  , [FullDate]
   , [RegionID]
   , [Region]
   , [RegionSortOrder]
@@ -581,15 +617,15 @@ SELECT
   , [CenterSSID]
   , [CenterDescription]
   , [Center]
-  , [performer]
+  , [Performer]
   , [EmployeeKey]
   , [PerformerName]
   , SUM([Consultations]) AS [Consultations]
   , SUM([BeBacks]) AS [BeBacks]
   , SUM([BeBacksToExclude]) AS [BeBacksToExclude]
   , SUM([Referrals]) AS [Referrals]
-  , SUM([netSale]) AS [netSale]
-  , SUM([netRevenue]) AS [netRevenue]
+  , SUM([NetSale]) AS [NetSale]
+  , SUM([NetRevenue]) AS [NetRevenue]
   , SUM([XTRPlus]) AS [XTRPlus]
   , SUM([EXT]) AS [EXT]
   , SUM([Xtrands]) AS [Xtrands]
@@ -602,6 +638,8 @@ SELECT
   , MAX([SurgeryPercent]) AS [SurgeryPercent]
   , MAX([MDPPercent]) AS [MDPPercent]
   , [Accommodation]
+  , SUM([VirtualConsultations]) AS [VirtualConsultations]
+  , SUM([InPersonConsultations]) AS [InPersonConsultations]
 FROM [#Results]
 GROUP BY [RegionID]
        , [Region]
@@ -610,9 +648,12 @@ GROUP BY [RegionID]
        , [CenterSSID]
        , [CenterDescription]
        , [Center]
-       , [performer]
+       , [Performer]
        , [EmployeeKey]
        , [PerformerName]
        , [Accommodation]
        , [FullDate] ;
 GO
+RETURN ;
+
+EXEC [dbo].[spRpt_ClosingByConsultant_V2] @CenterType = 1, @StartDate = '20220201', @EndDate = '20220222' ;
