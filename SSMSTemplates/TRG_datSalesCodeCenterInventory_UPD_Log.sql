@@ -140,6 +140,7 @@ SELECT
 FROM( SELECT * FROM [Audit].[dbo_datSalesCodeCenterInventory] AS [a] WITH( NOLOCK )WHERE [a].[Action] = 'D' ) AS [a]
 FULL OUTER JOIN( SELECT * FROM [Audit].[dbo_datSalesCodeCenterInventory] AS [b] WITH( NOLOCK )WHERE [b].[Action] = 'I' ) AS [b] ON [a].[LogId] = [b].[LogId]
                                                                                                                                AND [a].[SalesCodeCenterInventoryID] = [b].[SalesCodeCenterInventoryID] ;
+
 GO
 SELECT
     [v].[LogId]
@@ -167,4 +168,4 @@ SELECT
   , [v].[BeforeUpdateStamp]
   , [v].[AfterUpdateStamp]
 FROM [Audit].[vdbo_datSalesCodeCenterInventory] AS [v]
-WHERE [v].[DiffQuantityOnHand] < -1 ;
+WHERE [v].[DiffQuantityOnHand] < -1 OR [v].[DiffQuantityOnHand] > 1 ;

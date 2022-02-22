@@ -1,4 +1,4 @@
-/* CreateDate: 02/11/2022 15:30:57.193 , ModifyDate: 02/17/2022 15:54:48.737 */
+/* CreateDate: 02/11/2022 15:30:57.193 , ModifyDate: 02/21/2022 13:23:54.860 */
 GO
 /*
 ===============================================================================================
@@ -38,8 +38,11 @@ EXEC [rptHairOrderQuantitybyClient] 241, '26,27,28,29,30,31,45,46,47,48'
 ===============================================================================================
 */
 CREATE PROCEDURE [dbo].[rptHairOrderQuantitybyClient_V2]
-    @CenterID       INT
-  , @MembershipList NVARCHAR(MAX)
+    @CenterID            INT
+  , @MembershipList      NVARCHAR(MAX)
+  , @NoHairInCenter      NVARCHAR(30) = '<ALL>'
+  , @NoHairOnOrder       NVARCHAR(30) = '<ALL>'
+  , @PriorityOrderNeeded NVARCHAR(30) = '<ALL>'
 AS
 SET NOCOUNT ON ;
 
@@ -47,6 +50,7 @@ SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED ;
 
 DECLARE
     @Getdate    DATE     = CONVERT(VARCHAR(30), GETDATE(), 112)
+  , @Tomorrow   DATE     = CONVERT(VARCHAR(30), DATEADD(DAY, 1, GETDATE()), 112)
   , @BeginDate  DATETIME = DATEADD(MONTH, -18, GETUTCDATE())
   , @GetUTCDate DATETIME = GETUTCDATE() ;
 
@@ -201,6 +205,8 @@ IF @MembershipList = '0' --ALL
           AND [cm].[ClientMembershipStatusID] = 1
           AND [m].[BusinessSegmentID] = 1 --BIO
           AND [m].[MembershipID] NOT IN (1, 2, 11, 12, 14, 15, 16, 17, 18, 19, 49, 50, 57) --ALL except these
+          AND [m].[MembershipDescription] <> 'Employee - Retail'
+          AND ISNULL([cm].[EndDate], @Tomorrow) >= @Getdate
           /*Elite (New)
                         Elite (New) Solutions
                         Cancel
@@ -291,6 +297,8 @@ ELSE
           AND [cm].[MembershipID] IN( SELECT [MembershipID] FROM [#membership] )
           AND [m].[MembershipDescription] <> 'CANCEL'
           AND [cm].[ClientMembershipStatusID] = 1
+          AND [m].[MembershipDescription] <> 'Employee - Retail'
+          AND ISNULL([cm].[EndDate], @Tomorrow) >= @Getdate
         OPTION( RECOMPILE ) ;
     END ;
 
@@ -444,10 +452,10 @@ OPTION( RECOMPILE ) ;
 -- If Cent exists false
 
 -- Oldest Order Placed Date
--- [MinOrderCreateDate]
+-- [OldestOrderPlacedDate]
 
 -- Oldest Order Placed Due Date
--- [MinOrderCreateDateAdd8Months]
+-- [OldestOrderPlacedDueDate]
 IF OBJECT_ID('[tempdb]..[#Calc01]') IS NOT NULL
     DROP TABLE [#Calc01] ;
 
@@ -455,39 +463,37 @@ SELECT
     [clt].[ClientGUID]
   , MAX(CASE WHEN [hsos].[HairSystemOrderStatusDescriptionShort] = 'CENT' THEN 1 ELSE 0 END) AS [CENT]
   , MAX(CASE WHEN [hsos].[HairSystemOrderStatusDescriptionShort] = 'ORDER' THEN 1 ELSE 0 END) AS [ORDER]
-  , MIN(CASE WHEN [hsos].[HairSystemOrderStatusDescriptionShort] = 'ORDER' THEN [clt].[CreateDate] ELSE 0 END) AS [MinOrderCreateDate]
-  , MIN(CASE WHEN [hsos].[HairSystemOrderStatusDescriptionShort] = 'ORDER' THEN DATEADD(MONTH, 8, [clt].[CreateDate])ELSE 0 END) AS [MinOrderCreateDateAdd8Months]
+  , MIN(CASE WHEN [hsos].[HairSystemOrderStatusDescriptionShort] = 'ORDER' THEN NULLIF([hso].[CreateDate], '19000101')END) AS [OldestOrderPlacedDate]
+  , MIN(CASE WHEN [hsos].[HairSystemOrderStatusDescriptionShort] = 'ORDER' THEN DATEADD(MONTH, 8, NULLIF([hso].[CreateDate], '19000101'))END) AS [OldestOrderPlacedDueDate]
 INTO [#Calc01]
 FROM [dbo].[datClient] AS [clt]
 INNER JOIN [dbo].[datHairSystemOrder] AS [hso] ON [hso].[ClientGUID] = [clt].[ClientGUID]
 INNER JOIN [dbo].[lkpHairSystemOrderStatus] AS [hsos] ON [hsos].[HairSystemOrderStatusID] = [hso].[HairSystemOrderStatusID]
                                                      AND [hsos].[HairSystemOrderStatusDescriptionShort] IN ('CENT', 'ORDER')
-WHERE EXISTS ( SELECT 1 FROM [#LastApplication] AS [l] WHERE [l].[ClientGUID] = [clt].[ClientGUID] )
+WHERE EXISTS ( SELECT 1 FROM [#hair] AS [l] WHERE [l].[ClientGUID] = [clt].[ClientGUID] )
 GROUP BY [clt].[ClientGUID] ;
 
 -- Newest Order System Type
--- [HairSystemDescriptionShort]
+-- [NewestOrderSystemType]
 IF OBJECT_ID('[tempdb]..[#Calc02]') IS NOT NULL
     DROP TABLE [#Calc02] ;
 
 SELECT
     [k].[HairSystemDescription]
-  , [k].[HairSystemDescriptionShort]
+  , [k].[NewestOrderSystemType]
   , [k].[ClientGUID]
-  , [k].[CreateDate] AS [NewestOrderDate]
+  , [k].[NewestOrderDate]
 INTO [#Calc02]
 FROM( SELECT
           [hs].[HairSystemDescription]
-        , [hs].[HairSystemDescriptionShort]
+        , [hs].[HairSystemDescriptionShort] AS [NewestOrderSystemType]
         , [clt].[ClientGUID]
-        , [hso].[CreateDate]
+        , [hso].[CreateDate] AS [NewestOrderDate]
         , ROW_NUMBER() OVER ( PARTITION BY [clt].[ClientGUID] ORDER BY [hso].[CreateDate] DESC ) AS [rw]
       FROM [dbo].[datClient] AS [clt]
       INNER JOIN [dbo].[datHairSystemOrder] AS [hso] ON [hso].[ClientGUID] = [clt].[ClientGUID]
       INNER JOIN [dbo].[cfgHairSystem] AS [hs] ON [hso].[HairSystemID] = [hs].[HairSystemID]
-      INNER JOIN [dbo].[lkpHairSystemOrderStatus] AS [hsos] ON [hsos].[HairSystemOrderStatusID] = [hso].[HairSystemOrderStatusID]
-                                                           AND [hsos].[HairSystemOrderStatusDescriptionShort] = 'ORDER'
-      WHERE EXISTS ( SELECT 1 FROM [#LastApplication] AS [l] WHERE [l].[ClientGUID] = [clt].[ClientGUID] )) AS [k]
+      WHERE EXISTS ( SELECT 1 FROM [#hair] AS [l] WHERE [l].[ClientGUID] = [clt].[ClientGUID] )) AS [k]
 WHERE [k].[rw] = 1 ;
 
 -- Remaining Qty to Order
@@ -502,7 +508,7 @@ FROM [dbo].[datClient] AS [clt]
 INNER JOIN [dbo].[datClientMembership] AS [cm] ON [cm].[ClientMembershipGUID] = [clt].[CurrentBioMatrixClientMembershipGUID]
 OUTER APPLY( SELECT COUNT(1) AS [Cnt] FROM [dbo].[datHairSystemOrder] AS [hso] WHERE [hso].[ClientGUID] = [clt].[ClientGUID]
                                                                                AND [hso].[CreateDate] >= [cm].[BeginDate] ) AS [b]
-WHERE EXISTS ( SELECT 1 FROM [#LastApplication] AS [l] WHERE [l].[ClientGUID] = [clt].[ClientGUID] ) ;
+WHERE EXISTS ( SELECT 1 FROM [#hair] AS [l] WHERE [l].[ClientGUID] = [clt].[ClientGUID] ) ;
 
 SELECT
     [q].[ClientFullNameCalc] AS [Client]
@@ -525,9 +531,9 @@ SELECT
   , [sad].[AppointmentDate] AS [ScheduledNextAppDate]
   , ISNULL([c1].[CENT], 0) AS [OrderAvailableForNextAppointment]
   --  , ISNULL(1 - [c1].[CENT], 0) AS [PriorityHairNeeded]
-  , [c1].[MinOrderCreateDate] AS [OldestOrderPlacedDate]
-  , [c1].[MinOrderCreateDateAdd8Months] AS [OldestOrderPlacedDueDate]
-  , [c2].[HairSystemDescriptionShort] AS [NewestOrderSystemType]
+  , [c1].[OldestOrderPlacedDate]
+  , [c1].[OldestOrderPlacedDueDate]
+  , [c2].[NewestOrderSystemType]
   , [c3].[Cnt] AS [RemainingQuantityToOrder]
   , [q].[Region]
   , [c2].[NewestOrderDate]
@@ -614,8 +620,8 @@ FROM( SELECT
         , ISNULL([t].[QaNeeded], 0) AS [QA Needed]
         , ISNULL([t].[InCenter], 0) AS [In Center]
         , ISNULL([t].[OnOrder], 0) AS [On Order]
-        , ISNULL([t].[InCenter], 0) + ISNULL([t].[OnOrder], 0) AS [In Center + On Order]
-        , CEILING([t].[Calc02] / 12.0) AS [Months In Center And On Order]
+        , [t].[In Center + On Order]
+        , CAST(FLOOR(12.0 / [t].[InitialQuantity] * [t].[In Center + On Order]) AS INT) AS [Months In Center And On Order]
         , CAST([t].[LastApplicationDate] AS DATE) AS [Last App Date]
         , [t].[EstNextApp] AS [Est Next App Date]
         , [t].[ScheduledNextAppDate] AS [Scheduled Next App Date]
@@ -625,11 +631,10 @@ FROM( SELECT
         , [t].[NewestOrderSystemType] AS [Newest Order System Type]
         , ISNULL([t].[RemainingQuantityToOrder], 0) AS [Remaining to Order]
         , CASE WHEN [t].[OrderAvailableForNextAppointment] = 1 THEN 'Yes' ELSE 'No' END AS [Order Avail for Next App]
-        , CASE WHEN [t].[Calc01] > ( ISNULL([t].[QaNeeded], 0) + ISNULL([t].[InCenter], 0) + ISNULL([t].[OnOrder], 0)) THEN
-               CONCAT('Yes; ', [t].[Calc01] - [t].[Calc02])ELSE 'No' END AS [Priority Order Needed]
+        , CASE WHEN [t].[Calc01] > [t].[Calc02] THEN CONCAT('Yes; ', [t].[Calc01] - [t].[Calc02])ELSE 'No' END AS [Priority Order Needed]
         --, CASE WHEN [t].[PriorityHairNeeded] = 1 THEN 'Yes' ELSE 'No' END AS [Priority Order Needed]
-        , CASE WHEN [t].[SuggestedQuantityToOrder] > [gms].[MaxVal] THEN [gms].[MaxVal] WHEN [t].[SuggestedQuantityToOrder] > 0 THEN
-                                                                                        [t].[SuggestedQuantityToOrder] ELSE 0 END AS [Suggested Qty to Order]
+        , CAST(CASE WHEN [t].[SuggestedQuantityToOrder] > [gms].[MaxVal] THEN [gms].[MaxVal] WHEN [t].[SuggestedQuantityToOrder] > 0 THEN
+                                                                                             [t].[SuggestedQuantityToOrder] ELSE 0 END AS INT) AS [Suggested Qty to Order]
 
       --, CAST([t].[DueDate] AS DATE) AS [Due Date]
       --, [t].[TotalAccumQuantity] AS [Total Accum Qty]
@@ -644,12 +649,17 @@ FROM( SELECT
       --, [gms].[MaxVal] AS [Membership Maximum]
       FROM( SELECT
                 *
+              , ISNULL([t].[InCenter], 0) + ISNULL([t].[OnOrder], 0) AS [In Center + On Order]
               , ISNULL([t].[QaNeeded], 0) + ISNULL([t].[InCenter], 0) + ISNULL([t].[OnOrder], 0) AS [Calc02]
               , [t].[Calc01] - ( ISNULL([t].[QaNeeded], 0) + ISNULL([t].[InCenter], 0) + ISNULL([t].[OnOrder], 0)) AS [SuggestedQuantityToOrder]
             FROM( SELECT *, CEILING(( ISNULL([t].[InitialQuantity], 0) / 12.0 * 8 )) AS [Calc01] FROM [#tmpHairOrderQuantitybyClient] AS [t] ) AS [t] ) AS [t]
-      INNER JOIN [#groupedMemberships] AS [gms] ON [t].[MembershipID] = [gms].[membershipId] ) AS [k]
+      INNER JOIN [#groupedMemberships] AS [gms] ON [t].[MembershipID] = [gms].[membershipId]
+      WHERE( ISNULL(@PriorityOrderNeeded, '') <> '<ALL>' AND [t].[Calc01] > [t].[Calc02] OR ISNULL(@PriorityOrderNeeded, '<ALL>') = '<ALL>' )
+        AND ( ISNULL(@NoHairOnOrder, '') <> '<ALL>' AND ISNULL([t].[OnOrder], 0) <= 0 OR ISNULL(@NoHairOnOrder, '<ALL>') = '<ALL>' )
+        AND ( ISNULL(@NoHairInCenter, '') <> '<ALL>' AND ISNULL([t].[InCenter], 0) <= 0 OR ISNULL(@NoHairInCenter, '<ALL>') = '<ALL>' )) AS [k]
 ORDER BY [k].[Region]
        , [k].[Center]
        , [k].[Suggested Qty to Order] DESC
-       , [k].[Client] ;
+       , [k].[Client]
+OPTION( RECOMPILE ) ;
 GO
