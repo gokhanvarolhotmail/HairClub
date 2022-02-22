@@ -27,7 +27,7 @@ CREATE UNIQUE CLUSTERED INDEX [dbo_datSalesCodeCenterInventory_PKC] ON [Audit].[
 GO
 CREATE TRIGGER [dbo].[TRG_datSalesCodeCenterInventory_UPD_Log]
 ON [dbo].[datSalesCodeCenterInventory]
-FOR UPDATE
+FOR INSERT, DELETE, UPDATE
 AS
 SET NOCOUNT ON ;
 
