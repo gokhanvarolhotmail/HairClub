@@ -169,3 +169,34 @@ SELECT
   , [v].[AfterUpdateStamp]
 FROM [Audit].[vdbo_datSalesCodeCenterInventory] AS [v]
 WHERE [v].[DiffQuantityOnHand] < -1 OR [v].[DiffQuantityOnHand] > 1 ;
+GO
+SELECT
+    [v].[LogId]
+  , [v].[LogUser]
+  , [v].[LogAppName]
+  , [v].[LogDate]
+  , [v].[SalesCodeCenterInventoryID]
+  , [v].[Action]
+  , [v].[SalesCodeCenterID]
+  , [v].[BeforeQuantityOnHand]
+  , [v].[AfterQuantityOnHand]
+  , [v].[DiffQuantityOnHand]
+  , [v].[BeforeQuantityPar]
+  , [v].[AfterQuantityPar]
+  , [v].[BeforeIsActive]
+  , [v].[AfterIsActive]
+  , [v].[BeforeCreateDate]
+  , [v].[AfterCreateDate]
+  , [v].[BeforeCreateUser]
+  , [v].[AfterCreateUser]
+  , [v].[BeforeLastUpdate]
+  , [v].[AfterLastUpdate]
+  , [v].[BeforeLastUpdateUser]
+  , [v].[AfterLastUpdateUser]
+  , [v].[BeforeUpdateStamp]
+  , [v].[AfterUpdateStamp]
+FROM [Audit].[vdbo_datSalesCodeCenterInventory] AS [v]
+WHERE 1 = 1
+AND [v].[AfterQuantityOnHand] <0
+ORDER BY [v].[AfterQuantityOnHand]
+
