@@ -569,15 +569,16 @@ WHERE( [R].[Consultations] <> 0 OR [R].[BeBacks] <> 0 OR [R].[Referrals] <> 0 OR
 
 /*****************UPDATE records with EmployeeKey for Performer and EmployeeKey *****************************/
 UPDATE
-    [#Results]
+    [r]
 SET
-    [Performer] = ISNULL([E].[EmployeeKey], -1)
-FROM [#Results]
-LEFT JOIN [HC_BI_CMS_DDS].[bi_cms_dds].[DimEmployee] AS [E] ON REPLACE(REPLACE(LTRIM([PerformerName]), ' ', ''), ',', '') = REPLACE(
-                                                                                                                                REPLACE(
-                                                                                                                                LTRIM([E].[EmployeeFullName])
-                                                                                                                                , ' ', ''), ',', '')
-WHERE [Performer] IS NULL ;
+    [r].[Performer] = ISNULL([E].[EmployeeKey], -1)
+FROM [#Results] AS [r]
+LEFT JOIN [HC_BI_CMS_DDS].[bi_cms_dds].[DimEmployee] AS [E] ON REPLACE(REPLACE(LTRIM([r].[PerformerName]), ' ', ''), ',', '') = REPLACE(
+                                                                                                                                    REPLACE(
+                                                                                                                                    LTRIM(
+                                                                                                                                    [E].[EmployeeFullName])
+                                                                                                                                    , ' ', ''), ',', '')
+WHERE [r].[Performer] IS NULL ;
 
 UPDATE
     [r]
@@ -656,4 +657,3 @@ GO
 RETURN ;
 
 EXEC [dbo].[spRpt_ClosingByConsultant_V2] @CenterType = 1, @StartDate = '20220201', @EndDate = '20220222' ;
-
