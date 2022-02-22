@@ -167,4 +167,4 @@ SELECT
   , [v].[BeforeUpdateStamp]
   , [v].[AfterUpdateStamp]
 FROM [Audit].[vdbo_datSalesCodeCenterInventory] AS [v]
-WHERE [v].[DiffQuantityOnHand] > 1 ;
+WHERE [v].[DiffQuantityOnHand] < -1 ;
