@@ -49,7 +49,7 @@ CREATE TABLE [#Consultations]
   , [ActivityKey]           INT
   , [ActionCodeSSID]        NVARCHAR(10)
   , [ResultCodeSSID]        NVARCHAR(10)
-  , [ActivityDate]          DATETIME
+  , [ActivityDate]          DATE
   , [Performer]             NVARCHAR(50)
   , [Consultations]         INT
   , [InPersonConsultations] INT
@@ -81,7 +81,7 @@ CREATE TABLE [#BeBacks]
   , [ActivityKey]         INT
   , [ActionCodeSSID]      NVARCHAR(10)
   , [ResultCodeSSID]      NVARCHAR(10)
-  , [ActivityDate]        DATETIME
+  , [ActivityDate]        DATE
   , [Performer]           NVARCHAR(50)
   , [BeBacks]             INT
   , [ExcludeFromConsults] BIT
@@ -96,7 +96,7 @@ CREATE TABLE [#Referrals]
   , [ActivityKey]    INT
   , [ActionCodeSSID] NVARCHAR(10)
   , [ResultCodeSSID] NVARCHAR(10)
-  , [ActivityDate]   DATETIME
+  , [ActivityDate]   DATE
   , [Performer]      NVARCHAR(50)
   , [Referrals]      INT
   , [Accommodation]  VARCHAR(50)
@@ -209,7 +209,7 @@ INSERT INTO [#Task]( [ClientGUID]
                    , [Performer] )
 SELECT
     [appt].[ClientGUID]
-  , CAST([t].[ActivityDate] AS DATE) AS [FullDate]
+  , [t].[ActivityDate] AS [FullDate]
   , [t].[Id]
   , COALESCE([t].[CenterNumber__c], [t].[CenterID__c], 100) AS [CenterNumber]
   , [t].[Action__c]
@@ -230,12 +230,12 @@ SELECT
   , ISNULL(REPLACE([t].[Performer__c], ',', ''), REPLACE([de].[EmployeeFullNameCalc], ',', '')) AS [Performer]
 FROM [HC_BI_SFDC].[dbo].[Task] AS [t] -----??? sf new definition
 LEFT OUTER JOIN [SQL05].[HairClubCMS].[dbo].[datAppointment] AS [appt] WITH( NOLOCK )ON [appt].[SalesforceTaskID] = [t].[Id]
-                                                                                    AND CAST([t].[ActivityDate] AS DATE) = [appt].[AppointmentDate]
+                                                                                    AND [t].[ActivityDate] = [appt].[AppointmentDate]
                                                                                     AND [appt].[ClientGUID] IS NOT NULL
 LEFT OUTER JOIN [SQL05].[HairClubCMS].[dbo].[datAppointmentEmployee] AS [datapptemp] ON [appt].[AppointmentGUID] = [datapptemp].[AppointmentGUID]
 LEFT OUTER JOIN [SQL05].[HairClubCMS].[dbo].[datEmployee] AS [de] ON [de].[EmployeeGUID] = [datapptemp].[EmployeeGUID]
 WHERE LTRIM(RTRIM([t].[Action__c])) IN ('Appointment', 'Be Back', 'In House', 'Recovery')
-  AND CAST([t].[ActivityDate] AS DATE) BETWEEN @StartDate AND @EndDate
+  AND [t].[ActivityDate] BETWEEN @StartDate AND @EndDate
   AND ISNULL([t].[IsDeleted], 0) = 0
 OPTION( RECOMPILE ) ;
 
@@ -271,7 +271,8 @@ FROM [#Task] AS [t]
 INNER JOIN [#Centers] AS [CTR] ON [t].[CenterNumber] = [CTR].[CenterNumber]
 WHERE [t].[Result__c] IN ('Completed', 'Show Sale', 'Show no sale', 'Reschedule')
   AND ISNULL([t].[ExcludeFromConsults], 0) = 0
-  AND [t].[Action__c] IN ('Appointment', 'In House', 'Recovery', 'Be Back') ;
+  AND [t].[Action__c] IN ('Appointment', 'In House', 'Recovery', 'Be Back')
+OPTION( RECOMPILE ) ;
 
 INSERT INTO [#BeBacks]
 SELECT
@@ -387,6 +388,7 @@ INNER JOIN [HC_BI_ENT_DDS].[bi_ent_dds].[DimCenter] AS [ctr] ON [ctr].[CenterKey
 INNER JOIN [#Centers] AS [c] ON [c].[CenterNumber] = [ctr].[CenterNumber]
 INNER JOIN [HC_BI_CMS_DDS].[bi_cms_dds].[DimClient] AS [CLT] ON [FST].[ClientKey] = [CLT].[ClientKey]
 LEFT JOIN( SELECT [t].[ClientGUID], MAX([t].[Accommodation]) AS [Accommodation] FROM [#Consultations] AS [t] GROUP BY [t].[ClientGUID] ) AS [cs] ON [cs].[ClientGUID] = [CLT].[ClientSSID]
+WHERE [DD].[FullDate] BETWEEN @StartDate AND @EndDate AND [SC].[SalesCodeKey] NOT IN (665, 654, 393, 668) AND [SO].[IsVoidedFlag] = 0
 GROUP BY [c].[MainGroup]
        , [ctr].[CenterNumber]
        , [SOD].[Employee1FullName]
@@ -470,7 +472,7 @@ SELECT
   , [NS].[Xtrands]
   , [NS].[Surgery]
   , [NS].[NB_MDPCnt]
-  , '' AS [Accommodation]
+  , [NS].[Accommodation]
   , 0 AS [VirtualConsultations]
   , 0 AS [InPersonConsultations]
 FROM [#NetSales] AS [NS]
@@ -565,7 +567,12 @@ SELECT
 INTO [#Results]
 FROM [#NetSalesEmployee] AS [R]
 INNER JOIN [#Centers] AS [C] ON [C].[CenterNumber] = [R].[CenterNumber]
-WHERE( [R].[Consultations] <> 0 OR [R].[BeBacks] <> 0 OR [R].[Referrals] <> 0 OR [R].[NetNB1Count] <> 0 OR [R].[NetNB1Sales] <> 0 ) ;
+WHERE( [R].[Consultations] <> 0
+     OR ISNULL([R].[BeBacks], 0) <> 0
+     OR ISNULL([R].[Referrals], 0) <> 0
+     OR ISNULL([R].[NetNB1Count], 0) <> 0
+     OR ISNULL([R].[NetNB1Sales], 0) <> 0 )
+OPTION( RECOMPILE ) ;
 
 /*****************UPDATE records with EmployeeKey for Performer and EmployeeKey *****************************/
 UPDATE
