@@ -104,8 +104,7 @@ CREATE TABLE [#Referrals]
 
 CREATE TABLE [#CombinedData]
 (
-    [Table]                 VARCHAR(128)
-  , [MainGroup]             VARCHAR(50)
+    [MainGroup]             VARCHAR(50)
   , [CenterNumber]          INT
   , [FullDate]              DATETIME
   , [EmployeeFullName]      NVARCHAR(250)
@@ -395,8 +394,7 @@ GROUP BY [c].[MainGroup]
 OPTION( RECOMPILE ) ;
 
 /********************************** Combine Results *************************************/
-INSERT INTO [#CombinedData]( [Table]
-                           , [MainGroup]
+INSERT INTO [#CombinedData]( [MainGroup]
                            , [CenterNumber]
                            , [FullDate]
                            , [EmployeeFullName]
@@ -415,8 +413,7 @@ INSERT INTO [#CombinedData]( [Table]
                            , [VirtualConsultations]
                            , [InPersonConsultations] )
 SELECT
-    'NetConsultations' AS [Table]
-  , [NC].[MainGroup]
+    [NC].[MainGroup]
   , [NC].[CenterNumber]
   , [NC].[FullDate]
   , [NC].[Performer] AS [EmployeeFullName]
@@ -435,10 +432,9 @@ SELECT
   , ISNULL([NC].[VirtualConsultations], 0) AS [VirtualConsultations]
   , ISNULL([NC].[InPersonConsultations], 0) AS [InPersonConsultations]
 FROM [#NetConsultations] AS [NC]
-UNION ALL
+UNION
 SELECT
-    'NetBeBacks' AS [Table]
-  , [NB].[MainGroup]
+    [NB].[MainGroup]
   , [NB].[CenterNumber]
   , [NB].[FullDate]
   , [NB].[Performer] AS [EmployeeFullName]
@@ -457,10 +453,9 @@ SELECT
   , 0 AS [VirtualConsultations]
   , 0 AS [InPersonConsultations]
 FROM [#NetBeBacks] AS [NB]
-UNION ALL
+UNION
 SELECT
-    'NetSales' AS [Table]
-  , [NS].[MainGroup]
+    [NS].[MainGroup]
   , [NS].[CenterNumber]
   , [NS].[FullDate]
   , [NS].[EmployeeFullName]
@@ -479,10 +474,9 @@ SELECT
   , 0 AS [VirtualConsultations]
   , 0 AS [InPersonConsultations]
 FROM [#NetSales] AS [NS]
-UNION ALL
+UNION
 SELECT
-    'NetReferrals' AS [Table]
-  , [REF].[MainGroup]
+    [REF].[MainGroup]
   , [REF].[CenterNumber]
   , [REF].[FullDate]
   , [REF].[Performer] AS [EmployeeFullName]
@@ -503,11 +497,7 @@ SELECT
 FROM [#NetReferrals] AS [REF] ;
 
 SELECT
-    SUBSTRING(
-        CONCAT(
-            MAX(CASE WHEN [CD].[Table] = 'NetConsultations' THEN ',NetConsultations' END), MAX(CASE WHEN [CD].[Table] = 'NetBeBacks' THEN ',NetBeBacks' END)
-          , MAX(CASE WHEN [CD].[Table] = 'NetSales' THEN ',NetSales' END), MAX(CASE WHEN [CD].[Table] = 'NetReferrals' THEN ',NetReferrals' END)), 2, 500) AS [Tables]
-  , [CD].[MainGroup]
+    [CD].[MainGroup]
   , [CD].[CenterNumber]
   , [CD].[FullDate]
   , CASE WHEN [CD].[EmployeeFullName] = ',' THEN 'Unknown, Unknown' WHEN [CD].[EmployeeFullName] IS NULL THEN 'Unknown, Unknown' ELSE
@@ -541,8 +531,7 @@ GROUP BY [CD].[MainGroup]
 
 /********************************** Display Results *************************************/
 SELECT
-    [R].[Tables]
-  , [R].[FullDate]
+    [R].[FullDate]
   , [C].[MainGroupID] AS [RegionID]
   , [C].[MainGroup] AS [Region]
   , [C].[MainGroupSortOrder] AS [RegionSortOrder]
@@ -619,8 +608,7 @@ WHERE( [r].[PerformerName] IS NULL OR [r].[PerformerName] = '' ) ;
 
 /***************** Combine 'Unknown, Unknown' records into one per center ***************************************/
 SELECT
-    MAX([Tables]) AS [Tables]
-  , [FullDate]
+    [FullDate]
   , [RegionID]
   , [Region]
   , [RegionSortOrder]
@@ -668,3 +656,4 @@ GO
 RETURN ;
 
 EXEC [dbo].[spRpt_ClosingByConsultant_V2] @CenterType = 1, @StartDate = '20220201', @EndDate = '20220222' ;
+
