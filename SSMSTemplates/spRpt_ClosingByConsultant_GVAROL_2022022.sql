@@ -581,15 +581,16 @@ OPTION( RECOMPILE ) ;
 
 /*****************UPDATE records with EmployeeKey for Performer and EmployeeKey *****************************/
 UPDATE
-    [#Results]
+    [r]
 SET
-    [Performer] = ISNULL([E].[EmployeeKey], -1)
-FROM [#Results]
-LEFT JOIN [HC_BI_CMS_DDS].[bi_cms_dds].[DimEmployee] AS [E] ON REPLACE(REPLACE(LTRIM([PerformerName]), ' ', ''), ',', '') = REPLACE(
-                                                                                                                                REPLACE(
-                                                                                                                                LTRIM([E].[EmployeeFullName])
-                                                                                                                                , ' ', ''), ',', '')
-WHERE [Performer] IS NULL ;
+    [r].[Performer] = ISNULL([E].[EmployeeKey], -1)
+FROM [#Results] AS [r]
+LEFT JOIN [HC_BI_CMS_DDS].[bi_cms_dds].[DimEmployee] AS [E] ON REPLACE(REPLACE(LTRIM([r].[PerformerName]), ' ', ''), ',', '') = REPLACE(
+                                                                                                                                    REPLACE(
+                                                                                                                                    LTRIM(
+                                                                                                                                    [E].[EmployeeFullName])
+                                                                                                                                    , ' ', ''), ',', '')
+WHERE [r].[Performer] IS NULL ;
 
 UPDATE
     [r]
@@ -605,13 +606,13 @@ WHERE [r].[EmployeeKey] IS NULL
 OPTION( RECOMPILE ) ;
 
 UPDATE [r]
-SET [r].[Performer] = ( -1 )
+SET [r].[Performer] = -1
 FROM [#Results] AS [r]
 WHERE [r].[PerformerName] = 'Unknown, Unknown' AND [r].[Performer] IS NULL
 OPTION( RECOMPILE ) ;
 
 UPDATE [r]
-SET [r].[EmployeeKey] = ( -1 )
+SET [r].[EmployeeKey] = -1
 FROM [#Results] AS [r]
 WHERE [r].[PerformerName] = 'Unknown, Unknown' AND [r].[EmployeeKey] IS NULL
 OPTION( RECOMPILE ) ;
