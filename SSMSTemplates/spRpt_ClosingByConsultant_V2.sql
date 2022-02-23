@@ -230,12 +230,12 @@ SELECT
   , ISNULL(REPLACE([t].[Performer__c], ',', ''), REPLACE([de].[EmployeeFullNameCalc], ',', '')) AS [Performer]
 FROM [HC_BI_SFDC].[dbo].[Task] AS [t] -----??? sf new definition
 LEFT OUTER JOIN [SQL05].[HairClubCMS].[dbo].[datAppointment] AS [appt] WITH( NOLOCK )ON [appt].[SalesforceTaskID] = [t].[Id]
-                                                                                    AND [t].[ActivityDate] = [appt].[AppointmentDate]
+                                                                                    AND CAST([t].[ActivityDate] AS DATE) = [appt].[AppointmentDate]
                                                                                     AND [appt].[ClientGUID] IS NOT NULL
 LEFT OUTER JOIN [SQL05].[HairClubCMS].[dbo].[datAppointmentEmployee] AS [datapptemp] ON [appt].[AppointmentGUID] = [datapptemp].[AppointmentGUID]
 LEFT OUTER JOIN [SQL05].[HairClubCMS].[dbo].[datEmployee] AS [de] ON [de].[EmployeeGUID] = [datapptemp].[EmployeeGUID]
 WHERE LTRIM(RTRIM([t].[Action__c])) IN ('Appointment', 'Be Back', 'In House', 'Recovery')
-  AND [t].[ActivityDate] BETWEEN @StartDate AND @EndDate
+  AND CAST([t].[ActivityDate] AS DATE) BETWEEN @StartDate AND @EndDate
   AND ISNULL([t].[IsDeleted], 0) = 0
 OPTION( RECOMPILE ) ;
 
