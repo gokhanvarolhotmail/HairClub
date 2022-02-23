@@ -106,7 +106,7 @@ CREATE TABLE [#CombinedData]
 (
     [MainGroup]             VARCHAR(50)
   , [CenterNumber]          INT
-  , [FullDate]              DATETIME
+  , [FullDate]              DATE
   , [EmployeeFullName]      NVARCHAR(250)
   , [Consultations]         INT
   , [BeBacks]               INT
@@ -512,7 +512,7 @@ SELECT
     [CD].[MainGroup]
   , [CD].[CenterNumber]
   , [CD].[FullDate]
-  , CASE WHEN [CD].[EmployeeFullName] = ',' OR [CD].[EmployeeFullName] IS NULL THEN 'Unknown, Unknown' ELSE ISNULL([CD].[EmployeeFullName], 'Unknown, Unknown')END AS [EmployeeFullName]
+  , CASE WHEN [CD].[EmployeeFullName] = ',' OR [CD].[EmployeeFullName] IS NULL THEN 'Unknown, Unknown' ELSE [CD].[EmployeeFullName] END AS [EmployeeFullName]
   , SUM([CD].[Consultations]) AS [Consultations]
   , SUM([CD].[BeBacks]) AS [BeBacks]
   , SUM([CD].[BeBacksToExclude]) AS [BeBacksToExclude]
@@ -531,8 +531,7 @@ INTO [#NetSalesEmployee]
 FROM [#CombinedData] AS [CD]
 GROUP BY [CD].[MainGroup]
        , [CD].[CenterNumber]
-       , CASE WHEN [CD].[EmployeeFullName] = ',' OR [CD].[EmployeeFullName] IS NULL THEN 'Unknown, Unknown' ELSE
-                                                                                                            ISNULL([CD].[EmployeeFullName], 'Unknown, Unknown')END
+       , CASE WHEN [CD].[EmployeeFullName] = ',' OR [CD].[EmployeeFullName] IS NULL THEN 'Unknown, Unknown' ELSE [CD].[EmployeeFullName] END
        , [CD].[Accommodation]
        , [CD].[FullDate]
 OPTION( RECOMPILE ) ;
