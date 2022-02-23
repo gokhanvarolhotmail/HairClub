@@ -512,10 +512,7 @@ SELECT
     [CD].[MainGroup]
   , [CD].[CenterNumber]
   , [CD].[FullDate]
-  , CASE WHEN [CD].[EmployeeFullName] = ',' THEN 'Unknown, Unknown' WHEN [CD].[EmployeeFullName] IS NULL THEN 'Unknown, Unknown' ELSE
-                                                                                                                                 ISNULL(
-                                                                                                                                 [CD].[EmployeeFullName]
-                                                                                                                                 , 'Unknown, Unknown')END AS [EmployeeFullName]
+  , CASE WHEN [CD].[EmployeeFullName] = ',' OR [CD].[EmployeeFullName] IS NULL THEN 'Unknown, Unknown' ELSE ISNULL([CD].[EmployeeFullName], 'Unknown, Unknown')END AS [EmployeeFullName]
   , SUM([CD].[Consultations]) AS [Consultations]
   , SUM([CD].[BeBacks]) AS [BeBacks]
   , SUM([CD].[BeBacksToExclude]) AS [BeBacksToExclude]
@@ -534,10 +531,8 @@ INTO [#NetSalesEmployee]
 FROM [#CombinedData] AS [CD]
 GROUP BY [CD].[MainGroup]
        , [CD].[CenterNumber]
-       , CASE WHEN [CD].[EmployeeFullName] = ',' THEN 'Unknown, Unknown' WHEN [CD].[EmployeeFullName] IS NULL THEN 'Unknown, Unknown' ELSE
-                                                                                                                                      ISNULL(
-                                                                                                                                      [CD].[EmployeeFullName]
-                                                                                                                                      , 'Unknown, Unknown')END
+       , CASE WHEN [CD].[EmployeeFullName] = ',' OR [CD].[EmployeeFullName] IS NULL THEN 'Unknown, Unknown' ELSE
+                                                                                                            ISNULL([CD].[EmployeeFullName], 'Unknown, Unknown')END
        , [CD].[Accommodation]
        , [CD].[FullDate]
 OPTION( RECOMPILE ) ;
@@ -607,22 +602,26 @@ LEFT JOIN [HC_BI_CMS_DDS].[bi_cms_dds].[DimEmployee] AS [E] ON REPLACE(REPLACE(L
                                                                                                                                     LTRIM(
                                                                                                                                     [E].[EmployeeFullName])
                                                                                                                                     , ' ', ''), ',', '')
-WHERE [r].[EmployeeKey] IS NULL ;
+WHERE [r].[EmployeeKey] IS NULL
+OPTION( RECOMPILE ) ;
 
 UPDATE [r]
 SET [r].[Performer] = ( -1 )
 FROM [#Results] AS [r]
-WHERE [r].[PerformerName] = 'Unknown, Unknown' AND [r].[Performer] IS NULL ;
+WHERE [r].[PerformerName] = 'Unknown, Unknown' AND [r].[Performer] IS NULL
+OPTION( RECOMPILE ) ;
 
 UPDATE [r]
 SET [r].[EmployeeKey] = ( -1 )
 FROM [#Results] AS [r]
-WHERE [r].[PerformerName] = 'Unknown, Unknown' AND [r].[EmployeeKey] IS NULL ;
+WHERE [r].[PerformerName] = 'Unknown, Unknown' AND [r].[EmployeeKey] IS NULL
+OPTION( RECOMPILE ) ;
 
 UPDATE [r]
 SET [r].[PerformerName] = 'Unknown, Unknown'
 FROM [#Results] AS [r]
-WHERE( [r].[PerformerName] IS NULL OR [r].[PerformerName] = '' ) ;
+WHERE( [r].[PerformerName] IS NULL OR [r].[PerformerName] = '' )
+OPTION( RECOMPILE ) ;
 
 /***************** Combine 'Unknown, Unknown' records into one per center ***************************************/
 SELECT
