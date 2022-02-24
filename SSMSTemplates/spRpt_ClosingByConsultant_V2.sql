@@ -108,7 +108,8 @@ CREATE TABLE [#Referrals]
 
 CREATE TABLE [#CombinedData]
 (
-    [MainGroup]             VARCHAR(50)
+    [Table]                 VARCHAR(256) NOT NULL
+  , [MainGroup]             VARCHAR(50)
   , [CenterNumber]          INT
   , [FullDate]              DATETIME
   , [EmployeeFullName]      NVARCHAR(250)
@@ -244,6 +245,20 @@ WHERE LTRIM(RTRIM([t].[Action__c])) IN ('Appointment', 'Be Back', 'In House', 'R
 OPTION( RECOMPILE ) ;
 
 /********************************** Get consultations *************************************/
+SELECT
+    [appt].[ClientGUID]
+  , MAX([t].[Accommodation__c]) AS [Accommodation]
+INTO [#Accommodation]
+FROM [HC_BI_SFDC].[dbo].[Task] AS [t] -----??? sf new definition
+INNER JOIN [SQL05].[HairClubCMS].[dbo].[datAppointment] AS [appt] WITH( NOLOCK )ON [appt].[SalesforceTaskID] = [t].[Id]
+                                                                               AND CAST([t].[ActivityDate] AS DATE) = [appt].[AppointmentDate]
+                                                                               AND [appt].[ClientGUID] IS NOT NULL
+WHERE LTRIM(RTRIM([t].[Action__c])) IN ('Appointment', 'Be Back', 'In House', 'Recovery')
+  AND CAST([t].[ActivityDate] AS DATE) BETWEEN @StartDate AND @EndDate
+  AND ISNULL([t].[IsDeleted], 0) = 0
+GROUP BY [appt].[ClientGUID]
+OPTION( RECOMPILE ) ;
+
 INSERT INTO [#Consultations]
 SELECT
     [t].[ClientGUID]
@@ -391,7 +406,7 @@ INNER JOIN [HC_BI_CMS_DDS].[bi_cms_dds].[DimMembership] AS [m] ON [CM].[Membersh
 INNER JOIN [HC_BI_ENT_DDS].[bi_ent_dds].[DimCenter] AS [ctr] ON [ctr].[CenterKey] = [CM].[CenterKey]
 INNER JOIN [#Centers] AS [c] ON [c].[CenterNumber] = [ctr].[CenterNumber]
 INNER JOIN [HC_BI_CMS_DDS].[bi_cms_dds].[DimClient] AS [CLT] ON [FST].[ClientKey] = [CLT].[ClientKey]
-LEFT JOIN( SELECT [t].[ClientGUID], MAX([t].[Accommodation]) AS [Accommodation] FROM [#Consultations] AS [t] GROUP BY [t].[ClientGUID] ) AS [cs] ON [cs].[ClientGUID] = [CLT].[ClientSSID]
+LEFT JOIN [#Accommodation] AS [cs] ON [cs].[ClientGUID] = [CLT].[ClientSSID]
 WHERE [DD].[FullDate] BETWEEN @StartDate AND @EndDate AND [SC].[SalesCodeKey] NOT IN (665, 654, 393, 668) AND [SO].[IsVoidedFlag] = 0
 GROUP BY [c].[MainGroup]
        , [ctr].[CenterNumber]
@@ -400,7 +415,8 @@ GROUP BY [c].[MainGroup]
 OPTION( RECOMPILE ) ;
 
 /********************************** Combine Results *************************************/
-INSERT INTO [#CombinedData]( [MainGroup]
+INSERT INTO [#CombinedData]( [Table]
+                           , [MainGroup]
                            , [CenterNumber]
                            , [FullDate]
                            , [EmployeeFullName]
@@ -419,7 +435,8 @@ INSERT INTO [#CombinedData]( [MainGroup]
                            , [VirtualConsultations]
                            , [InPersonConsultations] )
 SELECT
-    [NC].[MainGroup]
+    'NetConsultations' AS [Table]
+  , [NC].[MainGroup]
   , [NC].[CenterNumber]
   , [NC].[FullDate]
   , [NC].[Performer] AS [EmployeeFullName]
@@ -440,7 +457,8 @@ SELECT
 FROM [#NetConsultations] AS [NC]
 UNION
 SELECT
-    [NB].[MainGroup]
+    'NetBeBacks' AS [Table]
+  , [NB].[MainGroup]
   , [NB].[CenterNumber]
   , [NB].[FullDate]
   , [NB].[Performer] AS [EmployeeFullName]
@@ -461,7 +479,8 @@ SELECT
 FROM [#NetBeBacks] AS [NB]
 UNION
 SELECT
-    [NS].[MainGroup]
+    'NetSales' AS [Table]
+  , [NS].[MainGroup]
   , [NS].[CenterNumber]
   , [NS].[FullDate]
   , [NS].[EmployeeFullName]
@@ -482,7 +501,8 @@ SELECT
 FROM [#NetSales] AS [NS]
 UNION
 SELECT
-    [REF].[MainGroup]
+    'NetReferrals' AS [Table]
+  , [REF].[MainGroup]
   , [REF].[CenterNumber]
   , [REF].[FullDate]
   , [REF].[Performer] AS [EmployeeFullName]
@@ -503,7 +523,11 @@ SELECT
 FROM [#NetReferrals] AS [REF] ;
 
 SELECT
-    [CD].[MainGroup]
+    SUBSTRING(
+        CONCAT(
+            MAX(CASE WHEN [CD].[Table] = 'NetConsultations' THEN ',NetConsultations' END), MAX(CASE WHEN [CD].[Table] = 'NetBeBacks' THEN ',NetBeBacks' END)
+          , MAX(CASE WHEN [CD].[Table] = 'NetSales' THEN ',NetSales' END), MAX(CASE WHEN [CD].[Table] = 'NetReferrals' THEN ',NetReferrals' END)), 2, 1000) AS [Tables]
+  , [CD].[MainGroup]
   , [CD].[CenterNumber]
   , [CD].[FullDate]
   , CASE WHEN [CD].[EmployeeFullName] = ',' THEN 'Unknown, Unknown' WHEN [CD].[EmployeeFullName] IS NULL THEN 'Unknown, Unknown' ELSE
@@ -537,7 +561,8 @@ GROUP BY [CD].[MainGroup]
 
 /********************************** Display Results *************************************/
 SELECT
-    [R].[FullDate]
+    [R].[Tables]
+  , [R].[FullDate]
   , [C].[MainGroupID] AS [RegionID]
   , [C].[MainGroup] AS [Region]
   , [C].[MainGroupSortOrder] AS [RegionSortOrder]
@@ -620,7 +645,11 @@ WHERE( [r].[PerformerName] IS NULL OR [r].[PerformerName] = '' ) ;
 
 /***************** Combine 'Unknown, Unknown' records into one per center ***************************************/
 SELECT
-    [FullDate]
+    SUBSTRING(
+        CONCAT(
+            MAX(CASE WHEN [Tables] LIKE '%NetConsultations%' THEN ',NetConsultations' END), MAX(CASE WHEN [Tables] LIKE '%NetBeBacks%' THEN ',NetBeBacks' END)
+          , MAX(CASE WHEN [Tables] LIKE '%NetSales%' THEN ',NetSales' END), MAX(CASE WHEN [Tables] LIKE '%NetReferrals%' THEN ',NetReferrals' END)), 2, 1000) AS [Tables]
+  , CAST([FullDate] AS DATE) AS [FullDate]
   , [RegionID]
   , [Region]
   , [RegionSortOrder]
@@ -663,8 +692,8 @@ GROUP BY [RegionID]
        , [EmployeeKey]
        , [PerformerName]
        , [Accommodation]
-       , [FullDate] ;
+       , CAST([FullDate] AS DATE) ;
 GO
 RETURN ;
 
-EXEC [dbo].[spRpt_ClosingByConsultant_V2] @CenterType = 1, @StartDate = '20220201', @EndDate = '20220222' ;
+EXEC [dbo].[spRpt_ClosingByConsultant_V2] @CenterType = 1, @StartDate = '20220201', @EndDate = '20220224' ;
