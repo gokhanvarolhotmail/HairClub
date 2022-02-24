@@ -1,12 +1,14 @@
 USE [HC_BI_MKTG_DDS] ;
 
-SELECT TOP 10
+SELECT TOP 100
        *
-FROM [HC_BI_MKTG_DDS].[bi_mktg_dds].[DimActivityDemographic] ;
+FROM [HC_BI_MKTG_DDS].[bi_mktg_dds].[DimActivityDemographic]
+ORDER BY [RowTimeStamp] DESC ;
 
 SELECT TOP 100
        *
-FROM [HC_BI_MKTG_STAGE].[bi_mktg_stage].[DimActivityDemographic] ;
+FROM [HC_BI_MKTG_STAGE].[bi_mktg_stage].[DimActivityDemographic]
+ORDER BY [ModifiedDate] DESC ;
 
 -- Audit
 SELECT TOP 100
