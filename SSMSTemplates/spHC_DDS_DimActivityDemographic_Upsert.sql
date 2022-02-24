@@ -2,7 +2,7 @@
 GO
 USE HC_BI_MKTG_STAGE
 GO
-ALTER PROCEDURE [bi_mktg_stage].[spHC_DDS_DimActivityDemographic_Upsert]
+CREATE PROCEDURE [bi_mktg_stage].[spHC_DDS_DimActivityDemographic_Upsert]
     @DataPkgKey           INT
   , @IgnoreRowCnt         BIGINT OUTPUT
   , @InsertRowCnt         BIGINT OUTPUT
