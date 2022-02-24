@@ -29,6 +29,10 @@ ALTER PROCEDURE [dbo].[spRpt_ClosingByConsultant_V2]
   , @StartDate  DATETIME
   , @EndDate    DATETIME
 AS
+--DECLARE
+--    @CenterType INT      = 1
+--  , @StartDate  DATETIME = '20220201'
+--  , @EndDate    DATETIME = '20220224' ;
 SET FMTONLY OFF ;
 
 /********************************** Create temp table objects *************************************/
@@ -80,7 +84,8 @@ CREATE TABLE [#Task]
 
 CREATE TABLE [#BeBacks]
 (
-    [MainGroup]           VARCHAR(50)
+    [ClientGUID]          UNIQUEIDENTIFIER
+  , [MainGroup]           VARCHAR(50)
   , [CenterNumber]        INT
   , [ActivityKey]         INT
   , [ActionCodeSSID]      NVARCHAR(10)
@@ -95,7 +100,8 @@ CREATE TABLE [#BeBacks]
 
 CREATE TABLE [#Referrals]
 (
-    [MainGroup]      VARCHAR(50)
+    [ClientGUID]     UNIQUEIDENTIFIER
+  , [MainGroup]      VARCHAR(50)
   , [CenterNumber]   INT
   , [ActivityKey]    INT
   , [ActionCodeSSID] NVARCHAR(10)
@@ -109,6 +115,7 @@ CREATE TABLE [#Referrals]
 CREATE TABLE [#CombinedData]
 (
     [Table]                 VARCHAR(256) NOT NULL
+  , [ClientGUIDList]        VARCHAR(MAX)
   , [MainGroup]             VARCHAR(50)
   , [CenterNumber]          INT
   , [FullDate]              DATETIME
@@ -295,7 +302,8 @@ OPTION( RECOMPILE ) ;
 
 INSERT INTO [#BeBacks]
 SELECT
-    [CTR].[MainGroup]
+    [t].[ClientGUID]
+  , [CTR].[MainGroup]
   , [t].[CenterNumber]
   , -1
   , -1
@@ -315,7 +323,8 @@ INNER JOIN [#Centers] AS [CTR] ON [t].[CenterNumber] = [CTR].[CenterNumber] ;
 
 INSERT INTO [#Referrals]
 SELECT
-    [CTR].[MainGroup]
+    [t].[ClientGUID]
+  , [CTR].[MainGroup]
   , [t].[CenterNumber]
   , -1
   , -1
@@ -331,7 +340,8 @@ WHERE [t].[SourceCode] IN ('CORP REFER', 'REFERAFRND', 'STYLEREFER', 'REGISSTYRF
                          , 'IPREFCLRERECA12476MP', 'bosref', 'other-bos') ;
 
 SELECT
-    [MainGroup]
+    [Utility].[dbo].[StringConcat]([ClientGUID], ',') AS [ClientGUIDList]
+  , [MainGroup]
   , [CenterNumber]
   , [Performer]
   , [ActivityDate] AS [FullDate]
@@ -349,7 +359,8 @@ GROUP BY [MainGroup]
        , [ActivityDate] ;
 
 SELECT
-    [MainGroup]
+    [Utility].[dbo].[StringConcat]([ClientGUID], ',') AS [ClientGUIDList]
+  , [MainGroup]
   , [CenterNumber]
   , [Performer]
   , SUM([BeBacks]) AS [BeBacks]
@@ -364,7 +375,8 @@ GROUP BY [MainGroup]
        , [ActivityDate] ;
 
 SELECT
-    [MainGroup]
+    [Utility].[dbo].[StringConcat]([ClientGUID], ',') AS [ClientGUIDList]
+  , [MainGroup]
   , [CenterNumber]
   , [Performer]
   , SUM([Referrals]) AS [Referrals]
@@ -380,7 +392,8 @@ GROUP BY [MainGroup]
 
 /********************************** Get sales data *************************************/
 SELECT
-    [c].[MainGroup]
+    [Utility].[dbo].[StringConcat]([CLT].[ClientSSID], ',') AS [ClientGUIDList]
+  , [c].[MainGroup]
   , [ctr].[CenterNumber]
   , [DD].[FullDate] AS [FullDate]
   , ISNULL([SOD].[Employee1FullName], 'Unknown, Unknown') AS [EmployeeFullName]
@@ -416,6 +429,7 @@ OPTION( RECOMPILE ) ;
 
 /********************************** Combine Results *************************************/
 INSERT INTO [#CombinedData]( [Table]
+                           , [ClientGUIDList]
                            , [MainGroup]
                            , [CenterNumber]
                            , [FullDate]
@@ -436,6 +450,7 @@ INSERT INTO [#CombinedData]( [Table]
                            , [InPersonConsultations] )
 SELECT
     'NetConsultations' AS [Table]
+  , [NC].[ClientGUIDList]
   , [NC].[MainGroup]
   , [NC].[CenterNumber]
   , [NC].[FullDate]
@@ -458,6 +473,7 @@ FROM [#NetConsultations] AS [NC]
 UNION
 SELECT
     'NetBeBacks' AS [Table]
+  , [NB].[ClientGUIDList]
   , [NB].[MainGroup]
   , [NB].[CenterNumber]
   , [NB].[FullDate]
@@ -480,6 +496,7 @@ FROM [#NetBeBacks] AS [NB]
 UNION
 SELECT
     'NetSales' AS [Table]
+  , [NS].[ClientGUIDList]
   , [NS].[MainGroup]
   , [NS].[CenterNumber]
   , [NS].[FullDate]
@@ -502,6 +519,7 @@ FROM [#NetSales] AS [NS]
 UNION
 SELECT
     'NetReferrals' AS [Table]
+  , [REF].[ClientGUIDList]
   , [REF].[MainGroup]
   , [REF].[CenterNumber]
   , [REF].[FullDate]
@@ -527,6 +545,7 @@ SELECT
         CONCAT(
             MAX(CASE WHEN [CD].[Table] = 'NetConsultations' THEN ',NetConsultations' END), MAX(CASE WHEN [CD].[Table] = 'NetBeBacks' THEN ',NetBeBacks' END)
           , MAX(CASE WHEN [CD].[Table] = 'NetSales' THEN ',NetSales' END), MAX(CASE WHEN [CD].[Table] = 'NetReferrals' THEN ',NetReferrals' END)), 2, 1000) AS [Tables]
+  , [Utility].[dbo].[StringConcat]([CD].[ClientGUIDList], ',') AS [ClientGUIDList]
   , [CD].[MainGroup]
   , [CD].[CenterNumber]
   , [CD].[FullDate]
@@ -562,6 +581,7 @@ GROUP BY [CD].[MainGroup]
 /********************************** Display Results *************************************/
 SELECT
     [R].[Tables]
+  , [R].[ClientGUIDList]
   , [R].[FullDate]
   , [C].[MainGroupID] AS [RegionID]
   , [C].[MainGroup] AS [Region]
@@ -649,6 +669,7 @@ SELECT
         CONCAT(
             MAX(CASE WHEN [Tables] LIKE '%NetConsultations%' THEN ',NetConsultations' END), MAX(CASE WHEN [Tables] LIKE '%NetBeBacks%' THEN ',NetBeBacks' END)
           , MAX(CASE WHEN [Tables] LIKE '%NetSales%' THEN ',NetSales' END), MAX(CASE WHEN [Tables] LIKE '%NetReferrals%' THEN ',NetReferrals' END)), 2, 1000) AS [Tables]
+  , [Utility].[dbo].[StringConcat]([ClientGUIDList], ',') AS [ClientGUIDList]
   , CAST([FullDate] AS DATE) AS [FullDate]
   , [RegionID]
   , [Region]
@@ -680,6 +701,7 @@ SELECT
   , [Accommodation]
   , SUM([VirtualConsultations]) AS [VirtualConsultations]
   , SUM([InPersonConsultations]) AS [InPersonConsultations]
+INTO [#Results_2]
 FROM [#Results]
 GROUP BY [RegionID]
        , [Region]
@@ -693,6 +715,62 @@ GROUP BY [RegionID]
        , [PerformerName]
        , [Accommodation]
        , CAST([FullDate] AS DATE) ;
+
+SELECT
+    [a].[Tables]
+  , [b].[ClientGUIDList]
+  , [b].[ClientKeyList]
+  , [b].[ClientCount]
+  , [a].[FullDate]
+  , [a].[RegionID]
+  , [a].[Region]
+  , [a].[RegionSortOrder]
+  , [a].[CenterID]
+  , [a].[CenterSSID]
+  , [a].[CenterDescription]
+  , [a].[Center]
+  , [a].[Performer]
+  , [a].[EmployeeKey]
+  , [a].[PerformerName]
+  , [a].[Consultations]
+  , [a].[BeBacks]
+  , [a].[BeBacksToExclude]
+  , [a].[Referrals]
+  , [a].[NetSale]
+  , [a].[NetRevenue]
+  , [a].[XTRPlus]
+  , [a].[EXT]
+  , [a].[Xtrands]
+  , [a].[Surgery]
+  , [a].[NB_MDPCnt]
+  , [a].[ConversionPercent]
+  , [a].[XTRPlusPercent]
+  , [a].[EXTPercent]
+  , [a].[XtrandsPercent]
+  , [a].[SurgeryPercent]
+  , [a].[MDPPercent]
+  , [a].[Accommodation]
+  , [a].[VirtualConsultations]
+  , [a].[InPersonConsultations]
+FROM [#Results_2] AS [a]
+OUTER APPLY( SELECT
+                 [Utility].[dbo].[StringConcat]([a].[Field], ',') AS [ClientGUIDList]
+               , [Utility].[dbo].[StringConcat]([c].[ClientKey], ',') AS [ClientKeyList]
+               , COUNT(1) AS [ClientCount]
+             FROM( SELECT DISTINCT [Field] FROM [Utility].[dbo].ParseDelimited([ClientGUIDList], ',') ) AS [a]
+             LEFT JOIN [HC_BI_CMS_DDS].[bi_cms_dds].[DimClient] AS [c] ON [c].[ClientSSID] = [a].[Field] ) AS [b]
+ORDER BY [a].[RegionID]
+       , [a].[Region]
+       , [a].[RegionSortOrder]
+       , [a].[CenterID]
+       , [a].[CenterSSID]
+       , [a].[CenterDescription]
+       , [a].[Center]
+       , [a].[Performer]
+       , [a].[EmployeeKey]
+       , [a].[PerformerName]
+       , [a].[Accommodation]
+       , [a].[FullDate] ;
 GO
 RETURN ;
 
