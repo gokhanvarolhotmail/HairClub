@@ -1,3 +1,7 @@
+-- SQL06
+GO
+USE [HC_BI_Reporting] ;
+GO
 /***********************************************************************
 PROCEDURE:				spRpt_ClosingByConsultantDetailsConsultations
 DESTINATION SERVER:		SQL06
