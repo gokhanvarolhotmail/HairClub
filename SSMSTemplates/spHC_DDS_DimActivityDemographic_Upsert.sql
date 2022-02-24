@@ -1,6 +1,6 @@
 -- SQL05
 GO
-USE HC_BI_MKTG_STAGE
+USE [HC_BI_MKTG_STAGE] ;
 GO
 CREATE PROCEDURE [bi_mktg_stage].[spHC_DDS_DimActivityDemographic_Upsert]
     @DataPkgKey           INT
@@ -89,7 +89,7 @@ DECLARE
 
         -- Determine Initial Row Cnt
         SELECT @InitialRowCnt = COUNT(1)
-        FROM [bi_mktg_stage].[synHC_DDS_DimActivityDemographic]
+        FROM [HC_BI_MKTG_DDS].[bi_mktg_dds].[DimActivityDemographic]
         OPTION( RECOMPILE ) ;
 
         -- Determine the number of extracted rows
@@ -101,7 +101,8 @@ DECLARE
         ------------------------
         -- Deleted Records
         ------------------------	
-        DELETE FROM [bi_mktg_stage].[synHC_DDS_DimActivityDemographic]
+        DELETE [k]
+        FROM [HC_BI_MKTG_DDS].[bi_mktg_dds].[DimActivityDemographic] AS [k]
         WHERE [ActivityDemographicSSID] IN( SELECT [STG].[ActivityDemographicSSID] FROM [bi_mktg_stage].[DimActivityDemographic] AS [STG] WHERE [STG].[IsDelete] = 1
                                                                                                                                           AND [STG].[DataPkgKey] = @DataPkgKey )
         OPTION( RECOMPILE ) ;
@@ -110,11 +111,11 @@ DECLARE
         ---- Deleted Records
         --------------------------	
         --DELETE 
-        --FROM [bi_mktg_stage].[synHC_DDS_DimActivityDemographic]  
+        --FROM [HC_BI_MKTG_DDS].[bi_mktg_dds].[DimActivityDemographic]  
         --WHERE [ActivityDemographicSSID] NOT
         --IN (
         --		SELECT SRC.[activity_demographic_id]
-        --		FROM [bi_mktg_stage].[synHC_SRC_TBL_MKTG_cstd_activity_demographic] SRC WITH (NOLOCK)
+        --		FROM [HCM].[dbo].[cstd_activity_demographic] SRC WITH (NOLOCK)
         --		) 
         --AND [ActivityDemographicKey] <> -1
 
@@ -123,41 +124,41 @@ DECLARE
         ------------------------
         -- New Records
         ------------------------
-        INSERT INTO [bi_mktg_stage].[synHC_DDS_DimActivityDemographic]( [ActivityDemographicSSID]
-                                                                      , [ActivitySSID]
-                                                                      , [ContactSSID]
-                                                                      , [GenderSSID]
-                                                                      , [GenderDescription]
-                                                                      , [EthnicitySSID]
-                                                                      , [EthnicityDescription]
-                                                                      , [OccupationSSID]
-                                                                      , [OccupationDescription]
-                                                                      , [MaritalStatusSSID]
-                                                                      , [MaritalStatusDescription]
-                                                                      , [Birthday]
-                                                                      , [Age]
-                                                                      , [AgeRangeSSID]
-                                                                      , [AgeRangeDescription]
-                                                                      , [HairLossTypeSSID]
-                                                                      , [HairLossTypeDescription]
-                                                                      , [NorwoodSSID]
-                                                                      , [LudwigSSID]
-                                                                      , [Performer]
-                                                                      , [PriceQuoted]
-                                                                      , [SolutionOffered]
-                                                                      , [NoSaleReason]
-                                                                      , [DiscStyleSSID]
-                                                                      , [SFDC_LeadID]
-                                                                      , [SFDC_TaskID]
-                                                                      , [SFDC_PersonAccountID]
-                                                                      , [DateSaved]
-                                                                      , [RowIsCurrent]
-                                                                      , [RowStartDate]
-                                                                      , [RowEndDate]
-                                                                      , [RowChangeReason]
-                                                                      , [RowIsInferred]
-                                                                      , [InsertAuditKey]
-                                                                      , [UpdateAuditKey] )
+        INSERT INTO [HC_BI_MKTG_DDS].[bi_mktg_dds].[DimActivityDemographic]( [ActivityDemographicSSID]
+                                                                           , [ActivitySSID]
+                                                                           , [ContactSSID]
+                                                                           , [GenderSSID]
+                                                                           , [GenderDescription]
+                                                                           , [EthnicitySSID]
+                                                                           , [EthnicityDescription]
+                                                                           , [OccupationSSID]
+                                                                           , [OccupationDescription]
+                                                                           , [MaritalStatusSSID]
+                                                                           , [MaritalStatusDescription]
+                                                                           , [Birthday]
+                                                                           , [Age]
+                                                                           , [AgeRangeSSID]
+                                                                           , [AgeRangeDescription]
+                                                                           , [HairLossTypeSSID]
+                                                                           , [HairLossTypeDescription]
+                                                                           , [NorwoodSSID]
+                                                                           , [LudwigSSID]
+                                                                           , [Performer]
+                                                                           , [PriceQuoted]
+                                                                           , [SolutionOffered]
+                                                                           , [NoSaleReason]
+                                                                           , [DiscStyleSSID]
+                                                                           , [SFDC_LeadID]
+                                                                           , [SFDC_TaskID]
+                                                                           , [SFDC_PersonAccountID]
+                                                                           , [DateSaved]
+                                                                           , [RowIsCurrent]
+                                                                           , [RowStartDate]
+                                                                           , [RowEndDate]
+                                                                           , [RowChangeReason]
+                                                                           , [RowIsInferred]
+                                                                           , [InsertAuditKey]
+                                                                           , [UpdateAuditKey] )
         SELECT
             [STG].[ActivityDemographicSSID]
           , [STG].[ActivitySSID]
@@ -238,9 +239,9 @@ DECLARE
           , [DW].[RowIsInferred] = 0
           , [DW].[UpdateAuditKey] = @DataPkgKey
         FROM [bi_mktg_stage].[DimActivityDemographic] AS [STG]
-        JOIN [bi_mktg_stage].[synHC_DDS_DimActivityDemographic] AS [DW] ON [DW].[SFDC_TaskID] = [STG].[SFDC_TaskID]
-                                                                       AND [DW].[RowIsCurrent] = 1
-                                                                       AND [DW].[RowIsInferred] = 1
+        JOIN [HC_BI_MKTG_DDS].[bi_mktg_dds].[DimActivityDemographic] AS [DW] ON [DW].[SFDC_TaskID] = [STG].[SFDC_TaskID]
+                                                                            AND [DW].[RowIsCurrent] = 1
+                                                                            AND [DW].[RowIsInferred] = 1
         WHERE [STG].[IsInferredMember] = 1 AND [STG].[IsException] = 0 AND [STG].[DataPkgKey] = @DataPkgKey
         OPTION( RECOMPILE ) ;
 
@@ -282,7 +283,7 @@ DECLARE
           , [DW].[RowChangeReason] = 'SCD Type 1'
           , [DW].[UpdateAuditKey] = @DataPkgKey
         FROM [bi_mktg_stage].[DimActivityDemographic] AS [STG]
-        JOIN [bi_mktg_stage].[synHC_DDS_DimActivityDemographic] AS [DW] ON [DW].[SFDC_TaskID] = [STG].[SFDC_TaskID] AND [DW].[RowIsCurrent] = 1
+        JOIN [HC_BI_MKTG_DDS].[bi_mktg_dds].[DimActivityDemographic] AS [DW] ON [DW].[SFDC_TaskID] = [STG].[SFDC_TaskID] AND [DW].[RowIsCurrent] = 1
         WHERE [STG].[IsType1] = 1 AND [STG].[IsException] = 0 AND [STG].[DataPkgKey] = @DataPkgKey
         OPTION( RECOMPILE ) ;
 
@@ -298,49 +299,49 @@ DECLARE
             [DW].[RowIsCurrent] = 0
           , [DW].[RowEndDate] = DATEADD(MINUTE, -1, [STG].[ModifiedDate])
         FROM [bi_mktg_stage].[DimActivityDemographic] AS [STG]
-        JOIN [bi_mktg_stage].[synHC_DDS_DimActivityDemographic] AS [DW] ON [DW].[ActivityDemographicKey] = [STG].[ActivityDemographicKey]
-                                                                       AND [DW].[RowIsCurrent] = 1
+        JOIN [HC_BI_MKTG_DDS].[bi_mktg_dds].[DimActivityDemographic] AS [DW] ON [DW].[ActivityDemographicKey] = [STG].[ActivityDemographicKey]
+                                                                            AND [DW].[RowIsCurrent] = 1
         WHERE [STG].[IsType2] = 1 AND [STG].[IsException] = 0 AND [STG].[DataPkgKey] = @DataPkgKey
         OPTION( RECOMPILE ) ;
 
         SET @UpdateSCD2RowCnt = @@ROWCOUNT ;
 
         --Next insert the record with the current values
-        INSERT INTO [bi_mktg_stage].[synHC_DDS_DimActivityDemographic]( [ActivityDemographicSSID]
-                                                                      , [ActivitySSID]
-                                                                      , [ContactSSID]
-                                                                      , [GenderSSID]
-                                                                      , [GenderDescription]
-                                                                      , [EthnicitySSID]
-                                                                      , [EthnicityDescription]
-                                                                      , [OccupationSSID]
-                                                                      , [OccupationDescription]
-                                                                      , [MaritalStatusSSID]
-                                                                      , [MaritalStatusDescription]
-                                                                      , [Birthday]
-                                                                      , [Age]
-                                                                      , [AgeRangeSSID]
-                                                                      , [AgeRangeDescription]
-                                                                      , [HairLossTypeSSID]
-                                                                      , [HairLossTypeDescription]
-                                                                      , [NorwoodSSID]
-                                                                      , [LudwigSSID]
-                                                                      , [Performer]
-                                                                      , [PriceQuoted]
-                                                                      , [SolutionOffered]
-                                                                      , [NoSaleReason]
-                                                                      , [DiscStyleSSID]
-                                                                      , [SFDC_LeadID]
-                                                                      , [SFDC_TaskID]
-                                                                      , [SFDC_PersonAccountID]
-                                                                      , [DateSaved]
-                                                                      , [RowIsCurrent]
-                                                                      , [RowStartDate]
-                                                                      , [RowEndDate]
-                                                                      , [RowChangeReason]
-                                                                      , [RowIsInferred]
-                                                                      , [InsertAuditKey]
-                                                                      , [UpdateAuditKey] )
+        INSERT INTO [HC_BI_MKTG_DDS].[bi_mktg_dds].[DimActivityDemographic]( [ActivityDemographicSSID]
+                                                                           , [ActivitySSID]
+                                                                           , [ContactSSID]
+                                                                           , [GenderSSID]
+                                                                           , [GenderDescription]
+                                                                           , [EthnicitySSID]
+                                                                           , [EthnicityDescription]
+                                                                           , [OccupationSSID]
+                                                                           , [OccupationDescription]
+                                                                           , [MaritalStatusSSID]
+                                                                           , [MaritalStatusDescription]
+                                                                           , [Birthday]
+                                                                           , [Age]
+                                                                           , [AgeRangeSSID]
+                                                                           , [AgeRangeDescription]
+                                                                           , [HairLossTypeSSID]
+                                                                           , [HairLossTypeDescription]
+                                                                           , [NorwoodSSID]
+                                                                           , [LudwigSSID]
+                                                                           , [Performer]
+                                                                           , [PriceQuoted]
+                                                                           , [SolutionOffered]
+                                                                           , [NoSaleReason]
+                                                                           , [DiscStyleSSID]
+                                                                           , [SFDC_LeadID]
+                                                                           , [SFDC_TaskID]
+                                                                           , [SFDC_PersonAccountID]
+                                                                           , [DateSaved]
+                                                                           , [RowIsCurrent]
+                                                                           , [RowStartDate]
+                                                                           , [RowEndDate]
+                                                                           , [RowChangeReason]
+                                                                           , [RowIsInferred]
+                                                                           , [InsertAuditKey]
+                                                                           , [UpdateAuditKey] )
         SELECT
             [STG].[ActivityDemographicSSID]
           , [STG].[ActivitySSID]
@@ -385,7 +386,7 @@ DECLARE
 
         --Update DimContact DiscStyleSSID
         UPDATE [DimContact]
-        SET [DimContact].[DiscStyleSSID] = ISNULL([DimActivityDemographic].[DiscStyleSSID], 'u')
+        SET [DiscStyleSSID] = ISNULL([DimActivityDemographic].[DiscStyleSSID], 'u')
         FROM [HC_BI_MKTG_DDS].[bi_mktg_dds].[DimContact] AS [DimContact]
         INNER JOIN [bi_mktg_stage].[DimActivityDemographic] AS [DimActivityDemographic] ON [DimContact].[SFDC_LeadID] = [DimActivityDemographic].[SFDC_LeadID]
         OPTION( RECOMPILE ) ;
@@ -416,7 +417,7 @@ DECLARE
 
         -- Determine Final Row Cnt
         SELECT @FinalRowCnt = COUNT(1)
-        FROM [bi_mktg_stage].[synHC_DDS_DimActivityDemographic]
+        FROM [HC_BI_MKTG_DDS].[bi_mktg_dds].[DimActivityDemographic]
         OPTION( RECOMPILE ) ;
 
         -- Determine the number of Fixed rows
