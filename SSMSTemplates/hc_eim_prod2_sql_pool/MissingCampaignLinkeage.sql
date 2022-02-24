@@ -1,3 +1,7 @@
+SELECT *
+FROM [ODS].[SF_Campaign] AS [s]
+WHERE NOT EXISTS ( SELECT 1 FROM [dbo].[DimCampaign] AS [d] WHERE [d].[CampaignId] = [s].[Id] ) ;
+
 SELECT
     [f].[CreatedDateKey]
   , [f].[OriginalCampaignKey]
@@ -29,15 +33,21 @@ INNER JOIN [dbo].[DimCampaign] AS [d] ON [d].[SourceCode] = [f].[OriginalCampaig
 WHERE ISNULL([f].[OriginalCampaignKey], -2) <> [d].[CampaignKey] AND ( [f].[OriginalCampaignKey] IS NULL OR [f].[OriginalCampaignKey] = -1 )
 ORDER BY [f].[CreatedDateKey] DESC
        , [f].[OriginalCampaignSource] ;
-
 GO
-RETURN
-UPDATE f SET [f].[OriginalCampaignKey] = [d].[CampaignKey], [f].[OriginalCampaignId] = d.[CampaignId]
+RETURN ;
+
+UPDATE [f]
+SET
+    [f].[OriginalCampaignKey] = [d].[CampaignKey]
+  , [f].[OriginalCampaignId] = [d].[CampaignId]
 FROM [dbo].[FactLeadTracking] AS [f]
 INNER JOIN [dbo].[DimCampaign] AS [d] ON [d].[SourceCode] = [f].[OriginalCampaignSource]
-WHERE ISNULL([f].[OriginalCampaignKey], -2) <> [d].[CampaignKey] AND ( [f].[OriginalCampaignKey] IS NULL OR [f].[OriginalCampaignKey] = -1 )
+WHERE ISNULL([f].[OriginalCampaignKey], -2) <> [d].[CampaignKey] AND ( [f].[OriginalCampaignKey] IS NULL OR [f].[OriginalCampaignKey] = -1 ) ;
 
-UPDATE f SET [f].[OriginalCampaignKey] = [d].[CampaignKey], [f].[OriginalCampaignId] = d.[CampaignId]
+UPDATE [f]
+SET
+    [f].[OriginalCampaignKey] = [d].[CampaignKey]
+  , [f].[OriginalCampaignId] = [d].[CampaignId]
 FROM [dbo].[DimLead] AS [f]
 INNER JOIN [dbo].[DimCampaign] AS [d] ON [d].[SourceCode] = [f].[OriginalCampaignSource]
-WHERE ISNULL([f].[OriginalCampaignKey], -2) <> [d].[CampaignKey] AND ( [f].[OriginalCampaignKey] IS NULL OR [f].[OriginalCampaignKey] = -1 )
+WHERE ISNULL([f].[OriginalCampaignKey], -2) <> [d].[CampaignKey] AND ( [f].[OriginalCampaignKey] IS NULL OR [f].[OriginalCampaignKey] = -1 ) ;
