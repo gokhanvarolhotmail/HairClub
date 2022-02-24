@@ -13,7 +13,8 @@ CREATE TABLE [Audit].[bi_mktg_stage_DimActivityDemographic]
   , [LogUser]                  VARCHAR(1000)  NOT NULL
   , [LogAppName]               VARCHAR(1000)  NOT NULL
   , [LogDate]                  DATETIME2(7)   NOT NULL
-  , [Action]                   CHAR(1)  NOT NULL
+  , [Action]                   CHAR(1)        NOT NULL
+  , [LogRowNum]                INT            NOT NULL
   , [DataPkgKey]               [INT]          NULL
   , [ActivityDemographicKey]   [INT]          NULL
   , [ActivityDemographicSSID]  [VARCHAR](10)  NULL
@@ -65,17 +66,10 @@ CREATE TABLE [Audit].[bi_mktg_stage_DimActivityDemographic]
   , [SFDC_PersonAccountID]     [NVARCHAR](18) NULL
 ) ;
 GO
-CREATE CLUSTERED INDEX [bi_mktg_stage_DimActivityDemographic_PKC]
+CREATE UNIQUE CLUSTERED INDEX [bi_mktg_stage_DimActivityDemographic_PKC]
 ON [Audit].[bi_mktg_stage_DimActivityDemographic]
 ( [LogId]
-, [DataPkgKey]
-, [ActivityDemographicSSID] ASC
-, [IsException] ASC
-, [IsNew] ASC
-, [IsType1] ASC
-, [IsType2] ASC
-, [IsDelete] ASC
-, [IsInferredMember] ASC
+, [LogRowNum]
 , [Action]
 ) ;
 GO
@@ -92,6 +86,7 @@ INSERT [Audit].[bi_mktg_stage_DimActivityDemographic]( [LogId]
                                                      , [LogAppName]
                                                      , [LogDate]
                                                      , [Action]
+                                                     , [LogRowNum]
                                                      , [DataPkgKey]
                                                      , [ActivityDemographicKey]
                                                      , [ActivityDemographicSSID]
@@ -147,6 +142,7 @@ SELECT
   , APP_NAME() AS [LogAppName]
   , GETDATE() AS [LogDate]
   , [k].[Action]
+  , [k].[LogRowNum]
   , [k].[DataPkgKey]
   , [k].[ActivityDemographicKey]
   , [k].[ActivityDemographicSSID]
@@ -198,6 +194,7 @@ SELECT
   , [k].[SFDC_PersonAccountID]
 FROM( SELECT
           'D' AS [Action]
+        , ROW_NUMBER() OVER ( ORDER BY( SELECT 0 )) AS [LogRowNum]
         , [d].[DataPkgKey]
         , [d].[ActivityDemographicKey]
         , [d].[ActivityDemographicSSID]
@@ -251,6 +248,7 @@ FROM( SELECT
       UNION ALL
       SELECT
           'I' AS [Action]
+        , ROW_NUMBER() OVER ( ORDER BY( SELECT 0 )) AS [LogRowNum]
         , [i].[DataPkgKey]
         , [i].[ActivityDemographicKey]
         , [i].[ActivityDemographicSSID]
