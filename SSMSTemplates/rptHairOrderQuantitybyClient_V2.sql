@@ -47,7 +47,7 @@ SET NOCOUNT ON ;
 SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED ;
 
 DECLARE
-    @Getdate    DATE     = CONVERT(VARCHAR(30), GETDATE(), 112)
+    @GetDate    DATE     = CONVERT(VARCHAR(30), GETDATE(), 112)
   , @Tomorrow   DATE     = CONVERT(VARCHAR(30), DATEADD(DAY, 1, GETDATE()), 112)
   , @BeginDate  DATETIME = DATEADD(MONTH, -18, GETUTCDATE())
   , @GetUTCDate DATETIME = GETUTCDATE() ;
@@ -129,6 +129,71 @@ CREATE TABLE [#hair]
   , [EstNextApp]                           DATE
 ) ;
 
+-- Last Application Date
+IF OBJECT_ID('[tempdb]..[#LastApplication]') IS NOT NULL
+    DROP TABLE [#LastApplication] ;
+
+SELECT
+    [c].[ClientGUID]
+  , MAX([sod].[CreateDate]) AS [CreateDate]
+INTO [#LastApplication]
+FROM [dbo].[datClient] AS [c]
+INNER JOIN [dbo].[datSalesOrder] AS [so] ON [so].[ClientGUID] = [c].[ClientGUID]
+INNER JOIN [dbo].[datSalesOrderDetail] AS [sod] ON [so].[SalesOrderGUID] = [sod].[SalesOrderGUID]
+INNER JOIN [dbo].[cfgSalesCode] AS [sc] ON [sod].[SalesCodeID] = [sc].[SalesCodeID]
+WHERE [sc].[SalesCodeDepartmentID] IN (5010, 5020)
+GROUP BY [c].[ClientGUID] ;
+
+IF OBJECT_ID('[tempdb]..[#ScheduledNextAppDate]') IS NOT NULL
+    DROP TABLE [#ScheduledNextAppDate] ;
+
+-- Scheduled Next App Date
+SELECT
+    [k].[ClientGUID]
+  , [k].[AppointmentDate]
+INTO [#ScheduledNextAppDate]
+FROM( SELECT
+          [c].[ClientGUID]
+        , [a].[AppointmentDate]
+        , ROW_NUMBER() OVER ( PARTITION BY [c].[ClientGUID] ORDER BY [a].[AppointmentDate] ASC ) AS [rw]
+      FROM [dbo].[datClient] AS [c]
+      INNER JOIN [dbo].[datClientMembership] AS [cm] ON [cm].[ClientGUID] = [c].[ClientGUID]
+      INNER JOIN [dbo].[cfgMembership] AS [m] ON [cm].[MembershipID] = [m].[MembershipID]
+      INNER JOIN [dbo].[datAppointment] AS [a] ON [cm].[ClientMembershipGUID] = [a].[ClientMembershipGUID]
+      INNER JOIN [dbo].[datAppointmentDetail] AS [ad] ON [ad].[AppointmentGUID] = [a].[AppointmentGUID]
+      INNER JOIN [dbo].[cfgSalesCode] AS [sc] ON [sc].[SalesCodeID] = [ad].[SalesCodeID]
+      INNER JOIN [dbo].[cfgCenter] AS [apptctr] ON [a].[CenterID] = [apptctr].[CenterID]
+      WHERE( [a].[IsDeletedFlag] IS NULL OR [a].[IsDeletedFlag] = 0 )
+        AND [a].[AppointmentDate] >= @GetDate
+        AND [sc].[SalesCodeDepartmentID] IN (5010, 5020)
+        AND EXISTS ( SELECT 1 FROM [#LastApplication] AS [l] WHERE [l].[ClientGUID] = [c].[ClientGUID] )) AS [k]
+WHERE [k].[rw] = 1
+OPTION( RECOMPILE ) ;
+
+IF OBJECT_ID('[tempdb]..[#LastAppDate]') IS NOT NULL
+    DROP TABLE [#LastAppDate] ;
+
+SELECT
+    [k].[ClientGUID]
+  , [k].[AppointmentDate]
+INTO [#LastAppDate]
+FROM( SELECT
+          [c].[ClientGUID]
+        , [a].[AppointmentDate]
+        , ROW_NUMBER() OVER ( PARTITION BY [c].[ClientGUID] ORDER BY [a].[AppointmentDate] ASC ) AS [rw]
+      FROM [dbo].[datClient] AS [c]
+      INNER JOIN [dbo].[datClientMembership] AS [cm] ON [cm].[ClientGUID] = [c].[ClientGUID]
+      INNER JOIN [dbo].[cfgMembership] AS [m] ON [cm].[MembershipID] = [m].[MembershipID]
+      INNER JOIN [dbo].[datAppointment] AS [a] ON [cm].[ClientMembershipGUID] = [a].[ClientMembershipGUID]
+      INNER JOIN [dbo].[datAppointmentDetail] AS [ad] ON [ad].[AppointmentGUID] = [a].[AppointmentGUID]
+      INNER JOIN [dbo].[cfgSalesCode] AS [sc] ON [sc].[SalesCodeID] = [ad].[SalesCodeID]
+      INNER JOIN [dbo].[cfgCenter] AS [apptctr] ON [a].[CenterID] = [apptctr].[CenterID]
+      WHERE( [a].[IsDeletedFlag] IS NULL OR [a].[IsDeletedFlag] = 0 ) AND [a].[AppointmentDate] < @GetDate AND [sc].[SalesCodeDepartmentID] IN (5010, 5020)
+--AND EXISTS ( SELECT 1 FROM [#LastApplication] AS [l] WHERE [l].[ClientGUID] = [c].[ClientGUID] )
+) AS [k]
+WHERE [k].[rw] = 1
+OPTION( RECOMPILE ) ;
+
 IF @MembershipList = '0' --ALL
     BEGIN
         INSERT INTO [#hair]( [HairSystemOrderNumber]
@@ -174,11 +239,12 @@ IF @MembershipList = '0' --ALL
           , [nad].[EstNextApp]
         FROM [dbo].[datClient] AS [clt]
         INNER JOIN [dbo].[datClientMembership] AS [cm] ON [cm].[ClientMembershipGUID] = [clt].[CurrentBioMatrixClientMembershipGUID]
+        LEFT JOIN [#LastAppDate] AS [sna] ON [sna].[ClientGUID] = [clt].[ClientGUID]
         LEFT JOIN( SELECT [ClientMembershipGUID], MAX([Freeze_End]) AS [FrozenEFTEndDate] FROM [dbo].[datClientEFT] GROUP BY [ClientMembershipGUID] ) AS [eft] ON [eft].[ClientMembershipGUID] = [cm].[ClientMembershipGUID]
         INNER JOIN [dbo].[cfgMembership] AS [m] ON [m].[MembershipID] = [cm].[MembershipID]
         OUTER APPLY( SELECT [k].[NextAppointmentDate] AS [EstNextApp]
                      FROM( SELECT
-                               DATEADD(DAY, ( [b].[digit] ) * [k].[Application Cadence Days], [cm].[BeginDate]) AS [NextAppointmentDate]
+                               DATEADD(DAY, ( [b].[digit] ) * [k].[Application Cadence Days], [sna].[AppointmentDate]) AS [NextAppointmentDate]
                              , ROW_NUMBER() OVER ( PARTITION BY [m].[MembershipID], [k].[MembershipAccumulatorID] ORDER BY [b].[digit] DESC ) AS [rw]
                              , [k].*
                            FROM( SELECT TOP( 1 )
@@ -188,7 +254,7 @@ IF @MembershipList = '0' --ALL
                                  FROM [dbo].[cfgMembershipAccum] AS [ca]
                                  WHERE [ca].[MembershipID] = [m].[MembershipID] AND [ca].[AccumulatorID] = 8 AND [m].[BusinessSegmentID] = 1 ) AS [k]
                            CROSS APPLY [dbo].GetNumbers(1, [k].[InitialQuantity]) AS [b]
-                           WHERE DATEADD(DAY, ( [b].[digit] ) * [k].[Application Cadence Days], [cm].[BeginDate]) > @Getdate ) AS [k]
+                           WHERE DATEADD(DAY, ( [b].[digit] ) * [k].[Application Cadence Days], [cm].[BeginDate]) > @GetDate ) AS [k]
                      WHERE [k].[rw] = 1 ) AS [nad]
         LEFT JOIN [dbo].[datHairSystemOrder] AS [hso] ON [hso].[ClientGUID] = [clt].[ClientGUID]
         LEFT JOIN [dbo].[lkpHairSystemOrderStatus] AS [hsos] ON [hsos].[HairSystemOrderStatusID] = [hso].[HairSystemOrderStatusID]
@@ -204,7 +270,7 @@ IF @MembershipList = '0' --ALL
           AND [m].[BusinessSegmentID] = 1 --BIO
           AND [m].[MembershipID] NOT IN (1, 2, 11, 12, 14, 15, 16, 17, 18, 19, 49, 50, 57) --ALL except these 
           AND [m].[MembershipDescription] <> 'Employee - Retail'
-          AND ISNULL([cm].[EndDate], @Tomorrow) >= @Getdate
+          AND ISNULL([cm].[EndDate], @Tomorrow) >= @GetDate
           /*Elite (New)
                         Elite (New) Solutions
                         Cancel
@@ -267,11 +333,12 @@ ELSE
           , [nad].[EstNextApp]
         FROM [dbo].[datClient] AS [clt]
         INNER JOIN [dbo].[datClientMembership] AS [cm] ON [cm].[ClientMembershipGUID] = [clt].[CurrentBioMatrixClientMembershipGUID]
+        LEFT JOIN [#LastAppDate] AS [sna] ON [sna].[ClientGUID] = [clt].[ClientGUID]
         LEFT JOIN( SELECT [ClientMembershipGUID], MAX([Freeze_End]) AS [FrozenEFTEndDate] FROM [dbo].[datClientEFT] GROUP BY [ClientMembershipGUID] ) AS [eft] ON [eft].[ClientMembershipGUID] = [cm].[ClientMembershipGUID]
         INNER JOIN [dbo].[cfgMembership] AS [m] ON [m].[MembershipID] = [cm].[MembershipID]
         OUTER APPLY( SELECT [k].[NextAppointmentDate] AS [EstNextApp]
                      FROM( SELECT
-                               DATEADD(DAY, ( [b].[digit] ) * [k].[Application Cadence Days], [cm].[BeginDate]) AS [NextAppointmentDate]
+                               DATEADD(DAY, ( [b].[digit] ) * [k].[Application Cadence Days], [sna].[AppointmentDate]) AS [NextAppointmentDate]
                              , ROW_NUMBER() OVER ( PARTITION BY [m].[MembershipID], [k].[MembershipAccumulatorID] ORDER BY [b].[digit] DESC ) AS [rw]
                              , [k].*
                            FROM( SELECT TOP( 1 )
@@ -281,7 +348,7 @@ ELSE
                                  FROM [dbo].[cfgMembershipAccum] AS [ca]
                                  WHERE [ca].[MembershipID] = [m].[MembershipID] AND [ca].[AccumulatorID] = 8 AND [m].[BusinessSegmentID] = 1 ) AS [k]
                            CROSS APPLY [dbo].GetNumbers(1, [k].[InitialQuantity]) AS [b]
-                           WHERE DATEADD(DAY, ( [b].[digit] ) * [k].[Application Cadence Days], [cm].[BeginDate]) > @Getdate ) AS [k]
+                           WHERE DATEADD(DAY, ( [b].[digit] ) * [k].[Application Cadence Days], [cm].[BeginDate]) > @GetDate ) AS [k]
                      WHERE [k].[rw] = 1 ) AS [nad]
         LEFT JOIN [dbo].[datHairSystemOrder] AS [hso] ON [hso].[ClientGUID] = [clt].[ClientGUID]
         LEFT JOIN [dbo].[lkpHairSystemOrderStatus] AS [hsos] ON [hsos].[HairSystemOrderStatusID] = [hso].[HairSystemOrderStatusID]
@@ -296,7 +363,7 @@ ELSE
           AND [m].[MembershipDescription] <> 'CANCEL'
           AND [cm].[ClientMembershipStatusID] = 1
           AND [m].[MembershipDescription] <> 'Employee - Retail'
-          AND ISNULL([cm].[EndDate], @Tomorrow) >= @Getdate
+          AND ISNULL([cm].[EndDate], @Tomorrow) >= @GetDate
         OPTION( RECOMPILE ) ;
     END ;
 
@@ -401,47 +468,6 @@ VALUES( 22, 'BASIC', 'Basic', 'Basic', 1 )
     , ( 285, 'GRDSV', 'Xtrands+ Initial 6 EZPAY', 'Xtrands+', 1 )
     , ( 4, 'GRDSV', 'Xtrands+ Initial 6 Solutions', 'Xtrands+', 1 )
     , ( 48, 'GRDSVSOL', 'Xtrands+ Initial 6 Solutions', 'Xtrands+', 1 ) ;
-
--- Last Application Date
-IF OBJECT_ID('[tempdb]..[#LastApplication]') IS NOT NULL
-    DROP TABLE [#LastApplication] ;
-
-SELECT
-    [c].[ClientGUID]
-  , MAX([sod].[CreateDate]) AS [CreateDate]
-INTO [#LastApplication]
-FROM [dbo].[datClient] AS [c]
-INNER JOIN [dbo].[datSalesOrder] AS [so] ON [so].[ClientGUID] = [c].[ClientGUID]
-INNER JOIN [dbo].[datSalesOrderDetail] AS [sod] ON [so].[SalesOrderGUID] = [sod].[SalesOrderGUID]
-INNER JOIN [dbo].[cfgSalesCode] AS [sc] ON [sod].[SalesCodeID] = [sc].[SalesCodeID]
-WHERE [sc].[SalesCodeDepartmentID] IN (5010, 5020)
-GROUP BY [c].[ClientGUID] ;
-
-IF OBJECT_ID('[tempdb]..[#ScheduledNextAppDate]') IS NOT NULL
-    DROP TABLE [#ScheduledNextAppDate] ;
-
--- Scheduled Next App Date
-SELECT
-    [k].[ClientGUID]
-  , [k].[AppointmentDate]
-INTO [#ScheduledNextAppDate]
-FROM( SELECT
-          [c].[ClientGUID]
-        , [a].[AppointmentDate]
-        , ROW_NUMBER() OVER ( PARTITION BY [c].[ClientGUID] ORDER BY [a].[AppointmentDate] ASC ) AS [rw]
-      FROM [dbo].[datClient] AS [c]
-      INNER JOIN [dbo].[datClientMembership] AS [cm] ON [cm].[ClientGUID] = [c].[ClientGUID]
-      INNER JOIN [dbo].[cfgMembership] AS [m] ON [cm].[MembershipID] = [m].[MembershipID]
-      INNER JOIN [dbo].[datAppointment] AS [a] ON [cm].[ClientMembershipGUID] = [a].[ClientMembershipGUID]
-      INNER JOIN [dbo].[datAppointmentDetail] AS [ad] ON [ad].[AppointmentGUID] = [a].[AppointmentGUID]
-      INNER JOIN [dbo].[cfgSalesCode] AS [sc] ON [sc].[SalesCodeID] = [ad].[SalesCodeID]
-      INNER JOIN [dbo].[cfgCenter] AS [apptctr] ON [a].[CenterID] = [apptctr].[CenterID]
-      WHERE( [a].[IsDeletedFlag] IS NULL OR [a].[IsDeletedFlag] = 0 )
-        AND [a].[AppointmentDate] >= @Getdate
-        AND [sc].[SalesCodeDepartmentID] IN (5010, 5020)
-        AND EXISTS ( SELECT 1 FROM [#LastApplication] AS [l] WHERE [l].[ClientGUID] = [c].[ClientGUID] )) AS [k]
-WHERE [k].[rw] = 1
-OPTION( RECOMPILE ) ;
 
 -- Order Avail for Next App
 -- If Cent exists true
@@ -590,7 +616,7 @@ SELECT
   , [k].[Current Membership]
   , [k].[Membership Expiration]
   , [k].[Membership Qty]
-  , CASE WHEN [k].[Frozen EFT End Date] > @Getdate THEN [k].[Frozen EFT End Date] END AS [Frozen EFT End Date]
+  , CASE WHEN [k].[Frozen EFT End Date] > @GetDate THEN [k].[Frozen EFT End Date] END AS [Frozen EFT End Date]
   , [k].[QA Needed]
   , [k].[In Center]
   , [k].[On Order]
