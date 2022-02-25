@@ -180,7 +180,7 @@ INTO [#LastAppDate]
 FROM( SELECT
           [c].[ClientGUID]
         , [a].[AppointmentDate]
-        , ROW_NUMBER() OVER ( PARTITION BY [c].[ClientGUID] ORDER BY [a].[AppointmentDate] ASC ) AS [rw]
+        , ROW_NUMBER() OVER ( PARTITION BY [c].[ClientGUID] ORDER BY [a].[AppointmentDate] DESC ) AS [rw]
       FROM [dbo].[datClient] AS [c]
       INNER JOIN [dbo].[datClientMembership] AS [cm] ON [cm].[ClientGUID] = [c].[ClientGUID]
       INNER JOIN [dbo].[cfgMembership] AS [m] ON [cm].[MembershipID] = [m].[MembershipID]
