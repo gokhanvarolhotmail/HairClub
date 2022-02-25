@@ -590,7 +590,7 @@ SELECT
   , [k].[Current Membership]
   , [k].[Membership Expiration]
   , [k].[Membership Qty]
-  , [k].[Frozen EFT End Date]
+  , CASE WHEN [k].[Frozen EFT End Date] > @Getdate THEN [k].[Frozen EFT End Date] END AS [Frozen EFT End Date]
   , [k].[QA Needed]
   , [k].[In Center]
   , [k].[On Order]
@@ -726,7 +726,8 @@ WHERE 1 = 1
 ORDER BY [Region]
        , [Center]
        , [Suggested Qty to Order]
-       , [Client] ;
+       , [Client]
+OPTION( RECOMPILE ) ;
 
 -- EXEC [dbo].[rptHairOrderQuantitybyClient_V2] @CenterID = 804, @MembershipList = '0' ;
 
