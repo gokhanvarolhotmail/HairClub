@@ -97,7 +97,7 @@ OUTER APPLY( SELECT
                , @run_duration % 100 + @run_duration / 100 % 100 * 60 + ( @run_duration / 10000 ) * 3600 AS [Seconds]
              FROM( SELECT @run_duration / 10000 AS [hours], STR(@run_duration, 30) AS [rds] ) AS [k] ) AS [rd]
 LEFT JOIN [dbo].[sysjobsteps] AS [js]( NOLOCK )ON [js].[job_id] = @job_id AND [js].[step_id] = @step_id AND [js].[command] <> ''
-WHERE [j].[job_id] = @job_id 
+WHERE [j].[job_id] = @job_id
 /* ENABLE BELOW IF YOU WANT TO CONTROL THIS VIA AN ACTIVE OPERATOR */
 /* AND [so].[enabled] = 1 AND [j].[notify_level_email] & 2 = 2 [so].[email_address] <> '' AND CHARINDEX('@', [so].[email_address]) > 0 */
 OPTION( RECOMPILE, MAXDOP 1 ) ;
@@ -105,7 +105,7 @@ OPTION( RECOMPILE, MAXDOP 1 ) ;
 IF @@ROWCOUNT = 1
     BEGIN
         -- SET @email_address = CASE WHEN @email_address LIKE '%@%' THEN @email_address ELSE 'gvarol@hairclub.com;MKunchum@hairclub.com;SAklog@hairclub.com;TJaved@hairclub.com' END ;
-		SET @email_address = 'TJaved@hairclub.com;MKunchum@hairclub.com;GVarol@hairclub.com' 
+		SET @email_address = 'TJaved@hairclub.com;MKunchum@hairclub.com;GVarol@hairclub.com'
         EXEC [dbo].[sp_send_dbmail] @recipients = @email_address, @subject = @subject, @body = @body ;
     END ;
 GO

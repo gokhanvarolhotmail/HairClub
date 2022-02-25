@@ -1,4 +1,3 @@
-
 /*=============================
 		UPDATE CENTER TO SCANNED CENTER
 		==============================*/
@@ -78,7 +77,7 @@ WHERE [batch].[HairSystemInventorySnapshotID] = 86 /*@HairSystemInventorySnapsho
   AND [hso].[CenterID] <> [hstran].[ScannedCenterID] AND ( [hso].[CenterID] = NULL /*@CenterID*/ OR NULL /*@CenterID*/ IS NULL ) -- Do we want to check the center on the batch?
 ;
 
--- Update Hair System Order - SCANNED CENTER <> HSO CENTER - change to PRIORITY 
+-- Update Hair System Order - SCANNED CENTER <> HSO CENTER - change to PRIORITY
 UPDATE [hso]
 SET
     [hso].[HairSystemOrderStatusID] = 6 /*@PriorityStatusID*/
@@ -278,7 +277,7 @@ WHERE [batch].[HairSystemInventorySnapshotID] = 86 /*@HairSystemInventorySnapsho
   AND ( [hso].[CenterID] = NULL /*@CenterID*/ OR NULL /*@CenterID*/ IS NULL ) ;
 
 -- Update Hair System Order - NOT SCANNED - change to
---		INVNS 
+--		INVNS
 UPDATE
     [hso]
 SET

@@ -22,9 +22,9 @@ AS
 -- [spHC_DDS_DimActivityDemographic_Upsert] is used to update
 -- SCD Type 1 records, update SCD Type 2 records and insert
 -- New records
--- 
 --
---   exec [bi_mktg_stage].[spHC_DDS_DimActivityDemographic_Upsert] -1 
+--
+--   exec [bi_mktg_stage].[spHC_DDS_DimActivityDemographic_Upsert] -1
 --
 -------------------------------------------------------------------------
 -- Change History
@@ -34,8 +34,8 @@ AS
 --  v1.0    11/16/2009  RLifke       Initial Creation
 --			03/29/2013  KMurdoch	 Added DiscStyleSSID
 --			03/29/2013  KMurdoch     Added update of DiscStyleSSID
---			01/31/2017  DLeiba		 Updated query to handle a 
---									 NULL value for Birthday & Age 
+--			01/31/2017  DLeiba		 Updated query to handle a
+--									 NULL value for Birthday & Age
 --			11/21/2017  KMurdoch     Added SFDC_Lead/Task_ID
 --			08/05/2019  KMurdoch	 Migrated ONC to SFDC
 --			08/06/2019  KMurdoch     Made SFDC primary
@@ -50,7 +50,7 @@ DECLARE
     @intError        INT -- error code
   , @intDBErrorLogID INT -- ID of error record logged
   , @intRowCount     INT -- count of rows modified
-  , @vchTagValueList NVARCHAR(1000) -- Named Valued Pairs of Parameters  
+  , @vchTagValueList NVARCHAR(1000) -- Named Valued Pairs of Parameters
   , @return_value    INT
   , @TableName       VARCHAR(150)  = N'[bi_mktg_dds].[DimActivityDemographic]' -- Name of table
   , @DeletedRowCnt   BIGINT
@@ -100,7 +100,7 @@ DECLARE
 
         ------------------------
         -- Deleted Records
-        ------------------------	
+        ------------------------
         DELETE [k]
         FROM [HC_BI_MKTG_DDS].[bi_mktg_dds].[DimActivityDemographic] AS [k]
         WHERE [ActivityDemographicSSID] IN( SELECT [STG].[ActivityDemographicSSID] FROM [bi_mktg_stage].[DimActivityDemographic] AS [STG] WHERE [STG].[IsDelete] = 1
@@ -109,14 +109,14 @@ DECLARE
 
         --------------------------
         ---- Deleted Records
-        --------------------------	
-        --DELETE 
-        --FROM [HC_BI_MKTG_DDS].[bi_mktg_dds].[DimActivityDemographic]  
+        --------------------------
+        --DELETE
+        --FROM [HC_BI_MKTG_DDS].[bi_mktg_dds].[DimActivityDemographic]
         --WHERE [ActivityDemographicSSID] NOT
         --IN (
         --		SELECT SRC.[activity_demographic_id]
         --		FROM [HCM].[dbo].[cstd_activity_demographic] SRC WITH (NOLOCK)
-        --		) 
+        --		)
         --AND [ActivityDemographicKey] <> -1
 
         --SET @OrphanedRowCnt = @@ROWCOUNT
@@ -492,7 +492,7 @@ DECLARE
           , @AllowedRowCnt
           , @FixedRowCnt ;
 
-        -- Cleanup 
+        -- Cleanup
         -- Reset SET NOCOUNT to OFF.
         SET NOCOUNT OFF ;
 
@@ -511,7 +511,7 @@ DECLARE
         -- Re Raise the error
         EXECUTE [bief_stage].[_DBErrorLog_RethrowError] @vchTagValueList ;
 
-        -- Cleanup 
+        -- Cleanup
         -- Reset SET NOCOUNT to OFF.
         SET NOCOUNT OFF ;
 

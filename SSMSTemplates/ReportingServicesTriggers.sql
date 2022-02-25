@@ -1,4 +1,3 @@
-
 CREATE TABLE [Log].[dbo_Catalog]
 (
     [LogId]          INT                IDENTITY NOT NULL PRIMARY KEY CLUSTERED
@@ -222,5 +221,5 @@ DISABLE TRIGGER [dbo].[TRG_Catalog_UPD_Log] ON [dbo].[Catalog]
 GO
 
 
-DROP TRIGGER [dbo].[TRG_Catalog_DEL_Log] 
+DROP TRIGGER [dbo].[TRG_Catalog_DEL_Log]
 GO

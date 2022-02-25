@@ -291,7 +291,7 @@ SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED ;
 DECLARE
     @AzureDatabase    BIT = CASE WHEN SERVERPROPERTY('EngineEdition') IN (5 /*SQL Database*/, 6 /*Microsoft Azure Synapse Analytics*/) THEN 1 ELSE 0 END
   , @QuotedIdentifier BIT = 1
-  
+
 
 IF NULLIF(@Input, '') IS NULL
     BEGIN
@@ -320,7 +320,7 @@ SELECT
   , @Output = '' ;
 
 DECLARE @RowDelimiter_2 NVARCHAR(1) = CASE WHEN @RowDelimiter = @NewLine THEN CHAR(10) ELSE @RowDelimiter END
-  
+
 SET @RowDelimiter = CASE WHEN @RowDelimiter = @NewLine AND CHARINDEX(@RowDelimiter, @Input) = 0 THEN CHAR(10)ELSE @RowDelimiter END ;
 
 IF @RowDelimiter = @NewLine

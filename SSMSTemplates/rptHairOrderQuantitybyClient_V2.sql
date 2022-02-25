@@ -1,7 +1,7 @@
 /*
 ===============================================================================================
  Procedure Name:            rptHairOrderQuantitybyClient_V2
- Procedure Description:     
+ Procedure Description:
  Created By:                Rachelen Hut
  Implemented By:            Rachelen Hut
  Date Created:              04/21/2014
@@ -12,10 +12,10 @@ NOTES:
     --Memberships included in the report: (These are selected and passed into the report as a parameter.)
     SELECT MembershipID
     ,    MembershipDescription
-    FROM dbo.cfgMembership 
+    FROM dbo.cfgMembership
     WHERE BusinessSegmentID = 1 --BIO
     AND MembershipID NOT IN(1,2,11,12,14,15,16,17,18,19,49,50,57)
-    
+
     This report pulls memberships that began 18 months ago: cm.BeginDate >= DATEADD(MONTH,-18,GETUTCDATE())
 ===============================================================================================
 Change History:
@@ -24,7 +24,7 @@ Change History:
 07/14/2015 - RH - Added Promo Systems
 07/17/2015 - RH - Added Remove REMOVESYS SalesCodeID = 705 to the Promo section
 08/31/2015 - RH - Added code to find the Initial Quantity per membership
-12/21/2016 - MVT- Tuned proc to run quicker. Changed MembershipID's to be stored as int's in the #membership temp, 
+12/21/2016 - MVT- Tuned proc to run quicker. Changed MembershipID's to be stored as int's in the #membership temp,
                     modified #hair select to run quicker, modified Due Date calculation query to no longer join back to datHairSystemOrder table.
 05/10/2017 - RH - Changed Remaining from (InitialQuantity - OnOrder + Promo) to ahs.AccumQuantityRemainingCalc to match cONEct
 09/27/2021 - AP - Include clients without hairOrders.
@@ -86,7 +86,7 @@ IF( @CenterID = 1 )
         WHERE [CenterTypeID] = @CorpCenterTypeID AND [IsCorporateHeadquartersFlag] = 0 ;
     END ;
 
--- Add Franchise CenterIDs to List    
+-- Add Franchise CenterIDs to List
 IF( @CenterID = 2 )
     BEGIN
         SELECT @CenterIDs = COALESCE(@CenterIDs + ',' + CONVERT(NVARCHAR, [CenterID]), '')
@@ -94,7 +94,7 @@ IF( @CenterID = 2 )
         WHERE [CenterTypeID] = @FranchiseCenterTypeID ;
     END ;
 
--- Add JointVenture CenterIDs to List    
+-- Add JointVenture CenterIDs to List
 IF( @CenterID = 3 )
     BEGIN
         SELECT @CenterIDs = COALESCE(@CenterIDs + ',' + CONVERT(NVARCHAR, [CenterID]), '')
@@ -260,7 +260,7 @@ IF @MembershipList = '0' --ALL
         LEFT JOIN [dbo].[lkpHairSystemOrderStatus] AS [hsos] ON [hsos].[HairSystemOrderStatusID] = [hso].[HairSystemOrderStatusID]
                                                             AND [hsos].[HairSystemOrderStatusDescriptionShort] IN ('CENT', 'NEW', 'ORDER', 'HQ-Recv', 'HQ-Ship'
                                                                                                                    , 'FAC-Ship', 'QANEEDED')
-        --INNER JOIN dbo.datClient clt ON clt.ClientGUID = hso.ClientGUID        
+        --INNER JOIN dbo.datClient clt ON clt.ClientGUID = hso.ClientGUID
         INNER JOIN [dbo].[cfgCenter] AS [c] ON [c].[CenterID] = [clt].[CenterID]
         LEFT JOIN [dbo].[lkpRegion] AS [r] ON [r].[RegionID] = [c].[RegionID]
         LEFT JOIN [dbo].[cfgHairSystem] AS [hs] ON [hs].[HairSystemID] = [hso].[HairSystemID]
@@ -268,7 +268,7 @@ IF @MembershipList = '0' --ALL
           AND [m].[MembershipDescription] <> 'CANCEL'
           AND [cm].[ClientMembershipStatusID] = 1
           AND [m].[BusinessSegmentID] = 1 --BIO
-          AND [m].[MembershipID] NOT IN (1, 2, 11, 12, 14, 15, 16, 17, 18, 19, 49, 50, 57) --ALL except these 
+          AND [m].[MembershipID] NOT IN (1, 2, 11, 12, 14, 15, 16, 17, 18, 19, 49, 50, 57) --ALL except these
           AND [m].[MembershipDescription] <> 'Employee - Retail'
           AND ISNULL([cm].[EndDate], @Tomorrow) >= @GetDate
           /*Elite (New)
@@ -759,7 +759,7 @@ OPTION( RECOMPILE ) ;
 
 -- EXEC [dbo].[rptHairOrderQuantitybyClient_GVAROL] @CenterID = 849, @MembershipList = '0' ;
 /*
-ALTER PROCEDURE [dbo].[rptHairOrderQuantitybyClient_V2] 
+ALTER PROCEDURE [dbo].[rptHairOrderQuantitybyClient_V2]
 AS
 SELECT * FROM tempdb.dbo.gokhan
 GO

@@ -58,14 +58,14 @@ AS
 
         -- Fiscal year starts on July 1.
         -- This will be different for each starting month
-        -- if Jan 1 is start then between 1 and 1   +0 and -0   
-        -- if Feb 1 is start then between 1 and 1   +11 and -1   
-        -- if Mar 1 is start then between 1 and 2   +10 and -2   
-        -- if Apr 1 is start then between 1 and 3   +9 and -3   
-        -- if May 1 is start then between 1 and 4   +8 and -4    
-        -- if Jun 1 is start then between 1 and 5   +7 and -5    
-        -- if Jul 1 is start then between 1 and 6   +6 and -6    
-        -- if Aug 1 is start then between 1 and 7   +5 and -7    
+        -- if Jan 1 is start then between 1 and 1   +0 and -0
+        -- if Feb 1 is start then between 1 and 1   +11 and -1
+        -- if Mar 1 is start then between 1 and 2   +10 and -2
+        -- if Apr 1 is start then between 1 and 3   +9 and -3
+        -- if May 1 is start then between 1 and 4   +8 and -4
+        -- if Jun 1 is start then between 1 and 5   +7 and -5
+        -- if Jul 1 is start then between 1 and 6   +6 and -6
+        -- if Aug 1 is start then between 1 and 7   +5 and -7
         -- if Sep 1 is start then between 1 and 8   +4 and -8
         -- if Oct 1 is start then between 1 and 9   +3 and -9
         -- if Nov 1 is start then between 1 and 10  +2 and -10
@@ -249,8 +249,8 @@ CREATE PROCEDURE [bief_dds].[DDS_DimDate_Populate]
   , @EndDate   DATETIME = '07/01/2009'
 AS
 -------------------------------------------------------------------------
--- [DDS_DimDate_Populate] is used to load the Date Dimension  
--- 
+-- [DDS_DimDate_Populate] is used to load the Date Dimension
+--
 --
 --
 --   EXEC [bief_dds].[DDS_DimDate_Populate] '01/01/2021', '12/31/2021'
@@ -260,7 +260,7 @@ AS
 -------------------------------------------------------------------------
 -- Version  Date        Author       Description
 -- -------  ----------  -----------  ------------------------------------
---  
+--
 -------------------------------------------------------------------------
 
 -- SET NOCOUNT ON added to prevent extra result sets from
@@ -382,7 +382,7 @@ WHILE DATEDIFF(DAY, @FullDate, @EndDate) >= 0
     BEGIN
         --  This will give sequential number 1,2,3
         --SET @DateKey = DateDiff(day,@StartDate,@EndDate) - DateDiff(day,@FullDate,@EndDate) + 1
-        -- This will give sequential number in format yyyymmdd 
+        -- This will give sequential number in format yyyymmdd
         SET @DateKey = CAST(CONVERT(CHAR(8), @FullDate, 112) AS INT) ;
         SET @ISODate = CONVERT(CHAR(8), @FullDate, 112) ;
         SET @DateName = CONVERT(CHAR(12), @FullDate, 107) ;

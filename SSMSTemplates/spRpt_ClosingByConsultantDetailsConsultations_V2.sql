@@ -11,7 +11,7 @@ AUTHOR:					Marlon Burrell
 IMPLEMENTOR:			Marlon Burrell
 DATE IMPLEMENTED:		05/28/2013
 ------------------------------------------------------------------------
-NOTES: 
+NOTES:
 @Type = 1 for Consultations, 2 for Bebacks, 3 for Referrals
 ------------------------------------------------------------------------
 CHANGE HISTORY:

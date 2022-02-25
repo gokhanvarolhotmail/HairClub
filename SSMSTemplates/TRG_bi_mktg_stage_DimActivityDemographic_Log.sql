@@ -308,7 +308,7 @@ GO
 -- DROP TRIGGER [bi_mktg_stage].[TRG_bi_mktg_stage_DimActivityDemographic_Log]
 GO
 /*
-SET XACT_ABORT ON 
+SET XACT_ABORT ON
 BEGIN TRANSACTION ;
 
 UPDATE [k]

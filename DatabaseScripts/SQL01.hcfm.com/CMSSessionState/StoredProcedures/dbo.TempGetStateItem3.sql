@@ -16,7 +16,7 @@ CREATE PROCEDURE dbo.TempGetStateItem3
             SET @now = GETUTCDATE()
 
             UPDATE [CMSSessionState].dbo.ASPStateTempSessions
-            SET Expires = DATEADD(n, Timeout, @now), 
+            SET Expires = DATEADD(n, Timeout, @now),
                 @locked = Locked,
                 @lockAge = DATEDIFF(second, LockDate, @now),
                 @lockCookie = LockCookie,

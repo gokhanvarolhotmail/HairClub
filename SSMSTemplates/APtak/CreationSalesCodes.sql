@@ -1,6 +1,6 @@
 IF OBJECT_ID('tempdb..#SalesCodes') IS NOT NULL
    DROP TABLE #SalesCodes
-   
+
 
 /********************************** Create temp table objects *************************************/
 CREATE TABLE #SalesCodes (
@@ -115,13 +115,13 @@ BEGIN
 	SET @User = (SELECT sc.CreateUser FROM #SalesCodes sc WHERE sc.RowID = @LoopCount)
 
 
-	-- Get the SalesCodeID which is being Copied 
+	-- Get the SalesCodeID which is being Copied
 	SELECT @CopyFromSalesCodeID = sc.SalesCodeID FROM cfgSalesCode sc WHERE sc.SalesCodeDescriptionShort = @CopyFromSalesCodeDescriptionShort
 
 
 	PRINT 'Inserting Sales Code ' + @NewSalesCodeDescriptionShort
 
-	INSERT  INTO dbo.cfgSalesCode ( 
+	INSERT  INTO dbo.cfgSalesCode (
 				SalesCodeSortOrder
 			,	SalesCodeDescription
 			,	SalesCodeDescriptionShort
@@ -228,7 +228,7 @@ BEGIN
 					AND scNew.SalesCodeID IS NULL
 
 
-	-- Get the New SalesCodeID 
+	-- Get the New SalesCodeID
 	SELECT @NewSalesCodeID = SalesCodeID FROM cfgSalesCode WHERE SalesCodeDescriptionShort = @NewSalesCodeDescriptionShort
 
 
@@ -274,7 +274,7 @@ BEGIN
 					AND ajNew.AccumulatorJoinID IS NULL
 
 
-	-- cfgSalesCodeCenter 
+	-- cfgSalesCodeCenter
 	PRINT 'Inserting Sales Code Center records for ' + @NewSalesCodeDescriptionShort
 
 	INSERT  INTO cfgSalesCodeCenter (
@@ -383,9 +383,9 @@ BEGIN
 				,       GETUTCDATE()
 				,       @User
 				FROM    cfgSalesCodeCenter scc
-						INNER JOIN cfgSalesCode sc 
+						INNER JOIN cfgSalesCode sc
 							ON scc.SalesCodeID = sc.SalesCodeID
-						LEFT OUTER JOIN datSalesCodeCenterInventory scciNew 
+						LEFT OUTER JOIN datSalesCodeCenterInventory scciNew
 							ON scc.SalesCodeCenterID = scciNew.SalesCodeCenterID
 				WHERE   scc.SalesCodeID = @NewSalesCodeID
 						AND scciNew.SalesCodeCenterInventoryID IS NULL
@@ -429,7 +429,7 @@ BEGIN
 				,		@User AS 'LastUpdateUser'
 				FROM    cfgSalesCode sc
 						INNER JOIN #SalesCodes s
-							ON s.NewSalesCodeDescriptionShort = sc.SalesCodeDescriptionShort 
+							ON s.NewSalesCodeDescriptionShort = sc.SalesCodeDescriptionShort
 	END
 
 
@@ -517,6 +517,6 @@ FROM    cfgSalesCode sc
 		LEFT JOIN lkpSalesCodeDepartment dep
 			ON dep.SalesCodeDepartmentDescription = s.SalesCodeDepartment
 
-UPDATE cfgSalesCode 
+UPDATE cfgSalesCode
 SET CanOrderFlag = 1
 WHERE LastUpdateUser = 'TFS #14975'

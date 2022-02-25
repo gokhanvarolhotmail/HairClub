@@ -9,8 +9,8 @@ DATE IMPLEMENTED:		04/05/2015
 NOTES:
 
 	* 04/05/2015 - MVT - Created proc
-	* 05/11/2016 - MVT - Added logic to ignore InTransit scans. 
-	* 05/26/2016 - MVT - Added logic to ignore transactions flagged as Excluded. Modified parameter to use 
+	* 05/11/2016 - MVT - Added logic to ignore InTransit scans.
+	* 05/26/2016 - MVT - Added logic to ignore transactions flagged as Excluded. Modified parameter to use
 						Snapshot ID
 	* 12/05/2016 - DSL - Removed ORDER, FAC-Ship from UPDATE CENTER TO SCANNED CENTER query logic
 	* 12/22/2016 - DSL - Changed WHERE clause in Scanned Center <> HSO Center from:
@@ -23,7 +23,7 @@ NOTES:
 	* 12/13/2019 - SAL - Modified so that hair in QANEEDED status is moved to INVNS status as part of the "UPDATE NOT SCANNED INVNS" section
 							of this stored proc. (TFS #13584)
 --------------------------------------------------------------------------------------------------------
-Sample Execution: 
+Sample Execution:
 
 EXEC mtnHairSystemInventoryCorrection NULL, 1
 ***********************************************************************/
@@ -131,7 +131,7 @@ INSERT INTO [dbo].[datHairSystemOrderTransaction]( [HairSystemOrderTransactionGU
    AND ( [hso].[CenterID] = @CenterID OR @CenterID IS NULL ) -- Do we want to check the center on the batch?
 ) ;
 
--- Update Hair System Order - SCANNED CENTER <> HSO CENTER - change to PRIORITY 
+-- Update Hair System Order - SCANNED CENTER <> HSO CENTER - change to PRIORITY
 UPDATE
     [hso]
 SET
@@ -334,7 +334,7 @@ INSERT INTO [dbo].[datHairSystemOrderTransaction]( [HairSystemOrderTransactionGU
    AND ( [hso].[CenterID] = @CenterID OR @CenterID IS NULL )) ;
 
 -- Update Hair System Order - NOT SCANNED - change to
---		INVNS 
+--		INVNS
 UPDATE
     [hso]
 SET

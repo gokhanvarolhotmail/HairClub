@@ -312,7 +312,7 @@ SELECT
   , [c].[TollFreeName]
   , [c].[TollFreeMobileName]
   INTO #CCC
-FROM [c] 
+FROM [c]
 --WHERE campaignname LIKE '%local listing_misc%'
 
 SELECT     [AgencyName]
@@ -335,7 +335,3 @@ SELECT     [AgencyName]
 WHERE agencyname = 'Gleam'
 ORDER BY 1,2,3,4,5,6
 GO
-
-
-
-

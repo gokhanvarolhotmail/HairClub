@@ -15,4 +15,3 @@ EXEC sp_addrolemember 'db_datareader', 'TJaved@hairclub.com';
 
 
 SELECT GETDATE(), * FROM sys.database_principals ORDER BY NAME
-

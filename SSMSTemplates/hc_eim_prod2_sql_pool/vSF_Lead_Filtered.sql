@@ -96,4 +96,3 @@ SELECT
 FROM [ODS].[SF_Lead] AS [s]
 WHERE [s].[LastModifiedDate] <= DATEADD(DAY, 1, GETDATE()) AND [s].[LastModifiedDate] > DATEADD(DAY, -4, CAST(GETDATE() AS DATE))
 GO
-

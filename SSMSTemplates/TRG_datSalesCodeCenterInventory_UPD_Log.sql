@@ -199,4 +199,3 @@ FROM [Audit].[vdbo_datSalesCodeCenterInventory] AS [v]
 WHERE 1 = 1
 AND [v].[AfterQuantityOnHand] <0
 ORDER BY [v].[DiffQuantityOnHand] ASC, [v].[AfterQuantityOnHand]
-

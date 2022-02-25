@@ -39,7 +39,7 @@ IF @datHairSystemInventoryTransactionCnt = 0
 UPDATE [hsit]
 SET
     [hsit].[IsExcludedFromCorrections] = 1
-  --, hsit.ExclusionReason = 'These two locations are unable to perform any inventory this month.' 
+  --, hsit.ExclusionReason = 'These two locations are unable to perform any inventory this month.'
   , [hsit].[ExclusionReason] = 'This location is unable to perform any inventory this month.'
   , [hsit].[LastUpdate] = GETUTCDATE()
   , [hsit].[LastUpdateUser] = 'NChavez'

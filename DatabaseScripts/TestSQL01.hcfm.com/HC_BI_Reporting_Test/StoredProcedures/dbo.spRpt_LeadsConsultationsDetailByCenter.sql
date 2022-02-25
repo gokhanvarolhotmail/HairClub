@@ -10,12 +10,12 @@ IMPLEMENTOR:			Dominic Leiba
 DATE IMPLEMENTED:		02/24/2014
 DATE IMPLEMENTED:		03/29/2019
 ------------------------------------------------------------------------
-NOTES: 
+NOTES:
 
 02/24/2014 - DL - Created Stored Procedure.
 01/11/2016 - RH - Changed to pull Consultations from vwFactActivityResults (#122061)
 03/29/2019 - JL - Changed report to group by area/region  (Case #6597)
-01/13/2020 - JL - Remove Bosley Consult from leads, appointments & consultation count TrackIT 5322 
+01/13/2020 - JL - Remove Bosley Consult from leads, appointments & consultation count TrackIT 5322
 ------------------------------------------------------------------------
 SAMPLE EXECUTION:
 
@@ -648,7 +648,7 @@ BEGIN
            , R.EndDate
 
 
---Franchise total 
+--Franchise total
     INSERT INTO #Final
     SELECT R.DateDesc
          , R.DateDescFiscalYear

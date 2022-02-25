@@ -131,4 +131,3 @@ FROM( SELECT
 ORDER BY [f].[Agency]
        , [f].[Channel]
        , [f].[Medium] ;
-

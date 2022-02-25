@@ -13,7 +13,7 @@ DROP TABLE IF EXISTS [#reports] ;
 
 IF OBJECT_ID('[tempdb]..[#reports]') IS NULL
     SELECT
-        [ct].[Name] --Just the objectd name  
+        [ct].[Name] --Just the objectd name
       , RANK() OVER ( PARTITION BY [ct].[Name] ORDER BY [ct].[CS] ) AS [Rank]
       , [x].[DistinctCnt]
       , [x].[TotalCnt]

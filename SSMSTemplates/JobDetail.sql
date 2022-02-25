@@ -159,4 +159,3 @@ FROM [#JobDetail] AS [j]
 WHERE 1 = 1 AND [j].[subsystem] = 'SSIS' AND [j].[command] LIKE '%bosley%'
 ORDER BY [j].[JobName]
        , [j].[step_id] ;
-

@@ -115,13 +115,13 @@ BEGIN
 			,       GETUTCDATE()
 			,       s.CreateUser
 			FROM    cfgSalesCodeCenter scc
-					INNER JOIN cfgSalesCode sc 
+					INNER JOIN cfgSalesCode sc
 						ON scc.SalesCodeID = sc.SalesCodeID
 					INNER JOIN #SalesCodes s
 						ON s.SalesCodeDescriptionShort = sc.SalesCodeDescriptionShort
 					INNER JOIN cfgSalesCodeDistributor scd
 						ON scd.SalesCodeID = s.SalesCodeID
-					LEFT OUTER JOIN datSalesCodeCenterInventory scciNew 
+					LEFT OUTER JOIN datSalesCodeCenterInventory scciNew
 						ON scc.SalesCodeCenterID = scciNew.SalesCodeCenterID
 			WHERE   scc.CenterID = @CenterID
 					AND s.IsInventoried = 1
@@ -139,7 +139,7 @@ SET
 		scc.IsActiveFlag = 0
 ,		scc.LastUpdateUser = 'TFS #14975'
 ,		scc.LastUpdate = GETUTCDATE()
-FROM cfgSalesCodeCenter scc 
+FROM cfgSalesCodeCenter scc
 INNER JOIN cfgCenter c ON
 	c.CenterID = scc.CenterID
 INNER JOIN lkpCenterType ct ON
@@ -154,7 +154,7 @@ SET
 		scc.IsActiveFlag = 1
 ,		scc.LastUpdateUser = 'TFS #14975'
 ,		scc.LastUpdate = GETUTCDATE()
-FROM cfgSalesCodeCenter scc 
+FROM cfgSalesCodeCenter scc
 INNER JOIN cfgCenter c ON
 	c.CenterID = scc.CenterID
 INNER JOIN lkpCenterType ct ON
@@ -162,8 +162,3 @@ INNER JOIN lkpCenterType ct ON
 INNER JOIN cfgSalesCode sc ON
 	sc.SalesCodeID = scc.SalesCodeID
 where c.CenterDescription LIKE '%Diego%' and sc.LastUpdateUser IN ('TFS #14975') AND c.IsActiveFlag = 1
-
-
-
-
-
