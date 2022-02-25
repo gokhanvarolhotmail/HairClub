@@ -245,7 +245,7 @@ IF @MembershipList = '0' --ALL
         OUTER APPLY( SELECT [k].[NextAppointmentDate] AS [EstNextApp]
                      FROM( SELECT
                                DATEADD(DAY, ( [b].[digit] ) * [k].[Application Cadence Days], [sna].[AppointmentDate]) AS [NextAppointmentDate]
-                             , ROW_NUMBER() OVER ( PARTITION BY [m].[MembershipID], [k].[MembershipAccumulatorID] ORDER BY [b].[digit] DESC ) AS [rw]
+                             , ROW_NUMBER() OVER ( PARTITION BY [m].[MembershipID], [k].[MembershipAccumulatorID] ORDER BY [b].[digit] ASC ) AS [rw]
                              , [k].*
                            FROM( SELECT TOP( 1 )
                                         [m].[DurationMonths] * 30 / [ca].[InitialQuantity] AS [Application Cadence Days]
@@ -339,7 +339,7 @@ ELSE
         OUTER APPLY( SELECT [k].[NextAppointmentDate] AS [EstNextApp]
                      FROM( SELECT
                                DATEADD(DAY, ( [b].[digit] ) * [k].[Application Cadence Days], [sna].[AppointmentDate]) AS [NextAppointmentDate]
-                             , ROW_NUMBER() OVER ( PARTITION BY [m].[MembershipID], [k].[MembershipAccumulatorID] ORDER BY [b].[digit] DESC ) AS [rw]
+                             , ROW_NUMBER() OVER ( PARTITION BY [m].[MembershipID], [k].[MembershipAccumulatorID] ORDER BY [b].[digit] ASC ) AS [rw]
                              , [k].*
                            FROM( SELECT TOP( 1 )
                                         [m].[DurationMonths] * 30 / [ca].[InitialQuantity] AS [Application Cadence Days]
