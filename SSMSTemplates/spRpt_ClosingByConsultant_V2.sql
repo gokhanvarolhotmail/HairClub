@@ -29,10 +29,7 @@ ALTER PROCEDURE [dbo].[spRpt_ClosingByConsultant_V2]
   , @StartDate  DATETIME
   , @EndDate    DATETIME
 AS
---DECLARE
---    @CenterType INT      = 1
---  , @StartDate  DATETIME = '20220201'
---  , @EndDate    DATETIME = '20220224' ;
+
 SET FMTONLY OFF ;
 
 /********************************** Create temp table objects *************************************/
