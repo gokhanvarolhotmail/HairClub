@@ -1,9 +1,9 @@
-/* CreateDate: 12/17/2018 12:10:25.690 , ModifyDate: 08/31/2021 16:59:36.843 */
+/* CreateDate: 12/17/2018 12:10:25.690 , ModifyDate: 02/28/2022 15:20:25.920 */
 GO
 /***********************************************************************
 PROCEDURE:				spRpt_FlashNewBusinessDetails
-DESTINATION SERVER:		SQL06
-DESTINATION DATABASE:	HC_BI_Reporting
+DESTINATION SERVER:		TESTSQL01
+DESTINATION DATABASE:	HC_BI_Reporting_Test
 RELATED REPORT:			NB1 Flash Details
 AUTHOR:					Marlon Burrell
 IMPLEMENTOR:			Marlon Burrell
@@ -332,7 +332,7 @@ FROM   HC_BI_CMS_DDS.bi_cms_dds.FactSalesTransaction FST
 		ON DCM.CenterKey = C.CenterKey
 	INNER JOIN #Centers CTRS
 		ON C.CenterNumber = CTRS.CenterNumber
-	LEFT JOIN HC_BI_Reporting.dbo.DimCancelReason cr
+	LEFT JOIN HC_BI_Reporting_Test.dbo.DimCancelReason cr
 		ON cr.CancelReasonID = sod.CancelReasonID
 WHERE   DD.FullDate BETWEEN @BegDt AND @EndDt
 	AND ( SC.SalesCodeKey NOT IN ( 665, 654, 393, 668)
@@ -415,8 +415,8 @@ FROM   HC_BI_CMS_DDS.bi_cms_dds.FactSalesTransaction FST
 		ON FST.SalesOrderKey = SO.SalesOrderKey
 	INNER JOIN HC_BI_CMS_DDS.bi_cms_dds.DimSalesOrderDetail SOD
 		ON FST.SalesOrderDetailKey = SOD.SalesOrderDetailKey
-		)
-
+WHERE DD.YearNumber = Year(@BegDt)
+)
 INSERT  INTO #Output
 SELECT  DISTINCT CTRS.CenterNumber, CTRS.CenterDescriptionNumber, CTRS.MainGroupKey, CTRS.MainGroupDescription, CTRS.MainGroupSortOrder, CLT.ClientIdentifier, CLT.ClientLastName, CLT.ClientFirstName
 ,       sod.SalesOrderDetailKey, SO.InvoiceNumber, DD.FullDate, SC.SalesCodeDescriptionShort, sc.SalesCodeDescription
@@ -480,10 +480,9 @@ FROM  cte FST
 		ON FST.Employee1Key = E.EmployeeKey
 	LEFT OUTER JOIN HC_BI_CMS_DDS.bi_cms_dds.DimEmployee E2
 		ON FST.Employee2Key = E2.EmployeeKey
-	LEFT JOIN HC_BI_Reporting.dbo.DimCancelReason cr
+	LEFT JOIN HC_BI_Reporting_Test.dbo.DimCancelReason cr
 		ON cr.CancelReasonID = sod.CancelReasonID
-WHERE   DD.FullDate BETWEEN @BegDt AND @EndDt
-	AND ( SC.SalesCodeKey NOT IN ( 665, 654, 393, 668)
+WHERE ( SC.SalesCodeKey NOT IN ( 665, 654, 393, 668)
 			OR SC.SalesCodeDescriptionShort = 'ADDBIOSYS' )
 	AND SO.IsVoidedFlag = 0
 	AND (  ISNULL(FST.NB_GrossNB1Cnt, 0) <> 0
@@ -574,7 +573,6 @@ LEFT OUTER JOIN HC_BI_MKTG_DDS.bi_mktg_dds.DimSource DS WITH (NOLOCK) --> Added 
     ON DS.SourceSSID = L.RecentSourceCode__c
 LEFT OUTER JOIN HC_BI_MKTG_DDS.bi_mktg_dds.DimPromotionCode PC WITH (NOLOCK)
     ON PC.PromotionCodeSSID = DS.PromoCode
---WHERE FAR.Consultation = 1 --> Pending for review due to all new leads come with 00Q5
 GROUP BY O.ClientIdentifier,
          CLT.contactkey,
          PC.PromotionCodeKey,
