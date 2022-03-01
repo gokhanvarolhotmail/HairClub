@@ -141,6 +141,7 @@ CREATE TABLE [#hair]
   , [MembershipExpiration]                 DATE
   , [FrozenEFTEndDate]                     DATE
   , [EstNextApp]                           DATE
+  , [LastApplicationDate]                  DATE
 ) ;
 
 -- Last Application Date
@@ -184,6 +185,7 @@ FROM( SELECT
 WHERE [k].[rw] = 1
 OPTION( RECOMPILE ) ;
 
+/*
 IF OBJECT_ID('[tempdb]..[#LastAppointmentDate]') IS NOT NULL
     DROP TABLE [#LastAppointmentDate] ;
 
@@ -205,7 +207,7 @@ FROM( SELECT
       WHERE( [a].[IsDeletedFlag] IS NULL OR [a].[IsDeletedFlag] = 0 ) AND [a].[AppointmentDate] < @GetDate AND [sc].[SalesCodeDepartmentID] IN (5010, 5020)) AS [k]
 WHERE [k].[rw] = 1
 OPTION( RECOMPILE ) ;
-
+*/
 INSERT INTO [#hair]( [HairSystemOrderNumber]
                    , [CenterID]
                    , [CenterDescriptionFullCalc]
@@ -225,7 +227,8 @@ INSERT INTO [#hair]( [HairSystemOrderNumber]
                    , [Region]
                    , [MembershipExpiration]
                    , [FrozenEFTEndDate]
-                   , [EstNextApp] )
+                   , [EstNextApp]
+                   , [LastApplicationDate] )
 SELECT
     [hso].[HairSystemOrderNumber]
   , [clt].[CenterID]
@@ -247,15 +250,16 @@ SELECT
   , [cm].[EndDate]
   , [eft].[FrozenEFTEndDate]
   , [nad].[EstNextApp]
+  , [sna].[LastApplicationDate]
 FROM [dbo].[datClient] AS [clt]
 INNER JOIN [dbo].[datClientMembership] AS [cm] ON [cm].[ClientMembershipGUID] = [clt].[CurrentBioMatrixClientMembershipGUID]
 INNER JOIN [dbo].[cfgCenter] AS [c] ON [c].[CenterID] = [clt].[CenterID]
-LEFT JOIN [#LastAppointmentDate] AS [sna] ON [sna].[ClientGUID] = [clt].[ClientGUID]
+LEFT JOIN [#LastApplication] AS [sna] ON [sna].[ClientGUID] = [clt].[ClientGUID]
 LEFT JOIN( SELECT [ClientMembershipGUID], MAX([Freeze_End]) AS [FrozenEFTEndDate] FROM [dbo].[datClientEFT] GROUP BY [ClientMembershipGUID] ) AS [eft] ON [eft].[ClientMembershipGUID] = [cm].[ClientMembershipGUID]
 INNER JOIN [dbo].[cfgMembership] AS [m] ON [m].[MembershipID] = [cm].[MembershipID]
 OUTER APPLY( SELECT [k].[NextAppointmentDate] AS [EstNextApp]
              FROM( SELECT
-                       DATEADD(DAY, ( [b].[digit] ) * [k].[Application Cadence Days], [sna].[AppointmentDate]) AS [NextAppointmentDate]
+                       DATEADD(DAY, ( [b].[digit] ) * [k].[Application Cadence Days], [sna].[LastApplicationDate]) AS [NextAppointmentDate]
                      , ROW_NUMBER() OVER ( PARTITION BY [m].[MembershipID], [k].[MembershipAccumulatorID] ORDER BY [b].[digit] ASC ) AS [rw]
                      , [k].*
                    FROM( SELECT TOP( 1 )
@@ -467,7 +471,8 @@ SELECT
   , [q].[MembershipDescription] AS [CurrentMembership]
   , [q].[MembershipID]
   , [q].[CenterDescriptionFullCalc] AS [Center]
-  , [lad].[LastApplicationDate]
+  --, [lad].[LastApplicationDate]
+  , [q].[LastApplicationDate]
   , [q].[InCenter]
   , [q].[OnOrder]
   , [ndd].[DueDate]
@@ -513,6 +518,7 @@ FROM( SELECT
         , MAX([hair].[MembershipExpiration]) AS [MembershipExpiration]
         , MAX([hair].[FrozenEFTEndDate]) AS [FrozenEFTEndDate]
         , MAX([hair].[EstNextApp]) AS [EstNextApp]
+        , MAX([hair].[LastApplicationDate]) AS [LastApplicationDate]
       --, MAX(CASE WHEN [hair].[HairSystemOrderDate] = [hair].[NextAppointmentDate] AND [hair].[InCenter] = 1 THEN 1 ELSE 0 END) AS [OrderAvailForNextApp]
       FROM [#hair] AS [hair]
       LEFT JOIN [dbo].[datClientMembershipAccum] AS [ahs] ON [hair].[CurrentBioMatrixClientMembershipGUID] = [ahs].[ClientMembershipGUID]
@@ -530,7 +536,7 @@ FROM( SELECT
              , [pro].[Promo]
              , [iq].[InitialQuantity]
              , [hair].[MembershipID] ) AS [q]
-LEFT JOIN [#LastApplication] AS [lad] ON [q].[ClientGUID] = [lad].[ClientGUID]
+--LEFT JOIN [#LastApplication] AS [lad] ON [q].[ClientGUID] = [lad].[ClientGUID]
 LEFT JOIN [#ScheduledNextAppDate] AS [sad] ON [q].[ClientGUID] = [sad].[ClientGUID]
 LEFT JOIN [#Calc01] AS [c1] ON [c1].[ClientGUID] = [q].[ClientGUID]
 LEFT JOIN [#Calc02] AS [c2] ON [c2].[ClientGUID] = [q].[ClientGUID]
