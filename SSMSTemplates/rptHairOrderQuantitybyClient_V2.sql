@@ -149,7 +149,7 @@ IF OBJECT_ID('[tempdb]..[#LastApplication]') IS NOT NULL
 
 SELECT
     [c].[ClientGUID]
-  , MAX([sod].[CreateDate]) AS [CreateDate]
+  , MAX([sod].[CreateDate]) AS [LastApplicationDate]
 INTO [#LastApplication]
 FROM [dbo].[datClient] AS [c]
 INNER JOIN [dbo].[datSalesOrder] AS [so] ON [so].[ClientGUID] = [c].[ClientGUID]
@@ -184,13 +184,13 @@ FROM( SELECT
 WHERE [k].[rw] = 1
 OPTION( RECOMPILE ) ;
 
-IF OBJECT_ID('[tempdb]..[#LastAppDate]') IS NOT NULL
-    DROP TABLE [#LastAppDate] ;
+IF OBJECT_ID('[tempdb]..[#LastAppointmentDate]') IS NOT NULL
+    DROP TABLE [#LastAppointmentDate] ;
 
 SELECT
     [k].[ClientGUID]
   , [k].[AppointmentDate]
-INTO [#LastAppDate]
+INTO [#LastAppointmentDate]
 FROM( SELECT
           [c].[ClientGUID]
         , [a].[AppointmentDate]
@@ -202,9 +202,7 @@ FROM( SELECT
       INNER JOIN [dbo].[datAppointmentDetail] AS [ad] ON [ad].[AppointmentGUID] = [a].[AppointmentGUID]
       INNER JOIN [dbo].[cfgSalesCode] AS [sc] ON [sc].[SalesCodeID] = [ad].[SalesCodeID]
       INNER JOIN [dbo].[cfgCenter] AS [apptctr] ON [a].[CenterID] = [apptctr].[CenterID]
-      WHERE( [a].[IsDeletedFlag] IS NULL OR [a].[IsDeletedFlag] = 0 ) AND [a].[AppointmentDate] < @GetDate AND [sc].[SalesCodeDepartmentID] IN (5010, 5020)
---AND EXISTS ( SELECT 1 FROM [#LastApplication] AS [l] WHERE [l].[ClientGUID] = [c].[ClientGUID] )
-) AS [k]
+      WHERE( [a].[IsDeletedFlag] IS NULL OR [a].[IsDeletedFlag] = 0 ) AND [a].[AppointmentDate] < @GetDate AND [sc].[SalesCodeDepartmentID] IN (5010, 5020)) AS [k]
 WHERE [k].[rw] = 1
 OPTION( RECOMPILE ) ;
 
@@ -252,7 +250,7 @@ SELECT
 FROM [dbo].[datClient] AS [clt]
 INNER JOIN [dbo].[datClientMembership] AS [cm] ON [cm].[ClientMembershipGUID] = [clt].[CurrentBioMatrixClientMembershipGUID]
 INNER JOIN [dbo].[cfgCenter] AS [c] ON [c].[CenterID] = [clt].[CenterID]
-LEFT JOIN [#LastAppDate] AS [sna] ON [sna].[ClientGUID] = [clt].[ClientGUID]
+LEFT JOIN [#LastAppointmentDate] AS [sna] ON [sna].[ClientGUID] = [clt].[ClientGUID]
 LEFT JOIN( SELECT [ClientMembershipGUID], MAX([Freeze_End]) AS [FrozenEFTEndDate] FROM [dbo].[datClientEFT] GROUP BY [ClientMembershipGUID] ) AS [eft] ON [eft].[ClientMembershipGUID] = [cm].[ClientMembershipGUID]
 INNER JOIN [dbo].[cfgMembership] AS [m] ON [m].[MembershipID] = [cm].[MembershipID]
 OUTER APPLY( SELECT [k].[NextAppointmentDate] AS [EstNextApp]
@@ -532,7 +530,7 @@ FROM( SELECT
              , [pro].[Promo]
              , [iq].[InitialQuantity]
              , [hair].[MembershipID] ) AS [q]
-LEFT JOIN [#LastAppliedDate] AS [lad] ON [q].[ClientGUID] = [lad].[ClientGUID]
+LEFT JOIN [#LastApplication] AS [lad] ON [q].[ClientGUID] = [lad].[ClientGUID]
 LEFT JOIN [#ScheduledNextAppDate] AS [sad] ON [q].[ClientGUID] = [sad].[ClientGUID]
 LEFT JOIN [#Calc01] AS [c1] ON [c1].[ClientGUID] = [q].[ClientGUID]
 LEFT JOIN [#Calc02] AS [c2] ON [c2].[ClientGUID] = [q].[ClientGUID]
@@ -650,7 +648,9 @@ CREATE TABLE [##rptHairOrderQuantitybyClient_V2]
 ) ;
 
 INSERT [##rptHairOrderQuantitybyClient_V2]
-EXEC [dbo].[rptHairOrderQuantitybyClient_V2] @CenterID = 201, @MembershipList = '10' ;
+EXEC [dbo].[rptHairOrderQuantitybyClient_V2] @CenterID = 223 ;
+
+--, @MembershipList = '10' ;
 
 --EXEC [dbo].[rptHairOrderQuantitybyClient_V2] @CenterID = 256, @MembershipList = '0' ;
 SELECT
