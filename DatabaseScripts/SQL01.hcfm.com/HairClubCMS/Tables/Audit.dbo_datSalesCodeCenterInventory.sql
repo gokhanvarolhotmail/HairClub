@@ -1,4 +1,4 @@
-/* CreateDate: 02/21/2022 17:05:21.490 , ModifyDate: 02/21/2022 17:05:21.523 */
+/* CreateDate: 02/21/2022 17:05:21.490 , ModifyDate: 02/28/2022 04:00:42.320 */
 GO
 CREATE TABLE [Audit].[dbo_datSalesCodeCenterInventory](
 	[LogId] [int] NOT NULL,

@@ -7,10 +7,10 @@ CREATE PROCEDURE dbo.TempUpdateStateItemLongNullShort
             @itemLong   tSessionItemLong,
             @timeout    int,
             @lockCookie int
-        AS
+        AS    
             UPDATE [CMSSessionState].dbo.ASPStateTempSessions
-            SET Expires = DATEADD(n, @timeout, GETUTCDATE()),
-                SessionItemLong = @itemLong,
+            SET Expires = DATEADD(n, @timeout, GETUTCDATE()), 
+                SessionItemLong = @itemLong, 
                 SessionItemShort = NULL,
                 Timeout = @timeout,
                 Locked = 0

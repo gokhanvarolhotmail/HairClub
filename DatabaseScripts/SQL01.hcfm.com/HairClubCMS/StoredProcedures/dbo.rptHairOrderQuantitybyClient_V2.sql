@@ -1,4 +1,4 @@
-/* CreateDate: 02/11/2022 15:30:57.193 , ModifyDate: 02/21/2022 13:23:54.860 */
+/* CreateDate: 02/11/2022 15:30:57.193 , ModifyDate: 02/28/2022 16:03:32.110 */
 GO
 /*
 ===============================================================================================
@@ -39,17 +39,17 @@ EXEC [rptHairOrderQuantitybyClient] 241, '26,27,28,29,30,31,45,46,47,48'
 */
 CREATE PROCEDURE [dbo].[rptHairOrderQuantitybyClient_V2]
     @CenterID            INT
-  , @MembershipList      NVARCHAR(MAX)
-  , @NoHairInCenter      NVARCHAR(30) = '<ALL>'
-  , @NoHairOnOrder       NVARCHAR(30) = '<ALL>'
-  , @PriorityOrderNeeded NVARCHAR(30) = '<ALL>'
+  , @MembershipList      NVARCHAR(MAX) = NULL
+  , @NoHairInCenter      NVARCHAR(30)  = '<ALL>'
+  , @NoHairOnOrder       NVARCHAR(30)  = '<ALL>'
+  , @PriorityOrderNeeded NVARCHAR(30)  = '<ALL>'
 AS
 SET NOCOUNT ON ;
 
 SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED ;
 
 DECLARE
-    @Getdate    DATE     = CONVERT(VARCHAR(30), GETDATE(), 112)
+    @GetDate    DATE     = CONVERT(VARCHAR(30), GETDATE(), 112)
   , @Tomorrow   DATE     = CONVERT(VARCHAR(30), DATEADD(DAY, 1, GETDATE()), 112)
   , @BeginDate  DATETIME = DATEADD(MONTH, -18, GETUTCDATE())
   , @GetUTCDate DATETIME = GETUTCDATE() ;
@@ -58,12 +58,18 @@ DECLARE
 CREATE TABLE [#membership] ( [MembershipID] INT ) ;
 
 INSERT INTO [#membership]
-SELECT CAST([item] AS INT)
-FROM [dbo].[fnSplit](@MembershipList, ',') ;
+SELECT CAST(NULLIF([value], '') AS INT)
+FROM STRING_SPLIT(@MembershipList, ',')
+WHERE @MembershipList NOT IN ('0', '')
+OPTION( RECOMPILE ) ;
+
+DECLARE @MembershipCount INT = @@ROWCOUNT ;
+
+IF EXISTS ( SELECT 1 FROM [#membership] WHERE [MembershipID] = 0 )
+    SET @MembershipCount = 0 ;
 
 DECLARE
-    @CenterIDs                NVARCHAR(MAX)
-  , @CorpCenterTypeID         INT
+    @CorpCenterTypeID         INT
   , @FranchiseCenterTypeID    INT
   , @JointVentureCenterTypeID INT ;
 
@@ -79,30 +85,38 @@ SELECT @JointVentureCenterTypeID = [CenterTypeID]
 FROM [dbo].[lkpCenterType]
 WHERE [CenterTypeDescriptionShort] = 'JV' ;
 
-SET @CenterIDs = @CenterID ;
+DROP TABLE IF EXISTS [#CenterId] ;
+
+CREATE TABLE [#CenterId] ( [CenterId] INT NOT NULL PRIMARY KEY CLUSTERED ) ;
 
 IF( @CenterID = 1 )
     BEGIN
-        SELECT @CenterIDs = COALESCE(@CenterIDs + ',' + CONVERT(NVARCHAR, [CenterID]), '')
+        INSERT [#CenterId]( [CenterId] )
+        SELECT [CenterID]
         FROM [dbo].[cfgCenter]
         WHERE [CenterTypeID] = @CorpCenterTypeID AND [IsCorporateHeadquartersFlag] = 0 ;
     END ;
 
 -- Add Franchise CenterIDs to List
-IF( @CenterID = 2 )
+ELSE IF( @CenterID = 2 )
     BEGIN
-        SELECT @CenterIDs = COALESCE(@CenterIDs + ',' + CONVERT(NVARCHAR, [CenterID]), '')
+        INSERT [#CenterId]( [CenterId] )
+        SELECT [CenterID]
         FROM [dbo].[cfgCenter]
         WHERE [CenterTypeID] = @FranchiseCenterTypeID ;
     END ;
 
 -- Add JointVenture CenterIDs to List
-IF( @CenterID = 3 )
+ELSE IF( @CenterID = 3 )
     BEGIN
-        SELECT @CenterIDs = COALESCE(@CenterIDs + ',' + CONVERT(NVARCHAR, [CenterID]), '')
+        INSERT [#CenterId]( [CenterId] )
+        SELECT [CenterID]
         FROM [dbo].[cfgCenter]
         WHERE [CenterTypeID] = @JointVentureCenterTypeID ;
     END ;
+ELSE
+    INSERT [#CenterId]( [CenterId] )
+    SELECT @CenterID AS [CenterId] ;
 
 IF OBJECT_ID('[tempdb]..[#hair]') IS NOT NULL
     DROP TABLE [#hair] ;
@@ -131,83 +145,146 @@ CREATE TABLE [#hair]
   , [EstNextApp]                           DATE
 ) ;
 
-IF @MembershipList = '0' --ALL
-    BEGIN
-        INSERT INTO [#hair]( [HairSystemOrderNumber]
-                           , [CenterID]
-                           , [CenterDescriptionFullCalc]
-                           , [ClientFullNameCalc]
-                           , [ClientGUID]
-                           , [CurrentBioMatrixClientMembershipGUID]
-                           , [MembershipID]
-                           , [MembershipDescription]
-                           , [InCenter]
-                           , [OnOrder]
-                           , [QaNeeded]
-                           , [Status]
-                           , [DueDate]
-                           , [HairSystemOrderDate]
-                           , [HairSystemOrderGUID]
-                           , [MembershipStartDate]
-                           , [Region]
-                           , [MembershipExpiration]
-                           , [FrozenEFTEndDate]
-                           , [EstNextApp] )
-        SELECT
-            [hso].[HairSystemOrderNumber]
-          , [clt].[CenterID]
-          , [c].[CenterDescriptionFullCalc]
-          , [clt].[ClientFullNameCalc]
-          , [clt].[ClientGUID]
-          , [clt].[CurrentBioMatrixClientMembershipGUID]
-          , [m].[MembershipID]
-          , [m].[MembershipDescription]
-          , CASE WHEN [hsos].[HairSystemOrderStatusDescriptionShort] IN ('CENT') THEN 1 ELSE 0 END AS [InCenter]
-          , CASE WHEN [hsos].[HairSystemOrderStatusDescriptionShort] IN ('NEW', 'ORDER', 'HQ-Recv', 'HQ-Ship', 'FAC-Ship') THEN 1 ELSE 0 END AS [OnOrder]
-          , CASE WHEN [hsos].[HairSystemOrderStatusDescriptionShort] IN ('QANEEDED') THEN 1 ELSE 0 END AS [QaNeeded]
-          , [hsos].[HairSystemOrderStatusDescriptionShort] AS [Status]
-          , [hso].[DueDate]
-          , [hso].[HairSystemOrderDate]
-          , [hso].[HairSystemOrderGUID]
-          , [cm].[BeginDate] AS [MembershipStartDate]
-          , [r].[RegionDescription]
-          , [cm].[EndDate]
-          , [eft].[FrozenEFTEndDate]
-          , [nad].[EstNextApp]
-        FROM [dbo].[datClient] AS [clt]
-        INNER JOIN [dbo].[datClientMembership] AS [cm] ON [cm].[ClientMembershipGUID] = [clt].[CurrentBioMatrixClientMembershipGUID]
-        LEFT JOIN( SELECT [ClientMembershipGUID], MAX([Freeze_End]) AS [FrozenEFTEndDate] FROM [dbo].[datClientEFT] GROUP BY [ClientMembershipGUID] ) AS [eft] ON [eft].[ClientMembershipGUID] = [cm].[ClientMembershipGUID]
-        INNER JOIN [dbo].[cfgMembership] AS [m] ON [m].[MembershipID] = [cm].[MembershipID]
-        OUTER APPLY( SELECT [k].[NextAppointmentDate] AS [EstNextApp]
-                     FROM( SELECT
-                               DATEADD(DAY, ( [b].[digit] ) * [k].[Application Cadence Days], [cm].[BeginDate]) AS [NextAppointmentDate]
-                             , ROW_NUMBER() OVER ( PARTITION BY [m].[MembershipID], [k].[MembershipAccumulatorID] ORDER BY [b].[digit] DESC ) AS [rw]
-                             , [k].*
-                           FROM( SELECT TOP( 1 )
-                                        [m].[DurationMonths] * 30 / [ca].[InitialQuantity] AS [Application Cadence Days]
-                                      , [ca].[InitialQuantity]
-                                      , [ca].[MembershipAccumulatorID]
-                                 FROM [dbo].[cfgMembershipAccum] AS [ca]
-                                 WHERE [ca].[MembershipID] = [m].[MembershipID] AND [ca].[AccumulatorID] = 8 AND [m].[BusinessSegmentID] = 1 ) AS [k]
-                           CROSS APPLY [dbo].GetNumbers(1, [k].[InitialQuantity]) AS [b]
-                           WHERE DATEADD(DAY, ( [b].[digit] ) * [k].[Application Cadence Days], [cm].[BeginDate]) > @Getdate ) AS [k]
-                     WHERE [k].[rw] = 1 ) AS [nad]
-        LEFT JOIN [dbo].[datHairSystemOrder] AS [hso] ON [hso].[ClientGUID] = [clt].[ClientGUID]
-        LEFT JOIN [dbo].[lkpHairSystemOrderStatus] AS [hsos] ON [hsos].[HairSystemOrderStatusID] = [hso].[HairSystemOrderStatusID]
-                                                            AND [hsos].[HairSystemOrderStatusDescriptionShort] IN ('CENT', 'NEW', 'ORDER', 'HQ-Recv', 'HQ-Ship'
-                                                                                                                   , 'FAC-Ship', 'QANEEDED')
-        --INNER JOIN dbo.datClient clt ON clt.ClientGUID = hso.ClientGUID
-        INNER JOIN [dbo].[cfgCenter] AS [c] ON [c].[CenterID] = [clt].[CenterID]
-        LEFT JOIN [dbo].[lkpRegion] AS [r] ON [r].[RegionID] = [c].[RegionID]
-        LEFT JOIN [dbo].[cfgHairSystem] AS [hs] ON [hs].[HairSystemID] = [hso].[HairSystemID]
-        WHERE [clt].[CenterID] IN( SELECT [item] FROM [dbo].[fnSplit](@CenterIDs, ',') )
-          AND [m].[MembershipDescription] <> 'CANCEL'
-          AND [cm].[ClientMembershipStatusID] = 1
-          AND [m].[BusinessSegmentID] = 1 --BIO
-          AND [m].[MembershipID] NOT IN (1, 2, 11, 12, 14, 15, 16, 17, 18, 19, 49, 50, 57) --ALL except these
-          AND [m].[MembershipDescription] <> 'Employee - Retail'
-          AND ISNULL([cm].[EndDate], @Tomorrow) >= @Getdate
-          /*Elite (New)
+-- Last Application Date
+IF OBJECT_ID('[tempdb]..[#LastApplication]') IS NOT NULL
+    DROP TABLE [#LastApplication] ;
+
+SELECT
+    [c].[ClientGUID]
+  , MAX([sod].[CreateDate]) AS [CreateDate]
+INTO [#LastApplication]
+FROM [dbo].[datClient] AS [c]
+INNER JOIN [dbo].[datSalesOrder] AS [so] ON [so].[ClientGUID] = [c].[ClientGUID]
+INNER JOIN [dbo].[datSalesOrderDetail] AS [sod] ON [so].[SalesOrderGUID] = [sod].[SalesOrderGUID]
+INNER JOIN [dbo].[cfgSalesCode] AS [sc] ON [sod].[SalesCodeID] = [sc].[SalesCodeID]
+WHERE [sc].[SalesCodeDepartmentID] IN (5010, 5020)
+GROUP BY [c].[ClientGUID] ;
+
+IF OBJECT_ID('[tempdb]..[#ScheduledNextAppDate]') IS NOT NULL
+    DROP TABLE [#ScheduledNextAppDate] ;
+
+-- Scheduled Next App Date
+SELECT
+    [k].[ClientGUID]
+  , [k].[AppointmentDate]
+INTO [#ScheduledNextAppDate]
+FROM( SELECT
+          [c].[ClientGUID]
+        , [a].[AppointmentDate]
+        , ROW_NUMBER() OVER ( PARTITION BY [c].[ClientGUID] ORDER BY [a].[AppointmentDate] ASC ) AS [rw]
+      FROM [dbo].[datClient] AS [c]
+      INNER JOIN [dbo].[datClientMembership] AS [cm] ON [cm].[ClientGUID] = [c].[ClientGUID]
+      INNER JOIN [dbo].[cfgMembership] AS [m] ON [cm].[MembershipID] = [m].[MembershipID]
+      INNER JOIN [dbo].[datAppointment] AS [a] ON [cm].[ClientMembershipGUID] = [a].[ClientMembershipGUID]
+      INNER JOIN [dbo].[datAppointmentDetail] AS [ad] ON [ad].[AppointmentGUID] = [a].[AppointmentGUID]
+      INNER JOIN [dbo].[cfgSalesCode] AS [sc] ON [sc].[SalesCodeID] = [ad].[SalesCodeID]
+      INNER JOIN [dbo].[cfgCenter] AS [apptctr] ON [a].[CenterID] = [apptctr].[CenterID]
+      WHERE( [a].[IsDeletedFlag] IS NULL OR [a].[IsDeletedFlag] = 0 )
+        AND [a].[AppointmentDate] >= @GetDate
+        AND [sc].[SalesCodeDepartmentID] IN (5010, 5020)
+        AND EXISTS ( SELECT 1 FROM [#LastApplication] AS [l] WHERE [l].[ClientGUID] = [c].[ClientGUID] )) AS [k]
+WHERE [k].[rw] = 1
+OPTION( RECOMPILE ) ;
+
+IF OBJECT_ID('[tempdb]..[#LastAppDate]') IS NOT NULL
+    DROP TABLE [#LastAppDate] ;
+
+SELECT
+    [k].[ClientGUID]
+  , [k].[AppointmentDate]
+INTO [#LastAppDate]
+FROM( SELECT
+          [c].[ClientGUID]
+        , [a].[AppointmentDate]
+        , ROW_NUMBER() OVER ( PARTITION BY [c].[ClientGUID] ORDER BY [a].[AppointmentDate] DESC ) AS [rw]
+      FROM [dbo].[datClient] AS [c]
+      INNER JOIN [dbo].[datClientMembership] AS [cm] ON [cm].[ClientGUID] = [c].[ClientGUID]
+      INNER JOIN [dbo].[cfgMembership] AS [m] ON [cm].[MembershipID] = [m].[MembershipID]
+      INNER JOIN [dbo].[datAppointment] AS [a] ON [cm].[ClientMembershipGUID] = [a].[ClientMembershipGUID]
+      INNER JOIN [dbo].[datAppointmentDetail] AS [ad] ON [ad].[AppointmentGUID] = [a].[AppointmentGUID]
+      INNER JOIN [dbo].[cfgSalesCode] AS [sc] ON [sc].[SalesCodeID] = [ad].[SalesCodeID]
+      INNER JOIN [dbo].[cfgCenter] AS [apptctr] ON [a].[CenterID] = [apptctr].[CenterID]
+      WHERE( [a].[IsDeletedFlag] IS NULL OR [a].[IsDeletedFlag] = 0 ) AND [a].[AppointmentDate] < @GetDate AND [sc].[SalesCodeDepartmentID] IN (5010, 5020)
+--AND EXISTS ( SELECT 1 FROM [#LastApplication] AS [l] WHERE [l].[ClientGUID] = [c].[ClientGUID] )
+) AS [k]
+WHERE [k].[rw] = 1
+OPTION( RECOMPILE ) ;
+
+INSERT INTO [#hair]( [HairSystemOrderNumber]
+                   , [CenterID]
+                   , [CenterDescriptionFullCalc]
+                   , [ClientFullNameCalc]
+                   , [ClientGUID]
+                   , [CurrentBioMatrixClientMembershipGUID]
+                   , [MembershipID]
+                   , [MembershipDescription]
+                   , [InCenter]
+                   , [OnOrder]
+                   , [QaNeeded]
+                   , [Status]
+                   , [DueDate]
+                   , [HairSystemOrderDate]
+                   , [HairSystemOrderGUID]
+                   , [MembershipStartDate]
+                   , [Region]
+                   , [MembershipExpiration]
+                   , [FrozenEFTEndDate]
+                   , [EstNextApp] )
+SELECT
+    [hso].[HairSystemOrderNumber]
+  , [clt].[CenterID]
+  , [c].[CenterDescriptionFullCalc]
+  , [clt].[ClientFullNameCalc]
+  , [clt].[ClientGUID]
+  , [clt].[CurrentBioMatrixClientMembershipGUID]
+  , [m].[MembershipID]
+  , [m].[MembershipDescription]
+  , CASE WHEN [hsos].[HairSystemOrderStatusDescriptionShort] IN ('CENT') THEN 1 ELSE 0 END AS [InCenter]
+  , CASE WHEN [hsos].[HairSystemOrderStatusDescriptionShort] IN ('NEW', 'ORDER', 'HQ-Recv', 'HQ-Ship', 'FAC-Ship') THEN 1 ELSE 0 END AS [OnOrder]
+  , CASE WHEN [hsos].[HairSystemOrderStatusDescriptionShort] IN ('QANEEDED') THEN 1 ELSE 0 END AS [QaNeeded]
+  , [hsos].[HairSystemOrderStatusDescriptionShort] AS [Status]
+  , [hso].[DueDate]
+  , [hso].[HairSystemOrderDate]
+  , [hso].[HairSystemOrderGUID]
+  , [cm].[BeginDate] AS [MembershipStartDate]
+  , [r].[RegionDescription]
+  , [cm].[EndDate]
+  , [eft].[FrozenEFTEndDate]
+  , [nad].[EstNextApp]
+FROM [dbo].[datClient] AS [clt]
+INNER JOIN [dbo].[datClientMembership] AS [cm] ON [cm].[ClientMembershipGUID] = [clt].[CurrentBioMatrixClientMembershipGUID]
+INNER JOIN [dbo].[cfgCenter] AS [c] ON [c].[CenterID] = [clt].[CenterID]
+LEFT JOIN [#LastAppDate] AS [sna] ON [sna].[ClientGUID] = [clt].[ClientGUID]
+LEFT JOIN( SELECT [ClientMembershipGUID], MAX([Freeze_End]) AS [FrozenEFTEndDate] FROM [dbo].[datClientEFT] GROUP BY [ClientMembershipGUID] ) AS [eft] ON [eft].[ClientMembershipGUID] = [cm].[ClientMembershipGUID]
+INNER JOIN [dbo].[cfgMembership] AS [m] ON [m].[MembershipID] = [cm].[MembershipID]
+OUTER APPLY( SELECT [k].[NextAppointmentDate] AS [EstNextApp]
+             FROM( SELECT
+                       DATEADD(DAY, ( [b].[digit] ) * [k].[Application Cadence Days], [sna].[AppointmentDate]) AS [NextAppointmentDate]
+                     , ROW_NUMBER() OVER ( PARTITION BY [m].[MembershipID], [k].[MembershipAccumulatorID] ORDER BY [b].[digit] ASC ) AS [rw]
+                     , [k].*
+                   FROM( SELECT TOP( 1 )
+                                [m].[DurationMonths] * 30 / [ca].[InitialQuantity] AS [Application Cadence Days]
+                              , [ca].[InitialQuantity]
+                              , [ca].[MembershipAccumulatorID]
+                         FROM [dbo].[cfgMembershipAccum] AS [ca]
+                         WHERE [ca].[MembershipID] = [m].[MembershipID] AND [ca].[AccumulatorID] = 8 AND [m].[BusinessSegmentID] = 1 ) AS [k]
+                   CROSS APPLY [dbo].GetNumbers(1, [k].[InitialQuantity]) AS [b]
+             /* WHERE DATEADD(DAY, ( [b].[digit] ) * [k].[Application Cadence Days], [sna].[AppointmentDate]) > @GetDate */ ) AS [k]
+             WHERE [k].[rw] = 1 ) AS [nad]
+LEFT JOIN [dbo].[datHairSystemOrder] AS [hso] ON [hso].[ClientGUID] = [clt].[ClientGUID]
+LEFT JOIN [dbo].[lkpHairSystemOrderStatus] AS [hsos] ON [hsos].[HairSystemOrderStatusID] = [hso].[HairSystemOrderStatusID]
+                                                    AND [hsos].[HairSystemOrderStatusDescriptionShort] IN ('CENT', 'NEW', 'ORDER', 'HQ-Recv', 'HQ-Ship'
+                                                                                                           , 'FAC-Ship', 'QANEEDED')
+LEFT JOIN [dbo].[lkpRegion] AS [r] ON [r].[RegionID] = [c].[RegionID]
+LEFT JOIN [dbo].[cfgHairSystem] AS [hs] ON [hs].[HairSystemID] = [hso].[HairSystemID]
+WHERE EXISTS ( SELECT 1 FROM [#CenterId] AS [c] WHERE [c].[CenterId] = [clt].[CenterID] )
+  AND [m].[MembershipDescription] NOT IN ('CANCEL', 'Employee - Retail')
+  AND [cm].[ClientMembershipStatusID] = 1
+  AND [m].[BusinessSegmentID] = 1 --BIO
+  AND [m].[MembershipID] NOT IN (1, 2, 11, 12, 14, 15, 16, 17, 18, 19, 49, 50, 57) --ALL except these
+  AND ( @MembershipCount = 0 OR EXISTS ( SELECT 1 FROM [#membership] AS [m2] WHERE [m2].[MembershipID] = [cm].[MembershipID] ))
+  AND ISNULL([cm].[EndDate], @Tomorrow) >= @GetDate
+  /*Elite (New)
                         Elite (New) Solutions
                         Cancel
                         Hair Club For Kids
@@ -221,88 +298,8 @@ IF @MembershipList = '0' --ALL
                         Employee - BioMatrix
                         New Client (ShowNoSale)
                     */
-          AND [cm].[BeginDate] >= @BeginDate
-        OPTION( RECOMPILE ) ;
-    END ;
-ELSE
-    BEGIN
-        INSERT INTO [#hair]( [HairSystemOrderNumber]
-                           , [CenterID]
-                           , [CenterDescriptionFullCalc]
-                           , [ClientFullNameCalc]
-                           , [ClientGUID]
-                           , [CurrentBioMatrixClientMembershipGUID]
-                           , [MembershipID]
-                           , [MembershipDescription]
-                           , [InCenter]
-                           , [OnOrder]
-                           , [QaNeeded]
-                           , [Status]
-                           , [DueDate]
-                           , [HairSystemOrderDate]
-                           , [HairSystemOrderGUID]
-                           , [MembershipStartDate]
-                           , [Region]
-                           , [MembershipExpiration]
-                           , [FrozenEFTEndDate]
-                           , [EstNextApp] )
-        SELECT
-            [hso].[HairSystemOrderNumber]
-          , [clt].[CenterID]
-          , [c].[CenterDescriptionFullCalc]
-          , [clt].[ClientFullNameCalc]
-          , [clt].[ClientGUID]
-          , [clt].[CurrentBioMatrixClientMembershipGUID]
-          , [m].[MembershipID]
-          , [m].[MembershipDescription]
-          , CASE WHEN [hsos].[HairSystemOrderStatusDescriptionShort] IN ('CENT') THEN 1 ELSE 0 END AS [InCenter]
-          , CASE WHEN [hsos].[HairSystemOrderStatusDescriptionShort] IN ('NEW', 'ORDER', 'HQ-Recv', 'HQ-Ship', 'FAC-Ship') THEN 1 ELSE 0 END AS [OnOrder]
-          , CASE WHEN [hsos].[HairSystemOrderStatusDescriptionShort] IN ('QANEEDED') THEN 1 ELSE 0 END AS [QaNeeded]
-          , [hsos].[HairSystemOrderStatusDescriptionShort] AS [Status]
-          , [hso].[DueDate]
-          , [hso].[HairSystemOrderDate]
-          , [hso].[HairSystemOrderGUID]
-          , [cm].[BeginDate] AS [MembershipStartDate]
-          , [r].[RegionDescription]
-          , [cm].[EndDate]
-          , [eft].[FrozenEFTEndDate]
-          , [nad].[EstNextApp]
-        FROM [dbo].[datClient] AS [clt]
-        INNER JOIN [dbo].[datClientMembership] AS [cm] ON [cm].[ClientMembershipGUID] = [clt].[CurrentBioMatrixClientMembershipGUID]
-        LEFT JOIN( SELECT [ClientMembershipGUID], MAX([Freeze_End]) AS [FrozenEFTEndDate] FROM [dbo].[datClientEFT] GROUP BY [ClientMembershipGUID] ) AS [eft] ON [eft].[ClientMembershipGUID] = [cm].[ClientMembershipGUID]
-        INNER JOIN [dbo].[cfgMembership] AS [m] ON [m].[MembershipID] = [cm].[MembershipID]
-        OUTER APPLY( SELECT [k].[NextAppointmentDate] AS [EstNextApp]
-                     FROM( SELECT
-                               DATEADD(DAY, ( [b].[digit] ) * [k].[Application Cadence Days], [cm].[BeginDate]) AS [NextAppointmentDate]
-                             , ROW_NUMBER() OVER ( PARTITION BY [m].[MembershipID], [k].[MembershipAccumulatorID] ORDER BY [b].[digit] DESC ) AS [rw]
-                             , [k].*
-                           FROM( SELECT TOP( 1 )
-                                        [m].[DurationMonths] * 30 / [ca].[InitialQuantity] AS [Application Cadence Days]
-                                      , [ca].[InitialQuantity]
-                                      , [ca].[MembershipAccumulatorID]
-                                 FROM [dbo].[cfgMembershipAccum] AS [ca]
-                                 WHERE [ca].[MembershipID] = [m].[MembershipID] AND [ca].[AccumulatorID] = 8 AND [m].[BusinessSegmentID] = 1 ) AS [k]
-                           CROSS APPLY [dbo].GetNumbers(1, [k].[InitialQuantity]) AS [b]
-                           WHERE DATEADD(DAY, ( [b].[digit] ) * [k].[Application Cadence Days], [cm].[BeginDate]) > @Getdate ) AS [k]
-                     WHERE [k].[rw] = 1 ) AS [nad]
-        LEFT JOIN [dbo].[datHairSystemOrder] AS [hso] ON [hso].[ClientGUID] = [clt].[ClientGUID]
-        LEFT JOIN [dbo].[lkpHairSystemOrderStatus] AS [hsos] ON [hsos].[HairSystemOrderStatusID] = [hso].[HairSystemOrderStatusID]
-                                                            AND [hsos].[HairSystemOrderStatusDescriptionShort] IN ('CENT', 'NEW', 'ORDER', 'HQ-Recv', 'HQ-Ship'
-                                                                                                                   , 'FAC-Ship', 'QANEEDED')
-        INNER JOIN [dbo].[cfgCenter] AS [c] ON [c].[CenterID] = [clt].[CenterID]
-        LEFT JOIN [dbo].[lkpRegion] AS [r] ON [r].[RegionID] = [c].[RegionID]
-        LEFT JOIN [dbo].[cfgHairSystem] AS [hs] ON [hs].[HairSystemID] = [hso].[HairSystemID]
-        WHERE [clt].[CenterID] IN( SELECT [item] FROM [dbo].[fnSplit](@CenterIDs, ',') )
-          AND [cm].[BeginDate] >= @BeginDate
-          AND [cm].[MembershipID] IN( SELECT [MembershipID] FROM [#membership] )
-          AND [m].[MembershipDescription] <> 'CANCEL'
-          AND [cm].[ClientMembershipStatusID] = 1
-          AND [m].[MembershipDescription] <> 'Employee - Retail'
-          AND ISNULL([cm].[EndDate], @Tomorrow) >= @Getdate
-        OPTION( RECOMPILE ) ;
-    END ;
-
-CREATE CLUSTERED INDEX [IDX_hair_CurrentBioMatrixClientMembershipGUID] ON [#hair]( [CurrentBioMatrixClientMembershipGUID] ) ;
+  AND [cm].[BeginDate] >= @BeginDate
+OPTION( RECOMPILE ) ;
 
 --Find Promo Systems
 SELECT
@@ -403,47 +400,6 @@ VALUES( 22, 'BASIC', 'Basic', 'Basic', 1 )
     , ( 285, 'GRDSV', 'Xtrands+ Initial 6 EZPAY', 'Xtrands+', 1 )
     , ( 4, 'GRDSV', 'Xtrands+ Initial 6 Solutions', 'Xtrands+', 1 )
     , ( 48, 'GRDSVSOL', 'Xtrands+ Initial 6 Solutions', 'Xtrands+', 1 ) ;
-
--- Last Application Date
-IF OBJECT_ID('[tempdb]..[#LastApplication]') IS NOT NULL
-    DROP TABLE [#LastApplication] ;
-
-SELECT
-    [c].[ClientGUID]
-  , MAX([sod].[CreateDate]) AS [CreateDate]
-INTO [#LastApplication]
-FROM [dbo].[datClient] AS [c]
-INNER JOIN [dbo].[datSalesOrder] AS [so] ON [so].[ClientGUID] = [c].[ClientGUID]
-INNER JOIN [dbo].[datSalesOrderDetail] AS [sod] ON [so].[SalesOrderGUID] = [sod].[SalesOrderGUID]
-INNER JOIN [dbo].[cfgSalesCode] AS [sc] ON [sod].[SalesCodeID] = [sc].[SalesCodeID]
-WHERE [sc].[SalesCodeDepartmentID] IN (5010, 5020)
-GROUP BY [c].[ClientGUID] ;
-
-IF OBJECT_ID('[tempdb]..[#ScheduledNextAppDate]') IS NOT NULL
-    DROP TABLE [#ScheduledNextAppDate] ;
-
--- Scheduled Next App Date
-SELECT
-    [k].[ClientGUID]
-  , [k].[AppointmentDate]
-INTO [#ScheduledNextAppDate]
-FROM( SELECT
-          [c].[ClientGUID]
-        , [a].[AppointmentDate]
-        , ROW_NUMBER() OVER ( PARTITION BY [c].[ClientGUID] ORDER BY [a].[AppointmentDate] ASC ) AS [rw]
-      FROM [dbo].[datClient] AS [c]
-      INNER JOIN [dbo].[datClientMembership] AS [cm] ON [cm].[ClientGUID] = [c].[ClientGUID]
-      INNER JOIN [dbo].[cfgMembership] AS [m] ON [cm].[MembershipID] = [m].[MembershipID]
-      INNER JOIN [dbo].[datAppointment] AS [a] ON [cm].[ClientMembershipGUID] = [a].[ClientMembershipGUID]
-      INNER JOIN [dbo].[datAppointmentDetail] AS [ad] ON [ad].[AppointmentGUID] = [a].[AppointmentGUID]
-      INNER JOIN [dbo].[cfgSalesCode] AS [sc] ON [sc].[SalesCodeID] = [ad].[SalesCodeID]
-      INNER JOIN [dbo].[cfgCenter] AS [apptctr] ON [a].[CenterID] = [apptctr].[CenterID]
-      WHERE( [a].[IsDeletedFlag] IS NULL OR [a].[IsDeletedFlag] = 0 )
-        AND [a].[AppointmentDate] >= @Getdate
-        AND [sc].[SalesCodeDepartmentID] IN (5010, 5020)
-        AND EXISTS ( SELECT 1 FROM [#LastApplication] AS [l] WHERE [l].[ClientGUID] = [c].[ClientGUID] )) AS [k]
-WHERE [k].[rw] = 1
-OPTION( RECOMPILE ) ;
 
 -- Order Avail for Next App
 -- If Cent exists true
@@ -592,7 +548,7 @@ SELECT
   , [k].[Current Membership]
   , [k].[Membership Expiration]
   , [k].[Membership Qty]
-  , [k].[Frozen EFT End Date]
+  , CASE WHEN [k].[Frozen EFT End Date] > @GetDate THEN [k].[Frozen EFT End Date] END AS [Frozen EFT End Date]
   , [k].[QA Needed]
   , [k].[In Center]
   , [k].[On Order]

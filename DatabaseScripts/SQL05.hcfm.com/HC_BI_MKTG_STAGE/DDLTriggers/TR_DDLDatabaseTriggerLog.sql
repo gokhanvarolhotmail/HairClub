@@ -1,4 +1,4 @@
-/* CreateDate: 05/03/2010 12:26:22.510 , ModifyDate: 05/03/2010 12:26:22.510 */
+/* CreateDate: 05/03/2010 12:26:22.510 , ModifyDate: 02/24/2022 08:24:44.000 */
 GO
 -----------------------------------------------------------------------
 -- [TR_DDLDatabaseTriggerLog] is a Database trigger used to audit
@@ -61,7 +61,7 @@ BEGIN
         );
 END;
 GO
-ENABLE TRIGGER [TR_DDLDatabaseTriggerLog] ON DATABASE
+DISABLE TRIGGER [TR_DDLDatabaseTriggerLog] ON DATABASE
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Database trigger to audit all of the DDL changes made to the database.' , @level0type=N'TRIGGER',@level0name=N'TR_DDLDatabaseTriggerLog'
 GO

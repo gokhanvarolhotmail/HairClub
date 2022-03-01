@@ -1,1 +1,1 @@
-Script failed for Synonym 'bi_mktg_stage.synHC_SRC_TBL_BOSMarketing_MediaSourceLevel02'.
+Script failed for Synonym 'bi_mktg_stage.synHC_SRC_TBL_BOSMarketing_MediaSourceLevel02'. 
