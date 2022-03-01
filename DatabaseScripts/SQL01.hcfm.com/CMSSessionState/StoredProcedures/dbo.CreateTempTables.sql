@@ -16,14 +16,14 @@ CREATE PROCEDURE dbo.CreateTempTables
                 SessionItemShort    VARBINARY(7000) NULL,
                 SessionItemLong     image           NULL,
                 Flags               int             NOT NULL DEFAULT 0,
-            ) 
+            )
 
             CREATE NONCLUSTERED INDEX Index_Expires ON [CMSSessionState].dbo.ASPStateTempSessions(Expires)
 
             CREATE TABLE [CMSSessionState].dbo.ASPStateTempApplications (
                 AppId               int             NOT NULL PRIMARY KEY,
                 AppName             char(280)       NOT NULL,
-            ) 
+            )
 
             CREATE NONCLUSTERED INDEX Index_AppName ON [CMSSessionState].dbo.ASPStateTempApplications(AppName)
 
