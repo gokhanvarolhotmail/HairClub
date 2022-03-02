@@ -1,4 +1,4 @@
-`-- SQL05
+-- SQL05
 USE [HC_Marketing] ;
 GO
 /***********************************************************************
@@ -25,8 +25,21 @@ SET FMTONLY OFF ;
 SET NOCOUNT OFF ;
 
 DECLARE
-    @CurrentDate DATE    = GETDATE()
-  , @TargetDate  AS DATE = DATEADD(DAY, -1, GETDATE()) ;
+    @CurrentDate    DATE          = GETDATE()
+  , @TargetDate     AS DATE       = DATEADD(DAY, -1, GETDATE())
+  , @RefersionLogID INT
+  , @first_name     NVARCHAR(40)
+  , @last_name      NVARCHAR(40)
+  , @email          NVARCHAR(40)
+  , @discount_code  NVARCHAR(20)
+  , @sku            NVARCHAR(10)
+  , @price          NVARCHAR(10)
+  , @quantity       NVARCHAR(3)
+  , @currency_code  NVARCHAR(10)
+  , @ip_address     NVARCHAR(20)
+  , @data           NVARCHAR(4000)
+  , @batchID        INT           = 1
+  , @rowCount       INT           = 1 ;
 
 -- Get Leads Created within time period
 INSERT INTO [dbo].[datRefersionLog]
@@ -197,18 +210,6 @@ WHERE [fch].[CommissionTypeID] IN (29, 30, 3, 46, 47, 77, 53, 54, 4)
   AND ( [o_Rl].[RefersionLogID] IS NULL OR [o_Rl].[IsReprocessFlag] = 1 ) ;
 
 -- Update Json
-DECLARE @RefersionLogID INT ;
-DECLARE @first_name NVARCHAR(40) ;
-DECLARE @last_name NVARCHAR(40) ;
-DECLARE @email NVARCHAR(40) ;
-DECLARE @discount_code NVARCHAR(20) ;
-DECLARE @sku NVARCHAR(10) ;
-DECLARE @price NVARCHAR(10) ;
-DECLARE @quantity NVARCHAR(3) ;
-DECLARE @currency_code NVARCHAR(10) ;
-DECLARE @ip_address NVARCHAR(20) ;
-DECLARE @data NVARCHAR(4000) ;
-
 DECLARE [db_refersion_cursor] CURSOR FOR
 SELECT
     [rl].[RefersionLogID]
@@ -283,10 +284,6 @@ CLOSE [db_refersion_cursor] ;
 DEALLOCATE [db_refersion_cursor] ;
 
 -- Update Batch ID
-DECLARE
-    @batchID  INT = 1
-  , @rowCount INT = 1 ;
-
 WHILE @rowCount > 0
     BEGIN
         WITH [NextBatch]
