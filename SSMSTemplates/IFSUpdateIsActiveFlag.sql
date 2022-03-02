@@ -53,8 +53,6 @@ SELECT
   , [b].[SalesCodeDescriptionShort]
   , [c].[SKU]
   , [c].[Product Description]
---UPDATE [b] SET [b].[IsActiveFlag] = 0
---UPDATE [a] SET [a].[IsActiveFlag] = 0
 FROM [dbo].[cfgSalesCodeCenter] AS [a]
 JOIN [dbo].[cfgSalesCode] AS [b] ON [b].[SalesCodeID] = [a].[SalesCodeID]
 JOIN [#temp] AS [c] ON [b].[SalesCodeDescription] = [c].[Product Description]
