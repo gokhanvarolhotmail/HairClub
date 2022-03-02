@@ -293,8 +293,9 @@ WHILE @rowCount > 0
         FROM [NextBatch]
         JOIN [dbo].[datRefersionLog] ON [NextBatch].[RefersionLogID] = [datRefersionLog].[RefersionLogID] ;
 
-        SET @rowCount = @@ROWCOUNT ;
-        SET @batchID = @batchID + 1 ;
+        SELECT
+            @rowCount = @@ROWCOUNT
+          , @batchID = @batchID + 1 ;
     END ;
 
 -- Return All Pending records for specific Session ID
