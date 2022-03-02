@@ -17,7 +17,7 @@ SAMPLE EXECUTION:
 
 EXEC spSvc_GetRefersionData ''
 ***********************************************************************/
-CREATE PROCEDURE [dbo].[spSvc_GetRefersionData_GVAROL]
+ALTER PROCEDURE [dbo].[spSvc_GetRefersionData_GVAROL]
     @SessionID NVARCHAR(100)
 AS
 SET FMTONLY OFF ;
@@ -267,9 +267,11 @@ WHILE @@FETCH_STATUS = 0
     "cart_id": "' + CONVERT(VARCHAR, @RefersionLogID) + N'"
     }'  ;
 
-        UPDATE [dbo].[datRefersionLog]
-        SET [JsonData] = @data
-        WHERE [RefersionLogID] = @RefersionLogID ;
+        UPDATE [d]
+        SET [d].[JsonData] = @data
+        FROM [dbo].[datRefersionLog] AS [d]
+        WHERE [d].[RefersionLogID] = @RefersionLogID
+        OPTION( RECOMPILE ) ;
 
         FETCH NEXT FROM [db_refersion_cursor]
         INTO
