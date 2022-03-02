@@ -26,6 +26,7 @@ SET NOCOUNT OFF ;
 
 DECLARE
     @CurrentDate    DATE          = GETDATE()
+  , @GETDATE        DATETIME      = GETDATE()
   , @TargetDate     AS DATE       = DATEADD(DAY, -1, GETDATE())
   , @RefersionLogID INT
   , @first_name     NVARCHAR(40)
@@ -66,9 +67,9 @@ SELECT
   , [rs].[RefersionStatusID]
   , [o_Rl].[RefersionLogID] AS [OriginalRefersionLogID]
   , 0 AS [IsReprocessFlag]
-  , GETDATE() AS [CreateDate]
+  , @GETDATE AS [CreateDate]
   , 'Refersion-HCM' AS [CreateUser]
-  , GETDATE() AS [LastUpdate]
+  , @GETDATE AS [LastUpdate]
   , 'Refersion-HCM' AS [LastUpdateUser]
 FROM [SQL06].[HC_BI_SFDC].[dbo].[Lead] AS [l] WITH( NOLOCK )
 INNER JOIN [HC_Marketing].[dbo].[lkpRefersionProcess] AS [rp] ON [rp].[RefersionProcessDescriptionShort] = 'LEADCREATE' AND [rp].[IsActiveFlag] = 1
@@ -83,7 +84,7 @@ OUTER APPLY( SELECT TOP 1
 WHERE( CAST(ISNULL([l].[ReportCreateDate__c], [l].[CreatedDate]) AS DATE) >= @TargetDate OR CAST([l].[LastModifiedDate] AS DATE) >= @TargetDate )
   AND [l].[Status] IN ('Lead', 'Client', 'Prospect', 'Event', 'HWClient', 'HWLead', 'NEW', 'PURSUING', 'CONVERTED', 'SCHEDULED', 'CONSULTATION'
                      , 'Pursuing my Story', 'Pursuing_my_Story', 'Scheduled', 'Establishing_Value', 'Establishing Value', 'Converted') --- add new lead Status
-  AND ( ISNULL([l].[ReferralCode__c], '') <> '' AND ISNULL([l].[ReferralCode__c], '') <> 'null' AND [l].[ReferralCodeExpireDate__c] >= GETDATE()
+  AND ( ISNULL([l].[ReferralCode__c], '') <> '' AND ISNULL([l].[ReferralCode__c], '') <> 'null' AND [l].[ReferralCodeExpireDate__c] >= @GETDATE
     --    AND (l.Source_Code_Legacy__c IN
     --        ('IPREFCLRERECA12476', 'IPREFCLRERECA12476DC', 'IPREFCLRERECA12476DF', 'IPREFCLRERECA12476DP',
     --         'IPREFCLRERECA12476MC', 'IPREFCLRERECA12476MF', 'IPREFCLRERECA12476MP')
@@ -120,9 +121,9 @@ SELECT
   , [rs].[RefersionStatusID]
   , [o_Rl].[RefersionLogID] AS [OriginalRefersionLogID]
   , 0 AS [IsReprocessFlag]
-  , GETDATE() AS [CreateDate]
+  , @GETDATE AS [CreateDate]
   , 'Refersion-HCM' AS [CreateUser]
-  , GETDATE() AS [LastUpdate]
+  , @GETDATE AS [LastUpdate]
   , 'Refersion-HCM' AS [LastUpdateUser]
 FROM [SQL06].[HC_BI_SFDC].[dbo].[Task] AS [t] WITH( NOLOCK )
 INNER JOIN [SQL06].[HC_BI_SFDC].[dbo].[Lead] AS [l] WITH( NOLOCK )ON [l].[Id] = [t].[WhoId] OR [l].[externalid] = [t].[WhoId]
@@ -142,7 +143,7 @@ WHERE( [t].[ActivityDate] >= @TargetDate OR [t].[CompletionDate__c] >= @TargetDa
   AND [t].[Action__c] IN ('Appointment', 'In House', 'Be Back')
   AND ISNULL([t].[Result__c], '') IN ('Show Sale', 'Show No Sale')
   AND ISNULL([l].[Email], [clt].[EMailAddress]) <> ''
-  AND ( ISNULL([t].[ReferralCode__c], '') <> '' AND ISNULL([l].[ReferralCode__c], '') <> 'null' AND [l].[ReferralCodeExpireDate__c] >= GETDATE()
+  AND ( ISNULL([t].[ReferralCode__c], '') <> '' AND ISNULL([l].[ReferralCode__c], '') <> 'null' AND [l].[ReferralCodeExpireDate__c] >= @GETDATE
     --    AND t.SourceCode__c IN
     --       ('IPREFCLRERECA12476', 'IPREFCLRERECA12476DC', 'IPREFCLRERECA12476DF', 'IPREFCLRERECA12476DP',
     --        'IPREFCLRERECA12476MC', 'IPREFCLRERECA12476MF', 'IPREFCLRERECA12476MP')
@@ -179,9 +180,9 @@ SELECT
   , [rs].[RefersionStatusID]
   , [o_Rl].[RefersionLogID] AS [OriginalRefersionLogID]
   , 0 AS [IsReprocessFlag]
-  , GETDATE() AS [CreateDate]
+  , @GETDATE AS [CreateDate]
   , 'Refersion-HCM' AS [CreateUser]
-  , GETDATE() AS [LastUpdate]
+  , @GETDATE AS [LastUpdate]
   , 'Refersion-HCM' AS [LastUpdateUser]
 FROM [SQL06].[HC_Commission].[dbo].[FactCommissionHeader] AS [fch]
 INNER JOIN [HC_BI_CMS_DDS].[bi_cms_dds].[DimClient] AS [clt] ON [clt].[ClientKey] = [fch].[ClientKey]
@@ -200,7 +201,7 @@ WHERE [fch].[CommissionTypeID] IN (29, 30, 3, 46, 47, 77, 53, 54, 4)
   AND ISNULL([l].[Email], [clt].[ClientEMailAddress]) <> ''
   AND [l].[Status] IN ('Lead', 'Client', 'Prospect', 'Event', 'HWClient', 'HWLead', 'NEW', 'PURSUING', 'CONVERTED', 'SCHEDULED', 'CONSULTATION'
                      , 'Pursuing my Story', 'Pursuing_my_Story', 'Scheduled', 'Establishing_Value', 'Establishing Value', 'Converted')
-  AND ( ISNULL([l].[ReferralCode__c], '') <> '' AND ISNULL([l].[ReferralCode__c], '') <> 'null' AND [l].[ReferralCodeExpireDate__c] >= GETDATE()
+  AND ( ISNULL([l].[ReferralCode__c], '') <> '' AND ISNULL([l].[ReferralCode__c], '') <> 'null' AND [l].[ReferralCodeExpireDate__c] >= @GETDATE
     --  AND (l.Source_Code_Legacy__c IN
     --       ('IPREFCLRERECA12476', 'IPREFCLRERECA12476DC', 'IPREFCLRERECA12476DF', 'IPREFCLRERECA12476DP',
     --        'IPREFCLRERECA12476MC', 'IPREFCLRERECA12476MF', 'IPREFCLRERECA12476MP')
