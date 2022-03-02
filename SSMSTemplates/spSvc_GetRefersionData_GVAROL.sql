@@ -92,7 +92,8 @@ WHERE( CAST(ISNULL([l].[ReportCreateDate__c], [l].[CreatedDate]) AS DATE) >= @Ta
     --           'IPREFCLRERECA12476MC', 'IPREFCLRERECA12476MF', 'IPREFCLRERECA12476MP'))
     )
   AND ISNULL([l].[IsDeleted], 0) = 0
-  AND ( [o_Rl].[RefersionLogID] IS NULL OR [o_Rl].[IsReprocessFlag] = 1 ) ;
+  AND ( [o_Rl].[RefersionLogID] IS NULL OR [o_Rl].[IsReprocessFlag] = 1 )
+OPTION( RECOMPILE ) ;
 
 -- Get Shows that occurred within time period
 INSERT INTO [dbo].[datRefersionLog]
@@ -150,7 +151,8 @@ WHERE( [t].[ActivityDate] >= @TargetDate OR [t].[CompletionDate__c] >= @TargetDa
   AND [l].[Status] IN ('Lead', 'Client', 'Prospect', 'Event', 'HWClient', 'HWLead', 'NEW', 'PURSUING', 'CONVERTED', 'SCHEDULED', 'CONSULTATION'
                      , 'Pursuing my Story', 'Pursuing_my_Story', 'Scheduled', 'Establishing_Value', 'Establishing Value', 'Converted')
   AND ISNULL([l].[IsDeleted], 0) = 0
-  AND ( [o_Rl].[RefersionLogID] IS NULL OR [o_Rl].[IsReprocessFlag] = 1 ) ;
+  AND ( [o_Rl].[RefersionLogID] IS NULL OR [o_Rl].[IsReprocessFlag] = 1 )
+OPTION( RECOMPILE ) ;
 
 -- Get Clients that been serviced and a commission record has been created within time period
 INSERT INTO [dbo].[datRefersionLog]
@@ -207,7 +209,8 @@ WHERE [fch].[CommissionTypeID] IN (29, 30, 3, 46, 47, 77, 53, 54, 4)
     --         'IPREFCLRERECA12476MC', 'IPREFCLRERECA12476MF', 'IPREFCLRERECA12476MP'))
     )
   AND ISNULL([l].[IsDeleted], 0) = 0
-  AND ( [o_Rl].[RefersionLogID] IS NULL OR [o_Rl].[IsReprocessFlag] = 1 ) ;
+  AND ( [o_Rl].[RefersionLogID] IS NULL OR [o_Rl].[IsReprocessFlag] = 1 )
+OPTION( RECOMPILE ) ;
 
 -- Update Json
 DECLARE [db_refersion_cursor] CURSOR FOR
@@ -223,7 +226,8 @@ SELECT
   , [rl].[CurrencyCode]
   , [rl].[IPAddress]
 FROM [HC_Marketing].[dbo].[datRefersionLog] AS [rl]
-WHERE [rl].[SessionGUID] = @SessionID AND ISNULL([rl].[JsonData], '') = '' ;
+WHERE [rl].[SessionGUID] = @SessionID AND ISNULL([rl].[JsonData], '') = ''
+OPTION( RECOMPILE ) ;
 
 OPEN [db_refersion_cursor] ;
 
@@ -306,12 +310,14 @@ SELECT
 FROM [dbo].[datRefersionLog] AS [rl]
 INNER JOIN [dbo].[lkpRefersionStatus] AS [rs] ON [rs].[RefersionStatusID] = [rl].[RefersionStatusID]
 WHERE [rl].[SessionGUID] = @SessionID AND [rs].[RefersionStatusDescriptionShort] = 'PENDING'
-ORDER BY [rl].[RefersionLogID] ;
+ORDER BY [rl].[RefersionLogID]
+OPTION( RECOMPILE ) ;
 
 -- Reset records marked for reprocessing
 UPDATE [rl]
 SET [rl].[IsReprocessFlag] = 0
 FROM [dbo].[datRefersionLog] AS [rl]
 INNER JOIN [dbo].[datRefersionLog] AS [rl2] ON [rl2].[OriginalRefersionLogID] = [rl].[RefersionLogID]
-WHERE [rl2].[OriginalRefersionLogID] IS NOT NULL AND [rl].[IsReprocessFlag] = 1 ;
+WHERE [rl2].[OriginalRefersionLogID] IS NOT NULL AND [rl].[IsReprocessFlag] = 1
+OPTION( RECOMPILE ) ;
 GO
