@@ -140,9 +140,10 @@ in
 // _SelectorExecutiveDashboard
 let
     Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45Wcs5IzMtLzVHSUTJUitWJVnLxdVQISk3PzM8DChmBhfyLMtMzQVxjpdhYAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Dimensions = _t, id = _t]),
-    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Dimensions", type text}, {"id", type number}})
+    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Dimensions", type text}, {"id", type number}}),
+    Custom1 = Table.AddColumn(#"Changed Type", "DimensionsDerived", each if [Dimensions] = "Origin" then "Lead Source" else [Dimensions])
 in
-    #"Changed Type"
+    Custom1
 
 // _SelectorPacing
 let
