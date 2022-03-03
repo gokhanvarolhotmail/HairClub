@@ -1,3 +1,8 @@
+IF OBJECT_ID('Control.InitiateSalesForceDriver') IS NOT NULL
+    DROP PROCEDURE [Control].[InitiateSalesForceDriver] ;
+GO
+CREATE PROCEDURE [Control].[InitiateSalesForceDriver]
+AS
 SET NOCOUNT ON ;
 
 IF OBJECT_ID('[tempdb]..[#Tables]') IS NOT NULL
@@ -47,3 +52,4 @@ SELECT
   , QUOTENAME(DB_NAME()) + '.' + QUOTENAME([k].[SchemaName] + 'Staging') + '.' + QUOTENAME([k].[TableName]) AS [StagingTableName]
   , 'EXEC ' + QUOTENAME(DB_NAME()) + '.' + QUOTENAME([k].[SchemaName]) + '.' + QUOTENAME('sp_' + [k].[TableName] + '_Merge') AS [ProcedureCall]
 FROM( SELECT *, PARSENAME([FQN], 1) AS [TableName], PARSENAME([FQN], 2) AS [SchemaName] FROM [#Dates] ) AS [k] ;
+GO
