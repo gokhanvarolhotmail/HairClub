@@ -226,7 +226,8 @@ WHEN MATCHED THEN
 	, [t].[Contact_ID_18_dig__pc] = [t].[Contact_ID_18_dig__pc]
 WHEN NOT MATCHED THEN
 	INSERT(
-	[IsDeleted]
+	[Id]
+	, [IsDeleted]
 	, [MasterRecordId]
 	, [Name]
 	, [LastName]
@@ -433,7 +434,8 @@ WHEN NOT MATCHED THEN
 	, [Contact_ID_18_dig__pc]
 	)
 	VALUES(
-	[s].[IsDeleted]
+	[s].[Id]
+	, [s].[IsDeleted]
 	, [s].[MasterRecordId]
 	, [s].[Name]
 	, [s].[LastName]
@@ -683,7 +685,8 @@ WHEN MATCHED THEN
 	, [t].[ServiceResourceId__c] = [t].[ServiceResourceId__c]
 WHEN NOT MATCHED THEN
 	INSERT(
-	[IsDeleted]
+	[Id]
+	, [IsDeleted]
 	, [AssignedResourceNumber]
 	, [CreatedDate]
 	, [CreatedById]
@@ -698,7 +701,8 @@ WHEN NOT MATCHED THEN
 	, [ServiceResourceId__c]
 	)
 	VALUES(
-	[s].[IsDeleted]
+	[s].[Id]
+	, [s].[IsDeleted]
 	, [s].[AssignedResourceNumber]
 	, [s].[CreatedDate]
 	, [s].[CreatedById]
@@ -815,7 +819,8 @@ WHEN MATCHED THEN
 	, [t].[CampaignSource__c] = [t].[CampaignSource__c]
 WHEN NOT MATCHED THEN
 	INSERT(
-	[IsDeleted]
+	[Id]
+	, [IsDeleted]
 	, [Name]
 	, [ParentId]
 	, [Type]
@@ -889,7 +894,8 @@ WHEN NOT MATCHED THEN
 	, [CampaignSource__c]
 	)
 	VALUES(
-	[s].[IsDeleted]
+	[s].[Id]
+	, [s].[IsDeleted]
 	, [s].[Name]
 	, [s].[ParentId]
 	, [s].[Type]
@@ -1036,7 +1042,8 @@ WHEN MATCHED THEN
 	, [t].[Time_Zone__c] = [t].[Time_Zone__c]
 WHEN NOT MATCHED THEN
 	INSERT(
-	[IsDeleted]
+	[Id]
+	, [IsDeleted]
 	, [CampaignId]
 	, [LeadId]
 	, [ContactId]
@@ -1081,7 +1088,8 @@ WHEN NOT MATCHED THEN
 	, [Time_Zone__c]
 	)
 	VALUES(
-	[s].[IsDeleted]
+	[s].[Id]
+	, [s].[IsDeleted]
 	, [s].[CampaignId]
 	, [s].[LeadId]
 	, [s].[ContactId]
@@ -1167,7 +1175,8 @@ WHEN MATCHED THEN
 	, [t].[SystemModstamp] = [t].[SystemModstamp]
 WHEN NOT MATCHED THEN
 	INSERT(
-	[IsDeleted]
+	[Id]
+	, [IsDeleted]
 	, [CampaignId]
 	, [Label]
 	, [SortOrder]
@@ -1180,7 +1189,8 @@ WHEN NOT MATCHED THEN
 	, [SystemModstamp]
 	)
 	VALUES(
-	[s].[IsDeleted]
+	[s].[Id]
+	, [s].[IsDeleted]
 	, [s].[CampaignId]
 	, [s].[Label]
 	, [s].[SortOrder]
@@ -1301,7 +1311,8 @@ WHEN MATCHED THEN
 	, [t].[Wereyouontime__c] = [t].[Wereyouontime__c]
 WHEN NOT MATCHED THEN
 	INSERT(
-	[IsDeleted]
+	[Id]
+	, [IsDeleted]
 	, [MasterRecordId]
 	, [CaseNumber]
 	, [ContactId]
@@ -1381,7 +1392,8 @@ WHEN NOT MATCHED THEN
 	, [Wereyouontime__c]
 	)
 	VALUES(
-	[s].[IsDeleted]
+	[s].[Id]
+	, [s].[IsDeleted]
 	, [s].[MasterRecordId]
 	, [s].[CaseNumber]
 	, [s].[ContactId]
@@ -1514,7 +1526,8 @@ WHEN MATCHED THEN
 	, [t].[Commission_To_Company__c] = [t].[Commission_To_Company__c]
 WHEN NOT MATCHED THEN
 	INSERT(
-	[IsDeleted]
+	[Id]
+	, [IsDeleted]
 	, [Name]
 	, [CurrencyIsoCode]
 	, [CreatedDate]
@@ -1539,7 +1552,8 @@ WHEN NOT MATCHED THEN
 	, [Commission_To_Company__c]
 	)
 	VALUES(
-	[s].[IsDeleted]
+	[s].[Id]
+	, [s].[IsDeleted]
 	, [s].[Name]
 	, [s].[CurrencyIsoCode]
 	, [s].[CreatedDate]
@@ -1673,7 +1687,8 @@ WHEN MATCHED THEN
 	, [t].[Contact_ID_18_dig__c] = [t].[Contact_ID_18_dig__c]
 WHEN NOT MATCHED THEN
 	INSERT(
-	[IsDeleted]
+	[Id]
+	, [IsDeleted]
 	, [MasterRecordId]
 	, [AccountId]
 	, [IsPersonAccount]
@@ -1754,7 +1769,8 @@ WHEN NOT MATCHED THEN
 	, [Contact_ID_18_dig__c]
 	)
 	VALUES(
-	[s].[IsDeleted]
+	[s].[Id]
+	, [s].[IsDeleted]
 	, [s].[MasterRecordId]
 	, [s].[AccountId]
 	, [s].[IsPersonAccount]
@@ -1917,7 +1933,8 @@ WHEN MATCHED THEN
 	, [t].[LastReferencedDate] = [t].[LastReferencedDate]
 WHEN NOT MATCHED THEN
 	INSERT(
-	[AccountId]
+	[Id]
+	, [AccountId]
 	, [CurrencyIsoCode]
 	, [Pricebook2Id]
 	, [OwnerExpirationNotice]
@@ -1971,7 +1988,8 @@ WHEN NOT MATCHED THEN
 	, [LastReferencedDate]
 	)
 	VALUES(
-	[s].[AccountId]
+	[s].[Id]
+	, [s].[AccountId]
 	, [s].[CurrencyIsoCode]
 	, [s].[Pricebook2Id]
 	, [s].[OwnerExpirationNotice]
@@ -2082,7 +2100,8 @@ WHEN MATCHED THEN
 	, [t].[LocationId] = [t].[LocationId]
 WHEN NOT MATCHED THEN
 	INSERT(
-	[IsDeleted]
+	[Id]
+	, [IsDeleted]
 	, [LineItemNumber]
 	, [CurrencyIsoCode]
 	, [CreatedDate]
@@ -2111,7 +2130,8 @@ WHEN NOT MATCHED THEN
 	, [LocationId]
 	)
 	VALUES(
-	[s].[IsDeleted]
+	[s].[Id]
+	, [s].[IsDeleted]
 	, [s].[LineItemNumber]
 	, [s].[CurrencyIsoCode]
 	, [s].[CreatedDate]
@@ -2204,7 +2224,8 @@ WHEN MATCHED THEN
 	, [t].[EmailTemplateId] = [t].[EmailTemplateId]
 WHEN NOT MATCHED THEN
 	INSERT(
-	[ParentId]
+	[Id]
+	, [ParentId]
 	, [ActivityId]
 	, [CreatedById]
 	, [CreatedDate]
@@ -2240,7 +2261,8 @@ WHEN NOT MATCHED THEN
 	, [EmailTemplateId]
 	)
 	VALUES(
-	[s].[ParentId]
+	[s].[Id]
+	, [s].[ParentId]
 	, [s].[ActivityId]
 	, [s].[CreatedById]
 	, [s].[CreatedDate]
@@ -2378,7 +2400,8 @@ WHEN MATCHED THEN
 	, [t].[Invite__c] = [t].[Invite__c]
 WHEN NOT MATCHED THEN
 	INSERT(
-	[WhoId]
+	[Id]
+	, [WhoId]
 	, [WhatId]
 	, [WhoCount]
 	, [WhatCount]
@@ -2452,7 +2475,8 @@ WHEN NOT MATCHED THEN
 	, [Invite__c]
 	)
 	VALUES(
-	[s].[WhoId]
+	[s].[Id]
+	, [s].[WhoId]
 	, [s].[WhatId]
 	, [s].[WhoCount]
 	, [s].[WhatCount]
@@ -2690,7 +2714,8 @@ WHEN MATCHED THEN
 	, [t].[Lead_ID_18_dig__c] = [t].[Lead_ID_18_dig__c]
 WHEN NOT MATCHED THEN
 	INSERT(
-	[IsDeleted]
+	[Id]
+	, [IsDeleted]
 	, [MasterRecordId]
 	, [LastName]
 	, [FirstName]
@@ -2826,7 +2851,8 @@ WHEN NOT MATCHED THEN
 	, [Lead_ID_18_dig__c]
 	)
 	VALUES(
-	[s].[IsDeleted]
+	[s].[Id]
+	, [s].[IsDeleted]
 	, [s].[MasterRecordId]
 	, [s].[LastName]
 	, [s].[FirstName]
@@ -3024,7 +3050,8 @@ WHEN MATCHED THEN
 	, [t].[LogoId] = [t].[LogoId]
 WHEN NOT MATCHED THEN
 	INSERT(
-	[OwnerId]
+	[Id]
+	, [OwnerId]
 	, [IsDeleted]
 	, [Name]
 	, [CurrencyIsoCode]
@@ -3058,7 +3085,8 @@ WHEN NOT MATCHED THEN
 	, [LogoId]
 	)
 	VALUES(
-	[s].[OwnerId]
+	[s].[Id]
+	, [s].[OwnerId]
 	, [s].[IsDeleted]
 	, [s].[Name]
 	, [s].[CurrencyIsoCode]
@@ -3212,7 +3240,8 @@ WHEN MATCHED THEN
 	, [t].[Commission_Override__c] = [t].[Commission_Override__c]
 WHEN NOT MATCHED THEN
 	INSERT(
-	[IsDeleted]
+	[Id]
+	, [IsDeleted]
 	, [AccountId]
 	, [RecordTypeId]
 	, [IsPrivate]
@@ -3304,7 +3333,8 @@ WHEN NOT MATCHED THEN
 	, [Commission_Override__c]
 	)
 	VALUES(
-	[s].[IsDeleted]
+	[s].[Id]
+	, [s].[IsDeleted]
 	, [s].[AccountId]
 	, [s].[RecordTypeId]
 	, [s].[IsPrivate]
@@ -3437,7 +3467,8 @@ WHEN MATCHED THEN
 	, [t].[CurrencyIsoCode] = [t].[CurrencyIsoCode]
 WHEN NOT MATCHED THEN
 	INSERT(
-	[OpportunityId]
+	[Id]
+	, [OpportunityId]
 	, [ContactId]
 	, [Role]
 	, [IsPrimary]
@@ -3450,7 +3481,8 @@ WHEN NOT MATCHED THEN
 	, [CurrencyIsoCode]
 	)
 	VALUES(
-	[s].[OpportunityId]
+	[s].[Id]
+	, [s].[OpportunityId]
 	, [s].[ContactId]
 	, [s].[Role]
 	, [s].[IsPrimary]
@@ -3519,7 +3551,8 @@ WHEN MATCHED THEN
 	, [t].[LastReferencedDate] = [t].[LastReferencedDate]
 WHEN NOT MATCHED THEN
 	INSERT(
-	[OpportunityId]
+	[Id]
+	, [OpportunityId]
 	, [SortOrder]
 	, [PricebookEntryId]
 	, [Product2Id]
@@ -3547,7 +3580,8 @@ WHEN NOT MATCHED THEN
 	, [LastReferencedDate]
 	)
 	VALUES(
-	[s].[OpportunityId]
+	[s].[Id]
+	, [s].[OpportunityId]
 	, [s].[SortOrder]
 	, [s].[PricebookEntryId]
 	, [s].[Product2Id]
@@ -3618,7 +3652,8 @@ WHEN MATCHED THEN
 	, [t].[IsDeleted] = [t].[IsDeleted]
 WHEN NOT MATCHED THEN
 	INSERT(
-	[OpportunityLineItemId]
+	[Id]
+	, [OpportunityLineItemId]
 	, [Type]
 	, [Revenue]
 	, [Quantity]
@@ -3633,7 +3668,8 @@ WHEN NOT MATCHED THEN
 	, [IsDeleted]
 	)
 	VALUES(
-	[s].[OpportunityLineItemId]
+	[s].[Id]
+	, [s].[OpportunityLineItemId]
 	, [s].[Type]
 	, [s].[Revenue]
 	, [s].[Quantity]
@@ -3692,7 +3728,8 @@ WHEN MATCHED THEN
 	, [t].[IsDeleted] = [t].[IsDeleted]
 WHEN NOT MATCHED THEN
 	INSERT(
-	[OpportunityId]
+	[Id]
+	, [OpportunityId]
 	, [UserId]
 	, [Name]
 	, [PhotoUrl]
@@ -3708,7 +3745,8 @@ WHEN NOT MATCHED THEN
 	, [IsDeleted]
 	)
 	VALUES(
-	[s].[OpportunityId]
+	[s].[Id]
+	, [s].[OpportunityId]
 	, [s].[UserId]
 	, [s].[Name]
 	, [s].[PhotoUrl]
@@ -3803,7 +3841,8 @@ WHEN MATCHED THEN
 	, [t].[LastReferencedDate] = [t].[LastReferencedDate]
 WHEN NOT MATCHED THEN
 	INSERT(
-	[OwnerId]
+	[Id]
+	, [OwnerId]
 	, [ContractId]
 	, [AccountId]
 	, [Pricebook2Id]
@@ -3854,7 +3893,8 @@ WHEN NOT MATCHED THEN
 	, [LastReferencedDate]
 	)
 	VALUES(
-	[s].[OwnerId]
+	[s].[Id]
+	, [s].[OwnerId]
 	, [s].[ContractId]
 	, [s].[AccountId]
 	, [s].[Pricebook2Id]
@@ -3955,7 +3995,8 @@ WHEN MATCHED THEN
 	, [t].[OrderItemNumber] = [t].[OrderItemNumber]
 WHEN NOT MATCHED THEN
 	INSERT(
-	[Product2Id]
+	[Id]
+	, [Product2Id]
 	, [IsDeleted]
 	, [OrderId]
 	, [PricebookEntryId]
@@ -3977,7 +4018,8 @@ WHEN NOT MATCHED THEN
 	, [OrderItemNumber]
 	)
 	VALUES(
-	[s].[Product2Id]
+	[s].[Id]
+	, [s].[Product2Id]
 	, [s].[IsDeleted]
 	, [s].[OrderId]
 	, [s].[PricebookEntryId]
@@ -4049,7 +4091,8 @@ WHEN MATCHED THEN
 	, [t].[External_Id__c] = [t].[External_Id__c]
 WHEN NOT MATCHED THEN
 	INSERT(
-	[OwnerId]
+	[Id]
+	, [OwnerId]
 	, [IsDeleted]
 	, [Name]
 	, [CurrencyIsoCode]
@@ -4071,7 +4114,8 @@ WHEN NOT MATCHED THEN
 	, [External_Id__c]
 	)
 	VALUES(
-	[s].[OwnerId]
+	[s].[Id]
+	, [s].[OwnerId]
 	, [s].[IsDeleted]
 	, [s].[Name]
 	, [s].[CurrencyIsoCode]
@@ -4203,7 +4247,8 @@ WHEN MATCHED THEN
 	, [t].[CanCreateQuoteLineItems] = [t].[CanCreateQuoteLineItems]
 WHEN NOT MATCHED THEN
 	INSERT(
-	[OwnerId]
+	[Id]
+	, [OwnerId]
 	, [IsDeleted]
 	, [Name]
 	, [CurrencyIsoCode]
@@ -4285,7 +4330,8 @@ WHEN NOT MATCHED THEN
 	, [CanCreateQuoteLineItems]
 	)
 	VALUES(
-	[s].[OwnerId]
+	[s].[Id]
+	, [s].[OwnerId]
 	, [s].[IsDeleted]
 	, [s].[Name]
 	, [s].[CurrencyIsoCode]
@@ -4484,7 +4530,8 @@ WHEN MATCHED THEN
 	, [t].[Previous_Appt_Same_Day__c] = [t].[Previous_Appt_Same_Day__c]
 WHEN NOT MATCHED THEN
 	INSERT(
-	[OwnerId]
+	[Id]
+	, [OwnerId]
 	, [IsDeleted]
 	, [AppointmentNumber]
 	, [CurrencyIsoCode]
@@ -4573,7 +4620,8 @@ WHEN NOT MATCHED THEN
 	, [Previous_Appt_Same_Day__c]
 	)
 	VALUES(
-	[s].[OwnerId]
+	[s].[Id]
+	, [s].[OwnerId]
 	, [s].[IsDeleted]
 	, [s].[AppointmentNumber]
 	, [s].[CurrencyIsoCode]
@@ -4746,7 +4794,8 @@ WHEN MATCHED THEN
 	, [t].[RootServiceContractId] = [t].[RootServiceContractId]
 WHEN NOT MATCHED THEN
 	INSERT(
-	[OwnerId]
+	[Id]
+	, [OwnerId]
 	, [IsDeleted]
 	, [Name]
 	, [CurrencyIsoCode]
@@ -4802,7 +4851,8 @@ WHEN NOT MATCHED THEN
 	, [RootServiceContractId]
 	)
 	VALUES(
-	[s].[OwnerId]
+	[s].[Id]
+	, [s].[OwnerId]
 	, [s].[IsDeleted]
 	, [s].[Name]
 	, [s].[CurrencyIsoCode]
@@ -4905,7 +4955,8 @@ WHEN MATCHED THEN
 	, [t].[External_Id__c] = [t].[External_Id__c]
 WHEN NOT MATCHED THEN
 	INSERT(
-	[OwnerId]
+	[Id]
+	, [OwnerId]
 	, [Name]
 	, [CurrencyIsoCode]
 	, [CreatedDate]
@@ -4924,7 +4975,8 @@ WHEN NOT MATCHED THEN
 	, [External_Id__c]
 	)
 	VALUES(
-	[s].[OwnerId]
+	[s].[Id]
+	, [s].[OwnerId]
 	, [s].[Name]
 	, [s].[CurrencyIsoCode]
 	, [s].[CreatedDate]
@@ -4989,7 +5041,8 @@ WHEN MATCHED THEN
 	, [t].[External_Id__c] = [t].[External_Id__c]
 WHEN NOT MATCHED THEN
 	INSERT(
-	[IsDeleted]
+	[Id]
+	, [IsDeleted]
 	, [SkillNumber]
 	, [CurrencyIsoCode]
 	, [CreatedDate]
@@ -5007,7 +5060,8 @@ WHEN NOT MATCHED THEN
 	, [External_Id__c]
 	)
 	VALUES(
-	[s].[IsDeleted]
+	[s].[Id]
+	, [s].[IsDeleted]
 	, [s].[SkillNumber]
 	, [s].[CurrencyIsoCode]
 	, [s].[CreatedDate]
@@ -5132,7 +5186,8 @@ WHEN MATCHED THEN
 	, [t].[Business_Hours__c] = [t].[Business_Hours__c]
 WHEN NOT MATCHED THEN
 	INSERT(
-	[OwnerId]
+	[Id]
+	, [OwnerId]
 	, [IsDeleted]
 	, [Name]
 	, [CurrencyIsoCode]
@@ -5211,7 +5266,8 @@ WHEN NOT MATCHED THEN
 	, [Business_Hours__c]
 	)
 	VALUES(
-	[s].[OwnerId]
+	[s].[Id]
+	, [s].[OwnerId]
 	, [s].[IsDeleted]
 	, [s].[Name]
 	, [s].[CurrencyIsoCode]
@@ -5333,7 +5389,8 @@ WHEN MATCHED THEN
 	, [t].[Service_Territory__c] = [t].[Service_Territory__c]
 WHEN NOT MATCHED THEN
 	INSERT(
-	[IsDeleted]
+	[Id]
+	, [IsDeleted]
 	, [Name]
 	, [CurrencyIsoCode]
 	, [CreatedDate]
@@ -5348,7 +5405,8 @@ WHEN NOT MATCHED THEN
 	, [Service_Territory__c]
 	)
 	VALUES(
-	[s].[IsDeleted]
+	[s].[Id]
+	, [s].[IsDeleted]
 	, [s].[Name]
 	, [s].[CurrencyIsoCode]
 	, [s].[CreatedDate]
@@ -5421,7 +5479,8 @@ WHEN MATCHED THEN
 	, [t].[Role] = [t].[Role]
 WHEN NOT MATCHED THEN
 	INSERT(
-	[IsDeleted]
+	[Id]
+	, [IsDeleted]
 	, [MemberNumber]
 	, [CurrencyIsoCode]
 	, [CreatedDate]
@@ -5451,7 +5510,8 @@ WHEN NOT MATCHED THEN
 	, [Role]
 	)
 	VALUES(
-	[s].[IsDeleted]
+	[s].[Id]
+	, [s].[IsDeleted]
 	, [s].[MemberNumber]
 	, [s].[CurrencyIsoCode]
 	, [s].[CreatedDate]
@@ -5525,7 +5585,8 @@ WHEN MATCHED THEN
 	, [t].[Work_Type_Appointment_Type__c] = [t].[Work_Type_Appointment_Type__c]
 WHEN NOT MATCHED THEN
 	INSERT(
-	[IsDeleted]
+	[Id]
+	, [IsDeleted]
 	, [Name]
 	, [CurrencyIsoCode]
 	, [CreatedDate]
@@ -5541,7 +5602,8 @@ WHEN NOT MATCHED THEN
 	, [Work_Type_Appointment_Type__c]
 	)
 	VALUES(
-	[s].[IsDeleted]
+	[s].[Id]
+	, [s].[IsDeleted]
 	, [s].[Name]
 	, [s].[CurrencyIsoCode]
 	, [s].[CreatedDate]
@@ -5650,7 +5712,8 @@ WHEN MATCHED THEN
 	, [t].[Invite__c] = [t].[Invite__c]
 WHEN NOT MATCHED THEN
 	INSERT(
-	[RecordTypeId]
+	[Id]
+	, [RecordTypeId]
 	, [WhoId]
 	, [WhatId]
 	, [WhoCount]
@@ -5715,7 +5778,8 @@ WHEN NOT MATCHED THEN
 	, [Invite__c]
 	)
 	VALUES(
-	[s].[RecordTypeId]
+	[s].[Id]
+	, [s].[RecordTypeId]
 	, [s].[WhoId]
 	, [s].[WhatId]
 	, [s].[WhoCount]
@@ -6009,7 +6073,8 @@ WHEN MATCHED THEN
 	, [t].[StartDay] = [t].[StartDay]
 WHEN NOT MATCHED THEN
 	INSERT(
-	[Username]
+	[Id]
+	, [Username]
 	, [LastName]
 	, [FirstName]
 	, [MiddleName]
@@ -6210,7 +6275,8 @@ WHEN NOT MATCHED THEN
 	, [StartDay]
 	)
 	VALUES(
-	[s].[Username]
+	[s].[Id]
+	, [s].[Username]
 	, [s].[LastName]
 	, [s].[FirstName]
 	, [s].[MiddleName]
@@ -6499,7 +6565,8 @@ WHEN MATCHED THEN
 	, [t].[LocationId] = [t].[LocationId]
 WHEN NOT MATCHED THEN
 	INSERT(
-	[OwnerId]
+	[Id]
+	, [OwnerId]
 	, [IsDeleted]
 	, [WorkOrderNumber]
 	, [CurrencyIsoCode]
@@ -6559,7 +6626,8 @@ WHEN NOT MATCHED THEN
 	, [LocationId]
 	)
 	VALUES(
-	[s].[OwnerId]
+	[s].[Id]
+	, [s].[OwnerId]
 	, [s].[IsDeleted]
 	, [s].[WorkOrderNumber]
 	, [s].[CurrencyIsoCode]
@@ -6698,7 +6766,8 @@ WHEN MATCHED THEN
 	, [t].[LocationId] = [t].[LocationId]
 WHEN NOT MATCHED THEN
 	INSERT(
-	[IsDeleted]
+	[Id]
+	, [IsDeleted]
 	, [LineItemNumber]
 	, [CurrencyIsoCode]
 	, [CreatedDate]
@@ -6749,7 +6818,8 @@ WHEN NOT MATCHED THEN
 	, [LocationId]
 	)
 	VALUES(
-	[s].[IsDeleted]
+	[s].[Id]
+	, [s].[IsDeleted]
 	, [s].[LineItemNumber]
 	, [s].[CurrencyIsoCode]
 	, [s].[CreatedDate]
@@ -6856,7 +6926,8 @@ WHEN MATCHED THEN
 	, [t].[External_Id__c] = [t].[External_Id__c]
 WHEN NOT MATCHED THEN
 	INSERT(
-	[OwnerId]
+	[Id]
+	, [OwnerId]
 	, [IsDeleted]
 	, [Name]
 	, [CurrencyIsoCode]
@@ -6884,7 +6955,8 @@ WHEN NOT MATCHED THEN
 	, [External_Id__c]
 	)
 	VALUES(
-	[s].[OwnerId]
+	[s].[Id]
+	, [s].[OwnerId]
 	, [s].[IsDeleted]
 	, [s].[Name]
 	, [s].[CurrencyIsoCode]
@@ -6959,7 +7031,8 @@ WHEN MATCHED THEN
 	, [t].[Language__c] = [t].[Language__c]
 WHEN NOT MATCHED THEN
 	INSERT(
-	[OwnerId]
+	[Id]
+	, [OwnerId]
 	, [IsDeleted]
 	, [Name]
 	, [CurrencyIsoCode]
@@ -6978,7 +7051,8 @@ WHEN NOT MATCHED THEN
 	, [Language__c]
 	)
 	VALUES(
-	[s].[OwnerId]
+	[s].[Id]
+	, [s].[OwnerId]
 	, [s].[IsDeleted]
 	, [s].[Name]
 	, [s].[CurrencyIsoCode]
@@ -7040,7 +7114,8 @@ WHEN MATCHED THEN
 	, [t].[External_Id__c] = [t].[External_Id__c]
 WHEN NOT MATCHED THEN
 	INSERT(
-	[OwnerId]
+	[Id]
+	, [OwnerId]
 	, [IsDeleted]
 	, [Name]
 	, [CurrencyIsoCode]
@@ -7055,7 +7130,8 @@ WHEN NOT MATCHED THEN
 	, [External_Id__c]
 	)
 	VALUES(
-	[s].[OwnerId]
+	[s].[Id]
+	, [s].[OwnerId]
 	, [s].[IsDeleted]
 	, [s].[Name]
 	, [s].[CurrencyIsoCode]

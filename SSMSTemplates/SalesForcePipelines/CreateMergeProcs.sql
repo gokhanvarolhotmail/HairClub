@@ -65,13 +65,13 @@ FROM( SELECT
                      , STUFF(( SELECT CONCAT('
 	, ', QUOTENAME([c].[name]))
                                FROM [sys].[columns] AS [c]
-                               WHERE [c].[object_id] = [t].[object_id] AND [c].[column_id] <> [ic].[column_id]
+                               WHERE [c].[object_id] = [t].[object_id]
                                ORDER BY [c].[column_id]
                              FOR XML PATH(N''), TYPE ).[value](N'.', N'NVARCHAR(MAX)'), 1, 5, '') AS [InsertTop]
                      , STUFF(( SELECT CONCAT('
 	, [s].', QUOTENAME([c].[name]))
                                FROM [sys].[columns] AS [c]
-                               WHERE [c].[object_id] = [t].[object_id] AND [c].[column_id] <> [ic].[column_id]
+                               WHERE [c].[object_id] = [t].[object_id]
                                ORDER BY [c].[column_id]
                              FOR XML PATH(N''), TYPE ).[value](N'.', N'NVARCHAR(MAX)'), 1, 5, '') AS [InsertBottom] ) AS [mc]
       WHERE [s].[name] = 'SF' ) AS [k] ;
