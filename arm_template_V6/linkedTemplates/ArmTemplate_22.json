@@ -1,0 +1,3911 @@
+{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "factoryName": {
+            "type": "string",
+            "metadata": "Data Factory name",
+            "defaultValue": "hc-eim-df-prod2"
+        }
+    },
+    "variables": {
+        "factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+    },
+    "resources": [
+        {
+            "name": "[concat(parameters('factoryName'), '/SFTPFunnelExtract')]",
+            "type": "Microsoft.DataFactory/factories/pipelines",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "activities": [
+                    {
+                        "name": "Copy data1",
+                        "type": "Copy",
+                        "dependsOn": [
+                            {
+                                "activity": "Set variable1",
+                                "dependencyConditions": [
+                                    "Succeeded"
+                                ]
+                            }
+                        ],
+                        "policy": {
+                            "timeout": "7.00:00:00",
+                            "retry": 0,
+                            "retryIntervalInSeconds": 30,
+                            "secureOutput": false,
+                            "secureInput": false
+                        },
+                        "userProperties": [],
+                        "typeProperties": {
+                            "source": {
+                                "type": "SqlDWSource",
+                                "sqlReaderQuery": {
+                                    "value": "with lead as\n(select distinct SaleforceLeadID,IsDeleted from\n [Reports].[Funnel]\nwhere [OriginalCampaignAgency] in (@{pipeline().parameters.AgencyName}) and ( LeadCreateDateEST >= DATEADD(day, -90, GETDATE()) or ActivityDateEST >= DATEADD(day, -90, GETDATE())\nor dateadd(mi,datepart(tz,CONVERT(datetime,[ReportCreateDate])    AT TIME ZONE 'Eastern Standard Time'),[ReportCreateDate]) >= DATEADD(day, -90, GETDATE()) and IsDeleted = 0)\n)\nselect a.[FunnelTransactionID]\n      ,a.[SalesForceTaskID]\n      ,a.[BrightPatternID]\n      ,a.[LeadFunnelTransactionID]\n      ,a.[SaleforceLeadID]  as [SalesForceLeadID]\n      ,a.[Company]\n      ,a.[FunnelStep]\n      ,a.[Funnelstatus]\n      ,a.[OriginalGCLID]\n      ,a.[LeadCreateDateEST]\n      ,a.[ActivityDateEST]\n      ,a.[Date]\n      ,a.[Time]\n      ,a.[DayPart]\n      ,a.[Hour]\n      ,a.[Minute]\n      ,a.[Seconds]\n      ,a.[OriginalContactType]\n      ,a.[OriginalSourcecode]\n      ,a.[OriginalDialedNumber]\n      ,a.[OriginalPhoneNumberAreaCode]\n      ,a.[OriginalCampaignAgency]\n      ,a.[OriginalCampaignChannel]\n      ,a.[OriginalCampaignName]\n      ,a.[OriginalCampaignFormat]\n      ,a.[OriginalCampaignLanguage]\n      ,a.[OriginalCampaignPromotionCode]\n      ,a.[OriginalCampaignStartDate]\n      ,a.[OriginalCampaignEndDate]\n      ,a.[OriginalCampaignStatus]\n      ,a.[RecentSourcecode]\n      ,a.[RecentDialedNumber]\n      ,a.[RecentPhoneNumberAreaCode]\n      ,a.[RecentCampaignAgency]\n      ,a.[RecentCampaignChannel]\n      ,a.[RecentCampaignName]\n      ,a.[RecentCampaignFormat]\n      ,a.[RecentCampaignLanguage]\n      ,a.[RecentCampaignPromotionCode]\n      ,a.[RecentCampaignStartDate]\n      ,a.[RecentCampaignEndDate]\n      ,a.[RecentCampaignStatus]\n      ,a.[PostalCode]\n      ,a.[Region]\n      ,a.[MarketDMA]\n      ,a.[CenterName]\n      ,a.[CenterRegion]\n      ,a.[CenterDMA]\n      ,a.[CenterType]\n      ,a.[CenterOwner]\n      ,a.[Language]\n      ,a.[Gender]\n      ,a.[Ethnicity]\n      ,a.[HairLossCondition]\n      ,a.[MaritalStatus]\n      ,a.[Occupation]\n      ,a.[BirthYear]\n      ,a.[AgeBands]\n      ,a.[NewContact]\n      ,a.[NewLead]\n      ,a.[NewAppointment]\n      ,a.[NewShow]\n      ,a.[NewSale]\n      ,a.[NewLeadToAppointment]\n      ,a.[NewLeadToShow]\n      ,a.[NewLeadToSale]\n      ,a.[QuotedPrice]\n      ,a.[PrimarySolution]\n      ,a.[DoNotContactFlag]\n      ,a.[DoNotCallFlag]\n      ,a.[DoNotSMSFlag]\n      ,a.[DoNotEmailFlag]\n      ,a.[DoNotMailFlag]\n      ,a.[IsDeleted]\nfrom [Reports].[Funnel] a\n      inner join lead b on a.SaleforceLeadID=b.SaleforceLeadID\nwhere funnelstep='Lead' and b.IsDeleted = 0\nunion all\nselect a.[FunnelTransactionID]\n      ,a.[SalesForceTaskID]\n      ,a.[BrightPatternID]\n      ,a.[LeadFunnelTransactionID]\n      ,a.[SaleforceLeadID] as [SalesForceLeadID]\n      ,a.[Company]\n      ,a.[FunnelStep]\n      ,a.[Funnelstatus]\n      ,a.[OriginalGCLID]\n      ,a.[LeadCreateDateEST]\n      ,a.[ActivityDateEST]\n      ,a.[Date]\n      ,a.[Time]\n      ,a.[DayPart]\n      ,a.[Hour]\n      ,a.[Minute]\n      ,a.[Seconds]\n      ,a.[OriginalContactType]\n      ,a.[OriginalSourcecode]\n      ,a.[OriginalDialedNumber]\n      ,a.[OriginalPhoneNumberAreaCode]\n      ,a.[OriginalCampaignAgency]\n      ,a.[OriginalCampaignChannel]\n      ,a.[OriginalCampaignName]\n      ,a.[OriginalCampaignFormat]\n      ,a.[OriginalCampaignLanguage]\n      ,a.[OriginalCampaignPromotionCode]\n      ,a.[OriginalCampaignStartDate]\n      ,a.[OriginalCampaignEndDate]\n      ,a.[OriginalCampaignStatus]\n      ,a.[RecentSourcecode]\n      ,a.[RecentDialedNumber]\n      ,a.[RecentPhoneNumberAreaCode]\n      ,a.[RecentCampaignAgency]\n      ,a.[RecentCampaignChannel]\n      ,a.[RecentCampaignName]\n      ,a.[RecentCampaignFormat]\n      ,a.[RecentCampaignLanguage]\n      ,a.[RecentCampaignPromotionCode]\n      ,a.[RecentCampaignStartDate]\n      ,a.[RecentCampaignEndDate]\n      ,a.[RecentCampaignStatus]\n      ,a.[PostalCode]\n      ,a.[Region]\n      ,a.[MarketDMA]\n      ,a.[CenterName]\n      ,a.[CenterRegion]\n      ,a.[CenterDMA]\n      ,a.[CenterType]\n      ,a.[CenterOwner]\n      ,a.[Language]\n      ,a.[Gender]\n      ,a.[Ethnicity]\n      ,a.[HairLossCondition]\n      ,a.[MaritalStatus]\n      ,a.[Occupation]\n      ,a.[BirthYear]\n      ,a.[AgeBands]\n      ,a.[NewContact]\n      ,a.[NewLead]\n      ,a.[NewAppointment]\n      ,a.[NewShow]\n      ,a.[NewSale]\n      ,a.[NewLeadToAppointment]\n      ,a.[NewLeadToShow]\n      ,a.[NewLeadToSale]\n      ,a.[QuotedPrice]\n      ,a.[PrimarySolution]\n      ,a.[DoNotContactFlag]\n      ,a.[DoNotCallFlag]\n      ,a.[DoNotSMSFlag]\n      ,a.[DoNotEmailFlag]\n      ,a.[DoNotMailFlag]\n      ,a.[IsDeleted]\nfrom [Reports].[Funnel] a\nwhere funnelstep!='Lead' and SaleforceLeadID in (select SaleforceLeadID from lead ) and IsDeleted = 0",
+                                    "type": "Expression"
+                                },
+                                "queryTimeout": "02:00:00",
+                                "partitionOption": "None"
+                            },
+                            "sink": {
+                                "type": "DelimitedTextSink",
+                                "storeSettings": {
+                                    "type": "AzureBlobFSWriteSettings"
+                                },
+                                "formatSettings": {
+                                    "type": "DelimitedTextWriteSettings",
+                                    "quoteAllText": true,
+                                    "fileExtension": ".txt"
+                                }
+                            },
+                            "enableStaging": false
+                        },
+                        "inputs": [
+                            {
+                                "referenceName": "ASA_Reporting_Funnel",
+                                "type": "DatasetReference",
+                                "parameters": {}
+                            }
+                        ],
+                        "outputs": [
+                            {
+                                "referenceName": "DL_Funnel",
+                                "type": "DatasetReference",
+                                "parameters": {
+                                    "AgencyName": {
+                                        "value": "@pipeline().parameters.AgencyName",
+                                        "type": "Expression"
+                                    },
+                                    "path": {
+                                        "value": "@variables('path')",
+                                        "type": "Expression"
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Set variable1",
+                        "description": "@{replace(split(utcnow(), 'T')[0], '-', '/')}",
+                        "type": "SetVariable",
+                        "dependsOn": [],
+                        "userProperties": [],
+                        "typeProperties": {
+                            "variableName": "path",
+                            "value": {
+                                "value": "@{replace(split(utcnow(), 'T')[0], '-', '/')}",
+                                "type": "Expression"
+                            }
+                        }
+                    }
+                ],
+                "policy": {
+                    "elapsedTimeMetric": {},
+                    "cancelAfter": {}
+                },
+                "parameters": {
+                    "AgencyName": {
+                        "type": "string"
+                    }
+                },
+                "variables": {
+                    "path": {
+                        "type": "String"
+                    }
+                },
+                "folder": {
+                    "name": "Reporting"
+                },
+                "annotations": [],
+                "lastPublishTime": "2021-10-15T16:37:48Z"
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/CBP Test')]",
+            "type": "Microsoft.DataFactory/factories/pipelines",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "activities": [
+                    {
+                        "name": "ClosingByPerformerTest",
+                        "type": "Copy",
+                        "dependsOn": [],
+                        "policy": {
+                            "timeout": "7.00:00:00",
+                            "retry": 0,
+                            "retryIntervalInSeconds": 30,
+                            "secureOutput": false,
+                            "secureInput": false
+                        },
+                        "userProperties": [],
+                        "typeProperties": {
+                            "source": {
+                                "type": "SqlDWSource",
+                                "sqlReaderStoredProcedureName": "[[dbo].[testSP]",
+                                "queryTimeout": "02:00:00",
+                                "partitionOption": "None"
+                            },
+                            "sink": {
+                                "type": "DelimitedTextSink",
+                                "storeSettings": {
+                                    "type": "AzureBlobFSWriteSettings"
+                                },
+                                "formatSettings": {
+                                    "type": "DelimitedTextWriteSettings",
+                                    "quoteAllText": true,
+                                    "fileExtension": ".txt"
+                                }
+                            },
+                            "enableStaging": false,
+                            "translator": {
+                                "type": "TabularTranslator",
+                                "mappings": [
+                                    {
+                                        "source": {
+                                            "name": "LeadKey",
+                                            "type": "Int32",
+                                            "physicalType": "int"
+                                        },
+                                        "sink": {
+                                            "name": "LeadKey",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "LeadId",
+                                            "type": "String",
+                                            "physicalType": "nvarchar"
+                                        },
+                                        "sink": {
+                                            "name": "LeadId",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "LeadFirstName",
+                                            "type": "String",
+                                            "physicalType": "nvarchar"
+                                        },
+                                        "sink": {
+                                            "name": "LeadFirstName",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "LeadLastname",
+                                            "type": "String",
+                                            "physicalType": "nvarchar"
+                                        },
+                                        "sink": {
+                                            "name": "LeadLastname",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "LeadFullName",
+                                            "type": "String",
+                                            "physicalType": "nvarchar"
+                                        },
+                                        "sink": {
+                                            "name": "LeadFullName",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "LeadBirthday",
+                                            "type": "DateTime",
+                                            "physicalType": "date"
+                                        },
+                                        "sink": {
+                                            "name": "LeadBirthday",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "LeadAddress",
+                                            "type": "String",
+                                            "physicalType": "nvarchar"
+                                        },
+                                        "sink": {
+                                            "name": "LeadAddress",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "IsActive",
+                                            "type": "Boolean",
+                                            "physicalType": "bit"
+                                        },
+                                        "sink": {
+                                            "name": "IsActive",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "IsConsultFormComplete",
+                                            "type": "Boolean",
+                                            "physicalType": "bit"
+                                        },
+                                        "sink": {
+                                            "name": "IsConsultFormComplete",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "Isvalid",
+                                            "type": "Boolean",
+                                            "physicalType": "bit"
+                                        },
+                                        "sink": {
+                                            "name": "Isvalid",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "LeadEmail",
+                                            "type": "String",
+                                            "physicalType": "nvarchar"
+                                        },
+                                        "sink": {
+                                            "name": "LeadEmail",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "LeadPhone",
+                                            "type": "String",
+                                            "physicalType": "nvarchar"
+                                        },
+                                        "sink": {
+                                            "name": "LeadPhone",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "LeadMobilePhone",
+                                            "type": "String",
+                                            "physicalType": "nvarchar"
+                                        },
+                                        "sink": {
+                                            "name": "LeadMobilePhone",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "NorwoodScale",
+                                            "type": "String",
+                                            "physicalType": "nvarchar"
+                                        },
+                                        "sink": {
+                                            "name": "NorwoodScale",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "LudwigScale",
+                                            "type": "String",
+                                            "physicalType": "nvarchar"
+                                        },
+                                        "sink": {
+                                            "name": "LudwigScale",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "HairLossInFamily",
+                                            "type": "String",
+                                            "physicalType": "nvarchar"
+                                        },
+                                        "sink": {
+                                            "name": "HairLossInFamily",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "HairLossProductUsed",
+                                            "type": "String",
+                                            "physicalType": "nvarchar"
+                                        },
+                                        "sink": {
+                                            "name": "HairLossProductUsed",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "HairLossSpot",
+                                            "type": "String",
+                                            "physicalType": "nvarchar"
+                                        },
+                                        "sink": {
+                                            "name": "HairLossSpot",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "GeographyKey",
+                                            "type": "Int32",
+                                            "physicalType": "int"
+                                        },
+                                        "sink": {
+                                            "name": "GeographyKey",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "LeadPostalCode",
+                                            "type": "String",
+                                            "physicalType": "nvarchar"
+                                        },
+                                        "sink": {
+                                            "name": "LeadPostalCode",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "EthnicityKey",
+                                            "type": "Int32",
+                                            "physicalType": "int"
+                                        },
+                                        "sink": {
+                                            "name": "EthnicityKey",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "LeadEthnicity",
+                                            "type": "String",
+                                            "physicalType": "nvarchar"
+                                        },
+                                        "sink": {
+                                            "name": "LeadEthnicity",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "GenderKey",
+                                            "type": "Int32",
+                                            "physicalType": "int"
+                                        },
+                                        "sink": {
+                                            "name": "GenderKey",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "LeadGender",
+                                            "type": "String",
+                                            "physicalType": "nvarchar"
+                                        },
+                                        "sink": {
+                                            "name": "LeadGender",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "CenterKey",
+                                            "type": "Int32",
+                                            "physicalType": "int"
+                                        },
+                                        "sink": {
+                                            "name": "CenterKey",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "CenterNumber",
+                                            "type": "String",
+                                            "physicalType": "varchar"
+                                        },
+                                        "sink": {
+                                            "name": "CenterNumber",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "LanguageKey",
+                                            "type": "Int32",
+                                            "physicalType": "int"
+                                        },
+                                        "sink": {
+                                            "name": "LanguageKey",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "LeadLanguage",
+                                            "type": "String",
+                                            "physicalType": "nvarchar"
+                                        },
+                                        "sink": {
+                                            "name": "LeadLanguage",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "StatusKey",
+                                            "type": "Int32",
+                                            "physicalType": "int"
+                                        },
+                                        "sink": {
+                                            "name": "StatusKey",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "LeadStatus",
+                                            "type": "String",
+                                            "physicalType": "nvarchar"
+                                        },
+                                        "sink": {
+                                            "name": "LeadStatus",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "LeadCreatedDate",
+                                            "type": "DateTime",
+                                            "physicalType": "datetime"
+                                        },
+                                        "sink": {
+                                            "name": "LeadCreatedDate",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "CreatedDateKey",
+                                            "type": "Int32",
+                                            "physicalType": "int"
+                                        },
+                                        "sink": {
+                                            "name": "CreatedDateKey",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "CreatedTimeKey",
+                                            "type": "Int32",
+                                            "physicalType": "int"
+                                        },
+                                        "sink": {
+                                            "name": "CreatedTimeKey",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "LeadLastActivityDate",
+                                            "type": "DateTime",
+                                            "physicalType": "datetime"
+                                        },
+                                        "sink": {
+                                            "name": "LeadLastActivityDate",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "LastActivityDateKey",
+                                            "type": "Int32",
+                                            "physicalType": "int"
+                                        },
+                                        "sink": {
+                                            "name": "LastActivityDateKey",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "LastActivityTimekey",
+                                            "type": "Int32",
+                                            "physicalType": "int"
+                                        },
+                                        "sink": {
+                                            "name": "LastActivityTimekey",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "DISCStyle",
+                                            "type": "String",
+                                            "physicalType": "nvarchar"
+                                        },
+                                        "sink": {
+                                            "name": "DISCStyle",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "LeadMaritalStatus",
+                                            "type": "String",
+                                            "physicalType": "nvarchar"
+                                        },
+                                        "sink": {
+                                            "name": "LeadMaritalStatus",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "LeadConsultReady",
+                                            "type": "Int32",
+                                            "physicalType": "int"
+                                        },
+                                        "sink": {
+                                            "name": "LeadConsultReady",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "ConsultationFormReady",
+                                            "type": "Int32",
+                                            "physicalType": "int"
+                                        },
+                                        "sink": {
+                                            "name": "ConsultationFormReady",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "IsDeleted",
+                                            "type": "Boolean",
+                                            "physicalType": "bit"
+                                        },
+                                        "sink": {
+                                            "name": "IsDeleted",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "DoNotCall",
+                                            "type": "Boolean",
+                                            "physicalType": "bit"
+                                        },
+                                        "sink": {
+                                            "name": "DoNotCall",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "DoNotContact",
+                                            "type": "Boolean",
+                                            "physicalType": "bit"
+                                        },
+                                        "sink": {
+                                            "name": "DoNotContact",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "DoNotEmail",
+                                            "type": "Boolean",
+                                            "physicalType": "bit"
+                                        },
+                                        "sink": {
+                                            "name": "DoNotEmail",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "DoNotMail",
+                                            "type": "Boolean",
+                                            "physicalType": "bit"
+                                        },
+                                        "sink": {
+                                            "name": "DoNotMail",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "DoNotText",
+                                            "type": "Boolean",
+                                            "physicalType": "bit"
+                                        },
+                                        "sink": {
+                                            "name": "DoNotText",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "CreateUser",
+                                            "type": "String",
+                                            "physicalType": "varchar"
+                                        },
+                                        "sink": {
+                                            "name": "CreateUser",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "UpdateUser",
+                                            "type": "String",
+                                            "physicalType": "varchar"
+                                        },
+                                        "sink": {
+                                            "name": "UpdateUser",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "City",
+                                            "type": "String",
+                                            "physicalType": "varchar"
+                                        },
+                                        "sink": {
+                                            "name": "City",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "State",
+                                            "type": "String",
+                                            "physicalType": "varchar"
+                                        },
+                                        "sink": {
+                                            "name": "State",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "MaritalStatusKey",
+                                            "type": "Int32",
+                                            "physicalType": "int"
+                                        },
+                                        "sink": {
+                                            "name": "MaritalStatusKey",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "LeadSource",
+                                            "type": "String",
+                                            "physicalType": "varchar"
+                                        },
+                                        "sink": {
+                                            "name": "LeadSource",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "SourceKey",
+                                            "type": "Int32",
+                                            "physicalType": "int"
+                                        },
+                                        "sink": {
+                                            "name": "SourceKey",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "OriginalCommMethodkey",
+                                            "type": "Int32",
+                                            "physicalType": "int"
+                                        },
+                                        "sink": {
+                                            "name": "OriginalCommMethodkey",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "RecentCommMethodKey",
+                                            "type": "Int32",
+                                            "physicalType": "int"
+                                        },
+                                        "sink": {
+                                            "name": "RecentCommMethodKey",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "CommunicationMethod",
+                                            "type": "String",
+                                            "physicalType": "varchar"
+                                        },
+                                        "sink": {
+                                            "name": "CommunicationMethod",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "IsValidLeadName",
+                                            "type": "Boolean",
+                                            "physicalType": "bit"
+                                        },
+                                        "sink": {
+                                            "name": "IsValidLeadName",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "IsValidLeadLastName",
+                                            "type": "Boolean",
+                                            "physicalType": "bit"
+                                        },
+                                        "sink": {
+                                            "name": "IsValidLeadLastName",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "IsValidLeadFullName",
+                                            "type": "Boolean",
+                                            "physicalType": "bit"
+                                        },
+                                        "sink": {
+                                            "name": "IsValidLeadFullName",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "IsValidLeadPhone",
+                                            "type": "Boolean",
+                                            "physicalType": "bit"
+                                        },
+                                        "sink": {
+                                            "name": "IsValidLeadPhone",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "IsValidLeadMobilePhone",
+                                            "type": "Boolean",
+                                            "physicalType": "bit"
+                                        },
+                                        "sink": {
+                                            "name": "IsValidLeadMobilePhone",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "IsValidLeadEmail",
+                                            "type": "Boolean",
+                                            "physicalType": "bit"
+                                        },
+                                        "sink": {
+                                            "name": "IsValidLeadEmail",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "ReviewNeeded",
+                                            "type": "Boolean",
+                                            "physicalType": "bit"
+                                        },
+                                        "sink": {
+                                            "name": "ReviewNeeded",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "ConvertedContactId",
+                                            "type": "String",
+                                            "physicalType": "nvarchar"
+                                        },
+                                        "sink": {
+                                            "name": "ConvertedContactId",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "ConvertedAccountId",
+                                            "type": "String",
+                                            "physicalType": "nvarchar"
+                                        },
+                                        "sink": {
+                                            "name": "ConvertedAccountId",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "ConvertedOpportunityId",
+                                            "type": "String",
+                                            "physicalType": "varchar"
+                                        },
+                                        "sink": {
+                                            "name": "ConvertedOpportunityId",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "ConvertedDate",
+                                            "type": "DateTime",
+                                            "physicalType": "datetime2"
+                                        },
+                                        "sink": {
+                                            "name": "ConvertedDate",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "LastModifiedDate",
+                                            "type": "DateTime",
+                                            "physicalType": "datetime"
+                                        },
+                                        "sink": {
+                                            "name": "LastModifiedDate",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "SourceSystem",
+                                            "type": "String",
+                                            "physicalType": "varchar"
+                                        },
+                                        "sink": {
+                                            "name": "SourceSystem",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "DWH_CreatedDate",
+                                            "type": "DateTime",
+                                            "physicalType": "datetime"
+                                        },
+                                        "sink": {
+                                            "name": "DWH_CreatedDate",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "DWH_LastUpdateDate",
+                                            "type": "DateTime",
+                                            "physicalType": "datetime"
+                                        },
+                                        "sink": {
+                                            "name": "DWH_LastUpdateDate",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "LeadExternalID",
+                                            "type": "String",
+                                            "physicalType": "varchar"
+                                        },
+                                        "sink": {
+                                            "name": "LeadExternalID",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "ServiceTerritoryID",
+                                            "type": "String",
+                                            "physicalType": "varchar"
+                                        },
+                                        "sink": {
+                                            "name": "ServiceTerritoryID",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "OriginalCampaignId",
+                                            "type": "String",
+                                            "physicalType": "varchar"
+                                        },
+                                        "sink": {
+                                            "name": "OriginalCampaignId",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "OriginalCampaignKey",
+                                            "type": "Int32",
+                                            "physicalType": "int"
+                                        },
+                                        "sink": {
+                                            "name": "OriginalCampaignKey",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "AccountID",
+                                            "type": "String",
+                                            "physicalType": "varchar"
+                                        },
+                                        "sink": {
+                                            "name": "AccountID",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "LeadOccupation",
+                                            "type": "String",
+                                            "physicalType": "varchar"
+                                        },
+                                        "sink": {
+                                            "name": "LeadOccupation",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "OriginalCampaignSource",
+                                            "type": "String",
+                                            "physicalType": "varchar"
+                                        },
+                                        "sink": {
+                                            "name": "OriginalCampaignSource",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "GCLID",
+                                            "type": "String",
+                                            "physicalType": "varchar"
+                                        },
+                                        "sink": {
+                                            "name": "GCLID",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "RealCreatedDate",
+                                            "type": "DateTime",
+                                            "physicalType": "datetime"
+                                        },
+                                        "sink": {
+                                            "name": "RealCreatedDate",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "IsDuplicateByEmail",
+                                            "type": "Boolean",
+                                            "physicalType": "bit"
+                                        },
+                                        "sink": {
+                                            "name": "IsDuplicateByEmail",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "IsDuplicateByName",
+                                            "type": "Boolean",
+                                            "physicalType": "bit"
+                                        },
+                                        "sink": {
+                                            "name": "IsDuplicateByName",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "ReferralCode",
+                                            "type": "String",
+                                            "physicalType": "nvarchar"
+                                        },
+                                        "sink": {
+                                            "name": "ReferralCode",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "ReferralCodeExpirationDate",
+                                            "type": "DateTime",
+                                            "physicalType": "datetime"
+                                        },
+                                        "sink": {
+                                            "name": "ReferralCodeExpirationDate",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "PromotionCodeKey",
+                                            "type": "Int32",
+                                            "physicalType": "int"
+                                        },
+                                        "sink": {
+                                            "name": "PromotionCodeKey",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "PromotionCode",
+                                            "type": "String",
+                                            "physicalType": "varchar"
+                                        },
+                                        "sink": {
+                                            "name": "PromotionCode",
+                                            "type": "String",
+                                            "physicalType": "String"
+                                        }
+                                    }
+                                ],
+                                "typeConversion": true,
+                                "typeConversionSettings": {
+                                    "allowDataTruncation": true,
+                                    "treatBooleanAsNumber": false
+                                }
+                            }
+                        },
+                        "inputs": [
+                            {
+                                "referenceName": "AzureSynapseAnalyticsTable1",
+                                "type": "DatasetReference",
+                                "parameters": {}
+                            }
+                        ],
+                        "outputs": [
+                            {
+                                "referenceName": "CBP_CSV",
+                                "type": "DatasetReference",
+                                "parameters": {
+                                    "File": "file.csv"
+                                }
+                            }
+                        ]
+                    }
+                ],
+                "policy": {
+                    "elapsedTimeMetric": {},
+                    "cancelAfter": {}
+                },
+                "annotations": [],
+                "lastPublishTime": "2021-11-04T17:12:14Z"
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/SQL01_DL_lkpSalesCodeDepartment')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_cONEct",
+                    "type": "LinkedServiceReference"
+                },
+                "folder": {
+                    "name": "Connect"
+                },
+                "annotations": [],
+                "type": "SqlServerTable",
+                "schema": [
+                    {
+                        "name": "SalesCodeDepartmentID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "SalesCodeDepartmentSortOrder",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "SalesCodeDepartmentDescription",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "SalesCodeDepartmentDescriptionShort",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "SalesCodeDivisionID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "IsActiveFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "CreateDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "CreateUser",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "LastUpdate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "LastUpdateUser",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "UpdateStamp",
+                        "type": "timestamp"
+                    }
+                ],
+                "typeProperties": {
+                    "schema": "dbo",
+                    "table": "lkpSalesCodeDepartment"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/SQL01_DL_RevenueGroup')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_cONEct",
+                    "type": "LinkedServiceReference"
+                },
+                "folder": {
+                    "name": "Connect"
+                },
+                "annotations": [],
+                "type": "SqlServerTable",
+                "schema": [
+                    {
+                        "name": "RevenueGroupID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "RevenueGroupSortOrder",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "RevenueGroupDescription",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "RevenueGroupDescriptionShort",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "IsActiveFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "CreateDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "CreateUser",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "LastUpdate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "LastUpdateUser",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "UpdateStamp",
+                        "type": "timestamp"
+                    }
+                ],
+                "typeProperties": {
+                    "schema": "dbo",
+                    "table": "lkpRevenueGroup"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/SQL01_DL_Gender')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_cONEct",
+                    "type": "LinkedServiceReference"
+                },
+                "folder": {
+                    "name": "Connect"
+                },
+                "annotations": [],
+                "type": "SqlServerTable",
+                "schema": [
+                    {
+                        "name": "GenderID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "GenderSortOrder",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "GenderDescription",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "GenderDescriptionShort",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "IsActiveFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "CreateDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "CreateUser",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "LastUpdate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "LastUpdateUser",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "UpdateStamp",
+                        "type": "timestamp"
+                    },
+                    {
+                        "name": "DescriptionResourceKey",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "DescriptionShortResourceKey",
+                        "type": "nvarchar"
+                    }
+                ],
+                "typeProperties": {
+                    "schema": "dbo",
+                    "table": "lkpGender"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/SQL01_DL_datSalesOrderDetail')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_cONEct",
+                    "type": "LinkedServiceReference"
+                },
+                "folder": {
+                    "name": "Connect"
+                },
+                "annotations": [],
+                "type": "SqlServerTable",
+                "schema": [
+                    {
+                        "name": "SalesOrderDetailGUID",
+                        "type": "uniqueidentifier"
+                    },
+                    {
+                        "name": "TransactionNumber_Temp",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "SalesOrderGUID",
+                        "type": "uniqueidentifier"
+                    },
+                    {
+                        "name": "SalesCodeID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "Quantity",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "Price",
+                        "type": "decimal",
+                        "precision": 21,
+                        "scale": 6
+                    },
+                    {
+                        "name": "Discount",
+                        "type": "money",
+                        "precision": 19,
+                        "scale": 4
+                    },
+                    {
+                        "name": "Tax1",
+                        "type": "money",
+                        "precision": 19,
+                        "scale": 4
+                    },
+                    {
+                        "name": "Tax2",
+                        "type": "money",
+                        "precision": 19,
+                        "scale": 4
+                    },
+                    {
+                        "name": "TaxRate1",
+                        "type": "decimal",
+                        "precision": 6,
+                        "scale": 5
+                    },
+                    {
+                        "name": "TaxRate2",
+                        "type": "decimal",
+                        "precision": 6,
+                        "scale": 5
+                    },
+                    {
+                        "name": "IsRefundedFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "RefundedSalesOrderDetailGUID",
+                        "type": "uniqueidentifier"
+                    },
+                    {
+                        "name": "RefundedTotalQuantity",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "RefundedTotalPrice",
+                        "type": "money",
+                        "precision": 19,
+                        "scale": 4
+                    },
+                    {
+                        "name": "Employee1GUID",
+                        "type": "uniqueidentifier"
+                    },
+                    {
+                        "name": "Employee2GUID",
+                        "type": "uniqueidentifier"
+                    },
+                    {
+                        "name": "Employee3GUID",
+                        "type": "uniqueidentifier"
+                    },
+                    {
+                        "name": "Employee4GUID",
+                        "type": "uniqueidentifier"
+                    },
+                    {
+                        "name": "PreviousClientMembershipGUID",
+                        "type": "uniqueidentifier"
+                    },
+                    {
+                        "name": "NewCenterID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "ExtendedPriceCalc",
+                        "type": "decimal",
+                        "precision": 33,
+                        "scale": 6
+                    },
+                    {
+                        "name": "TotalTaxCalc",
+                        "type": "money",
+                        "precision": 19,
+                        "scale": 4
+                    },
+                    {
+                        "name": "PriceTaxCalc",
+                        "type": "decimal",
+                        "precision": 35,
+                        "scale": 6
+                    },
+                    {
+                        "name": "CreateDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "CreateUser",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "LastUpdate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "LastUpdateUser",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "UpdateStamp",
+                        "type": "timestamp"
+                    },
+                    {
+                        "name": "Center_Temp",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "performer_temp",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "performer2_temp",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Member1Price_temp",
+                        "type": "decimal",
+                        "precision": 21,
+                        "scale": 6
+                    },
+                    {
+                        "name": "CancelReasonID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "EntrySortOrder",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "HairSystemOrderGUID",
+                        "type": "uniqueidentifier"
+                    },
+                    {
+                        "name": "DiscountTypeID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "BenefitTrackingEnabledFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "MembershipPromotionID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "MembershipOrderReasonID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "MembershipNotes",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "GenericSalesCodeDescription",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "SalesCodeSerialNumber",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "WriteOffSalesOrderDetailGUID",
+                        "type": "uniqueidentifier"
+                    },
+                    {
+                        "name": "NSFBouncedDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "IsWrittenOffFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "InterCompanyPrice",
+                        "type": "money",
+                        "precision": 19,
+                        "scale": 4
+                    },
+                    {
+                        "name": "TaxType1ID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "TaxType2ID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "ClientMembershipAddOnID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "NCCMembershipPromotionID",
+                        "type": "int",
+                        "precision": 10
+                    }
+                ],
+                "typeProperties": {
+                    "schema": "dbo",
+                    "table": "datSalesOrderDetail"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/SQL01_DL_TimeZone')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_cONEct",
+                    "type": "LinkedServiceReference"
+                },
+                "folder": {
+                    "name": "Connect"
+                },
+                "annotations": [],
+                "type": "SqlServerTable",
+                "schema": [
+                    {
+                        "name": "TimeZoneID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "TimeZoneSortOrder",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "TimeZoneDescription",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "TimeZoneDescriptionShort",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "UTCOffset",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "UsesDayLightSavingsFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsActiveFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "CreateDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "CreateUser",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "LastUpdate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "LastUpdateUser",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "UpdateStamp",
+                        "type": "timestamp"
+                    }
+                ],
+                "typeProperties": {
+                    "schema": "dbo",
+                    "table": "lkpTimeZone"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/SQL01_DL_PaymentSalesCode')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_cONEct",
+                    "type": "LinkedServiceReference"
+                },
+                "folder": {
+                    "name": "Connect"
+                },
+                "annotations": [],
+                "type": "SqlServerTable",
+                "schema": [
+                    {
+                        "name": "SalesCodeID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "SalesCodeSortOrder",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "SalesCodeDescription",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "SalesCodeDescriptionShort",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "SalesCodeTypeID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "SalesCodeDepartmentID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "VendorID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "Barcode",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "PriceDefault",
+                        "type": "money",
+                        "precision": 19,
+                        "scale": 4
+                    },
+                    {
+                        "name": "GLNumber",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "ServiceDuration",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "CanScheduleFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "FactoryOrderFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsRefundableFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "InventoryFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "SurgeryCloseoutFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "TechnicalProfileFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "AdjustContractPaidAmountFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsPriceAdjustableFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsDiscountableFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsActiveFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "CreateDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "CreateUser",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "LastUpdate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "LastUpdateUser",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "UpdateStamp",
+                        "type": "timestamp"
+                    },
+                    {
+                        "name": "IsARTenderRequiredFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "CanOrderFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsQuantityAdjustableFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsPhotoEnabledFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsEXTOnlyProductFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "HairSystemID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "SaleCount",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "IsSalesCodeKitFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "BIOGeneralLedgerID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "EXTGeneralLedgerID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "SURGeneralLedgerID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "BrandID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "Product",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "Size",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "IsRefundablePayment",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsNSFChargebackFee",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "InterCompanyPrice",
+                        "type": "money",
+                        "precision": 19,
+                        "scale": 4
+                    },
+                    {
+                        "name": "IsQuantityRequired",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "XTRGeneralLedgerID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "DescriptionResourceKey",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "IsBosleySalesCode",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsVisibleToConsultant",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsSerialized",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "SerialNumberRegEx",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "QuantityPerPack",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "PackUnitOfMeasureID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "InventorySalesCodeID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "IsVisibleToClient",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "CanBeManagedByClient",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsManagedByClientOnly",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "ClientDescription",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "MDPGeneralLedgerID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "PackSKU",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "IsBackBarApproved",
+                        "type": "bit"
+                    }
+                ],
+                "typeProperties": {
+                    "schema": "dbo",
+                    "table": "cfgSalesCode"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/SQL01_DL_cfgMembership')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_cONEct",
+                    "type": "LinkedServiceReference"
+                },
+                "folder": {
+                    "name": "Connect"
+                },
+                "annotations": [],
+                "type": "SqlServerTable",
+                "schema": [
+                    {
+                        "name": "MembershipID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "MembershipSortOrder",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "MembershipDescription",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "MembershipDescriptionShort",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "BusinessSegmentID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "RevenueGroupID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "GenderID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "DurationMonths",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "ContractPrice",
+                        "type": "money",
+                        "precision": 19,
+                        "scale": 4
+                    },
+                    {
+                        "name": "MonthlyFee",
+                        "type": "money",
+                        "precision": 19,
+                        "scale": 4
+                    },
+                    {
+                        "name": "IsTaxableFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsDefaultMembershipFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsActiveFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "CreateDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "CreateUser",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "LastUpdate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "LastUpdateUser",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "UpdateStamp",
+                        "type": "timestamp"
+                    },
+                    {
+                        "name": "IsHairSystemOrderRushFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "HairSystemGeneralLedgerID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "DefaultPaymentSalesCodeID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "NumRenewalDays",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "NumDaysAfterCancelBeforeNew",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "CanCheckinForConsultation",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "MaximumHairSystemHairLengthValue",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "ExpectedConversionDays",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "MinimumAge",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "MaximumAge",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "MaximumLongHairAddOnHairLengthValue",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "BOSSalesTypeCode",
+                        "type": "nvarchar"
+                    }
+                ],
+                "typeProperties": {
+                    "schema": "dbo",
+                    "table": "cfgMembership"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/SQL01_DL_lkpDayLightSavings')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_cONEct",
+                    "type": "LinkedServiceReference"
+                },
+                "folder": {
+                    "name": "Connect"
+                },
+                "annotations": [],
+                "type": "SqlServerTable",
+                "schema": [
+                    {
+                        "name": "DaylightSavingsID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "Year",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "DSTStartDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "DSTEndDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "CreateDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "CreateUser",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "LastUpdate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "LastUpdateUser",
+                        "type": "nvarchar"
+                    }
+                ],
+                "typeProperties": {
+                    "schema": "dbo",
+                    "table": "lkpDaylightSavings"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/SQL01_DL_CenterOwnership')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_cONEct",
+                    "type": "LinkedServiceReference"
+                },
+                "folder": {
+                    "name": "Connect"
+                },
+                "annotations": [],
+                "type": "SqlServerTable",
+                "schema": [
+                    {
+                        "name": "CenterID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "CountryID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "RegionID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "CenterPayGroupID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "CenterDescription",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "CenterTypeID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "CenterOwnershipID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "SurgeryHubCenterID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "ReportingCenterID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "AliasSurgeryCenterID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "EmployeeDoctorGUID",
+                        "type": "uniqueidentifier"
+                    },
+                    {
+                        "name": "DoctorRegionID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "TimeZoneID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "InvoiceCounter",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "Address1",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "Address2",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "Address3",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "City",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "StateID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "PostalCode",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "Phone1",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "Phone2",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "Phone3",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "Phone1TypeID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "Phone2TypeID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "Phone3TypeID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "IsPhone1PrimaryFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsPhone2PrimaryFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsPhone3PrimaryFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsActiveFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "CreateDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "CreateUser",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "LastUpdate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "LastUpdateUser",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "UpdateStamp",
+                        "type": "timestamp"
+                    },
+                    {
+                        "name": "IsCorporateHeadquartersFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "RegionRSMNBConsultantGuid",
+                        "type": "uniqueidentifier"
+                    },
+                    {
+                        "name": "RegionRSMMembershipAdvisorGuid",
+                        "type": "uniqueidentifier"
+                    },
+                    {
+                        "name": "RegionRTMTechnicalManagerGuid",
+                        "type": "uniqueidentifier"
+                    },
+                    {
+                        "name": "CenterManagementAreaID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "CenterNumber",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "BusinessUnitBrandID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "CenterDescriptionFullAlt1Calc",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "CenterDescriptionFullCalc",
+                        "type": "nvarchar"
+                    }
+                ],
+                "typeProperties": {
+                    "schema": "dbo",
+                    "table": "lkpCenterOwnership"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/SQL01_DL_CenterType')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_cONEct",
+                    "type": "LinkedServiceReference"
+                },
+                "folder": {
+                    "name": "Connect"
+                },
+                "annotations": [],
+                "type": "SqlServerTable",
+                "schema": [
+                    {
+                        "name": "CenterID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "CountryID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "RegionID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "CenterPayGroupID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "CenterDescription",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "CenterTypeID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "CenterOwnershipID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "SurgeryHubCenterID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "ReportingCenterID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "AliasSurgeryCenterID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "EmployeeDoctorGUID",
+                        "type": "uniqueidentifier"
+                    },
+                    {
+                        "name": "DoctorRegionID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "TimeZoneID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "InvoiceCounter",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "Address1",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "Address2",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "Address3",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "City",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "StateID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "PostalCode",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "Phone1",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "Phone2",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "Phone3",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "Phone1TypeID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "Phone2TypeID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "Phone3TypeID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "IsPhone1PrimaryFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsPhone2PrimaryFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsPhone3PrimaryFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsActiveFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "CreateDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "CreateUser",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "LastUpdate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "LastUpdateUser",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "UpdateStamp",
+                        "type": "timestamp"
+                    },
+                    {
+                        "name": "IsCorporateHeadquartersFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "RegionRSMNBConsultantGuid",
+                        "type": "uniqueidentifier"
+                    },
+                    {
+                        "name": "RegionRSMMembershipAdvisorGuid",
+                        "type": "uniqueidentifier"
+                    },
+                    {
+                        "name": "RegionRTMTechnicalManagerGuid",
+                        "type": "uniqueidentifier"
+                    },
+                    {
+                        "name": "CenterManagementAreaID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "CenterNumber",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "BusinessUnitBrandID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "CenterDescriptionFullAlt1Calc",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "CenterDescriptionFullCalc",
+                        "type": "nvarchar"
+                    }
+                ],
+                "typeProperties": {
+                    "schema": "dbo",
+                    "table": "lkpCenterType"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/SQL01_DL_lkpClientMembershipStatus')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_cONEct",
+                    "type": "LinkedServiceReference"
+                },
+                "folder": {
+                    "name": "Connect"
+                },
+                "annotations": [],
+                "type": "SqlServerTable",
+                "schema": [
+                    {
+                        "name": "ClientMembershipStatusID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "ClientMembershipStatusSortOrder",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "ClientMembershipStatusDescription",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "ClientMembershipStatusDescriptionShort",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "IsActiveMembershipFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsActiveFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "CreateDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "CreateUser",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "LastUpdate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "LastUpdateUser",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "UpdateStamp",
+                        "type": "timestamp"
+                    },
+                    {
+                        "name": "CanSearchAndDisplayFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "CanCheckInForConsultation",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "DescriptionResourceKey",
+                        "type": "nvarchar"
+                    }
+                ],
+                "typeProperties": {
+                    "schema": "dbo",
+                    "table": "lkpClientMembershipStatus"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/SQL01_DL_Center')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_cONEct",
+                    "type": "LinkedServiceReference"
+                },
+                "folder": {
+                    "name": "Connect"
+                },
+                "annotations": [],
+                "type": "SqlServerTable",
+                "schema": [
+                    {
+                        "name": "CenterID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "CountryID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "RegionID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "CenterPayGroupID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "CenterDescription",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "CenterTypeID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "CenterOwnershipID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "SurgeryHubCenterID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "ReportingCenterID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "AliasSurgeryCenterID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "EmployeeDoctorGUID",
+                        "type": "uniqueidentifier"
+                    },
+                    {
+                        "name": "DoctorRegionID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "TimeZoneID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "InvoiceCounter",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "Address1",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "Address2",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "Address3",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "City",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "StateID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "PostalCode",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "Phone1",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "Phone2",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "Phone3",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "Phone1TypeID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "Phone2TypeID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "Phone3TypeID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "IsPhone1PrimaryFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsPhone2PrimaryFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsPhone3PrimaryFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsActiveFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "CreateDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "CreateUser",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "LastUpdate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "LastUpdateUser",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "UpdateStamp",
+                        "type": "timestamp"
+                    },
+                    {
+                        "name": "IsCorporateHeadquartersFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "RegionRSMNBConsultantGuid",
+                        "type": "uniqueidentifier"
+                    },
+                    {
+                        "name": "RegionRSMMembershipAdvisorGuid",
+                        "type": "uniqueidentifier"
+                    },
+                    {
+                        "name": "RegionRTMTechnicalManagerGuid",
+                        "type": "uniqueidentifier"
+                    },
+                    {
+                        "name": "CenterManagementAreaID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "CenterNumber",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "BusinessUnitBrandID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "CenterDescriptionFullAlt1Calc",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "CenterDescriptionFullCalc",
+                        "type": "nvarchar"
+                    }
+                ],
+                "typeProperties": {
+                    "schema": "dbo",
+                    "table": "cfgCenter"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/SQL01_DL_lkpMembershipOrderReason')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_cONEct",
+                    "type": "LinkedServiceReference"
+                },
+                "folder": {
+                    "name": "Connect"
+                },
+                "annotations": [],
+                "type": "SqlServerTable",
+                "schema": [
+                    {
+                        "name": "MembershipOrderReasonID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "MembershipOrderReasonTypeID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "MembershipOrderReasonSortOrder",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "MembershipOrderReasonDescription",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "MembershipOrderReasonDescriptionShort",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "BusinessSegmentID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "RevenueTypeID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "IsActiveFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "CreateDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "CreateUser",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "LastUpdate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "LastUpdateUser",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "UpdateStamp",
+                        "type": "timestamp"
+                    }
+                ],
+                "typeProperties": {
+                    "schema": "dbo",
+                    "table": "lkpMembershipOrderReason"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/SQL01_DL_cfgSalesCode')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_cONEct",
+                    "type": "LinkedServiceReference"
+                },
+                "folder": {
+                    "name": "Connect"
+                },
+                "annotations": [],
+                "type": "SqlServerTable",
+                "schema": [
+                    {
+                        "name": "SalesCodeID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "SalesCodeSortOrder",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "SalesCodeDescription",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "SalesCodeDescriptionShort",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "SalesCodeTypeID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "SalesCodeDepartmentID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "VendorID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "Barcode",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "PriceDefault",
+                        "type": "money",
+                        "precision": 19,
+                        "scale": 4
+                    },
+                    {
+                        "name": "GLNumber",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "ServiceDuration",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "CanScheduleFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "FactoryOrderFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsRefundableFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "InventoryFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "SurgeryCloseoutFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "TechnicalProfileFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "AdjustContractPaidAmountFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsPriceAdjustableFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsDiscountableFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsActiveFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "CreateDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "CreateUser",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "LastUpdate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "LastUpdateUser",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "UpdateStamp",
+                        "type": "timestamp"
+                    },
+                    {
+                        "name": "IsARTenderRequiredFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "CanOrderFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsQuantityAdjustableFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsPhotoEnabledFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsEXTOnlyProductFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "HairSystemID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "SaleCount",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "IsSalesCodeKitFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "BIOGeneralLedgerID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "EXTGeneralLedgerID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "SURGeneralLedgerID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "BrandID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "Product",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "Size",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "IsRefundablePayment",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsNSFChargebackFee",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "InterCompanyPrice",
+                        "type": "money",
+                        "precision": 19,
+                        "scale": 4
+                    },
+                    {
+                        "name": "IsQuantityRequired",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "XTRGeneralLedgerID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "DescriptionResourceKey",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "IsBosleySalesCode",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsVisibleToConsultant",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsSerialized",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "SerialNumberRegEx",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "QuantityPerPack",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "PackUnitOfMeasureID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "InventorySalesCodeID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "IsVisibleToClient",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "CanBeManagedByClient",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsManagedByClientOnly",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "ClientDescription",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "MDPGeneralLedgerID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "PackSKU",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "IsBackBarApproved",
+                        "type": "bit"
+                    }
+                ],
+                "typeProperties": {
+                    "schema": "dbo",
+                    "table": "cfgSalesCode"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/SQL01_DL_datClientMembership')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_cONEct",
+                    "type": "LinkedServiceReference"
+                },
+                "folder": {
+                    "name": "Connect"
+                },
+                "annotations": [],
+                "type": "SqlServerTable",
+                "schema": [
+                    {
+                        "name": "ClientMembershipGUID",
+                        "type": "uniqueidentifier"
+                    },
+                    {
+                        "name": "Member1_ID_Temp",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "ClientGUID",
+                        "type": "uniqueidentifier"
+                    },
+                    {
+                        "name": "CenterID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "MembershipID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "ClientMembershipStatusID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "ContractPrice",
+                        "type": "money",
+                        "precision": 19,
+                        "scale": 4
+                    },
+                    {
+                        "name": "ContractPaidAmount",
+                        "type": "money",
+                        "precision": 19,
+                        "scale": 4
+                    },
+                    {
+                        "name": "MonthlyFee",
+                        "type": "money",
+                        "precision": 19,
+                        "scale": 4
+                    },
+                    {
+                        "name": "BeginDate",
+                        "type": "date"
+                    },
+                    {
+                        "name": "EndDate",
+                        "type": "date"
+                    },
+                    {
+                        "name": "MembershipCancelReasonID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "CancelDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "IsGuaranteeFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsRenewalFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsMultipleSurgeryFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "RenewalCount",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "IsActiveFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "CreateDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "CreateUser",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "LastUpdate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "LastUpdateUser",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "UpdateStamp",
+                        "type": "timestamp"
+                    },
+                    {
+                        "name": "ClientMembershipIdentifier",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "MembershipCancelReasonDescription",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "HasInHousePaymentPlan",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "NationalMonthlyFee",
+                        "type": "money",
+                        "precision": 19,
+                        "scale": 4
+                    },
+                    {
+                        "name": "MembershipProfileTypeID",
+                        "type": "int",
+                        "precision": 10
+                    }
+                ],
+                "typeProperties": {
+                    "schema": "dbo",
+                    "table": "datClientMembership"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/SQL01_DL_BusinessSegment')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_cONEct",
+                    "type": "LinkedServiceReference"
+                },
+                "folder": {
+                    "name": "Connect"
+                },
+                "annotations": [],
+                "type": "SqlServerTable",
+                "schema": [
+                    {
+                        "name": "BusinessSegmentID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "BusinessSegmentSortOrder",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "BusinessSegmentDescription",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "BusinessSegmentDescriptionShort",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "IsActiveFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "CreateDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "CreateUser",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "LastUpdate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "LastUpdateUser",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "UpdateStamp",
+                        "type": "timestamp"
+                    }
+                ],
+                "typeProperties": {
+                    "schema": "dbo",
+                    "table": "lkpBusinessSegment"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/SQL01_DL_lkpLanguage')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_cONEct",
+                    "type": "LinkedServiceReference"
+                },
+                "folder": {
+                    "name": "Connect"
+                },
+                "annotations": [],
+                "type": "SqlServerTable",
+                "schema": [
+                    {
+                        "name": "LanguageID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "LanguageSortOrder",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "LanguageDescription",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "LanguageDescriptionShort",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "IsActiveFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "CreateDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "CreateUser",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "LastUpdate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "LastUpdateUser",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "UpdateStamp",
+                        "type": "timestamp"
+                    },
+                    {
+                        "name": "OnContactLanguageCode",
+                        "type": "nvarchar"
+                    }
+                ],
+                "typeProperties": {
+                    "schema": "dbo",
+                    "table": "lkpLanguage"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/SQL01_DL_datEmployee')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_cONEct",
+                    "type": "LinkedServiceReference"
+                },
+                "folder": {
+                    "name": "Connect"
+                },
+                "annotations": [],
+                "type": "SqlServerTable",
+                "schema": [
+                    {
+                        "name": "EmployeeGUID",
+                        "type": "uniqueidentifier"
+                    },
+                    {
+                        "name": "CenterID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "TrainingExerciseID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "ResourceID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "SalutationID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "FirstName",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "LastName",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "EmployeeInitials",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "UserLogin",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "Address1",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "Address2",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "Address3",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "City",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "StateID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "PostalCode",
+                        "type": "nchar"
+                    },
+                    {
+                        "name": "PhoneMain",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "PhoneAlternate",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "EmergencyContact",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "PayrollNumber",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "TimeClockNumber",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "LastLogin",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "IsSchedulerViewOnlyFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "EmployeeFullNameCalc",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "IsActiveFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "CreateDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "CreateUser",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "LastUpdate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "LastUpdateUser",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "UpdateStamp",
+                        "type": "timestamp"
+                    },
+                    {
+                        "name": "AbbreviatedNameCalc",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "ActiveDirectorySID",
+                        "type": "varbinary"
+                    },
+                    {
+                        "name": "EmployeePayrollID",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "EmployeeTitleID",
+                        "type": "int",
+                        "precision": 10
+                    }
+                ],
+                "typeProperties": {
+                    "schema": "dbo",
+                    "table": "datEmployee"
+                }
+            },
+            "dependsOn": []
+        }
+    ]
+}

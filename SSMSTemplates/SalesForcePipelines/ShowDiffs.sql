@@ -1,13 +1,15 @@
 -- DBCC UPDATEUSAGE (SalesForceImport)
 GO
 --IF OBJECT_ID('tempdb..#temp1') IS NOT NULL DROP TABLE [#temp1] ;
-SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED ;
 GO
 IF OBJECT_ID('tempdb..#temp2') IS NOT NULL
     DROP TABLE [#temp2] ;
 
 SELECT
     QUOTENAME([s].[name]) + '.' + QUOTENAME([t].[name]) AS [FQN]
+  , [s].[name] AS [SchemaName]
+  , [t].[name] AS [TableName]
   , [p].[rows]
 INTO [#temp2]
 FROM [sys].[tables] AS [t]
@@ -15,7 +17,6 @@ INNER JOIN [sys].[schemas] AS [s] ON [s].[schema_id] = [t].[schema_id]
 INNER JOIN [sys].[partitions] AS [p] ON [p].[object_id] = [t].[object_id] AND [p].[index_id] <= 1
 WHERE [s].[name] IN ('sf', 'sfstaging')
 ORDER BY 1 ;
-
 
 IF OBJECT_ID('tempdb..#temp1') IS NULL
     BEGIN
