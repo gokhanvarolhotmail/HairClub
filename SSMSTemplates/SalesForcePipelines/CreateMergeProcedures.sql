@@ -1,3 +1,8 @@
+IF OBJECT_ID('[Control].[CreateMergeProcedures]') IS NOT NULL
+    DROP PROCEDURE [Control].[CreateMergeProcedures] ;
+GO
+CREATE PROCEDURE [Control].[CreateMergeProcedures]
+AS
 SELECT
     [k].*
   , CONCAT(CAST(NULL AS VARCHAR(MAX)), 'IF OBJECT_ID(''', [k].[ProcedureName], ''') IS NOT NULL DROP PROCEDURE ', [k].[ProcedureName], '
