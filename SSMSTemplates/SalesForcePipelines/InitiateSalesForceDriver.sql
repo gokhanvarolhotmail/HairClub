@@ -44,12 +44,13 @@ EXEC( @SQL ) ;
 
 TRUNCATE TABLE [Control].[SalesForceDriver] ;
 
-INSERT [Control].[SalesForceDriver]( [FQN], [LastDate], [SalesForceSelect], [StagingTableName], [ProcedureCall] )
+INSERT [Control].[SalesForceDriver]( [FQN], [LastDate], [SalesForceTable], [SalesForceSelect], [StagingTableName], [ProcedureCall] )
 SELECT
     [k].[FQN]
   , [k].[LastDate]
+  , [k].[TableName] AS [SalesForceTable]
   , CONCAT('SELECT * FROM ', [k].[TableName], CASE WHEN [k].[LastDate] IS NULL THEN '' ELSE CONCAT(' WHERE CreatedDate >= ''', CONVERT(VARCHAR(19), [k].[LastDate], 127), ''' OR LastModifiedDate >= ''', CONVERT(VARCHAR(19), [k].[LastDate], 127), '''')END) AS [SalesForceSelect]
-  , QUOTENAME(DB_NAME()) + '.' + QUOTENAME([k].[SchemaName] + 'Staging') + '.' + QUOTENAME([k].[TableName]) AS [StagingTableName]
-  , 'EXEC ' + QUOTENAME(DB_NAME()) + '.' + QUOTENAME([k].[SchemaName]) + '.' + QUOTENAME('sp_' + [k].[TableName] + '_Merge') AS [ProcedureCall]
+  , QUOTENAME([k].[SchemaName] + 'Staging') + '.' + QUOTENAME([k].[TableName]) AS [StagingTableName]
+  , 'EXEC ' + QUOTENAME([k].[SchemaName]) + '.' + QUOTENAME('sp_' + [k].[TableName] + '_Merge') AS [ProcedureCall]
 FROM( SELECT *, PARSENAME([FQN], 1) AS [TableName], PARSENAME([FQN], 2) AS [SchemaName] FROM [#Dates] ) AS [k] ;
 GO
