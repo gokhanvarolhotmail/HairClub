@@ -51,10 +51,9 @@ SELECT
     [k].[FQN]
   , [k].[LastDate]
   , [k].[TableName] AS [SalesForceTable]
-  , CONCAT('SELECT * FROM ', [k].[TableName], CASE WHEN [k].[LastDate] IS NULL THEN '' ELSE CONCAT(' WHERE CreatedDate >= ''', CONVERT(VARCHAR(19), [k].[LastDate], 120), ''' OR LastModifiedDate >= ''', CONVERT(VARCHAR(19), [k].[LastDate], 120), '''')END) AS [SalesForceSelect]
+  , CONCAT('SELECT * FROM ', [k].[TableName], ' WHERE Id IS NOT NULL', CASE WHEN [k].[LastDate] IS NULL THEN '' ELSE CONCAT(' AND (CreatedDate >= ''', CONVERT(VARCHAR(19), [k].[LastDate], 120), ''' OR LastModifiedDate >= ''', CONVERT(VARCHAR(19), [k].[LastDate], 120), ''')')END) AS [SalesForceSelect]
   , [k].[SchemaName] + CASE WHEN [k].[Rows] = 0 THEN '' ELSE 'Staging' END AS [StagingTableSchemaName]
   , [k].[TableName] AS [StagingTableName]
   , [k].[SchemaName] + '.' + 'sp_' + [k].[TableName] + '_Merge' AS [ProcedureCall]
 FROM( SELECT [t].[FQN], [d].[LastDate], [t].[TableName], [t].[SchemaName], [t].[Rows] FROM [#Dates] AS [d] INNER JOIN [#Tables] AS [t] ON [t].[FQN] = [d].[FQN] ) AS [k] ;
 GO
-
