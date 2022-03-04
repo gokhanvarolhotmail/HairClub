@@ -1,4 +1,4 @@
-/* CreateDate: 07/27/2021 15:27:43.547 , ModifyDate: 07/27/2021 15:27:43.547 */
+/* CreateDate: 07/27/2021 15:27:43.547 , ModifyDate: 03/03/2022 10:31:28.757 */
 GO
 /***********************************************************************
 PROCEDURE:				spSvc_GetRefersionData
@@ -30,12 +30,12 @@ BEGIN
         , @TargetDate AS DATE;
 
 
-    SET @CurrentDate = getdate()
-    SET @TargetDate = DATEADD(DAY, -1, @CurrentDate)
+    SET @CurrentDate = DATEADD(DAY, -1, @CurrentDate)
+    SET @TargetDate = DATEADD(DAY, -31, @CurrentDate)
 
 
 -- Get Leads Created within time period
-    INSERT INTO  datRefersionLog
+    INSERT INTO datRefersionLog
     SELECT rp.RefersionProcessID
          , @SessionID          AS 'SessionID'
          , -1                  AS 'BatchID'
@@ -72,7 +72,7 @@ BEGIN
         SELECT TOP 1 rl.RefersionLogID
                    , rl.SFDC_LeadID
                    , rl.IsReprocessFlag
-        FROM HC_Marketing.dbo. datRefersionLog rl
+        FROM HC_Marketing.dbo.datRefersionLog rl
         WHERE rl.RefersionProcessID = rp.RefersionProcessID
           AND rl.SFDC_LeadID = l.Id
         ORDER BY rl.CreateDate DESC
@@ -126,15 +126,14 @@ BEGIN
          , 'Refersion-HCM'                   AS 'LastUpdateUser'
     FROM SQL06.HC_BI_SFDC.dbo.Task t WITH (NOLOCK)
              INNER JOIN SQL06.HC_BI_SFDC.dbo.Lead l WITH (NOLOCK)
-                        ON l.Id = t.WhoId or l.externalid = t.whoid
+                        ON l.Id = t.WhoId
              INNER JOIN HC_Marketing.dbo.lkpRefersionProcess rp
                         ON rp.RefersionProcessDescriptionShort = 'LEADSHOW'
                             AND rp.IsActiveFlag = 1
              INNER JOIN HC_Marketing.dbo.lkpRefersionStatus rs
                         ON rs.RefersionStatusDescriptionShort = 'PENDING'
              INNER JOIN HairClubCMS.dbo.datClient clt
-                        ON clt.SalesforceContactID = l.Id or clt.SalesforceContactID = l.ConvertedAccountId or
-                           clt.SalesforceContactID = l.externalid
+                        ON clt.SalesforceContactID = l.Id or clt.SalesforceContactID = l.ConvertedAccountId
              OUTER APPLY (
         SELECT TOP 1 rl.RefersionLogID
                    , rl.SFDC_LeadID
@@ -152,10 +151,10 @@ BEGIN
       AND ISNULL(l.Email, clt.EMailAddress) <> ''
       AND (ISNULL(t.ReferralCode__c, '') <> '' AND ISNULL(l.ReferralCode__c, '') <> 'null'
         AND l.ReferralCodeExpireDate__c >= GETDATE()
-        --    AND t.SourceCode__c IN
-        --       ('IPREFCLRERECA12476', 'IPREFCLRERECA12476DC', 'IPREFCLRERECA12476DF', 'IPREFCLRERECA12476DP',
-        --        'IPREFCLRERECA12476MC', 'IPREFCLRERECA12476MF', 'IPREFCLRERECA12476MP')
-        )
+    --    AND t.SourceCode__c IN
+     --       ('IPREFCLRERECA12476', 'IPREFCLRERECA12476DC', 'IPREFCLRERECA12476DF', 'IPREFCLRERECA12476DP',
+     --        'IPREFCLRERECA12476MC', 'IPREFCLRERECA12476MF', 'IPREFCLRERECA12476MP')
+            )
       AND ISNULL(t.IsDeleted, 0) = 0
       AND l.Status IN
           ('Lead', 'Client', 'Prospect', 'Event', 'HWClient', 'HWLead', 'NEW', 'PURSUING', 'CONVERTED', 'SCHEDULED',
@@ -166,7 +165,7 @@ BEGIN
 
 
 -- Get Clients that been serviced and a commission record has been created within time period
-    INSERT INTO  datRefersionLog
+    INSERT INTO datRefersionLog
     SELECT rp.RefersionProcessID
          , @SessionID                                                     AS 'SessionID'
          , -1                                                             AS 'BatchID'
@@ -203,11 +202,12 @@ BEGIN
                             AND rp.IsActiveFlag = 1
              INNER JOIN HC_Marketing.dbo.lkpRefersionStatus rs
                         ON rs.RefersionStatusDescriptionShort = 'PENDING'
+
              OUTER APPLY (
         SELECT TOP 1 rl.RefersionLogID
                    , rl.SFDC_LeadID
                    , rl.IsReprocessFlag
-        FROM HC_Marketing.dbo. datRefersionLog rl
+        FROM HC_Marketing.dbo.datRefersionLog rl
         WHERE rl.RefersionProcessID = rp.RefersionProcessID
           AND rl.SalesOrderKey = fch.SalesOrderKey
         ORDER BY rl.CreateDate DESC
@@ -256,7 +256,7 @@ BEGIN
              , rl.Quantity
              , rl.CurrencyCode
              , rl.IPAddress
-        FROM HC_Marketing.dbo. datRefersionLog rl
+        FROM HC_Marketing.dbo.datRefersionLog rl
         WHERE rl.SessionGUID = @SessionID
           AND ISNULL(rl.JsonData, '') = ''
 
@@ -288,7 +288,7 @@ BEGIN
     }'
 
 
-            UPDATE  datRefersionLog
+            UPDATE datRefersionLog
             SET JsonData = @data
             WHERE RefersionLogID = @RefersionLogID
 
@@ -316,11 +316,11 @@ BEGIN
                          WHERE rl.SessionGUID = @SessionID
                            AND rl.BatchID = -1
                      )
-            UPDATE  datRefersionLog
+            UPDATE datRefersionLog
             SET BatchID = @batchID
             FROM NextBatch
-                     JOIN  datRefersionLog
-                          ON NextBatch.RefersionLogID =  datRefersionLog.RefersionLogID;
+                     JOIN datRefersionLog
+                          ON NextBatch.RefersionLogID = datRefersionLog.RefersionLogID;
 
             SET @rowCount = @@ROWCOUNT;
             SET @batchID = @batchID + 1;
@@ -331,7 +331,7 @@ BEGIN
     SELECT JsonData
          , RefersionLogID
          , ResponseCode
-    FROM  datRefersionLog rl
+    FROM datRefersionLog rl
              INNER JOIN lkpRefersionStatus rs
                         ON rs.RefersionStatusID = rl.RefersionStatusID
     WHERE rl.SessionGUID = @SessionID
@@ -342,8 +342,8 @@ BEGIN
 -- Reset records marked for reprocessing
     UPDATE rl
     SET rl.IsReprocessFlag = 0
-    FROM  datRefersionLog rl
-             INNER JOIN  datRefersionLog rl2
+    FROM datRefersionLog rl
+             INNER JOIN datRefersionLog rl2
                         ON rl2.OriginalRefersionLogID = rl.RefersionLogID
     WHERE rl2.OriginalRefersionLogID IS NOT NULL
       AND rl.IsReprocessFlag = 1

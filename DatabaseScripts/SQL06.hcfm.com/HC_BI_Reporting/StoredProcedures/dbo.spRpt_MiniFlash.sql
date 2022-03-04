@@ -44,7 +44,7 @@ BEGIN
 
 
     SET @CurrentDate = getdate()
-
+	
 
     SET @YesterdayStart = CONVERT(DATETIME, CONVERT(VARCHAR, DATEADD(DAY, -1, @CurrentDate), 101))
     SET @YesterdayEnd = @YesterdayStart

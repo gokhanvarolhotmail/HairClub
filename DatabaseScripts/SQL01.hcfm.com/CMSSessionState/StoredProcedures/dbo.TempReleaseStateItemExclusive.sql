@@ -7,7 +7,7 @@ CREATE PROCEDURE dbo.TempReleaseStateItemExclusive
             @lockCookie int
         AS
             UPDATE [CMSSessionState].dbo.ASPStateTempSessions
-            SET Expires = DATEADD(n, Timeout, GETUTCDATE()),
+            SET Expires = DATEADD(n, Timeout, GETUTCDATE()), 
                 Locked = 0
             WHERE SessionId = @id AND LockCookie = @lockCookie
 

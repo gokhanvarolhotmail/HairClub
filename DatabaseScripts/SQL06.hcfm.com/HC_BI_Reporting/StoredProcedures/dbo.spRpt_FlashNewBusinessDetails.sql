@@ -1,4 +1,4 @@
-/* CreateDate: 12/17/2018 12:10:25.690 , ModifyDate: 08/31/2021 16:59:36.843 */
+/* CreateDate: 12/17/2018 12:10:25.690 , ModifyDate: 03/03/2022 15:53:02.620 */
 GO
 /***********************************************************************
 PROCEDURE:				spRpt_FlashNewBusinessDetails
@@ -415,8 +415,8 @@ FROM   HC_BI_CMS_DDS.bi_cms_dds.FactSalesTransaction FST
 		ON FST.SalesOrderKey = SO.SalesOrderKey
 	INNER JOIN HC_BI_CMS_DDS.bi_cms_dds.DimSalesOrderDetail SOD
 		ON FST.SalesOrderDetailKey = SOD.SalesOrderDetailKey
-		)
-
+WHERE DD.FullDate BETWEEN @BegDt AND @EndDt
+)
 INSERT  INTO #Output
 SELECT  DISTINCT CTRS.CenterNumber, CTRS.CenterDescriptionNumber, CTRS.MainGroupKey, CTRS.MainGroupDescription, CTRS.MainGroupSortOrder, CLT.ClientIdentifier, CLT.ClientLastName, CLT.ClientFirstName
 ,       sod.SalesOrderDetailKey, SO.InvoiceNumber, DD.FullDate, SC.SalesCodeDescriptionShort, sc.SalesCodeDescription
@@ -559,7 +559,6 @@ GROUP BY m.BusinessSegmentSSID
 ,		  SO.IsVoidedFlag
 
 /****************** Find Promo Code, Type and Amount *******************************************************************************************/
-
 SELECT O.ClientIdentifier
 ,	CLT.ContactKey
 ,	PC.PromotionCodeKey

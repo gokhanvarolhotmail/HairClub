@@ -43,7 +43,7 @@ BEGIN
 
 
 
-
+    
 -- Get Leads Created within time period
     INSERT INTO    datRefersionLog
     SELECT rp.RefersionProcessID
