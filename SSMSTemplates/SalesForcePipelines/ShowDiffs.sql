@@ -1,7 +1,7 @@
-
---IF OBJECT_ID('tempdb..#temp1') IS NOT NULL DROP TABLE #temp1
-DBCC UPDATEUSAGE (SalesForceImport)
+-- DBCC UPDATEUSAGE (SalesForceImport)
 GO
+--IF OBJECT_ID('tempdb..#temp1') IS NOT NULL DROP TABLE [#temp1] ;
+
 IF OBJECT_ID('tempdb..#temp2') IS NOT NULL
     DROP TABLE [#temp2] ;
 
