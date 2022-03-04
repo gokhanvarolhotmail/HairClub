@@ -36,7 +36,10 @@ SELECT
 FROM(SELECT
     ''', [k].[FQN], ''' AS [FQN]
   , MAX([k].[LastDate]) AS [LastDate]
-FROM( SELECT MAX([CreatedDate]) AS [LastDate] FROM ', [k].[FQN], ' UNION ALL SELECT MAX([LastModifiedDate]) AS [LastDate] FROM ', [k].[FQN], ' ) AS [k]) AS [k] ;
+FROM(	SELECT MAX([CreatedDate]) AS [LastDate] FROM ', [k].[FQN], '
+		UNION ALL
+		SELECT MAX([LastModifiedDate]) AS [LastDate] FROM ', [k].[FQN], '
+) AS [k]) AS [k] ;
 
 TRUNCATE TABLE [SFStaging].', QUOTENAME([k].[TableName]), ' ;
 ')                  AS [SQL]
