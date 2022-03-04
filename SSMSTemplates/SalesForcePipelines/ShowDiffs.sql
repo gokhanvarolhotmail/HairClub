@@ -23,10 +23,11 @@ ELSE
     BEGIN
         SELECT
             ISNULL([a].[FQN], [b].[FQN]) AS [name]
-          , [a].[rows]
-          , [b].[rows]
-          , ISNULL([a].[rows], 0) - ISNULL([b].[rows], 0) AS [diff]
+          , [a].[rows] AS [PreviousRows]
+          , [b].[rows] AS [CurrentRows]
+          , ISNULL([b].[rows], 0) - ISNULL([a].[rows], 0) AS [diff]
         FROM [#temp1] AS [a]
         FULL OUTER JOIN [#temp2] AS [b] ON [a].[FQN] = [b].[FQN]
-        ORDER BY ISNULL([a].[FQN], [b].[FQN]) ;
+        ORDER BY ABS(ISNULL([b].[rows], 0) - ISNULL([a].[rows], 0)) DESC
+               , ISNULL([a].[FQN], [b].[FQN]) ;
     END ;
