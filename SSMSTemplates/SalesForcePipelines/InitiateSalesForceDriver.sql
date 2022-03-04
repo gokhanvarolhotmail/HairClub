@@ -46,13 +46,15 @@ EXEC( @SQL ) ;
 
 TRUNCATE TABLE [Control].[SalesForceDriver] ;
 
-INSERT [Control].[SalesForceDriver]( [FQN], [LastDate], [SalesForceTable], [SalesForceSelect], [StagingTableName], [StoredProcedure] )
+INSERT [Control].[SalesForceDriver]( [FQN], [LastDate], [SalesForceTable], [SalesForceSelect], [StagingTableSchemaName], [StagingTableName], [StoredProcedure] )
 SELECT
     [k].[FQN]
   , [k].[LastDate]
   , [k].[TableName] AS [SalesForceTable]
-  , CONCAT('SELECT * FROM ', [k].[TableName], CASE WHEN [k].[LastDate] IS NULL THEN '' ELSE CONCAT(' WHERE CreatedDate >= ''', CONVERT(VARCHAR(19), [k].[LastDate], 127), ''' OR LastModifiedDate >= ''', CONVERT(VARCHAR(19), [k].[LastDate], 127), '''')END) AS [SalesForceSelect]
-  , [k].[SchemaName] + CASE WHEN [k].[Rows] = 0 THEN '' ELSE 'Staging' END + '.' + [k].[TableName] AS [StagingTableName]
+  , CONCAT('SELECT * FROM ', [k].[TableName], CASE WHEN [k].[LastDate] IS NULL THEN '' ELSE CONCAT(' WHERE CreatedDate >= ''', CONVERT(VARCHAR(19), [k].[LastDate], 120), ''' OR LastModifiedDate >= ''', CONVERT(VARCHAR(19), [k].[LastDate], 120), '''')END) AS [SalesForceSelect]
+  , [k].[SchemaName] + CASE WHEN [k].[Rows] = 0 THEN '' ELSE 'Staging' END AS [StagingTableSchemaName]
+  , [k].[TableName] AS [StagingTableName]
   , [k].[SchemaName] + '.' + 'sp_' + [k].[TableName] + '_Merge' AS [ProcedureCall]
 FROM( SELECT [t].[FQN], [d].[LastDate], [t].[TableName], [t].[SchemaName], [t].[Rows] FROM [#Dates] AS [d] INNER JOIN [#Tables] AS [t] ON [t].[FQN] = [d].[FQN] ) AS [k] ;
 GO
+
