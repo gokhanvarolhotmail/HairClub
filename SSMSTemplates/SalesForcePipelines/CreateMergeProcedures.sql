@@ -17,10 +17,7 @@ SET @ROWCOUNT = 0
 IF NOT EXISTS(SELECT 1 FROM ', QUOTENAME([k].[SchemaName] + 'Staging'), '.', QUOTENAME([k].[TableName]), ')
 RETURN ;
 
-SET XACT_ABORT ON
-
-BEGIN TRANSACTION
-
+BEGIN TRY
 ;MERGE ', QUOTENAME([k].[SchemaName]), '.', QUOTENAME([k].[TableName]), ' AS [t]
 USING ', QUOTENAME([k].[SchemaName] + 'Staging'), '.', QUOTENAME([k].[TableName]), ' AS [s]
 	ON [t].', QUOTENAME([k].[PrimaryKeyName]), ' = [s].', QUOTENAME([k].[PrimaryKeyName]), '
@@ -40,7 +37,10 @@ SET @ROWCOUNT = @@ROWCOUNT ;
 
 TRUNCATE TABLE [', [k].[SchemaName], 'Staging].', QUOTENAME([k].[TableName]), ' ;
 
-COMMIT ;
+END TRY
+BEGIN CATCH
+	THROW ;
+END CATCH
 GO
 ') AS [MergeProcedure]
 FROM( SELECT

@@ -10,10 +10,7 @@ SET @ROWCOUNT = 0
 IF NOT EXISTS(SELECT 1 FROM [SFStaging].[AssignedResource])
 RETURN ;
 
-SET XACT_ABORT ON
-
-BEGIN TRANSACTION
-
+BEGIN TRY
 ;MERGE [SF].[AssignedResource] AS [t]
 USING [SFStaging].[AssignedResource] AS [s]
 	ON [t].[Id] = [s].[Id]
@@ -71,7 +68,10 @@ SET @ROWCOUNT = @@ROWCOUNT ;
 
 TRUNCATE TABLE [SFStaging].[AssignedResource] ;
 
-COMMIT ;
+END TRY
+BEGIN CATCH
+	THROW ;
+END CATCH
 GO
 IF OBJECT_ID('[SF].[sp_Campaign_Merge]') IS NOT NULL DROP PROCEDURE [SF].[sp_Campaign_Merge]
 GO
@@ -85,10 +85,7 @@ SET @ROWCOUNT = 0
 IF NOT EXISTS(SELECT 1 FROM [SFStaging].[Campaign])
 RETURN ;
 
-SET XACT_ABORT ON
-
-BEGIN TRANSACTION
-
+BEGIN TRY
 ;MERGE [SF].[Campaign] AS [t]
 USING [SFStaging].[Campaign] AS [s]
 	ON [t].[Id] = [s].[Id]
@@ -323,7 +320,10 @@ SET @ROWCOUNT = @@ROWCOUNT ;
 
 TRUNCATE TABLE [SFStaging].[Campaign] ;
 
-COMMIT ;
+END TRY
+BEGIN CATCH
+	THROW ;
+END CATCH
 GO
 IF OBJECT_ID('[SF].[sp_CampaignMember_Merge]') IS NOT NULL DROP PROCEDURE [SF].[sp_CampaignMember_Merge]
 GO
@@ -337,10 +337,7 @@ SET @ROWCOUNT = 0
 IF NOT EXISTS(SELECT 1 FROM [SFStaging].[CampaignMember])
 RETURN ;
 
-SET XACT_ABORT ON
-
-BEGIN TRANSACTION
-
+BEGIN TRY
 ;MERGE [SF].[CampaignMember] AS [t]
 USING [SFStaging].[CampaignMember] AS [s]
 	ON [t].[Id] = [s].[Id]
@@ -488,7 +485,10 @@ SET @ROWCOUNT = @@ROWCOUNT ;
 
 TRUNCATE TABLE [SFStaging].[CampaignMember] ;
 
-COMMIT ;
+END TRY
+BEGIN CATCH
+	THROW ;
+END CATCH
 GO
 IF OBJECT_ID('[SF].[sp_CampaignMemberStatus_Merge]') IS NOT NULL DROP PROCEDURE [SF].[sp_CampaignMemberStatus_Merge]
 GO
@@ -502,10 +502,7 @@ SET @ROWCOUNT = 0
 IF NOT EXISTS(SELECT 1 FROM [SFStaging].[CampaignMemberStatus])
 RETURN ;
 
-SET XACT_ABORT ON
-
-BEGIN TRANSACTION
-
+BEGIN TRY
 ;MERGE [SF].[CampaignMemberStatus] AS [t]
 USING [SFStaging].[CampaignMemberStatus] AS [s]
 	ON [t].[Id] = [s].[Id]
@@ -557,7 +554,10 @@ SET @ROWCOUNT = @@ROWCOUNT ;
 
 TRUNCATE TABLE [SFStaging].[CampaignMemberStatus] ;
 
-COMMIT ;
+END TRY
+BEGIN CATCH
+	THROW ;
+END CATCH
 GO
 IF OBJECT_ID('[SF].[sp_Case_Merge]') IS NOT NULL DROP PROCEDURE [SF].[sp_Case_Merge]
 GO
@@ -571,10 +571,7 @@ SET @ROWCOUNT = 0
 IF NOT EXISTS(SELECT 1 FROM [SFStaging].[Case])
 RETURN ;
 
-SET XACT_ABORT ON
-
-BEGIN TRANSACTION
-
+BEGIN TRY
 ;MERGE [SF].[Case] AS [t]
 USING [SFStaging].[Case] AS [s]
 	ON [t].[Id] = [s].[Id]
@@ -827,7 +824,10 @@ SET @ROWCOUNT = @@ROWCOUNT ;
 
 TRUNCATE TABLE [SFStaging].[Case] ;
 
-COMMIT ;
+END TRY
+BEGIN CATCH
+	THROW ;
+END CATCH
 GO
 IF OBJECT_ID('[SF].[sp_Commissions_Log__c_Merge]') IS NOT NULL DROP PROCEDURE [SF].[sp_Commissions_Log__c_Merge]
 GO
@@ -841,10 +841,7 @@ SET @ROWCOUNT = 0
 IF NOT EXISTS(SELECT 1 FROM [SFStaging].[Commissions_Log__c])
 RETURN ;
 
-SET XACT_ABORT ON
-
-BEGIN TRANSACTION
-
+BEGIN TRY
 ;MERGE [SF].[Commissions_Log__c] AS [t]
 USING [SFStaging].[Commissions_Log__c] AS [s]
 	ON [t].[Id] = [s].[Id]
@@ -932,7 +929,10 @@ SET @ROWCOUNT = @@ROWCOUNT ;
 
 TRUNCATE TABLE [SFStaging].[Commissions_Log__c] ;
 
-COMMIT ;
+END TRY
+BEGIN CATCH
+	THROW ;
+END CATCH
 GO
 IF OBJECT_ID('[SF].[sp_Contract_Merge]') IS NOT NULL DROP PROCEDURE [SF].[sp_Contract_Merge]
 GO
@@ -946,10 +946,7 @@ SET @ROWCOUNT = 0
 IF NOT EXISTS(SELECT 1 FROM [SFStaging].[Contract])
 RETURN ;
 
-SET XACT_ABORT ON
-
-BEGIN TRANSACTION
-
+BEGIN TRY
 ;MERGE [SF].[Contract] AS [t]
 USING [SFStaging].[Contract] AS [s]
 	ON [t].[Id] = [s].[Id]
@@ -1124,7 +1121,10 @@ SET @ROWCOUNT = @@ROWCOUNT ;
 
 TRUNCATE TABLE [SFStaging].[Contract] ;
 
-COMMIT ;
+END TRY
+BEGIN CATCH
+	THROW ;
+END CATCH
 GO
 IF OBJECT_ID('[SF].[sp_ContractLineItem_Merge]') IS NOT NULL DROP PROCEDURE [SF].[sp_ContractLineItem_Merge]
 GO
@@ -1138,10 +1138,7 @@ SET @ROWCOUNT = 0
 IF NOT EXISTS(SELECT 1 FROM [SFStaging].[ContractLineItem])
 RETURN ;
 
-SET XACT_ABORT ON
-
-BEGIN TRANSACTION
-
+BEGIN TRY
 ;MERGE [SF].[ContractLineItem] AS [t]
 USING [SFStaging].[ContractLineItem] AS [s]
 	ON [t].[Id] = [s].[Id]
@@ -1241,7 +1238,10 @@ SET @ROWCOUNT = @@ROWCOUNT ;
 
 TRUNCATE TABLE [SFStaging].[ContractLineItem] ;
 
-COMMIT ;
+END TRY
+BEGIN CATCH
+	THROW ;
+END CATCH
 GO
 IF OBJECT_ID('[SF].[sp_Event_Merge]') IS NOT NULL DROP PROCEDURE [SF].[sp_Event_Merge]
 GO
@@ -1255,10 +1255,7 @@ SET @ROWCOUNT = 0
 IF NOT EXISTS(SELECT 1 FROM [SFStaging].[Event])
 RETURN ;
 
-SET XACT_ABORT ON
-
-BEGIN TRANSACTION
-
+BEGIN TRY
 ;MERGE [SF].[Event] AS [t]
 USING [SFStaging].[Event] AS [s]
 	ON [t].[Id] = [s].[Id]
@@ -1505,7 +1502,10 @@ SET @ROWCOUNT = @@ROWCOUNT ;
 
 TRUNCATE TABLE [SFStaging].[Event] ;
 
-COMMIT ;
+END TRY
+BEGIN CATCH
+	THROW ;
+END CATCH
 GO
 IF OBJECT_ID('[SF].[sp_Location_Merge]') IS NOT NULL DROP PROCEDURE [SF].[sp_Location_Merge]
 GO
@@ -1519,10 +1519,7 @@ SET @ROWCOUNT = 0
 IF NOT EXISTS(SELECT 1 FROM [SFStaging].[Location])
 RETURN ;
 
-SET XACT_ABORT ON
-
-BEGIN TRANSACTION
-
+BEGIN TRY
 ;MERGE [SF].[Location] AS [t]
 USING [SFStaging].[Location] AS [s]
 	ON [t].[Id] = [s].[Id]
@@ -1637,7 +1634,10 @@ SET @ROWCOUNT = @@ROWCOUNT ;
 
 TRUNCATE TABLE [SFStaging].[Location] ;
 
-COMMIT ;
+END TRY
+BEGIN CATCH
+	THROW ;
+END CATCH
 GO
 IF OBJECT_ID('[SF].[sp_Opportunity_Merge]') IS NOT NULL DROP PROCEDURE [SF].[sp_Opportunity_Merge]
 GO
@@ -1651,10 +1651,7 @@ SET @ROWCOUNT = 0
 IF NOT EXISTS(SELECT 1 FROM [SFStaging].[Opportunity])
 RETURN ;
 
-SET XACT_ABORT ON
-
-BEGIN TRANSACTION
-
+BEGIN TRY
 ;MERGE [SF].[Opportunity] AS [t]
 USING [SFStaging].[Opportunity] AS [s]
 	ON [t].[Id] = [s].[Id]
@@ -1943,7 +1940,10 @@ SET @ROWCOUNT = @@ROWCOUNT ;
 
 TRUNCATE TABLE [SFStaging].[Opportunity] ;
 
-COMMIT ;
+END TRY
+BEGIN CATCH
+	THROW ;
+END CATCH
 GO
 IF OBJECT_ID('[SF].[sp_OpportunityContactRole_Merge]') IS NOT NULL DROP PROCEDURE [SF].[sp_OpportunityContactRole_Merge]
 GO
@@ -1957,10 +1957,7 @@ SET @ROWCOUNT = 0
 IF NOT EXISTS(SELECT 1 FROM [SFStaging].[OpportunityContactRole])
 RETURN ;
 
-SET XACT_ABORT ON
-
-BEGIN TRANSACTION
-
+BEGIN TRY
 ;MERGE [SF].[OpportunityContactRole] AS [t]
 USING [SFStaging].[OpportunityContactRole] AS [s]
 	ON [t].[Id] = [s].[Id]
@@ -2012,7 +2009,10 @@ SET @ROWCOUNT = @@ROWCOUNT ;
 
 TRUNCATE TABLE [SFStaging].[OpportunityContactRole] ;
 
-COMMIT ;
+END TRY
+BEGIN CATCH
+	THROW ;
+END CATCH
 GO
 IF OBJECT_ID('[SF].[sp_OpportunityLineItem_Merge]') IS NOT NULL DROP PROCEDURE [SF].[sp_OpportunityLineItem_Merge]
 GO
@@ -2026,10 +2026,7 @@ SET @ROWCOUNT = 0
 IF NOT EXISTS(SELECT 1 FROM [SFStaging].[OpportunityLineItem])
 RETURN ;
 
-SET XACT_ABORT ON
-
-BEGIN TRANSACTION
-
+BEGIN TRY
 ;MERGE [SF].[OpportunityLineItem] AS [t]
 USING [SFStaging].[OpportunityLineItem] AS [s]
 	ON [t].[Id] = [s].[Id]
@@ -2126,7 +2123,10 @@ SET @ROWCOUNT = @@ROWCOUNT ;
 
 TRUNCATE TABLE [SFStaging].[OpportunityLineItem] ;
 
-COMMIT ;
+END TRY
+BEGIN CATCH
+	THROW ;
+END CATCH
 GO
 IF OBJECT_ID('[SF].[sp_OpportunityLineItemSchedule_Merge]') IS NOT NULL DROP PROCEDURE [SF].[sp_OpportunityLineItemSchedule_Merge]
 GO
@@ -2140,10 +2140,7 @@ SET @ROWCOUNT = 0
 IF NOT EXISTS(SELECT 1 FROM [SFStaging].[OpportunityLineItemSchedule])
 RETURN ;
 
-SET XACT_ABORT ON
-
-BEGIN TRANSACTION
-
+BEGIN TRY
 ;MERGE [SF].[OpportunityLineItemSchedule] AS [t]
 USING [SFStaging].[OpportunityLineItemSchedule] AS [s]
 	ON [t].[Id] = [s].[Id]
@@ -2201,7 +2198,10 @@ SET @ROWCOUNT = @@ROWCOUNT ;
 
 TRUNCATE TABLE [SFStaging].[OpportunityLineItemSchedule] ;
 
-COMMIT ;
+END TRY
+BEGIN CATCH
+	THROW ;
+END CATCH
 GO
 IF OBJECT_ID('[SF].[sp_OpportunityTeamMember_Merge]') IS NOT NULL DROP PROCEDURE [SF].[sp_OpportunityTeamMember_Merge]
 GO
@@ -2215,10 +2215,7 @@ SET @ROWCOUNT = 0
 IF NOT EXISTS(SELECT 1 FROM [SFStaging].[OpportunityTeamMember])
 RETURN ;
 
-SET XACT_ABORT ON
-
-BEGIN TRANSACTION
-
+BEGIN TRY
 ;MERGE [SF].[OpportunityTeamMember] AS [t]
 USING [SFStaging].[OpportunityTeamMember] AS [s]
 	ON [t].[Id] = [s].[Id]
@@ -2279,7 +2276,10 @@ SET @ROWCOUNT = @@ROWCOUNT ;
 
 TRUNCATE TABLE [SFStaging].[OpportunityTeamMember] ;
 
-COMMIT ;
+END TRY
+BEGIN CATCH
+	THROW ;
+END CATCH
 GO
 IF OBJECT_ID('[SF].[sp_Order_Merge]') IS NOT NULL DROP PROCEDURE [SF].[sp_Order_Merge]
 GO
@@ -2293,10 +2293,7 @@ SET @ROWCOUNT = 0
 IF NOT EXISTS(SELECT 1 FROM [SFStaging].[Order])
 RETURN ;
 
-SET XACT_ABORT ON
-
-BEGIN TRANSACTION
-
+BEGIN TRY
 ;MERGE [SF].[Order] AS [t]
 USING [SFStaging].[Order] AS [s]
 	ON [t].[Id] = [s].[Id]
@@ -2462,7 +2459,10 @@ SET @ROWCOUNT = @@ROWCOUNT ;
 
 TRUNCATE TABLE [SFStaging].[Order] ;
 
-COMMIT ;
+END TRY
+BEGIN CATCH
+	THROW ;
+END CATCH
 GO
 IF OBJECT_ID('[SF].[sp_OrderItem_Merge]') IS NOT NULL DROP PROCEDURE [SF].[sp_OrderItem_Merge]
 GO
@@ -2476,10 +2476,7 @@ SET @ROWCOUNT = 0
 IF NOT EXISTS(SELECT 1 FROM [SFStaging].[OrderItem])
 RETURN ;
 
-SET XACT_ABORT ON
-
-BEGIN TRANSACTION
-
+BEGIN TRY
 ;MERGE [SF].[OrderItem] AS [t]
 USING [SFStaging].[OrderItem] AS [s]
 	ON [t].[Id] = [s].[Id]
@@ -2558,7 +2555,10 @@ SET @ROWCOUNT = @@ROWCOUNT ;
 
 TRUNCATE TABLE [SFStaging].[OrderItem] ;
 
-COMMIT ;
+END TRY
+BEGIN CATCH
+	THROW ;
+END CATCH
 GO
 IF OBJECT_ID('[SF].[sp_PromoCode__c_Merge]') IS NOT NULL DROP PROCEDURE [SF].[sp_PromoCode__c_Merge]
 GO
@@ -2572,10 +2572,7 @@ SET @ROWCOUNT = 0
 IF NOT EXISTS(SELECT 1 FROM [SFStaging].[PromoCode__c])
 RETURN ;
 
-SET XACT_ABORT ON
-
-BEGIN TRANSACTION
-
+BEGIN TRY
 ;MERGE [SF].[PromoCode__c] AS [t]
 USING [SFStaging].[PromoCode__c] AS [s]
 	ON [t].[Id] = [s].[Id]
@@ -2654,7 +2651,10 @@ SET @ROWCOUNT = @@ROWCOUNT ;
 
 TRUNCATE TABLE [SFStaging].[PromoCode__c] ;
 
-COMMIT ;
+END TRY
+BEGIN CATCH
+	THROW ;
+END CATCH
 GO
 IF OBJECT_ID('[SF].[sp_Quote_Merge]') IS NOT NULL DROP PROCEDURE [SF].[sp_Quote_Merge]
 GO
@@ -2668,10 +2668,7 @@ SET @ROWCOUNT = 0
 IF NOT EXISTS(SELECT 1 FROM [SFStaging].[Quote])
 RETURN ;
 
-SET XACT_ABORT ON
-
-BEGIN TRANSACTION
-
+BEGIN TRY
 ;MERGE [SF].[Quote] AS [t]
 USING [SFStaging].[Quote] AS [s]
 	ON [t].[Id] = [s].[Id]
@@ -2930,7 +2927,10 @@ SET @ROWCOUNT = @@ROWCOUNT ;
 
 TRUNCATE TABLE [SFStaging].[Quote] ;
 
-COMMIT ;
+END TRY
+BEGIN CATCH
+	THROW ;
+END CATCH
 GO
 IF OBJECT_ID('[SF].[sp_ServiceAppointment_Merge]') IS NOT NULL DROP PROCEDURE [SF].[sp_ServiceAppointment_Merge]
 GO
@@ -2944,10 +2944,7 @@ SET @ROWCOUNT = 0
 IF NOT EXISTS(SELECT 1 FROM [SFStaging].[ServiceAppointment])
 RETURN ;
 
-SET XACT_ABORT ON
-
-BEGIN TRANSACTION
-
+BEGIN TRY
 ;MERGE [SF].[ServiceAppointment] AS [t]
 USING [SFStaging].[ServiceAppointment] AS [s]
 	ON [t].[Id] = [s].[Id]
@@ -3227,7 +3224,10 @@ SET @ROWCOUNT = @@ROWCOUNT ;
 
 TRUNCATE TABLE [SFStaging].[ServiceAppointment] ;
 
-COMMIT ;
+END TRY
+BEGIN CATCH
+	THROW ;
+END CATCH
 GO
 IF OBJECT_ID('[SF].[sp_ServiceContract_Merge]') IS NOT NULL DROP PROCEDURE [SF].[sp_ServiceContract_Merge]
 GO
@@ -3241,10 +3241,7 @@ SET @ROWCOUNT = 0
 IF NOT EXISTS(SELECT 1 FROM [SFStaging].[ServiceContract])
 RETURN ;
 
-SET XACT_ABORT ON
-
-BEGIN TRANSACTION
-
+BEGIN TRY
 ;MERGE [SF].[ServiceContract] AS [t]
 USING [SFStaging].[ServiceContract] AS [s]
 	ON [t].[Id] = [s].[Id]
@@ -3425,7 +3422,10 @@ SET @ROWCOUNT = @@ROWCOUNT ;
 
 TRUNCATE TABLE [SFStaging].[ServiceContract] ;
 
-COMMIT ;
+END TRY
+BEGIN CATCH
+	THROW ;
+END CATCH
 GO
 IF OBJECT_ID('[SF].[sp_ServiceResource_Merge]') IS NOT NULL DROP PROCEDURE [SF].[sp_ServiceResource_Merge]
 GO
@@ -3439,10 +3439,7 @@ SET @ROWCOUNT = 0
 IF NOT EXISTS(SELECT 1 FROM [SFStaging].[ServiceResource])
 RETURN ;
 
-SET XACT_ABORT ON
-
-BEGIN TRANSACTION
-
+BEGIN TRY
 ;MERGE [SF].[ServiceResource] AS [t]
 USING [SFStaging].[ServiceResource] AS [s]
 	ON [t].[Id] = [s].[Id]
@@ -3512,7 +3509,10 @@ SET @ROWCOUNT = @@ROWCOUNT ;
 
 TRUNCATE TABLE [SFStaging].[ServiceResource] ;
 
-COMMIT ;
+END TRY
+BEGIN CATCH
+	THROW ;
+END CATCH
 GO
 IF OBJECT_ID('[SF].[sp_ServiceResourceSkill_Merge]') IS NOT NULL DROP PROCEDURE [SF].[sp_ServiceResourceSkill_Merge]
 GO
@@ -3526,10 +3526,7 @@ SET @ROWCOUNT = 0
 IF NOT EXISTS(SELECT 1 FROM [SFStaging].[ServiceResourceSkill])
 RETURN ;
 
-SET XACT_ABORT ON
-
-BEGIN TRANSACTION
-
+BEGIN TRY
 ;MERGE [SF].[ServiceResourceSkill] AS [t]
 USING [SFStaging].[ServiceResourceSkill] AS [s]
 	ON [t].[Id] = [s].[Id]
@@ -3596,7 +3593,10 @@ SET @ROWCOUNT = @@ROWCOUNT ;
 
 TRUNCATE TABLE [SFStaging].[ServiceResourceSkill] ;
 
-COMMIT ;
+END TRY
+BEGIN CATCH
+	THROW ;
+END CATCH
 GO
 IF OBJECT_ID('[SF].[sp_ServiceTerritory_Merge]') IS NOT NULL DROP PROCEDURE [SF].[sp_ServiceTerritory_Merge]
 GO
@@ -3610,10 +3610,7 @@ SET @ROWCOUNT = 0
 IF NOT EXISTS(SELECT 1 FROM [SFStaging].[ServiceTerritory])
 RETURN ;
 
-SET XACT_ABORT ON
-
-BEGIN TRANSACTION
-
+BEGIN TRY
 ;MERGE [SF].[ServiceTerritory] AS [t]
 USING [SFStaging].[ServiceTerritory] AS [s]
 	ON [t].[Id] = [s].[Id]
@@ -3863,7 +3860,10 @@ SET @ROWCOUNT = @@ROWCOUNT ;
 
 TRUNCATE TABLE [SFStaging].[ServiceTerritory] ;
 
-COMMIT ;
+END TRY
+BEGIN CATCH
+	THROW ;
+END CATCH
 GO
 IF OBJECT_ID('[SF].[sp_Lead_Merge]') IS NOT NULL DROP PROCEDURE [SF].[sp_Lead_Merge]
 GO
@@ -3877,10 +3877,7 @@ SET @ROWCOUNT = 0
 IF NOT EXISTS(SELECT 1 FROM [SFStaging].[Lead])
 RETURN ;
 
-SET XACT_ABORT ON
-
-BEGIN TRANSACTION
-
+BEGIN TRY
 ;MERGE [SF].[Lead] AS [t]
 USING [SFStaging].[Lead] AS [s]
 	ON [t].[Id] = [s].[Id]
@@ -4304,7 +4301,10 @@ SET @ROWCOUNT = @@ROWCOUNT ;
 
 TRUNCATE TABLE [SFStaging].[Lead] ;
 
-COMMIT ;
+END TRY
+BEGIN CATCH
+	THROW ;
+END CATCH
 GO
 IF OBJECT_ID('[SF].[sp_ServiceTerritory_ZipCode__c_Merge]') IS NOT NULL DROP PROCEDURE [SF].[sp_ServiceTerritory_ZipCode__c_Merge]
 GO
@@ -4318,10 +4318,7 @@ SET @ROWCOUNT = 0
 IF NOT EXISTS(SELECT 1 FROM [SFStaging].[ServiceTerritory_ZipCode__c])
 RETURN ;
 
-SET XACT_ABORT ON
-
-BEGIN TRANSACTION
-
+BEGIN TRY
 ;MERGE [SF].[ServiceTerritory_ZipCode__c] AS [t]
 USING [SFStaging].[ServiceTerritory_ZipCode__c] AS [s]
 	ON [t].[Id] = [s].[Id]
@@ -4379,7 +4376,10 @@ SET @ROWCOUNT = @@ROWCOUNT ;
 
 TRUNCATE TABLE [SFStaging].[ServiceTerritory_ZipCode__c] ;
 
-COMMIT ;
+END TRY
+BEGIN CATCH
+	THROW ;
+END CATCH
 GO
 IF OBJECT_ID('[SF].[sp_ServiceTerritoryMember_Merge]') IS NOT NULL DROP PROCEDURE [SF].[sp_ServiceTerritoryMember_Merge]
 GO
@@ -4393,10 +4393,7 @@ SET @ROWCOUNT = 0
 IF NOT EXISTS(SELECT 1 FROM [SFStaging].[ServiceTerritoryMember])
 RETURN ;
 
-SET XACT_ABORT ON
-
-BEGIN TRANSACTION
-
+BEGIN TRY
 ;MERGE [SF].[ServiceTerritoryMember] AS [t]
 USING [SFStaging].[ServiceTerritoryMember] AS [s]
 	ON [t].[Id] = [s].[Id]
@@ -4499,7 +4496,10 @@ SET @ROWCOUNT = @@ROWCOUNT ;
 
 TRUNCATE TABLE [SFStaging].[ServiceTerritoryMember] ;
 
-COMMIT ;
+END TRY
+BEGIN CATCH
+	THROW ;
+END CATCH
 GO
 IF OBJECT_ID('[SF].[sp_ServiceTerritoryWorkType_Merge]') IS NOT NULL DROP PROCEDURE [SF].[sp_ServiceTerritoryWorkType_Merge]
 GO
@@ -4513,10 +4513,7 @@ SET @ROWCOUNT = 0
 IF NOT EXISTS(SELECT 1 FROM [SFStaging].[ServiceTerritoryWorkType])
 RETURN ;
 
-SET XACT_ABORT ON
-
-BEGIN TRANSACTION
-
+BEGIN TRY
 ;MERGE [SF].[ServiceTerritoryWorkType] AS [t]
 USING [SFStaging].[ServiceTerritoryWorkType] AS [s]
 	ON [t].[Id] = [s].[Id]
@@ -4577,7 +4574,10 @@ SET @ROWCOUNT = @@ROWCOUNT ;
 
 TRUNCATE TABLE [SFStaging].[ServiceTerritoryWorkType] ;
 
-COMMIT ;
+END TRY
+BEGIN CATCH
+	THROW ;
+END CATCH
 GO
 IF OBJECT_ID('[SF].[sp_Task_Merge]') IS NOT NULL DROP PROCEDURE [SF].[sp_Task_Merge]
 GO
@@ -4591,10 +4591,7 @@ SET @ROWCOUNT = 0
 IF NOT EXISTS(SELECT 1 FROM [SFStaging].[Task])
 RETURN ;
 
-SET XACT_ABORT ON
-
-BEGIN TRANSACTION
-
+BEGIN TRY
 ;MERGE [SF].[Task] AS [t]
 USING [SFStaging].[Task] AS [s]
 	ON [t].[Id] = [s].[Id]
@@ -4805,7 +4802,10 @@ SET @ROWCOUNT = @@ROWCOUNT ;
 
 TRUNCATE TABLE [SFStaging].[Task] ;
 
-COMMIT ;
+END TRY
+BEGIN CATCH
+	THROW ;
+END CATCH
 GO
 IF OBJECT_ID('[SF].[sp_User_Merge]') IS NOT NULL DROP PROCEDURE [SF].[sp_User_Merge]
 GO
@@ -4819,10 +4819,7 @@ SET @ROWCOUNT = 0
 IF NOT EXISTS(SELECT 1 FROM [SFStaging].[User])
 RETURN ;
 
-SET XACT_ABORT ON
-
-BEGIN TRANSACTION
-
+BEGIN TRY
 ;MERGE [SF].[User] AS [t]
 USING [SFStaging].[User] AS [s]
 	ON [t].[Id] = [s].[Id]
@@ -5438,7 +5435,10 @@ SET @ROWCOUNT = @@ROWCOUNT ;
 
 TRUNCATE TABLE [SFStaging].[User] ;
 
-COMMIT ;
+END TRY
+BEGIN CATCH
+	THROW ;
+END CATCH
 GO
 IF OBJECT_ID('[SF].[sp_WorkOrder_Merge]') IS NOT NULL DROP PROCEDURE [SF].[sp_WorkOrder_Merge]
 GO
@@ -5452,10 +5452,7 @@ SET @ROWCOUNT = 0
 IF NOT EXISTS(SELECT 1 FROM [SFStaging].[WorkOrder])
 RETURN ;
 
-SET XACT_ABORT ON
-
-BEGIN TRANSACTION
-
+BEGIN TRY
 ;MERGE [SF].[WorkOrder] AS [t]
 USING [SFStaging].[WorkOrder] AS [s]
 	ON [t].[Id] = [s].[Id]
@@ -5648,7 +5645,10 @@ SET @ROWCOUNT = @@ROWCOUNT ;
 
 TRUNCATE TABLE [SFStaging].[WorkOrder] ;
 
-COMMIT ;
+END TRY
+BEGIN CATCH
+	THROW ;
+END CATCH
 GO
 IF OBJECT_ID('[SF].[sp_WorkOrderLineItem_Merge]') IS NOT NULL DROP PROCEDURE [SF].[sp_WorkOrderLineItem_Merge]
 GO
@@ -5662,10 +5662,7 @@ SET @ROWCOUNT = 0
 IF NOT EXISTS(SELECT 1 FROM [SFStaging].[WorkOrderLineItem])
 RETURN ;
 
-SET XACT_ABORT ON
-
-BEGIN TRANSACTION
-
+BEGIN TRY
 ;MERGE [SF].[WorkOrderLineItem] AS [t]
 USING [SFStaging].[WorkOrderLineItem] AS [s]
 	ON [t].[Id] = [s].[Id]
@@ -5831,7 +5828,10 @@ SET @ROWCOUNT = @@ROWCOUNT ;
 
 TRUNCATE TABLE [SFStaging].[WorkOrderLineItem] ;
 
-COMMIT ;
+END TRY
+BEGIN CATCH
+	THROW ;
+END CATCH
 GO
 IF OBJECT_ID('[SF].[sp_WorkType_Merge]') IS NOT NULL DROP PROCEDURE [SF].[sp_WorkType_Merge]
 GO
@@ -5845,10 +5845,7 @@ SET @ROWCOUNT = 0
 IF NOT EXISTS(SELECT 1 FROM [SFStaging].[WorkType])
 RETURN ;
 
-SET XACT_ABORT ON
-
-BEGIN TRANSACTION
-
+BEGIN TRY
 ;MERGE [SF].[WorkType] AS [t]
 USING [SFStaging].[WorkType] AS [s]
 	ON [t].[Id] = [s].[Id]
@@ -5945,7 +5942,10 @@ SET @ROWCOUNT = @@ROWCOUNT ;
 
 TRUNCATE TABLE [SFStaging].[WorkType] ;
 
-COMMIT ;
+END TRY
+BEGIN CATCH
+	THROW ;
+END CATCH
 GO
 IF OBJECT_ID('[SF].[sp_WorkTypeGroup_Merge]') IS NOT NULL DROP PROCEDURE [SF].[sp_WorkTypeGroup_Merge]
 GO
@@ -5959,10 +5959,7 @@ SET @ROWCOUNT = 0
 IF NOT EXISTS(SELECT 1 FROM [SFStaging].[WorkTypeGroup])
 RETURN ;
 
-SET XACT_ABORT ON
-
-BEGIN TRANSACTION
-
+BEGIN TRY
 ;MERGE [SF].[WorkTypeGroup] AS [t]
 USING [SFStaging].[WorkTypeGroup] AS [s]
 	ON [t].[Id] = [s].[Id]
@@ -6032,7 +6029,10 @@ SET @ROWCOUNT = @@ROWCOUNT ;
 
 TRUNCATE TABLE [SFStaging].[WorkTypeGroup] ;
 
-COMMIT ;
+END TRY
+BEGIN CATCH
+	THROW ;
+END CATCH
 GO
 IF OBJECT_ID('[SF].[sp_Account_Merge]') IS NOT NULL DROP PROCEDURE [SF].[sp_Account_Merge]
 GO
@@ -6046,10 +6046,7 @@ SET @ROWCOUNT = 0
 IF NOT EXISTS(SELECT 1 FROM [SFStaging].[Account])
 RETURN ;
 
-SET XACT_ABORT ON
-
-BEGIN TRANSACTION
-
+BEGIN TRY
 ;MERGE [SF].[Account] AS [t]
 USING [SFStaging].[Account] AS [s]
 	ON [t].[Id] = [s].[Id]
@@ -6683,7 +6680,10 @@ SET @ROWCOUNT = @@ROWCOUNT ;
 
 TRUNCATE TABLE [SFStaging].[Account] ;
 
-COMMIT ;
+END TRY
+BEGIN CATCH
+	THROW ;
+END CATCH
 GO
 IF OBJECT_ID('[SF].[sp_ZipCode__c_Merge]') IS NOT NULL DROP PROCEDURE [SF].[sp_ZipCode__c_Merge]
 GO
@@ -6697,10 +6697,7 @@ SET @ROWCOUNT = 0
 IF NOT EXISTS(SELECT 1 FROM [SFStaging].[ZipCode__c])
 RETURN ;
 
-SET XACT_ABORT ON
-
-BEGIN TRANSACTION
-
+BEGIN TRY
 ;MERGE [SF].[ZipCode__c] AS [t]
 USING [SFStaging].[ZipCode__c] AS [s]
 	ON [t].[Id] = [s].[Id]
@@ -6758,7 +6755,10 @@ SET @ROWCOUNT = @@ROWCOUNT ;
 
 TRUNCATE TABLE [SFStaging].[ZipCode__c] ;
 
-COMMIT ;
+END TRY
+BEGIN CATCH
+	THROW ;
+END CATCH
 GO
 IF OBJECT_ID('[SF].[sp_Contact_Merge]') IS NOT NULL DROP PROCEDURE [SF].[sp_Contact_Merge]
 GO
@@ -6772,10 +6772,7 @@ SET @ROWCOUNT = 0
 IF NOT EXISTS(SELECT 1 FROM [SFStaging].[Contact])
 RETURN ;
 
-SET XACT_ABORT ON
-
-BEGIN TRANSACTION
-
+BEGIN TRY
 ;MERGE [SF].[Contact] AS [t]
 USING [SFStaging].[Contact] AS [s]
 	ON [t].[Id] = [s].[Id]
@@ -7031,7 +7028,10 @@ SET @ROWCOUNT = @@ROWCOUNT ;
 
 TRUNCATE TABLE [SFStaging].[Contact] ;
 
-COMMIT ;
+END TRY
+BEGIN CATCH
+	THROW ;
+END CATCH
 GO
 IF OBJECT_ID('[SF].[sp_EmailMessage_Merge]') IS NOT NULL DROP PROCEDURE [SF].[sp_EmailMessage_Merge]
 GO
@@ -7045,10 +7045,7 @@ SET @ROWCOUNT = 0
 IF NOT EXISTS(SELECT 1 FROM [SFStaging].[EmailMessage])
 RETURN ;
 
-SET XACT_ABORT ON
-
-BEGIN TRANSACTION
-
+BEGIN TRY
 ;MERGE [SF].[EmailMessage] AS [t]
 USING [SFStaging].[EmailMessage] AS [s]
 	ON [t].[Id] = [s].[Id]
@@ -7181,5 +7178,8 @@ SET @ROWCOUNT = @@ROWCOUNT ;
 
 TRUNCATE TABLE [SFStaging].[EmailMessage] ;
 
-COMMIT ;
+END TRY
+BEGIN CATCH
+	THROW ;
+END CATCH
 GO
