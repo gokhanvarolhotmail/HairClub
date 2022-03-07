@@ -656,7 +656,7 @@ FROM( SELECT
         , CASE WHEN [t].[Calc01] > [t].[Calc02] THEN CONCAT('Yes; ', [t].[Calc01] - [t].[Calc02])ELSE 'No' END AS [Priority Order Needed]
         --, CASE WHEN [t].[PriorityHairNeeded] = 1 THEN 'Yes' ELSE 'No' END AS [Priority Order Needed]
         , CAST(CASE WHEN [t].[SuggestedQuantityToOrder] > [gms].[MaxVal] THEN [gms].[MaxVal] WHEN [t].[SuggestedQuantityToOrder] > 0 THEN [t].[SuggestedQuantityToOrder] ELSE 0 END AS INT) AS [Suggested Qty to Order]
-        , CASE WHEN [t].[RevenueGroupID] = 1 THEN CAST(ROUND([t].[ContractPaidAmount] * 100.0 / NULLIF([t].[ContractPrice], 0), 0) AS INT)END AS [ContractAmtPaid%]
+        , CASE WHEN [t].[RevenueGroupID] = 1 THEN CAST([t].[ContractPaidAmount] * 1.0 / NULLIF([t].[ContractPrice], 0) AS NUMERIC(10, 2))END AS [ContractAmtPaid%]
       --, CAST([t].[DueDate] AS DATE) AS [Due Date]
       --, [t].[TotalAccumQuantity] AS [Total Accum Qty]
       --, [t].[Promo]
@@ -697,7 +697,7 @@ CREATE TABLE [##rptHairOrderQuantitybyClient_V2]
   , [Client]                        NVARCHAR(127) NULL
   , [Current Membership]            NVARCHAR(50)  NULL
   , [Membership Expiration]         DATE          NULL
-  , [Contract Amt Paid %]           INT
+  , [Contract Amt Paid %]           NUMERIC(10, 2)
   , [Membership Qty]                INT           NOT NULL
   , [Frozen EFT End Date]           DATE          NULL
   , [QA Needed]                     INT           NOT NULL
