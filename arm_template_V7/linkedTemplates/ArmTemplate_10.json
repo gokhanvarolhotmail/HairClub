@@ -1,0 +1,1759 @@
+{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "factoryName": {
+            "type": "string",
+            "metadata": "Data Factory name",
+            "defaultValue": "hc-eim-df-prod2"
+        }
+    },
+    "variables": {
+        "factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+    },
+    "resources": [
+        {
+            "name": "[concat(parameters('factoryName'), '/SF_DL_AssignedResource')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_SF",
+                    "type": "LinkedServiceReference"
+                },
+                "folder": {
+                    "name": "Salesforce"
+                },
+                "annotations": [],
+                "type": "SalesforceServiceCloudObject",
+                "schema": [],
+                "typeProperties": {
+                    "objectApiName": "AssignedResource"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/SF_DL_ServiceResource')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_SF",
+                    "type": "LinkedServiceReference"
+                },
+                "folder": {
+                    "name": "Salesforce"
+                },
+                "annotations": [],
+                "type": "SalesforceServiceCloudObject",
+                "schema": [],
+                "typeProperties": {
+                    "objectApiName": "ServiceResource"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/DL_SF_ServiceResource')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_DataLake",
+                    "type": "LinkedServiceReference"
+                },
+                "parameters": {
+                    "Object_File_Name": {
+                        "type": "string"
+                    },
+                    "Container": {
+                        "type": "string",
+                        "defaultValue": "hc-eim-file-system-bi"
+                    }
+                },
+                "folder": {
+                    "name": "Datalake/Salesforce"
+                },
+                "annotations": [],
+                "type": "Parquet",
+                "typeProperties": {
+                    "location": {
+                        "type": "AzureBlobFSLocation",
+                        "fileName": {
+                            "value": "@dataset().Object_File_Name",
+                            "type": "Expression"
+                        },
+                        "folderPath": "Salesforce/ServiceResource",
+                        "fileSystem": {
+                            "value": "@dataset().Container",
+                            "type": "Expression"
+                        }
+                    },
+                    "compressionCodec": "snappy"
+                },
+                "schema": [
+                    {
+                        "name": "Id",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "OwnerId",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "Name",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "CurrencyIsoCode",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "CreatedDate",
+                        "type": "INT96"
+                    },
+                    {
+                        "name": "CreatedById",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "LastModifiedDate",
+                        "type": "INT96"
+                    },
+                    {
+                        "name": "LastModifiedById",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "SystemModstamp",
+                        "type": "INT96"
+                    },
+                    {
+                        "name": "LastViewedDate",
+                        "type": "INT96"
+                    },
+                    {
+                        "name": "LastReferencedDate",
+                        "type": "INT96"
+                    },
+                    {
+                        "name": "RelatedRecordId",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "ResourceType",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "Description",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "IsActive",
+                        "type": "BOOLEAN"
+                    },
+                    {
+                        "name": "LocationId",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "AccountId",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "External_Id__c",
+                        "type": "UTF8"
+                    }
+                ]
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/DL_SF_AssaignedRessource')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_DataLake",
+                    "type": "LinkedServiceReference"
+                },
+                "parameters": {
+                    "Object_File_Name": {
+                        "type": "string"
+                    },
+                    "Container": {
+                        "type": "string",
+                        "defaultValue": "hc-eim-file-system-bi"
+                    }
+                },
+                "folder": {
+                    "name": "Datalake/Salesforce"
+                },
+                "annotations": [],
+                "type": "Parquet",
+                "typeProperties": {
+                    "location": {
+                        "type": "AzureBlobFSLocation",
+                        "fileName": {
+                            "value": "@dataset().Object_File_Name",
+                            "type": "Expression"
+                        },
+                        "folderPath": "Salesforce/AssignedResource",
+                        "fileSystem": {
+                            "value": "@dataset().Container",
+                            "type": "Expression"
+                        }
+                    },
+                    "compressionCodec": "snappy"
+                },
+                "schema": [
+                    {
+                        "name": "Id",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "IsDeleted",
+                        "type": "BOOLEAN"
+                    },
+                    {
+                        "name": "AssignedResourceNumber",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "CreatedDate",
+                        "type": "INT96"
+                    },
+                    {
+                        "name": "CreatedById",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "LastModifiedDate",
+                        "type": "INT96"
+                    },
+                    {
+                        "name": "LastModifiedById",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "SystemModstamp",
+                        "type": "INT96"
+                    },
+                    {
+                        "name": "ServiceAppointmentId",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "ServiceResourceId",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "IsRequiredResource",
+                        "type": "BOOLEAN"
+                    },
+                    {
+                        "name": "Role",
+                        "type": "UTF8"
+                    }
+                ]
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/ASA_FactLeadTracking')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_BI_Pool",
+                    "type": "LinkedServiceReference"
+                },
+                "folder": {
+                    "name": "Synapse/DWH"
+                },
+                "annotations": [],
+                "type": "AzureSqlDWTable",
+                "schema": [
+                    {
+                        "name": "LeadKey",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "LeadId",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "LeadFirstName",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "LeadLastname",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "LeadFullName",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "LeadBirthday",
+                        "type": "date"
+                    },
+                    {
+                        "name": "LeadAddress",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "IsActive",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsConsultFormComplete",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "Isvalid",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "LeadEmail",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "LeadPhone",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "LeadMobilePhone",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "NorwoodScale",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "LudwigScale",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "HairLossInFamily",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "HairLossProductUsed",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "HairLossSpot",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "GeographyKey",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "LeadPostalCode",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "EthnicityKey",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "LeadEthnicity",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "GenderKey",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "LeadGender",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "CenterKey",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "CenterNumber",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "LanguageKey",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "LeadLanguage",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "StatusKey",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "LeadStatus",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "LeadCreatedDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "CreatedDateKey",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "CreatedTimeKey",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "LeadLastActivityDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "LastActivityDateKey",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "LastActivityTimekey",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "DISCStyle",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "LeadMaritalStatus",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "LeadConsultReady",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "ConsultationFormReady",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "IsDeleted",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "DoNotCall",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "DoNotContact",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "DoNotEmail",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "DoNotMail",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "DoNotText",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "CreateUser",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "UpdateUser",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "City",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "State",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "MaritalStatusKey",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "LeadSource",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "SourceKey",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "OriginalCommMethodkey",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "RecentCommMethodKey",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "CommunicationMethod",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "IsValidLeadName",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsValidLeadLastName",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsValidLeadFullName",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsValidLeadPhone",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsValidLeadMobilePhone",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsValidLeadEmail",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "ReviewNeeded",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "ConvertedContactId",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "ConvertedAccountId",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "ConvertedOpportunityId",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "ConvertedDate",
+                        "type": "datetime2",
+                        "scale": 7
+                    },
+                    {
+                        "name": "LastModifiedDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "SourceSystem",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "DWH_CreatedDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "DWH_LastUpdateDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "LeadExternalID",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "ServiceTerritoryID",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "OriginalCampaignId",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "OriginalCampaignKey",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "AccountID",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "LeadOccupation",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "OriginalCampaignSource",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "GCLID",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "RealCreatedDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    }
+                ],
+                "typeProperties": {
+                    "schema": "dbo",
+                    "table": "FactLeadTracking"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/ASA_ODS_Campaign_Old_Prod')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_BI_Pool",
+                    "type": "LinkedServiceReference"
+                },
+                "folder": {
+                    "name": "Synapse/ODS"
+                },
+                "annotations": [],
+                "type": "AzureSqlDWTable",
+                "schema": [
+                    {
+                        "name": "Id",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "IsDeleted",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "Name",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "ParentId",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Type",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "RecordTypeId",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Status",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "StartDate",
+                        "type": "datetime2",
+                        "scale": 7
+                    },
+                    {
+                        "name": "EndDate",
+                        "type": "datetime2",
+                        "scale": 7
+                    },
+                    {
+                        "name": "CurrencyIsoCode",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "ExpectedRevenue",
+                        "type": "decimal",
+                        "precision": 38,
+                        "scale": 18
+                    },
+                    {
+                        "name": "BudgetedCost",
+                        "type": "decimal",
+                        "precision": 38,
+                        "scale": 18
+                    },
+                    {
+                        "name": "ActualCost",
+                        "type": "decimal",
+                        "precision": 38,
+                        "scale": 18
+                    },
+                    {
+                        "name": "ExpectedResponse",
+                        "type": "decimal",
+                        "precision": 38,
+                        "scale": 18
+                    },
+                    {
+                        "name": "NumberSent",
+                        "type": "decimal",
+                        "precision": 38,
+                        "scale": 18
+                    },
+                    {
+                        "name": "IsActive",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "Description",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "CampaignImageId",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "NumberOfLeads",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "NumberOfConvertedLeads",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "NumberOfContacts",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "NumberOfResponses",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "NumberOfOpportunities",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "NumberOfWonOpportunities",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "AmountAllOpportunities",
+                        "type": "decimal",
+                        "precision": 38,
+                        "scale": 18
+                    },
+                    {
+                        "name": "AmountWonOpportunities",
+                        "type": "decimal",
+                        "precision": 38,
+                        "scale": 18
+                    },
+                    {
+                        "name": "OwnerId",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "CreatedDate",
+                        "type": "datetime2",
+                        "scale": 7
+                    },
+                    {
+                        "name": "CreatedById",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "LastModifiedDate",
+                        "type": "datetime2",
+                        "scale": 7
+                    },
+                    {
+                        "name": "LastModifiedById",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "SystemModstamp",
+                        "type": "datetime2",
+                        "scale": 7
+                    },
+                    {
+                        "name": "LastActivityDate",
+                        "type": "datetime2",
+                        "scale": 7
+                    },
+                    {
+                        "name": "LastViewedDate",
+                        "type": "datetime2",
+                        "scale": 7
+                    },
+                    {
+                        "name": "LastReferencedDate",
+                        "type": "datetime2",
+                        "scale": 7
+                    },
+                    {
+                        "name": "CampaignMemberRecordTypeId",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "PromoCode__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "SourceCode__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "PromoCodeName__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Channel__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Location__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Language__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Media__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Source__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Goal__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Format__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "ACE_Decription__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Gender__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "CampaignType__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "CommunicationType__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Toll_Free_Number__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "DNIS__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "SourceCode_L__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "SourceID_L__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "SourceName_L__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "IsInHouseSourceFlag_L__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "PhoneID_L__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Number_L__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "NumberTypeID_L__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "MediaID_L__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "NumberType_L__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "MediaCode_L__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Media_L__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Level02Location_L__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Notes_L__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "CreationDate_L__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "LastUpdateDate_L__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Level02LocationCode_L__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Level05ID_L__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Level05CreativeCode_L__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Level05Creative_L__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Level03ID_L__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Level03LanguageCode_L__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Level03Language_L__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Level04ID_L__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Level04FormatCode_L__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Level04Format_L__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Promo_Code_L__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "PromoCodeDisplay__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "TollFreeNumberMobile__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "DNISMobile__c",
+                        "type": "decimal",
+                        "precision": 38,
+                        "scale": 18
+                    },
+                    {
+                        "name": "URLDomain__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Referrer__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Campaign_Counter__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "TollFreeName__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "TollFreeMobileName__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "SourceCodeNumber__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "SCNumber__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "DPNCode__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "DWCCode__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "DWFCode__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "GenerateCodes__c",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "MPNCode__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "MWCCode__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "MWFCode__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "ShortcodeChannel__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "ShortcodeFormat__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "ShortcodeMedia__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "ShortcodeOrigin__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "WebCode__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "ShortcodeLocation__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "DialerMiscCode__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Company__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Action_Criteria__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Excluded_Centers__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Gender_Criteria__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Language_Criteria__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Leads_Created_From__c",
+                        "type": "datetime2",
+                        "scale": 7
+                    },
+                    {
+                        "name": "Leads_Created_Until__c",
+                        "type": "datetime2",
+                        "scale": 7
+                    },
+                    {
+                        "name": "Priority__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "DB_Campaign_Tactic__c",
+                        "type": "varchar"
+                    }
+                ],
+                "typeProperties": {
+                    "schema": "ODS",
+                    "table": "SFDC_Campaign_Old_Prod"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/SF_DL_ServiceAppointmentHistory')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_SF",
+                    "type": "LinkedServiceReference"
+                },
+                "folder": {
+                    "name": "Salesforce"
+                },
+                "annotations": [],
+                "type": "SalesforceServiceCloudObject",
+                "schema": [],
+                "typeProperties": {
+                    "objectApiName": "ServiceAppointmentHistory"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/DL_CNCT_Logs')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_DataLake",
+                    "type": "LinkedServiceReference"
+                },
+                "parameters": {
+                    "Object_File_Name": {
+                        "type": "string"
+                    },
+                    "Container": {
+                        "type": "string",
+                        "defaultValue": "hc-eim-file-system-bi"
+                    }
+                },
+                "folder": {
+                    "name": "Datalake/CONNECT"
+                },
+                "annotations": [],
+                "type": "Parquet",
+                "typeProperties": {
+                    "location": {
+                        "type": "AzureBlobFSLocation",
+                        "fileName": {
+                            "value": "@dataset().Object_File_Name",
+                            "type": "Expression"
+                        },
+                        "folderPath": "Connect/LOGS/Logs",
+                        "fileSystem": {
+                            "value": "@dataset().Container",
+                            "type": "Expression"
+                        }
+                    },
+                    "compressionCodec": "snappy"
+                },
+                "schema": [
+                    {
+                        "name": "ID",
+                        "type": "INT32"
+                    },
+                    {
+                        "name": "Date",
+                        "type": "INT96"
+                    },
+                    {
+                        "name": "CenterID",
+                        "type": "INT32"
+                    },
+                    {
+                        "name": "ClientGUID",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "ClientMembershipGUID",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "SalesOrderGUID",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "HairSystemOrderGUID",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "MethodName",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "UserName",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "Thread",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "Level",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "Logger",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "Message",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "Exception",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "HostName",
+                        "type": "UTF8"
+                    }
+                ]
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/SF_DL_OpportunityHistory')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_SF",
+                    "type": "LinkedServiceReference"
+                },
+                "folder": {
+                    "name": "Salesforce"
+                },
+                "annotations": [],
+                "type": "SalesforceServiceCloudObject",
+                "schema": [],
+                "typeProperties": {
+                    "objectApiName": "OpportunityHistory"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/SF_DL_AccountHistory')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_SF",
+                    "type": "LinkedServiceReference"
+                },
+                "folder": {
+                    "name": "Salesforce"
+                },
+                "annotations": [],
+                "type": "SalesforceServiceCloudObject",
+                "schema": [],
+                "typeProperties": {
+                    "objectApiName": "AccountHistory"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/DL_SF_LeadHistory')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_DataLake",
+                    "type": "LinkedServiceReference"
+                },
+                "parameters": {
+                    "Object_File_Name": {
+                        "type": "string"
+                    },
+                    "Container": {
+                        "type": "string",
+                        "defaultValue": "hc-eim-file-system-bi"
+                    }
+                },
+                "folder": {
+                    "name": "Datalake/Salesforce"
+                },
+                "annotations": [],
+                "type": "Parquet",
+                "typeProperties": {
+                    "location": {
+                        "type": "AzureBlobFSLocation",
+                        "fileName": {
+                            "value": "@dataset().Object_File_Name",
+                            "type": "Expression"
+                        },
+                        "folderPath": "Salesforce/LOGS/Lead",
+                        "fileSystem": {
+                            "value": "@dataset().Container",
+                            "type": "Expression"
+                        }
+                    },
+                    "compressionCodec": "snappy"
+                },
+                "schema": [
+                    {
+                        "name": "Id",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "IsDeleted",
+                        "type": "BOOLEAN"
+                    },
+                    {
+                        "name": "LeadId",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "CreatedById",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "CreatedDate",
+                        "type": "INT96"
+                    },
+                    {
+                        "name": "Field",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "OldValue",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "NewValue",
+                        "type": "UTF8"
+                    }
+                ]
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/DL_SF_OpportunityHistory')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_DataLake",
+                    "type": "LinkedServiceReference"
+                },
+                "parameters": {
+                    "Object_File_Name": {
+                        "type": "string"
+                    },
+                    "Container": {
+                        "type": "string",
+                        "defaultValue": "hc-eim-file-system-bi"
+                    }
+                },
+                "folder": {
+                    "name": "Datalake/Salesforce"
+                },
+                "annotations": [],
+                "type": "Parquet",
+                "typeProperties": {
+                    "location": {
+                        "type": "AzureBlobFSLocation",
+                        "fileName": {
+                            "value": "@dataset().Object_File_Name",
+                            "type": "Expression"
+                        },
+                        "folderPath": "Salesforce/LOGS/Opportunity",
+                        "fileSystem": {
+                            "value": "@dataset().Container",
+                            "type": "Expression"
+                        }
+                    },
+                    "compressionCodec": "snappy"
+                },
+                "schema": [
+                    {
+                        "name": "Id",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "OpportunityId",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "CreatedById",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "CreatedDate",
+                        "type": "INT96"
+                    },
+                    {
+                        "name": "StageName",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "Amount",
+                        "type": "DECIMAL",
+                        "precision": 38,
+                        "scale": 18
+                    },
+                    {
+                        "name": "ExpectedRevenue",
+                        "type": "DECIMAL",
+                        "precision": 38,
+                        "scale": 18
+                    },
+                    {
+                        "name": "CloseDate",
+                        "type": "INT96"
+                    },
+                    {
+                        "name": "Probability",
+                        "type": "DECIMAL",
+                        "precision": 38,
+                        "scale": 18
+                    },
+                    {
+                        "name": "ForecastCategory",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "CurrencyIsoCode",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "SystemModstamp",
+                        "type": "INT96"
+                    },
+                    {
+                        "name": "IsDeleted",
+                        "type": "BOOLEAN"
+                    }
+                ]
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/DL_SF_AccountHistory')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_DataLake",
+                    "type": "LinkedServiceReference"
+                },
+                "parameters": {
+                    "Object_File_Name": {
+                        "type": "string"
+                    },
+                    "Container": {
+                        "type": "string",
+                        "defaultValue": "hc-eim-file-system-bi"
+                    }
+                },
+                "folder": {
+                    "name": "Datalake/Salesforce"
+                },
+                "annotations": [],
+                "type": "Parquet",
+                "typeProperties": {
+                    "location": {
+                        "type": "AzureBlobFSLocation",
+                        "fileName": {
+                            "value": "@dataset().Object_File_Name",
+                            "type": "Expression"
+                        },
+                        "folderPath": "Salesforce/LOGS/Account",
+                        "fileSystem": {
+                            "value": "@dataset().Container",
+                            "type": "Expression"
+                        }
+                    },
+                    "compressionCodec": "snappy"
+                },
+                "schema": [
+                    {
+                        "name": "Id",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "IsDeleted",
+                        "type": "BOOLEAN"
+                    },
+                    {
+                        "name": "AccountId",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "CreatedById",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "CreatedDate",
+                        "type": "INT96"
+                    },
+                    {
+                        "name": "Field",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "OldValue",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "NewValue",
+                        "type": "UTF8"
+                    }
+                ]
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/DL_SF_ServiceAppointmentHistory')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_DataLake",
+                    "type": "LinkedServiceReference"
+                },
+                "parameters": {
+                    "Object_File_Name": {
+                        "type": "string"
+                    },
+                    "Container": {
+                        "type": "string",
+                        "defaultValue": "hc-eim-file-system-bi"
+                    }
+                },
+                "folder": {
+                    "name": "Datalake/Salesforce"
+                },
+                "annotations": [],
+                "type": "Parquet",
+                "typeProperties": {
+                    "location": {
+                        "type": "AzureBlobFSLocation",
+                        "fileName": {
+                            "value": "@dataset().Object_File_Name",
+                            "type": "Expression"
+                        },
+                        "folderPath": "Salesforce/LOGS/ServiceAppointment",
+                        "fileSystem": {
+                            "value": "@dataset().Container",
+                            "type": "Expression"
+                        }
+                    },
+                    "compressionCodec": "snappy"
+                },
+                "schema": [
+                    {
+                        "name": "Id",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "IsDeleted",
+                        "type": "BOOLEAN"
+                    },
+                    {
+                        "name": "ServiceAppointmentId",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "CreatedById",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "CreatedDate",
+                        "type": "INT96"
+                    },
+                    {
+                        "name": "Field",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "OldValue",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "NewValue",
+                        "type": "UTF8"
+                    }
+                ]
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/SF_DL_SAHistory')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_SF",
+                    "type": "LinkedServiceReference"
+                },
+                "folder": {
+                    "name": "SLF_LOGS/SLF"
+                },
+                "annotations": [],
+                "type": "SalesforceServiceCloudObject",
+                "schema": [],
+                "typeProperties": {
+                    "objectApiName": "ServiceAppointmentHistory"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/SF_DL_LeadsHistory')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_SF",
+                    "type": "LinkedServiceReference"
+                },
+                "folder": {
+                    "name": "Salesforce"
+                },
+                "annotations": [],
+                "type": "SalesforceServiceCloudObject",
+                "schema": [],
+                "typeProperties": {
+                    "objectApiName": "LeadHistory"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/ASA_dimSAHistory')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_BI_Pool",
+                    "type": "LinkedServiceReference"
+                },
+                "folder": {
+                    "name": "SLF_LOGS/Synapse"
+                },
+                "annotations": [],
+                "type": "AzureSqlDWTable",
+                "schema": [],
+                "typeProperties": {
+                    "schema": "dbo",
+                    "table": "DimServiceAppointmentLogs"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/ASA_dimAccountHistory')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_BI_Pool",
+                    "type": "LinkedServiceReference"
+                },
+                "folder": {
+                    "name": "SLF_LOGS/Synapse"
+                },
+                "annotations": [],
+                "type": "AzureSqlDWTable",
+                "schema": [],
+                "typeProperties": {
+                    "schema": "dbo",
+                    "table": "DimAccountLogs"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/ASA_dimConnectHistory')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_BI_Pool",
+                    "type": "LinkedServiceReference"
+                },
+                "folder": {
+                    "name": "SLF_LOGS/Synapse"
+                },
+                "annotations": [],
+                "type": "AzureSqlDWTable",
+                "schema": [],
+                "typeProperties": {
+                    "schema": "dbo",
+                    "table": "DimConnectLogs"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/ASA_dimLeadHistory')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_BI_Pool",
+                    "type": "LinkedServiceReference"
+                },
+                "folder": {
+                    "name": "SLF_LOGS/Synapse"
+                },
+                "annotations": [],
+                "type": "AzureSqlDWTable",
+                "schema": [],
+                "typeProperties": {
+                    "schema": "dbo",
+                    "table": "DimLeadLogs"
+                }
+            },
+            "dependsOn": []
+        }
+    ]
+}

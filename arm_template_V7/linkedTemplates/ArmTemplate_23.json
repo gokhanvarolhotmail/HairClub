@@ -1,0 +1,2329 @@
+{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "factoryName": {
+            "type": "string",
+            "metadata": "Data Factory name",
+            "defaultValue": "hc-eim-df-prod2"
+        }
+    },
+    "variables": {
+        "factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+    },
+    "resources": [
+        {
+            "name": "[concat(parameters('factoryName'), '/SQL01_DL_lkpGeneralLedger')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_cONEct",
+                    "type": "LinkedServiceReference"
+                },
+                "folder": {
+                    "name": "Connect"
+                },
+                "annotations": [],
+                "type": "SqlServerTable",
+                "schema": [
+                    {
+                        "name": "GeneralLedgerID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "GeneralLedgerSortOrder",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "GeneralLedgerDescription",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "GeneralLedgerDescriptionShort",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "QuickBooksDescription",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "QuickBooksAccountType",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "IsActiveFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "CreateDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "CreateUser",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "LastUpdate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "LastUpdateUser",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "UpdateStamp",
+                        "type": "timestamp"
+                    }
+                ],
+                "typeProperties": {
+                    "schema": "dbo",
+                    "table": "lkpGeneralLedger"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/SQL01_DL_datClient')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_cONEct",
+                    "type": "LinkedServiceReference"
+                },
+                "folder": {
+                    "name": "Connect"
+                },
+                "annotations": [],
+                "type": "SqlServerTable",
+                "schema": [
+                    {
+                        "name": "ClientGUID",
+                        "type": "uniqueidentifier"
+                    },
+                    {
+                        "name": "ClientIdentifier",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "ClientNumber_Temp",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "CenterID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "CountryID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "SalutationID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "ContactID",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "FirstName",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "MiddleName",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "LastName",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "Address1",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "Address2",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "Address3",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "City",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "StateID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "PostalCode",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "ARBalance",
+                        "type": "money",
+                        "precision": 19,
+                        "scale": 4
+                    },
+                    {
+                        "name": "GenderID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "DateOfBirth",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "DoNotCallFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "DoNotContactFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsHairModelFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsTaxExemptFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "EMailAddress",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "TextMessageAddress",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "Phone1",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "Phone2",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "Phone3",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "Phone1TypeID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "Phone2TypeID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "Phone3TypeID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "IsPhone1PrimaryFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsPhone2PrimaryFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsPhone3PrimaryFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "CreateDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "CreateUser",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "LastUpdate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "LastUpdateUser",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "UpdateStamp",
+                        "type": "timestamp"
+                    },
+                    {
+                        "name": "IsHairSystemClientFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "TaxExemptNumber",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "CurrentBioMatrixClientMembershipGUID",
+                        "type": "uniqueidentifier"
+                    },
+                    {
+                        "name": "CurrentSurgeryClientMembershipGUID",
+                        "type": "uniqueidentifier"
+                    },
+                    {
+                        "name": "CurrentExtremeTherapyClientMembershipGUID",
+                        "type": "uniqueidentifier"
+                    },
+                    {
+                        "name": "IsAutoConfirmTextPhone1",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsAutoConfirmTextPhone2",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsAutoConfirmTextPhone3",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "ImportCreateDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "ImportLastUpdate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "ClientMembershipCounter",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "RequiredNoteReview",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "SiebelID",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "EmergencyContactPhone",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "BosleyProcedureOffice",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "BosleyConsultOffice",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "IsAutoConfirmEmail",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsEmailUndeliverable",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "AcquiredDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "CurrentXtrandsClientMembershipGUID",
+                        "type": "uniqueidentifier"
+                    },
+                    {
+                        "name": "ExpectedConversionDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "LanguageID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "IsConfirmCallPhone1",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsConfirmCallPhone2",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsConfirmCallPhone3",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "AnniversaryDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "CanConfirmAppointmentByEmail",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "CanContactForPromotionsByEmail",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "DoNotVisitInRoom",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "DoNotMoveAppointments",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsAutoRenewDisabled",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "KorvueID",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "SalesforceContactID",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "ClientFullNameAltCalc",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "ClientFullNameCalc",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "ClientFullNameAlt2Calc",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "ClientFullNameAlt3Calc",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "AgeCalc",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "IsBioGraftClient",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "CurrentMDPClientMembershipGUID",
+                        "type": "uniqueidentifier"
+                    },
+                    {
+                        "name": "LeadCreateDate",
+                        "type": "date"
+                    },
+                    {
+                        "name": "BosleySalesforceAccountID",
+                        "type": "nvarchar"
+                    }
+                ],
+                "typeProperties": {
+                    "schema": "dbo",
+                    "table": "datClient"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/SQL01_DL_SalesType')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_cONEct",
+                    "type": "LinkedServiceReference"
+                },
+                "folder": {
+                    "name": "Connect"
+                },
+                "annotations": [],
+                "type": "SqlServerTable",
+                "schema": [
+                    {
+                        "name": "SalesCodeTypeID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "SalesCodeTypeSortOrder",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "SalesCodeTypeDescription",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "SalesCodeTypeDescriptionShort",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "IsInventory",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsSerialized",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsHairSystem",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsActiveFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "CreateDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "CreateUser",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "LastUpdate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "LastUpdateUser",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "UpdateStamp",
+                        "type": "timestamp"
+                    }
+                ],
+                "typeProperties": {
+                    "schema": "dbo",
+                    "table": "lkpSalesCodeType"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/SQL01_DL_datSalesOrder')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_cONEct",
+                    "type": "LinkedServiceReference"
+                },
+                "folder": {
+                    "name": "Connect"
+                },
+                "annotations": [],
+                "type": "SqlServerTable",
+                "schema": [
+                    {
+                        "name": "SalesOrderGUID",
+                        "type": "uniqueidentifier"
+                    },
+                    {
+                        "name": "TenderTransactionNumber_Temp",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "TicketNumber_Temp",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "CenterID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "ClientHomeCenterID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "SalesOrderTypeID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "ClientGUID",
+                        "type": "uniqueidentifier"
+                    },
+                    {
+                        "name": "ClientMembershipGUID",
+                        "type": "uniqueidentifier"
+                    },
+                    {
+                        "name": "AppointmentGUID",
+                        "type": "uniqueidentifier"
+                    },
+                    {
+                        "name": "HairSystemOrderGUID",
+                        "type": "uniqueidentifier"
+                    },
+                    {
+                        "name": "OrderDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "InvoiceNumber",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "IsTaxExemptFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsVoidedFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsClosedFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "RegisterCloseGUID",
+                        "type": "uniqueidentifier"
+                    },
+                    {
+                        "name": "EmployeeGUID",
+                        "type": "uniqueidentifier"
+                    },
+                    {
+                        "name": "FulfillmentNumber",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "IsWrittenOffFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsRefundedFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "RefundedSalesOrderGUID",
+                        "type": "uniqueidentifier"
+                    },
+                    {
+                        "name": "CreateDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "CreateUser",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "LastUpdate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "LastUpdateUser",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "UpdateStamp",
+                        "type": "timestamp"
+                    },
+                    {
+                        "name": "ParentSalesOrderGUID",
+                        "type": "uniqueidentifier"
+                    },
+                    {
+                        "name": "IsSurgeryReversalFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsGuaranteeFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "cashier_temp",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "ctrOrderDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "CenterFeeBatchGUID",
+                        "type": "uniqueidentifier"
+                    },
+                    {
+                        "name": "CenterDeclineBatchGUID",
+                        "type": "uniqueidentifier"
+                    },
+                    {
+                        "name": "RegisterID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "EndOfDayGUID",
+                        "type": "uniqueidentifier"
+                    },
+                    {
+                        "name": "IncomingRequestID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "WriteOffSalesOrderGUID",
+                        "type": "uniqueidentifier"
+                    },
+                    {
+                        "name": "NSFSalesOrderGUID",
+                        "type": "uniqueidentifier"
+                    },
+                    {
+                        "name": "ChargeBackSalesOrderGUID",
+                        "type": "uniqueidentifier"
+                    },
+                    {
+                        "name": "ChargebackReasonID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "InterCompanyTransactionID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "WriteOffReasonDescription",
+                        "type": "nvarchar"
+                    }
+                ],
+                "typeProperties": {
+                    "schema": "dbo",
+                    "table": "datSalesOrder"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/SQL01_DL_datAccumulatorAdjustment')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_cONEct",
+                    "type": "LinkedServiceReference"
+                },
+                "folder": {
+                    "name": "Connect"
+                },
+                "annotations": [],
+                "type": "SqlServerTable",
+                "schema": [
+                    {
+                        "name": "AccumulatorAdjustmentGUID",
+                        "type": "uniqueidentifier"
+                    },
+                    {
+                        "name": "ClientMembershipGUID",
+                        "type": "uniqueidentifier"
+                    },
+                    {
+                        "name": "SalesOrderDetailGUID",
+                        "type": "uniqueidentifier"
+                    },
+                    {
+                        "name": "AppointmentGUID",
+                        "type": "uniqueidentifier"
+                    },
+                    {
+                        "name": "AccumulatorID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "AccumulatorActionTypeID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "QuantityUsedOriginal",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "QuantityUsedAdjustment",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "QuantityTotalOriginal",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "QuantityTotalAdjustment",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "MoneyOriginal",
+                        "type": "decimal",
+                        "precision": 21,
+                        "scale": 6
+                    },
+                    {
+                        "name": "MoneyAdjustment",
+                        "type": "decimal",
+                        "precision": 21,
+                        "scale": 6
+                    },
+                    {
+                        "name": "DateOriginal",
+                        "type": "date"
+                    },
+                    {
+                        "name": "DateAdjustment",
+                        "type": "date"
+                    },
+                    {
+                        "name": "CreateDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "CreateUser",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "LastUpdate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "LastUpdateUser",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "UpdateStamp",
+                        "type": "timestamp"
+                    },
+                    {
+                        "name": "QuantityUsedNewCalc",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "QuantityUsedChangeCalc",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "QuantityTotalNewCalc",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "QuantityTotalChangeCalc",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "MoneyNewCalc",
+                        "type": "decimal",
+                        "precision": 22,
+                        "scale": 6
+                    },
+                    {
+                        "name": "MoneyChangeCalc",
+                        "type": "decimal",
+                        "precision": 23,
+                        "scale": 6
+                    },
+                    {
+                        "name": "SalesOrderTenderGuid",
+                        "type": "uniqueidentifier"
+                    },
+                    {
+                        "name": "ClientMembershipAddOnID",
+                        "type": "int",
+                        "precision": 10
+                    }
+                ],
+                "typeProperties": {
+                    "schema": "dbo",
+                    "table": "datAccumulatorAdjustment"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/BP_DL_AgentActivity')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "BrigthPattern_BD",
+                    "type": "LinkedServiceReference"
+                },
+                "folder": {
+                    "name": "BrightPattern"
+                },
+                "annotations": [],
+                "type": "MySqlTable",
+                "schema": [],
+                "typeProperties": {
+                    "tableName": "`agent_activity`"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/BP_DL_Agents')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "BrigthPattern_BD",
+                    "type": "LinkedServiceReference"
+                },
+                "folder": {
+                    "name": "BrightPattern"
+                },
+                "annotations": [],
+                "type": "MySqlTable",
+                "schema": [],
+                "typeProperties": {
+                    "tableName": "`agents`"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/BP_DL_AgentsDisposition')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "BrigthPattern_BD",
+                    "type": "LinkedServiceReference"
+                },
+                "folder": {
+                    "name": "BrightPattern"
+                },
+                "annotations": [],
+                "type": "MySqlTable",
+                "schema": [],
+                "typeProperties": {
+                    "tableName": "`agent_dispositions`"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/BP_DL_CallDetails')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "BrigthPattern_BD",
+                    "type": "LinkedServiceReference"
+                },
+                "folder": {
+                    "name": "BrightPattern"
+                },
+                "annotations": [],
+                "type": "MySqlTable",
+                "schema": [],
+                "typeProperties": {
+                    "tableName": "`call_detail`"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/SQL01_Log4Net_log')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_cONEct_LOG_Connection",
+                    "type": "LinkedServiceReference"
+                },
+                "folder": {
+                    "name": "Connect"
+                },
+                "annotations": [],
+                "type": "SqlServerTable",
+                "schema": [
+                    {
+                        "name": "ID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "Date",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "CenterID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "ClientGUID",
+                        "type": "uniqueidentifier"
+                    },
+                    {
+                        "name": "ClientMembershipGUID",
+                        "type": "uniqueidentifier"
+                    },
+                    {
+                        "name": "SalesOrderGUID",
+                        "type": "uniqueidentifier"
+                    },
+                    {
+                        "name": "HairSystemOrderGUID",
+                        "type": "uniqueidentifier"
+                    },
+                    {
+                        "name": "MethodName",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "UserName",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Thread",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Level",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Logger",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Message",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Exception",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "HostName",
+                        "type": "varchar"
+                    }
+                ],
+                "typeProperties": {
+                    "schema": "dbo",
+                    "table": "Log"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/SQL01_DL_lkpAccumulatorActionType')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_cONEct",
+                    "type": "LinkedServiceReference"
+                },
+                "folder": {
+                    "name": "Connect"
+                },
+                "annotations": [],
+                "type": "SqlServerTable",
+                "schema": [
+                    {
+                        "name": "AccumulatorActionTypeID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "AccumulatorActionTypeSortOrder",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "AccumulatorActionTypeDescription",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "AccumulatorActionTypeDescriptionShort",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "IsActiveFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "CreateDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "CreateUser",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "LastUpdate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "LastUpdateUser",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "UpdateStamp",
+                        "type": "timestamp"
+                    }
+                ],
+                "typeProperties": {
+                    "schema": "dbo",
+                    "table": "lkpAccumulatorActionType"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/SQL01_DL_cfgAccumulator')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_cONEct",
+                    "type": "LinkedServiceReference"
+                },
+                "folder": {
+                    "name": "Connect"
+                },
+                "annotations": [],
+                "type": "SqlServerTable",
+                "schema": [
+                    {
+                        "name": "AccumulatorID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "AccumulatorSortOrder",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "AccumulatorDescription",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "AccumulatorDescriptionShort",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "AccumulatorDataTypeID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "SalesOrderProcessFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "SchedulerProcessFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "SchedulerActionTypeID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "SchedulerAdjustmentTypeID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "AdjustARBalanceFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "AdjustContractPriceFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "AdjustContractPaidFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsVisibleFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsActiveFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "CreateDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "CreateUser",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "LastUpdate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "LastUpdateUser",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "UpdateStamp",
+                        "type": "timestamp"
+                    },
+                    {
+                        "name": "IsVisibleToClient",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "ClientDescription",
+                        "type": "nvarchar"
+                    }
+                ],
+                "typeProperties": {
+                    "schema": "dbo",
+                    "table": "cfgAccumulator"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/SQL01_DL_lkpAccumulatorDataType')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_cONEct",
+                    "type": "LinkedServiceReference"
+                },
+                "folder": {
+                    "name": "Connect"
+                },
+                "annotations": [],
+                "type": "SqlServerTable",
+                "schema": [
+                    {
+                        "name": "AccumulatorDataTypeID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "AccumulatorDataTypeSortOrder",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "AccumulatorDataTypeDescription",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "AccumulatorDataTypeDescriptionShort",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "IsActiveFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "CreateDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "CreateUser",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "LastUpdate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "LastUpdateUser",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "UpdateStamp",
+                        "type": "timestamp"
+                    }
+                ],
+                "typeProperties": {
+                    "schema": "dbo",
+                    "table": "lkpAccumulatorDataType"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/SQL01_DL_cfgConfigurationCenter')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_cONEct",
+                    "type": "LinkedServiceReference"
+                },
+                "folder": {
+                    "name": "Connect"
+                },
+                "annotations": [],
+                "type": "SqlServerTable",
+                "schema": [
+                    {
+                        "name": "ConfigurationCenterID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "ConfigurationCenterSortOrder",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "CenterID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "CreateDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "CreateUser",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "LastUpdate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "LastUpdateUser",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "UpdateStamp",
+                        "type": "timestamp"
+                    },
+                    {
+                        "name": "UseCreditCardProcessorFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "AccountingExportFreightBaseRate",
+                        "type": "money",
+                        "precision": 19,
+                        "scale": 4
+                    },
+                    {
+                        "name": "AccountingExportFreightPerItemRate",
+                        "type": "money",
+                        "precision": 19,
+                        "scale": 4
+                    },
+                    {
+                        "name": "AccountingExportReceiveAPDebitGLNumber",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "FeeNotificationDays",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "IsFeeProcessedCentrallyFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "LastClientEFTUpdate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "CenterBusinessTypeID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "HasFullAccess",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "EndOfDayLastRunDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "IsSalesConsultationEnabled",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsSalesOrderRoundingEnabled",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsScheduleFeatureEnabled",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsFulfillmentEnabled",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsEnhSalesConsultEnabled",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsAutoConfirmEnabled",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsNoteDeletionEnabled",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "NACHAFileProfileID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "IsNewClientEnabled",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "LanguageID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "EntityID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "IsAutomatedAgreementEnabled",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsAccountReceivableProcEnabled",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "HairOrderDelayDays",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "IsActiveForVipAccess",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "UseCreditCardProcessorForCreditCardOnFile",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "NewBusinessSizeID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "RecurringBusinessSizeID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "IsTrichoViewEnabledForMobile",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsSalesConsultationEnabledForMobile",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsLiveWithBosley",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "CanCompleteVisitNextDay",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsNonSerializedInventoryEnabled",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "NewClientMembershipID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "IncludeInNationalPricingRenewal",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsTransferToHWEnabled",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsConfirmAppointmentClientContactInformationEnabled",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsStylistCareerPathEnabled",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsHWIntegrationEnabled",
+                        "type": "bit"
+                    }
+                ],
+                "typeProperties": {
+                    "schema": "dbo",
+                    "table": "cfgConfigurationCenter"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/SQL01_DL_lkpAccumulatorAdjustmentType')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_cONEct",
+                    "type": "LinkedServiceReference"
+                },
+                "folder": {
+                    "name": "Connect"
+                },
+                "annotations": [],
+                "type": "SqlServerTable",
+                "schema": [
+                    {
+                        "name": "AccumulatorAdjustmentTypeID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "AccumulatorAdjustmentTypeSortOrder",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "AccumulatorAdjustmentTypeDescription",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "AccumulatorAdjustmentTypeDescriptionShort",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "IsActiveFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "CreateDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "CreateUser",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "LastUpdate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "LastUpdateUser",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "UpdateStamp",
+                        "type": "timestamp"
+                    }
+                ],
+                "typeProperties": {
+                    "schema": "dbo",
+                    "table": "lkpAccumulatorAdjustmentType"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/SQL01_DL_DatAppointment')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_cONEct",
+                    "type": "LinkedServiceReference"
+                },
+                "folder": {
+                    "name": "Connect"
+                },
+                "annotations": [],
+                "type": "SqlServerTable",
+                "schema": [
+                    {
+                        "name": "BusinessSegmentID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "BusinessSegmentSortOrder",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "BusinessSegmentDescription",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "BusinessSegmentDescriptionShort",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "IsActiveFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "CreateDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "CreateUser",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "LastUpdate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "LastUpdateUser",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "UpdateStamp",
+                        "type": "timestamp"
+                    }
+                ],
+                "typeProperties": {
+                    "schema": "dbo",
+                    "table": "datAppointment"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/SQL01_DL_DatAppointmentDetail')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_cONEct",
+                    "type": "LinkedServiceReference"
+                },
+                "folder": {
+                    "name": "Connect"
+                },
+                "annotations": [],
+                "type": "SqlServerTable",
+                "schema": [
+                    {
+                        "name": "AppointmentDetailGUID",
+                        "type": "uniqueidentifier"
+                    },
+                    {
+                        "name": "AppointmentGUID",
+                        "type": "uniqueidentifier"
+                    },
+                    {
+                        "name": "SalesCodeID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "AppointmentDetailDuration",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "CreateDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "CreateUser",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "LastUpdate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "LastUpdateUser",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "UpdateStamp",
+                        "type": "timestamp"
+                    },
+                    {
+                        "name": "Quantity",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "Price",
+                        "type": "money",
+                        "precision": 19,
+                        "scale": 4
+                    }
+                ],
+                "typeProperties": {
+                    "schema": "dbo",
+                    "table": "datAppointmentDetail"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/SQL01_DL_cfgCenterManagementArea')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_cONEct",
+                    "type": "LinkedServiceReference"
+                },
+                "folder": {
+                    "name": "Connect"
+                },
+                "annotations": [],
+                "type": "SqlServerTable",
+                "schema": [
+                    {
+                        "name": "CenterID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "CountryID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "RegionID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "CenterPayGroupID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "CenterDescription",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "CenterTypeID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "CenterOwnershipID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "SurgeryHubCenterID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "ReportingCenterID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "AliasSurgeryCenterID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "EmployeeDoctorGUID",
+                        "type": "uniqueidentifier"
+                    },
+                    {
+                        "name": "DoctorRegionID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "TimeZoneID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "InvoiceCounter",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "Address1",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "Address2",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "Address3",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "City",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "StateID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "PostalCode",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "Phone1",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "Phone2",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "Phone3",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "Phone1TypeID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "Phone2TypeID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "Phone3TypeID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "IsPhone1PrimaryFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsPhone2PrimaryFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsPhone3PrimaryFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsActiveFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "CreateDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "CreateUser",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "LastUpdate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "LastUpdateUser",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "UpdateStamp",
+                        "type": "timestamp"
+                    },
+                    {
+                        "name": "IsCorporateHeadquartersFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "RegionRSMNBConsultantGuid",
+                        "type": "uniqueidentifier"
+                    },
+                    {
+                        "name": "RegionRSMMembershipAdvisorGuid",
+                        "type": "uniqueidentifier"
+                    },
+                    {
+                        "name": "RegionRTMTechnicalManagerGuid",
+                        "type": "uniqueidentifier"
+                    },
+                    {
+                        "name": "CenterManagementAreaID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "CenterNumber",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "BusinessUnitBrandID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "CenterDescriptionFullAlt1Calc",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "CenterDescriptionFullCalc",
+                        "type": "nvarchar"
+                    }
+                ],
+                "typeProperties": {
+                    "schema": "dbo",
+                    "table": "cfgCenterManagementArea"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/SQL01_DL_lkpPhoneType')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_cONEct",
+                    "type": "LinkedServiceReference"
+                },
+                "folder": {
+                    "name": "Connect"
+                },
+                "annotations": [],
+                "type": "SqlServerTable",
+                "schema": [
+                    {
+                        "name": "PhoneTypeID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "PhoneTypeSortOrder",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "PhoneTypeDescription",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "PhoneTypeDescriptionShort",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "IsActiveFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "CreateDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "CreateUser",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "LastUpdate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "LastUpdateUser",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "UpdateStamp",
+                        "type": "timestamp"
+                    },
+                    {
+                        "name": "CanTextMessageFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "PhoneSegmentId",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "DescriptionResourceKey",
+                        "type": "nvarchar"
+                    }
+                ],
+                "typeProperties": {
+                    "schema": "dbo",
+                    "table": "lkpPhoneType"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/SQL01_DL_lkpMaritalStatus')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_cONEct",
+                    "type": "LinkedServiceReference"
+                },
+                "folder": {
+                    "name": "Connect"
+                },
+                "annotations": [],
+                "type": "SqlServerTable",
+                "schema": [
+                    {
+                        "name": "ConfigurationCenterID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "ConfigurationCenterSortOrder",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "CenterID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "CreateDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "CreateUser",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "LastUpdate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "LastUpdateUser",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "UpdateStamp",
+                        "type": "timestamp"
+                    },
+                    {
+                        "name": "UseCreditCardProcessorFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "AccountingExportFreightBaseRate",
+                        "type": "money",
+                        "precision": 19,
+                        "scale": 4
+                    },
+                    {
+                        "name": "AccountingExportFreightPerItemRate",
+                        "type": "money",
+                        "precision": 19,
+                        "scale": 4
+                    },
+                    {
+                        "name": "AccountingExportReceiveAPDebitGLNumber",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "FeeNotificationDays",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "IsFeeProcessedCentrallyFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "LastClientEFTUpdate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "CenterBusinessTypeID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "HasFullAccess",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "EndOfDayLastRunDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "IsSalesConsultationEnabled",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsSalesOrderRoundingEnabled",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsScheduleFeatureEnabled",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsFulfillmentEnabled",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsEnhSalesConsultEnabled",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsAutoConfirmEnabled",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsNoteDeletionEnabled",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "NACHAFileProfileID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "IsNewClientEnabled",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "LanguageID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "EntityID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "IsAutomatedAgreementEnabled",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsAccountReceivableProcEnabled",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "HairOrderDelayDays",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "IsActiveForVipAccess",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "UseCreditCardProcessorForCreditCardOnFile",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "NewBusinessSizeID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "RecurringBusinessSizeID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "IsTrichoViewEnabledForMobile",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsSalesConsultationEnabledForMobile",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsLiveWithBosley",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "CanCompleteVisitNextDay",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsNonSerializedInventoryEnabled",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "NewClientMembershipID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "IncludeInNationalPricingRenewal",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsTransferToHWEnabled",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsConfirmAppointmentClientContactInformationEnabled",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsStylistCareerPathEnabled",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsHWIntegrationEnabled",
+                        "type": "bit"
+                    }
+                ],
+                "typeProperties": {
+                    "schema": "dbo",
+                    "table": "lkpMaritalStatus"
+                }
+            },
+            "dependsOn": []
+        }
+    ]
+}
