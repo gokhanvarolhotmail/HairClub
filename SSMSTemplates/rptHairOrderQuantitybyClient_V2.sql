@@ -47,10 +47,13 @@ SET NOCOUNT ON ;
 SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED ;
 
 DECLARE
-    @GetDate    DATE     = CONVERT(VARCHAR(30), GETDATE(), 112)
-  , @Tomorrow   DATE     = CONVERT(VARCHAR(30), DATEADD(DAY, 1, GETDATE()), 112)
-  , @BeginDate  DATETIME = DATEADD(MONTH, -18, GETUTCDATE())
-  , @GetUTCDate DATETIME = GETUTCDATE() ;
+    @GetDate                  DATE     = CONVERT(VARCHAR(30), GETDATE(), 112)
+  , @Tomorrow                 DATE     = CONVERT(VARCHAR(30), DATEADD(DAY, 1, GETDATE()), 112)
+  , @BeginDate                DATETIME = DATEADD(MONTH, -18, GETUTCDATE())
+  , @GetUTCDate               DATETIME = GETUTCDATE()
+  , @CorpCenterTypeID         INT
+  , @FranchiseCenterTypeID    INT
+  , @JointVentureCenterTypeID INT ;
 
 --Split the string parameter that is entered for MembershipID's
 CREATE TABLE [#membership] ( [MembershipID] INT ) ;
@@ -66,22 +69,12 @@ DECLARE @MembershipCount INT = @@ROWCOUNT ;
 IF EXISTS ( SELECT 1 FROM [#membership] WHERE [MembershipID] = 0 )
     SET @MembershipCount = 0 ;
 
-DECLARE
-    @CorpCenterTypeID         INT
-  , @FranchiseCenterTypeID    INT
-  , @JointVentureCenterTypeID INT ;
-
-SELECT @CorpCenterTypeID = [CenterTypeID]
+SELECT
+    @CorpCenterTypeID = MAX(CASE WHEN [CenterTypeDescriptionShort] = 'C' THEN [CenterTypeID] END)
+  , @FranchiseCenterTypeID = MAX(CASE WHEN [CenterTypeDescriptionShort] = 'F' THEN [CenterTypeID] END)
+  , @JointVentureCenterTypeID = MAX(CASE WHEN [CenterTypeDescriptionShort] = 'JV' THEN [CenterTypeID] END)
 FROM [dbo].[lkpCenterType]
-WHERE [CenterTypeDescriptionShort] = 'C' ;
-
-SELECT @FranchiseCenterTypeID = [CenterTypeID]
-FROM [dbo].[lkpCenterType]
-WHERE [CenterTypeDescriptionShort] = 'F' ;
-
-SELECT @JointVentureCenterTypeID = [CenterTypeID]
-FROM [dbo].[lkpCenterType]
-WHERE [CenterTypeDescriptionShort] = 'JV' ;
+WHERE [CenterTypeDescriptionShort] IN ('C', 'F', 'JV') ;
 
 DROP TABLE IF EXISTS [#CenterId] ;
 
