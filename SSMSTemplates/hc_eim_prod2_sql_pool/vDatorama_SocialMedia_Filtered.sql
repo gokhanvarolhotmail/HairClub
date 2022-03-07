@@ -11,5 +11,5 @@ SELECT
   , [d].[DWH_LoadDate]
   , [d].[MediaSpend]
 FROM [ODS].[Datorama_SocialMedia] AS [d]
-WHERE [d].[DWH_LoadDate] > DATEADD(DAY, -60, GETUTCDATE()) AND [d].[DWH_LoadDate] <= GETUTCDATE() ;
+WHERE [d].[DWH_LoadDate] > DATEADD(DAY, -3, GETUTCDATE()) AND [d].[DWH_LoadDate] <= GETUTCDATE() ;
 GO
