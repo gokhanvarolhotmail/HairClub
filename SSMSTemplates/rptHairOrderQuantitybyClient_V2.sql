@@ -320,7 +320,8 @@ FROM( SELECT
              , [sod].[Quantity]
              , [sc].[SalesCodeDescriptionShort]
              , [sod].[SalesCodeID] ) AS [q]
-GROUP BY [q].[ClientMembershipGUID] ;
+GROUP BY [q].[ClientMembershipGUID]
+OPTION( RECOMPILE ) ;
 
 --Find Last Applied Date
 SELECT
@@ -339,7 +340,8 @@ FROM( SELECT
                   FROM [dbo].[datHairSystemOrderTransaction] ) AS [hsot] ON [hair].[ClientGUID] = [hsot].[ClientGUID]
       INNER JOIN [dbo].[lkpHairSystemOrderStatus] AS [hsos] ON [hsot].[NewHairSystemOrderStatusID] = [hsos].[HairSystemOrderStatusID]
       WHERE [hsos].[HairSystemOrderStatusDescriptionShort] = 'APPLIED' ) AS [lastapp]
-WHERE [lastapp].[LastRank] = 1 ;
+WHERE [lastapp].[LastRank] = 1
+OPTION( RECOMPILE ) ;
 
 --Find Next Due Date
 SELECT
@@ -369,7 +371,8 @@ WHERE [M].[BusinessSegmentID] = 1 --BIO
   AND [ACCUM].[MembershipID] NOT IN (1, 2, 11, 12, 14, 15, 16, 17, 18, 19, 49, 50, 57) AND [ACCUM].[IsActiveFlag] = 1 AND [ACCUM].[InitialQuantity] <> 0
 GROUP BY [M].[MembershipDescription]
        , [ACCUM].[MembershipID]
-ORDER BY [M].[MembershipDescription] ;
+ORDER BY [M].[MembershipDescription]
+OPTION( RECOMPILE ) ;
 
 CREATE TABLE [#groupedMemberships] ( [membershipId] INT, [membershipDescriptionShort] NVARCHAR(MAX), [membershipDescription] NVARCHAR(MAX), [membershipGroup] NVARCHAR(MAX), [MaxVal] INT ) ;
 
@@ -425,7 +428,8 @@ FROM [dbo].[datClient] AS [clt]
 INNER JOIN [dbo].[datHairSystemOrder] AS [hso] ON [hso].[ClientGUID] = [clt].[ClientGUID]
 INNER JOIN [dbo].[lkpHairSystemOrderStatus] AS [hsos] ON [hsos].[HairSystemOrderStatusID] = [hso].[HairSystemOrderStatusID] AND [hsos].[HairSystemOrderStatusDescriptionShort] IN ('CENT', 'ORDER')
 WHERE EXISTS ( SELECT 1 FROM [#hair] AS [l] WHERE [l].[ClientGUID] = [clt].[ClientGUID] )
-GROUP BY [clt].[ClientGUID] ;
+GROUP BY [clt].[ClientGUID]
+OPTION( RECOMPILE ) ;
 
 -- Newest Order System Type
 -- [NewestOrderSystemType]
@@ -448,7 +452,8 @@ FROM( SELECT
       INNER JOIN [dbo].[datHairSystemOrder] AS [hso] ON [hso].[ClientGUID] = [clt].[ClientGUID]
       INNER JOIN [dbo].[cfgHairSystem] AS [hs] ON [hso].[HairSystemID] = [hs].[HairSystemID]
       WHERE EXISTS ( SELECT 1 FROM [#hair] AS [l] WHERE [l].[ClientGUID] = [clt].[ClientGUID] )) AS [k]
-WHERE [k].[rw] = 1 ;
+WHERE [k].[rw] = 1
+OPTION( RECOMPILE ) ;
 
 -- Remaining Qty to Order
 IF OBJECT_ID('[tempdb]..[#Calc03]') IS NOT NULL
@@ -461,7 +466,8 @@ INTO [#Calc03]
 FROM [dbo].[datClient] AS [clt]
 INNER JOIN [dbo].[datClientMembership] AS [cm] ON [cm].[ClientMembershipGUID] = [clt].[CurrentBioMatrixClientMembershipGUID]
 OUTER APPLY( SELECT COUNT(1) AS [Cnt] FROM [dbo].[datHairSystemOrder] AS [hso] WHERE [hso].[ClientGUID] = [clt].[ClientGUID] AND [hso].[CreateDate] >= [cm].[BeginDate] ) AS [b]
-WHERE EXISTS ( SELECT 1 FROM [#hair] AS [l] WHERE [l].[ClientGUID] = [clt].[ClientGUID] ) ;
+WHERE EXISTS ( SELECT 1 FROM [#hair] AS [l] WHERE [l].[ClientGUID] = [clt].[ClientGUID] )
+OPTION( RECOMPILE ) ;
 
 SELECT
     [q].[ClientFullNameCalc] AS [Client]
@@ -537,7 +543,8 @@ LEFT JOIN [#ScheduledNextAppDate] AS [sad] ON [q].[ClientGUID] = [sad].[ClientGU
 LEFT JOIN [#Calc01] AS [c1] ON [c1].[ClientGUID] = [q].[ClientGUID]
 LEFT JOIN [#Calc02] AS [c2] ON [c2].[ClientGUID] = [q].[ClientGUID]
 LEFT JOIN [#Calc03] AS [c3] ON [c3].[ClientGUID] = [q].[ClientGUID]
-LEFT JOIN [#NextDueDate] AS [ndd] ON [ndd].[ClientGUID] = [q].[ClientGUID] ;
+LEFT JOIN [#NextDueDate] AS [ndd] ON [ndd].[ClientGUID] = [q].[ClientGUID]
+OPTION( RECOMPILE ) ;
 
 SELECT
     [k].[Region]
