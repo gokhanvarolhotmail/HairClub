@@ -388,53 +388,50 @@ CREATE TABLE [#groupedMemberships]
 --- Insert membership values
 INSERT INTO [#groupedMemberships]( [membershipId], [membershipDescriptionShort], [membershipDescription], [membershipGroup], [MaxVal] )
 SELECT
-    [d].[membershipId]
-  , [d].[membershipDescriptionShort]
-  , [d].[membershipDescription]
-  , [d].[membershipGroup]
-  , [d].[MaxVal]
-FROM( VALUES( 22, 'BASIC', 'Basic', 'Basic', 1 )
+    [t].[membershipId]
+  , [t].[membershipDescriptionShort]
+  , [t].[membershipDescription]
+  , [t].[membershipGroup]
+  , [t].[MaxVal]
+FROM( VALUES( 3, 'GRAD', 'Xtrands+ Initial 6', 'Xtrands+', 1 )
+          , ( 4, 'GRDSV', 'Xtrands+ Initial 6 Solutions', 'Xtrands+', 1 )
+          , ( 5, 'GRADSOL12', 'Xtrands+ Initial 12 Solutions', 'Xtrands+', 1 )
+          , ( 10, 'TRADITION', 'Xtrands+ Initial', 'Xtrands+', 1 )
+          , ( 12, 'HCFK', 'Hair Club For Kids', 'HCFK', 1 )
+          , ( 22, 'BASIC', 'Basic', 'Basic', 1 )
+          , ( 23, 'BASICSOL', 'Basic Solutions', 'Basic', 1 )
           , ( 24, 'BRZ', 'Bronze', 'Bronze', 1 )
-          , ( 30, 'DIA', 'Diamond', 'Diamond', 2 )
-          , ( 31, 'DIASOL', 'Diamond Solutions', 'Diamond', 2 )
-          , ( 65, 'EMRLD', 'Emerald', 'Emerald', 1 )
-          , ( 290, 'EMPLOYRET', 'Employee-Retail', 'EmployeeRetail', 1 )
-          , ( 34, 'EXE', 'Executive', 'Executive', 3 )
+          , ( 25, 'BRZSOL', 'Bronze Solutions', 'Bronze', 1 )
+          , ( 26, 'SIL', 'Silver', 'Silver', 1 )
+          , ( 27, 'SILSOL', 'Silver Solutions', 'Silver', 2 )
           , ( 28, 'GLD', 'Gold', 'Gold', 2 )
           , ( 29, 'GLDSOL', 'Gold Solutions', 'Gold', 2 )
-          , ( 12, 'HCFK', 'Hair Club For Kids', 'HCFK', 1 )
+          , ( 30, 'DIA', 'Diamond', 'Diamond', 2 )
+          , ( 31, 'DIASOL', 'Diamond Solutions', 'Diamond', 2 )
           , ( 32, 'PLA', 'Platinum', 'Platinum', 3 )
           , ( 33, 'PLASOL', 'Platinum Solutions', 'Platinum', 3 )
-          , ( 36, 'PRS', 'Presidential', 'Presidential', 4 )
-          , ( 63, 'RUBY', 'Ruby', 'Ruby', 1 )
-          , ( 95, 'RUBY', 'Ruby Plus Transitional', 'Ruby', 1 )
-          , ( 67, 'SAPPHIRE', 'Sapphire', 'Sapphire', 2 )
-          , ( 26, 'SIL', 'Silver', 'Silver', 1 )
-          , ( 10, 'TRADITION', 'Xtrands+ Initial', 'Xtrands+', 1 )
-          , ( 5, 'GRADSOL12', 'Xtrands+ Initial 12 Solutions', 'Xtrands+', 1 )
-          , ( 3, 'GRAD', 'Xtrands+ Initial 6', 'Xtrands+', 1 )
-          , ( 47, 'GRDSV', 'Xtrands+ Initial 6', 'Xtrands+', 1 )
-          , ( 285, 'GRDSV', 'Xtrands+ Initial 6 EZPAY', 'Xtrands+', 1 )
-          , ( 4, 'GRDSV', 'Xtrands+ Initial 6 Solutions', 'Xtrands+', 1 )
-          , ( 48, 'GRDSVSOL', 'Xtrands+ Initial 6 Solutions', 'Xtrands+', 1 )
-          , ( 23, 'BASICSOL', 'Basic Solutions', 'Basic', 1 )
-          , ( 25, 'BRZSOL', 'Bronze Solutions', 'Bronze', 1 )
-          , ( 27, 'SILSOL', 'Silver Solutions', 'Silver', 2 )
-          , ( 31, 'DIASOL', 'Diamond Solutions', 'Diamond', 2 )
+          , ( 34, 'EXE', 'Executive', 'Executive', 3 )
           , ( 35, 'EXESOL', 'Executive Solutions', 'Executive', 3 )
+          , ( 36, 'PRS', 'Presidential', 'Presidential', 4 )
           , ( 37, 'PRSSOL', 'Presidential Solutions', 'Presidential', 4 )
           , ( 38, 'PRE', 'Premier', 'Premier', 5 )
           , ( 39, 'PRESOL', 'Premier Solutions', 'Premier', 5 )
           , ( 45, 'GRDSV12', 'Xtrands+ Initial 12', 'Xtrands+', 1 )
+          , ( 47, 'GRDSV', 'Xtrands+ Initial 6', 'Xtrands+', 1 )
+          , ( 48, 'GRDSVSOL', 'Xtrands+ Initial 6 Solutions', 'Xtrands+', 1 )
           , ( 55, 'GRADPCP', 'Gradual PCP', 'Xtrands+', 1 )
           , ( 56, 'GRADPCPSOL', 'Gradual PCP Solutions', 'Xtrands+', 1 )
+          , ( 63, 'RUBY', 'Ruby', 'Ruby', 1 )
           , ( 64, 'RUBYPLUS', 'Ruby Plus', 'Ruby', 1 )
+          , ( 65, 'EMRLD', 'Emerald', 'Emerald', 1 )
           , ( 66, 'EMRLDPLUS', 'Emerald Plus', 'Emerald', 1 )
+          , ( 67, 'SAPPHIRE', 'Sapphire', 'Sapphire', 2 )
           , ( 68, 'SAPPHRPLUS', 'Sapphire Plus', 'Sapphire', 2 )
           , ( 88, 'EMRLDPR', 'Emerald Premium', 'Emerald', 1 )
           , ( 89, 'EMRLDPRPL', 'Emerald Premium Plus', 'Emerald', 1 )
           , ( 90, 'SAPPHIREPR', 'Sapphire Premium', 'Sapphire', 2 )
           , ( 91, 'SAPPHRPRPL', 'Sapphire Premium Plus', 'Sapphire', 2 )
+          , ( 95, 'RUBY', 'Ruby Plus Transitional', 'Ruby', 1 )
           , ( 96, 'EMRLPLUSTR', 'Emerald Plus Transitional', 'Emerald', 1 )
           , ( 97, 'SAPPPLUSTR', 'Sapphire Plus Transitional', 'Sapphire', 2 )
           , ( 98, 'BASICTR', 'Basic Transitional', 'Basic', 1 )
@@ -455,9 +452,10 @@ FROM( VALUES( 22, 'BASIC', 'Basic', 'Basic', 1 )
           , ( 113, 'PRSSOLTR', 'Presidential Solutions Transitional', 'Presidential', 4 )
           , ( 114, 'SILSOLTR', 'Silver Solutions Transitional', 'Silver', 1 )
           , ( 279, 'GRAD12', 'Xtrands+ Initial 12', 'Xtrands+', 1 )
-          , ( 285, 'GRDSVEZ', 'Xtrands+ Initial 6 EZPAY', 'Xtrands+', 1 )
+          , ( 285, 'GRDSV', 'Xtrands+ Initial 6 EZPAY', 'Xtrands+', 1 )
+          , ( 290, 'EMPLOYRET', 'Employee-Retail', 'EmployeeRetail', 1 )
           , ( 320, 'GRD12', 'Gradual 12', 'Xtrands+', 1 )
-          , ( 328, 'GRDSV3', 'Xtrands+ 3', 'Xtrands+', 1 )) AS [d]( [membershipId], [membershipDescriptionShort], [membershipDescription], [membershipGroup], [MaxVal] ) ;
+          , ( 328, 'GRDSV3', 'Xtrands+ 3', 'Xtrands+', 1 )) AS [t]( [membershipId], [membershipDescriptionShort], [membershipDescription], [membershipGroup], [MaxVal] ) ;
 
 -- Order Avail for Next App
 -- If Cent exists true
