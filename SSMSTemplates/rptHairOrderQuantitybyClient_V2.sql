@@ -78,7 +78,7 @@ WHERE [CenterTypeDescriptionShort] IN ('C', 'F', 'JV') ;
 
 DROP TABLE IF EXISTS [#CenterId] ;
 
-CREATE TABLE [#CenterId] ( [CenterId] INT NOT NULL UNIQUE CLUSTERED ) ;
+CREATE TABLE [#CenterId] ( [CenterId] INT NULL UNIQUE CLUSTERED ) ;
 
 IF( @CenterID = 1 )
     BEGIN
