@@ -36,7 +36,7 @@ EXEC [rptHairOrderQuantitybyClient] 241, '26,27,28,29,30,31,45,46,47,48'
 ===============================================================================================
 */
 ALTER PROCEDURE [dbo].[rptHairOrderQuantitybyClient_V2]
-    @CenterID            INT
+    @CenterID            INT           = NULL
   , @MembershipList      NVARCHAR(MAX) = NULL
   , @NoHairInCenter      NVARCHAR(30)  = '<ALL>'
   , @NoHairOnOrder       NVARCHAR(30)  = '<ALL>'
@@ -376,7 +376,14 @@ GROUP BY [M].[MembershipDescription]
 ORDER BY [M].[MembershipDescription]
 OPTION( RECOMPILE ) ;
 
-CREATE TABLE [#groupedMemberships] ( [membershipId] INT, [membershipDescriptionShort] NVARCHAR(MAX), [membershipDescription] NVARCHAR(MAX), [membershipGroup] NVARCHAR(MAX), [MaxVal] INT ) ;
+CREATE TABLE [#groupedMemberships]
+(
+    [membershipId]               INT NOT NULL PRIMARY KEY CLUSTERED
+  , [membershipDescriptionShort] NVARCHAR(MAX)
+  , [membershipDescription]      NVARCHAR(MAX)
+  , [membershipGroup]            NVARCHAR(MAX)
+  , [MaxVal]                     INT
+) ;
 
 --- Insert membership values
 INSERT INTO [#groupedMemberships]( [membershipId], [membershipDescriptionShort], [membershipDescription], [membershipGroup], [MaxVal] )
