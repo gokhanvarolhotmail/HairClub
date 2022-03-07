@@ -23,14 +23,14 @@
     <SSIS:PackageInfo>
       <SSIS:PackageMetaData SSIS:Name="ExportInventoryData.dtsx">
         <SSIS:Properties>
-          <SSIS:Property SSIS:Name="ID">{28A1615E-1F4C-410B-879A-71D137D3B1B2}</SSIS:Property>
+          <SSIS:Property SSIS:Name="ID">{2CCA1703-0E02-4B9C-9204-2779550779E6}</SSIS:Property>
           <SSIS:Property SSIS:Name="Name">ExportInventoryData</SSIS:Property>
           <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
           <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-          <SSIS:Property SSIS:Name="VersionBuild">86</SSIS:Property>
+          <SSIS:Property SSIS:Name="VersionBuild">94</SSIS:Property>
           <SSIS:Property SSIS:Name="VersionComments">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="VersionGUID">{85B10E28-2218-4AF6-BE82-E3E7CCBBF9E4}</SSIS:Property>
+          <SSIS:Property SSIS:Name="VersionGUID">{12FDFAB8-F28A-4C50-B3C4-FCA3B1CFB785}</SSIS:Property>
           <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
@@ -1960,7 +1960,7 @@
               <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
               <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
               <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-              <SSIS:Property SSIS:Name="Value">Data Source=SQL01;Initial Catalog=HairClubCMS;Integrated Security=True;Application Name=SSIS-ExportInventoryData-{E2C4EAC4-CF3D-4CF4-9066-6AD315E84BF8}SQL01.HairClubCMS;</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">Data Source=SQL01;Initial Catalog=HairClubCMS;Integrated Security=True;Application Name=SSIS-ExportInventoryData-{BB96CF45-15A3-4E07-AC9B-AFEF9C3E642A}SQL01.HairClubCMS;</SSIS:Property>
               <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
             </SSIS:Properties>
           </SSIS:Parameter>
@@ -2048,7 +2048,7 @@
               <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
               <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
               <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-              <SSIS:Property SSIS:Name="Value">Data Source=SQL05;Initial Catalog=HairClubCMS;Integrated Security=True;Application Name=SSIS-ExportInventoryData-{E2C4EAC4-CF3D-4CF4-9066-6AD315E84BF8}SQL01.HairClubCMS;</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">Data Source=SQL05;Initial Catalog=HairClubCMS;Integrated Security=True;Application Name=SSIS-ExportInventoryData-{BB96CF45-15A3-4E07-AC9B-AFEF9C3E642A}SQL01.HairClubCMS;</SSIS:Property>
               <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
             </SSIS:Properties>
           </SSIS:Parameter>
@@ -2136,7 +2136,7 @@
               <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
               <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
               <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-              <SSIS:Property SSIS:Name="Value">Data Source=SQL06;Initial Catalog=HC_BI_Reporting;Integrated Security=True;Application Name=SSIS-ExportInventoryData-{E2C4EAC4-CF3D-4CF4-9066-6AD315E84BF8}SQL01.HairClubCMS;</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">Data Source=SQL06;Initial Catalog=HC_BI_Reporting;Integrated Security=True;Application Name=SSIS-ExportInventoryData-{BB96CF45-15A3-4E07-AC9B-AFEF9C3E642A}SQL01.HairClubCMS;</SSIS:Property>
               <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
             </SSIS:Properties>
           </SSIS:Parameter>
