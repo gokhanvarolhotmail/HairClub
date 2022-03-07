@@ -381,11 +381,11 @@ CREATE TABLE [#groupedMemberships] ( [membershipId] INT, [membershipDescriptionS
 --- Insert membership values
 INSERT INTO [#groupedMemberships]( [membershipId], [membershipDescriptionShort], [membershipDescription], [membershipGroup], [MaxVal] )
 SELECT
-    [vdata].[membershipId]
-  , [vdata].[membershipDescriptionShort]
-  , [vdata].[membershipDescription]
-  , [vdata].[membershipGroup]
-  , [vdata].[MaxVal]
+    [d].[membershipId]
+  , [d].[membershipDescriptionShort]
+  , [d].[membershipDescription]
+  , [d].[membershipGroup]
+  , [d].[MaxVal]
 FROM( VALUES( 22, 'BASIC', 'Basic', 'Basic', 1 )
           , ( 24, 'BRZ', 'Bronze', 'Bronze', 1 )
           , ( 30, 'DIA', 'Diamond', 'Diamond', 2 )
@@ -450,7 +450,7 @@ FROM( VALUES( 22, 'BASIC', 'Basic', 'Basic', 1 )
           , ( 279, 'GRAD12', 'Xtrands+ Initial 12', 'Xtrands+', 1 )
           , ( 285, 'GRDSVEZ', 'Xtrands+ Initial 6 EZPAY', 'Xtrands+', 1 )
           , ( 320, 'GRD12', 'Gradual 12', 'Xtrands+', 1 )
-          , ( 328, 'GRDSV3', 'Xtrands+ 3', 'Xtrands+', 1 )) AS [vdata]( [membershipId], [membershipDescriptionShort], [membershipDescription], [membershipGroup], [MaxVal] ) ;
+          , ( 328, 'GRDSV3', 'Xtrands+ 3', 'Xtrands+', 1 )) AS [d]( [membershipId], [membershipDescriptionShort], [membershipDescription], [membershipGroup], [MaxVal] ) ;
 
 -- Order Avail for Next App
 -- If Cent exists true
