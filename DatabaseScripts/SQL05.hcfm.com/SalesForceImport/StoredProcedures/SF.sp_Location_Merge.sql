@@ -1,4 +1,4 @@
-/* CreateDate: 03/04/2022 08:19:53.323 , ModifyDate: 03/04/2022 08:19:53.323 */
+/* CreateDate: 03/06/2022 17:23:57.277 , ModifyDate: 03/06/2022 17:23:57.277 */
 GO
 CREATE PROCEDURE [SF].[sp_Location_Merge]
 	@ROWCOUNT BIGINT = NULL OUTPUT
@@ -10,10 +10,7 @@ SET @ROWCOUNT = 0
 IF NOT EXISTS(SELECT 1 FROM [SFStaging].[Location])
 RETURN ;
 
-SET XACT_ABORT ON
-
-BEGIN TRANSACTION
-
+BEGIN TRY
 ;MERGE [SF].[Location] AS [t]
 USING [SFStaging].[Location] AS [s]
 	ON [t].[Id] = [s].[Id]
@@ -128,5 +125,8 @@ SET @ROWCOUNT = @@ROWCOUNT ;
 
 TRUNCATE TABLE [SFStaging].[Location] ;
 
-COMMIT ;
+END TRY
+BEGIN CATCH
+	THROW ;
+END CATCH
 GO

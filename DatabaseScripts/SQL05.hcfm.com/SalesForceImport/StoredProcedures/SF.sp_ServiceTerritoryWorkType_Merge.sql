@@ -1,4 +1,4 @@
-/* CreateDate: 03/04/2022 08:19:54.287 , ModifyDate: 03/04/2022 08:19:54.287 */
+/* CreateDate: 03/06/2022 17:23:58.323 , ModifyDate: 03/06/2022 17:23:58.323 */
 GO
 CREATE PROCEDURE [SF].[sp_ServiceTerritoryWorkType_Merge]
 	@ROWCOUNT BIGINT = NULL OUTPUT
@@ -10,10 +10,7 @@ SET @ROWCOUNT = 0
 IF NOT EXISTS(SELECT 1 FROM [SFStaging].[ServiceTerritoryWorkType])
 RETURN ;
 
-SET XACT_ABORT ON
-
-BEGIN TRANSACTION
-
+BEGIN TRY
 ;MERGE [SF].[ServiceTerritoryWorkType] AS [t]
 USING [SFStaging].[ServiceTerritoryWorkType] AS [s]
 	ON [t].[Id] = [s].[Id]
@@ -74,5 +71,8 @@ SET @ROWCOUNT = @@ROWCOUNT ;
 
 TRUNCATE TABLE [SFStaging].[ServiceTerritoryWorkType] ;
 
-COMMIT ;
+END TRY
+BEGIN CATCH
+	THROW ;
+END CATCH
 GO

@@ -1,4 +1,4 @@
-/* CreateDate: 03/04/2022 08:19:53.747 , ModifyDate: 03/04/2022 08:19:53.747 */
+/* CreateDate: 03/06/2022 17:23:57.707 , ModifyDate: 03/06/2022 17:23:57.707 */
 GO
 CREATE PROCEDURE [SF].[sp_PromoCode__c_Merge]
 	@ROWCOUNT BIGINT = NULL OUTPUT
@@ -10,10 +10,7 @@ SET @ROWCOUNT = 0
 IF NOT EXISTS(SELECT 1 FROM [SFStaging].[PromoCode__c])
 RETURN ;
 
-SET XACT_ABORT ON
-
-BEGIN TRANSACTION
-
+BEGIN TRY
 ;MERGE [SF].[PromoCode__c] AS [t]
 USING [SFStaging].[PromoCode__c] AS [s]
 	ON [t].[Id] = [s].[Id]
@@ -92,5 +89,8 @@ SET @ROWCOUNT = @@ROWCOUNT ;
 
 TRUNCATE TABLE [SFStaging].[PromoCode__c] ;
 
-COMMIT ;
+END TRY
+BEGIN CATCH
+	THROW ;
+END CATCH
 GO

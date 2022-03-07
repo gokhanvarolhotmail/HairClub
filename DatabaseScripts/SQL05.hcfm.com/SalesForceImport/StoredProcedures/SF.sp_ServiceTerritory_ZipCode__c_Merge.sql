@@ -1,4 +1,4 @@
-/* CreateDate: 03/04/2022 08:19:54.183 , ModifyDate: 03/04/2022 08:19:54.183 */
+/* CreateDate: 03/06/2022 17:23:58.203 , ModifyDate: 03/06/2022 17:23:58.203 */
 GO
 CREATE PROCEDURE [SF].[sp_ServiceTerritory_ZipCode__c_Merge]
 	@ROWCOUNT BIGINT = NULL OUTPUT
@@ -10,10 +10,7 @@ SET @ROWCOUNT = 0
 IF NOT EXISTS(SELECT 1 FROM [SFStaging].[ServiceTerritory_ZipCode__c])
 RETURN ;
 
-SET XACT_ABORT ON
-
-BEGIN TRANSACTION
-
+BEGIN TRY
 ;MERGE [SF].[ServiceTerritory_ZipCode__c] AS [t]
 USING [SFStaging].[ServiceTerritory_ZipCode__c] AS [s]
 	ON [t].[Id] = [s].[Id]
@@ -71,5 +68,8 @@ SET @ROWCOUNT = @@ROWCOUNT ;
 
 TRUNCATE TABLE [SFStaging].[ServiceTerritory_ZipCode__c] ;
 
-COMMIT ;
+END TRY
+BEGIN CATCH
+	THROW ;
+END CATCH
 GO

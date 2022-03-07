@@ -1,4 +1,4 @@
-/* CreateDate: 03/04/2022 08:19:53.003 , ModifyDate: 03/04/2022 08:19:53.003 */
+/* CreateDate: 03/06/2022 17:23:56.877 , ModifyDate: 03/06/2022 17:23:56.877 */
 GO
 CREATE PROCEDURE [SF].[sp_CampaignMemberStatus_Merge]
 	@ROWCOUNT BIGINT = NULL OUTPUT
@@ -10,10 +10,7 @@ SET @ROWCOUNT = 0
 IF NOT EXISTS(SELECT 1 FROM [SFStaging].[CampaignMemberStatus])
 RETURN ;
 
-SET XACT_ABORT ON
-
-BEGIN TRANSACTION
-
+BEGIN TRY
 ;MERGE [SF].[CampaignMemberStatus] AS [t]
 USING [SFStaging].[CampaignMemberStatus] AS [s]
 	ON [t].[Id] = [s].[Id]
@@ -65,5 +62,8 @@ SET @ROWCOUNT = @@ROWCOUNT ;
 
 TRUNCATE TABLE [SFStaging].[CampaignMemberStatus] ;
 
-COMMIT ;
+END TRY
+BEGIN CATCH
+	THROW ;
+END CATCH
 GO

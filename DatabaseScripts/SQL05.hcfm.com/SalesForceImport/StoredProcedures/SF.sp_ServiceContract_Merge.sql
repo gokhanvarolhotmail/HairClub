@@ -1,4 +1,4 @@
-/* CreateDate: 03/04/2022 08:19:53.910 , ModifyDate: 03/04/2022 08:19:53.910 */
+/* CreateDate: 03/06/2022 17:23:57.900 , ModifyDate: 03/06/2022 17:23:57.900 */
 GO
 CREATE PROCEDURE [SF].[sp_ServiceContract_Merge]
 	@ROWCOUNT BIGINT = NULL OUTPUT
@@ -10,10 +10,7 @@ SET @ROWCOUNT = 0
 IF NOT EXISTS(SELECT 1 FROM [SFStaging].[ServiceContract])
 RETURN ;
 
-SET XACT_ABORT ON
-
-BEGIN TRANSACTION
-
+BEGIN TRY
 ;MERGE [SF].[ServiceContract] AS [t]
 USING [SFStaging].[ServiceContract] AS [s]
 	ON [t].[Id] = [s].[Id]
@@ -194,5 +191,8 @@ SET @ROWCOUNT = @@ROWCOUNT ;
 
 TRUNCATE TABLE [SFStaging].[ServiceContract] ;
 
-COMMIT ;
+END TRY
+BEGIN CATCH
+	THROW ;
+END CATCH
 GO

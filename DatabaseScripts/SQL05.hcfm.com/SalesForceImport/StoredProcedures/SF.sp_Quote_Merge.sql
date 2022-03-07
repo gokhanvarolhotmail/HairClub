@@ -1,4 +1,4 @@
-/* CreateDate: 03/04/2022 08:19:53.807 , ModifyDate: 03/04/2022 08:19:53.807 */
+/* CreateDate: 03/06/2022 17:23:57.763 , ModifyDate: 03/06/2022 17:23:57.763 */
 GO
 CREATE PROCEDURE [SF].[sp_Quote_Merge]
 	@ROWCOUNT BIGINT = NULL OUTPUT
@@ -10,10 +10,7 @@ SET @ROWCOUNT = 0
 IF NOT EXISTS(SELECT 1 FROM [SFStaging].[Quote])
 RETURN ;
 
-SET XACT_ABORT ON
-
-BEGIN TRANSACTION
-
+BEGIN TRY
 ;MERGE [SF].[Quote] AS [t]
 USING [SFStaging].[Quote] AS [s]
 	ON [t].[Id] = [s].[Id]
@@ -272,5 +269,8 @@ SET @ROWCOUNT = @@ROWCOUNT ;
 
 TRUNCATE TABLE [SFStaging].[Quote] ;
 
-COMMIT ;
+END TRY
+BEGIN CATCH
+	THROW ;
+END CATCH
 GO

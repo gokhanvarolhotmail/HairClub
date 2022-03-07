@@ -1,4 +1,4 @@
-/* CreateDate: 03/04/2022 08:19:54.597 , ModifyDate: 03/04/2022 08:19:54.597 */
+/* CreateDate: 03/06/2022 17:23:58.630 , ModifyDate: 03/06/2022 17:23:58.630 */
 GO
 CREATE PROCEDURE [SF].[sp_WorkType_Merge]
 	@ROWCOUNT BIGINT = NULL OUTPUT
@@ -10,10 +10,7 @@ SET @ROWCOUNT = 0
 IF NOT EXISTS(SELECT 1 FROM [SFStaging].[WorkType])
 RETURN ;
 
-SET XACT_ABORT ON
-
-BEGIN TRANSACTION
-
+BEGIN TRY
 ;MERGE [SF].[WorkType] AS [t]
 USING [SFStaging].[WorkType] AS [s]
 	ON [t].[Id] = [s].[Id]
@@ -110,5 +107,8 @@ SET @ROWCOUNT = @@ROWCOUNT ;
 
 TRUNCATE TABLE [SFStaging].[WorkType] ;
 
-COMMIT ;
+END TRY
+BEGIN CATCH
+	THROW ;
+END CATCH
 GO

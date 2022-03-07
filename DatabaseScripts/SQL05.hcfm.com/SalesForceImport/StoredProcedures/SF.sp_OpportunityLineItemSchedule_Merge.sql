@@ -1,4 +1,4 @@
-/* CreateDate: 03/04/2022 08:19:53.533 , ModifyDate: 03/04/2022 08:19:53.533 */
+/* CreateDate: 03/06/2022 17:23:57.490 , ModifyDate: 03/06/2022 17:23:57.490 */
 GO
 CREATE PROCEDURE [SF].[sp_OpportunityLineItemSchedule_Merge]
 	@ROWCOUNT BIGINT = NULL OUTPUT
@@ -10,10 +10,7 @@ SET @ROWCOUNT = 0
 IF NOT EXISTS(SELECT 1 FROM [SFStaging].[OpportunityLineItemSchedule])
 RETURN ;
 
-SET XACT_ABORT ON
-
-BEGIN TRANSACTION
-
+BEGIN TRY
 ;MERGE [SF].[OpportunityLineItemSchedule] AS [t]
 USING [SFStaging].[OpportunityLineItemSchedule] AS [s]
 	ON [t].[Id] = [s].[Id]
@@ -71,5 +68,8 @@ SET @ROWCOUNT = @@ROWCOUNT ;
 
 TRUNCATE TABLE [SFStaging].[OpportunityLineItemSchedule] ;
 
-COMMIT ;
+END TRY
+BEGIN CATCH
+	THROW ;
+END CATCH
 GO

@@ -1,4 +1,4 @@
-/* CreateDate: 03/04/2022 08:19:53.113 , ModifyDate: 03/04/2022 08:19:53.113 */
+/* CreateDate: 03/06/2022 17:23:57.010 , ModifyDate: 03/06/2022 17:23:57.010 */
 GO
 CREATE PROCEDURE [SF].[sp_Commissions_Log__c_Merge]
 	@ROWCOUNT BIGINT = NULL OUTPUT
@@ -10,10 +10,7 @@ SET @ROWCOUNT = 0
 IF NOT EXISTS(SELECT 1 FROM [SFStaging].[Commissions_Log__c])
 RETURN ;
 
-SET XACT_ABORT ON
-
-BEGIN TRANSACTION
-
+BEGIN TRY
 ;MERGE [SF].[Commissions_Log__c] AS [t]
 USING [SFStaging].[Commissions_Log__c] AS [s]
 	ON [t].[Id] = [s].[Id]
@@ -101,5 +98,8 @@ SET @ROWCOUNT = @@ROWCOUNT ;
 
 TRUNCATE TABLE [SFStaging].[Commissions_Log__c] ;
 
-COMMIT ;
+END TRY
+BEGIN CATCH
+	THROW ;
+END CATCH
 GO

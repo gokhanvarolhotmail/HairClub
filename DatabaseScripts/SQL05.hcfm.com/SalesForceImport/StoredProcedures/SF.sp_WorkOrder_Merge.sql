@@ -1,4 +1,4 @@
-/* CreateDate: 03/04/2022 08:19:54.483 , ModifyDate: 03/04/2022 08:19:54.483 */
+/* CreateDate: 03/06/2022 17:23:58.527 , ModifyDate: 03/06/2022 17:23:58.527 */
 GO
 CREATE PROCEDURE [SF].[sp_WorkOrder_Merge]
 	@ROWCOUNT BIGINT = NULL OUTPUT
@@ -10,10 +10,7 @@ SET @ROWCOUNT = 0
 IF NOT EXISTS(SELECT 1 FROM [SFStaging].[WorkOrder])
 RETURN ;
 
-SET XACT_ABORT ON
-
-BEGIN TRANSACTION
-
+BEGIN TRY
 ;MERGE [SF].[WorkOrder] AS [t]
 USING [SFStaging].[WorkOrder] AS [s]
 	ON [t].[Id] = [s].[Id]
@@ -206,5 +203,8 @@ SET @ROWCOUNT = @@ROWCOUNT ;
 
 TRUNCATE TABLE [SFStaging].[WorkOrder] ;
 
-COMMIT ;
+END TRY
+BEGIN CATCH
+	THROW ;
+END CATCH
 GO

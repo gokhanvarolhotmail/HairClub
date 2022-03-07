@@ -1,4 +1,4 @@
-/* CreateDate: 03/04/2022 08:10:42.600 , ModifyDate: 03/04/2022 08:10:42.663 */
+/* CreateDate: 03/04/2022 08:10:42.600 , ModifyDate: 03/05/2022 13:04:25.800 */
 GO
 CREATE TABLE [SF].[Account](
 	[Id] [varchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,

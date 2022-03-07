@@ -1,4 +1,4 @@
-/* CreateDate: 03/04/2022 08:19:54.007 , ModifyDate: 03/04/2022 08:19:54.007 */
+/* CreateDate: 03/06/2022 17:23:58.007 , ModifyDate: 03/06/2022 17:23:58.007 */
 GO
 CREATE PROCEDURE [SF].[sp_ServiceResourceSkill_Merge]
 	@ROWCOUNT BIGINT = NULL OUTPUT
@@ -10,10 +10,7 @@ SET @ROWCOUNT = 0
 IF NOT EXISTS(SELECT 1 FROM [SFStaging].[ServiceResourceSkill])
 RETURN ;
 
-SET XACT_ABORT ON
-
-BEGIN TRANSACTION
-
+BEGIN TRY
 ;MERGE [SF].[ServiceResourceSkill] AS [t]
 USING [SFStaging].[ServiceResourceSkill] AS [s]
 	ON [t].[Id] = [s].[Id]
@@ -80,5 +77,8 @@ SET @ROWCOUNT = @@ROWCOUNT ;
 
 TRUNCATE TABLE [SFStaging].[ServiceResourceSkill] ;
 
-COMMIT ;
+END TRY
+BEGIN CATCH
+	THROW ;
+END CATCH
 GO

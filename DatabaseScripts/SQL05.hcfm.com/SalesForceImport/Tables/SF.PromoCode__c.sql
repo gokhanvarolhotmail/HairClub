@@ -1,4 +1,4 @@
-/* CreateDate: 03/03/2022 13:53:56.667 , ModifyDate: 03/03/2022 22:19:12.777 */
+/* CreateDate: 03/03/2022 13:53:56.667 , ModifyDate: 03/05/2022 13:04:16.817 */
 GO
 CREATE TABLE [SF].[PromoCode__c](
 	[Id] [varchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,

@@ -1,4 +1,4 @@
-/* CreateDate: 10/03/2019 22:32:11.750 , ModifyDate: 03/03/2022 23:00:06.913 */
+/* CreateDate: 10/03/2019 22:32:11.750 , ModifyDate: 03/06/2022 23:00:05.477 */
 GO
 CREATE TABLE [dbo].[dbaClient](
 	[ClientID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,

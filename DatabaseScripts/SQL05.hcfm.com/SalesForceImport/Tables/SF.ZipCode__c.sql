@@ -1,4 +1,4 @@
-/* CreateDate: 03/03/2022 13:53:57.747 , ModifyDate: 03/03/2022 22:19:14.527 */
+/* CreateDate: 03/03/2022 13:53:57.747 , ModifyDate: 03/05/2022 13:04:26.250 */
 GO
 CREATE TABLE [SF].[ZipCode__c](
 	[Id] [varchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,

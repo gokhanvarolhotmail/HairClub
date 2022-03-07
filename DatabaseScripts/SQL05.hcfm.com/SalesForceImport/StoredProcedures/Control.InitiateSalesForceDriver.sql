@@ -1,4 +1,4 @@
-/* CreateDate: 03/03/2022 22:28:30.383 , ModifyDate: 03/03/2022 22:28:30.383 */
+/* CreateDate: 03/04/2022 11:28:18.520 , ModifyDate: 03/04/2022 11:28:18.520 */
 GO
 CREATE PROCEDURE [Control].[InitiateSalesForceDriver]
 AS
@@ -12,7 +12,6 @@ SELECT
   , [s].[name] AS [SchemaName]
   , [t].[name] AS [TableName]
   , COUNT(1) AS [Cnt]
-  , MAX([p].[rows]) AS [Rows]
 INTO [#Tables]
 FROM [sys].[tables] AS [t]
 INNER JOIN [sys].[schemas] AS [s] ON [s].[schema_id] = [t].[schema_id]
@@ -26,15 +25,20 @@ HAVING COUNT(1) = 2 ;
 IF OBJECT_ID('[tempdb]..[#Dates]') IS NOT NULL
     DROP TABLE [#Dates] ;
 
-CREATE TABLE [#Dates] ( [FQN] VARCHAR(256), [LastDate] [DATETIME2](7)) ;
+CREATE TABLE [#Dates] ( [FQN] VARCHAR(256), [LastDate] [DATETIME2](7), [Rows] INT NOT NULL ) ;
 
 DECLARE @SQL NVARCHAR(MAX) ;
 
 SELECT @SQL = ( SELECT CONCAT(CAST(NULL AS NVARCHAR(MAX)), 'INSERT [#Dates]
 SELECT
+	[FQN], [LastDate], CASE WHEN EXISTS (SELECT 1 FROM ', [k].[FQN], ') THEN 1 ELSE 0 END AS [Rows]
+FROM(SELECT
     ''', [k].[FQN], ''' AS [FQN]
   , MAX([k].[LastDate]) AS [LastDate]
-FROM( SELECT MAX([CreatedDate]) AS [LastDate] FROM [SF].[Account] UNION ALL SELECT MAX([LastModifiedDate]) AS [LastDate] FROM ', [k].[FQN], ' ) AS [k] ;
+FROM(	SELECT MAX([CreatedDate]) AS [LastDate] FROM ', [k].[FQN], '
+		UNION ALL
+		SELECT MAX([LastModifiedDate]) AS [LastDate] FROM ', [k].[FQN], '
+) AS [k]) AS [k] ;
 
 TRUNCATE TABLE [SFStaging].', QUOTENAME([k].[TableName]), ' ;
 ')                  AS [SQL]
@@ -54,5 +58,5 @@ SELECT
   , [k].[SchemaName] + CASE WHEN [k].[Rows] = 0 THEN '' ELSE 'Staging' END AS [StagingTableSchemaName]
   , [k].[TableName] AS [StagingTableName]
   , [k].[SchemaName] + '.' + 'sp_' + [k].[TableName] + '_Merge' AS [ProcedureCall]
-FROM( SELECT [t].[FQN], [d].[LastDate], [t].[TableName], [t].[SchemaName], [t].[Rows] FROM [#Dates] AS [d] INNER JOIN [#Tables] AS [t] ON [t].[FQN] = [d].[FQN] ) AS [k] ;
+FROM( SELECT [t].[FQN], [d].[LastDate], [t].[TableName], [t].[SchemaName], [d].[Rows] FROM [#Dates] AS [d] INNER JOIN [#Tables] AS [t] ON [t].[FQN] = [d].[FQN] ) AS [k] ;
 GO

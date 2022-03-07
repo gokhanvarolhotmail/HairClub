@@ -1,4 +1,4 @@
-/* CreateDate: 03/03/2022 13:53:57.210 , ModifyDate: 03/03/2022 22:19:13.677 */
+/* CreateDate: 03/03/2022 13:53:57.210 , ModifyDate: 03/05/2022 13:04:20.137 */
 GO
 CREATE TABLE [SF].[ServiceTerritoryMember](
 	[Id] [varchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,

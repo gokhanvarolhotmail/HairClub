@@ -1,4 +1,4 @@
-/* CreateDate: 03/03/2022 13:54:35.810 , ModifyDate: 03/03/2022 22:19:12.747 */
+/* CreateDate: 03/03/2022 13:54:35.810 , ModifyDate: 03/05/2022 13:04:16.793 */
 GO
 CREATE TABLE [SFStaging].[WorkTypeGroup](
 	[Id] [varchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,

@@ -1,4 +1,4 @@
-/* CreateDate: 03/04/2022 08:19:53.583 , ModifyDate: 03/04/2022 08:19:53.583 */
+/* CreateDate: 03/06/2022 17:23:57.543 , ModifyDate: 03/06/2022 17:23:57.543 */
 GO
 CREATE PROCEDURE [SF].[sp_OpportunityTeamMember_Merge]
 	@ROWCOUNT BIGINT = NULL OUTPUT
@@ -10,10 +10,7 @@ SET @ROWCOUNT = 0
 IF NOT EXISTS(SELECT 1 FROM [SFStaging].[OpportunityTeamMember])
 RETURN ;
 
-SET XACT_ABORT ON
-
-BEGIN TRANSACTION
-
+BEGIN TRY
 ;MERGE [SF].[OpportunityTeamMember] AS [t]
 USING [SFStaging].[OpportunityTeamMember] AS [s]
 	ON [t].[Id] = [s].[Id]
@@ -74,5 +71,8 @@ SET @ROWCOUNT = @@ROWCOUNT ;
 
 TRUNCATE TABLE [SFStaging].[OpportunityTeamMember] ;
 
-COMMIT ;
+END TRY
+BEGIN CATCH
+	THROW ;
+END CATCH
 GO

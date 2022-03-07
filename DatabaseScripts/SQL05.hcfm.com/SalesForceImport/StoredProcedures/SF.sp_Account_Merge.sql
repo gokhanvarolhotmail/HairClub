@@ -1,4 +1,4 @@
-/* CreateDate: 03/04/2022 08:19:54.717 , ModifyDate: 03/04/2022 08:19:54.717 */
+/* CreateDate: 03/06/2022 17:23:58.757 , ModifyDate: 03/06/2022 17:23:58.757 */
 GO
 CREATE PROCEDURE [SF].[sp_Account_Merge]
 	@ROWCOUNT BIGINT = NULL OUTPUT
@@ -10,10 +10,7 @@ SET @ROWCOUNT = 0
 IF NOT EXISTS(SELECT 1 FROM [SFStaging].[Account])
 RETURN ;
 
-SET XACT_ABORT ON
-
-BEGIN TRANSACTION
-
+BEGIN TRY
 ;MERGE [SF].[Account] AS [t]
 USING [SFStaging].[Account] AS [s]
 	ON [t].[Id] = [s].[Id]
@@ -647,5 +644,8 @@ SET @ROWCOUNT = @@ROWCOUNT ;
 
 TRUNCATE TABLE [SFStaging].[Account] ;
 
-COMMIT ;
+END TRY
+BEGIN CATCH
+	THROW ;
+END CATCH
 GO

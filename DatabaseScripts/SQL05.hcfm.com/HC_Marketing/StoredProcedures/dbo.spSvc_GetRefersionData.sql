@@ -1,4 +1,4 @@
-/* CreateDate: 07/27/2021 15:27:43.547 , ModifyDate: 03/03/2022 10:31:28.757 */
+/* CreateDate: 07/27/2021 15:27:43.547 , ModifyDate: 03/04/2022 15:17:23.210 */
 GO
 /***********************************************************************
 PROCEDURE:				spSvc_GetRefersionData
@@ -212,7 +212,7 @@ BEGIN
           AND rl.SalesOrderKey = fch.SalesOrderKey
         ORDER BY rl.CreateDate DESC
     ) o_Rl
-    WHERE fch.CommissionTypeID IN (29, 30, 3, 46, 47, 77, 53, 54, 4)
+    WHERE fch.CommissionTypeID IN (29, 30, 3, 46, 47, 77, 53, 54, 4, 13, 33, 78, 79)
       AND ISNULL(fch.AdvancedCommission, 0) > 0
       AND ISNULL(l.Email, clt.ClientEMailAddress) <> ''
       AND l.Status IN ('Lead', 'Client', 'Prospect', 'Event', 'HWClient', 'HWLead', 'NEW', 'PURSUING', 'CONVERTED', 'SCHEDULED',

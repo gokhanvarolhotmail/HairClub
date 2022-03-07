@@ -1,4 +1,4 @@
-/* CreateDate: 03/04/2022 08:17:51.347 , ModifyDate: 03/04/2022 08:17:51.347 */
+/* CreateDate: 03/04/2022 08:17:51.347 , ModifyDate: 03/05/2022 13:04:27.083 */
 GO
 CREATE TABLE [SFStaging].[EmailMessage](
 	[Id] [varchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
