@@ -1,4 +1,4 @@
-/* CreateDate: 03/03/2022 13:53:56.950 , ModifyDate: 03/05/2022 13:04:17.607 */
+/* CreateDate: 03/03/2022 13:53:56.950 , ModifyDate: 03/07/2022 12:17:13.750 */
 GO
 CREATE TABLE [SF].[ServiceResource](
 	[Id] [varchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
@@ -34,4 +34,34 @@ CREATE NONCLUSTERED INDEX [LastModifiedDate] ON [SF].[ServiceResource]
 (
 	[LastModifiedDate] DESC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO
+ALTER TABLE [SF].[ServiceResource]  WITH NOCHECK ADD  CONSTRAINT [fk_ServiceResource_Account_AccountId] FOREIGN KEY([AccountId])
+REFERENCES [SF].[Account] ([Id])
+GO
+ALTER TABLE [SF].[ServiceResource] NOCHECK CONSTRAINT [fk_ServiceResource_Account_AccountId]
+GO
+ALTER TABLE [SF].[ServiceResource]  WITH NOCHECK ADD  CONSTRAINT [fk_ServiceResource_Location_LocationId] FOREIGN KEY([LocationId])
+REFERENCES [SF].[Location] ([Id])
+GO
+ALTER TABLE [SF].[ServiceResource] NOCHECK CONSTRAINT [fk_ServiceResource_Location_LocationId]
+GO
+ALTER TABLE [SF].[ServiceResource]  WITH NOCHECK ADD  CONSTRAINT [fk_ServiceResource_User_CreatedById] FOREIGN KEY([CreatedById])
+REFERENCES [SF].[User] ([Id])
+GO
+ALTER TABLE [SF].[ServiceResource] NOCHECK CONSTRAINT [fk_ServiceResource_User_CreatedById]
+GO
+ALTER TABLE [SF].[ServiceResource]  WITH NOCHECK ADD  CONSTRAINT [fk_ServiceResource_User_LastModifiedById] FOREIGN KEY([LastModifiedById])
+REFERENCES [SF].[User] ([Id])
+GO
+ALTER TABLE [SF].[ServiceResource] NOCHECK CONSTRAINT [fk_ServiceResource_User_LastModifiedById]
+GO
+ALTER TABLE [SF].[ServiceResource]  WITH NOCHECK ADD  CONSTRAINT [fk_ServiceResource_User_OwnerId] FOREIGN KEY([OwnerId])
+REFERENCES [SF].[User] ([Id])
+GO
+ALTER TABLE [SF].[ServiceResource] NOCHECK CONSTRAINT [fk_ServiceResource_User_OwnerId]
+GO
+ALTER TABLE [SF].[ServiceResource]  WITH NOCHECK ADD  CONSTRAINT [fk_ServiceResource_User_RelatedRecordId] FOREIGN KEY([RelatedRecordId])
+REFERENCES [SF].[User] ([Id])
+GO
+ALTER TABLE [SF].[ServiceResource] NOCHECK CONSTRAINT [fk_ServiceResource_User_RelatedRecordId]
 GO

@@ -1,4 +1,4 @@
-/* CreateDate: 03/03/2022 13:53:57.150 , ModifyDate: 03/05/2022 13:04:20.047 */
+/* CreateDate: 03/03/2022 13:53:57.150 , ModifyDate: 03/07/2022 12:17:15.423 */
 GO
 CREATE TABLE [SF].[ServiceTerritory_ZipCode__c](
 	[Id] [varchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
@@ -30,4 +30,26 @@ CREATE NONCLUSTERED INDEX [LastModifiedDate] ON [SF].[ServiceTerritory_ZipCode__
 (
 	[LastModifiedDate] DESC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO
+ALTER TABLE [SF].[ServiceTerritory_ZipCode__c]  WITH NOCHECK ADD  CONSTRAINT [fk_ServiceTerritory_ZipCode__c_ServiceTerritory_Service_Territory__c] FOREIGN KEY([Service_Territory__c])
+REFERENCES [SF].[ServiceTerritory] ([Id])
+ON DELETE CASCADE
+GO
+ALTER TABLE [SF].[ServiceTerritory_ZipCode__c] NOCHECK CONSTRAINT [fk_ServiceTerritory_ZipCode__c_ServiceTerritory_Service_Territory__c]
+GO
+ALTER TABLE [SF].[ServiceTerritory_ZipCode__c]  WITH NOCHECK ADD  CONSTRAINT [fk_ServiceTerritory_ZipCode__c_User_CreatedById] FOREIGN KEY([CreatedById])
+REFERENCES [SF].[User] ([Id])
+GO
+ALTER TABLE [SF].[ServiceTerritory_ZipCode__c] NOCHECK CONSTRAINT [fk_ServiceTerritory_ZipCode__c_User_CreatedById]
+GO
+ALTER TABLE [SF].[ServiceTerritory_ZipCode__c]  WITH NOCHECK ADD  CONSTRAINT [fk_ServiceTerritory_ZipCode__c_User_LastModifiedById] FOREIGN KEY([LastModifiedById])
+REFERENCES [SF].[User] ([Id])
+GO
+ALTER TABLE [SF].[ServiceTerritory_ZipCode__c] NOCHECK CONSTRAINT [fk_ServiceTerritory_ZipCode__c_User_LastModifiedById]
+GO
+ALTER TABLE [SF].[ServiceTerritory_ZipCode__c]  WITH NOCHECK ADD  CONSTRAINT [fk_ServiceTerritory_ZipCode__c_ZipCode__c_Zip_Code_Center__c] FOREIGN KEY([Zip_Code_Center__c])
+REFERENCES [SF].[ZipCode__c] ([Id])
+ON DELETE CASCADE
+GO
+ALTER TABLE [SF].[ServiceTerritory_ZipCode__c] NOCHECK CONSTRAINT [fk_ServiceTerritory_ZipCode__c_ZipCode__c_Zip_Code_Center__c]
 GO

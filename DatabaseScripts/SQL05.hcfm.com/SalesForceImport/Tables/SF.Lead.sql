@@ -1,4 +1,4 @@
-/* CreateDate: 03/04/2022 08:04:46.070 , ModifyDate: 03/05/2022 13:04:19.687 */
+/* CreateDate: 03/04/2022 08:04:46.070 , ModifyDate: 03/07/2022 12:17:32.090 */
 GO
 CREATE TABLE [SF].[Lead](
 	[Id] [varchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
@@ -152,4 +152,59 @@ CREATE NONCLUSTERED INDEX [LastModifiedDate] ON [SF].[Lead]
 (
 	[LastModifiedDate] DESC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO
+ALTER TABLE [SF].[Lead]  WITH NOCHECK ADD  CONSTRAINT [fk_Lead_Account_ConvertedAccountId] FOREIGN KEY([ConvertedAccountId])
+REFERENCES [SF].[Account] ([Id])
+GO
+ALTER TABLE [SF].[Lead] NOCHECK CONSTRAINT [fk_Lead_Account_ConvertedAccountId]
+GO
+ALTER TABLE [SF].[Lead]  WITH NOCHECK ADD  CONSTRAINT [fk_Lead_Contact_ConvertedContactId] FOREIGN KEY([ConvertedContactId])
+REFERENCES [SF].[Contact] ([Id])
+GO
+ALTER TABLE [SF].[Lead] NOCHECK CONSTRAINT [fk_Lead_Contact_ConvertedContactId]
+GO
+ALTER TABLE [SF].[Lead]  WITH NOCHECK ADD  CONSTRAINT [fk_Lead_Lead_MasterRecordId] FOREIGN KEY([MasterRecordId])
+REFERENCES [SF].[Lead] ([Id])
+GO
+ALTER TABLE [SF].[Lead] NOCHECK CONSTRAINT [fk_Lead_Lead_MasterRecordId]
+GO
+ALTER TABLE [SF].[Lead]  WITH NOCHECK ADD  CONSTRAINT [fk_Lead_Opportunity_ConvertedOpportunityId] FOREIGN KEY([ConvertedOpportunityId])
+REFERENCES [SF].[Opportunity] ([Id])
+GO
+ALTER TABLE [SF].[Lead] NOCHECK CONSTRAINT [fk_Lead_Opportunity_ConvertedOpportunityId]
+GO
+ALTER TABLE [SF].[Lead]  WITH NOCHECK ADD  CONSTRAINT [fk_Lead_PromoCode__c_Promo_Code__c] FOREIGN KEY([Promo_Code__c])
+REFERENCES [SF].[PromoCode__c] ([Id])
+GO
+ALTER TABLE [SF].[Lead] NOCHECK CONSTRAINT [fk_Lead_PromoCode__c_Promo_Code__c]
+GO
+ALTER TABLE [SF].[Lead]  WITH NOCHECK ADD  CONSTRAINT [fk_Lead_ServiceTerritory_Service_Territory__c] FOREIGN KEY([Service_Territory__c])
+REFERENCES [SF].[ServiceTerritory] ([Id])
+GO
+ALTER TABLE [SF].[Lead] NOCHECK CONSTRAINT [fk_Lead_ServiceTerritory_Service_Territory__c]
+GO
+ALTER TABLE [SF].[Lead]  WITH NOCHECK ADD  CONSTRAINT [fk_Lead_User_CreatedById] FOREIGN KEY([CreatedById])
+REFERENCES [SF].[User] ([Id])
+GO
+ALTER TABLE [SF].[Lead] NOCHECK CONSTRAINT [fk_Lead_User_CreatedById]
+GO
+ALTER TABLE [SF].[Lead]  WITH NOCHECK ADD  CONSTRAINT [fk_Lead_User_LastModifiedById] FOREIGN KEY([LastModifiedById])
+REFERENCES [SF].[User] ([Id])
+GO
+ALTER TABLE [SF].[Lead] NOCHECK CONSTRAINT [fk_Lead_User_LastModifiedById]
+GO
+ALTER TABLE [SF].[Lead]  WITH NOCHECK ADD  CONSTRAINT [fk_Lead_User_Lead_Qualifier__c] FOREIGN KEY([Lead_Qualifier__c])
+REFERENCES [SF].[User] ([Id])
+GO
+ALTER TABLE [SF].[Lead] NOCHECK CONSTRAINT [fk_Lead_User_Lead_Qualifier__c]
+GO
+ALTER TABLE [SF].[Lead]  WITH NOCHECK ADD  CONSTRAINT [fk_Lead_User_Lead_Rescheduler__c] FOREIGN KEY([Lead_Rescheduler__c])
+REFERENCES [SF].[User] ([Id])
+GO
+ALTER TABLE [SF].[Lead] NOCHECK CONSTRAINT [fk_Lead_User_Lead_Rescheduler__c]
+GO
+ALTER TABLE [SF].[Lead]  WITH NOCHECK ADD  CONSTRAINT [fk_Lead_User_OwnerId] FOREIGN KEY([OwnerId])
+REFERENCES [SF].[User] ([Id])
+GO
+ALTER TABLE [SF].[Lead] NOCHECK CONSTRAINT [fk_Lead_User_OwnerId]
 GO

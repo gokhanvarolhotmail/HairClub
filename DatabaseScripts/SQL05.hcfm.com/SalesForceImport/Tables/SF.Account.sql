@@ -1,4 +1,4 @@
-/* CreateDate: 03/04/2022 08:10:42.600 , ModifyDate: 03/05/2022 13:04:25.800 */
+/* CreateDate: 03/04/2022 08:10:42.600 , ModifyDate: 03/07/2022 12:17:31.833 */
 GO
 CREATE TABLE [SF].[Account](
 	[Id] [varchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
@@ -222,4 +222,39 @@ CREATE NONCLUSTERED INDEX [LastModifiedDate] ON [SF].[Account]
 (
 	[LastModifiedDate] DESC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO
+ALTER TABLE [SF].[Account]  WITH NOCHECK ADD  CONSTRAINT [fk_Account_Account_MasterRecordId] FOREIGN KEY([MasterRecordId])
+REFERENCES [SF].[Account] ([Id])
+GO
+ALTER TABLE [SF].[Account] NOCHECK CONSTRAINT [fk_Account_Account_MasterRecordId]
+GO
+ALTER TABLE [SF].[Account]  WITH NOCHECK ADD  CONSTRAINT [fk_Account_Account_ParentId] FOREIGN KEY([ParentId])
+REFERENCES [SF].[Account] ([Id])
+GO
+ALTER TABLE [SF].[Account] NOCHECK CONSTRAINT [fk_Account_Account_ParentId]
+GO
+ALTER TABLE [SF].[Account]  WITH NOCHECK ADD  CONSTRAINT [fk_Account_Contact_PersonContactId] FOREIGN KEY([PersonContactId])
+REFERENCES [SF].[Contact] ([Id])
+GO
+ALTER TABLE [SF].[Account] NOCHECK CONSTRAINT [fk_Account_Contact_PersonContactId]
+GO
+ALTER TABLE [SF].[Account]  WITH NOCHECK ADD  CONSTRAINT [fk_Account_ServiceTerritory_Service_Territory__c] FOREIGN KEY([Service_Territory__c])
+REFERENCES [SF].[ServiceTerritory] ([Id])
+GO
+ALTER TABLE [SF].[Account] NOCHECK CONSTRAINT [fk_Account_ServiceTerritory_Service_Territory__c]
+GO
+ALTER TABLE [SF].[Account]  WITH NOCHECK ADD  CONSTRAINT [fk_Account_User_CreatedById] FOREIGN KEY([CreatedById])
+REFERENCES [SF].[User] ([Id])
+GO
+ALTER TABLE [SF].[Account] NOCHECK CONSTRAINT [fk_Account_User_CreatedById]
+GO
+ALTER TABLE [SF].[Account]  WITH NOCHECK ADD  CONSTRAINT [fk_Account_User_LastModifiedById] FOREIGN KEY([LastModifiedById])
+REFERENCES [SF].[User] ([Id])
+GO
+ALTER TABLE [SF].[Account] NOCHECK CONSTRAINT [fk_Account_User_LastModifiedById]
+GO
+ALTER TABLE [SF].[Account]  WITH NOCHECK ADD  CONSTRAINT [fk_Account_User_OwnerId] FOREIGN KEY([OwnerId])
+REFERENCES [SF].[User] ([Id])
+GO
+ALTER TABLE [SF].[Account] NOCHECK CONSTRAINT [fk_Account_User_OwnerId]
 GO

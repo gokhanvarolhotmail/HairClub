@@ -1,4 +1,4 @@
-/* CreateDate: 03/03/2022 13:53:56.420 , ModifyDate: 03/05/2022 13:04:16.603 */
+/* CreateDate: 03/03/2022 13:53:56.420 , ModifyDate: 03/07/2022 12:17:24.740 */
 GO
 CREATE TABLE [SF].[OpportunityLineItemSchedule](
 	[Id] [varchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
@@ -30,4 +30,19 @@ CREATE NONCLUSTERED INDEX [LastModifiedDate] ON [SF].[OpportunityLineItemSchedul
 (
 	[LastModifiedDate] DESC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO
+ALTER TABLE [SF].[OpportunityLineItemSchedule]  WITH NOCHECK ADD  CONSTRAINT [fk_OpportunityLineItemSchedule_OpportunityLineItem_OpportunityLineItemId] FOREIGN KEY([OpportunityLineItemId])
+REFERENCES [SF].[OpportunityLineItem] ([Id])
+GO
+ALTER TABLE [SF].[OpportunityLineItemSchedule] NOCHECK CONSTRAINT [fk_OpportunityLineItemSchedule_OpportunityLineItem_OpportunityLineItemId]
+GO
+ALTER TABLE [SF].[OpportunityLineItemSchedule]  WITH NOCHECK ADD  CONSTRAINT [fk_OpportunityLineItemSchedule_User_CreatedById] FOREIGN KEY([CreatedById])
+REFERENCES [SF].[User] ([Id])
+GO
+ALTER TABLE [SF].[OpportunityLineItemSchedule] NOCHECK CONSTRAINT [fk_OpportunityLineItemSchedule_User_CreatedById]
+GO
+ALTER TABLE [SF].[OpportunityLineItemSchedule]  WITH NOCHECK ADD  CONSTRAINT [fk_OpportunityLineItemSchedule_User_LastModifiedById] FOREIGN KEY([LastModifiedById])
+REFERENCES [SF].[User] ([Id])
+GO
+ALTER TABLE [SF].[OpportunityLineItemSchedule] NOCHECK CONSTRAINT [fk_OpportunityLineItemSchedule_User_LastModifiedById]
 GO

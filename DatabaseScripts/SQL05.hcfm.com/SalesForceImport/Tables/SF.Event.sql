@@ -1,4 +1,4 @@
-/* CreateDate: 03/03/2022 13:53:56.033 , ModifyDate: 03/05/2022 13:04:15.847 */
+/* CreateDate: 03/03/2022 13:53:56.033 , ModifyDate: 03/07/2022 12:17:33.927 */
 GO
 CREATE TABLE [SF].[Event](
 	[Id] [varchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
@@ -93,4 +93,154 @@ CREATE NONCLUSTERED INDEX [LastModifiedDate] ON [SF].[Event]
 (
 	[LastModifiedDate] DESC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO
+ALTER TABLE [SF].[Event]  WITH NOCHECK ADD  CONSTRAINT [fk_Event_Account_AccountId] FOREIGN KEY([AccountId])
+REFERENCES [SF].[Account] ([Id])
+GO
+ALTER TABLE [SF].[Event] NOCHECK CONSTRAINT [fk_Event_Account_AccountId]
+GO
+ALTER TABLE [SF].[Event]  WITH NOCHECK ADD  CONSTRAINT [fk_Event_Account_Person_Account__c] FOREIGN KEY([Person_Account__c])
+REFERENCES [SF].[Account] ([Id])
+GO
+ALTER TABLE [SF].[Event] NOCHECK CONSTRAINT [fk_Event_Account_Person_Account__c]
+GO
+ALTER TABLE [SF].[Event]  WITH NOCHECK ADD  CONSTRAINT [fk_Event_Account_WhatId] FOREIGN KEY([WhatId])
+REFERENCES [SF].[Account] ([Id])
+GO
+ALTER TABLE [SF].[Event] NOCHECK CONSTRAINT [fk_Event_Account_WhatId]
+GO
+ALTER TABLE [SF].[Event]  WITH NOCHECK ADD  CONSTRAINT [fk_Event_AssignedResource_WhatId] FOREIGN KEY([WhatId])
+REFERENCES [SF].[AssignedResource] ([Id])
+GO
+ALTER TABLE [SF].[Event] NOCHECK CONSTRAINT [fk_Event_AssignedResource_WhatId]
+GO
+ALTER TABLE [SF].[Event]  WITH NOCHECK ADD  CONSTRAINT [fk_Event_Campaign_WhatId] FOREIGN KEY([WhatId])
+REFERENCES [SF].[Campaign] ([Id])
+GO
+ALTER TABLE [SF].[Event] NOCHECK CONSTRAINT [fk_Event_Campaign_WhatId]
+GO
+ALTER TABLE [SF].[Event]  WITH NOCHECK ADD  CONSTRAINT [fk_Event_Case_WhatId] FOREIGN KEY([WhatId])
+REFERENCES [SF].[Case] ([Id])
+GO
+ALTER TABLE [SF].[Event] NOCHECK CONSTRAINT [fk_Event_Case_WhatId]
+GO
+ALTER TABLE [SF].[Event]  WITH NOCHECK ADD  CONSTRAINT [fk_Event_Commissions_Log__c_WhatId] FOREIGN KEY([WhatId])
+REFERENCES [SF].[Commissions_Log__c] ([Id])
+GO
+ALTER TABLE [SF].[Event] NOCHECK CONSTRAINT [fk_Event_Commissions_Log__c_WhatId]
+GO
+ALTER TABLE [SF].[Event]  WITH NOCHECK ADD  CONSTRAINT [fk_Event_Contact_WhoId] FOREIGN KEY([WhoId])
+REFERENCES [SF].[Contact] ([Id])
+GO
+ALTER TABLE [SF].[Event] NOCHECK CONSTRAINT [fk_Event_Contact_WhoId]
+GO
+ALTER TABLE [SF].[Event]  WITH NOCHECK ADD  CONSTRAINT [fk_Event_Contract_WhatId] FOREIGN KEY([WhatId])
+REFERENCES [SF].[Contract] ([Id])
+GO
+ALTER TABLE [SF].[Event] NOCHECK CONSTRAINT [fk_Event_Contract_WhatId]
+GO
+ALTER TABLE [SF].[Event]  WITH NOCHECK ADD  CONSTRAINT [fk_Event_ContractLineItem_WhatId] FOREIGN KEY([WhatId])
+REFERENCES [SF].[ContractLineItem] ([Id])
+GO
+ALTER TABLE [SF].[Event] NOCHECK CONSTRAINT [fk_Event_ContractLineItem_WhatId]
+GO
+ALTER TABLE [SF].[Event]  WITH NOCHECK ADD  CONSTRAINT [fk_Event_Event_RecurrenceActivityId] FOREIGN KEY([RecurrenceActivityId])
+REFERENCES [SF].[Event] ([Id])
+GO
+ALTER TABLE [SF].[Event] NOCHECK CONSTRAINT [fk_Event_Event_RecurrenceActivityId]
+GO
+ALTER TABLE [SF].[Event]  WITH NOCHECK ADD  CONSTRAINT [fk_Event_Lead_Lead__c] FOREIGN KEY([Lead__c])
+REFERENCES [SF].[Lead] ([Id])
+GO
+ALTER TABLE [SF].[Event] NOCHECK CONSTRAINT [fk_Event_Lead_Lead__c]
+GO
+ALTER TABLE [SF].[Event]  WITH NOCHECK ADD  CONSTRAINT [fk_Event_Lead_WhoId] FOREIGN KEY([WhoId])
+REFERENCES [SF].[Lead] ([Id])
+GO
+ALTER TABLE [SF].[Event] NOCHECK CONSTRAINT [fk_Event_Lead_WhoId]
+GO
+ALTER TABLE [SF].[Event]  WITH NOCHECK ADD  CONSTRAINT [fk_Event_Location_WhatId] FOREIGN KEY([WhatId])
+REFERENCES [SF].[Location] ([Id])
+GO
+ALTER TABLE [SF].[Event] NOCHECK CONSTRAINT [fk_Event_Location_WhatId]
+GO
+ALTER TABLE [SF].[Event]  WITH NOCHECK ADD  CONSTRAINT [fk_Event_Opportunity_Opportunity__c] FOREIGN KEY([Opportunity__c])
+REFERENCES [SF].[Opportunity] ([Id])
+GO
+ALTER TABLE [SF].[Event] NOCHECK CONSTRAINT [fk_Event_Opportunity_Opportunity__c]
+GO
+ALTER TABLE [SF].[Event]  WITH NOCHECK ADD  CONSTRAINT [fk_Event_Opportunity_WhatId] FOREIGN KEY([WhatId])
+REFERENCES [SF].[Opportunity] ([Id])
+GO
+ALTER TABLE [SF].[Event] NOCHECK CONSTRAINT [fk_Event_Opportunity_WhatId]
+GO
+ALTER TABLE [SF].[Event]  WITH NOCHECK ADD  CONSTRAINT [fk_Event_Order_WhatId] FOREIGN KEY([WhatId])
+REFERENCES [SF].[Order] ([Id])
+GO
+ALTER TABLE [SF].[Event] NOCHECK CONSTRAINT [fk_Event_Order_WhatId]
+GO
+ALTER TABLE [SF].[Event]  WITH NOCHECK ADD  CONSTRAINT [fk_Event_PromoCode__c_WhatId] FOREIGN KEY([WhatId])
+REFERENCES [SF].[PromoCode__c] ([Id])
+GO
+ALTER TABLE [SF].[Event] NOCHECK CONSTRAINT [fk_Event_PromoCode__c_WhatId]
+GO
+ALTER TABLE [SF].[Event]  WITH NOCHECK ADD  CONSTRAINT [fk_Event_Quote_WhatId] FOREIGN KEY([WhatId])
+REFERENCES [SF].[Quote] ([Id])
+GO
+ALTER TABLE [SF].[Event] NOCHECK CONSTRAINT [fk_Event_Quote_WhatId]
+GO
+ALTER TABLE [SF].[Event]  WITH NOCHECK ADD  CONSTRAINT [fk_Event_ServiceAppointment_Service_Appointment__c] FOREIGN KEY([Service_Appointment__c])
+REFERENCES [SF].[ServiceAppointment] ([Id])
+GO
+ALTER TABLE [SF].[Event] NOCHECK CONSTRAINT [fk_Event_ServiceAppointment_Service_Appointment__c]
+GO
+ALTER TABLE [SF].[Event]  WITH NOCHECK ADD  CONSTRAINT [fk_Event_ServiceAppointment_ServiceAppointmentId] FOREIGN KEY([ServiceAppointmentId])
+REFERENCES [SF].[ServiceAppointment] ([Id])
+GO
+ALTER TABLE [SF].[Event] NOCHECK CONSTRAINT [fk_Event_ServiceAppointment_ServiceAppointmentId]
+GO
+ALTER TABLE [SF].[Event]  WITH NOCHECK ADD  CONSTRAINT [fk_Event_ServiceAppointment_WhatId] FOREIGN KEY([WhatId])
+REFERENCES [SF].[ServiceAppointment] ([Id])
+GO
+ALTER TABLE [SF].[Event] NOCHECK CONSTRAINT [fk_Event_ServiceAppointment_WhatId]
+GO
+ALTER TABLE [SF].[Event]  WITH NOCHECK ADD  CONSTRAINT [fk_Event_ServiceContract_WhatId] FOREIGN KEY([WhatId])
+REFERENCES [SF].[ServiceContract] ([Id])
+GO
+ALTER TABLE [SF].[Event] NOCHECK CONSTRAINT [fk_Event_ServiceContract_WhatId]
+GO
+ALTER TABLE [SF].[Event]  WITH NOCHECK ADD  CONSTRAINT [fk_Event_ServiceResource_WhatId] FOREIGN KEY([WhatId])
+REFERENCES [SF].[ServiceResource] ([Id])
+GO
+ALTER TABLE [SF].[Event] NOCHECK CONSTRAINT [fk_Event_ServiceResource_WhatId]
+GO
+ALTER TABLE [SF].[Event]  WITH NOCHECK ADD  CONSTRAINT [fk_Event_User_CreatedById] FOREIGN KEY([CreatedById])
+REFERENCES [SF].[User] ([Id])
+GO
+ALTER TABLE [SF].[Event] NOCHECK CONSTRAINT [fk_Event_User_CreatedById]
+GO
+ALTER TABLE [SF].[Event]  WITH NOCHECK ADD  CONSTRAINT [fk_Event_User_LastModifiedById] FOREIGN KEY([LastModifiedById])
+REFERENCES [SF].[User] ([Id])
+GO
+ALTER TABLE [SF].[Event] NOCHECK CONSTRAINT [fk_Event_User_LastModifiedById]
+GO
+ALTER TABLE [SF].[Event]  WITH NOCHECK ADD  CONSTRAINT [fk_Event_User_OwnerId] FOREIGN KEY([OwnerId])
+REFERENCES [SF].[User] ([Id])
+GO
+ALTER TABLE [SF].[Event] NOCHECK CONSTRAINT [fk_Event_User_OwnerId]
+GO
+ALTER TABLE [SF].[Event]  WITH NOCHECK ADD  CONSTRAINT [fk_Event_WorkOrder_WhatId] FOREIGN KEY([WhatId])
+REFERENCES [SF].[WorkOrder] ([Id])
+GO
+ALTER TABLE [SF].[Event] NOCHECK CONSTRAINT [fk_Event_WorkOrder_WhatId]
+GO
+ALTER TABLE [SF].[Event]  WITH NOCHECK ADD  CONSTRAINT [fk_Event_WorkOrderLineItem_WhatId] FOREIGN KEY([WhatId])
+REFERENCES [SF].[WorkOrderLineItem] ([Id])
+GO
+ALTER TABLE [SF].[Event] NOCHECK CONSTRAINT [fk_Event_WorkOrderLineItem_WhatId]
+GO
+ALTER TABLE [SF].[Event]  WITH NOCHECK ADD  CONSTRAINT [fk_Event_ZipCode__c_WhatId] FOREIGN KEY([WhatId])
+REFERENCES [SF].[ZipCode__c] ([Id])
+GO
+ALTER TABLE [SF].[Event] NOCHECK CONSTRAINT [fk_Event_ZipCode__c_WhatId]
 GO

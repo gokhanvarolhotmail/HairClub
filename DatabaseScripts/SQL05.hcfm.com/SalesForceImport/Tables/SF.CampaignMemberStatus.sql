@@ -1,4 +1,4 @@
-/* CreateDate: 03/03/2022 13:53:55.540 , ModifyDate: 03/05/2022 13:04:15.260 */
+/* CreateDate: 03/03/2022 13:53:55.540 , ModifyDate: 03/07/2022 12:17:15.090 */
 GO
 CREATE TABLE [SF].[CampaignMemberStatus](
 	[Id] [varchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
@@ -28,4 +28,19 @@ CREATE NONCLUSTERED INDEX [LastModifiedDate] ON [SF].[CampaignMemberStatus]
 (
 	[LastModifiedDate] DESC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO
+ALTER TABLE [SF].[CampaignMemberStatus]  WITH NOCHECK ADD  CONSTRAINT [fk_CampaignMemberStatus_Campaign_CampaignId] FOREIGN KEY([CampaignId])
+REFERENCES [SF].[Campaign] ([Id])
+GO
+ALTER TABLE [SF].[CampaignMemberStatus] NOCHECK CONSTRAINT [fk_CampaignMemberStatus_Campaign_CampaignId]
+GO
+ALTER TABLE [SF].[CampaignMemberStatus]  WITH NOCHECK ADD  CONSTRAINT [fk_CampaignMemberStatus_User_CreatedById] FOREIGN KEY([CreatedById])
+REFERENCES [SF].[User] ([Id])
+GO
+ALTER TABLE [SF].[CampaignMemberStatus] NOCHECK CONSTRAINT [fk_CampaignMemberStatus_User_CreatedById]
+GO
+ALTER TABLE [SF].[CampaignMemberStatus]  WITH NOCHECK ADD  CONSTRAINT [fk_CampaignMemberStatus_User_LastModifiedById] FOREIGN KEY([LastModifiedById])
+REFERENCES [SF].[User] ([Id])
+GO
+ALTER TABLE [SF].[CampaignMemberStatus] NOCHECK CONSTRAINT [fk_CampaignMemberStatus_User_LastModifiedById]
 GO

@@ -1,4 +1,4 @@
-/* CreateDate: 03/02/2022 09:46:11.880 , ModifyDate: 03/02/2022 09:50:45.150 */
+/* CreateDate: 03/02/2022 09:46:11.880 , ModifyDate: 03/07/2022 12:02:55.543 */
 GO
 /***********************************************************************
 
@@ -287,8 +287,8 @@ BEGIN
 				   @ErrorSeverity = ERROR_SEVERITY(),
 				   @ErrorState = ERROR_STATE();
 
-			RAISERROR (@ErrorMessage, @ErrorSeverity, @ErrorState);
-			--Print @ErrorMessage
+			--RAISERROR (@ErrorMessage, @ErrorSeverity, @ErrorState);
+			Print @ErrorMessage
 
 		END CATCH
 		END

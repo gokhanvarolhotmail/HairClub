@@ -1,4 +1,4 @@
-/* CreateDate: 03/03/2022 13:53:56.240 , ModifyDate: 03/05/2022 13:04:16.460 */
+/* CreateDate: 03/03/2022 13:53:56.240 , ModifyDate: 03/07/2022 12:17:33.233 */
 GO
 CREATE TABLE [SF].[Opportunity](
 	[Id] [varchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
@@ -107,4 +107,69 @@ CREATE NONCLUSTERED INDEX [LastModifiedDate] ON [SF].[Opportunity]
 (
 	[LastModifiedDate] DESC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO
+ALTER TABLE [SF].[Opportunity]  WITH NOCHECK ADD  CONSTRAINT [fk_Opportunity_Account_AccountId] FOREIGN KEY([AccountId])
+REFERENCES [SF].[Account] ([Id])
+GO
+ALTER TABLE [SF].[Opportunity] NOCHECK CONSTRAINT [fk_Opportunity_Account_AccountId]
+GO
+ALTER TABLE [SF].[Opportunity]  WITH NOCHECK ADD  CONSTRAINT [fk_Opportunity_Campaign_CampaignId] FOREIGN KEY([CampaignId])
+REFERENCES [SF].[Campaign] ([Id])
+GO
+ALTER TABLE [SF].[Opportunity] NOCHECK CONSTRAINT [fk_Opportunity_Campaign_CampaignId]
+GO
+ALTER TABLE [SF].[Opportunity]  WITH NOCHECK ADD  CONSTRAINT [fk_Opportunity_Contact_ContactId] FOREIGN KEY([ContactId])
+REFERENCES [SF].[Contact] ([Id])
+GO
+ALTER TABLE [SF].[Opportunity] NOCHECK CONSTRAINT [fk_Opportunity_Contact_ContactId]
+GO
+ALTER TABLE [SF].[Opportunity]  WITH NOCHECK ADD  CONSTRAINT [fk_Opportunity_Contract_ContractId] FOREIGN KEY([ContractId])
+REFERENCES [SF].[Contract] ([Id])
+GO
+ALTER TABLE [SF].[Opportunity] NOCHECK CONSTRAINT [fk_Opportunity_Contract_ContractId]
+GO
+ALTER TABLE [SF].[Opportunity]  WITH NOCHECK ADD  CONSTRAINT [fk_Opportunity_PromoCode__c_Promo_Code__c] FOREIGN KEY([Promo_Code__c])
+REFERENCES [SF].[PromoCode__c] ([Id])
+GO
+ALTER TABLE [SF].[Opportunity] NOCHECK CONSTRAINT [fk_Opportunity_PromoCode__c_Promo_Code__c]
+GO
+ALTER TABLE [SF].[Opportunity]  WITH NOCHECK ADD  CONSTRAINT [fk_Opportunity_Quote_SyncedQuoteId] FOREIGN KEY([SyncedQuoteId])
+REFERENCES [SF].[Quote] ([Id])
+GO
+ALTER TABLE [SF].[Opportunity] NOCHECK CONSTRAINT [fk_Opportunity_Quote_SyncedQuoteId]
+GO
+ALTER TABLE [SF].[Opportunity]  WITH NOCHECK ADD  CONSTRAINT [fk_Opportunity_ServiceTerritory_Service_Territory__c] FOREIGN KEY([Service_Territory__c])
+REFERENCES [SF].[ServiceTerritory] ([Id])
+GO
+ALTER TABLE [SF].[Opportunity] NOCHECK CONSTRAINT [fk_Opportunity_ServiceTerritory_Service_Territory__c]
+GO
+ALTER TABLE [SF].[Opportunity]  WITH NOCHECK ADD  CONSTRAINT [fk_Opportunity_User_Approver__c] FOREIGN KEY([Approver__c])
+REFERENCES [SF].[User] ([Id])
+GO
+ALTER TABLE [SF].[Opportunity] NOCHECK CONSTRAINT [fk_Opportunity_User_Approver__c]
+GO
+ALTER TABLE [SF].[Opportunity]  WITH NOCHECK ADD  CONSTRAINT [fk_Opportunity_User_Commission_Override__c] FOREIGN KEY([Commission_Override__c])
+REFERENCES [SF].[User] ([Id])
+GO
+ALTER TABLE [SF].[Opportunity] NOCHECK CONSTRAINT [fk_Opportunity_User_Commission_Override__c]
+GO
+ALTER TABLE [SF].[Opportunity]  WITH NOCHECK ADD  CONSTRAINT [fk_Opportunity_User_CreatedById] FOREIGN KEY([CreatedById])
+REFERENCES [SF].[User] ([Id])
+GO
+ALTER TABLE [SF].[Opportunity] NOCHECK CONSTRAINT [fk_Opportunity_User_CreatedById]
+GO
+ALTER TABLE [SF].[Opportunity]  WITH NOCHECK ADD  CONSTRAINT [fk_Opportunity_User_LastModifiedById] FOREIGN KEY([LastModifiedById])
+REFERENCES [SF].[User] ([Id])
+GO
+ALTER TABLE [SF].[Opportunity] NOCHECK CONSTRAINT [fk_Opportunity_User_LastModifiedById]
+GO
+ALTER TABLE [SF].[Opportunity]  WITH NOCHECK ADD  CONSTRAINT [fk_Opportunity_User_Owner__c] FOREIGN KEY([Owner__c])
+REFERENCES [SF].[User] ([Id])
+GO
+ALTER TABLE [SF].[Opportunity] NOCHECK CONSTRAINT [fk_Opportunity_User_Owner__c]
+GO
+ALTER TABLE [SF].[Opportunity]  WITH NOCHECK ADD  CONSTRAINT [fk_Opportunity_User_OwnerId] FOREIGN KEY([OwnerId])
+REFERENCES [SF].[User] ([Id])
+GO
+ALTER TABLE [SF].[Opportunity] NOCHECK CONSTRAINT [fk_Opportunity_User_OwnerId]
 GO

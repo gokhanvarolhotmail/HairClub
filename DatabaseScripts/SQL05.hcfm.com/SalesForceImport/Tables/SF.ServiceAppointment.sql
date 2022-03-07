@@ -1,4 +1,4 @@
-/* CreateDate: 03/03/2022 13:53:56.810 , ModifyDate: 03/05/2022 13:04:17.557 */
+/* CreateDate: 03/03/2022 13:53:56.810 , ModifyDate: 03/07/2022 12:17:31.427 */
 GO
 CREATE TABLE [SF].[ServiceAppointment](
 	[Id] [varchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
@@ -104,4 +104,89 @@ CREATE NONCLUSTERED INDEX [LastModifiedDate] ON [SF].[ServiceAppointment]
 (
 	[LastModifiedDate] DESC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO
+ALTER TABLE [SF].[ServiceAppointment]  WITH NOCHECK ADD  CONSTRAINT [fk_ServiceAppointment_Account_AccountId] FOREIGN KEY([AccountId])
+REFERENCES [SF].[Account] ([Id])
+GO
+ALTER TABLE [SF].[ServiceAppointment] NOCHECK CONSTRAINT [fk_ServiceAppointment_Account_AccountId]
+GO
+ALTER TABLE [SF].[ServiceAppointment]  WITH NOCHECK ADD  CONSTRAINT [fk_ServiceAppointment_Account_ParentRecordId] FOREIGN KEY([ParentRecordId])
+REFERENCES [SF].[Account] ([Id])
+GO
+ALTER TABLE [SF].[ServiceAppointment] NOCHECK CONSTRAINT [fk_ServiceAppointment_Account_ParentRecordId]
+GO
+ALTER TABLE [SF].[ServiceAppointment]  WITH NOCHECK ADD  CONSTRAINT [fk_ServiceAppointment_Account_Person_Account__c] FOREIGN KEY([Person_Account__c])
+REFERENCES [SF].[Account] ([Id])
+GO
+ALTER TABLE [SF].[ServiceAppointment] NOCHECK CONSTRAINT [fk_ServiceAppointment_Account_Person_Account__c]
+GO
+ALTER TABLE [SF].[ServiceAppointment]  WITH NOCHECK ADD  CONSTRAINT [fk_ServiceAppointment_Contact_ContactId] FOREIGN KEY([ContactId])
+REFERENCES [SF].[Contact] ([Id])
+GO
+ALTER TABLE [SF].[ServiceAppointment] NOCHECK CONSTRAINT [fk_ServiceAppointment_Contact_ContactId]
+GO
+ALTER TABLE [SF].[ServiceAppointment]  WITH NOCHECK ADD  CONSTRAINT [fk_ServiceAppointment_Lead_Lead__c] FOREIGN KEY([Lead__c])
+REFERENCES [SF].[Lead] ([Id])
+GO
+ALTER TABLE [SF].[ServiceAppointment] NOCHECK CONSTRAINT [fk_ServiceAppointment_Lead_Lead__c]
+GO
+ALTER TABLE [SF].[ServiceAppointment]  WITH NOCHECK ADD  CONSTRAINT [fk_ServiceAppointment_Lead_ParentRecordId] FOREIGN KEY([ParentRecordId])
+REFERENCES [SF].[Lead] ([Id])
+GO
+ALTER TABLE [SF].[ServiceAppointment] NOCHECK CONSTRAINT [fk_ServiceAppointment_Lead_ParentRecordId]
+GO
+ALTER TABLE [SF].[ServiceAppointment]  WITH NOCHECK ADD  CONSTRAINT [fk_ServiceAppointment_Opportunity_ParentRecordId] FOREIGN KEY([ParentRecordId])
+REFERENCES [SF].[Opportunity] ([Id])
+GO
+ALTER TABLE [SF].[ServiceAppointment] NOCHECK CONSTRAINT [fk_ServiceAppointment_Opportunity_ParentRecordId]
+GO
+ALTER TABLE [SF].[ServiceAppointment]  WITH NOCHECK ADD  CONSTRAINT [fk_ServiceAppointment_ServiceAppointment_Service_Appointment__c] FOREIGN KEY([Service_Appointment__c])
+REFERENCES [SF].[ServiceAppointment] ([Id])
+GO
+ALTER TABLE [SF].[ServiceAppointment] NOCHECK CONSTRAINT [fk_ServiceAppointment_ServiceAppointment_Service_Appointment__c]
+GO
+ALTER TABLE [SF].[ServiceAppointment]  WITH NOCHECK ADD  CONSTRAINT [fk_ServiceAppointment_ServiceTerritory_ServiceTerritoryId] FOREIGN KEY([ServiceTerritoryId])
+REFERENCES [SF].[ServiceTerritory] ([Id])
+GO
+ALTER TABLE [SF].[ServiceAppointment] NOCHECK CONSTRAINT [fk_ServiceAppointment_ServiceTerritory_ServiceTerritoryId]
+GO
+ALTER TABLE [SF].[ServiceAppointment]  WITH NOCHECK ADD  CONSTRAINT [fk_ServiceAppointment_User_Confirmer_User__c] FOREIGN KEY([Confirmer_User__c])
+REFERENCES [SF].[User] ([Id])
+GO
+ALTER TABLE [SF].[ServiceAppointment] NOCHECK CONSTRAINT [fk_ServiceAppointment_User_Confirmer_User__c]
+GO
+ALTER TABLE [SF].[ServiceAppointment]  WITH NOCHECK ADD  CONSTRAINT [fk_ServiceAppointment_User_CreatedById] FOREIGN KEY([CreatedById])
+REFERENCES [SF].[User] ([Id])
+GO
+ALTER TABLE [SF].[ServiceAppointment] NOCHECK CONSTRAINT [fk_ServiceAppointment_User_CreatedById]
+GO
+ALTER TABLE [SF].[ServiceAppointment]  WITH NOCHECK ADD  CONSTRAINT [fk_ServiceAppointment_User_LastModifiedById] FOREIGN KEY([LastModifiedById])
+REFERENCES [SF].[User] ([Id])
+GO
+ALTER TABLE [SF].[ServiceAppointment] NOCHECK CONSTRAINT [fk_ServiceAppointment_User_LastModifiedById]
+GO
+ALTER TABLE [SF].[ServiceAppointment]  WITH NOCHECK ADD  CONSTRAINT [fk_ServiceAppointment_User_OwnerId] FOREIGN KEY([OwnerId])
+REFERENCES [SF].[User] ([Id])
+GO
+ALTER TABLE [SF].[ServiceAppointment] NOCHECK CONSTRAINT [fk_ServiceAppointment_User_OwnerId]
+GO
+ALTER TABLE [SF].[ServiceAppointment]  WITH NOCHECK ADD  CONSTRAINT [fk_ServiceAppointment_WorkOrder_ParentRecordId] FOREIGN KEY([ParentRecordId])
+REFERENCES [SF].[WorkOrder] ([Id])
+GO
+ALTER TABLE [SF].[ServiceAppointment] NOCHECK CONSTRAINT [fk_ServiceAppointment_WorkOrder_ParentRecordId]
+GO
+ALTER TABLE [SF].[ServiceAppointment]  WITH NOCHECK ADD  CONSTRAINT [fk_ServiceAppointment_WorkOrderLineItem_ParentRecordId] FOREIGN KEY([ParentRecordId])
+REFERENCES [SF].[WorkOrderLineItem] ([Id])
+GO
+ALTER TABLE [SF].[ServiceAppointment] NOCHECK CONSTRAINT [fk_ServiceAppointment_WorkOrderLineItem_ParentRecordId]
+GO
+ALTER TABLE [SF].[ServiceAppointment]  WITH NOCHECK ADD  CONSTRAINT [fk_ServiceAppointment_WorkType_WorkTypeId] FOREIGN KEY([WorkTypeId])
+REFERENCES [SF].[WorkType] ([Id])
+GO
+ALTER TABLE [SF].[ServiceAppointment] NOCHECK CONSTRAINT [fk_ServiceAppointment_WorkType_WorkTypeId]
+GO
+ALTER TABLE [SF].[ServiceAppointment]  WITH NOCHECK ADD  CONSTRAINT [fk_ServiceAppointment_WorkTypeGroup_Work_Type_Group__c] FOREIGN KEY([Work_Type_Group__c])
+REFERENCES [SF].[WorkTypeGroup] ([Id])
+GO
+ALTER TABLE [SF].[ServiceAppointment] NOCHECK CONSTRAINT [fk_ServiceAppointment_WorkTypeGroup_Work_Type_Group__c]
 GO

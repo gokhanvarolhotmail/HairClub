@@ -1,4 +1,4 @@
-/* CreateDate: 03/03/2022 13:53:55.417 , ModifyDate: 03/05/2022 13:04:13.530 */
+/* CreateDate: 03/03/2022 13:53:55.417 , ModifyDate: 03/07/2022 12:17:14.200 */
 GO
 CREATE TABLE [SF].[Campaign](
 	[Id] [varchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
@@ -89,4 +89,29 @@ CREATE NONCLUSTERED INDEX [LastModifiedDate] ON [SF].[Campaign]
 (
 	[LastModifiedDate] DESC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO
+ALTER TABLE [SF].[Campaign]  WITH NOCHECK ADD  CONSTRAINT [fk_Campaign_Campaign_ParentId] FOREIGN KEY([ParentId])
+REFERENCES [SF].[Campaign] ([Id])
+GO
+ALTER TABLE [SF].[Campaign] NOCHECK CONSTRAINT [fk_Campaign_Campaign_ParentId]
+GO
+ALTER TABLE [SF].[Campaign]  WITH NOCHECK ADD  CONSTRAINT [fk_Campaign_PromoCode__c_Promo_Code__c] FOREIGN KEY([Promo_Code__c])
+REFERENCES [SF].[PromoCode__c] ([Id])
+GO
+ALTER TABLE [SF].[Campaign] NOCHECK CONSTRAINT [fk_Campaign_PromoCode__c_Promo_Code__c]
+GO
+ALTER TABLE [SF].[Campaign]  WITH NOCHECK ADD  CONSTRAINT [fk_Campaign_User_CreatedById] FOREIGN KEY([CreatedById])
+REFERENCES [SF].[User] ([Id])
+GO
+ALTER TABLE [SF].[Campaign] NOCHECK CONSTRAINT [fk_Campaign_User_CreatedById]
+GO
+ALTER TABLE [SF].[Campaign]  WITH NOCHECK ADD  CONSTRAINT [fk_Campaign_User_LastModifiedById] FOREIGN KEY([LastModifiedById])
+REFERENCES [SF].[User] ([Id])
+GO
+ALTER TABLE [SF].[Campaign] NOCHECK CONSTRAINT [fk_Campaign_User_LastModifiedById]
+GO
+ALTER TABLE [SF].[Campaign]  WITH NOCHECK ADD  CONSTRAINT [fk_Campaign_User_OwnerId] FOREIGN KEY([OwnerId])
+REFERENCES [SF].[User] ([Id])
+GO
+ALTER TABLE [SF].[Campaign] NOCHECK CONSTRAINT [fk_Campaign_User_OwnerId]
 GO

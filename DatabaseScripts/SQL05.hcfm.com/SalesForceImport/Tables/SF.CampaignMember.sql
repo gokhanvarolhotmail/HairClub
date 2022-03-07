@@ -1,4 +1,4 @@
-/* CreateDate: 03/03/2022 13:53:55.480 , ModifyDate: 03/05/2022 13:04:15.040 */
+/* CreateDate: 03/03/2022 13:53:55.480 , ModifyDate: 03/07/2022 12:17:31.630 */
 GO
 CREATE TABLE [SF].[CampaignMember](
 	[Id] [varchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
@@ -60,4 +60,54 @@ CREATE NONCLUSTERED INDEX [LastModifiedDate] ON [SF].[CampaignMember]
 (
 	[LastModifiedDate] DESC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO
+ALTER TABLE [SF].[CampaignMember]  WITH NOCHECK ADD  CONSTRAINT [fk_CampaignMember_Account_LeadOrContactId] FOREIGN KEY([LeadOrContactId])
+REFERENCES [SF].[Account] ([Id])
+GO
+ALTER TABLE [SF].[CampaignMember] NOCHECK CONSTRAINT [fk_CampaignMember_Account_LeadOrContactId]
+GO
+ALTER TABLE [SF].[CampaignMember]  WITH NOCHECK ADD  CONSTRAINT [fk_CampaignMember_Campaign_CampaignId] FOREIGN KEY([CampaignId])
+REFERENCES [SF].[Campaign] ([Id])
+GO
+ALTER TABLE [SF].[CampaignMember] NOCHECK CONSTRAINT [fk_CampaignMember_Campaign_CampaignId]
+GO
+ALTER TABLE [SF].[CampaignMember]  WITH NOCHECK ADD  CONSTRAINT [fk_CampaignMember_Contact_ContactId] FOREIGN KEY([ContactId])
+REFERENCES [SF].[Contact] ([Id])
+GO
+ALTER TABLE [SF].[CampaignMember] NOCHECK CONSTRAINT [fk_CampaignMember_Contact_ContactId]
+GO
+ALTER TABLE [SF].[CampaignMember]  WITH NOCHECK ADD  CONSTRAINT [fk_CampaignMember_Contact_LeadOrContactId] FOREIGN KEY([LeadOrContactId])
+REFERENCES [SF].[Contact] ([Id])
+GO
+ALTER TABLE [SF].[CampaignMember] NOCHECK CONSTRAINT [fk_CampaignMember_Contact_LeadOrContactId]
+GO
+ALTER TABLE [SF].[CampaignMember]  WITH NOCHECK ADD  CONSTRAINT [fk_CampaignMember_Lead_LeadId] FOREIGN KEY([LeadId])
+REFERENCES [SF].[Lead] ([Id])
+GO
+ALTER TABLE [SF].[CampaignMember] NOCHECK CONSTRAINT [fk_CampaignMember_Lead_LeadId]
+GO
+ALTER TABLE [SF].[CampaignMember]  WITH NOCHECK ADD  CONSTRAINT [fk_CampaignMember_Lead_LeadOrContactId] FOREIGN KEY([LeadOrContactId])
+REFERENCES [SF].[Lead] ([Id])
+GO
+ALTER TABLE [SF].[CampaignMember] NOCHECK CONSTRAINT [fk_CampaignMember_Lead_LeadOrContactId]
+GO
+ALTER TABLE [SF].[CampaignMember]  WITH NOCHECK ADD  CONSTRAINT [fk_CampaignMember_Opportunity_Opportunity__c] FOREIGN KEY([Opportunity__c])
+REFERENCES [SF].[Opportunity] ([Id])
+GO
+ALTER TABLE [SF].[CampaignMember] NOCHECK CONSTRAINT [fk_CampaignMember_Opportunity_Opportunity__c]
+GO
+ALTER TABLE [SF].[CampaignMember]  WITH NOCHECK ADD  CONSTRAINT [fk_CampaignMember_User_CreatedById] FOREIGN KEY([CreatedById])
+REFERENCES [SF].[User] ([Id])
+GO
+ALTER TABLE [SF].[CampaignMember] NOCHECK CONSTRAINT [fk_CampaignMember_User_CreatedById]
+GO
+ALTER TABLE [SF].[CampaignMember]  WITH NOCHECK ADD  CONSTRAINT [fk_CampaignMember_User_LastModifiedById] FOREIGN KEY([LastModifiedById])
+REFERENCES [SF].[User] ([Id])
+GO
+ALTER TABLE [SF].[CampaignMember] NOCHECK CONSTRAINT [fk_CampaignMember_User_LastModifiedById]
+GO
+ALTER TABLE [SF].[CampaignMember]  WITH NOCHECK ADD  CONSTRAINT [fk_CampaignMember_User_LeadOrContactOwnerId] FOREIGN KEY([LeadOrContactOwnerId])
+REFERENCES [SF].[User] ([Id])
+GO
+ALTER TABLE [SF].[CampaignMember] NOCHECK CONSTRAINT [fk_CampaignMember_User_LeadOrContactOwnerId]
 GO

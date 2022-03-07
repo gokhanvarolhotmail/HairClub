@@ -1,4 +1,4 @@
-/* CreateDate: 03/03/2022 13:53:57.510 , ModifyDate: 03/05/2022 13:04:23.733 */
+/* CreateDate: 03/03/2022 13:53:57.510 , ModifyDate: 03/07/2022 12:17:31.477 */
 GO
 CREATE TABLE [SF].[WorkOrder](
 	[Id] [varchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
@@ -75,4 +75,64 @@ CREATE NONCLUSTERED INDEX [LastModifiedDate] ON [SF].[WorkOrder]
 (
 	[LastModifiedDate] DESC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO
+ALTER TABLE [SF].[WorkOrder]  WITH NOCHECK ADD  CONSTRAINT [fk_WorkOrder_Account_AccountId] FOREIGN KEY([AccountId])
+REFERENCES [SF].[Account] ([Id])
+GO
+ALTER TABLE [SF].[WorkOrder] NOCHECK CONSTRAINT [fk_WorkOrder_Account_AccountId]
+GO
+ALTER TABLE [SF].[WorkOrder]  WITH NOCHECK ADD  CONSTRAINT [fk_WorkOrder_Case_CaseId] FOREIGN KEY([CaseId])
+REFERENCES [SF].[Case] ([Id])
+GO
+ALTER TABLE [SF].[WorkOrder] NOCHECK CONSTRAINT [fk_WorkOrder_Case_CaseId]
+GO
+ALTER TABLE [SF].[WorkOrder]  WITH NOCHECK ADD  CONSTRAINT [fk_WorkOrder_Contact_ContactId] FOREIGN KEY([ContactId])
+REFERENCES [SF].[Contact] ([Id])
+GO
+ALTER TABLE [SF].[WorkOrder] NOCHECK CONSTRAINT [fk_WorkOrder_Contact_ContactId]
+GO
+ALTER TABLE [SF].[WorkOrder]  WITH NOCHECK ADD  CONSTRAINT [fk_WorkOrder_Location_LocationId] FOREIGN KEY([LocationId])
+REFERENCES [SF].[Location] ([Id])
+GO
+ALTER TABLE [SF].[WorkOrder] NOCHECK CONSTRAINT [fk_WorkOrder_Location_LocationId]
+GO
+ALTER TABLE [SF].[WorkOrder]  WITH NOCHECK ADD  CONSTRAINT [fk_WorkOrder_ServiceContract_ServiceContractId] FOREIGN KEY([ServiceContractId])
+REFERENCES [SF].[ServiceContract] ([Id])
+GO
+ALTER TABLE [SF].[WorkOrder] NOCHECK CONSTRAINT [fk_WorkOrder_ServiceContract_ServiceContractId]
+GO
+ALTER TABLE [SF].[WorkOrder]  WITH NOCHECK ADD  CONSTRAINT [fk_WorkOrder_ServiceTerritory_ServiceTerritoryId] FOREIGN KEY([ServiceTerritoryId])
+REFERENCES [SF].[ServiceTerritory] ([Id])
+GO
+ALTER TABLE [SF].[WorkOrder] NOCHECK CONSTRAINT [fk_WorkOrder_ServiceTerritory_ServiceTerritoryId]
+GO
+ALTER TABLE [SF].[WorkOrder]  WITH NOCHECK ADD  CONSTRAINT [fk_WorkOrder_User_CreatedById] FOREIGN KEY([CreatedById])
+REFERENCES [SF].[User] ([Id])
+GO
+ALTER TABLE [SF].[WorkOrder] NOCHECK CONSTRAINT [fk_WorkOrder_User_CreatedById]
+GO
+ALTER TABLE [SF].[WorkOrder]  WITH NOCHECK ADD  CONSTRAINT [fk_WorkOrder_User_LastModifiedById] FOREIGN KEY([LastModifiedById])
+REFERENCES [SF].[User] ([Id])
+GO
+ALTER TABLE [SF].[WorkOrder] NOCHECK CONSTRAINT [fk_WorkOrder_User_LastModifiedById]
+GO
+ALTER TABLE [SF].[WorkOrder]  WITH NOCHECK ADD  CONSTRAINT [fk_WorkOrder_User_OwnerId] FOREIGN KEY([OwnerId])
+REFERENCES [SF].[User] ([Id])
+GO
+ALTER TABLE [SF].[WorkOrder] NOCHECK CONSTRAINT [fk_WorkOrder_User_OwnerId]
+GO
+ALTER TABLE [SF].[WorkOrder]  WITH NOCHECK ADD  CONSTRAINT [fk_WorkOrder_WorkOrder_ParentWorkOrderId] FOREIGN KEY([ParentWorkOrderId])
+REFERENCES [SF].[WorkOrder] ([Id])
+GO
+ALTER TABLE [SF].[WorkOrder] NOCHECK CONSTRAINT [fk_WorkOrder_WorkOrder_ParentWorkOrderId]
+GO
+ALTER TABLE [SF].[WorkOrder]  WITH NOCHECK ADD  CONSTRAINT [fk_WorkOrder_WorkOrder_RootWorkOrderId] FOREIGN KEY([RootWorkOrderId])
+REFERENCES [SF].[WorkOrder] ([Id])
+GO
+ALTER TABLE [SF].[WorkOrder] NOCHECK CONSTRAINT [fk_WorkOrder_WorkOrder_RootWorkOrderId]
+GO
+ALTER TABLE [SF].[WorkOrder]  WITH NOCHECK ADD  CONSTRAINT [fk_WorkOrder_WorkType_WorkTypeId] FOREIGN KEY([WorkTypeId])
+REFERENCES [SF].[WorkType] ([Id])
+GO
+ALTER TABLE [SF].[WorkOrder] NOCHECK CONSTRAINT [fk_WorkOrder_WorkType_WorkTypeId]
 GO

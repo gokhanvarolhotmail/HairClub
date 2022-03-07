@@ -1,4 +1,4 @@
-/* CreateDate: 03/03/2022 13:53:57.210 , ModifyDate: 03/05/2022 13:04:20.137 */
+/* CreateDate: 03/03/2022 13:53:57.210 , ModifyDate: 03/07/2022 12:17:14.840 */
 GO
 CREATE TABLE [SF].[ServiceTerritoryMember](
 	[Id] [varchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
@@ -45,4 +45,24 @@ CREATE NONCLUSTERED INDEX [LastModifiedDate] ON [SF].[ServiceTerritoryMember]
 (
 	[LastModifiedDate] DESC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO
+ALTER TABLE [SF].[ServiceTerritoryMember]  WITH NOCHECK ADD  CONSTRAINT [fk_ServiceTerritoryMember_ServiceResource_ServiceResourceId] FOREIGN KEY([ServiceResourceId])
+REFERENCES [SF].[ServiceResource] ([Id])
+GO
+ALTER TABLE [SF].[ServiceTerritoryMember] NOCHECK CONSTRAINT [fk_ServiceTerritoryMember_ServiceResource_ServiceResourceId]
+GO
+ALTER TABLE [SF].[ServiceTerritoryMember]  WITH NOCHECK ADD  CONSTRAINT [fk_ServiceTerritoryMember_ServiceTerritory_ServiceTerritoryId] FOREIGN KEY([ServiceTerritoryId])
+REFERENCES [SF].[ServiceTerritory] ([Id])
+GO
+ALTER TABLE [SF].[ServiceTerritoryMember] NOCHECK CONSTRAINT [fk_ServiceTerritoryMember_ServiceTerritory_ServiceTerritoryId]
+GO
+ALTER TABLE [SF].[ServiceTerritoryMember]  WITH NOCHECK ADD  CONSTRAINT [fk_ServiceTerritoryMember_User_CreatedById] FOREIGN KEY([CreatedById])
+REFERENCES [SF].[User] ([Id])
+GO
+ALTER TABLE [SF].[ServiceTerritoryMember] NOCHECK CONSTRAINT [fk_ServiceTerritoryMember_User_CreatedById]
+GO
+ALTER TABLE [SF].[ServiceTerritoryMember]  WITH NOCHECK ADD  CONSTRAINT [fk_ServiceTerritoryMember_User_LastModifiedById] FOREIGN KEY([LastModifiedById])
+REFERENCES [SF].[User] ([Id])
+GO
+ALTER TABLE [SF].[ServiceTerritoryMember] NOCHECK CONSTRAINT [fk_ServiceTerritoryMember_User_LastModifiedById]
 GO
