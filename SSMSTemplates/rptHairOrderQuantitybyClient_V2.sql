@@ -58,7 +58,7 @@ CREATE TABLE [#membership] ( [MembershipID] INT ) ;
 INSERT INTO [#membership]
 SELECT CAST(NULLIF([value], '') AS INT)
 FROM STRING_SPLIT(@MembershipList, ',')
-WHERE @MembershipList NOT IN ('0', '')
+WHERE @MembershipList NOT IN ('0', '') AND [value] <> ''
 OPTION( RECOMPILE ) ;
 
 DECLARE @MembershipCount INT = @@ROWCOUNT ;
@@ -92,7 +92,8 @@ IF( @CenterID = 1 )
         INSERT [#CenterId]( [CenterId] )
         SELECT [CenterID]
         FROM [dbo].[cfgCenter]
-        WHERE [CenterTypeID] = @CorpCenterTypeID AND [IsCorporateHeadquartersFlag] = 0 ;
+        WHERE [CenterTypeID] = @CorpCenterTypeID AND [IsCorporateHeadquartersFlag] = 0
+        OPTION( RECOMPILE ) ;
     END ;
 
 -- Add Franchise CenterIDs to List
@@ -101,7 +102,8 @@ ELSE IF( @CenterID = 2 )
         INSERT [#CenterId]( [CenterId] )
         SELECT [CenterID]
         FROM [dbo].[cfgCenter]
-        WHERE [CenterTypeID] = @FranchiseCenterTypeID ;
+        WHERE [CenterTypeID] = @FranchiseCenterTypeID
+        OPTION( RECOMPILE ) ;
     END ;
 
 -- Add JointVenture CenterIDs to List
@@ -110,7 +112,8 @@ ELSE IF( @CenterID = 3 )
         INSERT [#CenterId]( [CenterId] )
         SELECT [CenterID]
         FROM [dbo].[cfgCenter]
-        WHERE [CenterTypeID] = @JointVentureCenterTypeID ;
+        WHERE [CenterTypeID] = @JointVentureCenterTypeID
+        OPTION( RECOMPILE ) ;
     END ;
 ELSE
     INSERT [#CenterId]( [CenterId] )
