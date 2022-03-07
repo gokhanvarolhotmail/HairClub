@@ -78,7 +78,7 @@ WHERE [CenterTypeDescriptionShort] IN ('C', 'F', 'JV') ;
 
 DROP TABLE IF EXISTS [#CenterId] ;
 
-CREATE TABLE [#CenterId] ( [CenterId] INT NOT NULL PRIMARY KEY CLUSTERED ) ;
+CREATE TABLE [#CenterId] ( [CenterId] INT NOT NULL UNIQUE CLUSTERED ) ;
 
 IF( @CenterID = 1 )
     BEGIN
@@ -138,6 +138,8 @@ CREATE TABLE [#hair]
   , [FrozenEFTEndDate]                     DATE
   , [EstNextApp]                           DATE
   , [LastApplicationDate]                  DATE
+  , [ContractPrice]                        MONEY
+  , [ContractPaidAmount]                   MONEY
 ) ;
 
 -- Last Application Date
@@ -221,7 +223,9 @@ INSERT INTO [#hair]( [HairSystemOrderNumber]
                    , [MembershipExpiration]
                    , [FrozenEFTEndDate]
                    , [EstNextApp]
-                   , [LastApplicationDate] )
+                   , [LastApplicationDate]
+                   , [ContractPrice]
+                   , [ContractPaidAmount] )
 SELECT
     [hso].[HairSystemOrderNumber]
   , [clt].[CenterID]
@@ -244,6 +248,8 @@ SELECT
   , [eft].[FrozenEFTEndDate]
   , [nad].[EstNextApp]
   , [sna].[LastApplicationDate]
+  , [cm].[ContractPrice]
+  , [cm].[ContractPaidAmount]
 FROM [dbo].[datClient] AS [clt]
 INNER JOIN [dbo].[datClientMembership] AS [cm] ON [cm].[ClientMembershipGUID] = [clt].[CurrentBioMatrixClientMembershipGUID]
 INNER JOIN [dbo].[cfgCenter] AS [c] ON [c].[CenterID] = [clt].[CenterID]
@@ -487,13 +493,15 @@ SELECT
   , [c1].[OldestOrderPlacedDate]
   , [c1].[OldestOrderPlacedDueDate]
   , [c2].[NewestOrderSystemType]
-  , [c3].[Cnt] AS [RemainingQuantityToOrder]
+  , CASE WHEN [c3].[Cnt] >= ISNULL([q].[InitialQuantity], 0) THEN [c3].[Cnt] - ISNULL([q].[InitialQuantity], 0)ELSE 0 END AS [RemainingQuantityToOrder]
   , [q].[Region]
   , [c2].[NewestOrderDate]
   , [q].[MembershipExpiration]
   , [q].[FrozenEFTEndDate]
   , [q].[EstNextApp]
---, [q].[OrderAvailForNextApp]
+  --, [q].[OrderAvailForNextApp]
+  , ISNULL([q].[ContractPrice], 0) AS [ContractPrice]
+  , ISNULL([q].[ContractPaidAmount], 0) AS [ContractPaidAmount]
 INTO [#tmpHairOrderQuantitybyClient]
 FROM( SELECT
           [hair].[ClientGUID]
@@ -515,7 +523,9 @@ FROM( SELECT
         , MAX([hair].[FrozenEFTEndDate]) AS [FrozenEFTEndDate]
         , MAX([hair].[EstNextApp]) AS [EstNextApp]
         , MAX([hair].[LastApplicationDate]) AS [LastApplicationDate]
-      --, MAX(CASE WHEN [hair].[HairSystemOrderDate] = [hair].[NextAppointmentDate] AND [hair].[InCenter] = 1 THEN 1 ELSE 0 END) AS [OrderAvailForNextApp]
+        --, MAX(CASE WHEN [hair].[HairSystemOrderDate] = [hair].[NextAppointmentDate] AND [hair].[InCenter] = 1 THEN 1 ELSE 0 END) AS [OrderAvailForNextApp]
+        , MAX([hair].[ContractPrice]) AS [ContractPrice]
+        , MAX([hair].[ContractPaidAmount]) AS [ContractPaidAmount]
       FROM [#hair] AS [hair]
       LEFT JOIN [dbo].[datClientMembershipAccum] AS [ahs] ON [hair].[CurrentBioMatrixClientMembershipGUID] = [ahs].[ClientMembershipGUID] AND [ahs].[AccumulatorID] = 8 --Hair Systems
       LEFT JOIN [#initialquantity] AS [iq] ON [hair].[MembershipID] = [iq].[MembershipID]
@@ -545,6 +555,7 @@ SELECT
   , [k].[Client]
   , [k].[Current Membership]
   , [k].[Membership Expiration]
+  , [k].[ContractAmtPaid%] AS [Contract Amt Paid %]
   , [k].[Membership Qty]
   , CASE WHEN [k].[Frozen EFT End Date] > @GetDate THEN [k].[Frozen EFT End Date] END AS [Frozen EFT End Date]
   , [k].[QA Needed]
@@ -588,7 +599,7 @@ FROM( SELECT
         , CASE WHEN [t].[Calc01] > [t].[Calc02] THEN CONCAT('Yes; ', [t].[Calc01] - [t].[Calc02])ELSE 'No' END AS [Priority Order Needed]
         --, CASE WHEN [t].[PriorityHairNeeded] = 1 THEN 'Yes' ELSE 'No' END AS [Priority Order Needed]
         , CAST(CASE WHEN [t].[SuggestedQuantityToOrder] > [gms].[MaxVal] THEN [gms].[MaxVal] WHEN [t].[SuggestedQuantityToOrder] > 0 THEN [t].[SuggestedQuantityToOrder] ELSE 0 END AS INT) AS [Suggested Qty to Order]
-
+        , CAST(ROUND([t].[ContractPaidAmount] * 100.0 / NULLIF([t].[ContractPrice], 0), 0) AS INT) AS [ContractAmtPaid%]
       --, CAST([t].[DueDate] AS DATE) AS [Due Date]
       --, [t].[TotalAccumQuantity] AS [Total Accum Qty]
       --, [t].[Promo]
@@ -616,6 +627,7 @@ ORDER BY [k].[Region]
        , [k].[Client]
 OPTION( RECOMPILE ) ;
 GO
+
 RETURN ;
 
 IF OBJECT_ID('[tempdb]..[##rptHairOrderQuantitybyClient_V2]') IS NOT NULL
@@ -628,6 +640,7 @@ CREATE TABLE [##rptHairOrderQuantitybyClient_V2]
   , [Client]                        NVARCHAR(127) NULL
   , [Current Membership]            NVARCHAR(50)  NULL
   , [Membership Expiration]         DATE          NULL
+  , [Contract Amt Paid %]           INT
   , [Membership Qty]                INT           NOT NULL
   , [Frozen EFT End Date]           DATE          NULL
   , [QA Needed]                     INT           NOT NULL
@@ -660,6 +673,7 @@ SELECT
   , [Client]
   , [Current Membership]
   , [Membership Expiration]
+  , [Contract Amt Paid %]
   , [Membership Qty]
   , [Frozen EFT End Date]
   , [QA Needed]
@@ -696,4 +710,3 @@ SELECT * FROM tempdb.dbo.gokhan
 GO
 DROP TABLE tempdb.dbo.gokhan
 */
-EXEC [dbo].[rptHairOrderQuantitybyClient_V2] NULL, NULL ;
