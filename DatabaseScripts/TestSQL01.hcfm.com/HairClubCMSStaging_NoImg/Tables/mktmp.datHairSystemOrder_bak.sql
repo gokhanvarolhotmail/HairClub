@@ -1,4 +1,4 @@
-/* CreateDate: 01/03/2022 11:03:54.480 , ModifyDate: 02/07/2022 11:05:03.377 */
+/* CreateDate: 01/03/2022 11:03:54.480 , ModifyDate: 02/07/2022 11:10:10.187 */
 GO
 CREATE TABLE [mktmp].[datHairSystemOrder_bak](
 	[HairSystemOrderGUID] [uniqueidentifier] NOT NULL,

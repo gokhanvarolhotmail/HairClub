@@ -1,4 +1,4 @@
-/* CreateDate: 11/18/2016 11:55:05.277 , ModifyDate: 01/31/2022 08:32:31.863 */
+/* CreateDate: 11/18/2016 11:55:05.277 , ModifyDate: 03/04/2022 16:09:12.813 */
 GO
 CREATE TABLE [dbo].[lkpDaylightSavings](
 	[DaylightSavingsID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,

@@ -1,4 +1,4 @@
-/* CreateDate: 10/04/2010 12:08:45.140 , ModifyDate: 01/31/2022 08:32:31.777 */
+/* CreateDate: 10/04/2010 12:08:45.140 , ModifyDate: 03/04/2022 16:09:12.643 */
 GO
 CREATE TABLE [dbo].[lkpVendorType](
 	[VendorTypeID] [int] NOT NULL,

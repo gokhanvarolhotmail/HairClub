@@ -1,4 +1,4 @@
-/* CreateDate: 06/19/2021 08:18:35.077 , ModifyDate: 01/20/2022 11:23:08.473 */
+/* CreateDate: 06/19/2021 08:18:35.077 , ModifyDate: 03/04/2022 11:59:31.803 */
 GO
 /***********************************************************************
 PROCEDURE:				spRpt_DailyFlash
@@ -74,9 +74,7 @@ BEGIN
     SET @CurrentYearEnd = DATEADD(MINUTE, -1, DATEADD(YEAR, 1, @CurrentYearStart))
     SET @CurrentQuarterStartDate = DATEADD(QUARTER, DATEDIFF(QUARTER, 0, @YesterdayStart), 0)
     SET @CurrentQuarterEndDate = DATEADD(DAY, -1, DATEADD(QUARTER, DATEDIFF(QUARTER, 0, @YesterdayStart) + 1, 0))
-    SET @CurrentFiscalYearStart = (SELECT CONVERT(DATETIME, '1/1/' + CONVERT(VARCHAR, YEAR(FullDate)))
-                                   FROM HC_BI_ENT_DDS.bief_dds.DimDate
-                                   WHERE FullDate = CONVERT(DATETIME, CONVERT(VARCHAR, @YesterdayStart, 101)))
+    SET @CurrentFiscalYearStart = CONVERT(DATETIME, '1/1/' + CONVERT(VARCHAR, YEAR(CONVERT(DATETIME, CONVERT(VARCHAR, @YesterdayStart, 101)))))
     SET @CurrentFiscalYearEnd = DATEADD(MINUTE, -1, DATEADD(YEAR, 1, @CurrentFiscalYearStart))
     SET @RoyaltyPercentage = 0.06
 

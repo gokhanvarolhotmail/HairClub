@@ -1,4 +1,4 @@
-/* CreateDate: 08/05/2014 08:15:50.717 , ModifyDate: 01/31/2022 08:32:31.837 */
+/* CreateDate: 08/05/2014 08:15:50.717 , ModifyDate: 03/04/2022 16:09:12.763 */
 GO
 CREATE TABLE [dbo].[lkpSebumLevel](
 	[SebumLevelID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,

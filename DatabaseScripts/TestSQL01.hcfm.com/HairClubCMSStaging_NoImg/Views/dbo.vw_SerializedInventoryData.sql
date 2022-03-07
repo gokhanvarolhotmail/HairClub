@@ -1,4 +1,4 @@
-/* CreateDate: 09/10/2018 10:59:19.700 , ModifyDate: 02/01/2022 10:54:09.617 */
+/* CreateDate: 09/10/2018 10:59:19.700 , ModifyDate: 02/01/2022 10:54:18.037 */
 GO
 CREATE VIEW [dbo].[vw_SerializedInventoryData]
 AS

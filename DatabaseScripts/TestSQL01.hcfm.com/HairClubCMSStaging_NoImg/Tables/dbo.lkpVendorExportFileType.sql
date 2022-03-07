@@ -1,4 +1,4 @@
-/* CreateDate: 10/14/2011 12:05:45.500 , ModifyDate: 01/31/2022 08:32:31.723 */
+/* CreateDate: 10/14/2011 12:05:45.500 , ModifyDate: 03/04/2022 16:09:12.540 */
 GO
 CREATE TABLE [dbo].[lkpVendorExportFileType](
 	[VendorExportFileTypeID] [int] NOT NULL,

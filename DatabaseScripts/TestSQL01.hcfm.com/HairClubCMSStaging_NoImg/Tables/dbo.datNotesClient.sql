@@ -1,4 +1,4 @@
-/* CreateDate: 10/28/2008 15:22:20.733 , ModifyDate: 01/31/2022 08:32:31.723 */
+/* CreateDate: 10/28/2008 15:22:20.733 , ModifyDate: 03/04/2022 16:09:12.540 */
 GO
 CREATE TABLE [dbo].[datNotesClient](
 	[NotesClientGUID] [uniqueidentifier] NOT NULL,

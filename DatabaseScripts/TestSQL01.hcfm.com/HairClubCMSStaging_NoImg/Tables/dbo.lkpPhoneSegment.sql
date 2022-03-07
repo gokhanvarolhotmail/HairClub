@@ -1,4 +1,4 @@
-/* CreateDate: 08/27/2012 08:40:09.657 , ModifyDate: 01/31/2022 08:32:31.763 */
+/* CreateDate: 08/27/2012 08:40:09.657 , ModifyDate: 03/04/2022 16:09:12.620 */
 GO
 CREATE TABLE [dbo].[lkpPhoneSegment](
 	[PhoneSegmentID] [int] NOT NULL,

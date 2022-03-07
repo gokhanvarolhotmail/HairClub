@@ -1,4 +1,4 @@
-/* CreateDate: 05/31/2016 07:49:04.927 , ModifyDate: 02/04/2022 21:31:54.967 */
+/* CreateDate: 05/31/2016 07:49:04.927 , ModifyDate: 03/04/2022 16:09:12.907 */
 GO
 CREATE TABLE [dbo].[datHairSystemInventoryBatch](
 	[HairSystemInventoryBatchID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,

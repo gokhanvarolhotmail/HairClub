@@ -1,4 +1,4 @@
-/* CreateDate: 12/31/2010 13:21:02.433 , ModifyDate: 01/31/2022 08:32:31.753 */
+/* CreateDate: 12/31/2010 13:21:02.433 , ModifyDate: 03/04/2022 16:09:12.600 */
 GO
 CREATE TABLE [dbo].[lkpAccountingExportBatchType](
 	[AccountingExportBatchTypeID] [int] NOT NULL,

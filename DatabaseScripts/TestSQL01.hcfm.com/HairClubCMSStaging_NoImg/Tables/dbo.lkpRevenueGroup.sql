@@ -1,4 +1,4 @@
-/* CreateDate: 08/27/2008 12:17:00.943 , ModifyDate: 01/31/2022 08:32:31.927 */
+/* CreateDate: 08/27/2008 12:17:00.943 , ModifyDate: 03/04/2022 16:09:12.933 */
 GO
 CREATE TABLE [dbo].[lkpRevenueGroup](
 	[RevenueGroupID] [int] NOT NULL,

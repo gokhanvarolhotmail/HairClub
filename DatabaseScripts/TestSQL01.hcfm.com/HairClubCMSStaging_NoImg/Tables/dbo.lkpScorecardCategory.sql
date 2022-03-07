@@ -1,4 +1,4 @@
-/* CreateDate: 11/04/2019 08:18:20.160 , ModifyDate: 01/31/2022 08:32:31.777 */
+/* CreateDate: 11/04/2019 08:18:20.160 , ModifyDate: 03/04/2022 16:09:12.643 */
 GO
 CREATE TABLE [dbo].[lkpScorecardCategory](
 	[ScorecardCategoryID] [int] IDENTITY(1,1) NOT NULL,

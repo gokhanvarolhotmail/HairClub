@@ -1,0 +1,4 @@
+/* CreateDate: 02/21/2022 14:32:25.247 , ModifyDate: 02/21/2022 14:32:25.247 */
+GO
+CREATE SYNONYM [dbo].[SF_Lead] FOR [SALESFORCE_PROD]...[Lead]
+GO

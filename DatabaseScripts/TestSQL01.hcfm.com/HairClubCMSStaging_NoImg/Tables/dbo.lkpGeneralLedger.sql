@@ -1,4 +1,4 @@
-/* CreateDate: 02/04/2009 09:15:59.620 , ModifyDate: 01/31/2022 08:32:31.833 */
+/* CreateDate: 02/04/2009 09:15:59.620 , ModifyDate: 03/04/2022 16:09:12.750 */
 GO
 CREATE TABLE [dbo].[lkpGeneralLedger](
 	[GeneralLedgerID] [int] NOT NULL,

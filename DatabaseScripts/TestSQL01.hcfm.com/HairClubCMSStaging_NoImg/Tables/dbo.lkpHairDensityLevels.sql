@@ -1,4 +1,4 @@
-/* CreateDate: 09/24/2014 22:36:49.097 , ModifyDate: 01/31/2022 08:32:31.913 */
+/* CreateDate: 09/24/2014 22:36:49.097 , ModifyDate: 03/04/2022 16:09:12.903 */
 GO
 CREATE TABLE [dbo].[lkpHairDensityLevels](
 	[HairDensityLevelsID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,

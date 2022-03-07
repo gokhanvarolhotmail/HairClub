@@ -1,4 +1,4 @@
-/* CreateDate: 02/09/2022 11:04:51.190 , ModifyDate: 02/09/2022 11:04:51.190 */
+/* CreateDate: 02/09/2022 11:04:59.477 , ModifyDate: 02/09/2022 11:04:59.477 */
 GO
 CREATE FUNCTION [dbo].[GetDates]( @low AS DATE, @high AS DATE )
 RETURNS TABLE

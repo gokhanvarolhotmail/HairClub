@@ -1,4 +1,4 @@
-/* CreateDate: 02/26/2017 22:35:10.547 , ModifyDate: 01/31/2022 08:32:31.693 */
+/* CreateDate: 02/26/2017 22:35:10.547 , ModifyDate: 03/04/2022 16:09:12.487 */
 GO
 CREATE TABLE [dbo].[datTechnicalProfilePermRelaxer](
 	[TechnicalProfilePermRelaxerID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,

@@ -1,4 +1,4 @@
-/* CreateDate: 02/06/2014 20:26:42.590 , ModifyDate: 01/31/2022 08:32:31.713 */
+/* CreateDate: 02/06/2014 20:26:42.590 , ModifyDate: 03/04/2022 16:09:12.520 */
 GO
 CREATE TABLE [dbo].[datInterCompanyTransactionDetail](
 	[InterCompanyTransactionDetailId] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,

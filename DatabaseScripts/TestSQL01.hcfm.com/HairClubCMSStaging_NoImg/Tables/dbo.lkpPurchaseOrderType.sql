@@ -1,4 +1,4 @@
-/* CreateDate: 12/31/2010 13:21:02.037 , ModifyDate: 01/31/2022 08:32:31.733 */
+/* CreateDate: 12/31/2010 13:21:02.037 , ModifyDate: 03/04/2022 16:09:12.560 */
 GO
 CREATE TABLE [dbo].[lkpPurchaseOrderType](
 	[PurchaseOrderTypeID] [int] NOT NULL,

@@ -1,0 +1,38 @@
+/* CreateDate: 02/07/2022 09:17:00.393 , ModifyDate: 02/07/2022 11:18:10.763 */
+GO
+CREATE TABLE [mktmp].[tmp_CentersToEnable](
+	[MembershipID] [float] NULL,
+	[MembershipSortOrder] [float] NULL,
+	[MembershipDescription] [nvarchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[MembershipDescriptionShort] [nvarchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[CML?] [nvarchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[CP+?] [nvarchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[MembershipDescriptionShort1] [nvarchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[BusinessSegmentID] [float] NULL,
+	[RevenueGroupID] [float] NULL,
+	[GenderID] [float] NULL,
+	[DurationMonths] [float] NULL,
+	[ContractPrice] [float] NULL,
+	[MonthlyFee] [float] NULL,
+	[IsTaxableFlag] [float] NULL,
+	[IsDefaultMembershipFlag] [float] NULL,
+	[IsActiveFlag] [float] NULL,
+	[CreateDate] [datetime] NULL,
+	[CreateUser] [nvarchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[LastUpdate] [datetime] NULL,
+	[LastUpdateUser] [nvarchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[UpdateStamp] [nvarchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[IsHairSystemOrderRushFlag] [float] NULL,
+	[HairSystemGeneralLedgerID] [nvarchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[DefaultPaymentSalesCodeID] [float] NULL,
+	[NumRenewalDays] [float] NULL,
+	[NumDaysAfterCancelBeforeNew] [float] NULL,
+	[CanCheckinForConsultation] [float] NULL,
+	[MaximumHairSystemHairLengthValue] [float] NULL,
+	[ExpectedConversionDays] [float] NULL,
+	[MinimumAge] [nvarchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[MaximumAge] [nvarchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[MaximumLongHairAddOnHairLengthValue] [nvarchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[BOSSalesTypeCode] [float] NULL
+) ON [PRIMARY]
+GO

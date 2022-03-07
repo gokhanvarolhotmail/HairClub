@@ -1,4 +1,4 @@
-/* CreateDate: 11/20/2019 11:00:54.880 , ModifyDate: 05/29/2020 13:39:55.130 */
+/* CreateDate: 02/09/2022 08:15:01.513 , ModifyDate: 02/09/2022 09:10:42.197 */
 GO
 /*===============================================================================================
 -- Procedure Name:			rptClientWOFutureAppointment
@@ -18,13 +18,7 @@ NOTES: @Status = 1 for Active, 2 for Canceled, 3 for All
 CHANGE HISTORY:
 --------------------------------------------------------------------------------------------------------
 SAMPLE EXECUTION:
-EXEC [rptClientWOFutureAppointment] 849, '7/1/2019', '7/31/2019', 2, 1, NULL, 1
-EXEC [rptClientWOFutureAppointment] 201, '8/1/2019', '8/30/2019', 2, 1, NULL, 2
-
-
-EXEC [rptClientWOFutureAppointment] 201, '10/27/2019', '12/11/2019', 0, 0, NULL, 1
-
-
+EXEC [rptClientWOFutureAppointment] '1/09/2022', '02/09/2022', 4, 0, 0, 3
 EXEC [rptClientWOFutureAppointment] '4/19/2020', '5/30/2020', 213, 0, 0, 1
 ================================================================================================*/
 CREATE PROCEDURE [dbo].[rptClientWOFutureAppointment]
@@ -51,6 +45,7 @@ BEGIN
 1	Corporate Centers
 2	Franchise Centers
 3	Joint Ventures
+4   All
 */
 CREATE TABLE #Center(CenterID INT
 )
@@ -70,6 +65,11 @@ ELSE IF @CenterID = '3'
 	SELECT        CenterID
 	FROM          cfgCenter WITH (NOLOCK)
 	WHERE         Centertypeid = 3 AND IsActiveFlag = 1
+ELSE IF @CenterID = '4'
+	INSERT INTO   #Center
+	SELECT        CenterID
+	FROM          cfgCenter WITH (NOLOCK)
+	WHERE         Centertypeid IN (1,2,3) AND IsActiveFlag = 1
 ELSE
 	INSERT INTO   #Center
 	SELECT        CenterID
@@ -161,7 +161,9 @@ CREATE TABLE #LastPayment(
 )
 
 CREATE TABLE #Expiration(
-	ClientFullNameCalc  NVARCHAR(250)
+	RegionDescription   NVARCHAR(250)
+,	CenterDEscription	NVARCHAR(250)
+,	ClientFullNameCalc  NVARCHAR(250)
 ,	MembershipID INT
 ,	MembershipDescription NVARCHAR(50)
 ,	CurrentMembership NVARCHAR(50)
@@ -345,7 +347,9 @@ WHERE (SC.SalesCodeDepartmentID  = @MembershipReveueID OR SC.SalesCodeDepartment
 IF @Status = 1         --Active
 BEGIN
 INSERT INTO #Expiration
-SELECT CLT.ClientFullNameCalc
+SELECT LR.RegionDescription
+	,	CC.CenterDescription
+	,	CLT.ClientFullNameCalc
 	,	M.MembershipID
 	,	M.MembershipDescription
 	,	CURR.MembershipDescription AS 'CurrentMembership'
@@ -379,7 +383,10 @@ SELECT CLT.ClientFullNameCalc
 FROM #Membership TMP WITH (NOLOCK)
 		INNER JOIN datClient CLT WITH (NOLOCK)
 			ON CLT.ClientGUID = TMP.ClientGUID
-			--AND CLT.CenterID = @CenterID
+		INNER JOIN cfgCenter CC with (NOLOCK)
+			ON CLT.CenterID = CC.CenterID
+		INNER JOIN lkpRegion LR WITH (NOLOCK)
+			ON LR.RegionID = CC.RegionID
 		INNER JOIN cfgMembership M WITH (NOLOCK)
 			ON M.MembershipID = TMP.MembershipID
 		INNER JOIN lkpBusinessSegment BS WITH (NOLOCK)
@@ -402,7 +409,9 @@ ELSE
 IF @Status = 2
 BEGIN
 INSERT INTO #Expiration
-SELECT CLT.ClientFullNameCalc
+SELECT LR.RegionDescription
+	,	CC.CenterDescription
+	,	CLT.ClientFullNameCalc
 	,	M.MembershipID
 	,	M.MembershipDescription
 	,	CURR.MembershipDescription AS 'CurrentMembership'
@@ -436,7 +445,10 @@ SELECT CLT.ClientFullNameCalc
 FROM #Membership TMP WITH (NOLOCK)
 		INNER JOIN datClient CLT WITH (NOLOCK)
 			ON CLT.ClientGUID = TMP.ClientGUID
-			--AND CLT.CenterID = @CenterID
+		INNER JOIN cfgCenter CC with (NOLOCK)
+			ON CLT.CenterID = CC.CenterID
+		INNER JOIN lkpRegion LR WITH (NOLOCK)
+			ON LR.RegionID = CC.RegionID
 		INNER JOIN cfgMembership M WITH (NOLOCK)
 			ON M.MembershipID = TMP.MembershipID
 		INNER JOIN lkpBusinessSegment BS WITH (NOLOCK)
@@ -459,7 +471,9 @@ ELSE
 IF @Status = 3
 BEGIN
 INSERT INTO #Expiration
-SELECT CLT.ClientFullNameCalc
+SELECT LR.RegionDescription
+	,	CC.CenterDescription
+	,	CLT.ClientFullNameCalc
 	,	M.MembershipID
 	,	M.MembershipDescription
 	,	CURR.MembershipDescription AS 'CurrentMembership'
@@ -493,7 +507,10 @@ SELECT CLT.ClientFullNameCalc
 FROM #Membership TMP WITH (NOLOCK)
 		INNER JOIN datClient CLT WITH (NOLOCK)
 			ON CLT.ClientGUID = TMP.ClientGUID
-			--AND CLT.CenterID = @CenterID
+		INNER JOIN cfgCenter CC with (NOLOCK)
+			ON CLT.CenterID = CC.CenterID
+		INNER JOIN lkpRegion LR WITH (NOLOCK)
+			ON LR.RegionID = CC.RegionID
 		INNER JOIN cfgMembership M WITH (NOLOCK)
 			ON M.MembershipID = TMP.MembershipID
 		INNER JOIN lkpBusinessSegment BS WITH (NOLOCK)
@@ -514,16 +531,18 @@ WHERE   --TMP.EndDate BETWEEN @StartDate AND @EndDate
 END
 
 SELECT distinct
-    ClientFullNameCalc
+	RegionDescription
+,	CenterDescription
+,   ClientFullNameCalc
 --,	MembershipID
 ,	MembershipDescription
---,	CurrentMembership
---,	CurrentStatus
+,	CurrentMembership
+,	CurrentStatus
 --,	RevenueGroupID
---,	RevenueGroupDescription
+,	RevenueGroupDescription
 --,	RevenueGroupDescriptionShort
 --,	BusinessSegmentID
---,	BusinessSegmentDescription
+,	BusinessSegmentDescription
 --,	BusinessSegmentDescriptionShort
 ,	EndDate
 ,	HomePhone
@@ -536,7 +555,7 @@ SELECT distinct
 ,	TenderAmount
 ,	LastStylist
 ,	[DateDiff]
---,	Over31Days
+,	Over31Days
 FROM #Expiration WITH (NOLOCK)
 WHERE ISNULL(NextAppointmentDate, '')  = ''
 

@@ -1,4 +1,4 @@
-/* CreateDate: 10/21/2008 18:09:07.303 , ModifyDate: 01/31/2022 08:32:31.893 */
+/* CreateDate: 10/21/2008 18:09:07.303 , ModifyDate: 03/04/2022 16:09:12.870 */
 GO
 CREATE TABLE [dbo].[lkpAccumulatorJoinType](
 	[AccumulatorJoinTypeID] [int] NOT NULL,

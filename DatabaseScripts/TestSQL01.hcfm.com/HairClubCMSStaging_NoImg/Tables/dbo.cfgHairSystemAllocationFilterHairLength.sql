@@ -1,4 +1,4 @@
-/* CreateDate: 10/04/2010 12:08:45.320 , ModifyDate: 01/31/2022 08:32:31.803 */
+/* CreateDate: 10/04/2010 12:08:45.320 , ModifyDate: 03/04/2022 16:09:12.697 */
 GO
 CREATE TABLE [dbo].[cfgHairSystemAllocationFilterHairLength](
 	[HairSystemAllocationFilterHairLengthID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,

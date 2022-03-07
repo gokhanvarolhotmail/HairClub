@@ -1,4 +1,4 @@
-/* CreateDate: 08/29/2008 09:52:39.633 , ModifyDate: 01/31/2022 08:32:31.760 */
+/* CreateDate: 08/29/2008 09:52:39.633 , ModifyDate: 03/04/2022 16:09:12.613 */
 GO
 CREATE TABLE [dbo].[cfgPostalCode](
 	[zip_code] [int] NOT NULL,

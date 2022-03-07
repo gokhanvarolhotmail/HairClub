@@ -1,4 +1,4 @@
-/* CreateDate: 07/18/2016 07:45:10.587 , ModifyDate: 01/31/2022 08:32:31.707 */
+/* CreateDate: 07/18/2016 07:45:10.587 , ModifyDate: 03/04/2022 16:09:12.507 */
 GO
 CREATE TABLE [dbo].[lkpPaymentPlanStatus](
 	[PaymentPlanStatusID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,

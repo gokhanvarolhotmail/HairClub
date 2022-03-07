@@ -1,4 +1,4 @@
-/* CreateDate: 12/31/2010 13:21:01.047 , ModifyDate: 01/31/2022 08:32:31.893 */
+/* CreateDate: 12/31/2010 13:21:01.047 , ModifyDate: 03/04/2022 16:09:12.873 */
 GO
 CREATE TABLE [dbo].[datHairSystemOrderTransaction](
 	[HairSystemOrderTransactionGUID] [uniqueidentifier] NOT NULL,

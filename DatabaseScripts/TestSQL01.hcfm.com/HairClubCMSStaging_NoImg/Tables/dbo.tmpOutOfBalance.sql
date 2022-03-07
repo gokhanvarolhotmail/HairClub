@@ -1,4 +1,4 @@
-/* CreateDate: 07/16/2020 13:48:46.160 , ModifyDate: 02/04/2022 21:52:23.697 */
+/* CreateDate: 07/16/2020 13:48:46.160 , ModifyDate: 07/16/2020 13:48:46.283 */
 GO
 CREATE TABLE [dbo].[tmpOutOfBalance](
 	[CenterName] [nvarchar](128) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,

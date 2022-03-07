@@ -1,4 +1,4 @@
-/* CreateDate: 08/29/2008 09:43:41.043 , ModifyDate: 01/31/2022 08:32:31.753 */
+/* CreateDate: 08/29/2008 09:43:41.043 , ModifyDate: 03/04/2022 16:09:12.600 */
 GO
 CREATE TABLE [dbo].[lkpResourceType](
 	[ResourceTypeID] [int] NOT NULL,

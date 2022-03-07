@@ -1,4 +1,4 @@
-/* CreateDate: 08/27/2008 11:32:57.360 , ModifyDate: 01/31/2022 08:32:31.833 */
+/* CreateDate: 08/27/2008 11:32:57.360 , ModifyDate: 03/04/2022 16:09:12.753 */
 GO
 CREATE TABLE [dbo].[lkpCurrencyType](
 	[CurrencyTypeID] [int] NOT NULL,

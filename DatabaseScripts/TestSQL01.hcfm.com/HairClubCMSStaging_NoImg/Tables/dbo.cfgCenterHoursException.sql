@@ -1,4 +1,4 @@
-/* CreateDate: 03/18/2014 08:05:08.840 , ModifyDate: 01/31/2022 08:32:31.813 */
+/* CreateDate: 03/18/2014 08:05:08.840 , ModifyDate: 03/04/2022 16:09:12.717 */
 GO
 CREATE TABLE [dbo].[cfgCenterHoursException](
 	[CenterHoursExceptionID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,

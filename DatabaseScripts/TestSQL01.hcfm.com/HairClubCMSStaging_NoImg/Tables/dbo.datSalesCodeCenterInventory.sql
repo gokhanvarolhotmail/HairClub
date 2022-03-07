@@ -1,4 +1,4 @@
-/* CreateDate: 05/28/2018 22:15:34.517 , ModifyDate: 02/22/2022 08:32:06.847 */
+/* CreateDate: 05/28/2018 22:15:34.517 , ModifyDate: 03/04/2022 16:09:12.550 */
 /* ***HasTriggers*** TriggerCount: 1 */
 GO
 CREATE TABLE [dbo].[datSalesCodeCenterInventory](

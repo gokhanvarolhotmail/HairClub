@@ -1,4 +1,4 @@
-/* CreateDate: 08/27/2008 12:26:52.253 , ModifyDate: 01/31/2022 08:32:31.737 */
+/* CreateDate: 08/27/2008 12:26:52.253 , ModifyDate: 03/04/2022 16:09:12.567 */
 GO
 CREATE TABLE [dbo].[lkpInventoryTransactionType](
 	[InventoryTransactionTypeID] [int] NOT NULL,

@@ -1,4 +1,4 @@
-/* CreateDate: 02/09/2022 16:12:01.953 , ModifyDate: 02/09/2022 16:12:02.413 */
+/* CreateDate: 02/09/2022 16:02:49.700 , ModifyDate: 02/09/2022 16:03:15.187 */
 GO
 CREATE TRIGGER [trg_DDLLog] ON DATABASE
 -- this statement will create DDL trigger on database level, you can use

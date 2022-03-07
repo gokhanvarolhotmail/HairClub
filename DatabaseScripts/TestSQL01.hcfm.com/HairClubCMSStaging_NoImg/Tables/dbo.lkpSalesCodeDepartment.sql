@@ -1,4 +1,4 @@
-/* CreateDate: 09/03/2008 13:13:58.550 , ModifyDate: 01/31/2022 08:32:31.703 */
+/* CreateDate: 09/03/2008 13:13:58.550 , ModifyDate: 03/04/2022 16:09:12.503 */
 GO
 CREATE TABLE [dbo].[lkpSalesCodeDepartment](
 	[SalesCodeDepartmentID] [int] NOT NULL,
