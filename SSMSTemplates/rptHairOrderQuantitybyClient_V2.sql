@@ -649,7 +649,7 @@ CREATE TABLE [##rptHairOrderQuantitybyClient_V2]
 ) ;
 
 INSERT [##rptHairOrderQuantitybyClient_V2]
-EXEC [dbo].[rptHairOrderQuantitybyClient_V2] @CenterID = 229 ;
+EXEC [dbo].[rptHairOrderQuantitybyClient_V2] @CenterID = 804 ;
 
 --, @MembershipList = '10' ;
 
