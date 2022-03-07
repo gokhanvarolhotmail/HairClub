@@ -1,0 +1,835 @@
+{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "factoryName": {
+            "type": "string",
+            "metadata": "Data Factory name",
+            "defaultValue": "hc-eim-df-prod2"
+        }
+    },
+    "variables": {
+        "factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+    },
+    "resources": [
+        {
+            "name": "[concat(parameters('factoryName'), '/ODS_CNCT_ConnectHistory')]",
+            "type": "Microsoft.DataFactory/factories/dataflows",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "folder": {
+                    "name": "SLF_LOGS"
+                },
+                "type": "MappingDataFlow",
+                "typeProperties": {
+                    "sources": [
+                        {
+                            "dataset": {
+                                "referenceName": "DL_CNCT_Logs",
+                                "type": "DatasetReference"
+                            },
+                            "name": "DLLogs"
+                        }
+                    ],
+                    "sinks": [
+                        {
+                            "dataset": {
+                                "referenceName": "ASA_dimConnectHistory",
+                                "type": "DatasetReference"
+                            },
+                            "name": "ODSLogs"
+                        }
+                    ],
+                    "transformations": [
+                        {
+                            "name": "AlterUpsert"
+                        }
+                    ],
+                    "script": "source(output(\n\t\tID as integer,\n\t\tDate as timestamp,\n\t\tCenterID as integer,\n\t\tClientGUID as string,\n\t\tClientMembershipGUID as string,\n\t\tSalesOrderGUID as string,\n\t\tHairSystemOrderGUID as string,\n\t\tMethodName as string,\n\t\tUserName as string,\n\t\tThread as string,\n\t\tLevel as string,\n\t\tLogger as string,\n\t\tMessage as string,\n\t\tException as string,\n\t\tHostName as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\tformat: 'parquet') ~> DLLogs\nDLLogs alterRow(upsertIf(true())) ~> AlterUpsert\nAlterUpsert sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tdeletable:false,\n\tinsertable:false,\n\tupdateable:false,\n\tupsertable:true,\n\tkeys:['ID','Date'],\n\tformat: 'table',\n\tstaged: true,\n\tallowCopyCommand: true,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\terrorHandlingOption: 'stopOnFirstError') ~> ODSLogs"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/ODS_SF_OpportunityHistory')]",
+            "type": "Microsoft.DataFactory/factories/dataflows",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "folder": {
+                    "name": "SLF_LOGS"
+                },
+                "type": "MappingDataFlow",
+                "typeProperties": {
+                    "sources": [
+                        {
+                            "dataset": {
+                                "referenceName": "DL_SF_OpportunityHistory",
+                                "type": "DatasetReference"
+                            },
+                            "name": "DLOpportunityHistory"
+                        }
+                    ],
+                    "sinks": [
+                        {
+                            "dataset": {
+                                "referenceName": "ASA_dimOpportunityHistory",
+                                "type": "DatasetReference"
+                            },
+                            "name": "ODSOpportunityHistory"
+                        }
+                    ],
+                    "transformations": [
+                        {
+                            "name": "AlterUpsert"
+                        }
+                    ],
+                    "script": "source(output(\n\t\tId as string,\n\t\tOpportunityId as string,\n\t\tCreatedById as string,\n\t\tCreatedDate as timestamp,\n\t\tStageName as string,\n\t\tAmount as decimal(38,18),\n\t\tExpectedRevenue as decimal(38,18),\n\t\tCloseDate as timestamp,\n\t\tProbability as decimal(38,18),\n\t\tForecastCategory as string,\n\t\tCurrencyIsoCode as string,\n\t\tSystemModstamp as timestamp,\n\t\tIsDeleted as boolean\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\tformat: 'parquet') ~> DLOpportunityHistory\nDLOpportunityHistory alterRow(upsertIf(true())) ~> AlterUpsert\nAlterUpsert sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tdeletable:false,\n\tinsertable:false,\n\tupdateable:false,\n\tupsertable:true,\n\tkeys:['Id','CreatedDate'],\n\tformat: 'table',\n\tstaged: true,\n\tallowCopyCommand: true,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\terrorHandlingOption: 'stopOnFirstError') ~> ODSOpportunityHistory"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/ODSSFOpportunityHistory')]",
+            "type": "Microsoft.DataFactory/factories/dataflows",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "folder": {
+                    "name": "Synapse/ODS"
+                },
+                "type": "MappingDataFlow",
+                "typeProperties": {
+                    "sources": [
+                        {
+                            "dataset": {
+                                "referenceName": "DL_SF_OpportunityHistory",
+                                "type": "DatasetReference"
+                            },
+                            "name": "DLOpportunityHistory"
+                        }
+                    ],
+                    "sinks": [
+                        {
+                            "dataset": {
+                                "referenceName": "ODS_SF_OpportunityHistory",
+                                "type": "DatasetReference"
+                            },
+                            "name": "ODSOpportunityHistory"
+                        }
+                    ],
+                    "transformations": [
+                        {
+                            "name": "AlterUpsert"
+                        }
+                    ],
+                    "script": "source(output(\n\t\tId as string,\n\t\tOpportunityId as string,\n\t\tCreatedById as string,\n\t\tCreatedDate as timestamp,\n\t\tStageName as string,\n\t\tAmount as decimal(38,18),\n\t\tExpectedRevenue as decimal(38,18),\n\t\tCloseDate as timestamp,\n\t\tProbability as decimal(38,18),\n\t\tForecastCategory as string,\n\t\tCurrencyIsoCode as string,\n\t\tSystemModstamp as timestamp,\n\t\tIsDeleted as boolean\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\tformat: 'parquet') ~> DLOpportunityHistory\nDLOpportunityHistory alterRow(upsertIf(true())) ~> AlterUpsert\nAlterUpsert sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tdeletable:false,\n\tinsertable:false,\n\tupdateable:false,\n\tupsertable:true,\n\tkeys:['Id','CreatedDate'],\n\tformat: 'table',\n\tstaged: true,\n\tallowCopyCommand: true,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\terrorHandlingOption: 'stopOnFirstError') ~> ODSOpportunityHistory"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/DimMembership')]",
+            "type": "Microsoft.DataFactory/factories/dataflows",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "description": "Load the necessary columns from ODS.CNCT_cfgMembership to DimMembership dimension.",
+                "folder": {
+                    "name": "Synapse/DWH"
+                },
+                "type": "MappingDataFlow",
+                "typeProperties": {
+                    "sources": [
+                        {
+                            "dataset": {
+                                "referenceName": "ODS_CNCT_cfgMembership",
+                                "type": "DatasetReference"
+                            },
+                            "name": "ODSMembership"
+                        },
+                        {
+                            "dataset": {
+                                "referenceName": "ASA_DimGender",
+                                "type": "DatasetReference"
+                            },
+                            "name": "DimGender"
+                        },
+                        {
+                            "dataset": {
+                                "referenceName": "ODS_CNCT_lkpBusinessSegment",
+                                "type": "DatasetReference"
+                            },
+                            "name": "ODSBusinessSegment"
+                        },
+                        {
+                            "dataset": {
+                                "referenceName": "ODS_CNCT_RevenueGroup",
+                                "type": "DatasetReference"
+                            },
+                            "name": "ODSRevenueGroup"
+                        }
+                    ],
+                    "sinks": [
+                        {
+                            "dataset": {
+                                "referenceName": "ASA_DimMembership",
+                                "type": "DatasetReference"
+                            },
+                            "name": "UpdateDimMember"
+                        }
+                    ],
+                    "transformations": [
+                        {
+                            "name": "LastUpdateAndMembershipIDFilter"
+                        },
+                        {
+                            "name": "SelectColumns"
+                        },
+                        {
+                            "name": "AddSourceSystem"
+                        },
+                        {
+                            "name": "Upsert"
+                        },
+                        {
+                            "name": "JoinDimGender"
+                        },
+                        {
+                            "name": "FinalColumns"
+                        },
+                        {
+                            "name": "SelectColumnsM"
+                        },
+                        {
+                            "name": "SelectGenderKey"
+                        },
+                        {
+                            "name": "GenderGroupFilter"
+                        },
+                        {
+                            "name": "SelectBusinesSegmentId"
+                        },
+                        {
+                            "name": "SelectRevenueGroupId"
+                        },
+                        {
+                            "name": "JoinBusinessSegment"
+                        },
+                        {
+                            "name": "JoinRevenueGroup"
+                        }
+                    ],
+                    "script": "parameters{\n\tDaysToLoad as integer\n}\nsource(output(\n\t\tMembershipID as integer,\n\t\tMembershipSortOrder as integer,\n\t\tMembershipDescription as string,\n\t\tMembershipDescriptionShort as string,\n\t\tBusinessSegmentID as integer,\n\t\tRevenueGroupID as integer,\n\t\tGenderID as integer,\n\t\tDurationMonths as integer,\n\t\tContractPrice as decimal(19,4),\n\t\tMonthlyFee as decimal(19,4),\n\t\tIsTaxableFlag as boolean,\n\t\tIsDefaultMembershipFlag as boolean,\n\t\tIsActiveFlag as boolean,\n\t\tCreateDate as timestamp,\n\t\tCreateUser as string,\n\t\tLastUpdate as timestamp,\n\t\tLastUpdateUser as string,\n\t\tUpdateStamp as binary,\n\t\tIsHairSystemOrderRushFlag as boolean,\n\t\tHairSystemGeneralLedgerID as integer,\n\t\tDefaultPaymentSalesCodeID as integer,\n\t\tNumRenewalDays as integer,\n\t\tNumDaysAfterCancelBeforeNew as integer,\n\t\tCanCheckinForConsultation as boolean,\n\t\tMaximumHairSystemHairLengthValue as integer,\n\t\tExpectedConversionDays as integer,\n\t\tMinimumAge as integer,\n\t\tMaximumAge as integer,\n\t\tMaximumLongHairAddOnHairLengthValue as integer,\n\t\tBOSSalesTypeCode as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tisolationLevel: 'READ_UNCOMMITTED',\n\tformat: 'table',\n\tstaged: false) ~> ODSMembership\nsource(output(\n\t\tGenderKey as integer,\n\t\tGenderId as integer,\n\t\tGenderName as string,\n\t\tHash as string,\n\t\tDWH_LoadDate as timestamp,\n\t\tDWH_LastUpdateDate as timestamp,\n\t\tIsActive as boolean,\n\t\tSourceSystem as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tisolationLevel: 'READ_UNCOMMITTED',\n\tformat: 'table',\n\tstaged: false) ~> DimGender\nsource(output(\n\t\tBusinessSegmentID as integer,\n\t\tBusinessSegmentSortOrder as integer,\n\t\tBusinessSegmentDescription as string,\n\t\tBusinessSegmentDescriptionShort as string,\n\t\tIsActiveFlag as boolean,\n\t\tCreateDate as timestamp,\n\t\tCreateUser as string,\n\t\tLastUpdate as timestamp,\n\t\tLastUpdateUser as string,\n\t\tUpdateStamp as binary\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tisolationLevel: 'READ_UNCOMMITTED',\n\tformat: 'table',\n\tstaged: false) ~> ODSBusinessSegment\nsource(output(\n\t\tRevenueGroupID as integer,\n\t\tRevenueGroupSortOrder as integer,\n\t\tRevenueGroupDescription as string,\n\t\tRevenueGroupDescriptionShort as string,\n\t\tIsActiveFlag as boolean,\n\t\tCreateDate as timestamp,\n\t\tCreateUser as string,\n\t\tLastUpdate as timestamp,\n\t\tLastUpdateUser as string,\n\t\tUpdateStamp as binary\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tisolationLevel: 'READ_UNCOMMITTED',\n\tformat: 'table',\n\tstaged: false) ~> ODSRevenueGroup\nODSMembership filter(toDate(LastUpdate) >= addDays(toDate(currentTimestamp()), ($DaysToLoad * -1)) && toDate(LastUpdate) <= addDays(toDate(currentTimestamp()), -1) && !isNull(MembershipID)) ~> LastUpdateAndMembershipIDFilter\nLastUpdateAndMembershipIDFilter select(mapColumn(\n\t\tMembershipID,\n\t\tMembershipName = MembershipDescription,\n\t\tMembershipShortName = MembershipDescriptionShort,\n\t\tBusinessSegmentID,\n\t\tRevenueGroupID,\n\t\tGenderID,\n\t\tDurationMonths,\n\t\tContractPrice,\n\t\tMonthlyFee,\n\t\tIsTaxableFlag,\n\t\tIsDefaultMembershipFlag,\n\t\tIsActiveFlag,\n\t\tMembershipCreateDate = CreateDate,\n\t\tMembershipLastUpdateDate = LastUpdate\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> SelectColumns\nSelectColumns derive(SourceSystem = 'Conect',\n\t\tDWH_CreatedDate = currentTimestamp(),\n\t\tDWH_LastUpdateDate = currentTimestamp()) ~> AddSourceSystem\nSelectColumnsM alterRow(upsertIf(true())) ~> Upsert\nAddSourceSystem, SelectGenderKey join(SelectColumns@GenderID == SelectGenderKey@GenderId,\n\tjoinType:'left',\n\tbroadcast: 'auto')~> JoinDimGender\nJoinRevenueGroup derive(MembershipID = MembershipID,\n\t\tMembershipName = initCap(MembershipName),\n\t\tMembershipShortName = upper(MembershipShortName),\n\t\tBusinessSegmentKey = -1,\n\t\tBusinessSegmentID = SelectColumns@BusinessSegmentID,\n\t\tRevenueGroupKey = -1,\n\t\tRevenueGroupID = SelectColumns@RevenueGroupID,\n\t\tGenderKey = coalesce(GenderKey, -1),\n\t\tGenderID = SelectColumns@GenderID,\n\t\tDurationMonths = DurationMonths,\n\t\tContractPrice = ContractPrice,\n\t\tMonthlyFee = MonthlyFee,\n\t\tIsTaxableFlag = IsTaxableFlag,\n\t\tIsDefaultMembershipFlag = IsDefaultMembershipFlag,\n\t\tIsActive = IsActiveFlag,\n\t\tSourceSystem = 'Conect',\n\t\tBusinessSegmentName = initCap(BusinessSegmentName),\n\t\tBusinessSegmentNameShort = upper(BusinessSegmentShortName),\n\t\tRevenueGroupName = RevenueGroupName,\n\t\tRevenueGroupNameShort = upper(RevenueGroupShortName),\n\t\tMembershipCreateDate = MembershipCreateDate,\n\t\tMembershipLastUpdateDate = MembershipLastUpdateDate) ~> FinalColumns\nFinalColumns select(mapColumn(\n\t\teach(match(stream=='FinalColumns'))\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> SelectColumnsM\nGenderGroupFilter select(mapColumn(\n\t\tGenderKey,\n\t\tGenderId\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> SelectGenderKey\nDimGender filter(lower(trim(SourceSystem)) == 'conect') ~> GenderGroupFilter\nODSBusinessSegment select(mapColumn(\n\t\tBusinessSegmentID,\n\t\tBusinessSegmentName = BusinessSegmentDescription,\n\t\tBusinessSegmentShortName = BusinessSegmentDescriptionShort\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> SelectBusinesSegmentId\nODSRevenueGroup select(mapColumn(\n\t\tRevenueGroupID,\n\t\tRevenueGroupName = RevenueGroupDescription,\n\t\tRevenueGroupShortName = RevenueGroupDescriptionShort\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> SelectRevenueGroupId\nJoinDimGender, SelectBusinesSegmentId join(SelectColumns@BusinessSegmentID == SelectBusinesSegmentId@BusinessSegmentID,\n\tjoinType:'left',\n\tbroadcast: 'auto')~> JoinBusinessSegment\nJoinBusinessSegment, SelectRevenueGroupId join(SelectColumns@RevenueGroupID == SelectRevenueGroupId@RevenueGroupID,\n\tjoinType:'left',\n\tbroadcast: 'auto')~> JoinRevenueGroup\nUpsert sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tinput(\n\t\tMembershipKey as integer,\n\t\tMembershipID as integer,\n\t\tMembershipName as string,\n\t\tMembershipShortName as string,\n\t\tBusinessSegmentKey as integer,\n\t\tBusinessSegmentID as integer,\n\t\tRevenueGroupKey as integer,\n\t\tRevenueGroupID as integer,\n\t\tGenderKey as integer,\n\t\tGenderID as string,\n\t\tDurationMonths as integer,\n\t\tContractPrice as decimal(18,0),\n\t\tMonthlyFee as decimal(18,0),\n\t\tIsTaxableFlag as boolean,\n\t\tIsDefaultMembershipFlag as boolean,\n\t\tIsActive as boolean,\n\t\tDWH_CreatedDate as timestamp,\n\t\tDWH_LastUpdateDate as timestamp,\n\t\tSourceSystem as string,\n\t\tBusinessSegmentName as string,\n\t\tBusinessSegmentShortName as string,\n\t\tRevenueGroupName as string,\n\t\tRevenueGroupShortName as string,\n\t\tMembershipCreateDate as timestamp,\n\t\tMembershipLastUpdateDate as timestamp\n\t),\n\tdeletable:false,\n\tinsertable:false,\n\tupdateable:false,\n\tupsertable:true,\n\tkeys:['MembershipID'],\n\tformat: 'table',\n\tstaged: true,\n\tallowCopyCommand: true,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\terrorHandlingOption: 'stopOnFirstError',\n\tmapColumn(\n\t\tMembershipID,\n\t\tMembershipName,\n\t\tMembershipShortName,\n\t\tBusinessSegmentKey,\n\t\tBusinessSegmentID,\n\t\tRevenueGroupKey,\n\t\tRevenueGroupID,\n\t\tGenderKey,\n\t\tGenderID,\n\t\tDurationMonths,\n\t\tContractPrice,\n\t\tMonthlyFee,\n\t\tIsTaxableFlag,\n\t\tIsDefaultMembershipFlag,\n\t\tIsActive = IsActiveFlag,\n\t\tDWH_LastUpdateDate,\n\t\tSourceSystem,\n\t\tBusinessSegmentName,\n\t\tBusinessSegmentShortName,\n\t\tRevenueGroupName,\n\t\tRevenueGroupShortName,\n\t\tMembershipCreateDate,\n\t\tMembershipLastUpdateDate,\n\t\tDWH_CreatedDate\n\t)) ~> UpdateDimMember"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/ODSSFAccountHistory')]",
+            "type": "Microsoft.DataFactory/factories/dataflows",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "folder": {
+                    "name": "Synapse/ODS"
+                },
+                "type": "MappingDataFlow",
+                "typeProperties": {
+                    "sources": [
+                        {
+                            "dataset": {
+                                "referenceName": "DL_SF_AccountHistory",
+                                "type": "DatasetReference"
+                            },
+                            "name": "DLAccountHistory"
+                        }
+                    ],
+                    "sinks": [
+                        {
+                            "dataset": {
+                                "referenceName": "ODS_SF_AccountHistory",
+                                "type": "DatasetReference"
+                            },
+                            "name": "ODSAccountHistory"
+                        }
+                    ],
+                    "transformations": [
+                        {
+                            "name": "AlterUpsert"
+                        }
+                    ],
+                    "script": "source(output(\n\t\tId as string,\n\t\tIsDeleted as boolean,\n\t\tAccountId as string,\n\t\tCreatedById as string,\n\t\tCreatedDate as timestamp,\n\t\tField as string,\n\t\tOldValue as string,\n\t\tNewValue as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\tformat: 'parquet') ~> DLAccountHistory\nDLAccountHistory alterRow(upsertIf(true())) ~> AlterUpsert\nAlterUpsert sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tdeletable:false,\n\tinsertable:false,\n\tupdateable:false,\n\tupsertable:true,\n\tkeys:['Id','CreatedDate'],\n\tformat: 'table',\n\tstaged: true,\n\tallowCopyCommand: true,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\terrorHandlingOption: 'stopOnFirstError') ~> ODSAccountHistory"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/ODSSFLeadHistory')]",
+            "type": "Microsoft.DataFactory/factories/dataflows",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "folder": {
+                    "name": "Synapse/ODS"
+                },
+                "type": "MappingDataFlow",
+                "typeProperties": {
+                    "sources": [
+                        {
+                            "dataset": {
+                                "referenceName": "DL_SF_LeadHistory",
+                                "type": "DatasetReference"
+                            },
+                            "name": "DLLeadHistory"
+                        }
+                    ],
+                    "sinks": [
+                        {
+                            "dataset": {
+                                "referenceName": "ODS_SF_LeadHistory",
+                                "type": "DatasetReference"
+                            },
+                            "name": "ODSLeadHistory"
+                        }
+                    ],
+                    "transformations": [
+                        {
+                            "name": "AlterUpsert"
+                        }
+                    ],
+                    "script": "source(output(\n\t\tId as string,\n\t\tIsDeleted as boolean,\n\t\tLeadId as string,\n\t\tCreatedById as string,\n\t\tCreatedDate as timestamp,\n\t\tField as string,\n\t\tOldValue as string,\n\t\tNewValue as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\tformat: 'parquet') ~> DLLeadHistory\nDLLeadHistory alterRow(upsertIf(true())) ~> AlterUpsert\nAlterUpsert sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tdeletable:false,\n\tinsertable:false,\n\tupdateable:false,\n\tupsertable:true,\n\tkeys:['Id','CreatedDate'],\n\tformat: 'table',\n\tstaged: true,\n\tallowCopyCommand: true,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\terrorHandlingOption: 'stopOnFirstError') ~> ODSLeadHistory"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/CNCT_ConnectLog')]",
+            "type": "Microsoft.DataFactory/factories/dataflows",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "folder": {
+                    "name": "CONNECT"
+                },
+                "type": "MappingDataFlow",
+                "typeProperties": {
+                    "sources": [
+                        {
+                            "dataset": {
+                                "referenceName": "DL_CNCT_Logs",
+                                "type": "DatasetReference"
+                            },
+                            "name": "DLLogs"
+                        }
+                    ],
+                    "sinks": [
+                        {
+                            "dataset": {
+                                "referenceName": "ODS_CNCT_Logs",
+                                "type": "DatasetReference"
+                            },
+                            "name": "ODSLogs"
+                        }
+                    ],
+                    "transformations": [
+                        {
+                            "name": "AlterUpsert"
+                        }
+                    ],
+                    "script": "source(output(\n\t\tID as integer,\n\t\tDate as timestamp,\n\t\tCenterID as integer,\n\t\tClientGUID as string,\n\t\tClientMembershipGUID as string,\n\t\tSalesOrderGUID as string,\n\t\tHairSystemOrderGUID as string,\n\t\tMethodName as string,\n\t\tUserName as string,\n\t\tThread as string,\n\t\tLevel as string,\n\t\tLogger as string,\n\t\tMessage as string,\n\t\tException as string,\n\t\tHostName as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\tformat: 'parquet') ~> DLLogs\nDLLogs alterRow(upsertIf(true())) ~> AlterUpsert\nAlterUpsert sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tdeletable:false,\n\tinsertable:false,\n\tupdateable:false,\n\tupsertable:true,\n\tkeys:['ID','Date'],\n\tformat: 'table',\n\tstaged: true,\n\tallowCopyCommand: true,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\terrorHandlingOption: 'stopOnFirstError') ~> ODSLogs"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/ODSSFSAHistory')]",
+            "type": "Microsoft.DataFactory/factories/dataflows",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "folder": {
+                    "name": "Synapse/ODS"
+                },
+                "type": "MappingDataFlow",
+                "typeProperties": {
+                    "sources": [
+                        {
+                            "dataset": {
+                                "referenceName": "DL_SF_ServiceAppointmentHistory",
+                                "type": "DatasetReference"
+                            },
+                            "name": "DLSAHistory"
+                        }
+                    ],
+                    "sinks": [
+                        {
+                            "dataset": {
+                                "referenceName": "ODS_SF_ServiceAppointmentHistory",
+                                "type": "DatasetReference"
+                            },
+                            "name": "ODSSAHistory"
+                        }
+                    ],
+                    "transformations": [
+                        {
+                            "name": "AlterUpsert"
+                        }
+                    ],
+                    "script": "source(output(\n\t\tId as string,\n\t\tIsDeleted as boolean,\n\t\tServiceAppointmentId as string,\n\t\tCreatedById as string,\n\t\tCreatedDate as timestamp,\n\t\tField as string,\n\t\tOldValue as string,\n\t\tNewValue as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\tformat: 'parquet') ~> DLSAHistory\nDLSAHistory alterRow(upsertIf(true())) ~> AlterUpsert\nAlterUpsert sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tdeletable:false,\n\tinsertable:false,\n\tupdateable:false,\n\tupsertable:true,\n\tkeys:['Id','CreatedDate'],\n\tformat: 'table',\n\tstaged: true,\n\tallowCopyCommand: true,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\terrorHandlingOption: 'stopOnFirstError') ~> ODSSAHistory"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/FactOpportunityTracking')]",
+            "type": "Microsoft.DataFactory/factories/dataflows",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "folder": {
+                    "name": "Synapse/DWH"
+                },
+                "type": "MappingDataFlow",
+                "typeProperties": {
+                    "sources": [
+                        {
+                            "dataset": {
+                                "referenceName": "ASA_FactOpportunity",
+                                "type": "DatasetReference"
+                            },
+                            "name": "Factopportunity"
+                        }
+                    ],
+                    "sinks": [
+                        {
+                            "dataset": {
+                                "referenceName": "ASA_FactOpportunityTracking",
+                                "type": "DatasetReference"
+                            },
+                            "name": "InsertFactOpportunityTRacking"
+                        }
+                    ],
+                    "transformations": [
+                        {
+                            "name": "FilterByFactDate"
+                        }
+                    ],
+                    "script": "source(output(\n\t\tFactDate as timestamp,\n\t\tFactDatekey as integer,\n\t\tOpportunityId as string,\n\t\tLeadKey as integer,\n\t\tLeadId as string,\n\t\tAccountKey as integer,\n\t\tAccountId as string,\n\t\tOpportunityName as string,\n\t\tOpportunityDescription as string,\n\t\tStatusKey as integer,\n\t\tOpportunityStatus as string,\n\t\tCampaignKey as integer,\n\t\tOpportunityCampaign as string,\n\t\tCloseDate as timestamp,\n\t\tCloseDateKey as integer,\n\t\tCreatedDate as timestamp,\n\t\tCreatedUserKey as integer,\n\t\tCreatedById as string,\n\t\tLastModifiedDate as timestamp,\n\t\tUpdateUserKey as integer,\n\t\tLastModifiedById as string,\n\t\tLossReasonKey as integer,\n\t\tOpportunityLossReason as string,\n\t\tIsDeleted as boolean,\n\t\tIsClosed as boolean,\n\t\tIsWon as boolean,\n\t\tOpportunityReferralCode as string,\n\t\tOpportunitySourceCode as string,\n\t\tOpportunitySolutionOffered as string,\n\t\tExternalTaskId as string,\n\t\tBeBackFlag as boolean,\n\t\tCenterKey as integer,\n\t\tCenterNumber as integer,\n\t\tIsOld as integer,\n\t\tAmmount as decimal(38,18)\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tisolationLevel: 'READ_UNCOMMITTED',\n\tformat: 'table',\n\tstaged: false) ~> Factopportunity\nFactopportunity filter(toDate(FactDate)<= toDate('2021-07-31')) ~> FilterByFactDate\nFilterByFactDate sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tinput(\n\t\tFactDate as timestamp,\n\t\tFactDatekey as integer,\n\t\tOpportunityId as string,\n\t\tLeadKey as integer,\n\t\tLeadId as string,\n\t\tAccountKey as integer,\n\t\tAccountId as string,\n\t\tOpportunityName as string,\n\t\tOpportunityDescription as string,\n\t\tStatusKey as integer,\n\t\tOpportunityStatus as string,\n\t\tCampaignKey as integer,\n\t\tOpportunityCampaign as string,\n\t\tCloseDate as timestamp,\n\t\tCloseDateKey as integer,\n\t\tCreatedDate as timestamp,\n\t\tCreatedUserKey as integer,\n\t\tCreatedById as string,\n\t\tLastModifiedDate as timestamp,\n\t\tUpdateUserKey as integer,\n\t\tLastModifiedById as string,\n\t\tLossReasonKey as integer,\n\t\tOpportunityLossReason as string,\n\t\tIsDeleted as boolean,\n\t\tIsClosed as boolean,\n\t\tIsWon as boolean,\n\t\tOpportunityReferralCode as string,\n\t\tOpportunitySourceCode as string,\n\t\tOpportunitySolutionOffered as string,\n\t\tExternalTaskId as string,\n\t\tBeBackFlag as boolean,\n\t\tCenterKey as integer,\n\t\tCenterNumber as integer,\n\t\tIsOld as integer,\n\t\tAmmount as decimal(38,18)\n\t),\n\tdeletable:false,\n\tinsertable:true,\n\tupdateable:false,\n\tupsertable:false,\n\tformat: 'table',\n\tstaged: true,\n\tallowCopyCommand: true,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\terrorHandlingOption: 'stopOnFirstError') ~> InsertFactOpportunityTRacking"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/FactAppointmentTracking')]",
+            "type": "Microsoft.DataFactory/factories/dataflows",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "description": "This DF is to insert a previous month snapshot into FactAppointmentTracking from FactAppointment",
+                "folder": {
+                    "name": "Synapse/DWH"
+                },
+                "type": "MappingDataFlow",
+                "typeProperties": {
+                    "sources": [
+                        {
+                            "dataset": {
+                                "referenceName": "ASA_FactAppointment",
+                                "type": "DatasetReference"
+                            },
+                            "name": "FactAppointment"
+                        }
+                    ],
+                    "sinks": [
+                        {
+                            "dataset": {
+                                "referenceName": "ASA_FactAppoitmentTracking",
+                                "type": "DatasetReference"
+                            },
+                            "name": "InsertFactAppointmentTracking"
+                        }
+                    ],
+                    "transformations": [
+                        {
+                            "name": "FilterbyAppointmentDate"
+                        }
+                    ],
+                    "script": "source(output(\n\t\tFactDate as timestamp,\n\t\tFactTimeKey as integer,\n\t\tFactDateKey as integer,\n\t\tAppointmentDate as timestamp,\n\t\tAppointmentTimeKey as integer,\n\t\tAppointmentDateKey as integer,\n\t\tLeadKey as integer,\n\t\tLeadId as string,\n\t\tAccountKey as integer,\n\t\tAccountId as string,\n\t\tContactKey as integer,\n\t\tContactId as string,\n\t\tParentRecordType as string,\n\t\tWorkTypeKey as integer,\n\t\tWorkTypeId as string,\n\t\tAccountAddress as string,\n\t\tAccountCity as string,\n\t\tAccountState as string,\n\t\tAccountPostalCode as string,\n\t\tAccountCountry as string,\n\t\tGeographyKey as integer,\n\t\tAppointmentDescription as string,\n\t\tAppointmentStatus as string,\n\t\tCenterKey as integer,\n\t\tServiceTerritoryId as string,\n\t\tCenterNumber as integer,\n\t\tAppointmentTypeKey as integer,\n\t\tAppointmentType as string,\n\t\tAppointmentCenterType as string,\n\t\tExternalId as string,\n\t\tServiceAppointment as string,\n\t\tMeetingPlatformKey as integer,\n\t\tMeetingPlatformId as string,\n\t\tMeetingPlatform as string,\n\t\tDWH_LoadDate as timestamp,\n\t\tDWH_LastUpdateDate as timestamp,\n\t\tParentRecordId as string,\n\t\tAppointmentId as string,\n\t\tExternalTaskId as string,\n\t\tStatusKey as integer,\n\t\tCancellationReason as string,\n\t\tBeBackFlag as boolean,\n\t\tOldStatus as string,\n\t\tAppoinmentStatusCategory as string,\n\t\tIsDeleted as boolean,\n\t\tIsOld as integer,\n\t\tOpportunityId as string,\n\t\tOpportunityStatus as string,\n\t\tOpportunityDate as timestamp,\n\t\tOpportunityReferralCode as string,\n\t\tOpportunityReferralCodeExpirationDate as timestamp\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tisolationLevel: 'READ_UNCOMMITTED',\n\tformat: 'table',\n\tstaged: false) ~> FactAppointment\nFactAppointment filter(month(toDate(AppointmentDate)) == month(toDate(addMonths(currentTimestamp(),-1))) && year(toDate(AppointmentDate)) == year(toDate(addMonths(currentTimestamp(),-1)))) ~> FilterbyAppointmentDate\nFilterbyAppointmentDate sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tinput(\n\t\tFactDate as timestamp,\n\t\tFactTimeKey as integer,\n\t\tFactDateKey as integer,\n\t\tAppointmentDate as timestamp,\n\t\tAppointmentTimeKey as integer,\n\t\tAppointmentDateKey as integer,\n\t\tLeadKey as integer,\n\t\tLeadId as string,\n\t\tAccountKey as integer,\n\t\tAccountId as string,\n\t\tContactKey as integer,\n\t\tContactId as string,\n\t\tParentRecordType as string,\n\t\tWorkTypeKey as integer,\n\t\tWorkTypeId as string,\n\t\tAccountAddress as string,\n\t\tAccountCity as string,\n\t\tAccountState as string,\n\t\tAccountPostalCode as string,\n\t\tAccountCountry as string,\n\t\tGeographyKey as integer,\n\t\tAppointmentDescription as string,\n\t\tAppointmentStatus as string,\n\t\tCenterKey as integer,\n\t\tServiceTerritoryId as string,\n\t\tCenterNumber as integer,\n\t\tAppointmentTypeKey as integer,\n\t\tAppointmentType as string,\n\t\tAppointmentCenterType as string,\n\t\tExternalId as string,\n\t\tServiceAppointment as string,\n\t\tMeetingPlatformKey as integer,\n\t\tMeetingPlatformId as string,\n\t\tMeetingPlatform as string,\n\t\tDWH_LoadDate as timestamp,\n\t\tDWH_LastUpdateDate as timestamp,\n\t\tParentRecordId as string,\n\t\tAppointmentId as string,\n\t\tExternalTaskId as string,\n\t\tStatusKey as integer,\n\t\tCancellationReason as string,\n\t\tBeBackFlag as boolean,\n\t\tOldStatus as string,\n\t\tAppoinmentStatusCategory as string,\n\t\tIsDeleted as boolean,\n\t\tIsOld as integer,\n\t\tOpportunityId as string,\n\t\tOpportunityStatus as string,\n\t\tOpportunityDate as timestamp,\n\t\tOpportunityReferralCode as string,\n\t\tOpportunityReferralCodeExpirationDate as timestamp\n\t),\n\tdeletable:false,\n\tinsertable:true,\n\tupdateable:false,\n\tupsertable:false,\n\tformat: 'table',\n\tstaged: true,\n\tallowCopyCommand: true,\n\terrorHandlingOption: 'stopOnFirstError',\n\tmapColumn(\n\t\tFactDate,\n\t\tFactTimeKey,\n\t\tFactDateKey,\n\t\tAppointmentDate,\n\t\tAppointmentTimeKey,\n\t\tAppointmentDateKey,\n\t\tLeadKey,\n\t\tLeadId,\n\t\tAccountKey,\n\t\tAccountId,\n\t\tContactKey,\n\t\tContactId,\n\t\tParentRecordType,\n\t\tWorkTypeKey,\n\t\tWorkTypeId,\n\t\tAccountAddress,\n\t\tAccountCity,\n\t\tAccountState,\n\t\tAccountPostalCode,\n\t\tAccountCountry,\n\t\tGeographyKey,\n\t\tAppointmentDescription,\n\t\tAppointmentStatus,\n\t\tCenterKey,\n\t\tServiceTerritoryId,\n\t\tCenterNumber,\n\t\tAppointmentTypeKey,\n\t\tAppointmentType,\n\t\tAppointmentCenterType,\n\t\tExternalId,\n\t\tServiceAppointment,\n\t\tMeetingPlatformKey,\n\t\tMeetingPlatformId,\n\t\tMeetingPlatform,\n\t\tDWH_LoadDate,\n\t\tDWH_LastUpdateDate,\n\t\tParentRecordId,\n\t\tAppointmentId,\n\t\tExternalTaskId,\n\t\tStatusKey,\n\t\tCancellationReason,\n\t\tBeBackFlag,\n\t\tOldStatus,\n\t\tAppoinmentStatusCategory,\n\t\tIsDeleted,\n\t\tIsOld,\n\t\tOpportunityId,\n\t\tOpportunityStatus,\n\t\tOpportunityDate,\n\t\tOpportunityReferralCode,\n\t\tOpportunityReferralCodeExpirationDate\n\t)) ~> InsertFactAppointmentTracking"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/ODSDatAppointmentDetail')]",
+            "type": "Microsoft.DataFactory/factories/dataflows",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "folder": {
+                    "name": "Synapse/ODS"
+                },
+                "type": "MappingDataFlow",
+                "typeProperties": {
+                    "sources": [
+                        {
+                            "dataset": {
+                                "referenceName": "DL_CNCT_datAppointmentDetail",
+                                "type": "DatasetReference"
+                            },
+                            "name": "DatAppointmentDetail"
+                        }
+                    ],
+                    "sinks": [
+                        {
+                            "dataset": {
+                                "referenceName": "ODS_CNCT_datAppointmentDetail",
+                                "type": "DatasetReference"
+                            },
+                            "name": "OdsDatAppointmentDetail"
+                        }
+                    ],
+                    "transformations": [
+                        {
+                            "name": "AllowUpsert"
+                        }
+                    ],
+                    "script": "source(output(\n\t\tAppointmentDetailGUID as string,\n\t\tAppointmentGUID as string,\n\t\tSalesCodeID as integer,\n\t\tAppointmentDetailDuration as integer,\n\t\tCreateDate as timestamp,\n\t\tCreateUser as string,\n\t\tLastUpdate as timestamp,\n\t\tLastUpdateUser as string,\n\t\tUpdateStamp as binary,\n\t\tQuantity as integer,\n\t\tPrice as decimal(19,4)\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\tformat: 'parquet') ~> DatAppointmentDetail\nDatAppointmentDetail alterRow(upsertIf(true())) ~> AllowUpsert\nAllowUpsert sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tinput(\n\t\tAppointmentDetailGUID as string,\n\t\tAppointmentGUID as string,\n\t\tSalesCodeID as integer,\n\t\tAppointmentDetailDuration as integer,\n\t\tCreateDate as timestamp,\n\t\tCreateUser as string,\n\t\tLastUpdate as timestamp,\n\t\tLastUpdateUser as string,\n\t\tQuantity as integer,\n\t\tPrice as decimal(19,4)\n\t),\n\tdeletable:false,\n\tinsertable:false,\n\tupdateable:false,\n\tupsertable:true,\n\tkeys:['AppointmentDetailGUID'],\n\tformat: 'table',\n\tstaged: true,\n\tallowCopyCommand: true,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\terrorHandlingOption: 'stopOnFirstError',\n\tmapColumn(\n\t\tAppointmentDetailGUID,\n\t\tAppointmentGUID,\n\t\tSalesCodeID,\n\t\tAppointmentDetailDuration,\n\t\tCreateDate,\n\t\tCreateUser,\n\t\tLastUpdate,\n\t\tLastUpdateUser,\n\t\tQuantity,\n\t\tPrice\n\t)) ~> OdsDatAppointmentDetail"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/ODSDatAppointment')]",
+            "type": "Microsoft.DataFactory/factories/dataflows",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "folder": {
+                    "name": "Synapse/ODS"
+                },
+                "type": "MappingDataFlow",
+                "typeProperties": {
+                    "sources": [
+                        {
+                            "dataset": {
+                                "referenceName": "DL_CNCT_datAppointment",
+                                "type": "DatasetReference"
+                            },
+                            "name": "DatAppointment"
+                        }
+                    ],
+                    "sinks": [
+                        {
+                            "dataset": {
+                                "referenceName": "ODS_CNCT_datAppointment",
+                                "type": "DatasetReference"
+                            },
+                            "name": "OdsDatAppointment"
+                        }
+                    ],
+                    "transformations": [
+                        {
+                            "name": "AllowUpsert"
+                        }
+                    ],
+                    "script": "source(output(\n\t\tAppointmentGUID as string,\n\t\tAppointmentID_Temp as integer,\n\t\tClientGUID as string,\n\t\tClientMembershipGUID as string,\n\t\tParentAppointmentGUID as string,\n\t\tCenterID as integer,\n\t\tClientHomeCenterID as integer,\n\t\tResourceID as integer,\n\t\tConfirmationTypeID as integer,\n\t\tAppointmentTypeID as integer,\n\t\tAppointmentDate as date,\n\t\tStartTime as timestamp,\n\t\tEndTime as timestamp,\n\t\tCheckinTime as timestamp,\n\t\tCheckoutTime as timestamp,\n\t\tAppointmentSubject as string,\n\t\tCanPrintCommentFlag as boolean,\n\t\tIsNonAppointmentFlag as boolean,\n\t\tRecurrenceRule as string,\n\t\tStartDateTimeCalc as timestamp,\n\t\tEndDateTimeCalc as timestamp,\n\t\tAppointmentDurationCalc as integer,\n\t\tCreateDate as timestamp,\n\t\tCreateUser as string,\n\t\tLastUpdate as timestamp,\n\t\tLastUpdateUser as string,\n\t\tUpdateStamp as binary,\n\t\tAppointmentStatusID as integer,\n\t\tIsDeletedFlag as boolean,\n\t\tOnContactActivityID as string,\n\t\tOnContactContactID as string,\n\t\tCheckedInFlag as integer,\n\t\tIsAuthorizedFlag as boolean,\n\t\tLastChangeUser as string,\n\t\tLastChangeDate as timestamp,\n\t\tScalpHealthID as integer,\n\t\tAppointmentPriorityColorID as integer,\n\t\tCompletedVisitTypeID as integer,\n\t\tIsFullTrichoView as boolean,\n\t\tSalesforceContactID as string,\n\t\tSalesforceTaskID as string,\n\t\tKorvueID as integer,\n\t\tServiceStartTime as timestamp,\n\t\tServiceEndTime as timestamp,\n\t\tIsClientContactInformationConfirmed as boolean\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\tformat: 'parquet') ~> DatAppointment\nDatAppointment alterRow(upsertIf(true())) ~> AllowUpsert\nAllowUpsert sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tinput(\n\t\tAppointmentGUID as string,\n\t\tAppointmentID_Temp as integer,\n\t\tClientGUID as string,\n\t\tClientMembershipGUID as string,\n\t\tParentAppointmentGUID as string,\n\t\tCenterID as integer,\n\t\tClientHomeCenterID as integer,\n\t\tResourceID as integer,\n\t\tConfirmationTypeID as integer,\n\t\tAppointmentTypeID as integer,\n\t\tAppointmentDate as date,\n\t\tStartTime as timestamp,\n\t\tEndTime as timestamp,\n\t\tCheckinTime as timestamp,\n\t\tCheckoutTime as timestamp,\n\t\tAppointmentSubject as string,\n\t\tCanPrintCommentFlag as boolean,\n\t\tIsNonAppointmentFlag as boolean,\n\t\tRecurrenceRule as string,\n\t\tStartDateTimeCalc as timestamp,\n\t\tEndDateTimeCalc as timestamp,\n\t\tAppointmentDurationCalc as timestamp,\n\t\tCreateDate as timestamp,\n\t\tCreateUser as string,\n\t\tLastUpdate as timestamp,\n\t\tLastUpdateUser as string,\n\t\tUpdateStamp as string,\n\t\tAppointmentStatusID as integer,\n\t\tIsDeletedFlag as boolean,\n\t\tOnContactActivityID as string,\n\t\tOnContactContactID as string,\n\t\tCheckedInFlag as boolean,\n\t\tIsAuthorizedFlag as boolean,\n\t\tLastChangeUser as string,\n\t\tLastChangeDate as timestamp,\n\t\tScalpHealthID as integer,\n\t\tAppointmentPriorityColorID as integer,\n\t\tCompletedVisitTypeID as integer,\n\t\tIsFullTrichoView as boolean,\n\t\tSalesforceContactID as string,\n\t\tSalesforceTaskID as string,\n\t\tKorvueID as integer,\n\t\tServiceStartTime as timestamp,\n\t\tServiceEndTime as timestamp,\n\t\tIsClientContactInformationConfirmed as boolean\n\t),\n\tdeletable:false,\n\tinsertable:false,\n\tupdateable:false,\n\tupsertable:true,\n\tkeys:['AppointmentGUID'],\n\tformat: 'table',\n\tstaged: true,\n\tallowCopyCommand: true,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\terrorHandlingOption: 'stopOnFirstError',\n\tmapColumn(\n\t\tAppointmentGUID,\n\t\tAppointmentID_Temp,\n\t\tClientGUID,\n\t\tClientMembershipGUID,\n\t\tParentAppointmentGUID,\n\t\tCenterID,\n\t\tClientHomeCenterID,\n\t\tResourceID,\n\t\tConfirmationTypeID,\n\t\tAppointmentTypeID,\n\t\tAppointmentDate,\n\t\tStartTime,\n\t\tEndTime,\n\t\tCheckinTime,\n\t\tCheckoutTime,\n\t\tAppointmentSubject,\n\t\tCanPrintCommentFlag,\n\t\tIsNonAppointmentFlag,\n\t\tRecurrenceRule,\n\t\tStartDateTimeCalc,\n\t\tEndDateTimeCalc,\n\t\tAppointmentDurationCalc,\n\t\tCreateDate,\n\t\tCreateUser,\n\t\tLastUpdate,\n\t\tLastUpdateUser,\n\t\tAppointmentStatusID,\n\t\tIsDeletedFlag,\n\t\tOnContactActivityID,\n\t\tOnContactContactID,\n\t\tCheckedInFlag,\n\t\tIsAuthorizedFlag,\n\t\tLastChangeUser,\n\t\tLastChangeDate,\n\t\tScalpHealthID,\n\t\tAppointmentPriorityColorID,\n\t\tCompletedVisitTypeID,\n\t\tIsFullTrichoView,\n\t\tSalesforceContactID,\n\t\tSalesforceTaskID,\n\t\tKorvueID,\n\t\tServiceStartTime,\n\t\tServiceEndTime,\n\t\tIsClientContactInformationConfirmed\n\t)) ~> OdsDatAppointment"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/CNCT_lkpSalutation')]",
+            "type": "Microsoft.DataFactory/factories/dataflows",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "folder": {
+                    "name": "CONNECT"
+                },
+                "type": "MappingDataFlow",
+                "typeProperties": {
+                    "sources": [
+                        {
+                            "dataset": {
+                                "referenceName": "DL_CNCT_lkpSalutation",
+                                "type": "DatasetReference"
+                            },
+                            "name": "CNTlkpSalutation"
+                        }
+                    ],
+                    "sinks": [
+                        {
+                            "dataset": {
+                                "referenceName": "ODS_CNCT_lkpSalutation",
+                                "type": "DatasetReference"
+                            },
+                            "name": "ODSlkpSalutation"
+                        }
+                    ],
+                    "transformations": [
+                        {
+                            "name": "AlterRow"
+                        }
+                    ],
+                    "script": "source(output(\n\t\tSalutationID as integer,\n\t\tSalutationSortOrder as integer,\n\t\tSalutationDescription as string,\n\t\tSalutationDescriptionShort as string,\n\t\tIsActiveFlag as boolean,\n\t\tCreateDate as timestamp,\n\t\tCreateUser as string,\n\t\tLastUpdate as timestamp,\n\t\tLastUpdateUser as string,\n\t\tUpdateStamp as binary,\n\t\tDescriptionResourceKey as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\tformat: 'parquet') ~> CNTlkpSalutation\nCNTlkpSalutation alterRow(upsertIf(true())) ~> AlterRow\nAlterRow sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tinput(\n\t\tSalutationID as integer,\n\t\tSalutationSortOrder as integer,\n\t\tSalutationDescription as string,\n\t\tSalutationDescriptionShort as string,\n\t\tIsActiveFlag as boolean,\n\t\tCreateDate as timestamp,\n\t\tCreateUser as string,\n\t\tLastUpdate as timestamp,\n\t\tLastUpdateUser as string,\n\t\tUpdateStamp as binary,\n\t\tDescriptionResourceKey as string\n\t),\n\tdeletable:false,\n\tinsertable:true,\n\tupdateable:false,\n\tupsertable:true,\n\tkeys:['SalutationID'],\n\tformat: 'table',\n\tstaged: true,\n\tallowCopyCommand: true,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\terrorHandlingOption: 'stopOnFirstError',\n\tmapColumn(\n\t\tSalutationID,\n\t\tSalutationSortOrder,\n\t\tSalutationDescription,\n\t\tSalutationDescriptionShort,\n\t\tIsActiveFlag,\n\t\tCreateDate,\n\t\tCreateUser,\n\t\tLastUpdate,\n\t\tLastUpdateUser,\n\t\tDescriptionResourceKey\n\t)) ~> ODSlkpSalutation"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/CNCT_cfgCenterManagementArea')]",
+            "type": "Microsoft.DataFactory/factories/dataflows",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "folder": {
+                    "name": "CONNECT"
+                },
+                "type": "MappingDataFlow",
+                "typeProperties": {
+                    "sources": [
+                        {
+                            "dataset": {
+                                "referenceName": "DL_CNCT_cfgCenterManagementArea",
+                                "type": "DatasetReference"
+                            },
+                            "name": "CNTcfgCenterManagementArea"
+                        }
+                    ],
+                    "sinks": [
+                        {
+                            "dataset": {
+                                "referenceName": "ODS_CNCT_cfgCenterManagementArea",
+                                "type": "DatasetReference"
+                            },
+                            "name": "ODScfgCenterManagementArea"
+                        }
+                    ],
+                    "transformations": [
+                        {
+                            "name": "AlterRow1"
+                        }
+                    ],
+                    "script": "source(output(\n\t\tCenterManagementAreaID as integer,\n\t\tCenterManagementAreaSortOrder as integer,\n\t\tCenterManagementAreaDescription as string,\n\t\tCenterManagementAreaDescriptionShort as string,\n\t\tOperationsManagerGUID as string,\n\t\tIsActiveFlag as boolean,\n\t\tCreateDate as timestamp,\n\t\tCreateUser as string,\n\t\tLastUpdate as timestamp,\n\t\tLastUpdateUser as string,\n\t\tUpdateStamp as binary\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\tformat: 'parquet') ~> CNTcfgCenterManagementArea\nCNTcfgCenterManagementArea alterRow(upsertIf(true())) ~> AlterRow1\nAlterRow1 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tinput(\n\t\tCenterManagementAreaID as integer,\n\t\tCenterManagementAreaSortOrder as integer,\n\t\tCenterManagementAreaDescription as string,\n\t\tCenterManagementAreaDescriptionShort as string,\n\t\tOperationsManagerGUID as string,\n\t\tIsActiveFlag as boolean,\n\t\tCreateDate as timestamp,\n\t\tCreateUser as string,\n\t\tLastUpdate as timestamp,\n\t\tLastUpdateUser as string,\n\t\tUpdateStamp as binary\n\t),\n\tdeletable:false,\n\tinsertable:false,\n\tupdateable:false,\n\tupsertable:true,\n\tkeys:['CenterManagementAreaID'],\n\tformat: 'table',\n\tstaged: true,\n\tallowCopyCommand: true,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\terrorHandlingOption: 'stopOnFirstError') ~> ODScfgCenterManagementArea"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/CNCT_lkpPhoneType')]",
+            "type": "Microsoft.DataFactory/factories/dataflows",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "folder": {
+                    "name": "CONNECT"
+                },
+                "type": "MappingDataFlow",
+                "typeProperties": {
+                    "sources": [
+                        {
+                            "dataset": {
+                                "referenceName": "DL_CNCT_lkpPhoneType",
+                                "type": "DatasetReference"
+                            },
+                            "name": "CNTlkpPhoneType"
+                        }
+                    ],
+                    "sinks": [
+                        {
+                            "dataset": {
+                                "referenceName": "ODS_CNCT_lkpPhoneType",
+                                "type": "DatasetReference"
+                            },
+                            "name": "ODSlkpPhoneType"
+                        }
+                    ],
+                    "transformations": [
+                        {
+                            "name": "AlterRow"
+                        }
+                    ],
+                    "script": "source(output(\n\t\tPhoneTypeID as integer,\n\t\tPhoneTypeSortOrder as integer,\n\t\tPhoneTypeDescription as string,\n\t\tPhoneTypeDescriptionShort as string,\n\t\tIsActiveFlag as boolean,\n\t\tCreateDate as timestamp,\n\t\tCreateUser as string,\n\t\tLastUpdate as timestamp,\n\t\tLastUpdateUser as string,\n\t\tUpdateStamp as binary,\n\t\tCanTextMessageFlag as boolean,\n\t\tPhoneSegmentId as integer,\n\t\tDescriptionResourceKey as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\tformat: 'parquet') ~> CNTlkpPhoneType\nCNTlkpPhoneType alterRow(upsertIf(true())) ~> AlterRow\nAlterRow sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tinput(\n\t\tPhoneTypeID as integer,\n\t\tPhoneTypeSortOrder as integer,\n\t\tPhoneTypeDescription as string,\n\t\tPhoneTypeDescriptionShort as string,\n\t\tIsActiveFlag as boolean,\n\t\tCreateDate as timestamp,\n\t\tCreateUser as string,\n\t\tLastUpdate as timestamp,\n\t\tLastUpdateUser as string,\n\t\tUpdateStamp as binary,\n\t\tCanTextMessageFlag as boolean,\n\t\tPhoneSegmentId as integer,\n\t\tDescriptionResourceKey as string\n\t),\n\tdeletable:false,\n\tinsertable:true,\n\tupdateable:false,\n\tupsertable:true,\n\tkeys:['PhoneTypeID'],\n\tformat: 'table',\n\tstaged: true,\n\tallowCopyCommand: true,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\terrorHandlingOption: 'stopOnFirstError',\n\tmapColumn(\n\t\tPhoneTypeID,\n\t\tPhoneTypeSortOrder,\n\t\tPhoneTypeDescription,\n\t\tPhoneTypeDescriptionShort,\n\t\tIsActiveFlag,\n\t\tCreateDate,\n\t\tCreateUser,\n\t\tLastUpdate,\n\t\tLastUpdateUser,\n\t\tCanTextMessageFlag,\n\t\tPhoneSegmentId,\n\t\tDescriptionResourceKey\n\t)) ~> ODSlkpPhoneType"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/CNCT_lkpAccumulatorAdjustmentType')]",
+            "type": "Microsoft.DataFactory/factories/dataflows",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "folder": {
+                    "name": "CONNECT"
+                },
+                "type": "MappingDataFlow",
+                "typeProperties": {
+                    "sources": [
+                        {
+                            "dataset": {
+                                "referenceName": "DL_CNCT_lkpAccumulatorAdjustmentType",
+                                "type": "DatasetReference"
+                            },
+                            "name": "CNTlkpAccumulatorAdjustmentType"
+                        }
+                    ],
+                    "sinks": [
+                        {
+                            "dataset": {
+                                "referenceName": "ODS_CNCT_lkpAccumulatorAdjustmentType",
+                                "type": "DatasetReference"
+                            },
+                            "name": "ODScfgConfigurationCenter"
+                        }
+                    ],
+                    "transformations": [
+                        {
+                            "name": "AlterRow"
+                        }
+                    ],
+                    "script": "source(output(\n\t\tAccumulatorAdjustmentTypeID as integer,\n\t\tAccumulatorAdjustmentTypeSortOrder as integer,\n\t\tAccumulatorAdjustmentTypeDescription as string,\n\t\tAccumulatorAdjustmentTypeDescriptionShort as string,\n\t\tIsActiveFlag as boolean,\n\t\tCreateDate as timestamp,\n\t\tCreateUser as string,\n\t\tLastUpdate as timestamp,\n\t\tLastUpdateUser as string,\n\t\tUpdateStamp as binary\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\tformat: 'parquet') ~> CNTlkpAccumulatorAdjustmentType\nCNTlkpAccumulatorAdjustmentType alterRow(upsertIf(true())) ~> AlterRow\nAlterRow sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tdeletable:false,\n\tinsertable:false,\n\tupdateable:false,\n\tupsertable:true,\n\tkeys:['AccumulatorAdjustmentTypeID'],\n\tformat: 'table',\n\tstaged: true,\n\tallowCopyCommand: true,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\terrorHandlingOption: 'stopOnFirstError',\n\tmapColumn(\n\t\tAccumulatorAdjustmentTypeID,\n\t\tAccumulatorAdjustmentTypeSortOrder,\n\t\tAccumulatorAdjustmentTypeDescription,\n\t\tAccumulatorAdjustmentTypeDescriptionShort,\n\t\tIsActiveFlag,\n\t\tCreateDate,\n\t\tCreateUser,\n\t\tLastUpdate,\n\t\tLastUpdateUser,\n\t\tUpdateStamp\n\t)) ~> ODScfgConfigurationCenter"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/CNCT_cfgVendor')]",
+            "type": "Microsoft.DataFactory/factories/dataflows",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "folder": {
+                    "name": "CONNECT"
+                },
+                "type": "MappingDataFlow",
+                "typeProperties": {
+                    "sources": [
+                        {
+                            "dataset": {
+                                "referenceName": "DL_CNCT_cfgVendor",
+                                "type": "DatasetReference"
+                            },
+                            "name": "CNTcfgVendor"
+                        }
+                    ],
+                    "sinks": [
+                        {
+                            "dataset": {
+                                "referenceName": "ODS_CNCT_cfgVendor",
+                                "type": "DatasetReference"
+                            },
+                            "name": "sink1"
+                        }
+                    ],
+                    "transformations": [
+                        {
+                            "name": "AlterRow1"
+                        }
+                    ],
+                    "script": "source(output(\n\t\tVendorID as integer,\n\t\tVendorTypeID as integer,\n\t\tVendorSortOrder as integer,\n\t\tVendorDescription as string,\n\t\tVendorDescriptionShort as string,\n\t\tVendorAddress1 as string,\n\t\tVendorAddress2 as string,\n\t\tVendorAddress3 as string,\n\t\tVendorPhone as string,\n\t\tVendorFax as string,\n\t\tVendorContractCounter as integer,\n\t\tIsActiveFlag as boolean,\n\t\tCreateDate as timestamp,\n\t\tCreateUser as string,\n\t\tLastUpdate as timestamp,\n\t\tLastUpdateUser as string,\n\t\tUpdateStamp as binary,\n\t\tFactoryColor as string,\n\t\tGPVendorID as string,\n\t\tGPVendorDescription as string,\n\t\tVendorExportFileTypeID as integer\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\tformat: 'parquet') ~> CNTcfgVendor\nCNTcfgVendor alterRow(upsertIf(true())) ~> AlterRow1\nAlterRow1 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tinput(\n\t\tVendorID as integer,\n\t\tVendorTypeID as integer,\n\t\tVendorSortOrder as integer,\n\t\tVendorDescription as string,\n\t\tVendorDescriptionShort as string,\n\t\tVendorAddress1 as string,\n\t\tVendorAddress2 as string,\n\t\tVendorAddress3 as string,\n\t\tVendorPhone as string,\n\t\tVendorFax as string,\n\t\tVendorContractCounter as integer,\n\t\tIsActiveFlag as boolean,\n\t\tCreateDate as timestamp,\n\t\tCreateUser as string,\n\t\tLastUpdate as timestamp,\n\t\tLastUpdateUser as string,\n\t\tUpdateStamp as binary,\n\t\tFactoryColor as string,\n\t\tGPVendorID as string,\n\t\tGPVendorDescription as string,\n\t\tVendorExportFileTypeID as integer\n\t),\n\tdeletable:false,\n\tinsertable:false,\n\tupdateable:false,\n\tupsertable:true,\n\tkeys:['VendorID'],\n\tformat: 'table',\n\tstaged: true,\n\tallowCopyCommand: true,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\terrorHandlingOption: 'stopOnFirstError') ~> sink1"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/CNCT_lkpEthnicity')]",
+            "type": "Microsoft.DataFactory/factories/dataflows",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "folder": {
+                    "name": "CONNECT"
+                },
+                "type": "MappingDataFlow",
+                "typeProperties": {
+                    "sources": [
+                        {
+                            "dataset": {
+                                "referenceName": "DL_CNCT_lkpEthnicity",
+                                "type": "DatasetReference"
+                            },
+                            "name": "CNTlkpEthnicity"
+                        }
+                    ],
+                    "sinks": [
+                        {
+                            "dataset": {
+                                "referenceName": "ODS_CNCT_lkpEthnicity",
+                                "type": "DatasetReference"
+                            },
+                            "name": "ODSlkpEthnicity"
+                        }
+                    ],
+                    "transformations": [
+                        {
+                            "name": "AlterRow"
+                        }
+                    ],
+                    "script": "source(output(\n\t\tEthnicityID as integer,\n\t\tBOSEthnicityCode as string,\n\t\tEthnicitySortOrder as integer,\n\t\tEthnicityDescription as string,\n\t\tEthnicityDescriptionShort as string,\n\t\tIsActiveFlag as boolean,\n\t\tCreateDate as timestamp,\n\t\tCreateUser as string,\n\t\tLastUpdate as timestamp,\n\t\tLastUpdateUser as string,\n\t\tUpdateStamp as binary,\n\t\tDescriptionResourceKey as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\tformat: 'parquet') ~> CNTlkpEthnicity\nCNTlkpEthnicity alterRow(upsertIf(true())) ~> AlterRow\nAlterRow sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tinput(\n\t\tEthnicityID as integer,\n\t\tBOSEthnicityCode as string,\n\t\tEthnicitySortOrder as integer,\n\t\tEthnicityDescription as string,\n\t\tEthnicityDescriptionShort as string,\n\t\tIsActiveFlag as boolean,\n\t\tCreateDate as timestamp,\n\t\tCreateUser as string,\n\t\tLastUpdate as timestamp,\n\t\tLastUpdateUser as string,\n\t\tUpdateStamp as binary,\n\t\tDescriptionResourceKey as string\n\t),\n\tdeletable:false,\n\tinsertable:false,\n\tupdateable:false,\n\tupsertable:true,\n\tkeys:['EthnicityID'],\n\tformat: 'table',\n\tstaged: true,\n\tallowCopyCommand: true,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\terrorHandlingOption: 'stopOnFirstError',\n\tmapColumn(\n\t\tEthnicityID,\n\t\tBOSEthnicityCode,\n\t\tEthnicitySortOrder,\n\t\tEthnicityDescription,\n\t\tEthnicityDescriptionShort,\n\t\tIsActiveFlag,\n\t\tCreateDate,\n\t\tCreateUser,\n\t\tLastUpdate,\n\t\tLastUpdateUser,\n\t\tDescriptionResourceKey\n\t)) ~> ODSlkpEthnicity"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/CNCT_cfgCenter')]",
+            "type": "Microsoft.DataFactory/factories/dataflows",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "folder": {
+                    "name": "CONNECT"
+                },
+                "type": "MappingDataFlow",
+                "typeProperties": {
+                    "sources": [
+                        {
+                            "dataset": {
+                                "referenceName": "DL_CNCT_Center",
+                                "type": "DatasetReference"
+                            },
+                            "name": "CNTcfgCenter"
+                        }
+                    ],
+                    "sinks": [
+                        {
+                            "dataset": {
+                                "referenceName": "ODS_CNCT_Center",
+                                "type": "DatasetReference"
+                            },
+                            "name": "ODScfgCenter"
+                        }
+                    ],
+                    "transformations": [
+                        {
+                            "name": "AlterRow1"
+                        }
+                    ],
+                    "script": "source(output(\n\t\tCenterID as integer,\n\t\tCountryID as integer,\n\t\tRegionID as integer,\n\t\tCenterPayGroupID as integer,\n\t\tCenterDescription as string,\n\t\tCenterTypeID as integer,\n\t\tCenterOwnershipID as integer,\n\t\tSurgeryHubCenterID as integer,\n\t\tReportingCenterID as integer,\n\t\tAliasSurgeryCenterID as integer,\n\t\tEmployeeDoctorGUID as string,\n\t\tDoctorRegionID as integer,\n\t\tTimeZoneID as integer,\n\t\tInvoiceCounter as integer,\n\t\tAddress1 as string,\n\t\tAddress2 as string,\n\t\tAddress3 as string,\n\t\tCity as string,\n\t\tStateID as integer,\n\t\tPostalCode as string,\n\t\tPhone1 as string,\n\t\tPhone2 as string,\n\t\tPhone3 as string,\n\t\tPhone1TypeID as integer,\n\t\tPhone2TypeID as integer,\n\t\tPhone3TypeID as integer,\n\t\tIsPhone1PrimaryFlag as boolean,\n\t\tIsPhone2PrimaryFlag as boolean,\n\t\tIsPhone3PrimaryFlag as boolean,\n\t\tIsActiveFlag as boolean,\n\t\tCreateDate as timestamp,\n\t\tCreateUser as string,\n\t\tLastUpdate as timestamp,\n\t\tLastUpdateUser as string,\n\t\tUpdateStamp as binary,\n\t\tIsCorporateHeadquartersFlag as boolean,\n\t\tRegionRSMNBConsultantGuid as string,\n\t\tRegionRSMMembershipAdvisorGuid as string,\n\t\tRegionRTMTechnicalManagerGuid as string,\n\t\tCenterManagementAreaID as integer,\n\t\tCenterNumber as integer,\n\t\tBusinessUnitBrandID as integer,\n\t\tCenterDescriptionFullAlt1Calc as string,\n\t\tCenterDescriptionFullCalc as string,\n\t\tWareHouseId as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\tformat: 'parquet') ~> CNTcfgCenter\nCNTcfgCenter alterRow(upsertIf(true())) ~> AlterRow1\nAlterRow1 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tinput(\n\t\tCenterID as integer,\n\t\tCountryID as integer,\n\t\tRegionID as integer,\n\t\tCenterPayGroupID as integer,\n\t\tCenterDescription as string,\n\t\tCenterTypeID as integer,\n\t\tCenterOwnershipID as integer,\n\t\tSurgeryHubCenterID as integer,\n\t\tReportingCenterID as integer,\n\t\tAliasSurgeryCenterID as integer,\n\t\tEmployeeDoctorGUID as string,\n\t\tDoctorRegionID as integer,\n\t\tTimeZoneID as integer,\n\t\tInvoiceCounter as integer,\n\t\tAddress1 as string,\n\t\tAddress2 as string,\n\t\tAddress3 as string,\n\t\tCity as string,\n\t\tStateID as integer,\n\t\tPostalCode as string,\n\t\tPhone1 as string,\n\t\tPhone2 as string,\n\t\tPhone3 as string,\n\t\tPhone1TypeID as integer,\n\t\tPhone2TypeID as integer,\n\t\tPhone3TypeID as integer,\n\t\tIsPhone1PrimaryFlag as boolean,\n\t\tIsPhone2PrimaryFlag as boolean,\n\t\tIsPhone3PrimaryFlag as boolean,\n\t\tIsActiveFlag as boolean,\n\t\tCreateDate as timestamp,\n\t\tCreateUser as string,\n\t\tLastUpdate as timestamp,\n\t\tLastUpdateUser as string,\n\t\tUpdateStamp as binary,\n\t\tIsCorporateHeadquartersFlag as boolean,\n\t\tRegionRSMNBConsultantGuid as string,\n\t\tRegionRSMMembershipAdvisorGuid as string,\n\t\tRegionRTMTechnicalManagerGuid as string,\n\t\tCenterManagementAreaID as integer,\n\t\tCenterNumber as integer,\n\t\tBusinessUnitBrandID as integer,\n\t\tCenterDescriptionFullAlt1Calc as string,\n\t\tCenterDescriptionFullCalc as string\n\t),\n\tdeletable:false,\n\tinsertable:false,\n\tupdateable:false,\n\tupsertable:true,\n\tkeys:['CenterID'],\n\tformat: 'table',\n\tstaged: true,\n\tallowCopyCommand: true,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\terrorHandlingOption: 'stopOnFirstError') ~> ODScfgCenter"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/CNCT_lkpSalesOrderType')]",
+            "type": "Microsoft.DataFactory/factories/dataflows",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "folder": {
+                    "name": "CONNECT"
+                },
+                "type": "MappingDataFlow",
+                "typeProperties": {
+                    "sources": [
+                        {
+                            "dataset": {
+                                "referenceName": "DL_CNCT_lkpSalesOrderType",
+                                "type": "DatasetReference"
+                            },
+                            "name": "CNTlkpSalesOrderType"
+                        }
+                    ],
+                    "sinks": [
+                        {
+                            "dataset": {
+                                "referenceName": "ODS_CNCT_lkpSalesOrderType",
+                                "type": "DatasetReference"
+                            },
+                            "name": "ODSlkpSalesOrderType"
+                        }
+                    ],
+                    "transformations": [
+                        {
+                            "name": "AlterRow"
+                        }
+                    ],
+                    "script": "source(output(\n\t\tSalesOrderTypeID as integer,\n\t\tSalesOrderTypeSortOrder as integer,\n\t\tSalesOrderTypeDescription as string,\n\t\tSalesOrderTypeDescriptionShort as string,\n\t\tIsActiveFlag as boolean,\n\t\tCreateDate as timestamp,\n\t\tCreateUser as string,\n\t\tLastUpdate as timestamp,\n\t\tLastUpdateUser as string,\n\t\tUpdateStamp as binary\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\tformat: 'parquet') ~> CNTlkpSalesOrderType\nCNTlkpSalesOrderType alterRow(upsertIf(true())) ~> AlterRow\nAlterRow sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tinput(\n\t\tSalesOrderTypeID as integer,\n\t\tSalesOrderTypeSortOrder as integer,\n\t\tSalesOrderTypeDescription as string,\n\t\tSalesOrderTypeDescriptionShort as string,\n\t\tIsActiveFlag as boolean,\n\t\tCreateDate as timestamp,\n\t\tCreateUser as string,\n\t\tLastUpdate as timestamp,\n\t\tLastUpdateUser as string,\n\t\tUpdateStamp as binary\n\t),\n\tdeletable:false,\n\tinsertable:false,\n\tupdateable:false,\n\tupsertable:true,\n\tkeys:['SalesOrderTypeID'],\n\tformat: 'table',\n\tstaged: true,\n\tallowCopyCommand: true,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\terrorHandlingOption: 'stopOnFirstError',\n\tmapColumn(\n\t\tSalesOrderTypeID,\n\t\tSalesOrderTypeSortOrder,\n\t\tSalesOrderTypeDescription,\n\t\tSalesOrderTypeDescriptionShort,\n\t\tIsActiveFlag,\n\t\tCreateDate,\n\t\tCreateUser,\n\t\tLastUpdate,\n\t\tLastUpdateUser\n\t)) ~> ODSlkpSalesOrderType"
+                }
+            },
+            "dependsOn": []
+        }
+    ]
+}
