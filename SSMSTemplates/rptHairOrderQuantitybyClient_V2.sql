@@ -140,6 +140,7 @@ CREATE TABLE [#hair]
   , [LastApplicationDate]                  DATE
   , [ContractPrice]                        MONEY
   , [ContractPaidAmount]                   MONEY
+  , [RevenueGroupID]                       INT
 ) ;
 
 -- Last Application Date
@@ -225,7 +226,8 @@ INSERT INTO [#hair]( [HairSystemOrderNumber]
                    , [EstNextApp]
                    , [LastApplicationDate]
                    , [ContractPrice]
-                   , [ContractPaidAmount] )
+                   , [ContractPaidAmount]
+                   , [RevenueGroupID] )
 SELECT
     [hso].[HairSystemOrderNumber]
   , [clt].[CenterID]
@@ -250,6 +252,7 @@ SELECT
   , [sna].[LastApplicationDate]
   , [cm].[ContractPrice]
   , [cm].[ContractPaidAmount]
+  , [m].[RevenueGroupID]
 FROM [dbo].[datClient] AS [clt]
 INNER JOIN [dbo].[datClientMembership] AS [cm] ON [cm].[ClientMembershipGUID] = [clt].[CurrentBioMatrixClientMembershipGUID]
 INNER JOIN [dbo].[cfgCenter] AS [c] ON [c].[CenterID] = [clt].[CenterID]
@@ -502,6 +505,7 @@ SELECT
   --, [q].[OrderAvailForNextApp]
   , ISNULL([q].[ContractPrice], 0) AS [ContractPrice]
   , ISNULL([q].[ContractPaidAmount], 0) AS [ContractPaidAmount]
+  , [q].[RevenueGroupID]
 INTO [#tmpHairOrderQuantitybyClient]
 FROM( SELECT
           [hair].[ClientGUID]
@@ -526,6 +530,7 @@ FROM( SELECT
         --, MAX(CASE WHEN [hair].[HairSystemOrderDate] = [hair].[NextAppointmentDate] AND [hair].[InCenter] = 1 THEN 1 ELSE 0 END) AS [OrderAvailForNextApp]
         , MAX([hair].[ContractPrice]) AS [ContractPrice]
         , MAX([hair].[ContractPaidAmount]) AS [ContractPaidAmount]
+        , MAX([hair].[RevenueGroupID]) AS [RevenueGroupID]
       FROM [#hair] AS [hair]
       LEFT JOIN [dbo].[datClientMembershipAccum] AS [ahs] ON [hair].[CurrentBioMatrixClientMembershipGUID] = [ahs].[ClientMembershipGUID] AND [ahs].[AccumulatorID] = 8 --Hair Systems
       LEFT JOIN [#initialquantity] AS [iq] ON [hair].[MembershipID] = [iq].[MembershipID]
@@ -599,7 +604,7 @@ FROM( SELECT
         , CASE WHEN [t].[Calc01] > [t].[Calc02] THEN CONCAT('Yes; ', [t].[Calc01] - [t].[Calc02])ELSE 'No' END AS [Priority Order Needed]
         --, CASE WHEN [t].[PriorityHairNeeded] = 1 THEN 'Yes' ELSE 'No' END AS [Priority Order Needed]
         , CAST(CASE WHEN [t].[SuggestedQuantityToOrder] > [gms].[MaxVal] THEN [gms].[MaxVal] WHEN [t].[SuggestedQuantityToOrder] > 0 THEN [t].[SuggestedQuantityToOrder] ELSE 0 END AS INT) AS [Suggested Qty to Order]
-        , CAST(ROUND([t].[ContractPaidAmount] * 100.0 / NULLIF([t].[ContractPrice], 0), 0) AS INT) AS [ContractAmtPaid%]
+        , CASE WHEN [t].[RevenueGroupID] = 1 THEN CAST(ROUND([t].[ContractPaidAmount] * 100.0 / NULLIF([t].[ContractPrice], 0), 0) AS INT)END AS [ContractAmtPaid%]
       --, CAST([t].[DueDate] AS DATE) AS [Due Date]
       --, [t].[TotalAccumQuantity] AS [Total Accum Qty]
       --, [t].[Promo]
