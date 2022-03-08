@@ -62,22 +62,61 @@ INNER JOIN [sys].[schemas] AS [s] ON [s].[schema_id] = [t].[schema_id]
 INNER JOIN [sys].[columns] AS [c] ON [c].[object_id] = [t].[object_id]
 INNER JOIN [sys].[types] AS [y] ON [y].[user_type_id] = [c].[user_type_id]
 LEFT JOIN [sys].[databases] AS [d] ON [d].[name] = DB_NAME() ;
-
 GO
+IF OBJECT_ID('[tempdb]..[#NotNullCount]') IS NOT NULL
+    DROP TABLE [#NotNullCount] ;
+
+CREATE TABLE [#NotNullCount]
+(
+    [TableName]  VARCHAR(128) NOT NULL
+  , [AllCnt]     INT          NOT NULL
+  , [ColumnName] VARCHAR(128) NOT NULL
+  , [NotNullCnt] INT          NOT NULL
+  , PRIMARY KEY CLUSTERED( [TableName], [ColumnName] )
+) ;
+
+SELECT
+    [FQN]
+  , CONCAT(
+        CAST(NULL AS VARCHAR(MAX)), 'INSERT [#NotNullCount]
+SELECT
+''', MAX([ObjectName]), ''' as [TableName],
+[k].[Cnt] as [AllCnt],
+[d].[ColumnName],
+[d].[NotNullCnt]
+FROM(SELECT
+	COUNT(1) AS [Cnt],
+	', STRING_AGG(
+           CONCAT(CAST(NULL AS VARCHAR(MAX)), CASE WHEN [ColumnDef] LIKE '%char%' THEN CONCAT('SUM(CASE WHEN ', QUOTENAME([ColumnName]), ' <> '''' THEN 1 ELSE 0 END)')ELSE CONCAT('SUM(CASE WHEN ', QUOTENAME([ColumnName]), ' IS NOT NULL THEN 1 ELSE 0 END)')END, ' AS ', QUOTENAME([ColumnName]))
+         , ',
+')WITHIN GROUP(ORDER BY [ColumnId]), '
+FROM ', [FQN], ' [k] WITH(NOLOCK)) [k]
+CROSS APPLY (VALUES', STRING_AGG(CONCAT(CAST(NULL AS VARCHAR(MAX)), '(''', [ColumnName], ''', ', QUOTENAME([ColumnName]), ')'), ',
+	')WITHIN GROUP(ORDER BY [ColumnId]), ' )[d] ([ColumnName], [NotNullCnt])')
+FROM [#temptable]
+GROUP BY [FQN] ;
+
 SELECT
     ISNULL([a].[ObjectName], [b].[ObjectName]) AS [ObjectName]
   , ISNULL([a].[ColumnName], [b].[ColumnName]) AS [ColumnName]
   , ISNULL([a].[ColumnId], [b].[ColumnId]) AS [ColumnId]
+  , [a].[AllCnt]
+  , [a].[NotNullCnt]
+  , CASE WHEN [a].[NotNullCnt] = 0 THEN 1 WHEN [a].[AllCnt] IS NULL THEN NULL ELSE 0 END AS [ExistingDataAllNulls]
   , CASE WHEN ISNULL([a].[ObjectName], [b].[ObjectName]) IN (N'Account', N'Action__c', N'Address__c', N'Campaign', N'ChangeLog', N'Consultation_Form__c', N'Email__c', N'HCDeletionTracker__c', N'Lead', N'Phone__c', N'PhoneScrub__c', N'PromoCode__c', N'Result__c', N'SaleTypeCode__c'
                                                            , N'Survey_Response__c', N'Task', N'User', N'ZipCode__c') THEN 1
         ELSE 0
     END AS [CurrentlyUsed]
   , [a].[ColumnDef] AS [HC_BI_SFDC_ColumnDef]
   , [b].[ColumnDef] AS [SalesForceImport_ColumnDef]
-FROM( SELECT *
-      FROM [#HC_BI_SFDC]
-      WHERE [ObjectName] IN (N'Account', N'Action__c', N'Address__c', N'Campaign', N'ChangeLog', N'Consultation_Form__c', N'Email__c', N'HCDeletionTracker__c', N'Lead', N'Phone__c', N'PhoneScrub__c', N'PromoCode__c', N'Result__c', N'SaleTypeCode__c', N'Survey_Response__c', N'Task', N'User'
-                           , N'ZipCode__c')) AS [a]
+FROM( SELECT
+          [b].*
+        , [n].[AllCnt]
+        , [n].[NotNullCnt]
+      FROM [#HC_BI_SFDC] AS [b]
+      LEFT JOIN [#NotNullCount] AS [n] ON [n].[TableName] = [b].[ObjectName] AND [n].[ColumnName] = [b].[ColumnName]
+      WHERE [b].[ObjectName] IN (N'Account', N'Action__c', N'Address__c', N'Campaign', N'ChangeLog', N'Consultation_Form__c', N'Email__c', N'HCDeletionTracker__c', N'Lead', N'Phone__c', N'PhoneScrub__c', N'PromoCode__c', N'Result__c', N'SaleTypeCode__c', N'Survey_Response__c', N'Task', N'User'
+                               , N'ZipCode__c')) AS [a]
 FULL OUTER JOIN( SELECT * FROM [#SalesForceImport] WHERE [SchemaName] = 'SF' ) AS [b] ON [a].[ObjectName] = [b].[ObjectName] AND [a].[ColumnName] = [b].[ColumnName]
 ORDER BY ISNULL([a].[ObjectName], [b].[ObjectName])
        , ISNULL([a].[ColumnId], [b].[ColumnId])
