@@ -64,10 +64,16 @@ INNER JOIN [sys].[types] AS [y] ON [y].[user_type_id] = [c].[user_type_id]
 LEFT JOIN [sys].[databases] AS [d] ON [d].[name] = DB_NAME() ;
 GO
 SELECT
-    ISNULL([a].[ColumnName], [b].[ColumnName]) AS [ColumnName]
+    ISNULL([a].[ObjectName], [b].[ObjectName]) AS [ObjectName]
+  , ISNULL([a].[ColumnName], [b].[ColumnName]) AS [ColumnName]
+  , ISNULL([a].[ColumnId], [b].[ColumnId])
   , [a].[ColumnDef] AS [HC_BI_SFDC_ColumnDef]
   , [b].[ColumnDef] AS [SalesForceImport_ColumnDef]
-FROM( SELECT * FROM [#HC_BI_SFDC] WHERE [ObjectName] = 'Task' ) AS [a]
-FULL OUTER JOIN( SELECT * FROM [#SalesForceImport] WHERE [SchemaName] = 'SF' AND [ObjectName] = 'Task' ) AS [b] ON [a].[ColumnName] = [b].[ColumnName]
-ORDER BY ISNULL([a].[ColumnId], [b].[ColumnId])
+FROM( SELECT *
+      FROM [#HC_BI_SFDC]
+      WHERE [ObjectName] IN (N'Account', N'Action__c', N'Address__c', N'Campaign', N'ChangeLog', N'Consultation_Form__c', N'Email__c', N'HCDeletionTracker__c', N'Lead', N'Phone__c', N'PhoneScrub__c', N'PromoCode__c', N'Result__c', N'SaleTypeCode__c', N'Survey_Response__c', N'Task', N'User'
+                           , N'ZipCode__c')) AS [a]
+FULL OUTER JOIN( SELECT * FROM [#SalesForceImport] WHERE [SchemaName] = 'SF' ) AS [b] ON [a].[ObjectName] = [b].[ObjectName] AND [a].[ColumnName] = [b].[ColumnName]
+ORDER BY ISNULL([a].[ObjectName], [b].[ObjectName])
+       , ISNULL([a].[ColumnId], [b].[ColumnId])
        , ISNULL([a].[ColumnName], [b].[ColumnName]) ;
