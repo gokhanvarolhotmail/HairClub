@@ -28,9 +28,8 @@ FROM [sys].[objects] AS [t]
 INNER JOIN [sys].[schemas] AS [s] ON [s].[schema_id] = [t].[schema_id]
 INNER JOIN [sys].[columns] AS [c] ON [c].[object_id] = [t].[object_id]
 INNER JOIN [sys].[types] AS [y] ON [y].[user_type_id] = [c].[user_type_id]
-LEFT JOIN [sys].[databases] AS [d] ON [d].[name] = DB_NAME() 
-WHERE s.name = 'SF'
-
+LEFT JOIN [sys].[databases] AS [d] ON [d].[name] = DB_NAME()
+WHERE [s].[name] = 'SF' ;
 GO
 USE [HC_BI_SFDC] ;
 GO
@@ -62,12 +61,12 @@ FROM [sys].[objects] AS [t]
 INNER JOIN [sys].[schemas] AS [s] ON [s].[schema_id] = [t].[schema_id]
 INNER JOIN [sys].[columns] AS [c] ON [c].[object_id] = [t].[object_id]
 INNER JOIN [sys].[types] AS [y] ON [y].[user_type_id] = [c].[user_type_id]
-LEFT JOIN [sys].[databases] AS [d] ON [d].[name] = DB_NAME() 
+LEFT JOIN [sys].[databases] AS [d] ON [d].[name] = DB_NAME() ;
 GO
 SELECT
     ISNULL([a].[ColumnName], [b].[ColumnName]) AS [ColumnName]
-  , [a].[ColumnDef]
-  , [b].[ColumnDef]
+  , [a].[ColumnDef] AS [HC_BI_SFDC_ColumnDef]
+  , [b].[ColumnDef] AS [SalesForceImport_ColumnDef]
 FROM( SELECT * FROM [#HC_BI_SFDC] WHERE [ObjectName] = 'Task' ) AS [a]
 FULL OUTER JOIN( SELECT * FROM [#SalesForceImport] WHERE [SchemaName] = 'SF' AND [ObjectName] = 'Task' ) AS [b] ON [a].[ColumnName] = [b].[ColumnName]
 ORDER BY ISNULL([a].[ColumnId], [b].[ColumnId])
