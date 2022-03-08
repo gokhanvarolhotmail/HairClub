@@ -62,11 +62,16 @@ INNER JOIN [sys].[schemas] AS [s] ON [s].[schema_id] = [t].[schema_id]
 INNER JOIN [sys].[columns] AS [c] ON [c].[object_id] = [t].[object_id]
 INNER JOIN [sys].[types] AS [y] ON [y].[user_type_id] = [c].[user_type_id]
 LEFT JOIN [sys].[databases] AS [d] ON [d].[name] = DB_NAME() ;
+
 GO
 SELECT
     ISNULL([a].[ObjectName], [b].[ObjectName]) AS [ObjectName]
   , ISNULL([a].[ColumnName], [b].[ColumnName]) AS [ColumnName]
-  , ISNULL([a].[ColumnId], [b].[ColumnId])
+  , ISNULL([a].[ColumnId], [b].[ColumnId]) AS [ColumnId]
+  , CASE WHEN ISNULL([a].[ObjectName], [b].[ObjectName]) IN (N'Account', N'Action__c', N'Address__c', N'Campaign', N'ChangeLog', N'Consultation_Form__c', N'Email__c', N'HCDeletionTracker__c', N'Lead', N'Phone__c', N'PhoneScrub__c', N'PromoCode__c', N'Result__c', N'SaleTypeCode__c'
+                                                           , N'Survey_Response__c', N'Task', N'User', N'ZipCode__c') THEN 1
+        ELSE 0
+    END AS [CurrentlyUsed]
   , [a].[ColumnDef] AS [HC_BI_SFDC_ColumnDef]
   , [b].[ColumnDef] AS [SalesForceImport_ColumnDef]
 FROM( SELECT *
