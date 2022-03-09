@@ -1,4 +1,4 @@
-/* CreateDate: 03/03/2022 13:53:57.360 , ModifyDate: 03/07/2022 12:17:33.947 */
+/* CreateDate: 03/03/2022 13:53:57.360 , ModifyDate: 03/08/2022 08:42:56.150 */
 GO
 CREATE TABLE [SF].[Task](
 	[Id] [varchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
@@ -13,7 +13,7 @@ CREATE TABLE [SF].[Task](
 	[Priority] [varchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[IsHighPriority] [bit] NULL,
 	[OwnerId] [varchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-	[Description] [text] COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[Description] [varchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[CurrencyIsoCode] [varchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[Type] [varchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[IsDeleted] [bit] NULL,
@@ -81,149 +81,4 @@ CREATE NONCLUSTERED INDEX [LastModifiedDate] ON [SF].[Task]
 (
 	[LastModifiedDate] DESC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-GO
-ALTER TABLE [SF].[Task]  WITH NOCHECK ADD  CONSTRAINT [fk_Task_Account_AccountId] FOREIGN KEY([AccountId])
-REFERENCES [SF].[Account] ([Id])
-GO
-ALTER TABLE [SF].[Task] NOCHECK CONSTRAINT [fk_Task_Account_AccountId]
-GO
-ALTER TABLE [SF].[Task]  WITH NOCHECK ADD  CONSTRAINT [fk_Task_Account_Person_Account__c] FOREIGN KEY([Person_Account__c])
-REFERENCES [SF].[Account] ([Id])
-GO
-ALTER TABLE [SF].[Task] NOCHECK CONSTRAINT [fk_Task_Account_Person_Account__c]
-GO
-ALTER TABLE [SF].[Task]  WITH NOCHECK ADD  CONSTRAINT [fk_Task_Account_WhatId] FOREIGN KEY([WhatId])
-REFERENCES [SF].[Account] ([Id])
-GO
-ALTER TABLE [SF].[Task] NOCHECK CONSTRAINT [fk_Task_Account_WhatId]
-GO
-ALTER TABLE [SF].[Task]  WITH NOCHECK ADD  CONSTRAINT [fk_Task_AssignedResource_WhatId] FOREIGN KEY([WhatId])
-REFERENCES [SF].[AssignedResource] ([Id])
-GO
-ALTER TABLE [SF].[Task] NOCHECK CONSTRAINT [fk_Task_AssignedResource_WhatId]
-GO
-ALTER TABLE [SF].[Task]  WITH NOCHECK ADD  CONSTRAINT [fk_Task_Campaign_WhatId] FOREIGN KEY([WhatId])
-REFERENCES [SF].[Campaign] ([Id])
-GO
-ALTER TABLE [SF].[Task] NOCHECK CONSTRAINT [fk_Task_Campaign_WhatId]
-GO
-ALTER TABLE [SF].[Task]  WITH NOCHECK ADD  CONSTRAINT [fk_Task_Case_WhatId] FOREIGN KEY([WhatId])
-REFERENCES [SF].[Case] ([Id])
-GO
-ALTER TABLE [SF].[Task] NOCHECK CONSTRAINT [fk_Task_Case_WhatId]
-GO
-ALTER TABLE [SF].[Task]  WITH NOCHECK ADD  CONSTRAINT [fk_Task_Commissions_Log__c_WhatId] FOREIGN KEY([WhatId])
-REFERENCES [SF].[Commissions_Log__c] ([Id])
-GO
-ALTER TABLE [SF].[Task] NOCHECK CONSTRAINT [fk_Task_Commissions_Log__c_WhatId]
-GO
-ALTER TABLE [SF].[Task]  WITH NOCHECK ADD  CONSTRAINT [fk_Task_Contact_WhoId] FOREIGN KEY([WhoId])
-REFERENCES [SF].[Contact] ([Id])
-GO
-ALTER TABLE [SF].[Task] NOCHECK CONSTRAINT [fk_Task_Contact_WhoId]
-GO
-ALTER TABLE [SF].[Task]  WITH NOCHECK ADD  CONSTRAINT [fk_Task_Contract_WhatId] FOREIGN KEY([WhatId])
-REFERENCES [SF].[Contract] ([Id])
-GO
-ALTER TABLE [SF].[Task] NOCHECK CONSTRAINT [fk_Task_Contract_WhatId]
-GO
-ALTER TABLE [SF].[Task]  WITH NOCHECK ADD  CONSTRAINT [fk_Task_ContractLineItem_WhatId] FOREIGN KEY([WhatId])
-REFERENCES [SF].[ContractLineItem] ([Id])
-GO
-ALTER TABLE [SF].[Task] NOCHECK CONSTRAINT [fk_Task_ContractLineItem_WhatId]
-GO
-ALTER TABLE [SF].[Task]  WITH NOCHECK ADD  CONSTRAINT [fk_Task_Lead_Lead__c] FOREIGN KEY([Lead__c])
-REFERENCES [SF].[Lead] ([Id])
-GO
-ALTER TABLE [SF].[Task] NOCHECK CONSTRAINT [fk_Task_Lead_Lead__c]
-GO
-ALTER TABLE [SF].[Task]  WITH NOCHECK ADD  CONSTRAINT [fk_Task_Lead_WhoId] FOREIGN KEY([WhoId])
-REFERENCES [SF].[Lead] ([Id])
-GO
-ALTER TABLE [SF].[Task] NOCHECK CONSTRAINT [fk_Task_Lead_WhoId]
-GO
-ALTER TABLE [SF].[Task]  WITH NOCHECK ADD  CONSTRAINT [fk_Task_Location_WhatId] FOREIGN KEY([WhatId])
-REFERENCES [SF].[Location] ([Id])
-GO
-ALTER TABLE [SF].[Task] NOCHECK CONSTRAINT [fk_Task_Location_WhatId]
-GO
-ALTER TABLE [SF].[Task]  WITH NOCHECK ADD  CONSTRAINT [fk_Task_Opportunity_Opportunity__c] FOREIGN KEY([Opportunity__c])
-REFERENCES [SF].[Opportunity] ([Id])
-GO
-ALTER TABLE [SF].[Task] NOCHECK CONSTRAINT [fk_Task_Opportunity_Opportunity__c]
-GO
-ALTER TABLE [SF].[Task]  WITH NOCHECK ADD  CONSTRAINT [fk_Task_Opportunity_WhatId] FOREIGN KEY([WhatId])
-REFERENCES [SF].[Opportunity] ([Id])
-GO
-ALTER TABLE [SF].[Task] NOCHECK CONSTRAINT [fk_Task_Opportunity_WhatId]
-GO
-ALTER TABLE [SF].[Task]  WITH NOCHECK ADD  CONSTRAINT [fk_Task_Order_WhatId] FOREIGN KEY([WhatId])
-REFERENCES [SF].[Order] ([Id])
-GO
-ALTER TABLE [SF].[Task] NOCHECK CONSTRAINT [fk_Task_Order_WhatId]
-GO
-ALTER TABLE [SF].[Task]  WITH NOCHECK ADD  CONSTRAINT [fk_Task_PromoCode__c_WhatId] FOREIGN KEY([WhatId])
-REFERENCES [SF].[PromoCode__c] ([Id])
-GO
-ALTER TABLE [SF].[Task] NOCHECK CONSTRAINT [fk_Task_PromoCode__c_WhatId]
-GO
-ALTER TABLE [SF].[Task]  WITH NOCHECK ADD  CONSTRAINT [fk_Task_Quote_WhatId] FOREIGN KEY([WhatId])
-REFERENCES [SF].[Quote] ([Id])
-GO
-ALTER TABLE [SF].[Task] NOCHECK CONSTRAINT [fk_Task_Quote_WhatId]
-GO
-ALTER TABLE [SF].[Task]  WITH NOCHECK ADD  CONSTRAINT [fk_Task_ServiceAppointment_Service_Appointment__c] FOREIGN KEY([Service_Appointment__c])
-REFERENCES [SF].[ServiceAppointment] ([Id])
-GO
-ALTER TABLE [SF].[Task] NOCHECK CONSTRAINT [fk_Task_ServiceAppointment_Service_Appointment__c]
-GO
-ALTER TABLE [SF].[Task]  WITH NOCHECK ADD  CONSTRAINT [fk_Task_ServiceAppointment_WhatId] FOREIGN KEY([WhatId])
-REFERENCES [SF].[ServiceAppointment] ([Id])
-GO
-ALTER TABLE [SF].[Task] NOCHECK CONSTRAINT [fk_Task_ServiceAppointment_WhatId]
-GO
-ALTER TABLE [SF].[Task]  WITH NOCHECK ADD  CONSTRAINT [fk_Task_ServiceContract_WhatId] FOREIGN KEY([WhatId])
-REFERENCES [SF].[ServiceContract] ([Id])
-GO
-ALTER TABLE [SF].[Task] NOCHECK CONSTRAINT [fk_Task_ServiceContract_WhatId]
-GO
-ALTER TABLE [SF].[Task]  WITH NOCHECK ADD  CONSTRAINT [fk_Task_ServiceResource_WhatId] FOREIGN KEY([WhatId])
-REFERENCES [SF].[ServiceResource] ([Id])
-GO
-ALTER TABLE [SF].[Task] NOCHECK CONSTRAINT [fk_Task_ServiceResource_WhatId]
-GO
-ALTER TABLE [SF].[Task]  WITH NOCHECK ADD  CONSTRAINT [fk_Task_Task_RecurrenceActivityId] FOREIGN KEY([RecurrenceActivityId])
-REFERENCES [SF].[Task] ([Id])
-GO
-ALTER TABLE [SF].[Task] NOCHECK CONSTRAINT [fk_Task_Task_RecurrenceActivityId]
-GO
-ALTER TABLE [SF].[Task]  WITH NOCHECK ADD  CONSTRAINT [fk_Task_User_CreatedById] FOREIGN KEY([CreatedById])
-REFERENCES [SF].[User] ([Id])
-GO
-ALTER TABLE [SF].[Task] NOCHECK CONSTRAINT [fk_Task_User_CreatedById]
-GO
-ALTER TABLE [SF].[Task]  WITH NOCHECK ADD  CONSTRAINT [fk_Task_User_LastModifiedById] FOREIGN KEY([LastModifiedById])
-REFERENCES [SF].[User] ([Id])
-GO
-ALTER TABLE [SF].[Task] NOCHECK CONSTRAINT [fk_Task_User_LastModifiedById]
-GO
-ALTER TABLE [SF].[Task]  WITH NOCHECK ADD  CONSTRAINT [fk_Task_User_OwnerId] FOREIGN KEY([OwnerId])
-REFERENCES [SF].[User] ([Id])
-GO
-ALTER TABLE [SF].[Task] NOCHECK CONSTRAINT [fk_Task_User_OwnerId]
-GO
-ALTER TABLE [SF].[Task]  WITH NOCHECK ADD  CONSTRAINT [fk_Task_WorkOrder_WhatId] FOREIGN KEY([WhatId])
-REFERENCES [SF].[WorkOrder] ([Id])
-GO
-ALTER TABLE [SF].[Task] NOCHECK CONSTRAINT [fk_Task_WorkOrder_WhatId]
-GO
-ALTER TABLE [SF].[Task]  WITH NOCHECK ADD  CONSTRAINT [fk_Task_WorkOrderLineItem_WhatId] FOREIGN KEY([WhatId])
-REFERENCES [SF].[WorkOrderLineItem] ([Id])
-GO
-ALTER TABLE [SF].[Task] NOCHECK CONSTRAINT [fk_Task_WorkOrderLineItem_WhatId]
-GO
-ALTER TABLE [SF].[Task]  WITH NOCHECK ADD  CONSTRAINT [fk_Task_ZipCode__c_WhatId] FOREIGN KEY([WhatId])
-REFERENCES [SF].[ZipCode__c] ([Id])
-GO
-ALTER TABLE [SF].[Task] NOCHECK CONSTRAINT [fk_Task_ZipCode__c_WhatId]
 GO

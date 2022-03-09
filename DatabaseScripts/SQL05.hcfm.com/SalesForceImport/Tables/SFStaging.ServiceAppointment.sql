@@ -1,4 +1,4 @@
-/* CreateDate: 03/03/2022 13:54:34.970 , ModifyDate: 03/05/2022 13:04:15.280 */
+/* CreateDate: 03/03/2022 13:54:34.970 , ModifyDate: 03/08/2022 08:42:49.187 */
 GO
 CREATE TABLE [SFStaging].[ServiceAppointment](
 	[Id] [varchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
@@ -29,7 +29,7 @@ CREATE TABLE [SFStaging].[ServiceAppointment](
 	[Longitude] [decimal](25, 15) NULL,
 	[GeocodeAccuracy] [varchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[Address] [varchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-	[Description] [text] COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[Description] [varchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[EarliestStartTime] [datetime2](7) NULL,
 	[DueDate] [datetime2](7) NULL,
 	[Duration] [decimal](16, 2) NULL,
@@ -47,7 +47,7 @@ CREATE TABLE [SFStaging].[ServiceAppointment](
 	[Subject] [varchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[ParentRecordStatusCategory] [varchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[StatusCategory] [varchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-	[ServiceNote] [text] COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[ServiceNote] [varchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[AppointmentType] [varchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[Email] [varchar](128) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[Phone] [varchar](40) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
@@ -56,7 +56,7 @@ CREATE TABLE [SFStaging].[ServiceAppointment](
 	[Comments] [varchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[IsAnonymousBooking] [bit] NULL,
 	[IsOffsiteAppointment] [bit] NULL,
-	[ApptBookingInfoUrl] [text] COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[ApptBookingInfoUrl] [varchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[Confirmer_User__c] [varchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[External_Id__c] [varchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[Meeting_Platform_Id__c] [varchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,

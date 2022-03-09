@@ -1,4 +1,4 @@
-/* CreateDate: 03/03/2022 13:54:35.543 , ModifyDate: 03/05/2022 13:04:16.553 */
+/* CreateDate: 03/03/2022 13:54:35.543 , ModifyDate: 03/08/2022 08:42:50.487 */
 GO
 CREATE TABLE [SFStaging].[User](
 	[Id] [varchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
@@ -29,9 +29,9 @@ CREATE TABLE [SFStaging].[User](
 	[EmailPreferencesStayInTouchReminder] [bit] NULL,
 	[SenderEmail] [varchar](128) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[SenderName] [varchar](80) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-	[Signature] [text] COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[Signature] [varchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[StayInTouchSubject] [varchar](80) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-	[StayInTouchSignature] [text] COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[StayInTouchSignature] [varchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[StayInTouchNote] [varchar](512) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[Phone] [varchar](40) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[Fax] [varchar](40) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
@@ -161,7 +161,7 @@ CREATE TABLE [SFStaging].[User](
 	[CallCenterId] [varchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[Extension] [varchar](40) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[FederationIdentifier] [varchar](512) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-	[AboutMe] [text] COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[AboutMe] [varchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[FullPhotoUrl] [varchar](1024) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[SmallPhotoUrl] [varchar](1024) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[IsExtIndicatorVisible] [bit] NULL,
@@ -192,7 +192,7 @@ CREATE TABLE [SFStaging].[User](
 	[approver__c] [varchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[DB_Region__c] [varchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[Full_Name__c] [varchar](1300) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-	[User_Deactivation_Details__c] [text] COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[User_Deactivation_Details__c] [varchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[BannerPhotoId] [varchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[EndDay] [varchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[WorkspaceId] [varchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,

@@ -1,4 +1,4 @@
-/* CreateDate: 03/03/2022 13:54:35.477 , ModifyDate: 03/05/2022 13:04:15.933 */
+/* CreateDate: 03/03/2022 13:54:35.477 , ModifyDate: 03/08/2022 08:42:49.847 */
 GO
 CREATE TABLE [SFStaging].[Task](
 	[Id] [varchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
@@ -13,7 +13,7 @@ CREATE TABLE [SFStaging].[Task](
 	[Priority] [varchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[IsHighPriority] [bit] NULL,
 	[OwnerId] [varchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-	[Description] [text] COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[Description] [varchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[CurrencyIsoCode] [varchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[Type] [varchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[IsDeleted] [bit] NULL,

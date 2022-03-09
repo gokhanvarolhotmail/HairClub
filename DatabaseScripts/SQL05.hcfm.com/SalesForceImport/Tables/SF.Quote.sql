@@ -1,4 +1,4 @@
-/* CreateDate: 03/03/2022 13:53:56.740 , ModifyDate: 03/07/2022 12:17:33.337 */
+/* CreateDate: 03/03/2022 13:53:56.740 , ModifyDate: 03/08/2022 08:42:50.797 */
 GO
 CREATE TABLE [SF].[Quote](
 	[Id] [varchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
@@ -22,7 +22,7 @@ CREATE TABLE [SF].[Quote](
 	[Tax] [decimal](16, 2) NULL,
 	[Status] [varchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[ExpirationDate] [date] NULL,
-	[Description] [text] COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[Description] [varchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[Subtotal] [varchar](30) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[TotalPrice] [varchar](30) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[LineItemCount] [varchar](30) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
@@ -97,39 +97,4 @@ CREATE NONCLUSTERED INDEX [LastModifiedDate] ON [SF].[Quote]
 (
 	[LastModifiedDate] DESC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-GO
-ALTER TABLE [SF].[Quote]  WITH NOCHECK ADD  CONSTRAINT [fk_Quote_Account_AccountId] FOREIGN KEY([AccountId])
-REFERENCES [SF].[Account] ([Id])
-GO
-ALTER TABLE [SF].[Quote] NOCHECK CONSTRAINT [fk_Quote_Account_AccountId]
-GO
-ALTER TABLE [SF].[Quote]  WITH NOCHECK ADD  CONSTRAINT [fk_Quote_Contact_ContactId] FOREIGN KEY([ContactId])
-REFERENCES [SF].[Contact] ([Id])
-GO
-ALTER TABLE [SF].[Quote] NOCHECK CONSTRAINT [fk_Quote_Contact_ContactId]
-GO
-ALTER TABLE [SF].[Quote]  WITH NOCHECK ADD  CONSTRAINT [fk_Quote_Contract_ContractId] FOREIGN KEY([ContractId])
-REFERENCES [SF].[Contract] ([Id])
-GO
-ALTER TABLE [SF].[Quote] NOCHECK CONSTRAINT [fk_Quote_Contract_ContractId]
-GO
-ALTER TABLE [SF].[Quote]  WITH NOCHECK ADD  CONSTRAINT [fk_Quote_Opportunity_OpportunityId] FOREIGN KEY([OpportunityId])
-REFERENCES [SF].[Opportunity] ([Id])
-GO
-ALTER TABLE [SF].[Quote] NOCHECK CONSTRAINT [fk_Quote_Opportunity_OpportunityId]
-GO
-ALTER TABLE [SF].[Quote]  WITH NOCHECK ADD  CONSTRAINT [fk_Quote_User_CreatedById] FOREIGN KEY([CreatedById])
-REFERENCES [SF].[User] ([Id])
-GO
-ALTER TABLE [SF].[Quote] NOCHECK CONSTRAINT [fk_Quote_User_CreatedById]
-GO
-ALTER TABLE [SF].[Quote]  WITH NOCHECK ADD  CONSTRAINT [fk_Quote_User_LastModifiedById] FOREIGN KEY([LastModifiedById])
-REFERENCES [SF].[User] ([Id])
-GO
-ALTER TABLE [SF].[Quote] NOCHECK CONSTRAINT [fk_Quote_User_LastModifiedById]
-GO
-ALTER TABLE [SF].[Quote]  WITH NOCHECK ADD  CONSTRAINT [fk_Quote_User_OwnerId] FOREIGN KEY([OwnerId])
-REFERENCES [SF].[User] ([Id])
-GO
-ALTER TABLE [SF].[Quote] NOCHECK CONSTRAINT [fk_Quote_User_OwnerId]
 GO

@@ -1,4 +1,4 @@
-/* CreateDate: 03/03/2022 13:54:33.703 , ModifyDate: 03/05/2022 13:04:27.063 */
+/* CreateDate: 03/03/2022 13:54:33.703 , ModifyDate: 03/08/2022 08:42:59.923 */
 GO
 CREATE TABLE [SFStaging].[CampaignMember](
 	[Id] [varchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
@@ -29,7 +29,7 @@ CREATE TABLE [SFStaging].[CampaignMember](
 	[Phone] [varchar](40) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[Fax] [varchar](40) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[MobilePhone] [varchar](40) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-	[Description] [text] COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[Description] [varchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[DoNotCall] [bit] NULL,
 	[HasOptedOutOfEmail] [bit] NULL,
 	[HasOptedOutOfFax] [bit] NULL,

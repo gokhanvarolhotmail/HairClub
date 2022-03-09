@@ -1,4 +1,4 @@
-/* CreateDate: 03/04/2022 08:04:46.237 , ModifyDate: 03/05/2022 13:04:20.090 */
+/* CreateDate: 03/04/2022 08:04:46.237 , ModifyDate: 03/08/2022 08:42:53.827 */
 GO
 CREATE TABLE [SFStaging].[Lead](
 	[Id] [varchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
@@ -29,7 +29,7 @@ CREATE TABLE [SFStaging].[Lead](
 	[Email] [varchar](128) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[Website] [varchar](1024) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[PhotoUrl] [varchar](1024) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-	[Description] [text] COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[Description] [varchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[LeadSource] [varchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[Status] [varchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[Industry] [varchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
@@ -99,12 +99,12 @@ CREATE TABLE [SFStaging].[Lead](
 	[DNCValidationMobilePhone__c] [bit] NULL,
 	[DNCValidationPhone__c] [bit] NULL,
 	[GCLID__c] [varchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-	[Goals_Expectations__c] [text] COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[Goals_Expectations__c] [varchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[How_many_times_a_week_do_you_think__c] [varchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-	[How_much_time_a_week_do_you_spend__c] [text] COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-	[Other_Reason__c] [text] COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[How_much_time_a_week_do_you_spend__c] [varchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[Other_Reason__c] [varchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[What_are_your_main_concerns_today__c] [varchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-	[What_else_would_be_helpful_for_your__c] [text] COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[What_else_would_be_helpful_for_your__c] [varchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[What_methods_have_you_used_or_currently__c] [varchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[RefersionLogId__c] [varchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[Service_Territory_Time_Zone__c] [varchar](1300) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,

@@ -1,4 +1,4 @@
-/* CreateDate: 03/03/2022 13:53:57.437 , ModifyDate: 03/07/2022 12:17:32.113 */
+/* CreateDate: 03/03/2022 13:53:57.437 , ModifyDate: 03/08/2022 08:42:56.220 */
 GO
 CREATE TABLE [SF].[User](
 	[Id] [varchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
@@ -29,9 +29,9 @@ CREATE TABLE [SF].[User](
 	[EmailPreferencesStayInTouchReminder] [bit] NULL,
 	[SenderEmail] [varchar](128) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[SenderName] [varchar](80) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-	[Signature] [text] COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[Signature] [varchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[StayInTouchSubject] [varchar](80) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-	[StayInTouchSignature] [text] COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[StayInTouchSignature] [varchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[StayInTouchNote] [varchar](512) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[Phone] [varchar](40) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[Fax] [varchar](40) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
@@ -161,7 +161,7 @@ CREATE TABLE [SF].[User](
 	[CallCenterId] [varchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[Extension] [varchar](40) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[FederationIdentifier] [varchar](512) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-	[AboutMe] [text] COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[AboutMe] [varchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[FullPhotoUrl] [varchar](1024) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[SmallPhotoUrl] [varchar](1024) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[IsExtIndicatorVisible] [bit] NULL,
@@ -192,7 +192,7 @@ CREATE TABLE [SF].[User](
 	[approver__c] [varchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[DB_Region__c] [varchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[Full_Name__c] [varchar](1300) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-	[User_Deactivation_Details__c] [text] COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[User_Deactivation_Details__c] [varchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[BannerPhotoId] [varchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[EndDay] [varchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[WorkspaceId] [varchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
@@ -216,39 +216,4 @@ CREATE NONCLUSTERED INDEX [LastModifiedDate] ON [SF].[User]
 (
 	[LastModifiedDate] DESC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-GO
-ALTER TABLE [SF].[User]  WITH NOCHECK ADD  CONSTRAINT [fk_User_Account_AccountId] FOREIGN KEY([AccountId])
-REFERENCES [SF].[Account] ([Id])
-GO
-ALTER TABLE [SF].[User] NOCHECK CONSTRAINT [fk_User_Account_AccountId]
-GO
-ALTER TABLE [SF].[User]  WITH NOCHECK ADD  CONSTRAINT [fk_User_Contact_ContactId] FOREIGN KEY([ContactId])
-REFERENCES [SF].[Contact] ([Id])
-GO
-ALTER TABLE [SF].[User] NOCHECK CONSTRAINT [fk_User_Contact_ContactId]
-GO
-ALTER TABLE [SF].[User]  WITH NOCHECK ADD  CONSTRAINT [fk_User_User_approver__c] FOREIGN KEY([approver__c])
-REFERENCES [SF].[User] ([Id])
-GO
-ALTER TABLE [SF].[User] NOCHECK CONSTRAINT [fk_User_User_approver__c]
-GO
-ALTER TABLE [SF].[User]  WITH NOCHECK ADD  CONSTRAINT [fk_User_User_CreatedById] FOREIGN KEY([CreatedById])
-REFERENCES [SF].[User] ([Id])
-GO
-ALTER TABLE [SF].[User] NOCHECK CONSTRAINT [fk_User_User_CreatedById]
-GO
-ALTER TABLE [SF].[User]  WITH NOCHECK ADD  CONSTRAINT [fk_User_User_DelegatedApproverId] FOREIGN KEY([DelegatedApproverId])
-REFERENCES [SF].[User] ([Id])
-GO
-ALTER TABLE [SF].[User] NOCHECK CONSTRAINT [fk_User_User_DelegatedApproverId]
-GO
-ALTER TABLE [SF].[User]  WITH NOCHECK ADD  CONSTRAINT [fk_User_User_LastModifiedById] FOREIGN KEY([LastModifiedById])
-REFERENCES [SF].[User] ([Id])
-GO
-ALTER TABLE [SF].[User] NOCHECK CONSTRAINT [fk_User_User_LastModifiedById]
-GO
-ALTER TABLE [SF].[User]  WITH NOCHECK ADD  CONSTRAINT [fk_User_User_ManagerId] FOREIGN KEY([ManagerId])
-REFERENCES [SF].[User] ([Id])
-GO
-ALTER TABLE [SF].[User] NOCHECK CONSTRAINT [fk_User_User_ManagerId]
 GO

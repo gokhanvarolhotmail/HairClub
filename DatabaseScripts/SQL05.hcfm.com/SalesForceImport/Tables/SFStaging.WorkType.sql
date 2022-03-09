@@ -1,4 +1,4 @@
-/* CreateDate: 03/03/2022 13:54:35.747 , ModifyDate: 03/05/2022 13:04:16.757 */
+/* CreateDate: 03/03/2022 13:54:35.747 , ModifyDate: 03/08/2022 08:42:50.683 */
 GO
 CREATE TABLE [SFStaging].[WorkType](
 	[Id] [varchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
@@ -13,7 +13,7 @@ CREATE TABLE [SFStaging].[WorkType](
 	[SystemModstamp] [datetime2](7) NULL,
 	[LastViewedDate] [datetime2](7) NULL,
 	[LastReferencedDate] [datetime2](7) NULL,
-	[Description] [text] COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[Description] [varchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[EstimatedDuration] [decimal](16, 2) NULL,
 	[DurationType] [varchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[DurationInMinutes] [decimal](16, 2) NULL,

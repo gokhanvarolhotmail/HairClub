@@ -1,4 +1,4 @@
-/* CreateDate: 03/04/2022 08:10:42.600 , ModifyDate: 03/07/2022 12:17:31.833 */
+/* CreateDate: 03/04/2022 08:10:42.600 , ModifyDate: 03/08/2022 08:42:58.443 */
 GO
 CREATE TABLE [SF].[Account](
 	[Id] [varchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
@@ -44,7 +44,7 @@ CREATE TABLE [SF].[Account](
 	[NumberOfEmployees] [varchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[Ownership] [varchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[TickerSymbol] [varchar](20) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-	[Description] [text] COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[Description] [varchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[Rating] [varchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[Site] [varchar](80) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[CurrencyIsoCode] [varchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
@@ -134,12 +134,12 @@ CREATE TABLE [SF].[Account](
 	[WebPhone__c] [varchar](40) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[X1Apptperslot__c] [bit] NULL,
 	[ClientGUID__c] [varchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-	[Goals_Expectations__c] [text] COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[Goals_Expectations__c] [varchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[How_many_times_a_week_do_you_think__c] [varchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-	[How_much_time_a_week_do_you_spend__c] [text] COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-	[Other_Reason__c] [text] COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[How_much_time_a_week_do_you_spend__c] [varchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[Other_Reason__c] [varchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[What_are_your_main_concerns_today__c] [varchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-	[What_else_would_be_helpful_for_your__c] [text] COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[What_else_would_be_helpful_for_your__c] [varchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[What_methods_have_you_used_or_currently__c] [varchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[fferpcore__ExemptionCertificate__c] [varchar](25) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[fferpcore__IsBillingAddressValidated__c] [bit] NULL,
@@ -222,39 +222,4 @@ CREATE NONCLUSTERED INDEX [LastModifiedDate] ON [SF].[Account]
 (
 	[LastModifiedDate] DESC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-GO
-ALTER TABLE [SF].[Account]  WITH NOCHECK ADD  CONSTRAINT [fk_Account_Account_MasterRecordId] FOREIGN KEY([MasterRecordId])
-REFERENCES [SF].[Account] ([Id])
-GO
-ALTER TABLE [SF].[Account] NOCHECK CONSTRAINT [fk_Account_Account_MasterRecordId]
-GO
-ALTER TABLE [SF].[Account]  WITH NOCHECK ADD  CONSTRAINT [fk_Account_Account_ParentId] FOREIGN KEY([ParentId])
-REFERENCES [SF].[Account] ([Id])
-GO
-ALTER TABLE [SF].[Account] NOCHECK CONSTRAINT [fk_Account_Account_ParentId]
-GO
-ALTER TABLE [SF].[Account]  WITH NOCHECK ADD  CONSTRAINT [fk_Account_Contact_PersonContactId] FOREIGN KEY([PersonContactId])
-REFERENCES [SF].[Contact] ([Id])
-GO
-ALTER TABLE [SF].[Account] NOCHECK CONSTRAINT [fk_Account_Contact_PersonContactId]
-GO
-ALTER TABLE [SF].[Account]  WITH NOCHECK ADD  CONSTRAINT [fk_Account_ServiceTerritory_Service_Territory__c] FOREIGN KEY([Service_Territory__c])
-REFERENCES [SF].[ServiceTerritory] ([Id])
-GO
-ALTER TABLE [SF].[Account] NOCHECK CONSTRAINT [fk_Account_ServiceTerritory_Service_Territory__c]
-GO
-ALTER TABLE [SF].[Account]  WITH NOCHECK ADD  CONSTRAINT [fk_Account_User_CreatedById] FOREIGN KEY([CreatedById])
-REFERENCES [SF].[User] ([Id])
-GO
-ALTER TABLE [SF].[Account] NOCHECK CONSTRAINT [fk_Account_User_CreatedById]
-GO
-ALTER TABLE [SF].[Account]  WITH NOCHECK ADD  CONSTRAINT [fk_Account_User_LastModifiedById] FOREIGN KEY([LastModifiedById])
-REFERENCES [SF].[User] ([Id])
-GO
-ALTER TABLE [SF].[Account] NOCHECK CONSTRAINT [fk_Account_User_LastModifiedById]
-GO
-ALTER TABLE [SF].[Account]  WITH NOCHECK ADD  CONSTRAINT [fk_Account_User_OwnerId] FOREIGN KEY([OwnerId])
-REFERENCES [SF].[User] ([Id])
-GO
-ALTER TABLE [SF].[Account] NOCHECK CONSTRAINT [fk_Account_User_OwnerId]
 GO

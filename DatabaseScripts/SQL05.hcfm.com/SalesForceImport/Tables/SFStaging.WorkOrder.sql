@@ -1,4 +1,4 @@
-/* CreateDate: 03/03/2022 13:54:35.613 , ModifyDate: 03/05/2022 13:04:16.620 */
+/* CreateDate: 03/03/2022 13:54:35.613 , ModifyDate: 03/08/2022 08:42:50.547 */
 GO
 CREATE TABLE [SFStaging].[WorkOrder](
 	[Id] [varchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
@@ -30,7 +30,7 @@ CREATE TABLE [SFStaging].[WorkOrder](
 	[Longitude] [decimal](25, 15) NULL,
 	[GeocodeAccuracy] [varchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[Address] [varchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-	[Description] [text] COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[Description] [varchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[StartDate] [datetime2](7) NULL,
 	[EndDate] [datetime2](7) NULL,
 	[Subject] [varchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,

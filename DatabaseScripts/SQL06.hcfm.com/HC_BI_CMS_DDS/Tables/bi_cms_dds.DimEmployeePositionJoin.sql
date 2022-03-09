@@ -1,4 +1,4 @@
-/* CreateDate: 10/03/2019 23:03:40.430 , ModifyDate: 07/06/2021 23:17:52.047 */
+/* CreateDate: 10/03/2019 23:03:40.430 , ModifyDate: 03/08/2022 23:08:37.067 */
 GO
 CREATE TABLE [bi_cms_dds].[DimEmployeePositionJoin](
 	[EmployeeGUID] [uniqueidentifier] NOT NULL,

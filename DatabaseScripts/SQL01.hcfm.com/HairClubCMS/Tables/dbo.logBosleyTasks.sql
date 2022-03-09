@@ -1,0 +1,36 @@
+/* CreateDate: 03/07/2022 15:11:55.123 , ModifyDate: 03/07/2022 15:11:55.123 */
+GO
+CREATE TABLE [dbo].[logBosleyTasks](
+	[HCSalesforceLeadID] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[CenterID__c] [int] NULL,
+	[Action__c] [nvarchar](32) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[ActivityType__c] [nvarchar](32) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[WhoId] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[AppointmentDate__c] [datetime] NULL,
+	[CompletionDate__c] [datetime] NULL,
+	[ActivityDate] [datetime] NULL,
+	[StartTime__c] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[EndTime__c] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[SaleTypeCode__c] [nvarchar](32) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[SaleTypeDescription__c] [nvarchar](32) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[PriceQuoted__c] [numeric](14, 4) NULL,
+	[Performer__c] [nvarchar](128) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[Result__c] [nvarchar](32) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[BosleyRequestID] [int] NULL,
+	[Subject] [nvarchar](128) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[NorwoodScale__c] [nvarchar](128) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[LudwigScale__c] [nvarchar](128) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[Occupation__c] [nvarchar](128) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[MaritalStatus__c] [nvarchar](128) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[DISC__c] [nvarchar](128) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[ReportCreateDate__c] [datetime] NULL,
+	[LeadID] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[Status] [nvarchar](128) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[FullName__c] [nvarchar](256) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[CreateDate] [datetime] NULL,
+	[TaskID] [nvarchar](128) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[IsProcessed] [bit] NULL,
+	[IsIgnore] [bit] NULL,
+	[logBosleySalesforceID] [int] NULL
+) ON [PRIMARY]
+GO

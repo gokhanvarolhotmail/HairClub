@@ -1,4 +1,4 @@
-/* CreateDate: 03/03/2022 13:54:33.820 , ModifyDate: 03/05/2022 13:04:27.123 */
+/* CreateDate: 03/03/2022 13:54:33.820 , ModifyDate: 03/08/2022 08:42:59.983 */
 GO
 CREATE TABLE [SFStaging].[Case](
 	[Id] [varchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
@@ -25,7 +25,7 @@ CREATE TABLE [SFStaging].[Case](
 	[Language] [varchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[Subject] [varchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[Priority] [varchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-	[Description] [text] COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[Description] [varchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[IsClosed] [bit] NULL,
 	[ClosedDate] [datetime2](7) NULL,
 	[IsEscalated] [bit] NULL,
@@ -45,7 +45,7 @@ CREATE TABLE [SFStaging].[Case](
 	[ContactMobile] [varchar](40) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[ContactEmail] [varchar](128) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[ContactFax] [varchar](40) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-	[Comments] [text] COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[Comments] [varchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[LastViewedDate] [datetime2](7) NULL,
 	[LastReferencedDate] [datetime2](7) NULL,
 	[ServiceContractId] [varchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
@@ -62,7 +62,7 @@ CREATE TABLE [SFStaging].[Case](
 	[Category__c] [varchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[CenterEmployee__c] [varchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[Center__c] [varchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-	[Content__c] [text] COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[Content__c] [varchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[Courteous__c] [varchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[DateofAppointment__c] [date] NULL,
 	[DateofIncident__c] [date] NULL,
@@ -75,7 +75,7 @@ CREATE TABLE [SFStaging].[Case](
 	[OptionOffered__c] [varchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[Points__c] [varchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[PricePlan__c] [varchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-	[Resolution__c] [text] COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[Resolution__c] [varchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[SignIn__c] [varchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[TimeofIncident__c] [varchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[Title__c] [varchar](80) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,

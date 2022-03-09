@@ -1,4 +1,4 @@
-/* CreateDate: 03/03/2022 13:53:57.690 , ModifyDate: 03/07/2022 12:17:14.347 */
+/* CreateDate: 03/03/2022 13:53:57.690 , ModifyDate: 03/08/2022 08:42:56.317 */
 GO
 CREATE TABLE [SF].[WorkTypeGroup](
 	[Id] [varchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
@@ -13,7 +13,7 @@ CREATE TABLE [SF].[WorkTypeGroup](
 	[SystemModstamp] [datetime2](7) NULL,
 	[LastViewedDate] [datetime2](7) NULL,
 	[LastReferencedDate] [datetime2](7) NULL,
-	[Description] [text] COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[Description] [varchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[GroupType] [varchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[IsActive] [bit] NULL,
 	[AdditionalInformation] [varchar](1000) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
@@ -34,19 +34,4 @@ CREATE NONCLUSTERED INDEX [LastModifiedDate] ON [SF].[WorkTypeGroup]
 (
 	[LastModifiedDate] DESC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-GO
-ALTER TABLE [SF].[WorkTypeGroup]  WITH NOCHECK ADD  CONSTRAINT [fk_WorkTypeGroup_User_CreatedById] FOREIGN KEY([CreatedById])
-REFERENCES [SF].[User] ([Id])
-GO
-ALTER TABLE [SF].[WorkTypeGroup] NOCHECK CONSTRAINT [fk_WorkTypeGroup_User_CreatedById]
-GO
-ALTER TABLE [SF].[WorkTypeGroup]  WITH NOCHECK ADD  CONSTRAINT [fk_WorkTypeGroup_User_LastModifiedById] FOREIGN KEY([LastModifiedById])
-REFERENCES [SF].[User] ([Id])
-GO
-ALTER TABLE [SF].[WorkTypeGroup] NOCHECK CONSTRAINT [fk_WorkTypeGroup_User_LastModifiedById]
-GO
-ALTER TABLE [SF].[WorkTypeGroup]  WITH NOCHECK ADD  CONSTRAINT [fk_WorkTypeGroup_User_OwnerId] FOREIGN KEY([OwnerId])
-REFERENCES [SF].[User] ([Id])
-GO
-ALTER TABLE [SF].[WorkTypeGroup] NOCHECK CONSTRAINT [fk_WorkTypeGroup_User_OwnerId]
 GO

@@ -1,4 +1,4 @@
-/* CreateDate: 03/03/2022 13:54:35.230 , ModifyDate: 03/05/2022 13:04:15.557 */
+/* CreateDate: 03/03/2022 13:54:35.230 , ModifyDate: 03/08/2022 08:42:49.460 */
 GO
 CREATE TABLE [SFStaging].[ServiceTerritory](
 	[Id] [varchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
@@ -15,7 +15,7 @@ CREATE TABLE [SFStaging].[ServiceTerritory](
 	[LastReferencedDate] [datetime2](7) NULL,
 	[ParentTerritoryId] [varchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[TopLevelTerritoryId] [varchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-	[Description] [text] COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[Description] [varchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[OperatingHoursId] [varchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[Street] [varchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[City] [varchar](40) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
@@ -71,9 +71,9 @@ CREATE TABLE [SFStaging].[ServiceTerritory](
 	[WebPhone__c] [varchar](40) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[Web_Phone__c] [varchar](40) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[X1Apptperslot__c] [bit] NULL,
-	[English_Directions__c] [text] COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-	[French_Directions__c] [text] COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-	[Spanish_Directions__c] [text] COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[English_Directions__c] [varchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[French_Directions__c] [varchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[Spanish_Directions__c] [varchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[Virtual__c] [bit] NULL,
 	[English_Cross_Streets__c] [varchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[French_Cross_Streets__c] [varchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,

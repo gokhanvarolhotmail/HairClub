@@ -1,4 +1,4 @@
-/* CreateDate: 03/03/2022 13:54:34.073 , ModifyDate: 03/05/2022 13:04:27.190 */
+/* CreateDate: 03/03/2022 13:54:34.073 , ModifyDate: 03/08/2022 08:43:00.047 */
 GO
 CREATE TABLE [SFStaging].[ContractLineItem](
 	[Id] [varchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
@@ -17,7 +17,7 @@ CREATE TABLE [SFStaging].[ContractLineItem](
 	[AssetId] [varchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[StartDate] [date] NULL,
 	[EndDate] [date] NULL,
-	[Description] [text] COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[Description] [varchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[PricebookEntryId] [varchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[Quantity] [decimal](10, 2) NULL,
 	[UnitPrice] [decimal](16, 2) NULL,

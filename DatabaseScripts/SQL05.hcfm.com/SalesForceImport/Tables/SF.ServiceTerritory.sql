@@ -1,4 +1,4 @@
-/* CreateDate: 03/03/2022 13:53:57.083 , ModifyDate: 03/07/2022 12:17:14.457 */
+/* CreateDate: 03/03/2022 13:53:57.083 , ModifyDate: 03/08/2022 08:42:51.303 */
 GO
 CREATE TABLE [SF].[ServiceTerritory](
 	[Id] [varchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
@@ -15,7 +15,7 @@ CREATE TABLE [SF].[ServiceTerritory](
 	[LastReferencedDate] [datetime2](7) NULL,
 	[ParentTerritoryId] [varchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[TopLevelTerritoryId] [varchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-	[Description] [text] COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[Description] [varchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[OperatingHoursId] [varchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[Street] [varchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[City] [varchar](40) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
@@ -71,9 +71,9 @@ CREATE TABLE [SF].[ServiceTerritory](
 	[WebPhone__c] [varchar](40) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[Web_Phone__c] [varchar](40) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[X1Apptperslot__c] [bit] NULL,
-	[English_Directions__c] [text] COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-	[French_Directions__c] [text] COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-	[Spanish_Directions__c] [text] COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[English_Directions__c] [varchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[French_Directions__c] [varchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[Spanish_Directions__c] [varchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[Virtual__c] [bit] NULL,
 	[English_Cross_Streets__c] [varchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[French_Cross_Streets__c] [varchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
@@ -94,29 +94,4 @@ CREATE NONCLUSTERED INDEX [LastModifiedDate] ON [SF].[ServiceTerritory]
 (
 	[LastModifiedDate] DESC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-GO
-ALTER TABLE [SF].[ServiceTerritory]  WITH NOCHECK ADD  CONSTRAINT [fk_ServiceTerritory_ServiceTerritory_ParentTerritoryId] FOREIGN KEY([ParentTerritoryId])
-REFERENCES [SF].[ServiceTerritory] ([Id])
-GO
-ALTER TABLE [SF].[ServiceTerritory] NOCHECK CONSTRAINT [fk_ServiceTerritory_ServiceTerritory_ParentTerritoryId]
-GO
-ALTER TABLE [SF].[ServiceTerritory]  WITH NOCHECK ADD  CONSTRAINT [fk_ServiceTerritory_ServiceTerritory_TopLevelTerritoryId] FOREIGN KEY([TopLevelTerritoryId])
-REFERENCES [SF].[ServiceTerritory] ([Id])
-GO
-ALTER TABLE [SF].[ServiceTerritory] NOCHECK CONSTRAINT [fk_ServiceTerritory_ServiceTerritory_TopLevelTerritoryId]
-GO
-ALTER TABLE [SF].[ServiceTerritory]  WITH NOCHECK ADD  CONSTRAINT [fk_ServiceTerritory_User_CreatedById] FOREIGN KEY([CreatedById])
-REFERENCES [SF].[User] ([Id])
-GO
-ALTER TABLE [SF].[ServiceTerritory] NOCHECK CONSTRAINT [fk_ServiceTerritory_User_CreatedById]
-GO
-ALTER TABLE [SF].[ServiceTerritory]  WITH NOCHECK ADD  CONSTRAINT [fk_ServiceTerritory_User_LastModifiedById] FOREIGN KEY([LastModifiedById])
-REFERENCES [SF].[User] ([Id])
-GO
-ALTER TABLE [SF].[ServiceTerritory] NOCHECK CONSTRAINT [fk_ServiceTerritory_User_LastModifiedById]
-GO
-ALTER TABLE [SF].[ServiceTerritory]  WITH NOCHECK ADD  CONSTRAINT [fk_ServiceTerritory_User_OwnerId] FOREIGN KEY([OwnerId])
-REFERENCES [SF].[User] ([Id])
-GO
-ALTER TABLE [SF].[ServiceTerritory] NOCHECK CONSTRAINT [fk_ServiceTerritory_User_OwnerId]
 GO

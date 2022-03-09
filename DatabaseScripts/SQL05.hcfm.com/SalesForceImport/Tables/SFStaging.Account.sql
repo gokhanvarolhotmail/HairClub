@@ -1,4 +1,4 @@
-/* CreateDate: 03/04/2022 08:10:42.777 , ModifyDate: 03/05/2022 13:04:26.273 */
+/* CreateDate: 03/04/2022 08:10:42.777 , ModifyDate: 03/08/2022 08:42:58.887 */
 GO
 CREATE TABLE [SFStaging].[Account](
 	[Id] [varchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
@@ -44,7 +44,7 @@ CREATE TABLE [SFStaging].[Account](
 	[NumberOfEmployees] [varchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[Ownership] [varchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[TickerSymbol] [varchar](20) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-	[Description] [text] COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[Description] [varchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[Rating] [varchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[Site] [varchar](80) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[CurrencyIsoCode] [varchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
@@ -134,12 +134,12 @@ CREATE TABLE [SFStaging].[Account](
 	[WebPhone__c] [varchar](40) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[X1Apptperslot__c] [bit] NULL,
 	[ClientGUID__c] [varchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-	[Goals_Expectations__c] [text] COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[Goals_Expectations__c] [varchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[How_many_times_a_week_do_you_think__c] [varchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-	[How_much_time_a_week_do_you_spend__c] [text] COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-	[Other_Reason__c] [text] COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[How_much_time_a_week_do_you_spend__c] [varchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[Other_Reason__c] [varchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[What_are_your_main_concerns_today__c] [varchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-	[What_else_would_be_helpful_for_your__c] [text] COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[What_else_would_be_helpful_for_your__c] [varchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[What_methods_have_you_used_or_currently__c] [varchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[fferpcore__ExemptionCertificate__c] [varchar](25) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[fferpcore__IsBillingAddressValidated__c] [bit] NULL,

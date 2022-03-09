@@ -1,4 +1,4 @@
-/* CreateDate: 03/03/2022 13:54:35.037 , ModifyDate: 03/05/2022 13:04:15.360 */
+/* CreateDate: 03/03/2022 13:54:35.037 , ModifyDate: 03/08/2022 08:42:49.263 */
 GO
 CREATE TABLE [SFStaging].[ServiceContract](
 	[Id] [varchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
@@ -20,7 +20,7 @@ CREATE TABLE [SFStaging].[ServiceContract](
 	[EndDate] [date] NULL,
 	[ActivationDate] [datetime2](7) NULL,
 	[ApprovalStatus] [varchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-	[Description] [text] COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[Description] [varchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[BillingStreet] [varchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[BillingCity] [varchar](40) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[BillingState] [varchar](80) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
@@ -50,7 +50,7 @@ CREATE TABLE [SFStaging].[ServiceContract](
 	[TotalPrice] [varchar](30) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[LineItemCount] [varchar](30) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[ContractNumber] [varchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-	[SpecialTerms] [text] COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[SpecialTerms] [varchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[Discount] [decimal](3, 2) NULL,
 	[GrandTotal] [decimal](16, 2) NULL,
 	[Status] [varchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,

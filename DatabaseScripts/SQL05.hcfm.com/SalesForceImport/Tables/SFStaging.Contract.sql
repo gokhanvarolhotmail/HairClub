@@ -1,4 +1,4 @@
-/* CreateDate: 03/03/2022 13:54:34.007 , ModifyDate: 03/05/2022 13:04:27.167 */
+/* CreateDate: 03/03/2022 13:54:34.007 , ModifyDate: 03/08/2022 08:43:00.023 */
 GO
 CREATE TABLE [SFStaging].[Contract](
 	[Id] [varchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
@@ -38,11 +38,11 @@ CREATE TABLE [SFStaging].[Contract](
 	[CustomerSignedId] [varchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[CustomerSignedTitle] [varchar](40) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[CustomerSignedDate] [date] NULL,
-	[SpecialTerms] [text] COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[SpecialTerms] [varchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[ActivatedById] [varchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[ActivatedDate] [datetime2](7) NULL,
 	[StatusCode] [varchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-	[Description] [text] COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[Description] [varchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[IsDeleted] [bit] NULL,
 	[ContractNumber] [varchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[LastApprovedDate] [datetime2](7) NULL,

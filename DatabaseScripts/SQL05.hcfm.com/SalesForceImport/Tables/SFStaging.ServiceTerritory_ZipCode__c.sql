@@ -1,4 +1,4 @@
-/* CreateDate: 03/03/2022 13:54:35.290 , ModifyDate: 03/05/2022 13:04:15.583 */
+/* CreateDate: 03/03/2022 13:54:35.290 , ModifyDate: 03/08/2022 08:42:49.480 */
 GO
 CREATE TABLE [SFStaging].[ServiceTerritory_ZipCode__c](
 	[Id] [varchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,

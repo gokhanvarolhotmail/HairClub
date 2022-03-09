@@ -1,4 +1,4 @@
-/* CreateDate: 03/03/2022 13:54:34.200 , ModifyDate: 03/05/2022 13:04:13.133 */
+/* CreateDate: 03/03/2022 13:54:34.200 , ModifyDate: 03/08/2022 08:42:47.373 */
 GO
 CREATE TABLE [SFStaging].[Event](
 	[Id] [varchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
@@ -15,7 +15,7 @@ CREATE TABLE [SFStaging].[Event](
 	[StartDateTime] [datetime2](7) NULL,
 	[EndDateTime] [datetime2](7) NULL,
 	[EndDate] [date] NULL,
-	[Description] [text] COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[Description] [varchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[AccountId] [varchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[OwnerId] [varchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[CurrencyIsoCode] [varchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
@@ -47,7 +47,7 @@ CREATE TABLE [SFStaging].[Event](
 	[IsReminderSet] [bit] NULL,
 	[EventSubtype] [varchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[IsRecurrence2Exclusion] [bit] NULL,
-	[Recurrence2PatternText] [text] COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[Recurrence2PatternText] [varchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[Recurrence2PatternVersion] [varchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[IsRecurrence2] [bit] NULL,
 	[IsRecurrence2Exception] [bit] NULL,

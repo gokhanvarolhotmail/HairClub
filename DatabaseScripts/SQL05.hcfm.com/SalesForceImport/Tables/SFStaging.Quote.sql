@@ -1,4 +1,4 @@
-/* CreateDate: 03/03/2022 13:54:34.907 , ModifyDate: 03/05/2022 13:04:15.097 */
+/* CreateDate: 03/03/2022 13:54:34.907 , ModifyDate: 03/08/2022 08:42:49.083 */
 GO
 CREATE TABLE [SFStaging].[Quote](
 	[Id] [varchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
@@ -22,7 +22,7 @@ CREATE TABLE [SFStaging].[Quote](
 	[Tax] [decimal](16, 2) NULL,
 	[Status] [varchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[ExpirationDate] [date] NULL,
-	[Description] [text] COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[Description] [varchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[Subtotal] [varchar](30) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[TotalPrice] [varchar](30) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[LineItemCount] [varchar](30) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,

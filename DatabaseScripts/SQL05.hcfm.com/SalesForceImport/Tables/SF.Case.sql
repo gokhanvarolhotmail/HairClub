@@ -1,4 +1,4 @@
-/* CreateDate: 03/03/2022 13:53:55.607 , ModifyDate: 03/07/2022 12:17:31.690 */
+/* CreateDate: 03/03/2022 13:53:55.607 , ModifyDate: 03/08/2022 08:42:49.243 */
 GO
 CREATE TABLE [SF].[Case](
 	[Id] [varchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
@@ -25,7 +25,7 @@ CREATE TABLE [SF].[Case](
 	[Language] [varchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[Subject] [varchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[Priority] [varchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-	[Description] [text] COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[Description] [varchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[IsClosed] [bit] NULL,
 	[ClosedDate] [datetime2](7) NULL,
 	[IsEscalated] [bit] NULL,
@@ -45,7 +45,7 @@ CREATE TABLE [SF].[Case](
 	[ContactMobile] [varchar](40) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[ContactEmail] [varchar](128) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[ContactFax] [varchar](40) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-	[Comments] [text] COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[Comments] [varchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[LastViewedDate] [datetime2](7) NULL,
 	[LastReferencedDate] [datetime2](7) NULL,
 	[ServiceContractId] [varchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
@@ -62,7 +62,7 @@ CREATE TABLE [SF].[Case](
 	[Category__c] [varchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[CenterEmployee__c] [varchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[Center__c] [varchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-	[Content__c] [text] COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[Content__c] [varchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[Courteous__c] [varchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[DateofAppointment__c] [date] NULL,
 	[DateofIncident__c] [date] NULL,
@@ -75,7 +75,7 @@ CREATE TABLE [SF].[Case](
 	[OptionOffered__c] [varchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[Points__c] [varchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[PricePlan__c] [varchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-	[Resolution__c] [text] COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[Resolution__c] [varchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[SignIn__c] [varchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[TimeofIncident__c] [varchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[Title__c] [varchar](80) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
@@ -95,64 +95,4 @@ CREATE NONCLUSTERED INDEX [LastModifiedDate] ON [SF].[Case]
 (
 	[LastModifiedDate] DESC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-GO
-ALTER TABLE [SF].[Case]  WITH NOCHECK ADD  CONSTRAINT [fk_Case_Account_AccountId] FOREIGN KEY([AccountId])
-REFERENCES [SF].[Account] ([Id])
-GO
-ALTER TABLE [SF].[Case] NOCHECK CONSTRAINT [fk_Case_Account_AccountId]
-GO
-ALTER TABLE [SF].[Case]  WITH NOCHECK ADD  CONSTRAINT [fk_Case_Account_Center__c] FOREIGN KEY([Center__c])
-REFERENCES [SF].[Account] ([Id])
-GO
-ALTER TABLE [SF].[Case] NOCHECK CONSTRAINT [fk_Case_Account_Center__c]
-GO
-ALTER TABLE [SF].[Case]  WITH NOCHECK ADD  CONSTRAINT [fk_Case_Campaign_Campaign__c] FOREIGN KEY([Campaign__c])
-REFERENCES [SF].[Campaign] ([Id])
-GO
-ALTER TABLE [SF].[Case] NOCHECK CONSTRAINT [fk_Case_Campaign_Campaign__c]
-GO
-ALTER TABLE [SF].[Case]  WITH NOCHECK ADD  CONSTRAINT [fk_Case_Case_MasterRecordId] FOREIGN KEY([MasterRecordId])
-REFERENCES [SF].[Case] ([Id])
-GO
-ALTER TABLE [SF].[Case] NOCHECK CONSTRAINT [fk_Case_Case_MasterRecordId]
-GO
-ALTER TABLE [SF].[Case]  WITH NOCHECK ADD  CONSTRAINT [fk_Case_Case_ParentId] FOREIGN KEY([ParentId])
-REFERENCES [SF].[Case] ([Id])
-GO
-ALTER TABLE [SF].[Case] NOCHECK CONSTRAINT [fk_Case_Case_ParentId]
-GO
-ALTER TABLE [SF].[Case]  WITH NOCHECK ADD  CONSTRAINT [fk_Case_Contact_ContactId] FOREIGN KEY([ContactId])
-REFERENCES [SF].[Contact] ([Id])
-GO
-ALTER TABLE [SF].[Case] NOCHECK CONSTRAINT [fk_Case_Contact_ContactId]
-GO
-ALTER TABLE [SF].[Case]  WITH NOCHECK ADD  CONSTRAINT [fk_Case_EmailMessage_SourceId] FOREIGN KEY([SourceId])
-REFERENCES [SF].[EmailMessage] ([Id])
-GO
-ALTER TABLE [SF].[Case] NOCHECK CONSTRAINT [fk_Case_EmailMessage_SourceId]
-GO
-ALTER TABLE [SF].[Case]  WITH NOCHECK ADD  CONSTRAINT [fk_Case_Lead_LeadId__c] FOREIGN KEY([LeadId__c])
-REFERENCES [SF].[Lead] ([Id])
-GO
-ALTER TABLE [SF].[Case] NOCHECK CONSTRAINT [fk_Case_Lead_LeadId__c]
-GO
-ALTER TABLE [SF].[Case]  WITH NOCHECK ADD  CONSTRAINT [fk_Case_ServiceContract_ServiceContractId] FOREIGN KEY([ServiceContractId])
-REFERENCES [SF].[ServiceContract] ([Id])
-GO
-ALTER TABLE [SF].[Case] NOCHECK CONSTRAINT [fk_Case_ServiceContract_ServiceContractId]
-GO
-ALTER TABLE [SF].[Case]  WITH NOCHECK ADD  CONSTRAINT [fk_Case_User_CreatedById] FOREIGN KEY([CreatedById])
-REFERENCES [SF].[User] ([Id])
-GO
-ALTER TABLE [SF].[Case] NOCHECK CONSTRAINT [fk_Case_User_CreatedById]
-GO
-ALTER TABLE [SF].[Case]  WITH NOCHECK ADD  CONSTRAINT [fk_Case_User_LastModifiedById] FOREIGN KEY([LastModifiedById])
-REFERENCES [SF].[User] ([Id])
-GO
-ALTER TABLE [SF].[Case] NOCHECK CONSTRAINT [fk_Case_User_LastModifiedById]
-GO
-ALTER TABLE [SF].[Case]  WITH NOCHECK ADD  CONSTRAINT [fk_Case_User_OwnerId] FOREIGN KEY([OwnerId])
-REFERENCES [SF].[User] ([Id])
-GO
-ALTER TABLE [SF].[Case] NOCHECK CONSTRAINT [fk_Case_User_OwnerId]
 GO

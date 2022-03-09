@@ -1,4 +1,4 @@
-/* CreateDate: 03/03/2022 13:54:34.393 , ModifyDate: 03/05/2022 13:04:13.173 */
+/* CreateDate: 03/03/2022 13:54:34.393 , ModifyDate: 03/08/2022 08:42:47.413 */
 GO
 CREATE TABLE [SFStaging].[Opportunity](
 	[Id] [varchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
@@ -7,7 +7,7 @@ CREATE TABLE [SFStaging].[Opportunity](
 	[RecordTypeId] [varchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[IsPrivate] [bit] NULL,
 	[Name] [varchar](120) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-	[Description] [text] COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[Description] [varchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[StageName] [varchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[Amount] [decimal](16, 2) NULL,
 	[Probability] [decimal](3, 0) NULL,
@@ -76,16 +76,16 @@ CREATE TABLE [SFStaging].[Opportunity](
 	[SolutionOffered__c] [varchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[Approver__c] [varchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[Email__c] [varchar](1300) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-	[Goals_Expectations__c] [text] COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[Goals_Expectations__c] [varchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[How_many_times_a_week_do_you_think__c] [varchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-	[How_much_time_a_week_do_you_spend__c] [text] COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[How_much_time_a_week_do_you_spend__c] [varchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[Mobile__c] [varchar](1300) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[Opportunity_Owner__c] [varchar](1300) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-	[Other_Reason__c] [text] COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[Other_Reason__c] [varchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[Owner__c] [varchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[Phone__c] [varchar](1300) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[What_are_your_main_concerns_today__c] [varchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-	[What_else_would_be_helpful_for_your__c] [text] COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[What_else_would_be_helpful_for_your__c] [varchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[What_methods_have_you_used_or_currently__c] [varchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[RefersionLogId__c] [varchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[Commission_Paid__c] [bit] NULL,

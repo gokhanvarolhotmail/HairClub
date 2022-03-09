@@ -1,4 +1,4 @@
-/* CreateDate: 03/04/2022 08:17:51.347 , ModifyDate: 03/05/2022 13:04:27.083 */
+/* CreateDate: 03/04/2022 08:17:51.347 , ModifyDate: 03/08/2022 08:42:59.947 */
 GO
 CREATE TABLE [SFStaging].[EmailMessage](
 	[Id] [varchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
@@ -9,9 +9,9 @@ CREATE TABLE [SFStaging].[EmailMessage](
 	[LastModifiedDate] [datetime2](7) NOT NULL,
 	[LastModifiedById] [varchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[SystemModstamp] [datetime2](7) NULL,
-	[TextBody] [text] COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-	[HtmlBody] [text] COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-	[Headers] [text] COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[TextBody] [varchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[HtmlBody] [varchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[Headers] [varchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[Subject] [varchar](3000) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[FromName] [varchar](1000) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[FromAddress] [varchar](128) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
