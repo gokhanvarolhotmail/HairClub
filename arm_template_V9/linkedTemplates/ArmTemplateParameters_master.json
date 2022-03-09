@@ -1,0 +1,78 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "factoryName": {
+            "value": "hc-eim-df-prod2"
+        },
+        "SQLDEVPool_connectionString": {
+            "value": ""
+        },
+        "HC_BI_Pool_connectionString": {
+            "value": ""
+        },
+        "HC_DataLake_accountKey": {
+            "value": ""
+        },
+        "HC_SF_password": {
+            "value": ""
+        },
+        "HC_SF_securityToken": {
+            "value": ""
+        },
+        "Pool_Prod_connectionString": {
+            "value": ""
+        },
+        "BrigthPattern_BD_connectionString": {
+            "value": ""
+        },
+        "AzureKeyVault1_properties_typeProperties_baseUrl": {
+            "value": "https://hc-eim-kv-dev.vault.azure.net/"
+        },
+        "HC_DataLake_properties_typeProperties_url": {
+            "value": "https://steimdatalakeprod2.dfs.core.windows.net"
+        },
+        "HC_SF_properties_typeProperties_environmentUrl": {
+            "value": "https://hairclub1.my.salesforce.com/"
+        },
+        "HC_SF_properties_typeProperties_username": {
+            "value": "sfintegration@hairclub.com.newprod"
+        },
+        "HC_cONEct_properties_typeProperties_connectionString_secretName": {
+            "value": "cONEctConnection"
+        },
+        "HC_cONEct_properties_typeProperties_userName": {
+            "value": "HCFM\\svc.HairClubCMS-RO"
+        },
+        "HC_cONEct_LOG_Connection_properties_typeProperties_connectionString_secretName": {
+            "value": "cONEctLogConnection"
+        },
+        "HC_cONEct_LOG_Connection_properties_typeProperties_userName": {
+            "value": "HCFM\\svc.HairClubCMS-RO"
+        },
+        "HC_cONEctSQL05_properties_typeProperties_connectionString_secretName": {
+            "value": "cONEctConnection05"
+        },
+        "HC_cONEctSQL05_properties_typeProperties_userName": {
+            "value": "HCFM\\svc.HairClubCMS-RO"
+        },
+        "SQL05SalesForceImport_properties_typeProperties_connectionString_secretName": {
+            "value": "SQL05SalesForceImport"
+        },
+        "SQL05SalesForceImport_properties_typeProperties_userName": {
+            "value": "HCFM\\svc.HairClubCMS-RO"
+        },
+        "SQL06SalesForceImport_properties_typeProperties_connectionString_secretName": {
+            "value": "SQL06SalesForceImport"
+        },
+        "SQL06SalesForceImport_properties_typeProperties_userName": {
+            "value": "HCFM\\svc.HairClubCMS-RO"
+        },
+        "containerUri": {
+            "value": ""
+        },
+        "containerSasToken": {
+            "value": ""
+        }
+    }
+}

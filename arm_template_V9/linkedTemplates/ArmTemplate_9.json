@@ -1,0 +1,2885 @@
+{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "factoryName": {
+            "type": "string",
+            "metadata": "Data Factory name",
+            "defaultValue": "hc-eim-df-prod2"
+        }
+    },
+    "variables": {
+        "factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+    },
+    "resources": [
+        {
+            "name": "[concat(parameters('factoryName'), '/ASA_DimTactic')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_BI_Pool",
+                    "type": "LinkedServiceReference"
+                },
+                "folder": {
+                    "name": "Synapse/DWH"
+                },
+                "annotations": [],
+                "type": "AzureSqlDWTable",
+                "schema": [
+                    {
+                        "name": "TacticKey",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "TacticName",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "DWH_CreatedDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "DWH_LastUpdateDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "IsActive",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "Source",
+                        "type": "varchar"
+                    }
+                ],
+                "typeProperties": {
+                    "schema": "dbo",
+                    "table": "DimTactic"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/ODS_MA_Targets')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_BI_Pool",
+                    "type": "LinkedServiceReference"
+                },
+                "folder": {
+                    "name": "Synapse/ODS"
+                },
+                "annotations": [],
+                "type": "AzureSqlDWTable",
+                "schema": [
+                    {
+                        "name": "Date",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Month",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "BudgetType",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Agency",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Channel",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Medium",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Source",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Budget",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Location",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "BudgetAmount",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "TargetLeads",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "CurrencyConversion",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Fee",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "DataStreamID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "DataStreamName",
+                        "type": "varchar"
+                    }
+                ],
+                "typeProperties": {
+                    "schema": "ODS",
+                    "table": "MA_Targets"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/DL_BP_CallDetail')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_DataLake",
+                    "type": "LinkedServiceReference"
+                },
+                "parameters": {
+                    "Object_File_name": {
+                        "type": "string"
+                    },
+                    "Container": {
+                        "type": "string",
+                        "defaultValue": "hc-eim-file-system-bi"
+                    }
+                },
+                "folder": {
+                    "name": "Datalake/BrigthPattern"
+                },
+                "annotations": [],
+                "type": "Parquet",
+                "typeProperties": {
+                    "location": {
+                        "type": "AzureBlobFSLocation",
+                        "fileName": {
+                            "value": "@dataset().Object_File_Name",
+                            "type": "Expression"
+                        },
+                        "folderPath": "Brightpattern/CallDetail",
+                        "fileSystem": {
+                            "value": "@dataset().Container",
+                            "type": "Expression"
+                        }
+                    },
+                    "compressionCodec": "snappy"
+                },
+                "schema": [
+                    {
+                        "name": "id",
+                        "type": "BINARY"
+                    },
+                    {
+                        "name": "pkid",
+                        "type": "INT32"
+                    },
+                    {
+                        "name": "agg_run_id",
+                        "type": "BINARY"
+                    },
+                    {
+                        "name": "media_type",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "start_time",
+                        "type": "INT96"
+                    },
+                    {
+                        "name": "ivr_time",
+                        "type": "INT64"
+                    },
+                    {
+                        "name": "queue_time",
+                        "type": "INT64"
+                    },
+                    {
+                        "name": "pending_time",
+                        "type": "INT64"
+                    },
+                    {
+                        "name": "talk_time",
+                        "type": "INT64"
+                    },
+                    {
+                        "name": "hold_time",
+                        "type": "INT64"
+                    },
+                    {
+                        "name": "held",
+                        "type": "INT64"
+                    },
+                    {
+                        "name": "max_hold",
+                        "type": "INT64"
+                    },
+                    {
+                        "name": "acw_time",
+                        "type": "INT64"
+                    },
+                    {
+                        "name": "duration",
+                        "type": "INT64"
+                    },
+                    {
+                        "name": "service_name",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "scenario_name",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "trunk_description",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "caller_login_id",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "callee_login_id",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "caller_phone_type",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "callee_phone_type",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "caller_rank",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "callee_rank",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "from_phone",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "original_destination_phone",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "connected_to_phone",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "transferred_from_phone",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "disposition",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "agent_disposition_name",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "agent_disposition_code",
+                        "type": "INT32"
+                    },
+                    {
+                        "name": "agent_disposition_notes",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "reported_problem",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "global_interaction_id",
+                        "type": "BINARY"
+                    },
+                    {
+                        "name": "initial_call_id",
+                        "type": "BINARY"
+                    },
+                    {
+                        "name": "initial_start_time",
+                        "type": "INT96"
+                    },
+                    {
+                        "name": "initial_service_name",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "initial_caller_phone_type",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "initial_callee_phone_type",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "initial_from_phone",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "initial_original_destination_phone",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "initial_connected_to_phone",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "flagged",
+                        "type": "BOOLEAN"
+                    },
+                    {
+                        "name": "voice_signature",
+                        "type": "BOOLEAN"
+                    },
+                    {
+                        "name": "account_number",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "caller_first_name",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "callee_first_name",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "caller_last_name",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "callee_last_name",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "caller_city",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "callee_city",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "caller_country",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "callee_country",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "email_id",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "email_subject",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "email_language",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "case_id",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "thread_id",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "case_number",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "case_search_result",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "response_email_id",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "caller_monitored",
+                        "type": "BOOLEAN"
+                    },
+                    {
+                        "name": "callee_monitored",
+                        "type": "BOOLEAN"
+                    },
+                    {
+                        "name": "caller_interaction_step_id",
+                        "type": "BINARY"
+                    },
+                    {
+                        "name": "callee_interaction_step_id",
+                        "type": "BINARY"
+                    },
+                    {
+                        "name": "caller_cpa_rtp_server_id",
+                        "type": "BINARY"
+                    },
+                    {
+                        "name": "caller_cpa_recording_url",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "caller_encryption_key_id",
+                        "type": "BINARY"
+                    },
+                    {
+                        "name": "callee_cpa_rtp_server_id",
+                        "type": "BINARY"
+                    },
+                    {
+                        "name": "callee_cpa_recording_url",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "callee_encryption_key_id",
+                        "type": "BINARY"
+                    },
+                    {
+                        "name": "caller_has_screen_recording",
+                        "type": "BOOLEAN"
+                    },
+                    {
+                        "name": "callee_has_screen_recording",
+                        "type": "BOOLEAN"
+                    },
+                    {
+                        "name": "caller_interaction_id",
+                        "type": "BINARY"
+                    },
+                    {
+                        "name": "callee_interaction_id",
+                        "type": "BINARY"
+                    },
+                    {
+                        "name": "caller_has_voice_recording",
+                        "type": "BOOLEAN"
+                    },
+                    {
+                        "name": "callee_has_voice_recording",
+                        "type": "BOOLEAN"
+                    },
+                    {
+                        "name": "voice_recording_banned",
+                        "type": "BOOLEAN"
+                    },
+                    {
+                        "name": "monitoring_banned",
+                        "type": "BOOLEAN"
+                    },
+                    {
+                        "name": "email_detail_id",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "email_completion_time",
+                        "type": "INT64"
+                    },
+                    {
+                        "name": "email_kb_article_id",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "caller_team_name",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "callee_team_name",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "detail_record_count",
+                        "type": "INT32"
+                    },
+                    {
+                        "name": "in_service_level",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "custom1",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "custom2",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "custom3",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "custom4",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "custom5",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "sentiment",
+                        "type": "DECIMAL",
+                        "precision": 38,
+                        "scale": 18
+                    },
+                    {
+                        "name": "erased_voice_recording",
+                        "type": "BOOLEAN"
+                    },
+                    {
+                        "name": "erased_voice_signature",
+                        "type": "BOOLEAN"
+                    },
+                    {
+                        "name": "erased_chat_transcript",
+                        "type": "BOOLEAN"
+                    },
+                    {
+                        "name": "erased_email",
+                        "type": "BOOLEAN"
+                    },
+                    {
+                        "name": "erased_screen_recording",
+                        "type": "BOOLEAN"
+                    },
+                    {
+                        "name": "ewt",
+                        "type": "INT64"
+                    },
+                    {
+                        "name": "cobrowsing",
+                        "type": "BOOLEAN"
+                    }
+                ]
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/DL_BP_AgentActivity')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_DataLake",
+                    "type": "LinkedServiceReference"
+                },
+                "parameters": {
+                    "Object_File_name": {
+                        "type": "string"
+                    },
+                    "Container": {
+                        "type": "string",
+                        "defaultValue": "hc-eim-file-system-bi"
+                    }
+                },
+                "folder": {
+                    "name": "Datalake/BrigthPattern"
+                },
+                "annotations": [],
+                "type": "Parquet",
+                "typeProperties": {
+                    "location": {
+                        "type": "AzureBlobFSLocation",
+                        "fileName": {
+                            "value": "@dataset().Object_File_name",
+                            "type": "Expression"
+                        },
+                        "folderPath": "Brightpattern/AgentActivity",
+                        "fileSystem": {
+                            "value": "@dataset().Container",
+                            "type": "Expression"
+                        }
+                    },
+                    "compressionCodec": "snappy"
+                },
+                "schema": [
+                    {
+                        "name": "id",
+                        "type": "BINARY"
+                    },
+                    {
+                        "name": "pkid",
+                        "type": "INT32"
+                    },
+                    {
+                        "name": "activity_id",
+                        "type": "BINARY"
+                    },
+                    {
+                        "name": "login_id",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "first_name",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "last_name",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "team_name",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "agent_country",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "agent_city",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "rank",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "agg_run_id",
+                        "type": "BINARY"
+                    },
+                    {
+                        "name": "start_time",
+                        "type": "INT96"
+                    },
+                    {
+                        "name": "activity",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "duration",
+                        "type": "INT64"
+                    },
+                    {
+                        "name": "detail",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "pending_time",
+                        "type": "INT64"
+                    },
+                    {
+                        "name": "talk_time",
+                        "type": "INT64"
+                    },
+                    {
+                        "name": "hold_time",
+                        "type": "INT64"
+                    },
+                    {
+                        "name": "held",
+                        "type": "INT64"
+                    },
+                    {
+                        "name": "max_hold",
+                        "type": "INT64"
+                    },
+                    {
+                        "name": "acw_time",
+                        "type": "INT64"
+                    },
+                    {
+                        "name": "service_name",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "origination_number",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "destination_number",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "external_number",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "other_party_phone_type",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "disposition",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "agent_disposition_name",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "agent_disposition_code",
+                        "type": "INT32"
+                    },
+                    {
+                        "name": "agent_disposition_notes",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "session_id",
+                        "type": "BINARY"
+                    },
+                    {
+                        "name": "media_type",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "case_number",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "email_completion_time",
+                        "type": "INT64"
+                    },
+                    {
+                        "name": "workitem_id",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "call_detail_id",
+                        "type": "BINARY"
+                    },
+                    {
+                        "name": "has_screen_recording",
+                        "type": "BOOLEAN"
+                    },
+                    {
+                        "name": "cobrowsing",
+                        "type": "BOOLEAN"
+                    },
+                    {
+                        "name": "custom1",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "custom2",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "custom3",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "custom4",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "custom5",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "ip_address",
+                        "type": "UTF8"
+                    }
+                ]
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/DL_BP_AgentsDisposition')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_DataLake",
+                    "type": "LinkedServiceReference"
+                },
+                "parameters": {
+                    "Object_File_Name": {
+                        "type": "string"
+                    },
+                    "Container": {
+                        "type": "string",
+                        "defaultValue": "hc-eim-file-system-bi"
+                    }
+                },
+                "folder": {
+                    "name": "Datalake/BrigthPattern"
+                },
+                "annotations": [],
+                "type": "Parquet",
+                "typeProperties": {
+                    "location": {
+                        "type": "AzureBlobFSLocation",
+                        "fileName": {
+                            "value": "@dataset().Object_File_Name",
+                            "type": "Expression"
+                        },
+                        "folderPath": "Brightpattern/AgentsDisposition",
+                        "fileSystem": {
+                            "value": "@dataset().Container",
+                            "type": "Expression"
+                        }
+                    },
+                    "compressionCodec": "snappy"
+                },
+                "schema": [
+                    {
+                        "name": "disposition_name",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "start_time",
+                        "type": "INT96"
+                    },
+                    {
+                        "name": "end_time",
+                        "type": "INT96"
+                    }
+                ]
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/ASA_BP_AgentsActivity')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_BI_Pool",
+                    "type": "LinkedServiceReference"
+                },
+                "folder": {
+                    "name": "Synapse/ODS"
+                },
+                "annotations": [],
+                "type": "AzureSqlDWTable",
+                "schema": [
+                    {
+                        "name": "id",
+                        "type": "varbinary"
+                    },
+                    {
+                        "name": "pkid",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "activity_id",
+                        "type": "varbinary"
+                    },
+                    {
+                        "name": "login_id",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "first_name",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "last_name",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "team_name",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "agent_country",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "agent_city",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "rank",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "agg_run_id",
+                        "type": "varbinary"
+                    },
+                    {
+                        "name": "start_time",
+                        "type": "datetime2",
+                        "scale": 7
+                    },
+                    {
+                        "name": "activity",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "duration",
+                        "type": "bigint",
+                        "precision": 19
+                    },
+                    {
+                        "name": "detail",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "pending_time",
+                        "type": "bigint",
+                        "precision": 19
+                    },
+                    {
+                        "name": "talk_time",
+                        "type": "bigint",
+                        "precision": 19
+                    },
+                    {
+                        "name": "hold_time",
+                        "type": "bigint",
+                        "precision": 19
+                    },
+                    {
+                        "name": "held",
+                        "type": "bigint",
+                        "precision": 19
+                    },
+                    {
+                        "name": "max_hold",
+                        "type": "bigint",
+                        "precision": 19
+                    },
+                    {
+                        "name": "acw_time",
+                        "type": "bigint",
+                        "precision": 19
+                    },
+                    {
+                        "name": "service_name",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "origination_number",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "destination_number",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "external_number",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "other_party_phone_type",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "disposition",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "agent_disposition_name",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "agent_disposition_code",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "agent_disposition_notes",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "session_id",
+                        "type": "varbinary"
+                    },
+                    {
+                        "name": "media_type",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "case_number",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "email_completion_time",
+                        "type": "bigint",
+                        "precision": 19
+                    },
+                    {
+                        "name": "workitem_id",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "call_detail_id",
+                        "type": "varbinary"
+                    },
+                    {
+                        "name": "has_screen_recording",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "cobrowsing",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "custom1",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "custom2",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "custom3",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "custom4",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "custom5",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "ip_address",
+                        "type": "varchar"
+                    }
+                ],
+                "typeProperties": {
+                    "schema": "ODS",
+                    "table": "BP_AgentsActivity"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/DL_BP_Agents')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_DataLake",
+                    "type": "LinkedServiceReference"
+                },
+                "parameters": {
+                    "Object_File_name": {
+                        "type": "string"
+                    },
+                    "Container": {
+                        "type": "string",
+                        "defaultValue": "hc-eim-file-system-bi"
+                    }
+                },
+                "folder": {
+                    "name": "Datalake/BrigthPattern"
+                },
+                "annotations": [],
+                "type": "Parquet",
+                "typeProperties": {
+                    "location": {
+                        "type": "AzureBlobFSLocation",
+                        "fileName": {
+                            "value": "@dataset().Object_File_name",
+                            "type": "Expression"
+                        },
+                        "folderPath": "Brightpattern/Agents",
+                        "fileSystem": {
+                            "value": "@dataset().Container",
+                            "type": "Expression"
+                        }
+                    },
+                    "compressionCodec": "snappy"
+                },
+                "schema": [
+                    {
+                        "name": "login_id",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "first_name",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "last_name",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "team_name",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "agent_country",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "agent_city",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "rank",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "start_time",
+                        "type": "INT96"
+                    },
+                    {
+                        "name": "end_time",
+                        "type": "INT96"
+                    }
+                ]
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/ASA_ODS_PB_CallDetail')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_BI_Pool",
+                    "type": "LinkedServiceReference"
+                },
+                "folder": {
+                    "name": "Synapse/ODS"
+                },
+                "annotations": [],
+                "type": "AzureSqlDWTable",
+                "schema": [
+                    {
+                        "name": "id",
+                        "type": "varbinary"
+                    },
+                    {
+                        "name": "pkid",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "agg_run_id",
+                        "type": "varbinary"
+                    },
+                    {
+                        "name": "media_type",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "start_time",
+                        "type": "datetime2",
+                        "scale": 7
+                    },
+                    {
+                        "name": "ivr_time",
+                        "type": "bigint",
+                        "precision": 19
+                    },
+                    {
+                        "name": "queue_time",
+                        "type": "bigint",
+                        "precision": 19
+                    },
+                    {
+                        "name": "pending_time",
+                        "type": "bigint",
+                        "precision": 19
+                    },
+                    {
+                        "name": "talk_time",
+                        "type": "bigint",
+                        "precision": 19
+                    },
+                    {
+                        "name": "hold_time",
+                        "type": "bigint",
+                        "precision": 19
+                    },
+                    {
+                        "name": "held",
+                        "type": "bigint",
+                        "precision": 19
+                    },
+                    {
+                        "name": "max_hold",
+                        "type": "bigint",
+                        "precision": 19
+                    },
+                    {
+                        "name": "acw_time",
+                        "type": "bigint",
+                        "precision": 19
+                    },
+                    {
+                        "name": "duration",
+                        "type": "bigint",
+                        "precision": 19
+                    },
+                    {
+                        "name": "service_name",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "scenario_name",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "trunk_description",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "caller_login_id",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "callee_login_id",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "caller_phone_type",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "callee_phone_type",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "caller_rank",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "callee_rank",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "from_phone",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "original_destination_phone",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "connected_to_phone",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "transferred_from_phone",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "disposition",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "agent_disposition_name",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "agent_disposition_code",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "agent_disposition_notes",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "reported_problem",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "global_interaction_id",
+                        "type": "varbinary"
+                    },
+                    {
+                        "name": "initial_call_id",
+                        "type": "varbinary"
+                    },
+                    {
+                        "name": "initial_start_time",
+                        "type": "datetime2",
+                        "scale": 7
+                    },
+                    {
+                        "name": "initial_service_name",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "initial_caller_phone_type",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "initial_callee_phone_type",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "initial_from_phone",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "initial_original_destination_phone",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "initial_connected_to_phone",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "flagged",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "voice_signature",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "account_number",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "caller_first_name",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "callee_first_name",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "caller_last_name",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "callee_last_name",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "caller_city",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "callee_city",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "caller_country",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "callee_country",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "email_id",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "email_subject",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "email_language",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "case_id",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "thread_id",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "case_number",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "case_search_result",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "response_email_id",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "caller_monitored",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "callee_monitored",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "caller_interaction_step_id",
+                        "type": "varbinary"
+                    },
+                    {
+                        "name": "callee_interaction_step_id",
+                        "type": "varbinary"
+                    },
+                    {
+                        "name": "caller_cpa_rtp_server_id",
+                        "type": "varbinary"
+                    },
+                    {
+                        "name": "caller_cpa_recording_url",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "caller_encryption_key_id",
+                        "type": "varbinary"
+                    },
+                    {
+                        "name": "callee_cpa_rtp_server_id",
+                        "type": "varbinary"
+                    },
+                    {
+                        "name": "callee_cpa_recording_url",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "callee_encryption_key_id",
+                        "type": "varbinary"
+                    },
+                    {
+                        "name": "caller_has_screen_recording",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "callee_has_screen_recording",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "caller_interaction_id",
+                        "type": "varbinary"
+                    },
+                    {
+                        "name": "callee_interaction_id",
+                        "type": "varbinary"
+                    },
+                    {
+                        "name": "caller_has_voice_recording",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "callee_has_voice_recording",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "voice_recording_banned",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "monitoring_banned",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "email_detail_id",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "email_completion_time",
+                        "type": "bigint",
+                        "precision": 19
+                    },
+                    {
+                        "name": "email_kb_article_id",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "caller_team_name",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "callee_team_name",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "detail_record_count",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "in_service_level",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "custom1",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "custom2",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "custom3",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "custom4",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "custom5",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "sentiment",
+                        "type": "decimal",
+                        "precision": 38,
+                        "scale": 18
+                    },
+                    {
+                        "name": "erased_voice_recording",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "erased_voice_signature",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "erased_chat_transcript",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "erased_email",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "erased_screen_recording",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "ewt",
+                        "type": "bigint",
+                        "precision": 19
+                    },
+                    {
+                        "name": "cobrowsing",
+                        "type": "bit"
+                    }
+                ],
+                "typeProperties": {
+                    "schema": "ODS",
+                    "table": "BP_CallDetail"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/DL_Google')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_DataLake",
+                    "type": "LinkedServiceReference"
+                },
+                "parameters": {
+                    "path": {
+                        "type": "string"
+                    }
+                },
+                "folder": {
+                    "name": "Synapse/Reporting"
+                },
+                "annotations": [],
+                "type": "DelimitedText",
+                "typeProperties": {
+                    "location": {
+                        "type": "AzureBlobFSLocation",
+                        "fileName": "google_ads.csv",
+                        "folderPath": "Reporting/Google",
+                        "fileSystem": "hc-eim-file-system-bi"
+                    },
+                    "columnDelimiter": ",",
+                    "escapeChar": "\\",
+                    "quoteChar": "\""
+                },
+                "schema": []
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/ASA_Reporting_Funnel')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_BI_Pool",
+                    "type": "LinkedServiceReference"
+                },
+                "folder": {
+                    "name": "Synapse/Reporting"
+                },
+                "annotations": [],
+                "type": "AzureSqlDWTable",
+                "schema": [
+                    {
+                        "name": "FunnelTransactionID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "ContactID",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "SalesForceTaskID",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "BrightPatternID",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "LeadFunnelTransactionID",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "SaleforceLeadID",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "Company",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "FunnelStep",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "Funnelstatus",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "OriginalGCLID",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "LeadCreateDateUTC",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "LeadCreateDateEST",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "ActivityDateUTC",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "ActivityDateEST",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "AppointmentCreated",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "AppointmentScheduled",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "Date",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "Time",
+                        "type": "time",
+                        "scale": 7
+                    },
+                    {
+                        "name": "DayPart",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "Hour",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Minute",
+                        "type": "smallint",
+                        "precision": 5
+                    },
+                    {
+                        "name": "Seconds",
+                        "type": "smallint",
+                        "precision": 5
+                    },
+                    {
+                        "name": "OriginalContactType",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "OriginalSourcecode",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "OriginalDialedNumber",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "OriginalPhoneNumberAreaCode",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "OriginalCampaignAgency",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "OriginalCampaignChannel",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "OriginalCampaignName",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "OriginalCampaignFormat",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "OriginalCampaignLanguage",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "OriginalCampaignPromotionCode",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "OriginalCampaignStartDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "OriginalCampaignEndDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "OriginalCampaignStatus",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "RecentSourcecode",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "RecentDialedNumber",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "RecentPhoneNumberAreaCode",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "RecentCampaignAgency",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "RecentCampaignChannel",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "RecentCampaignName",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "RecentCampaignFormat",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "RecentCampaignLanguage",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "RecentCampaignPromotionCode",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "RecentCampaignStartDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "RecentCampaignEndDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "RecentCampaignStatus",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "PostalCode",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "Region",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "MarketDMA",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "CenterName",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "CenterRegion",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "CenterDMA",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "CenterType",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "CenterOwner",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "Language",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "Gender",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "LastName",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "FirstName",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "Phone",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "MobilePhone",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "Email",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "Ethnicity",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "HairLossCondition",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "MaritalStatus",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "Occupation",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "BirthYear",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "AgeBands",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "NewContact",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "NewLead",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "NewAppointment",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "NewShow",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "NewSale",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "NewLeadToAppointment",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "NewLeadToShow",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "NewLeadToSale",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "QuotedPrice",
+                        "type": "money",
+                        "precision": 19,
+                        "scale": 4
+                    },
+                    {
+                        "name": "PrimarySolution",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "DoNotContactFlag",
+                        "type": "nchar"
+                    },
+                    {
+                        "name": "DoNotCallFlag",
+                        "type": "nchar"
+                    },
+                    {
+                        "name": "DoNotSMSFlag",
+                        "type": "nchar"
+                    },
+                    {
+                        "name": "DoNotEmailFlag",
+                        "type": "nchar"
+                    },
+                    {
+                        "name": "DoNotMailFlag",
+                        "type": "nchar"
+                    },
+                    {
+                        "name": "LastModifiedDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "IsDeleted",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "ReportCreateDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    }
+                ],
+                "typeProperties": {
+                    "schema": "Reports",
+                    "table": "Funnel"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/DL_Contacts')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_DataLake",
+                    "type": "LinkedServiceReference"
+                },
+                "parameters": {
+                    "AgencyName": {
+                        "type": "string"
+                    },
+                    "path": {
+                        "type": "string"
+                    }
+                },
+                "folder": {
+                    "name": "Synapse/Reporting"
+                },
+                "annotations": [],
+                "type": "DelimitedText",
+                "typeProperties": {
+                    "location": {
+                        "type": "AzureBlobFSLocation",
+                        "fileName": {
+                            "value": "hairclub_contacts_@{replace(adddays(utcnow(), -1, 'yyyy-MM-dd'), '-', '')}.tab",
+                            "type": "Expression"
+                        },
+                        "folderPath": {
+                            "value": "Reporting/Contact/@{dataset().AgencyName}/@{dataset().path}",
+                            "type": "Expression"
+                        },
+                        "fileSystem": "hc-eim-file-system-bi"
+                    },
+                    "columnDelimiter": ",",
+                    "escapeChar": "\\",
+                    "quoteChar": "\""
+                },
+                "schema": []
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/ASA_Reporting_Google')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_BI_Pool",
+                    "type": "LinkedServiceReference"
+                },
+                "folder": {
+                    "name": "Synapse/Reporting"
+                },
+                "annotations": [],
+                "type": "AzureSqlDWTable",
+                "schema": [
+                    {
+                        "name": "GoogleClickID",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "ConversionName",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "ConversionTime",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "ConversionValue",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "ConversionCurrency",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "dateTimeG",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    }
+                ],
+                "typeProperties": {
+                    "schema": "Reports",
+                    "table": "Google"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/ASA_Reporting_Contacts')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_BI_Pool",
+                    "type": "LinkedServiceReference"
+                },
+                "folder": {
+                    "name": "Synapse/Reporting"
+                },
+                "annotations": [],
+                "type": "AzureSqlDWTable",
+                "schema": [
+                    {
+                        "name": "ContactID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "Company",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "LeadID",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "GCLID",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "HashedEmail",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Start_Date",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "Date",
+                        "type": "date"
+                    },
+                    {
+                        "name": "Time",
+                        "type": "time",
+                        "scale": 7
+                    },
+                    {
+                        "name": "DayPart",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "Hour",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Minute",
+                        "type": "smallint",
+                        "precision": 5
+                    },
+                    {
+                        "name": "Seconds",
+                        "type": "smallint",
+                        "precision": 5
+                    },
+                    {
+                        "name": "LastName",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "FirstName",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "Phone",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "MobilePhone",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "Email",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "Sourcecode",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "DialedNumber",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "PhoneNumberAreaCode",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "CampaignAgency",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "CampaignChannel",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "CampaignMedium",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "CampaignName",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "CampaignFormat",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "CampaignCompany",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "CampaignLocation",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "CampaignBudgetName",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "CampaignLanguage",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "CampaignPromotionCode",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "CampaignLandingPageURL",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "CampaignStartDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "CampaignEndDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "CampaignStatus",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "PostalCode",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "TotalTime",
+                        "type": "bigint",
+                        "precision": 19
+                    },
+                    {
+                        "name": "IVRTime",
+                        "type": "bigint",
+                        "precision": 19
+                    },
+                    {
+                        "name": "TalkTime",
+                        "type": "bigint",
+                        "precision": 19
+                    },
+                    {
+                        "name": "RawContact",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "AbandonedContact",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "Contact",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "QualifiedContact",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "NonQualifiedContact",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "Pkid",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "TaskId",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "TollFreeName",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "TollFreeMobileName",
+                        "type": "varchar"
+                    }
+                ],
+                "typeProperties": {
+                    "schema": "Reports",
+                    "table": "Contact"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/DL_Funnel')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_DataLake",
+                    "type": "LinkedServiceReference"
+                },
+                "parameters": {
+                    "AgencyName": {
+                        "type": "string"
+                    },
+                    "path": {
+                        "type": "string"
+                    }
+                },
+                "folder": {
+                    "name": "Synapse/Reporting"
+                },
+                "annotations": [],
+                "type": "DelimitedText",
+                "typeProperties": {
+                    "location": {
+                        "type": "AzureBlobFSLocation",
+                        "fileName": {
+                            "value": "hairclub_funnel_@{replace(adddays(utcnow(), -1, 'yyyy-MM-dd'), '-', '')}.tab",
+                            "type": "Expression"
+                        },
+                        "folderPath": {
+                            "value": "Reporting/Funnel/@{dataset().AgencyName}/@{dataset().path}",
+                            "type": "Expression"
+                        },
+                        "fileSystem": "hc-eim-file-system-bi"
+                    },
+                    "columnDelimiter": ",",
+                    "escapeChar": "\\",
+                    "firstRowAsHeader": true,
+                    "quoteChar": "\""
+                },
+                "schema": []
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/ASA_DimCallType')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_BI_Pool",
+                    "type": "LinkedServiceReference"
+                },
+                "folder": {
+                    "name": "Synapse/DWH"
+                },
+                "annotations": [],
+                "type": "AzureSqlDWTable",
+                "schema": [
+                    {
+                        "name": "CallTypeKey",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "CallTypeName",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "DWH_LoadDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "DWH_LastUpdateDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "IsActive",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "SourceSystem",
+                        "type": "varchar"
+                    }
+                ],
+                "typeProperties": {
+                    "schema": "dbo",
+                    "table": "DimCallType"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/ASA_DimService')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_BI_Pool",
+                    "type": "LinkedServiceReference"
+                },
+                "folder": {
+                    "name": "Synapse/DWH"
+                },
+                "annotations": [],
+                "type": "AzureSqlDWTable",
+                "schema": [
+                    {
+                        "name": "ServiceKey",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "ServiceName",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "DWH_CreatedDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "DWH_LastUpdateDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "IsActive",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "SourceSystem",
+                        "type": "varchar"
+                    }
+                ],
+                "typeProperties": {
+                    "schema": "dbo",
+                    "table": "DimService"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/ASA_dimAgentDisposition')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_BI_Pool",
+                    "type": "LinkedServiceReference"
+                },
+                "folder": {
+                    "name": "Synapse/DWH"
+                },
+                "annotations": [],
+                "type": "AzureSqlDWTable",
+                "schema": [
+                    {
+                        "name": "AgentDispositionKey",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "AgentDispositionName",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "DWH_LoadDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "DWH_LastUpdateDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "IsActive",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "SourceSystem",
+                        "type": "varchar"
+                    }
+                ],
+                "typeProperties": {
+                    "schema": "dbo",
+                    "table": "DimAgentDisposition"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/ASA_FactCallDetail')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_BI_Pool",
+                    "type": "LinkedServiceReference"
+                },
+                "folder": {
+                    "name": "Synapse/DWH"
+                },
+                "annotations": [],
+                "type": "AzureSqlDWTable",
+                "schema": [
+                    {
+                        "name": "FactDateKey",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "FactTimeKey",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "FactDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "CallId",
+                        "type": "varbinary"
+                    },
+                    {
+                        "name": "CallMediaType",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "MediaKey",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "CallPkId",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "CallDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "CallIvrTime",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "CallQueueTime",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "CallPendingTime",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "CallTalkTime",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "CallHoldTime",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "CallHeld",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "CallMaxHold",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "CallAcwTime",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "CallDuration",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "ServiceName",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "ServiceKey",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "ScenarioName",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "ScenarioKey",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "LeadKey",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "LeadId",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "TaskId",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "IncommingSourceCode",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "SourceKey",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "CallType",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "CallTypeKey",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "AgentDisposition",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "AgentDispositionKey",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "AgentLogin",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "AgentKey",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "IsViableCall",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "IsProductiveCall",
+                        "type": "int",
+                        "precision": 10
+                    }
+                ],
+                "typeProperties": {
+                    "schema": "dbo",
+                    "table": "FactCallDetail"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/ASA_DimScenario')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_BI_Pool",
+                    "type": "LinkedServiceReference"
+                },
+                "folder": {
+                    "name": "Synapse/DWH"
+                },
+                "annotations": [],
+                "type": "AzureSqlDWTable",
+                "schema": [
+                    {
+                        "name": "ScenarioKey",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "ScenarioName",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "DWH_CreatedDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "DWH_LastUpdateDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "IsActive",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "SourceSystem",
+                        "type": "varchar"
+                    }
+                ],
+                "typeProperties": {
+                    "schema": "dbo",
+                    "table": "DimScenario"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/ASA_ODS_ServiceResource')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_BI_Pool",
+                    "type": "LinkedServiceReference"
+                },
+                "folder": {
+                    "name": "Synapse/ODS"
+                },
+                "annotations": [],
+                "type": "AzureSqlDWTable",
+                "schema": [
+                    {
+                        "name": "Id",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "OwnerId",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "Name",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "CurrencyIsoCode",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "CreatedDate",
+                        "type": "datetime2",
+                        "scale": 0
+                    },
+                    {
+                        "name": "CreatedById",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "LastModifiedDate",
+                        "type": "datetime2",
+                        "scale": 0
+                    },
+                    {
+                        "name": "LastModifiedById",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "SystemModstamp",
+                        "type": "datetime2",
+                        "scale": 0
+                    },
+                    {
+                        "name": "LastViewedDate",
+                        "type": "datetime2",
+                        "scale": 0
+                    },
+                    {
+                        "name": "LastReferencedDate",
+                        "type": "datetime2",
+                        "scale": 0
+                    },
+                    {
+                        "name": "RelatedRecordId",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "ResourceType",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "Description",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "IsActive",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "LocationId",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "AccountId",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "External_Id__c",
+                        "type": "nvarchar"
+                    }
+                ],
+                "typeProperties": {
+                    "schema": "ODS",
+                    "table": "ServiceResource"
+                }
+            },
+            "dependsOn": []
+        }
+    ]
+}

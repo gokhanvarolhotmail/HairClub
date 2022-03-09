@@ -1,0 +1,4106 @@
+{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "factoryName": {
+            "type": "string",
+            "metadata": "Data Factory name",
+            "defaultValue": "hc-eim-df-prod2"
+        }
+    },
+    "variables": {
+        "factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+    },
+    "resources": [
+        {
+            "name": "[concat(parameters('factoryName'), '/ASA_FactAppointment')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_BI_Pool",
+                    "type": "LinkedServiceReference"
+                },
+                "folder": {
+                    "name": "Synapse/DWH"
+                },
+                "annotations": [],
+                "type": "AzureSqlDWTable",
+                "schema": [
+                    {
+                        "name": "FactDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "FactTimeKey",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "FactDateKey",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "AppointmentDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "AppointmentTimeKey",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "AppointmentDateKey",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "LeadKey",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "LeadId",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "AccountKey",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "AccountId",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "ContactKey",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "ContactId",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "ParentRecordType",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "WorkTypeKey",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "WorkTypeId",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "AccountAddress",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "AccountCity",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "AccountState",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "AccountPostalCode",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "AccountCountry",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "GeographyKey",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "AppointmentDescription",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "AppointmentStatus",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "CenterKey",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "ServiceTerritoryId",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "CenterNumber",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "AppointmentTypeKey",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "AppointmentType",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "AppointmentCenterType",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "ExternalId",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "ServiceAppointment",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "MeetingPlatformKey",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "MeetingPlatformId",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "MeetingPlatform",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "DWH_LoadDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "DWH_LastUpdateDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "ParentRecordId",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "AppointmentId",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "ExternalTaskId",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "StatusKey",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "CancellationReason",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "BeBackFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "OldStatus",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "AppoinmentStatusCategory",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "IsDeleted",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsOld",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "OpportunityId",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "OpportunityStatus",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "OpportunityDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "OpportunityReferralCode",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "OpportunityReferralCodeExpirationDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "OpportunityAmmount",
+                        "type": "decimal",
+                        "precision": 38,
+                        "scale": 18
+                    }
+                ],
+                "typeProperties": {
+                    "schema": "dbo",
+                    "table": "FactAppointment"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/ODS_SF_ServiceTerritory')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_BI_Pool",
+                    "type": "LinkedServiceReference"
+                },
+                "folder": {
+                    "name": "Synapse/ODS"
+                },
+                "annotations": [],
+                "type": "AzureSqlDWTable",
+                "schema": [
+                    {
+                        "name": "Id",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "OwnerId",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "IsDeleted",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "Name",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "CurrencyIsoCode",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "CreatedDate",
+                        "type": "datetime2",
+                        "scale": 7
+                    },
+                    {
+                        "name": "CreatedById",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "LastModifiedDate",
+                        "type": "datetime2",
+                        "scale": 7
+                    },
+                    {
+                        "name": "LastModifiedById",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "SystemModstamp",
+                        "type": "datetime2",
+                        "scale": 7
+                    },
+                    {
+                        "name": "LastViewedDate",
+                        "type": "datetime2",
+                        "scale": 7
+                    },
+                    {
+                        "name": "LastReferencedDate",
+                        "type": "datetime2",
+                        "scale": 7
+                    },
+                    {
+                        "name": "ParentTerritoryId",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "TopLevelTerritoryId",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Description",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "OperatingHoursId",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Street",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "City",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "State",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "PostalCode",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Country",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "StateCode",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "CountryCode",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Latitude",
+                        "type": "decimal",
+                        "precision": 38,
+                        "scale": 18
+                    },
+                    {
+                        "name": "Longitude",
+                        "type": "decimal",
+                        "precision": 38,
+                        "scale": 18
+                    },
+                    {
+                        "name": "GeocodeAccuracy",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "IsActive",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "TypicalInTerritoryTravelTime",
+                        "type": "decimal",
+                        "precision": 38,
+                        "scale": 18
+                    },
+                    {
+                        "name": "Alternative_Phone__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "AreaManager__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Area__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "AssistantManager__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "BackLinePhone__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "BestTressedOffered__c",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "Caller_Id__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "CenterAlert__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "CenterNumber__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "CenterOwner__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "CenterType__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "CompanyID__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Company__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "ConfirmationCallerIDEnglish__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "ConfirmationCallerIDFrench__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "ConfirmationCallerIDSpanish__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "CustomerServiceLine__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "DisplayName__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "External_Id__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "ImageConsultant__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "MDPOffered__c",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "MDPPerformed__c",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "Main_Phone__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "ManagerName__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Map_Short_Link__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "MgrCellPhone__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "OfferPRP__c",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "OtherCallerIDEnglish__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "OtherCallerIDFrench__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "OtherCallerIDSpanish__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "OutboundDialingAllowed__c",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "ProfileCode__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Region__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Status__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Supported_Appointment_Types__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "SurgeryOffered__c",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "TimeZone__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Type__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "WebPhone__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Web_Phone__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "X1Apptperslot__c",
+                        "type": "bit"
+                    }
+                ],
+                "typeProperties": {
+                    "schema": "ODS",
+                    "table": "SF_ServiceTerritory"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/DL_CNCT_lkpMembershipOrderReason')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_DataLake",
+                    "type": "LinkedServiceReference"
+                },
+                "parameters": {
+                    "Object_File_Name": {
+                        "type": "string"
+                    },
+                    "Container": {
+                        "type": "string",
+                        "defaultValue": "hc-eim-file-system-bi"
+                    }
+                },
+                "folder": {
+                    "name": "Datalake/CONNECT"
+                },
+                "annotations": [],
+                "type": "Parquet",
+                "typeProperties": {
+                    "location": {
+                        "type": "AzureBlobFSLocation",
+                        "fileName": {
+                            "value": "@dataset().Object_File_Name",
+                            "type": "Expression"
+                        },
+                        "folderPath": "Connect/lkpMembershipOrderReason",
+                        "fileSystem": {
+                            "value": "@dataset().Container",
+                            "type": "Expression"
+                        }
+                    },
+                    "compressionCodec": "snappy"
+                },
+                "schema": [
+                    {
+                        "name": "MembershipOrderReasonID",
+                        "type": "INT32"
+                    },
+                    {
+                        "name": "MembershipOrderReasonTypeID",
+                        "type": "INT32"
+                    },
+                    {
+                        "name": "MembershipOrderReasonSortOrder",
+                        "type": "INT32"
+                    },
+                    {
+                        "name": "MembershipOrderReasonDescription",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "MembershipOrderReasonDescriptionShort",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "BusinessSegmentID",
+                        "type": "INT32"
+                    },
+                    {
+                        "name": "RevenueTypeID",
+                        "type": "INT32"
+                    },
+                    {
+                        "name": "IsActiveFlag",
+                        "type": "BOOLEAN"
+                    },
+                    {
+                        "name": "CreateDate",
+                        "type": "INT96"
+                    },
+                    {
+                        "name": "CreateUser",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "LastUpdate",
+                        "type": "INT96"
+                    },
+                    {
+                        "name": "LastUpdateUser",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "UpdateStamp",
+                        "type": "BINARY"
+                    }
+                ]
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/ODS_SF_Task')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_BI_Pool",
+                    "type": "LinkedServiceReference"
+                },
+                "folder": {
+                    "name": "Synapse/ODS"
+                },
+                "annotations": [],
+                "type": "AzureSqlDWTable",
+                "schema": [
+                    {
+                        "name": "Id",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "RecordTypeId",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "WhoId",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "WhatId",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "WhoCount",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "WhatCount",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "Subject",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "ActivityDate",
+                        "type": "datetime2",
+                        "scale": 7
+                    },
+                    {
+                        "name": "Status",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "Priority",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "IsHighPriority",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "OwnerId",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "Description",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "CurrencyIsoCode",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "Type",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "IsDeleted",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "AccountId",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "IsClosed",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "CreatedDate",
+                        "type": "datetime2",
+                        "scale": 7
+                    },
+                    {
+                        "name": "CreatedById",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "LastModifiedDate",
+                        "type": "datetime2",
+                        "scale": 7
+                    },
+                    {
+                        "name": "LastModifiedById",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "SystemModstamp",
+                        "type": "datetime2",
+                        "scale": 7
+                    },
+                    {
+                        "name": "IsArchived",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "CallDurationInSeconds",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "CallType",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "CallDisposition",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "CallObject",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "ReminderDateTime",
+                        "type": "datetime2",
+                        "scale": 7
+                    },
+                    {
+                        "name": "IsReminderSet",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "RecurrenceActivityId",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "IsRecurrence",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "RecurrenceStartDateOnly",
+                        "type": "datetime2",
+                        "scale": 7
+                    },
+                    {
+                        "name": "RecurrenceEndDateOnly",
+                        "type": "datetime2",
+                        "scale": 7
+                    },
+                    {
+                        "name": "RecurrenceTimeZoneSidKey",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "RecurrenceType",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "RecurrenceInterval",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "RecurrenceDayOfWeekMask",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "RecurrenceDayOfMonth",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "RecurrenceInstance",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "RecurrenceMonthOfYear",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "RecurrenceRegeneratedType",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "TaskSubtype",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "CompletedDateTime",
+                        "type": "datetime2",
+                        "scale": 7
+                    },
+                    {
+                        "name": "Center_Name__c",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "Completed_Date__c",
+                        "type": "datetime2",
+                        "scale": 7
+                    },
+                    {
+                        "name": "External_ID__c",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "Lead__c",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "Person_Account__c",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "Recording_Link__c",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "Result__c",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "SPRecordingOrTranscriptURL__c",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "Service_Appointment__c",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "Service_Territory_Caller_Id__c",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "TaskWhoIds",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "BrightPattern__SPRecordingOrTranscriptURL__c",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "Meeting_Platform_Id__c",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "Meeting_Platform__c",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "Agent_Link__c",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "Guest_Link__c",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "Opportunity__c",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "Center_Phone__c",
+                        "type": "nvarchar"
+                    }
+                ],
+                "typeProperties": {
+                    "schema": "ODS",
+                    "table": "SF_Task"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/DL_CNCT_lkpClientMembershipStatus')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_DataLake",
+                    "type": "LinkedServiceReference"
+                },
+                "parameters": {
+                    "Object_File_Name": {
+                        "type": "string"
+                    },
+                    "Container": {
+                        "type": "string",
+                        "defaultValue": "hc-eim-file-system-bi"
+                    }
+                },
+                "folder": {
+                    "name": "Datalake/CONNECT"
+                },
+                "annotations": [],
+                "type": "Parquet",
+                "typeProperties": {
+                    "location": {
+                        "type": "AzureBlobFSLocation",
+                        "fileName": {
+                            "value": "@dataset().Object_File_Name",
+                            "type": "Expression"
+                        },
+                        "folderPath": "Connect/lkpClientMembershipStatus",
+                        "fileSystem": {
+                            "value": "@dataset().Container",
+                            "type": "Expression"
+                        }
+                    },
+                    "compressionCodec": "snappy"
+                },
+                "schema": [
+                    {
+                        "name": "ClientMembershipStatusID",
+                        "type": "INT32"
+                    },
+                    {
+                        "name": "ClientMembershipStatusSortOrder",
+                        "type": "INT32"
+                    },
+                    {
+                        "name": "ClientMembershipStatusDescription",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "ClientMembershipStatusDescriptionShort",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "IsActiveMembershipFlag",
+                        "type": "BOOLEAN"
+                    },
+                    {
+                        "name": "IsActiveFlag",
+                        "type": "BOOLEAN"
+                    },
+                    {
+                        "name": "CreateDate",
+                        "type": "INT96"
+                    },
+                    {
+                        "name": "CreateUser",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "LastUpdate",
+                        "type": "INT96"
+                    },
+                    {
+                        "name": "LastUpdateUser",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "UpdateStamp",
+                        "type": "BINARY"
+                    },
+                    {
+                        "name": "CanSearchAndDisplayFlag",
+                        "type": "BOOLEAN"
+                    },
+                    {
+                        "name": "CanCheckInForConsultation",
+                        "type": "BOOLEAN"
+                    },
+                    {
+                        "name": "DescriptionResourceKey",
+                        "type": "UTF8"
+                    }
+                ]
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/DL_CNCT_Gender')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_DataLake",
+                    "type": "LinkedServiceReference"
+                },
+                "parameters": {
+                    "Object_File_Name": {
+                        "type": "string"
+                    },
+                    "Container": {
+                        "type": "string",
+                        "defaultValue": "hc-eim-file-system-bi"
+                    }
+                },
+                "folder": {
+                    "name": "Datalake/CONNECT"
+                },
+                "annotations": [],
+                "type": "Parquet",
+                "typeProperties": {
+                    "location": {
+                        "type": "AzureBlobFSLocation",
+                        "fileName": {
+                            "value": "@dataset().Object_File_Name",
+                            "type": "Expression"
+                        },
+                        "folderPath": "Connect/Gender",
+                        "fileSystem": {
+                            "value": "@dataset().Container",
+                            "type": "Expression"
+                        }
+                    },
+                    "compressionCodec": "snappy"
+                },
+                "schema": [
+                    {
+                        "name": "GenderID",
+                        "type": "INT32"
+                    },
+                    {
+                        "name": "GenderSortOrder",
+                        "type": "INT32"
+                    },
+                    {
+                        "name": "GenderDescription",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "GenderDescriptionShort",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "IsActiveFlag",
+                        "type": "BOOLEAN"
+                    },
+                    {
+                        "name": "CreateDate",
+                        "type": "INT96"
+                    },
+                    {
+                        "name": "CreateUser",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "LastUpdate",
+                        "type": "INT96"
+                    },
+                    {
+                        "name": "LastUpdateUser",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "UpdateStamp",
+                        "type": "BINARY"
+                    },
+                    {
+                        "name": "DescriptionResourceKey",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "DescriptionShortResourceKey",
+                        "type": "UTF8"
+                    }
+                ]
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/ODS_CNCT_lkpLanguage')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_BI_Pool",
+                    "type": "LinkedServiceReference"
+                },
+                "folder": {
+                    "name": "Synapse/ODS"
+                },
+                "annotations": [],
+                "type": "AzureSqlDWTable",
+                "schema": [
+                    {
+                        "name": "LanguageID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "LanguageSortOrder",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "LanguageDescription",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "LanguageDescriptionShort",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "IsActiveFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "CreateDate",
+                        "type": "datetime2",
+                        "scale": 7
+                    },
+                    {
+                        "name": "CreateUser",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "LastUpdate",
+                        "type": "datetime2",
+                        "scale": 7
+                    },
+                    {
+                        "name": "LastUpdateUser",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "UpdateStamp",
+                        "type": "varbinary"
+                    },
+                    {
+                        "name": "OnContactLanguageCode",
+                        "type": "varchar"
+                    }
+                ],
+                "typeProperties": {
+                    "schema": "ODS",
+                    "table": "CNCT_lkpLanguage"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/ODS_CNCT_datClient')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_BI_Pool",
+                    "type": "LinkedServiceReference"
+                },
+                "folder": {
+                    "name": "Synapse/ODS"
+                },
+                "annotations": [],
+                "type": "AzureSqlDWTable",
+                "schema": [
+                    {
+                        "name": "ClientGUID",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "ClientIdentifier",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "ClientNumber_Temp",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "CenterID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "CountryID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "SalutationID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "ContactID",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "FirstName",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "MiddleName",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "LastName",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Address1",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Address2",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Address3",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "City",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "StateID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "PostalCode",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "ARBalance",
+                        "type": "decimal",
+                        "precision": 19,
+                        "scale": 4
+                    },
+                    {
+                        "name": "GenderID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "DateOfBirth",
+                        "type": "datetime2",
+                        "scale": 7
+                    },
+                    {
+                        "name": "DoNotCallFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "DoNotContactFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsHairModelFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsTaxExemptFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "EMailAddress",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "TextMessageAddress",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Phone1",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Phone2",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Phone3",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Phone1TypeID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "Phone2TypeID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "Phone3TypeID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "IsPhone1PrimaryFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsPhone2PrimaryFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsPhone3PrimaryFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "CreateDate",
+                        "type": "datetime2",
+                        "scale": 7
+                    },
+                    {
+                        "name": "CreateUser",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "LastUpdate",
+                        "type": "datetime2",
+                        "scale": 7
+                    },
+                    {
+                        "name": "LastUpdateUser",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "UpdateStamp",
+                        "type": "varbinary"
+                    },
+                    {
+                        "name": "IsHairSystemClientFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "TaxExemptNumber",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "CurrentBioMatrixClientMembershipGUID",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "CurrentSurgeryClientMembershipGUID",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "CurrentExtremeTherapyClientMembershipGUID",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "IsAutoConfirmTextPhone1",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsAutoConfirmTextPhone2",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsAutoConfirmTextPhone3",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "ImportCreateDate",
+                        "type": "datetime2",
+                        "scale": 7
+                    },
+                    {
+                        "name": "ImportLastUpdate",
+                        "type": "datetime2",
+                        "scale": 7
+                    },
+                    {
+                        "name": "ClientMembershipCounter",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "RequiredNoteReview",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "SiebelID",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "EmergencyContactPhone",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "BosleyProcedureOffice",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "BosleyConsultOffice",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "IsAutoConfirmEmail",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsEmailUndeliverable",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "AcquiredDate",
+                        "type": "datetime2",
+                        "scale": 7
+                    },
+                    {
+                        "name": "CurrentXtrandsClientMembershipGUID",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "ExpectedConversionDate",
+                        "type": "datetime2",
+                        "scale": 7
+                    },
+                    {
+                        "name": "LanguageID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "IsConfirmCallPhone1",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsConfirmCallPhone2",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsConfirmCallPhone3",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "AnniversaryDate",
+                        "type": "datetime2",
+                        "scale": 7
+                    },
+                    {
+                        "name": "CanConfirmAppointmentByEmail",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "CanContactForPromotionsByEmail",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "DoNotVisitInRoom",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "DoNotMoveAppointments",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsAutoRenewDisabled",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "KorvueID",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "SalesforceContactID",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "ClientFullNameAltCalc",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "ClientFullNameCalc",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "ClientFullNameAlt2Calc",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "ClientFullNameAlt3Calc",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "AgeCalc",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "IsBioGraftClient",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "CurrentMDPClientMembershipGUID",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "LeadCreateDate",
+                        "type": "date"
+                    },
+                    {
+                        "name": "BosleySalesforceAccountID",
+                        "type": "varchar"
+                    }
+                ],
+                "typeProperties": {
+                    "schema": "ODS",
+                    "table": "CNCT_datClient"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/DL_CNCT_RevenueGroup')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_DataLake",
+                    "type": "LinkedServiceReference"
+                },
+                "parameters": {
+                    "Object_File_Name": {
+                        "type": "string"
+                    },
+                    "Container": {
+                        "type": "string",
+                        "defaultValue": "hc-eim-file-system-bi"
+                    }
+                },
+                "folder": {
+                    "name": "Datalake/CONNECT"
+                },
+                "annotations": [],
+                "type": "Parquet",
+                "typeProperties": {
+                    "location": {
+                        "type": "AzureBlobFSLocation",
+                        "fileName": {
+                            "value": "@dataset().Object_File_Name",
+                            "type": "Expression"
+                        },
+                        "folderPath": "Connect/RevenueGroup",
+                        "fileSystem": {
+                            "value": "@dataset().Container",
+                            "type": "Expression"
+                        }
+                    },
+                    "compressionCodec": "snappy"
+                },
+                "schema": [
+                    {
+                        "name": "RevenueGroupID",
+                        "type": "INT32"
+                    },
+                    {
+                        "name": "RevenueGroupSortOrder",
+                        "type": "INT32"
+                    },
+                    {
+                        "name": "RevenueGroupDescription",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "RevenueGroupDescriptionShort",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "IsActiveFlag",
+                        "type": "BOOLEAN"
+                    },
+                    {
+                        "name": "CreateDate",
+                        "type": "INT96"
+                    },
+                    {
+                        "name": "CreateUser",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "LastUpdate",
+                        "type": "INT96"
+                    },
+                    {
+                        "name": "LastUpdateUser",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "UpdateStamp",
+                        "type": "BINARY"
+                    }
+                ]
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/DL_SF_CampaignMember')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_DataLake",
+                    "type": "LinkedServiceReference"
+                },
+                "parameters": {
+                    "Object_File_Name": {
+                        "type": "string"
+                    },
+                    "Container": {
+                        "type": "string",
+                        "defaultValue": "hc-eim-file-system-bi"
+                    }
+                },
+                "folder": {
+                    "name": "Datalake/Salesforce"
+                },
+                "annotations": [],
+                "type": "Parquet",
+                "typeProperties": {
+                    "location": {
+                        "type": "AzureBlobFSLocation",
+                        "fileName": {
+                            "value": "@dataset().Object_File_Name",
+                            "type": "Expression"
+                        },
+                        "folderPath": "Salesforce/CampaignMember",
+                        "fileSystem": {
+                            "value": "@dataset().Container",
+                            "type": "Expression"
+                        }
+                    },
+                    "compressionCodec": "snappy"
+                },
+                "schema": [
+                    {
+                        "name": "Id",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "IsDeleted",
+                        "type": "BOOLEAN"
+                    },
+                    {
+                        "name": "CampaignId",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "LeadId",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "ContactId",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "Status",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "HasResponded",
+                        "type": "BOOLEAN"
+                    },
+                    {
+                        "name": "CreatedDate",
+                        "type": "INT96"
+                    },
+                    {
+                        "name": "CreatedById",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "LastModifiedDate",
+                        "type": "INT96"
+                    },
+                    {
+                        "name": "LastModifiedById",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "SystemModstamp",
+                        "type": "INT96"
+                    },
+                    {
+                        "name": "FirstRespondedDate",
+                        "type": "INT96"
+                    },
+                    {
+                        "name": "CurrencyIsoCode",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "Salutation",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "Name",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "FirstName",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "LastName",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "Title",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "Street",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "City",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "State",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "PostalCode",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "Country",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "Email",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "Phone",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "Fax",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "MobilePhone",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "Description",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "DoNotCall",
+                        "type": "BOOLEAN"
+                    },
+                    {
+                        "name": "HasOptedOutOfEmail",
+                        "type": "BOOLEAN"
+                    },
+                    {
+                        "name": "HasOptedOutOfFax",
+                        "type": "BOOLEAN"
+                    },
+                    {
+                        "name": "LeadSource",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "CompanyOrAccount",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "Type",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "LeadOrContactId",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "LeadOrContactOwnerId",
+                        "type": "UTF8"
+                    }
+                ]
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/DL_SF_ServiceAppointment')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_DataLake",
+                    "type": "LinkedServiceReference"
+                },
+                "parameters": {
+                    "Object_File_Name": {
+                        "type": "string"
+                    },
+                    "Container": {
+                        "type": "string",
+                        "defaultValue": "hc-eim-file-system-bi"
+                    }
+                },
+                "folder": {
+                    "name": "Datalake/Salesforce"
+                },
+                "annotations": [],
+                "type": "Parquet",
+                "typeProperties": {
+                    "location": {
+                        "type": "AzureBlobFSLocation",
+                        "fileName": {
+                            "value": "@dataset().Object_File_Name",
+                            "type": "Expression"
+                        },
+                        "folderPath": "Salesforce/ServiceAppointment",
+                        "fileSystem": {
+                            "value": "@dataset().Container",
+                            "type": "Expression"
+                        }
+                    },
+                    "compressionCodec": "snappy"
+                },
+                "schema": [
+                    {
+                        "name": "Id",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "OwnerId",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "IsDeleted",
+                        "type": "BOOLEAN"
+                    },
+                    {
+                        "name": "AppointmentNumber",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "CurrencyIsoCode",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "CreatedDate",
+                        "type": "INT96"
+                    },
+                    {
+                        "name": "CreatedById",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "LastModifiedDate",
+                        "type": "INT96"
+                    },
+                    {
+                        "name": "LastModifiedById",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "SystemModstamp",
+                        "type": "INT96"
+                    },
+                    {
+                        "name": "LastViewedDate",
+                        "type": "INT96"
+                    },
+                    {
+                        "name": "LastReferencedDate",
+                        "type": "INT96"
+                    },
+                    {
+                        "name": "ParentRecordId",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "ParentRecordType",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "AccountId",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "WorkTypeId",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "ContactId",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "Street",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "City",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "State",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "PostalCode",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "Country",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "StateCode",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "CountryCode",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "Latitude",
+                        "type": "DECIMAL",
+                        "precision": 38,
+                        "scale": 18
+                    },
+                    {
+                        "name": "Longitude",
+                        "type": "DECIMAL",
+                        "precision": 38,
+                        "scale": 18
+                    },
+                    {
+                        "name": "GeocodeAccuracy",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "Description",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "EarliestStartTime",
+                        "type": "INT96"
+                    },
+                    {
+                        "name": "DueDate",
+                        "type": "INT96"
+                    },
+                    {
+                        "name": "Duration",
+                        "type": "DECIMAL",
+                        "precision": 38,
+                        "scale": 18
+                    },
+                    {
+                        "name": "ArrivalWindowStartTime",
+                        "type": "INT96"
+                    },
+                    {
+                        "name": "ArrivalWindowEndTime",
+                        "type": "INT96"
+                    },
+                    {
+                        "name": "Status",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "SchedStartTime",
+                        "type": "INT96"
+                    },
+                    {
+                        "name": "SchedEndTime",
+                        "type": "INT96"
+                    },
+                    {
+                        "name": "ActualStartTime",
+                        "type": "INT96"
+                    },
+                    {
+                        "name": "ActualEndTime",
+                        "type": "INT96"
+                    },
+                    {
+                        "name": "ActualDuration",
+                        "type": "DECIMAL",
+                        "precision": 38,
+                        "scale": 18
+                    },
+                    {
+                        "name": "DurationType",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "DurationInMinutes",
+                        "type": "DECIMAL",
+                        "precision": 38,
+                        "scale": 18
+                    },
+                    {
+                        "name": "ServiceTerritoryId",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "Subject",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "ParentRecordStatusCategory",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "StatusCategory",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "ServiceNote",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "AppointmentType",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "Email",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "Phone",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "CancellationReason",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "AdditionalInformation",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "Comments",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "Center_Type__c",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "External_Id__c",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "Service_Appointment__c",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "Work_Type_Group__c",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "Appointment_Type__c",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "Meeting_Platform_Id__c",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "Meeting_Platform__c",
+                        "type": "UTF8"
+                    }
+                ]
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/DL_MA_Canella')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_DataLake",
+                    "type": "LinkedServiceReference"
+                },
+                "parameters": {
+                    "FileName": {
+                        "type": "string"
+                    },
+                    "LA_ID": {
+                        "type": "string"
+                    },
+                    "AgencyID": {
+                        "type": "string"
+                    },
+                    "Container": {
+                        "type": "string",
+                        "defaultValue": "hc-eim-file-system-bi"
+                    }
+                },
+                "folder": {
+                    "name": "Datalake/Marketing"
+                },
+                "annotations": [],
+                "type": "Parquet",
+                "typeProperties": {
+                    "location": {
+                        "type": "AzureBlobFSLocation",
+                        "fileName": {
+                            "value": "@dataset().FileName",
+                            "type": "Expression"
+                        },
+                        "folderPath": {
+                            "value": "MarketingAgencies/@{dataset().AgencyID}/@{dataset().LA_ID}",
+                            "type": "Expression"
+                        },
+                        "fileSystem": {
+                            "value": "@dataset().Container",
+                            "type": "Expression"
+                        }
+                    },
+                    "compressionCodec": "snappy"
+                },
+                "schema": [
+                    {
+                        "name": "transactionid",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "CalendarDateEST",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "CalendarTimeEST",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "BroadcastDateEST",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "LocalAirTime",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "purpose",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "method",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "Channel",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "Medium",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "company",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "location",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "BudgetType",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "BudgetName",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "Source",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "Affiliate",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "Station",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "Show",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "ContentType",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "Content",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "CampaignType",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "Campaign",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "ISCI",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "MasterNumber",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "TFN",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "Sourcecode",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "PromoCode",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "URL",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "Agency",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "Region",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "DMACode",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "DMAName",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "Audience",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "Tactic",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "Placement",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "Format",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "Language",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "GrossSpend",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "NetSpend",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "Impressions18-65",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "GRP",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "Spots",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "LogType",
+                        "type": "UTF8"
+                    }
+                ]
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/DL_SF_ServiceTerritory')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_DataLake",
+                    "type": "LinkedServiceReference"
+                },
+                "parameters": {
+                    "Object_File_Name": {
+                        "type": "string"
+                    },
+                    "Container": {
+                        "type": "string",
+                        "defaultValue": "hc-eim-file-system-bi"
+                    }
+                },
+                "folder": {
+                    "name": "Datalake/Salesforce"
+                },
+                "annotations": [],
+                "type": "Parquet",
+                "typeProperties": {
+                    "location": {
+                        "type": "AzureBlobFSLocation",
+                        "fileName": {
+                            "value": "@dataset().Object_File_Name",
+                            "type": "Expression"
+                        },
+                        "folderPath": "Salesforce/ServiceTerritory",
+                        "fileSystem": {
+                            "value": "@dataset().Container",
+                            "type": "Expression"
+                        }
+                    },
+                    "compressionCodec": "snappy"
+                },
+                "schema": [
+                    {
+                        "name": "Id",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "OwnerId",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "IsDeleted",
+                        "type": "BOOLEAN"
+                    },
+                    {
+                        "name": "Name",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "CurrencyIsoCode",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "CreatedDate",
+                        "type": "INT96"
+                    },
+                    {
+                        "name": "CreatedById",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "LastModifiedDate",
+                        "type": "INT96"
+                    },
+                    {
+                        "name": "LastModifiedById",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "SystemModstamp",
+                        "type": "INT96"
+                    },
+                    {
+                        "name": "LastViewedDate",
+                        "type": "INT96"
+                    },
+                    {
+                        "name": "LastReferencedDate",
+                        "type": "INT96"
+                    },
+                    {
+                        "name": "ParentTerritoryId",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "TopLevelTerritoryId",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "Description",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "OperatingHoursId",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "Street",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "City",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "State",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "PostalCode",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "Country",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "StateCode",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "CountryCode",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "Latitude",
+                        "type": "DECIMAL",
+                        "precision": 38,
+                        "scale": 18
+                    },
+                    {
+                        "name": "Longitude",
+                        "type": "DECIMAL",
+                        "precision": 38,
+                        "scale": 18
+                    },
+                    {
+                        "name": "GeocodeAccuracy",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "IsActive",
+                        "type": "BOOLEAN"
+                    },
+                    {
+                        "name": "TypicalInTerritoryTravelTime",
+                        "type": "DECIMAL",
+                        "precision": 38,
+                        "scale": 18
+                    },
+                    {
+                        "name": "Alternative_Phone__c",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "AreaManager__c",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "Area__c",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "AssistantManager__c",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "BackLinePhone__c",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "BestTressedOffered__c",
+                        "type": "BOOLEAN"
+                    },
+                    {
+                        "name": "Caller_Id__c",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "CenterAlert__c",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "CenterNumber__c",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "CenterOwner__c",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "CenterType__c",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "CompanyID__c",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "Company__c",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "ConfirmationCallerIDEnglish__c",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "ConfirmationCallerIDFrench__c",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "ConfirmationCallerIDSpanish__c",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "CustomerServiceLine__c",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "DisplayName__c",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "External_Id__c",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "ImageConsultant__c",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "MDPOffered__c",
+                        "type": "BOOLEAN"
+                    },
+                    {
+                        "name": "MDPPerformed__c",
+                        "type": "BOOLEAN"
+                    },
+                    {
+                        "name": "Main_Phone__c",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "ManagerName__c",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "Map_Short_Link__c",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "MgrCellPhone__c",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "OfferPRP__c",
+                        "type": "BOOLEAN"
+                    },
+                    {
+                        "name": "OtherCallerIDEnglish__c",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "OtherCallerIDFrench__c",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "OtherCallerIDSpanish__c",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "OutboundDialingAllowed__c",
+                        "type": "BOOLEAN"
+                    },
+                    {
+                        "name": "ProfileCode__c",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "Region__c",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "Status__c",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "Supported_Appointment_Types__c",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "SurgeryOffered__c",
+                        "type": "BOOLEAN"
+                    },
+                    {
+                        "name": "TimeZone__c",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "Type__c",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "WebPhone__c",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "Web_Phone__c",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "X1Apptperslot__c",
+                        "type": "BOOLEAN"
+                    }
+                ]
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/ASA_DimCenter')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_BI_Pool",
+                    "type": "LinkedServiceReference"
+                },
+                "folder": {
+                    "name": "Synapse/DWH"
+                },
+                "annotations": [],
+                "type": "AzureSqlDWTable",
+                "schema": [
+                    {
+                        "name": "CenterKey",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "CenterID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "CenterPayGroupID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "CenterDescription",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Address1",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Address2",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Address3",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "CenterGeographykey",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "CenterPostalCode",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "CenterPhone1",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "CenterPhone2",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "CenterPhone3",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Phone1TypeID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "Phone2TypeID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "Phone3TypeID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "IsPhone1PrimaryFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsPhone2PrimaryFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsPhone3PrimaryFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsActiveFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "CreateDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "LastUpdate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "UpdateStamp",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "CenterNumber",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "CenterOwnershipID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "CenterOwnershipSortOrder",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "CenterOwnershipDescription",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "CenterOwnershipDescriptionShort",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "OwnerLastName",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "OwnerFirstName",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "CorporateName",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "OwnershipAddress1",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "OwnershipAddress2",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "OwnershipGeographykey",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "OwnershipPostalCode",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "CenterTypeID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "CenterTypeSortOrder",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "CenterTypeDescription",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "CenterTypeDescriptionShort",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "DWH_LoadDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "DWH_LastUpdateDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "IsActive",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "SourceSystem",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "TimeZoneID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "ServiceTerritoryId",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "IsDeleted",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "Region1",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Region2",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "RegioAM",
+                        "type": "nvarchar"
+                    }
+                ],
+                "typeProperties": {
+                    "schema": "dbo",
+                    "table": "DimCenter"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/DL_SF_Product')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_DataLake",
+                    "type": "LinkedServiceReference"
+                },
+                "parameters": {
+                    "Object_File_Name": {
+                        "type": "string"
+                    },
+                    "Container": {
+                        "type": "string",
+                        "defaultValue": "hc-eim-file-system-bi"
+                    }
+                },
+                "folder": {
+                    "name": "Datalake/Salesforce"
+                },
+                "annotations": [],
+                "type": "Parquet",
+                "typeProperties": {
+                    "location": {
+                        "type": "AzureBlobFSLocation",
+                        "fileName": {
+                            "value": "@dataset().Object_File_Name",
+                            "type": "Expression"
+                        },
+                        "folderPath": "Salesforce/Product",
+                        "fileSystem": {
+                            "value": "@dataset().Container",
+                            "type": "Expression"
+                        }
+                    },
+                    "compressionCodec": "snappy"
+                },
+                "schema": [
+                    {
+                        "name": "Id",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "Name",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "ProductCode",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "Description",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "IsActive",
+                        "type": "BOOLEAN"
+                    },
+                    {
+                        "name": "CreatedDate",
+                        "type": "INT96"
+                    },
+                    {
+                        "name": "CreatedById",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "LastModifiedDate",
+                        "type": "INT96"
+                    },
+                    {
+                        "name": "LastModifiedById",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "SystemModstamp",
+                        "type": "INT96"
+                    },
+                    {
+                        "name": "Family",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "CurrencyIsoCode",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "ExternalDataSourceId",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "ExternalId",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "DisplayUrl",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "QuantityUnitOfMeasure",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "IsDeleted",
+                        "type": "BOOLEAN"
+                    },
+                    {
+                        "name": "IsArchived",
+                        "type": "BOOLEAN"
+                    },
+                    {
+                        "name": "LastViewedDate",
+                        "type": "INT96"
+                    },
+                    {
+                        "name": "LastReferencedDate",
+                        "type": "INT96"
+                    },
+                    {
+                        "name": "StockKeepingUnit",
+                        "type": "UTF8"
+                    }
+                ]
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/ODS_CNCT_Center')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_BI_Pool",
+                    "type": "LinkedServiceReference"
+                },
+                "folder": {
+                    "name": "Synapse/ODS"
+                },
+                "annotations": [],
+                "type": "AzureSqlDWTable",
+                "schema": [
+                    {
+                        "name": "CenterID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "CountryID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "RegionID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "CenterPayGroupID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "CenterDescription",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "CenterTypeID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "CenterOwnershipID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "SurgeryHubCenterID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "ReportingCenterID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "AliasSurgeryCenterID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "EmployeeDoctorGUID",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "DoctorRegionID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "TimeZoneID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "InvoiceCounter",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "Address1",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Address2",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Address3",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "City",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "StateID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "PostalCode",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Phone1",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Phone2",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Phone3",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Phone1TypeID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "Phone2TypeID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "Phone3TypeID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "IsPhone1PrimaryFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsPhone2PrimaryFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsPhone3PrimaryFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsActiveFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "CreateDate",
+                        "type": "datetime2",
+                        "scale": 7
+                    },
+                    {
+                        "name": "CreateUser",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "LastUpdate",
+                        "type": "datetime2",
+                        "scale": 7
+                    },
+                    {
+                        "name": "LastUpdateUser",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "UpdateStamp",
+                        "type": "varbinary"
+                    },
+                    {
+                        "name": "IsCorporateHeadquartersFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "RegionRSMNBConsultantGuid",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "RegionRSMMembershipAdvisorGuid",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "RegionRTMTechnicalManagerGuid",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "CenterManagementAreaID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "CenterNumber",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "BusinessUnitBrandID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "CenterDescriptionFullAlt1Calc",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "CenterDescriptionFullCalc",
+                        "type": "varchar"
+                    }
+                ],
+                "typeProperties": {
+                    "schema": "ODS",
+                    "table": "CNCT_Center"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/ODS_SF_Lead')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_BI_Pool",
+                    "type": "LinkedServiceReference"
+                },
+                "folder": {
+                    "name": "Synapse/ODS"
+                },
+                "annotations": [],
+                "type": "AzureSqlDWTable",
+                "schema": [
+                    {
+                        "name": "Id",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "IsDeleted",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "MasterRecordId",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "LastName",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "FirstName",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Salutation",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "MiddleName",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Suffix",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Name",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "RecordTypeId",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Title",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Company",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Street",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "City",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "State",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "PostalCode",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Country",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "StateCode",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "CountryCode",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Latitude",
+                        "type": "decimal",
+                        "precision": 38,
+                        "scale": 18
+                    },
+                    {
+                        "name": "Longitude",
+                        "type": "decimal",
+                        "precision": 38,
+                        "scale": 18
+                    },
+                    {
+                        "name": "GeocodeAccuracy",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Phone",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "MobilePhone",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Fax",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Email",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Website",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "PhotoUrl",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Description",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "LeadSource",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Status",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Industry",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Rating",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "CurrencyIsoCode",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "AnnualRevenue",
+                        "type": "decimal",
+                        "precision": 38,
+                        "scale": 18
+                    },
+                    {
+                        "name": "NumberOfEmployees",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "OwnerId",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "HasOptedOutOfEmail",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsConverted",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "ConvertedDate",
+                        "type": "datetime2",
+                        "scale": 7
+                    },
+                    {
+                        "name": "ConvertedAccountId",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "ConvertedContactId",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "ConvertedOpportunityId",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "IsUnreadByOwner",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "CreatedDate",
+                        "type": "datetime2",
+                        "scale": 7
+                    },
+                    {
+                        "name": "CreatedById",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "LastModifiedDate",
+                        "type": "datetime2",
+                        "scale": 7
+                    },
+                    {
+                        "name": "LastModifiedById",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "SystemModstamp",
+                        "type": "datetime2",
+                        "scale": 7
+                    },
+                    {
+                        "name": "LastActivityDate",
+                        "type": "datetime2",
+                        "scale": 7
+                    },
+                    {
+                        "name": "DoNotCall",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "HasOptedOutOfFax",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "LastViewedDate",
+                        "type": "datetime2",
+                        "scale": 7
+                    },
+                    {
+                        "name": "LastReferencedDate",
+                        "type": "datetime2",
+                        "scale": 7
+                    },
+                    {
+                        "name": "LastTransferDate",
+                        "type": "datetime2",
+                        "scale": 7
+                    },
+                    {
+                        "name": "Jigsaw",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "JigsawContactId",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "EmailBouncedReason",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "EmailBouncedDate",
+                        "type": "datetime2",
+                        "scale": 7
+                    },
+                    {
+                        "name": "et4ae5__HasOptedOutOfMobile__c",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "et4ae5__Mobile_Country_Code__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Disc__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "DoNotContact__c",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "DoNotEmail__c",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "DoNotMail__c",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "DoNotText__c",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "Ethnicity__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "External_Id__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Gender__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "HairLossExperience__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "HairLossFamily__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "HairLossOrVolume__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "HairLossProductOther__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "HairLossProductUsed__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "HairLossSpot__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "HardCopyPreferred__c",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "Language__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "LudwigScale__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "MaritalStatus__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "NorwoodScale__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Referral_Code_Expiration_Date__c",
+                        "type": "datetime2",
+                        "scale": 7
+                    },
+                    {
+                        "name": "Referral_Code__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Service_Territory__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "SolutionOffered__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Text_Reminer_Opt_In__c",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "Age__c",
+                        "type": "decimal",
+                        "precision": 38,
+                        "scale": 18
+                    },
+                    {
+                        "name": "Birthdate__c",
+                        "type": "datetime2",
+                        "scale": 7
+                    },
+                    {
+                        "name": "Lead_Qualifier__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Lead_Rescheduler__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Promo_Code__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "GCLID__c",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Occupation__c",
+                        "type": "nvarchar"
+                    }
+                ],
+                "typeProperties": {
+                    "schema": "ODS",
+                    "table": "SF_Lead"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/ASA_DimFormat')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_BI_Pool",
+                    "type": "LinkedServiceReference"
+                },
+                "folder": {
+                    "name": "Synapse/DWH"
+                },
+                "annotations": [],
+                "type": "AzureSqlDWTable",
+                "schema": [
+                    {
+                        "name": "FormatKey",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "FormatName",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "FormatValue",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "DWH_CreatedDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "DWH_LastUpdate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "IsActive",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "Source",
+                        "type": "varchar"
+                    }
+                ],
+                "typeProperties": {
+                    "schema": "dbo",
+                    "table": "DimFormat"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/SF_DL_TollFree')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_SF",
+                    "type": "LinkedServiceReference"
+                },
+                "folder": {
+                    "name": "Salesforce"
+                },
+                "annotations": [],
+                "type": "SalesforceServiceCloudObject",
+                "schema": [],
+                "typeProperties": {
+                    "objectApiName": "TollFreeNumbers__c"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/DL_SF_Event')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_DataLake",
+                    "type": "LinkedServiceReference"
+                },
+                "parameters": {
+                    "Object_File_Name": {
+                        "type": "string"
+                    },
+                    "Container": {
+                        "type": "string",
+                        "defaultValue": "hc-eim-file-system-bi"
+                    }
+                },
+                "folder": {
+                    "name": "Datalake/Salesforce"
+                },
+                "annotations": [],
+                "type": "Parquet",
+                "typeProperties": {
+                    "location": {
+                        "type": "AzureBlobFSLocation",
+                        "fileName": {
+                            "value": "@dataset().Object_File_Name",
+                            "type": "Expression"
+                        },
+                        "folderPath": "Event",
+                        "fileSystem": {
+                            "value": "@dataset().Container",
+                            "type": "Expression"
+                        }
+                    },
+                    "compressionCodec": "snappy"
+                },
+                "schema": [
+                    {
+                        "name": "Id",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "WhoId",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "WhatId",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "WhoCount",
+                        "type": "INT32"
+                    },
+                    {
+                        "name": "WhatCount",
+                        "type": "INT32"
+                    },
+                    {
+                        "name": "Subject",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "Location",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "IsAllDayEvent",
+                        "type": "BOOLEAN"
+                    },
+                    {
+                        "name": "ActivityDateTime",
+                        "type": "INT96"
+                    },
+                    {
+                        "name": "ActivityDate",
+                        "type": "INT96"
+                    },
+                    {
+                        "name": "DurationInMinutes",
+                        "type": "INT32"
+                    },
+                    {
+                        "name": "StartDateTime",
+                        "type": "INT96"
+                    },
+                    {
+                        "name": "EndDateTime",
+                        "type": "INT96"
+                    },
+                    {
+                        "name": "Description",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "AccountId",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "OwnerId",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "CurrencyIsoCode",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "Type",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "IsPrivate",
+                        "type": "BOOLEAN"
+                    },
+                    {
+                        "name": "ShowAs",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "IsDeleted",
+                        "type": "BOOLEAN"
+                    },
+                    {
+                        "name": "IsChild",
+                        "type": "BOOLEAN"
+                    },
+                    {
+                        "name": "IsGroupEvent",
+                        "type": "BOOLEAN"
+                    },
+                    {
+                        "name": "GroupEventType",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "CreatedDate",
+                        "type": "INT96"
+                    },
+                    {
+                        "name": "CreatedById",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "LastModifiedDate",
+                        "type": "INT96"
+                    },
+                    {
+                        "name": "LastModifiedById",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "SystemModstamp",
+                        "type": "INT96"
+                    },
+                    {
+                        "name": "IsArchived",
+                        "type": "BOOLEAN"
+                    },
+                    {
+                        "name": "RecurrenceActivityId",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "IsRecurrence",
+                        "type": "BOOLEAN"
+                    },
+                    {
+                        "name": "RecurrenceStartDateTime",
+                        "type": "INT96"
+                    },
+                    {
+                        "name": "RecurrenceEndDateOnly",
+                        "type": "INT96"
+                    },
+                    {
+                        "name": "RecurrenceTimeZoneSidKey",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "RecurrenceType",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "RecurrenceInterval",
+                        "type": "INT32"
+                    },
+                    {
+                        "name": "RecurrenceDayOfWeekMask",
+                        "type": "INT32"
+                    },
+                    {
+                        "name": "RecurrenceDayOfMonth",
+                        "type": "INT32"
+                    },
+                    {
+                        "name": "RecurrenceInstance",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "RecurrenceMonthOfYear",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "ReminderDateTime",
+                        "type": "INT96"
+                    },
+                    {
+                        "name": "IsReminderSet",
+                        "type": "BOOLEAN"
+                    },
+                    {
+                        "name": "EventSubtype",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "IsRecurrence2Exclusion",
+                        "type": "BOOLEAN"
+                    },
+                    {
+                        "name": "Recurrence2PatternText",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "Recurrence2PatternVersion",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "IsRecurrence2",
+                        "type": "BOOLEAN"
+                    },
+                    {
+                        "name": "IsRecurrence2Exception",
+                        "type": "BOOLEAN"
+                    },
+                    {
+                        "name": "Recurrence2PatternStartDate",
+                        "type": "INT96"
+                    },
+                    {
+                        "name": "Recurrence2PatternTimeZone",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "BrightPattern__SPRecordingOrTranscriptURL__c",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "Center_Name__c",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "Completed_Date__c",
+                        "type": "INT96"
+                    },
+                    {
+                        "name": "External_ID__c",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "Lead__c",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "Meeting_Platform_Id__c",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "Meeting_Platform__c",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "Person_Account__c",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "Recording_Link__c",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "Result__c",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "SPRecordingOrTranscriptURL__c",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "Service_Appointment__c",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "Service_Territory_Caller_Id__c",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "Agent_Link__c",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "Guest_Link__c",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "Opportunity__c",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "AcceptedEventInviteeIds",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "DeclinedEventInviteeIds",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "EventWhoIds",
+                        "type": "UTF8"
+                    },
+                    {
+                        "name": "UndecidedEventInviteeIds",
+                        "type": "UTF8"
+                    }
+                ]
+            },
+            "dependsOn": []
+        }
+    ]
+}

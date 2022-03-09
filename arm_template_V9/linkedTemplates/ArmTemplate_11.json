@@ -1,0 +1,1319 @@
+{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "factoryName": {
+            "type": "string",
+            "metadata": "Data Factory name",
+            "defaultValue": "hc-eim-df-prod2"
+        }
+    },
+    "variables": {
+        "factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+    },
+    "resources": [
+        {
+            "name": "[concat(parameters('factoryName'), '/ASA_dimLeadHistory')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_BI_Pool",
+                    "type": "LinkedServiceReference"
+                },
+                "folder": {
+                    "name": "SLF_LOGS/Synapse"
+                },
+                "annotations": [],
+                "type": "AzureSqlDWTable",
+                "schema": [],
+                "typeProperties": {
+                    "schema": "dbo",
+                    "table": "DimLeadLogs"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/ASA_dimOpportunityHistory')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_BI_Pool",
+                    "type": "LinkedServiceReference"
+                },
+                "folder": {
+                    "name": "SLF_LOGS/Synapse"
+                },
+                "annotations": [],
+                "type": "AzureSqlDWTable",
+                "schema": [],
+                "typeProperties": {
+                    "schema": "dbo",
+                    "table": "DimOpportunityLogs"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/ODS_SF_LeadHistory')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_BI_Pool",
+                    "type": "LinkedServiceReference"
+                },
+                "folder": {
+                    "name": "Synapse/ODS"
+                },
+                "annotations": [],
+                "type": "AzureSqlDWTable",
+                "schema": [],
+                "typeProperties": {
+                    "schema": "ODS",
+                    "table": "SF_LeadHistory"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/ODS_SF_OpportunityHistory')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_BI_Pool",
+                    "type": "LinkedServiceReference"
+                },
+                "folder": {
+                    "name": "Synapse/ODS"
+                },
+                "annotations": [],
+                "type": "AzureSqlDWTable",
+                "schema": [],
+                "typeProperties": {
+                    "schema": "ODS",
+                    "table": "SF_OpportunityHistory"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/ODS_CNCT_Logs')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_BI_Pool",
+                    "type": "LinkedServiceReference"
+                },
+                "folder": {
+                    "name": "Synapse/ODS"
+                },
+                "annotations": [],
+                "type": "AzureSqlDWTable",
+                "schema": [],
+                "typeProperties": {
+                    "schema": "ODS",
+                    "table": "CNCT_ConnectLogs"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/ODS_SF_ServiceAppointmentHistory')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_BI_Pool",
+                    "type": "LinkedServiceReference"
+                },
+                "folder": {
+                    "name": "Synapse/ODS"
+                },
+                "annotations": [],
+                "type": "AzureSqlDWTable",
+                "schema": [],
+                "typeProperties": {
+                    "schema": "ODS",
+                    "table": "SF_ServiceAppointmentHistory"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/ASA_DimMembership')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_BI_Pool",
+                    "type": "LinkedServiceReference"
+                },
+                "folder": {
+                    "name": "Synapse/DWH"
+                },
+                "annotations": [],
+                "type": "AzureSqlDWTable",
+                "schema": [
+                    {
+                        "name": "MembershipKey",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "MembershipID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "MembershipName",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "MembershipShortName",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "BusinessSegmentKey",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "BusinessSegmentID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "RevenueGroupKey",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "RevenueGroupID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "GenderKey",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "GenderID",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "DurationMonths",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "ContractPrice",
+                        "type": "decimal",
+                        "precision": 18,
+                        "scale": 0
+                    },
+                    {
+                        "name": "MonthlyFee",
+                        "type": "decimal",
+                        "precision": 18,
+                        "scale": 0
+                    },
+                    {
+                        "name": "IsTaxableFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsDefaultMembershipFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsActive",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "DWH_CreatedDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "DWH_LastUpdateDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "SourceSystem",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "BusinessSegmentName",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "BusinessSegmentShortName",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "RevenueGroupName",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "RevenueGroupShortName",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "MembershipCreateDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "MembershipLastUpdateDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    }
+                ],
+                "typeProperties": {
+                    "schema": "dbo",
+                    "table": "DimMembership"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/ODS_SF_AccountHistory')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_BI_Pool",
+                    "type": "LinkedServiceReference"
+                },
+                "folder": {
+                    "name": "Synapse/ODS"
+                },
+                "annotations": [],
+                "type": "AzureSqlDWTable",
+                "schema": [],
+                "typeProperties": {
+                    "schema": "ODS",
+                    "table": "SF_AccountHistory"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/DL_CNCT_cfgCenter')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_DataLake",
+                    "type": "LinkedServiceReference"
+                },
+                "parameters": {
+                    "Object_File_Name": {
+                        "type": "string"
+                    },
+                    "Container": {
+                        "type": "string",
+                        "defaultValue": "hc-eim-file-system-bi"
+                    }
+                },
+                "folder": {
+                    "name": "Datalake/CONNECT"
+                },
+                "annotations": [],
+                "type": "Parquet",
+                "typeProperties": {
+                    "location": {
+                        "type": "AzureBlobFSLocation",
+                        "fileName": {
+                            "value": "@dataset().Object_File_Name",
+                            "type": "Expression"
+                        },
+                        "folderPath": "Connect/cfgCenter",
+                        "fileSystem": {
+                            "value": "@dataset().Container",
+                            "type": "Expression"
+                        }
+                    },
+                    "compressionCodec": "snappy"
+                },
+                "schema": []
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/DL_CNCT_cfgAccumulator')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_DataLake",
+                    "type": "LinkedServiceReference"
+                },
+                "parameters": {
+                    "Object_File_Name": {
+                        "type": "string"
+                    },
+                    "Container": {
+                        "type": "string",
+                        "defaultValue": "hc-eim-file-system-bi"
+                    }
+                },
+                "folder": {
+                    "name": "Datalake/CONNECT"
+                },
+                "annotations": [],
+                "type": "Parquet",
+                "typeProperties": {
+                    "location": {
+                        "type": "AzureBlobFSLocation",
+                        "fileName": {
+                            "value": "@dataset().Object_File_Name",
+                            "type": "Expression"
+                        },
+                        "folderPath": "Connect/cfgAccumulator",
+                        "fileSystem": {
+                            "value": "@dataset().Container",
+                            "type": "Expression"
+                        }
+                    },
+                    "compressionCodec": "snappy"
+                },
+                "schema": []
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/ODS_CNCT_lkpAccumulatorAdjustmentType')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_BI_Pool",
+                    "type": "LinkedServiceReference"
+                },
+                "folder": {
+                    "name": "Synapse/ODS"
+                },
+                "annotations": [],
+                "type": "AzureSqlDWTable",
+                "schema": [],
+                "typeProperties": {
+                    "schema": "ODS",
+                    "table": "CNCT_lkpAccumulatorAdjustmentType"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/ODS_CNCT_cfgAccumulator')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_BI_Pool",
+                    "type": "LinkedServiceReference"
+                },
+                "folder": {
+                    "name": "Synapse/ODS"
+                },
+                "annotations": [],
+                "type": "AzureSqlDWTable",
+                "schema": [],
+                "typeProperties": {
+                    "schema": "ODS",
+                    "table": "CNCT_cfgAccumulator"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/ODS_CNCT_lkpAccumulatorActionType')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_BI_Pool",
+                    "type": "LinkedServiceReference"
+                },
+                "folder": {
+                    "name": "Synapse/ODS"
+                },
+                "annotations": [],
+                "type": "AzureSqlDWTable",
+                "schema": [],
+                "typeProperties": {
+                    "schema": "ODS",
+                    "table": "CNCT_lkpAccumulatorActionType"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/ASA_FactAppoitmentTracking')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_BI_Pool",
+                    "type": "LinkedServiceReference"
+                },
+                "folder": {
+                    "name": "Synapse/DWH"
+                },
+                "annotations": [],
+                "type": "AzureSqlDWTable",
+                "schema": [
+                    {
+                        "name": "FactDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "FactTimeKey",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "FactDateKey",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "AppointmentDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "AppointmentTimeKey",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "AppointmentDateKey",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "LeadKey",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "LeadId",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "AccountKey",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "AccountId",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "ContactKey",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "ContactId",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "ParentRecordType",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "WorkTypeKey",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "WorkTypeId",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "AccountAddress",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "AccountCity",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "AccountState",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "AccountPostalCode",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "AccountCountry",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "GeographyKey",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "AppointmentDescription",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "AppointmentStatus",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "CenterKey",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "ServiceTerritoryId",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "CenterNumber",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "AppointmentTypeKey",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "AppointmentType",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "AppointmentCenterType",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "ExternalId",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "ServiceAppointment",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "MeetingPlatformKey",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "MeetingPlatformId",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "MeetingPlatform",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "DWH_LoadDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "DWH_LastUpdateDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "ParentRecordId",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "AppointmentId",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "ExternalTaskId",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "StatusKey",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "CancellationReason",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "BeBackFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "OldStatus",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "AppoinmentStatusCategory",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "IsDeleted",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsOld",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "OpportunityId",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "OpportunityStatus",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "OpportunityDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "OpportunityReferralCode",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "OpportunityReferralCodeExpirationDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    }
+                ],
+                "typeProperties": {
+                    "schema": "dbo",
+                    "table": "FactAppointmentTracking"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/ODS_CNCT_lkpAccumulatorDataType')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_BI_Pool",
+                    "type": "LinkedServiceReference"
+                },
+                "folder": {
+                    "name": "Synapse/ODS"
+                },
+                "annotations": [],
+                "type": "AzureSqlDWTable",
+                "schema": [],
+                "typeProperties": {
+                    "schema": "ODS",
+                    "table": "CNCT_lkpAccumulatorDataType"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/ASA_FactOpportunityTracking')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_BI_Pool",
+                    "type": "LinkedServiceReference"
+                },
+                "folder": {
+                    "name": "Synapse/DWH"
+                },
+                "annotations": [],
+                "type": "AzureSqlDWTable",
+                "schema": [
+                    {
+                        "name": "FactDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "FactDatekey",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "OpportunityId",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "LeadKey",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "LeadId",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "AccountKey",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "AccountId",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "OpportunityName",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "OpportunityDescription",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "StatusKey",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "OpportunityStatus",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "CampaignKey",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "OpportunityCampaign",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "CloseDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "CloseDateKey",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "CreatedDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "CreatedUserKey",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "CreatedById",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "LastModifiedDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "UpdateUserKey",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "LastModifiedById",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "LossReasonKey",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "OpportunityLossReason",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "IsDeleted",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsClosed",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsWon",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "OpportunityReferralCode",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "OpportunitySourceCode",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "OpportunitySolutionOffered",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "ExternalTaskId",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "BeBackFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "CenterKey",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "CenterNumber",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "IsOld",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "Ammount",
+                        "type": "decimal",
+                        "precision": 38,
+                        "scale": 18
+                    }
+                ],
+                "typeProperties": {
+                    "schema": "dbo",
+                    "table": "FactOpportunityTracking"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/ODS_CNCT_cfgCenter')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_BI_Pool",
+                    "type": "LinkedServiceReference"
+                },
+                "folder": {
+                    "name": "Synapse/ODS"
+                },
+                "annotations": [],
+                "type": "AzureSqlDWTable",
+                "schema": [],
+                "typeProperties": {
+                    "schema": "ODS",
+                    "table": "CNCT_cfgCenter"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/ODS_CNCT_cfgConfigurationCenter')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_BI_Pool",
+                    "type": "LinkedServiceReference"
+                },
+                "folder": {
+                    "name": "Synapse/ODS"
+                },
+                "annotations": [],
+                "type": "AzureSqlDWTable",
+                "schema": [
+                    {
+                        "name": "ConfigurationCenterID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "ConfigurationCenterSortOrder",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "CenterID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "CreateDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "CreateUser",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "LastUpdate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "LastUpdateUser",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "UpdateStamp",
+                        "type": "varbinary"
+                    },
+                    {
+                        "name": "UseCreditCardProcessorFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "AccountingExportFreightBaseRate",
+                        "type": "money",
+                        "precision": 19,
+                        "scale": 4
+                    },
+                    {
+                        "name": "AccountingExportFreightPerItemRate",
+                        "type": "money",
+                        "precision": 19,
+                        "scale": 4
+                    },
+                    {
+                        "name": "AccountingExportReceiveAPDebitGLNumber",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "FeeNotificationDays",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "IsFeeProcessedCentrallyFlag",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "LastClientEFTUpdate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "CenterBusinessTypeID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "HasFullAccess",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "EndOfDayLastRunDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "IsSalesConsultationEnabled",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsSalesOrderRoundingEnabled",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsScheduleFeatureEnabled",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsFulfillmentEnabled",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsEnhSalesConsultEnabled",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsAutoConfirmEnabled",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsNoteDeletionEnabled",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "NACHAFileProfileID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "IsNewClientEnabled",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "LanguageID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "EntityID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "IsAutomatedAgreementEnabled",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsAccountReceivableProcEnabled",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "HairOrderDelayDays",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "IsActiveForVipAccess",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "UseCreditCardProcessorForCreditCardOnFile",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "NewBusinessSizeID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "RecurringBusinessSizeID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "IsTrichoViewEnabledForMobile",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsSalesConsultationEnabledForMobile",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsLiveWithBosley",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "CanCompleteVisitNextDay",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsNonSerializedInventoryEnabled",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "NewClientMembershipID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "IncludeInNationalPricingRenewal",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsTransferToHWEnabled",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsConfirmAppointmentClientContactInformationEnabled",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsStylistCareerPathEnabled",
+                        "type": "bit"
+                    },
+                    {
+                        "name": "IsHWIntegrationEnabled",
+                        "type": "bit"
+                    }
+                ],
+                "typeProperties": {
+                    "schema": "ODS",
+                    "table": "CNCT_cfgConfigurationCenter"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/ODS_MA_OTT')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_BI_Pool",
+                    "type": "LinkedServiceReference"
+                },
+                "folder": {
+                    "name": "Synapse/ODS"
+                },
+                "annotations": [],
+                "type": "AzureSqlDWTable",
+                "schema": [
+                    {
+                        "name": "Date",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Advertiser",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "AdvertiserCurrencyCode",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Campaign",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "AdGroup",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Creative",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Impressions",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "CNSpend",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "FilePath",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "DWH_LoadDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    }
+                ],
+                "typeProperties": {
+                    "schema": "ODS",
+                    "table": "MA_OTTSpend"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/ODS_CNCT_datAppointmentDetail')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "HC_BI_Pool",
+                    "type": "LinkedServiceReference"
+                },
+                "folder": {
+                    "name": "Synapse/ODS"
+                },
+                "annotations": [],
+                "type": "AzureSqlDWTable",
+                "schema": [
+                    {
+                        "name": "AppointmentDetailGUID",
+                        "type": "uniqueidentifier"
+                    },
+                    {
+                        "name": "AppointmentGUID",
+                        "type": "uniqueidentifier"
+                    },
+                    {
+                        "name": "SalesCodeID",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "AppointmentDetailDuration",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "CreateDate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "CreateUser",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "LastUpdate",
+                        "type": "datetime",
+                        "precision": 23,
+                        "scale": 3
+                    },
+                    {
+                        "name": "LastUpdateUser",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "Quantity",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "Price",
+                        "type": "money",
+                        "precision": 19,
+                        "scale": 4
+                    }
+                ],
+                "typeProperties": {
+                    "schema": "ODS",
+                    "table": "CNCT_datAppointmentDetail"
+                }
+            },
+            "dependsOn": []
+        }
+    ]
+}

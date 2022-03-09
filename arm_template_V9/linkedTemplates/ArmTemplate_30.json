@@ -1,0 +1,1823 @@
+{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "factoryName": {
+            "type": "string",
+            "metadata": "Data Factory name",
+            "defaultValue": "hc-eim-df-prod2"
+        }
+    },
+    "variables": {
+        "factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+    },
+    "resources": [
+        {
+            "name": "[concat(parameters('factoryName'), '/CBP_Corporate')]",
+            "type": "Microsoft.DataFactory/factories/pipelines",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "activities": [
+                    {
+                        "name": "Execute_extClosingByPerformer_Corporate_forADF",
+                        "type": "Copy",
+                        "dependsOn": [],
+                        "policy": {
+                            "timeout": "7.00:00:00",
+                            "retry": 0,
+                            "retryIntervalInSeconds": 30,
+                            "secureOutput": false,
+                            "secureInput": false
+                        },
+                        "userProperties": [],
+                        "typeProperties": {
+                            "source": {
+                                "type": "SqlServerSource",
+                                "sqlReaderQuery": "Select *  from dbo.ClosingByPerformer_Corporate_forADF",
+                                "queryTimeout": "02:00:00",
+                                "partitionOption": "None"
+                            },
+                            "sink": {
+                                "type": "DelimitedTextSink",
+                                "storeSettings": {
+                                    "type": "AzureBlobFSWriteSettings"
+                                },
+                                "formatSettings": {
+                                    "type": "DelimitedTextWriteSettings",
+                                    "quoteAllText": true,
+                                    "fileExtension": ".txt"
+                                }
+                            },
+                            "enableStaging": false
+                        },
+                        "inputs": [
+                            {
+                                "referenceName": "CBP_dataset",
+                                "type": "DatasetReference",
+                                "parameters": {}
+                            }
+                        ],
+                        "outputs": [
+                            {
+                                "referenceName": "CBP_CSV",
+                                "type": "DatasetReference",
+                                "parameters": {
+                                    "File": {
+                                        "value": "CBPReport_Post_Migration_Corporate_@{replace(adddays(utcnow(), -1, 'yyyy-MM-dd'), '-', '')}.csv",
+                                        "type": "Expression"
+                                    }
+                                }
+                            }
+                        ]
+                    }
+                ],
+                "policy": {
+                    "elapsedTimeMetric": {},
+                    "cancelAfter": {}
+                },
+                "folder": {
+                    "name": "Reporting"
+                },
+                "annotations": [],
+                "lastPublishTime": "2021-11-04T17:12:14Z"
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/DimLeadTest')]",
+            "type": "Microsoft.DataFactory/factories/pipelines",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "activities": [
+                    {
+                        "name": "Test DimLead",
+                        "type": "ExecuteDataFlow",
+                        "dependsOn": [],
+                        "policy": {
+                            "timeout": "1.00:00:00",
+                            "retry": 0,
+                            "retryIntervalInSeconds": 30,
+                            "secureOutput": false,
+                            "secureInput": false
+                        },
+                        "userProperties": [],
+                        "typeProperties": {
+                            "dataflow": {
+                                "referenceName": "DimLead",
+                                "type": "DataFlowReference",
+                                "parameters": {
+                                    "DaysToLoad": "1"
+                                },
+                                "datasetParameters": {
+                                    "ODSLead": {},
+                                    "DimTimeOfDay": {},
+                                    "DimGeography": {},
+                                    "DimDate": {},
+                                    "DimEthnicity": {},
+                                    "DimGender": {},
+                                    "DimLanguage": {},
+                                    "DimStatus": {},
+                                    "DimMaritalStatus": {},
+                                    "DimSource": {},
+                                    "OriginalCampaignDataset": {},
+                                    "DimCampaign": {},
+                                    "DimCenter": {},
+                                    "DimPromotion": {},
+                                    "UpsertLead": {}
+                                }
+                            },
+                            "staging": {
+                                "linkedService": {
+                                    "referenceName": "HC_DataLake",
+                                    "type": "LinkedServiceReference"
+                                },
+                                "folderPath": "hc-eim-file-system-bi-staging"
+                            },
+                            "compute": {
+                                "coreCount": 8,
+                                "computeType": "General"
+                            },
+                            "traceLevel": "Fine"
+                        }
+                    }
+                ],
+                "policy": {
+                    "elapsedTimeMetric": {},
+                    "cancelAfter": {}
+                },
+                "annotations": [],
+                "lastPublishTime": "2022-02-10T23:30:24Z"
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/DailyProcess_DaysToLoad_7')]",
+            "type": "Microsoft.DataFactory/factories/pipelines",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "activities": [
+                    {
+                        "name": "DimStatus",
+                        "type": "ExecuteDataFlow",
+                        "dependsOn": [],
+                        "policy": {
+                            "timeout": "7.00:00:00",
+                            "retry": 0,
+                            "retryIntervalInSeconds": 30,
+                            "secureOutput": false,
+                            "secureInput": false
+                        },
+                        "userProperties": [],
+                        "typeProperties": {
+                            "dataflow": {
+                                "referenceName": "DimStatus",
+                                "type": "DataFlowReference",
+                                "parameters": {
+                                    "DaysToLoad": "7"
+                                },
+                                "datasetParameters": {
+                                    "ODSCampaign": {},
+                                    "ODSLead": {},
+                                    "ODSAccount": {},
+                                    "ODSServiceAppointment": {},
+                                    "UpdateStatus": {}
+                                }
+                            },
+                            "staging": {
+                                "linkedService": {
+                                    "referenceName": "HC_DataLake",
+                                    "type": "LinkedServiceReference"
+                                },
+                                "folderPath": "hc-eim-file-system-bi-staging"
+                            },
+                            "compute": {
+                                "coreCount": 8,
+                                "computeType": "General"
+                            },
+                            "traceLevel": "Fine"
+                        }
+                    },
+                    {
+                        "name": "DimCurrency",
+                        "type": "ExecuteDataFlow",
+                        "dependsOn": [],
+                        "policy": {
+                            "timeout": "7.00:00:00",
+                            "retry": 0,
+                            "retryIntervalInSeconds": 30,
+                            "secureOutput": false,
+                            "secureInput": false
+                        },
+                        "userProperties": [],
+                        "typeProperties": {
+                            "dataflow": {
+                                "referenceName": "DimCurrency",
+                                "type": "DataFlowReference",
+                                "parameters": {
+                                    "DaysToLoad": "7"
+                                },
+                                "datasetParameters": {
+                                    "ODSCampaign": {},
+                                    "DimCurrency": {},
+                                    "UpdateDimCurrency": {},
+                                    "InsertDimCurrency": {}
+                                }
+                            },
+                            "staging": {
+                                "linkedService": {
+                                    "referenceName": "HC_DataLake",
+                                    "type": "LinkedServiceReference"
+                                },
+                                "folderPath": "hc-eim-file-system-bi-staging"
+                            },
+                            "compute": {
+                                "coreCount": 8,
+                                "computeType": "General"
+                            },
+                            "traceLevel": "Fine"
+                        }
+                    },
+                    {
+                        "name": "DimChannel",
+                        "type": "ExecuteDataFlow",
+                        "dependsOn": [],
+                        "policy": {
+                            "timeout": "7.00:00:00",
+                            "retry": 0,
+                            "retryIntervalInSeconds": 30,
+                            "secureOutput": false,
+                            "secureInput": false
+                        },
+                        "userProperties": [],
+                        "typeProperties": {
+                            "dataflow": {
+                                "referenceName": "DimChannel",
+                                "type": "DataFlowReference",
+                                "parameters": {
+                                    "DaysToLoad": "7"
+                                },
+                                "datasetParameters": {
+                                    "ODSTelevision": {},
+                                    "ODSCampaign": {},
+                                    "SourceDimChannel": {},
+                                    "UpdateDimChannel": {},
+                                    "InsertDimChannel": {}
+                                }
+                            },
+                            "staging": {
+                                "linkedService": {
+                                    "referenceName": "HC_DataLake",
+                                    "type": "LinkedServiceReference"
+                                },
+                                "folderPath": "hc-eim-file-system-bi-staging"
+                            },
+                            "compute": {
+                                "coreCount": 8,
+                                "computeType": "General"
+                            },
+                            "traceLevel": "Fine"
+                        }
+                    },
+                    {
+                        "name": "DimLanguage",
+                        "type": "ExecuteDataFlow",
+                        "dependsOn": [],
+                        "policy": {
+                            "timeout": "7.00:00:00",
+                            "retry": 0,
+                            "retryIntervalInSeconds": 30,
+                            "secureOutput": false,
+                            "secureInput": false
+                        },
+                        "userProperties": [],
+                        "typeProperties": {
+                            "dataflow": {
+                                "referenceName": "DimLanguage",
+                                "type": "DataFlowReference",
+                                "parameters": {
+                                    "DaysToLoad": "7"
+                                },
+                                "datasetParameters": {
+                                    "ODSCampaign": {},
+                                    "DimLanguageSource": {},
+                                    "DimLanguage": {},
+                                    "InsertDimLanguage": {}
+                                }
+                            },
+                            "staging": {
+                                "linkedService": {
+                                    "referenceName": "HC_DataLake",
+                                    "type": "LinkedServiceReference"
+                                },
+                                "folderPath": "hc-eim-file-system-bi-staging"
+                            },
+                            "compute": {
+                                "coreCount": 8,
+                                "computeType": "General"
+                            },
+                            "traceLevel": "Fine"
+                        }
+                    },
+                    {
+                        "name": "DimMedia",
+                        "type": "ExecuteDataFlow",
+                        "dependsOn": [
+                            {
+                                "activity": "DimStatus",
+                                "dependencyConditions": [
+                                    "Succeeded"
+                                ]
+                            },
+                            {
+                                "activity": "DimCurrency",
+                                "dependencyConditions": [
+                                    "Succeeded"
+                                ]
+                            },
+                            {
+                                "activity": "DimChannel",
+                                "dependencyConditions": [
+                                    "Succeeded"
+                                ]
+                            },
+                            {
+                                "activity": "DimLanguage",
+                                "dependencyConditions": [
+                                    "Succeeded"
+                                ]
+                            }
+                        ],
+                        "policy": {
+                            "timeout": "7.00:00:00",
+                            "retry": 0,
+                            "retryIntervalInSeconds": 30,
+                            "secureOutput": false,
+                            "secureInput": false
+                        },
+                        "userProperties": [],
+                        "typeProperties": {
+                            "dataflow": {
+                                "referenceName": "DimMedia",
+                                "type": "DataFlowReference",
+                                "parameters": {
+                                    "DaysToLoad": "7"
+                                },
+                                "datasetParameters": {
+                                    "ODSCampaign": {},
+                                    "DimMedia": {},
+                                    "UpdateDimMedia": {},
+                                    "InsertDimMedia": {}
+                                }
+                            },
+                            "staging": {
+                                "linkedService": {
+                                    "referenceName": "HC_DataLake",
+                                    "type": "LinkedServiceReference"
+                                },
+                                "folderPath": "hc-eim-file-system-bi-staging"
+                            },
+                            "compute": {
+                                "coreCount": 8,
+                                "computeType": "General"
+                            },
+                            "traceLevel": "Fine"
+                        }
+                    },
+                    {
+                        "name": "DimLossReason",
+                        "type": "ExecuteDataFlow",
+                        "dependsOn": [
+                            {
+                                "activity": "DimCurrency",
+                                "dependencyConditions": [
+                                    "Succeeded"
+                                ]
+                            },
+                            {
+                                "activity": "DimChannel",
+                                "dependencyConditions": [
+                                    "Succeeded"
+                                ]
+                            },
+                            {
+                                "activity": "DimLanguage",
+                                "dependencyConditions": [
+                                    "Succeeded"
+                                ]
+                            }
+                        ],
+                        "policy": {
+                            "timeout": "7.00:00:00",
+                            "retry": 0,
+                            "retryIntervalInSeconds": 30,
+                            "secureOutput": false,
+                            "secureInput": false
+                        },
+                        "userProperties": [],
+                        "typeProperties": {
+                            "dataflow": {
+                                "referenceName": "DimLossReason",
+                                "type": "DataFlowReference",
+                                "parameters": {
+                                    "DaysToLoad": "7"
+                                },
+                                "datasetParameters": {
+                                    "ODSOpportunity": {},
+                                    "DimLossReasonSource": {},
+                                    "DimLossReason": {},
+                                    "InsertDimLossReason": {}
+                                }
+                            },
+                            "staging": {
+                                "linkedService": {
+                                    "referenceName": "HC_DataLake",
+                                    "type": "LinkedServiceReference"
+                                },
+                                "folderPath": "hc-eim-file-system-bi-staging"
+                            },
+                            "compute": {
+                                "coreCount": 8,
+                                "computeType": "General"
+                            },
+                            "traceLevel": "Fine"
+                        }
+                    },
+                    {
+                        "name": "DimPromotion",
+                        "type": "ExecuteDataFlow",
+                        "dependsOn": [
+                            {
+                                "activity": "DimCurrency",
+                                "dependencyConditions": [
+                                    "Succeeded"
+                                ]
+                            },
+                            {
+                                "activity": "DimLanguage",
+                                "dependencyConditions": [
+                                    "Succeeded"
+                                ]
+                            }
+                        ],
+                        "policy": {
+                            "timeout": "7.00:00:00",
+                            "retry": 0,
+                            "retryIntervalInSeconds": 30,
+                            "secureOutput": false,
+                            "secureInput": false
+                        },
+                        "userProperties": [],
+                        "typeProperties": {
+                            "dataflow": {
+                                "referenceName": "DimPromotion",
+                                "type": "DataFlowReference",
+                                "parameters": {
+                                    "DaysToLoad": "7"
+                                },
+                                "datasetParameters": {
+                                    "ODSPromoCode": {},
+                                    "sourceDimPromocode": {},
+                                    "InsertDimePromotion": {},
+                                    "UpdateDimPromotion": {}
+                                }
+                            },
+                            "staging": {
+                                "linkedService": {
+                                    "referenceName": "HC_DataLake",
+                                    "type": "LinkedServiceReference"
+                                },
+                                "folderPath": "hc-eim-file-system-bi-staging"
+                            },
+                            "compute": {
+                                "coreCount": 8,
+                                "computeType": "General"
+                            },
+                            "traceLevel": "Fine"
+                        }
+                    },
+                    {
+                        "name": "DimCenter",
+                        "type": "ExecuteDataFlow",
+                        "dependsOn": [
+                            {
+                                "activity": "DimSystemUSer",
+                                "dependencyConditions": [
+                                    "Succeeded"
+                                ]
+                            },
+                            {
+                                "activity": "DimEthnicity",
+                                "dependencyConditions": [
+                                    "Succeeded"
+                                ]
+                            }
+                        ],
+                        "policy": {
+                            "timeout": "1.00:00:00",
+                            "retry": 0,
+                            "retryIntervalInSeconds": 30,
+                            "secureOutput": false,
+                            "secureInput": false
+                        },
+                        "userProperties": [],
+                        "typeProperties": {
+                            "dataflow": {
+                                "referenceName": "DimCenter",
+                                "type": "DataFlowReference",
+                                "parameters": {},
+                                "datasetParameters": {
+                                    "ODSCenter": {},
+                                    "ODSCenterOwnership": {},
+                                    "ODSCenterType": {},
+                                    "DimGeography": {},
+                                    "SourceDimCenter": {},
+                                    "OdsServiceTerritory": {},
+                                    "ODScfgCenterManagementArea": {},
+                                    "InsertDimCenter": {}
+                                }
+                            },
+                            "staging": {
+                                "linkedService": {
+                                    "referenceName": "HC_DataLake",
+                                    "type": "LinkedServiceReference"
+                                },
+                                "folderPath": "hc-eim-file-system-bi-staging"
+                            },
+                            "compute": {
+                                "coreCount": 8,
+                                "computeType": "General"
+                            },
+                            "traceLevel": "Fine"
+                        }
+                    },
+                    {
+                        "name": "DimAppointmentType",
+                        "type": "ExecuteDataFlow",
+                        "dependsOn": [
+                            {
+                                "activity": "DimCenter",
+                                "dependencyConditions": [
+                                    "Succeeded"
+                                ]
+                            },
+                            {
+                                "activity": "DimPromotion",
+                                "dependencyConditions": [
+                                    "Succeeded"
+                                ]
+                            }
+                        ],
+                        "policy": {
+                            "timeout": "1.00:00:00",
+                            "retry": 0,
+                            "retryIntervalInSeconds": 30,
+                            "secureOutput": false,
+                            "secureInput": false
+                        },
+                        "userProperties": [],
+                        "typeProperties": {
+                            "dataflow": {
+                                "referenceName": "DimAppointmentType",
+                                "type": "DataFlowReference",
+                                "parameters": {
+                                    "DaysToLoad": "7"
+                                },
+                                "datasetParameters": {
+                                    "ODSServiceAppointment": {},
+                                    "AppointmentType": {},
+                                    "InsertCompany": {}
+                                }
+                            },
+                            "staging": {
+                                "linkedService": {
+                                    "referenceName": "HC_DataLake",
+                                    "type": "LinkedServiceReference"
+                                },
+                                "folderPath": "hc-eim-file-system-bi-staging"
+                            },
+                            "compute": {
+                                "coreCount": 8,
+                                "computeType": "General"
+                            },
+                            "traceLevel": "Fine"
+                        }
+                    },
+                    {
+                        "name": "DimCampaign",
+                        "type": "ExecuteDataFlow",
+                        "dependsOn": [
+                            {
+                                "activity": "DimMedia",
+                                "dependencyConditions": [
+                                    "Succeeded"
+                                ]
+                            },
+                            {
+                                "activity": "DimLossReason",
+                                "dependencyConditions": [
+                                    "Succeeded"
+                                ]
+                            },
+                            {
+                                "activity": "DimPromotion",
+                                "dependencyConditions": [
+                                    "Succeeded"
+                                ]
+                            }
+                        ],
+                        "policy": {
+                            "timeout": "1.00:00:00",
+                            "retry": 0,
+                            "retryIntervalInSeconds": 30,
+                            "secureOutput": false,
+                            "secureInput": false
+                        },
+                        "userProperties": [],
+                        "typeProperties": {
+                            "dataflow": {
+                                "referenceName": "DimCampaign",
+                                "type": "DataFlowReference",
+                                "parameters": {
+                                    "DaysToLoad": "7"
+                                },
+                                "datasetParameters": {
+                                    "ODSCampaign": {},
+                                    "DimStatus": {},
+                                    "DimAgency": {},
+                                    "DimCurrency": {},
+                                    "DimPromotion": {},
+                                    "DimChannel": {},
+                                    "DimLanguage": {},
+                                    "DimMedia": {},
+                                    "ODSTollFree": {},
+                                    "ODSOldCampaing": {},
+                                    "UpsertDimCampaign": {}
+                                }
+                            },
+                            "staging": {
+                                "linkedService": {
+                                    "referenceName": "HC_DataLake",
+                                    "type": "LinkedServiceReference"
+                                },
+                                "folderPath": "hc-eim-file-system-bi-staging"
+                            },
+                            "compute": {
+                                "coreCount": 8,
+                                "computeType": "General"
+                            },
+                            "traceLevel": "Fine"
+                        }
+                    },
+                    {
+                        "name": "DimLead",
+                        "type": "ExecuteDataFlow",
+                        "dependsOn": [
+                            {
+                                "activity": "DimCampaign",
+                                "dependencyConditions": [
+                                    "Succeeded"
+                                ]
+                            }
+                        ],
+                        "policy": {
+                            "timeout": "1.00:00:00",
+                            "retry": 0,
+                            "retryIntervalInSeconds": 30,
+                            "secureOutput": false,
+                            "secureInput": false
+                        },
+                        "userProperties": [],
+                        "typeProperties": {
+                            "dataflow": {
+                                "referenceName": "DimLead",
+                                "type": "DataFlowReference",
+                                "parameters": {
+                                    "DaysToLoad": "7"
+                                },
+                                "datasetParameters": {
+                                    "ODSLead": {},
+                                    "DimTimeOfDay": {},
+                                    "DimGeography": {},
+                                    "DimDate": {},
+                                    "DimEthnicity": {},
+                                    "DimGender": {},
+                                    "DimLanguage": {},
+                                    "DimStatus": {},
+                                    "DimMaritalStatus": {},
+                                    "DimSource": {},
+                                    "OriginalCampaignDataset": {},
+                                    "DimCampaign": {},
+                                    "DimCenter": {},
+                                    "DimPromotion": {},
+                                    "UpsertLead": {}
+                                }
+                            },
+                            "staging": {
+                                "linkedService": {
+                                    "referenceName": "HC_DataLake",
+                                    "type": "LinkedServiceReference"
+                                },
+                                "folderPath": "hc-eim-file-system-bi-staging"
+                            },
+                            "compute": {
+                                "coreCount": 8,
+                                "computeType": "General"
+                            },
+                            "traceLevel": "Fine"
+                        }
+                    },
+                    {
+                        "name": "FactAppointment",
+                        "type": "ExecuteDataFlow",
+                        "dependsOn": [
+                            {
+                                "activity": "DimLead",
+                                "dependencyConditions": [
+                                    "Succeeded"
+                                ]
+                            },
+                            {
+                                "activity": "DimAccount",
+                                "dependencyConditions": [
+                                    "Succeeded"
+                                ]
+                            },
+                            {
+                                "activity": "DimAppointmentType",
+                                "dependencyConditions": [
+                                    "Succeeded"
+                                ]
+                            }
+                        ],
+                        "policy": {
+                            "timeout": "1.00:00:00",
+                            "retry": 0,
+                            "retryIntervalInSeconds": 30,
+                            "secureOutput": false,
+                            "secureInput": false
+                        },
+                        "userProperties": [],
+                        "typeProperties": {
+                            "dataflow": {
+                                "referenceName": "FactAppointment",
+                                "type": "DataFlowReference",
+                                "parameters": {
+                                    "DaysToLoad": "11"
+                                },
+                                "datasetParameters": {
+                                    "ODServiceAppointment": {},
+                                    "DimDate": {},
+                                    "DimTimeOfDay": {},
+                                    "DimGeography": {},
+                                    "DimAppointmentType": {},
+                                    "DimMeetingPlatform": {},
+                                    "DimAccount": {},
+                                    "DimStatus": {},
+                                    "DimLead": {},
+                                    "DimCenter": {},
+                                    "Event": {},
+                                    "Opportunity": {},
+                                    "FactLeadTracking": {},
+                                    "InsertFactAppointment": {}
+                                }
+                            },
+                            "staging": {
+                                "linkedService": {
+                                    "referenceName": "HC_DataLake",
+                                    "type": "LinkedServiceReference"
+                                },
+                                "folderPath": "hc-eim-file-system-bi-staging"
+                            },
+                            "compute": {
+                                "coreCount": 8,
+                                "computeType": "General"
+                            },
+                            "traceLevel": "Fine"
+                        }
+                    },
+                    {
+                        "name": "DimAccount",
+                        "type": "ExecuteDataFlow",
+                        "dependsOn": [
+                            {
+                                "activity": "DimCampaign",
+                                "dependencyConditions": [
+                                    "Succeeded"
+                                ]
+                            }
+                        ],
+                        "policy": {
+                            "timeout": "1.00:00:00",
+                            "retry": 0,
+                            "retryIntervalInSeconds": 30,
+                            "secureOutput": false,
+                            "secureInput": false
+                        },
+                        "userProperties": [],
+                        "typeProperties": {
+                            "dataflow": {
+                                "referenceName": "DimAccount",
+                                "type": "DataFlowReference",
+                                "parameters": {
+                                    "DaysToLoad": "7"
+                                },
+                                "datasetParameters": {
+                                    "ODSAccount": {},
+                                    "DimDate": {},
+                                    "DimTimeOfDay": {},
+                                    "DimSystemUser": {},
+                                    "DimGeography": {},
+                                    "DimEthnicity": {},
+                                    "DimGender": {},
+                                    "DimMaritalStatus": {},
+                                    "DimCompany": {},
+                                    "DimSource": {},
+                                    "DimStatus": {},
+                                    "UpsertDimAccount": {}
+                                }
+                            },
+                            "staging": {
+                                "linkedService": {
+                                    "referenceName": "HC_DataLake",
+                                    "type": "LinkedServiceReference"
+                                },
+                                "folderPath": "hc-eim-file-system-bi-staging"
+                            },
+                            "compute": {
+                                "coreCount": 8,
+                                "computeType": "General"
+                            },
+                            "traceLevel": "Fine"
+                        }
+                    },
+                    {
+                        "name": "FactCampaignHistory",
+                        "type": "ExecuteDataFlow",
+                        "dependsOn": [
+                            {
+                                "activity": "DimAccount",
+                                "dependencyConditions": [
+                                    "Succeeded"
+                                ]
+                            },
+                            {
+                                "activity": "DimLead",
+                                "dependencyConditions": [
+                                    "Succeeded"
+                                ]
+                            }
+                        ],
+                        "policy": {
+                            "timeout": "1.00:00:00",
+                            "retry": 0,
+                            "retryIntervalInSeconds": 30,
+                            "secureOutput": false,
+                            "secureInput": false
+                        },
+                        "userProperties": [],
+                        "typeProperties": {
+                            "dataflow": {
+                                "referenceName": "FactCampaignHistory",
+                                "type": "DataFlowReference",
+                                "parameters": {
+                                    "DaysToLoad": "7"
+                                },
+                                "datasetParameters": {
+                                    "ODSCampaignMember": {},
+                                    "DimLead": {},
+                                    "DimCampaign": {},
+                                    "DimStatus": {},
+                                    "DimGeography": {},
+                                    "DimDate": {},
+                                    "DimTimeOfDay": {},
+                                    "UpsertCampaignHistory": {}
+                                }
+                            },
+                            "staging": {
+                                "linkedService": {
+                                    "referenceName": "HC_DataLake",
+                                    "type": "LinkedServiceReference"
+                                },
+                                "folderPath": "hc-eim-file-system-bi-staging"
+                            },
+                            "compute": {
+                                "coreCount": 8,
+                                "computeType": "General"
+                            },
+                            "traceLevel": "Fine"
+                        }
+                    },
+                    {
+                        "name": "FactOpportunity",
+                        "type": "ExecuteDataFlow",
+                        "dependsOn": [
+                            {
+                                "activity": "DimLead",
+                                "dependencyConditions": [
+                                    "Succeeded"
+                                ]
+                            },
+                            {
+                                "activity": "DimAccount",
+                                "dependencyConditions": [
+                                    "Succeeded"
+                                ]
+                            }
+                        ],
+                        "policy": {
+                            "timeout": "1.00:00:00",
+                            "retry": 0,
+                            "retryIntervalInSeconds": 30,
+                            "secureOutput": false,
+                            "secureInput": false
+                        },
+                        "userProperties": [],
+                        "typeProperties": {
+                            "dataflow": {
+                                "referenceName": "FactOpportunity",
+                                "type": "DataFlowReference",
+                                "parameters": {
+                                    "DaysToLoad": "7"
+                                },
+                                "datasetParameters": {
+                                    "ODSOppoprtunity": {},
+                                    "DimDate": {},
+                                    "DimLead": {},
+                                    "DimAccount": {},
+                                    "DimSystemUser": {},
+                                    "DimLossReason": {},
+                                    "DimCampaign": {},
+                                    "UpsertFactOpportunity": {}
+                                }
+                            },
+                            "staging": {
+                                "linkedService": {
+                                    "referenceName": "HC_DataLake",
+                                    "type": "LinkedServiceReference"
+                                },
+                                "folderPath": "hc-eim-file-system-bi-staging"
+                            },
+                            "compute": {
+                                "coreCount": 8,
+                                "computeType": "General"
+                            },
+                            "traceLevel": "Fine"
+                        }
+                    },
+                    {
+                        "name": "DimSystemUSer",
+                        "type": "ExecuteDataFlow",
+                        "dependsOn": [
+                            {
+                                "activity": "DimMembership",
+                                "dependencyConditions": [
+                                    "Succeeded"
+                                ]
+                            }
+                        ],
+                        "policy": {
+                            "timeout": "1.00:00:00",
+                            "retry": 0,
+                            "retryIntervalInSeconds": 30,
+                            "secureOutput": false,
+                            "secureInput": false
+                        },
+                        "userProperties": [],
+                        "typeProperties": {
+                            "dataflow": {
+                                "referenceName": "DimSystemUser",
+                                "type": "DataFlowReference",
+                                "parameters": {
+                                    "DaysToLoad": "7"
+                                },
+                                "datasetParameters": {
+                                    "ODSSFUser": {},
+                                    "CNCTEmployee": {},
+                                    "InsertIntoSystemUser": {}
+                                }
+                            },
+                            "staging": {
+                                "linkedService": {
+                                    "referenceName": "HC_DataLake",
+                                    "type": "LinkedServiceReference"
+                                },
+                                "folderPath": "hc-eim-file-system-bi-staging"
+                            },
+                            "compute": {
+                                "coreCount": 8,
+                                "computeType": "General"
+                            },
+                            "traceLevel": "Fine"
+                        }
+                    },
+                    {
+                        "name": "DimEthnicity",
+                        "type": "ExecuteDataFlow",
+                        "dependsOn": [],
+                        "policy": {
+                            "timeout": "1.00:00:00",
+                            "retry": 0,
+                            "retryIntervalInSeconds": 30,
+                            "secureOutput": false,
+                            "secureInput": false
+                        },
+                        "userProperties": [],
+                        "typeProperties": {
+                            "dataflow": {
+                                "referenceName": "DimEthnicity",
+                                "type": "DataFlowReference",
+                                "parameters": {
+                                    "DaysToLoad": "7"
+                                },
+                                "datasetParameters": {
+                                    "ODSAccount": {},
+                                    "DimEthnicity": {},
+                                    "ODSlkpEthnicity": {},
+                                    "InsertEthnicity": {}
+                                }
+                            },
+                            "staging": {
+                                "linkedService": {
+                                    "referenceName": "HC_DataLake",
+                                    "type": "LinkedServiceReference"
+                                },
+                                "folderPath": "hc-eim-file-system-bi-staging"
+                            },
+                            "compute": {
+                                "coreCount": 8,
+                                "computeType": "General"
+                            },
+                            "traceLevel": "Fine"
+                        }
+                    },
+                    {
+                        "name": "FactCallDetail",
+                        "type": "ExecuteDataFlow",
+                        "dependsOn": [
+                            {
+                                "activity": "DimLead",
+                                "dependencyConditions": [
+                                    "Succeeded"
+                                ]
+                            },
+                            {
+                                "activity": "DimAccount",
+                                "dependencyConditions": [
+                                    "Succeeded"
+                                ]
+                            }
+                        ],
+                        "policy": {
+                            "timeout": "1.00:00:00",
+                            "retry": 0,
+                            "retryIntervalInSeconds": 30,
+                            "secureOutput": false,
+                            "secureInput": false
+                        },
+                        "userProperties": [],
+                        "typeProperties": {
+                            "dataflow": {
+                                "referenceName": "FactCallDetail",
+                                "type": "DataFlowReference",
+                                "parameters": {},
+                                "datasetParameters": {
+                                    "ODSBPCallDetail": {},
+                                    "DimDate": {},
+                                    "DimeTimeOfDay": {},
+                                    "DimAgentDisposition": {},
+                                    "DimLead": {},
+                                    "DimSource": {},
+                                    "DimSystemUser": {},
+                                    "DimCallType": {},
+                                    "DimMedia": {},
+                                    "DimScenario": {},
+                                    "DimService": {},
+                                    "FactCallDetail": {}
+                                }
+                            },
+                            "staging": {
+                                "linkedService": {
+                                    "referenceName": "HC_DataLake",
+                                    "type": "LinkedServiceReference"
+                                },
+                                "folderPath": "hc-eim-file-system-bi-staging"
+                            },
+                            "compute": {
+                                "coreCount": 8,
+                                "computeType": "General"
+                            },
+                            "traceLevel": "Fine"
+                        }
+                    },
+                    {
+                        "name": "BeBackFlagSP",
+                        "type": "SqlServerStoredProcedure",
+                        "dependsOn": [
+                            {
+                                "activity": "FactOpportunity",
+                                "dependencyConditions": [
+                                    "Succeeded"
+                                ]
+                            }
+                        ],
+                        "policy": {
+                            "timeout": "7.00:00:00",
+                            "retry": 0,
+                            "retryIntervalInSeconds": 30,
+                            "secureOutput": false,
+                            "secureInput": false
+                        },
+                        "userProperties": [],
+                        "typeProperties": {
+                            "storedProcedureName": "[[dbo].[sp_UpdateFactOpportunityBeBackFlag]"
+                        },
+                        "linkedServiceName": {
+                            "referenceName": "HC_BI_Pool",
+                            "type": "LinkedServiceReference"
+                        }
+                    },
+                    {
+                        "name": "UpdateDimLead",
+                        "type": "SqlServerStoredProcedure",
+                        "dependsOn": [
+                            {
+                                "activity": "DimLead",
+                                "dependencyConditions": [
+                                    "Succeeded"
+                                ]
+                            }
+                        ],
+                        "policy": {
+                            "timeout": "7.00:00:00",
+                            "retry": 0,
+                            "retryIntervalInSeconds": 30,
+                            "secureOutput": false,
+                            "secureInput": false
+                        },
+                        "userProperties": [],
+                        "typeProperties": {
+                            "storedProcedureName": "[[dbo].[UpdateDimLead]"
+                        },
+                        "linkedServiceName": {
+                            "referenceName": "HC_BI_Pool",
+                            "type": "LinkedServiceReference"
+                        }
+                    },
+                    {
+                        "name": "DimMembership",
+                        "type": "ExecuteDataFlow",
+                        "dependsOn": [],
+                        "policy": {
+                            "timeout": "1.00:00:00",
+                            "retry": 0,
+                            "retryIntervalInSeconds": 30,
+                            "secureOutput": false,
+                            "secureInput": false
+                        },
+                        "userProperties": [],
+                        "typeProperties": {
+                            "dataflow": {
+                                "referenceName": "DimMembership",
+                                "type": "DataFlowReference",
+                                "parameters": {
+                                    "DaysToLoad": "7"
+                                },
+                                "datasetParameters": {
+                                    "ODSMembership": {},
+                                    "DimGender": {},
+                                    "ODSBusinessSegment": {},
+                                    "ODSRevenueGroup": {},
+                                    "UpdateDimMember": {}
+                                }
+                            },
+                            "staging": {
+                                "linkedService": {
+                                    "referenceName": "HC_DataLake",
+                                    "type": "LinkedServiceReference"
+                                },
+                                "folderPath": "hc-eim-file-system-bi-staging"
+                            },
+                            "compute": {
+                                "coreCount": 8,
+                                "computeType": "General"
+                            },
+                            "traceLevel": "Fine"
+                        }
+                    }
+                ],
+                "policy": {
+                    "elapsedTimeMetric": {},
+                    "cancelAfter": {}
+                },
+                "folder": {
+                    "name": "Synapse"
+                },
+                "annotations": [],
+                "lastPublishTime": "2022-02-11T01:28:27Z"
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/SalesForceDriver_SQL05')]",
+            "type": "Microsoft.DataFactory/factories/pipelines",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "activities": [
+                    {
+                        "name": "LookupSalesForceDriver",
+                        "type": "Lookup",
+                        "dependsOn": [
+                            {
+                                "activity": "InitiateSalesForceDriver",
+                                "dependencyConditions": [
+                                    "Succeeded"
+                                ]
+                            }
+                        ],
+                        "policy": {
+                            "timeout": "7.00:00:00",
+                            "retry": 0,
+                            "retryIntervalInSeconds": 30,
+                            "secureOutput": false,
+                            "secureInput": false
+                        },
+                        "userProperties": [],
+                        "typeProperties": {
+                            "source": {
+                                "type": "SqlServerSource",
+                                "queryTimeout": "02:00:00",
+                                "partitionOption": "None"
+                            },
+                            "dataset": {
+                                "referenceName": "SalesForceDriver_SQL05",
+                                "type": "DatasetReference",
+                                "parameters": {}
+                            },
+                            "firstRowOnly": false
+                        }
+                    },
+                    {
+                        "name": "LoopThrougSalesForceDriver",
+                        "type": "ForEach",
+                        "dependsOn": [
+                            {
+                                "activity": "LookupSalesForceDriver",
+                                "dependencyConditions": [
+                                    "Succeeded"
+                                ]
+                            }
+                        ],
+                        "userProperties": [],
+                        "typeProperties": {
+                            "items": {
+                                "value": "@activity('LookupSalesForceDriver').output.value",
+                                "type": "Expression"
+                            },
+                            "isSequential": false,
+                            "batchCount": 3,
+                            "activities": [
+                                {
+                                    "name": "CopyFromSalesForceToSQL05",
+                                    "type": "Copy",
+                                    "dependsOn": [],
+                                    "policy": {
+                                        "timeout": "7.00:00:00",
+                                        "retry": 0,
+                                        "retryIntervalInSeconds": 30,
+                                        "secureOutput": false,
+                                        "secureInput": false
+                                    },
+                                    "userProperties": [],
+                                    "typeProperties": {
+                                        "source": {
+                                            "type": "SalesforceServiceCloudSource",
+                                            "query": {
+                                                "value": "@item().SalesForceSelect",
+                                                "type": "Expression"
+                                            },
+                                            "readBehavior": "query"
+                                        },
+                                        "sink": {
+                                            "type": "SqlServerSink",
+                                            "writeBehavior": "insert",
+                                            "sqlWriterUseTableLock": false
+                                        },
+                                        "enableStaging": false,
+                                        "translator": {
+                                            "type": "TabularTranslator",
+                                            "typeConversion": true,
+                                            "typeConversionSettings": {
+                                                "allowDataTruncation": true,
+                                                "treatBooleanAsNumber": false
+                                            }
+                                        }
+                                    },
+                                    "inputs": [
+                                        {
+                                            "referenceName": "SalesForceCloudDynamic",
+                                            "type": "DatasetReference",
+                                            "parameters": {
+                                                "SalesForceTable": {
+                                                    "value": "@item().SalesForceTable",
+                                                    "type": "Expression"
+                                                }
+                                            }
+                                        }
+                                    ],
+                                    "outputs": [
+                                        {
+                                            "referenceName": "SalesForceImportDynamic_SQL05",
+                                            "type": "DatasetReference",
+                                            "parameters": {
+                                                "StagingTableName": {
+                                                    "value": "@item().StagingTableName",
+                                                    "type": "Expression"
+                                                },
+                                                "StagingTableSchemaName": {
+                                                    "value": "@item().StagingTableSchemaName",
+                                                    "type": "Expression"
+                                                }
+                                            }
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "MergeProcedure",
+                                    "type": "SqlServerStoredProcedure",
+                                    "dependsOn": [
+                                        {
+                                            "activity": "CopyFromSalesForceToSQL05",
+                                            "dependencyConditions": [
+                                                "Succeeded"
+                                            ]
+                                        }
+                                    ],
+                                    "policy": {
+                                        "timeout": "7.00:00:00",
+                                        "retry": 0,
+                                        "retryIntervalInSeconds": 30,
+                                        "secureOutput": false,
+                                        "secureInput": false
+                                    },
+                                    "userProperties": [],
+                                    "typeProperties": {
+                                        "storedProcedureName": {
+                                            "value": "@item().StoredProcedure",
+                                            "type": "Expression"
+                                        }
+                                    },
+                                    "linkedServiceName": {
+                                        "referenceName": "SQL05SalesForceImport",
+                                        "type": "LinkedServiceReference"
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "InitiateSalesForceDriver",
+                        "type": "SqlServerStoredProcedure",
+                        "dependsOn": [],
+                        "policy": {
+                            "timeout": "7.00:00:00",
+                            "retry": 0,
+                            "retryIntervalInSeconds": 30,
+                            "secureOutput": false,
+                            "secureInput": false
+                        },
+                        "userProperties": [],
+                        "typeProperties": {
+                            "storedProcedureName": "[[Control].[InitiateSalesForceDriver]"
+                        },
+                        "linkedServiceName": {
+                            "referenceName": "SQL05SalesForceImport",
+                            "type": "LinkedServiceReference"
+                        }
+                    },
+                    {
+                        "name": "Error Notification",
+                        "type": "WebActivity",
+                        "dependsOn": [
+                            {
+                                "activity": "LoopThrougSalesForceDriver",
+                                "dependencyConditions": [
+                                    "Failed"
+                                ]
+                            }
+                        ],
+                        "policy": {
+                            "timeout": "7.00:00:00",
+                            "retry": 0,
+                            "retryIntervalInSeconds": 30,
+                            "secureOutput": false,
+                            "secureInput": false
+                        },
+                        "userProperties": [],
+                        "typeProperties": {
+                            "url": "https://prod-46.eastus2.logic.azure.com:443/workflows/04f510f1120b42ee8301c5db8d393580/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=ycpAPQcmDk4Y5NcgZHjRvPkU7b-8eDQARyLP8fxsVzk",
+                            "method": "POST",
+                            "headers": {},
+                            "body": {
+                                "value": "{\"PipielineRunId\":\"@{pipeline().runID}\",\"PipelineName\":\"@{pipeline().pipeline}\",\"FailedDateTime\":\"@{utcnow()}\"}",
+                                "type": "Expression"
+                            }
+                        }
+                    }
+                ],
+                "policy": {
+                    "elapsedTimeMetric": {},
+                    "cancelAfter": {}
+                },
+                "folder": {
+                    "name": "SalesForceImport"
+                },
+                "annotations": [],
+                "lastPublishTime": "2022-03-09T20:30:51Z"
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/SalesForceDriver_SQL06')]",
+            "type": "Microsoft.DataFactory/factories/pipelines",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "activities": [
+                    {
+                        "name": "LookupSalesForceDriver",
+                        "type": "Lookup",
+                        "dependsOn": [
+                            {
+                                "activity": "InitiateSalesForceDriver",
+                                "dependencyConditions": [
+                                    "Succeeded"
+                                ]
+                            }
+                        ],
+                        "policy": {
+                            "timeout": "7.00:00:00",
+                            "retry": 0,
+                            "retryIntervalInSeconds": 30,
+                            "secureOutput": false,
+                            "secureInput": false
+                        },
+                        "userProperties": [],
+                        "typeProperties": {
+                            "source": {
+                                "type": "SqlServerSource",
+                                "queryTimeout": "02:00:00",
+                                "partitionOption": "None"
+                            },
+                            "dataset": {
+                                "referenceName": "SalesForceDriver_SQL06",
+                                "type": "DatasetReference",
+                                "parameters": {}
+                            },
+                            "firstRowOnly": false
+                        }
+                    },
+                    {
+                        "name": "LoopThrougSalesForceDriver",
+                        "type": "ForEach",
+                        "dependsOn": [
+                            {
+                                "activity": "LookupSalesForceDriver",
+                                "dependencyConditions": [
+                                    "Succeeded"
+                                ]
+                            }
+                        ],
+                        "userProperties": [],
+                        "typeProperties": {
+                            "items": {
+                                "value": "@activity('LookupSalesForceDriver').output.value",
+                                "type": "Expression"
+                            },
+                            "isSequential": false,
+                            "batchCount": 3,
+                            "activities": [
+                                {
+                                    "name": "CopyFromSalesForceToSQL06",
+                                    "type": "Copy",
+                                    "dependsOn": [],
+                                    "policy": {
+                                        "timeout": "7.00:00:00",
+                                        "retry": 0,
+                                        "retryIntervalInSeconds": 30,
+                                        "secureOutput": false,
+                                        "secureInput": false
+                                    },
+                                    "userProperties": [],
+                                    "typeProperties": {
+                                        "source": {
+                                            "type": "SalesforceServiceCloudSource",
+                                            "query": {
+                                                "value": "@item().SalesForceSelect",
+                                                "type": "Expression"
+                                            },
+                                            "readBehavior": "query"
+                                        },
+                                        "sink": {
+                                            "type": "SqlServerSink",
+                                            "writeBehavior": "insert",
+                                            "sqlWriterUseTableLock": false
+                                        },
+                                        "enableStaging": false,
+                                        "translator": {
+                                            "type": "TabularTranslator",
+                                            "typeConversion": true,
+                                            "typeConversionSettings": {
+                                                "allowDataTruncation": true,
+                                                "treatBooleanAsNumber": false
+                                            }
+                                        }
+                                    },
+                                    "inputs": [
+                                        {
+                                            "referenceName": "SalesForceCloudDynamic",
+                                            "type": "DatasetReference",
+                                            "parameters": {
+                                                "SalesForceTable": {
+                                                    "value": "@item().SalesForceTable",
+                                                    "type": "Expression"
+                                                }
+                                            }
+                                        }
+                                    ],
+                                    "outputs": [
+                                        {
+                                            "referenceName": "SalesForceImportDynamic_SQL06",
+                                            "type": "DatasetReference",
+                                            "parameters": {
+                                                "StagingTableName": "@item().StagingTableName",
+                                                "StagingTableSchemaName": "@item().StagingTableSchemaName"
+                                            }
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "MergeProcedure",
+                                    "type": "SqlServerStoredProcedure",
+                                    "dependsOn": [
+                                        {
+                                            "activity": "CopyFromSalesForceToSQL06",
+                                            "dependencyConditions": [
+                                                "Succeeded"
+                                            ]
+                                        }
+                                    ],
+                                    "policy": {
+                                        "timeout": "7.00:00:00",
+                                        "retry": 0,
+                                        "retryIntervalInSeconds": 30,
+                                        "secureOutput": false,
+                                        "secureInput": false
+                                    },
+                                    "userProperties": [],
+                                    "typeProperties": {
+                                        "storedProcedureName": {
+                                            "value": "@item().StoredProcedure",
+                                            "type": "Expression"
+                                        }
+                                    },
+                                    "linkedServiceName": {
+                                        "referenceName": "SQL06SalesForceImport",
+                                        "type": "LinkedServiceReference"
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "InitiateSalesForceDriver",
+                        "type": "SqlServerStoredProcedure",
+                        "dependsOn": [],
+                        "policy": {
+                            "timeout": "7.00:00:00",
+                            "retry": 0,
+                            "retryIntervalInSeconds": 30,
+                            "secureOutput": false,
+                            "secureInput": false
+                        },
+                        "userProperties": [],
+                        "typeProperties": {
+                            "storedProcedureName": "[[Control].[InitiateSalesForceDriver]"
+                        },
+                        "linkedServiceName": {
+                            "referenceName": "SQL06SalesForceImport",
+                            "type": "LinkedServiceReference"
+                        }
+                    },
+                    {
+                        "name": "Error Notification",
+                        "type": "WebActivity",
+                        "dependsOn": [
+                            {
+                                "activity": "LoopThrougSalesForceDriver",
+                                "dependencyConditions": [
+                                    "Failed"
+                                ]
+                            }
+                        ],
+                        "policy": {
+                            "timeout": "7.00:00:00",
+                            "retry": 0,
+                            "retryIntervalInSeconds": 30,
+                            "secureOutput": false,
+                            "secureInput": false
+                        },
+                        "userProperties": [],
+                        "typeProperties": {
+                            "url": "https://prod-46.eastus2.logic.azure.com:443/workflows/04f510f1120b42ee8301c5db8d393580/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=ycpAPQcmDk4Y5NcgZHjRvPkU7b-8eDQARyLP8fxsVzk",
+                            "method": "POST",
+                            "headers": {},
+                            "body": {
+                                "value": "{\"PipielineRunId\":\"@{pipeline().runID}\",\"PipelineName\":\"@{pipeline().pipeline}\",\"FailedDateTime\":\"@{utcnow()}\"}",
+                                "type": "Expression"
+                            }
+                        }
+                    }
+                ],
+                "policy": {
+                    "elapsedTimeMetric": {},
+                    "cancelAfter": {}
+                },
+                "folder": {
+                    "name": "SalesForceImport"
+                },
+                "annotations": [],
+                "lastPublishTime": "2022-03-09T20:36:45Z"
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/DailyProcessTrigger')]",
+            "type": "Microsoft.DataFactory/factories/triggers",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "annotations": [],
+                "runtimeState": "Stopped",
+                "pipelines": [
+                    {
+                        "pipelineReference": {
+                            "referenceName": "DailyProcess",
+                            "type": "PipelineReference"
+                        },
+                        "parameters": {}
+                    }
+                ],
+                "type": "ScheduleTrigger",
+                "typeProperties": {
+                    "recurrence": {
+                        "frequency": "Day",
+                        "interval": 1,
+                        "startTime": "2021-06-17T04:53:00Z",
+                        "timeZone": "UTC",
+                        "schedule": {
+                            "minutes": [
+                                30
+                            ],
+                            "hours": [
+                                5
+                            ]
+                        }
+                    }
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/LASSRProcess')]",
+            "type": "Microsoft.DataFactory/factories/pipelines",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "activities": [
+                    {
+                        "name": "DailyProcess",
+                        "type": "ExecutePipeline",
+                        "dependsOn": [],
+                        "userProperties": [],
+                        "typeProperties": {
+                            "pipeline": {
+                                "referenceName": "DailyProcess",
+                                "type": "PipelineReference"
+                            },
+                            "waitOnCompletion": true,
+                            "parameters": {}
+                        }
+                    },
+                    {
+                        "name": "FactSalesTransaction",
+                        "type": "ExecutePipeline",
+                        "dependsOn": [
+                            {
+                                "activity": "DailyProcess",
+                                "dependencyConditions": [
+                                    "Succeeded"
+                                ]
+                            }
+                        ],
+                        "userProperties": [],
+                        "typeProperties": {
+                            "pipeline": {
+                                "referenceName": "FactSalesTransaction",
+                                "type": "PipelineReference"
+                            },
+                            "waitOnCompletion": true,
+                            "parameters": {}
+                        }
+                    }
+                ],
+                "policy": {
+                    "elapsedTimeMetric": {},
+                    "cancelAfter": {}
+                },
+                "folder": {
+                    "name": "Synapse"
+                },
+                "annotations": [],
+                "lastPublishTime": "2021-10-15T16:38:07Z"
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/SalesForceDriver_ALL')]",
+            "type": "Microsoft.DataFactory/factories/pipelines",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "activities": [
+                    {
+                        "name": "SalesForceDriver_SQL05",
+                        "type": "ExecutePipeline",
+                        "dependsOn": [],
+                        "userProperties": [],
+                        "typeProperties": {
+                            "pipeline": {
+                                "referenceName": "SalesForceDriver_SQL05",
+                                "type": "PipelineReference"
+                            },
+                            "waitOnCompletion": true,
+                            "parameters": {}
+                        }
+                    },
+                    {
+                        "name": "SalesForceDriver_SQL06",
+                        "type": "ExecutePipeline",
+                        "dependsOn": [],
+                        "userProperties": [],
+                        "typeProperties": {
+                            "pipeline": {
+                                "referenceName": "SalesForceDriver_SQL06",
+                                "type": "PipelineReference"
+                            },
+                            "waitOnCompletion": true,
+                            "parameters": {}
+                        }
+                    }
+                ],
+                "policy": {
+                    "elapsedTimeMetric": {},
+                    "cancelAfter": {}
+                },
+                "folder": {
+                    "name": "SalesForceImport"
+                },
+                "annotations": []
+            },
+            "dependsOn": [
+                "[concat(variables('factoryId'), '/pipelines/SalesForceDriver_SQL05')]",
+                "[concat(variables('factoryId'), '/pipelines/SalesForceDriver_SQL06')]"
+            ]
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/SalesForceDriverAll')]",
+            "type": "Microsoft.DataFactory/factories/triggers",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "annotations": [],
+                "runtimeState": "Started",
+                "pipeline": {
+                    "pipelineReference": {
+                        "referenceName": "SalesForceDriver_ALL",
+                        "type": "PipelineReference"
+                    },
+                    "parameters": {}
+                },
+                "type": "TumblingWindowTrigger",
+                "typeProperties": {
+                    "frequency": "Hour",
+                    "interval": 3,
+                    "startTime": "2022-03-09T20:48:00Z",
+                    "delay": "00:00:00",
+                    "maxConcurrency": 1,
+                    "retryPolicy": {
+                        "intervalInSeconds": 30
+                    },
+                    "dependsOn": []
+                }
+            },
+            "dependsOn": [
+                "[concat(variables('factoryId'), '/pipelines/SalesForceDriver_ALL')]"
+            ]
+        }
+    ]
+}
