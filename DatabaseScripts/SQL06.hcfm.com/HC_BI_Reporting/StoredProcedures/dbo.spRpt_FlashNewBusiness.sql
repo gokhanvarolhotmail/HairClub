@@ -1,4 +1,4 @@
-/* CreateDate: 12/12/2018 14:14:31.217 , ModifyDate: 02/17/2022 13:10:29.707 */
+/* CreateDate: 12/12/2018 14:14:31.217 , ModifyDate: 03/11/2022 09:03:13.617 */
 GO
 /***********************************************************************
 PROCEDURE:				spRpt_FlashNewBusiness
@@ -47,8 +47,7 @@ CREATE TABLE [#Centers]
   , [CenterDescription]       VARCHAR(50)
   , [CenterDescriptionNumber] VARCHAR(104)
 ) ;
-
-CREATE TABLE [#Task]
+create TABLE [#Task]
 (
     [FullDate]            DATETIME
   , [Id]                  NVARCHAR(18)

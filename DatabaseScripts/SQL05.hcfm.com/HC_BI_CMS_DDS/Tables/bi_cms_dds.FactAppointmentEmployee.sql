@@ -1,4 +1,4 @@
-/* CreateDate: 06/27/2011 16:10:51.227 , ModifyDate: 11/21/2019 15:17:46.793 */
+/* CreateDate: 06/27/2011 16:10:51.227 , ModifyDate: 03/10/2022 14:15:14.160 */
 GO
 CREATE TABLE [bi_cms_dds].[FactAppointmentEmployee](
 	[AppointmentEmployeeKey] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,

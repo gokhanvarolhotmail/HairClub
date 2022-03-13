@@ -1,4 +1,4 @@
-/* CreateDate: 11/06/2018 11:10:52.923 , ModifyDate: 11/17/2020 12:11:55.567 */
+/* CreateDate: 11/06/2018 11:10:52.923 , ModifyDate: 03/10/2022 14:13:01.580 */
 GO
 CREATE TABLE [dbo].[PromoCode__c](
 	[Id] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,

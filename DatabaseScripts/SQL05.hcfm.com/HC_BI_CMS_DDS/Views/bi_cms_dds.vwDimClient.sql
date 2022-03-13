@@ -1,4 +1,4 @@
-/* CreateDate: 05/03/2010 12:17:24.393 , ModifyDate: 07/10/2020 13:43:53.350 */
+/* CreateDate: 05/03/2010 12:17:24.393 , ModifyDate: 03/11/2022 09:01:11.493 */
 GO
 CREATE VIEW [bi_cms_dds].[vwDimClient]
 AS

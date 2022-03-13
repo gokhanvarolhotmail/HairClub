@@ -1,4 +1,4 @@
-/* CreateDate: 08/01/2012 15:46:35.987 , ModifyDate: 11/21/2019 15:17:46.730 */
+/* CreateDate: 08/01/2012 15:46:35.987 , ModifyDate: 03/10/2022 14:15:14.013 */
 GO
 CREATE TABLE [bi_cms_dds].[DimSecurityElement](
 	[SecurityElementKey] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,

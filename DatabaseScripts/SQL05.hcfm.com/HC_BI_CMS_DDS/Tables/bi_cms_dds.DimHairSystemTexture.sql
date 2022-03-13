@@ -1,4 +1,4 @@
-/* CreateDate: 06/27/2011 16:01:44.120 , ModifyDate: 11/21/2019 15:17:46.383 */
+/* CreateDate: 06/27/2011 16:01:44.120 , ModifyDate: 03/10/2022 14:15:13.550 */
 GO
 CREATE TABLE [bi_cms_dds].[DimHairSystemTexture](
 	[HairSystemTextureKey] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,

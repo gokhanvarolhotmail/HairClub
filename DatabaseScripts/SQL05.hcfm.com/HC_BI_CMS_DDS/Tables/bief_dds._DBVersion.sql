@@ -1,4 +1,4 @@
-/* CreateDate: 05/03/2010 12:17:22.967 , ModifyDate: 11/21/2019 15:17:45.117 */
+/* CreateDate: 05/03/2010 12:17:22.967 , ModifyDate: 03/10/2022 14:15:12.590 */
 GO
 CREATE TABLE [bief_dds].[_DBVersion](
 	[DBVersionMajor] [int] NOT NULL,

@@ -1,4 +1,4 @@
-/* CreateDate: 08/01/2012 15:42:43.127 , ModifyDate: 11/21/2019 15:17:46.670 */
+/* CreateDate: 08/01/2012 15:42:43.127 , ModifyDate: 03/10/2022 14:15:12.970 */
 GO
 CREATE TABLE [bi_cms_dds].[DimActiveDirectoryGroup](
 	[ActiveDirectoryGroupKey] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,

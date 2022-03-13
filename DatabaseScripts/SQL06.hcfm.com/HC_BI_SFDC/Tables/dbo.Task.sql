@@ -1,4 +1,4 @@
-/* CreateDate: 10/04/2019 14:09:30.497 , ModifyDate: 03/08/2022 23:44:34.510 */
+/* CreateDate: 10/04/2019 14:09:30.497 , ModifyDate: 03/11/2022 23:44:11.687 */
 GO
 CREATE TABLE [dbo].[Task](
 	[Id] [nvarchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,

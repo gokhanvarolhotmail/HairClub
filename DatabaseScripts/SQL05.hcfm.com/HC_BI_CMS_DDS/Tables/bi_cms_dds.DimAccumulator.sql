@@ -1,4 +1,4 @@
-/* CreateDate: 05/03/2010 12:17:22.980 , ModifyDate: 11/21/2019 15:17:45.300 */
+/* CreateDate: 05/03/2010 12:17:22.980 , ModifyDate: 03/10/2022 14:15:12.853 */
 GO
 CREATE TABLE [bi_cms_dds].[DimAccumulator](
 	[AccumulatorKey] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,

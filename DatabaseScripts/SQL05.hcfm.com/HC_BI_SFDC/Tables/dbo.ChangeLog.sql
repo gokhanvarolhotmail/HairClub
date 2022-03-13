@@ -1,4 +1,4 @@
-/* CreateDate: 04/24/2018 16:13:25.950 , ModifyDate: 11/17/2020 12:11:54.517 */
+/* CreateDate: 04/24/2018 16:13:25.950 , ModifyDate: 03/10/2022 14:13:01.450 */
 GO
 CREATE TABLE [dbo].[ChangeLog](
 	[ChangeLogID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,

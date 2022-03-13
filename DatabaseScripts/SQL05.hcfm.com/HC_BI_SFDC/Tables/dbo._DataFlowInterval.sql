@@ -1,4 +1,4 @@
-/* CreateDate: 02/13/2018 09:39:58.840 , ModifyDate: 11/17/2020 12:11:54.763 */
+/* CreateDate: 02/13/2018 09:39:58.840 , ModifyDate: 03/10/2022 14:13:01.333 */
 GO
 CREATE TABLE [dbo].[_DataFlowInterval](
 	[DataFlowIntervalKey] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,

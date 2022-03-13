@@ -1,4 +1,4 @@
-/* CreateDate: 06/27/2011 16:01:44.317 , ModifyDate: 11/21/2019 15:17:46.570 */
+/* CreateDate: 06/27/2011 16:01:44.317 , ModifyDate: 03/10/2022 14:15:13.310 */
 GO
 CREATE TABLE [bi_cms_dds].[DimHairSystemFrontalDensity](
 	[HairSystemFrontalDensityKey] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
