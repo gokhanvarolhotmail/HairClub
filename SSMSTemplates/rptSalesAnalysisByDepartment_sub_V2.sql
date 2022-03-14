@@ -230,3 +230,13 @@ WHERE [SalesCodeDepartmentDescription] = @SalesCodeDepartmentDescription ;
 
 DROP TABLE [#UTCDateParms] ;
 GO
+
+RETURN ;
+
+EXEC [dbo].[rptSalesAnalysisByDepartment_sub_V2]
+    @CenterId = 100
+  , @StartDate = '20220101'
+  , @EndDate = '20220315'
+  , @GenderID = 0 --0 All, 1 Male, 2 Female
+  , @SalesCodeDepartmentDescription = 'Shampoos' ;
+GO
