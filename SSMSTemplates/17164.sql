@@ -13,11 +13,31 @@ Update the 'UpdatedDueDate' field value in [HairClubCMS].[dbo].[datHairSystemOrd
  
  */
 
-
-SELECT top 1000 [a].[UpdatedDueDate], * FROM datHairSystemOrder  a 
+SELECT TOP 1000
+       [a].[UpdatedDueDate]
+     , DATEADD(DAY, 240, [a].[CreateDate])
+FROM [dbo].[datHairSystemOrder] AS [a]
 --INNER JOIN [lkpHairSystemOrderStatus] b ON a.[HairSystemOrderStatusID] = b.[HairSystemOrderStatusID]
-WHERE a.[HairSystemOrderDate] >= '20210301' AND a.[HairSystemOrderDate]  <= '20220209'
-AND a.HairSystemOrderStatusID = 8
+WHERE [a].[HairSystemOrderDate] >= '20210301' AND [a].[HairSystemOrderDate] <= '20220209' AND [a].[HairSystemOrderStatusID] = 8 ;
+GO
+RETURN ;
 
+UPDATE [a]
+SET
+    [a].[UpdatedDueDate] = DATEADD(DAY, 240, [a].[CreateDate])
+  , [a].[LastUpdateUser] = 'ZND#17164'
+  , [a].[LastUpdate] = GETUTCDATE()
+FROM [dbo].[datHairSystemOrder] AS [a]
+WHERE [a].[HairSystemOrderDate] >= '20210301' AND [a].[HairSystemOrderDate] <= '20220209' AND [a].[HairSystemOrderStatusID] = 8 ;
+GO
+
+SELECT
+    CAST([a].[UpdatedDueDate] AS DATE) AS [Dt]
+  , COUNT(1) AS [cnt]
+FROM [dbo].[datHairSystemOrder] AS [a]
+--INNER JOIN [lkpHairSystemOrderStatus] b ON a.[HairSystemOrderStatusID] = b.[HairSystemOrderStatusID]
+WHERE [a].[HairSystemOrderDate] >= '20210301' AND [a].[HairSystemOrderDate] <= '20220209' AND [a].[HairSystemOrderStatusID] = 8
+GROUP BY CAST([a].[UpdatedDueDate] AS DATE)
+ORDER BY COUNT(1) DESC ;
 
 -- 155,587
