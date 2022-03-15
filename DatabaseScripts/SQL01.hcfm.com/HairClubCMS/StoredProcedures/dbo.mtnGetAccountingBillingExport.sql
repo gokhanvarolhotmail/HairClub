@@ -10,7 +10,7 @@ DESTINATION DATABASE: 	HairClubCMS
 
 RELATED APPLICATION:  	CMS
 
-AUTHOR: 				
+AUTHOR:
 
 IMPLEMENTOR: 			Mike Tovbin
 
@@ -19,20 +19,20 @@ DATE IMPLEMENTED: 		10/12/2010
 LAST REVISION DATE: 	03/16/2020
 
 ==============================================================================
-DESCRIPTION:	
+DESCRIPTION:
 ==============================================================================
 NOTES:
-		* 10/12/2010 MVT - Created	
+		* 10/12/2010 MVT - Created
 		* 01/21/2010 MVT - Modified to allow for ability to re-generate by an
 							existing Accounting Export Batch GUID. Changed to
 							store user on Export Batch parent and detail records.
-		* 01/22/2011 MLM - Added Paging To the Stored Procedure 	
+		* 01/22/2011 MLM - Added Paging To the Stored Procedure
 		* 01/25/2011 MLM - Fixed Join Issue
-		* 01/25/2011 MVT - Fixed Freight Amount so that it is calculated by 
+		* 01/25/2011 MVT - Fixed Freight Amount so that it is calculated by
 							Shippment instead of Center.
 		* 01/26/2011 MVT - Fixed issue with the Receive Date to use Receive from
 							Factory date instead of Receive at center date.
-		* 03/09/2011 MVT - Updated to set price and freight charge of the repair/redo 
+		* 03/09/2011 MVT - Updated to set price and freight charge of the repair/redo
 							orders that were accepted for credit to 0.
 		* 04/14/2011 MVT - Updated to use HairSystemOrderGUID instead of HairSystemOrderTransactionGUID
 							to check if the billing has been generated for the order. Modified to only use
@@ -44,15 +44,15 @@ NOTES:
 							when paging.
 		* 06/06/2011 MVT - Modified to charge contract price for Repair orders. Added negative credit amount
 							for repair orders.
-		* 02/24/2012 MVT - Changed CostCenterWholesale to CenterPrice		
+		* 02/24/2012 MVT - Changed CostCenterWholesale to CenterPrice
 		* 06/13/2012 MVT - Modified to exclude Priority Hair Systems from the Billing File and to track CenterID
 							on AccountingExportBatchDetail record.
 		* 11/10/2015 SAL - Modified to exclude Xtrands Employee and Model memberships from being billed to Corporate Centers.
 		* 09/17/2017 SAL - Updated to join union selects to datHairSystemOrderTransaction.CenterID to cfgCenter and
 								Updated to return cfgCenter.CenterNumber As CenterID.
-		* 04/25/2018 SAL - Modified to include AutoPriorityCorp transactions so that centers get charged for hair that is 
+		* 04/25/2018 SAL - Modified to include AutoPriorityCorp transactions so that centers get charged for hair that is
 								received from the factory at corporate, automatically put into PRIORITY status, and kept
-								at Corporate.  Also, updated to join union selects to datAccountingExportBatchDetail.CenterID 
+								at Corporate.  Also, updated to join union selects to datAccountingExportBatchDetail.CenterID
 								to cfgCenter so that the correct centernumber is returned (TFS #10625).
 		* 06/18/2018 SAL - Modified to allow executing for Hans Wiemann Type/CenterType (TFS #10928).
 		* 02/19/2019 JLM - Modified to add columns for add-on pricing. (TFS #11976)
@@ -61,7 +61,7 @@ NOTES:
 		* 03/16/2020 JLM - Update center add-on pricing to use cuticle intact hair and root shadowing add-on. (TFS 14025 & 14067)
 
 ==============================================================================
-SAMPLE EXECUTION: 
+SAMPLE EXECUTION:
 ==============================================================================
 */
 
@@ -69,24 +69,24 @@ CREATE PROCEDURE [dbo].[mtnGetAccountingBillingExport]
 	@BeginDate datetime,
 	@EndDate datetime,
 	@Type nvarchar(25),
-	@InvoiceDate datetime, -- informational, only written to batch record	
+	@InvoiceDate datetime, -- informational, only written to batch record
 	@ExportFileName nvarchar(200),
 	@BatchGUID uniqueidentifier,
-	@User nvarchar(25), 
-	@SkipCount int, 
+	@User nvarchar(25),
+	@SkipCount int,
 	@PageSize int
 AS
 BEGIN
 	SET NOCOUNT ON
 	DECLARE @CenterType as char
-		
 
-	/**********************************************/		
+
+	/**********************************************/
 	-- CONSTANTS
 	/**********************************************/
 	DECLARE @CorpBatchTypeConst as nvarchar(15)  = 'HSCorpBill'
-	DECLARE @FranchiseBatchTypeConst as nvarchar(15) = 'HSFranBill'	
-	DECLARE @HansWiemannBatchTypeConst as nvarchar(15) = 'HSHwBill'	
+	DECLARE @FranchiseBatchTypeConst as nvarchar(15) = 'HSFranBill'
+	DECLARE @HansWiemannBatchTypeConst as nvarchar(15) = 'HSHwBill'
 	DECLARE @HairSystemOrderProcessDescription as nvarchar(15) = 'SHIPFCORP'
 	DECLARE @HairSystemOrderProcessDescription_AutoPriorityCorp as nvarchar(15) = 'AUTOPRCORP'
 	DECLARE @CorpCenter as integer = 100
@@ -105,28 +105,28 @@ BEGIN
 	DECLARE @ModelMembershipShortDesc as nvarchar(10) = 'MODEL'
 	DECLARE @ModelExtMembershipShortDesc as nvarchar(10) = 'MODELEXT'
 	DECLARE @ModelXtrandsMembershipShortDesc as nvarchar(10) = 'MODELXTR'
-		
-	/**********************************************/		
-	-- Create an AccountingExportBatch record	
+
+	/**********************************************/
+	-- Create an AccountingExportBatch record
 	/**********************************************/
 	DECLARE @AccountingExportBatchGUID as uniqueidentifier
 	DECLARE @AccountingExportBatchTypeID as int
 	DECLARE @AccountingBatchNumber as int
 	DECLARE @ReceiveFromFactoryShipmentTypeID as int
-		
+
 	IF @BatchGUID is null
 		SET @AccountingExportBatchGUID = newid()
 	ELSE
 		SET @AccountingExportBatchGUID = @BatchGUID
-		
-			
+
+
 	-------------------------------------------
 	-- SET Receive From Factory Shipment ID
 	-------------------------------------------
 	SET @ReceiveFromFactoryShipmentTypeID = (SELECT st.InventoryShipmentTypeID FROM lkpInventoryShipmentType st
 													WHERE st.InventoryShipmentTypeDescriptionShort = @ReceiveFromFactoryShipmentType)
-	
-	
+
+
 	-------------------------------------------
 	-- SET End Date
 	-------------------------------------------
@@ -151,39 +151,39 @@ BEGIN TRY
 	-- Check if creating a new Accounting Export Batch.
 	-- If @BatchGUID has a value, then re-generating
 	IF @BatchGUID is null
-	BEGIN	
+	BEGIN
 		-------------------------------------------
 		-- SET Accounting Export Batch Number
 		-------------------------------------------
 		DECLARE @BatchNumber TABLE	(
 				Number nvarchar(40)
 		)
-					
+
 		INSERT INTO @BatchNumber(Number)
 		EXEC dbo.mtnGetAccountingExportBatchNumber
-			
+
 		SET @AccountingBatchNumber = (SELECT CONVERT(Integer, Number) FROM @BatchNumber)
-		
+
 		-------------------------------------------
 		-- SET Batch Type ID and Center Type
-		-------------------------------------------	
-		IF @Type = @CorpType		
-			SET @AccountingExportBatchTypeID = (SELECT l.AccountingExportBatchTypeID FROM dbo.lkpAccountingExportBatchType l WHERE  l.AccountingExportBatchTypeDescriptionShort = @CorpBatchTypeConst)			
-		ELSE IF @Type = @FranchiseType	
+		-------------------------------------------
+		IF @Type = @CorpType
+			SET @AccountingExportBatchTypeID = (SELECT l.AccountingExportBatchTypeID FROM dbo.lkpAccountingExportBatchType l WHERE  l.AccountingExportBatchTypeDescriptionShort = @CorpBatchTypeConst)
+		ELSE IF @Type = @FranchiseType
 			SET @AccountingExportBatchTypeID = (SELECT l.AccountingExportBatchTypeID FROM dbo.lkpAccountingExportBatchType l WHERE  l.AccountingExportBatchTypeDescriptionShort = @FranchiseBatchTypeConst)
-		ELSE IF @Type = @HansWiemannType		
+		ELSE IF @Type = @HansWiemannType
 			SET @AccountingExportBatchTypeID = (SELECT l.AccountingExportBatchTypeID FROM dbo.lkpAccountingExportBatchType l WHERE  l.AccountingExportBatchTypeDescriptionShort = @HansWiemannBatchTypeConst)
 		ELSE
-			SET @AccountingExportBatchTypeID = (SELECT l.AccountingExportBatchTypeID FROM dbo.lkpAccountingExportBatchType l WHERE  l.AccountingExportBatchTypeDescriptionShort = @CorpBatchTypeConst)			
+			SET @AccountingExportBatchTypeID = (SELECT l.AccountingExportBatchTypeID FROM dbo.lkpAccountingExportBatchType l WHERE  l.AccountingExportBatchTypeDescriptionShort = @CorpBatchTypeConst)
 
-		--IF @Type = @CorpType		
-		--	SET @AccountingExportBatchTypeID = (SELECT l.AccountingExportBatchTypeID FROM dbo.lkpAccountingExportBatchType l WHERE  l.AccountingExportBatchTypeDescriptionShort = @CorpBatchTypeConst)			
-		--ELSE		
+		--IF @Type = @CorpType
+		--	SET @AccountingExportBatchTypeID = (SELECT l.AccountingExportBatchTypeID FROM dbo.lkpAccountingExportBatchType l WHERE  l.AccountingExportBatchTypeDescriptionShort = @CorpBatchTypeConst)
+		--ELSE
 		--	SET @AccountingExportBatchTypeID = (SELECT l.AccountingExportBatchTypeID FROM dbo.lkpAccountingExportBatchType l WHERE  l.AccountingExportBatchTypeDescriptionShort = @FranchiseBatchTypeConst)
-						
-		INSERT INTO dbo.datAccountingExportBatch (AccountingExportBatchGUID, AccountingExportBatchTypeID, AccountingExportBatchNumber, BatchRunDate, BatchBeginDate, BatchEndDate, BatchInvoiceDate, ExportFileName, CreateDate, CreateUser, LastUpdate, LastUpdateUser) VALUES 
+
+		INSERT INTO dbo.datAccountingExportBatch (AccountingExportBatchGUID, AccountingExportBatchTypeID, AccountingExportBatchNumber, BatchRunDate, BatchBeginDate, BatchEndDate, BatchInvoiceDate, ExportFileName, CreateDate, CreateUser, LastUpdate, LastUpdateUser) VALUES
 			(@AccountingExportBatchGUID, @AccountingExportBatchTypeID, @AccountingBatchNumber, GETUTCDATE(), @BeginDate, @EndDate, @InvoiceDate, @ExportFileName, GETUTCDATE(), @User, GETUTCDATE(), @User)
-						
+
 		-------------------------------------------
 		-- Select Distinct transactions by Hair System Order
 		-------------------------------------------
@@ -194,39 +194,39 @@ BEGIN TRY
 		)
 
 		INSERT INTO @Transactions(TransactionGUID)
-		SELECT MAX(convert(nvarchar(40),h.HairSystemOrderTransactionGUID))  
+		SELECT MAX(convert(nvarchar(40),h.HairSystemOrderTransactionGUID))
 		FROM datHairSystemOrderTransaction h
 			INNER JOIN datHairSystemOrder hso ON hso.HairSystemOrderGUID = h.HairSystemOrderGUID
 			INNER JOIN cfgCenter cntr ON cntr.CenterID = @CorpCenter  -- Corporate center
-			INNER JOIN lkpTimeZone tz ON cntr.TimeZoneID = tz.TimeZoneID	
+			INNER JOIN lkpTimeZone tz ON cntr.TimeZoneID = tz.TimeZoneID
 			INNER JOIN cfgCenter htcntr ON htcntr.CenterID = h.CenterID
-			INNER JOIN lkpCenterType ct ON htcntr.CenterTypeID = ct.CenterTypeID	
-			INNER JOIN dbo.lkpHairSystemOrderProcess hsop ON h.HairSystemOrderProcessID = hsop.HairSystemOrderProcessID	
+			INNER JOIN lkpCenterType ct ON htcntr.CenterTypeID = ct.CenterTypeID
+			INNER JOIN dbo.lkpHairSystemOrderProcess hsop ON h.HairSystemOrderProcessID = hsop.HairSystemOrderProcessID
 			---
 			INNER JOIN datInventoryShipmentDetail isd ON h.InventoryShipmentDetailGUID = isd.InventoryShipmentDetailGUID
 			---
 			JOIN #UTCDateParms AS [UTCDateParms] ON UTCDateParms.TimeZoneID = tz.TimeZoneID
 			---
 			LEFT OUTER JOIN datClientMembership cm ON h.ClientMembershipGUID = cm.ClientMembershipGUID
-			LEFT OUTER JOIN cfgMembership m ON cm.MembershipID = m.MembershipID	
+			LEFT OUTER JOIN cfgMembership m ON cm.MembershipID = m.MembershipID
 		WHERE  h.HairSystemOrderGUID NOT IN
 							(SELECT abd.HairSystemOrderGUID FROM datAccountingExportBatchDetail abd
-										INNER JOIN datAccountingExportBatch ab 
+										INNER JOIN datAccountingExportBatch ab
 										ON abd.AccountingExportBatchGUID = ab.AccountingExportBatchGUID
 										WHERE ab.AccountingExportBatchTypeID = @AccountingExportBatchTypeID)
-				AND h.HairSystemOrderTransactionDate BETWEEN UTCDateParms.UTCStartDate AND UTCDateParms.UTCEndDate			
+				AND h.HairSystemOrderTransactionDate BETWEEN UTCDateParms.UTCStartDate AND UTCDateParms.UTCEndDate
 				AND hsop.HairSystemOrderProcessDescriptionShort = @HairSystemOrderProcessDescription
 				AND (
 						(@Type = @CorpType AND ct.CenterTypeDescriptionShort = @CorpCenterType)
 						OR (@Type = @HansWiemannType AND ct.CenterTypeDescriptionShort = @HansWiemannCenterType)
-						OR (@Type = @FranchiseType 
-								AND (ct.CenterTypeDescriptionShort = @FranchiseCenterType 
+						OR (@Type = @FranchiseType
+								AND (ct.CenterTypeDescriptionShort = @FranchiseCenterType
 										OR ct.CenterTypeDescriptionShort = @JointCenterType))
 					)
 				AND m.MembershipDescriptionShort <> @HairClubForKidsMembershipShortDesc
 				AND (@Type = @FranchiseType OR @Type = @HansWiemannType OR
 						(
-							@Type = @CorpType				
+							@Type = @CorpType
 							AND m.MembershipDescriptionShort <> @EmployeeMembershipShortDesc
 							AND m.MembershipDescriptionShort <> @EmployeeExtMembershipShortDesc
 							AND m.MembershipDescriptionShort <> @EmployeeXtrandsMembershipShortDesc
@@ -243,39 +243,39 @@ BEGIN TRY
 				TransactionGUID uniqueidentifier,
 				PRIMARY KEY ( TransactionGUID )
 		)
-		
+
 		INSERT INTO @Transactions_AutoPriorityCorp(TransactionGUID)
-		SELECT MAX(convert(nvarchar(40),h.HairSystemOrderTransactionGUID))  
+		SELECT MAX(convert(nvarchar(40),h.HairSystemOrderTransactionGUID))
 		FROM datHairSystemOrderTransaction h
 			INNER JOIN datHairSystemOrder hso ON hso.HairSystemOrderGUID = h.HairSystemOrderGUID
 			INNER JOIN cfgCenter cntr ON cntr.CenterID = @CorpCenter  -- Corporate center
-			INNER JOIN lkpTimeZone tz ON cntr.TimeZoneID = tz.TimeZoneID	
+			INNER JOIN lkpTimeZone tz ON cntr.TimeZoneID = tz.TimeZoneID
 			INNER JOIN cfgCenter htcntr ON htcntr.CenterID = h.CenterID
-			INNER JOIN lkpCenterType ct ON htcntr.CenterTypeID = ct.CenterTypeID	
-			INNER JOIN dbo.lkpHairSystemOrderProcess hsop ON h.HairSystemOrderProcessID = hsop.HairSystemOrderProcessID	
+			INNER JOIN lkpCenterType ct ON htcntr.CenterTypeID = ct.CenterTypeID
+			INNER JOIN dbo.lkpHairSystemOrderProcess hsop ON h.HairSystemOrderProcessID = hsop.HairSystemOrderProcessID
 			---
 			JOIN #UTCDateParms AS [UTCDateParms] ON UTCDateParms.TimeZoneID = tz.TimeZoneID
 			---
 			LEFT OUTER JOIN datClientMembership cm ON h.ClientMembershipGUID = cm.ClientMembershipGUID
-			LEFT OUTER JOIN cfgMembership m ON cm.MembershipID = m.MembershipID	
+			LEFT OUTER JOIN cfgMembership m ON cm.MembershipID = m.MembershipID
 		WHERE  h.HairSystemOrderGUID NOT IN
 							(SELECT abd.HairSystemOrderGUID FROM datAccountingExportBatchDetail abd
-										INNER JOIN datAccountingExportBatch ab 
+										INNER JOIN datAccountingExportBatch ab
 										ON abd.AccountingExportBatchGUID = ab.AccountingExportBatchGUID
 										WHERE ab.AccountingExportBatchTypeID = @AccountingExportBatchTypeID)
-				AND h.HairSystemOrderTransactionDate BETWEEN UTCDateParms.UTCStartDate AND UTCDateParms.UTCEndDate				
+				AND h.HairSystemOrderTransactionDate BETWEEN UTCDateParms.UTCStartDate AND UTCDateParms.UTCEndDate
 				AND hsop.HairSystemOrderProcessDescriptionShort = @HairSystemOrderProcessDescription_AutoPriorityCorp
 				AND (
 						(@Type = @CorpType AND ct.CenterTypeDescriptionShort = @CorpCenterType)
 						OR (@Type = @HansWiemannType AND ct.CenterTypeDescriptionShort = @HansWiemannCenterType)
-						OR (@Type = @FranchiseType 
-								AND (ct.CenterTypeDescriptionShort = @FranchiseCenterType 
+						OR (@Type = @FranchiseType
+								AND (ct.CenterTypeDescriptionShort = @FranchiseCenterType
 										OR ct.CenterTypeDescriptionShort = @JointCenterType))
 					)
 				AND m.MembershipDescriptionShort <> @HairClubForKidsMembershipShortDesc
 				AND (@Type = @FranchiseType OR @Type = @HansWiemannType OR
 						(
-							@Type = @CorpType				
+							@Type = @CorpType
 							AND m.MembershipDescriptionShort <> @EmployeeMembershipShortDesc
 							AND m.MembershipDescriptionShort <> @EmployeeExtMembershipShortDesc
 							AND m.MembershipDescriptionShort <> @EmployeeXtrandsMembershipShortDesc
@@ -285,40 +285,40 @@ BEGIN TRY
 						)
 					)
 		GROUP BY h.HairSystemOrderGUID
-		
+
 		-------------------------------------------
-		-- Populate Account Export Batch Detail	
+		-- Populate Account Export Batch Detail
 		-------------------------------------------
 		--Ship From Corp Transactions (bill CenterID)
 		INSERT INTO	dbo.datAccountingExportBatchDetail (AccountingExportBatchDetailGUID, AccountingExportBatchGUID, HairSystemOrderGUID, HairSystemOrderTransactionGUID, CreateDate, CreateUser, LastUpdate, LastUpdateUser, InventoryShipmentGUID, CenterID )
 		SELECT NEWID(), @AccountingExportBatchGUID, h.HairSystemOrderGUID, h.HairSystemOrderTransactionGUID, GETUTCDATE(), @User, GETUTCDATE(), @User, isd.InventoryShipmentGUID, h.CenterID
-		FROM dbo.datHairSystemOrderTransaction h	
+		FROM dbo.datHairSystemOrderTransaction h
 			INNER JOIN dbo.datInventoryShipmentDetail isd ON h.InventoryShipmentDetailGUID = isd.InventoryShipmentDetailGUID
 		WHERE h.HairSystemOrderTransactionGUID IN
 						(SELECT TransactionGUID FROM @Transactions)
-		
+
 		--Auto Priority At Corp Transactions (bill ClientHomeCenterID)
 		INSERT INTO	dbo.datAccountingExportBatchDetail (AccountingExportBatchDetailGUID, AccountingExportBatchGUID, HairSystemOrderGUID, HairSystemOrderTransactionGUID, CreateDate, CreateUser, LastUpdate, LastUpdateUser, InventoryShipmentGUID, CenterID )
 		SELECT NEWID(), @AccountingExportBatchGUID, h.HairSystemOrderGUID, h.HairSystemOrderTransactionGUID, GETUTCDATE(), @User, GETUTCDATE(), @User, NULL, h.ClientHomeCenterID
-		FROM dbo.datHairSystemOrderTransaction h	
+		FROM dbo.datHairSystemOrderTransaction h
 		WHERE h.HairSystemOrderTransactionGUID IN
-						(SELECT TransactionGUID FROM @Transactions_AutoPriorityCorp)		
-						
+						(SELECT TransactionGUID FROM @Transactions_AutoPriorityCorp)
+
 		-------------------------------------------
 		-- Create temp table to store Center Freight charge
-		-------------------------------------------		
+		-------------------------------------------
 		DECLARE @CenterFreight TABLE  (
-		InventoryShipmentGUID uniqueidentifier NULL,	
+		InventoryShipmentGUID uniqueidentifier NULL,
 		CenterId int NOT NULL,
 		FreightCharge decimal(9,2) NULL )
-	    		
-		
+
+
 		-------------------------------------------
 		-- Determine Freight charge for each center
-		-------------------------------------------	
-		INSERT INTO @CenterFreight (InventoryShipmentGUID, CenterId, FreightCharge)		
+		-------------------------------------------
+		INSERT INTO @CenterFreight (InventoryShipmentGUID, CenterId, FreightCharge)
 		SELECT ebd.InventoryShipmentGUID, h.CenterID, (cntr.AccountingExportFreightPerItemRate * Count(*)) +  cntr.AccountingExportFreightBaseRate
-		FROM dbo.datAccountingExportBatchDetail ebd		
+		FROM dbo.datAccountingExportBatchDetail ebd
 			INNER JOIN dbo.datHairSystemOrderTransaction h ON ebd.HairSystemOrderTransactionGUID = h.HairSystemOrderTransactionGUID
 			INNER JOIN dbo.cfgConfigurationCenter cntr ON cntr.CenterID = h.CenterID
 			INNER JOIN dbo.datHairSystemOrder hso ON h.HairSystemOrderGUID = hso.HairSystemOrderGUID
@@ -327,14 +327,14 @@ BEGIN TRY
 			--AND (ISNULL(hso.IsRepairOrderFlag, 0) = 0 OR hso.RequestForCreditAcceptedDate is null)  -- exclude repair orders that were accepted for credit
 			--AND	(ISNULL(hso.IsRedoOrderFlag, 0) = 0 OR  origHso.RequestForCreditAcceptedDate is null)  -- exclude redo orders if original order was accepted for credit
 		GROUP BY ebd.InventoryShipmentGUID, h.CenterID, cntr.AccountingExportFreightPerItemRate, cntr.AccountingExportFreightBaseRate
-					
-			
+
+
 		-------------------------------------------
-		-- Update invoice and Invoice Amount and Total Freight Amount on the 
+		-- Update invoice and Invoice Amount and Total Freight Amount on the
 		-- header record.
-		-------------------------------------------	
+		-------------------------------------------
 		UPDATE dbo.datAccountingExportBatch SET
-			InvoiceAmount = (SELECT ISNULL(SUM(ht.CenterPrice), 0) 
+			InvoiceAmount = (SELECT ISNULL(SUM(ht.CenterPrice), 0)
 								FROM dbo.datAccountingExportBatchDetail abd
 									INNER JOIN dbo.datHairSystemOrderTransaction ht ON abd.HairSystemOrderTransactionGUID = ht.HairSystemOrderTransactionGUID
 									INNER JOIN dbo.datHairSystemOrder hso ON ht.HairSystemOrderGUID = hso.HairSystemOrderGUID
@@ -343,41 +343,41 @@ BEGIN TRY
 									--AND (ISNULL(hso.IsRepairOrderFlag, 0) = 0 OR hso.RequestForCreditAcceptedDate is null)  -- exclude repair orders that were accepted for credit
 									--AND	(ISNULL(hso.IsRedoOrderFlag, 0) = 0 OR  origHso.RequestForCreditAcceptedDate is null)  -- exclude redo orders if original order was accepted for credit
 								),
-			FreightAmount = (SELECT ISNULL(SUM(cf.FreightCharge), 0) 
-								FROM @CenterFreight cf) 				
+			FreightAmount = (SELECT ISNULL(SUM(cf.FreightCharge), 0)
+								FROM @CenterFreight cf)
 		WHERE AccountingExportBatchGUID = @AccountingExportBatchGUID
-		
-			
+
+
 		-------------------------------------------
-		-- Update invoice and Freight Amount on the 
+		-- Update invoice and Freight Amount on the
 		-- detail record.
-		-------------------------------------------	
-		UPDATE dbo.datAccountingExportBatchDetail 			
-		 SET			
-			FreightAmount = (SELECT ISNULL(cf.FreightCharge, 0) FROM @CenterFreight cf WHERE cf.InventoryShipmentGUID = datAccountingExportBatchDetail.InventoryShipmentGUID)		
+		-------------------------------------------
+		UPDATE dbo.datAccountingExportBatchDetail
+		 SET
+			FreightAmount = (SELECT ISNULL(cf.FreightCharge, 0) FROM @CenterFreight cf WHERE cf.InventoryShipmentGUID = datAccountingExportBatchDetail.InventoryShipmentGUID)
 		WHERE AccountingExportBatchGUID = @AccountingExportBatchGUID
-		
+
 	END
-		
-	
+
+
 	-------------------------------------------
 	-- Select for Export
-	-------------------------------------------	
-	SELECT r.ShippingMenifest, 
-		r.BatchGUID, 
-		r.BatchId, 
-		r.ShipmentMethod, 
-		r.CenterId, 
-		r.InvoiceDate, 
-		r.ShipDate, 
-		r.ReceiveDate, 
-		r.Membership, 
-		r.ClientNumber, 
-		r.ClientName, 
-		r.SystemType, 
-		r.FactoryOrderNumber, 
-		r.Price, 
-		r.Quantity, 
+	-------------------------------------------
+	SELECT r.ShippingMenifest,
+		r.BatchGUID,
+		r.BatchId,
+		r.ShipmentMethod,
+		r.CenterId,
+		r.InvoiceDate,
+		r.ShipDate,
+		r.ReceiveDate,
+		r.Membership,
+		r.ClientNumber,
+		r.ClientName,
+		r.SystemType,
+		r.FactoryOrderNumber,
+		r.Price,
+		r.Quantity,
 		r.Freight,
 		r.AddOnSignature,
 		r.AddOnExtendedLace,
@@ -386,24 +386,24 @@ BEGIN TRY
 		r.TotalPrice,
 		r.AddOnCuticleIntactHair,
 		r.AddOnRootShadowing
-	FROM 
+	FROM
 	(
 		SELECT Row_Number() OVER(Order by u.FactoryOrderNumber, u.Price desc) as RowNumber,
 			u.ShippingMenifest,
 			u.BatchGUID,
 			u.BatchId,
-			u.ShipmentMethod, 
-			u.CenterId, 
-			u.InvoiceDate, 
-			u.ShipDate, 
-			u.ReceiveDate, 
-			u.Membership, 
-			u.ClientNumber, 
-			u.ClientName, 
-			u.SystemType, 
-			u.FactoryOrderNumber, 
-			u.Price, 
-			u.Quantity, 
+			u.ShipmentMethod,
+			u.CenterId,
+			u.InvoiceDate,
+			u.ShipDate,
+			u.ReceiveDate,
+			u.Membership,
+			u.ClientNumber,
+			u.ClientName,
+			u.SystemType,
+			u.FactoryOrderNumber,
+			u.Price,
+			u.Quantity,
 			u.Freight,
 			u.AddOnSignature,
 			u.AddOnExtendedLace,
@@ -417,18 +417,18 @@ BEGIN TRY
 			SELECT
 				CASE WHEN s.ShipDate IS NULL THEN 0
 					ELSE s.ShipmentNumber END as ShippingMenifest,
-				@AccountingExportBatchGUID AS BatchGUID, 
+				@AccountingExportBatchGUID AS BatchGUID,
 				CONVERT(NVarChar, eb.BatchEndDate, 101) + ' Prod_Inv' as BatchId,
 				CASE WHEN s.ShipDate IS NULL THEN NULL
 					ELSE 'OTH' END as ShipmentMethod,
 				ebdctr.CenterNumber as CenterId,
 				eb.BatchInvoiceDate as InvoiceDate,
 				s.ShipDate AS ShipDate, -- Ship to Center From Corporate date
-				(SELECT sff.ReceiveDate 
+				(SELECT sff.ReceiveDate
 					FROM dbo.datInventoryShipmentDetail sdff  -- Assumed that the HSO is sent to the factory once and received from factory once
-						INNER JOIN dbo.datInventoryShipment sff 
+						INNER JOIN dbo.datInventoryShipment sff
 							ON sdff.InventoryShipmentGUID = sff.InventoryShipmentGUID    -- join to get received from factory date
-					WHERE sdff.HairSystemOrderGUID = h.HairSystemOrderGUID 
+					WHERE sdff.HairSystemOrderGUID = h.HairSystemOrderGUID
 							AND sff.InventoryShipmentTypeID = @ReceiveFromFactoryShipmentTypeID) as ReceiveDate, -- Receive from Factory date
 				mem.MembershipDescriptionShort as Membership,
 				c.ClientIdentifier as ClientNumber,
@@ -436,7 +436,7 @@ BEGIN TRY
 				hs.HairSystemDescriptionShort as SystemType,
 				hso.HairSystemOrderNumber as FactoryOrderNumber,
 				CASE WHEN ISNULL(hso.IsRepairOrderFlag, 0) = 1  -- If Repair, use repair contract price to bill the center.  If not found, default to $64.
-					THEN ISNULL(p.HairSystemPrice, 64.0) ELSE p.HairSystemPrice END as Price,  
+					THEN ISNULL(p.HairSystemPrice, 64.0) ELSE p.HairSystemPrice END as Price,
 				1 as Quantity,
 				CASE WHEN ebd.FreightAmount IS NULL THEN 0
 					ELSE ebd.FreightAmount END as Freight,
@@ -453,11 +453,11 @@ BEGIN TRY
 				CASE WHEN hso.IsRootShadowingAddOn = 1 THEN p.AddOnRootShadowingPrice
 					 ELSE 0 END AS AddOnRootShadowing
 			 FROM  dbo.datAccountingExportBatchDetail ebd
-				INNER JOIN dbo.datAccountingExportBatch eb ON eb.AccountingExportBatchGUID = ebd.AccountingExportBatchGUID 
+				INNER JOIN dbo.datAccountingExportBatch eb ON eb.AccountingExportBatchGUID = ebd.AccountingExportBatchGUID
 				INNER JOIN dbo.datHairSystemOrderTransaction h ON ebd.HairSystemOrderTransactionGUID = h.HairSystemOrderTransactionGUID
 				INNER JOIN dbo.cfgCenter ebdctr on ebd.CenterID = ebdctr.CenterID
 				INNER JOIN dbo.datHairSystemOrder hso ON h.HairSystemOrderGUID = hso.HairSystemOrderGUID
-				INNER JOIN dbo.cfgHairSystem hs ON hso.HairSystemID = hs.HairSystemID	
+				INNER JOIN dbo.cfgHairSystem hs ON hso.HairSystemID = hs.HairSystemID
 				LEFT OUTER JOIN dbo.datInventoryShipmentDetail sd ON h.InventoryShipmentDetailGUID = sd.InventoryShipmentDetailGUID --AutoPriority Orders on not on a shipment
 				LEFT OUTER JOIN dbo.datInventoryShipment s ON sd.InventoryShipmentGUID = s.InventoryShipmentGUID
 				INNER JOIN dbo.datClient c ON h.ClientGUID = c.ClientGUID
@@ -467,34 +467,34 @@ BEGIN TRY
 				INNER JOIN lkpTimeZone tz ON cntr.TimeZoneID = tz.TimeZoneID
 				LEFT OUTER JOIN dbo.cfgHairSystemCenterContractPricing p on p.HairSystemCenterContractPricingID = hso.HairSystemCenterContractPricingID
 
-			WHERE ebd.AccountingExportBatchGUID = @AccountingExportBatchGUID	
-				
+			WHERE ebd.AccountingExportBatchGUID = @AccountingExportBatchGUID
+
 			UNION
-			
+
 			-- Select Credit Records for Repair orders that have been approved for Credit.
 			SELECT
 				CASE WHEN s.ShipDate IS NULL THEN 0
 					ELSE s.ShipmentNumber END as ShippingMenifest,
-				@AccountingExportBatchGUID AS BatchGUID, 
+				@AccountingExportBatchGUID AS BatchGUID,
 				CONVERT(NVarChar, eb.BatchEndDate, 101) + ' Prod_Inv' as BatchId,
 				CASE WHEN s.ShipDate IS NULL THEN NULL
 					ELSE 'OTH' END as ShipmentMethod,
 				ebdctr.CenterNumber as CenterId,
 				eb.BatchInvoiceDate as InvoiceDate,
-				s.ShipDate AS ShipDate, -- Ship to Center From Corporate date			
-				(SELECT sff.ReceiveDate 
+				s.ShipDate AS ShipDate, -- Ship to Center From Corporate date
+				(SELECT sff.ReceiveDate
 					FROM dbo.datInventoryShipmentDetail sdff  -- Assumed that the HSO is sent to the factory once and received from factory once
-						INNER JOIN dbo.datInventoryShipment sff 
+						INNER JOIN dbo.datInventoryShipment sff
 							ON sdff.InventoryShipmentGUID = sff.InventoryShipmentGUID    -- join to get received from factory date
-					WHERE sdff.HairSystemOrderGUID = h.HairSystemOrderGUID 
+					WHERE sdff.HairSystemOrderGUID = h.HairSystemOrderGUID
 							AND sff.InventoryShipmentTypeID = @ReceiveFromFactoryShipmentTypeID) as ReceiveDate, -- Receive from Factory date
 				mem.MembershipDescriptionShort as Membership,
 				c.ClientIdentifier as ClientNumber,
 				c.ClientFullNameAlt2Calc as ClientName,
 				hs.HairSystemDescriptionShort as SystemType,
-				hso.HairSystemOrderNumber as FactoryOrderNumber,				
+				hso.HairSystemOrderNumber as FactoryOrderNumber,
 				-1 * ISNULL(p.HairSystemPrice, 64.0) as Price, -- Credit
-				1 as Quantity,				
+				1 as Quantity,
 				0.0 as Freight, --no freight charge since it's credit
 				CASE WHEN hso.IsSignatureHairlineAddOn = 1 THEN -1 * p.AddOnSignatureHairlinePrice
 					 ELSE 0 END as AddOnSignature,
@@ -514,20 +514,20 @@ BEGIN TRY
 				INNER JOIN dbo.datHairSystemOrderTransaction h ON ebd.HairSystemOrderTransactionGUID = h.HairSystemOrderTransactionGUID
 				INNER JOIN dbo.cfgCenter ebdctr on ebd.CenterID = ebdctr.CenterID
 				INNER JOIN dbo.datHairSystemOrder hso ON h.HairSystemOrderGUID = hso.HairSystemOrderGUID
-				INNER JOIN dbo.cfgHairSystem hs ON hso.HairSystemID = hs.HairSystemID	
+				INNER JOIN dbo.cfgHairSystem hs ON hso.HairSystemID = hs.HairSystemID
 				LEFT JOIN dbo.datInventoryShipmentDetail sd ON h.InventoryShipmentDetailGUID = sd.InventoryShipmentDetailGUID --AutoPriority Orders on not on a shipment
 				LEFT JOIN dbo.datInventoryShipment s ON sd.InventoryShipmentGUID = s.InventoryShipmentGUID
 				INNER JOIN dbo.datClient c ON h.ClientGUID = c.ClientGUID
 				INNER JOIN dbo.datClientMembership cm ON h.ClientMembershipGUID = cm.ClientMembershipGUID
-				INNER JOIN dbo.cfgMembership mem ON cm.MembershipID = mem.MembershipID	
+				INNER JOIN dbo.cfgMembership mem ON cm.MembershipID = mem.MembershipID
 				INNER JOIN cfgCenter cntr ON cntr.CenterID = @CorpCenter  -- Corporate center
 				INNER JOIN lkpTimeZone tz ON cntr.TimeZoneID = tz.TimeZoneID
 				LEFT OUTER JOIN cfgHairSystemCenterContractPricing p on p.HairSystemCenterContractPricingID = hso.HairSystemCenterContractPricingID
 
 			WHERE ebd.AccountingExportBatchGUID = @AccountingExportBatchGUID
 			and ebt.AccountingExportBatchTypeDescriptionShort <> @FranchiseBatchTypeConst
-		) u		
-		
+		) u
+
 	) r
 	WHERE RowNumber BETWEEN (@SkipCount+1) AND (@SkipCount + @PageSize)
 
@@ -537,18 +537,18 @@ BEGIN TRY
 			-- 	SELECT
 			-- 	CASE WHEN s.ShipDate IS NULL THEN 0
 			-- 		ELSE s.ShipmentNumber END as ShippingMenifest,
-			-- 	NEWID() AS BatchGUID, 
+			-- 	NEWID() AS BatchGUID,
 			-- 	CONVERT(NVarChar, eb.BatchEndDate, 101) + ' Prod_Inv' as BatchId,
 			-- 	CASE WHEN s.ShipDate IS NULL THEN NULL
 			-- 		ELSE 'OTH' END as ShipmentMethod,
 			-- 	ebdctr.CenterNumber as CenterId,
 			-- 	eb.BatchInvoiceDate as InvoiceDate,
 			-- 	s.ShipDate AS ShipDate, -- Ship to Center From Corporate date
-			-- 	(SELECT sff.ReceiveDate 
+			-- 	(SELECT sff.ReceiveDate
 			-- 		FROM dbo.datInventoryShipmentDetail sdff  -- Assumed that the HSO is sent to the factory once and received from factory once
-			-- 			INNER JOIN dbo.datInventoryShipment sff 
+			-- 			INNER JOIN dbo.datInventoryShipment sff
 			-- 				ON sdff.InventoryShipmentGUID = sff.InventoryShipmentGUID    -- join to get received from factory date
-			-- 		WHERE sdff.HairSystemOrderGUID = h.HairSystemOrderGUID 
+			-- 		WHERE sdff.HairSystemOrderGUID = h.HairSystemOrderGUID
 			-- 				AND sff.InventoryShipmentTypeID = 0) as ReceiveDate, -- Receive from Factory date
 			-- 	mem.MembershipDescriptionShort as Membership,
 			-- 	c.ClientIdentifier as ClientNumber,
@@ -556,7 +556,7 @@ BEGIN TRY
 			-- 	hs.HairSystemDescriptionShort as SystemType,
 			-- 	hso.HairSystemOrderNumber as FactoryOrderNumber,
 			-- 	CASE WHEN ISNULL(hso.IsRepairOrderFlag, 0) = 1  -- If Repair, use repair contract price to bill the center.  If not found, default to $64.
-			-- 		THEN ISNULL(p.HairSystemPrice, 64.0) ELSE p.HairSystemPrice END as Price,  
+			-- 		THEN ISNULL(p.HairSystemPrice, 64.0) ELSE p.HairSystemPrice END as Price,
 			-- 	1 as Quantity,
 			-- 	CASE WHEN ebd.FreightAmount IS NULL THEN 0
 			-- 		ELSE ebd.FreightAmount END as Freight,
@@ -574,11 +574,11 @@ BEGIN TRY
 			-- 		 ELSE 0 END AS AddOnRootShadowing,
 			-- 	CAST(NULL AS MOINEY) AS TotalPrice
 			--  FROM  dbo.datAccountingExportBatchDetail ebd
-			-- 	INNER JOIN dbo.datAccountingExportBatch eb ON eb.AccountingExportBatchGUID = ebd.AccountingExportBatchGUID 
+			-- 	INNER JOIN dbo.datAccountingExportBatch eb ON eb.AccountingExportBatchGUID = ebd.AccountingExportBatchGUID
 			-- 	INNER JOIN dbo.datHairSystemOrderTransaction h ON ebd.HairSystemOrderTransactionGUID = h.HairSystemOrderTransactionGUID
 			-- 	INNER JOIN dbo.cfgCenter ebdctr on ebd.CenterID = ebdctr.CenterID
 			-- 	INNER JOIN dbo.datHairSystemOrder hso ON h.HairSystemOrderGUID = hso.HairSystemOrderGUID
-			-- 	INNER JOIN dbo.cfgHairSystem hs ON hso.HairSystemID = hs.HairSystemID	
+			-- 	INNER JOIN dbo.cfgHairSystem hs ON hso.HairSystemID = hs.HairSystemID
 			-- 	LEFT OUTER JOIN dbo.datInventoryShipmentDetail sd ON h.InventoryShipmentDetailGUID = sd.InventoryShipmentDetailGUID --AutoPriority Orders on not on a shipment
 			-- 	LEFT OUTER JOIN dbo.datInventoryShipment s ON sd.InventoryShipmentGUID = s.InventoryShipmentGUID
 			-- 	INNER JOIN dbo.datClient c ON h.ClientGUID = c.ClientGUID
@@ -589,13 +589,13 @@ BEGIN TRY
 			-- 	LEFT OUTER JOIN dbo.cfgHairSystemCenterContractPricing p on p.HairSystemCenterContractPricingID = hso.HairSystemCenterContractPricingID
 
 			-- WHERE ebd.AccountingExportBatchGUID = NEWID()
-		
-		
+
+
 	COMMIT TRANSACTION
 END TRY
 BEGIN CATCH
 	ROLLBACK TRANSACTION
-	
+
 	 DECLARE @ErrorMessage NVARCHAR(4000);
     DECLARE @ErrorSeverity INT;
     DECLARE @ErrorState INT;
