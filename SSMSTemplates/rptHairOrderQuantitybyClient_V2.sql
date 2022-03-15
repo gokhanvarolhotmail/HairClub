@@ -629,7 +629,7 @@ SELECT
   , [k].[Newest Order System Type]
   , [k].[Remaining to Order]
   , [k].[Order Avail for Next App]
-  , [k].[Priority Order Needed]
+  , [k].[Priority Hair Order (PRH) or Stock Needed]
   , [k].[Suggested Qty to Order]
 FROM( SELECT
           [t].[Region]
@@ -653,8 +653,8 @@ FROM( SELECT
         , [t].[NewestOrderSystemType] AS [Newest Order System Type]
         , ISNULL([t].[RemainingQuantityToOrder], 0) AS [Remaining to Order]
         , CASE WHEN [t].[OrderAvailableForNextAppointment] = 1 THEN 'Yes' ELSE 'No' END AS [Order Avail for Next App]
-        , CASE WHEN [t].[Calc01] > [t].[Calc02] THEN CONCAT('Yes; ', [t].[Calc01] - [t].[Calc02])ELSE 'No' END AS [Priority Order Needed]
-        --, CASE WHEN [t].[PriorityHairNeeded] = 1 THEN 'Yes' ELSE 'No' END AS [Priority Order Needed]
+        , CASE WHEN [t].[Calc01] > [t].[Calc02] THEN CONCAT('Yes; ', [t].[Calc01] - [t].[Calc02])ELSE 'No' END AS [Priority Hair Order (PRH) or Stock Needed]
+        --, CASE WHEN [t].[PriorityHairNeeded] = 1 THEN 'Yes' ELSE 'No' END AS [Priority Hair Order (PRH) or Stock Needed]
         , CAST(CASE WHEN [t].[SuggestedQuantityToOrder] > [gms].[MaxVal] THEN [gms].[MaxVal] WHEN [t].[SuggestedQuantityToOrder] > 0 THEN [t].[SuggestedQuantityToOrder] ELSE 0 END AS INT) AS [Suggested Qty to Order]
         , CASE WHEN [t].[RevenueGroupID] = 1 THEN CAST([t].[ContractPaidAmount] * 1.0 / NULLIF([t].[ContractPrice], 0) AS NUMERIC(10, 2))END AS [ContractAmtPaid%]
       --, CAST([t].[DueDate] AS DATE) AS [Due Date]
@@ -692,30 +692,30 @@ IF OBJECT_ID('[tempdb]..[##rptHairOrderQuantitybyClient_V2]') IS NOT NULL
 
 CREATE TABLE [##rptHairOrderQuantitybyClient_V2]
 (
-    [Region]                        NVARCHAR(100) NULL
-  , [Center]                        NVARCHAR(103) NULL
-  , [Client]                        NVARCHAR(127) NULL
-  , [Current Membership]            NVARCHAR(50)  NULL
-  , [Membership Expiration]         DATE          NULL
-  , [Contract Amt Paid %]           NUMERIC(10, 2)
-  , [Membership Qty]                INT           NOT NULL
-  , [Frozen EFT End Date]           DATE          NULL
-  , [QA Needed]                     INT           NOT NULL
-  , [In Center]                     INT           NOT NULL
-  , [On Order]                      INT           NOT NULL
-  , [In Center + On Order]          INT           NULL
-  , [Months In Center And On Order] INT           NULL
-  , [Last App Date]                 DATE          NULL
-  , [Est Next App Date]             DATE          NULL
-  , [Scheduled Next App Date]       DATE          NULL
-  , [Oldest Order Placed Date]      DATE          NULL
-  , [Oldest Order Placed Due Date]  DATE          NULL
-  , [Newest Order Date]             DATE          NULL
-  , [Newest Order System Type]      NVARCHAR(10)  NULL
-  , [Remaining to Order]            INT           NOT NULL
-  , [Order Avail for Next App]      VARCHAR(3)    NOT NULL
-  , [Priority Order Needed]         VARCHAR(46)   NOT NULL
-  , [Suggested Qty to Order]        INT           NULL
+    [Region]                                    NVARCHAR(100) NULL
+  , [Center]                                    NVARCHAR(103) NULL
+  , [Client]                                    NVARCHAR(127) NULL
+  , [Current Membership]                        NVARCHAR(50)  NULL
+  , [Membership Expiration]                     DATE          NULL
+  , [Contract Amt Paid %]                       NUMERIC(10, 2)
+  , [Membership Qty]                            INT           NOT NULL
+  , [Frozen EFT End Date]                       DATE          NULL
+  , [QA Needed]                                 INT           NOT NULL
+  , [In Center]                                 INT           NOT NULL
+  , [On Order]                                  INT           NOT NULL
+  , [In Center + On Order]                      INT           NULL
+  , [Months In Center And On Order]             INT           NULL
+  , [Last App Date]                             DATE          NULL
+  , [Est Next App Date]                         DATE          NULL
+  , [Scheduled Next App Date]                   DATE          NULL
+  , [Oldest Order Placed Date]                  DATE          NULL
+  , [Oldest Order Placed Due Date]              DATE          NULL
+  , [Newest Order Date]                         DATE          NULL
+  , [Newest Order System Type]                  NVARCHAR(10)  NULL
+  , [Remaining to Order]                        INT           NOT NULL
+  , [Order Avail for Next App]                  VARCHAR(3)    NOT NULL
+  , [Priority Hair Order (PRH) or Stock Needed] VARCHAR(46)   NOT NULL
+  , [Suggested Qty to Order]                    INT           NULL
 ) ;
 
 INSERT [##rptHairOrderQuantitybyClient_V2]
@@ -747,7 +747,7 @@ SELECT
   , [Newest Order System Type]
   , [Remaining to Order]
   , [Order Avail for Next App]
-  , [Priority Order Needed]
+  , [Priority Hair Order (PRH) or Stock Needed]
   , [Suggested Qty to Order]
 FROM [##rptHairOrderQuantitybyClient_V2]
 WHERE 1 = 1
