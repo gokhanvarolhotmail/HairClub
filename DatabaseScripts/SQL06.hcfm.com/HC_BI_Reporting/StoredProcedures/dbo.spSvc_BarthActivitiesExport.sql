@@ -1,4 +1,4 @@
-/* CreateDate: 04/10/2014 12:07:16.477 , ModifyDate: 10/22/2021 12:55:50.710 */
+/* CreateDate: 04/10/2014 12:07:16.477 , ModifyDate: 03/11/2022 07:32:50.743 */
 GO
 --EXEC [dbo].[spSvc_BarthActivitiesExport] NULL, NULL
 CREATE PROCEDURE [dbo].[spSvc_BarthActivitiesExport]
@@ -21,7 +21,7 @@ IF ( @StartDate IS NULL OR @EndDate IS NULL )
 		--SET @StartDate = '2021-09-01'
 		--SET @EndDate = '2021-09-30'
 
-		SET @StartDate = DATEADD(dd, -30, CAST(CONVERT(VARCHAR, GETDATE(), 10) AS DATETIME))
+		SET @StartDate = DATEADD(dd, -21, CAST(CONVERT(VARCHAR, GETDATE(), 10) AS DATETIME))
 		SET @EndDate = DATEADD(dd, -1, CAST(CONVERT(VARCHAR, GETDATE(), 10) AS DATETIME))
    END
 

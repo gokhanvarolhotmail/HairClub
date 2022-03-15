@@ -1,4 +1,4 @@
-/* CreateDate: 05/03/2010 12:17:22.947 , ModifyDate: 11/21/2019 15:17:46.860 */
+/* CreateDate: 05/03/2010 12:17:22.947 , ModifyDate: 03/10/2022 14:15:12.553 */
 GO
 CREATE TABLE [bief_dds].[_DBLog](
 	[DBLogID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,

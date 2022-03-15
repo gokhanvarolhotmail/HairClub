@@ -1,4 +1,4 @@
-/* CreateDate: 04/10/2014 12:15:12.080 , ModifyDate: 03/01/2017 12:10:52.450 */
+/* CreateDate: 04/10/2014 12:15:12.080 , ModifyDate: 03/11/2022 08:43:37.937 */
 GO
 /***********************************************************************
 PROCEDURE:				spSvc_BarthHSOInventoryTransactionsExport
@@ -32,6 +32,7 @@ IF ( @StartDate IS NULL OR @EndDate IS NULL )
    BEGIN
          SET @StartDate = DATEADD(DAY, -2, CONVERT(VARCHAR, GETDATE(), 101))
          SET @EndDate = @StartDate + ' 23:59:59'
+		 --SET @EndDate = GETDATE()
    END
 
 

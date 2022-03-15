@@ -1,4 +1,4 @@
-/* CreateDate: 11/06/2018 10:44:42.003 , ModifyDate: 11/17/2020 12:11:55.420 */
+/* CreateDate: 11/06/2018 10:44:42.003 , ModifyDate: 03/10/2022 14:13:01.600 */
 GO
 CREATE TABLE [dbo].[Result__c](
 	[Id] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,

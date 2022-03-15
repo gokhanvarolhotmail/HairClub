@@ -1,4 +1,4 @@
-/* CreateDate: 01/09/2018 13:39:15.150 , ModifyDate: 11/17/2020 12:11:55.643 */
+/* CreateDate: 01/09/2018 13:39:15.150 , ModifyDate: 03/10/2022 14:13:01.617 */
 GO
 CREATE TABLE [dbo].[SaleTypeCode__c](
 	[Id] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,

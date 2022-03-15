@@ -1,4 +1,4 @@
-/* CreateDate: 08/13/2019 09:20:12.623 , ModifyDate: 08/13/2019 09:20:12.623 */
+/* CreateDate: 08/13/2019 09:20:12.623 , ModifyDate: 03/11/2022 09:19:14.000 */
 GO
 /***********************************************************************
 PROCEDURE:				spSvc_HC_BI_MKTG_DDS_Cleanup
@@ -16,7 +16,7 @@ SAMPLE EXECUTION:
 
 EXEC spSvc_HC_BI_MKTG_DDS_Cleanup
 ***********************************************************************/
-CREATE PROCEDURE spSvc_HC_BI_MKTG_DDS_Cleanup
+CREATE PROCEDURE [dbo].[spSvc_HC_BI_MKTG_DDS_Cleanup]
 AS
 BEGIN
 

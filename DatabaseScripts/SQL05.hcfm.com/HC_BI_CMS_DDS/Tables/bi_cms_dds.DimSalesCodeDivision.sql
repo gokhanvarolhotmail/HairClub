@@ -1,4 +1,4 @@
-/* CreateDate: 05/03/2010 12:17:23.100 , ModifyDate: 11/21/2019 15:17:45.660 */
+/* CreateDate: 05/03/2010 12:17:23.100 , ModifyDate: 03/10/2022 14:15:13.843 */
 GO
 CREATE TABLE [bi_cms_dds].[DimSalesCodeDivision](
 	[SalesCodeDivisionKey] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,

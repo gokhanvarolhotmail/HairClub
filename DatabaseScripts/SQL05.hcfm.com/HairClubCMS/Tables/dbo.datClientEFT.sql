@@ -1,4 +1,4 @@
-/* CreateDate: 05/05/2020 17:42:49.250 , ModifyDate: 03/02/2022 19:10:18.383 */
+/* CreateDate: 05/05/2020 17:42:49.250 , ModifyDate: 03/12/2022 19:31:26.880 */
 GO
 CREATE TABLE [dbo].[datClientEFT](
 	[ClientEFTGUID] [uniqueidentifier] NOT NULL,

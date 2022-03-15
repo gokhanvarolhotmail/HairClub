@@ -1,4 +1,4 @@
-/* CreateDate: 05/03/2010 12:17:23.263 , ModifyDate: 11/21/2019 15:17:46.037 */
+/* CreateDate: 05/03/2010 12:17:23.263 , ModifyDate: 03/10/2022 14:15:14.253 */
 GO
 CREATE TABLE [bi_cms_dds].[FactSales](
 	[OrderDateKey] [int] NOT NULL,

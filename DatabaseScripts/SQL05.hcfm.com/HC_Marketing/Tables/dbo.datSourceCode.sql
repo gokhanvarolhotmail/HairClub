@@ -1,4 +1,4 @@
-/* CreateDate: 11/26/2018 17:40:33.360 , ModifyDate: 04/18/2019 14:26:56.533 */
+/* CreateDate: 11/26/2018 17:40:33.360 , ModifyDate: 03/09/2022 21:07:44.440 */
 GO
 CREATE TABLE [dbo].[datSourceCode](
 	[SourceCodeID] [nvarchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
