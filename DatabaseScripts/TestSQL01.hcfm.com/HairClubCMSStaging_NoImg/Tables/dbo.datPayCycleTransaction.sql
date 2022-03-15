@@ -1,4 +1,4 @@
-/* CreateDate: 05/14/2012 17:33:38.557 , ModifyDate: 01/31/2022 08:32:31.697 */
+/* CreateDate: 05/14/2012 17:33:38.557 , ModifyDate: 03/04/2022 16:09:12.493 */
 GO
 CREATE TABLE [dbo].[datPayCycleTransaction](
 	[PayCycleTransactionGUID] [uniqueidentifier] NOT NULL,

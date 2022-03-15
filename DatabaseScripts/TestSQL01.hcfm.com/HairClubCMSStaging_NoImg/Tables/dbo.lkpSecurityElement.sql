@@ -1,4 +1,4 @@
-/* CreateDate: 02/18/2009 08:20:18.440 , ModifyDate: 01/31/2022 08:32:31.873 */
+/* CreateDate: 02/18/2009 08:20:18.440 , ModifyDate: 03/04/2022 16:09:12.833 */
 GO
 CREATE TABLE [dbo].[lkpSecurityElement](
 	[SecurityElementID] [int] NOT NULL,

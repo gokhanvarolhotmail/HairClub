@@ -1,4 +1,4 @@
-/* CreateDate: 08/27/2008 12:23:45.403 , ModifyDate: 01/31/2022 08:32:31.713 */
+/* CreateDate: 08/27/2008 12:23:45.403 , ModifyDate: 03/04/2022 16:09:12.523 */
 GO
 CREATE TABLE [dbo].[lkpSurgeryCenterType](
 	[SurgeryCenterTypeID] [int] NOT NULL,

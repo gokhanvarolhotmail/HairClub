@@ -1,4 +1,4 @@
-/* CreateDate: 02/09/2022 11:08:23.187 , ModifyDate: 02/09/2022 11:08:23.187 */
+/* CreateDate: 02/09/2022 11:08:09.353 , ModifyDate: 02/09/2022 11:08:09.353 */
 GO
 CREATE FUNCTION dbo.GetNumbers (@StartVal INT
                              , @EndVal INT)

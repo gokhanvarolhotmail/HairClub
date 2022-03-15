@@ -1,4 +1,4 @@
-/* CreateDate: 10/04/2010 12:08:52.453 , ModifyDate: 01/31/2022 08:32:31.927 */
+/* CreateDate: 10/04/2010 12:08:52.453 , ModifyDate: 03/04/2022 16:09:12.933 */
 GO
 CREATE TABLE [dbo].[lkpScheduleType](
 	[ScheduleTypeID] [int] NOT NULL,

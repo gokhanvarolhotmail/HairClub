@@ -1,4 +1,4 @@
-/* CreateDate: 05/28/2018 22:17:57.727 , ModifyDate: 01/31/2022 08:32:31.780 */
+/* CreateDate: 05/28/2018 22:17:57.727 , ModifyDate: 03/04/2022 16:09:12.647 */
 GO
 CREATE TABLE [dbo].[lkpInventoryAuditBatchStatus](
 	[InventoryAuditBatchStatusID] [int] IDENTITY(1,1) NOT NULL,

@@ -1,4 +1,4 @@
-/* CreateDate: 05/21/2017 22:29:10.640 , ModifyDate: 02/04/2022 21:40:49.737 */
+/* CreateDate: 05/21/2017 22:29:10.640 , ModifyDate: 07/13/2018 05:40:42.700 */
 GO
 CREATE TABLE [dbo].[datPhotoBookPhotoSet](
 	[PhotoBookPhotoSetID] [int] IDENTITY(1,1) NOT NULL,

@@ -1,4 +1,4 @@
-/* CreateDate: 05/14/2012 17:29:16.200 , ModifyDate: 01/31/2022 08:32:31.900 */
+/* CreateDate: 05/14/2012 17:29:16.200 , ModifyDate: 03/04/2022 16:09:12.880 */
 GO
 CREATE TABLE [dbo].[lkpCenterFeeBatchStatus](
 	[CenterFeeBatchStatusID] [int] NOT NULL,

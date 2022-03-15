@@ -1,4 +1,4 @@
-/* CreateDate: 03/06/2009 13:55:34.443 , ModifyDate: 01/31/2022 08:32:31.807 */
+/* CreateDate: 03/06/2009 13:55:34.443 , ModifyDate: 03/04/2022 16:09:12.700 */
 GO
 CREATE TABLE [dbo].[datClientMembershipAccum](
 	[ClientMembershipAccumGUID] [uniqueidentifier] NOT NULL,

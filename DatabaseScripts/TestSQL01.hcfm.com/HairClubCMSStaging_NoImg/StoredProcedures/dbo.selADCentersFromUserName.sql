@@ -1,4 +1,4 @@
-/* CreateDate: 02/18/2009 09:01:49.527 , ModifyDate: 10/27/2021 11:36:39.793 */
+/* CreateDate: 02/18/2009 09:01:49.527 , ModifyDate: 02/09/2022 16:25:20.647 */
 GO
 /***********************************************************************
 
@@ -72,7 +72,6 @@ BEGIN
 					INNER JOIN lkpCenterBusinessType cbt on cc.CenterBusinessTypeID = cbt.CenterBusinessTypeID
 				WHERE c.IsActiveFlag = 1
 					AND cbt.CenterBusinessTypeDescriptionShort <> 'Surgery'
-				ORDER BY c.CenterID
 		  END
 		ELSE
 		  BEGIN
@@ -83,20 +82,18 @@ BEGIN
 			FROM cfgCenter c
 				INNER JOIN datEmployeeCenter ec on c.CenterID = ec.CenterID
 			WHERE c.IsActiveFlag = 1 AND ec.EmployeeGUID = @EmployeeGUID AND ec.IsActiveFlag = 1
-			ORDER BY c.CenterID
 		  END
 
 
 	IF ((SELECT count(*) FROM #Centers) = 0)
 	 BEGIN
 		INSERT INTO #Centers (CenterID, CenterDescription)
-				SELECT c.CenterID, c.CenterDescriptionFullCalc AS 'CenterDescription'
-				FROM cfgCenter c
-					INNER JOIN cfgConfigurationCenter cc on c.CenterID = cc.CenterID
-					INNER JOIN lkpCenterBusinessType cbt on cc.CenterBusinessTypeID = cbt.CenterBusinessTypeID
-				WHERE c.IsActiveFlag = 1
-					AND cbt.CenterBusinessTypeDescriptionShort <> 'Surgery'
-				ORDER BY c.CenterID
+			SELECT c.CenterID, c.CenterDescriptionFullCalc AS 'CenterDescription'
+			FROM cfgCenter c
+				INNER JOIN cfgConfigurationCenter cc on c.CenterID = cc.CenterID
+				INNER JOIN lkpCenterBusinessType cbt on cc.CenterBusinessTypeID = cbt.CenterBusinessTypeID
+			WHERE c.IsActiveFlag = 1
+				AND cbt.CenterBusinessTypeDescriptionShort <> 'Surgery'
 	END
 
 	SELECT * FROM #Centers

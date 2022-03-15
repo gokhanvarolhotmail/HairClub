@@ -1,4 +1,4 @@
-/* CreateDate: 09/16/2016 06:18:16.567 , ModifyDate: 02/04/2022 21:18:46.133 */
+/* CreateDate: 09/16/2016 06:18:16.567 , ModifyDate: 03/06/2022 20:37:02.370 */
 GO
 CREATE TABLE [dbo].[cfgMachineInformation](
 	[MachineInformationId] [int] IDENTITY(1,1) NOT NULL,

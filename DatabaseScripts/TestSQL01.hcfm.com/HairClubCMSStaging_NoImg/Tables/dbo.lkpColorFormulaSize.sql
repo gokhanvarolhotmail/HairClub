@@ -1,4 +1,4 @@
-/* CreateDate: 08/27/2008 11:31:38.010 , ModifyDate: 01/31/2022 08:32:31.820 */
+/* CreateDate: 08/27/2008 11:31:38.010 , ModifyDate: 03/04/2022 16:09:12.727 */
 GO
 CREATE TABLE [dbo].[lkpColorFormulaSize](
 	[ColorFormulaSizeID] [int] NOT NULL,

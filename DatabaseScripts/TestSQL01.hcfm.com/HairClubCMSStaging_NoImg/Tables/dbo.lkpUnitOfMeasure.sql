@@ -1,4 +1,4 @@
-/* CreateDate: 11/04/2008 12:28:46.533 , ModifyDate: 01/31/2022 08:32:31.753 */
+/* CreateDate: 11/04/2008 12:28:46.533 , ModifyDate: 03/04/2022 16:09:12.600 */
 GO
 CREATE TABLE [dbo].[lkpUnitOfMeasure](
 	[UnitOfMeasureID] [int] NOT NULL,

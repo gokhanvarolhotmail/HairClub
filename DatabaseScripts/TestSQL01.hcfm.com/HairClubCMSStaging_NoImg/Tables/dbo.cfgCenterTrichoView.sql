@@ -1,4 +1,4 @@
-/* CreateDate: 06/03/2014 08:34:30.943 , ModifyDate: 01/31/2022 08:32:31.743 */
+/* CreateDate: 06/03/2014 08:34:30.943 , ModifyDate: 03/04/2022 16:09:12.583 */
 GO
 CREATE TABLE [dbo].[cfgCenterTrichoView](
 	[CenterTrichoViewID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,

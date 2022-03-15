@@ -1,4 +1,4 @@
-/* CreateDate: 08/27/2008 11:40:01.593 , ModifyDate: 01/31/2022 08:32:31.853 */
+/* CreateDate: 08/27/2008 11:40:01.593 , ModifyDate: 03/04/2022 16:09:12.790 */
 GO
 CREATE TABLE [dbo].[lkpEFTAccountType](
 	[EFTAccountTypeID] [int] NOT NULL,

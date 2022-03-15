@@ -1,4 +1,4 @@
-/* CreateDate: 08/27/2008 12:22:11.337 , ModifyDate: 01/31/2022 08:32:31.707 */
+/* CreateDate: 08/27/2008 12:22:11.337 , ModifyDate: 03/04/2022 16:09:12.510 */
 GO
 CREATE TABLE [dbo].[lkpSalutation](
 	[SalutationID] [int] NOT NULL,

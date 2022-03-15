@@ -1,4 +1,4 @@
-/* CreateDate: 08/27/2008 11:30:23.997 , ModifyDate: 01/31/2022 08:32:31.803 */
+/* CreateDate: 08/27/2008 11:30:23.997 , ModifyDate: 03/04/2022 16:09:12.697 */
 GO
 CREATE TABLE [dbo].[lkpNoteType](
 	[NoteTypeID] [int] NOT NULL,

@@ -1,4 +1,4 @@
-/* CreateDate: 09/28/2009 16:51:53.950 , ModifyDate: 01/31/2022 08:32:31.863 */
+/* CreateDate: 09/28/2009 16:51:53.950 , ModifyDate: 03/04/2022 16:09:12.813 */
 GO
 CREATE TABLE [dbo].[mtnTREBebackExport](
 	[TREBebackExportID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,

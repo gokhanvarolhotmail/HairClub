@@ -1,4 +1,4 @@
-/* CreateDate: 02/07/2011 21:37:20.663 , ModifyDate: 01/31/2022 08:32:31.763 */
+/* CreateDate: 02/07/2011 21:37:20.663 , ModifyDate: 03/04/2022 16:09:12.620 */
 GO
 CREATE TABLE [dbo].[lkpChargeDecision](
 	[ChargeDecisionID] [int] NOT NULL,

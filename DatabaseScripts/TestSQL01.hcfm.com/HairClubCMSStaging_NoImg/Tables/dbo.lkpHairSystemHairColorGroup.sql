@@ -1,4 +1,4 @@
-/* CreateDate: 08/29/2016 07:24:23.957 , ModifyDate: 01/31/2022 08:32:31.813 */
+/* CreateDate: 08/29/2016 07:24:23.957 , ModifyDate: 03/04/2022 16:09:12.713 */
 GO
 CREATE TABLE [dbo].[lkpHairSystemHairColorGroup](
 	[HairSystemHairColorGroupID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,

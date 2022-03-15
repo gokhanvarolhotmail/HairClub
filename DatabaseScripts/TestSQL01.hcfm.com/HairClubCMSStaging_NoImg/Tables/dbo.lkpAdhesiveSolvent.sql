@@ -1,4 +1,4 @@
-/* CreateDate: 08/27/2008 11:27:12.560 , ModifyDate: 01/31/2022 08:32:31.777 */
+/* CreateDate: 08/27/2008 11:27:12.560 , ModifyDate: 03/04/2022 16:09:12.647 */
 GO
 CREATE TABLE [dbo].[lkpAdhesiveSolvent](
 	[AdhesiveSolventID] [int] NOT NULL,

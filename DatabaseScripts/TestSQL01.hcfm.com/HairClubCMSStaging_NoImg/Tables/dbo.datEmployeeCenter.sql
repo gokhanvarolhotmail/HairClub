@@ -1,4 +1,4 @@
-/* CreateDate: 07/30/2012 08:54:10.180 , ModifyDate: 02/04/2022 21:31:46.407 */
+/* CreateDate: 07/30/2012 08:54:10.180 , ModifyDate: 03/04/2022 16:09:12.850 */
 GO
 CREATE TABLE [dbo].[datEmployeeCenter](
 	[EmployeeCenterGUID] [uniqueidentifier] NOT NULL,

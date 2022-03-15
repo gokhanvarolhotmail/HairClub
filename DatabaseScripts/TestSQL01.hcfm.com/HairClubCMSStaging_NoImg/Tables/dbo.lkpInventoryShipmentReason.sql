@@ -1,4 +1,4 @@
-/* CreateDate: 12/31/2010 13:21:00.910 , ModifyDate: 01/31/2022 08:32:31.883 */
+/* CreateDate: 12/31/2010 13:21:00.910 , ModifyDate: 03/04/2022 16:09:12.853 */
 GO
 CREATE TABLE [dbo].[lkpInventoryShipmentReason](
 	[InventoryShipmentReasonID] [int] NOT NULL,

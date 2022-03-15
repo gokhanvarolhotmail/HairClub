@@ -1,4 +1,4 @@
-/* CreateDate: 10/28/2008 14:00:56.643 , ModifyDate: 01/31/2022 08:32:31.930 */
+/* CreateDate: 10/28/2008 14:00:56.643 , ModifyDate: 03/04/2022 16:09:12.937 */
 GO
 CREATE TABLE [dbo].[lkpAccumulatorAdjustmentType](
 	[AccumulatorAdjustmentTypeID] [int] NOT NULL,

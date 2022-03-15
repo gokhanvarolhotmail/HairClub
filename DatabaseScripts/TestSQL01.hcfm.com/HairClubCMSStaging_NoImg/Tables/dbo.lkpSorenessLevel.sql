@@ -1,4 +1,4 @@
-/* CreateDate: 08/05/2014 08:15:50.780 , ModifyDate: 01/31/2022 08:32:31.850 */
+/* CreateDate: 08/05/2014 08:15:50.780 , ModifyDate: 03/04/2022 16:09:12.787 */
 GO
 CREATE TABLE [dbo].[lkpSorenessLevel](
 	[SorenessLevelID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,

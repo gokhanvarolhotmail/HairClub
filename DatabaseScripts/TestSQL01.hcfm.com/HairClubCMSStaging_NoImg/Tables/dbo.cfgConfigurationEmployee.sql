@@ -1,4 +1,4 @@
-/* CreateDate: 06/20/2011 21:40:07.160 , ModifyDate: 02/04/2022 21:17:45.820 */
+/* CreateDate: 06/20/2011 21:40:07.160 , ModifyDate: 03/06/2022 20:36:04.320 */
 GO
 CREATE TABLE [dbo].[cfgConfigurationEmployee](
 	[ConfigurationEmployeeID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,

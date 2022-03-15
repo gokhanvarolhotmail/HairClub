@@ -1,4 +1,4 @@
-/* CreateDate: 01/27/2011 22:24:13.737 , ModifyDate: 10/05/2021 16:45:25.640 */
+/* CreateDate: 01/27/2011 22:24:13.737 , ModifyDate: 02/09/2022 08:24:40.423 */
 GO
 /***********************************************************************
 
@@ -79,6 +79,10 @@ BEGIN
 			UNION
 			SELECT  3 AS 'CenterID'
 			,       'Joint Ventures' AS 'CenterDescriptionFullCalc'
+			,       0 AS 'CenterTypeID'
+			UNION
+			SELECT  4 AS 'CenterID'
+			,       'All Centers' AS 'CenterDescriptionFullCalc'
 			,       0 AS 'CenterTypeID'
 			UNION
 			SELECT  c.CenterID

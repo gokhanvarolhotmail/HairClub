@@ -1,4 +1,4 @@
-/* CreateDate: 04/24/2017 08:10:29.217 , ModifyDate: 01/31/2022 08:32:31.880 */
+/* CreateDate: 04/24/2017 08:10:29.217 , ModifyDate: 03/04/2022 16:09:12.847 */
 GO
 CREATE TABLE [dbo].[lkpClientMembershipAddOnStatus](
 	[ClientMembershipAddOnStatusID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,

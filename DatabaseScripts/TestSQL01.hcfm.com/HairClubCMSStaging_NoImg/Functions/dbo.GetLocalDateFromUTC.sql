@@ -1,4 +1,4 @@
-/* CreateDate: 03/02/2022 15:45:34.877 , ModifyDate: 03/02/2022 15:45:34.877 */
+/* CreateDate: 03/02/2022 15:44:06.587 , ModifyDate: 03/02/2022 15:44:06.587 */
 GO
 CREATE FUNCTION [dbo].[GetLocalDateFromUTC]( @Input DATETIME )
 RETURNS TABLE

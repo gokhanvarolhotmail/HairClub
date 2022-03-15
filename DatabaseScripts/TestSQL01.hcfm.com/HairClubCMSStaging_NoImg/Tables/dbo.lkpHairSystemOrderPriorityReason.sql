@@ -1,4 +1,4 @@
-/* CreateDate: 02/22/2016 08:56:32.127 , ModifyDate: 01/31/2022 08:32:31.737 */
+/* CreateDate: 02/22/2016 08:56:32.127 , ModifyDate: 03/04/2022 16:09:12.570 */
 GO
 CREATE TABLE [dbo].[lkpHairSystemOrderPriorityReason](
 	[HairSystemOrderPriorityReasonID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,

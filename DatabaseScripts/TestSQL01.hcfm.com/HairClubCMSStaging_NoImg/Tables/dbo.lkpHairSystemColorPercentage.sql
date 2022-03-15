@@ -1,4 +1,4 @@
-/* CreateDate: 10/04/2010 12:08:46.090 , ModifyDate: 01/31/2022 08:32:31.763 */
+/* CreateDate: 10/04/2010 12:08:46.090 , ModifyDate: 03/04/2022 16:09:12.617 */
 GO
 CREATE TABLE [dbo].[lkpHairSystemColorPercentage](
 	[HairSystemColorPercentageID] [int] NOT NULL,

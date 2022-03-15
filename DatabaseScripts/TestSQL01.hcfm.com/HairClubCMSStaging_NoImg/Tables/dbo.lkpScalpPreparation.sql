@@ -1,4 +1,4 @@
-/* CreateDate: 02/18/2013 06:40:48.983 , ModifyDate: 01/31/2022 08:32:31.833 */
+/* CreateDate: 02/18/2013 06:40:48.983 , ModifyDate: 03/04/2022 16:09:12.753 */
 GO
 CREATE TABLE [dbo].[lkpScalpPreparation](
 	[ScalpPreparationID] [int] NOT NULL,

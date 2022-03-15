@@ -1,4 +1,4 @@
-/* CreateDate: 02/18/2013 06:42:01.890 , ModifyDate: 01/31/2022 08:32:31.910 */
+/* CreateDate: 02/18/2013 06:42:01.890 , ModifyDate: 03/04/2022 16:09:12.903 */
 GO
 CREATE TABLE [dbo].[lkpDiscountType](
 	[DiscountTypeID] [int] NOT NULL,

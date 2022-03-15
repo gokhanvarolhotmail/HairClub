@@ -1,4 +1,4 @@
-/* CreateDate: 10/04/2010 12:00:48.590 , ModifyDate: 01/31/2022 08:32:31.747 */
+/* CreateDate: 10/04/2010 12:00:48.590 , ModifyDate: 03/04/2022 16:09:12.587 */
 GO
 CREATE TABLE [dbo].[lkpPhotoCaption](
 	[PhotoCaptionID] [int] NOT NULL,

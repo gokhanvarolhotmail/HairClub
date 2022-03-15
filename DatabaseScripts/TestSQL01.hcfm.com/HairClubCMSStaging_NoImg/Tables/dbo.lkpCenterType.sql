@@ -1,4 +1,4 @@
-/* CreateDate: 08/27/2008 11:29:14.357 , ModifyDate: 01/31/2022 08:32:31.793 */
+/* CreateDate: 08/27/2008 11:29:14.357 , ModifyDate: 03/04/2022 16:09:12.673 */
 GO
 CREATE TABLE [dbo].[lkpCenterType](
 	[CenterTypeID] [int] NOT NULL,

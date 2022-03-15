@@ -1,4 +1,4 @@
-/* CreateDate: 11/04/2019 08:18:20.210 , ModifyDate: 01/31/2022 08:32:31.783 */
+/* CreateDate: 11/04/2019 08:18:20.210 , ModifyDate: 03/04/2022 16:09:12.653 */
 GO
 CREATE TABLE [dbo].[lkpScorecardMetric](
 	[ScorecardMetricID] [int] IDENTITY(1,1) NOT NULL,

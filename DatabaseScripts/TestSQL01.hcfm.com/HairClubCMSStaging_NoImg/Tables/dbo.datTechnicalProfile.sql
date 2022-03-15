@@ -1,4 +1,4 @@
-/* CreateDate: 02/26/2017 22:35:10.313 , ModifyDate: 01/31/2022 08:32:31.903 */
+/* CreateDate: 02/26/2017 22:35:10.313 , ModifyDate: 03/04/2022 16:09:12.887 */
 GO
 CREATE TABLE [dbo].[datTechnicalProfile](
 	[TechnicalProfileID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,

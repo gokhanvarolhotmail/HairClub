@@ -1,4 +1,4 @@
-/* CreateDate: 10/28/2008 13:59:55.040 , ModifyDate: 01/31/2022 08:32:31.923 */
+/* CreateDate: 10/28/2008 13:59:55.040 , ModifyDate: 03/04/2022 16:09:12.930 */
 GO
 CREATE TABLE [dbo].[lkpAccumulatorActionType](
 	[AccumulatorActionTypeID] [int] NOT NULL,

@@ -1,4 +1,4 @@
-/* CreateDate: 01/21/2014 23:48:16.530 , ModifyDate: 06/25/2021 07:18:53.380 */
+/* CreateDate: 01/21/2014 23:48:16.530 , ModifyDate: 03/03/2022 07:29:29.553 */
 GO
 CREATE TABLE [dbo].[datClientMembershipDocument](
 	[ClientMembershipDocumentGUID] [uniqueidentifier] ROWGUIDCOL  NOT NULL,

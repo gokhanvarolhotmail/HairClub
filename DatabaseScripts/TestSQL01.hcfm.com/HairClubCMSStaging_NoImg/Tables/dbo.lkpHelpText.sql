@@ -1,4 +1,4 @@
-/* CreateDate: 05/06/2014 09:10:03.770 , ModifyDate: 01/31/2022 08:32:31.790 */
+/* CreateDate: 05/06/2014 09:10:03.770 , ModifyDate: 03/04/2022 16:09:12.670 */
 GO
 CREATE TABLE [dbo].[lkpHelpText](
 	[HelpTextID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,

@@ -1,4 +1,4 @@
-/* CreateDate: 08/27/2008 11:32:35.397 , ModifyDate: 01/31/2022 08:32:31.830 */
+/* CreateDate: 08/27/2008 11:32:35.397 , ModifyDate: 03/04/2022 16:09:12.747 */
 GO
 CREATE TABLE [dbo].[lkpCreditCardType](
 	[CreditCardTypeID] [int] NOT NULL,
