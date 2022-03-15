@@ -49,7 +49,8 @@ SELECT
   , [dbo].[GetUTCFromLocal](DATEADD(SECOND, 86399, @EndDate), [UTCOffset], [UsesDayLightSavingsFlag]) AS [UTCEndDate]
 INTO [#UTCDateParms]
 FROM [dbo].[lkpTimeZone]
-WHERE [IsActiveFlag] = 1 ;
+WHERE [IsActiveFlag] = 1
+OPTION( RECOMPILE ) ;
 
 DECLARE
     @MembershipManagement_DivisionID INT
@@ -58,15 +59,18 @@ DECLARE
 
 SELECT @MembershipManagement_DivisionID = [SalesCodeDivisionID]
 FROM [dbo].[lkpSalesCodeDivision]
-WHERE [SalesCodeDivisionDescriptionShort] = 'MbrMgmt' ;
+WHERE [SalesCodeDivisionDescriptionShort] = 'MbrMgmt'
+OPTION( RECOMPILE ) ;
 
 SELECT @Services_DivisionID = [SalesCodeDivisionID]
 FROM [dbo].[lkpSalesCodeDivision]
-WHERE [SalesCodeDivisionDescriptionShort] = 'Services' ;
+WHERE [SalesCodeDivisionDescriptionShort] = 'Services'
+OPTION( RECOMPILE ) ;
 
 SELECT @Products_DivisionID = [SalesCodeDivisionID]
 FROM [dbo].[lkpSalesCodeDivision]
-WHERE [SalesCodeDivisionDescriptionShort] = 'Products' ;
+WHERE [SalesCodeDivisionDescriptionShort] = 'Products'
+OPTION( RECOMPILE ) ;
 
 CREATE TABLE [#Analysis]
 (
@@ -101,7 +105,33 @@ CREATE TABLE [#Analysis]
 
 IF @GenderID = 0
     BEGIN
-        INSERT INTO [#Analysis]
+        INSERT [#Analysis]( [SalesCodeDivisionID]
+                          , [SalesCodeDivisionDescription]
+                          , [SalesCodeDepartmentID]
+                          , [SalesCodeDepartmentDescription]
+                          , [Department]
+                          , [SalesCodeID]
+                          , [SalesCodeDescriptionShort]
+                          , [SalesCodeDescription]
+                          , [Code]
+                          , [OrderDate]
+                          , [InvoiceNumber]
+                          , [Quantity]
+                          , [Price]
+                          , [Discount]
+                          , [TotalTaxCalc]
+                          , [ExtendedPriceCalc]
+                          , [PriceTaxCalc]
+                          , [ClientFullNameCalc]
+                          , [Cashier]
+                          , [ConGUID]
+                          , [Consultant]
+                          , [ConFullName]
+                          , [Stylist]
+                          , [PerformerGUID]
+                          , [PerformerName]
+                          , [RevenueGroupID]
+                          , [RefundedTotalPrice] )
         SELECT
             [scdv].[SalesCodeDivisionID]
           , [scdv].[SalesCodeDivisionDescription]
@@ -153,17 +183,44 @@ IF @GenderID = 0
         INNER JOIN [dbo].[datClient] AS [cl] ON [cl].[ClientGUID] = [so].[ClientGUID]
         INNER JOIN [dbo].[datClientMembership] AS [cm] ON [cm].[ClientMembershipGUID] = [so].[ClientMembershipGUID]
         INNER JOIN [dbo].[cfgMembership] AS [m] ON [m].[MembershipID] = [cm].[MembershipID]
-        JOIN [#UTCDateParms] AS [UTCDateParms] ON [UTCDateParms].[TimeZoneID] = [tz].[TimeZoneID]
+        INNER JOIN [#UTCDateParms] AS [UTCDateParms] ON [UTCDateParms].[TimeZoneID] = [tz].[TimeZoneID]
         WHERE [so].[OrderDate] BETWEEN [UTCDateParms].[UTCStartDate] AND [UTCDateParms].[UTCEndDate]
           --WHERE dbo.GetLocalFromUTC(so.OrderDate, tz.UTCOffset, tz.UsesDayLightSavingsFlag) BETWEEN @StartDate and @EndDate + '23:59:59'
           --WHERE DATEADD(Hour, CASE WHEN tz.UsesDayLightSavingsFlag = 0 THEN (tz.UTCOffset) WHEN DATEPART(WK, so.OrderDate) <= 10 OR DATEPART(WK, so.OrderDate) >= 45 THEN (tz.UTCOffset) ELSE ((tz.UTCOffset) + 1) END, so.OrderDate) BETWEEN @StartDate and @EndDate + '23:59:59'
           AND [scd].[IsActiveFlag] = 1
         ORDER BY [cl].[ClientFullNameCalc]
-               , [so].[InvoiceNumber] ;
+               , [so].[InvoiceNumber]
+        OPTION( RECOMPILE ) ;
     END ;
 ELSE
     BEGIN
-        INSERT INTO [#Analysis]
+        INSERT [#Analysis]( [SalesCodeDivisionID]
+                          , [SalesCodeDivisionDescription]
+                          , [SalesCodeDepartmentID]
+                          , [SalesCodeDepartmentDescription]
+                          , [Department]
+                          , [SalesCodeID]
+                          , [SalesCodeDescriptionShort]
+                          , [SalesCodeDescription]
+                          , [Code]
+                          , [OrderDate]
+                          , [InvoiceNumber]
+                          , [Quantity]
+                          , [Price]
+                          , [Discount]
+                          , [TotalTaxCalc]
+                          , [ExtendedPriceCalc]
+                          , [PriceTaxCalc]
+                          , [ClientFullNameCalc]
+                          , [Cashier]
+                          , [ConGUID]
+                          , [Consultant]
+                          , [ConFullName]
+                          , [Stylist]
+                          , [PerformerGUID]
+                          , [PerformerName]
+                          , [RevenueGroupID]
+                          , [RefundedTotalPrice] )
         SELECT
             [scdv].[SalesCodeDivisionID]
           , [scdv].[SalesCodeDivisionDescription]
@@ -215,18 +272,20 @@ ELSE
         INNER JOIN [dbo].[datClient] AS [cl] ON [cl].[ClientGUID] = [so].[ClientGUID] AND [cl].[GenderID] = @GenderID
         INNER JOIN [dbo].[datClientMembership] AS [cm] ON [cm].[ClientMembershipGUID] = [so].[ClientMembershipGUID]
         INNER JOIN [dbo].[cfgMembership] AS [m] ON [m].[MembershipID] = [cm].[MembershipID]
-        JOIN [#UTCDateParms] AS [UTCDateParms] ON [UTCDateParms].[TimeZoneID] = [tz].[TimeZoneID]
+        INNER JOIN [#UTCDateParms] AS [UTCDateParms] ON [UTCDateParms].[TimeZoneID] = [tz].[TimeZoneID]
         WHERE [so].[OrderDate] BETWEEN [UTCDateParms].[UTCStartDate] AND [UTCDateParms].[UTCEndDate]
           --WHERE dbo.GetLocalFromUTC(so.OrderDate, tz.UTCOffset, tz.UsesDayLightSavingsFlag) BETWEEN @StartDate and @EndDate + '23:59:59'
           --WHERE DATEADD(Hour, CASE WHEN tz.UsesDayLightSavingsFlag = 0 THEN (tz.UTCOffset) WHEN DATEPART(WK, so.OrderDate) <= 10 OR DATEPART(WK, so.OrderDate) >= 45 THEN (tz.UTCOffset) ELSE ((tz.UTCOffset) + 1) END, so.OrderDate) BETWEEN @StartDate and @EndDate + '23:59:59'
           AND [scd].[IsActiveFlag] = 1
         ORDER BY [cl].[ClientFullNameCalc]
-               , [so].[InvoiceNumber] ;
+               , [so].[InvoiceNumber]
+        OPTION( RECOMPILE ) ;
     END ;
 
 SELECT *
 FROM [#Analysis]
-WHERE [SalesCodeDepartmentDescription] = @SalesCodeDepartmentDescription ;
+WHERE [SalesCodeDepartmentDescription] = @SalesCodeDepartmentDescription
+OPTION( RECOMPILE ) ;
 
 DROP TABLE [#UTCDateParms] ;
 GO
