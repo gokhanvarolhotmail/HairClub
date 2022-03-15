@@ -57,19 +57,12 @@ DECLARE
   , @Services_DivisionID             INT
   , @Products_DivisionID             INT ;
 
-SELECT @MembershipManagement_DivisionID = [SalesCodeDivisionID]
+SELECT
+    @MembershipManagement_DivisionID = MAX(CASE WHEN [SalesCodeDivisionDescriptionShort] = 'MbrMgmt' THEN [SalesCodeDivisionID] END)
+  , @Services_DivisionID = MAX(CASE WHEN [SalesCodeDivisionDescriptionShort] = 'Services' THEN [SalesCodeDivisionID] END)
+  , @Products_DivisionID = MAX(CASE WHEN [SalesCodeDivisionDescriptionShort] = 'Products' THEN [SalesCodeDivisionID] END)
 FROM [dbo].[lkpSalesCodeDivision]
-WHERE [SalesCodeDivisionDescriptionShort] = 'MbrMgmt'
-OPTION( RECOMPILE ) ;
-
-SELECT @Services_DivisionID = [SalesCodeDivisionID]
-FROM [dbo].[lkpSalesCodeDivision]
-WHERE [SalesCodeDivisionDescriptionShort] = 'Services'
-OPTION( RECOMPILE ) ;
-
-SELECT @Products_DivisionID = [SalesCodeDivisionID]
-FROM [dbo].[lkpSalesCodeDivision]
-WHERE [SalesCodeDivisionDescriptionShort] = 'Products'
+WHERE [SalesCodeDivisionDescriptionShort] IN ('MbrMgmt', 'Services', 'Products')
 OPTION( RECOMPILE ) ;
 
 CREATE TABLE [#Analysis]
@@ -216,7 +209,7 @@ IF @GenderID = 0
                 --WHERE dbo.GetLocalFromUTC(so.OrderDate, tz.UTCOffset, tz.UsesDayLightSavingsFlag) BETWEEN @StartDate and @EndDate + '23:59:59'
                 --WHERE DATEADD(Hour, CASE WHEN tz.UsesDayLightSavingsFlag = 0 THEN (tz.UTCOffset) WHEN DATEPART(WK, so.OrderDate) <= 10 OR DATEPART(WK, so.OrderDate) >= 45 THEN (tz.UTCOffset) ELSE ((tz.UTCOffset) + 1) END, so.OrderDate) BETWEEN @StartDate and @EndDate + '23:59:59'
                 AND [scd].[IsActiveFlag] = 1 ) AS [k]
-        WHERE [SalesCodeDepartmentDescription] = @SalesCodeDepartmentDescription
+        WHERE [k].[SalesCodeDepartmentDescription] = @SalesCodeDepartmentDescription
         OPTION( RECOMPILE ) ;
     END ;
 ELSE
@@ -332,7 +325,7 @@ ELSE
                 --WHERE dbo.GetLocalFromUTC(so.OrderDate, tz.UTCOffset, tz.UsesDayLightSavingsFlag) BETWEEN @StartDate and @EndDate + '23:59:59'
                 --WHERE DATEADD(Hour, CASE WHEN tz.UsesDayLightSavingsFlag = 0 THEN (tz.UTCOffset) WHEN DATEPART(WK, so.OrderDate) <= 10 OR DATEPART(WK, so.OrderDate) >= 45 THEN (tz.UTCOffset) ELSE ((tz.UTCOffset) + 1) END, so.OrderDate) BETWEEN @StartDate and @EndDate + '23:59:59'
                 AND [scd].[IsActiveFlag] = 1 ) AS [k]
-        WHERE [SalesCodeDepartmentDescription] = @SalesCodeDepartmentDescription
+        WHERE [k].[SalesCodeDepartmentDescription] = @SalesCodeDepartmentDescription
         OPTION( RECOMPILE ) ;
     END ;
 
@@ -375,9 +368,9 @@ GO
 RETURN ;
 
 EXEC [dbo].[rptSalesAnalysisByDepartment_sub_V2]
-    @CenterId = 100
-  , @StartDate = '20220101'
-  , @EndDate = '20220315'
+    @CenterId = 228
+  , @StartDate = '20220301'
+  , @EndDate = '20220308'
   , @GenderID = 0 --0 All, 1 Male, 2 Female
   , @SalesCodeDepartmentDescription = 'Shampoos' ;
 GO

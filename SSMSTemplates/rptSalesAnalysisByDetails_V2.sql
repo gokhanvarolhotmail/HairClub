@@ -45,7 +45,7 @@ EXEC [rptSalesAnalysisByDetails] 896, '8/02/2017', '8/02/2017', 1, 368
 EXEC [rptSalesAnalysisByDetails] 896, '8/02/2017', '8/02/2017', 1, 368
 ==============================================================================
 */
-CREATE PROCEDURE [dbo].[rptSalesAnalysisByDetails_V2]
+ALTER PROCEDURE [dbo].[rptSalesAnalysisByDetails_V2]
     @CenterId    INT
   , @StartDate   DATETIME
   , @EndDate     DATETIME
@@ -73,17 +73,12 @@ DECLARE
   , @Services_DivisionID             INT
   , @Products_DivisionID             INT ;
 
-SELECT @MembershipManagement_DivisionID = [SalesCodeDivisionID]
+SELECT
+    @Products_DivisionID = MAX(CASE WHEN [SalesCodeDivisionDescriptionShort] = 'Products' THEN [SalesCodeDivisionID] END)
+  , @Services_DivisionID = MAX(CASE WHEN [SalesCodeDivisionDescriptionShort] = 'Services' THEN [SalesCodeDivisionID] END)
+  , @MembershipManagement_DivisionID = MAX(CASE WHEN [SalesCodeDivisionDescriptionShort] = 'MbrMgmt' THEN [SalesCodeDivisionID] END)
 FROM [dbo].[lkpSalesCodeDivision]
-WHERE [SalesCodeDivisionDescriptionShort] = 'MbrMgmt' ;
-
-SELECT @Services_DivisionID = [SalesCodeDivisionID]
-FROM [dbo].[lkpSalesCodeDivision]
-WHERE [SalesCodeDivisionDescriptionShort] = 'Services' ;
-
-SELECT @Products_DivisionID = [SalesCodeDivisionID]
-FROM [dbo].[lkpSalesCodeDivision]
-WHERE [SalesCodeDivisionDescriptionShort] = 'Products' ;
+WHERE [SalesCodeDivisionDescriptionShort] IN ('Products', 'Services', 'MbrMgmt') ;
 
 CREATE TABLE [#Analysis]
 (
@@ -116,40 +111,35 @@ CREATE TABLE [#Analysis]
   , [RefundedTotalPrice]             MONEY
 ) ;
 
-CREATE TABLE [#Final]
-(
-    [SalesCodeDivisionID]            INT
-  , [SalesCodeDivisionDescription]   NVARCHAR(100)
-  , [SalesCodeDepartmentID]          INT
-  , [SalesCodeDepartmentDescription] NVARCHAR(100)
-  , [Department]                     NVARCHAR(100)
-  , [SalesCodeID]                    INT
-  , [SalesCodeDescriptionShort]      NVARCHAR(15)
-  , [SalesCodeDescription]           NVARCHAR(50)
-  , [Code]                           NVARCHAR(100)
-  , [OrderDate]                      DATETIME
-  , [InvoiceNumber]                  NVARCHAR(50)
-  , [Quantity]                       INT
-  , [Price]                          DECIMAL(21, 6)
-  , [Discount]                       MONEY
-  , [TotalTaxCalc]                   MONEY
-  , [ExtendedPriceCalc]              DECIMAL(33, 6)
-  , [PriceTaxCalc]                   DECIMAL(35, 6)
-  , [ClientFullNameCalc]             NVARCHAR(127)
-  , [Cashier]                        NVARCHAR(5)
-  , [ConGUID]                        UNIQUEIDENTIFIER
-  , [Consultant]                     NVARCHAR(5)
-  , [ConFullName]                    NVARCHAR(127)
-  , [Stylist]                        NVARCHAR(5)
-  , [PerformerGUID]                  UNIQUEIDENTIFIER
-  , [PerformerName]                  NVARCHAR(102)
-  , [RevenueGroupID]                 INT
-  , [RefundedTotalPrice]             MONEY
-) ;
-
 IF @GenderID = 0
     BEGIN
-        INSERT INTO [#Analysis]
+        INSERT [#Analysis]( [SalesCodeDivisionID]
+                          , [SalesCodeDivisionDescription]
+                          , [SalesCodeDepartmentID]
+                          , [SalesCodeDepartmentDescription]
+                          , [Department]
+                          , [SalesCodeID]
+                          , [SalesCodeDescriptionShort]
+                          , [SalesCodeDescription]
+                          , [Code]
+                          , [OrderDate]
+                          , [InvoiceNumber]
+                          , [Quantity]
+                          , [Price]
+                          , [Discount]
+                          , [TotalTaxCalc]
+                          , [ExtendedPriceCalc]
+                          , [PriceTaxCalc]
+                          , [ClientFullNameCalc]
+                          , [Cashier]
+                          , [ConGUID]
+                          , [Consultant]
+                          , [ConFullName]
+                          , [Stylist]
+                          , [PerformerGUID]
+                          , [PerformerName]
+                          , [RevenueGroupID]
+                          , [RefundedTotalPrice] )
         SELECT
             [scdv].[SalesCodeDivisionID]
           , [scdv].[SalesCodeDivisionDescription]
@@ -208,13 +198,38 @@ IF @GenderID = 0
         --WHERE so.OrderDate BETWEEN UTCDateParms.UTCStartDate AND UTCDateParms.UTCEndDate
         --WHERE dbo.GetLocalFromUTC(so.OrderDate, tz.UTCOffset, tz.UsesDayLightSavingsFlag) BETWEEN @StartDate and @EndDate + '23:59:59'
         --WHERE DATEADD(Hour, CASE WHEN tz.UsesDayLightSavingsFlag = 0 THEN (tz.UTCOffset) WHEN DATEPART(WK, so.OrderDate) <= 10 OR DATEPART(WK, so.OrderDate) >= 45 THEN (tz.UTCOffset) ELSE ((tz.UTCOffset) + 1) END, so.OrderDate) BETWEEN @StartDate and @EndDate + '23:59:59'
-        WHERE [so].[OrderDate] BETWEEN @StartDate AND @EndDate AND [scd].[IsActiveFlag] = 1
-        ORDER BY [cl].[ClientFullNameCalc]
-               , [so].[InvoiceNumber] ;
+        WHERE [so].[OrderDate] BETWEEN @StartDate AND @EndDate AND [scd].[IsActiveFlag] = 1 AND ( @SalesCodeID IS NULL OR [sc].[SalesCodeID] = @SalesCodeID )
+        OPTION( RECOMPILE ) ;
     END ;
 ELSE
     BEGIN
-        INSERT INTO [#Analysis]
+        INSERT [#Analysis]( [SalesCodeDivisionID]
+                          , [SalesCodeDivisionDescription]
+                          , [SalesCodeDepartmentID]
+                          , [SalesCodeDepartmentDescription]
+                          , [Department]
+                          , [SalesCodeID]
+                          , [SalesCodeDescriptionShort]
+                          , [SalesCodeDescription]
+                          , [Code]
+                          , [OrderDate]
+                          , [InvoiceNumber]
+                          , [Quantity]
+                          , [Price]
+                          , [Discount]
+                          , [TotalTaxCalc]
+                          , [ExtendedPriceCalc]
+                          , [PriceTaxCalc]
+                          , [ClientFullNameCalc]
+                          , [Cashier]
+                          , [ConGUID]
+                          , [Consultant]
+                          , [ConFullName]
+                          , [Stylist]
+                          , [PerformerGUID]
+                          , [PerformerName]
+                          , [RevenueGroupID]
+                          , [RefundedTotalPrice] )
         SELECT
             [scdv].[SalesCodeDivisionID]
           , [scdv].[SalesCodeDivisionDescription]
@@ -273,26 +288,40 @@ ELSE
         --WHERE so.OrderDate BETWEEN UTCDateParms.UTCStartDate AND UTCDateParms.UTCEndDate
         --WHERE dbo.GetLocalFromUTC(so.OrderDate, tz.UTCOffset, tz.UsesDayLightSavingsFlag) BETWEEN @StartDate and @EndDate + '23:59:59'
         --WHERE DATEADD(Hour, CASE WHEN tz.UsesDayLightSavingsFlag = 0 THEN (tz.UTCOffset) WHEN DATEPART(WK, so.OrderDate) <= 10 OR DATEPART(WK, so.OrderDate) >= 45 THEN (tz.UTCOffset) ELSE ((tz.UTCOffset) + 1) END, so.OrderDate) BETWEEN @StartDate and @EndDate + '23:59:59'
-        WHERE [so].[OrderDate] BETWEEN @StartDate AND @EndDate AND [scd].[IsActiveFlag] = 1
-        ORDER BY [cl].[ClientFullNameCalc]
-               , [so].[InvoiceNumber] ;
+        WHERE [so].[OrderDate] BETWEEN @StartDate AND @EndDate AND [scd].[IsActiveFlag] = 1 AND ( @SalesCodeID IS NULL OR [sc].[SalesCodeID] = @SalesCodeID )
+        OPTION( RECOMPILE ) ;
     END ;
 
 /********** Select only those records for the SalesCodeID if it is not null *****************************************/
-IF @SalesCodeID IS NULL
-    BEGIN
-        INSERT INTO [#Final]
-        SELECT *
-        FROM [#Analysis] ;
-    END ;
-ELSE
-    BEGIN
-        INSERT INTO [#Final]
-        SELECT *
-        FROM [#Analysis]
-        WHERE [SalesCodeID] = @SalesCodeID ;
-    END ;
-
-SELECT *
-FROM [#Final] ;
+SELECT
+    [SalesCodeDivisionID]
+  , [SalesCodeDivisionDescription]
+  , [SalesCodeDepartmentID]
+  , [SalesCodeDepartmentDescription]
+  , [Department]
+  , [SalesCodeID]
+  , [SalesCodeDescriptionShort]
+  , [SalesCodeDescription]
+  , [Code]
+  , [OrderDate]
+  , [InvoiceNumber]
+  , [Quantity]
+  , [Price]
+  , [Discount]
+  , [TotalTaxCalc]
+  , [ExtendedPriceCalc]
+  , [PriceTaxCalc]
+  , [ClientFullNameCalc]
+  , [Cashier]
+  , [ConGUID]
+  , [Consultant]
+  , [ConFullName]
+  , [Stylist]
+  , [PerformerGUID]
+  , [PerformerName]
+  , [RevenueGroupID]
+  , [RefundedTotalPrice]
+FROM [#Analysis]
+ORDER BY [ClientFullNameCalc]
+       , [InvoiceNumber] ;
 GO
