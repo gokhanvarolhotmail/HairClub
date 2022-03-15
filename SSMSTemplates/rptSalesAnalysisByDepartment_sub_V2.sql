@@ -282,7 +282,34 @@ ELSE
         OPTION( RECOMPILE ) ;
     END ;
 
-SELECT *
+SELECT
+    [SalesCodeDivisionID]
+  , [SalesCodeDivisionDescription]
+  , [SalesCodeDepartmentID]
+  , [SalesCodeDepartmentDescription]
+  , [Department]
+  , [SalesCodeID]
+  , [SalesCodeDescriptionShort]
+  , [SalesCodeDescription]
+  , [Code]
+  , [OrderDate]
+  , [InvoiceNumber]
+  , [Quantity]
+  , [Price]
+  , [Discount]
+  , [TotalTaxCalc]
+  , [ExtendedPriceCalc]
+  , [PriceTaxCalc]
+  , [ClientFullNameCalc]
+  , [Cashier]
+  , [ConGUID]
+  , [Consultant]
+  , [ConFullName]
+  , [Stylist]
+  , [PerformerGUID]
+  , [PerformerName]
+  , [RevenueGroupID]
+  , [RefundedTotalPrice]
 FROM [#Analysis]
 WHERE [SalesCodeDepartmentDescription] = @SalesCodeDepartmentDescription
 OPTION( RECOMPILE ) ;
