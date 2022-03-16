@@ -27,7 +27,7 @@ SAMPLE EXEC:  SELECT TOP 100 * FROM [vw_datSalesOrderTender]
 ***********************************************************************/
 ALTER VIEW [dbo].[vw_datSalesOrderTender_V2]
 AS
-SELECT ( SELECT [outval] FROM [dbo].[GetLocalFromUTCInline]([SO].[OrderDate], [UTCOffset], [UsesDayLightSavingsFlag]) ) AS [Date]
+SELECT ( SELECT [OutVal] FROM [dbo].[GetLocalFromUTCInline]([SO].[OrderDate], [UTCOffset], [UsesDayLightSavingsFlag]) ) AS [Date]
 
      --DATEADD(HOUR, CASE WHEN [lkpTimeZone].[UsesDayLightSavingsFlag] = 0 THEN ( [lkpTimeZone].[UTCOffset] )
      --                         WHEN DATEPART(WK, [SO].[OrderDate]) <= 10
