@@ -28,176 +28,175 @@ SAMPLE EXEC:  SELECT TOP 100 * FROM [vw_datSalesOrderDetail]
 ***********************************************************************/
 ALTER VIEW [dbo].[vw_datSalesOrderDetail_V2]
 AS
-SELECT
-    [dbo].[GetLocalFromUTC]([datSalesOrder].[OrderDate], [lkpTimeZone].[UTCOffset], [lkpTimeZone].[UsesDayLightSavingsFlag]) AS [Date]
+SELECT ( SELECT [outval] FROM [dbo].[GetLocalFromUTCInline]([datSalesOrder].[OrderDate], [lkpTimeZone].[UTCOffset], [lkpTimeZone].[UsesDayLightSavingsFlag]) ) AS [Date]
 
-  --DATEADD(HOUR, CASE WHEN [lkpTimeZone].[UsesDayLightSavingsFlag] = 0 THEN ( [lkpTimeZone].[UTCOffset] )
-  --                         WHEN DATEPART(WK, [datSalesOrder].[OrderDate]) <= 10
-  --                              OR DATEPART(WK, [datSalesOrder].[OrderDate]) >= 45 THEN ( [lkpTimeZone].[UTCOffset] )
-  --                         ELSE ( ( [lkpTimeZone].[UTCOffset] ) + 1 )
-  --                    END, [datSalesOrder].[OrderDate]) AS 'Date'
-  , [cfgCenter].[CenterID]
-  , [cfgCenter].[CenterDescription]
-  , [cfgCenter].[CenterDescriptionFullCalc]
-  , [cfgCenterClient].[CenterID] AS [ClientHomeCenterID]
-  , [cfgCenterClient].[CenterDescriptionFullCalc] AS [ClientHomeCenterDescriptionFullCalc]
-  , [cfgCenterClient].[CenterDescription] AS [ClientHomeCenterDescription]
-  , [lkpRegion].[RegionID]
-  , [lkpRegion].[RegionDescription]
-  , [lkpRegion].[RegionSortOrder]
-  , [lkpDoctorRegion].[DoctorRegionID]
-  , [lkpDoctorRegion].[DoctorRegionDescription]
-  , [lkpDoctorRegion].[DoctorRegionDescriptionShort]
-  , [lkpCenterType].[CenterTypeID]
-  , [lkpCenterType].[CenterTypeDescription]
-  , [lkpCenterType].[CenterTypeDescriptionShort]
-  , [lkpCenterTypeTRX].[CenterTypeID] AS [CenterTypeIDTRX]
-  , [lkpCenterTypeTRX].[CenterTypeDescription] AS [CenterTypeDescriptionTRX]
-  , [lkpCenterTypeTRX].[CenterTypeDescriptionShort] AS [CenterTypeDescriptionShortTRX]
-  , [datClient].[ClientGUID]
-  , [datClient].[ClientIdentifier]
-  , [datClient].[ClientNumber_Temp]
-  , [datClient].[FirstName] AS [ClientFirstName]
-  , [datClient].[LastName] AS [ClientLastName]
-  , [datClient].[ClientFullNameAltCalc]
-  , [datClientMembership].[ClientMembershipGUID]
-  , [datClientMembership].[BeginDate]
-  , [datClientMembership].[EndDate]
-  , [datClientMembership].[CancelDate]
-  , [dbo].[CanadianConversion]([cfgCenterClient].[CenterID], [datClientMembership].[ContractPrice], [dbo].[GetLocalFromUTC]([datSalesOrder].[OrderDate], [lkpTimeZone].[UTCOffset], [lkpTimeZone].[UsesDayLightSavingsFlag])
-    --,	DATEADD(HOUR, CASE WHEN [lkpTimeZone].[UsesDayLightSavingsFlag] = 0 THEN ( [lkpTimeZone].[UTCOffset] )
-    --                         WHEN DATEPART(WK, [datSalesOrder].[OrderDate]) <= 10
-    --                              OR DATEPART(WK, [datSalesOrder].[OrderDate]) >= 45 THEN ( [lkpTimeZone].[UTCOffset] )
-    --                         ELSE ( ( [lkpTimeZone].[UTCOffset] ) + 1 )
-    --	END, [datSalesOrder].[OrderDate])
-    ) AS [ContractPrice]
-  , [dbo].[CanadianConversion]([cfgCenterClient].[CenterID], [datClientMembership].[ContractPaidAmount], [dbo].[GetLocalFromUTC]([datSalesOrder].[OrderDate], [lkpTimeZone].[UTCOffset], [lkpTimeZone].[UsesDayLightSavingsFlag])
-    --,	DATEADD(HOUR, CASE WHEN [lkpTimeZone].[UsesDayLightSavingsFlag] = 0 THEN ( [lkpTimeZone].[UTCOffset] )
-    --                         WHEN DATEPART(WK, [datSalesOrder].[OrderDate]) <= 10
-    --                              OR DATEPART(WK, [datSalesOrder].[OrderDate]) >= 45 THEN ( [lkpTimeZone].[UTCOffset] )
-    --                         ELSE ( ( [lkpTimeZone].[UTCOffset] ) + 1 )
-    --	END, [datSalesOrder].[OrderDate])
-    ) AS [ContractPaidAmount]
-  , [dbo].[CanadianConversion]([cfgCenterClient].[CenterID], [datClientMembership].[MonthlyFee], [dbo].[GetLocalFromUTC]([datSalesOrder].[OrderDate], [lkpTimeZone].[UTCOffset], [lkpTimeZone].[UsesDayLightSavingsFlag])
-    --,	DATEADD(HOUR, CASE WHEN [lkpTimeZone].[UsesDayLightSavingsFlag] = 0 THEN ( [lkpTimeZone].[UTCOffset] )
-    --                         WHEN DATEPART(WK, [datSalesOrder].[OrderDate]) <= 10
-    --                              OR DATEPART(WK, [datSalesOrder].[OrderDate]) >= 45 THEN ( [lkpTimeZone].[UTCOffset] )
-    --                         ELSE ( ( [lkpTimeZone].[UTCOffset] ) + 1 )
-    --	END, [datSalesOrder].[OrderDate])
-    ) AS [MonthlyFee]
-  , [lkpClientMembershipStatus].[ClientMembershipStatusID]
-  , [lkpClientMembershipStatus].[ClientMembershipStatusDescription]
-  , [cfgMembership].[MembershipID]
-  , [cfgMembership].[MembershipDescription]
-  , [cfgMembership].[MembershipDescriptionShort]
-  , [cfgSalesCode].[SalesCodeID]
-  , [cfgSalesCode].[SalesCodeDescription]
-  , [cfgSalesCode].[SalesCodeDescriptionShort]
-  , [lkpSalesCodeType].[SalesCodeTypeID]
-  , [lkpSalesCodeType].[SalesCodeTypeDescription]
-  , [lkpSalesCodeDepartment].[SalesCodeDepartmentID]
-  , [lkpSalesCodeDepartment].[SalesCodeDepartmentDescription]
-  , [lkpSalesCodeDepartment].[SalesCodeDepartmentDescriptionShort]
-  , [lkpSalesCodeDivision].[SalesCodeDivisionID]
-  , [lkpSalesCodeDivision].[SalesCodeDivisionDescription]
-  , [lkpSalesCodeDivision].[SalesCodeDivisionDescriptionShort]
-  , [datEmployee0].[EmployeeFullNameCalc] AS [Cashier]
-  , [datEmployee1].[EmployeeFullNameCalc] AS [Consultant]
-  , [datEmployee2].[EmployeeFullNameCalc] AS [Technician]
-  , [datEmployee3].[EmployeeFullNameCalc] AS [Doctor]
-  , [datEmployee4].[EmployeeFullNameCalc] AS [Employee4]
-  , [datEmployee0].[EmployeeInitials] AS [CashierInitials]
-  , [datEmployee1].[EmployeeInitials] AS [ConsultantInitials]
-  , [datEmployee2].[EmployeeInitials] AS [TechnicianInitials]
-  , [datEmployee3].[EmployeeInitials] AS [DoctorInitials]
-  , [datEmployee4].[EmployeeInitials] AS [Employee4Initials]
-  , [datEmployee2].[EmployeeInitials] AS [Performer1]
-  , [datSalesOrder].[InvoiceNumber] AS [Transact_No]
-  , [datSalesOrder].[InvoiceNumber]
-  , [datSalesOrder].[TicketNumber_Temp]
-  , [lkpSalesOrderType].[SalesOrderTypeID]
-  , [lkpSalesOrderType].[SalesOrderTypeDescription]
-  , [lkpSalesOrderType].[SalesOrderTypeDescriptionShort]
-  , [datSalesOrderDetail].[TransactionNumber_Temp]
-  , [datSalesOrderDetail].[Quantity]
-  , [dbo].[CanadianConversion]([cfgCenterClient].[CenterID], [datSalesOrderDetail].[Price], [dbo].[GetLocalFromUTC]([datSalesOrder].[OrderDate], [lkpTimeZone].[UTCOffset], [lkpTimeZone].[UsesDayLightSavingsFlag])
-    --,	DATEADD(HOUR, CASE WHEN [lkpTimeZone].[UsesDayLightSavingsFlag] = 0 THEN ( [lkpTimeZone].[UTCOffset] )
-    --                         WHEN DATEPART(WK, [datSalesOrder].[OrderDate]) <= 10
-    --                              OR DATEPART(WK, [datSalesOrder].[OrderDate]) >= 45 THEN ( [lkpTimeZone].[UTCOffset] )
-    --                         ELSE ( ( [lkpTimeZone].[UTCOffset] ) + 1 )
-    --	END, [datSalesOrder].[OrderDate])
-    ) AS [Price]
-  , [datSalesOrderDetail].[Price] AS [CanadianPrice]
-  , [dbo].[CanadianConversion]([cfgCenterClient].[CenterID], [datSalesOrderDetail].[Discount], [dbo].[GetLocalFromUTC]([datSalesOrder].[OrderDate], [lkpTimeZone].[UTCOffset], [lkpTimeZone].[UsesDayLightSavingsFlag])
-    --,	DATEADD(HOUR, CASE WHEN [lkpTimeZone].[UsesDayLightSavingsFlag] = 0 THEN ( [lkpTimeZone].[UTCOffset] )
-    --                         WHEN DATEPART(WK, [datSalesOrder].[OrderDate]) <= 10
-    --                              OR DATEPART(WK, [datSalesOrder].[OrderDate]) >= 45 THEN ( [lkpTimeZone].[UTCOffset] )
-    --                         ELSE ( ( [lkpTimeZone].[UTCOffset] ) + 1 )
-    --	END, [datSalesOrder].[OrderDate])
-    ) AS [Discount]
-  , [dbo].[CanadianConversion]([cfgCenterClient].[CenterID], [datSalesOrderDetail].[PriceTaxCalc], [dbo].[GetLocalFromUTC]([datSalesOrder].[OrderDate], [lkpTimeZone].[UTCOffset], [lkpTimeZone].[UsesDayLightSavingsFlag])
-    --,	DATEADD(HOUR, CASE WHEN [lkpTimeZone].[UsesDayLightSavingsFlag] = 0 THEN ( [lkpTimeZone].[UTCOffset] )
-    --                         WHEN DATEPART(WK, [datSalesOrder].[OrderDate]) <= 10
-    --                              OR DATEPART(WK, [datSalesOrder].[OrderDate]) >= 45 THEN ( [lkpTimeZone].[UTCOffset] )
-    --                         ELSE ( ( [lkpTimeZone].[UTCOffset] ) + 1 )
-    --	END, [datSalesOrder].[OrderDate])
-    ) AS [PriceTaxCalc]
-  , [dbo].[CanadianConversion]([cfgCenterClient].[CenterID], [datSalesOrderDetail].[ExtendedPriceCalc], [dbo].[GetLocalFromUTC]([datSalesOrder].[OrderDate], [lkpTimeZone].[UTCOffset], [lkpTimeZone].[UsesDayLightSavingsFlag])
-    --,	DATEADD(HOUR, CASE WHEN [lkpTimeZone].[UsesDayLightSavingsFlag] = 0 THEN ( [lkpTimeZone].[UTCOffset] )
-    --                         WHEN DATEPART(WK, [datSalesOrder].[OrderDate]) <= 10
-    --                              OR DATEPART(WK, [datSalesOrder].[OrderDate]) >= 45 THEN ( [lkpTimeZone].[UTCOffset] )
-    --                         ELSE ( ( [lkpTimeZone].[UTCOffset] ) + 1 )
-    --	END, [datSalesOrder].[OrderDate])
-    ) AS [ExtendedPriceCalc]
-  , [datSalesOrderDetail].[ExtendedPriceCalc] AS [CanadianExtendedPriceCalc]
-  , [dbo].[CanadianConversion]([cfgCenterClient].[CenterID], [datSalesOrderDetail].[Tax1], [dbo].[GetLocalFromUTC]([datSalesOrder].[OrderDate], [lkpTimeZone].[UTCOffset], [lkpTimeZone].[UsesDayLightSavingsFlag])
-    --,	DATEADD(HOUR, CASE WHEN [lkpTimeZone].[UsesDayLightSavingsFlag] = 0 THEN ( [lkpTimeZone].[UTCOffset] )
-    --                         WHEN DATEPART(WK, [datSalesOrder].[OrderDate]) <= 10
-    --                              OR DATEPART(WK, [datSalesOrder].[OrderDate]) >= 45 THEN ( [lkpTimeZone].[UTCOffset] )
-    --                         ELSE ( ( [lkpTimeZone].[UTCOffset] ) + 1 )
-    --	END, [datSalesOrder].[OrderDate])
-    ) AS [Tax1]
-  , [datSalesOrderDetail].[Tax1] AS [CanadianTax1]
-  , [dbo].[CanadianConversion]([cfgCenterClient].[CenterID], [datSalesOrderDetail].[Tax2], [dbo].[GetLocalFromUTC]([datSalesOrder].[OrderDate], [lkpTimeZone].[UTCOffset], [lkpTimeZone].[UsesDayLightSavingsFlag])
-    --,	DATEADD(HOUR, CASE WHEN [lkpTimeZone].[UsesDayLightSavingsFlag] = 0 THEN ( [lkpTimeZone].[UTCOffset] )
-    --                         WHEN DATEPART(WK, [datSalesOrder].[OrderDate]) <= 10
-    --                              OR DATEPART(WK, [datSalesOrder].[OrderDate]) >= 45 THEN ( [lkpTimeZone].[UTCOffset] )
-    --                         ELSE ( ( [lkpTimeZone].[UTCOffset] ) + 1 )
-    --	END, [datSalesOrder].[OrderDate])
-    ) AS [Tax2]
-  , [datSalesOrderDetail].[Tax2] AS [CanadianTax2]
-  , [datSalesOrderDetail].[TaxRate1]
-  , [datSalesOrderDetail].[TaxRate2]
-  , [dbo].[CanadianConversion]([cfgCenterClient].[CenterID], [datSalesOrderDetail].[TotalTaxCalc], [dbo].[GetLocalFromUTC]([datSalesOrder].[OrderDate], [lkpTimeZone].[UTCOffset], [lkpTimeZone].[UsesDayLightSavingsFlag])
-    --,	DATEADD(HOUR, CASE WHEN [lkpTimeZone].[UsesDayLightSavingsFlag] = 0 THEN ( [lkpTimeZone].[UTCOffset] )
-    --                         WHEN DATEPART(WK, [datSalesOrder].[OrderDate]) <= 10
-    --                              OR DATEPART(WK, [datSalesOrder].[OrderDate]) >= 45 THEN ( [lkpTimeZone].[UTCOffset] )
-    --                         ELSE ( ( [lkpTimeZone].[UTCOffset] ) + 1 )
-    --	END, [datSalesOrder].[OrderDate])
-    ) AS [TotalTaxCalc]
-  , [dbo].[CanadianConversion]([cfgCenterClient].[CenterID], [datSalesOrderDetail].[RefundedTotalPrice], [dbo].[GetLocalFromUTC]([datSalesOrder].[OrderDate], [lkpTimeZone].[UTCOffset], [lkpTimeZone].[UsesDayLightSavingsFlag])
-    --,	DATEADD(HOUR, CASE WHEN [lkpTimeZone].[UsesDayLightSavingsFlag] = 0 THEN ( [lkpTimeZone].[UTCOffset] )
-    --                         WHEN DATEPART(WK, [datSalesOrder].[OrderDate]) <= 10
-    --                              OR DATEPART(WK, [datSalesOrder].[OrderDate]) >= 45 THEN ( [lkpTimeZone].[UTCOffset] )
-    --                         ELSE ( ( [lkpTimeZone].[UTCOffset] ) + 1 )
-    --	END, [datSalesOrder].[OrderDate])
-    ) AS [RefundedTotalPrice]
-  , [datSalesOrderDetail].[RefundedTotalQuantity]
-  , [datSalesOrder].[FulfillmentNumber]
-  , [datSalesOrderDetail].[IsRefundedFlag]
-  , [datSalesOrderDetail].[RefundedSalesOrderDetailGUID]
-  , [datSalesOrderDetail].[PreviousClientMembershipGUID]
-  , [datSalesOrderDetail].[NewCenterID]
-  , [datSalesOrder].[IsVoidedFlag]
-  , [datSalesOrder].[IsClosedFlag]
-  , [datSalesOrder].[RegisterCloseGUID]
-  , [datSalesOrder].[IsWrittenOffFlag]
-  , [datSalesOrder].[CreateUser]
-  , [datSalesOrder].[SalesOrderGUID]
-  , [datSalesOrderDetail].[SalesOrderDetailGUID]
-  , [datEmployee0].[EmployeePayrollID]
-  , [datEmployee1].[EmployeePayrollID] AS [Consultant EmployeePayrollID]
-  , [datEmployee2].[EmployeePayrollID] AS [Technician EmployeePayrollID]
+     --DATEADD(HOUR, CASE WHEN [lkpTimeZone].[UsesDayLightSavingsFlag] = 0 THEN ( [lkpTimeZone].[UTCOffset] )
+     --                         WHEN DATEPART(WK, [datSalesOrder].[OrderDate]) <= 10
+     --                              OR DATEPART(WK, [datSalesOrder].[OrderDate]) >= 45 THEN ( [lkpTimeZone].[UTCOffset] )
+     --                         ELSE ( ( [lkpTimeZone].[UTCOffset] ) + 1 )
+     --                    END, [datSalesOrder].[OrderDate]) AS 'Date'
+     , [cfgCenter].[CenterID]
+     , [cfgCenter].[CenterDescription]
+     , [cfgCenter].[CenterDescriptionFullCalc]
+     , [cfgCenterClient].[CenterID] AS [ClientHomeCenterID]
+     , [cfgCenterClient].[CenterDescriptionFullCalc] AS [ClientHomeCenterDescriptionFullCalc]
+     , [cfgCenterClient].[CenterDescription] AS [ClientHomeCenterDescription]
+     , [lkpRegion].[RegionID]
+     , [lkpRegion].[RegionDescription]
+     , [lkpRegion].[RegionSortOrder]
+     , [lkpDoctorRegion].[DoctorRegionID]
+     , [lkpDoctorRegion].[DoctorRegionDescription]
+     , [lkpDoctorRegion].[DoctorRegionDescriptionShort]
+     , [lkpCenterType].[CenterTypeID]
+     , [lkpCenterType].[CenterTypeDescription]
+     , [lkpCenterType].[CenterTypeDescriptionShort]
+     , [lkpCenterTypeTRX].[CenterTypeID] AS [CenterTypeIDTRX]
+     , [lkpCenterTypeTRX].[CenterTypeDescription] AS [CenterTypeDescriptionTRX]
+     , [lkpCenterTypeTRX].[CenterTypeDescriptionShort] AS [CenterTypeDescriptionShortTRX]
+     , [datClient].[ClientGUID]
+     , [datClient].[ClientIdentifier]
+     , [datClient].[ClientNumber_Temp]
+     , [datClient].[FirstName] AS [ClientFirstName]
+     , [datClient].[LastName] AS [ClientLastName]
+     , [datClient].[ClientFullNameAltCalc]
+     , [datClientMembership].[ClientMembershipGUID]
+     , [datClientMembership].[BeginDate]
+     , [datClientMembership].[EndDate]
+     , [datClientMembership].[CancelDate]
+     , [dbo].[CanadianConversion]([cfgCenterClient].[CenterID], [datClientMembership].[ContractPrice], [dbo].[GetLocalFromUTC]([datSalesOrder].[OrderDate], [lkpTimeZone].[UTCOffset], [lkpTimeZone].[UsesDayLightSavingsFlag])
+       --,	DATEADD(HOUR, CASE WHEN [lkpTimeZone].[UsesDayLightSavingsFlag] = 0 THEN ( [lkpTimeZone].[UTCOffset] )
+       --                         WHEN DATEPART(WK, [datSalesOrder].[OrderDate]) <= 10
+       --                              OR DATEPART(WK, [datSalesOrder].[OrderDate]) >= 45 THEN ( [lkpTimeZone].[UTCOffset] )
+       --                         ELSE ( ( [lkpTimeZone].[UTCOffset] ) + 1 )
+       --	END, [datSalesOrder].[OrderDate])
+       ) AS [ContractPrice]
+     , [dbo].[CanadianConversion]([cfgCenterClient].[CenterID], [datClientMembership].[ContractPaidAmount], [dbo].[GetLocalFromUTC]([datSalesOrder].[OrderDate], [lkpTimeZone].[UTCOffset], [lkpTimeZone].[UsesDayLightSavingsFlag])
+       --,	DATEADD(HOUR, CASE WHEN [lkpTimeZone].[UsesDayLightSavingsFlag] = 0 THEN ( [lkpTimeZone].[UTCOffset] )
+       --                         WHEN DATEPART(WK, [datSalesOrder].[OrderDate]) <= 10
+       --                              OR DATEPART(WK, [datSalesOrder].[OrderDate]) >= 45 THEN ( [lkpTimeZone].[UTCOffset] )
+       --                         ELSE ( ( [lkpTimeZone].[UTCOffset] ) + 1 )
+       --	END, [datSalesOrder].[OrderDate])
+       ) AS [ContractPaidAmount]
+     , [dbo].[CanadianConversion]([cfgCenterClient].[CenterID], [datClientMembership].[MonthlyFee], [dbo].[GetLocalFromUTC]([datSalesOrder].[OrderDate], [lkpTimeZone].[UTCOffset], [lkpTimeZone].[UsesDayLightSavingsFlag])
+       --,	DATEADD(HOUR, CASE WHEN [lkpTimeZone].[UsesDayLightSavingsFlag] = 0 THEN ( [lkpTimeZone].[UTCOffset] )
+       --                         WHEN DATEPART(WK, [datSalesOrder].[OrderDate]) <= 10
+       --                              OR DATEPART(WK, [datSalesOrder].[OrderDate]) >= 45 THEN ( [lkpTimeZone].[UTCOffset] )
+       --                         ELSE ( ( [lkpTimeZone].[UTCOffset] ) + 1 )
+       --	END, [datSalesOrder].[OrderDate])
+       ) AS [MonthlyFee]
+     , [lkpClientMembershipStatus].[ClientMembershipStatusID]
+     , [lkpClientMembershipStatus].[ClientMembershipStatusDescription]
+     , [cfgMembership].[MembershipID]
+     , [cfgMembership].[MembershipDescription]
+     , [cfgMembership].[MembershipDescriptionShort]
+     , [cfgSalesCode].[SalesCodeID]
+     , [cfgSalesCode].[SalesCodeDescription]
+     , [cfgSalesCode].[SalesCodeDescriptionShort]
+     , [lkpSalesCodeType].[SalesCodeTypeID]
+     , [lkpSalesCodeType].[SalesCodeTypeDescription]
+     , [lkpSalesCodeDepartment].[SalesCodeDepartmentID]
+     , [lkpSalesCodeDepartment].[SalesCodeDepartmentDescription]
+     , [lkpSalesCodeDepartment].[SalesCodeDepartmentDescriptionShort]
+     , [lkpSalesCodeDivision].[SalesCodeDivisionID]
+     , [lkpSalesCodeDivision].[SalesCodeDivisionDescription]
+     , [lkpSalesCodeDivision].[SalesCodeDivisionDescriptionShort]
+     , [datEmployee0].[EmployeeFullNameCalc] AS [Cashier]
+     , [datEmployee1].[EmployeeFullNameCalc] AS [Consultant]
+     , [datEmployee2].[EmployeeFullNameCalc] AS [Technician]
+     , [datEmployee3].[EmployeeFullNameCalc] AS [Doctor]
+     , [datEmployee4].[EmployeeFullNameCalc] AS [Employee4]
+     , [datEmployee0].[EmployeeInitials] AS [CashierInitials]
+     , [datEmployee1].[EmployeeInitials] AS [ConsultantInitials]
+     , [datEmployee2].[EmployeeInitials] AS [TechnicianInitials]
+     , [datEmployee3].[EmployeeInitials] AS [DoctorInitials]
+     , [datEmployee4].[EmployeeInitials] AS [Employee4Initials]
+     , [datEmployee2].[EmployeeInitials] AS [Performer1]
+     , [datSalesOrder].[InvoiceNumber] AS [Transact_No]
+     , [datSalesOrder].[InvoiceNumber]
+     , [datSalesOrder].[TicketNumber_Temp]
+     , [lkpSalesOrderType].[SalesOrderTypeID]
+     , [lkpSalesOrderType].[SalesOrderTypeDescription]
+     , [lkpSalesOrderType].[SalesOrderTypeDescriptionShort]
+     , [datSalesOrderDetail].[TransactionNumber_Temp]
+     , [datSalesOrderDetail].[Quantity]
+     , [dbo].[CanadianConversion]([cfgCenterClient].[CenterID], [datSalesOrderDetail].[Price], [dbo].[GetLocalFromUTC]([datSalesOrder].[OrderDate], [lkpTimeZone].[UTCOffset], [lkpTimeZone].[UsesDayLightSavingsFlag])
+       --,	DATEADD(HOUR, CASE WHEN [lkpTimeZone].[UsesDayLightSavingsFlag] = 0 THEN ( [lkpTimeZone].[UTCOffset] )
+       --                         WHEN DATEPART(WK, [datSalesOrder].[OrderDate]) <= 10
+       --                              OR DATEPART(WK, [datSalesOrder].[OrderDate]) >= 45 THEN ( [lkpTimeZone].[UTCOffset] )
+       --                         ELSE ( ( [lkpTimeZone].[UTCOffset] ) + 1 )
+       --	END, [datSalesOrder].[OrderDate])
+       ) AS [Price]
+     , [datSalesOrderDetail].[Price] AS [CanadianPrice]
+     , [dbo].[CanadianConversion]([cfgCenterClient].[CenterID], [datSalesOrderDetail].[Discount], [dbo].[GetLocalFromUTC]([datSalesOrder].[OrderDate], [lkpTimeZone].[UTCOffset], [lkpTimeZone].[UsesDayLightSavingsFlag])
+       --,	DATEADD(HOUR, CASE WHEN [lkpTimeZone].[UsesDayLightSavingsFlag] = 0 THEN ( [lkpTimeZone].[UTCOffset] )
+       --                         WHEN DATEPART(WK, [datSalesOrder].[OrderDate]) <= 10
+       --                              OR DATEPART(WK, [datSalesOrder].[OrderDate]) >= 45 THEN ( [lkpTimeZone].[UTCOffset] )
+       --                         ELSE ( ( [lkpTimeZone].[UTCOffset] ) + 1 )
+       --	END, [datSalesOrder].[OrderDate])
+       ) AS [Discount]
+     , [dbo].[CanadianConversion]([cfgCenterClient].[CenterID], [datSalesOrderDetail].[PriceTaxCalc], [dbo].[GetLocalFromUTC]([datSalesOrder].[OrderDate], [lkpTimeZone].[UTCOffset], [lkpTimeZone].[UsesDayLightSavingsFlag])
+       --,	DATEADD(HOUR, CASE WHEN [lkpTimeZone].[UsesDayLightSavingsFlag] = 0 THEN ( [lkpTimeZone].[UTCOffset] )
+       --                         WHEN DATEPART(WK, [datSalesOrder].[OrderDate]) <= 10
+       --                              OR DATEPART(WK, [datSalesOrder].[OrderDate]) >= 45 THEN ( [lkpTimeZone].[UTCOffset] )
+       --                         ELSE ( ( [lkpTimeZone].[UTCOffset] ) + 1 )
+       --	END, [datSalesOrder].[OrderDate])
+       ) AS [PriceTaxCalc]
+     , [dbo].[CanadianConversion]([cfgCenterClient].[CenterID], [datSalesOrderDetail].[ExtendedPriceCalc], [dbo].[GetLocalFromUTC]([datSalesOrder].[OrderDate], [lkpTimeZone].[UTCOffset], [lkpTimeZone].[UsesDayLightSavingsFlag])
+       --,	DATEADD(HOUR, CASE WHEN [lkpTimeZone].[UsesDayLightSavingsFlag] = 0 THEN ( [lkpTimeZone].[UTCOffset] )
+       --                         WHEN DATEPART(WK, [datSalesOrder].[OrderDate]) <= 10
+       --                              OR DATEPART(WK, [datSalesOrder].[OrderDate]) >= 45 THEN ( [lkpTimeZone].[UTCOffset] )
+       --                         ELSE ( ( [lkpTimeZone].[UTCOffset] ) + 1 )
+       --	END, [datSalesOrder].[OrderDate])
+       ) AS [ExtendedPriceCalc]
+     , [datSalesOrderDetail].[ExtendedPriceCalc] AS [CanadianExtendedPriceCalc]
+     , [dbo].[CanadianConversion]([cfgCenterClient].[CenterID], [datSalesOrderDetail].[Tax1], [dbo].[GetLocalFromUTC]([datSalesOrder].[OrderDate], [lkpTimeZone].[UTCOffset], [lkpTimeZone].[UsesDayLightSavingsFlag])
+       --,	DATEADD(HOUR, CASE WHEN [lkpTimeZone].[UsesDayLightSavingsFlag] = 0 THEN ( [lkpTimeZone].[UTCOffset] )
+       --                         WHEN DATEPART(WK, [datSalesOrder].[OrderDate]) <= 10
+       --                              OR DATEPART(WK, [datSalesOrder].[OrderDate]) >= 45 THEN ( [lkpTimeZone].[UTCOffset] )
+       --                         ELSE ( ( [lkpTimeZone].[UTCOffset] ) + 1 )
+       --	END, [datSalesOrder].[OrderDate])
+       ) AS [Tax1]
+     , [datSalesOrderDetail].[Tax1] AS [CanadianTax1]
+     , [dbo].[CanadianConversion]([cfgCenterClient].[CenterID], [datSalesOrderDetail].[Tax2], [dbo].[GetLocalFromUTC]([datSalesOrder].[OrderDate], [lkpTimeZone].[UTCOffset], [lkpTimeZone].[UsesDayLightSavingsFlag])
+       --,	DATEADD(HOUR, CASE WHEN [lkpTimeZone].[UsesDayLightSavingsFlag] = 0 THEN ( [lkpTimeZone].[UTCOffset] )
+       --                         WHEN DATEPART(WK, [datSalesOrder].[OrderDate]) <= 10
+       --                              OR DATEPART(WK, [datSalesOrder].[OrderDate]) >= 45 THEN ( [lkpTimeZone].[UTCOffset] )
+       --                         ELSE ( ( [lkpTimeZone].[UTCOffset] ) + 1 )
+       --	END, [datSalesOrder].[OrderDate])
+       ) AS [Tax2]
+     , [datSalesOrderDetail].[Tax2] AS [CanadianTax2]
+     , [datSalesOrderDetail].[TaxRate1]
+     , [datSalesOrderDetail].[TaxRate2]
+     , [dbo].[CanadianConversion]([cfgCenterClient].[CenterID], [datSalesOrderDetail].[TotalTaxCalc], [dbo].[GetLocalFromUTC]([datSalesOrder].[OrderDate], [lkpTimeZone].[UTCOffset], [lkpTimeZone].[UsesDayLightSavingsFlag])
+       --,	DATEADD(HOUR, CASE WHEN [lkpTimeZone].[UsesDayLightSavingsFlag] = 0 THEN ( [lkpTimeZone].[UTCOffset] )
+       --                         WHEN DATEPART(WK, [datSalesOrder].[OrderDate]) <= 10
+       --                              OR DATEPART(WK, [datSalesOrder].[OrderDate]) >= 45 THEN ( [lkpTimeZone].[UTCOffset] )
+       --                         ELSE ( ( [lkpTimeZone].[UTCOffset] ) + 1 )
+       --	END, [datSalesOrder].[OrderDate])
+       ) AS [TotalTaxCalc]
+     , [dbo].[CanadianConversion]([cfgCenterClient].[CenterID], [datSalesOrderDetail].[RefundedTotalPrice], [dbo].[GetLocalFromUTC]([datSalesOrder].[OrderDate], [lkpTimeZone].[UTCOffset], [lkpTimeZone].[UsesDayLightSavingsFlag])
+       --,	DATEADD(HOUR, CASE WHEN [lkpTimeZone].[UsesDayLightSavingsFlag] = 0 THEN ( [lkpTimeZone].[UTCOffset] )
+       --                         WHEN DATEPART(WK, [datSalesOrder].[OrderDate]) <= 10
+       --                              OR DATEPART(WK, [datSalesOrder].[OrderDate]) >= 45 THEN ( [lkpTimeZone].[UTCOffset] )
+       --                         ELSE ( ( [lkpTimeZone].[UTCOffset] ) + 1 )
+       --	END, [datSalesOrder].[OrderDate])
+       ) AS [RefundedTotalPrice]
+     , [datSalesOrderDetail].[RefundedTotalQuantity]
+     , [datSalesOrder].[FulfillmentNumber]
+     , [datSalesOrderDetail].[IsRefundedFlag]
+     , [datSalesOrderDetail].[RefundedSalesOrderDetailGUID]
+     , [datSalesOrderDetail].[PreviousClientMembershipGUID]
+     , [datSalesOrderDetail].[NewCenterID]
+     , [datSalesOrder].[IsVoidedFlag]
+     , [datSalesOrder].[IsClosedFlag]
+     , [datSalesOrder].[RegisterCloseGUID]
+     , [datSalesOrder].[IsWrittenOffFlag]
+     , [datSalesOrder].[CreateUser]
+     , [datSalesOrder].[SalesOrderGUID]
+     , [datSalesOrderDetail].[SalesOrderDetailGUID]
+     , [datEmployee0].[EmployeePayrollID]
+     , [datEmployee1].[EmployeePayrollID] AS [Consultant EmployeePayrollID]
+     , [datEmployee2].[EmployeePayrollID] AS [Technician EmployeePayrollID]
 FROM [dbo].[datSalesOrder] AS [datSalesOrder]
 INNER JOIN [dbo].[cfgCenter] AS [cfgCenter] ON [datSalesOrder].[CenterID] = [cfgCenter].[CenterID]
 LEFT OUTER JOIN [dbo].[cfgCenter] AS [cfgCenterClient] ON [datSalesOrder].[ClientHomeCenterID] = [cfgCenterClient].[CenterID]
@@ -221,5 +220,5 @@ LEFT OUTER JOIN [dbo].[datEmployee] AS [datEmployee1] ON [datSalesOrderDetail].[
 LEFT OUTER JOIN [dbo].[datEmployee] AS [datEmployee2] ON [datSalesOrderDetail].[Employee2GUID] = [datEmployee2].[EmployeeGUID]
 LEFT OUTER JOIN [dbo].[datEmployee] AS [datEmployee3] ON [datSalesOrderDetail].[Employee3GUID] = [datEmployee3].[EmployeeGUID]
 LEFT OUTER JOIN [dbo].[datEmployee] AS [datEmployee4] ON [datSalesOrderDetail].[Employee4GUID] = [datEmployee4].[EmployeeGUID]
-WHERE(( [lkpSalesOrderType].[SalesOrderTypeDescriptionShort] = 'SO' AND [datSalesOrder].[IsClosedFlag] = 1 ) OR [lkpSalesOrderType].[SalesOrderTypeDescriptionShort] = 'MO' ) AND ( [datSalesOrder].[IsSurgeryReversalFlag] = 0 ) ;
+WHERE(( [lkpSalesOrderType].[SalesOrderTypeDescriptionShort] = 'SO' AND [datSalesOrder].[IsClosedFlag] = 1 ) OR [lkpSalesOrderType].[SalesOrderTypeDescriptionShort] = 'MO' ) AND [datSalesOrder].[IsSurgeryReversalFlag] = 0 ;
 GO
