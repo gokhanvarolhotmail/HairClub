@@ -4018,6 +4018,7 @@ WHEN MATCHED THEN
 	, [t].[Lead_ID_18_dig__c] = [t].[Lead_ID_18_dig__c]
 	, [t].[Initial_Campaign_Source__c] = [t].[Initial_Campaign_Source__c]
 	, [t].[Landing_Page_Form_Submitted_Date__c] = [t].[Landing_Page_Form_Submitted_Date__c]
+	, [t].[Personal_Photo__c] = [t].[Personal_Photo__c]
 WHEN NOT MATCHED THEN
 	INSERT(
 	[Id]
@@ -4156,6 +4157,7 @@ WHEN NOT MATCHED THEN
 	, [Lead_ID_18_dig__c]
 	, [Initial_Campaign_Source__c]
 	, [Landing_Page_Form_Submitted_Date__c]
+	, [Personal_Photo__c]
 	)
 	VALUES(
 	[s].[Id]
@@ -4294,6 +4296,7 @@ WHEN NOT MATCHED THEN
 	, [s].[Lead_ID_18_dig__c]
 	, [s].[Initial_Campaign_Source__c]
 	, [s].[Landing_Page_Form_Submitted_Date__c]
+	, [s].[Personal_Photo__c]
 	)
 OPTION(RECOMPILE) ;
 
@@ -6257,6 +6260,7 @@ WHEN MATCHED THEN
 	, [t].[Bosley_Siebel_Id__pc] = [t].[Bosley_Siebel_Id__pc]
 	, [t].[Contact_ID_18_dig__pc] = [t].[Contact_ID_18_dig__pc]
 	, [t].[Landing_Page_Form_Submitted_Date__pc] = [t].[Landing_Page_Form_Submitted_Date__pc]
+	, [t].[Personal_Photo__pc] = [t].[Personal_Photo__pc]
 WHEN NOT MATCHED THEN
 	INSERT(
 	[Id]
@@ -6465,6 +6469,7 @@ WHEN NOT MATCHED THEN
 	, [Bosley_Siebel_Id__pc]
 	, [Contact_ID_18_dig__pc]
 	, [Landing_Page_Form_Submitted_Date__pc]
+	, [Personal_Photo__pc]
 	)
 	VALUES(
 	[s].[Id]
@@ -6673,6 +6678,7 @@ WHEN NOT MATCHED THEN
 	, [s].[Bosley_Siebel_Id__pc]
 	, [s].[Contact_ID_18_dig__pc]
 	, [s].[Landing_Page_Form_Submitted_Date__pc]
+	, [s].[Personal_Photo__pc]
 	)
 OPTION(RECOMPILE) ;
 
@@ -6857,6 +6863,7 @@ WHEN MATCHED THEN
 	, [t].[Bosley_Siebel_Id__c] = [t].[Bosley_Siebel_Id__c]
 	, [t].[Contact_ID_18_dig__c] = [t].[Contact_ID_18_dig__c]
 	, [t].[Landing_Page_Form_Submitted_Date__c] = [t].[Landing_Page_Form_Submitted_Date__c]
+	, [t].[Personal_Photo__c] = [t].[Personal_Photo__c]
 WHEN NOT MATCHED THEN
 	INSERT(
 	[Id]
@@ -6939,6 +6946,7 @@ WHEN NOT MATCHED THEN
 	, [Bosley_Siebel_Id__c]
 	, [Contact_ID_18_dig__c]
 	, [Landing_Page_Form_Submitted_Date__c]
+	, [Personal_Photo__c]
 	)
 	VALUES(
 	[s].[Id]
@@ -7021,6 +7029,7 @@ WHEN NOT MATCHED THEN
 	, [s].[Bosley_Siebel_Id__c]
 	, [s].[Contact_ID_18_dig__c]
 	, [s].[Landing_Page_Form_Submitted_Date__c]
+	, [s].[Personal_Photo__c]
 	)
 OPTION(RECOMPILE) ;
 
