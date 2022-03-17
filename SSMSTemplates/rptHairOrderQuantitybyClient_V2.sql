@@ -368,34 +368,41 @@ GROUP BY [M].[MembershipDescription]
        , [ACCUM].[MembershipID]
 ORDER BY [M].[MembershipDescription] ;
 
-CREATE TABLE [#groupedMemberships] ( [membershipId] INT, [membershipDescriptionShort] NVARCHAR(MAX), [membershipDescription] NVARCHAR(MAX), [membershipGroup] NVARCHAR(MAX), [MaxVal] INT ) ;
+CREATE TABLE [#groupedMemberships] ( [membershipId] INT, [membershipDescriptionShort] NVARCHAR(128), [membershipDescription] NVARCHAR(128), [MaxVal] INT ) ;
 
 --- Insert membership values
-INSERT INTO [#groupedMemberships]( [membershipId], [membershipDescriptionShort], [membershipDescription], [membershipGroup], [MaxVal] )
-VALUES( 22, 'BASIC', 'Basic', 'Basic', 1 )
-    , ( 30, 'DIA', 'Diamond', 'Diamond', 2 )
-    , ( 31, 'DIASOL', 'Diamond Solutions', 'Diamond', 2 )
-    , ( 24, 'BRZ', 'Bronze', 'Bronze', 1 )
-    , ( 12, 'HCFK', 'Hair Club For Kids', 'HCFK', 1 )
-    , ( 65, 'EMRLD', 'Emerald', 'Emerald', 1 )
-    , ( 290, 'EMPLOYRET', 'Employee-Retail', 'EmployeeRetail', 1 )
-    , ( 34, 'EXE', 'Executive', 'Executive', 3 )
-    , ( 28, 'GLD', 'Gold', 'Gold', 2 )
-    , ( 29, 'GLDSOL', 'Gold Solutions', 'Gold', 2 )
-    , ( 32, 'PLA', 'Platinum', 'Platinum', 3 )
-    , ( 33, 'PLASOL', 'Platinum Solutions', 'Platinum', 3 )
-    , ( 36, 'PRS', 'Presidential', 'Presidential', 4 )
-    , ( 63, 'RUBY', 'Ruby', 'Ruby', 1 )
-    , ( 95, 'RUBY', 'Ruby Plus Transitional', 'Ruby', 1 )
-    , ( 67, 'SAPPHIRE', 'Sapphire', 'Sapphire', 2 )
-    , ( 26, 'SIL', 'Silver', 'Silver', 1 )
-    , ( 10, 'TRADITION', 'Xtrands+ Initial', 'Xtrands+', 1 )
-    , ( 5, 'GRADSOL12', 'Xtrands+ Initial 12 Solutions', 'Xtrands+', 1 )
-    , ( 3, 'GRAD', 'Xtrands+ Initial 6', 'Xtrands+', 1 )
-    , ( 47, 'GRDSV', 'Xtrands+ Initial 6', 'Xtrands+', 1 )
-    , ( 285, 'GRDSV', 'Xtrands+ Initial 6 EZPAY', 'Xtrands+', 1 )
-    , ( 4, 'GRDSV', 'Xtrands+ Initial 6 Solutions', 'Xtrands+', 1 )
-    , ( 48, 'GRDSVSOL', 'Xtrands+ Initial 6 Solutions', 'Xtrands+', 1 ) ;
+INSERT INTO [#groupedMemberships]( [membershipId], [membershipDescriptionShort], [membershipDescription], [MaxVal] )
+SELECT
+    CAST([t].[membershipId] AS INT) AS [membershipId]
+  , CAST([t].[membershipDescriptionShort] AS NVARCHAR(MAX)) AS [membershipDescriptionShort]
+  , CAST([t].[membershipDescription] AS NVARCHAR(MAX)) AS [membershipDescription]
+  , CAST([t].[MaxVal] AS INT) AS [MaxVal]
+FROM( VALUES( 22, N'BASIC', N'Basic', 1 )
+          , ( 30, N'DIA', N'Diamond', 2 )
+          , ( 31, N'DIASOL', N'Diamond Solutions', 2 )
+          , ( 24, N'BRZ', N'Bronze', 1 )
+          , ( 12, N'HCFK', N'Hair Club For Kids', 1 )
+          , ( 65, N'EMRLD', N'Emerald', 1 )
+          , ( 290, N'EMPLOYRET', N'Employee-Retail', 1 )
+          , ( 34, N'EXE', N'Executive', 3 )
+          , ( 28, N'GLD', N'Gold', 2 )
+          , ( 29, N'GLDSOL', N'Gold Solutions', 2 )
+          , ( 32, N'PLA', N'Platinum', 3 )
+          , ( 33, N'PLASOL', N'Platinum Solutions', 3 )
+          , ( 36, N'PRS', N'Presidential', 4 )
+          , ( 63, N'RUBY', N'Ruby', 1 )
+          , ( 95, N'RUBY', N'Ruby Plus Transitional', 1 )
+          , ( 67, N'SAPPHIRE', N'Sapphire', 2 )
+          , ( 26, N'SIL', N'Silver', 1 )
+          , ( 10, N'TRADITION', N'Xtrands+ Initial', 1 )
+          , ( 5, N'GRADSOL12', N'Xtrands+ Initial 12 Solutions', 1 )
+          , ( 3, N'GRAD', N'Xtrands+ Initial 6', 1 )
+          , ( 47, N'GRDSV', N'Xtrands+ Initial 6', 1 )
+          , ( 285, N'GRDSV', N'Xtrands+ Initial 6 EZPAY', 1 )
+          , ( 4, N'GRDSV', N'Xtrands+ Initial 6 Solutions', 1 )
+          , ( 48, N'GRDSVSOL', N'Xtrands+ Initial 6 Solutions', 1 )
+          , ( 18, N'ACQUIRED', N'ACQUIRED', 2 )
+          , ( 77, N'ACQSOL', N'ACQUIRED Solutions', 2 )) AS [t]( [membershipId], [membershipDescriptionShort], [membershipDescription], [MaxVal] ) ;
 
 -- Order Avail for Next App
 -- If Cent exists true
