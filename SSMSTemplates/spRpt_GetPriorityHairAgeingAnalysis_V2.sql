@@ -16,13 +16,15 @@ SAMPLE EXECUTION:
 
 EXEC spRpt_GetPriorityHairAgeingAnalysis '1/1/2020', '4/30/2020'the
 ***********************************************************************/
-CREATE PROCEDURE [dbo].[spRpt_GetPriorityHairAgeingAnalysis_V2]
+ALTER PROCEDURE [dbo].[spRpt_GetPriorityHairAgeingAnalysis_V2]
     @StartDate DATETIME
   , @EndDate   DATETIME
 AS
 SET FMTONLY OFF ;
 
 SET NOCOUNT ON ;
+
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
 
 CREATE TABLE [#HairSystem]
 (
@@ -58,8 +60,8 @@ SELECT
   , [tz].[UTCOffset]
   , [tz].[UsesDayLightSavingsFlag]
   , [tz].[IsActiveFlag]
-  , ( SELECT [OutVal] FROM [HairClubCMS].[dbo].[GetUTCFromLocalInline](@StartDate, [tz].[UTCOffset], [tz].[UsesDayLightSavingsFlag]) ) AS [UTCStartDate]
-  , ( SELECT [OutVal] FROM [HairClubCMS].[dbo].[GetUTCFromLocalInline](DATEADD(SECOND, 86399, @EndDate), [tz].[UTCOffset], [tz].[UsesDayLightSavingsFlag]) ) AS [UTCEndDate]
+  , [HairClubCMS].[dbo].[GetUTCFromLocal](@StartDate, [tz].[UTCOffset], [tz].[UsesDayLightSavingsFlag]) AS [UTCStartDate]
+  , [HairClubCMS].[dbo].[GetUTCFromLocal](DATEADD(SECOND, 86399, @EndDate), [tz].[UTCOffset], [tz].[UsesDayLightSavingsFlag]) AS [UTCEndDate]
 INTO [#UTCDates]
 FROM [HairClubCMS].[dbo].[lkpTimeZone] AS [tz]
 WHERE [tz].[IsActiveFlag] = 1
