@@ -54,8 +54,8 @@ SELECT
   , [c].[SKU]
   , [c].[Product Description]
 FROM [dbo].[cfgSalesCodeCenter] AS [a]
-JOIN [dbo].[cfgSalesCode] AS [b] ON [b].[SalesCodeID] = [a].[SalesCodeID]
-JOIN [#temp] AS [c] ON [b].[SalesCodeDescription] = [c].[Product Description]
+INNER JOIN [dbo].[cfgSalesCode] AS [b] ON [b].[SalesCodeID] = [a].[SalesCodeID]
+INNER JOIN [#temp] AS [c] ON [b].[SalesCodeDescription] = [c].[Product Description]
 WHERE [a].[CenterID] IN (1091, 1098) ;
 GO
 RETURN ;
@@ -63,8 +63,8 @@ RETURN ;
 UPDATE [b]
 SET [b].[IsActiveFlag] = 0
 FROM [dbo].[cfgSalesCodeCenter] AS [a]
-JOIN [dbo].[cfgSalesCode] AS [b] ON [b].[SalesCodeID] = [a].[SalesCodeID]
-JOIN [#temp] AS [c] ON [b].[SalesCodeDescription] = [c].[Product Description]
+INNER JOIN [dbo].[cfgSalesCode] AS [b] ON [b].[SalesCodeID] = [a].[SalesCodeID]
+INNER JOIN [#temp] AS [c] ON [b].[SalesCodeDescription] = [c].[Product Description]
 WHERE [a].[CenterID] IN (1091, 1098) ;
 GO
 RETURN ;
@@ -72,7 +72,7 @@ RETURN ;
 UPDATE [a]
 SET [a].[IsActiveFlag] = 0
 FROM [dbo].[cfgSalesCodeCenter] AS [a]
-JOIN [dbo].[cfgSalesCode] AS [b] ON [b].[SalesCodeID] = [a].[SalesCodeID]
-JOIN [#temp] AS [c] ON [b].[SalesCodeDescription] = [c].[Product Description]
+INNER JOIN [dbo].[cfgSalesCode] AS [b] ON [b].[SalesCodeID] = [a].[SalesCodeID]
+INNER JOIN [#temp] AS [c] ON [b].[SalesCodeDescription] = [c].[Product Description]
 WHERE [a].[CenterID] IN (1091, 1098) ;
 GO
