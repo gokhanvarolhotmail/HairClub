@@ -102,6 +102,6 @@ INNER JOIN [dbo].[datPurchaseOrder] AS [po] ON [pod].[PurchaseOrderGUID] = [po].
 WHERE EXISTS ( SELECT 1 FROM [#HairSystemOrderNumber] AS [h] WHERE [h].[HairSystemOrderNumber] = [hso].[HairSystemOrderNumber] )
 OPTION( RECOMPILE ) ;
 GO
-COMMIT ;
+-- COMMIT ;
 
-ROLLBACK ;
+-- ROLLBACK ;
