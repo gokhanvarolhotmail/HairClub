@@ -2476,6 +2476,14 @@ FROM (VALUES
 [vdata] ([TableName], [ColumnName], [HC_BI_SFDC_ColumnId], [SalesForceImport_ColumnId], [HC_BI_SFDC_ColumnDef], [SalesForceImport_ColumnDef], [HC_BI_SFDC_AllCount], [SalesForceImport_AllCount], [HC_BI_SFDC_NotNullCount], [SalesForceImport_NotNullCount])
 
 SELECT
+DISTINCT
+    [TableName]
+  , [HC_BI_SFDC_AllCount]
+  , [SalesForceImport_AllCount]
+FROM [##SalesForceMapping] 
+ORDER BY [TableName]
+
+SELECT
     [TableName]
   , [ColumnName]
   , [HC_BI_SFDC_ColumnId]
