@@ -90,6 +90,7 @@ ORDER BY ISNULL([a].[ObjectName], [b].[ObjectName])
        , ISNULL([a].[ColumnId], [b].[ColumnId])
        , ISNULL([a].[ColumnName], [b].[ColumnName]) ;
 GO
+
 IF OBJECT_ID('[tempdb]..[##HC_BI_SFDC_Cnt]') IS NOT NULL
     DROP TABLE [##HC_BI_SFDC_Cnt] ;
 
@@ -103,9 +104,9 @@ CREATE TABLE [##SalesForceImport_Cnt] ( [TableName] VARCHAR(128) NOT NULL, [Colu
 SELECT CONCAT(CAST(NULL AS NVARCHAR(MAX)), 'INSERT [##HC_BI_SFDC_Cnt]
 SELECT CAST(''', [tABLEnAME], ''' AS VARCHAR(128)) AS [TableName], [ColumnName], [Cnt] AS [AllCount], [NotNullCount]
 FROM(SELECT COUNT(1) AS [Cnt],
-	', STRING_AGG(CONCAT(CAST(NULL AS NVARCHAR(MAX)), 'MAX(CASE WHEN ', QUOTENAME([ColumnName]), ' IS NOT NULL THEN 1 ELSE 0 END) AS ', QUOTENAME([COLUMNNAME])), ',
+	', STRING_AGG(CONCAT(CAST(NULL AS NVARCHAR(MAX)), 'SUM(CASE WHEN ', QUOTENAME([ColumnName]), ' IS NOT NULL THEN 1 ELSE 0 END) AS ', QUOTENAME([COLUMNNAME])), ',
 	')WITHIN GROUP(ORDER BY [HC_BI_SFDC_ColumnId]), '
-FROM [HC_BI_SFDC].[dbo].', QUOTENAME([TableName]), ' [k]) [k]
+FROM [HC_BI_SFDC].[dbo].', QUOTENAME([TableName]), ' [k] WITH(NOLOCK)) [k]
 CROSS APPLY (SELECT [ColumnName], [NotNullCount]
 FROM( VALUES
 	', STRING_AGG(CONCAT(CAST(NULL AS NVARCHAR(MAX)), '(''', [ColumnName], ''', ', QUOTENAME([ColumnName]), ')'), ',
@@ -118,9 +119,9 @@ GROUP BY [TableName] ;
 SELECT CONCAT(CAST(NULL AS NVARCHAR(MAX)), 'INSERT [##SalesForceImport_Cnt]
 SELECT CAST(''', [tABLEnAME], ''' AS VARCHAR(128)) AS [TableName], [ColumnName], [Cnt] AS [AllCount], [NotNullCount]
 FROM(SELECT COUNT(1) AS [Cnt],
-	', STRING_AGG(CONCAT(CAST(NULL AS NVARCHAR(MAX)), 'MAX(CASE WHEN ', QUOTENAME([ColumnName]), ' IS NOT NULL THEN 1 ELSE 0 END) AS ', QUOTENAME([COLUMNNAME])), ',
+	', STRING_AGG(CONCAT(CAST(NULL AS NVARCHAR(MAX)), 'SUM(CASE WHEN ', QUOTENAME([ColumnName]), ' IS NOT NULL THEN 1 ELSE 0 END) AS ', QUOTENAME([COLUMNNAME])), ',
 	')WITHIN GROUP(ORDER BY [SalesForceImport_ColumnId]), '
-FROM [SalesForceImport].[SF].', QUOTENAME([TableName]), ' [k]) [k]
+FROM [SalesForceImport].[SF].', QUOTENAME([TableName]), ' [k] WITH(NOLOCK)) [k]
 CROSS APPLY (SELECT [ColumnName], [NotNullCount]
 FROM( VALUES
 	', STRING_AGG(CONCAT(CAST(NULL AS NVARCHAR(MAX)), '(''', [ColumnName], ''', ', QUOTENAME([ColumnName]), ')'), ',
@@ -129,3 +130,22 @@ FROM( VALUES
 FROM [##SalesForceMapping]
 WHERE [SalesForceImport_ColumnId] IS NOT NULL
 GROUP BY [TableName] ;
+
+GO
+SELECT
+    [sm].[TableName]
+  , [sm].[ColumnName]
+  , [sm].[HC_BI_SFDC_ColumnId]
+  , [sm].[SalesForceImport_ColumnId]
+  , [sm].[HC_BI_SFDC_ColumnDef]
+  , [sm].[SalesForceImport_ColumnDef]
+  , [h].[AllCount] AS [HC_BI_SFDC_AllCount]
+  , [s].[AllCount] AS [SalesForceImport_AllCount]
+  , [h].[NotNullCount] AS [HC_BI_SFDC_NotNullCount]
+  , [s].[NotNullCount] AS [SalesForceImport_NotNullCount]
+FROM [##SalesForceMapping] AS [sm]
+LEFT JOIN [##HC_BI_SFDC_Cnt] AS [h] ON [h].[TableName] = [sm].[TableName] AND [h].[ColumnName] = [sm].[ColumnName] AND [sm].[HC_BI_SFDC_ColumnId] IS NOT NULL
+LEFT JOIN [##SalesForceImport_Cnt] AS [s] ON [s].[TableName] = [sm].[TableName] AND [s].[ColumnName] = [sm].[ColumnName] AND [sm].[SalesForceImport_ColumnId] IS NOT NULL
+ORDER BY [sm].[TableName]
+       , [sm].[ColumnName] ;
+GO
