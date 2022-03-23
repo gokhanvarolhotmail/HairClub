@@ -1,4 +1,4 @@
-/* CreateDate: 10/26/2011 12:13:26.680 , ModifyDate: 09/10/2021 20:31:47.870 */
+/* CreateDate: 10/26/2011 12:13:26.680 , ModifyDate: 03/16/2022 20:27:05.337 */
 GO
 CREATE TABLE [bi_cms_stage].[FactSalesTransaction](
 	[DataPkgKey] [int] NOT NULL,

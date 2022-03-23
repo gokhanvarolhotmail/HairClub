@@ -1,4 +1,4 @@
-/* CreateDate: 10/01/2018 08:53:16.753 , ModifyDate: 03/01/2022 09:00:59.937 */
+/* CreateDate: 10/01/2018 08:53:16.753 , ModifyDate: 03/16/2022 10:18:30.623 */
 GO
 CREATE TABLE [dbo].[transdata](
 	[userid] [int] NOT NULL,

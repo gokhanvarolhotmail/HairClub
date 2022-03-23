@@ -1,4 +1,4 @@
-/* CreateDate: 10/03/2019 23:03:41.987 , ModifyDate: 10/03/2019 23:03:47.227 */
+/* CreateDate: 03/17/2022 11:57:07.203 , ModifyDate: 03/17/2022 11:57:17.227 */
 GO
 CREATE TABLE [bi_cms_dds].[DimSecurityElement](
 	[SecurityElementKey] [int] NOT NULL,

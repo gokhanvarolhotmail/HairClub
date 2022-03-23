@@ -1,4 +1,4 @@
-/* CreateDate: 03/06/2022 17:23:58.877 , ModifyDate: 03/06/2022 17:23:58.877 */
+/* CreateDate: 03/17/2022 15:12:22.880 , ModifyDate: 03/17/2022 15:12:22.880 */
 GO
 CREATE PROCEDURE [SF].[sp_Contact_Merge]
 	@ROWCOUNT BIGINT = NULL OUTPUT
@@ -95,6 +95,7 @@ WHEN MATCHED THEN
 	, [t].[Bosley_Siebel_Id__c] = [t].[Bosley_Siebel_Id__c]
 	, [t].[Contact_ID_18_dig__c] = [t].[Contact_ID_18_dig__c]
 	, [t].[Landing_Page_Form_Submitted_Date__c] = [t].[Landing_Page_Form_Submitted_Date__c]
+	, [t].[Personal_Photo__c] = [t].[Personal_Photo__c]
 WHEN NOT MATCHED THEN
 	INSERT(
 	[Id]
@@ -177,6 +178,7 @@ WHEN NOT MATCHED THEN
 	, [Bosley_Siebel_Id__c]
 	, [Contact_ID_18_dig__c]
 	, [Landing_Page_Form_Submitted_Date__c]
+	, [Personal_Photo__c]
 	)
 	VALUES(
 	[s].[Id]
@@ -259,6 +261,7 @@ WHEN NOT MATCHED THEN
 	, [s].[Bosley_Siebel_Id__c]
 	, [s].[Contact_ID_18_dig__c]
 	, [s].[Landing_Page_Form_Submitted_Date__c]
+	, [s].[Personal_Photo__c]
 	)
 OPTION(RECOMPILE) ;
 

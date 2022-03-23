@@ -1,4 +1,4 @@
-/* CreateDate: 10/03/2019 23:03:41.497 , ModifyDate: 06/16/2021 23:26:52.603 */
+/* CreateDate: 03/17/2022 11:57:06.547 , ModifyDate: 03/17/2022 11:57:16.207 */
 GO
 CREATE TABLE [bi_cms_dds].[DimSalesCode](
 	[SalesCodeKey] [int] NOT NULL,
@@ -32,18 +32,4 @@ CREATE TABLE [bi_cms_dds].[DimSalesCode](
 	[SalesCodeKey] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [FG1]
 ) ON [FG1]
-GO
-CREATE NONCLUSTERED INDEX [IDX_DimSalesCode_RowIsCurrent_SalesCodeSSID_SalesCodeKey] ON [bi_cms_dds].[DimSalesCode]
-(
-	[SalesCodeSSID] ASC,
-	[RowIsCurrent] ASC,
-	[RowIsInferred] ASC
-)
-INCLUDE([SalesCodeKey]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-GO
-CREATE NONCLUSTERED INDEX [IDX_DimSalesCode_SalesCodeKey] ON [bi_cms_dds].[DimSalesCode]
-(
-	[SalesCodeKey] ASC
-)
-INCLUDE([SalesCodeSSID],[SalesCodeDescription],[SalesCodeTypeDescription],[ProductVendorDescription],[Barcode],[PriceDefault],[ServiceDuration]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO

@@ -1,4 +1,4 @@
-/* CreateDate: 10/03/2019 23:03:42.490 , ModifyDate: 10/04/2019 00:27:37.050 */
+/* CreateDate: 03/17/2022 11:57:08.540 , ModifyDate: 03/17/2022 11:57:19.137 */
 GO
 CREATE TABLE [bi_cms_dds].[FactSalesTransactionTender](
 	[OrderDateKey] [int] NOT NULL,
@@ -25,10 +25,4 @@ CREATE TABLE [bi_cms_dds].[FactSalesTransactionTender](
 	[SalesOrderTenderKey] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [FG1]
 ) ON [FG1]
-GO
-CREATE NONCLUSTERED INDEX [IDX_FactSalesTransactionTender_SalesOrderTenderKey] ON [bi_cms_dds].[FactSalesTransactionTender]
-(
-	[SalesOrderTenderKey] ASC
-)
-INCLUDE([OrderDateKey],[SalesOrderKey],[SalesOrderTypeKey],[CenterKey],[ClientKey],[MembershipKey],[ClientMembershipKey],[TenderTypeKey],[TenderAmount]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO

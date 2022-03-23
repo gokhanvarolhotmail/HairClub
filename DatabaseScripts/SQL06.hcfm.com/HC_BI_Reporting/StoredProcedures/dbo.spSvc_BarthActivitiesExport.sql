@@ -1,4 +1,4 @@
-/* CreateDate: 04/10/2014 12:07:16.477 , ModifyDate: 03/11/2022 07:32:50.743 */
+/* CreateDate: 04/10/2014 12:07:16.477 , ModifyDate: 03/18/2022 11:22:28.963 */
 GO
 --EXEC [dbo].[spSvc_BarthActivitiesExport] NULL, NULL
 CREATE PROCEDURE [dbo].[spSvc_BarthActivitiesExport]
@@ -204,7 +204,8 @@ WHERE ( ctr.CenterSSID IN ( 745, 746, 747, 748, 804, 805, 806, 807, 811, 814, 81
 	 OR ( ctr.CenterSSID = 100 AND c.AgencyName IN ( 'Barth', 'Jane Creative' ) ) )
 	 AND ( t.ActivityDate >= @StartDate)
 	 AND t.Action__c IN ('Appointment','Be Back','In Hose')
-	 AND l.isValid = 1 AND l.IsDeleted = 0
+	 AND l.isValid = 1
+	 AND l.IsDeleted = 0
 	 AND t.Result__c NOT IN ('Show Sale','Show No Sale')
 
 INSERT INTO #Activities
@@ -357,7 +358,8 @@ WHERE ( ctr.CenterSSID IN ( 745, 746, 747, 748, 804, 805, 806, 807, 811, 814, 81
 	 OR ( ctr.CenterSSID = 100 AND c.AgencyName IN ( 'Barth', 'Jane Creative' ) ) )
 	 AND ( t.ActivityDate >= @StartDate)
 	 AND t.Action__c IN ('Appointment','Be Back','In Hose')
-	 AND l.isValid = 1 AND l.IsDeleted = 0
+	 AND l.isValid = 1
+	 AND l.IsDeleted = 0
 	AND (t.Result__c IN ('Show Sale','Show No Sale') AND de.[EmployeeFullNameCalc] IS NOT NULL)
 
 

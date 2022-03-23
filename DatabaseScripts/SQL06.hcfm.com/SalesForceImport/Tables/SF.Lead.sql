@@ -1,4 +1,4 @@
-/* CreateDate: 03/04/2022 08:04:46.070 , ModifyDate: 03/08/2022 08:42:53.470 */
+/* CreateDate: 03/04/2022 08:04:46.070 , ModifyDate: 03/17/2022 14:26:11.363 */
 GO
 CREATE TABLE [SF].[Lead](
 	[Id] [varchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
@@ -137,6 +137,7 @@ CREATE TABLE [SF].[Lead](
 	[Lead_ID_18_dig__c] [varchar](1300) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[Initial_Campaign_Source__c] [varchar](8000) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[Landing_Page_Form_Submitted_Date__c] [varchar](8000) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[Personal_Photo__c] [varchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
  CONSTRAINT [pk_Lead] PRIMARY KEY CLUSTERED
 (
 	[Id] ASC

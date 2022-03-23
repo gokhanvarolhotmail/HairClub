@@ -1,4 +1,4 @@
-/* CreateDate: 10/03/2019 23:03:43.693 , ModifyDate: 10/03/2019 23:03:43.693 */
+/* CreateDate: 03/17/2022 11:57:11.717 , ModifyDate: 03/17/2022 11:57:11.717 */
 GO
 CREATE VIEW [bi_cms_dds].[vwDimHairSystemHairColor]
 AS

@@ -1,4 +1,4 @@
-/* CreateDate: 10/03/2019 23:03:40.890 , ModifyDate: 10/03/2019 23:03:40.890 */
+/* CreateDate: 03/17/2022 11:57:05.957 , ModifyDate: 03/17/2022 11:57:05.957 */
 GO
 create procedure [sp_MSdel_bi_cms_ddsDimHairSystemOrderStatus]
 		@pkc1 int

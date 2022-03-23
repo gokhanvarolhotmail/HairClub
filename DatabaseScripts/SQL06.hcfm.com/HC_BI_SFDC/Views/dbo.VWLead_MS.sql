@@ -1,4 +1,4 @@
-/* CreateDate: 08/13/2021 18:01:00.883 , ModifyDate: 09/01/2021 07:28:10.423 */
+/* CreateDate: 03/17/2022 16:30:59.917 , ModifyDate: 03/18/2022 11:18:57.203 */
 GO
 CREATE VIEW [dbo].[VWLead_MS]
 AS
@@ -84,7 +84,7 @@ With vwdimLead_CTE as (
            LeadEmail,
            LeadPhone,
            LeadMobilePhone,
-           Isvalid,
+           1 as Isvalid,
            ExternalID,
            LeadCreateDateEst,
            ConvertedContactId,
@@ -96,8 +96,8 @@ With vwdimLead_CTE as (
            dl.UpdateUser
     from HC_BI_SFDC.synapse_pool.FactLeadTracking dl
              left join HC_BI_SFDC.Synapse_pool.DimCampaign dc on dl.OriginalCampaignKey = dc.CampaignKey
-    where convert(date, dl.LeadCreateDateEst) > '2021-06-15'
-      and month(dl.LeadCreateDateEst) <= month(dateadd(month, -1, dateadd(day, -1, getdate())))
+    where convert(date, dl.LeadCreateDateEST) > '2021-06-15'
+      and month(dl.LeadCreateDateEST) <= month(dateadd(month, -1, dateadd(day, -1, getdate())))
     union all
     select Id,
            CenterNumber__c,
@@ -145,7 +145,7 @@ With vwdimLead_CTE as (
            LastModifiedById
     from HC_BI_SFDC.dbo.Lead dl
     where month(convert(date, dl.CreatedDate)) = month(dateadd(day, -1, getdate()))
-      and year(convert(date, dl.CreatedDateEst)) = year(dateadd(day, -1, getdate()))
+      and year(convert(date, dl.CreatedDate)) = year(dateadd(day, -1, getdate()))
 )
 select Id,
        CenterNumber__c,

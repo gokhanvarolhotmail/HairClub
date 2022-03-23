@@ -1,4 +1,4 @@
-/* CreateDate: 10/03/2019 23:03:40.213 , ModifyDate: 10/04/2019 00:13:52.803 */
+/* CreateDate: 03/17/2022 11:57:04.633 , ModifyDate: 03/17/2022 12:55:47.260 */
 GO
 CREATE TABLE [bi_cms_dds].[DimClientMembership](
 	[ClientMembershipKey] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
@@ -57,58 +57,14 @@ CREATE NONCLUSTERED INDEX [IDX_DimClientMembership_RowIsCurrent_ClientMembership
 )
 INCLUDE([MembershipKey]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [FG1]
 GO
-CREATE NONCLUSTERED INDEX [IX_DimClientMembership_CenterKey] ON [bi_cms_dds].[DimClientMembership]
-(
-	[CenterKey] ASC
-)
-INCLUDE([ClientMembershipKey]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-GO
-CREATE NONCLUSTERED INDEX [IX_DimClientMembership_CenterKey_INCL] ON [bi_cms_dds].[DimClientMembership]
-(
-	[CenterKey] ASC
-)
-INCLUDE([ClientMembershipKey],[MembershipKey]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [FG1]
-GO
 CREATE NONCLUSTERED INDEX [IX_DimClientMembership_ClientKeyINCL] ON [bi_cms_dds].[DimClientMembership]
 (
 	[ClientKey] ASC
 )
 INCLUDE([ClientMembershipKey],[ClientMembershipStatusSSID],[ClientMembershipContractPrice],[ClientMembershipBeginDate]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [FG1]
 GO
-CREATE NONCLUSTERED INDEX [IX_DimClientMembership_ClientMembershipDates] ON [bi_cms_dds].[DimClientMembership]
-(
-	[ClientMembershipBeginDate] ASC,
-	[ClientMembershipEndDate] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-GO
-CREATE NONCLUSTERED INDEX [IX_DimClientMembership_ClientMembershipKey] ON [bi_cms_dds].[DimClientMembership]
-(
-	[ClientMembershipKey] ASC
-)
-INCLUDE([ClientKey],[MembershipKey],[ClientMembershipBeginDate],[ClientMembershipEndDate],[CenterSSID]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-GO
-CREATE NONCLUSTERED INDEX [ix_DimClientMembership_ClientMembershipSSID] ON [bi_cms_dds].[DimClientMembership]
-(
-	[ClientMembershipSSID] ASC
-)
-INCLUDE([MembershipSSID]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-GO
-CREATE NONCLUSTERED INDEX [IX_DimClientMembership_ClientMembershipStatusSSID] ON [bi_cms_dds].[DimClientMembership]
-(
-	[ClientMembershipStatusSSID] ASC,
-	[MembershipSSID] ASC,
-	[ClientMembershipEndDate] ASC
-)
-INCLUDE([ClientMembershipSSID]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-GO
 CREATE NONCLUSTERED INDEX [IX_DimClientMembership_ClientSSID] ON [bi_cms_dds].[DimClientMembership]
 (
 	[ClientSSID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [FG1]
-GO
-CREATE NONCLUSTERED INDEX [IX_DimClientMembership_MembershipKey] ON [bi_cms_dds].[DimClientMembership]
-(
-	[MembershipKey] ASC
-)
-INCLUDE([CenterKey],[ClientMembershipIdentifier]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [FG1]
 GO

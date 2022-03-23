@@ -1,6 +1,7 @@
-/* CreateDate: 10/03/2019 23:03:43.290 , ModifyDate: 05/06/2021 10:10:56.150 */
+/* CreateDate: 03/17/2022 11:57:10.890 , ModifyDate: 03/17/2022 11:57:10.890 */
 GO
-CREATE VIEW [bi_cms_dds].[vwDimSalesCode] as
+CREATE view [bi_cms_dds].[vwDimSalesCode]
+as
 -------------------------------------------------------------------------
 -- [vwDimSalesCode] is used to retrieve a
 -- list of Sales Codes

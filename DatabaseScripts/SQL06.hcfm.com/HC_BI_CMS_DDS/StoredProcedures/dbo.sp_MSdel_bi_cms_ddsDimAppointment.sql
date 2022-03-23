@@ -1,4 +1,4 @@
-/* CreateDate: 10/03/2019 23:03:40.097 , ModifyDate: 10/03/2019 23:03:40.097 */
+/* CreateDate: 03/17/2022 11:57:04.610 , ModifyDate: 03/17/2022 11:57:04.610 */
 GO
 create procedure [dbo].[sp_MSdel_bi_cms_ddsDimAppointment]
 		@pkc1 int

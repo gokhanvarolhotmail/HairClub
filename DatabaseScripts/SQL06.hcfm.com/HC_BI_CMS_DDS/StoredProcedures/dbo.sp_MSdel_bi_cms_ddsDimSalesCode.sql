@@ -1,4 +1,4 @@
-/* CreateDate: 10/03/2019 23:03:41.523 , ModifyDate: 10/03/2019 23:03:41.523 */
+/* CreateDate: 03/17/2022 11:57:06.580 , ModifyDate: 03/17/2022 11:57:06.580 */
 GO
 create procedure [sp_MSdel_bi_cms_ddsDimSalesCode]
 		@pkc1 int

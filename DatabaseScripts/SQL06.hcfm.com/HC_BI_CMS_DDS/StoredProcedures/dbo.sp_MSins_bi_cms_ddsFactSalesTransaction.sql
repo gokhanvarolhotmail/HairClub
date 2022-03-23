@@ -1,4 +1,4 @@
-/* CreateDate: 10/03/2019 23:03:42.427 , ModifyDate: 10/03/2019 23:03:42.427 */
+/* CreateDate: 03/17/2022 11:57:08.400 , ModifyDate: 03/17/2022 11:57:08.400 */
 GO
 create procedure [dbo].[sp_MSins_bi_cms_ddsFactSalesTransaction]
     @c1 int,

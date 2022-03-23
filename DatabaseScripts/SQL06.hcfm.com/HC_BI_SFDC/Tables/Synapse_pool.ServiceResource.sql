@@ -1,4 +1,4 @@
-/* CreateDate: 06/25/2021 17:17:15.023 , ModifyDate: 06/25/2021 17:17:15.023 */
+/* CreateDate: 03/21/2022 13:00:04.157 , ModifyDate: 03/21/2022 13:00:07.793 */
 GO
 CREATE TABLE [Synapse_pool].[ServiceResource](
 	[Id] [nvarchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,

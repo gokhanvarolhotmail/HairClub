@@ -1,4 +1,4 @@
-/* CreateDate: 02/24/2020 09:00:46.643 , ModifyDate: 03/11/2021 15:38:03.520 */
+/* CreateDate: 03/22/2022 08:10:59.083 , ModifyDate: 03/22/2022 08:10:59.083 */
 GO
 CREATE TABLE [dbo].[Consultation_Form__c](
 	[Id] [nvarchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
@@ -65,11 +65,4 @@ CREATE TABLE [dbo].[Consultation_Form__c](
 	[LastModifiedDate] [datetime] NULL,
 	[LastModifiedById] [nvarchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NULL
 ) ON [PRIMARY]
-GO
-SET ANSI_PADDING ON
-GO
-CREATE UNIQUE CLUSTERED INDEX [PK__Consulta__3214EC0761F26689] ON [dbo].[Consultation_Form__c]
-(
-	[Id] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO

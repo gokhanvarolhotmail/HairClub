@@ -1,4 +1,4 @@
-/* CreateDate: 10/03/2019 23:03:43.680 , ModifyDate: 10/03/2019 23:03:43.680 */
+/* CreateDate: 03/17/2022 11:57:11.627 , ModifyDate: 03/17/2022 11:57:11.627 */
 GO
 CREATE VIEW [bi_cms_dds].[vwDimHairSystemFrontalDensity]
 AS

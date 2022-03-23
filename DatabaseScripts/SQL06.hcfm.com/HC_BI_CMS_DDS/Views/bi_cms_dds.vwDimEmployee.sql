@@ -1,4 +1,4 @@
-/* CreateDate: 10/03/2019 23:03:43.603 , ModifyDate: 10/03/2019 23:03:43.603 */
+/* CreateDate: 03/17/2022 11:57:11.403 , ModifyDate: 03/17/2022 11:57:11.403 */
 GO
 CREATE VIEW [bi_cms_dds].[vwDimEmployee]
 AS

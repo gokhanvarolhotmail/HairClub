@@ -1,4 +1,4 @@
-/* CreateDate: 10/01/2012 15:33:39.483 , ModifyDate: 02/23/2021 13:20:20.887 */
+/* CreateDate: 10/01/2012 15:33:39.483 , ModifyDate: 03/15/2022 15:52:24.720 */
 GO
 CREATE VIEW [bi_cms_dds].[vwFactSalesConect]
 AS

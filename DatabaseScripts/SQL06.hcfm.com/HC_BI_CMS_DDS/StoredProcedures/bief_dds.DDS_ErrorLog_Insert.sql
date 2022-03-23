@@ -1,4 +1,4 @@
-/* CreateDate: 10/03/2019 23:03:43.057 , ModifyDate: 10/03/2019 23:03:43.057 */
+/* CreateDate: 03/17/2022 11:57:10.310 , ModifyDate: 03/17/2022 11:57:10.310 */
 GO
 CREATE PROCEDURE [bief_dds].[DDS_ErrorLog_Insert]
 			  @EventType				varchar(20) = NULL

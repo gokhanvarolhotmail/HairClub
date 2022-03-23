@@ -1,4 +1,4 @@
-/* CreateDate: 06/16/2021 18:17:41.447 , ModifyDate: 06/16/2021 18:17:41.447 */
+/* CreateDate: 03/21/2022 13:00:03.450 , ModifyDate: 03/21/2022 13:00:05.760 */
 GO
 CREATE TABLE [Synapse_pool].[DimCampaign](
 	[CampaignKey] [int] NULL,

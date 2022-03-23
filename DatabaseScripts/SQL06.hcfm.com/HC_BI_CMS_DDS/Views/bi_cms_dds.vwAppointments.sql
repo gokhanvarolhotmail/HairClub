@@ -1,4 +1,4 @@
-/* CreateDate: 10/03/2019 23:03:43.550 , ModifyDate: 10/03/2019 23:03:43.550 */
+/* CreateDate: 03/17/2022 11:57:11.233 , ModifyDate: 03/17/2022 11:57:11.233 */
 GO
 create VIEW [bi_cms_dds].[vwAppointments]
 AS

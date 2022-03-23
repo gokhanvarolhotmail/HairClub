@@ -1,4 +1,4 @@
-/* CreateDate: 01/14/2015 11:11:10.143 , ModifyDate: 06/29/2018 12:26:46.233 */
+/* CreateDate: 01/14/2015 11:11:10.143 , ModifyDate: 03/21/2022 08:57:56.743 */
 GO
 /*
 ==============================================================================
@@ -35,11 +35,12 @@ CHANGE HISTORY:
 ==============================================================================
 SAMPLE EXECUTION:
 
-EXEC [sprpt_XtrFlash] '6/1/2018', '7/1/2018','C', 2
+EXEC [sprpt_XtrFlash] '03/6/2022', '03/6/2022','C', 2
 EXEC [sprpt_XtrFlash] '6/1/2018', '7/1/2018','C', 3
 
 EXEC [sprpt_XtrFlash] '6/1/2018', '7/1/2018','F', 1
 EXEC [sprpt_XtrFlash] '6/1/2018', '7/1/2018','F', 3
+
 
 ==============================================================================
 */
@@ -391,9 +392,11 @@ END
 
 	/*****************************************************************/
 
-	SELECT CTR.CenterNumber AS 'Center'
-	,	CTR.CenterDescriptionNumber AS 'CenterName'
-	,	CT.CenterTypeDescriptionShort
+	SELECT
+	--CTR.CenterNumber AS 'Center'
+	--,	CTR.CenterDescriptionNumber AS 'CenterName'
+	--,
+	CT.CenterTypeDescriptionShort
 	,	CASE WHEN @sType = 'F' THEN  R.RegionDescription WHEN F.CenterNumber = 100 then 'Corporate(100)' ELSE CMA.CenterManagementAreaDescription END AS 'Region' --The report has all the drill-downs pointing to Region
 	,	CASE WHEN @sType = 'F' THEN  R.RegionSSID WHEN F.CenterNumber = 100 THEN 100 ELSE CMA.CenterManagementAreaSSID END  AS 'RegionID'
 	,	CASE WHEN @sType = 'F' THEN  R.RegionSortOrder WHEN F.CenterNumber = 100 THEN 100 ELSE CMA.CenterManagementAreaSortOrder END  AS 'RegionSortOrder'
@@ -427,8 +430,8 @@ END
 	FROM #Final F
 		INNER JOIN HC_BI_ENT_DDS.bi_ent_dds.DimCenter C
 			ON F.CenterNumber = C.CenterNumber
-		INNER JOIN #Centers CTR
-			ON CTR.CenterKey = C.CenterKey
+		--INNER JOIN #Centers CTR
+		--	ON CTR.CenterKey = C.CenterKey
 		INNER JOIN HC_BI_ENT_DDS.bi_ent_dds.DimCenterType CT
 			ON CT.CenterTypeKey = C.CenterTypeKey
 		LEFT JOIN HC_BI_ENT_DDS.bi_ent_dds.DimRegion R
@@ -447,9 +450,9 @@ END
 			ON F.CenterNumber = OPCP.CenterNumber
 		LEFT JOIN #ClosePCP CPCP
 			ON F.CenterNumber = CPCP.CenterNumber
-	GROUP BY CTR.CenterNumber
-	,	F.CenterNumber
-	,	CTR.CenterDescriptionNumber
+	GROUP BY-- CTR.CenterNumber	,
+	F.CenterNumber
+	--,	CTR.CenterDescriptionNumber
 	,	CT.CenterTypeDescriptionShort
 	,	R.RegionDescription
 	,	R.RegionSSID

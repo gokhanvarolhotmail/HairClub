@@ -1,4 +1,4 @@
-/* CreateDate: 06/24/2021 17:02:14.760 , ModifyDate: 06/24/2021 17:02:14.760 */
+/* CreateDate: 03/21/2022 13:00:03.503 , ModifyDate: 03/21/2022 13:00:05.777 */
 GO
 CREATE TABLE [Synapse_pool].[DimSystemUser](
 	[UserKey] [int] NULL,

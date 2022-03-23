@@ -1,4 +1,4 @@
-/* CreateDate: 07/27/2021 15:27:43.547 , ModifyDate: 03/07/2022 11:57:17.703 */
+/* CreateDate: 07/27/2021 15:27:43.547 , ModifyDate: 03/18/2022 14:58:34.293 */
 GO
 /***********************************************************************
 PROCEDURE:				spSvc_GetRefersionData
@@ -14,10 +14,10 @@ NOTES:
 ------------------------------------------------------------------------
 SAMPLE EXECUTION:
 
-EXEC spSvc_GetRefersionData ''
+EXEC spSvc_GetRefersionData  '{24D17F96-E80F-4465-88B9-540E7E6565A9}'
 ***********************************************************************/
 CREATE PROCEDURE [dbo].[spSvc_GetRefersionData](
-    @SessionID NVARCHAR(100)
+  @SessionID nvarchar(50)
 )
 AS
 BEGIN
@@ -28,6 +28,7 @@ BEGIN
 
     DECLARE @CurrentDate DATE
         , @TargetDate AS DATE;
+
 
 
     SET @CurrentDate = DATEADD(DAY, -1, @CurrentDate)
@@ -233,15 +234,15 @@ BEGIN
 
 -- Update Json
     DECLARE @RefersionLogID INT
-    DECLARE @first_name NVARCHAR(40)
-    DECLARE @last_name NVARCHAR(40)
-    DECLARE @email NVARCHAR(40)
-    DECLARE @discount_code NVARCHAR(20)
-    DECLARE @sku NVARCHAR(10)
-    DECLARE @price NVARCHAR(10)
-    DECLARE @quantity NVARCHAR(3)
-    DECLARE @currency_code NVARCHAR(10)
-    DECLARE @ip_address NVARCHAR(20)
+    DECLARE @first_name NVARCHAR(50)
+    DECLARE @last_name NVARCHAR(50)
+    DECLARE @email NVARCHAR(50)
+    DECLARE @discount_code NVARCHAR(50)
+    DECLARE @sku NVARCHAR(50)
+    DECLARE @price NVARCHAR(50)
+    DECLARE @quantity NVARCHAR(50)
+    DECLARE @currency_code NVARCHAR(50)
+    DECLARE @ip_address NVARCHAR(50)
     DECLARE @data NVARCHAR(4000)
 
 
@@ -268,25 +269,24 @@ BEGIN
     WHILE @@FETCH_STATUS = 0
         BEGIN
             SET @data = N'{
-    "items": [
+	"items": [
             {
             "price":' + @price + ',
             "quantity":' + @quantity + ',
             "sku": "' + @sku + '"
             }
     ],
-    "order_id": "' + CONVERT(VARCHAR, @RefersionLogID) + '",
-    "discount_code": "' + @discount_code + '",
-    "currency_code": "' + @currency_code + '",
+	"order_id": "' + CONVERT(varchar, @RefersionLogID) + '",
+	"discount_code": "' + CONVERT(varchar, @discount_code) + '",
+    "currency_code": "' + CONVERT(varchar, @currency_code) + '",
     "customer": {
-            "email": "' + @email + '",
-            "ip_address": "' + @ip_address + '",
-            "last_name": "' + @last_name + '",
-            "first_name": "' + @first_name + '"
+            "email": "' + CONVERT(varchar, @email) + '",
+            "ip_address": "' + CONVERT(varchar, @ip_address) + '",
+            "last_name": "' + CONVERT(varchar, @last_name) + '",
+            "first_name": "' + CONVERT(varchar, @first_name) + '"
     },
-    "cart_id": "' + CONVERT(VARCHAR, @RefersionLogID) + '"
+    "cart_id": "' + CONVERT(varchar, @RefersionLogID) + '"
     }'
-
 
             UPDATE datRefersionLog
             SET JsonData = @data

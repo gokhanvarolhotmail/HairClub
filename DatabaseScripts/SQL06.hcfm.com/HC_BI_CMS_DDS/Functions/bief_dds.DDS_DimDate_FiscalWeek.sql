@@ -1,4 +1,4 @@
-/* CreateDate: 10/03/2019 23:03:42.987 , ModifyDate: 10/03/2019 23:03:42.987 */
+/* CreateDate: 03/17/2022 11:57:10.200 , ModifyDate: 03/17/2022 11:57:10.200 */
 GO
 create function [bief_dds].[DDS_DimDate_FiscalWeek] (@date as datetime)
 returns int

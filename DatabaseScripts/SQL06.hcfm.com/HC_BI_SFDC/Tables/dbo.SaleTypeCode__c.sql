@@ -1,7 +1,7 @@
-/* CreateDate: 10/04/2019 14:09:30.470 , ModifyDate: 10/04/2019 14:09:31.743 */
+/* CreateDate: 03/22/2022 08:26:04.030 , ModifyDate: 03/22/2022 08:26:04.030 */
 GO
 CREATE TABLE [dbo].[SaleTypeCode__c](
-	[Id] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
+	[Id] [int] NOT NULL,
 	[SaleTypeCode__c] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[SaleTypeDescription__c] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[SortOrder] [int] NOT NULL,
@@ -9,10 +9,6 @@ CREATE TABLE [dbo].[SaleTypeCode__c](
 	[CreatedById] [nvarchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[CreatedDate] [datetime] NOT NULL,
 	[LastModifiedById] [nvarchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-	[LastModifiedDate] [datetime] NOT NULL,
- CONSTRAINT [PK_SaleTypeCode__c] PRIMARY KEY CLUSTERED
-(
-	[Id] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+	[LastModifiedDate] [datetime] NOT NULL
 ) ON [PRIMARY]
 GO

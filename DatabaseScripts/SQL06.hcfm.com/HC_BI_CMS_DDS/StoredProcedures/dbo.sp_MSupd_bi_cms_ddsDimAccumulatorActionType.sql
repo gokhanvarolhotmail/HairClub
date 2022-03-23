@@ -1,4 +1,4 @@
-/* CreateDate: 10/03/2019 23:03:39.823 , ModifyDate: 10/03/2019 23:03:39.823 */
+/* CreateDate: 03/17/2022 11:57:04.420 , ModifyDate: 03/17/2022 11:57:04.420 */
 GO
 create procedure [sp_MSupd_bi_cms_ddsDimAccumulatorActionType]
 		@c1 int = NULL,

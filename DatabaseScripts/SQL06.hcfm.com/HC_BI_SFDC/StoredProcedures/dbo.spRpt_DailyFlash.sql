@@ -1,4 +1,4 @@
-/* CreateDate: 06/17/2021 19:09:53.123 , ModifyDate: 06/17/2021 19:09:53.123 */
+/* CreateDate: 06/17/2021 19:09:53.123 , ModifyDate: 03/17/2022 16:22:29.260 */
 GO
 /***********************************************************************
 PROCEDURE:				spRpt_DailyFlash
@@ -16,7 +16,7 @@ SAMPLE EXECUTION:
 
 EXEC spRpt_DailyFlash 'C'
 ***********************************************************************/
-CReate PROCEDURE [dbo].[spRpt_DailyFlash](
+CREATE PROCEDURE [dbo].[spRpt_DailyFlash](
     @CenterType CHAR(1)
 )
 AS
@@ -620,7 +620,7 @@ BEGIN
              LEFT OUTER JOIN HC_BI_SFDC.dbo.Account a ---??? sf new def??
                              ON a.PersonContactId = t.WhoId
     WHERE LTRIM(RTRIM(t.Action__c)) IN ('Appointment', 'Be Back', 'In House', 'Recovery')
-      and l.isValid = 1
+      --and l.isValid = 1
       AND CAST(t.ActivityDate AS DATE) BETWEEN @MinDate AND @YesterdayEnd
       AND ISNULL(t.IsDeleted, 0) = 0
 

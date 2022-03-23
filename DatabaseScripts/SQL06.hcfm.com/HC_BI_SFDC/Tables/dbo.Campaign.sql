@@ -1,4 +1,4 @@
-/* CreateDate: 10/04/2019 14:09:30.217 , ModifyDate: 10/14/2020 13:51:02.933 */
+/* CreateDate: 03/21/2022 16:32:34.137 , ModifyDate: 03/21/2022 16:32:34.137 */
 GO
 CREATE TABLE [dbo].[Campaign](
 	[Id] [nvarchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
@@ -86,24 +86,6 @@ CREATE TABLE [dbo].[Campaign](
 	[CreatedById] [nvarchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[CreatedDate] [datetime] NOT NULL,
 	[LastModifiedById] [nvarchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-	[LastModifiedDate] [datetime] NOT NULL,
- CONSTRAINT [PK_Campaign] PRIMARY KEY CLUSTERED
-(
-	[Id] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+	[LastModifiedDate] [datetime] NOT NULL
 ) ON [PRIMARY]
-GO
-SET ANSI_PADDING ON
-GO
-CREATE NONCLUSTERED INDEX [IX_Campaign_IsDeleted_INCL] ON [dbo].[Campaign]
-(
-	[IsDeleted] ASC,
-	[MWCCode__c] ASC,
-	[MWFCode__c] ASC,
-	[MPNCode__c] ASC,
-	[DPNCode__c] ASC,
-	[DWFCode__c] ASC,
-	[DWCCode__c] ASC
-)
-INCLUDE([Id],[SourceCode_L__c]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO

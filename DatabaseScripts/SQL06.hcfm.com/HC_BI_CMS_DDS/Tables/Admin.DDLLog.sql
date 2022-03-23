@@ -1,4 +1,4 @@
-/* CreateDate: 02/10/2022 10:01:23.107 , ModifyDate: 02/10/2022 10:01:23.287 */
+/* CreateDate: 02/10/2022 10:01:23.107 , ModifyDate: 03/17/2022 23:15:08.427 */
 GO
 CREATE TABLE [Admin].[DDLLog](
 	[ID] [int] IDENTITY(1,1) NOT NULL,

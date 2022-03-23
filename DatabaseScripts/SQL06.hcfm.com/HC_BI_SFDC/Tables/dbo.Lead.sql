@@ -1,8 +1,8 @@
-/* CreateDate: 10/04/2019 14:09:30.350 , ModifyDate: 03/14/2022 23:30:10.050 */
+/* CreateDate: 03/21/2022 16:21:50.720 , ModifyDate: 03/21/2022 16:21:50.720 */
 GO
 CREATE TABLE [dbo].[Lead](
-	[Id] [nvarchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-	[ContactID__c] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[Id] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+	[ContactID__c] [nchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[CenterNumber__c] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[CenterID__c] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[FirstName] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
@@ -24,8 +24,8 @@ CREATE TABLE [dbo].[Lead](
 	[HairLossProductOther__c] [nvarchar](150) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[HairLossProductUsed__c] [nvarchar](100) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[HairLossSpot__c] [nvarchar](100) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-	[OriginalCampaignID__c] [nvarchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-	[RecentCampaignID__c] [nvarchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[OriginalCampaignID__c] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[RecentCampaignID__c] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[Source_Code_Legacy__c] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[Promo_Code_Legacy__c] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[DoNotContact__c] [bit] NULL,
@@ -42,9 +42,9 @@ CREATE TABLE [dbo].[Lead](
 	[IsDeleted] [bit] NOT NULL,
 	[OnCtCreatedDate__c] [datetime] NULL,
 	[ReportCreateDate__c] [datetime] NULL,
-	[CreatedById] [nvarchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[CreatedById] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[CreatedDate] [datetime] NOT NULL,
-	[LastModifiedById] [nvarchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[LastModifiedById] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[LastModifiedDate] [datetime] NOT NULL,
 	[ReferralCode__c] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[ReferralCodeExpireDate__c] [datetime] NULL,
@@ -59,105 +59,20 @@ CREATE TABLE [dbo].[Lead](
 	[CountryCode] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[PostalCode] [nvarchar](20) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[HTTPReferrer__c] [ntext] COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-	[ConvertedAccountId] [nvarchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-	[ConvertedContactId] [nvarchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-	[ConvertedOpportunityId] [nvarchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[ConvertedAccountId] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[ConvertedContactId] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[ConvertedOpportunityId] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[Lead_Activity_Status__c] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[LeadSource] [nvarchar](80) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[Email] [nvarchar](105) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[Phone] [nvarchar](80) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[MobilePhone] [nvarchar](80) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[BosleySFID__c] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-	[externalID] [varchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-	[isValid] [bit] NULL,
-	[CreatedDateEst] [datetime] NULL,
-	[IsNew] [bit] NULL,
-	[ContactID] [varchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[IsDuplicateByEmail] [bit] NULL,
-	[IsDuplicateByName] [bit] NULL
+	[IsDuplicateByName] [bit] NULL,
+	[isValid] [bit] NULL,
+	[externalID] [nvarchar](500) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[CreatedDateEst] [datetime] NULL,
+	[IsNew] [bit] NULL
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
-GO
-SET ANSI_PADDING ON
-GO
-CREATE NONCLUSTERED INDEX [IX_Lead_CenterNumber_CenterID] ON [dbo].[Lead]
-(
-	[CenterNumber__c] ASC,
-	[CenterID__c] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-GO
-SET ANSI_PADDING ON
-GO
-CREATE NONCLUSTERED INDEX [IX_Lead_ContactSourceLegacy] ON [dbo].[Lead]
-(
-	[Source_Code_Legacy__c] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-GO
-SET ANSI_PADDING ON
-GO
-CREATE NONCLUSTERED INDEX [IX_Lead_ConvertedContactId_INCL] ON [dbo].[Lead]
-(
-	[ConvertedContactId] ASC
-)
-INCLUDE([Id]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-GO
-SET ANSI_PADDING ON
-GO
-CREATE NONCLUSTERED INDEX [IX_Lead_ID] ON [dbo].[Lead]
-(
-	[Id] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-GO
-SET ANSI_PADDING ON
-GO
-CREATE NONCLUSTERED INDEX [IX_Lead_Lead_Activity_Status_INCL] ON [dbo].[Lead]
-(
-	[Lead_Activity_Status__c] ASC
-)
-INCLUDE([Id]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-GO
-CREATE NONCLUSTERED INDEX [IX_Lead_OnCtCreatedDate__c] ON [dbo].[Lead]
-(
-	[OnCtCreatedDate__c] ASC
-)
-INCLUDE([Id],[ContactID__c]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-GO
-SET ANSI_PADDING ON
-GO
-CREATE NONCLUSTERED INDEX [IX_Lead_OriginalCampaignID__c_INCL] ON [dbo].[Lead]
-(
-	[IsDeleted] ASC,
-	[OriginalCampaignID__c] ASC,
-	[Status] ASC,
-	[Lead_Activity_Status__c] ASC
-)
-INCLUDE([CenterNumber__c],[CenterID__c],[ReportCreateDate__c]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-GO
-SET ANSI_PADDING ON
-GO
-CREATE NONCLUSTERED INDEX [IX_Lead_RecentCampaignID__c_INCL] ON [dbo].[Lead]
-(
-	[IsDeleted] ASC,
-	[RecentCampaignID__c] ASC,
-	[Status] ASC,
-	[Lead_Activity_Status__c] ASC
-)
-INCLUDE([CenterNumber__c],[CenterID__c],[ReportCreateDate__c]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-GO
-CREATE NONCLUSTERED INDEX [IX_Lead_ReportCreateDate] ON [dbo].[Lead]
-(
-	[ReportCreateDate__c] ASC
-)
-INCLUDE([Status],[Lead_Activity_Status__c],[Id],[CenterNumber__c],[CenterID__c],[Gender__c],[RecentCampaignID__c],[Source_Code_Legacy__c],[GCLID__c],[OnCAffiliateID__c],[IsDeleted]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-GO
-SET ANSI_PADDING ON
-GO
-CREATE NONCLUSTERED INDEX [IX_Lead_Status_INCL] ON [dbo].[Lead]
-(
-	[Status] ASC
-)
-INCLUDE([Id]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-GO
-ALTER TABLE [dbo].[Lead] ADD  DEFAULT ((0)) FOR [IsDuplicateByEmail]
-GO
-ALTER TABLE [dbo].[Lead] ADD  DEFAULT ((0)) FOR [IsDuplicateByName]
 GO

@@ -1,4 +1,4 @@
-/* CreateDate: 08/13/2021 18:24:21.900 , ModifyDate: 09/01/2021 08:02:57.407 */
+/* CreateDate: 08/13/2021 18:24:21.900 , ModifyDate: 03/18/2022 11:18:19.503 */
 GO
 CREATE VIEW [dbo].[VWTask_MS]
 AS
@@ -14,11 +14,11 @@ With vwTask_CTE as (
            Accommodation__c,
            CompletionDate__c,
            EndTime__c,
-           IsNew,
+           0 as IsNew,
            IsDeleted,
-           IsOld,
-           [ContactKey],
-           [ContactId],
+           1 as IsOld,
+           null as [ContactKey],
+           null as [ContactId],
            ReferralCode__c
     from Task
     where convert(date, ActivityDate) <= '2021-06-15'
@@ -46,7 +46,6 @@ With vwTask_CTE as (
            1                                                              as new,
            fa.IsDeleted,
            fa.IsOld,
-
            ContactKey,
            ContactId,
            OpportunityReferralCode
@@ -73,8 +72,8 @@ With vwTask_CTE as (
            IsNew,
            IsDeleted,
            IsOld,
-           [ContactKey],
-           [ContactId],
+           null as [ContactKey],
+           null as [ContactId],
            ReferralCode__c
     from Task
     where month(convert(date, ActivityDate)) = month(dateadd(day, -1, getdate()))

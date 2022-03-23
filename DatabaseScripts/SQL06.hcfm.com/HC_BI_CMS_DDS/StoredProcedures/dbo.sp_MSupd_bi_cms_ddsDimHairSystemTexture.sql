@@ -1,4 +1,4 @@
-/* CreateDate: 10/03/2019 23:03:41.113 , ModifyDate: 10/03/2019 23:03:41.113 */
+/* CreateDate: 03/17/2022 11:57:06.257 , ModifyDate: 03/17/2022 11:57:06.257 */
 GO
 create procedure [sp_MSupd_bi_cms_ddsDimHairSystemTexture]
 		@c1 int = NULL,

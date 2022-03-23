@@ -1,4 +1,4 @@
-/* CreateDate: 10/03/2019 23:03:39.683 , ModifyDate: 10/03/2019 23:03:39.683 */
+/* CreateDate: 03/17/2022 11:57:04.320 , ModifyDate: 03/17/2022 11:57:04.320 */
 GO
 create procedure [sp_MSdel_bief_dds_DBVersion]
 		@pkc1 int,

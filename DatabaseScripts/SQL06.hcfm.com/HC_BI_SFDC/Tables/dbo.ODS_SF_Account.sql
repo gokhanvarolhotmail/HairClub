@@ -1,4 +1,4 @@
-/* CreateDate: 10/04/2021 17:01:09.087 , ModifyDate: 10/04/2021 17:01:09.087 */
+/* CreateDate: 03/21/2022 13:00:03.753 , ModifyDate: 03/21/2022 13:00:06.640 */
 GO
 CREATE TABLE [dbo].[ODS_SF_Account](
 	[CreatedDate] [datetime] NULL,

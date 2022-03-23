@@ -1,4 +1,4 @@
-/* CreateDate: 08/02/2012 10:19:49.890 , ModifyDate: 03/10/2022 14:15:14.190 */
+/* CreateDate: 08/02/2012 10:19:49.890 , ModifyDate: 03/17/2022 11:56:42.560 */
 GO
 CREATE TABLE [bi_cms_dds].[FactEmployeeSecurity](
 	[EmployeeSecurityKey] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,

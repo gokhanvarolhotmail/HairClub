@@ -1,4 +1,4 @@
-/* CreateDate: 10/08/2021 18:51:05.687 , ModifyDate: 10/08/2021 18:51:05.687 */
+/* CreateDate: 03/21/2022 13:00:04.170 , ModifyDate: 03/21/2022 13:00:07.797 */
 GO
 CREATE TABLE [dbo].[SF_Event](
 	[CreatedDate] [datetime] NULL,

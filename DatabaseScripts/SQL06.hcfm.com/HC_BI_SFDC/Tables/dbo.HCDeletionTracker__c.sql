@@ -1,4 +1,4 @@
-/* CreateDate: 10/04/2019 14:09:30.320 , ModifyDate: 06/13/2021 00:12:56.087 */
+/* CreateDate: 03/21/2022 16:48:09.593 , ModifyDate: 03/21/2022 16:48:09.703 */
 GO
 CREATE TABLE [dbo].[HCDeletionTracker__c](
 	[Id] [nvarchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
@@ -25,9 +25,7 @@ CREATE TABLE [dbo].[HCDeletionTracker__c](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-CREATE NONCLUSTERED INDEX [IX_HCDeletionTracker__c_SessionID] ON [dbo].[HCDeletionTracker__c]
-(
-	[SessionID] ASC
-)
-INCLUDE([ToBeProcessed__c],[IsProcessed],[IsError]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+ALTER TABLE [dbo].[HCDeletionTracker__c] ADD  CONSTRAINT [DF_HCDeletionTracker__c_IsProcessed]  DEFAULT ((0)) FOR [IsProcessed]
+GO
+ALTER TABLE [dbo].[HCDeletionTracker__c] ADD  CONSTRAINT [DF_HCDeletionTracker__c_IsError]  DEFAULT ((0)) FOR [IsError]
 GO

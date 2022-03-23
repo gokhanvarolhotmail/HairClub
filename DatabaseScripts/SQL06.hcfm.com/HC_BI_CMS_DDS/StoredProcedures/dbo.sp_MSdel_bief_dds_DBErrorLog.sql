@@ -1,4 +1,4 @@
-/* CreateDate: 10/03/2019 23:03:39.553 , ModifyDate: 10/03/2019 23:03:39.553 */
+/* CreateDate: 03/17/2022 11:57:03.627 , ModifyDate: 03/17/2022 11:57:03.627 */
 GO
 create procedure [sp_MSdel_bief_dds_DBErrorLog]
 		@pkc1 int

@@ -1,4 +1,4 @@
-/* CreateDate: 10/03/2019 23:03:39.413 , ModifyDate: 10/03/2019 23:03:39.413 */
+/* CreateDate: 03/17/2022 11:57:03.493 , ModifyDate: 03/17/2022 11:57:03.493 */
 GO
 create procedure [sp_MSupd_bief_dds_DBConfig]
 		@c1 int = NULL,

@@ -1,4 +1,4 @@
-/* CreateDate: 05/03/2010 12:26:20.437 , ModifyDate: 10/29/2021 20:54:25.053 */
+/* CreateDate: 05/03/2010 12:26:20.437 , ModifyDate: 03/22/2022 19:42:51.477 */
 GO
 CREATE TABLE [bi_mktg_stage].[DimActivity](
 	[DataPkgKey] [int] NULL,

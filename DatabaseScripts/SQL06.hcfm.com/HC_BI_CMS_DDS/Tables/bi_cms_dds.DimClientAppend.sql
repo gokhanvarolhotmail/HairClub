@@ -1,4 +1,4 @@
-/* CreateDate: 07/22/2016 08:56:16.690 , ModifyDate: 04/05/2017 23:02:21.083 */
+/* CreateDate: 07/22/2016 08:56:16.690 , ModifyDate: 03/22/2022 23:10:31.673 */
 GO
 CREATE TABLE [bi_cms_dds].[DimClientAppend](
 	[ClientAppendKey] [int] NOT NULL,

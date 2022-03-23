@@ -1,4 +1,4 @@
-/* CreateDate: 10/03/2019 23:03:42.233 , ModifyDate: 10/03/2019 23:03:47.647 */
+/* CreateDate: 03/17/2022 11:57:07.893 , ModifyDate: 03/17/2022 11:57:17.943 */
 GO
 CREATE TABLE [bi_cms_dds].[FactEmployeeSecurity](
 	[EmployeeSecurityKey] [int] NOT NULL,

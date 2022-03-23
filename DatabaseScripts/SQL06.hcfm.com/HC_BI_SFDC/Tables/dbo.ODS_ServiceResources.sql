@@ -1,4 +1,4 @@
-/* CreateDate: 10/08/2021 19:02:13.820 , ModifyDate: 10/08/2021 19:02:13.820 */
+/* CreateDate: 03/21/2022 13:00:03.720 , ModifyDate: 03/21/2022 13:00:06.633 */
 GO
 CREATE TABLE [dbo].[ODS_ServiceResources](
 	[Id] [nvarchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,

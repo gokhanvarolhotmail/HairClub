@@ -1,6 +1,7 @@
-/* CreateDate: 10/03/2019 23:03:44.217 , ModifyDate: 01/31/2021 14:43:48.693 */
+/* CreateDate: 03/17/2022 11:57:12.887 , ModifyDate: 03/17/2022 11:57:12.887 */
 GO
-CREATE VIEW [bi_cms_dds].[vwFactSalesTransactionTender] AS
+CREATE VIEW [bi_cms_dds].[vwFactSalesTransactionTender]
+AS
 -------------------------------------------------------------------------
 -- [vwFactSalesTransactionTender] is used to retrieve a
 -- list of Sales Transaction Tenders

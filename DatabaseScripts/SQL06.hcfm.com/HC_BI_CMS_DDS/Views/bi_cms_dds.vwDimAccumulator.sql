@@ -1,4 +1,4 @@
-/* CreateDate: 10/03/2019 23:03:43.567 , ModifyDate: 10/03/2019 23:03:43.567 */
+/* CreateDate: 03/17/2022 11:57:11.310 , ModifyDate: 03/17/2022 11:57:11.310 */
 GO
 CREATE VIEW [bi_cms_dds].[vwDimAccumulator]
 AS

@@ -1,4 +1,4 @@
-/* CreateDate: 10/04/2019 14:09:30.530 , ModifyDate: 03/14/2022 23:45:12.827 */
+/* CreateDate: 03/21/2022 16:32:34.287 , ModifyDate: 03/21/2022 16:32:34.287 */
 GO
 CREATE TABLE [dbo].[User](
 	[Id] [nvarchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
@@ -12,14 +12,10 @@ CREATE TABLE [dbo].[User](
 	[Department] [nvarchar](80) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[CompanyName] [nvarchar](80) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[Team] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-	[IsDeleted] [bit] NULL,
+	[IsDeleted] [bit] NOT NULL,
 	[CreatedById] [nvarchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[CreatedDate] [datetime] NOT NULL,
 	[LastModifiedById] [nvarchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-	[LastModifiedDate] [datetime] NOT NULL,
- CONSTRAINT [PK_User] PRIMARY KEY CLUSTERED
-(
-	[Id] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+	[LastModifiedDate] [datetime] NOT NULL
 ) ON [PRIMARY]
 GO

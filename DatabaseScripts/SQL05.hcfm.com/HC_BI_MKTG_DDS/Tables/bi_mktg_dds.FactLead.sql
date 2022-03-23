@@ -1,4 +1,4 @@
-/* CreateDate: 02/03/2011 17:32:43.710 , ModifyDate: 09/03/2021 09:35:33.480 */
+/* CreateDate: 02/03/2011 17:32:43.710 , ModifyDate: 03/21/2022 19:40:55.860 */
 GO
 CREATE TABLE [bi_mktg_dds].[FactLead](
 	[ContactKey] [int] NOT NULL,

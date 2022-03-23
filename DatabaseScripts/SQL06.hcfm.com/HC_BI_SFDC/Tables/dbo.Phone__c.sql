@@ -1,4 +1,4 @@
-/* CreateDate: 10/04/2019 14:09:30.383 , ModifyDate: 11/20/2019 23:47:19.543 */
+/* CreateDate: 03/22/2022 08:10:59.313 , ModifyDate: 03/22/2022 08:10:59.313 */
 GO
 CREATE TABLE [dbo].[Phone__c](
 	[Id] [nvarchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
@@ -22,24 +22,6 @@ CREATE TABLE [dbo].[Phone__c](
 	[CreatedById] [nvarchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[CreatedDate] [datetime] NOT NULL,
 	[LastModifiedById] [nvarchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-	[LastModifiedDate] [datetime] NOT NULL,
- CONSTRAINT [PK_Phone__c] PRIMARY KEY CLUSTERED
-(
-	[Id] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+	[LastModifiedDate] [datetime] NOT NULL
 ) ON [PRIMARY]
-GO
-SET ANSI_PADDING ON
-GO
-CREATE NONCLUSTERED INDEX [IX_Phone__c_Lead] ON [dbo].[Phone__c]
-(
-	[Lead__c] ASC
-)
-INCLUDE([Primary__c]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-GO
-CREATE NONCLUSTERED INDEX [IX_Phone__c_Primary] ON [dbo].[Phone__c]
-(
-	[Primary__c] ASC
-)
-INCLUDE([Lead__c],[PhoneAbr__c],[LastModifiedDate]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO

@@ -1,7 +1,7 @@
-/* CreateDate: 02/10/2022 10:05:31.130 , ModifyDate: 02/10/2022 10:05:31.510 */
+/* CreateDate: 02/10/2022 10:05:31.130 , ModifyDate: 03/21/2022 13:43:21.647 */
 GO
 CREATE TABLE [Admin].[DDLLog](
-	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[ID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
 	[SchemaName] [varchar](256) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[ObjectName] [varchar](256) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[ObjectID] [int] NULL,

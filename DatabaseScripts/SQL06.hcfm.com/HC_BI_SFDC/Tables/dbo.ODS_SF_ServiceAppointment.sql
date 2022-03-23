@@ -1,4 +1,4 @@
-/* CreateDate: 10/04/2021 14:33:16.943 , ModifyDate: 10/04/2021 14:33:16.943 */
+/* CreateDate: 03/21/2022 13:00:03.953 , ModifyDate: 03/21/2022 13:00:06.653 */
 GO
 CREATE TABLE [dbo].[ODS_SF_ServiceAppointment](
 	[CreatedDate] [datetime] NULL,

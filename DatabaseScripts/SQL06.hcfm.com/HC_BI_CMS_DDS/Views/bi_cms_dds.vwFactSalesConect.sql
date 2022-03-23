@@ -1,6 +1,7 @@
-/* CreateDate: 10/03/2019 23:03:44.020 , ModifyDate: 02/23/2021 13:20:26.967 */
+/* CreateDate: 03/17/2022 11:57:12.580 , ModifyDate: 03/17/2022 11:57:12.580 */
 GO
-CREATE VIEW [bi_cms_dds].[vwFactSalesConect] AS
+CREATE VIEW [bi_cms_dds].[vwFactSalesConect]
+AS
 -------------------------------------------------------------------------
 --	[vwFactSalesConect] is used to retrieve a list of Sales Transactions for First Surgery Net Dollars
 --

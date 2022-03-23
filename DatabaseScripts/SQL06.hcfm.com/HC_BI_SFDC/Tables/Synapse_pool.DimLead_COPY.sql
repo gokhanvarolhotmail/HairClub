@@ -1,4 +1,4 @@
-/* CreateDate: 06/17/2021 12:02:05.603 , ModifyDate: 06/17/2021 12:02:05.603 */
+/* CreateDate: 03/21/2022 13:00:03.487 , ModifyDate: 03/21/2022 13:00:05.770 */
 GO
 CREATE TABLE [Synapse_pool].[DimLead_COPY](
 	[LeadKey] [int] NULL,

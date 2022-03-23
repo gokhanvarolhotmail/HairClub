@@ -1,4 +1,4 @@
-/* CreateDate: 10/03/2019 23:03:43.357 , ModifyDate: 10/03/2019 23:03:43.357 */
+/* CreateDate: 03/17/2022 11:57:10.950 , ModifyDate: 03/17/2022 11:57:10.950 */
 GO
 /*-----------------------------------------------------------------------
  [vwFactSalesTransaction_FLASH] is used to retrieve a

@@ -1,6 +1,7 @@
-/* CreateDate: 10/03/2019 23:03:43.970 , ModifyDate: 10/02/2020 10:53:49.770 */
+/* CreateDate: 03/17/2022 11:57:12.487 , ModifyDate: 03/17/2022 11:57:12.487 */
 GO
-CREATE VIEW [bi_cms_dds].[vwFactHairSystemOrder] AS
+CREATE VIEW [bi_cms_dds].[vwFactHairSystemOrder]
+AS
 -------------------------------------------------------------------------
 -- [vwFactHairSystemOrder] is used to retrieve a
 -- list of Hair System Order Records

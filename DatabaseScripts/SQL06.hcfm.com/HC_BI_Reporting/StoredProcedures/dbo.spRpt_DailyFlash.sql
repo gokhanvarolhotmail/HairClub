@@ -1,4 +1,4 @@
-/* CreateDate: 06/19/2021 08:18:35.077 , ModifyDate: 12/02/2021 08:10:17.640 */
+/* CreateDate: 06/19/2021 08:18:35.077 , ModifyDate: 03/17/2022 16:35:22.813 */
 GO
 /***********************************************************************
 PROCEDURE:				spRpt_DailyFlash
@@ -571,7 +571,7 @@ BEGIN
            'Converted')
       AND CAST(l.CreatedDate AS DATE) BETWEEN @MinDate AND @YesterdayEnd
       AND ISNULL(l.IsDeleted, 0) = 0
-      and isvalid = 1
+      --and isvalid = 1
     GROUP BY CAST(l.CreatedDate AS DATE)
 
 

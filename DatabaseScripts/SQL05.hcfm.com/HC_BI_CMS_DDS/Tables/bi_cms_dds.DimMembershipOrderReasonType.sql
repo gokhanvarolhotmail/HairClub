@@ -1,4 +1,4 @@
-/* CreateDate: 02/10/2014 13:25:22.350 , ModifyDate: 03/10/2022 14:15:13.730 */
+/* CreateDate: 02/10/2014 13:25:22.350 , ModifyDate: 03/17/2022 11:56:41.117 */
 GO
 CREATE TABLE [bi_cms_dds].[DimMembershipOrderReasonType](
 	[MembershipOrderReasonTypeID] [int] NOT NULL,

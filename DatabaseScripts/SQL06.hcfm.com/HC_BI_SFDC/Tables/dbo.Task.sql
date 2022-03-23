@@ -1,4 +1,4 @@
-/* CreateDate: 10/04/2019 14:09:30.497 , ModifyDate: 03/14/2022 23:43:17.680 */
+/* CreateDate: 03/21/2022 16:21:50.897 , ModifyDate: 03/21/2022 16:21:50.897 */
 GO
 CREATE TABLE [dbo].[Task](
 	[Id] [nvarchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
@@ -35,109 +35,19 @@ CREATE TABLE [dbo].[Task](
 	[TimeZone__c] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[OncCreatedDate__c] [datetime] NULL,
 	[ReportCreateDate__c] [datetime] NULL,
-	[IsDeleted] [bit] NULL,
-	[CreatedById] [nvarchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-	[CreatedDate] [datetime] NOT NULL,
-	[LastModifiedById] [nvarchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[IsDeleted] [bit] NOT NULL,
+	[CreatedById] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[CreatedDate] [datetime] NULL,
+	[LastModifiedById] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[LastModifiedDate] [datetime] NULL,
 	[IsArchived] [bit] NULL,
 	[ReceiveBrochure__c] [bit] NULL,
 	[ReferralCode__c] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[Accommodation__c] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-	[externalID] [varchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-	[CreatedDateEst] [datetime] NULL,
 	[IsNew] [bit] NULL,
 	[IsOld] [bit] NULL,
-	[ContactKey] [int] NULL,
-	[ContactId] [varchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-	[OpportunityAmmount] [numeric](38, 18) NULL,
-	[OppotunityAmmount] [numeric](38, 18) NULL,
-	[ParentRecordType] [varchar](200) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-	[AppointmentStatus] [varchar](200) COLLATE SQL_Latin1_General_CP1_CI_AS NULL
+	[OpportunityAmmount] [decimal](18, 2) NULL,
+	[ContactId] [nvarchar](500) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[ContactKey] [nvarchar](500) COLLATE SQL_Latin1_General_CP1_CI_AS NULL
 ) ON [PRIMARY]
-GO
-SET ANSI_PADDING ON
-GO
-CREATE NONCLUSTERED INDEX [IX_ID_included] ON [dbo].[Task]
-(
-	[Id] ASC
-)
-INCLUDE([Performer__c],[Accommodation__c]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-GO
-SET ANSI_PADDING ON
-GO
-CREATE NONCLUSTERED INDEX [IX_Task_Action__c] ON [dbo].[Task]
-(
-	[Action__c] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-GO
-SET ANSI_PADDING ON
-GO
-CREATE NONCLUSTERED INDEX [IX_Task_Action__c_Result__c] ON [dbo].[Task]
-(
-	[Action__c] ASC,
-	[Result__c] ASC
-)
-INCLUDE([Id],[WhoId],[CreatedDate]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-GO
-CREATE NONCLUSTERED INDEX [IX_Task_ActivityDate] ON [dbo].[Task]
-(
-	[ActivityDate] ASC
-)
-INCLUDE([WhoId],[Action__c],[Result__c],[CenterNumber__c],[CenterID__c],[SaleTypeCode__c],[SourceCode__c],[IsDeleted]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-GO
-CREATE NONCLUSTERED INDEX [IX_Task_ActivityDate_INCL] ON [dbo].[Task]
-(
-	[ActivityDate] ASC
-)
-INCLUDE([Id],[WhoId],[ActivityID__c],[CenterNumber__c],[Action__c],[Result__c]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-GO
-SET ANSI_PADDING ON
-GO
-CREATE NONCLUSTERED INDEX [IX_Task_ActivityID__c] ON [dbo].[Task]
-(
-	[ActivityID__c] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-GO
-CREATE NONCLUSTERED INDEX [IX_Task_Dates] ON [dbo].[Task]
-(
-	[ActivityDate] ASC,
-	[CompletionDate__c] ASC,
-	[ReportCreateDate__c] ASC,
-	[LastModifiedDate] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-GO
-CREATE NONCLUSTERED INDEX [IX_Task_IsDeleted_INCL] ON [dbo].[Task]
-(
-	[IsDeleted] ASC
-)
-INCLUDE([Id],[WhoId],[ActivityID__c],[CenterNumber__c],[CenterID__c],[Action__c],[Result__c],[ActivityDate]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-GO
-CREATE NONCLUSTERED INDEX [IX_Task_OncCreatedDate__c] ON [dbo].[Task]
-(
-	[OncCreatedDate__c] ASC
-)
-INCLUDE([Id],[ActivityID__c]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-GO
-CREATE NONCLUSTERED INDEX [IX_Task_ReceiveBrochure__c] ON [dbo].[Task]
-(
-	[ReceiveBrochure__c] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-GO
-SET ANSI_PADDING ON
-GO
-CREATE NONCLUSTERED INDEX [IX_Task_Result__c] ON [dbo].[Task]
-(
-	[Result__c] ASC
-)
-INCLUDE([Id],[WhoId]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-GO
-SET ANSI_PADDING ON
-GO
-CREATE NONCLUSTERED INDEX [IX_Task_WhoId_INCL] ON [dbo].[Task]
-(
-	[WhoId] ASC,
-	[Result__c] ASC
-)
-INCLUDE([Id]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO

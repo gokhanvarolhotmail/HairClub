@@ -1,4 +1,4 @@
-/* CreateDate: 10/03/2019 23:03:43.090 , ModifyDate: 10/03/2019 23:03:43.090 */
+/* CreateDate: 03/17/2022 11:57:10.480 , ModifyDate: 03/17/2022 11:57:10.480 */
 GO
 CREATE PROCEDURE [bi_cms_dds].[EmptyAllTables]
 AS

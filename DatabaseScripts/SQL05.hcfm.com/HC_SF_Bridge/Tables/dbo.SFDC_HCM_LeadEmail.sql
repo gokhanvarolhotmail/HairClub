@@ -1,4 +1,4 @@
-/* CreateDate: 03/15/2022 10:27:32.190 , ModifyDate: 03/15/2022 11:26:09.337 */
+/* CreateDate: 03/15/2022 10:27:32.190 , ModifyDate: 03/16/2022 08:44:17.680 */
 GO
 CREATE TABLE [dbo].[SFDC_HCM_LeadEmail](
 	[Id] [nvarchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
@@ -29,6 +29,7 @@ CREATE TABLE [dbo].[SFDC_HCM_LeadEmail](
 	[Dest_Converted__c] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[IsProcessedFlag] [bit] NULL,
 	[IsExcludedFlag] [bit] NULL,
-	[cst_sfdc_lead_id] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL
+	[cst_sfdc_lead_id] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[LeadStatus] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL
 ) ON [PRIMARY]
 GO

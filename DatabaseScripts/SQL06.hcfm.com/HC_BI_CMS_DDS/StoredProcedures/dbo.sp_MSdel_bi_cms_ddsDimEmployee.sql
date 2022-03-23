@@ -1,4 +1,4 @@
-/* CreateDate: 10/03/2019 23:03:40.347 , ModifyDate: 10/03/2019 23:03:40.347 */
+/* CreateDate: 03/17/2022 11:57:04.793 , ModifyDate: 03/17/2022 11:57:04.793 */
 GO
 create procedure [sp_MSdel_bi_cms_ddsDimEmployee]
 		@pkc1 int

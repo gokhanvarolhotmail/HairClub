@@ -1,4 +1,4 @@
-/* CreateDate: 10/26/2011 12:15:02.560 , ModifyDate: 11/06/2012 10:38:30.773 */
+/* CreateDate: 10/26/2011 12:15:02.560 , ModifyDate: 03/16/2022 20:26:54.640 */
 GO
 CREATE TABLE [bi_cms_stage].[FactHairSystemOrder](
 	[DataPkgKey] [int] NOT NULL,

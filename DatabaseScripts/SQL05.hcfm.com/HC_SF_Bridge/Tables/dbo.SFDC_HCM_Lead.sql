@@ -1,4 +1,4 @@
-/* CreateDate: 03/15/2022 10:31:40.747 , ModifyDate: 03/15/2022 10:31:40.747 */
+/* CreateDate: 03/15/2022 10:31:40.747 , ModifyDate: 03/16/2022 08:29:22.797 */
 GO
 CREATE TABLE [dbo].[SFDC_HCM_Lead](
 	[Id] [nvarchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,

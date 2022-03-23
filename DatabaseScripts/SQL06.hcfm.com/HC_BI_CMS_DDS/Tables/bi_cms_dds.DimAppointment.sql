@@ -1,4 +1,4 @@
-/* CreateDate: 10/03/2019 23:03:40.067 , ModifyDate: 12/04/2019 23:17:08.803 */
+/* CreateDate: 03/17/2022 11:57:04.573 , ModifyDate: 03/17/2022 12:55:42.770 */
 GO
 CREATE TABLE [bi_cms_dds].[DimAppointment](
 	[AppointmentKey] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
@@ -55,34 +55,12 @@ CREATE NONCLUSTERED INDEX [IX_DimAppointment_AppointmentDate_AppointmentType] ON
 )
 INCLUDE([ClientKey]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [FG1]
 GO
-CREATE NONCLUSTERED INDEX [IX_DimAppointment_AppointmentDate_INCLUDEClientKeyCheckOutTime] ON [bi_cms_dds].[DimAppointment]
-(
-	[AppointmentDate] ASC
-)
-INCLUDE([ClientKey],[CheckOutTime]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [FG1]
-GO
-CREATE NONCLUSTERED INDEX [IX_DimAppointment_CenterSSID_ClientKey_ApptDate] ON [bi_cms_dds].[DimAppointment]
-(
-	[CenterSSID] ASC,
-	[ClientKey] ASC,
-	[AppointmentDate] ASC
-)
-INCLUDE([AppointmentKey],[AppointmentSSID],[CenterKey],[ClientMembershipKey],[AppointmentStartTime],[AppointmentEndTime],[IsDeletedFlag]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-GO
 CREATE NONCLUSTERED INDEX [IX_DimAppointment_ClientKey_AppointmentDate] ON [bi_cms_dds].[DimAppointment]
 (
 	[ClientKey] ASC,
 	[AppointmentDate] ASC
 )
 INCLUDE([AppointmentTypeSSID]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [FG1]
-GO
-CREATE NONCLUSTERED INDEX [IX_DimAppointment_ClientKeyIsDeletedFlagAppointmentDate_INCLUDEAppointmentKey] ON [bi_cms_dds].[DimAppointment]
-(
-	[ClientKey] ASC,
-	[IsDeletedFlag] ASC,
-	[AppointmentDate] ASC
-)
-INCLUDE([AppointmentKey]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [FG1]
 GO
 SET ANSI_PADDING ON
 GO
@@ -99,21 +77,6 @@ CREATE NONCLUSTERED INDEX [IX_DimAppointment_IsDeletedFlag_AppointmentDate] ON [
 	[AppointmentDate] ASC
 )
 INCLUDE([ClientKey]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [FG1]
-GO
-CREATE NONCLUSTERED INDEX [IX_DimAppointment_IsDeletedFlagAppointmentDate_INCLUDEClientKeyCheckOutTime] ON [bi_cms_dds].[DimAppointment]
-(
-	[IsDeletedFlag] ASC,
-	[AppointmentDate] ASC
-)
-INCLUDE([ClientKey],[CheckOutTime]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [FG1]
-GO
-SET ANSI_PADDING ON
-GO
-CREATE NONCLUSTERED INDEX [IX_DimAppointment_OnContactActivitySSID_INCLUDEAppointmentKey] ON [bi_cms_dds].[DimAppointment]
-(
-	[OnContactActivitySSID] ASC
-)
-INCLUDE([AppointmentKey]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [FG1]
 GO
 CREATE NONCLUSTERED INDEX [IX_DimAppointment_RowIsCurrent_AppointmentSSID] ON [bi_cms_dds].[DimAppointment]
 (

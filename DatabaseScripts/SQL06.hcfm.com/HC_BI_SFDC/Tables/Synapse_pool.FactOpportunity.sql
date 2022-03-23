@@ -1,4 +1,4 @@
-/* CreateDate: 06/16/2021 18:23:01.270 , ModifyDate: 06/18/2021 16:45:06.203 */
+/* CreateDate: 03/21/2022 13:00:03.593 , ModifyDate: 03/21/2022 13:00:06.000 */
 GO
 CREATE TABLE [Synapse_pool].[FactOpportunity](
 	[FactDate] [datetime] NULL,

@@ -1,4 +1,4 @@
-/* CreateDate: 06/16/2021 18:16:34.720 , ModifyDate: 08/04/2021 12:21:41.760 */
+/* CreateDate: 03/21/2022 13:00:03.470 , ModifyDate: 03/21/2022 13:00:05.763 */
 GO
 CREATE TABLE [Synapse_pool].[DimLead](
 	[LeadKey] [int] NULL,
@@ -87,8 +87,4 @@ CREATE TABLE [Synapse_pool].[DimLead](
 	[ReferralCodeExpirationDate] [datetime] NULL,
 	[PromotionCode] [varchar](200) COLLATE SQL_Latin1_General_CP1_CI_AS NULL
 ) ON [PRIMARY]
-GO
-ALTER TABLE [Synapse_pool].[DimLead] ADD  DEFAULT ((0)) FOR [IsDuplicateByEmail]
-GO
-ALTER TABLE [Synapse_pool].[DimLead] ADD  DEFAULT ((0)) FOR [IsDuplicateByName]
 GO

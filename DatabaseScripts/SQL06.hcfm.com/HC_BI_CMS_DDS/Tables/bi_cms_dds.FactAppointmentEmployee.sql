@@ -1,4 +1,4 @@
-/* CreateDate: 10/03/2019 23:03:42.183 , ModifyDate: 10/04/2019 00:23:39.490 */
+/* CreateDate: 03/17/2022 11:57:07.717 , ModifyDate: 03/17/2022 11:57:17.927 */
 GO
 CREATE TABLE [bi_cms_dds].[FactAppointmentEmployee](
 	[AppointmentEmployeeKey] [int] NOT NULL,
@@ -14,10 +14,4 @@ CREATE TABLE [bi_cms_dds].[FactAppointmentEmployee](
 	[AppointmentEmployeeKey] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [FG1]
 ) ON [FG1]
-GO
-CREATE NONCLUSTERED INDEX [ix_FactAppointmentEmployee_AppointmentKey] ON [bi_cms_dds].[FactAppointmentEmployee]
-(
-	[AppointmentKey] ASC
-)
-INCLUDE([EmployeeKey]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO

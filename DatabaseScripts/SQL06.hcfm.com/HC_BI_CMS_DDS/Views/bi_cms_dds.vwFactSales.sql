@@ -1,6 +1,7 @@
-/* CreateDate: 10/03/2019 23:03:43.333 , ModifyDate: 10/02/2020 10:54:04.793 */
+/* CreateDate: 03/17/2022 11:57:10.927 , ModifyDate: 03/17/2022 11:57:10.927 */
 GO
-CREATE VIEW [bi_cms_dds].[vwFactSales] AS
+CREATE VIEW [bi_cms_dds].[vwFactSales]
+AS
 -------------------------------------------------------------------------
 -- [vwFactSales] is used to retrieve a
 -- list of Sales Orders

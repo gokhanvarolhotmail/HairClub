@@ -1,4 +1,4 @@
-/* CreateDate: 10/03/2019 23:03:41.223 , ModifyDate: 10/03/2019 23:03:46.187 */
+/* CreateDate: 03/17/2022 11:57:06.340 , ModifyDate: 03/17/2022 11:57:15.917 */
 GO
 CREATE TABLE [bi_cms_dds].[DimHairSystemVendorContract](
 	[HairSystemVendorContractKey] [int] NOT NULL,

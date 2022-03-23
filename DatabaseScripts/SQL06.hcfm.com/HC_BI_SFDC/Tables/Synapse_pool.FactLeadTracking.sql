@@ -1,4 +1,4 @@
-/* CreateDate: 08/13/2021 15:33:39.673 , ModifyDate: 08/13/2021 15:40:44.870 */
+/* CreateDate: 03/21/2022 13:00:03.577 , ModifyDate: 03/21/2022 13:00:05.993 */
 GO
 CREATE TABLE [Synapse_pool].[FactLeadTracking](
 	[LeadKey] [int] NULL,

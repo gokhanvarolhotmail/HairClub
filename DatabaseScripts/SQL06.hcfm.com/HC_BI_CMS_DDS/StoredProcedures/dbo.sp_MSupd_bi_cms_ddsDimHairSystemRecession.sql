@@ -1,4 +1,4 @@
-/* CreateDate: 10/03/2019 23:03:40.973 , ModifyDate: 10/03/2019 23:03:40.973 */
+/* CreateDate: 03/17/2022 11:57:06.110 , ModifyDate: 03/17/2022 11:57:06.110 */
 GO
 create procedure [sp_MSupd_bi_cms_ddsDimHairSystemRecession]
 		@c1 int = NULL,

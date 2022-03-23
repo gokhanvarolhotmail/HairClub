@@ -1,4 +1,4 @@
-/* CreateDate: 04/24/2018 16:09:21.460 , ModifyDate: 03/10/2022 14:13:01.523 */
+/* CreateDate: 04/24/2018 16:09:21.460 , ModifyDate: 03/23/2022 10:00:06.503 */
 GO
 CREATE TABLE [dbo].[HCDeletionTracker__c](
 	[Id] [nvarchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,

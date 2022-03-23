@@ -1,4 +1,4 @@
-/* CreateDate: 10/03/2019 23:03:40.733 , ModifyDate: 10/03/2019 23:03:46.143 */
+/* CreateDate: 03/17/2022 11:57:05.610 , ModifyDate: 03/17/2022 11:57:15.853 */
 GO
 CREATE TABLE [bi_cms_dds].[DimHairSystemHairLength](
 	[HairSystemHairLengthKey] [int] NOT NULL,

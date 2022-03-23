@@ -1,4 +1,4 @@
-/* CreateDate: 10/03/2019 23:03:40.433 , ModifyDate: 10/03/2019 23:03:40.433 */
+/* CreateDate: 03/17/2022 11:57:04.880 , ModifyDate: 03/17/2022 11:57:04.880 */
 GO
 create procedure [dbo].[sp_MSins_bi_cms_ddsDimEmployeePositionJoin]
     @c1 uniqueidentifier,

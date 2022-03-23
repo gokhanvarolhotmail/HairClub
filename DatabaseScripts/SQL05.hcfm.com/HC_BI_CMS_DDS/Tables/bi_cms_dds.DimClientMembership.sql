@@ -1,4 +1,4 @@
-/* CreateDate: 05/03/2010 12:17:23.023 , ModifyDate: 03/10/2022 14:15:13.063 */
+/* CreateDate: 05/03/2010 12:17:23.023 , ModifyDate: 03/17/2022 11:56:40.923 */
 GO
 CREATE TABLE [bi_cms_dds].[DimClientMembership](
 	[ClientMembershipKey] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,

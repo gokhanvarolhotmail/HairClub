@@ -1,4 +1,4 @@
-/* CreateDate: 08/13/2021 16:26:08.010 , ModifyDate: 08/13/2021 16:26:08.010 */
+/* CreateDate: 03/21/2022 13:00:03.557 , ModifyDate: 03/21/2022 13:00:05.987 */
 GO
 CREATE TABLE [Synapse_pool].[FactAppointmentTracking](
 	[FactDate] [datetime] NULL,

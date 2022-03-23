@@ -1,6 +1,7 @@
-/* CreateDate: 10/03/2019 23:03:43.233 , ModifyDate: 07/10/2020 13:43:59.177 */
+/* CreateDate: 03/17/2022 11:57:10.787 , ModifyDate: 03/17/2022 11:57:10.787 */
 GO
-CREATE VIEW [bi_cms_dds].[vwDimClient] AS
+CREATE VIEW [bi_cms_dds].[vwDimClient]
+AS
 -------------------------------------------------------------------------
 -- [vwDimClient] is used to retrieve a
 -- list of Clients

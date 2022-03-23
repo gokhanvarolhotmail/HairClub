@@ -1,4 +1,4 @@
-/* CreateDate: 02/24/2022 08:54:23.870 , ModifyDate: 02/27/2022 21:41:28.963 */
+/* CreateDate: 02/24/2022 08:54:23.870 , ModifyDate: 03/16/2022 20:33:39.940 */
 GO
 CREATE TABLE [Audit].[bi_mktg_stage_DimActivityDemographic](
 	[LogId] [int] NOT NULL,

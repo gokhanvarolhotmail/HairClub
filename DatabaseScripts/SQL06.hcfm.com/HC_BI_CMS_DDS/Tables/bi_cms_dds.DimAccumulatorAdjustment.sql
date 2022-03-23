@@ -1,4 +1,4 @@
-/* CreateDate: 10/03/2019 23:03:39.860 , ModifyDate: 03/14/2022 23:08:12.003 */
+/* CreateDate: 03/17/2022 11:57:04.450 , ModifyDate: 03/17/2022 11:57:14.093 */
 GO
 CREATE TABLE [bi_cms_dds].[DimAccumulatorAdjustment](
 	[AccumulatorAdjustmentKey] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
@@ -40,24 +40,4 @@ CREATE TABLE [bi_cms_dds].[DimAccumulatorAdjustment](
 	[AccumulatorAdjustmentKey] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [FG1]
 ) ON [FG1]
-GO
-CREATE NONCLUSTERED INDEX [IX_DimAccumulatorAdjustment_AccumulatorSSIDINCL] ON [bi_cms_dds].[DimAccumulatorAdjustment]
-(
-	[AccumulatorSSID] ASC
-)
-INCLUDE([SalesOrderDetailKey],[AccumulatorKey],[MoneyChange]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-GO
-CREATE NONCLUSTERED INDEX [IX_DimAccumulatorAdjustment_ClientMembershipKeyAccumulatorSSIDDateAdjustment] ON [bi_cms_dds].[DimAccumulatorAdjustment]
-(
-	[ClientMembershipKey] ASC,
-	[AccumulatorSSID] ASC,
-	[DateAdjustment] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-GO
-CREATE NONCLUSTERED INDEX [IX_DimAccumulatorAdjustment_SalesOrderDetailKeyAccumulatorSSID] ON [bi_cms_dds].[DimAccumulatorAdjustment]
-(
-	[SalesOrderDetailKey] ASC,
-	[AccumulatorSSID] ASC
-)
-INCLUDE([AccumulatorKey],[MoneyChange]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO

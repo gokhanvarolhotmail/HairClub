@@ -1,4 +1,4 @@
-/* CreateDate: 10/03/2019 23:03:41.280 , ModifyDate: 10/04/2019 00:14:16.153 */
+/* CreateDate: 03/17/2022 11:57:06.390 , ModifyDate: 03/17/2022 11:57:15.923 */
 GO
 CREATE TABLE [bi_cms_dds].[DimMembership](
 	[MembershipKey] [int] NOT NULL,
@@ -33,18 +33,4 @@ CREATE TABLE [bi_cms_dds].[DimMembership](
 	[MembershipKey] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [FG1]
 ) ON [FG1]
-GO
-CREATE NONCLUSTERED INDEX [IDX_DimMembership_MembershipKey] ON [bi_cms_dds].[DimMembership]
-(
-	[MembershipKey] ASC
-)
-INCLUDE([MembershipSSID],[MembershipDescription],[RevenueGroupDescription],[GenderDescription],[MembershipDurationMonths],[MembershipContractPrice],[MembershipMonthlyFee]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-GO
-CREATE NONCLUSTERED INDEX [IDX_DimMembership_RowIsCurrent_MembershipSSID_MembershipKey] ON [bi_cms_dds].[DimMembership]
-(
-	[MembershipSSID] ASC,
-	[RowIsCurrent] ASC,
-	[RowIsInferred] ASC
-)
-INCLUDE([MembershipKey]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO

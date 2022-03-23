@@ -1,4 +1,4 @@
-/* CreateDate: 06/27/2011 16:01:43.417 , ModifyDate: 03/10/2022 14:15:14.347 */
+/* CreateDate: 06/27/2011 16:01:43.417 , ModifyDate: 03/17/2022 11:56:41.793 */
 GO
 CREATE TABLE [bi_cms_dds].[FactSurgeryCloseoutEmployee](
 	[SurgeryCloseOutEmployeeKey] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,

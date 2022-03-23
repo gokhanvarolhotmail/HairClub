@@ -1,4 +1,4 @@
-/* CreateDate: 10/04/2019 14:09:30.190 , ModifyDate: 10/04/2019 15:15:28.227 */
+/* CreateDate: 03/22/2022 08:10:58.973 , ModifyDate: 03/22/2022 08:10:58.973 */
 GO
 CREATE TABLE [dbo].[Address__c](
 	[Id] [nvarchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
@@ -20,25 +20,6 @@ CREATE TABLE [dbo].[Address__c](
 	[CreatedById] [nvarchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[CreatedDate] [datetime] NOT NULL,
 	[LastModifiedById] [nvarchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-	[LastModifiedDate] [datetime] NOT NULL,
- CONSTRAINT [PK_Address__c] PRIMARY KEY CLUSTERED
-(
-	[Id] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+	[LastModifiedDate] [datetime] NOT NULL
 ) ON [PRIMARY]
-GO
-SET ANSI_PADDING ON
-GO
-CREATE NONCLUSTERED INDEX [IX_Address__c_Lead] ON [dbo].[Address__c]
-(
-	[Lead__c] ASC,
-	[Primary__c] ASC
-)
-INCLUDE([Zip__c]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-GO
-CREATE NONCLUSTERED INDEX [IX_Address__c_Primary] ON [dbo].[Address__c]
-(
-	[Primary__c] ASC
-)
-INCLUDE([Lead__c],[Zip__c],[LastModifiedDate]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO

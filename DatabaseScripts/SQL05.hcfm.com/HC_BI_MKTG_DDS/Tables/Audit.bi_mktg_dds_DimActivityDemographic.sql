@@ -1,4 +1,4 @@
-/* CreateDate: 02/24/2022 08:37:17.540 , ModifyDate: 02/24/2022 08:37:17.603 */
+/* CreateDate: 02/24/2022 08:37:17.540 , ModifyDate: 03/16/2022 20:27:34.327 */
 GO
 CREATE TABLE [Audit].[bi_mktg_dds_DimActivityDemographic](
 	[LogId] [int] NOT NULL,

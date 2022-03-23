@@ -1,6 +1,19 @@
-/* CreateDate: 10/03/2019 23:03:43.250 , ModifyDate: 07/17/2021 18:26:59.210 */
+/* CreateDate: 03/17/2022 11:57:10.827 , ModifyDate: 03/17/2022 11:57:10.827 */
 GO
-CREATE VIEW [bi_cms_dds].[vwDimClientMembership] AS
+/*-----------------------------------------------------------------------
+ [vwDimClientMembership] is used to retrieve a
+ list of Client Memberships
+
+   SELECT * FROM [bi_cms_dds].[vwDimClientMembership]
+
+-----------------------------------------------------------------------
+ Change History
+-----------------------------------------------------------------------
+ Version  Date        Author       Description
+ -------  ----------  -----------  ------------------------------------
+  v1.0    04/15/2009  RLifke       Initial Creation*/
+CREATE VIEW [bi_cms_dds].[vwDimClientMembership]
+AS
 SELECT        bi_cms_dds.DimClientMembership.ClientMembershipKey, bi_cms_dds.DimClientMembership.ClientMembershipSSID, bi_cms_dds.DimClientMembership.ClientKey, bi_cms_dds.DimClientMembership.ClientSSID,
                          bi_cms_dds.DimClientMembership.CenterKey, bi_cms_dds.DimClientMembership.CenterSSID, bi_cms_dds.DimClientMembership.MembershipKey, bi_cms_dds.DimClientMembership.MembershipSSID,
                          bi_cms_dds.DimClientMembership.ClientMembershipStatusSSID, bi_cms_dds.DimClientMembership.ClientMembershipStatusDescription, bi_cms_dds.DimClientMembership.ClientMembershipStatusDescriptionShort,

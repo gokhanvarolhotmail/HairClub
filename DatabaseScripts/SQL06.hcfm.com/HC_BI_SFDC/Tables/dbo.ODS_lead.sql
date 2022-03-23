@@ -1,4 +1,4 @@
-/* CreateDate: 10/07/2021 15:45:35.157 , ModifyDate: 10/07/2021 15:45:35.157 */
+/* CreateDate: 03/21/2022 13:00:03.707 , ModifyDate: 03/21/2022 13:00:06.627 */
 GO
 CREATE TABLE [dbo].[ODS_lead](
 	[Street] [varchar](400) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,

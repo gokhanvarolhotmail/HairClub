@@ -1,4 +1,4 @@
-/* CreateDate: 07/02/2021 16:55:39.217 , ModifyDate: 07/02/2021 16:55:39.217 */
+/* CreateDate: 03/21/2022 13:00:03.690 , ModifyDate: 03/21/2022 13:00:06.623 */
 GO
 CREATE TABLE [Synapse_pool].[LeadsWithOutCampaign](
 	[ID] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,

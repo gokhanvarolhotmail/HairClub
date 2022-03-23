@@ -1,4 +1,4 @@
-/* CreateDate: 10/03/2019 23:03:42.283 , ModifyDate: 02/17/2022 08:13:30.570 */
+/* CreateDate: 03/17/2022 11:57:07.980 , ModifyDate: 03/17/2022 11:57:18.350 */
 GO
 CREATE TABLE [bi_cms_dds].[FactHairSystemOrder](
 	[HairSystemOrderKey] [int] NOT NULL,
@@ -62,24 +62,4 @@ CREATE TABLE [bi_cms_dds].[FactHairSystemOrder](
 	[HairSystemOrderKey] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [FG1]
 ) ON [FG1]
-GO
-CREATE NONCLUSTERED INDEX [IDX_FactHairSystemOrder_ClientKey_HairSystemAppliedDate] ON [bi_cms_dds].[FactHairSystemOrder]
-(
-	[ClientKey] ASC,
-	[HairSystemAppliedDate] ASC
-)
-INCLUDE([HairSystemOrderNumber],[HairSystemOrderDate],[HairSystemDueDate],[CenterKey],[ClientMembershipKey],[ClientHomeCenterKey]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [FG1]
-GO
-CREATE NONCLUSTERED INDEX [NCI_FHSO_HSOD] ON [bi_cms_dds].[FactHairSystemOrder]
-(
-	[HairSystemOrderDate] ASC
-)
-INCLUDE([HairSystemOrderNumber],[HairSystemOrderDateKey],[HairSystemDueDate],[HairSystemAlocationDate],[HairSystemReceivedDate],[HairSystemShippedDate],[HairSystemAppliedDate],[CenterKey],[ClientKey],[ClientMembershipKey],[HairSystemTypeKey],[HairSystemDesignTemplateKey],[CapSizeKey],[TemplateWidth],[TemplateHeight],[TemplateArea],[FactorySSID],[HairSystemOrderStatusKey],[CostContract],[CostActual],[PriceContract],[HairSystemRepairReasonDescription],[HairSystemRedoReasonDescription],[IsOnHoldForReviewFlag],[IsSampleOrderFlag],[IsRepairOrderFlag],[IsRedoOrderFlag],[IsRushOrderFlag],[IsStockInventoryFlag]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [FG1]
-GO
-CREATE NONCLUSTERED INDEX [NCI_FHSO_HSODK_HSOD] ON [bi_cms_dds].[FactHairSystemOrder]
-(
-	[HairSystemOrderDateKey] ASC,
-	[HairSystemOrderDate] ASC
-)
-INCLUDE([HairSystemOrderNumber],[HairSystemDueDate],[HairSystemAlocationDate],[HairSystemReceivedDate],[HairSystemShippedDate],[HairSystemAppliedDate],[CenterKey],[ClientKey],[ClientMembershipKey],[HairSystemTypeKey],[HairSystemDesignTemplateKey],[CapSizeKey],[TemplateWidth],[TemplateHeight],[TemplateArea],[FactorySSID],[HairSystemOrderStatusKey],[CostContract],[CostActual],[PriceContract],[HairSystemRepairReasonDescription],[HairSystemRedoReasonDescription],[IsOnHoldForReviewFlag],[IsSampleOrderFlag],[IsRepairOrderFlag],[IsRedoOrderFlag],[IsRushOrderFlag],[IsStockInventoryFlag]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [FG1]
 GO

@@ -1,4 +1,4 @@
-/* CreateDate: 10/03/2019 23:03:43.150 , ModifyDate: 10/03/2019 23:03:43.150 */
+/* CreateDate: 03/17/2022 11:57:10.670 , ModifyDate: 03/17/2022 11:57:10.670 */
 GO
 CREATE FUNCTION [dbo].[fn_GetFiscalDateInfo] (@Date datetime)
 -----------------------------------------------------------------------

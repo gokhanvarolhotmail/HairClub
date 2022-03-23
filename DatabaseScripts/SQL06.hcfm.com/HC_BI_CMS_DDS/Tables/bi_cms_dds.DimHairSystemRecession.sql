@@ -1,4 +1,4 @@
-/* CreateDate: 10/03/2019 23:03:40.923 , ModifyDate: 10/03/2019 23:03:46.160 */
+/* CreateDate: 03/17/2022 11:57:05.980 , ModifyDate: 03/17/2022 11:57:15.880 */
 GO
 CREATE TABLE [bi_cms_dds].[DimHairSystemRecession](
 	[HairSystemRecessionKey] [int] NOT NULL,

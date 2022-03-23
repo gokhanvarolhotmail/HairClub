@@ -1,4 +1,4 @@
-/* CreateDate: 02/11/2022 15:30:57.193 , ModifyDate: 03/15/2022 07:47:09.377 */
+/* CreateDate: 02/11/2022 15:30:57.193 , ModifyDate: 03/17/2022 11:40:03.247 */
 GO
 /*
 ===============================================================================================
@@ -38,7 +38,7 @@ EXEC [rptHairOrderQuantitybyClient] 241, '26,27,28,29,30,31,45,46,47,48'
 ===============================================================================================
 */
 CREATE PROCEDURE [dbo].[rptHairOrderQuantitybyClient_V2]
-    @CenterID            INT           = NULL
+    @CenterID            INT
   , @MembershipList      NVARCHAR(MAX) = NULL
   , @NoHairInCenter      NVARCHAR(30)  = '<ALL>'
   , @NoHairOnOrder       NVARCHAR(30)  = '<ALL>'
@@ -49,13 +49,10 @@ SET NOCOUNT ON ;
 SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED ;
 
 DECLARE
-    @GetDate                  DATE     = CONVERT(VARCHAR(30), GETDATE(), 112)
-  , @Tomorrow                 DATE     = CONVERT(VARCHAR(30), DATEADD(DAY, 1, GETDATE()), 112)
-  , @BeginDate                DATETIME = DATEADD(MONTH, -18, GETUTCDATE())
-  , @GetUTCDate               DATETIME = GETUTCDATE()
-  , @CorpCenterTypeID         INT
-  , @FranchiseCenterTypeID    INT
-  , @JointVentureCenterTypeID INT ;
+    @GetDate    DATE     = CONVERT(VARCHAR(30), GETDATE(), 112)
+  , @Tomorrow   DATE     = CONVERT(VARCHAR(30), DATEADD(DAY, 1, GETDATE()), 112)
+  , @BeginDate  DATETIME = DATEADD(MONTH, -18, GETUTCDATE())
+  , @GetUTCDate DATETIME = GETUTCDATE() ;
 
 --Split the string parameter that is entered for MembershipID's
 CREATE TABLE [#membership] ( [MembershipID] INT ) ;
@@ -63,7 +60,7 @@ CREATE TABLE [#membership] ( [MembershipID] INT ) ;
 INSERT INTO [#membership]
 SELECT CAST(NULLIF([value], '') AS INT)
 FROM STRING_SPLIT(@MembershipList, ',')
-WHERE @MembershipList NOT IN ('0', '') AND [value] <> ''
+WHERE @MembershipList NOT IN ('0', '')
 OPTION( RECOMPILE ) ;
 
 DECLARE @MembershipCount INT = @@ROWCOUNT ;
@@ -71,24 +68,33 @@ DECLARE @MembershipCount INT = @@ROWCOUNT ;
 IF EXISTS ( SELECT 1 FROM [#membership] WHERE [MembershipID] = 0 )
     SET @MembershipCount = 0 ;
 
-SELECT
-    @CorpCenterTypeID = MAX(CASE WHEN [CenterTypeDescriptionShort] = 'C' THEN [CenterTypeID] END)
-  , @FranchiseCenterTypeID = MAX(CASE WHEN [CenterTypeDescriptionShort] = 'F' THEN [CenterTypeID] END)
-  , @JointVentureCenterTypeID = MAX(CASE WHEN [CenterTypeDescriptionShort] = 'JV' THEN [CenterTypeID] END)
+DECLARE
+    @CorpCenterTypeID         INT
+  , @FranchiseCenterTypeID    INT
+  , @JointVentureCenterTypeID INT ;
+
+SELECT @CorpCenterTypeID = [CenterTypeID]
 FROM [dbo].[lkpCenterType]
-WHERE [CenterTypeDescriptionShort] IN ('C', 'F', 'JV') ;
+WHERE [CenterTypeDescriptionShort] = 'C' ;
+
+SELECT @FranchiseCenterTypeID = [CenterTypeID]
+FROM [dbo].[lkpCenterType]
+WHERE [CenterTypeDescriptionShort] = 'F' ;
+
+SELECT @JointVentureCenterTypeID = [CenterTypeID]
+FROM [dbo].[lkpCenterType]
+WHERE [CenterTypeDescriptionShort] = 'JV' ;
 
 DROP TABLE IF EXISTS [#CenterId] ;
 
-CREATE TABLE [#CenterId] ( [CenterId] INT NULL UNIQUE CLUSTERED ) ;
+CREATE TABLE [#CenterId] ( [CenterId] INT NOT NULL PRIMARY KEY CLUSTERED ) ;
 
 IF( @CenterID = 1 )
     BEGIN
         INSERT [#CenterId]( [CenterId] )
         SELECT [CenterID]
         FROM [dbo].[cfgCenter]
-        WHERE [CenterTypeID] = @CorpCenterTypeID AND [IsCorporateHeadquartersFlag] = 0
-        OPTION( RECOMPILE ) ;
+        WHERE [CenterTypeID] = @CorpCenterTypeID AND [IsCorporateHeadquartersFlag] = 0 ;
     END ;
 
 -- Add Franchise CenterIDs to List
@@ -97,8 +103,7 @@ ELSE IF( @CenterID = 2 )
         INSERT [#CenterId]( [CenterId] )
         SELECT [CenterID]
         FROM [dbo].[cfgCenter]
-        WHERE [CenterTypeID] = @FranchiseCenterTypeID
-        OPTION( RECOMPILE ) ;
+        WHERE [CenterTypeID] = @FranchiseCenterTypeID ;
     END ;
 
 -- Add JointVenture CenterIDs to List
@@ -107,8 +112,7 @@ ELSE IF( @CenterID = 3 )
         INSERT [#CenterId]( [CenterId] )
         SELECT [CenterID]
         FROM [dbo].[cfgCenter]
-        WHERE [CenterTypeID] = @JointVentureCenterTypeID
-        OPTION( RECOMPILE ) ;
+        WHERE [CenterTypeID] = @JointVentureCenterTypeID ;
     END ;
 ELSE
     INSERT [#CenterId]( [CenterId] )
@@ -140,9 +144,6 @@ CREATE TABLE [#hair]
   , [FrozenEFTEndDate]                     DATE
   , [EstNextApp]                           DATE
   , [LastApplicationDate]                  DATE
-  , [ContractPrice]                        MONEY
-  , [ContractPaidAmount]                   MONEY
-  , [RevenueGroupID]                       INT
 ) ;
 
 -- Last Application Date
@@ -226,10 +227,7 @@ INSERT INTO [#hair]( [HairSystemOrderNumber]
                    , [MembershipExpiration]
                    , [FrozenEFTEndDate]
                    , [EstNextApp]
-                   , [LastApplicationDate]
-                   , [ContractPrice]
-                   , [ContractPaidAmount]
-                   , [RevenueGroupID] )
+                   , [LastApplicationDate] )
 SELECT
     [hso].[HairSystemOrderNumber]
   , [clt].[CenterID]
@@ -252,9 +250,6 @@ SELECT
   , [eft].[FrozenEFTEndDate]
   , [nad].[EstNextApp]
   , [sna].[LastApplicationDate]
-  , [cm].[ContractPrice]
-  , [cm].[ContractPaidAmount]
-  , [m].[RevenueGroupID]
 FROM [dbo].[datClient] AS [clt]
 INNER JOIN [dbo].[datClientMembership] AS [cm] ON [cm].[ClientMembershipGUID] = [clt].[CurrentBioMatrixClientMembershipGUID]
 INNER JOIN [dbo].[cfgCenter] AS [c] ON [c].[CenterID] = [clt].[CenterID]
@@ -324,8 +319,7 @@ FROM( SELECT
              , [sod].[Quantity]
              , [sc].[SalesCodeDescriptionShort]
              , [sod].[SalesCodeID] ) AS [q]
-GROUP BY [q].[ClientMembershipGUID]
-OPTION( RECOMPILE ) ;
+GROUP BY [q].[ClientMembershipGUID] ;
 
 --Find Last Applied Date
 SELECT
@@ -344,8 +338,7 @@ FROM( SELECT
                   FROM [dbo].[datHairSystemOrderTransaction] ) AS [hsot] ON [hair].[ClientGUID] = [hsot].[ClientGUID]
       INNER JOIN [dbo].[lkpHairSystemOrderStatus] AS [hsos] ON [hsot].[NewHairSystemOrderStatusID] = [hsos].[HairSystemOrderStatusID]
       WHERE [hsos].[HairSystemOrderStatusDescriptionShort] = 'APPLIED' ) AS [lastapp]
-WHERE [lastapp].[LastRank] = 1
-OPTION( RECOMPILE ) ;
+WHERE [lastapp].[LastRank] = 1 ;
 
 --Find Next Due Date
 SELECT
@@ -375,89 +368,43 @@ WHERE [M].[BusinessSegmentID] = 1 --BIO
   AND [ACCUM].[MembershipID] NOT IN (1, 2, 11, 12, 14, 15, 16, 17, 18, 19, 49, 50, 57) AND [ACCUM].[IsActiveFlag] = 1 AND [ACCUM].[InitialQuantity] <> 0
 GROUP BY [M].[MembershipDescription]
        , [ACCUM].[MembershipID]
-ORDER BY [M].[MembershipDescription]
-OPTION( RECOMPILE ) ;
+ORDER BY [M].[MembershipDescription] ;
 
-CREATE TABLE [#groupedMemberships]
-(
-    [membershipId]               INT NOT NULL PRIMARY KEY CLUSTERED
-  , [membershipDescriptionShort] NVARCHAR(MAX)
-  , [membershipDescription]      NVARCHAR(MAX)
-  , [membershipGroup]            NVARCHAR(MAX)
-  , [MaxVal]                     INT
-) ;
+CREATE TABLE [#groupedMemberships] ( [membershipId] INT, [membershipDescriptionShort] NVARCHAR(128), [membershipDescription] NVARCHAR(128), [MaxVal] INT ) ;
 
 --- Insert membership values
-INSERT INTO [#groupedMemberships]( [membershipId], [membershipDescriptionShort], [membershipDescription], [membershipGroup], [MaxVal] )
+INSERT INTO [#groupedMemberships]( [membershipId], [membershipDescriptionShort], [membershipDescription], [MaxVal] )
 SELECT
-    [t].[membershipId]
-  , [t].[membershipDescriptionShort]
-  , [t].[membershipDescription]
-  , [t].[membershipGroup]
-  , [t].[MaxVal]
-FROM( VALUES( 3, 'GRAD', 'Xtrands+ Initial 6', 'Xtrands+', 1 )
-          , ( 4, 'GRDSV', 'Xtrands+ Initial 6 Solutions', 'Xtrands+', 1 )
-          , ( 5, 'GRADSOL12', 'Xtrands+ Initial 12 Solutions', 'Xtrands+', 1 )
-          , ( 10, 'TRADITION', 'Xtrands+ Initial', 'Xtrands+', 1 )
-          , ( 12, 'HCFK', 'Hair Club For Kids', 'HCFK', 1 )
-          , ( 22, 'BASIC', 'Basic', 'Basic', 1 )
-          , ( 23, 'BASICSOL', 'Basic Solutions', 'Basic', 1 )
-          , ( 24, 'BRZ', 'Bronze', 'Bronze', 1 )
-          , ( 25, 'BRZSOL', 'Bronze Solutions', 'Bronze', 1 )
-          , ( 26, 'SIL', 'Silver', 'Silver', 1 )
-          , ( 27, 'SILSOL', 'Silver Solutions', 'Silver', 2 )
-          , ( 28, 'GLD', 'Gold', 'Gold', 2 )
-          , ( 29, 'GLDSOL', 'Gold Solutions', 'Gold', 2 )
-          , ( 30, 'DIA', 'Diamond', 'Diamond', 2 )
-          , ( 31, 'DIASOL', 'Diamond Solutions', 'Diamond', 2 )
-          , ( 32, 'PLA', 'Platinum', 'Platinum', 3 )
-          , ( 33, 'PLASOL', 'Platinum Solutions', 'Platinum', 3 )
-          , ( 34, 'EXE', 'Executive', 'Executive', 3 )
-          , ( 35, 'EXESOL', 'Executive Solutions', 'Executive', 3 )
-          , ( 36, 'PRS', 'Presidential', 'Presidential', 4 )
-          , ( 37, 'PRSSOL', 'Presidential Solutions', 'Presidential', 4 )
-          , ( 38, 'PRE', 'Premier', 'Premier', 5 )
-          , ( 39, 'PRESOL', 'Premier Solutions', 'Premier', 5 )
-          , ( 45, 'GRDSV12', 'Xtrands+ Initial 12', 'Xtrands+', 1 )
-          , ( 47, 'GRDSV', 'Xtrands+ Initial 6', 'Xtrands+', 1 )
-          , ( 48, 'GRDSVSOL', 'Xtrands+ Initial 6 Solutions', 'Xtrands+', 1 )
-          , ( 55, 'GRADPCP', 'Gradual PCP', 'Xtrands+', 1 )
-          , ( 56, 'GRADPCPSOL', 'Gradual PCP Solutions', 'Xtrands+', 1 )
-          , ( 63, 'RUBY', 'Ruby', 'Ruby', 1 )
-          , ( 64, 'RUBYPLUS', 'Ruby Plus', 'Ruby', 1 )
-          , ( 65, 'EMRLD', 'Emerald', 'Emerald', 1 )
-          , ( 66, 'EMRLDPLUS', 'Emerald Plus', 'Emerald', 1 )
-          , ( 67, 'SAPPHIRE', 'Sapphire', 'Sapphire', 2 )
-          , ( 68, 'SAPPHRPLUS', 'Sapphire Plus', 'Sapphire', 2 )
-          , ( 88, 'EMRLDPR', 'Emerald Premium', 'Emerald', 1 )
-          , ( 89, 'EMRLDPRPL', 'Emerald Premium Plus', 'Emerald', 1 )
-          , ( 90, 'SAPPHIREPR', 'Sapphire Premium', 'Sapphire', 2 )
-          , ( 91, 'SAPPHRPRPL', 'Sapphire Premium Plus', 'Sapphire', 2 )
-          , ( 95, 'RUBY', 'Ruby Plus Transitional', 'Ruby', 1 )
-          , ( 96, 'EMRLPLUSTR', 'Emerald Plus Transitional', 'Emerald', 1 )
-          , ( 97, 'SAPPPLUSTR', 'Sapphire Plus Transitional', 'Sapphire', 2 )
-          , ( 98, 'BASICTR', 'Basic Transitional', 'Basic', 1 )
-          , ( 99, 'BRZTR', 'Bronze Transitional', 'Bronze', 1 )
-          , ( 100, 'SILTR', 'Silver Transitional', 'Silver', 1 )
-          , ( 101, 'GLDTR', 'Gold Transitional', 'Gold', 2 )
-          , ( 102, 'BASICSOLTR', 'Basic Solutions Transitional', 'Basic', 1 )
-          , ( 103, 'BRZSOLTR', 'Bronze Solutions Transitional', 'Bronze', 1 )
-          , ( 104, 'DIATR', 'Diamond Transitional', 'Diamond', 2 )
-          , ( 105, 'DIASOLTR', 'Diamond Solutions Transitional', 'Diamond', 2 )
-          , ( 106, 'EXETR', 'Executive Transitional', 'Executive', 3 )
-          , ( 107, 'EXESOLTR', 'Executive Solutions Transitional', 'Executive', 3 )
-          , ( 108, 'GLDSOLTR', 'Gold Solutions Transitional', 'Gold', 2 )
-          , ( 109, 'PLATR', 'Platinum Transitional', 'Platinum', 3 )
-          , ( 110, 'PLASOLTR', 'Platinum Solutions Transitional', 'Platinum', 3 )
-          , ( 111, 'PRETR', 'Premier Transitional', 'Premier', 5 )
-          , ( 112, 'PRSTR', 'Presidential Transitional', 'Presidential', 4 )
-          , ( 113, 'PRSSOLTR', 'Presidential Solutions Transitional', 'Presidential', 4 )
-          , ( 114, 'SILSOLTR', 'Silver Solutions Transitional', 'Silver', 1 )
-          , ( 279, 'GRAD12', 'Xtrands+ Initial 12', 'Xtrands+', 1 )
-          , ( 285, 'GRDSV', 'Xtrands+ Initial 6 EZPAY', 'Xtrands+', 1 )
-          , ( 290, 'EMPLOYRET', 'Employee-Retail', 'EmployeeRetail', 1 )
-          , ( 320, 'GRD12', 'Gradual 12', 'Xtrands+', 1 )
-          , ( 328, 'GRDSV3', 'Xtrands+ 3', 'Xtrands+', 1 )) AS [t]( [membershipId], [membershipDescriptionShort], [membershipDescription], [membershipGroup], [MaxVal] ) ;
+    CAST([t].[membershipId] AS INT) AS [membershipId]
+  , CAST([t].[membershipDescriptionShort] AS NVARCHAR(MAX)) AS [membershipDescriptionShort]
+  , CAST([t].[membershipDescription] AS NVARCHAR(MAX)) AS [membershipDescription]
+  , CAST([t].[MaxVal] AS INT) AS [MaxVal]
+FROM( VALUES( 22, N'BASIC', N'Basic', 1 )
+          , ( 30, N'DIA', N'Diamond', 2 )
+          , ( 31, N'DIASOL', N'Diamond Solutions', 2 )
+          , ( 24, N'BRZ', N'Bronze', 1 )
+          , ( 12, N'HCFK', N'Hair Club For Kids', 1 )
+          , ( 65, N'EMRLD', N'Emerald', 1 )
+          , ( 290, N'EMPLOYRET', N'Employee-Retail', 1 )
+          , ( 34, N'EXE', N'Executive', 3 )
+          , ( 28, N'GLD', N'Gold', 2 )
+          , ( 29, N'GLDSOL', N'Gold Solutions', 2 )
+          , ( 32, N'PLA', N'Platinum', 3 )
+          , ( 33, N'PLASOL', N'Platinum Solutions', 3 )
+          , ( 36, N'PRS', N'Presidential', 4 )
+          , ( 63, N'RUBY', N'Ruby', 1 )
+          , ( 95, N'RUBY', N'Ruby Plus Transitional', 1 )
+          , ( 67, N'SAPPHIRE', N'Sapphire', 2 )
+          , ( 26, N'SIL', N'Silver', 1 )
+          , ( 10, N'TRADITION', N'Xtrands+ Initial', 1 )
+          , ( 5, N'GRADSOL12', N'Xtrands+ Initial 12 Solutions', 1 )
+          , ( 3, N'GRAD', N'Xtrands+ Initial 6', 1 )
+          , ( 47, N'GRDSV', N'Xtrands+ Initial 6', 1 )
+          , ( 285, N'GRDSV', N'Xtrands+ Initial 6 EZPAY', 1 )
+          , ( 4, N'GRDSV', N'Xtrands+ Initial 6 Solutions', 1 )
+          , ( 48, N'GRDSVSOL', N'Xtrands+ Initial 6 Solutions', 1 )
+          , ( 18, N'ACQUIRED', N'ACQUIRED', 2 )
+          , ( 77, N'ACQSOL', N'ACQUIRED Solutions', 2 )) AS [t]( [membershipId], [membershipDescriptionShort], [membershipDescription], [MaxVal] ) ;
 
 -- Order Avail for Next App
 -- If Cent exists true
@@ -484,8 +431,7 @@ FROM [dbo].[datClient] AS [clt]
 INNER JOIN [dbo].[datHairSystemOrder] AS [hso] ON [hso].[ClientGUID] = [clt].[ClientGUID]
 INNER JOIN [dbo].[lkpHairSystemOrderStatus] AS [hsos] ON [hsos].[HairSystemOrderStatusID] = [hso].[HairSystemOrderStatusID] AND [hsos].[HairSystemOrderStatusDescriptionShort] IN ('CENT', 'ORDER')
 WHERE EXISTS ( SELECT 1 FROM [#hair] AS [l] WHERE [l].[ClientGUID] = [clt].[ClientGUID] )
-GROUP BY [clt].[ClientGUID]
-OPTION( RECOMPILE ) ;
+GROUP BY [clt].[ClientGUID] ;
 
 -- Newest Order System Type
 -- [NewestOrderSystemType]
@@ -508,8 +454,7 @@ FROM( SELECT
       INNER JOIN [dbo].[datHairSystemOrder] AS [hso] ON [hso].[ClientGUID] = [clt].[ClientGUID]
       INNER JOIN [dbo].[cfgHairSystem] AS [hs] ON [hso].[HairSystemID] = [hs].[HairSystemID]
       WHERE EXISTS ( SELECT 1 FROM [#hair] AS [l] WHERE [l].[ClientGUID] = [clt].[ClientGUID] )) AS [k]
-WHERE [k].[rw] = 1
-OPTION( RECOMPILE ) ;
+WHERE [k].[rw] = 1 ;
 
 -- Remaining Qty to Order
 IF OBJECT_ID('[tempdb]..[#Calc03]') IS NOT NULL
@@ -522,8 +467,7 @@ INTO [#Calc03]
 FROM [dbo].[datClient] AS [clt]
 INNER JOIN [dbo].[datClientMembership] AS [cm] ON [cm].[ClientMembershipGUID] = [clt].[CurrentBioMatrixClientMembershipGUID]
 OUTER APPLY( SELECT COUNT(1) AS [Cnt] FROM [dbo].[datHairSystemOrder] AS [hso] WHERE [hso].[ClientGUID] = [clt].[ClientGUID] AND [hso].[CreateDate] >= [cm].[BeginDate] ) AS [b]
-WHERE EXISTS ( SELECT 1 FROM [#hair] AS [l] WHERE [l].[ClientGUID] = [clt].[ClientGUID] )
-OPTION( RECOMPILE ) ;
+WHERE EXISTS ( SELECT 1 FROM [#hair] AS [l] WHERE [l].[ClientGUID] = [clt].[ClientGUID] ) ;
 
 SELECT
     [q].[ClientFullNameCalc] AS [Client]
@@ -550,16 +494,13 @@ SELECT
   , [c1].[OldestOrderPlacedDate]
   , [c1].[OldestOrderPlacedDueDate]
   , [c2].[NewestOrderSystemType]
-  , CASE WHEN [c3].[Cnt] >= ISNULL([q].[InitialQuantity], 0) THEN [c3].[Cnt] - ISNULL([q].[InitialQuantity], 0)ELSE 0 END AS [RemainingQuantityToOrder]
+  , [c3].[Cnt] AS [RemainingQuantityToOrder]
   , [q].[Region]
   , [c2].[NewestOrderDate]
   , [q].[MembershipExpiration]
   , [q].[FrozenEFTEndDate]
   , [q].[EstNextApp]
-  --, [q].[OrderAvailForNextApp]
-  , ISNULL([q].[ContractPrice], 0) AS [ContractPrice]
-  , ISNULL([q].[ContractPaidAmount], 0) AS [ContractPaidAmount]
-  , [q].[RevenueGroupID]
+--, [q].[OrderAvailForNextApp]
 INTO [#tmpHairOrderQuantitybyClient]
 FROM( SELECT
           [hair].[ClientGUID]
@@ -581,10 +522,7 @@ FROM( SELECT
         , MAX([hair].[FrozenEFTEndDate]) AS [FrozenEFTEndDate]
         , MAX([hair].[EstNextApp]) AS [EstNextApp]
         , MAX([hair].[LastApplicationDate]) AS [LastApplicationDate]
-        --, MAX(CASE WHEN [hair].[HairSystemOrderDate] = [hair].[NextAppointmentDate] AND [hair].[InCenter] = 1 THEN 1 ELSE 0 END) AS [OrderAvailForNextApp]
-        , MAX([hair].[ContractPrice]) AS [ContractPrice]
-        , MAX([hair].[ContractPaidAmount]) AS [ContractPaidAmount]
-        , MAX([hair].[RevenueGroupID]) AS [RevenueGroupID]
+      --, MAX(CASE WHEN [hair].[HairSystemOrderDate] = [hair].[NextAppointmentDate] AND [hair].[InCenter] = 1 THEN 1 ELSE 0 END) AS [OrderAvailForNextApp]
       FROM [#hair] AS [hair]
       LEFT JOIN [dbo].[datClientMembershipAccum] AS [ahs] ON [hair].[CurrentBioMatrixClientMembershipGUID] = [ahs].[ClientMembershipGUID] AND [ahs].[AccumulatorID] = 8 --Hair Systems
       LEFT JOIN [#initialquantity] AS [iq] ON [hair].[MembershipID] = [iq].[MembershipID]
@@ -605,8 +543,7 @@ LEFT JOIN [#ScheduledNextAppDate] AS [sad] ON [q].[ClientGUID] = [sad].[ClientGU
 LEFT JOIN [#Calc01] AS [c1] ON [c1].[ClientGUID] = [q].[ClientGUID]
 LEFT JOIN [#Calc02] AS [c2] ON [c2].[ClientGUID] = [q].[ClientGUID]
 LEFT JOIN [#Calc03] AS [c3] ON [c3].[ClientGUID] = [q].[ClientGUID]
-LEFT JOIN [#NextDueDate] AS [ndd] ON [ndd].[ClientGUID] = [q].[ClientGUID]
-OPTION( RECOMPILE ) ;
+LEFT JOIN [#NextDueDate] AS [ndd] ON [ndd].[ClientGUID] = [q].[ClientGUID] ;
 
 SELECT
     [k].[Region]
@@ -614,7 +551,6 @@ SELECT
   , [k].[Client]
   , [k].[Current Membership]
   , [k].[Membership Expiration]
-  , [k].[ContractAmtPaid%] AS [Contract Amt Paid %]
   , [k].[Membership Qty]
   , CASE WHEN [k].[Frozen EFT End Date] > @GetDate THEN [k].[Frozen EFT End Date] END AS [Frozen EFT End Date]
   , [k].[QA Needed]
@@ -631,7 +567,7 @@ SELECT
   , [k].[Newest Order System Type]
   , [k].[Remaining to Order]
   , [k].[Order Avail for Next App]
-  , [k].[Priority Hair Order (PRH) or Stock Needed]
+  , [k].[Priority Order Needed]
   , [k].[Suggested Qty to Order]
 FROM( SELECT
           [t].[Region]
@@ -655,10 +591,10 @@ FROM( SELECT
         , [t].[NewestOrderSystemType] AS [Newest Order System Type]
         , ISNULL([t].[RemainingQuantityToOrder], 0) AS [Remaining to Order]
         , CASE WHEN [t].[OrderAvailableForNextAppointment] = 1 THEN 'Yes' ELSE 'No' END AS [Order Avail for Next App]
-        , CASE WHEN [t].[Calc01] > [t].[Calc02] THEN CONCAT('Yes; ', [t].[Calc01] - [t].[Calc02])ELSE 'No' END AS [Priority Hair Order (PRH) or Stock Needed]
-        --, CASE WHEN [t].[PriorityHairNeeded] = 1 THEN 'Yes' ELSE 'No' END AS [Priority Hair Order (PRH) or Stock Needed]
+        , CASE WHEN [t].[Calc01] > [t].[Calc02] THEN CONCAT('Yes; ', [t].[Calc01] - [t].[Calc02])ELSE 'No' END AS [Priority Order Needed]
+        --, CASE WHEN [t].[PriorityHairNeeded] = 1 THEN 'Yes' ELSE 'No' END AS [Priority Order Needed]
         , CAST(CASE WHEN [t].[SuggestedQuantityToOrder] > [gms].[MaxVal] THEN [gms].[MaxVal] WHEN [t].[SuggestedQuantityToOrder] > 0 THEN [t].[SuggestedQuantityToOrder] ELSE 0 END AS INT) AS [Suggested Qty to Order]
-        , CASE WHEN [t].[RevenueGroupID] = 1 THEN CAST([t].[ContractPaidAmount] * 1.0 / NULLIF([t].[ContractPrice], 0) AS NUMERIC(10, 2))END AS [ContractAmtPaid%]
+
       --, CAST([t].[DueDate] AS DATE) AS [Due Date]
       --, [t].[TotalAccumQuantity] AS [Total Accum Qty]
       --, [t].[Promo]

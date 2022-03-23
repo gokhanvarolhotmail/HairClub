@@ -1,4 +1,4 @@
-/* CreateDate: 10/03/2019 23:03:42.630 , ModifyDate: 10/03/2019 23:03:42.630 */
+/* CreateDate: 03/17/2022 11:57:09.510 , ModifyDate: 03/17/2022 11:57:09.510 */
 GO
 CREATE FUNCTION [bief_dds].[fn_IsErrorLoggingEnabled] ()
 -----------------------------------------------------------------------

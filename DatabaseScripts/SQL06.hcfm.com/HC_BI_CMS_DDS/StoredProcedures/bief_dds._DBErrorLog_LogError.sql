@@ -1,4 +1,4 @@
-/* CreateDate: 10/03/2019 23:03:42.747 , ModifyDate: 10/03/2019 23:03:42.747 */
+/* CreateDate: 03/17/2022 11:57:09.617 , ModifyDate: 03/17/2022 11:57:09.617 */
 GO
 CREATE PROCEDURE [bief_dds].[_DBErrorLog_LogError]
 (

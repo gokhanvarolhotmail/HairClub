@@ -1,4 +1,4 @@
-/* CreateDate: 10/03/2019 23:03:40.377 , ModifyDate: 10/03/2019 23:03:45.903 */
+/* CreateDate: 03/17/2022 11:57:04.817 , ModifyDate: 03/17/2022 11:57:15.487 */
 GO
 CREATE TABLE [bi_cms_dds].[DimEmployeePosition](
 	[EmployeePositionKey] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,

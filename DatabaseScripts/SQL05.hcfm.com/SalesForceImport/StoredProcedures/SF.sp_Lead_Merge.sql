@@ -1,4 +1,4 @@
-/* CreateDate: 03/06/2022 17:23:58.143 , ModifyDate: 03/06/2022 17:23:58.143 */
+/* CreateDate: 03/17/2022 15:12:22.183 , ModifyDate: 03/17/2022 15:12:22.183 */
 GO
 CREATE PROCEDURE [SF].[sp_Lead_Merge]
 	@ROWCOUNT BIGINT = NULL OUTPUT
@@ -151,6 +151,7 @@ WHEN MATCHED THEN
 	, [t].[Lead_ID_18_dig__c] = [t].[Lead_ID_18_dig__c]
 	, [t].[Initial_Campaign_Source__c] = [t].[Initial_Campaign_Source__c]
 	, [t].[Landing_Page_Form_Submitted_Date__c] = [t].[Landing_Page_Form_Submitted_Date__c]
+	, [t].[Personal_Photo__c] = [t].[Personal_Photo__c]
 WHEN NOT MATCHED THEN
 	INSERT(
 	[Id]
@@ -289,6 +290,7 @@ WHEN NOT MATCHED THEN
 	, [Lead_ID_18_dig__c]
 	, [Initial_Campaign_Source__c]
 	, [Landing_Page_Form_Submitted_Date__c]
+	, [Personal_Photo__c]
 	)
 	VALUES(
 	[s].[Id]
@@ -427,6 +429,7 @@ WHEN NOT MATCHED THEN
 	, [s].[Lead_ID_18_dig__c]
 	, [s].[Initial_Campaign_Source__c]
 	, [s].[Landing_Page_Form_Submitted_Date__c]
+	, [s].[Personal_Photo__c]
 	)
 OPTION(RECOMPILE) ;
 

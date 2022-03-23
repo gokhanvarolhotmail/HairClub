@@ -1,4 +1,4 @@
-/* CreateDate: 10/03/2019 23:03:43.953 , ModifyDate: 10/03/2019 23:03:43.953 */
+/* CreateDate: 03/17/2022 11:57:12.457 , ModifyDate: 03/17/2022 11:57:12.457 */
 GO
 CREATE VIEW [bi_cms_dds].[vwDimTenderType]
 AS

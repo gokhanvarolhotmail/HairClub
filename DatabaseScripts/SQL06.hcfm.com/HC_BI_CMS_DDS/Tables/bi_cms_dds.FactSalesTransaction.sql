@@ -1,4 +1,4 @@
-/* CreateDate: 10/03/2019 23:03:42.417 , ModifyDate: 04/06/2021 09:38:49.140 */
+/* CreateDate: 03/17/2022 11:57:08.383 , ModifyDate: 03/17/2022 13:02:20.990 */
 GO
 CREATE TABLE [bi_cms_dds].[FactSalesTransaction](
 	[OrderDateKey] [int] NOT NULL,
@@ -118,23 +118,25 @@ CREATE UNIQUE CLUSTERED INDEX [PK_FactSalesTransaction] ON [bi_cms_dds].[FactSal
 	[SalesOrderDetailKey] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [FG1]
 GO
+SET ARITHABORT ON
+SET CONCAT_NULL_YIELDS_NULL ON
+SET QUOTED_IDENTIFIER ON
+SET ANSI_NULLS ON
+SET ANSI_PADDING ON
+SET ANSI_WARNINGS ON
+SET NUMERIC_ROUNDABORT OFF
+GO
+CREATE NONCLUSTERED INDEX [IDX_FactSalesTransacdtion_ExtendedPriceINCL] ON [bi_cms_dds].[FactSalesTransaction]
+(
+	[ExtendedPrice] ASC
+)
+INCLUDE([ContactKey],[S_PostExtAmt],[NB_TradAmt],[NB_GradAmt],[NB_ExtAmt],[RetailAmt],[S_SurAmt],[NB_XTRAmt],[S_PRPAmt],[NB_MDPAmt],[NB_LaserAmt]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [FG1]
+GO
 CREATE NONCLUSTERED INDEX [IDX_FactSalesTransaction_CenterKey] ON [bi_cms_dds].[FactSalesTransaction]
 (
 	[CenterKey] ASC
 )
 INCLUDE([SalesOrderKey],[ClientKey],[MembershipKey],[ClientMembershipKey]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [FG1]
-GO
-CREATE NONCLUSTERED INDEX [IDX_FactSalesTransaction_ClientKeySalesCodeKey_INCLUDEOrderDateKeyetc] ON [bi_cms_dds].[FactSalesTransaction]
-(
-	[ClientKey] ASC,
-	[SalesCodeKey] ASC
-)
-INCLUDE([OrderDateKey],[SalesOrderKey],[ClientMembershipKey],[Employee1Key]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [FG1]
-GO
-CREATE NONCLUSTERED INDEX [IDX_FactSalesTransaction_ContactKey] ON [bi_cms_dds].[FactSalesTransaction]
-(
-	[ContactKey] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [FG1]
 GO
 CREATE NONCLUSTERED INDEX [IDX_FactSalesTransaction_SalesOrderDetailKey] ON [bi_cms_dds].[FactSalesTransaction]
 (
@@ -147,42 +149,10 @@ CREATE NONCLUSTERED INDEX [IDX_FactSaleTransaction_SaleOrderKey] ON [bi_cms_dds]
 	[SalesOrderKey] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [FG1]
 GO
-SET ARITHABORT ON
-SET CONCAT_NULL_YIELDS_NULL ON
-SET QUOTED_IDENTIFIER ON
-SET ANSI_NULLS ON
-SET ANSI_PADDING ON
-SET ANSI_WARNINGS ON
-SET NUMERIC_ROUNDABORT OFF
-GO
-CREATE NONCLUSTERED INDEX [IX_31005_31004_FactSalesTransaction] ON [bi_cms_dds].[FactSalesTransaction]
-(
-	[ExtendedPrice] ASC
-)
-INCLUDE([ContactKey],[S_PostExtAmt],[NB_TradAmt],[NB_GradAmt],[NB_ExtAmt],[RetailAmt],[S_SurAmt],[NB_XTRAmt],[S_PRPAmt],[NB_MDPAmt],[NB_LaserAmt]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [FG1]
-GO
 CREATE NONCLUSTERED INDEX [IX_FactSalesTransaction_AccountID] ON [bi_cms_dds].[FactSalesTransaction]
 (
 	[AccountID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [FG1]
-GO
-CREATE NONCLUSTERED INDEX [IX_FactSalesTransaction_CenterKeyEmployee2KeyINCL] ON [bi_cms_dds].[FactSalesTransaction]
-(
-	[CenterKey] ASC,
-	[Employee2Key] ASC
-)
-INCLUDE([OrderDateKey],[ClientKey],[MembershipKey],[SalesCodeKey]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-GO
-CREATE NONCLUSTERED INDEX [IX_FactSalesTransaction_CenterKeyONLY] ON [bi_cms_dds].[FactSalesTransaction]
-(
-	[CenterKey] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-GO
-CREATE NONCLUSTERED INDEX [IX_FactSalesTransaction_CenterKeyOrderDateKeyINCL] ON [bi_cms_dds].[FactSalesTransaction]
-(
-	[CenterKey] ASC
-)
-INCLUDE([OrderDateKey],[SalesOrderKey],[ClientKey],[Employee1Key],[Employee2Key],[NB_TradCnt],[NB_GradCnt]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [FG1]
 GO
 CREATE NONCLUSTERED INDEX [IX_FactSalesTransaction_CenterKeyOrderDateKeySalesCodeKey] ON [bi_cms_dds].[FactSalesTransaction]
 (
@@ -197,12 +167,6 @@ CREATE NONCLUSTERED INDEX [IX_FactSalesTransaction_ClientMembershipKeyINCL] ON [
 	[ClientMembershipKey] ASC
 )
 INCLUDE([OrderDateKey],[SalesOrderKey],[SalesOrderDetailKey],[CenterKey],[MembershipKey],[SalesCodeKey],[ExtendedPrice]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [FG1]
-GO
-CREATE NONCLUSTERED INDEX [IX_FactSalesTransaction_DiscountINCL] ON [bi_cms_dds].[FactSalesTransaction]
-(
-	[Discount] ASC
-)
-INCLUDE([OrderDateKey],[SalesOrderKey],[SalesOrderDetailKey],[ClientKey],[SalesCodeKey],[Employee1Key]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [FG1]
 GO
 CREATE NONCLUSTERED INDEX [IX_FactSalesTransaction_INCL] ON [bi_cms_dds].[FactSalesTransaction]
 (
@@ -232,12 +196,6 @@ CREATE NONCLUSTERED INDEX [IX_FactSalesTransaction_SalesOrderKeyINCL] ON [bi_cms
 	[SalesOrderKey] ASC
 )
 INCLUDE([SalesOrderDetailKey],[CenterKey],[ClientMembershipKey],[SalesCodeKey],[Quantity],[Price],[Discount],[ExtendedPrice]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [FG1]
-GO
-CREATE NONCLUSTERED INDEX [IXX_FactSalesTransaction_SalesCodeKey] ON [bi_cms_dds].[FactSalesTransaction]
-(
-	[SalesCodeKey] ASC
-)
-INCLUDE([OrderDateKey],[SalesOrderKey],[SalesOrderDetailKey],[ClientKey],[Employee1Key],[Discount]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
 CREATE NONCLUSTERED INDEX [Temp_FactSalesTransaction_ClientMembershipKey] ON [bi_cms_dds].[FactSalesTransaction]
 (

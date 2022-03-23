@@ -1,4 +1,4 @@
-/* CreateDate: 10/03/2019 23:03:40.320 , ModifyDate: 03/14/2022 23:09:12.787 */
+/* CreateDate: 03/17/2022 11:57:04.753 , ModifyDate: 03/17/2022 11:57:15.480 */
 GO
 CREATE TABLE [bi_cms_dds].[DimEmployee](
 	[EmployeeKey] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
@@ -42,38 +42,4 @@ CREATE TABLE [bi_cms_dds].[DimEmployee](
 	[EmployeeKey] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [FG1]
 ) ON [FG1]
-GO
-CREATE NONCLUSTERED INDEX [Employee_IsActiveFlag_Includes] ON [bi_cms_dds].[DimEmployee]
-(
-	[IsActiveFlag] ASC
-)
-INCLUDE([EmployeeSSID],[EmployeeFirstName],[EmployeeLastName],[CenterSSID]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [FG1]
-GO
-CREATE NONCLUSTERED INDEX [IDX_DimEmployee_EmployeeKey_Name] ON [bi_cms_dds].[DimEmployee]
-(
-	[EmployeeKey] ASC
-)
-INCLUDE([EmployeeSSID],[EmployeeFullName],[EmployeeLastName],[EmployeeFirstName]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-GO
-CREATE NONCLUSTERED INDEX [IDX_DimEmployee_RowIsCurrent_EmployeeSSID_EmployeeKey] ON [bi_cms_dds].[DimEmployee]
-(
-	[EmployeeSSID] ASC,
-	[RowIsCurrent] ASC,
-	[RowIsInferred] ASC
-)
-INCLUDE([EmployeeKey]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-GO
-CREATE NONCLUSTERED INDEX [IX_DimEmployee_CenterSSID_Included_EmployeeKey_Name] ON [bi_cms_dds].[DimEmployee]
-(
-	[CenterSSID] ASC
-)
-INCLUDE([EmployeeKey],[EmployeeFirstName],[EmployeeLastName]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [FG1]
-GO
-SET ANSI_PADDING ON
-GO
-CREATE NONCLUSTERED INDEX [ix_DimEmployee_EmployeePayrollID] ON [bi_cms_dds].[DimEmployee]
-(
-	[EmployeePayrollID] ASC
-)
-INCLUDE([EmployeeFirstName],[EmployeeLastName]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO

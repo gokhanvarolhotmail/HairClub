@@ -1,4 +1,4 @@
-/* CreateDate: 10/03/2019 23:03:43.073 , ModifyDate: 10/03/2019 23:03:43.073 */
+/* CreateDate: 03/17/2022 11:57:10.400 , ModifyDate: 03/17/2022 11:57:10.400 */
 GO
 create  FUNCTION [dbo].[DIVIDE] (@numerator numeric, @denominator numeric)
 RETURNS float

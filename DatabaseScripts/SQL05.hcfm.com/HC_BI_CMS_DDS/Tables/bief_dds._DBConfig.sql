@@ -1,4 +1,4 @@
-/* CreateDate: 10/13/2010 16:37:06.143 , ModifyDate: 03/10/2022 14:15:12.207 */
+/* CreateDate: 10/13/2010 16:37:06.143 , ModifyDate: 03/17/2022 11:56:42.510 */
 GO
 CREATE TABLE [bief_dds].[_DBConfig](
 	[setting_key] [int] NOT NULL,

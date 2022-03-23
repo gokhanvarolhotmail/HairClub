@@ -1,4 +1,4 @@
-/* CreateDate: 10/03/2019 23:03:43.747 , ModifyDate: 10/03/2019 23:03:43.747 */
+/* CreateDate: 03/17/2022 11:57:11.803 , ModifyDate: 03/17/2022 11:57:11.803 */
 GO
 CREATE VIEW [bi_cms_dds].[vwDimHairSystemOrderStatus]
 AS

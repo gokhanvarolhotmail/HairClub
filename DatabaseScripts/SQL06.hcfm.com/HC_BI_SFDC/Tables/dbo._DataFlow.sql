@@ -1,4 +1,4 @@
-/* CreateDate: 10/04/2019 14:09:30.090 , ModifyDate: 10/04/2019 14:09:30.613 */
+/* CreateDate: 03/21/2022 13:00:03.257 , ModifyDate: 03/21/2022 13:00:04.470 */
 GO
 CREATE TABLE [dbo].[_DataFlow](
 	[DataFlowKey] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,

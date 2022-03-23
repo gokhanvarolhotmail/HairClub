@@ -1,4 +1,4 @@
-/* CreateDate: 03/04/2022 08:13:40.440 , ModifyDate: 03/08/2022 08:42:59.787 */
+/* CreateDate: 03/04/2022 08:13:40.440 , ModifyDate: 03/17/2022 14:49:10.000 */
 GO
 CREATE TABLE [SFStaging].[Contact](
 	[Id] [varchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
@@ -81,6 +81,7 @@ CREATE TABLE [SFStaging].[Contact](
 	[Bosley_Siebel_Id__c] [varchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[Contact_ID_18_dig__c] [varchar](1300) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[Landing_Page_Form_Submitted_Date__c] [datetime2](7) NULL,
+	[Personal_Photo__c] [varchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
  CONSTRAINT [pk_Contact] PRIMARY KEY CLUSTERED
 (
 	[Id] ASC

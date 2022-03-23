@@ -1,4 +1,4 @@
-/* CreateDate: 10/03/2019 23:03:40.430 , ModifyDate: 03/08/2022 23:08:37.067 */
+/* CreateDate: 03/17/2022 11:57:04.870 , ModifyDate: 03/17/2022 11:57:15.800 */
 GO
 CREATE TABLE [bi_cms_dds].[DimEmployeePositionJoin](
 	[EmployeeGUID] [uniqueidentifier] NOT NULL,
@@ -15,10 +15,4 @@ CREATE UNIQUE CLUSTERED INDEX [PK_DimEmployeePositionJoin] ON [bi_cms_dds].[DimE
 	[EmployeeGUID] ASC,
 	[EmployeePositionID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [FG1]
-GO
-CREATE NONCLUSTERED INDEX [IX_DimEmployeePositionJoin_EmployeeGUID] ON [bi_cms_dds].[DimEmployeePositionJoin]
-(
-	[EmployeePositionID] ASC
-)
-INCLUDE([EmployeeGUID]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [FG1]
 GO

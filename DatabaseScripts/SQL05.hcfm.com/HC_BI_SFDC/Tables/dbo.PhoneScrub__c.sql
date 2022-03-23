@@ -1,4 +1,4 @@
-/* CreateDate: 04/17/2020 10:53:52.940 , ModifyDate: 04/17/2020 19:59:36.180 */
+/* CreateDate: 04/17/2020 10:53:52.940 , ModifyDate: 03/21/2022 16:35:30.563 */
 GO
 CREATE TABLE [dbo].[PhoneScrub__c](
 	[Id] [nvarchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,

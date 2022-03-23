@@ -1,4 +1,4 @@
-/* CreateDate: 10/03/2019 23:03:41.723 , ModifyDate: 03/01/2022 23:17:07.967 */
+/* CreateDate: 03/17/2022 11:57:06.703 , ModifyDate: 03/17/2022 11:57:16.577 */
 GO
 CREATE TABLE [bi_cms_dds].[DimSalesOrder](
 	[SalesOrderKey] [int] NOT NULL,
@@ -44,65 +44,4 @@ CREATE TABLE [bi_cms_dds].[DimSalesOrder](
 	[SalesOrderKey] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [FG1]
 ) ON [FG1]
-GO
-CREATE NONCLUSTERED INDEX [IDX_DimSalesOrder_CenterKey_OrderDate_IncludeColumns] ON [bi_cms_dds].[DimSalesOrder]
-(
-	[CenterKey] ASC,
-	[OrderDate] ASC
-)
-INCLUDE([SalesOrderKey],[ClientKey],[EmployeeKey]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [FG1]
-GO
-CREATE NONCLUSTERED INDEX [IDX_DimSalesOrder_ClientMembershipKey_SalesOrderKey] ON [bi_cms_dds].[DimSalesOrder]
-(
-	[ClientMembershipKey] ASC
-)
-INCLUDE([SalesOrderKey]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [FG1]
-GO
-CREATE NONCLUSTERED INDEX [IDX_DimSalesOrder_RowIsCurrent_SalesOrderSSID_SalesOrderKey] ON [bi_cms_dds].[DimSalesOrder]
-(
-	[SalesOrderSSID] ASC,
-	[RowIsCurrent] ASC,
-	[RowIsInferred] ASC
-)
-INCLUDE([SalesOrderKey]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-GO
-CREATE NONCLUSTERED INDEX [IDX_DimSalesOrder_SalesOrderKey] ON [bi_cms_dds].[DimSalesOrder]
-(
-	[SalesOrderKey] ASC
-)
-INCLUDE([SalesOrderSSID],[OrderDate],[CenterKey],[ClientKey],[ClientMembershipKey],[SalesOrderTypeKey],[EmployeeKey],[InvoiceNumber],[IsClosedFlag],[IsVoidedFlag],[IsTaxExemptFlag],[IsWrittenOffFlag],[IsRefundedFlag]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-GO
-CREATE NONCLUSTERED INDEX [idx_DimSalesOrder_SalesOrderSSID] ON [bi_cms_dds].[DimSalesOrder]
-(
-	[SalesOrderSSID] ASC
-)
-INCLUDE([CenterSSID],[OrderDate]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-GO
-CREATE NONCLUSTERED INDEX [IX_DimSalesOrder_CenterSSID_IsVoidedFlag_OrderDate] ON [bi_cms_dds].[DimSalesOrder]
-(
-	[CenterSSID] ASC,
-	[IsVoidedFlag] ASC,
-	[OrderDate] ASC
-)
-INCLUDE([SalesOrderKey],[TicketNumber_Temp]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-GO
-CREATE NONCLUSTERED INDEX [IX_DimSalesOrder_IsVoidedFlag] ON [bi_cms_dds].[DimSalesOrder]
-(
-	[IsVoidedFlag] ASC,
-	[ClientMembershipKey] ASC
-)
-INCLUDE([SalesOrderKey]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [FG1]
-GO
-CREATE NONCLUSTERED INDEX [IX_DimSalesOrder_IsVoidedFlag_INCL] ON [bi_cms_dds].[DimSalesOrder]
-(
-	[IsVoidedFlag] ASC
-)
-INCLUDE([SalesOrderKey],[SalesOrderTypeKey],[ClientMembershipKey]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [FG1]
-GO
-CREATE NONCLUSTERED INDEX [RP_DimSalesOrder_IsVoidedFlagOrderDate] ON [bi_cms_dds].[DimSalesOrder]
-(
-	[IsVoidedFlag] ASC,
-	[OrderDate] ASC
-)
-INCLUDE([SalesOrderKey],[CenterSSID]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO

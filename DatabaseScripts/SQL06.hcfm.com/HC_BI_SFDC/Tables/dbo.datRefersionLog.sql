@@ -1,7 +1,7 @@
-/* CreateDate: 06/30/2021 13:17:40.557 , ModifyDate: 06/30/2021 13:17:40.843 */
+/* CreateDate: 03/21/2022 13:00:03.423 , ModifyDate: 03/21/2022 13:00:05.750 */
 GO
 CREATE TABLE [dbo].[datRefersionLog](
-	[RefersionLogID] [int] IDENTITY(1,1) NOT NULL,
+	[RefersionLogID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
 	[RefersionProcessID] [int] NOT NULL,
 	[SessionGUID] [uniqueidentifier] NOT NULL,
 	[BatchID] [int] NOT NULL,
@@ -30,16 +30,4 @@ CREATE TABLE [dbo].[datRefersionLog](
 	[RefersionLogID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
-GO
-ALTER TABLE [dbo].[datRefersionLog] ADD  CONSTRAINT [DF_datRefersionLog_IsReprocessFlag]  DEFAULT ((0)) FOR [IsReprocessFlag]
-GO
-ALTER TABLE [dbo].[datRefersionLog]  WITH CHECK ADD  CONSTRAINT [FK_datClientMessageLog_lkpRefersionProcess] FOREIGN KEY([RefersionProcessID])
-REFERENCES [dbo].[lkpRefersionProcess] ([RefersionProcessID])
-GO
-ALTER TABLE [dbo].[datRefersionLog] CHECK CONSTRAINT [FK_datClientMessageLog_lkpRefersionProcess]
-GO
-ALTER TABLE [dbo].[datRefersionLog]  WITH CHECK ADD  CONSTRAINT [FK_datRefersionLog_lkpRefersionStatus] FOREIGN KEY([RefersionStatusID])
-REFERENCES [dbo].[lkpRefersionStatus] ([RefersionStatusID])
-GO
-ALTER TABLE [dbo].[datRefersionLog] CHECK CONSTRAINT [FK_datRefersionLog_lkpRefersionStatus]
 GO

@@ -1,4 +1,4 @@
-/* CreateDate: 10/03/2019 23:03:41.867 , ModifyDate: 03/02/2022 23:37:41.853 */
+/* CreateDate: 03/17/2022 11:57:06.967 , ModifyDate: 03/17/2022 11:57:17.213 */
 GO
 CREATE TABLE [bi_cms_dds].[DimSalesOrderTender](
 	[SalesOrderTenderKey] [int] NOT NULL,
@@ -38,24 +38,4 @@ CREATE TABLE [bi_cms_dds].[DimSalesOrderTender](
 	[SalesOrderTenderKey] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [FG1]
 ) ON [FG1]
-GO
-CREATE NONCLUSTERED INDEX [IDX_DimSalesOrderTender_RowIsCurrent_SalesOrderTenderSSID_SalesOrderTenderKey] ON [bi_cms_dds].[DimSalesOrderTender]
-(
-	[SalesOrderTenderSSID] ASC,
-	[RowIsCurrent] ASC,
-	[RowIsInferred] ASC
-)
-INCLUDE([SalesOrderTenderKey]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-GO
-CREATE NONCLUSTERED INDEX [IDX_DimSalesOrderTender_SalesOrderTenderKey] ON [bi_cms_dds].[DimSalesOrderTender]
-(
-	[SalesOrderTenderKey] ASC
-)
-INCLUDE([SalesOrderTenderSSID],[SalesOrderKey],[SalesOrderSSID],[OrderDate],[Amount]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-GO
-CREATE NONCLUSTERED INDEX [IX_DimSalesOrderTender_SalesOrderKey_67561] ON [bi_cms_dds].[DimSalesOrderTender]
-(
-	[SalesOrderKey] ASC
-)
-INCLUDE([TenderTypeDescriptionShort]) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [FG1]
 GO

@@ -1,4 +1,4 @@
-/* CreateDate: 10/03/2019 23:03:39.530 , ModifyDate: 10/03/2019 23:03:39.530 */
+/* CreateDate: 03/17/2022 11:57:03.607 , ModifyDate: 03/17/2022 11:57:03.607 */
 GO
 create procedure [sp_MSins_bief_dds_DBErrorLog]
     @c1 int,

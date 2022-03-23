@@ -1,4 +1,4 @@
-/* CreateDate: 11/17/2020 12:12:00.280 , ModifyDate: 11/17/2020 23:30:29.753 */
+/* CreateDate: 03/21/2022 16:10:17.523 , ModifyDate: 03/21/2022 16:10:17.523 */
 GO
 CREATE TABLE [dbo].[Account](
 	[Id] [nvarchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
@@ -11,17 +11,6 @@ CREATE TABLE [dbo].[Account](
 	[CreatedById] [nvarchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[CreatedDate] [datetime] NULL,
 	[LastModifiedById] [nvarchar](18) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-	[LastModifiedDate] [datetime] NULL,
- CONSTRAINT [PK_Account] PRIMARY KEY CLUSTERED
-(
-	[Id] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+	[LastModifiedDate] [datetime] NULL
 ) ON [PRIMARY]
-GO
-SET ANSI_PADDING ON
-GO
-CREATE NONCLUSTERED INDEX [IX_Account_PersonContactId] ON [dbo].[Account]
-(
-	[PersonContactId] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO

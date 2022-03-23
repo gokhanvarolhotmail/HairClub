@@ -1,4 +1,4 @@
-/* CreateDate: 05/03/2010 12:17:24.603 , ModifyDate: 01/31/2021 14:43:42.903 */
+/* CreateDate: 05/03/2010 12:17:24.603 , ModifyDate: 03/15/2022 15:52:20.377 */
 GO
 CREATE VIEW [bi_cms_dds].[vwFactSalesTransactionTender]
 AS
