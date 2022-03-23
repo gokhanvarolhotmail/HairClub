@@ -1,103 +1,117 @@
 <SSIS:Project SSIS:ProtectionLevel="ServerStorage" xmlns:SSIS="www.microsoft.com/SqlServer/SSIS">
   <SSIS:Properties>
-    <SSIS:Property SSIS:Name="ID">{9928c0c2-f8fa-45b5-abc1-f6a083e3015c}</SSIS:Property>
-    <SSIS:Property SSIS:Name="Name">NobleSourceTollFreeNumberExport</SSIS:Property>
-    <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
+    <SSIS:Property SSIS:Name="ID">{454e71b9-8bd3-48b7-99d6-db0989db66f6}</SSIS:Property>
+    <SSIS:Property SSIS:Name="Name">Update Salesforce from Bosley</SSIS:Property>
+    <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
     <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
     <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
     <SSIS:Property SSIS:Name="VersionComments">
     </SSIS:Property>
-    <SSIS:Property SSIS:Name="CreationDate">2018-08-15T14:27:45.5841974-04:00</SSIS:Property>
-    <SSIS:Property SSIS:Name="CreatorName">HCFM\dleiba</SSIS:Property>
-    <SSIS:Property SSIS:Name="CreatorComputerName">ITWS06</SSIS:Property>
+    <SSIS:Property SSIS:Name="CreationDate">2020-01-30T10:17:10.6893965-06:00</SSIS:Property>
+    <SSIS:Property SSIS:Name="CreatorName">SKYLINE\epoillion</SSIS:Property>
+    <SSIS:Property SSIS:Name="CreatorComputerName">LT1320</SSIS:Property>
     <SSIS:Property SSIS:Name="Description">
     </SSIS:Property>
     <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
   </SSIS:Properties>
   <SSIS:Packages>
-    <SSIS:Package SSIS:Name="NobleSourceTollFreeNumberExport.dtsx" SSIS:EntryPoint="1" />
+    <SSIS:Package SSIS:Name="UpdateSalesforceFromBosley.dtsx" SSIS:EntryPoint="1" />
   </SSIS:Packages>
   <SSIS:ConnectionManagers />
   <SSIS:DeploymentInfo>
     <SSIS:ProjectConnectionParameters />
     <SSIS:PackageInfo>
-      <SSIS:PackageMetaData SSIS:Name="NobleSourceTollFreeNumberExport.dtsx">
+      <SSIS:PackageMetaData SSIS:Name="UpdateSalesforceFromBosley.dtsx">
         <SSIS:Properties>
-          <SSIS:Property SSIS:Name="ID">{B63C124E-81AC-4D17-8250-3258CD2E8D00}</SSIS:Property>
-          <SSIS:Property SSIS:Name="Name">NobleSourceTollFreeNumberExport</SSIS:Property>
+          <SSIS:Property SSIS:Name="ID">{C9348FE0-449B-4AAB-86A1-9AB57B8B96E5}</SSIS:Property>
+          <SSIS:Property SSIS:Name="Name">UpdateSalesforceFromBosley</SSIS:Property>
           <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
           <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-          <SSIS:Property SSIS:Name="VersionBuild">15</SSIS:Property>
+          <SSIS:Property SSIS:Name="VersionBuild">67</SSIS:Property>
           <SSIS:Property SSIS:Name="VersionComments">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="VersionGUID">{65B3FEAF-86B4-42DB-817E-2E6D519FBA79}</SSIS:Property>
-          <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
+          <SSIS:Property SSIS:Name="VersionGUID">{3DFDA41A-D2FA-4CFE-B434-D60760710B3D}</SSIS:Property>
+          <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
           <SSIS:Property SSIS:Name="ProtectionLevel">5</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Parameters>
-          <SSIS:Parameter SSIS:Name="CM.HCAPP.ChunkSize">
+          <SSIS:Parameter SSIS:Name="SalesforcePassword">
             <SSIS:Properties>
-              <SSIS:Property SSIS:Name="ID">
-              </SSIS:Property>
+              <SSIS:Property SSIS:Name="ID">{E1EA3458-D41D-4AF9-901E-B8C1889622C4}</SSIS:Property>
               <SSIS:Property SSIS:Name="CreationName">
               </SSIS:Property>
               <SSIS:Property SSIS:Name="Description">
               </SSIS:Property>
               <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
               <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
-              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-              <SSIS:Property SSIS:Name="Value">1</SSIS:Property>
-              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
-            </SSIS:Properties>
-          </SSIS:Parameter>
-          <SSIS:Parameter SSIS:Name="CM.HCAPP.ConnectionString">
-            <SSIS:Properties>
-              <SSIS:Property SSIS:Name="ID">
+              <SSIS:Property SSIS:Name="Sensitive">1</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value" SSIS:Sensitive="1">
               </SSIS:Property>
-              <SSIS:Property SSIS:Name="CreationName">
-              </SSIS:Property>
-              <SSIS:Property SSIS:Name="Description">
-              </SSIS:Property>
-              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
-              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
-              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-              <SSIS:Property SSIS:Name="Value">192.168.60.1:21</SSIS:Property>
               <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
             </SSIS:Properties>
           </SSIS:Parameter>
-          <SSIS:Parameter SSIS:Name="CM.HCAPP.Retries">
+          <SSIS:Parameter SSIS:Name="SalesforceToken">
             <SSIS:Properties>
-              <SSIS:Property SSIS:Name="ID">
-              </SSIS:Property>
+              <SSIS:Property SSIS:Name="ID">{6CBC9CA8-CBE5-4C07-AB80-258C26BF42F0}</SSIS:Property>
               <SSIS:Property SSIS:Name="CreationName">
               </SSIS:Property>
               <SSIS:Property SSIS:Name="Description">
               </SSIS:Property>
               <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
               <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
-              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-              <SSIS:Property SSIS:Name="Value">5</SSIS:Property>
-              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
-            </SSIS:Properties>
-          </SSIS:Parameter>
-          <SSIS:Parameter SSIS:Name="CM.HCAPP.ServerName">
-            <SSIS:Properties>
-              <SSIS:Property SSIS:Name="ID">
+              <SSIS:Property SSIS:Name="Sensitive">1</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value" SSIS:Sensitive="1">
               </SSIS:Property>
-              <SSIS:Property SSIS:Name="CreationName">
-              </SSIS:Property>
-              <SSIS:Property SSIS:Name="Description">
-              </SSIS:Property>
-              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
-              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
-              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-              <SSIS:Property SSIS:Name="Value">192.168.60.1</SSIS:Property>
               <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
             </SSIS:Properties>
           </SSIS:Parameter>
-          <SSIS:Parameter SSIS:Name="CM.HCAPP.ServerPassword">
+          <SSIS:Parameter SSIS:Name="SalesforceURL">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">{5183FD49-FBBB-4E61-9061-20528E2331D4}</SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">test.salesforce.com</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="SalesforceUserID">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">{E7C0022C-9A7E-4898-AC4D-3512AA4786C2}</SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">1</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value" SSIS:Sensitive="1">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Devart Salesforce Connection Manager.Authentication">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Devart Salesforce Connection Manager.ClientId">
             <SSIS:Properties>
               <SSIS:Property SSIS:Name="ID">
               </SSIS:Property>
@@ -111,7 +125,7 @@
               <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
             </SSIS:Properties>
           </SSIS:Parameter>
-          <SSIS:Parameter SSIS:Name="CM.HCAPP.ServerPort">
+          <SSIS:Parameter SSIS:Name="CM.Devart Salesforce Connection Manager.ClientSecret">
             <SSIS:Properties>
               <SSIS:Property SSIS:Name="ID">
               </SSIS:Property>
@@ -121,27 +135,11 @@
               </SSIS:Property>
               <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
               <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
-              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-              <SSIS:Property SSIS:Name="Value">21</SSIS:Property>
-              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
-            </SSIS:Properties>
-          </SSIS:Parameter>
-          <SSIS:Parameter SSIS:Name="CM.HCAPP.ServerUserName">
-            <SSIS:Properties>
-              <SSIS:Property SSIS:Name="ID">
-              </SSIS:Property>
-              <SSIS:Property SSIS:Name="CreationName">
-              </SSIS:Property>
-              <SSIS:Property SSIS:Name="Description">
-              </SSIS:Property>
-              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
-              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
-              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-              <SSIS:Property SSIS:Name="Value">voxmove</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">1</SSIS:Property>
               <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
             </SSIS:Properties>
           </SSIS:Parameter>
-          <SSIS:Parameter SSIS:Name="CM.HCAPP.Timeout">
+          <SSIS:Parameter SSIS:Name="CM.Devart Salesforce Connection Manager.ConnectionString">
             <SSIS:Properties>
               <SSIS:Property SSIS:Name="ID">
               </SSIS:Property>
@@ -152,147 +150,11 @@
               <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
               <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
               <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-              <SSIS:Property SSIS:Name="Value">60</SSIS:Property>
-              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
-            </SSIS:Properties>
-          </SSIS:Parameter>
-          <SSIS:Parameter SSIS:Name="CM.HCAPP.UsePassiveMode">
-            <SSIS:Properties>
-              <SSIS:Property SSIS:Name="ID">
-              </SSIS:Property>
-              <SSIS:Property SSIS:Name="CreationName">
-              </SSIS:Property>
-              <SSIS:Property SSIS:Name="Description">
-              </SSIS:Property>
-              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
-              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
-              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-              <SSIS:Property SSIS:Name="Value">true</SSIS:Property>
-              <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
-            </SSIS:Properties>
-          </SSIS:Parameter>
-          <SSIS:Parameter SSIS:Name="CM.NobleFile.AlwaysCheckForRowDelimiters">
-            <SSIS:Properties>
-              <SSIS:Property SSIS:Name="ID">
-              </SSIS:Property>
-              <SSIS:Property SSIS:Name="CreationName">
-              </SSIS:Property>
-              <SSIS:Property SSIS:Name="Description">
-              </SSIS:Property>
-              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
-              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
-              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-              <SSIS:Property SSIS:Name="Value">true</SSIS:Property>
-              <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
-            </SSIS:Properties>
-          </SSIS:Parameter>
-          <SSIS:Parameter SSIS:Name="CM.NobleFile.CodePage">
-            <SSIS:Properties>
-              <SSIS:Property SSIS:Name="ID">
-              </SSIS:Property>
-              <SSIS:Property SSIS:Name="CreationName">
-              </SSIS:Property>
-              <SSIS:Property SSIS:Name="Description">
-              </SSIS:Property>
-              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
-              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
-              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-              <SSIS:Property SSIS:Name="Value">1252</SSIS:Property>
-              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
-            </SSIS:Properties>
-          </SSIS:Parameter>
-          <SSIS:Parameter SSIS:Name="CM.NobleFile.ColumnNamesInFirstDataRow">
-            <SSIS:Properties>
-              <SSIS:Property SSIS:Name="ID">
-              </SSIS:Property>
-              <SSIS:Property SSIS:Name="CreationName">
-              </SSIS:Property>
-              <SSIS:Property SSIS:Name="Description">
-              </SSIS:Property>
-              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
-              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
-              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-              <SSIS:Property SSIS:Name="Value">true</SSIS:Property>
-              <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
-            </SSIS:Properties>
-          </SSIS:Parameter>
-          <SSIS:Parameter SSIS:Name="CM.NobleFile.DataRowsToSkip">
-            <SSIS:Properties>
-              <SSIS:Property SSIS:Name="ID">
-              </SSIS:Property>
-              <SSIS:Property SSIS:Name="CreationName">
-              </SSIS:Property>
-              <SSIS:Property SSIS:Name="Description">
-              </SSIS:Property>
-              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
-              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
-              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-              <SSIS:Property SSIS:Name="Value">0</SSIS:Property>
-              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
-            </SSIS:Properties>
-          </SSIS:Parameter>
-          <SSIS:Parameter SSIS:Name="CM.NobleFile.Format">
-            <SSIS:Properties>
-              <SSIS:Property SSIS:Name="ID">
-              </SSIS:Property>
-              <SSIS:Property SSIS:Name="CreationName">
-              </SSIS:Property>
-              <SSIS:Property SSIS:Name="Description">
-              </SSIS:Property>
-              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
-              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
-              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-              <SSIS:Property SSIS:Name="Value">Delimited</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">Host=test.salesforce.com</SSIS:Property>
               <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
             </SSIS:Properties>
           </SSIS:Parameter>
-          <SSIS:Parameter SSIS:Name="CM.NobleFile.HeaderRowDelimiter">
-            <SSIS:Properties>
-              <SSIS:Property SSIS:Name="ID">
-              </SSIS:Property>
-              <SSIS:Property SSIS:Name="CreationName">
-              </SSIS:Property>
-              <SSIS:Property SSIS:Name="Description">
-              </SSIS:Property>
-              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
-              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
-              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-              <SSIS:Property xml:space="preserve" SSIS:Name="Value">
-</SSIS:Property>
-              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
-            </SSIS:Properties>
-          </SSIS:Parameter>
-          <SSIS:Parameter SSIS:Name="CM.NobleFile.HeaderRowsToSkip">
-            <SSIS:Properties>
-              <SSIS:Property SSIS:Name="ID">
-              </SSIS:Property>
-              <SSIS:Property SSIS:Name="CreationName">
-              </SSIS:Property>
-              <SSIS:Property SSIS:Name="Description">
-              </SSIS:Property>
-              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
-              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
-              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-              <SSIS:Property SSIS:Name="Value">0</SSIS:Property>
-              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
-            </SSIS:Properties>
-          </SSIS:Parameter>
-          <SSIS:Parameter SSIS:Name="CM.NobleFile.LocaleID">
-            <SSIS:Properties>
-              <SSIS:Property SSIS:Name="ID">
-              </SSIS:Property>
-              <SSIS:Property SSIS:Name="CreationName">
-              </SSIS:Property>
-              <SSIS:Property SSIS:Name="Description">
-              </SSIS:Property>
-              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
-              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
-              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-              <SSIS:Property SSIS:Name="Value">1033</SSIS:Property>
-              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
-            </SSIS:Properties>
-          </SSIS:Parameter>
-          <SSIS:Parameter SSIS:Name="CM.NobleFile.RowDelimiter">
+          <SSIS:Parameter SSIS:Name="CM.Devart Salesforce Connection Manager.ProxyHost">
             <SSIS:Properties>
               <SSIS:Property SSIS:Name="ID">
               </SSIS:Property>
@@ -308,67 +170,7 @@
               <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
             </SSIS:Properties>
           </SSIS:Parameter>
-          <SSIS:Parameter SSIS:Name="CM.NobleFile.TextQualifier">
-            <SSIS:Properties>
-              <SSIS:Property SSIS:Name="ID">
-              </SSIS:Property>
-              <SSIS:Property SSIS:Name="CreationName">
-              </SSIS:Property>
-              <SSIS:Property SSIS:Name="Description">
-              </SSIS:Property>
-              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
-              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
-              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-              <SSIS:Property SSIS:Name="Value">&lt;none&gt;</SSIS:Property>
-              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
-            </SSIS:Properties>
-          </SSIS:Parameter>
-          <SSIS:Parameter SSIS:Name="CM.NobleFile.Unicode">
-            <SSIS:Properties>
-              <SSIS:Property SSIS:Name="ID">
-              </SSIS:Property>
-              <SSIS:Property SSIS:Name="CreationName">
-              </SSIS:Property>
-              <SSIS:Property SSIS:Name="Description">
-              </SSIS:Property>
-              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
-              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
-              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-              <SSIS:Property SSIS:Name="Value">false</SSIS:Property>
-              <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
-            </SSIS:Properties>
-          </SSIS:Parameter>
-          <SSIS:Parameter SSIS:Name="CM.SQL05.HC_Marketing_ADO.ConnectionString">
-            <SSIS:Properties>
-              <SSIS:Property SSIS:Name="ID">
-              </SSIS:Property>
-              <SSIS:Property SSIS:Name="CreationName">
-              </SSIS:Property>
-              <SSIS:Property SSIS:Name="Description">
-              </SSIS:Property>
-              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
-              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
-              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-              <SSIS:Property SSIS:Name="Value">Data Source=SQL05;Initial Catalog=HC_Marketing;Integrated Security=True;Application Name=SSIS-NobleSourceTollFreeNumberExport-{A036D729-46F1-4C6F-B1EE-32B7256B75C5}SQL05.HC_Marketing1;</SSIS:Property>
-              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
-            </SSIS:Properties>
-          </SSIS:Parameter>
-          <SSIS:Parameter SSIS:Name="CM.SQL05.HC_Marketing_ADO.InitialCatalog">
-            <SSIS:Properties>
-              <SSIS:Property SSIS:Name="ID">
-              </SSIS:Property>
-              <SSIS:Property SSIS:Name="CreationName">
-              </SSIS:Property>
-              <SSIS:Property SSIS:Name="Description">
-              </SSIS:Property>
-              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
-              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
-              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-              <SSIS:Property SSIS:Name="Value">HC_Marketing</SSIS:Property>
-              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
-            </SSIS:Properties>
-          </SSIS:Parameter>
-          <SSIS:Parameter SSIS:Name="CM.SQL05.HC_Marketing_ADO.Password">
+          <SSIS:Parameter SSIS:Name="CM.Devart Salesforce Connection Manager.ProxyPassword">
             <SSIS:Properties>
               <SSIS:Property SSIS:Name="ID">
               </SSIS:Property>
@@ -382,7 +184,111 @@
               <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
             </SSIS:Properties>
           </SSIS:Parameter>
-          <SSIS:Parameter SSIS:Name="CM.SQL05.HC_Marketing_ADO.RetainSameConnection">
+          <SSIS:Parameter SSIS:Name="CM.Devart Salesforce Connection Manager.ProxyPort">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">3128</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Devart Salesforce Connection Manager.ProxyUser">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Devart Salesforce Connection Manager.RefreshToken">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">1</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.Devart Salesforce Connection Manager.TargetServerVersion">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">140</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.HairClubCMS.ConnectionString">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">Data Source=HCTESTSQL011;User ID=skyline;Initial Catalog=HairClubCMSDevSky;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.HairClubCMS.InitialCatalog">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">HairClubCMSDevSky</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.HairClubCMS.Password">
+            <SSIS:Properties>
+              <SSIS:Property SSIS:Name="ID">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="CreationName">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="Description">
+              </SSIS:Property>
+              <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Sensitive">1</SSIS:Property>
+              <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+            </SSIS:Properties>
+          </SSIS:Parameter>
+          <SSIS:Parameter SSIS:Name="CM.HairClubCMS.RetainSameConnection">
             <SSIS:Properties>
               <SSIS:Property SSIS:Name="ID">
               </SSIS:Property>
@@ -397,7 +303,7 @@
               <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
             </SSIS:Properties>
           </SSIS:Parameter>
-          <SSIS:Parameter SSIS:Name="CM.SQL05.HC_Marketing_ADO.ServerName">
+          <SSIS:Parameter SSIS:Name="CM.HairClubCMS.ServerName">
             <SSIS:Properties>
               <SSIS:Property SSIS:Name="ID">
               </SSIS:Property>
@@ -408,11 +314,11 @@
               <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
               <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
               <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-              <SSIS:Property SSIS:Name="Value">SQL05</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">HCTESTSQL011</SSIS:Property>
               <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
             </SSIS:Properties>
           </SSIS:Parameter>
-          <SSIS:Parameter SSIS:Name="CM.SQL05.HC_Marketing_ADO.UserName">
+          <SSIS:Parameter SSIS:Name="CM.HairClubCMS.UserName">
             <SSIS:Properties>
               <SSIS:Property SSIS:Name="ID">
               </SSIS:Property>
@@ -423,6 +329,7 @@
               <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
               <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
               <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+              <SSIS:Property SSIS:Name="Value">skyline</SSIS:Property>
               <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
             </SSIS:Properties>
           </SSIS:Parameter>

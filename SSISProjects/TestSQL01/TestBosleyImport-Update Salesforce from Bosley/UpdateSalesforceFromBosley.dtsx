@@ -1,0 +1,2732 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="1/30/2020 10:17:10 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="LT1320"
+  DTS:CreatorName="SKYLINE\epoillion"
+  DTS:DTSID="{C9348FE0-449B-4AAB-86A1-9AB57B8B96E5}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.3421.10"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="UpdateSalesforceFromBosley"
+  DTS:PackageType="5"
+  DTS:ProtectionLevel="5"
+  DTS:VersionBuild="67"
+  DTS:VersionGUID="{3DFDA41A-D2FA-4CFE-B434-D60760710B3D}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Devart Salesforce Connection Manager]"
+      DTS:CreationName="DevartSalesforce"
+      DTS:DTSID="{B762C95C-4DB5-4823-BB2F-0B6D73E8F55F}"
+      DTS:ObjectName="Devart Salesforce Connection Manager">
+      <DTS:PropertyExpression
+        DTS:Name="Host">@[$Package::SalesforceURL]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="Password">@[$Package::SalesforcePassword]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="SecurityToken">@[$Package::SalesforceToken]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="User">@[$Package::SalesforceUserID]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <SalesforceConnectionManager>
+          <ConnectionString>Host=test.salesforce.com</ConnectionString>
+        </SalesforceConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[HairClubCMS]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{E402BED0-4A66-4B1A-990E-C37A9B6C028E}"
+      DTS:ObjectName="HairClubCMS">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=HCTESTSQL011;User ID=skyline;Initial Catalog=HairClubCMSDevSky;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{E1EA3458-D41D-4AF9-901E-B8C1889622C4}"
+      DTS:ObjectName="SalesforcePassword"
+      DTS:Sensitive="True">
+      <DTS:Property
+        DTS:Name="ParameterValue">
+        <DTS:Property
+          DTS:DataType="8"
+          DTS:Name="ParameterValue"></DTS:Property>
+      </DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{6CBC9CA8-CBE5-4C07-AB80-258C26BF42F0}"
+      DTS:ObjectName="SalesforceToken"
+      DTS:Sensitive="True">
+      <DTS:Property
+        DTS:Name="ParameterValue">
+        <DTS:Property
+          DTS:DataType="8"
+          DTS:Name="ParameterValue"></DTS:Property>
+      </DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{5183FD49-FBBB-4E61-9061-20528E2331D4}"
+      DTS:ObjectName="SalesforceURL">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">test.salesforce.com</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{E7C0022C-9A7E-4898-AC4D-3512AA4786C2}"
+      DTS:ObjectName="SalesforceUserID"
+      DTS:Sensitive="True">
+      <DTS:Property
+        DTS:Name="ParameterValue">
+        <DTS:Property
+          DTS:DataType="8"
+          DTS:Name="ParameterValue"></DTS:Property>
+      </DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{AE751494-F5FA-4352-B016-E627BA3C0539}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="LogID">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{9F9106C2-ADBA-405B-89EC-B9D4C801F919}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="LogIDSet">
+      <DTS:VariableValue
+        DTS:DataSubType="ManagedSerializable"
+        DTS:DataType="13">
+        <SOAP-ENV:Envelope xmlns:clr="http://schemas.microsoft.com/soap/encoding/clr/1.0" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+          <SOAP-ENV:Body>
+            <xsd:anyType
+              id="ref-1"></xsd:anyType>
+          </SOAP-ENV:Body>
+        </SOAP-ENV:Envelope>
+      </DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Get Rows to Process"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{70EEDE88-6CDD-463C-8EE5-1E2BA913BB2B}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Get Rows to Process"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{E402BED0-4A66-4B1A-990E-C37A9B6C028E}"
+          SQLTask:SqlStatementSource="SELECT &#xA;    [ID]&#xA;FROM &#xA;    [dbo].[logBosleySalesforce]&#xA;WHERE&#xA;    IsProcessed = 0&#xA;    AND IsIgnore = 0;"
+          SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="0"
+            SQLTask:DtsVariableName="User::LogIDSet" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Process Rows in Queue"
+      DTS:CreationName="STOCK:FOREACHLOOP"
+      DTS:Description="Foreach Loop Container"
+      DTS:DTSID="{6BFB10B9-A0E3-4F3D-A192-E1FEF1EB00C6}"
+      DTS:ExecutableType="STOCK:FOREACHLOOP"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Process Rows in Queue">
+      <DTS:ForEachEnumerator
+        DTS:CreationName="Microsoft.ForEachADOEnumerator"
+        DTS:DTSID="{3BD07EEB-7A85-4EF3-A320-AD1751DBEDAE}"
+        DTS:ObjectName="{3BD07EEB-7A85-4EF3-A320-AD1751DBEDAE}">
+        <DTS:ObjectData>
+          <FEEADO
+            EnumType="EnumerateRowsInFirstTable"
+            VarName="User::LogIDSet" />
+        </DTS:ObjectData>
+      </DTS:ForEachEnumerator>
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Process Rows in Queue\Update Salesforce"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{0B97CF01-BCD7-417C-8548-4AA3893D899D}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Update Salesforce"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Process Rows in Queue\Update Salesforce\Check for Status of Lead"
+                  componentClassID="Microsoft.ConditionalSplit"
+                  contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+                  name="Check for Status of Lead"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\Process Rows in Queue\Update Salesforce\Check for Status of Lead.Inputs[Conditional Split Input]"
+                      description="Input to the Conditional Split Transformation"
+                      name="Conditional Split Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Check for Status of Lead.Inputs[Conditional Split Input].Columns[Status]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Status"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Lookup Lead.Outputs[Lookup Match Output].Columns[Status]" />
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Process Rows in Queue\Update Salesforce\Check for Status of Lead.Outputs[Lead Status]"
+                      description="Output 1 of the Conditional Split Transformation"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      exclusionGroup="1"
+                      name="Lead Status"
+                      synchronousInputId="Package\Process Rows in Queue\Update Salesforce\Check for Status of Lead.Inputs[Conditional Split Input]"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                          name="Expression">#{Package\Process Rows in Queue\Update Salesforce\Lookup Lead.Outputs[Lookup Match Output].Columns[Status]} == "Lead"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Specifies the friendly version of the expression. This expression version uses column names."
+                          expressionType="Notify"
+                          name="FriendlyExpression">Status == "Lead"</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                          name="EvaluationOrder">0</property>
+                      </properties>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Process Rows in Queue\Update Salesforce\Check for Status of Lead.Outputs[Conditional Split Default Output]"
+                      description="Default Output of the Conditional Split Transformation"
+                      exclusionGroup="1"
+                      name="Conditional Split Default Output"
+                      synchronousInputId="Package\Process Rows in Queue\Update Salesforce\Check for Status of Lead.Inputs[Conditional Split Input]">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsDefaultOut">true</property>
+                      </properties>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Process Rows in Queue\Update Salesforce\Check for Status of Lead.Outputs[Conditional Split Error Output]"
+                      description="Error Output of the Conditional Split Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Conditional Split Error Output"
+                      synchronousInputId="Package\Process Rows in Queue\Update Salesforce\Check for Status of Lead.Inputs[Conditional Split Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Check for Status of Lead.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Check for Status of Lead.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Check for Status of Lead.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Check for Status of Lead.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Process Rows in Queue\Update Salesforce\Create new Task"
+                  componentClassID="Microsoft.ManagedComponentHost"
+                  description="Loads or modifies data into an object of the Salesforce."
+                  name="Create new Task"
+                  usesDispositions="true"
+                  version="1">
+                  <properties>
+                    <property
+                      dataType="System.Null"
+                      name="DesignObject"
+                      typeConverter="NOTBROWSABLE" />
+                    <property
+                      dataType="System.String"
+                      description="The name of the CRM object to copy data into."
+                      name="ObjectName"
+                      typeConverter="Devart.SSIS.Common.Design.TablesListConverter">Task</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Destination action"
+                      name="Action"
+                      typeConverter="Devart.SSIS.SqlShim.DestinationAction">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="The max number of records loaded in one batch. Ignored for some cloud sources."
+                      name="BatchSize">5000</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the max size of local buffer."
+                      name="BufferSize">10485760</property>
+                    <property
+                      dataType="System.Null"
+                      description="Specifies external identifier field."
+                      expressionType="Notify"
+                      name="ExternalId"
+                      typeConverter="Devart.SSIS.Salesforce.SalesforceDestination+ExternalIdsList" />
+                    <property
+                      dataType="System.Boolean"
+                      description="Specifies whether to use Bulk API or SOAP API."
+                      name="UseBulkApi">true</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Determines whether multiple batches associated with a bulk load operation are processed by Salesforce in parallel or one at a time. The default is true."
+                      name="ParallelBatchProcessing">true</property>
+                    <property
+                      dataType="System.Null"
+                      description="Specifies the ID of a specific assignment rule to run for the Case or Lead."
+                      name="Assignment Rule Id" />
+                    <property
+                      dataType="System.String"
+                      name="UserComponentTypeName">Devart.SSIS.Salesforce.SalesforceDestination</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Connections[SalesforceConnectionManager]"
+                      connectionManagerID="Package.ConnectionManagers[Devart Salesforce Connection Manager]"
+                      connectionManagerRefId="Package.ConnectionManagers[Devart Salesforce Connection Manager]"
+                      description="Devart Connection Manager for Salesforce connections"
+                      name="SalesforceConnectionManager" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input]"
+                      errorOrTruncationOperation="Insert operation"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].Columns[CenterID__c]"
+                          cachedDataType="i4"
+                          cachedName="CenterID__c"
+                          externalMetadataColumnId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[CenterID__c]"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].Columns[CenterID__c]" />
+                        <inputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].Columns[Action__c]"
+                          cachedDataType="wstr"
+                          cachedLength="32"
+                          cachedName="Action__c"
+                          externalMetadataColumnId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[Action__c]"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].Columns[Action__c]" />
+                        <inputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].Columns[ActivityType__c]"
+                          cachedDataType="wstr"
+                          cachedLength="32"
+                          cachedName="ActivityType__c"
+                          externalMetadataColumnId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[ActivityType__c]"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].Columns[ActivityType__c]" />
+                        <inputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].Columns[WhoId]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="WhoId"
+                          externalMetadataColumnId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[WhoId]"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].Columns[WhoId]" />
+                        <inputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].Columns[AppointmentDate__c]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="AppointmentDate__c"
+                          externalMetadataColumnId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[AppointmentDate__c]"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].Columns[AppointmentDate__c]" />
+                        <inputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].Columns[CompletionDate__c]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="CompletionDate__c"
+                          externalMetadataColumnId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[CompletionDate__c]"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].Columns[CompletionDate__c]" />
+                        <inputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].Columns[ActivityDate]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="ActivityDate"
+                          externalMetadataColumnId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[ActivityDate]"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].Columns[ActivityDate]" />
+                        <inputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].Columns[StartTime__c]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="StartTime__c"
+                          externalMetadataColumnId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[StartTime__c]"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].Columns[StartTime__c]" />
+                        <inputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].Columns[EndTime__c]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="EndTime__c"
+                          externalMetadataColumnId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[EndTime__c]"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].Columns[EndTime__c]" />
+                        <inputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].Columns[SaleTypeCode__c]"
+                          cachedDataType="wstr"
+                          cachedLength="32"
+                          cachedName="SaleTypeCode__c"
+                          externalMetadataColumnId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[SaleTypeCode__c]"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].Columns[SaleTypeCode__c]" />
+                        <inputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].Columns[SaleTypeDescription__c]"
+                          cachedDataType="wstr"
+                          cachedLength="32"
+                          cachedName="SaleTypeDescription__c"
+                          externalMetadataColumnId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[SaleTypeDescription__c]"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].Columns[SaleTypeDescription__c]" />
+                        <inputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].Columns[PriceQuoted__c]"
+                          cachedDataType="numeric"
+                          cachedName="PriceQuoted__c"
+                          cachedPrecision="14"
+                          cachedScale="4"
+                          externalMetadataColumnId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[PriceQuoted__c]"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].Columns[PriceQuoted__c]" />
+                        <inputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].Columns[Performer__c]"
+                          cachedDataType="wstr"
+                          cachedLength="128"
+                          cachedName="Performer__c"
+                          externalMetadataColumnId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[Performer__c]"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].Columns[Performer__c]" />
+                        <inputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].Columns[Status]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Status"
+                          externalMetadataColumnId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[Status]"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Lookup Lead.Outputs[Lookup Match Output].Columns[Status]" />
+                        <inputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].Columns[Subject]"
+                          cachedDataType="wstr"
+                          cachedLength="128"
+                          cachedName="Subject"
+                          externalMetadataColumnId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[Subject]"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].Columns[Subject]" />
+                        <inputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].Columns[Result__c]"
+                          cachedDataType="wstr"
+                          cachedLength="32"
+                          cachedName="Result__c"
+                          externalMetadataColumnId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[Result__c]"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].Columns[Result__c]" />
+                        <inputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].Columns[Source_Code_Legacy__c]"
+                          cachedDataType="wstr"
+                          cachedLength="64"
+                          cachedName="Source_Code_Legacy__c"
+                          externalMetadataColumnId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[SourceCode__c]"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Lookup Lead.Outputs[Lookup Match Output].Columns[Source_Code_Legacy__c]" />
+                        <inputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].Columns[DISC__c]"
+                          cachedDataType="wstr"
+                          cachedLength="128"
+                          cachedName="DISC__c"
+                          externalMetadataColumnId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[DISC__c]"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].Columns[DISC__c]" />
+                        <inputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].Columns[LudwigScale__c]"
+                          cachedDataType="wstr"
+                          cachedLength="128"
+                          cachedName="LudwigScale__c"
+                          externalMetadataColumnId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[LudwigScale__c]"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].Columns[LudwigScale__c]" />
+                        <inputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].Columns[MaritalStatus__c]"
+                          cachedDataType="wstr"
+                          cachedLength="128"
+                          cachedName="MaritalStatus__c"
+                          externalMetadataColumnId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[MaritalStatus__c]"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].Columns[MaritalStatus__c]" />
+                        <inputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].Columns[NorwoodScale__c]"
+                          cachedDataType="wstr"
+                          cachedLength="128"
+                          cachedName="NorwoodScale__c"
+                          externalMetadataColumnId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[NorwoodScale__c]"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].Columns[NorwoodScale__c]" />
+                        <inputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].Columns[Occupation__c]"
+                          cachedDataType="wstr"
+                          cachedLength="128"
+                          cachedName="Occupation__c"
+                          externalMetadataColumnId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[Occupation__c]"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].Columns[Occupation__c]" />
+                        <inputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].Columns[ReportCreateDate__c]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="ReportCreateDate__c"
+                          externalMetadataColumnId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[ReportCreateDate__c]"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].Columns[ReportCreateDate__c]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[Id]"
+                          dataType="wstr"
+                          length="18"
+                          name="Id" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[WhoId]"
+                          dataType="wstr"
+                          length="18"
+                          name="WhoId" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[WhatId]"
+                          dataType="wstr"
+                          length="18"
+                          name="WhatId" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[WhoCount]"
+                          dataType="i4"
+                          name="WhoCount" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[WhatCount]"
+                          dataType="i4"
+                          name="WhatCount" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[Subject]"
+                          dataType="wstr"
+                          length="255"
+                          name="Subject" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[ActivityDate]"
+                          dataType="dbDate"
+                          name="ActivityDate" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[Status]"
+                          dataType="wstr"
+                          length="255"
+                          name="Status" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[Priority]"
+                          dataType="wstr"
+                          length="255"
+                          name="Priority" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[IsHighPriority]"
+                          dataType="bool"
+                          name="IsHighPriority" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[OwnerId]"
+                          dataType="wstr"
+                          length="18"
+                          name="OwnerId" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[Description]"
+                          dataType="nText"
+                          name="Description" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[Type]"
+                          dataType="wstr"
+                          length="255"
+                          name="Type" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[IsDeleted]"
+                          dataType="bool"
+                          name="IsDeleted" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[AccountId]"
+                          dataType="wstr"
+                          length="18"
+                          name="AccountId" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[IsClosed]"
+                          dataType="bool"
+                          name="IsClosed" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[CreatedDate]"
+                          dataType="dbTimeStamp"
+                          name="CreatedDate" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[CreatedById]"
+                          dataType="wstr"
+                          length="18"
+                          name="CreatedById" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[LastModifiedDate]"
+                          dataType="dbTimeStamp"
+                          name="LastModifiedDate" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[LastModifiedById]"
+                          dataType="wstr"
+                          length="18"
+                          name="LastModifiedById" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[SystemModstamp]"
+                          dataType="dbTimeStamp"
+                          name="SystemModstamp" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[IsArchived]"
+                          dataType="bool"
+                          name="IsArchived" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[CallDurationInSeconds]"
+                          dataType="i4"
+                          name="CallDurationInSeconds" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[CallType]"
+                          dataType="wstr"
+                          length="255"
+                          name="CallType" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[CallDisposition]"
+                          dataType="wstr"
+                          length="255"
+                          name="CallDisposition" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[CallObject]"
+                          dataType="wstr"
+                          length="255"
+                          name="CallObject" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[ReminderDateTime]"
+                          dataType="dbTimeStamp"
+                          name="ReminderDateTime" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[IsReminderSet]"
+                          dataType="bool"
+                          name="IsReminderSet" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[RecurrenceActivityId]"
+                          dataType="wstr"
+                          length="18"
+                          name="RecurrenceActivityId" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[IsRecurrence]"
+                          dataType="bool"
+                          name="IsRecurrence" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[RecurrenceStartDateOnly]"
+                          dataType="dbDate"
+                          name="RecurrenceStartDateOnly" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[RecurrenceEndDateOnly]"
+                          dataType="dbDate"
+                          name="RecurrenceEndDateOnly" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[RecurrenceTimeZoneSidKey]"
+                          dataType="wstr"
+                          length="255"
+                          name="RecurrenceTimeZoneSidKey" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[RecurrenceType]"
+                          dataType="wstr"
+                          length="255"
+                          name="RecurrenceType" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[RecurrenceInterval]"
+                          dataType="i4"
+                          name="RecurrenceInterval" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[RecurrenceDayOfWeekMask]"
+                          dataType="i4"
+                          name="RecurrenceDayOfWeekMask" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[RecurrenceDayOfMonth]"
+                          dataType="i4"
+                          name="RecurrenceDayOfMonth" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[RecurrenceInstance]"
+                          dataType="wstr"
+                          length="255"
+                          name="RecurrenceInstance" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[RecurrenceMonthOfYear]"
+                          dataType="wstr"
+                          length="255"
+                          name="RecurrenceMonthOfYear" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[RecurrenceRegeneratedType]"
+                          dataType="wstr"
+                          length="255"
+                          name="RecurrenceRegeneratedType" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[TaskSubtype]"
+                          dataType="wstr"
+                          length="255"
+                          name="TaskSubtype" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[CompletedDateTime]"
+                          dataType="dbTimeStamp"
+                          name="CompletedDateTime" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[ActivityType__c]"
+                          dataType="wstr"
+                          length="255"
+                          name="ActivityType__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[Action__c]"
+                          dataType="wstr"
+                          length="255"
+                          name="Action__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[Result__c]"
+                          dataType="wstr"
+                          length="255"
+                          name="Result__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[NCCPromoCode__c]"
+                          dataType="wstr"
+                          length="18"
+                          name="NCCPromoCode__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[DisplayName__c]"
+                          dataType="wstr"
+                          length="1300"
+                          name="DisplayName__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[ActivityID__c]"
+                          dataType="wstr"
+                          length="255"
+                          name="ActivityID__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[CompletionDate__c]"
+                          dataType="dbTimeStamp"
+                          name="CompletionDate__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[TaskCase__c]"
+                          dataType="wstr"
+                          length="18"
+                          name="TaskCase__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[Center__c]"
+                          dataType="wstr"
+                          length="18"
+                          name="Center__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[CreatedByL__c]"
+                          dataType="wstr"
+                          length="255"
+                          name="CreatedByL__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[SourceCode__c]"
+                          dataType="wstr"
+                          length="255"
+                          name="SourceCode__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[Accommodation__c]"
+                          dataType="wstr"
+                          length="255"
+                          name="Accommodation__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[OnCMinsSinceCreated__c]"
+                          dataType="r8"
+                          name="OnCMinsSinceCreated__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[UserCode__c]"
+                          dataType="wstr"
+                          length="255"
+                          name="UserCode__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[CallBackDate__c]"
+                          dataType="dbDate"
+                          name="CallBackDate__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[Lead__c]"
+                          dataType="wstr"
+                          length="18"
+                          name="Lead__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[NoApptCancelReason__c]"
+                          dataType="wstr"
+                          length="255"
+                          name="NoApptCancelReason__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[Campaign__c]"
+                          dataType="wstr"
+                          length="18"
+                          name="Campaign__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[PromoCodeDisplay__c]"
+                          dataType="wstr"
+                          length="1300"
+                          name="PromoCodeDisplay__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[OncCreatedDate__c]"
+                          dataType="dbTimeStamp"
+                          name="OncCreatedDate__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[StartTime__c]"
+                          dataType="wstr"
+                          length="255"
+                          name="StartTime__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[EndTime__c]"
+                          dataType="wstr"
+                          length="255"
+                          name="EndTime__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[EventID__c]"
+                          dataType="wstr"
+                          length="255"
+                          name="EventID__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[AppointmentDate__c]"
+                          dataType="dbDate"
+                          name="AppointmentDate__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[EventHRID__c]"
+                          dataType="wstr"
+                          length="18"
+                          name="EventHRID__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[CallBackTime__c]"
+                          dataType="wstr"
+                          length="255"
+                          name="CallBackTime__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[CallbackTimeFormatted__c]"
+                          dataType="wstr"
+                          length="1300"
+                          name="CallbackTimeFormatted__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[CampaignID__c]"
+                          dataType="wstr"
+                          length="1300"
+                          name="CampaignID__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[CenterNumber__c]"
+                          dataType="wstr"
+                          length="1300"
+                          name="CenterNumber__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[ContactID__c]"
+                          dataType="wstr"
+                          length="255"
+                          name="ContactID__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[LeadCity__c]"
+                          dataType="wstr"
+                          length="1300"
+                          name="LeadCity__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[LeadSource__c]"
+                          dataType="wstr"
+                          length="1300"
+                          name="LeadSource__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[LeadState__c]"
+                          dataType="wstr"
+                          length="1300"
+                          name="LeadState__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[LeadZipCode__c]"
+                          dataType="wstr"
+                          length="1300"
+                          name="LeadZipCode__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[NobleAddition__c]"
+                          dataType="bool"
+                          name="NobleAddition__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[NobleException__c]"
+                          dataType="bool"
+                          name="NobleException__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[PromoCode__c]"
+                          dataType="wstr"
+                          length="1300"
+                          name="PromoCode__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[PromoCodeID__c]"
+                          dataType="wstr"
+                          length="1300"
+                          name="PromoCodeID__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[ReceiveBrochure__c]"
+                          dataType="bool"
+                          name="ReceiveBrochure__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[StartTimeFormatted__c]"
+                          dataType="wstr"
+                          length="1300"
+                          name="StartTimeFormatted__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[TextNumber__c]"
+                          dataType="wstr"
+                          length="40"
+                          name="TextNumber__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[TextOptIn__c]"
+                          dataType="bool"
+                          name="TextOptIn__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[TimeZone__c]"
+                          dataType="wstr"
+                          length="1300"
+                          name="TimeZone__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[EndTimeFormatted__c]"
+                          dataType="wstr"
+                          length="1300"
+                          name="EndTimeFormatted__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[InOutNumber__c]"
+                          dataType="wstr"
+                          length="40"
+                          name="InOutNumber__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[IPAddress__c]"
+                          dataType="wstr"
+                          length="255"
+                          name="IPAddress__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[LeadEthnicity__c]"
+                          dataType="wstr"
+                          length="1300"
+                          name="LeadEthnicity__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[LeadFirstName__c]"
+                          dataType="wstr"
+                          length="1300"
+                          name="LeadFirstName__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[LeadGender__c]"
+                          dataType="wstr"
+                          length="1300"
+                          name="LeadGender__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[LeadLanguage__c]"
+                          dataType="wstr"
+                          length="1300"
+                          name="LeadLanguage__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[LeadLastName__c]"
+                          dataType="wstr"
+                          length="1300"
+                          name="LeadLastName__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[LeadLudwigScale__c]"
+                          dataType="wstr"
+                          length="1300"
+                          name="LeadLudwigScale__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[LeadPhone__c]"
+                          dataType="wstr"
+                          length="1300"
+                          name="LeadPhone__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[DISC__c]"
+                          dataType="wstr"
+                          length="255"
+                          name="DISC__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[PriceQuoted__c]"
+                          dataType="r8"
+                          name="PriceQuoted__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[LudwigScale__c]"
+                          dataType="wstr"
+                          length="255"
+                          name="LudwigScale__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[MaritalStatus__c]"
+                          dataType="wstr"
+                          length="255"
+                          name="MaritalStatus__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[NorwoodScale__c]"
+                          dataType="wstr"
+                          length="255"
+                          name="NorwoodScale__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[Occupation__c]"
+                          dataType="wstr"
+                          length="255"
+                          name="Occupation__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[SolutionOffered__c]"
+                          dataType="wstr"
+                          length="255"
+                          name="SolutionOffered__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[NoSaleReason__c]"
+                          dataType="wstr"
+                          length="255"
+                          name="NoSaleReason__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[Performer__c]"
+                          dataType="wstr"
+                          length="255"
+                          name="Performer__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[FollowUpDate__c]"
+                          dataType="dbDate"
+                          name="FollowUpDate__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[UniqueTaskID__c]"
+                          dataType="wstr"
+                          length="1300"
+                          name="UniqueTaskID__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[HairLossScale__c]"
+                          dataType="wstr"
+                          length="255"
+                          name="HairLossScale__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[SaleTypeCode__c]"
+                          dataType="wstr"
+                          length="255"
+                          name="SaleTypeCode__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[SaleTypeDescription__c]"
+                          dataType="wstr"
+                          length="255"
+                          name="SaleTypeDescription__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[ConfirmCallOptOut__c]"
+                          dataType="bool"
+                          name="ConfirmCallOptOut__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[ToBeProcessed__c]"
+                          dataType="bool"
+                          name="ToBeProcessed__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[LastProcessedDate__c]"
+                          dataType="dbTimeStamp"
+                          name="LastProcessedDate__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[LeadOncContactID__c]"
+                          dataType="wstr"
+                          length="1300"
+                          name="LeadOncContactID__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[LeadOncBirthday__c]"
+                          dataType="dbDate"
+                          name="LeadOncBirthday__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[LeadOncGender__c]"
+                          dataType="wstr"
+                          length="1300"
+                          name="LeadOncGender__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[LeadOncEthnicity__c]"
+                          dataType="wstr"
+                          length="1300"
+                          name="LeadOncEthnicity__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[LeadOncAge__c]"
+                          dataType="r8"
+                          name="LeadOncAge__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[CenterID__c]"
+                          dataType="wstr"
+                          length="255"
+                          name="CenterID__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[Converted__c]"
+                          dataType="wstr"
+                          length="1300"
+                          name="Converted__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[LastModifedBy__c]"
+                          dataType="wstr"
+                          length="100"
+                          name="LastModifedBy__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[LeadCampaignID__c]"
+                          dataType="wstr"
+                          length="1300"
+                          name="LeadCampaignID__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[LeadID__c]"
+                          dataType="wstr"
+                          length="1300"
+                          name="LeadID__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[OncBatchProcessedDate__c]"
+                          dataType="wstr"
+                          length="255"
+                          name="OncBatchProcessedDate__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[LastModifiedDate__c]"
+                          dataType="dbTimeStamp"
+                          name="LastModifiedDate__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[CreatedTime__c]"
+                          dataType="dbTimeStamp"
+                          name="CreatedTime__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[ReportCreateDate__c]"
+                          dataType="dbTimeStamp"
+                          name="ReportCreateDate__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[ActivitySource__c]"
+                          dataType="wstr"
+                          length="255"
+                          name="ActivitySource__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[DeviceType__c]"
+                          dataType="wstr"
+                          length="255"
+                          name="DeviceType__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[PerformerID__c]"
+                          dataType="wstr"
+                          length="50"
+                          name="PerformerID__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[OriginalLeadId__c]"
+                          dataType="wstr"
+                          length="30"
+                          name="OriginalLeadId__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[TaskCreationDate__c]"
+                          dataType="dbDate"
+                          name="TaskCreationDate__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[Consultation_Form__c]"
+                          dataType="wstr"
+                          length="1300"
+                          name="Consultation_Form__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[Email__c]"
+                          dataType="wstr"
+                          length="80"
+                          name="Email__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[Customer__c]"
+                          dataType="wstr"
+                          length="18"
+                          name="Customer__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[ConsultationFormURL__c]"
+                          dataType="wstr"
+                          length="1300"
+                          name="ConsultationFormURL__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input].ExternalColumns[ReferralCode__c]"
+                          dataType="wstr"
+                          length="20"
+                          name="ReferralCode__c" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Outputs[Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Error Output"
+                      synchronousInputId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Outputs[Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Outputs[Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Outputs[Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Outputs[Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                        <outputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Outputs[Error Output].Columns[ErrorDescription]"
+                          dataType="wstr"
+                          length="1024"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Outputs[Error Output].Columns[ErrorDescription]"
+                          name="ErrorDescription" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Outputs[RecordId Output]"
+                      exclusionGroup="1"
+                      name="RecordId Output"
+                      synchronousInputId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Outputs[RecordId Output].Columns[Id]"
+                          dataType="wstr"
+                          length="18"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Outputs[RecordId Output].Columns[Id]"
+                          name="Id" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Process Rows in Queue\Update Salesforce\Lookup Lead"
+                  componentClassID="Microsoft.ManagedComponentHost"
+                  description="Joins additional columns to the data flow by looking up values in a object of the Salesforce."
+                  name="Lookup Lead"
+                  usesDispositions="true"
+                  version="1">
+                  <properties>
+                    <property
+                      dataType="System.Null"
+                      name="DesignObject"
+                      typeConverter="NOTBROWSABLE" />
+                    <property
+                      dataType="System.String"
+                      description="The name of the reference Object."
+                      name="Lookup Object"
+                      typeConverter="Devart.SSIS.Common.Design.TablesListConverter">Lead</property>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of objects in the batch query."
+                      name="BatchSize">50</property>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of cached objects."
+                      name="CacheSize">2000</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Redirect no matching rows to error output."
+                      name="NoMatchAsError">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Determines whether to pick the first row if more than one match is found or redirect the input row to the error output with an error message."
+                      name="UseFirstMatchInMultipleResults">true</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Determines whether to set null values or create no lookup relationship between the objects if no matches are found."
+                      name="UseNullsIfNoMatchFound">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Determines whether to use case insensitive comparison in Lookup"
+                      name="CaseInsensitiveLookup">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Enables local SQL processing, which allows using more standard SELECT statement features."
+                      name="LocalSQLEngine">true</property>
+                    <property
+                      dataType="System.String"
+                      name="UserComponentTypeName">Devart.SSIS.Salesforce.SalesforceLookup</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Process Rows in Queue\Update Salesforce\Lookup Lead.Connections[SalesforceConnectionManager]"
+                      connectionManagerID="Package.ConnectionManagers[Devart Salesforce Connection Manager]"
+                      connectionManagerRefId="Package.ConnectionManagers[Devart Salesforce Connection Manager]"
+                      description="Devart Connection Manager for Salesforce connections"
+                      name="SalesforceConnectionManager" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Process Rows in Queue\Update Salesforce\Lookup Lead.Inputs[Lookup Input]"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="Lookup Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Lookup Lead.Inputs[Lookup Input].Columns[HCSalesforceLeadID]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="HCSalesforceLeadID"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].Columns[HCSalesforceLeadID]"
+                          name="HCSalesforceLeadID">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table for lookup condition"
+                              name="ReferenceColumn"
+                              typeConverter="Devart.SSIS.SqlShim.LookupComponent+SourceColumnList">Id</property>
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Process Rows in Queue\Update Salesforce\Lookup Lead.Outputs[Lookup Match Output]"
+                      exclusionGroup="1"
+                      name="Lookup Match Output"
+                      synchronousInputId="Package\Process Rows in Queue\Update Salesforce\Lookup Lead.Inputs[Lookup Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Lookup Lead.Outputs[Lookup Match Output].Columns[Id]"
+                          dataType="wstr"
+                          length="18"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Lookup Lead.Outputs[Lookup Match Output].Columns[Id]"
+                          name="Id">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table to copy data from."
+                              name="SourceColumn"
+                              typeConverter="Devart.SSIS.SqlShim.LookupComponent+SourceColumnList">Id</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Lookup Lead.Outputs[Lookup Match Output].Columns[Status]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Lookup Lead.Outputs[Lookup Match Output].Columns[Status]"
+                          name="Status">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table to copy data from."
+                              name="SourceColumn"
+                              typeConverter="Devart.SSIS.SqlShim.LookupComponent+SourceColumnList">Status</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Lookup Lead.Outputs[Lookup Match Output].Columns[Source_Code_Legacy__c]"
+                          dataType="wstr"
+                          length="64"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Lookup Lead.Outputs[Lookup Match Output].Columns[Source_Code_Legacy__c]"
+                          name="Source_Code_Legacy__c">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table to copy data from."
+                              name="SourceColumn"
+                              typeConverter="Devart.SSIS.SqlShim.LookupComponent+SourceColumnList">Source_Code_Legacy__c</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Lookup Lead.Outputs[Lookup Match Output].Columns[FullName__c]"
+                          dataType="wstr"
+                          length="1300"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Lookup Lead.Outputs[Lookup Match Output].Columns[FullName__c]"
+                          name="FullName__c">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table to copy data from."
+                              name="SourceColumn"
+                              typeConverter="Devart.SSIS.SqlShim.LookupComponent+SourceColumnList">FullName__c</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Process Rows in Queue\Update Salesforce\Lookup Lead.Outputs[Lookup No Match Output]"
+                      exclusionGroup="1"
+                      name="Lookup No Match Output"
+                      synchronousInputId="Package\Process Rows in Queue\Update Salesforce\Lookup Lead.Inputs[Lookup Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Process Rows in Queue\Update Salesforce\Lookup Lead.Outputs[Lookup Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Lookup Error Output"
+                      synchronousInputId="Package\Process Rows in Queue\Update Salesforce\Lookup Lead.Inputs[Lookup Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Lookup Lead.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Lookup Lead.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Lookup Lead.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Lookup Lead.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                        <outputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Lookup Lead.Outputs[Lookup Error Output].Columns[ErrorDescription]"
+                          dataType="wstr"
+                          length="1024"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Lookup Lead.Outputs[Lookup Error Output].Columns[ErrorDescription]"
+                          name="ErrorDescription" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Process Rows in Queue\Update Salesforce\Multicast 1"
+                  componentClassID="Microsoft.Multicast"
+                  contactInfo="Multicast;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Distributes every input row to every row in one or more outputs. For example, branch your data flow to make a copy of data so that some values can be masked before sharing with external partners."
+                  name="Multicast 1">
+                  <inputs>
+                    <input
+                      refId="Package\Process Rows in Queue\Update Salesforce\Multicast 1.Inputs[Multicast Input 1]"
+                      name="Multicast Input 1">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Process Rows in Queue\Update Salesforce\Multicast 1.Outputs[Multicast Output 1]"
+                      deleteOutputOnPathDetached="true"
+                      name="Multicast Output 1"
+                      synchronousInputId="Package\Process Rows in Queue\Update Salesforce\Multicast 1.Inputs[Multicast Input 1]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Process Rows in Queue\Update Salesforce\Multicast 1.Outputs[Multicast Output 3]"
+                      deleteOutputOnPathDetached="true"
+                      name="Multicast Output 3"
+                      synchronousInputId="Package\Process Rows in Queue\Update Salesforce\Multicast 1.Inputs[Multicast Input 1]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Process Rows in Queue\Update Salesforce\Multicast 1.Outputs[Multicast Output 2]"
+                      dangling="true"
+                      deleteOutputOnPathDetached="true"
+                      name="Multicast Output 2"
+                      synchronousInputId="Package\Process Rows in Queue\Update Salesforce\Multicast 1.Inputs[Multicast Input 1]">
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="Read logBosleySalesforce"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT 
+    [ID] AS [logBosleySalesforceID],
+    [BosleyRequestID],
+    [HCSalesforceLeadID],
+    [CenterID__c],
+    [Action__c],
+    [ActivityType__c],
+    [WhoId],
+    [AppointmentDate__c],
+    [CompletionDate__c],
+    [ActivityDate],
+    [StartTime__c],
+    [EndTime__c],
+    [SaleTypeCode__c],
+    [SaleTypeDescription__c],
+    [PriceQuoted__c],
+    [Performer__c],
+    [Result__c],
+    [LeadID],
+    [Status],
+    [FullName__c],
+    [CreateDate],
+    [Subject],
+    [NorwoodScale__c],
+    [LudwigScale__c],
+    [Occupation__c],
+    [MaritalStatus__c],
+    [DISC__c],
+    [ReportCreateDate__c],
+    [TaskID],
+    [IsProcessed],
+    [IsIgnore]
+FROM 
+    [dbo].[logBosleySalesforce]
+WHERE
+    ID = ?;</property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping">"0:Input",{AE751494-F5FA-4352-B016-E627BA3C0539};</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[HairClubCMS]"
+                      connectionManagerRefId="Package.ConnectionManagers[HairClubCMS]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].Columns[HCSalesforceLeadID]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].ExternalColumns[HCSalesforceLeadID]"
+                          length="50"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].Columns[HCSalesforceLeadID]"
+                          name="HCSalesforceLeadID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].Columns[CenterID__c]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].ExternalColumns[CenterID__c]"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].Columns[CenterID__c]"
+                          name="CenterID__c"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].Columns[Action__c]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].ExternalColumns[Action__c]"
+                          length="32"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].Columns[Action__c]"
+                          name="Action__c"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].Columns[ActivityType__c]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].ExternalColumns[ActivityType__c]"
+                          length="32"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].Columns[ActivityType__c]"
+                          name="ActivityType__c"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].Columns[WhoId]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].ExternalColumns[WhoId]"
+                          length="50"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].Columns[WhoId]"
+                          name="WhoId"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].Columns[AppointmentDate__c]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].ExternalColumns[AppointmentDate__c]"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].Columns[AppointmentDate__c]"
+                          name="AppointmentDate__c"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].Columns[CompletionDate__c]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].ExternalColumns[CompletionDate__c]"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].Columns[CompletionDate__c]"
+                          name="CompletionDate__c"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].Columns[ActivityDate]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].ExternalColumns[ActivityDate]"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].Columns[ActivityDate]"
+                          name="ActivityDate"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].Columns[StartTime__c]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].ExternalColumns[StartTime__c]"
+                          length="50"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].Columns[StartTime__c]"
+                          name="StartTime__c"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].Columns[EndTime__c]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].ExternalColumns[EndTime__c]"
+                          length="50"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].Columns[EndTime__c]"
+                          name="EndTime__c"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].Columns[SaleTypeCode__c]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].ExternalColumns[SaleTypeCode__c]"
+                          length="32"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].Columns[SaleTypeCode__c]"
+                          name="SaleTypeCode__c"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].Columns[SaleTypeDescription__c]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].ExternalColumns[SaleTypeDescription__c]"
+                          length="32"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].Columns[SaleTypeDescription__c]"
+                          name="SaleTypeDescription__c"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].Columns[PriceQuoted__c]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].ExternalColumns[PriceQuoted__c]"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].Columns[PriceQuoted__c]"
+                          name="PriceQuoted__c"
+                          precision="14"
+                          scale="4"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].Columns[Performer__c]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].ExternalColumns[Performer__c]"
+                          length="128"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].Columns[Performer__c]"
+                          name="Performer__c"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].Columns[Result__c]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].ExternalColumns[Result__c]"
+                          length="32"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].Columns[Result__c]"
+                          name="Result__c"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].Columns[BosleyRequestID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].ExternalColumns[BosleyRequestID]"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].Columns[BosleyRequestID]"
+                          name="BosleyRequestID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].Columns[Subject]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].ExternalColumns[Subject]"
+                          length="128"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].Columns[Subject]"
+                          name="Subject"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].Columns[NorwoodScale__c]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].ExternalColumns[NorwoodScale__c]"
+                          length="128"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].Columns[NorwoodScale__c]"
+                          name="NorwoodScale__c"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].Columns[LudwigScale__c]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].ExternalColumns[LudwigScale__c]"
+                          length="128"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].Columns[LudwigScale__c]"
+                          name="LudwigScale__c"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].Columns[Occupation__c]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].ExternalColumns[Occupation__c]"
+                          length="128"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].Columns[Occupation__c]"
+                          name="Occupation__c"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].Columns[MaritalStatus__c]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].ExternalColumns[MaritalStatus__c]"
+                          length="128"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].Columns[MaritalStatus__c]"
+                          name="MaritalStatus__c"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].Columns[DISC__c]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].ExternalColumns[DISC__c]"
+                          length="128"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].Columns[DISC__c]"
+                          name="DISC__c"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].Columns[ReportCreateDate__c]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].ExternalColumns[ReportCreateDate__c]"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].Columns[ReportCreateDate__c]"
+                          name="ReportCreateDate__c"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].Columns[LeadID]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].ExternalColumns[LeadID]"
+                          length="50"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].Columns[LeadID]"
+                          name="LeadID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].Columns[Status]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].ExternalColumns[Status]"
+                          length="128"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].Columns[Status]"
+                          name="Status"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].Columns[FullName__c]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].ExternalColumns[FullName__c]"
+                          length="256"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].Columns[FullName__c]"
+                          name="FullName__c"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].Columns[CreateDate]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].ExternalColumns[CreateDate]"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].Columns[CreateDate]"
+                          name="CreateDate"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].Columns[TaskID]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].ExternalColumns[TaskID]"
+                          length="128"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].Columns[TaskID]"
+                          name="TaskID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].Columns[IsProcessed]"
+                          dataType="bool"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].ExternalColumns[IsProcessed]"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].Columns[IsProcessed]"
+                          name="IsProcessed"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].Columns[IsIgnore]"
+                          dataType="bool"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].ExternalColumns[IsIgnore]"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].Columns[IsIgnore]"
+                          name="IsIgnore"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].Columns[logBosleySalesforceID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].ExternalColumns[logBosleySalesforceID]"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].Columns[logBosleySalesforceID]"
+                          name="logBosleySalesforceID"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].ExternalColumns[HCSalesforceLeadID]"
+                          dataType="wstr"
+                          length="50"
+                          name="HCSalesforceLeadID" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].ExternalColumns[CenterID__c]"
+                          dataType="i4"
+                          name="CenterID__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].ExternalColumns[Action__c]"
+                          dataType="wstr"
+                          length="32"
+                          name="Action__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].ExternalColumns[ActivityType__c]"
+                          dataType="wstr"
+                          length="32"
+                          name="ActivityType__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].ExternalColumns[WhoId]"
+                          dataType="wstr"
+                          length="50"
+                          name="WhoId" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].ExternalColumns[AppointmentDate__c]"
+                          dataType="dbTimeStamp"
+                          name="AppointmentDate__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].ExternalColumns[CompletionDate__c]"
+                          dataType="dbTimeStamp"
+                          name="CompletionDate__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].ExternalColumns[ActivityDate]"
+                          dataType="dbTimeStamp"
+                          name="ActivityDate" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].ExternalColumns[StartTime__c]"
+                          dataType="wstr"
+                          length="50"
+                          name="StartTime__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].ExternalColumns[EndTime__c]"
+                          dataType="wstr"
+                          length="50"
+                          name="EndTime__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].ExternalColumns[SaleTypeCode__c]"
+                          dataType="wstr"
+                          length="32"
+                          name="SaleTypeCode__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].ExternalColumns[SaleTypeDescription__c]"
+                          dataType="wstr"
+                          length="32"
+                          name="SaleTypeDescription__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].ExternalColumns[PriceQuoted__c]"
+                          dataType="numeric"
+                          name="PriceQuoted__c"
+                          precision="14"
+                          scale="4" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].ExternalColumns[Performer__c]"
+                          dataType="wstr"
+                          length="128"
+                          name="Performer__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].ExternalColumns[Result__c]"
+                          dataType="wstr"
+                          length="32"
+                          name="Result__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].ExternalColumns[BosleyRequestID]"
+                          dataType="i4"
+                          name="BosleyRequestID" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].ExternalColumns[Subject]"
+                          dataType="wstr"
+                          length="128"
+                          name="Subject" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].ExternalColumns[NorwoodScale__c]"
+                          dataType="wstr"
+                          length="128"
+                          name="NorwoodScale__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].ExternalColumns[LudwigScale__c]"
+                          dataType="wstr"
+                          length="128"
+                          name="LudwigScale__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].ExternalColumns[Occupation__c]"
+                          dataType="wstr"
+                          length="128"
+                          name="Occupation__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].ExternalColumns[MaritalStatus__c]"
+                          dataType="wstr"
+                          length="128"
+                          name="MaritalStatus__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].ExternalColumns[DISC__c]"
+                          dataType="wstr"
+                          length="128"
+                          name="DISC__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].ExternalColumns[ReportCreateDate__c]"
+                          dataType="dbTimeStamp"
+                          name="ReportCreateDate__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].ExternalColumns[LeadID]"
+                          dataType="wstr"
+                          length="50"
+                          name="LeadID" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].ExternalColumns[Status]"
+                          dataType="wstr"
+                          length="128"
+                          name="Status" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].ExternalColumns[FullName__c]"
+                          dataType="wstr"
+                          length="256"
+                          name="FullName__c" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].ExternalColumns[CreateDate]"
+                          dataType="dbTimeStamp"
+                          name="CreateDate" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].ExternalColumns[TaskID]"
+                          dataType="wstr"
+                          length="128"
+                          name="TaskID" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].ExternalColumns[IsProcessed]"
+                          dataType="bool"
+                          name="IsProcessed" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].ExternalColumns[IsIgnore]"
+                          dataType="bool"
+                          name="IsIgnore" />
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].ExternalColumns[logBosleySalesforceID]"
+                          dataType="i4"
+                          name="logBosleySalesforceID" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Error Output].Columns[logBosleySalesforceID]"
+                          dataType="i4"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Error Output].Columns[logBosleySalesforceID]"
+                          name="logBosleySalesforceID" />
+                        <outputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Error Output].Columns[BosleyRequestID]"
+                          dataType="i4"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Error Output].Columns[BosleyRequestID]"
+                          name="BosleyRequestID" />
+                        <outputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Error Output].Columns[HCSalesforceLeadID]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Error Output].Columns[HCSalesforceLeadID]"
+                          name="HCSalesforceLeadID" />
+                        <outputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Error Output].Columns[CenterID__c]"
+                          dataType="i4"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Error Output].Columns[CenterID__c]"
+                          name="CenterID__c" />
+                        <outputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Error Output].Columns[Action__c]"
+                          dataType="wstr"
+                          length="32"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Error Output].Columns[Action__c]"
+                          name="Action__c" />
+                        <outputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Error Output].Columns[ActivityType__c]"
+                          dataType="wstr"
+                          length="32"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Error Output].Columns[ActivityType__c]"
+                          name="ActivityType__c" />
+                        <outputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Error Output].Columns[WhoId]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Error Output].Columns[WhoId]"
+                          name="WhoId" />
+                        <outputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Error Output].Columns[AppointmentDate__c]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Error Output].Columns[AppointmentDate__c]"
+                          name="AppointmentDate__c" />
+                        <outputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Error Output].Columns[CompletionDate__c]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Error Output].Columns[CompletionDate__c]"
+                          name="CompletionDate__c" />
+                        <outputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Error Output].Columns[ActivityDate]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Error Output].Columns[ActivityDate]"
+                          name="ActivityDate" />
+                        <outputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Error Output].Columns[StartTime__c]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Error Output].Columns[StartTime__c]"
+                          name="StartTime__c" />
+                        <outputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Error Output].Columns[EndTime__c]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Error Output].Columns[EndTime__c]"
+                          name="EndTime__c" />
+                        <outputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Error Output].Columns[SaleTypeCode__c]"
+                          dataType="wstr"
+                          length="32"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Error Output].Columns[SaleTypeCode__c]"
+                          name="SaleTypeCode__c" />
+                        <outputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Error Output].Columns[SaleTypeDescription__c]"
+                          dataType="wstr"
+                          length="32"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Error Output].Columns[SaleTypeDescription__c]"
+                          name="SaleTypeDescription__c" />
+                        <outputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Error Output].Columns[PriceQuoted__c]"
+                          dataType="numeric"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Error Output].Columns[PriceQuoted__c]"
+                          name="PriceQuoted__c"
+                          precision="14"
+                          scale="4" />
+                        <outputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Error Output].Columns[Performer__c]"
+                          dataType="wstr"
+                          length="128"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Error Output].Columns[Performer__c]"
+                          name="Performer__c" />
+                        <outputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Error Output].Columns[Subject]"
+                          dataType="wstr"
+                          length="128"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Error Output].Columns[Subject]"
+                          name="Subject" />
+                        <outputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Error Output].Columns[LeadID]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Error Output].Columns[LeadID]"
+                          name="LeadID" />
+                        <outputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Error Output].Columns[Status]"
+                          dataType="wstr"
+                          length="128"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Error Output].Columns[Status]"
+                          name="Status" />
+                        <outputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Error Output].Columns[FullName__c]"
+                          dataType="wstr"
+                          length="256"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Error Output].Columns[FullName__c]"
+                          name="FullName__c" />
+                        <outputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Error Output].Columns[CreateDate]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Error Output].Columns[CreateDate]"
+                          name="CreateDate" />
+                        <outputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Error Output].Columns[Result__c]"
+                          dataType="wstr"
+                          length="32"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Error Output].Columns[Result__c]"
+                          name="Result__c" />
+                        <outputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Error Output].Columns[NorwoodScale__c]"
+                          dataType="wstr"
+                          length="128"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Error Output].Columns[NorwoodScale__c]"
+                          name="NorwoodScale__c" />
+                        <outputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Error Output].Columns[LudwigScale__c]"
+                          dataType="wstr"
+                          length="128"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Error Output].Columns[LudwigScale__c]"
+                          name="LudwigScale__c" />
+                        <outputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Error Output].Columns[Occupation__c]"
+                          dataType="wstr"
+                          length="128"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Error Output].Columns[Occupation__c]"
+                          name="Occupation__c" />
+                        <outputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Error Output].Columns[MaritalStatus__c]"
+                          dataType="wstr"
+                          length="128"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Error Output].Columns[MaritalStatus__c]"
+                          name="MaritalStatus__c" />
+                        <outputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Error Output].Columns[DISC__c]"
+                          dataType="wstr"
+                          length="128"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Error Output].Columns[DISC__c]"
+                          name="DISC__c" />
+                        <outputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Error Output].Columns[ReportCreateDate__c]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Error Output].Columns[ReportCreateDate__c]"
+                          name="ReportCreateDate__c" />
+                        <outputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Error Output].Columns[TaskID]"
+                          dataType="wstr"
+                          length="128"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Error Output].Columns[TaskID]"
+                          name="TaskID" />
+                        <outputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Error Output].Columns[IsProcessed]"
+                          dataType="bool"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Error Output].Columns[IsProcessed]"
+                          name="IsProcessed" />
+                        <outputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Error Output].Columns[IsIgnore]"
+                          dataType="bool"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Error Output].Columns[IsIgnore]"
+                          name="IsIgnore" />
+                        <outputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Process Rows in Queue\Update Salesforce\Update logBosleySalesforce"
+                  componentClassID="Microsoft.OLEDBCommand"
+                  contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+                  description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+                  name="Update logBosleySalesforce"
+                  usesDispositions="true"
+                  version="2">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      expressionType="Notify"
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE
+    logBosleySalesforce
+SET
+    LeadID = ?,
+    Status = ?,
+    FullName__c = ?,
+    IsProcessed = 1
+WHERE
+    ID = ?;</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Process Rows in Queue\Update Salesforce\Update logBosleySalesforce.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[HairClubCMS]"
+                      connectionManagerRefId="Package.ConnectionManagers[HairClubCMS]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Process Rows in Queue\Update Salesforce\Update logBosleySalesforce.Inputs[OLE DB Command Input]"
+                      errorOrTruncationOperation="Command Execution"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Command Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Update logBosleySalesforce.Inputs[OLE DB Command Input].Columns[Id]"
+                          cachedDataType="wstr"
+                          cachedLength="18"
+                          cachedName="Id"
+                          externalMetadataColumnId="Package\Process Rows in Queue\Update Salesforce\Update logBosleySalesforce.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Lookup Lead.Outputs[Lookup Match Output].Columns[Id]" />
+                        <inputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Update logBosleySalesforce.Inputs[OLE DB Command Input].Columns[Status]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Status"
+                          externalMetadataColumnId="Package\Process Rows in Queue\Update Salesforce\Update logBosleySalesforce.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Lookup Lead.Outputs[Lookup Match Output].Columns[Status]" />
+                        <inputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Update logBosleySalesforce.Inputs[OLE DB Command Input].Columns[FullName__c]"
+                          cachedDataType="wstr"
+                          cachedLength="1300"
+                          cachedName="FullName__c"
+                          externalMetadataColumnId="Package\Process Rows in Queue\Update Salesforce\Update logBosleySalesforce.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Lookup Lead.Outputs[Lookup Match Output].Columns[FullName__c]" />
+                        <inputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Update logBosleySalesforce.Inputs[OLE DB Command Input].Columns[logBosleySalesforceID]"
+                          cachedDataType="i4"
+                          cachedName="logBosleySalesforceID"
+                          externalMetadataColumnId="Package\Process Rows in Queue\Update Salesforce\Update logBosleySalesforce.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].Columns[logBosleySalesforceID]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Update logBosleySalesforce.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                          dataType="wstr"
+                          length="50"
+                          name="Param_0">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">81</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Update logBosleySalesforce.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                          dataType="wstr"
+                          length="128"
+                          name="Param_1">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">65</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Update logBosleySalesforce.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                          dataType="wstr"
+                          length="256"
+                          name="Param_2">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">65</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Update logBosleySalesforce.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                          dataType="i4"
+                          name="Param_3">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">81</property>
+                          </properties>
+                        </externalMetadataColumn>
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Process Rows in Queue\Update Salesforce\Update logBosleySalesforce.Outputs[OLE DB Command Output]"
+                      exclusionGroup="1"
+                      name="OLE DB Command Output"
+                      synchronousInputId="Package\Process Rows in Queue\Update Salesforce\Update logBosleySalesforce.Inputs[OLE DB Command Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Process Rows in Queue\Update Salesforce\Update logBosleySalesforce.Outputs[OLE DB Command Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Command Error Output"
+                      synchronousInputId="Package\Process Rows in Queue\Update Salesforce\Update logBosleySalesforce.Inputs[OLE DB Command Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Update logBosleySalesforce.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Update logBosleySalesforce.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Update logBosleySalesforce.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Update logBosleySalesforce.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Process Rows in Queue\Update Salesforce\Update logBosleySalesforce2"
+                  componentClassID="Microsoft.OLEDBCommand"
+                  contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+                  description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+                  name="Update logBosleySalesforce2"
+                  usesDispositions="true"
+                  version="2">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      expressionType="Notify"
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE
+    logBosleySalesforce
+SET
+    TaskID = ?,
+    IsProcessed = 1
+WHERE
+    ID = ?;</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Process Rows in Queue\Update Salesforce\Update logBosleySalesforce2.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[HairClubCMS]"
+                      connectionManagerRefId="Package.ConnectionManagers[HairClubCMS]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Process Rows in Queue\Update Salesforce\Update logBosleySalesforce2.Inputs[OLE DB Command Input]"
+                      errorOrTruncationOperation="Command Execution"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Command Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Update logBosleySalesforce2.Inputs[OLE DB Command Input].Columns[Id]"
+                          cachedDataType="wstr"
+                          cachedLength="18"
+                          cachedName="Id"
+                          externalMetadataColumnId="Package\Process Rows in Queue\Update Salesforce\Update logBosleySalesforce2.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Outputs[RecordId Output].Columns[Id]" />
+                        <inputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Update logBosleySalesforce2.Inputs[OLE DB Command Input].Columns[logBosleySalesforceID]"
+                          cachedDataType="i4"
+                          cachedName="logBosleySalesforceID"
+                          externalMetadataColumnId="Package\Process Rows in Queue\Update Salesforce\Update logBosleySalesforce2.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output].Columns[logBosleySalesforceID]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Update logBosleySalesforce2.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                          dataType="wstr"
+                          length="128"
+                          name="Param_0">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">65</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Update logBosleySalesforce2.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                          dataType="i4"
+                          name="Param_1">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">81</property>
+                          </properties>
+                        </externalMetadataColumn>
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Process Rows in Queue\Update Salesforce\Update logBosleySalesforce2.Outputs[OLE DB Command Output]"
+                      exclusionGroup="1"
+                      name="OLE DB Command Output"
+                      synchronousInputId="Package\Process Rows in Queue\Update Salesforce\Update logBosleySalesforce2.Inputs[OLE DB Command Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Process Rows in Queue\Update Salesforce\Update logBosleySalesforce2.Outputs[OLE DB Command Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Command Error Output"
+                      synchronousInputId="Package\Process Rows in Queue\Update Salesforce\Update logBosleySalesforce2.Inputs[OLE DB Command Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Update logBosleySalesforce2.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Update logBosleySalesforce2.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Process Rows in Queue\Update Salesforce\Update logBosleySalesforce2.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Process Rows in Queue\Update Salesforce\Update logBosleySalesforce2.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Process Rows in Queue\Update Salesforce.Paths[Lead Status]"
+                  endId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Inputs[input]"
+                  name="Lead Status"
+                  startId="Package\Process Rows in Queue\Update Salesforce\Check for Status of Lead.Outputs[Lead Status]" />
+                <path
+                  refId="Package\Process Rows in Queue\Update Salesforce.Paths[Lookup Match Output]"
+                  endId="Package\Process Rows in Queue\Update Salesforce\Multicast 1.Inputs[Multicast Input 1]"
+                  name="Lookup Match Output"
+                  startId="Package\Process Rows in Queue\Update Salesforce\Lookup Lead.Outputs[Lookup Match Output]" />
+                <path
+                  refId="Package\Process Rows in Queue\Update Salesforce.Paths[Multicast Output 1]"
+                  endId="Package\Process Rows in Queue\Update Salesforce\Check for Status of Lead.Inputs[Conditional Split Input]"
+                  name="Multicast Output 1"
+                  startId="Package\Process Rows in Queue\Update Salesforce\Multicast 1.Outputs[Multicast Output 1]" />
+                <path
+                  refId="Package\Process Rows in Queue\Update Salesforce.Paths[Multicast Output 3]"
+                  endId="Package\Process Rows in Queue\Update Salesforce\Update logBosleySalesforce.Inputs[OLE DB Command Input]"
+                  name="Multicast Output 3"
+                  startId="Package\Process Rows in Queue\Update Salesforce\Multicast 1.Outputs[Multicast Output 3]" />
+                <path
+                  refId="Package\Process Rows in Queue\Update Salesforce.Paths[OLE DB Source Output]"
+                  endId="Package\Process Rows in Queue\Update Salesforce\Lookup Lead.Inputs[Lookup Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce.Outputs[OLE DB Source Output]" />
+                <path
+                  refId="Package\Process Rows in Queue\Update Salesforce.Paths[RecordId Output]"
+                  endId="Package\Process Rows in Queue\Update Salesforce\Update logBosleySalesforce2.Inputs[OLE DB Command Input]"
+                  name="RecordId Output"
+                  startId="Package\Process Rows in Queue\Update Salesforce\Create new Task.Outputs[RecordId Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:ForEachVariableMappings>
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{661EFB5D-565E-4C44-B5E6-F269338F2F9C}"
+          DTS:ObjectName="{661EFB5D-565E-4C44-B5E6-F269338F2F9C}"
+          DTS:ValueIndex="0"
+          DTS:VariableName="User::LogID" />
+      </DTS:ForEachVariableMappings>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{F3AA2938-E9A1-4997-AE94-7639F9546129}"
+      DTS:From="Package\Get Rows to Process"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Process Rows in Queue" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="169,42"
+          Id="Package\Process Rows in Queue\Update Salesforce"
+          TopLeft="86.5,67" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="414,212"
+          Size="414,255"
+          Id="Package\Process Rows in Queue"
+          TopLeft="97,168" />
+        <NodeLayout
+          Size="182,42"
+          Id="Package\Get Rows to Process"
+          TopLeft="211,56" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="303,98">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,70"
+              Start="0,0"
+              End="0,62.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,62.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Process Rows in Queue\Update Salesforce">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="208,42"
+          Id="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce"
+          TopLeft="62.8888999267856,23.8370369880582" />
+        <NodeLayout
+          Size="241,42"
+          Id="Package\Process Rows in Queue\Update Salesforce\Lookup Lead"
+          TopLeft="45.8888999267856,187.974074692432" />
+        <NodeLayout
+          Size="132,42"
+          Id="Package\Process Rows in Queue\Update Salesforce\Multicast 1"
+          TopLeft="100.388899926786,270" />
+        <NodeLayout
+          Size="200,42"
+          Id="Package\Process Rows in Queue\Update Salesforce\Check for Status of Lead"
+          TopLeft="66.3888999267856,353.111112396805" />
+        <NodeLayout
+          Size="217,42"
+          Id="Package\Process Rows in Queue\Update Salesforce\Update logBosleySalesforce"
+          TopLeft="353,277" />
+        <NodeLayout
+          Size="241,42"
+          Id="Package\Process Rows in Queue\Update Salesforce\Create new Task"
+          TopLeft="45.8888999267856,435.248150101179" />
+        <NodeLayout
+          Size="223,42"
+          Id="Package\Process Rows in Queue\Update Salesforce\Update logBosleySalesforce2"
+          TopLeft="349,437" />
+        <EdgeLayout
+          Id="Package\Process Rows in Queue\Update Salesforce.Paths[Multicast Output 1]"
+          TopLeft="166.388899926786,312">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,41.111112396805"
+              Start="0,0"
+              End="0,33.611112396805">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.611112396805" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Process Rows in Queue\Update Salesforce.Paths[Lookup Match Output]"
+          TopLeft="166.388899926786,229.974074692432">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,40.025925307568"
+              Start="0,0"
+              End="0,32.525925307568">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,32.525925307568" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,10.458275153784,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Process Rows in Queue\Update Salesforce.Paths[Lead Status]"
+          TopLeft="166.388899926786,395.111112396805">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,40.1370377043741"
+              Start="0,0"
+              End="0,32.6370377043741">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,32.6370377043741" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-26.382578125,11.4440071334371,52.76515625,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Process Rows in Queue\Update Salesforce.Paths[OLE DB Source Output]"
+          TopLeft="166.638899926786,65.8370369880582">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,122.137037704374"
+              Start="0,0"
+              End="0,114.637037704374">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,114.637037704374" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Process Rows in Queue\Update Salesforce.Paths[Multicast Output 3]"
+          TopLeft="232.388899926786,294.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="120.611100073214,0"
+              Start="0,0"
+              End="113.111100073214,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="113.111100073214,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Process Rows in Queue\Update Salesforce.Paths[RecordId Output]"
+          TopLeft="286.888899926786,457.12407505059">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="62.1111000732144,0"
+              Start="0,0"
+              End="54.6111000732144,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="54.6111000732144,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Process Rows in Queue\Update Salesforce\Read logBosleySalesforce">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
