@@ -1,8 +1,8 @@
-DROP TABLE IF EXISTS [##SalesForceMapping] 
+DROP TABLE IF EXISTS [##SalesForceMapping]
 go
 SELECT
 	[TableName], [ColumnName], [HC_BI_SFDC_ColumnId], [SalesForceImport_ColumnId], [HC_BI_SFDC_ColumnDef], [SalesForceImport_ColumnDef], [HC_BI_SFDC_AllCount], [SalesForceImport_AllCount], [HC_BI_SFDC_NotNullCount], [SalesForceImport_NotNullCount]
-INTO [##SalesForceMapping] 
+INTO [##SalesForceMapping]
 FROM (VALUES
 ('Account', 'AccountNumber', 4, 35, 'nvarchar(80)', 'varchar(40)', 383362, 405029, 51, 0),
 ('Account', 'AccountSource', NULL, 83, NULL, 'varchar(255)', NULL, 405029, NULL, 91685),
@@ -2480,7 +2480,7 @@ DISTINCT
     [TableName]
   , [HC_BI_SFDC_AllCount]
   , [SalesForceImport_AllCount]
-FROM [##SalesForceMapping] 
+FROM [##SalesForceMapping]
 ORDER BY [TableName]
 
 SELECT
@@ -2494,6 +2494,6 @@ SELECT
   , [SalesForceImport_AllCount]
   , [HC_BI_SFDC_NotNullCount]
   , [SalesForceImport_NotNullCount]
-FROM [##SalesForceMapping] 
+FROM [##SalesForceMapping]
 ORDER BY [TableName]
   , [ColumnName]

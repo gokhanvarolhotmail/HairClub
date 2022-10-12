@@ -9,7 +9,7 @@ AUTHOR:					Dominic Leiba
 IMPLEMENTOR:			Dominic Leiba
 DATE IMPLEMENTED:		02/24/2014
 ------------------------------------------------------------------------
-NOTES: 
+NOTES:
 
 06/19/2020 - DL - Rewrote Stored Procedure.
 ------------------------------------------------------------------------

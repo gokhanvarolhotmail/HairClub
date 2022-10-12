@@ -7,9 +7,9 @@ DESTINATION DATABASE:	HC_Accounting
 AUTHOR:					Dominic Leiba
 IMPLEMENTOR:			Dominic Leiba
 DATE IMPLEMENTED:		5/1/2020
-DESCRIPTION:			
+DESCRIPTION:
 ------------------------------------------------------------------------
-NOTES: 
+NOTES:
 
 ------------------------------------------------------------------------
 SAMPLE EXECUTION:

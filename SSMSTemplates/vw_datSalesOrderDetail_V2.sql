@@ -21,7 +21,7 @@ LAST REVISION DATE: 12/16/2009
 -------------------------------------------------------------------------------------------------------------
 NOTES: 12/16/2009 -- JH -- Added Canadian Dollars to selection for fields (Price, Tax1, Tax2 and Total_Price)
 							As Per Ticket Request 49040.
-		03/16/2011 -- MB -- Added IsSurgeryReversalFlag=0 to applicable queries							
+		03/16/2011 -- MB -- Added IsSurgeryReversalFlag=0 to applicable queries
 -------------------------------------------------------------------------------------------------------------
 SAMPLE EXEC:  SELECT TOP 100 * FROM [vw_datSalesOrderDetail]
 -------------------------------------------------------------------------------------------------------------

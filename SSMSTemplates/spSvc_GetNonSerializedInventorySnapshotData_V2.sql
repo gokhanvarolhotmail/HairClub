@@ -35,9 +35,9 @@ DESTINATION DATABASE:	HairClubCMS
 AUTHOR:					Dominic Leiba
 IMPLEMENTOR:			Dominic Leiba
 DATE IMPLEMENTED:		5/28/2020
-DESCRIPTION:			
+DESCRIPTION:
 ------------------------------------------------------------------------
-NOTES: 
+NOTES:
 
 ------------------------------------------------------------------------
 SAMPLE EXECUTION:
